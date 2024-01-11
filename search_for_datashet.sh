@@ -14,7 +14,7 @@ usage() {
 while getopts "d:p:" opt; do
     case $opt in
         d) SEARCH_DIR=$OPTARG;;
-        p) PATTERN=$OPTARG;;
+        p) PATTERN="$OPTARG*";;
         *) usage;;
     esac
 done
@@ -27,5 +27,8 @@ fi
 # Define the output file
 OUTPUT_FILE="directories_list.txt"
 
-# Find directories matching the pattern and write to the file
-find "$SEARCH_DIR" -type d -name "$PATTERN" > "$OUTPUT_FILE"
+# Find directories matching the pattern at the first level
+# and write only their names to the file
+find "$SEARCH_DIR" -maxdepth 1 -type d -name "$PATTERN" | while read -r dir; do
+    basename "$dir"
+done > "$OUTPUT_FILE"
