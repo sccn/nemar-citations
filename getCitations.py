@@ -1,6 +1,6 @@
 from scholarly import scholarly
 from scholarly import ProxyGenerator
-import pandas as pandas
+import pandas as pd
 
 
 def get_working_proxy():
@@ -18,23 +18,30 @@ def get_citation_numbers(dataset: str) -> int:
     return scholarly.search_pubs(dataset).total_results
 
 
-def get_citations(dataset: str, num_cites: int) -> list:
-    
+def get_citations(dataset: str, num_cites: int) -> pd.DataFrame:
+    """
+    Returns a dataframe of the citations for a given dataset
+    """
     if num_cites is None:
         num_cites = get_citation_numbers(dataset)
-    
+
     get_working_proxy()
     # Run the search_pubs function with the dataset name, and get the ith result, sorted by year
-    citations = []
+    citations = pd.DataFrame(columns=['title', 'author', 'year', 'url', 'cited_by', 'bib'])
     for i in range(num_cites):
         try:
-            citation = scholarly.search_pubs(dataset, start_index=i)
-            citations.append(citation)
+            entry = scholarly.search_pubs(dataset, start_index=i)
         except:
             # likely the proxy is not working, so we need to get a new one
             print("Failed to connected, retrying one more time...")
             get_working_proxy()
-            citation = scholarly.search_pubs(dataset, start_index=i)
-            citations.append(citation)
+            entry = scholarly.search_pubs(dataset, start_index=i)
 
+        entry = next(entry)  # This is the ith result
+        citations = citations.append({'title': entry['bib']['title'],
+                                      'author': entry['bib']['author'],
+                                      'year': entry['bib']['pub_year'],
+                                      'url': entry['pub_url'],
+                                      'cited_by': entry['num_citations'],
+                                      'bib': entry['bib']}, ignore_index=True)
     return citations
