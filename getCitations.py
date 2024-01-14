@@ -7,7 +7,11 @@ def get_working_proxy():
     success = False
     while not success:
         pg = ProxyGenerator()
-        success = pg.ScraperAPI("6f1f6b38b5f6b8e4870be1f20df9e4f0")
+        success = pg.ScraperAPI("2ba9040c384b9f6d2d45607a57afbab8")
+        # success = pg.FreeProxies()
+        # Luminati did not work, it connects, but does not return any results
+        # success = pg.Luminati(usr='brd-customer-hl_237c9c0b-zone-residential',
+        #                       passwd='eu7qo5tid82s', proxy_port=22225)
         if success:
             scholarly.use_proxy(pg)
 
