@@ -7,6 +7,7 @@ def get_working_proxy():
     success = False
     while not success:
         pg = ProxyGenerator()
+        # This is a PAID API key specific to the NEMAR project, please do NOT share
         success = pg.ScraperAPI("2b1a9b9f4327a5bec275d0261231886b")
         # success = pg.FreeProxies()
         # Luminati did not work, it connects, but does not return any results
