@@ -41,6 +41,24 @@ def get_citations(dataset: str, num_cites: int) -> pd.DataFrame:
             entry = scholarly.search_pubs(dataset, start_index=i)
 
         entry = next(entry)  # This is the ith result
+        entry_fields = entry.keys()
+        bib_fields = entry['bib'].keys()
+        # Check if all expected fields are present, if not, add n/a to the dataframe
+        if 'pub_url' not in entry_fields:
+            entry['pub_url'] = 'n/a'
+        if 'num_citations' not in entry_fields:
+            entry['num_citations'] = 'n/a'
+        if 'bib' not in entry_fields:
+            entry['bib'] = 'n/a'
+        else:
+            if 'pub_year' not in bib_fields:
+                entry['bib']['pub_year'] = 'n/a'
+            if 'author' not in bib_fields:
+                entry['bib']['author'] = 'n/a'
+            if 'title' not in bib_fields:
+                entry['bib']['title'] = 'n/a'
+
+        # Add the entry to the dataframe
         citations = citations.append({'title': entry['bib']['title'],
                                       'author': entry['bib']['author'],
                                       'year': entry['bib']['pub_year'],
