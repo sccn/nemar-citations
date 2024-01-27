@@ -57,10 +57,13 @@ def get_citations(dataset: str, num_cites: int) -> pd.DataFrame:
                 entry['bib']['author'] = 'n/a'
             if 'title' not in bib_fields:
                 entry['bib']['title'] = 'n/a'
+            if 'venue' not in bib_fields:
+                entry['bib']['venue'] = 'n/a'
 
         # Add the entry to the dataframe
         citations = citations.append({'title': entry['bib']['title'],
                                       'author': entry['bib']['author'],
+                                      'venue': entry['bib']['venue'],
                                       'year': entry['bib']['pub_year'],
                                       'url': entry['pub_url'],
                                       'cited_by': entry['num_citations'],
