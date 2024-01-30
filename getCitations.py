@@ -30,7 +30,7 @@ def get_citations(dataset: str, num_cites: int) -> pd.DataFrame:
         num_cites = get_citation_numbers(dataset)
 
     # Run the search_pubs function with the dataset name, and get the ith result, sorted by year
-    citations = pd.DataFrame(columns=['title', 'author', 'year', 'url', 'cited_by', 'bib'])
+    citations = pd.DataFrame(columns=['title', 'author', 'venue', 'year', 'url', 'cited_by', 'bib'])
     for i in range(num_cites):
         try:
             entry = scholarly.search_pubs(dataset, start_index=i)
@@ -51,14 +51,14 @@ def get_citations(dataset: str, num_cites: int) -> pd.DataFrame:
         if 'bib' not in entry_fields:
             entry['bib'] = 'n/a'
         else:
-            if 'pub_year' not in bib_fields:
-                entry['bib']['pub_year'] = 'n/a'
-            if 'author' not in bib_fields:
-                entry['bib']['author'] = 'n/a'
             if 'title' not in bib_fields:
                 entry['bib']['title'] = 'n/a'
+            if 'author' not in bib_fields:
+                entry['bib']['author'] = 'n/a'
             if 'venue' not in bib_fields:
                 entry['bib']['venue'] = 'n/a'
+            if 'pub_year' not in bib_fields:
+                entry['bib']['pub_year'] = 'n/a'
 
         # Add the entry to the dataframe
         citations = citations.append({'title': entry['bib']['title'],
