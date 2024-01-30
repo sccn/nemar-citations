@@ -60,12 +60,15 @@ def get_citations(dataset: str, num_cites: int) -> pd.DataFrame:
             if 'pub_year' not in bib_fields:
                 entry['bib']['pub_year'] = 'n/a'
 
-        # Add the entry to the dataframe
-        citations = citations.append({'title': entry['bib']['title'],
-                                      'author': entry['bib']['author'],
-                                      'venue': entry['bib']['venue'],
-                                      'year': entry['bib']['pub_year'],
-                                      'url': entry['pub_url'],
-                                      'cited_by': entry['num_citations'],
-                                      'bib': entry['bib']}, ignore_index=True)
+        # Add the entry to the data frame
+        citations = pd.concat([citations,
+                               pd.DataFrame.from_records([
+                                   {'title': entry['bib']['title'],
+                                    'author': entry['bib']['author'],
+                                    'venue': entry['bib']['venue'],
+                                    'year': entry['bib']['pub_year'],
+                                    'url': entry['pub_url'],
+                                    'cited_by': entry['num_citations'],
+                                    'bib': entry['bib']}])
+                               ], ignore_index=True)
     return citations
