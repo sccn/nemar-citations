@@ -15,7 +15,7 @@ UPDATE_CITE_LIST = False
 
 # %% get the list of datasets and citation numbers
 datasets = pd.read_csv('citations/directories_list.txt', header=None)[0].tolist()
-num_cites = pd.read_csv('citations/citations_011023.csv', index_col='dataset_id')
+num_cites = pd.read_csv('citations/citations_011024.csv', index_col='dataset_id')
 num_cites = num_cites.iloc[:, 0]
 # %% if we need to update the citation numbers
 
@@ -47,6 +47,7 @@ if UPDATE_CITE_LIST:
             try:
                 citations = gc.get_citations(d, num_cites_new[d])
                 citations.to_pickle('citations/' + d + '.pkl')
+                print('Completed citations for ' + d)
             except:
                 unsucessful.append(d)
                 print('Failed to get citations for ' + d)
