@@ -64,7 +64,7 @@ def get_citations(dataset: str, num_cites: int) -> pd.DataFrame:
             get_working_proxy()
             entry = scholarly.search_pubs(dataset, start_index=i)
 
-        entry = scholarly.fill(next(entry))  # This is the ith result
+        entry = next(entry)  # This is the ith result, do not use fill() command (very API expensive)
         entry_fields = entry.keys()
         bib_fields = entry['bib'].keys()
         # Check if all expected fields are present, if not, add n/a to the dataframe
@@ -84,12 +84,31 @@ def get_citations(dataset: str, num_cites: int) -> pd.DataFrame:
             if 'pub_year' not in bib_fields:
                 entry['bib']['pub_year'] = 'n/a'
 
-        # Check the author list, replace 'and' with ';' Then, if there are more than 3 authors, replace the last
+        # Check the venue, if it is not "na", then check if the name contains "...",
+        # then retrieve the name using the fill() command
+        if entry['bib']['venue'] != 'n/a':
+            if "..." in entry['bib']['venue']:
+                authors = entry['bib']['author']  # save the author list as it will be expanded
+                filled_entry = scholarly.fill(entry)
+                entry['bib']['author'] = authors
+                # check if the "journal" or "conference" key is present, replace the venue with the name
+                if 'journal' in filled_entry['bib']:
+                    entry['bib']['venue'] = filled_entry['bib']['journal']
+                elif 'conference' in filled_entry['bib']:
+                    entry['bib']['venue'] = filled_entry['bib']['conference']
+                else:
+                    print('cannnot fill the venue for ' + entry['bib']['title'] + ' in ' + dataset)
+
+        # join the author list into a string
+        entry['bib']['author'] = ', '.join(entry['bib']['author'])
+
+        # If there are more than 3 authors, replace the last
         # 'and' with ', et al.'
         if entry['bib']['author'] != 'n/a':
-            entry['bib']['author'] = entry['bib']['author'].replace(' and', ';')
-            if entry['bib']['author'].count(';') > 3:
-                entry['bib']['short_author'] = '; '.join(entry['bib']['author'].rsplit(';')[0:3]) + '; et al.'
+            if entry['bib']['author'].count(',') > 3:
+                entry['bib']['short_author'] = ', '.join(entry['bib']['author'].rsplit(', ')[0:3]) + ', et al.'
+            else:
+                entry['bib']['short_author'] = entry['bib']['author']
 
         # Add the entry to the data frame
         citations = pd.concat([citations,
