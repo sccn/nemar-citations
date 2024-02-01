@@ -1,3 +1,27 @@
+"""
+This module provides methods to retrieve citation information for a given dataset using the Google Scholar API.
+
+Methods:
+- get_working_proxy: Retrieves a working proxy for making API requests.
+- get_citation_numbers: Retrieves the total number of citations for a given dataset.
+- get_citations: Retrieves the detailed citation information for a given dataset.
+
+Dependencies:
+- scholarly: A Python library for interacting with the Google Scholar API.
+- pandas: A data manipulation library for creating and manipulating dataframes.
+
+Note: The 'get_working_proxy' function requires a paid API key specific to the NEMAR project.
+Please do NOT share this key with anyone outside the project team.
+
+Usage:
+1. Import the module using the 'import' statement.
+2. Call the 'get_working_proxy' function to initialize the proxy.
+3. Use the 'get_citation_numbers' function to retrieve the total number of citations for a dataset.
+4. Use the 'get_citations' function to retrieve detailed citation information for a dataset.
+
+(c) 2024, Seyed Yahya Shirazi
+"""
+
 from scholarly import scholarly
 from scholarly import ProxyGenerator
 import pandas as pd
