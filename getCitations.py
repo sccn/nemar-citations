@@ -87,7 +87,7 @@ def get_citations(dataset: str, num_cites: int) -> pd.DataFrame:
         # Check the venue, if it is not "na", then check if the name contains "...",
         # then retrieve the name using the fill() command
         if entry['bib']['venue'] != 'n/a':
-            if "..." in entry['bib']['venue']:
+            if "…" in entry['bib']['venue']:
                 authors = entry['bib']['author']  # save the author list as it will be expanded
                 filled_entry = scholarly.fill(entry)
                 entry['bib']['author'] = authors
@@ -96,6 +96,8 @@ def get_citations(dataset: str, num_cites: int) -> pd.DataFrame:
                     entry['bib']['venue'] = filled_entry['bib']['journal']
                 elif 'conference' in filled_entry['bib']:
                     entry['bib']['venue'] = filled_entry['bib']['conference']
+                elif 'booktitle' in filled_entry['bib']:
+                    entry['bib']['venue'] = filled_entry['bib']['booktitle']
                 else:
                     print('cannnot fill the venue for ' + entry['bib']['title'] + ' in ' + dataset)
 
