@@ -116,7 +116,7 @@ def get_citations(dataset: str, num_cites: int) -> pd.DataFrame:
         citations = pd.concat([citations,
                                pd.DataFrame.from_records([
                                    {'title': entry['bib']['title'],
-                                    'author': entry['bib']['short_author'],
+                                    'author': entry['bib']['author'],
                                     'venue': entry['bib']['venue'],
                                     'year': entry['bib']['pub_year'],
                                     'url': entry['pub_url'],
