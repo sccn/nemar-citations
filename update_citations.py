@@ -48,7 +48,7 @@ if UPDATE_CITE_LIST:
                 citations = gc.get_citations(d, num_cites_new[d])
                 citations.to_pickle('citations/' + d + '.pkl')
                 print('Completed citations for ' + d)
-            except:
+            except Exception:
                 unsucessful.append(d)
                 print('Failed to get citations for ' + d)
     else:
