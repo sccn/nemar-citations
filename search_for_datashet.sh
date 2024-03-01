@@ -25,7 +25,7 @@ if [ -z "$SEARCH_DIR" ] || [ -z "$PATTERN" ]; then
 fi
 
 # Define the output file
-OUTPUT_FILE="directories_list.txt"
+OUTPUT_FILE="directories_list_feb.txt"
 
 # Find directories matching the pattern at the first level
 # and write only their names to the file
