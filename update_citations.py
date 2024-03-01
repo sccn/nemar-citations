@@ -14,11 +14,11 @@ UPDATE_NUM_CITES = False
 UPDATE_CITE_LIST = False
 
 # %% get the list of datasets and citation numbers
-datasets = pd.read_csv('citations/directories_list.txt', header=None)[0].tolist()
+datasets = pd.read_csv('citations/directories_list_feb.txt', header=None)[0].tolist()
 num_cites = pd.read_csv('citations/citations_011024.csv', index_col='dataset_id')
 num_cites = num_cites.iloc[:, 0]
-# %% if we need to update the citation numbers
 
+# %% if we need to update the citation numbers
 if UPDATE_NUM_CITES:
     num_cites_new = pd.Series(name='number_of_citations')
     for i, d in enumerate(datasets):
