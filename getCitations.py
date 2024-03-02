@@ -38,7 +38,7 @@ def get_working_proxy(method: str = 'ScraperAPI'):
             success = pg.FreeProxies()
             # Luminati did not work, it connects, but does not return any results
             success = pg.Luminati(usr='brd-customer-hl_237c9c0b-zone-residential',
-                                passwd='eu7qo5tid82s', proxy_port=22225)
+                                  passwd='eu7qo5tid82s', proxy_port=22225)
         else:
             # Try free proxies
             success = pg.FreeProxies()
