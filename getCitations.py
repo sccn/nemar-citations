@@ -58,7 +58,7 @@ def get_citations(dataset: str, num_cites: int) -> pd.DataFrame:
     for i in range(num_cites):
         try:
             entry = scholarly.search_pubs(dataset, start_index=i)
-        except:
+        except Exception:
             # likely the proxy is not working, so we need to get a new one
             print("Failed to connected, retrying one more time...")
             get_working_proxy()
