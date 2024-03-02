@@ -27,16 +27,22 @@ from scholarly import ProxyGenerator
 import pandas as pd
 
 
-def get_working_proxy():
+def get_working_proxy(method: str = 'ScraperAPI'):
     success = False
     while not success:
         pg = ProxyGenerator()
-        # This is a PAID API key specific to the NEMAR project, please do NOT share
-        success = pg.ScraperAPI("2b1a9b9f4327a5bec275d0261231886b")
-        # success = pg.FreeProxies()
-        # Luminati did not work, it connects, but does not return any results
-        # success = pg.Luminati(usr='brd-customer-hl_237c9c0b-zone-residential',
-        #                       passwd='eu7qo5tid82s', proxy_port=22225)
+        if method == 'ScraperAPI':
+            # This is a PAID API key specific to the NEMAR project, please do NOT share
+            success = pg.ScraperAPI("2b1a9b9f4327a5bec275d0261231886b")
+        elif method == 'Luminati':
+            success = pg.FreeProxies()
+            # Luminati did not work, it connects, but does not return any results
+            success = pg.Luminati(usr='brd-customer-hl_237c9c0b-zone-residential',
+                                passwd='eu7qo5tid82s', proxy_port=22225)
+        else:
+            # Try free proxies
+            success = pg.FreeProxies()
+
         if success:
             scholarly.use_proxy(pg)
 
