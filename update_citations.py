@@ -10,12 +10,12 @@ from datetime import datetime
 import getCitations as gc
 gc.get_working_proxy()  # initialize the proxy
 
-UPDATE_NUM_CITES = False
-UPDATE_CITE_LIST = False
+UPDATE_NUM_CITES = True
+UPDATE_CITE_LIST = True
 
 # %% get the list of datasets and citation numbers
-datasets = pd.read_csv('citations/directories_list_march.txt', header=None)[0].tolist()
-num_cites = pd.read_csv('citations/citations_29022024.csv', index_col='dataset_id')
+datasets = pd.read_csv('citations/directories_list_june.txt', header=None)[0].tolist()
+num_cites = pd.read_csv('citations/citations_28032024.csv', index_col='dataset_id')
 num_cites = num_cites.iloc[:, 0]
 
 # %% if we need to update the citation numbers
