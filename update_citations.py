@@ -14,7 +14,7 @@ UPDATE_NUM_CITES = True
 UPDATE_CITE_LIST = True
 
 # %% get the list of datasets and citation numbers
-datasets = pd.read_csv('citations/directories_list_july.txt', header=None)[0].tolist()
+datasets = pd.read_csv('citations/directories_list_oct24.txt', header=None)[0].tolist()
 num_cites = pd.read_csv('citations/citations_21062024.csv', index_col='dataset_id')
 num_cites = num_cites.iloc[:, 0]
 
