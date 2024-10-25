@@ -52,7 +52,9 @@ def get_citation_numbers(dataset: str) -> int:
     return scholarly.search_pubs(dataset).total_results
 
 
-def get_citations(dataset: str, num_cites: int) -> pd.DataFrame:
+def get_citations(dataset: str, num_cites: int,
+                  year_low: int = None, year_high: int = None, start_index: int = 0,
+                  citations: pd.DataFrame = None) -> pd.DataFrame:
     """
     Returns a dataframe of the citations for a given dataset
     """
@@ -60,10 +62,11 @@ def get_citations(dataset: str, num_cites: int) -> pd.DataFrame:
         num_cites = get_citation_numbers(dataset)
 
     # Run the search_pubs function with the dataset name, and get the ith result, sorted by year
-    citations = pd.DataFrame(columns=['title', 'author', 'venue', 'year', 'url', 'cited_by', 'bib'])
+    if citations is None:
+        citations = pd.DataFrame(columns=['title', 'author', 'venue', 'year', 'url', 'cited_by', 'bib'])
     for i in range(num_cites):
         try:
-            entry = scholarly.search_pubs(dataset, start_index=i)
+            entry = scholarly.search_pubs(dataset, start_index=i + start_index, year_low=year_low, year_high=year_high)
         except Exception:
             # likely the proxy is not working, so we need to get a new one
             print("Failed to connected, retrying one more time...")
