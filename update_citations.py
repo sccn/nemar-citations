@@ -14,8 +14,8 @@ UPDATE_NUM_CITES = True
 UPDATE_CITE_LIST = True
 
 # %% get the list of datasets and citation numbers
-datasets = pd.read_csv('citations/directories_list_oct24.txt', header=None)[0].tolist()
-num_cites = pd.read_csv('citations/citations_21062024.csv', index_col='dataset_id')
+datasets = pd.read_csv('citations/directories_list_jan25.txt', header=None)[0].tolist()
+num_cites = pd.read_csv('citations/citations_25102024.csv', index_col='dataset_id')
 num_cites = num_cites.iloc[:, 0]
 
 # %% if we need to update the citation numbers
@@ -35,6 +35,9 @@ if UPDATE_NUM_CITES:
 
         # Get the list of datasets that have been updated
         datasets_updated = num_cites_diff.drop(index=num_cites_diff[num_cites_diff < 1].index).index.tolist()
+        # save the list of updated datasets
+        pd.Series(datasets_updated).to_csv('citations/updated_datasets_' + datetime.today().strftime('%d%m%Y') + '.csv',
+                                           index=False)
     else:
         print('No new citations found')
 
