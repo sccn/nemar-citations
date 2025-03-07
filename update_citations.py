@@ -35,9 +35,6 @@ if UPDATE_NUM_CITES:
 
         # Get the list of datasets that have been updated
         datasets_updated = num_cites_diff.drop(index=num_cites_diff[num_cites_diff < 1].index).index.tolist()
-        # save the list of updated datasets
-        pd.Series(datasets_updated).to_csv('citations/updated_datasets_' + datetime.today().strftime('%d%m%Y') + '.csv',
-                                           index=False)
     else:
         print('No new citations found')
 
@@ -45,14 +42,23 @@ if UPDATE_NUM_CITES:
 if UPDATE_CITE_LIST:
     if UPDATE_FLAG:
         unsucessful = []
+        successful_updates = {}  # Changed to dict to store both dataset and citation count
         # get the citations for the updated datasets
         for d in datasets_updated:
             try:
                 citations = gc.get_citations(d, int(num_cites_new[d]))
                 citations.to_pickle('citations/' + d + '.pkl')
+                successful_updates[d] = len(citations)  # Store the actual number of citations retrieved
                 print('Completed citations for ' + d)
             except Exception:
                 unsucessful.append(d)
                 print('Failed to get citations for ' + d)
+
+        # Only save the list of datasets that were successfully updated
+        if successful_updates:
+            output_file = 'citations/updated_datasets_' + datetime.today().strftime('%d%m%Y') + '.csv'
+            pd.Series(successful_updates).to_csv(output_file, index=True)  # index=True to save dataset IDs
+        if unsucessful:
+            print(f"Failed to get citations for {len(unsucessful)} datasets: {', '.join(unsucessful)}")
     else:
         print('No new citations found')
