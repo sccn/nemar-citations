@@ -25,15 +25,30 @@ Usage:
 from scholarly import scholarly
 from scholarly import ProxyGenerator
 import pandas as pd
+import os
 
 
 def get_working_proxy(method: str = 'ScraperAPI'):
     success = False
+    scraper_api_key = None
+
+    if method == 'ScraperAPI':
+        scraper_api_key = os.environ.get('SCRAPERAPI_KEY')
+        if not scraper_api_key:
+            print("ERROR: SCRAPERAPI_KEY environment variable not set.")
+            print("This key is required for the ScraperAPI method.")
+            print("Please set the SCRAPERAPI_KEY environment variable and try again.")
+            return
+    
     while not success:
         pg = ProxyGenerator()
         if method == 'ScraperAPI':
-            # This is a PAID API key specific to the NEMAR project, please do NOT share
-            success = pg.ScraperAPI("2b1a9b9f4327a5bec275d0261231886b")
+            if not scraper_api_key:
+                print("ERROR: ScraperAPI method chosen but SCRAPERAPI_KEY is missing.")
+                return
+
+            print("Attempting to use ScraperAPI with key from environment variable...")
+            success = pg.ScraperAPI(scraper_api_key)
         elif method == 'Luminati':
             success = pg.FreeProxies()
             # Luminati did not work, it connects, but does not return any results
