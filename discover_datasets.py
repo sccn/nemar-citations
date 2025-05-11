@@ -22,6 +22,9 @@ logger = logging.getLogger(__name__)
 
 GITHUB_API_BASE_URL = "https://api.github.com"
 TARGET_ORG = "OpenNeuroDatasets" # The organization to scan
+# Max items per page for GitHub API
+# https://docs.github.com/en/rest/guides/using-pagination-in-the-rest-api?apiVersion=2022-11-28#changing-the-number-of-items-per-page
+DEFAULT_PER_PAGE = 100 
 
 def get_github_api_response(api_url: str, headers: dict) -> requests.Response | None:
     """
@@ -72,6 +75,12 @@ def main():
         default="discovered_datasets.txt", 
         help="Path to the output file where discovered dataset names will be written (one per line)."
     )
+    parser.add_argument(
+        "--max-repos",
+        type=int,
+        default=None, # No limit by default
+        help="Maximum number of repositories to process (for testing/development)."
+    )
     # parser.add_argument(
     #     "--org",
     #     default=TARGET_ORG,
@@ -93,23 +102,70 @@ def main():
         }
 
     # Initial test: List repositories in the organization
-    repos_url = f"{GITHUB_API_BASE_URL}/orgs/{TARGET_ORG}/repos?per_page=5&page=1" # Get first 5 for testing
-    logger.info(f"Attempting to list repositories from {TARGET_ORG}...")
-    
-    response = get_github_api_response(repos_url, headers)
+    # repos_url = f"{GITHUB_API_BASE_URL}/orgs/{TARGET_ORG}/repos?per_page=5&page=1" # Get first 5 for testing
+    current_repos_url = f"{GITHUB_API_BASE_URL}/orgs/{TARGET_ORG}/repos?per_page={DEFAULT_PER_PAGE}"
+    all_repositories = []
+    page_num = 1
 
-    if response and response.status_code == 200:
-        repositories = response.json()
-        logger.info(f"Successfully fetched {len(repositories)} repositories (sample):")
-        for repo in repositories:
+    logger.info(f"Attempting to list all repositories from {TARGET_ORG} (page by page)...")
+
+    while current_repos_url:
+        logger.info(f"Fetching page {page_num} from URL: {current_repos_url}")
+        response = get_github_api_response(current_repos_url, headers)
+
+        if response and response.status_code == 200:
+            page_repositories = response.json()
+            if not page_repositories: # No more repositories on this page, or empty last page
+                logger.info("No more repositories found on this page. Assuming end of list.")
+                break
+            
+            all_repositories.extend(page_repositories)
+            logger.info(f"Fetched {len(page_repositories)} repositories on this page. Total fetched so far: {len(all_repositories)}.")
+
+            if args.max_repos is not None and len(all_repositories) >= args.max_repos:
+                logger.info(f"Reached max_repos limit of {args.max_repos}. Stopping repository fetching.")
+                all_repositories = all_repositories[:args.max_repos] # Trim if over limit
+                break
+
+            # Check for next page link
+            if 'Link' in response.headers:
+                links = requests.utils.parse_header_links(response.headers['Link'])
+                next_url = None
+                for link in links:
+                    if link.get('rel') == 'next':
+                        next_url = link['url']
+                        break
+                current_repos_url = next_url
+                if current_repos_url:
+                    page_num += 1
+                else:
+                    logger.info("No 'next' link found in Link header. Reached end of repositories.")
+                    current_repos_url = None # End loop
+            else:
+                logger.info("No 'Link' header in response. Assuming single page or end of repositories.")
+                current_repos_url = None # End loop
+        
+        elif response: # Response object exists but status code was not 200
+            logger.error(f"Failed to list repositories from {current_repos_url}. Status: {response.status_code}. Resp: {response.text[:200]}")
+            current_repos_url = None # Stop on error
+            break # Critical error, stop pagination
+        else: # No response object means a requests.exceptions.RequestException likely occurred
+            logger.error(f"Failed to list repositories from {current_repos_url} due to a request exception. Stopping pagination.")
+            current_repos_url = None # Stop on error
+            break # Critical error, stop pagination
+
+    logger.info(f"Finished fetching repositories. Total unique repositories found: {len(all_repositories)}.")
+
+    # Log a sample of fetched repositories if any
+    if all_repositories:
+        logger.info(f"Sample of fetched repositories (up to 5):")
+        for repo in all_repositories[:5]: # Log first 5
             logger.info(f"  - {repo['name']} (ID: {repo['id']})")
         # TODO: Further processing will go here in subsequent subtasks
-    elif response: # Response object exists but status code was not 200
-        logger.error(f"Failed to list repositories. Status code: {response.status_code}. Response: {response.text[:200]}")
-    else: # No response object means a requests.exceptions.RequestException likely occurred
-        logger.error("Failed to list repositories due to a request exception (see previous logs).")
+    else:
+        logger.warning("No repositories were successfully fetched.")
     
-    logger.info(f"Dataset discovery script finished (subtask 2.1 basic connection test). Output file: {args.output_file}")
+    logger.info(f"Dataset discovery script finished (subtask 2.2 pagination). Output file: {args.output_file}")
 
 
 if __name__ == "__main__":
