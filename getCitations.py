@@ -26,7 +26,11 @@ from scholarly import scholarly
 from scholarly import ProxyGenerator
 import pandas as pd
 import os
+import logging
+import time
 
+# Configure basic logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def get_working_proxy(method: str = 'ScraperAPI'):
     success = False
@@ -44,11 +48,22 @@ def get_working_proxy(method: str = 'ScraperAPI'):
         pg = ProxyGenerator()
         if method == 'ScraperAPI':
             if not scraper_api_key:
-                print("ERROR: ScraperAPI method chosen but SCRAPERAPI_KEY is missing.")
-                return
+                # This condition should ideally be caught by the initial check
+                # but as a safeguard during the loop if method is ScraperAPI.
+                logging.error("ScraperAPI method chosen but SCRAPERAPI_KEY is missing during proxy setup loop.")
+                return # Exit if key is missing
 
-            print("Attempting to use ScraperAPI with key from environment variable...")
-            success = pg.ScraperAPI(scraper_api_key)
+            # This is a PAID API key specific to the NEMAR project, please do NOT share
+            # Key is now fetched from environment variable SCRAPERAPI_KEY
+            logging.info("Attempting to use ScraperAPI with key from environment variable...")
+            try:
+                success = pg.ScraperAPI(scraper_api_key)
+                if not success:
+                    logging.warning(f"ScraperAPI proxy setup failed with key. Will retry.")
+            except Exception as e:
+                logging.error(f"Exception during ScraperAPI setup with key: {e}. Will retry.")
+                success = False # Ensure success is false to retry
+
         elif method == 'Luminati':
             success = pg.FreeProxies()
             # Luminati did not work, it connects, but does not return any results
@@ -60,11 +75,26 @@ def get_working_proxy(method: str = 'ScraperAPI'):
 
         if success:
             scholarly.use_proxy(pg)
+            logging.info(f"Successfully set up proxy using {method}.")
+        else:
+            # Add a small delay before retrying to avoid spamming proxy services if continuously failing
+            logging.warning(f"Proxy setup failed with {method}. Retrying in 5 seconds...")
+            time.sleep(5)
 
 
 def get_citation_numbers(dataset: str) -> int:
-
-    return scholarly.search_pubs(dataset).total_results
+    try:
+        search_results = scholarly.search_pubs(dataset)
+        if search_results:
+            total_results = search_results.total_results
+            logging.info(f"Found {total_results} citation(s) for dataset: {dataset}")
+            return total_results
+        else:
+            logging.warning(f"No search results from scholarly.search_pubs for dataset: {dataset}")
+            return 0
+    except Exception as e:
+        logging.error(f"Error getting citation number for {dataset}: {e}")
+        return 0 # Return 0 or None, or re-raise depending on desired strictness
 
 
 def get_citations(dataset: str, num_cites: int,
@@ -81,14 +111,27 @@ def get_citations(dataset: str, num_cites: int,
         citations = pd.DataFrame(columns=['title', 'author', 'venue', 'year', 'url', 'cited_by', 'bib'])
     for i in range(num_cites):
         try:
-            entry = scholarly.search_pubs(dataset, start_index=i + start_index, year_low=year_low, year_high=year_high)
-        except Exception:
-            # likely the proxy is not working, so we need to get a new one
-            print("Failed to connected, retrying one more time...")
-            get_working_proxy()
-            entry = scholarly.search_pubs(dataset, start_index=i)
+            entry_search = scholarly.search_pubs(dataset, start_index=i + start_index, year_low=year_low, year_high=year_high)
+            entry = next(entry_search)
+        except StopIteration:
+            logging.warning(f"StopIteration: Expected {num_cites} citations for {dataset}, but found fewer after index {i + start_index -1}. Processing what was found.")
+            break # Stop if no more entries are found
+        except Exception as e:
+            logging.error(f"Failed to get publication entry {i + start_index} for {dataset}. Attempting to get new proxy. Error: {e}")
+            get_working_proxy() # Attempt to refresh proxy
+            try:
+                entry_search = scholarly.search_pubs(dataset, start_index=i + start_index, year_low=year_low, year_high=year_high)
+                entry = next(entry_search)
+                logging.info(f"Successfully retrieved entry {i+start_index} for {dataset} after proxy refresh.")
+            except Exception as e2:
+                logging.error(f"Still failed to get publication entry {i + start_index} for {dataset} after proxy refresh. Skipping this entry. Error: {e2}")
+                continue # Skip this entry and try the next one
 
-        entry = next(entry)  # This is the ith result, do not use fill() command (very API expensive)
+        # entry = next(entry)  # This is the ith result, do not use fill() command (very API expensive) - already done above
+        if not entry: # Should not happen if next() was successful, but as a safeguard
+            logging.warning(f"Entry {i+start_index} for {dataset} was unexpectedly None. Skipping.")
+            continue
+
         entry_fields = entry.keys()
         bib_fields = entry['bib'].keys()
         # Check if all expected fields are present, if not, add n/a to the dataframe
