@@ -9,15 +9,20 @@ Methods:
 Dependencies:
 - scholarly: A Python library for interacting with the Google Scholar API.
 - pandas: A data manipulation library for creating and manipulating dataframes.
+- os: For environment variable access.
+- logging: For logging messages.
+- time: For adding delays in retries.
 
-Note: The 'get_working_proxy' function requires a paid API key specific to the NEMAR project.
-Please do NOT share this key with anyone outside the project team.
+Note:
+- The 'get_working_proxy' function, when using the 'ScraperAPI' method, requires the
+  SCRAPERAPI_KEY environment variable to be set with a valid API key.
+- Functions interacting with Google Scholar are subject to network availability and API changes.
 
 Usage:
-1. Import the module using the 'import' statement.
-2. Call the 'get_working_proxy' function to initialize the proxy.
-3. Use the 'get_citation_numbers' function to retrieve the total number of citations for a dataset.
-4. Use the 'get_citations' function to retrieve detailed citation information for a dataset.
+1. Ensure SCRAPERAPI_KEY environment variable is set if using ScraperAPI method.
+2. Import the module: `import getCitations as gc`
+3. Initialize the proxy if needed by other functions: `gc.get_working_proxy()`
+4. Use functions like `gc.get_citation_numbers('dataset_id')` or `gc.get_citations('dataset_id', count)`.
 
 (c) 2024, Seyed Yahya Shirazi
 """
@@ -33,6 +38,24 @@ import time
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def get_working_proxy(method: str = 'ScraperAPI'):
+    """
+    Sets up and validates a proxy for use with the scholarly library.
+
+    This function attempts to configure a proxy using the specified method.
+    It retries on failure with a delay. Currently supports 'ScraperAPI'
+    (requires SCRAPERAPI_KEY environment variable) and 'Luminati'.
+    If successful, `scholarly.use_proxy(pg)` is called.
+
+    Args:
+        method (str, optional): The proxy method to use. 
+                                Defaults to 'ScraperAPI'. 
+                                Other options include 'Luminati' or 'FreeProxies'.
+    
+    Returns:
+        None. The function aims to configure the global scholarly proxy.
+        It will log errors if it fails to set up a proxy after retries
+        or if necessary configurations (like API key) are missing.
+    """
     success = False
     scraper_api_key = None
 
@@ -83,6 +106,16 @@ def get_working_proxy(method: str = 'ScraperAPI'):
 
 
 def get_citation_numbers(dataset: str) -> int:
+    """
+    Retrieves the total number of citations for a given dataset ID using Google Scholar.
+
+    Args:
+        dataset (str): The dataset ID or search query string for Google Scholar.
+
+    Returns:
+        int: The total number of citations found. Returns 0 if no results are found
+             or if an error occurs during the search.
+    """
     try:
         search_results = scholarly.search_pubs(dataset)
         if search_results:
@@ -101,10 +134,30 @@ def get_citations(dataset: str, num_cites: int,
                   year_low: int = None, year_high: int = None, start_index: int = 0,
                   citations: pd.DataFrame = None) -> pd.DataFrame:
     """
-    Returns a dataframe of the citations for a given dataset
+    Returns a dataframe of the citations for a given dataset.
+
+    Fetches detailed citation information for a specified number of citations
+    for the given dataset ID. It handles potential errors during fetching, 
+    including attempting to refresh the proxy if issues occur.
+
+    Args:
+        dataset (str): The dataset ID or search query string.
+        num_cites (int): The number of citations to retrieve.
+        year_low (int, optional): The earliest publication year to include. Defaults to None.
+        year_high (int, optional): The latest publication year to include. Defaults to None.
+        start_index (int, optional): The starting index for fetching citations. Defaults to 0.
+        citations (pd.DataFrame, optional): An existing DataFrame to append citations to. 
+                                            If None, a new DataFrame is created.
+                                            Columns: ['title', 'author', 'venue', 'year', 'url', 'cited_by', 'bib'].
+
+    Returns:
+        pd.DataFrame: A DataFrame containing the fetched citation details.
+                      Returns an empty DataFrame or the original DataFrame if num_cites is 0
+                      or if errors prevent fetching any new citations.
     """
-    if num_cites is None:
-        num_cites = get_citation_numbers(dataset)
+    if num_cites is None or num_cites == 0: # Added check for num_cites being 0
+        logging.info(f"Number of citations to fetch for {dataset} is None or 0. Returning existing/empty DataFrame.")
+        return citations if citations is not None else pd.DataFrame(columns=['title', 'author', 'venue', 'year', 'url', 'cited_by', 'bib'])
 
     # Run the search_pubs function with the dataset name, and get the ith result, sorted by year
     if citations is None:

@@ -16,6 +16,170 @@ import logging # Added import
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__) # Create a logger instance for this module
 
+def load_input_data(dataset_list_file_path: str, previous_citations_file_path: str) -> tuple[list | None, pd.Series | None]:
+    """
+    Loads the list of datasets and previous citation counts from specified files.
+
+    Args:
+        dataset_list_file_path (str): Path to the file containing dataset IDs.
+        previous_citations_file_path (str): Path to the CSV file with previous citation counts.
+
+    Returns:
+        tuple[list | None, pd.Series | None]: A tuple containing:
+            - list: List of dataset IDs. None if loading fails.
+            - pd.Series: Series of previous citation counts, indexed by dataset_id. 
+                         An empty Series if the file is not found. None if loading fails otherwise.
+    """
+    datasets = None
+    num_cites_old = None
+
+    try:
+        datasets = pd.read_csv(dataset_list_file_path, header=None)[0].tolist()
+        if not datasets:
+            logger.error(f"Dataset list file is empty: {dataset_list_file_path}")
+            return None, None
+        logger.info(f"Successfully read {len(datasets)} dataset IDs from {dataset_list_file_path}")
+    except FileNotFoundError:
+        logger.error(f"Dataset list file not found: {dataset_list_file_path}")
+        return None, None
+    except Exception as e:
+        logger.error(f"Could not read dataset list file: {dataset_list_file_path}. Error: {e}")
+        return None, None
+        
+    try:
+        num_cites_old_df = pd.read_csv(previous_citations_file_path, index_col='dataset_id')
+        num_cites_old = num_cites_old_df.iloc[:, 0]
+        logger.info(f"Successfully read {len(num_cites_old)} entries from previous citations file: {previous_citations_file_path}")
+    except FileNotFoundError:
+        logger.info(f"Previous citations file not found: {previous_citations_file_path}. Starting with no previous counts.")
+        num_cites_old = pd.Series(name='number_of_citations', dtype='float64')
+    except Exception as e:
+        logger.error(f"Could not read previous citations file: {previous_citations_file_path}. Error: {e}")
+        return datasets, None # Return datasets if successfully loaded, but num_cites_old failed
+        
+    return datasets, num_cites_old
+
+def update_citation_counts(datasets: list, num_cites_old: pd.Series) -> tuple[pd.Series, pd.Series, list, bool]:
+    """
+    Updates citation counts for the given list of datasets.
+
+    Args:
+        datasets (list): List of dataset IDs to update.
+        num_cites_old (pd.Series): Series of old citation counts.
+
+    Returns:
+        tuple[pd.Series, pd.Series, list, bool]: A tuple containing:
+            - pd.Series: New citation counts.
+            - pd.Series: Differences between new and old counts.
+            - list: List of dataset IDs that have updated counts (increased or newly added).
+            - bool: Flag indicating if any citation counts were updated.
+    """
+    num_cites_new = pd.Series(name='number_of_citations', dtype='float64')
+    logger.info("Updating citation numbers...")
+    for i, d in enumerate(datasets):
+        logger.info(f"Fetching citation number for {d} ({i+1}/{len(datasets)})...")
+        try:
+            num_cites_new[d] = gc.get_citation_numbers(d)
+        except Exception as e:
+            logger.error(f"Unexpected error calling gc.get_citation_numbers for {d}. Error: {e}")
+            num_cites_new[d] = num_cites_old.get(d, 0)
+
+    num_cites_new_aligned, num_cites_old_aligned = num_cites_new.align(num_cites_old, join='outer', fill_value=0)
+    num_cites_diff = num_cites_new_aligned.sub(num_cites_old_aligned, fill_value=0)
+    
+    update_flag = (num_cites_diff != 0).any()
+    datasets_updated_for_counts = []
+
+    if update_flag:
+        logger.info("New citation counts found. Differences:")
+        changed_counts = num_cites_diff[num_cites_diff != 0]
+        for dataset_id, diff_value in changed_counts.items():
+            old_val = num_cites_old_aligned.get(dataset_id, 'N/A')
+            new_val = num_cites_new_aligned.get(dataset_id, 'N/A')
+            logger.info(f"  Dataset {dataset_id}: old={old_val}, new={new_val}, diff={diff_value}")
+        
+        datasets_updated_for_counts = num_cites_diff[num_cites_diff > 0].index.tolist()
+        newly_added_datasets = num_cites_new.index.difference(num_cites_old.index).tolist()
+        datasets_updated_for_counts.extend([d_new for d_new in newly_added_datasets if d_new not in datasets_updated_for_counts])
+        
+        if not datasets_updated_for_counts:
+            logger.info("No datasets found with an increase in citations. Update flag might be due to decreases.")
+            # update_flag = False # Keep true if there are *any* changes, even decreases
+    else:
+        logger.info('No new citation counts found or no change in counts.')
+    
+    return num_cites_new, num_cites_diff, datasets_updated_for_counts, update_flag
+
+def save_citation_counts(num_cites_new: pd.Series, output_dir: str) -> str | None:
+    """Saves the new citation counts to a CSV file."""
+    filename = 'citations_' + datetime.today().strftime('%d%m%Y') + '.csv'
+    filepath = os.path.join(output_dir, filename)
+    try:
+        num_cites_new.to_csv(filepath, index_label='dataset_id')
+        logger.info(f"Saved new citation counts to {filepath}")
+        return filepath
+    except Exception as e:
+        logger.error(f"Failed to save new citation counts to {filepath}. Error: {e}")
+        return None
+
+def update_detailed_citation_lists(datasets_to_process: list, num_cites_new: pd.Series, output_dir: str) -> tuple[dict, list]:
+    """Fetches and saves detailed citation lists for specified datasets."""
+    unsuccessful_list_update = []
+    successful_updates_details = {}
+    logger.info(f"Processing citation lists for {len(datasets_to_process)} datasets: {datasets_to_process}")
+    for i, d in enumerate(datasets_to_process):
+        logger.info(f"Fetching citation list for {d} ({i+1}/{len(datasets_to_process)})...")
+        current_num_cites = num_cites_new.get(d)
+
+        if pd.isna(current_num_cites):
+            logger.warning(f"Skipping citation list for {d} as its citation count is NaN.")
+            continue
+        if current_num_cites == 0:
+            logger.info(f"Skipping citation list for {d} as it has 0 citations.")
+            continue
+        
+        try:
+            citations = gc.get_citations(d, int(current_num_cites))
+            if citations is not None and not citations.empty:
+                output_pkl_path = os.path.join(output_dir, d + '.pkl')
+                try:
+                    citations.to_pickle(output_pkl_path)
+                    successful_updates_details[d] = len(citations)
+                    logger.info(f"Completed citations for {d} ({len(citations)} entries), saved to {output_pkl_path}")
+                except Exception as e:
+                    logger.error(f"Failed to save pickle for {d} to {output_pkl_path}. Error: {e}")
+                    unsuccessful_list_update.append(d)
+            elif citations is None:
+                logger.warning(f"gc.get_citations returned None for {d}. No pickle file saved.")
+                unsuccessful_list_update.append(d)
+            else: # Empty dataframe
+                logger.info(f"No citations retrieved by gc.get_citations for {d} (returned empty). No pickle file saved.")
+                successful_updates_details[d] = 0
+        except ValueError as ve:
+            logger.error(f"ValueError converting citation count for {d} (value: {current_num_cites}). Error: {ve}")
+            unsuccessful_list_update.append(d)
+        except Exception as e:
+            logger.error(f"Failed to get citation list for {d}. Error: {e}")
+            unsuccessful_list_update.append(d)
+            
+    return successful_updates_details, unsuccessful_list_update
+
+def save_updated_dataset_summary(successful_updates_details: dict, output_dir: str) -> str | None:
+    """Saves a summary of successfully updated dataset citation lists."""
+    if not successful_updates_details:
+        logger.info("No successful updates to summarize for detailed citation lists.")
+        return None
+        
+    filename = 'updated_datasets_' + datetime.today().strftime('%d%m%Y') + '.csv'
+    filepath = os.path.join(output_dir, filename)
+    try:
+        pd.Series(successful_updates_details).to_csv(filepath, index=True, header=['retrieved_citations_count'], index_label='dataset_id')
+        logger.info(f"Saved summary of updated citation lists to {filepath}")
+        return filepath
+    except Exception as e:
+        logger.error(f"Failed to save updated_datasets summary to {filepath}. Error: {e}")
+        return None
+
 def main():
     parser = argparse.ArgumentParser(description="Update dataset citation numbers and lists.")
     parser.add_argument("--dataset-list-file", required=True,
@@ -45,154 +209,57 @@ def main():
     logger.info("Proxy initialization attempted.")
 
     # %% get the list of datasets and citation numbers
-    try:
-        datasets = pd.read_csv(args.dataset_list_file, header=None)[0].tolist()
-        if not datasets:
-            logger.error(f"Dataset list file is empty: {args.dataset_list_file}")
-            return
-        logger.info(f"Successfully read {len(datasets)} dataset IDs from {args.dataset_list_file}")
-    except FileNotFoundError:
-        logger.error(f"Dataset list file not found: {args.dataset_list_file}")
-        return
-    except Exception as e:
-        logger.error(f"Could not read dataset list file: {args.dataset_list_file}. Error: {e}")
-        return
-        
-    try:
-        num_cites_old_df = pd.read_csv(args.previous_citations_file, index_col='dataset_id')
-        num_cites_old = num_cites_old_df.iloc[:, 0]
-        logger.info(f"Successfully read {len(num_cites_old)} entries from previous citations file: {args.previous_citations_file}")
-    except FileNotFoundError:
-        logger.info(f"Previous citations file not found: {args.previous_citations_file}. Starting with no previous counts.")
-        num_cites_old = pd.Series(name='number_of_citations', dtype='float64') # Empty series if file not found
-    except Exception as e:
-        logger.error(f"Could not read previous citations file: {args.previous_citations_file}. Error: {e}")
+    datasets, num_cites_old = load_input_data(args.dataset_list_file, args.previous_citations_file)
+    if datasets is None or num_cites_old is None:
+        logger.error("Failed to load initial data. Exiting.")
         return
 
-    UPDATE_FLAG = False # Initialize UPDATE_FLAG
-    datasets_updated = [] # Initialize datasets_updated
-    num_cites_new = pd.Series(name='number_of_citations', dtype='float64') # Initialize num_cites_new
+    num_cites_new = num_cites_old.copy()
+    overall_update_occurred = False # Tracks if any significant update happened for lists
+    datasets_for_list_update = []
 
-    # %% if we need to update the citation numbers
     if args.update_num_cites:
-        logger.info("Updating citation numbers...")
-        for i, d in enumerate(datasets):
-            logger.info(f"Fetching citation number for {d} ({i+1}/{len(datasets)})...")
-            try:
-                # get_citation_numbers in gc now returns 0 on error and logs it
-                num_cites_new[d] = gc.get_citation_numbers(d)
-            except Exception as e: # This is a fallback, gc.get_citation_numbers should handle its own errors
-                logger.error(f"Unexpected error calling gc.get_citation_numbers for {d}. Error: {e}")
-                num_cites_new[d] = num_cites_old.get(d, 0) # Keep old value or 0 if new
+        num_cites_new, _, datasets_with_new_counts, counts_updated_flag = update_citation_counts(datasets, num_cites_old)
+        if counts_updated_flag:
+            save_citation_counts(num_cites_new, args.output_dir)
+            overall_update_occurred = True 
+            # Use datasets_with_new_counts (increased or new) for targeted list updates
+            datasets_for_list_update = datasets_with_new_counts 
+        else: # No change in counts
+            logger.info("Citation counts were not updated as no changes were found.")
+            # If counts didn't change, but user wants to update lists, process all datasets
+            if args.update_cite_list:
+                logger.info("Proceeding to update citation lists for all datasets based on existing counts as per --update-cite-list.")
+                datasets_for_list_update = datasets
+                overall_update_occurred = True # Force list update if requested
+            else: # No count change AND no list update requested
+                 datasets_for_list_update = [] # No lists to update
 
-        # compare the old and new citation numbers
-        # Ensure alignment before subtraction, handle new datasets correctly
-        num_cites_new_aligned, num_cites_old_aligned = num_cites_new.align(num_cites_old, join='outer', fill_value=0)
-        num_cites_diff = num_cites_new_aligned.sub(num_cites_old_aligned, fill_value=0)
-        
-        UPDATE_FLAG = (num_cites_diff != 0).any() # Check if any difference exists
-
-        if UPDATE_FLAG:
-            logger.info("New citation counts found. Differences:")
-            # Log only datasets with actual changes to avoid excessive logging
-            changed_counts = num_cites_diff[num_cites_diff != 0]
-            for dataset_id, diff_value in changed_counts.items():
-                old_val = num_cites_old_aligned.get(dataset_id, 'N/A')
-                new_val = num_cites_new_aligned.get(dataset_id, 'N/A')
-                logger.info(f"  Dataset {dataset_id}: old={old_val}, new={new_val}, diff={diff_value}")
-            
-            new_citations_filepath = os.path.join(args.output_dir, 'citations_' + datetime.today().strftime('%d%m%Y') + '.csv')
-            try:
-                num_cites_new.to_csv(new_citations_filepath, index_label='dataset_id')
-                logger.info(f"Saved new citation counts to {new_citations_filepath}")
-            except Exception as e:
-                logger.error(f"Failed to save new citation counts to {new_citations_filepath}. Error: {e}")
-
-            # Get the list of datasets that have been updated (genuinely new citations or new datasets)
-            datasets_updated = num_cites_diff[num_cites_diff > 0].index.tolist()
-            newly_added_datasets = num_cites_new.index.difference(num_cites_old.index).tolist()
-            datasets_updated.extend([d for d in newly_added_datasets if d not in datasets_updated])
-            
-            if not datasets_updated:
-                logger.info("No datasets found with an increase in citations. UPDATE_FLAG might be due to decreases or other non-update changes.")
-                UPDATE_FLAG = False
-        else:
-            logger.info('No new citation counts found or no change in counts.')
-            UPDATE_FLAG = False
-
-    else:
+    else: # Not updating numbers
         logger.info("Skipping update of citation numbers.")
-        # If not updating numbers, we need to decide if we proceed with cite list update
-        # For now, let's assume if numbers aren't updated, we use previous numbers for list update
-        # and the flag means if *any* list should be updated.
-        # A more sophisticated logic might be needed based on exact requirements.
-        num_cites_new = num_cites_old.copy() # Use old numbers if not updating
-        # Potentially set UPDATE_FLAG to True if update_cite_list is True, to force list processing
+        # If not updating numbers, but want to update lists, use all datasets with old numbers
         if args.update_cite_list:
-             logger.info("Force processing citation lists based on previous numbers.")
-             UPDATE_FLAG = True # To allow cite list update to run with old numbers
-             datasets_updated = datasets # Process all datasets if forcing list update
-
-    # %% if we need to update the citation list
-    if args.update_cite_list:
-        logger.info("Updating detailed citation lists...")
-        if UPDATE_FLAG and datasets_updated: # Ensure there are datasets marked for update
-            unsuccessful_list_update = []
-            successful_updates_details = {}  # Changed to dict to store both dataset and citation count
-            # get the citations for the updated datasets
-            logger.info(f"Processing citation lists for {len(datasets_updated)} datasets: {datasets_updated}")
-            for i, d in enumerate(datasets_updated):
-                logger.info(f"Fetching citation list for {d} ({i+1}/{len(datasets_updated)})...")
-                current_num_cites = num_cites_new.get(d)
-                if pd.isna(current_num_cites):
-                    logger.warning(f"Skipping citation list for {d} as its citation count is NaN.")
-                    continue
-                if current_num_cites == 0:
-                    logger.info(f"Skipping citation list for {d} as it has 0 citations.")
-                    continue
-                try:
-                    # gc.get_citations now handles its own errors and logs them
-                    citations = gc.get_citations(d, int(current_num_cites))
-                    if citations is not None and not citations.empty:
-                        output_pkl_path = os.path.join(args.output_dir, d + '.pkl')
-                        try:
-                            citations.to_pickle(output_pkl_path)
-                            successful_updates_details[d] = len(citations)
-                            logger.info(f"Completed citations for {d} ({len(citations)} entries), saved to {output_pkl_path}")
-                        except Exception as e:
-                            logger.error(f"Failed to save pickle for {d} to {output_pkl_path}. Error: {e}")
-                            unsuccessful_list_update.append(d)
-                    elif citations is None:
-                         logger.warning(f"gc.get_citations returned None for {d}. No pickle file saved.")
-                         unsuccessful_list_update.append(d)
-                    else: # Empty dataframe
-                        logger.info(f"No citations retrieved by gc.get_citations for {d} (returned empty). No pickle file saved.")
-                        # Not necessarily an error, could be 0 actual citations despite count > 0 from search_pubs
-                        successful_updates_details[d] = 0 # Record that 0 were retrieved
-
-                except ValueError as ve:
-                    logger.error(f"ValueError converting citation count for {d} (value: {current_num_cites}). Error: {ve}")
-                    unsuccessful_list_update.append(d)
-                except Exception as e: # Fallback for other errors from gc.get_citations or logic here
-                    logger.error(f"Failed to get citation list for {d}. Error: {e}")
-                    unsuccessful_list_update.append(d)
-
-            # Only save the list of datasets that were successfully updated
-            if successful_updates_details:
-                updated_datasets_filepath = os.path.join(args.output_dir, 'updated_datasets_' + datetime.today().strftime('%d%m%Y') + '.csv')
-                try:
-                    pd.Series(successful_updates_details).to_csv(updated_datasets_filepath, index=True, header=['retrieved_citations_count'], index_label='dataset_id')
-                    logger.info(f"Saved summary of updated citation lists to {updated_datasets_filepath}")
-                except Exception as e:
-                    logger.error(f"Failed to save updated_datasets summary to {updated_datasets_filepath}. Error: {e}")
-            if unsuccessful_list_update:
-                logger.warning(f"Failed to get/save complete citation lists for {len(unsuccessful_list_update)} datasets: {', '.join(unsuccessful_list_update)}")
-        elif not datasets_updated and UPDATE_FLAG:
-            logger.info("Citation lists update skipped: UPDATE_FLAG was true, but no specific datasets were marked for update (e.g. only decreases or forced with no prior increase).")
+            logger.info("Updating citation lists for all datasets based on previous counts as num_cites update was skipped.")
+            datasets_for_list_update = datasets
+            overall_update_occurred = True # Indicate that list update will proceed
         else:
-            logger.info('Citation lists update skipped as no new citation counts were found, update was not requested, or no datasets were pending update.')
+            datasets_for_list_update = []
+
+    if args.update_cite_list:
+        if overall_update_occurred and datasets_for_list_update:
+            successful_updates, unsuccessful_updates = update_detailed_citation_lists(datasets_for_list_update, num_cites_new, args.output_dir)
+            if successful_updates:
+                save_updated_dataset_summary(successful_updates, args.output_dir)
+            if unsuccessful_updates:
+                logger.warning(f"Failed to get/save complete citation lists for {len(unsuccessful_updates)} datasets: {', '.join(unsuccessful_updates)}")
+        elif not overall_update_occurred:
+             logger.info("Citation lists update skipped as no prior updates indicated a need (e.g., no count changes and not forced).")
+        elif not datasets_for_list_update:
+             logger.info("Citation lists update skipped as no datasets were identified for processing (e.g. counts updated but only decreases, and not forcing all lists).")
     else:
         logger.info("Skipping update of detailed citation lists.")
+
+    logger.info("Dataset citation update process finished.")
 
 if __name__ == "__main__":
     main()
