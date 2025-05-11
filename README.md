@@ -66,3 +66,48 @@ Running the script can produce the following files in the specified output direc
 *   `<dataset_id>.pkl`: Pickle files, one for each dataset for which the detailed citation list was successfully fetched and saved. These contain a pandas DataFrame of the citation details.
 
 (Note: `DDMMYYYY` in filenames will be replaced by the current date.)
+
+### Running `discover_datasets.py`
+
+The script `discover_datasets.py` is used to find relevant datasets (EEG, iEEG, MEG modalities) from the OpenNeuroDatasets GitHub organization. It checks for BIDS-standard directory structures within each repository.
+
+**Prerequisites:**
+
+1.  **Python Environment**: Ensure you have Python 3 installed along with the `requests` library.
+    ```bash
+    pip install requests
+    ```
+2.  **GitHub Token**: The script uses the GitHub API. To avoid strict rate limits, you **must** provide a GitHub Personal Access Token (PAT) with `public_repo` scope. Set this token as an environment variable named `GITHUB_TOKEN`:
+    ```bash
+    export GITHUB_TOKEN="your_github_pat_here"
+    ```
+    On Windows, you might use:
+    ```bash
+    set GITHUB_TOKEN="your_github_pat_here"
+    ```
+    Or set it through your system's environment variable settings. Without this token, the script will likely fail due to rate limiting.
+
+**Command-Line Arguments:**
+
+*   `--output-file FILE_PATH` (Optional): Path to a text file where the names of discovered dataset repositories will be written (one per line).
+    Example: `citations/discovered_datasets_YYYY-MM-DD.txt`
+    If not specified, the list will only be printed to the log.
+*   `--max-repos NUMBER` (Optional): An integer specifying the maximum number of repositories to process from the OpenNeuroDatasets organization. This is primarily for testing purposes to speed up execution.
+    Example: `--max-repos 10`
+
+**Example Invocation:**
+
+To discover datasets and save their names to `citations/discovered_datasets.txt`, processing all repositories:
+```bash
+python discover_datasets.py --output-file citations/discovered_datasets.txt
+```
+
+To discover datasets from the first 20 repositories (for a quick test) and save to a specific file:
+```bash
+python discover_datasets.py --output-file temp/test_discovery.txt --max-repos 20
+```
+
+**Output:**
+
+*   If `--output-file` is provided, a text file will be created (or overwritten) at the specified path, containing one dataset repository name per line. This file can then be used as input for `update_citations.py` (via its `--dataset-list-file` argument).
+*   The script also logs its progress and findings to the console.
