@@ -39,4 +39,24 @@ jobs:
             --previous-citations-file citations/previous_citations.csv \
             --output-dir citations_output/
           # Add steps here to commit and push changes, or create a PR
-          # This will be handled in a later task (Task 4 & 5) 
+          # This will be handled in a later task (Task 4 & 5)
+
+      - name: Update previous_citations.csv for next run
+        run: |
+          echo "Looking for today's citation file to update previous_citations.csv..."
+          TODAY_DATE=$(date +%d%m%Y)
+          LATEST_CITATIONS_FILE="citations_output/citations_${TODAY_DATE}.csv"
+          TARGET_PREVIOUS_FILE="citations/previous_citations.csv"
+
+          if [ -f "$LATEST_CITATIONS_FILE" ]; then
+            echo "Found $LATEST_CITATIONS_FILE. Copying to $TARGET_PREVIOUS_FILE..."
+            # Ensure the target directory exists, though it should from checkout
+            mkdir -p citations/
+            cp "$LATEST_CITATIONS_FILE" "$TARGET_PREVIOUS_FILE"
+            echo "Successfully updated $TARGET_PREVIOUS_FILE"
+          else
+            echo "Error: Today's citation file ($LATEST_CITATIONS_FILE) not found."
+            echo "Skipping update of $TARGET_PREVIOUS_FILE. It might need to be created manually or the script might not have run as expected."
+            # Consider whether this should be a failing condition
+            # exit 1 
+          fi 
