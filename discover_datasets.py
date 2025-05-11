@@ -8,13 +8,15 @@ import os
 import time
 import logging
 import requests  # Using requests for simplicity, consider httpx for async later if needed
+import pandas as pd  # For lookup table
+from datetime import datetime  # For rate limit logging and processed_date
 
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.StreamHandler()  # Outputs to console
+        logging.StreamHandler(),  # Outputs to console
         # Optionally add logging.FileHandler("discover_datasets.log")
     ]
 )
@@ -26,8 +28,51 @@ TARGET_ORG = "OpenNeuroDatasets"  # The organization to scan
 # https://docs.github.com/en/rest/guides/using-pagination-in-the-rest-api?apiVersion=2022-11-28#changing-the-number-of-items-per-page
 DEFAULT_PER_PAGE = 100
 
-# BIDS modalities to search for
+# BIDS modalities to search for (for final filtering)
 TARGET_MODALITIES = ["eeg", "ieeg", "meg"]
+# All BIDS data types that could be present in a subject directory (for comprehensive logging)
+# This list can be expanded based on BIDS specs for other common data types.
+ALL_POSSIBLE_BIDS_MODALITIES = sorted(list(set(TARGET_MODALITIES + [
+    "anat", "func", "dwi", "fmap", "perf", "pet", "beh", "micr", "motion",
+    "nirs", "mrs"
+])))  # Add more as needed
+
+LOOKUP_TABLE_PATH = "citations/dataset_modalities_lookup.csv"
+LOOKUP_COLUMNS = ["dataset_name", "modalities", "processed_date"]
+
+
+def load_lookup_table(path: str) -> pd.DataFrame:
+    """Loads the dataset modalities lookup table from a CSV file."""
+    if os.path.exists(path):
+        try:
+            logger.info(f"Loading existing lookup table from {path}")
+            df = pd.read_csv(path)
+            # Ensure correct columns, handle if file is empty or malformed
+            if not all(col in df.columns for col in LOOKUP_COLUMNS):
+                logger.warning(f"Lookup table {path} has incorrect columns. Will create a new one.")
+                return pd.DataFrame(columns=LOOKUP_COLUMNS)
+            # For simplicity, we'll assume modalities is a comma-separated string and process later as needed.
+            return df.set_index("dataset_name")  # Index by dataset_name for quick lookups
+        except pd.errors.EmptyDataError:
+            logger.info(f"Lookup table {path} is empty. Creating a new one.")
+            return pd.DataFrame(columns=LOOKUP_COLUMNS).set_index("dataset_name")
+        except Exception as e:
+            logger.error(f"Error loading lookup table {path}: {e}. Will create a new one.")
+            return pd.DataFrame(columns=LOOKUP_COLUMNS).set_index("dataset_name")
+    else:
+        logger.info(f"Lookup table {path} not found. Creating a new one.")
+        return pd.DataFrame(columns=LOOKUP_COLUMNS).set_index("dataset_name")
+
+
+def save_lookup_table(df: pd.DataFrame, path: str):
+    """Saves the dataset modalities lookup table to a CSV file."""
+    try:
+        # Ensure parent directory exists
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        df.reset_index().to_csv(path, index=False)
+        logger.info(f"Successfully saved lookup table to {path} with {len(df)} entries.")
+    except Exception as e:
+        logger.error(f"Error saving lookup table to {path}: {e}")
 
 
 def get_github_api_response(api_url: str, headers: dict) -> requests.Response | None:
@@ -53,10 +98,16 @@ def get_github_api_response(api_url: str, headers: dict) -> requests.Response | 
             remaining = int(response.headers['X-RateLimit-Remaining'])
             limit = int(response.headers['X-RateLimit-Limit'])
             reset_time = int(response.headers['X-RateLimit-Reset'])
-            logger.debug(f"Rate limit: {remaining}/{limit} remaining. Resets at {datetime.fromtimestamp(reset_time)}.")
+            logger.debug(
+                f"Rate limit: {remaining}/{limit} remaining. "
+                f"Resets at {datetime.fromtimestamp(reset_time)}."
+            )
             if remaining < 20:  # Be conservative
                 wait_time = max(0, reset_time - time.time()) + 15  # Add a small buffer
-                logger.warning(f"Approaching rate limit ({remaining} remaining). Waiting for {wait_time:.2f} seconds.")
+                logger.warning(
+                    f"Approaching rate limit ({remaining} remaining). "
+                    f"Waiting for {wait_time:.2f} seconds."
+                )
                 time.sleep(wait_time)
 
         response.raise_for_status()  # Raises HTTPError for bad responses (4XX or 5XX)
@@ -73,7 +124,8 @@ def get_github_api_response(api_url: str, headers: dict) -> requests.Response | 
 
 def check_repository_for_modalities(repo_name: str, org_name: str, headers: dict) -> list[str]:
     """
-    Checks a given repository for specified BIDS modalities (eeg, ieeg, meg).
+    Checks a given repository for BIDS data types by inspecting subdirectories
+    within the first found subject directory (e.g., sub-01).
 
     Args:
         repo_name (str): The name of the repository.
@@ -81,11 +133,12 @@ def check_repository_for_modalities(repo_name: str, org_name: str, headers: dict
         headers (dict): Headers for GitHub API requests (including auth).
 
     Returns:
-        list[str]: A list of found target modalities in the repository (e.g., ["eeg", "meg"]).
-                   Returns an empty list if no target modalities are found or if errors occur.
+        list[str]: A list of all directory names found within the first subject directory
+                   (e.g., ["eeg", "anat", "func"]). Returns an empty list if no subject
+                   directory is found, it's empty, or if errors occur.
     """
-    found_modalities_in_repo = set()
-    logger.info(f"Checking repository: {org_name}/{repo_name} for BIDS modalities ({', '.join(TARGET_MODALITIES)})...")
+    all_found_modalities_in_repo = set()  # Using a more generic name now
+    logger.info(f"Scanning repository: {org_name}/{repo_name} for all BIDS data types...")
 
     # 1. List contents of the repository root to find sub-* directories
     root_contents_url = f"{GITHUB_API_BASE_URL}/repos/{org_name}/{repo_name}/contents/"
@@ -103,7 +156,7 @@ def check_repository_for_modalities(repo_name: str, org_name: str, headers: dict
         if item['type'] == 'dir' and item['name'].startswith('sub-'):
             subject_dirs_found += 1
             subject_dir_name = item['name']
-            logger.debug(f"  Found subject directory: {subject_dir_name} in {repo_name}")
+            logger.debug(f"  Found subject directory: {subject_dir_name} in {repo_name}. Checking its contents.")
 
             # 2. List contents of this subject directory to find modality directories
             subject_contents_url = item['url']  # API URL for subject directory contents
@@ -111,57 +164,48 @@ def check_repository_for_modalities(repo_name: str, org_name: str, headers: dict
 
             if not (subject_response and subject_response.status_code == 200):
                 logger.warning(f"Could not list contents for {subject_dir_name} in {repo_name}. Skipping this sub-dir.")
-                continue
+                # Since we only check the first subject dir, if it fails, we bail for this repo.
+                return []
 
             modalities_in_subj_dir = set()
             for sub_item in subject_response.json():
-                if sub_item['type'] == 'dir' and sub_item['name'] in TARGET_MODALITIES:
-                    logger.info(
-                        f"    Found modality directory: {sub_item['name']} "
-                        f"in {subject_dir_name} of {repo_name}!"
-                    )
-                    modalities_in_subj_dir.add(sub_item['name'])
-                    found_modalities_in_repo.add(sub_item['name'])
+                if sub_item['type'] == 'dir':  # Collect all directories found here
+                    dir_name = sub_item['name']
+                    logger.info(f"    Found data directory: {dir_name} in {subject_dir_name} of {repo_name}")
+                    modalities_in_subj_dir.add(dir_name)
+                    all_found_modalities_in_repo.add(dir_name)
 
-            # Optimization: If all target modalities are found within one subject,
-            # or if we just need to confirm *any* modality, we could break early.
-            # For now, let's check one subject directory thoroughly for its modalities.
-            # If we found any modalities in this subject dir, we can often assume BIDS structure is present.
-            # We only need to check one subject dir to confirm presence for now, for efficiency.
             if modalities_in_subj_dir:
-                logger.debug(
-                    f"  Finished checking subject directory {subject_dir_name}. "
-                    f"Found modalities: {modalities_in_subj_dir}"
-                )
-                # We've confirmed modalities in one subject dir, which is enough to classify the repo.
-                # We return all unique modalities found across all subject dirs checked (currently just one).
-                return list(found_modalities_in_repo)
+                logger.debug(f"  Finished checking subject directory {subject_dir_name}."
+                             f"Found data types: {modalities_in_subj_dir}")
             else:
-                logger.debug(f"  No target modalities found in subject directory: {subject_dir_name}")
-            # Only check the first subject directory found to save API calls
-            # If this first sub-dir doesn't have modalities, we assume the repo isn't structured as we need
-            # or doesn't contain the target modalities in a representative way.
-            logger.info(
-                f"Checked first subject directory ({subject_dir_name}) in {repo_name}, "
-                f"no target modalities found there. Concluding for this repo."
-            )
-            return []  # Return empty if first subject dir has no target modalities
+                logger.debug(f"  No subdirectories found in subject directory: {subject_dir_name}")
+
+            # We only check the first representative subject directory to save API calls.
+            # Return all unique directory names found within this first subject directory.
+            return sorted(list(all_found_modalities_in_repo))
 
     if subject_dirs_found == 0:
         logger.info(f"No 'sub-' directories found in the root of {repo_name}.")
 
-    return list(found_modalities_in_repo)  # Should be empty if we exited early or no sub-dirs
+    return sorted(list(all_found_modalities_in_repo))  # Should be empty if we exited early or no sub-dirs
 
 
 def main():
     """Main function to orchestrate dataset discovery."""
     parser = argparse.ArgumentParser(description="Discover OpenNeuro datasets with specific BIDS modalities.")
-    parser.add_argument("--output-file", help="Path to save the list of discovered dataset names.")
+    parser.add_argument("--output-file", help="Path to save the list of discovered dataset names"
+                        "(those matching TARGET_MODALITIES).")
     parser.add_argument(
         "--max-repos",
         type=int,
         default=None,
         help="Maximum number of repositories to process (for testing)."
+    )
+    parser.add_argument(
+        "--force-rescan-all",
+        action="store_true",
+        help="Force a full rescan of all repositories, ignoring the lookup table for fetching modalities."
     )
     args = parser.parse_args()
 
@@ -177,113 +221,139 @@ def main():
         "Accept": "application/vnd.github.v3+json"
     }
 
-    all_repositories = []
+    # Load existing lookup table or create an empty one
+    lookup_df = load_lookup_table(LOOKUP_TABLE_PATH)
+    # Ensure 'modalities' column is treated as string for consistent handling, especially if empty then filled
+    if 'modalities' not in lookup_df.columns and not lookup_df.empty:
+        lookup_df['modalities'] = pd.NA  # Or empty string, depending on how we handle it later
+    elif lookup_df.empty and LOOKUP_COLUMNS:
+        lookup_df = pd.DataFrame(columns=LOOKUP_COLUMNS).set_index("dataset_name")
+
+    all_gh_repositories = []
     url = f"https://api.github.com/orgs/{TARGET_ORG}/repos?type=public&per_page={DEFAULT_PER_PAGE}"
     page_num = 1
 
+    logging.info(f"Fetching list of all repositories from {TARGET_ORG}...")
     while url:
-        if args.max_repos is not None and len(all_repositories) >= args.max_repos:
-            logging.info(f"Reached max_repos limit of {args.max_repos}. Stopping repository fetching.")
+        if args.max_repos is not None and len(all_gh_repositories) >= args.max_repos:
+            logging.info(f"Reached max_repos limit of {args.max_repos} for initial GitHub repo listing.")
             break
         logging.info(f"Fetching page {page_num} of repositories from {url.split('?')[0]}...")
-        response_data = get_github_api_response(url, headers)
-        if not response_data:  # This now assumes get_github_api_response returns None on critical failure
-            logging.error("Failed to fetch repositories or hit rate limit after checks in get_github_api_response.")
-            break
+        response_obj = get_github_api_response(url, headers)  # Renamed to response_obj for clarity
 
-        # Ensure response_data is a dictionary (parsed JSON) if it's not None
-        # The original get_github_api_response returns a Response object or None.
-        # Let's adjust to work with the structure from previous edits where response_data holds the parsed json or error info
-        
-        # This block needs to be re-evaluated based on actual return type of get_github_api_response
-        # For now, assuming previous tool edit correctly made response_data a dict with 'data' and 'links'
-        # or that get_github_api_response was changed to return such a dict.
-        # If get_github_api_response returns a requests.Response object:
-        if isinstance(response_data, requests.Response):
-             if response_data.status_code == 200:
-                 try:
-                     actual_data = response_data.json()
-                     page_repos = actual_data
-                     links_header = requests.utils.parse_header_links(response_data.headers.get('Link', ''))
-                     next_url = None
-                     for link_info in links_header:
-                         if link_info.get('rel') == 'next':
-                             next_url = link_info['url']
-                             break
-                     current_url_links = {'next': {'url': next_url}} if next_url else {} # Mimic structure
-                 except ValueError: #Includes JSONDecodeError
-                     logging.error("Failed to decode JSON from successful API response.")
-                     break
-             else:
-                 logging.error(f"GitHub API request failed with status {response_data.status_code}. Response: {response_data.text[:200]}")
-                 break
-        elif response_data is None: # Explicit None means critical error from get_github_api_response
-            break # Already logged in get_github_api_response
-        else: # Assuming response_data is already a dict from a previous version of get_github_api_response
-             page_repos = response_data.get("data", [])
-             current_url_links = response_data.get("links", {})
+        if not response_obj:
+            logging.error("Critical error fetching repository list from GitHub. Aborting.")
+            return  # Cannot proceed without the repo list
 
+        page_repos_json = []
+        next_page_url = None
 
-        if not isinstance(page_repos, list):
-            logging.error(f"Expected a list of repositories, but got {type(page_repos)}. Response: {page_repos}")
-            break
-
-        all_repositories.extend(page_repos)
-        logging.info(
-            f"Fetched {len(page_repos)} repositories on this page. "
-            f"Total fetched so far: {len(all_repositories)}."
-        )
-
-        if "next" in current_url_links and "url" in current_url_links["next"]:
-            url = current_url_links["next"]["url"]
-            page_num += 1
+        if response_obj.status_code == 200:
+            try:
+                page_repos_json = response_obj.json()
+                links_header = requests.utils.parse_header_links(response_obj.headers.get('Link', ''))
+                for link_info in links_header:
+                    if link_info.get('rel') == 'next':
+                        next_page_url = link_info['url']
+                        break
+            except ValueError:  # Includes JSONDecodeError
+                logging.error("Failed to decode JSON from GitHub API response for repository list.")
+                return  # Critical error
         else:
-            url = None
+            logging.error(
+                f"GitHub API request for repository list failed with status {response_obj.status_code}. "
+                f"Response: {response_obj.text[:200]}"
+            )
+            return  # Critical error
 
-        # Optional: add a small delay to be extremely cautious with API rate limits,
-        # though get_github_api_response handles explicit limits
-        # time.sleep(0.1)
+        if not isinstance(page_repos_json, list):
+            logging.error(f"Expected a list of repositories, got {type(page_repos_json)}. Aborting.")
+            return
 
-    logging.info(f"Total repositories fetched: {len(all_repositories)}")
+        all_gh_repositories.extend(page_repos_json)
+        logging.info(f"Fetched {len(page_repos_json)} repositories on this page. Total fetched so far:"
+                     f"{len(all_gh_repositories)}.")
+        url = next_page_url
+        page_num += 1
+
+    logging.info(f"Total repositories listed from GitHub: {len(all_gh_repositories)}")
     if args.max_repos is not None:
-        all_repositories = all_repositories[:args.max_repos]
-        logging.info(f"Processing the first {len(all_repositories)} repositories due to --max-repos limit.")
+        # Apply max_repos limit *after* fetching all, then trim for processing if needed
+        # Or, if meant to limit API calls, the break inside loop is primary.
+        # For processing, we can re-slice if a different number is desired for actual checks vs listing.
+        # Current logic limits actual processing by index in loop below if max_repos is set.
+        pass
 
-    identified_datasets_info = []
-    for repo in all_repositories:
-        repo_name = repo.get("name")
+    processed_repo_count = 0
+    for repo_data in all_gh_repositories:
+        if args.max_repos is not None and processed_repo_count >= args.max_repos:
+            logging.info(f"Reached processing limit of --max-repos ({args.max_repos})."
+                         "Stopping further repository checks.")
+            break
+
+        repo_name = repo_data.get("name")
         if not repo_name:
-            logging.warning(f"Repository found without a name: {repo.get('html_url')}. Skipping.")
+            logging.warning(f"Repository found without a name: {repo_data.get('html_url')}. Skipping.")
             continue
 
-        logging.debug(f"Checking repository: {repo_name}")
-        found_modalities = check_repository_for_modalities(repo_name, TARGET_ORG, headers)
-        if found_modalities:
-            logging.info(f"Relevant dataset {repo_name} found with modalities: {', '.join(found_modalities)}")
-            identified_datasets_info.append({"name": repo_name, "modalities": found_modalities})
-        else:
-            logging.debug(f"No target modalities found in {repo_name}")
+        processed_repo_count += 1
+        current_time_iso = datetime.now().isoformat()
 
-    logging.info(f"Identified {len(identified_datasets_info)} relevant datasets.")
+        if not args.force_rescan_all and repo_name in lookup_df.index:
+            logging.info(f"Dataset {repo_name} found in lookup table. Using cached modalities.")
+            # Optionally, update processed_date if we want to track when it was last seen/confirmed
+            # lookup_df.loc[repo_name, 'processed_date'] = current_time_iso
+            continue  # Already processed and in table, unless forcing rescan
+
+        logging.info(f"Processing {repo_name} (New or --force-rescan-all)..."
+                     f"({processed_repo_count}/{len(all_gh_repositories)
+                     if args.max_repos is None else args.max_repos})")
+        all_modalities_found = check_repository_for_modalities(repo_name, TARGET_ORG, headers)
+
+        modalities_str = ",".join(sorted(list(set(all_modalities_found))))  # Ensure unique and sorted for consistency
+
+        # Update or add to lookup DataFrame
+        if repo_name in lookup_df.index:  # If force_rescan_all, update existing
+            lookup_df.loc[repo_name, 'modalities'] = modalities_str
+            lookup_df.loc[repo_name, 'processed_date'] = current_time_iso
+        else:  # New entry
+            new_row = pd.DataFrame([{'modalities': modalities_str, 'processed_date': current_time_iso}],
+                                   index=[repo_name])
+            new_row.index.name = "dataset_name"
+            lookup_df = pd.concat([lookup_df, new_row])
+
+    # Save the potentially updated lookup table
+    save_lookup_table(lookup_df, LOOKUP_TABLE_PATH)
+
+    # Filter datasets for output based on TARGET_MODALITIES
+    relevant_datasets_for_output = []
+    if not lookup_df.empty:
+        for dataset_name, row in lookup_df.iterrows():
+            if pd.isna(row['modalities']) or row['modalities'] == '':
+                repo_modalities = []
+            else:
+                repo_modalities = [m.strip() for m in str(row['modalities']).split(',')]
+
+            if any(tm in repo_modalities for tm in TARGET_MODALITIES):
+                relevant_datasets_for_output.append(dataset_name)
+
+    logging.info(f"Found {len(relevant_datasets_for_output)} datasets matching target modalities "
+                 f"({', '.join(TARGET_MODALITIES)}) from lookup table.")
 
     if args.output_file:
-        logging.info(f"Saving discovered dataset names to {args.output_file}...")
+        logging.info(f"Saving {len(relevant_datasets_for_output)} relevant dataset names to {args.output_file}...")
         try:
             with open(args.output_file, 'w') as f:
-                for dataset_info in identified_datasets_info:
-                    f.write(f"{dataset_info['name']}\\n")
-            logging.info(f"Successfully saved {len(identified_datasets_info)} dataset names to {args.output_file}")
+                for dataset_name in sorted(relevant_datasets_for_output):
+                    f.write(f"{dataset_name}\n")
+            logging.info(f"Successfully saved relevant dataset names to {args.output_file}")
         except IOError as e:
             logging.error(f"Error writing to output file {args.output_file}: {e}")
     else:
-        logging.info(
-            "No output file specified. Discovered dataset names will not be saved to a file. "
-            "Log will contain the list."
-        )
+        logging.info("No output file specified. Filtered dataset names will not be saved to a file.")
 
     logging.info("Dataset discovery process completed.")
 
 
 if __name__ == "__main__":
-    from datetime import datetime  # Imported here for rate limit logging only for now
-    main() 
+    main()
