@@ -232,6 +232,23 @@ jobs:
           echo "You may need to manually push the commits or resolve conflicts."
           # Could send notification or create an issue here
 
+      - name: Generate dynamic PR content
+        id: pr-content
+        if: ${{ success() && env.CHANGES_DETECTED == 'true' && steps.push.outcome == 'success' }}
+        run: |
+          # Find the updated citation file to compare with the previous one
+          TODAY_DATE=$(date +%d%m%Y)
+          LATEST_CITATIONS_FILE="citations_output/citations_${TODAY_DATE}.csv"
+          PREVIOUS_CITATIONS_FILE="citations/previous_citations.csv"
+          
+          # Generate dynamic PR content using our Python script
+          python scripts/generate_pr_content.py \
+            --previous-file "$PREVIOUS_CITATIONS_FILE" \
+            --current-file "$LATEST_CITATIONS_FILE" \
+            --format github
+          
+          echo "PR content generated successfully"
+
       - name: Create Pull Request
         id: create-pr
         if: ${{ success() && env.CHANGES_DETECTED == 'true' && steps.push.outcome == 'success' }}
@@ -244,24 +261,8 @@ jobs:
           branch: ${{ env.BRANCH_NAME }}
           base: main
           delete-branch: false
-          title: "Update dataset citations - ${{ github.event.repository.updated_at }}"
-          body: |
-            ## Automated Dataset Citation Update
-            
-            This pull request contains updates to the dataset citation database.
-            
-            ### Changes Summary
-            - Updated on: ${{ github.event.repository.updated_at }}
-            - Workflow Run: ${{ github.workflow }} #${{ github.run_number }}
-            - Run ID: ${{ github.run_id }}
-            - Updated files: ${{ env.CHANGED_FILES }}
-            
-            ### Changed Files
-            ```
-            ${{ env.CHANGED_FILES_LIST }}
-            ```
-            
-            @cdesyoun Please review these citation updates when you have a chance.
+          title: ${{ steps.pr-content.outputs.pr_title || 'Update dataset citations' }}
+          body: ${{ steps.pr-content.outputs.pr_body || 'This PR updates the dataset citation database.' }}
           labels: |
             automated
             citation-update
