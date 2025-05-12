@@ -64,6 +64,7 @@ jobs:
           echo "dataset_list_file=discovered_datasets.txt" >> $GITHUB_OUTPUT
 
       - name: Update citation information
+        id: update_citations
         env:
           SCRAPERAPI_KEY: ${{ secrets.SCRAPERAPI_KEY }}
         run: |
@@ -75,6 +76,7 @@ jobs:
           # This will be handled in a later task (Task 4 & 5)
 
       - name: Update previous_citations.csv for next run
+        id: update_previous
         run: |
           echo "Looking for today's citation file to update previous_citations.csv..."
           TODAY_DATE=$(date +%d%m%Y)
@@ -92,7 +94,7 @@ jobs:
             echo "Skipping update of $TARGET_PREVIOUS_FILE. It might need to be created manually or the script might not have run as expected."
             # Consider whether this should be a failing condition
             # exit 1 
-          fi 
+          fi
 
       - name: Check for changes
         id: check_changes
@@ -135,7 +137,8 @@ jobs:
           fi
 
       - name: Commit changes
-        if: ${{ env.CHANGES_DETECTED == 'true' }}
+        id: commit
+        if: ${{ env.CHANGES_DETECTED == 'true' && steps.update_citations.outcome == 'success' && steps.update_previous.outcome == 'success' }}
         run: |
           # Stage all changes for commit
           git add citations/ citations_output/
@@ -164,4 +167,61 @@ jobs:
           
           echo "Changes committed successfully with descriptive message"
           echo "Commit message:"
-          cat commit_message.txt 
+          cat commit_message.txt
+
+      - name: Push changes
+        id: push
+        if: ${{ success() && env.CHANGES_DETECTED == 'true' && steps.commit.outcome == 'success' }}
+        run: |
+          # Try to push changes, with retry logic
+          MAX_RETRIES=3
+          RETRY_COUNT=0
+          PUSH_SUCCESS=false
+          
+          while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+            echo "Attempting to push changes to origin/${{ env.BRANCH_NAME }} (attempt $((RETRY_COUNT+1)) of $MAX_RETRIES)..."
+            
+            if git push origin ${{ env.BRANCH_NAME }}; then
+              echo "Changes pushed successfully to ${{ env.BRANCH_NAME }}"
+              PUSH_SUCCESS=true
+              break
+            else
+              RETRY_COUNT=$((RETRY_COUNT+1))
+              if [ $RETRY_COUNT -lt $MAX_RETRIES ]; then
+                echo "Push failed, retrying in 10 seconds... (Attempt $RETRY_COUNT of $MAX_RETRIES)"
+                sleep 10
+                
+                # Fetch latest changes before retry
+                echo "Fetching latest changes from origin/${{ env.BRANCH_NAME }}..."
+                git fetch origin ${{ env.BRANCH_NAME }}
+                
+                # Check if we need to rebase
+                if git rev-parse origin/${{ env.BRANCH_NAME }} >/dev/null 2>&1; then
+                  echo "Rebasing with latest changes from origin/${{ env.BRANCH_NAME }}..."
+                  if ! git rebase origin/${{ env.BRANCH_NAME }}; then
+                    echo "Rebase failed. Aborting rebase and trying merge instead..."
+                    git rebase --abort
+                    git merge origin/${{ env.BRANCH_NAME }}
+                  fi
+                fi
+              else
+                echo "::error::Failed to push changes after $MAX_RETRIES attempts"
+                exit 1
+              fi
+            fi
+          done
+          
+          if [ "$PUSH_SUCCESS" = true ]; then
+            echo "push_successful=true" >> $GITHUB_OUTPUT
+            echo "PUSH_SUCCESSFUL=true" >> $GITHUB_ENV
+          else
+            echo "push_successful=false" >> $GITHUB_OUTPUT
+            echo "PUSH_SUCCESSFUL=false" >> $GITHUB_ENV
+          fi
+
+      - name: Handle push failure
+        if: ${{ failure() && steps.push.outcome == 'failure' }}
+        run: |
+          echo "Push operation failed. Please check the logs for details."
+          echo "You may need to manually push the commits or resolve conflicts."
+          # Could send notification or create an issue here 
