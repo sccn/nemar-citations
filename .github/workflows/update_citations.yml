@@ -22,6 +22,39 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Configure Git User Identity
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          echo "Git user identity configured successfully"
+
+      - name: Create or switch to update branch
+        id: create_branch
+        run: |
+          # Generate branch name with current year and month
+          BRANCH_NAME="update-citations-$(date +'%Y-%m')"
+          echo "Using branch name: $BRANCH_NAME"
+          
+          # Check if branch exists locally
+          if git show-ref --quiet refs/heads/$BRANCH_NAME; then
+            echo "Branch $BRANCH_NAME already exists locally, checking out"
+            git checkout $BRANCH_NAME
+          else
+            # Check if branch exists on remote
+            if git ls-remote --heads origin $BRANCH_NAME | grep -q $BRANCH_NAME; then
+              echo "Branch $BRANCH_NAME exists on remote, checking out"
+              git fetch origin $BRANCH_NAME
+              git checkout $BRANCH_NAME
+            else
+              echo "Creating new branch $BRANCH_NAME"
+              git checkout -b $BRANCH_NAME
+            fi
+          fi
+          
+          # Make branch name available to subsequent steps
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+
       - name: Discover relevant datasets
         id: discover
         env:
