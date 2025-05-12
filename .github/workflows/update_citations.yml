@@ -22,6 +22,39 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Configure Git User Identity
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          echo "Git user identity configured successfully"
+
+      - name: Create or switch to update branch
+        id: create_branch
+        run: |
+          # Generate branch name with current year and month
+          BRANCH_NAME="update-citations-$(date +'%Y-%m')"
+          echo "Using branch name: $BRANCH_NAME"
+          
+          # Check if branch exists locally
+          if git show-ref --quiet refs/heads/$BRANCH_NAME; then
+            echo "Branch $BRANCH_NAME already exists locally, checking out"
+            git checkout $BRANCH_NAME
+          else
+            # Check if branch exists on remote
+            if git ls-remote --heads origin $BRANCH_NAME | grep -q $BRANCH_NAME; then
+              echo "Branch $BRANCH_NAME exists on remote, checking out"
+              git fetch origin $BRANCH_NAME
+              git checkout $BRANCH_NAME
+            else
+              echo "Creating new branch $BRANCH_NAME"
+              git checkout -b $BRANCH_NAME
+            fi
+          fi
+          
+          # Make branch name available to subsequent steps
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+
       - name: Discover relevant datasets
         id: discover
         env:
@@ -31,6 +64,7 @@ jobs:
           echo "dataset_list_file=discovered_datasets.txt" >> $GITHUB_OUTPUT
 
       - name: Update citation information
+        id: update_citations
         env:
           SCRAPERAPI_KEY: ${{ secrets.SCRAPERAPI_KEY }}
         run: |
@@ -42,6 +76,7 @@ jobs:
           # This will be handled in a later task (Task 4 & 5)
 
       - name: Update previous_citations.csv for next run
+        id: update_previous
         run: |
           echo "Looking for today's citation file to update previous_citations.csv..."
           TODAY_DATE=$(date +%d%m%Y)
@@ -59,4 +94,134 @@ jobs:
             echo "Skipping update of $TARGET_PREVIOUS_FILE. It might need to be created manually or the script might not have run as expected."
             # Consider whether this should be a failing condition
             # exit 1 
-          fi 
+          fi
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          # Refresh Git status to detect new or modified files
+          git add -A
+          
+          # Check if there are any unstaged changes in the citations and citations_output directories
+          if ! git diff --cached --quiet -- citations/ citations_output/; then
+            echo "CHANGES_DETECTED=true" >> $GITHUB_ENV
+            echo "changes_detected=true" >> $GITHUB_OUTPUT
+            
+            # Count changed files for reporting
+            CHANGED_FILES=$(git diff --cached --name-only -- citations/ citations_output/ | grep -E '\.(csv|pkl|txt)$' | wc -l)
+            echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
+            echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
+            
+            # List changed files for the commit message
+            CHANGED_FILES_LIST=$(git diff --cached --name-only -- citations/ citations_output/ | grep -E '\.(csv|pkl|txt)$')
+            echo "CHANGED_FILES_LIST<<EOF" >> $GITHUB_ENV
+            echo "$CHANGED_FILES_LIST" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
+            
+            echo "Detected $CHANGED_FILES changed files in citations and citations_output directories"
+          else
+            echo "CHANGES_DETECTED=false" >> $GITHUB_ENV
+            echo "changes_detected=false" >> $GITHUB_OUTPUT
+            echo "No changes detected in citations or citations_output directories"
+          fi
+
+      - name: Display change detection results
+        run: |
+          if [ "${{ env.CHANGES_DETECTED }}" == "true" ]; then
+            echo "Found changes in the following files:"
+            echo "${{ env.CHANGED_FILES_LIST }}"
+            echo "Total changed files: ${{ env.CHANGED_FILES }}"
+          else
+            echo "No changes were detected in citation files."
+            echo "Skipping commit stage."
+          fi
+
+      - name: Commit changes
+        id: commit
+        if: ${{ env.CHANGES_DETECTED == 'true' && steps.update_citations.outcome == 'success' && steps.update_previous.outcome == 'success' }}
+        run: |
+          # Stage all changes for commit
+          git add citations/ citations_output/
+          
+          # Create a descriptive commit message
+          COMMIT_DATE=$(date +'%Y-%m-%d')
+          WORKFLOW_RUN="${{ github.workflow }} #${{ github.run_number }}"
+          
+          # Create multi-line commit message with details
+          cat > commit_message.txt << EOF
+          Update dataset citations - $COMMIT_DATE
+          
+          Workflow: $WORKFLOW_RUN
+          Run ID: ${{ github.run_id }}
+          Updated files: ${{ env.CHANGED_FILES }}
+          
+          Changed files:
+          ${{ env.CHANGED_FILES_LIST }}
+          EOF
+          
+          # Commit with the descriptive message
+          if ! git commit -F commit_message.txt; then
+            echo "::error::Failed to commit changes"
+            exit 1
+          fi
+          
+          echo "Changes committed successfully with descriptive message"
+          echo "Commit message:"
+          cat commit_message.txt
+
+      - name: Push changes
+        id: push
+        if: ${{ success() && env.CHANGES_DETECTED == 'true' && steps.commit.outcome == 'success' }}
+        run: |
+          # Try to push changes, with retry logic
+          MAX_RETRIES=3
+          RETRY_COUNT=0
+          PUSH_SUCCESS=false
+          
+          while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+            echo "Attempting to push changes to origin/${{ env.BRANCH_NAME }} (attempt $((RETRY_COUNT+1)) of $MAX_RETRIES)..."
+            
+            if git push origin ${{ env.BRANCH_NAME }}; then
+              echo "Changes pushed successfully to ${{ env.BRANCH_NAME }}"
+              PUSH_SUCCESS=true
+              break
+            else
+              RETRY_COUNT=$((RETRY_COUNT+1))
+              if [ $RETRY_COUNT -lt $MAX_RETRIES ]; then
+                echo "Push failed, retrying in 10 seconds... (Attempt $RETRY_COUNT of $MAX_RETRIES)"
+                sleep 10
+                
+                # Fetch latest changes before retry
+                echo "Fetching latest changes from origin/${{ env.BRANCH_NAME }}..."
+                git fetch origin ${{ env.BRANCH_NAME }}
+                
+                # Check if we need to rebase
+                if git rev-parse origin/${{ env.BRANCH_NAME }} >/dev/null 2>&1; then
+                  echo "Rebasing with latest changes from origin/${{ env.BRANCH_NAME }}..."
+                  if ! git rebase origin/${{ env.BRANCH_NAME }}; then
+                    echo "Rebase failed. Aborting rebase and trying merge instead..."
+                    git rebase --abort
+                    git merge origin/${{ env.BRANCH_NAME }}
+                  fi
+                fi
+              else
+                echo "::error::Failed to push changes after $MAX_RETRIES attempts"
+                exit 1
+              fi
+            fi
+          done
+          
+          if [ "$PUSH_SUCCESS" = true ]; then
+            echo "push_successful=true" >> $GITHUB_OUTPUT
+            echo "PUSH_SUCCESSFUL=true" >> $GITHUB_ENV
+          else
+            echo "push_successful=false" >> $GITHUB_OUTPUT
+            echo "PUSH_SUCCESSFUL=false" >> $GITHUB_ENV
+          fi
+
+      - name: Handle push failure
+        if: ${{ failure() && steps.push.outcome == 'failure' }}
+        run: |
+          echo "Push operation failed. Please check the logs for details."
+          echo "You may need to manually push the commits or resolve conflicts."
+          # Could send notification or create an issue here 
