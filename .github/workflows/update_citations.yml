@@ -132,4 +132,36 @@ jobs:
           else
             echo "No changes were detected in citation files."
             echo "Skipping commit stage."
-          fi 
+          fi
+
+      - name: Commit changes
+        if: ${{ env.CHANGES_DETECTED == 'true' }}
+        run: |
+          # Stage all changes for commit
+          git add citations/ citations_output/
+          
+          # Create a descriptive commit message
+          COMMIT_DATE=$(date +'%Y-%m-%d')
+          WORKFLOW_RUN="${{ github.workflow }} #${{ github.run_number }}"
+          
+          # Create multi-line commit message with details
+          cat > commit_message.txt << EOF
+          Update dataset citations - $COMMIT_DATE
+          
+          Workflow: $WORKFLOW_RUN
+          Run ID: ${{ github.run_id }}
+          Updated files: ${{ env.CHANGED_FILES }}
+          
+          Changed files:
+          ${{ env.CHANGED_FILES_LIST }}
+          EOF
+          
+          # Commit with the descriptive message
+          if ! git commit -F commit_message.txt; then
+            echo "::error::Failed to commit changes"
+            exit 1
+          fi
+          
+          echo "Changes committed successfully with descriptive message"
+          echo "Commit message:"
+          cat commit_message.txt 
