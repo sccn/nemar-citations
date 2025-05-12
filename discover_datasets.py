@@ -196,7 +196,7 @@ def check_repository_for_modalities(repo_name: str, org_name: str, headers: dict
                     for session_item in session_response.json():
                         if session_item['type'] == 'dir':
                             dir_name = session_item['name']
-                            logger.info(f"    Found data directory: {dir_name} in {session_dir_name} of"
+                            logger.info(f"Found data directory: {dir_name} in {session_dir_name} of"
                                         f"{subject_dir_name} in {repo_name}")
                             all_found_modalities_in_repo.add(dir_name)
 
