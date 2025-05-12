@@ -3,6 +3,11 @@ name: Update Dataset Citations Manually
 on:
   workflow_dispatch: # Allows manual triggering
 
+# Permissions needed for creating pull requests
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   update_citations_job:
     runs-on: ubuntu-latest
@@ -11,6 +16,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          # Fetch all history so branches can be properly updated
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v3
@@ -32,7 +40,7 @@ jobs:
         id: create_branch
         run: |
           # Generate branch name with current year and month
-          BRANCH_NAME="update-citations-$(date +'%Y-%m')"
+          BRANCH_NAME="auto-update/$(date +'%Y-%m')"
           echo "Using branch name: $BRANCH_NAME"
           
           # Check if branch exists locally
@@ -72,8 +80,6 @@ jobs:
             --dataset-list-file ${{ steps.discover.outputs.dataset_list_file }} \
             --previous-citations-file citations/previous_citations.csv \
             --output-dir citations_output/
-          # Add steps here to commit and push changes, or create a PR
-          # This will be handled in a later task (Task 4 & 5)
 
       - name: Update previous_citations.csv for next run
         id: update_previous
@@ -224,4 +230,44 @@ jobs:
         run: |
           echo "Push operation failed. Please check the logs for details."
           echo "You may need to manually push the commits or resolve conflicts."
-          # Could send notification or create an issue here 
+          # Could send notification or create an issue here
+
+      - name: Generate dynamic PR content
+        id: pr-content
+        if: ${{ success() && env.CHANGES_DETECTED == 'true' && steps.push.outcome == 'success' }}
+        run: |
+          # Find the updated citation file to compare with the previous one
+          TODAY_DATE=$(date +%d%m%Y)
+          LATEST_CITATIONS_FILE="citations_output/citations_${TODAY_DATE}.csv"
+          PREVIOUS_CITATIONS_FILE="citations/previous_citations.csv"
+          
+          # Generate dynamic PR content using our Python script
+          python scripts/generate_pr_content.py \
+            --previous-file "$PREVIOUS_CITATIONS_FILE" \
+            --current-file "$LATEST_CITATIONS_FILE" \
+            --format github \
+            --repo-url "${{ github.server_url }}/${{ github.repository }}"
+          
+          echo "PR content generated successfully"
+
+      - name: Create Pull Request
+        id: create-pr
+        if: ${{ success() && env.CHANGES_DETECTED == 'true' && steps.push.outcome == 'success' }}
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update dataset citations"
+          committer: GitHub Actions <actions@github.com>
+          author: GitHub Actions <actions@github.com>
+          branch: ${{ env.BRANCH_NAME }}
+          base: main
+          delete-branch: false
+          title: ${{ steps.pr-content.outputs.pr_title || 'Update dataset citations' }}
+          body: ${{ steps.pr-content.outputs.pr_body || 'This PR updates the dataset citation database.' }}
+          labels: ${{ steps.pr-content.outputs.pr_labels || 'automated,citation-update' }}
+
+      - name: PR Creation Result
+        if: ${{ env.CHANGES_DETECTED == 'true' && steps.create-pr.outcome == 'success' }}
+        run: |
+          echo "Pull request created successfully!"
+          echo "PR URL: ${{ steps.create-pr.outputs.pull-request-url }}" 
