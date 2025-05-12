@@ -40,7 +40,7 @@ jobs:
         id: create_branch
         run: |
           # Generate branch name with current year and month
-          BRANCH_NAME="update-citations-$(date +'%Y-%m')"
+          BRANCH_NAME="auto-update/$(date +'%Y-%m')"
           echo "Using branch name: $BRANCH_NAME"
           
           # Check if branch exists locally
@@ -245,7 +245,8 @@ jobs:
           python scripts/generate_pr_content.py \
             --previous-file "$PREVIOUS_CITATIONS_FILE" \
             --current-file "$LATEST_CITATIONS_FILE" \
-            --format github
+            --format github \
+            --repo-url "${{ github.server_url }}/${{ github.repository }}"
           
           echo "PR content generated successfully"
 
@@ -263,9 +264,7 @@ jobs:
           delete-branch: false
           title: ${{ steps.pr-content.outputs.pr_title || 'Update dataset citations' }}
           body: ${{ steps.pr-content.outputs.pr_body || 'This PR updates the dataset citation database.' }}
-          labels: |
-            automated
-            citation-update
+          labels: ${{ steps.pr-content.outputs.pr_labels || 'automated,citation-update' }}
 
       - name: PR Creation Result
         if: ${{ env.CHANGES_DETECTED == 'true' && steps.create-pr.outcome == 'success' }}
