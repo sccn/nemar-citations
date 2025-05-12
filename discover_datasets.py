@@ -158,7 +158,7 @@ def check_repository_for_modalities(repo_name: str, org_name: str, headers: dict
             subject_dir_name = item['name']
             logger.debug(f"  Found subject directory: {subject_dir_name} in {repo_name}. Checking its contents.")
 
-            # 2. List contents of this subject directory to find modality directories
+            # 2. List contents of this subject directory to find session directories or modality directories
             subject_contents_url = item['url']  # API URL for subject directory contents
             subject_response = get_github_api_response(subject_contents_url, headers)
 
@@ -167,19 +167,43 @@ def check_repository_for_modalities(repo_name: str, org_name: str, headers: dict
                 # Since we only check the first subject dir, if it fails, we bail for this repo.
                 return []
 
-            modalities_in_subj_dir = set()
+            # Check if there are any session directories (ses-*)
+            session_dirs = []
             for sub_item in subject_response.json():
-                if sub_item['type'] == 'dir':  # Collect all directories found here
+                if sub_item['type'] == 'dir' and sub_item['name'].startswith('ses-'):
+                    session_dirs.append(sub_item)
+                elif sub_item['type'] == 'dir':  # Also collect direct modality dirs under subject
                     dir_name = sub_item['name']
-                    logger.info(f"    Found data directory: {dir_name} in {subject_dir_name} of {repo_name}")
-                    modalities_in_subj_dir.add(dir_name)
+                    logger.info(f"    Found data directory: {dir_name} directly under {subject_dir_name} of {repo_name}")
                     all_found_modalities_in_repo.add(dir_name)
 
-            if modalities_in_subj_dir:
-                logger.debug(f"  Finished checking subject directory {subject_dir_name}."
-                             f"Found data types: {modalities_in_subj_dir}")
+            # If session directories exist, check the first one for modality directories
+            if session_dirs:
+                logger.debug(f"  Found {len(session_dirs)} session directories in {subject_dir_name}. Checking the first one.")
+                first_session = session_dirs[0]
+                session_dir_name = first_session['name']
+                
+                # List contents of the first session directory
+                session_contents_url = first_session['url']
+                session_response = get_github_api_response(session_contents_url, headers)
+                
+                if not (session_response and session_response.status_code == 200):
+                    logger.warning(f"Could not list contents for {session_dir_name} in {subject_dir_name} of {repo_name}. Using subject-level directories only.")
+                else:
+                    # Process modality directories within this session
+                    for session_item in session_response.json():
+                        if session_item['type'] == 'dir':
+                            dir_name = session_item['name']
+                            logger.info(f"    Found data directory: {dir_name} in {session_dir_name} of {subject_dir_name} in {repo_name}")
+                            all_found_modalities_in_repo.add(dir_name)
+            
+            if all_found_modalities_in_repo:
+                logger.debug(
+                    f"  Finished checking subject directory {subject_dir_name}. "
+                    f"Found data types: {all_found_modalities_in_repo}"
+                )
             else:
-                logger.debug(f"  No subdirectories found in subject directory: {subject_dir_name}")
+                logger.debug(f"  No subdirectories found in subject/session directories: {subject_dir_name}")
 
             # We only check the first representative subject directory to save API calls.
             # Return all unique directory names found within this first subject directory.
@@ -187,7 +211,7 @@ def check_repository_for_modalities(repo_name: str, org_name: str, headers: dict
 
     if subject_dirs_found == 0:
         logger.info(f"No 'sub-' directories found in the root of {repo_name}.")
-
+    
     return sorted(list(all_found_modalities_in_repo))  # Should be empty if we exited early or no sub-dirs
 
 
