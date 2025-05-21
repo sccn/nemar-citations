@@ -37,6 +37,7 @@ import time
 # Configure basic logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+
 def get_working_proxy(method: str = 'ScraperAPI'):
     """
     Sets up and validates a proxy for use with the scholarly library.
@@ -74,7 +75,7 @@ def get_working_proxy(method: str = 'ScraperAPI'):
                 # This condition should ideally be caught by the initial check
                 # but as a safeguard during the loop if method is ScraperAPI.
                 logging.error("ScraperAPI method chosen but SCRAPERAPI_KEY is missing during proxy setup loop.")
-                return # Exit if key is missing
+                return  # Exit if key is missing
 
             # This is a PAID API key specific to the NEMAR project, please do NOT share
             # Key is now fetched from environment variable SCRAPERAPI_KEY
@@ -82,10 +83,10 @@ def get_working_proxy(method: str = 'ScraperAPI'):
             try:
                 success = pg.ScraperAPI(scraper_api_key)
                 if not success:
-                    logging.warning(f"ScraperAPI proxy setup failed with key. Will retry.")
+                    logging.warning("ScraperAPI proxy setup failed with key. Will retry.")
             except Exception as e:
                 logging.error(f"Exception during ScraperAPI setup with key: {e}. Will retry.")
-                success = False # Ensure success is false to retry
+                success = False  # Ensure success is false to retry
 
         elif method == 'Luminati':
             success = pg.FreeProxies()
@@ -127,7 +128,7 @@ def get_citation_numbers(dataset: str) -> int:
             return 0
     except Exception as e:
         logging.error(f"Error getting citation number for {dataset}: {e}")
-        return 0 # Return 0 or None, or re-raise depending on desired strictness
+        return 0  # Return 0 or None, or re-raise depending on desired strictness
 
 
 def get_citations(dataset: str, num_cites: int,
@@ -155,34 +156,43 @@ def get_citations(dataset: str, num_cites: int,
                       Returns an empty DataFrame or the original DataFrame if num_cites is 0
                       or if errors prevent fetching any new citations.
     """
-    if num_cites is None or num_cites == 0: # Added check for num_cites being 0
+    if num_cites is None or num_cites == 0:  # Added check for num_cites being 0
         logging.info(f"Number of citations to fetch for {dataset} is None or 0. Returning existing/empty DataFrame.")
-        return citations if citations is not None else pd.DataFrame(columns=['title', 'author', 'venue', 'year', 'url', 'cited_by', 'bib'])
+        return citations if citations is not None else pd.DataFrame(
+            columns=['title', 'author', 'venue', 'year', 'url', 'cited_by', 'bib'])
 
     # Run the search_pubs function with the dataset name, and get the ith result, sorted by year
     if citations is None:
         citations = pd.DataFrame(columns=['title', 'author', 'venue', 'year', 'url', 'cited_by', 'bib'])
     for i in range(num_cites):
         try:
-            entry_search = scholarly.search_pubs(dataset, start_index=i + start_index, year_low=year_low, year_high=year_high)
+            entry_search = scholarly.search_pubs(
+                dataset, start_index=i + start_index, year_low=year_low, year_high=year_high
+            )
             entry = next(entry_search)
         except StopIteration:
-            logging.warning(f"StopIteration: Expected {num_cites} citations for {dataset}, but found fewer after index {i + start_index -1}. Processing what was found.")
-            break # Stop if no more entries are found
+            logging.warning(f"StopIteration: Expected {num_cites} citations for {dataset},"
+                            f"but found fewer after index {i + start_index - 1}. Processing what was found.")
+            break  # Stop if no more entries are found
         except Exception as e:
-            logging.error(f"Failed to get publication entry {i + start_index} for {dataset}. Attempting to get new proxy. Error: {e}")
-            get_working_proxy() # Attempt to refresh proxy
+            logging.error(f"Failed to get publication entry {i + start_index} for {dataset}."
+                          f"Attempting to get new proxy. Error: {e}")
+            get_working_proxy()  # Attempt to refresh proxy
             try:
-                entry_search = scholarly.search_pubs(dataset, start_index=i + start_index, year_low=year_low, year_high=year_high)
+                entry_search = scholarly.search_pubs(
+                    dataset, start_index=i + start_index, year_low=year_low, year_high=year_high
+                )
                 entry = next(entry_search)
-                logging.info(f"Successfully retrieved entry {i+start_index} for {dataset} after proxy refresh.")
+                logging.info(f"Successfully retrieved entry {i + start_index} for {dataset} after proxy refresh.")
             except Exception as e2:
-                logging.error(f"Still failed to get publication entry {i + start_index} for {dataset} after proxy refresh. Skipping this entry. Error: {e2}")
-                continue # Skip this entry and try the next one
+                logging.error(f"Still failed to get publication entry {i + start_index} for {dataset}"
+                              f"after proxy refresh. Skipping this entry. Error: {e2}")
+                continue  # Skip this entry and try the next one
 
-        # entry = next(entry)  # This is the ith result, do not use fill() command (very API expensive) - already done above
-        if not entry: # Should not happen if next() was successful, but as a safeguard
-            logging.warning(f"Entry {i+start_index} for {dataset} was unexpectedly None. Skipping.")
+        # entry = next(entry)  # This is the ith result, do not use fill()
+        # command (very API expensive) - already done above
+        if not entry:  # Should not happen if next() was successful, but as a safeguard
+            logging.warning(f"Entry {i + start_index} for {dataset} was unexpectedly None. Skipping.")
             continue
 
         entry_fields = entry.keys()
