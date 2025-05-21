@@ -125,7 +125,7 @@ jobs:
       - name: Discover relevant datasets
         id: discover
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Or a specific PAT if needed for cross-repo access not covered by GITHUB_TOKEN
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Or a specific PAT if needed
         run: |
           echo "Discovering relevant datasets..."
           python discover_datasets.py --output-file discovered_datasets.txt
@@ -139,7 +139,8 @@ jobs:
           python update_citations.py \
             --dataset-list-file ${{ steps.discover.outputs.dataset_list_file }} \
             --previous-citations-file citations/previous_citations.csv \
-            --output-dir citations_output/
+            --output-dir citations_output/ \
+            --workers 15
 
       - name: Update previous_citations.csv for next run
         id: update_previous

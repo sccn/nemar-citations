@@ -58,58 +58,37 @@ A helper script `run_local_workflow.sh` is provided in the project root to simpl
     chmod +x run_local_workflow.sh
     ```
 
-2.  **Run the default workflow event (`workflow_dispatch`):**
+2.  **Ensure your `.secrets` file is populated** with your `GITHUB_TOKEN` and `SCRAPERAPI_KEY`.
+
+3.  **Execute the local run script:**
     ```bash
     ./run_local_workflow.sh
     ```
-    This will trigger the `workflow_dispatch` event defined in `.github/workflows/update_citations.yml`.
+    This script uses `act` to run the `workflow_dispatch` event defined in your `.github/workflows/update_citations.yml` file.
+    It will use the configurations from `.actrc` (which points to your `.secrets` file and sets container architecture).
 
-3.  **Run a specific job from the workflow:**
-    If your workflow has multiple jobs and you want to run a specific one (e.g., `update_citations_job`):
+4.  **To run a specific job within the workflow** (if your workflow has multiple jobs triggered by `workflow_dispatch`):
     ```bash
-    ./run_local_workflow.sh update_citations_job
+    ./run_local_workflow.sh [job_id]
+    ```
+    You can find job IDs by running `act -l` in the project root.
+
+5.  **Directly invoking `act` (alternative to the script):**
+    If you prefer, you can call `act` directly. The `.actrc` file helps simplify this.
+    To trigger the `workflow_dispatch` event:
+    ```bash
+    act workflow_dispatch
+    ```
+    To trigger a specific job:
+    ```bash
+    act workflow_dispatch -j <job_id>
     ```
 
-    The first time you run a workflow with `act`, it will download the necessary Docker images for the actions and the runner environment. This might take some time. Subsequent runs will be faster.
+    **Note on Concurrency for `update_citations.py`:**
+    The `update_citations.py` script, when run via the GitHub Action (and thus by `act`), now supports parallel processing for fetching citations. This is controlled by the `--workers` argument within the Python script itself. The GitHub workflow file (`update_citations.yml`) calls this script. If you need to adjust the concurrency when running locally via `act`, you would modify the `python update_citations.py ...` line within the `update_citations.yml` workflow file to change the default `--workers` value passed to it, or add it if not present.
+
+    The default number of workers in `update_citations.py` is 10. You can change this in the script if needed or by modifying how the workflow calls it.
 
 ## Scheduled Local Execution (using `cron` on macOS/Linux)
 
-You can schedule the local execution of the workflow using `cron`.
-
-1.  **Create a logs directory (optional but recommended):**
-    In the project root:
-    ```bash
-    mkdir logs
-    ```
-    (Consider adding `logs/` to your `.gitignore` if you haven't already to avoid committing local run logs.)
-
-2.  **Edit your crontab:**
-    Open your crontab file for editing:
-    ```bash
-    crontab -e
-    ```
-
-3.  **Add the cron job:**
-    Add a line similar to the following, adjusting the schedule and paths as needed. This example runs daily at 2 AM:
-    ```cron
-    0 2 * * * cd /full/path/to/your/dataset_citations && ./run_local_workflow.sh >> /full/path/to/your/dataset_citations/logs/cron_act_run.log 2>&1
-    ```
-    *   Replace `/full/path/to/your/dataset_citations` with the absolute path to your project.
-    *   `0 2 * * *` means "at 02:00 every day".
-    *   `>> .../logs/cron_act_run.log 2>&1` redirects both standard output and standard error to a log file.
-
-    **Example for last Friday of the month at 2 PM:**
-    ```cron
-    0 14 * * 5 [ "$(date +\%d)" -ge 24 ] && [ "$(date +\%d)" -le 31 ] && cd /full/path/to/your/dataset_citations && ./run_local_workflow.sh >> /full/path/to/your/dataset_citations/logs/cron_act_run.log 2>&1
-    ```
-    Note the escaped `%` for `date` command within cron.
-
-4.  **Save and exit the crontab editor.** Cron will automatically pick up the new schedule.
-
-## Troubleshooting
-
-*   **`unknown command "set-default" for "gh repo"`:** This usually means an outdated version of the `gh` CLI is being used by `act`. The workflow now includes steps to install the latest `gh` CLI from its official source, which should resolve this.
-*   **Docker image pulls:** The first run can be slow due to Docker image downloads.
-*   **Architecture issues (Apple Silicon M1/M2/M3):** The `.actrc` file specifies `--container-architecture linux/amd64`. If you still encounter architecture-related errors, ensure this setting is active or try other options if necessary.
-*   **Secrets:** Double-check that your `.secrets` file is correctly formatted, named, and in the project root, and that the tokens/keys within it are valid and have the correct permissions.
-*   **`act` Logs:** `act` provides verbose output. If a step fails, review the logs for that step carefully. You can increase verbosity by running `act -v workflow_dispatch` or `act -vv workflow_dispatch` directly (or modify `run_local_workflow.sh` temporarily). 
+You can schedule the local execution of the workflow using `
