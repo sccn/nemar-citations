@@ -30,6 +30,63 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Setup GitHub CLI
+        run: |
+          echo "Checking for gh CLI..."
+          if ! command -v gh &> /dev/null
+          then
+              echo "gh CLI not found, attempting to install using official script..."
+              # Official gh installation script for Debian/Ubuntu based systems
+              (type -p wget >/dev/null || (sudo apt-get update -yq && sudo apt-get install wget -yq)) \
+              && sudo mkdir -p -m 755 /etc/apt/keyrings \
+              && out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+              && cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+              && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+              && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+              && sudo apt-get update -yq \
+              && sudo apt-get install gh -yq
+
+              if ! command -v gh &> /dev/null; then echo "::error::Failed to install/verify gh CLI after using official script."; exit 1; fi
+              echo "gh CLI installed successfully using official script."
+          else
+              echo "gh CLI already found. Checking version to ensure it's recent enough..."
+              # Optional: Add a version check here if pre-installed gh could be too old
+              # For now, we assume if it's found, it might be okay, or the install block would have run.
+          fi
+
+          echo "Authenticating gh CLI..."
+          # secrets.GITHUB_TOKEN should be available here if .secrets is used with act
+          gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
+          echo "Setting up Git with gh CLI authentication..."
+          gh auth setup-git # Configures git to use gh as a credential helper
+          
+          echo "Verifying gh auth status..."
+          gh auth status # This will show how gh is authenticated
+
+          echo "Checking gh CLI version..."
+          gh --version
+
+          echo "Determining repository from git remote..."
+          REMOTE_URL=$(git config --get remote.origin.url)
+          # Try to extract owner/repo from HTTPS URL
+          REPO_SLUG=$(echo "$REMOTE_URL" | sed -n 's|https://github.com/\([^/]*\/[^.]*\)\.git$|\1|p')
+          
+          if [ -z "$REPO_SLUG" ]; then
+            # Try to extract owner/repo from SSH URL
+            REPO_SLUG=$(echo "$REMOTE_URL" | sed -n 's|git@github.com:\([^/]*\/[^.]*\)\.git$|\1|p')
+          fi
+
+          if [ -n "$REPO_SLUG" ]; then
+              echo "Setting default repository for gh CLI to: $REPO_SLUG"
+              gh repo set-default "$REPO_SLUG"
+          else
+              echo "::warning::Could not automatically determine repository from remote URL ('$REMOTE_URL'). You may need to set it manually for act if gh commands fail."
+              # Fallback if really needed for act AND if the slug is static:
+              # echo "Falling back to hardcoded repository: neuromechanist/dataset_citations"
+              # gh repo set-default "neuromechanist/dataset_citations"
+          fi
+          echo "gh CLI setup complete."
+
       - name: Configure Git User Identity
         run: |
           git config --global user.name "citations-bot"
@@ -253,24 +310,34 @@ jobs:
           
           echo "PR content generated successfully"
 
-      - name: Create Pull Request
+      - name: Create Pull Request with gh CLI
         id: create-pr
         if: ${{ success() && env.CHANGES_DETECTED == 'true' && steps.push.outcome == 'success' }}
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Update dataset citations"
-          committer: GitHub Actions <actions@github.com>
-          author: GitHub Actions <actions@github.com>
-          branch: ${{ env.BRANCH_NAME }}
-          base: main
-          delete-branch: false
-          title: ${{ steps.pr-content.outputs.pr_title || 'Update dataset citations' }}
-          body: ${{ steps.pr-content.outputs.pr_body || 'This PR updates the dataset citation database.' }}
-          labels: ${{ steps.pr-content.outputs.pr_labels || 'automated,citation-update' }}
-
-      - name: PR Creation Result
-        if: ${{ env.CHANGES_DETECTED == 'true' && steps.create-pr.outcome == 'success' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: ${{ env.BRANCH_NAME }}
+          PR_TITLE: ${{ steps.pr-content.outputs.pr_title || 'Update dataset citations' }}
+          PR_BODY: ${{ steps.pr-content.outputs.pr_body || 'This PR updates the dataset citation database.' }}
+          PR_LABELS: ${{ steps.pr-content.outputs.pr_labels || 'automated,citation-update' }}
         run: |
-          echo "Pull request created successfully!"
-          echo "PR URL: ${{ steps.create-pr.outputs.pull-request-url }}" 
+          echo "Attempting to create Pull Request for branch: $BRANCH_NAME"
+          gh pr create \
+            --base main \
+            --head "$BRANCH_NAME" \
+            --title "$PR_TITLE" \
+            --body "$PR_BODY" \
+            --label "$PR_LABELS" \
+            --repo "${{ github.repository }}"
+          echo "gh pr create command executed."
+
+      - name: PR Creation Status
+        if: ${{ success() && env.CHANGES_DETECTED == 'true' && steps.push.outcome == 'success' && steps.create-pr.outcome == 'success' }}
+        run: |
+          echo "Pull Request creation attempt using gh CLI finished. Review logs from 'Create Pull Request with gh CLI' step for URL and details."
+
+# Removing the old PR Creation Result step that will no longer work
+# - name: PR Creation Result
+#   if: ${{ env.CHANGES_DETECTED == 'true' && steps.create-pr.outcome == 'success' }}
+#   run: |
+#     echo "Pull request created successfully!"
+#     echo "PR URL: ${{ steps.create-pr.outputs.pull-request-url }}" 
