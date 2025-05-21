@@ -32,12 +32,14 @@ jobs:
 
       - name: Configure Git User Identity
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+          git config --global user.name "citations-bot"
+          git config --global user.email "shirazi@ieee.org"
           echo "Git user identity configured successfully"
 
       - name: Create or switch to update branch
         id: create_branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Generate branch name with current year and month
           BRANCH_NAME="auto-update/$(date +'%Y-%m')"
@@ -49,14 +51,14 @@ jobs:
             git checkout $BRANCH_NAME
           else
             # Check if branch exists on remote
-            if git ls-remote --heads origin $BRANCH_NAME | grep -q $BRANCH_NAME; then
-              echo "Branch $BRANCH_NAME exists on remote, checking out"
-              git fetch origin $BRANCH_NAME
-              git checkout $BRANCH_NAME
-            else
-              echo "Creating new branch $BRANCH_NAME"
-              git checkout -b $BRANCH_NAME
-            fi
+            # if git ls-remote --heads origin $BRANCH_NAME | grep -q $BRANCH_NAME; then
+            #   echo "Branch $BRANCH_NAME exists on remote, checking out"
+            #   git fetch origin $BRANCH_NAME
+            #   git checkout $BRANCH_NAME
+            # else
+            echo "Creating new branch $BRANCH_NAME"
+            git checkout -b $BRANCH_NAME
+            # fi
           fi
           
           # Make branch name available to subsequent steps
@@ -68,6 +70,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Or a specific PAT if needed for cross-repo access not covered by GITHUB_TOKEN
         run: |
+          echo "Discovering relevant datasets..."
           python discover_datasets.py --output-file discovered_datasets.txt
           echo "dataset_list_file=discovered_datasets.txt" >> $GITHUB_OUTPUT
 

@@ -332,9 +332,9 @@ def main():
             # lookup_df.loc[repo_name, 'processed_date'] = current_time_iso
             continue  # Already processed and in table, unless forcing rescan
 
-        logging.info(f"Processing {repo_name} (New or --force-rescan-all)..."
-                     f"({processed_repo_count}/{len(all_gh_repositories)
-                     if args.max_repos is None else args.max_repos})")
+        total_to_process_display = len(all_gh_repositories) if args.max_repos is None else args.max_repos
+        logging.info(f"Processing {repo_name} (New or --force-rescan-all)... "
+                     f"({processed_repo_count}/{total_to_process_display})")
         all_modalities_found = check_repository_for_modalities(repo_name, TARGET_ORG, headers)
 
         modalities_str = ",".join(sorted(list(set(all_modalities_found))))  # Ensure unique and sorted for consistency
