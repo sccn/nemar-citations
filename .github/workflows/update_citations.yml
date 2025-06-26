@@ -140,7 +140,7 @@ jobs:
             --dataset-list-file ${{ steps.discover.outputs.dataset_list_file }} \
             --previous-citations-file citations/previous_citations.csv \
             --output-dir citations_output/ \
-            --workers 1
+            --workers 5
 
       - name: Update previous_citations.csv for next run
         id: update_previous
