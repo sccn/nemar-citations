@@ -139,7 +139,7 @@ jobs:
           python update_citations.py \
             --dataset-list-file ${{ steps.discover.outputs.dataset_list_file }} \
             --previous-citations-file citations/previous_citations.csv \
-            --output-dir citations_output/ \
+            --output-dir citations/ \
             --workers 5
 
       - name: Update previous_citations.csv for next run
@@ -147,7 +147,7 @@ jobs:
         run: |
           echo "Looking for today's citation file to update previous_citations.csv..."
           TODAY_DATE=$(date +%d%m%Y)
-          LATEST_CITATIONS_FILE="citations_output/citations_${TODAY_DATE}.csv"
+          LATEST_CITATIONS_FILE="citations/citations_${TODAY_DATE}.csv"
           TARGET_PREVIOUS_FILE="citations/previous_citations.csv"
 
           if [ -f "$LATEST_CITATIONS_FILE" ]; then
@@ -169,27 +169,27 @@ jobs:
           # Refresh Git status to detect new or modified files
           git add -A
           
-          # Check if there are any unstaged changes in the citations and citations_output directories
-          if ! git diff --cached --quiet -- citations/ citations_output/; then
+          # Check if there are any unstaged changes in the citations and citations directories
+          if ! git diff --cached --quiet -- citations/ citations/; then
             echo "CHANGES_DETECTED=true" >> $GITHUB_ENV
             echo "changes_detected=true" >> $GITHUB_OUTPUT
             
             # Count changed files for reporting
-            CHANGED_FILES=$(git diff --cached --name-only -- citations/ citations_output/ | grep -E '\.(csv|pkl|txt)$' | wc -l)
+            CHANGED_FILES=$(git diff --cached --name-only -- citations/ citations/ | grep -E '\.(csv|pkl|txt)$' | wc -l)
             echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
             echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
             
             # List changed files for the commit message
-            CHANGED_FILES_LIST=$(git diff --cached --name-only -- citations/ citations_output/ | grep -E '\.(csv|pkl|txt)$')
+            CHANGED_FILES_LIST=$(git diff --cached --name-only -- citations/ citations/ | grep -E '\.(csv|pkl|txt)$')
             echo "CHANGED_FILES_LIST<<EOF" >> $GITHUB_ENV
             echo "$CHANGED_FILES_LIST" >> $GITHUB_ENV
             echo "EOF" >> $GITHUB_ENV
             
-            echo "Detected $CHANGED_FILES changed files in citations and citations_output directories"
+            echo "Detected $CHANGED_FILES changed files in citations and citations directories"
           else
             echo "CHANGES_DETECTED=false" >> $GITHUB_ENV
             echo "changes_detected=false" >> $GITHUB_OUTPUT
-            echo "No changes detected in citations or citations_output directories"
+            echo "No changes detected in citations or citations directories"
           fi
 
       - name: Display change detection results
@@ -208,7 +208,7 @@ jobs:
         if: ${{ env.CHANGES_DETECTED == 'true' && steps.update_citations.outcome == 'success' && steps.update_previous.outcome == 'success' }}
         run: |
           # Stage all changes for commit
-          git add citations/ citations_output/
+          git add citations/ citations/
           
           # Create a descriptive commit message
           COMMIT_DATE=$(date +'%Y-%m-%d')
@@ -299,7 +299,7 @@ jobs:
         run: |
           # Find the updated citation file to compare with the previous one
           TODAY_DATE=$(date +%d%m%Y)
-          LATEST_CITATIONS_FILE="citations_output/citations_${TODAY_DATE}.csv"
+          LATEST_CITATIONS_FILE="citations/citations_${TODAY_DATE}.csv"
           PREVIOUS_CITATIONS_FILE="citations/previous_citations.csv"
           
           # Generate dynamic PR content using our Python script
