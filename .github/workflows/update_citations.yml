@@ -135,7 +135,7 @@ jobs:
         id: migrate_pickle
         run: |
           echo "Migrating existing pickle files to JSON format..."
-          python migrate_pickle_to_json.py --input-dir citations/ --output-dir citations/ --overwrite
+          python migrate_pickle_to_json.py --input-dir citations/pickle/ --output-dir citations/json/ --overwrite
           echo "Migration completed"
 
       - name: Update citation information

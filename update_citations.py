@@ -247,7 +247,9 @@ def update_detailed_citation_lists(
                     
                     # Save pickle file if requested
                     if output_format in ["pickle", "both"]:
-                        output_pkl_path = os.path.join(output_dir, dataset_id + '.pkl')
+                        pickle_dir = os.path.join(output_dir, "pickle")
+                        os.makedirs(pickle_dir, exist_ok=True)
+                        output_pkl_path = os.path.join(pickle_dir, dataset_id + '.pkl')
                         try:
                             citations_df.to_pickle(output_pkl_path)
                             logger.info(
@@ -260,9 +262,11 @@ def update_detailed_citation_lists(
                     
                     # Save JSON file if requested
                     if output_format in ["json", "both"]:
+                        json_dir = os.path.join(output_dir, "json")
+                        os.makedirs(json_dir, exist_ok=True)
                         try:
                             json_filepath = citation_utils.save_citation_json(
-                                dataset_id, citations_df, output_dir, fetch_date
+                                dataset_id, citations_df, json_dir, fetch_date
                             )
                             logger.info(
                                 f"Saved detailed citations for {dataset_id} ({len(citations_df)} entries) "

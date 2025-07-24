@@ -240,13 +240,13 @@ Examples:
     
     parser.add_argument(
         "--input-dir", 
-        default="citations",
-        help="Directory containing pickle files to migrate (default: citations)"
+        default="citations/pickle",
+        help="Directory containing pickle files to migrate (default: citations/pickle)"
     )
     parser.add_argument(
         "--output-dir",
-        default="citations", 
-        help="Directory to save JSON files (default: citations)"
+        default="citations/json", 
+        help="Directory to save JSON files (default: citations/json)"
     )
     parser.add_argument(
         "--overwrite",
