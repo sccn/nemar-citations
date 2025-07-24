@@ -8,7 +8,12 @@ to the new JSON citation format for easier downstream processing.
 Usage:
     python migrate_pickle_to_json.py [--input-dir citations] [--output-dir citations] [--overwrite]
 
-(c) 2024, Seyed Yahya Shirazi
+Copyright (c) 2024 Seyed Yahya Shirazi (neuromechanist)
+All rights reserved.
+
+Author: Seyed Yahya Shirazi
+GitHub: https://github.com/neuromechanist
+Email: shirazi@ieee.org
 """
 
 import argparse

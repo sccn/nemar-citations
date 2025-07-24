@@ -1,8 +1,15 @@
+#!/usr/bin/env python3
 """
 This script updates the citation numbers and citation lists for the datasets
 in the datasets.csv file. It is meant to be run periodically to keep the
 citations up to date.
-(c) 2024, Seyed Yahya Shirazi
+
+Copyright (c) 2024 Seyed Yahya Shirazi (neuromechanist)
+All rights reserved.
+
+Author: Seyed Yahya Shirazi
+GitHub: https://github.com/neuromechanist
+Email: shirazi@ieee.org
 """
 # %% initialize
 import pandas as pd

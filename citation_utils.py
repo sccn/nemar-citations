@@ -1,10 +1,16 @@
+#!/usr/bin/env python3
 """
 Utility functions for handling citation data in JSON format.
 
 This module provides functions to convert citation DataFrames to structured JSON format
 and handle citation data for easier downstream processing.
 
-(c) 2024, Seyed Yahya Shirazi
+Copyright (c) 2024 Seyed Yahya Shirazi (neuromechanist)
+All rights reserved.
+
+Author: Seyed Yahya Shirazi
+GitHub: https://github.com/neuromechanist
+Email: shirazi@ieee.org
 """
 
 import pandas as pd
