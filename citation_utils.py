@@ -114,9 +114,17 @@ def create_citation_json_structure(
 def _safe_get_value(row: pd.Series, key: str, default: str = "n/a") -> str:
     """Safely get a string value from a pandas Series row."""
     value = row.get(key, default)
-    if pd.isna(value) or value is None:
-        return default
-    return str(value)
+    try:
+        if pd.isna(value) or value is None:
+            return default
+    except (ValueError, TypeError):
+        # Handle arrays or other complex data types
+        if hasattr(value, '__iter__') and not isinstance(value, str):
+            # Convert array-like objects to string representation
+            value = str(value)
+        elif value is None:
+            return default
+    return str(value).strip() if str(value).strip() else default
 
 
 def _safe_get_int_value(row: pd.Series, key: str, default: int = 0) -> int:
