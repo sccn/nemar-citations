@@ -131,6 +131,13 @@ jobs:
           python discover_datasets.py --output-file discovered_datasets.txt
           echo "dataset_list_file=discovered_datasets.txt" >> $GITHUB_OUTPUT
 
+      - name: Migrate existing pickle files to JSON
+        id: migrate_pickle
+        run: |
+          echo "Migrating existing pickle files to JSON format..."
+          python migrate_pickle_to_json.py --input-dir citations/ --output-dir citations/ --overwrite
+          echo "Migration completed"
+
       - name: Update citation information
         id: update_citations
         env:
@@ -140,7 +147,8 @@ jobs:
             --dataset-list-file ${{ steps.discover.outputs.dataset_list_file }} \
             --previous-citations-file citations/previous_citations.csv \
             --output-dir citations/ \
-            --workers 5
+            --workers 5 \
+            --output-format json
 
       - name: Update previous_citations.csv for next run
         id: update_previous
@@ -174,13 +182,13 @@ jobs:
             echo "CHANGES_DETECTED=true" >> $GITHUB_ENV
             echo "changes_detected=true" >> $GITHUB_OUTPUT
             
-            # Count changed files for reporting
-            CHANGED_FILES=$(git diff --cached --name-only -- citations/ citations/ | grep -E '\.(csv|pkl|txt)$' | wc -l)
+            # Count changed files for reporting (including JSON files)
+            CHANGED_FILES=$(git diff --cached --name-only -- citations/ citations/ | grep -E '\.(csv|pkl|txt|json)$' | wc -l)
             echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
             echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
             
-            # List changed files for the commit message
-            CHANGED_FILES_LIST=$(git diff --cached --name-only -- citations/ citations/ | grep -E '\.(csv|pkl|txt)$')
+            # List changed files for the commit message (including JSON files)
+            CHANGED_FILES_LIST=$(git diff --cached --name-only -- citations/ citations/ | grep -E '\.(csv|pkl|txt|json)$')
             echo "CHANGED_FILES_LIST<<EOF" >> $GITHUB_ENV
             echo "$CHANGED_FILES_LIST" >> $GITHUB_ENV
             echo "EOF" >> $GITHUB_ENV

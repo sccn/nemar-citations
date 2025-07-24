@@ -8,6 +8,7 @@ citations up to date.
 import pandas as pd
 from datetime import datetime
 import getCitations as gc
+import citation_utils  # Added for JSON citation format support
 import argparse
 import os
 import logging  # Added import
@@ -187,9 +188,22 @@ def fetch_detailed_citations_for_dataset(
 
 
 def update_detailed_citation_lists(
-        datasets_to_process: list, num_cites_new: pd.Series, output_dir: str, max_workers: int
+        datasets_to_process: list, num_cites_new: pd.Series, output_dir: str, max_workers: int, 
+        output_format: str = "both"
 ) -> tuple[dict, list]:
-    """Fetches and saves detailed citation lists for specified datasets using parallel execution."""
+    """
+    Fetches and saves detailed citation lists for specified datasets using parallel execution.
+    
+    Args:
+        datasets_to_process (list): List of dataset IDs to process
+        num_cites_new (pd.Series): Series with citation counts
+        output_dir (str): Output directory path
+        max_workers (int): Maximum number of worker threads
+        output_format (str): Output format - "pickle", "json", or "both"
+    
+    Returns:
+        tuple[dict, list]: (successful_updates_details, unsuccessful_list_update)
+    """
     unsuccessful_list_update = []
     successful_updates_details = {}
     logger.info(
@@ -228,16 +242,39 @@ def update_detailed_citation_lists(
                     continue
 
                 if citations_df is not None and not citations_df.empty:
-                    output_pkl_path = os.path.join(output_dir, dataset_id + '.pkl')
-                    try:
-                        citations_df.to_pickle(output_pkl_path)
+                    save_success = False
+                    fetch_date = datetime.now()
+                    
+                    # Save pickle file if requested
+                    if output_format in ["pickle", "both"]:
+                        output_pkl_path = os.path.join(output_dir, dataset_id + '.pkl')
+                        try:
+                            citations_df.to_pickle(output_pkl_path)
+                            logger.info(
+                                f"Saved detailed citations for {dataset_id} ({len(citations_df)} entries) "
+                                f"to {output_pkl_path}"
+                            )
+                            save_success = True
+                        except Exception as e_save:
+                            logger.error(f"Failed to save pickle for {dataset_id} to {output_pkl_path}. Error: {e_save}")
+                    
+                    # Save JSON file if requested
+                    if output_format in ["json", "both"]:
+                        try:
+                            json_filepath = citation_utils.save_citation_json(
+                                dataset_id, citations_df, output_dir, fetch_date
+                            )
+                            logger.info(
+                                f"Saved detailed citations for {dataset_id} ({len(citations_df)} entries) "
+                                f"to {json_filepath}"
+                            )
+                            save_success = True
+                        except Exception as e_save:
+                            logger.error(f"Failed to save JSON for {dataset_id}. Error: {e_save}")
+                    
+                    if save_success:
                         successful_updates_details[dataset_id] = len(citations_df)
-                        logger.info(
-                            f"Saved detailed citations for {dataset_id} ({len(citations_df)} entries) "
-                            f"to {output_pkl_path}"
-                        )
-                    except Exception as e_save:
-                        logger.error(f"Failed to save pickle for {dataset_id} to {output_pkl_path}. Error: {e_save}")
+                    else:
                         unsuccessful_list_update.append(dataset_id)
                 elif citations_df is not None and citations_df.empty:
                     logger.info(
@@ -292,6 +329,8 @@ def main():
                         help="Skip updating citation numbers.")
     parser.add_argument("--no-update-cite-list", action="store_false", dest="update_cite_list",
                         help="Skip updating detailed citation lists.")
+    parser.add_argument("--output-format", choices=["pickle", "json", "both"], default="both",
+                        help="Output format for detailed citation data (default: both).")
     parser.set_defaults(update_num_cites=True, update_cite_list=True)
 
     args = parser.parse_args()
@@ -343,7 +382,7 @@ def main():
     if args.update_cite_list and datasets_for_list_update:
         logger.info(f"Updating detailed citation lists for {len(datasets_for_list_update)} dataset(s).")
         successful_details, unsuccessful_details = update_detailed_citation_lists(
-            datasets_for_list_update, num_cites_new, args.output_dir, args.workers  # Pass workers
+            datasets_for_list_update, num_cites_new, args.output_dir, args.workers, args.output_format
         )
         if successful_details:
             save_updated_dataset_summary(successful_details, args.output_dir)
