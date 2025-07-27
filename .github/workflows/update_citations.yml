@@ -166,9 +166,51 @@ jobs:
             echo "Successfully updated $TARGET_PREVIOUS_FILE"
           else
             echo "Error: Today's citation file ($LATEST_CITATIONS_FILE) not found."
-            echo "Skipping update of $TARGET_PREVIOUS_FILE. It might need to be created manually or the script might not have run as expected."
-            # Consider whether this should be a failing condition
-            # exit 1 
+            echo "Attempting to regenerate CSV files from JSON data as fallback..."
+            # Regenerate CSV files from JSON data
+            python regenerate_csv_from_json.py \
+              --json-dir citations/json \
+              --output-dir citations \
+              --date-suffix ${TODAY_DATE} \
+              --update-previous
+            echo "CSV files regenerated from JSON data"
+          fi
+
+      - name: Validate CSV files and regenerate if needed
+        id: validate_csv
+        run: |
+          echo "Validating that CSV files have correct citation counts..."
+          TODAY_DATE=$(date +%d%m%Y)
+          LATEST_CITATIONS_FILE="citations/citations_${TODAY_DATE}.csv"
+          
+          # Check if CSV file exists and has meaningful data
+          if [ -f "$LATEST_CITATIONS_FILE" ]; then
+            # Count lines with non-zero citations (exclude header)
+            NON_ZERO_COUNT=$(awk -F',' 'NR>1 && $2>0' "$LATEST_CITATIONS_FILE" | wc -l)
+            TOTAL_COUNT=$(awk -F',' 'NR>1' "$LATEST_CITATIONS_FILE" | wc -l)
+            
+            echo "CSV validation: $NON_ZERO_COUNT datasets with citations out of $TOTAL_COUNT total"
+            
+            # If most datasets have zero citations, regenerate from JSON
+            if [ "$NON_ZERO_COUNT" -lt 50 ]; then
+              echo "CSV appears to have incorrect data (too many zeros). Regenerating from JSON..."
+              python regenerate_csv_from_json.py \
+                --json-dir citations/json \
+                --output-dir citations \
+                --date-suffix ${TODAY_DATE} \
+                --update-previous
+              echo "CSV files regenerated from JSON data due to validation failure"
+            else
+              echo "CSV validation passed"
+            fi
+          else
+            echo "No CSV file found. Generating from JSON data..."
+            python regenerate_csv_from_json.py \
+              --json-dir citations/json \
+              --output-dir citations \
+              --date-suffix ${TODAY_DATE} \
+              --update-previous
+            echo "CSV files generated from JSON data"
           fi
 
       - name: Check for changes
@@ -327,7 +369,7 @@ jobs:
           BRANCH_NAME: ${{ env.BRANCH_NAME }}
           PR_TITLE: ${{ steps.pr-content.outputs.pr_title || 'Update dataset citations' }}
           PR_BODY: ${{ steps.pr-content.outputs.pr_body || 'This PR updates the dataset citation database.' }}
-          PR_LABELS: ${{ steps.pr-content.outputs.pr_labels || 'automated,citation-update' }}
+          PR_LABELS: ${{ steps.pr-content.outputs.pr_labels || 'automated,monthly-update' }}
         run: |
           echo "Attempting to create Pull Request for branch: $BRANCH_NAME"
           gh pr create \
