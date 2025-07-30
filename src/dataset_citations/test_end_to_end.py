@@ -196,12 +196,8 @@ def test_citation_retrieval(test_datasets: List[str], output_dir: str) -> bool:
                 citations_df = gc.get_citations(dataset_id, min(citation_count, 2))
                 
                 if not citations_df.empty:
-                    # Create JSON structure
-                    json_data = citation_utils.create_citation_json_structure(dataset_id, citations_df)
-                    
-                    # Save to file
-                    json_file = Path(output_dir) / f"{dataset_id}_test_citations.json"
-                    citation_utils.save_citation_json(json_data, str(json_file))
+                    # Save to file using the correct function signature
+                    json_filepath = citation_utils.save_citation_json(dataset_id, citations_df, output_dir)
                     
                     logger.info(f"✓ Successfully retrieved and saved citations for {dataset_id}")
                 else:
@@ -233,11 +229,9 @@ def create_mock_citation_files(test_datasets: List[str], output_dir: str):
             }
             
             df = pd.DataFrame(mock_data)
-            json_data = citation_utils.create_citation_json_structure(dataset_id, df)
             
-            # Save mock file
-            json_file = Path(output_dir) / f"{dataset_id}_mock_citations.json"
-            citation_utils.save_citation_json(json_data, str(json_file))
+            # Save mock file using the correct function signature
+            json_filepath = citation_utils.save_citation_json(dataset_id, df, output_dir)
             
         logger.info(f"✓ Created mock citation files for {test_datasets}")
         
@@ -263,8 +257,8 @@ def test_json_operations(test_datasets: List[str], output_dir: str) -> bool:
             # Test loading
             json_data = citation_utils.load_citation_json(str(json_file))
             
-            # Test summary extraction
-            summary = citation_utils.get_citation_summary_from_json(json_data)
+            # Test summary extraction (pass filepath, not loaded data)
+            summary = citation_utils.get_citation_summary_from_json(str(json_file))
             
             # Verify summary has expected fields
             expected_fields = ['dataset_id', 'num_citations', 'total_cumulative_citations']
