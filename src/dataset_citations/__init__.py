@@ -18,11 +18,11 @@ __email__ = "shirazi@ieee.org"
 __license__ = "Copyright Reserved"
 
 # Core functionality exports
-from . import citation_utils
-from . import getCitations
+from .core import citation_utils
+from .core import getCitations
 
 # Main functions from citation_utils
-from .citation_utils import (
+from .core.citation_utils import (
     save_citation_json,
     load_citation_json,
     migrate_pickle_to_json,
@@ -31,7 +31,7 @@ from .citation_utils import (
 )
 
 # Main functions from getCitations
-from .getCitations import (
+from .core.getCitations import (
     get_working_proxy,
     get_citation_numbers,
     get_citations,
