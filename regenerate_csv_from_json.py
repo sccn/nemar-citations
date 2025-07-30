@@ -21,7 +21,7 @@ import pandas as pd
 from datetime import datetime
 from pathlib import Path
 import logging
-from src.dataset_citations import citation_utils
+from dataset_citations import citation_utils
 
 # Configure logging
 logging.basicConfig(

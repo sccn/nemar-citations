@@ -14,8 +14,8 @@ Email: shirazi@ieee.org
 # %% initialize
 import pandas as pd
 from datetime import datetime
-from src.dataset_citations import getCitations as gc
-from src.dataset_citations import citation_utils  # Added for JSON citation format support
+from dataset_citations import getCitations as gc
+from dataset_citations import citation_utils  # Added for JSON citation format support
 import argparse
 import os
 import logging  # Added import
