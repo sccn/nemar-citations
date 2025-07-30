@@ -19,7 +19,7 @@ import logging
 from typing import List
 import json
 
-from ..quality.confidence_scoring import score_dataset_citations
+# Lazy import to avoid sentence-transformers issues during CLI help
 
 logger = logging.getLogger(__name__)
 
@@ -185,7 +185,9 @@ Examples:
         try:
             logger.info(f"Scoring citations for {dataset_id}")
 
-            # Score citations
+            # Score citations (lazy import to avoid sentence-transformers during help)
+            from ..quality.confidence_scoring import score_dataset_citations
+
             score_dataset_citations(
                 citation_file, metadata_file, output_file, args.model
             )

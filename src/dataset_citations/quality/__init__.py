@@ -8,24 +8,43 @@ This module contains Phase 3 features including:
 - Metadata retrieval and comparison
 """
 
+# Import only dataset_metadata to avoid sentence-transformers import issues during CLI help
 from .dataset_metadata import (
     DatasetMetadataRetriever,
     save_dataset_metadata,
     load_dataset_metadata,
     extract_dataset_text,
 )
-from .confidence_scoring import (
-    CitationConfidenceScorer,
-    score_dataset_citations,
-    batch_score_citations,
-)
+
+
+# Lazy import functions for confidence scoring to avoid early sentence-transformers import
+def get_confidence_scorer(*args, **kwargs):
+    """Lazy import and create CitationConfidenceScorer."""
+    from .confidence_scoring import CitationConfidenceScorer
+
+    return CitationConfidenceScorer(*args, **kwargs)
+
+
+def score_dataset_citations(*args, **kwargs):
+    """Lazy import and call score_dataset_citations."""
+    from .confidence_scoring import score_dataset_citations as _score_dataset_citations
+
+    return _score_dataset_citations(*args, **kwargs)
+
+
+def batch_score_citations(*args, **kwargs):
+    """Lazy import and call batch_score_citations."""
+    from .confidence_scoring import batch_score_citations as _batch_score_citations
+
+    return _batch_score_citations(*args, **kwargs)
+
 
 __all__ = [
     "DatasetMetadataRetriever",
     "save_dataset_metadata",
     "load_dataset_metadata",
     "extract_dataset_text",
-    "CitationConfidenceScorer",
+    "get_confidence_scorer",
     "score_dataset_citations",
     "batch_score_citations",
 ]

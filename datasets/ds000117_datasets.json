@@ -1,0 +1,38 @@
+{
+  "dataset_id": "ds000117",
+  "date_retrieved": "2025-07-30T23:53:30.461034+00:00",
+  "dataset_description": {
+    "Name": "Multisubject, multimodal face processing",
+    "License": "CC0",
+    "Authors": [
+      "Wakeman, DG",
+      "Henson, RN"
+    ],
+    "Acknowledgements": "This work was supported by the UK Medical Research Council (SUAG/010\nRG91365) and Elekta Ltd. We would also like to acknowledge the contribution of Andre van der Kouwe and the A.A. Martinos Center for Biomedical Imaging (MGH) for providing the Multi-Echo FLASH sequences used in this work.",
+    "HowToAcknowledge": "Cite this paper: https://www.ncbi.nlm.nih.gov/pubmed/25977808 and consider including the following message: 'This data was obtained from the OpenNeuro database. Its accession number is ds000117'",
+    "Funding": [
+      "UK Medical Research Council (SUAG/010 RG91365), Elekta Ltd."
+    ],
+    "ReferencesAndLinks": [
+      "https://www.ncbi.nlm.nih.gov/pubmed/25977808",
+      "https://openfmri.org/dataset/ds000117/",
+      "ftp://ftp.mrc-cbu.cam.ac.uk/personal/rik.henson/wakemandg_hensonrn/Publications/"
+    ],
+    "BIDSVersion": "1.0.2",
+    "DatasetDOI": "doi:10.18112/openneuro.ds000117.v1.1.0"
+  },
+  "readme_content": "This dataset was obtained from the OpenNeuro project (https://www.openneuro.org). Accession #: ds000117\n\nThe same dataset is also available here: ftp://ftp.mrc-cbu.cam.ac.uk/personal/rik.henson/wakemandg_hensonrn/, but in a non-BIDS format (which may be easier to download by subject rather than by modality)\n\nNote that it is a subset of the data available on OpenfMRI (http://www.openfmri.org; Accession #: ds000117).\n\n\nDescription:  Multi-subject, multi-modal (sMRI+fMRI+MEG+EEG) neuroimaging dataset on face processing\n\nPlease cite the following reference if you use these data:\n\n     Wakeman, D.G. & Henson, R.N. (2015). A multi-subject, multi-modal human neuroimaging dataset. Sci. Data 2:150001 doi: 10.1038/sdata.2015.1\n\nThe data have been used in several publications including, for example:\n\n   Henson, R.N., Abdulrahman, H., Flandin, G. & Litvak, V. (2019). Multimodal integration of M/EEG and f/MRI data in SPM12. Frontiers in Neuroscience, Methods, 13, 300.\n\n    Henson, R.N., Wakeman, D.G., Litvak, V. & Friston, K.J. (2011). A Parametric Empirical Bayesian framework for the EEG/MEG inverse problem: generative models for multisubject and multimodal integration. Frontiers in Human Neuroscience, 5, 76, 1-16.\n\n    Chapter 42 of the SPM12 manual (http://www.fil.ion.ucl.ac.uk/spm/doc/manual.pdf)\n\n(see ftp://ftp.mrc-cbu.cam.ac.uk/personal/rik.henson/wakemandg_hensonrn/Publications for full list), as well as the BioMag2010 data competition and the Kaggle competition: https://www.kaggle.com/c/decoding-the-human-brain)\n\n==================================================================================\n\nfunc/\n-----\nUnlike in v1-v3 of this dataset, the first two (dummy) volumes have now been removed (as stated in *.json), so event onset times correctly refer to t=0 at start of third volume \n\nNote that, owing to scanner error, Subject 10 only has 170 volumes in last run (Run 9) \n\nmeg/\n----\nThree anatomical fiducials were digitized for aligning the MEG with the MRI: the nasion \n(lowest depression between the eyes) and the left and right ears (lowest depression \nbetween the tragus and the helix, above the tragus). This procedure is illustrated here:\nhttp://neuroimage.usc.edu/brainstorm/CoordinateSystems#Subject_Coordinate_System_.28SCS_.2F_CTF.29\nand in task-facerecognition_fidinfo.pdf \n\nThe following triggers are included in the .fif files and are also used in the “trigger” column of the meg and bold events files:\n\nTrigger            Label               Simplified Label\n\n5         Initial Famous Face               IniFF\n6         Immediate Repeat Famous Face      ImmFF\n7         Delayed Repeat Famous Face        DelFF\n13        Initial Unfamiliar Face           IniUF\n14        Immediate Repeat Unfamiliar Face  ImmUF\n15        Delayed Repeat Unfamiliar Face    DelUF\n17        Initial Scrambled Face            IniSF\n18        Immediate Repeat Scrambled Face   ImmSF\n19        Delayed Repeat Scrambled Face     DelSF\n\nstimuli/meg/\n------------\nThe .bmp files correspond to those described in the text. There are 6 additional images in this directory, which were used in the practice experiment to familiarize participants with the task (hence some more BIDS validator warnings)\n\nstimuli/mri/\n------------\nThe .bmp files correspond to those described in the text.\n\t\nDefacing\n--------\nDefacing of MPRAGE T1 images was performed by the submitter. A subset of subjects have given consent for non-defaced versions to be shared - in which case, please contact rik.henson@mrc-cbu.cam.ac.uk.\n \nQuality Control\n---------------\nMriqc was run on the dataset. Results are located in derivatives/mriqc. Learn more about it here: https://mriqc.readthedocs.io/en/latest/\n \nKnown Issues\n------------\nN/A\n\nRelationship of Subject Numbering relative to other versions of Dataset\n------------\n\nThere are multiple versions of the dataset available on the web (see notes above), and these entailed a renumbering of the subjects for various reasons. Here are all the versions and how to match subjects between them (plus some rationale and history for different versions):\n \n1. Original Paper (N=19): Wakeman & Henson (2015): doi:10.1038/sdata.2015.1 \n    Number refers to order that tested (and some, eg 4, 7, 13 etc were excluded for not completing both MRI and MEG sessions)\n \n2. openfMRI, renumbered from paper: http://openfmri.org/s3-browser/?prefix=ds000117/ds000117_R0.1.1/uncompressed/\n    Numbers 1-19 just made contiguous\n \n3. FTP subset of N=16: ftp: ftp://ftp.mrc-cbu.cam.ac.uk/personal/rik.henson/wakemandg_hensonrn/  \n    This set was used for SPM Courses\n    Designed to illustrate multimodal integration, so wanted good MRI+MEG+EEG data for all subjects\n    Removed original subject_01 and subject_06 because bad EEG data; subject_19 because poor EEG and fMRI data\n    (And renumbered subject_14 for some reason).\n \n4. Current OpenNeuro subset N=16 used for (BIDS): https://openneuro.org/datasets/ds000117 \n    OpenNeuro was rebranding of openfMRI, and enforced BIDS format\n    Since this version designed to illustrate multi-modal BIDS, kept same numbering as FTP\n \nW&H2015       openfMRI    FTP      openNeuro\n========       ======        ===     =======\nsubject_01      sub001\nsubject_02      sub002      Sub01   sub-01\nsubject_03      sub003      Sub02   sub-02\nsubject_05      sub004      Sub03   sub-03\nsubject_06      sub005\nsubject_08      sub006      Sub05   sub-05\nsubject_09      sub007      Sub06   sub-06\nsubject_10      sub008      Sub07   sub-07\nsubject_11      sub009      Sub08   sub-08\nsubject_12      sub010      Sub09   sub-09\nsubject_14      sub011      Sub04   sub-04\nsubject_15      sub012      Sub10   sub-10\nsubject_16      sub013      Sub11   sub-11\nsubject_17      sub014      Sub12   sub-12\nsubject_18      sub015      Sub13   sub-13\nsubject_19      sub016\nsubject_23      sub017      Sub14   sub-14\nsubject_24      sub018      Sub15   sub-15\nsubject_25      sub019      Sub16   sub-16\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds000117",
+    "exists": true,
+    "description": "OpenNeuro dataset - Multisubject, multimodal face processing",
+    "created_at": "2018-09-30T22:19:26+00:00",
+    "updated_at": "2025-01-06T15:39:12+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

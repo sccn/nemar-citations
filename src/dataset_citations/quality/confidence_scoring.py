@@ -18,7 +18,6 @@ import pandas as pd
 import json
 import logging
 from typing import Dict, List, Any, Optional
-from sentence_transformers import SentenceTransformer
 import os
 
 from .dataset_metadata import extract_dataset_text, load_dataset_metadata
@@ -43,6 +42,9 @@ class CitationConfidenceScorer:
     def _load_model(self):
         """Load the sentence transformer model."""
         try:
+            # Lazy import to avoid import errors during CLI help
+            from sentence_transformers import SentenceTransformer
+
             logger.info(f"Loading sentence transformer model: {self.model_name}")
             self.model = SentenceTransformer(self.model_name)
             logger.info("Model loaded successfully")
@@ -50,7 +52,15 @@ class CitationConfidenceScorer:
             logger.error(f"Failed to load model {self.model_name}: {e}")
             # Fallback to a smaller, more commonly available model
             logger.info("Falling back to all-MiniLM-L6-v2 model")
-            self.model = SentenceTransformer("all-MiniLM-L6-v2")
+            try:
+                from sentence_transformers import SentenceTransformer
+
+                self.model = SentenceTransformer("all-MiniLM-L6-v2")
+            except Exception as fallback_error:
+                logger.error(f"Failed to load fallback model: {fallback_error}")
+                raise RuntimeError(
+                    "Could not load any sentence transformer model"
+                ) from fallback_error
 
     def extract_citation_text(self, citation: Dict[str, Any]) -> str:
         """
