@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "dataset-citations"
+name = "dataset_citations"
 version = "0.0.1"
 description = "Automated BIDS dataset citation tracking and JSON generation system"
 readme = "README.md"
@@ -45,14 +45,7 @@ dependencies = [
     "beautifulsoup4>=4.9.0",
     "free-proxy>=1.1.0",
     "python-dotenv>=0.19.0",
-    "argparse",
-    "logging",
-    "datetime",
-    "json",
-    "os",
-    "sys",
-    "pathlib",
-    "concurrent.futures",
+
 ]
 
 [project.optional-dependencies]
@@ -76,16 +69,13 @@ Documentation = "https://github.com/neuromechanist/dataset_citations/blob/main/R
 "Bug Reports" = "https://github.com/neuromechanist/dataset_citations/issues"
 
 [project.scripts]
-update-citations = "update_citations:main"
-migrate-citations = "migrate_pickle_to_json:main"
-discover-datasets = "discover_datasets:main"
-regenerate-csv = "regenerate_csv_from_json:main"
+dataset-citations-discover = "dataset_citations.cli.discover:main"
+dataset-citations-migrate = "dataset_citations.cli.migrate:main"
+dataset-citations-update = "dataset_citations.cli.update:main"
+dataset-citations-regenerate = "dataset_citations.cli.regenerate:main"
 
-[tool.setuptools]
-packages = ["dataset_citations"]
-
-[tool.setuptools.package-dir]
-dataset_citations = "."
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.black]
 line-length = 88
