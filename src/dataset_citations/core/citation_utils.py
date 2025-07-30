@@ -236,7 +236,7 @@ def load_citation_json(filepath: str) -> Dict[str, Any]:
     """
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
-            return json.load(f)
+            return json.load(f)  # type: ignore
     except FileNotFoundError:
         logger.error(f"Citation JSON file not found: {filepath}")
         raise

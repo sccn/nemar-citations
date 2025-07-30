@@ -33,12 +33,13 @@ import pandas as pd
 import os
 import logging
 import time
+from typing import Optional, Union, Iterator, Dict, Any
 
 # Configure basic logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-def get_working_proxy(method: str = 'ScraperAPI'):
+def get_working_proxy(method: str = 'ScraperAPI') -> None:
     """
     Sets up and validates a proxy for use with the scholarly library.
 
@@ -57,8 +58,8 @@ def get_working_proxy(method: str = 'ScraperAPI'):
         It will log errors if it fails to set up a proxy after retries
         or if necessary configurations (like API key) are missing.
     """
-    success = False
-    scraper_api_key = None
+    success: bool = False
+    scraper_api_key: Optional[str] = None
 
     if method == 'ScraperAPI':
         scraper_api_key = os.environ.get('SCRAPERAPI_KEY')
@@ -120,7 +121,7 @@ def get_citation_numbers(dataset: str) -> int:
     try:
         search_results = scholarly.search_pubs(dataset)
         if search_results:
-            total_results = search_results.total_results
+            total_results = int(search_results.total_results)
             logging.info(f"Found {total_results} citation(s) for dataset: {dataset}")
             return total_results
         else:
@@ -131,9 +132,9 @@ def get_citation_numbers(dataset: str) -> int:
         return 0  # Return 0 or None, or re-raise depending on desired strictness
 
 
-def get_citations(dataset: str, num_cites: int,
-                  year_low: int = None, year_high: int = None, start_index: int = 0,
-                  citations: pd.DataFrame = None) -> pd.DataFrame:
+def get_citations(dataset: str, num_cites: Optional[int],
+                  year_low: Optional[int] = None, year_high: Optional[int] = None, start_index: int = 0,
+                  citations: Optional[pd.DataFrame] = None) -> pd.DataFrame:
     """
     Returns a dataframe of the citations for a given dataset.
 
