@@ -17,7 +17,7 @@ This system automatically discovers, tracks, and manages citations for BIDS (Bra
 - 🌐 **Web-Ready Output**: Generates clean JSON files perfect for website integration
 - 🔄 **Format Migration**: Converts legacy pickle files to modern JSON format
 - 🚀 **CI/CD Integration**: GitHub Actions workflow for automated updates
-- 📈 **Trend Analysis**: Track citation trends over time
+- 📈 **Trend Analysis**: Track citation trends over time, (look for sample scripts)
 
 ## Installation
 
@@ -95,7 +95,7 @@ print(f"Dataset {citations['dataset_id']} has {citations['num_citations']} citat
 dataset_citations/
 ├── citations/                  # Citation data storage
 │   ├── json/                  # JSON format citations (302 files)
-│   ├── pickle/                # Legacy pickle format (302 files) 
+│   ├── pickle/                # Legacy pickle format (302 files, will develop further) 
 │   └── *.csv                  # Summary and tracking files
 ├── scripts/                   # Utility scripts
 ├── tasks/                     # Task management
@@ -382,7 +382,7 @@ We welcome contributions! Please see our contributing guidelines:
 
 ## License
 
-**Copyright (c) 2024 Seyed Yahya Shirazi (neuromechanist)**  
+**Copyright (c) 2025 Seyed Yahya Shirazi (neuromechanist)**  
 All rights reserved.
 
 This software is proprietary and confidential. Unauthorized copying, distribution, or use is strictly prohibited.
@@ -395,7 +395,7 @@ If you use this software in your research, please cite:
 @software{shirazi2024datasetcitations,
   title={Dataset Citations: Automated BIDS Dataset Citation Tracking System},
   author={Shirazi, Seyed Yahya},
-  year={2024},
+  year={2025},
   url={https://github.com/neuromechanist/dataset_citations}
 }
 ```
@@ -403,11 +403,10 @@ If you use this software in your research, please cite:
 ## Acknowledgments
 
 - **Author**: [Seyed Yahya Shirazi](https://github.com/neuromechanist)
-- **Email**: shirazi@ieee.org
 - **GitHub**: [@neuromechanist](https://github.com/neuromechanist)
 
-Built with ❤️ for the neuroscience research community.
+Built with ❤️ for the neuroscience open science.
 
 ---
 
-*Last updated: July 24, 2024*
+*Last updated: July 24, 2025*
