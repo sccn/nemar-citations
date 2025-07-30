@@ -1,7 +1,5 @@
 """
-Command line interface functionality.
-
-This module contains CLI tools and scripts for the dataset citations package.
+Command-line interface modules for dataset citations package.
 """
 
-__all__ = []
+__all__ = ['discover', 'migrate', 'update', 'regenerate']

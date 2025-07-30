@@ -29,6 +29,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install -e .  # Install package with CLI entry points
 
       - name: Setup GitHub CLI
         run: |
@@ -128,14 +129,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Or a specific PAT if needed
         run: |
           echo "Discovering relevant datasets..."
-          python discover_datasets.py --output-file discovered_datasets.txt
+          dataset-citations-discover --output-file discovered_datasets.txt
           echo "dataset_list_file=discovered_datasets.txt" >> $GITHUB_OUTPUT
 
       - name: Migrate existing pickle files to JSON
         id: migrate_pickle
         run: |
           echo "Migrating existing pickle files to JSON format..."
-          python migrate_pickle_to_json.py --input-dir citations/pickle/ --output-dir citations/json/ --overwrite
+          dataset-citations-migrate --input-dir citations/pickle/ --output-dir citations/json/ --overwrite
           echo "Migration completed"
 
       - name: Update citation information
@@ -143,7 +144,7 @@ jobs:
         env:
           SCRAPERAPI_KEY: ${{ secrets.SCRAPERAPI_KEY }}
         run: |
-          python update_citations.py \
+          dataset-citations-update \
             --dataset-list-file ${{ steps.discover.outputs.dataset_list_file }} \
             --previous-citations-file citations/previous_citations.csv \
             --output-dir citations/ \
@@ -168,7 +169,7 @@ jobs:
             echo "Error: Today's citation file ($LATEST_CITATIONS_FILE) not found."
             echo "Attempting to regenerate CSV files from JSON data as fallback..."
             # Regenerate CSV files from JSON data
-            python regenerate_csv_from_json.py \
+            dataset-citations-regenerate \
               --json-dir citations/json \
               --output-dir citations \
               --date-suffix ${TODAY_DATE} \
@@ -194,7 +195,7 @@ jobs:
             # If most datasets have zero citations, regenerate from JSON
             if [ "$NON_ZERO_COUNT" -lt 50 ]; then
               echo "CSV appears to have incorrect data (too many zeros). Regenerating from JSON..."
-              python regenerate_csv_from_json.py \
+              dataset-citations-regenerate \
                 --json-dir citations/json \
                 --output-dir citations \
                 --date-suffix ${TODAY_DATE} \
@@ -205,7 +206,7 @@ jobs:
             fi
           else
             echo "No CSV file found. Generating from JSON data..."
-            python regenerate_csv_from_json.py \
+            dataset-citations-regenerate \
               --json-dir citations/json \
               --output-dir citations \
               --date-suffix ${TODAY_DATE} \

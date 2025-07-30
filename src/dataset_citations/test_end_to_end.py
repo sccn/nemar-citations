@@ -86,16 +86,10 @@ def test_minimal_workflow(test_datasets: List[str] = None, output_dir: str = Non
         if not test_citation_json_structure():
             return False
             
-        # Test 3: Test minimal citation retrieval (if API key available)
+        # Test 3: Test minimal citation retrieval with real API keys
         logger.info("Step 3: Testing citation retrieval...")
-        scraperapi_key = os.getenv("SCRAPERAPI_KEY")
-        if scraperapi_key:
-            if not test_citation_retrieval(test_datasets, output_dir):
-                return False
-        else:
-            logger.warning("SCRAPERAPI_KEY not found - skipping actual citation retrieval test")
-            # Create mock JSON files for testing
-            create_mock_citation_files(test_datasets, output_dir)
+        if not test_citation_retrieval_with_secrets(test_datasets, output_dir):
+            return False
             
         # Test 4: Test JSON file operations
         logger.info("Step 4: Testing JSON file operations...")
@@ -175,9 +169,20 @@ def test_citation_json_structure() -> bool:
         return False
 
 
-def test_citation_retrieval(test_datasets: List[str], output_dir: str) -> bool:
-    """Test actual citation retrieval (requires API key)."""
+def test_citation_retrieval_with_secrets(test_datasets: List[str], output_dir: str) -> bool:
+    """Test actual citation retrieval using secrets from .secrets file."""
     try:
+        # Load environment variables from .secrets file
+        from dotenv import load_dotenv
+        load_dotenv('.secrets')
+        
+        scraperapi_key = os.getenv("SCRAPERAPI_KEY")
+        if not scraperapi_key:
+            logger.error("SCRAPERAPI_KEY not found in .secrets file")
+            return False
+            
+        logger.info("Found SCRAPERAPI_KEY in .secrets file")
+        
         from dataset_citations.core import getCitations as gc
         from dataset_citations.core import citation_utils
         
@@ -210,33 +215,7 @@ def test_citation_retrieval(test_datasets: List[str], output_dir: str) -> bool:
         return False
 
 
-def create_mock_citation_files(test_datasets: List[str], output_dir: str):
-    """Create mock citation JSON files for testing when API key is not available."""
-    try:
-        import pandas as pd
-        from dataset_citations.core import citation_utils
-        
-        for dataset_id in test_datasets:
-            # Create mock citation data
-            mock_data = {
-                'title': [f'Mock Paper 1 for {dataset_id}', f'Mock Paper 2 for {dataset_id}'],
-                'author': ['Mock Author 1', 'Mock Author 2'],
-                'venue': ['Mock Journal 1', 'Mock Journal 2'],
-                'year': [2023, 2024],
-                'url': ['http://mock1.com', 'http://mock2.com'],
-                'cited_by': [10, 5],
-                'bib': [f'@article{{mock1_{dataset_id}}}', f'@article{{mock2_{dataset_id}}}']
-            }
-            
-            df = pd.DataFrame(mock_data)
-            
-            # Save mock file using the correct function signature
-            json_filepath = citation_utils.save_citation_json(dataset_id, df, output_dir)
-            
-        logger.info(f"✓ Created mock citation files for {test_datasets}")
-        
-    except Exception as e:
-        logger.error(f"Mock file creation failed: {e}")
+# Mock files removed - test now requires real API credentials
 
 
 def test_json_operations(test_datasets: List[str], output_dir: str) -> bool:

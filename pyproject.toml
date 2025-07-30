@@ -69,10 +69,10 @@ Documentation = "https://github.com/neuromechanist/dataset_citations/blob/main/R
 "Bug Reports" = "https://github.com/neuromechanist/dataset_citations/issues"
 
 [project.scripts]
-update-citations = "update_citations:main"
-migrate-citations = "migrate_pickle_to_json:main"
-discover-datasets = "discover_datasets:main"
-regenerate-csv = "regenerate_csv_from_json:main"
+dataset-citations-discover = "dataset_citations.cli.discover:main"
+dataset-citations-migrate = "dataset_citations.cli.migrate:main"
+dataset-citations-update = "dataset_citations.cli.update:main"
+dataset-citations-regenerate = "dataset_citations.cli.regenerate:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
