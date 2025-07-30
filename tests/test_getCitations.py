@@ -89,11 +89,11 @@ class TestGetCitations(unittest.TestCase):
         except Exception as e:
             self.fail(f"Proxy setup failed with valid key: {e}")
 
+    @unittest.skipUnless(
+        os.getenv("SCRAPERAPI_KEY"), "Requires SCRAPERAPI_KEY environment variable"
+    )
     def test_get_citation_numbers_invalid_dataset(self):
         """Test citation count for non-existent dataset."""
-        if not self.has_api_key:
-            self.skipTest("Requires SCRAPERAPI_KEY for API testing")
-
         # Set up proxy first
         gc.get_working_proxy("ScraperAPI")
 
