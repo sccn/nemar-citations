@@ -151,6 +151,31 @@ jobs:
             --workers 5 \
             --output-format json
 
+      - name: Retrieve dataset metadata from GitHub
+        id: retrieve_metadata
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Retrieving dataset metadata from OpenNeuro GitHub repositories..."
+          dataset-citations-retrieve-metadata \
+            --citations-dir citations/json \
+            --output-dir datasets \
+            --skip-existing \
+            --log-level INFO
+          echo "Dataset metadata retrieval completed"
+
+      - name: Calculate citation confidence scores
+        id: score_confidence
+        run: |
+          echo "Calculating citation confidence scores using semantic similarity..."
+          dataset-citations-score-confidence \
+            --citations-dir citations/json \
+            --datasets-dir datasets \
+            --model all-MiniLM-L6-v2 \
+            --skip-existing \
+            --log-level INFO
+          echo "Citation confidence scoring completed"
+
       - name: Update previous_citations.csv for next run
         id: update_previous
         run: |
@@ -220,27 +245,27 @@ jobs:
           # Refresh Git status to detect new or modified files
           git add -A
           
-          # Check if there are any unstaged changes in the citations and citations directories
-          if ! git diff --cached --quiet -- citations/ citations/; then
+          # Check if there are any unstaged changes in the citations, citations, and datasets directories
+          if ! git diff --cached --quiet -- citations/ citations/ datasets/; then
             echo "CHANGES_DETECTED=true" >> $GITHUB_ENV
             echo "changes_detected=true" >> $GITHUB_OUTPUT
             
             # Count changed files for reporting (including JSON files)
-            CHANGED_FILES=$(git diff --cached --name-only -- citations/ citations/ | grep -E '\.(csv|pkl|txt|json)$' | wc -l)
+            CHANGED_FILES=$(git diff --cached --name-only -- citations/ citations/ datasets/ | grep -E '\.(csv|pkl|txt|json)$' | wc -l)
             echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
             echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
             
             # List changed files for the commit message (including JSON files)
-            CHANGED_FILES_LIST=$(git diff --cached --name-only -- citations/ citations/ | grep -E '\.(csv|pkl|txt|json)$')
+            CHANGED_FILES_LIST=$(git diff --cached --name-only -- citations/ citations/ datasets/ | grep -E '\.(csv|pkl|txt|json)$')
             echo "CHANGED_FILES_LIST<<EOF" >> $GITHUB_ENV
             echo "$CHANGED_FILES_LIST" >> $GITHUB_ENV
             echo "EOF" >> $GITHUB_ENV
             
-            echo "Detected $CHANGED_FILES changed files in citations and citations directories"
+            echo "Detected $CHANGED_FILES changed files in citations, citations, and datasets directories"
           else
             echo "CHANGES_DETECTED=false" >> $GITHUB_ENV
             echo "changes_detected=false" >> $GITHUB_OUTPUT
-            echo "No changes detected in citations or citations directories"
+            echo "No changes detected in citations, citations, or datasets directories"
           fi
 
       - name: Display change detection results
@@ -259,7 +284,7 @@ jobs:
         if: ${{ env.CHANGES_DETECTED == 'true' && steps.update_citations.outcome == 'success' && steps.update_previous.outcome == 'success' }}
         run: |
           # Stage all changes for commit
-          git add citations/ citations/
+          git add citations/ citations/ datasets/
           
           # Create a descriptive commit message
           COMMIT_DATE=$(date +'%Y-%m-%d')

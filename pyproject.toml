@@ -45,7 +45,9 @@ dependencies = [
     "beautifulsoup4>=4.9.0",
     "free-proxy>=1.1.0",
     "python-dotenv>=0.19.0",
-
+    "httpx<=0.27.0",
+    "sentence-transformers>=2.0.0",
+    "PyGithub>=1.55.0",
 ]
 
 [project.optional-dependencies]
@@ -73,6 +75,8 @@ dataset-citations-discover = "dataset_citations.cli.discover:main"
 dataset-citations-migrate = "dataset_citations.cli.migrate:main"
 dataset-citations-update = "dataset_citations.cli.update:main"
 dataset-citations-regenerate = "dataset_citations.cli.regenerate:main"
+dataset-citations-retrieve-metadata = "dataset_citations.cli.retrieve_metadata:main"
+dataset-citations-score-confidence = "dataset_citations.cli.score_confidence:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
