@@ -40,8 +40,11 @@ logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
+# Global proxy state tracking to avoid redundant setups
+_proxy_initialized = False
 
-def get_working_proxy(method: str = "ScraperAPI") -> None:
+
+def get_working_proxy(method: str = "ScraperAPI", force: bool = False) -> None:
     """
     Sets up and validates a proxy for use with the scholarly library.
 
@@ -54,12 +57,21 @@ def get_working_proxy(method: str = "ScraperAPI") -> None:
         method (str, optional): The proxy method to use.
                                 Defaults to 'ScraperAPI'.
                                 Other options include 'Luminati' or 'FreeProxies'.
+        force (bool, optional): Force proxy setup even if already initialized.
+                                Defaults to False.
 
     Returns:
         None. The function aims to configure the global scholarly proxy.
         It will log errors if it fails to set up a proxy after retries
         or if necessary configurations (like API key) are missing.
     """
+    global _proxy_initialized
+
+    # Skip if proxy already initialized and not forcing
+    if _proxy_initialized and not force:
+        logging.debug(f"Proxy already initialized with {method}, skipping setup")
+        return
+
     success: bool = False
     scraper_api_key: Optional[str] = None
 
@@ -113,6 +125,7 @@ def get_working_proxy(method: str = "ScraperAPI") -> None:
 
         if success:
             scholarly.use_proxy(pg)
+            _proxy_initialized = True
             logging.info(f"Successfully set up proxy using {method}.")
         else:
             # Add a small delay before retrying to avoid spamming proxy services if continuously failing
@@ -120,6 +133,16 @@ def get_working_proxy(method: str = "ScraperAPI") -> None:
                 f"Proxy setup failed with {method}. Retrying in 5 seconds..."
             )
             time.sleep(5)
+
+
+def is_proxy_initialized() -> bool:
+    """
+    Check if a proxy has been successfully initialized.
+
+    Returns:
+        bool: True if proxy is initialized, False otherwise.
+    """
+    return _proxy_initialized
 
 
 def get_citation_numbers(dataset: str) -> int:
@@ -237,7 +260,7 @@ def get_citations(
                 f"Failed to get publication entry {i + start_index} for {dataset}."
                 f"Attempting to get new proxy. Error: {e}"
             )
-            get_working_proxy()  # Attempt to refresh proxy
+            get_working_proxy(force=True)  # Attempt to refresh proxy
             try:
                 entry_search = scholarly.search_pubs(
                     dataset,
