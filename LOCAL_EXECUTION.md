@@ -84,10 +84,10 @@ A helper script `run_local_workflow.sh` is provided in the project root to simpl
     act workflow_dispatch -j <job_id>
     ```
 
-    **Note on Concurrency for `update_citations.py`:**
-    The `update_citations.py` script, when run via the GitHub Action (and thus by `act`), now supports parallel processing for fetching citations. This is controlled by the `--workers` argument within the Python script itself. The GitHub workflow file (`update_citations.yml`) calls this script. If you need to adjust the concurrency when running locally via `act`, you would modify the `python update_citations.py ...` line within the `update_citations.yml` workflow file to change the default `--workers` value passed to it, or add it if not present.
+    **Note on Concurrency for Citation Updates:**
+    The `dataset-citations-update` CLI command, when run via the GitHub Action (and thus by `act`), supports parallel processing for fetching citations. This is controlled by the `--workers` argument. The GitHub workflow file (`update_citations.yml`) calls this CLI command. If you need to adjust the concurrency when running locally via `act`, you would modify the `dataset-citations-update` command line within the `update_citations.yml` workflow file to change the `--workers` value.
 
-    The default number of workers in `update_citations.py` is 10. You can change this in the script if needed or by modifying how the workflow calls it.
+    The default number of workers is 10. You can change this by modifying the `--workers` parameter in the workflow file.
 
 ## Scheduled Local Execution (using `cron` on macOS/Linux)
 

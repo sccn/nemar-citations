@@ -393,9 +393,9 @@ pytest --cov=dataset_citations tests/
    - Handles proxy management and rate limiting
    - Extracts detailed citation information
 
-3. **Data Processing** (`update_citations.py`)
+3. **Data Processing** (`dataset-citations-update` CLI)
    - Orchestrates the citation update workflow
-   - Manages parallel processing of multiple datasets
+   - Manages parallel processing of multiple datasets  
    - Handles both citation counts and detailed information
 
 4. **Format Conversion** (`citation_utils.py`)
@@ -598,4 +598,4 @@ Built with ❤️ for the neuroscience open science.
 
 ---
 
-*Last updated: July 24, 2025*
+*Last updated: July 31, 2025*

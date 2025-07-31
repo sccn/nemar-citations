@@ -222,19 +222,19 @@ The main citation update script now supports JSON output:
 
 ```bash
 # Generate only JSON files
-python update_citations.py \
+dataset-citations-update \
   --dataset-list-file datasets.txt \
   --previous-citations-file previous.csv \
   --output-format json
 
 # Generate both pickle and JSON files
-python update_citations.py \
+dataset-citations-update \
   --dataset-list-file datasets.txt \
   --previous-citations-file previous.csv \
   --output-format both
 
 # Generate only pickle files (legacy mode)
-python update_citations.py \
+dataset-citations-update \
   --dataset-list-file datasets.txt \
   --previous-citations-file previous.csv \
   --output-format pickle
