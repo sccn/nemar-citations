@@ -1,0 +1,195 @@
+{
+  "name": "Dataset Citations - Confidence Analysis",
+  "description": "Citation quality analysis with confidence score visualization",
+  "categories": [
+    {
+      "id": 1,
+      "name": "Dataset",
+      "labels": ["Dataset"],
+      "properties": [
+        {"name": "uid", "dataType": "string"},
+        {"name": "name", "dataType": "string"},
+        {"name": "description", "dataType": "string"},
+        {"name": "num_citations", "dataType": "bigint"},
+        {"name": "total_cumulative_citations", "dataType": "bigint"},
+        {"name": "data_type", "dataType": "string"},
+        {"name": "modality", "dataType": "string"},
+        {"name": "bids_version", "dataType": "string"}
+      ],
+      "color": "#8DCC93",
+      "size": 1,
+      "icon": "database-icon",
+      "captions": [
+        {"key": "name", "type": "property", "isCaption": true},
+        {"key": "data_type", "type": "property", "inTooltip": true},
+        {"key": "modality", "type": "property", "inTooltip": true}
+      ],
+      "styleRules": [
+        {
+          "type": "range",
+          "basedOn": "total_cumulative_citations",
+          "applySize": true,
+          "minSize": 0.5,
+          "maxSize": 4.0,
+          "applyColor": false
+        },
+        {
+          "type": "unique-values",
+          "basedOn": "data_type",
+          "applyColor": true
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Citation",
+      "labels": ["Citation"],
+      "properties": [
+        {"name": "uid", "dataType": "string"},
+        {"name": "title", "dataType": "string"},
+        {"name": "author", "dataType": "string"},
+        {"name": "venue", "dataType": "string"},
+        {"name": "year", "dataType": "bigint"},
+        {"name": "confidence_score", "dataType": "number"},
+        {"name": "cited_by", "dataType": "bigint"},
+        {"name": "is_high_confidence", "dataType": "boolean"},
+        {"name": "abstract", "dataType": "string"}
+      ],
+      "color": "#FFC454",
+      "size": 1,
+      "icon": "article-icon",
+      "captions": [
+        {"key": "title", "type": "property", "isCaption": true},
+        {"key": "confidence_score", "type": "property", "inTooltip": true},
+        {"key": "cited_by", "type": "property", "inTooltip": true}
+      ],
+      "styleRules": [
+        {
+          "type": "range",
+          "basedOn": "confidence_score",
+          "applyColor": true,
+          "minColor": "#FF6B6B",
+          "midColor": "#FFE66D",
+          "maxColor": "#4ECDC4",
+          "applySize": true,
+          "minSize": 0.3,
+          "maxSize": 2.0
+        },
+        {
+          "type": "range",
+          "basedOn": "cited_by",
+          "applySize": true,
+          "minSize": 0.5,
+          "maxSize": 3.0,
+          "applyColor": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "HighConfidenceCitation",
+      "labels": ["Citation"],
+      "filter": "is_high_confidence = true",
+      "properties": [
+        {"name": "uid", "dataType": "string"},
+        {"name": "title", "dataType": "string"},
+        {"name": "confidence_score", "dataType": "number"},
+        {"name": "cited_by", "dataType": "bigint"}
+      ],
+      "color": "#4ECDC4",
+      "size": 1.5,
+      "icon": "verified-icon",
+      "captions": [
+        {"key": "title", "type": "property", "isCaption": true},
+        {"key": "confidence_score", "type": "property", "inTooltip": true}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "LowConfidenceCitation",
+      "labels": ["Citation"],
+      "filter": "is_high_confidence = false",
+      "properties": [
+        {"name": "uid", "dataType": "string"},
+        {"name": "title", "dataType": "string"},
+        {"name": "confidence_score", "dataType": "number"}
+      ],
+      "color": "#FF6B6B",
+      "size": 0.7,
+      "icon": "warning-icon",
+      "captions": [
+        {"key": "title", "type": "property", "isCaption": true},
+        {"key": "confidence_score", "type": "property", "inTooltip": true}
+      ]
+    }
+  ],
+  "relationshipTypes": [
+    {
+      "id": "CITES",
+      "name": "CITES",
+      "properties": [],
+      "color": "#848484",
+      "size": 1,
+      "captions": [
+        {"key": "CITES", "type": "relationship", "isCaption": true}
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "name": "High Confidence Citations Only",
+      "text": "Show only citations with confidence >= $minConfidence",
+      "cypher": "MATCH (d:Dataset)-[:CITES]->(c:Citation) WHERE c.confidence_score >= $minConfidence RETURN d, c",
+      "params": [
+        {"name": "$minConfidence", "dataType": "Number"}
+      ]
+    },
+    {
+      "name": "Low Confidence Citations for Review",
+      "text": "Show citations with confidence < $maxConfidence for manual review",
+      "cypher": "MATCH (d:Dataset)-[:CITES]->(c:Citation) WHERE c.confidence_score < $maxConfidence RETURN d, c ORDER BY c.confidence_score DESC",
+      "params": [
+        {"name": "$maxConfidence", "dataType": "Number"}
+      ]
+    },
+    {
+      "name": "Dataset Quality Overview",
+      "text": "Show dataset $datasetId with confidence distribution",
+      "cypher": "MATCH (d:Dataset {uid: $datasetId})-[:CITES]->(c:Citation) RETURN d, c ORDER BY c.confidence_score DESC",
+      "params": [
+        {"name": "$datasetId", "dataType": "String"}
+      ]
+    },
+    {
+      "name": "Confidence Score Distribution",
+      "text": "Show all citations grouped by confidence ranges",
+      "cypher": "MATCH (c:Citation) WITH c, CASE WHEN c.confidence_score >= 0.8 THEN 'High' WHEN c.confidence_score >= 0.6 THEN 'Medium' WHEN c.confidence_score >= 0.4 THEN 'Low' ELSE 'Very Low' END AS confidence_category RETURN c, confidence_category",
+      "params": []
+    },
+    {
+      "name": "Most Cited High-Confidence Papers",
+      "text": "Show high-confidence citations with more than $minCited citations",
+      "cypher": "MATCH (c:Citation) WHERE c.is_high_confidence = true AND c.cited_by > $minCited RETURN c ORDER BY c.cited_by DESC",
+      "params": [
+        {"name": "$minCited", "dataType": "Integer"}
+      ]
+    }
+  ],
+  "sceneActions": [
+    {
+      "name": "Show Only High Confidence",
+      "cypher": "MATCH (n)-[r]-(m) WHERE id(n) in $nodes AND (NOT EXISTS(m.confidence_score) OR m.confidence_score >= 0.4) RETURN n, r, m",
+      "categories": [1, 2]
+    },
+    {
+      "name": "Filter by Confidence Range",
+      "cypher": "MATCH (n:Citation) WHERE id(n) in $nodes AND n.confidence_score >= 0.6 RETURN n",
+      "categories": [2]
+    },
+    {
+      "name": "Show Dataset Quality Summary",
+      "cypher": "MATCH (d:Dataset)-[:CITES]->(c:Citation) WHERE id(d) in $nodes WITH d, COUNT(c) as total_citations, COUNT(CASE WHEN c.is_high_confidence THEN 1 END) as high_conf_citations RETURN d, total_citations, high_conf_citations, (high_conf_citations * 100.0 / total_citations) as quality_percentage",
+      "categories": [1]
+    }
+  ]
+}

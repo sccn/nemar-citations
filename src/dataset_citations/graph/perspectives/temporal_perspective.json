@@ -1,0 +1,158 @@
+{
+  "name": "Dataset Citations - Temporal View",
+  "description": "Temporal analysis of dataset citations with year-based visualization",
+  "categories": [
+    {
+      "id": 1,
+      "name": "Dataset",
+      "labels": ["Dataset"],
+      "properties": [
+        {"name": "uid", "dataType": "string"},
+        {"name": "name", "dataType": "string"},
+        {"name": "description", "dataType": "string"},
+        {"name": "num_citations", "dataType": "bigint"},
+        {"name": "total_cumulative_citations", "dataType": "bigint"},
+        {"name": "data_type", "dataType": "string"},
+        {"name": "modality", "dataType": "string"}
+      ],
+      "color": "#FFE081",
+      "size": 1,
+      "icon": "dataset-icon",
+      "captions": [
+        {"key": "name", "type": "property", "isCaption": true},
+        {"key": "num_citations", "type": "property", "inTooltip": true}
+      ],
+      "styleRules": [
+        {
+          "type": "range",
+          "basedOn": "num_citations",
+          "applySize": true,
+          "minSize": 0.5,
+          "maxSize": 3.0,
+          "applyColor": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Citation",
+      "labels": ["Citation"],
+      "properties": [
+        {"name": "uid", "dataType": "string"},
+        {"name": "title", "dataType": "string"},
+        {"name": "author", "dataType": "string"},
+        {"name": "venue", "dataType": "string"},
+        {"name": "year", "dataType": "bigint"},
+        {"name": "confidence_score", "dataType": "number"},
+        {"name": "cited_by", "dataType": "bigint"},
+        {"name": "is_high_confidence", "dataType": "boolean"}
+      ],
+      "color": "#57C7E3",
+      "size": 1,
+      "icon": "document-icon",
+      "captions": [
+        {"key": "title", "type": "property", "isCaption": true},
+        {"key": "year", "type": "property", "inTooltip": true},
+        {"key": "confidence_score", "type": "property", "inTooltip": true}
+      ],
+      "styleRules": [
+        {
+          "type": "range",
+          "basedOn": "confidence_score",
+          "applyColor": true,
+          "minColor": "#FFCCCC",
+          "maxColor": "#FF0000",
+          "applySize": false
+        },
+        {
+          "type": "single",
+          "basedOn": "is_high_confidence",
+          "condition": "is-true",
+          "color": "#00FF00",
+          "applyColor": true
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Year",
+      "labels": ["Year"],
+      "properties": [
+        {"name": "value", "dataType": "bigint"}
+      ],
+      "color": "#F79767",
+      "size": 2,
+      "icon": "calendar-icon",
+      "captions": [
+        {"key": "value", "type": "property", "isCaption": true}
+      ]
+    }
+  ],
+  "relationshipTypes": [
+    {
+      "id": "CITES",
+      "name": "CITES",
+      "properties": [],
+      "color": "#848484",
+      "size": 1,
+      "captions": [
+        {"key": "CITES", "type": "relationship", "isCaption": true}
+      ]
+    },
+    {
+      "id": "CITED_IN",
+      "name": "CITED_IN",
+      "properties": [],
+      "color": "#DA7194",
+      "size": 1,
+      "captions": [
+        {"key": "CITED_IN", "type": "relationship", "isCaption": true}
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "name": "Citations by Year Range",
+      "text": "Show citations between $startYear and $endYear",
+      "cypher": "MATCH (c:Citation)-[:CITED_IN]->(y:Year) WHERE y.value >= $startYear AND y.value <= $endYear RETURN c, y",
+      "params": [
+        {"name": "$startYear", "dataType": "Integer"},
+        {"name": "$endYear", "dataType": "Integer"}
+      ]
+    },
+    {
+      "name": "High Confidence Citations",
+      "text": "Show only high confidence citations (>= 0.4)",
+      "cypher": "MATCH (c:Citation) WHERE c.is_high_confidence = true RETURN c",
+      "params": []
+    },
+    {
+      "name": "Dataset Citation Timeline",
+      "text": "Show citations for dataset $datasetId over time",
+      "cypher": "MATCH (d:Dataset {uid: $datasetId})-[:CITES]->(c:Citation)-[:CITED_IN]->(y:Year) RETURN d, c, y ORDER BY y.value",
+      "params": [
+        {"name": "$datasetId", "dataType": "String"}
+      ]
+    },
+    {
+      "name": "Top Cited Datasets",
+      "text": "Show datasets with more than $minCitations citations",
+      "cypher": "MATCH (d:Dataset) WHERE d.num_citations > $minCitations RETURN d ORDER BY d.num_citations DESC",
+      "params": [
+        {"name": "$minCitations", "dataType": "Integer"}
+      ]
+    }
+  ],
+  "sceneActions": [
+    {
+      "name": "Show Citations by Year",
+      "cypher": "MATCH (c:Citation)-[:CITED_IN]->(y:Year) WHERE id(c) in $nodes RETURN c, y",
+      "categories": [2]
+    },
+    {
+      "name": "Show Dataset Citations",
+      "cypher": "MATCH (d:Dataset)-[:CITES]->(c:Citation) WHERE id(d) in $nodes RETURN d, c",
+      "categories": [1]
+    }
+  ]
+}
