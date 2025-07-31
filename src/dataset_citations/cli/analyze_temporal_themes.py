@@ -122,13 +122,17 @@ class TemporalThemeAnalyzer:
                         emb_id = f"citation_{citation_hash}"
 
                         if emb_id in embedding_ids:
+                            # Extract confidence score from nested structure
+                            confidence_data = citation.get("confidence_scoring", {})
+                            confidence_score = confidence_data.get(
+                                "confidence_score", 0.0
+                            )
+
                             temporal_data[emb_id] = {
                                 "year": citation.get("year"),
                                 "title": title,
                                 "dataset_id": dataset_id,
-                                "confidence_score": citation.get(
-                                    "confidence_score", 0.0
-                                ),
+                                "confidence_score": confidence_score,
                                 "cited_by": citation.get("cited_by", 0),
                             }
 

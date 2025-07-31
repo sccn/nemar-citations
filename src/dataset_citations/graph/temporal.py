@@ -94,7 +94,9 @@ def analyze_citation_timeline(
 
             for citation in citation_details:
                 year = citation.get("year")
-                confidence = citation.get("confidence_score", 0.0)
+                # Extract confidence score from nested structure
+                confidence_data = citation.get("confidence_scoring", {})
+                confidence = confidence_data.get("confidence_score", 0.0)
 
                 # Validate year
                 if year and isinstance(year, int) and 1900 <= year <= 2030:
@@ -219,7 +221,9 @@ def create_citation_year_relationships(
 
             for i, citation in enumerate(citation_details):
                 year = citation.get("year")
-                confidence = citation.get("confidence_score", 0.0)
+                # Extract confidence score from nested structure
+                confidence_data = citation.get("confidence_scoring", {})
+                confidence = confidence_data.get("confidence_score", 0.0)
 
                 # Only include high-confidence citations
                 if confidence < confidence_threshold:

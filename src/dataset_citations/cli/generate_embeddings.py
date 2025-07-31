@@ -228,8 +228,11 @@ def generate_citation_embeddings(
 
             # Process each citation
             for citation in citations_data["citation_details"]:
-                # Check confidence score
-                confidence = citation.get("confidence_score", 0.0)
+                # Check confidence score - handle nested structure
+                confidence_data = citation.get("confidence_scoring", {})
+                confidence = confidence_data.get("confidence_score", 0.0)
+
+                # Skip citations below confidence threshold
                 if confidence < min_confidence:
                     continue
 

@@ -131,14 +131,18 @@ class ThemeNetworkGenerator:
                         emb_id = f"citation_{citation_hash}"
 
                         if emb_id in embedding_ids:
+                            # Extract confidence score from nested structure
+                            confidence_data = citation.get("confidence_scoring", {})
+                            confidence_score = confidence_data.get(
+                                "confidence_score", 0.0
+                            )
+
                             citation_texts[emb_id] = {
                                 "title": title,
                                 "abstract": abstract,
                                 "full_text": citation_text,
                                 "dataset_id": dataset_id,
-                                "confidence_score": citation.get(
-                                    "confidence_score", 0.0
-                                ),
+                                "confidence_score": confidence_score,
                                 "year": citation.get("year"),
                                 "author": citation.get("author", ""),
                                 "venue": citation.get("venue", ""),
