@@ -230,13 +230,18 @@ def load_datasets_from_json(
             with open(json_file, "r", encoding="utf-8") as f:
                 data = json.load(f)
 
+            # Extract metadata if available
+            metadata = data.get("metadata", {})
+
             datasets[dataset_id] = {
                 "uid": dataset_id,
                 "name": dataset_id,  # Default to dataset ID
                 "description": None,
                 "authors": None,
                 "num_citations": data.get("num_citations", 0),
-                "total_cumulative_citations": data.get("total_cumulative_citations", 0),
+                "total_cumulative_citations": metadata.get(
+                    "total_cumulative_citations", 0
+                ),
                 "date_last_updated": data.get("date_last_updated"),
                 "bids_version": None,
                 "data_type": None,
