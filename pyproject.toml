@@ -48,6 +48,9 @@ dependencies = [
     "httpx<=0.27.0",
     "sentence-transformers>=2.0.0",
     "PyGithub>=1.55.0",
+    "neo4j>=5.0.0",
+    "umap-learn>=0.5.0",
+    "scikit-learn>=1.0.0",
 ]
 
 [project.optional-dependencies]
@@ -77,6 +80,7 @@ dataset-citations-update = "dataset_citations.cli.update:main"
 dataset-citations-regenerate = "dataset_citations.cli.regenerate:main"
 dataset-citations-retrieve-metadata = "dataset_citations.cli.retrieve_metadata:main"
 dataset-citations-score-confidence = "dataset_citations.cli.score_confidence:main"
+dataset-citations-analyze-temporal = "dataset_citations.cli.analyze_temporal:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
