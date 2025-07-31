@@ -1,0 +1,44 @@
+{
+  "dataset_id": "ds004381",
+  "date_retrieved": "2025-07-31T00:17:56.808737+00:00",
+  "dataset_description": {
+    "Name": "Intraoperative EEG dataset during medianus-tibialis stimulation with 8 different rates",
+    "BIDSVersion": "1.4.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Giorgio Selmin",
+      "Vasileios Dimakopoulos",
+      "Niklaus Krayenbühl",
+      "Luca Regli",
+      "Johannes Sarnthein"
+    ],
+    "Acknowledgements": "We acknowledge a grant awarded by the Swiss National Science Foundation(funded by the SNSF 204651 to J.S.) and a scholarship awarded by the Alexander S. Onassis Public Benefit Foundation (to V.D.). The funders had no role in the design or analysis of the study. We thank two anonymous reviewers for their constructive comments on earlier versions of the manuscript.",
+    "HowToAcknowledge": "If you use this dataset please cite this paper: Dimakopoulos V, Selmin G, Regli L, Sarnthein J, Optimization of signal-to-noise ratio in short-duration SEP recordings by variation of stimulation rate, Clinical Neurophysiology, 2023, ISSN 1388-2457, https://doi.org/10.1016/j.clinph.2023.03.008.",
+    "Funding": [
+      "Swiss National Science Foundation, SNSF 204651",
+      "Alexander S. Onassis Public Benefit Foundation Scholarship"
+    ],
+    "EthicsApprovals": [
+      "2019-01977"
+    ],
+    "ReferencesAndLinks": [
+      "https://hfozuri.ch"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds004381.v1.0.2"
+  },
+  "readme_content": "# Intraoperative EEG dataset during medianus-tibialis stimulation with 8 different rates\nThis dataset was obtained from the publication [1] wherein we varyied the stimulus repetition rate and recorded medianus and tibial nerve SEP. \nWe randomly sampled a number of sweeps corresponding to recording durations up to 20 s and calculated the signal-to-noise ratio (SNR).\n\nThere are 14 adults subjects and 4 children subjects with continuous EEG data split in sessions (tibial left/right, medianus left/right) and runs (1 run for each stimulation rate).\nWe also provide processed data (derivatives) for all the sessions. \nIn total there are 34 medianus SEP and 32 tibial SEP sessions.\n \n## Repository structure\n\n### Main directory (SEP rate/)\nContains metadata files in the BIDS standard about the participants and the study. Folders are explained below.\n\n### Subfolders\n* SEP rate/sub-**/\nContains folders for each subject, named sub-<subject number> and session information.\n* SEP rate/sub-**/ses-01/eeg\nContains the raw eeg data in .edf format for each subject. \nEach *eeg.edf file contains EEG data from one stimulation rate (see scans.tsv column stimRate).\nDetails about the channels are given in the corresponding .tsv file. \n* SEP rate/derivatives\nContains folders for each subject,named sub-<subject number> and session information that include processed data\n* SEP rate/derivatives/sub-**/ses-01/eeg/\nContains processed data for each subject.\n\n\n# Note from the paper\n\"The offline data processing used the continuous EEG that was recorded in parallel to the SEP recordings. \nData analysis was performed with custom scripts in Matlab (www.mathworks.com). To detect the SEP stimulation artefact, \nwe first filtered the EEG (high pass cutoff = 200 Hz) and performed local peak detection (minimum peak prominence between peaks = 30 ms,\nminimum peak width = 4 ms, samples = 0.2 ms). We used the times of the detected stimulus artifact as triggers to define sweeps with \npost-stimulus recording sweep length 50 ms for medianus SEP and 100 ms for tibial SEP. We resampled the data to sampling rate 1200 Hz before\nfurther processing. We classified sweeps with amplitude > 10 ÂµV as artefact-ridden and excluded them from further analysis.\"\n\nBIDS Conversion\n---------------\nbids-starter-kid and custom Matlab scripts were used to convert the dataset into BIDS format. \n\n\nReferences\n----------\n[1] Dimakopoulos V, Selmin G, Regli L, Sarnthein J, Optimization of signal-to-noise ratio in short-duration SEP recordings by variation of stimulation rate, Clinical Neurophysiology, 2023, ISSN 1388-2457, https://doi.org/10.1016/j.clinph.2023.03.008.\n\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds004381",
+    "exists": true,
+    "description": "OpenNeuro dataset - Intraoperative EEG dataset during medianus-tibialis stimulation with 8 different rates",
+    "created_at": "2023-04-02T15:14:26+00:00",
+    "updated_at": "2024-10-29T11:49:44+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

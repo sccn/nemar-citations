@@ -1,0 +1,38 @@
+{
+  "dataset_id": "ds004350",
+  "date_retrieved": "2025-07-31T00:20:24.894772+00:00",
+  "dataset_description": {
+    "Name": "Executive Functionning Study for Assessing the Effect of Neurofeedback",
+    "ReferencesAndLinks": [
+      "https://www.frontiersin.org/articles/10.3389/fnhum.2020.00246/full"
+    ],
+    "BIDSVersion": "v1.8.0",
+    "License": "CC0",
+    "Authors": [
+      "Arnaud Delorme",
+      "Tracy Brandmeyer"
+    ],
+    "HEDVersion": "8.1.0",
+    "GeneratedBy": [
+      {
+        "Name": "bids-matlab-tools",
+        "Version": "8.0"
+      }
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds004350.v2.0.0"
+  },
+  "readme_content": "## Executive Functioning Tasks\n\nThe data of this dataset was collected as part of an executive functioning battery consisting of three separate tasks: \n\n1) N-Back (NB)\n\n2) Sustained Attention to Response Task (SART)\n\n3) Local Global (LG)\n\nThe original experiment details in which these tasks were conducted in addition to can be read about here (https://doi.org/10.3389/fnhum.2020.00246).\n\n**Experiment Design:** Two sessions of each task were conducted on the first and last day of the neurofeedback experiment with 24 participants (mentioned above).\n\n**[N-Back (NB)]** Participants performed a visual sequential letter n-back working memory task, with memory load ranging from 1-back to 3-back. The visual stimuli consisted of a sequence of 4 letters (A, B, C, D) presented black on a gray background. Participants observed stimuli on a visual display and responded using the spacebar on a provided keyboard. In the 1-back condition, the target was any letter identical to the trial immediately preceding one. In the 2-back and 3-back conditions, the target was any letter that was presented two or three trials back, respectively. The stimuli were presented on a screen for a duration of 1 s, after which a fixation cross was presented for 500 ms. Participants responded to each stimulus by pressing the spacebar with their right hand upon target presentation. If no spacebar was pressed within 1500 ms of the stimulus presentation, a new stimulus was presented. Each n-back condition (1, 2, and 3-back) consisted of the presentation of 280 stimuli selected randomly in the 4-letter pool.\n\n**[Sustained Attention to Response Task (SART)]** Participants were presented with a series of single numerical digits (randomly selected from 0 to 9 - the same digit could not be presented twice in a row) and instructed to press the spacebar for each digit, except for when presented with the digit 3. Each number was presented for 400 ms in white on a gray background. The inter-stimulus interval was 2 s irrespective of the button press and a fixation cross was present at all times except for when the digits were presented. Participants performed the SART for approximately 10 minutes corresponding to 250 digit presentations.\n\n**[Local Global (LG)]** Participants were shown large letters (H and T) on a computer screen. The large letters were made up of an aggregate of smaller letters that could be congruent (i.e large H made of small Hs or large T made of small Ts) or incongruent (large H made of small Ts or large T made of small Hs) with respect to the large letter. The small letters were 0.8 cm high and the large letters were 8 cm high on the computer screen. A fixation cross was present at all times except when the stimulus letters were presented. Letters were shown on the computer screen until the subject responded. After each subject's response, there was a delay of 1 s before the next stimulus was presented. Before each sequence of letters, instructions were shown on a computer screen indicating to participants whether they should respond to the presence of small (local condition) or large (global condition) letters. The participants were instructed to categorize specifically large letters or small letters and to press the letter H or T on the computer keyboard to indicate their choice. \n\n**Data Processing:** Data processing was performed in Matlab and EEGLAB. The EEG data was average referenced and down-sampled from 2048 to 256 Hz. A high-pass filter at 1 HZ using an elliptical non-linear filter was applied and the data was then average referenced.\n\n**Note:** The data files in this dataset were converted into the .set format for EEGLAB. The .bdf files that were converted for each of the tasks can be found in the sourcedata folder.\n\n**Exclusion Note:** The second run of NB in session 1 of sub-11 and the run of SART in session 1 of sub-18 were both excluded due to issues with conversion to .set format. However, the .bdf files of these runs can be found in the sourcedata folder. ",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds004350",
+    "exists": true,
+    "description": "OpenNeuro dataset - Executive Functionning Study for Assessing the Effect of Neurofeedback",
+    "created_at": "2022-12-06T03:04:23+00:00",
+    "updated_at": "2025-02-07T16:56:44+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "dataset_id": "ds003739",
+  "date_retrieved": "2025-07-31T00:20:01.485601+00:00",
+  "dataset_description": {
+    "Name": "Perturbed beam-walking task",
+    "ReferencesAndLinks": [
+      "https://doi.org/10.1016/j.neuroimage.2019.05.038",
+      "https://doi.org/10.1523/ENEURO.0207-18.2018"
+    ],
+    "BIDSVersion": "v1.6.0",
+    "License": "CC0",
+    "Authors": [
+      "Steven Peterson",
+      "Daniel Ferris"
+    ],
+    "Funding": [
+      "National Science Foundation (DGE 1256260)",
+      "Army Research Laboratory (W911NF-10-2-0022)",
+      "National Institutes of Health (R01 NS104772)"
+    ],
+    "EthicsApprovals": [
+      "University of Michigan Health Sciences and Behavioral Sciences Institutional Review Board"
+    ],
+    "Acknowledgements": "We thank Estefania Rios and Zachary Ohs for their assistance with data collections and processing the motion capture data. We would also like to thank members of the Human Neuromechanics Laboratory for input regarding the experiment design and data processing.",
+    "HowToAcknowledge": "Please cite:\n\nPeterson SM & Ferris DP (2018). Differentiation in theta and beta electrocortical activity between visual and physical perturbations to walking and standing balance. eNeuro, 5(4): ENEURO.0207-18.2018.\nDOI: 10.1523/ENEURO.0207-18.2018",
+    "DatasetDOI": "10.18112/openneuro.ds003739.v1.0.2"
+  },
+  "readme_content": "Data was collected at the University of Michigan by Steven Peterson in the lab of Daniel Ferris. This study's protocol was approved by the University of Michigan Institutional Review Board and all participants provided written consent.\n\nEach data file includes synchronized 128-channel EEG, lower leg EMG, neck EMG, EOG, and motion capture data. Participants performed four 10-minute, same-day sessions where they either stood or walked at 0.22 m/s on a treadmill-mounted balance beam that was 2.5 cm tall and 12.7 cm wide.\n\nDuring each session, participants were exposed to sensorimotor perturbations (either virtual-reality-induced visual field rotations or side-to-side waist pulls, lasting 0.5 seconds and 1 second in duration, respectively). Each session involved 150 perturbation events, balanced between rotation/pull directions.\n\nWe have included the indices of all good channels for each participant in EEG.etc.good_chans of each .set file (includes non-EEG channel indices). Criteria for determining good/bad EEG channels can be found in our eNeuro publication. EEG.etc also includes the resulting ICA sphere and weight matrices when run on only the EEG channels, along with the selected good IC's that were retained for our analyses.",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds003739",
+    "exists": true,
+    "description": null,
+    "created_at": "2021-07-23T00:20:25+00:00",
+    "updated_at": "2021-08-02T17:07:56+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

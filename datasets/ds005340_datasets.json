@@ -1,0 +1,38 @@
+{
+  "dataset_id": "ds005340",
+  "date_retrieved": "2025-07-31T00:24:18.644293+00:00",
+  "dataset_description": {
+    "Name": "Fundamental frequency predominantly drives talker differences in auditory brainstem responses to continuous speech",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Melissa J. Polonenko",
+      "Ross K. Maddox"
+    ],
+    "Funding": [
+      "NIDCD R01DC017962"
+    ],
+    "EthicsApprovals": [
+      "Approved by the University of Rochester Subjects Review Board (#1227)"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds005340.v1.0.4",
+    "ReferencesAndLinks": [
+      "Melissa J. Polonenko, Ross K. Maddox; Fundamental frequency predominantly drives talker differences in auditory brainstem responses to continuous speech. JASA Express Lett. 1 November 2024; 4 (11): 114401. https://doi.org/10.1121/10.0034329"
+    ],
+    "License": "CC0"
+  },
+  "readme_content": "\nREADME\n------\nDetails related to access to the data\n-------------------------------------\nPlease contact the following authors for further information:\n    Melissa Polonenko(email: mpolonen@umn.edu)\n    Ross Maddox (email: rkmaddox@med.umich.edu)\n\nOverview\n--------\nThis is the \"peaky_pitchshift\"\" dataset for the paper\nPolonenko MJ & Maddox RK (2024), with citation listed below.\n\nPeer-reviewed manuscript:\n\nMelissa J. Polonenko, Ross K. Maddox; Fundamental frequency predominantly drives talker differences in auditory brainstem responses to continuous speech. JASA Express Lett. 1 November 2024; 4 (11): 114401. https://doi.org/10.1121/10.0034329\n\nBioRxiv pre-print:\n\nMelissa Jane Polonenko, Ross K Maddox (2024). Fundamental frequency predominantly drives talker differences in auditory brainstem responses to continuous speech. bioRxiv 2024.07.12.603125; doi: https://doi.org/10.1101/2024.07.12.603125\n\n\n\nAuditory brainstem responses (ABRs) were derived to continuous peaky speech\nfrom two talkers with different fundamental frequencies (f0s) and from clicks\nthat have mean stimulus rates set to the mean f0s. Data was collected from\nMay to June 2021.\n\nAims:\n    1) replicate the male/female talker effect with each at their natural f0\n    2) systematically determine if f0 is the main driver of this talker difference\n    3) evaluate if the f0 effect resembles the click rate effect\n\nThe details of the experiment can be found at Polonenko & Maddox (2024). \n\nStimuli:\n    1) randomized click trains at 3 stimulus rates (123, 150, 183 Hz), \n    30 x 10 s trials each for a total of 90 trials (15 min, 5 min each rate)\n    2) peaky speech for a male and female narrator at 3 f0s (123, 150, 183 Hz),\n    120 x 10 s trials each of the 6 narrator-f0 combo for a total of 720 trials\n    (2 hours, 20 min each)\n    \n    NOTE: f0s used: original f0s (low & high respectively) and f0s\n    shifted to the other narrator's f0 and an f0 at the midpoint between the f0s.\n    click rates used: set to the mean f0s used for the speech\n\nThe code for stimulus preprocessing and EEG analysis is available on Github:\n    https://github.com/polonenkolab/peaky_pitchshift\n\nFormat\n------\nThe dataset is formatted according to the EEG Brain Imaging Data Structure. It \nincludes EEG recording from participant 01 to 15 in raw brainvision format\n(3 files: .eeg, .vhdr, .vmrk) and stimuli files in format of .hdf5. The stimuli\nfiles contain the audio ('x'), and regressors for the deconvolution \n('pinds' are the pulse indices, 'anm' is an auditory nerve model regressor,\n which was used during analyses but was not included as part of the article). \n\nGenerally, you can find detailed event data in the .tsv files and descriptions\nin the accompanying .json files. Raw eeg files are provided in the Brain\nProducts format.\n\nParticipants\n------------\n15 participants, mean ± SD age of 24.1 ± 6.1 years (19-35 years)\n\nInclusion criteria:\n    1) Age between 18-40 years\n    2) Normal hearing: audiometric thresholds 20 dB HL or better from 500 to 8000 Hz\n    3) Speak English as their primary language\n\nPlease see participants.tsv for more information.\n\nApparatus\n---------\nParticipants sat in a darkened sound-isolating booth and rested or watched\nsilent videos with closed captioning. Stimuli were presented at an average level\nof 65 dB SPL and a sampling rate of 48 kHz through ER-2 insert earphones\nplugged into an RME Babyface Pro digital sound card. Custom python scripts\nusing expyfun were used to control the experiment and stimulus presentation.\n\nDetails about the experiment\n----------------------------\nFor a detailed description of the task, see Polonenko & Maddox (2024) and the\nsupplied `task-peaky_pitch_eeg.json` file. The 6 peaky speech conditions\n(2 narrators x 3 f0s) were randomly interleaved for each block of trials\n(i.e., for trial 1, the 6 conditions were randomized) and the story token\nwas randomized. This means that the participant would not be able to follow\nthe story. For clicks the trials were not randomized (already random clicks).\n\nTrigger onset times in the tsv files have already been corrected for the tubing\ndelay of the insert earphones (but not in the events of the raw files).\nTriggers with values of \"1\" were recorded to the onset of the 10 s audio, and\nshortly after triggers with values of \"4\" or \"8\" were stamped to indicate the\noverall trial number out of 120 for each speech conditon and out of 30 for each\nclick condition. This was done by converting the decimal trial number to bits,\ndenoted b, then calculating 2 ** (b + 2). We've specified these trial numbers\nand more metadata of the events in each of the '*_eeg_events.tsv\" file, which\nis sufficient to know which trial corresponded to which type of stimulus\n(clicks, male narrator, female narrator), which f0 (low, mid, high), and which\nfile - e.g., male_low_000_regress.hdf5 for the male narrator with the low f0.\n\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005340",
+    "exists": true,
+    "description": "OpenNeuro dataset - Fundamental frequency predominantly drives talker differences in auditory brainstem responses to continuous speech",
+    "created_at": "2024-11-22T23:47:58+00:00",
+    "updated_at": "2024-11-23T00:02:07+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

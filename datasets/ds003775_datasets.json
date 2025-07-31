@@ -1,0 +1,31 @@
+{
+  "dataset_id": "ds003775",
+  "date_retrieved": "2025-07-31T00:16:17.650298+00:00",
+  "dataset_description": {
+    "Authors": [
+      "Christoffer Hatlestad-Hall",
+      "Trine Waage Rygvold",
+      "Stein Andersson"
+    ],
+    "BIDSVersion": "1.6.0",
+    "DatasetType": "raw",
+    "HowToAcknowledge": "Reference to:\nHatlestad-Hall, C., Rygvold, T. W., & Andersson, S. (2022). BIDS-structured resting-state electroencephalography (EEG) data extracted from an experimental paradigm. Data in Brief, 45, 108647. https://doi.org/10.1016/j.dib.2022.108647",
+    "License": "CC0",
+    "Name": "SRM Resting-state EEG",
+    "DatasetDOI": "doi:10.18112/openneuro.ds003775.v1.2.1"
+  },
+  "readme_content": "# SRM Resting-state EEG\r\n\r\n## Introduction\r\n\r\nThis EEG dataset contains resting-state EEG extracted from the experimental\r\nparadigm used in the *Stimulus-Selective Response Modulation* (SRM) project at\r\nthe Dept. of Psychology, University of Oslo, Norway.\r\n\r\nThe data is recorded with a BioSemi ActiveTwo system, using 64 electrodes\r\nfollowing the positional scheme of the extended 10-20 system (10-10).\r\nEach datafile comprises four minutes of uninterrupted EEG acquired while the\r\nsubjects were resting with their eyes closed. The dataset includes EEG from\r\n111 healthy control subjects (the \"t1\" session), of which a number underwent\r\nan additional EEG recording at a later date (the \"t2\" session). Thus, some\r\nsubjects have one associated EEG file, whereas others have two.\r\n\r\n### Disclaimer\r\n\r\nThe dataset is provided \"as is\". Hereunder, the authors take no responsibility\r\nwith regard to data quality. The user is solely responsible for ascertaining\r\nthat the data used for publications or in other contexts fulfil the required\r\nquality criteria.\r\n\r\n\r\n\r\n## The data\r\n\r\n### Raw data files\r\n\r\nThe raw EEG data signals are rereferenced to the average reference. Other than\r\nthat, no operations have been performed on the data. The files contain no\r\nevents; the whole continuous segment is resting-state data. The data signals\r\nare unfiltered (recorded in Europe, the line noise frequency is 50 Hz). The\r\ntime points for the subject's EEG recording(s), are listed in the *_scans.tsv\r\nfile (particularly interesting for the subjects with two recordings).\r\n\r\nPlease note that the quality of the raw data has **not** been carefully\r\nassessed. While most data files are of high quality, a few might be of poorer\r\nquality. The data files are provided \"as is\", and it is the user's\r\nesponsibility to ascertain the quality of the individual data file.\r\n\r\n\r\n### /derivatives/cleaned_data\r\n\r\nFor convenience, a cleaned dataset is provided. The files in this derived\r\ndataset have been preprocessed with a basic, fully automated pipeline (see\r\n/code/s2_preprocess.m for details) directory for details. The derived files are\r\nstored as EEGLAB .set files in a directory structure identical to that of the\r\nraw files. Please note that the *\\*_channels.tsv* files associated with the\r\nderived files have been updated with status information about each channel\r\n(\"good\" or \"bad\"). The \"bad\" channels are – for the sake of consistency –\r\ninterpolated, and thus still present in the data. It might be advisable to\r\nremove these channels in some analyses, as they (per definition) do not provide\r\nanything to the EEG data. The cleaned data signals are referenced to the\r\naverage reference (including the interpolated channels).\r\n\r\nPlease mind the automatic nature of the employed pipeline. It might not perform\r\noptimally on all data files (*e.g.* over-/underestimating proportion of bad\r\nchannels). For publications, we recommend implementing a more sensitive\r\ncleaning pipeline.\r\n\r\n\r\n### Demographic and cognitive test data\r\n\r\nThe *participants.tsv* file in the root folder contains the variables age,\r\nsex, and a range of cognitive test scores. See the sidecar participants.json\r\nfor more information on the behavioural measures. Please note that these\r\nmeasures were collected in connection with the \"t1\" session recording.\r\n\r\n\r\n\r\n## How to cite\r\n\r\nAll use of this dataset in a publication context requires the following paper\r\nto be cited:\r\n\r\nHatlestad-Hall, C., Rygvold, T. W., & Andersson, S. (2022). BIDS-structured\r\nresting-state electroencephalography (EEG) data extracted from an experimental\r\nparadigm. Data in Brief, 45, 108647. https://doi.org/10.1016/j.dib.2022.108647\r\n\r\n\r\n\r\n## Contact\r\n\r\nQuestions regarding the EEG data may be addressed to\r\nChristoffer Hatlestad-Hall (chr.hh@pm.me).\r\n\r\nQuestion regarding the project in general may be addressed to\r\nStein Andersson (stein.andersson@psykologi.uio.no) or\r\nTrine W. Rygvold (t.w.rygvold@psykologi.uio.no).\r\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds003775",
+    "exists": true,
+    "description": null,
+    "created_at": "2021-08-25T12:29:08+00:00",
+    "updated_at": "2024-07-31T03:31:28+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

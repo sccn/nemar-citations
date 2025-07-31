@@ -1,0 +1,43 @@
+{
+  "dataset_id": "ds005691",
+  "date_retrieved": "2025-07-31T00:15:07.070075+00:00",
+  "dataset_description": {
+    "Acknowledgements": "We would like to thank Hans-Juergen Warmbold and Anne Katrin Baum for their technical support.",
+    "Authors": [
+      "Max-Philipp Stenner",
+      "Cindy Marquez Nossa",
+      "Tino Zaehle",
+      "Elena Azanon",
+      "Hans-Jochen Heinze",
+      "Matthias Deliano",
+      "Lars Buentjen"
+    ],
+    "BIDSVersion": "1.6",
+    "DatasetType": "raw",
+    "Funding": [
+      "M.-P.S. was supported by a VolkswagenStiftung Freigeist Fellowship project-ID 92977.",
+      "M.-P.S. and E.A. received funding from a Deutsche Forschungsgemeinschaft Sonderforschungsbereich SFB-1436 TPC03 project-ID 425899996."
+    ],
+    "HowToAcknowledge": "Paper to be cited: Stenner, Marquez Nossa, Zaehle, Azañon, Heinze, Deliano, and Büntjen. Prior Knowledge Changes Initial Sensory Processing in the Human Spinal Cord. Science Advances, accepted",
+    "License": "CC0",
+    "Name": "SpinalExpect_Invasive",
+    "EthicsApprovals": [
+      "Ethics Committee at the Medical Faculty at Otto-von-Guericke University Magdeburg, Germany"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds005691.v1.0.0"
+  },
+  "readme_content": "Contact person: \nMax-Philipp Stenner, email: max-philipp.stenner@med.ovgu.de or max-philipp.stenner@lin-magdeburg.de, ORCID: 0000-0002-3694-1887\n\nBrief overview of the tasks in the experiment:\nThe goal was to reveal whether temporal expectation influences initial sensory processing in the human spinal cord. In each trial, subjects (included n=8, patients with neuropathic pain following epidural electrode implantation into the cervical spinal canal, dorsal to the spinal cord) received at least one electric median nerve stimulation on the left wrist. Their task was to silently count in how many (rare) trials in each block (~5 min) there were two median nerve stimuli in rapid succession (80 ms ISI), and to report that number at the end of each block. In each trial, the median nerve stimulatino was preceded by an auditory cue. In alternating blocks, the time interval between the auditory cue and the (first) median nerve stimulation was either fixed at 1100 ms, or varied randomly (uniform distribution) between 100 and 2100 ms. \n\nMontage: \nLead placement alongside the cervical spinal cord varied across patients. In each patient, we recorded from eight epidural contacts (3 mm length, 1 mm spacing) placed alongside the dorsal cervical spinal cord. The fourth contact (counted from the most caudal contact) served as a reference. The ground was an extra wire twisted around the wire for the sixth contact (counted from the most caudal contact).\n\nEvents:\nThere are three events of interest. \"S1\" is a keypress of the experimenter, to advance the task upon breaks. \"S1\" can therefore be used to identify the start of each new block. \"S70\" corresponds to the auditory cue. \"S130\" corresponds to median nerve stimulation. \"S99\" is a \"placeholder\" that corresponds to no stimulus at all. The placeholder was used to enable \"double stimuli\", i.e., a rapid succession of two median nerve stimulations with an ISI of 80 ms. Most trials follow a sequence of \"S70\" - \"S130\" - \"S99\". Deviant trials have \"S70\" - \"S130\" - \"S130\". \n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005691",
+    "exists": true,
+    "description": "OpenNeuro dataset - SpinalExpect_Invasive",
+    "created_at": "2024-12-03T09:23:44+00:00",
+    "updated_at": "2024-12-03T09:24:30+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

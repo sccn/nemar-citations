@@ -1,0 +1,36 @@
+{
+  "dataset_id": "ds003838",
+  "date_retrieved": "2025-07-31T00:19:19.072397+00:00",
+  "dataset_description": {
+    "Name": "EEG, pupillometry, ECG and photoplethysmography, and behavioral data in the digit span task and rest",
+    "ReferencesAndLinks": [
+      "Pavlov, Y. G., Kasanov, D., Kosachenko, A. I., Kotyusov, A. I., & Busch, N. A. (2022). Pupillometry and electroencephalography in the digit span task. Scientific Data, 9(1), 325. https://doi.org/10.1038/s41597-022-01414-2",
+      "Pavlov, Y. G., Gashkova, A. S., Kasanov, D., Kosachenko, A. I., Kotyusov, A. I., & Kotchoubey, B. (2023). Task-evoked pulse wave amplitude tracks cognitive load. Scientific Reports, 13(1), 1–10. https://doi.org/10.1038/s41598-023-48917-5",
+      "Kosachenko, A. I., Kasanov, D., Kotyusov, A. I., & Pavlov, Y. G. (2023). EEG and pupillometric signatures of working memory overload. Psychophysiology, n/a(n/a), e14275. https://doi.org/10.1111/psyp.14275"
+    ],
+    "Authors": [
+      "Yuri G. Pavlov",
+      "Dauren Kasanov",
+      "Alexandra I. Kosachenko",
+      "Alexander I. Kotyusov"
+    ],
+    "License": "CC0",
+    "BIDSVersion": "1.1.1",
+    "DatasetDOI": "doi:10.18112/openneuro.ds003838.v1.0.6",
+    "HowToAcknowledge": "https://doi.org/10.1038/s41597-022-01414-2"
+  },
+  "readme_content": "This dataset consists of raw 64-channel EEG, cardiovascular (electrocardiography and photoplethysmography), and pupillometry data from 86 human participants during 4 minutes of eyes-closed resting and during performance of a classic working memory task – digit span task with serial recall. The participants either memorized (memory) or just listened to (control condition) sequences of 5, 9, or 13 digits presented auditorily with 2 second stimulus onset asynchrony. The dataset can be used for (1) developing algorithms for cognitive load discrimination and detection of cognitive overload; (2) studying neural (event-related potentials and brain oscillations) and peripheral physiological (electrocardiography, photoplethysmography, and pupillometry) signals during encoding and maintenance of each sequentially presented memory item in a fine time scale; (3) correlating cognitive load and individual differences in working memory to neural and peripheral physiology, and studying the relationship between the physiological signals; (4) integration of the physiological findings with the vast knowledge coming from behavioral studies of verbal working memory in simple span paradigms.\n\nEEG, pupillometry, ECG and photoplethysmography, and behavioral data are stored separately in corresponding folders. Each data record can consist of four data folders:\nbeh - behavioral data: correctness of the recall in the memory trials\necg - electrocardiography (ECG) and photoplethysmography (PPG) data\neeg - EEG data\npupil -  pupillometry and eye-tracking data\n\nSome of the participants had some physiological data missing:\nsub-017, sub-094 have no pupillometry data\nsub-017, sub-037, sub-066 have no ECG and PPG data\nsub-013, sub-014, sub-015, sub-016, sub-017, sub-018, sub-019, sub-020, sub-021, sub-022, sub-023, sub-024, sub-025, sub-026, sub-027, sub-028, sub-029, sub-030, sub-031, sub-037, sub-066 have no EEG data",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds003838",
+    "exists": true,
+    "description": "OpenNeuro dataset - EEG, pupillometry, ECG and photoplethysmography, and behavioral data in the digit span task and rest",
+    "created_at": "2021-11-10T16:45:57+00:00",
+    "updated_at": "2024-03-05T04:17:43+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

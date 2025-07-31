@@ -1,0 +1,49 @@
+{
+  "dataset_id": "ds000248",
+  "date_retrieved": "2025-07-31T00:18:48.643990+00:00",
+  "dataset_description": {
+    "Name": " ",
+    "BIDSVersion": "1.4.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Alexandre Gramfort",
+      "Matti S Hämäläinen"
+    ],
+    "Acknowledgements": "Alexandre Gramfort, Mainak Jas, and Stefan Appelhoff prepared and updated the data in BIDS format.",
+    "HowToAcknowledge": "If you reference this dataset in a publication, please acknowledge its authors and cite MNE papers: A. Gramfort, M. Luessi, E. Larson, D. Engemann, D. Strohmeier, C. Brodbeck, L. Parkkonen, M. Hämäläinen, MNE software for processing MEG and EEG data, NeuroImage, Volume 86, 1 February 2014, Pages 446-460, ISSN 1053-8119 and A. Gramfort, M. Luessi, E. Larson, D. Engemann, D. Strohmeier, C. Brodbeck, R. Goj, M. Jas, T. Brooks, L. Parkkonen, M. Hämäläinen, MEG and EEG data analysis with MNE-Python, Frontiers in Neuroscience, Volume 7, 2013, ISSN 1662-453X",
+    "Funding": [
+      "NIH 5R01EB009048",
+      "NIH 1R01EB009048",
+      "NIH R01EB006385",
+      "NIH 1R01HD40712",
+      "NIH 1R01NS44319",
+      "NIH 2R01NS37462",
+      "NIH P41EB015896",
+      "ANR-11-IDEX-0003-02",
+      "ERC-StG-263584",
+      "ERC-StG-676943",
+      "ANR-14-NEUC-0002-01"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.1016/j.neuroimage.2014.02.017",
+      "https://doi.org/10.3389/fnins.2013.00267",
+      "https://mne.tools/stable/overview/datasets_index.html#sample"
+    ],
+    "DatasetDOI": "10.18112/openneuro.ds000248.v1.2.4"
+  },
+  "readme_content": "﻿MNE-Sample-Data\n---------------\n\nThe MNE software is accompanied by a sample data set. These data were acquired with the Neuromag Vectorview system at MGH/HMS/MIT Athinoula A. Martinos Center Biomedical Imaging. EEG data from a 60-channel electrode cap was acquired simultaneously with the MEG. The original MRI data set was acquired with a Siemens 1.5 T Sonata scanner using an MPRAGE sequence.\n\nIn the MEG/EEG experiment, checkerboard patterns were presented into the left and right visual field, interspersed by tones to the left or right ear. The interval between the stimuli was 750 ms. Occasionally a smiley face was presented at the center of the visual field. The subject was asked to press a key with the right index finger as soon as possible after the appearance of the face.\n\n\nFreesurfer derivatives\n----------------------\n\n- Calls from the command line:\n  - `recon-all -i sub-01/anat/sub-01_T1w.nii.gz -s sub-01 -all`\n  - `mne make_scalp_surfaces -s sub-01 --overwrite --force`\n  - `mne flash_bem -s sub-01 --overwrite`\n  - `mne watershed_bem -s sub-01 --overwrite`\n\nReferences\n----------\n\nA. Gramfort, M. Luessi, E. Larson, D. Engemann, D. Strohmeier, C. Brodbeck, L. Parkkonen, M. Hämäläinen, MNE software for processing MEG and EEG data, NeuroImage, Volume 86, 1 February 2014, Pages 446-460, ISSN 1053-8119\n\nA. Gramfort, M. Luessi, E. Larson, D. Engemann, D. Strohmeier, C. Brodbeck, R. Goj, M. Jas, T. Brooks, L. Parkkonen, M. Hämäläinen, MEG and EEG data analysis with MNE-Python, Frontiers in Neuroscience, Volume 7, 2013, ISSN 1662-453X\"\n\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nNiso, G., Gorgolewski, K. J., Bock, E., Brooks, T. L., Flandin, G., Gramfort, A., Henson, R. N., Jas, M., Litvak, V., Moreau, J., Oostenveld, R., Schoffelen, J., Tadel, F., Wexler, J., Baillet, S. (2018). MEG-BIDS, the brain imaging data structure extended to magnetoencephalography. Scientific Data, 5, 180110. http://doi.org/10.1038/sdata.2018.110\n\n\n\nReferences\n----------\nNiso, G., Gorgolewski, K. J., Bock, E., Brooks, T. L., Flandin, G., Gramfort, A., Henson, R. N., Jas, M., Litvak, V., Moreau, J., Oostenveld, R., Schoffelen, J., Tadel, F., Wexler, J., Baillet, S. (2018). MEG-BIDS, the brain imaging data structure extended to magnetoencephalography. Scientific Data, 5, 180110. https://doi.org/10.1038/sdata.2018.110\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds000248",
+    "exists": true,
+    "description": null,
+    "created_at": "2018-07-16T18:44:51+00:00",
+    "updated_at": "2022-06-23T22:29:12+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

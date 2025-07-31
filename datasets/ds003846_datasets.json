@@ -1,0 +1,41 @@
+{
+  "dataset_id": "ds003846",
+  "date_retrieved": "2025-07-31T00:19:47.860860+00:00",
+  "dataset_description": {
+    "Name": "Prediction Error",
+    "BIDSVersion": "1.8.0",
+    "DatasetType": "raw",
+    "Acknowledgements": "We thank Avinash Singh, Tim Chen and C.-T. Lin from the Univsersity of Sydney (New South Wales, Australia) for their help developing the task.",
+    "Authors": [
+      "Lukas Gehrke",
+      "Sezen Akman",
+      "Albert Chen",
+      "Pedro Lopes",
+      "Klaus Gramann"
+    ],
+    "Funding": [
+      ""
+    ],
+    "EthicsApprovals": [
+      "Local ethics board at the Institute of Psychology and Ergonomics at TU Berlin number GR_10_20180603"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds003846.v2.0.2",
+    "HowToAcknowledge": "See CITATION.cff",
+    "License": "CC0",
+    "ReferencesAndLinks": []
+  },
+  "readme_content": "\r\n# Readme\r\n\r\nIn case of any questions, please contact: Lukas Gehrke, lukas.gehrke@tu-berlin.de, orcid: 0000-0003-3661-1973\r\n\r\n## Overview\r\n\r\nCyber-Physical Systems: Prediction Error\r\n\r\nThese data were collected at https://www.tu.berlin/bpn. Data collection occurred either between 10:00 and 12:00 or between 14:00 and 18:00.\r\n\r\nTo learn about the task, independent-, dependent-, and control variables, please consult the methods sections of the following two publications:\r\n\r\nhttps://dl.acm.org/doi/abs/10.1145/3290605.3300657\r\nhttps://iopscience.iop.org/article/10.1088/1741-2552/ac69bc/meta\r\n\r\n- Contents of the dataset: Output from BIDS-validator\r\n\r\nSummary\r\n324 Files, 9.76GB\r\n19 - Subjects\r\n5 - Sessions\r\n\r\nAvailable Tasks\r\nPredictionError\r\n\r\nAvailable Modalities\r\nEEG\r\n\r\n- [ ] Quality assessment of the data: Link to data paper, once done\r\n\r\n## Methods\r\n\r\n### Subjects\r\n\r\nThe study sample consists of 19 participants (participant_id 1 to 19) with ages ranging from 18 to 34 years and varying cap sizes from 54 to 60. Stimulation is delivered in three blocks: Block_1, Block_2, and Block_3, utilizing different combinations of Visual, Vibro, and EMS.\r\n\r\nParticipant Information:\r\nAge: Ranges from 18 to 34 years.\r\nCap Size: Varied, with sizes ranging from 54 to 60.\r\nStimulation Blocks:\r\nBlock_1 and Block_2 include Visual, Visual + Vibro, and Visual + Vibro + EMS.\r\nBlock_3 primarily involves Visual + Vibro + EMS.\r\nUsage of Stimulation Blocks:\r\nMost participants experience Visual stimulation in all blocks.\r\nVisual + Vibro is common in Block_1 and Block_2.\r\nVisual + Vibro + EMS is prevalent in Block_3.\r\nSome participants did not experience certain blocks (indicated by \"0\").\r\nOther Observations:\r\nCap size variation doesn't show a clear pattern in relation to stimulation blocks.\r\nParticipants exhibit diverse stimulation patterns, showcasing individualized experiences.\r\n\r\n### Task, Environment and Variables\r\n\r\nThis set of variables outlines key parameters in a neuroscience experiment involving a haptic task. Here's a summary:\r\n\r\nbox:\r\nDescription: Represents the target object to be touched following its spawn.\r\nUnits: String (presumably indicating the characteristics or identity of the object).\r\nnormal_or_conflict:\r\nDescription: Describes the behavior of the target object in the current trial, distinguishing between oddball and non-oddball conditions.\r\nUnits: String (presumably indicating the nature of the trial).\r\ncondition:\r\nDescription: Indicates the level of haptic realism in the experiment.\r\nUnits: String (presumably representing different levels of realism).\r\ncube:\r\nDescription: Specifies the position of the target object, whether it is located on the left, right, or center.\r\nUnits: String (presumably indicating spatial orientation).\r\ntrial_nr:\r\nDescription: Denotes the number of the current trial in the experiment.\r\nUnits: Integer.\r\n\r\n### Apparatus\r\n\r\nHere's a summary of the recording environment:\r\n\r\n- **EEG Stream Name:** BrainVision\r\n- **EEG Reference and Ground:** FCz and AFz, respectively\r\n- **EEG Channel Locations:** 63 channels with specific names (e.g., Fp1, Fz, Pz) and types (EEG)\r\n- **Additional Channels:** 1 EOG (Electrooculogram)\r\n- **Power Line Frequency:** 50 Hz\r\n- **Manufacturer:** Brain Products\r\n- **Manufacturer's Model Name:** BrainAmp DC\r\n- **Cap Manufacturer:** EasyCap\r\n- **Cap Model Name:** actiCap 64ch CACS-64\r\n- **EEG Placement Scheme:** Positions chosen from a 10% system\r\n- **Channel Counts:**\r\n  - EEG Channels: 63\r\n  - EOG Channels: 1\r\n  - ECG Channels: 0\r\n  - EMG Channels: 0\r\n  - Miscellaneous Channels: 0\r\n  - Trigger Channels: 0\r\n\r\nThis configuration indicates a high-density EEG setup with specific electrode placements, utilizing Brain Products' BrainAmp DC model. The electrode cap is manufactured by EasyCap, with the specific model name actiCap 64ch CACS-64. The EEG data is sampled at an unspecified frequency, and the system is designed to capture electrical brain activity across a comprehensive set of channels. The recording includes an additional channel for recording eye movements (EOG). Overall, the setup appears suitable for detailed EEG investigations in neurophysiological research.\r\n\r\nThe motion capture recording environment uses two devices: \"rigid_head\" and \"rigid_handr,\" which correspond to \"HTCViveHead\" and \"HTCViveRightHand\" in the BIDS (Brain Imaging Data Structure) naming convention. The tracked points include \"Head\" and \"handR.\" The motion data is captured using quaternions with channels named \"quat_X,\" \"quat_Y,\" \"quat_Z,\" and \"quat_W.\" Positional data includes channels \"_X,\" \"_Y,\" and \"_Z.\" The system is manufactured by HTC, with the model name \"Vive,\" and the recording has a sampling frequency of 90 Hz. Additional information such as software versions is not provided.",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds003846",
+    "exists": true,
+    "description": "OpenNeuro dataset available at https://openneuro.org/datasets/ds003846",
+    "created_at": "2021-10-22T15:53:49+00:00",
+    "updated_at": "2025-04-09T02:11:01+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

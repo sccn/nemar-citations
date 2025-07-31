@@ -1,0 +1,40 @@
+{
+  "dataset_id": "ds006065",
+  "date_retrieved": "2025-07-31T00:22:53.562073+00:00",
+  "dataset_description": {
+    "Authors": [
+      "James Kragel",
+      "Joel Voss"
+    ],
+    "BIDSVersion": "1.8",
+    "DatasetType": "raw",
+    "Funding": [
+      "This research was funded by the National Institute Of Neurological Disorders and Stroke under Award Number R01NS113804"
+    ],
+    "GeneratedBy": [
+      {
+        "Name": "FieldTrip",
+        "Version": "7018a7700",
+        "Description": "data2bids converter",
+        "URI": "https://www.fieldtriptoolbox.org"
+      }
+    ],
+    "License": "CC0",
+    "Name": "TSS_iEEG",
+    "DatasetDOI": "doi:10.18112/openneuro.ds006065.v1.0.0"
+  },
+  "readme_content": "# iEEG Dataset: Theta-synchronized Stimulation of Human Hippocampal Networks\n\n## Information\nThis folder contains intracranial EEG (iEEG) data from **7 participants** undergoing closed-loop stimulation as part of a study on hippocampal network connectivity, as used in the following publication:  \n\n**Kragel et al., 2025, Nature Communications:**  \n*“Closed-loop control of theta oscillations enhances human hippocampal network connectivity”*  \n\nFor questions or further information, contact:  \n- **James Kragel:** [jkragel@uchicago.edu](mailto:jkragel@uchicago.edu)  \n- **Joel Voss:** [joelvoss@uchicago.edu](mailto:joelvoss@uchicago.edu)  \n\n---\n\n## License\nThis dataset is made available under the **Public Domain Dedication and License v1.0**.  \nFull text: [http://www.opendatacommons.org/licenses/pddl/1.0](http://www.opendatacommons.org/licenses/pddl/1.0)\n\n---\n\n## Dataset and Protocol\nThe data are organized according to the **Brain Imaging Data Structure (BIDS)** iEEG specification, a community-driven standard for organizing neurophysiology data along with its metadata.  \n\n### Structure\nEach subject folder contains the raw iEEG data for that subject, segmented into different periods of the stimulation protocol:\n- **Pre-stimulation evoked potentials**\n- **Post-stimulation evoked potentials**\n- **Pre-stimulation rest**\n- **Post-stimulation rest**\n- **Closed-loop stimulation**\n- **Control stimulation**\n\n---\n\n## Raw Data\nThe raw data are stored in **BrainVision format** (`vhdr`, `vmrk`, and `eeg` files). You can read these files into memory using the following tools:\n\n- **MATLAB:** [FieldTrip toolbox](https://www.fieldtriptoolbox.org/getting_started/eeg/brainvision/)  \n- **Python:** [`pybv` package](https://github.com/bids-standard/pybv)  \n\n### Electrode Coordinates\nElectrode coordinates are provided in **MNI space**, registered to the **MNI152 2009c asymmetrical template**.\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds006065",
+    "exists": true,
+    "description": "OpenNeuro dataset - TSS_iEEG",
+    "created_at": "2025-04-02T04:16:27+00:00",
+    "updated_at": "2025-04-02T04:22:39+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

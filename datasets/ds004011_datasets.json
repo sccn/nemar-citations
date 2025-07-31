@@ -1,0 +1,35 @@
+{
+  "dataset_id": "ds004011",
+  "date_retrieved": "2025-07-31T00:24:58.913274+00:00",
+  "dataset_description": {
+    "Name": " The nature of neural object representations during dynamic occlusion",
+    "BIDSVersion": "1.6.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Lina Teichmann",
+      "Denise Moerel",
+      "Anina Rich",
+      "Chris Baker"
+    ],
+    "ReferencesAndLinks": [
+      "Teichmann, L., Moerel, D., Rich, A. N., & Baker, C. I. (2021, April 24). The nature of neural object representations during dynamic occlusion. Retrieved from osf.io/tp2ad",
+      "Teichmann, L., Moerel, D., Rich, A. N., & Baker, C. I. (2022, January 24). The nature of neural object representations during dynamic occlusion . Retrieved from osf.io/hc25w"
+    ],
+    "License": "CC0",
+    "DatasetDOI": "doi:10.18112/openneuro.ds004011.v1.0.3"
+  },
+  "readme_content": "The main folder contains the raw MEG data for all participants in standard bids format. See references.\n \n\nThe ‘sourcedata’ folder contains the behavioural data collected during the MEG session as well as the eyetracking data. The data in this folder follows the following trial structure:\n \n\n- sourcedata\n\t- beh\n\t\t- sub-[participant number]\n\t\t\t- sub-[participant number]_task-occlusion_run-[run number]_events.csv: contains all the events for each trial in the MEG session, detailing what was shown on the screen.\n\t\t\t- sub-[participant number]_task-occlusion_run-[run number]_occframes.csv: contains all the stimulus positions for each occlusion trial in the MEG session.\n\t\t\t- sub-[participant number]_task-occlusion_run-[run number]_disframes.csv: contains all the stimulus positions for each disappearance trial in the MEG session.\n\t- eyetracking\n\t\t- sub-[participant number]_Occ.edf: edf file containing the eye positions during the MEG session.\n\nThe ‘derivatives’ folder contains the pre-processed MEG data for each participant. The data in this folder follows the following trial structure:\n\n\n- derivatives\n\t- preprocessed\n\t\t- cosmo_p[participant number].mat: cosmomvpa formatted file with the pre-processed data, epoched for each trial, containing the following variables:\n\t\t\t- ds_diss: cosmo data struct containing the disappearance trials epoched relative to stimulus onset (MEG channels)\n\t\t\t- ds_occ: cosmo data struct containing the disappearance trials epoched relative to stimulus onset (MEG channels)\n\t\t\t- ds_loc: cosmo data struct containing the unpredictable position stream trials epoched relative to stimulus onset (MEG channels)\n\t\t\t- ds_eyes_diss: cosmo data struct containing the disappearance trials epoched relative to stimulus onset (eye-x, eye-y, pupil size)\n\t\t\t- ds_eyes_occ: cosmo data struct containing the disappearance trials epoched relative to stimulus onset (eye-x, eye-y, pupil size)\n\t\t\t- ds_eyes_loc: cosmo data struct containing the unpredictable position stream trials epoched relative to stimulus onset (eye-x, eye-y, pupil size)\n\t\t-  cosmo_p[participant number]_position_epochs.mat: cosmomvpa formatted file with the pre-processed data, epoched relative to each position change, containing the following variables:\n\t\t\t- ds_tiny: cell with two entries. First entry contains the disappearance trials epoched relative to position change. Second entry contains the occlusion trials epoched relative to position change. (MEG channels)\n\t\t\t- ds_tiny_eyes: cell with two entries. First entry contains the disappearance trials epoched relative to position change. Second entry contains the occlusion trials epoched relative to position change. (eye-x, eye-y, pupil size)\n\n\n------------\n\nReferences:\n\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nNiso, G., Gorgolewski, K. J., Bock, E., Brooks, T. L., Flandin, G., Gramfort, A., Henson, R. N., Jas, M., Litvak, V., Moreau, J., Oostenveld, R., Schoffelen, J., Tadel, F., Wexler, J., Baillet, S. (2018). MEG-BIDS, the brain imaging data structure extended to magnetoencephalography. Scientific Data, 5, 180110. https://doi.org/10.1038/sdata.2018.110\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds004011",
+    "exists": true,
+    "description": "OpenNeuro dataset available at https://openneuro.org/datasets/ds004011",
+    "created_at": "2022-02-08T02:58:43+00:00",
+    "updated_at": "2025-04-07T17:05:49+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

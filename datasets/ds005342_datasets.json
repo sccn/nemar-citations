@@ -1,0 +1,49 @@
+{
+  "dataset_id": "ds005342",
+  "date_retrieved": "2025-07-31T00:20:59.963814+00:00",
+  "dataset_description": {
+    "Name": "EEG data offline and online during motor imagery for standing and sitting",
+    "ReferencesAndLinks": [
+      "Triana-Guzman N, Orjuela-Cañon AD, Jutinico AL, Mendoza-Montoya O and Antelis JM (2022) Decoding EEG rhythms offline and online during motor imagery for standing and sitting based on a brain-computer interface. Front. Neuroinform. 16:961089. https://doi.org/10.3389/fninf.2022.961089"
+    ],
+    "BIDSVersion": "1.8.0",
+    "HEDVersion": "8.1.0",
+    "License": "CC0",
+    "Authors": [
+      "Nayid Triana-Guzman",
+      "Alvaro D Orjuela-Cañon",
+      "Andres L Jutinico",
+      "Omar Mendoza-Montoya",
+      "Javier M Antelis"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds005342.v1.0.3",
+    "HowToAcknowledge": "Triana-Guzman N, Orjuela-Cañon AD, Jutinico AL, Mendoza-Montoya O and Antelis JM (2024). EEG data offline and online during motor imagery for standing and sitting. OpenNeuro Dataset ds005342. doi: doi:10.18112/openneuro.ds005342.v1.0.3",
+    "GeneratedBy": [
+      {
+        "Name": "bids-matlab-tools",
+        "Version": "8.0"
+      }
+    ],
+    "Acknowledgements": "We would like to thank the Ministerio de Ciencia, Tecnología e Innovación of Colombia-Minciencias/Colciencias, Universidad Antonio Nariño (UAN), Universidad del Rosario, and Tecnologico de Monterrey for all their support in the development of this dataset",
+    "Funding": [
+      "This research was funded by Ministerio de Ciencia, Tecnología e Innovación of Colombia-Minciencias/Colciencias, contract 594-2019, project 80740-594-2019, and in part by the University of Illinois Chicago and Tecnologico de Monterrey (UIC-TEC) Seed funding Program 2021-2022"
+    ],
+    "EthicsApprovals": [
+      "The experimental protocol was approved by the ethics committee of the Universidad Antonio Nariño"
+    ]
+  },
+  "readme_content": "The experiments were conducted in an acoustically isolated room where only the participant and the experimenter were present. Participants voluntarily signed an informed consent form in accordance with the experimental protocol approved by the ethics committee of the Universidad Antonio Nariño. The participant was seated in a chair in a posture that was comfortable for him/her but did not affect data collection. In front of the participant, a 40-inch TV screen was placed at about 3 m. On this screen, a graphical user interface (GUI) displayed images that guided the participant through the experiment. Each experimental session was divided into two phases: an offline phase and an online phase.\n\nThe offline experiments consisted of recording participants´ EEG signals during motor imagery trials for standing and sitting that were guided by the GUI presented on the TV screen. Six offline runs were conducted in which the participants were standing in three runs and sitting in the other three runs. In each run, the participant had to repeat a block of 30 trials of mental tasks indicated by visual cues continuously presented on the screen in a pseudo-random sequence.\n\nThe first phase of the experimental session was conducted to construct the offline parts of the dataset: (A) Sit-to-stand and (B) Stand-to-sit. The participant´s EEG data were collected from 90 sequences for part A (45 trials of MotorImageryA tasks and 45 trials of IdleStateA tasks) and 90 sequences for part B (45 trials of MotorImageryB tasks and 45 trials of IdleStateB tasks).\n\nFor each participant, the two machine learning models obtained in the offline phase were used to carry out the online experiment parts of the dataset: (C) Sit-to-stand and (D) Stand-to-sit. Each participant was instructed to select, in no particular order, 30 sequences for part C (15 trials of MotorImageryA tasks and 15 trials of IdleStateA tasks) and 30 other sequences for part D (15 trials of MotorImageryB tasks and 15 trials of IdleStateB tasks). Each trial was unique and was generated pseudo-randomly before the experiment.\n\nThe database consisted of 32 electroencephalographic files corresponding to the 32 participants. All recordings were collected on channels F3, Fz, F4, FC5, FC1, FC2, FC6, C3, Cz, C4, CP5, CP1, CP2, CP6, P3, Pz, and P4 according to the 10-20 EEG electrode placement standard, grounded to AFz channel and referenced to right mastoid (M2). Each data file contained the data stream in a 2D matrix where rows corresponded to channels and columns corresponded to time samples with a sampling frequency of 250Hz.\n\nThe following marker numbers encoded information about the execution of the experiment. Marker numbers 200, 201, 202, and 203, indicated the beginning and end of the four steps of the sequence in a trial (resting, fixation, action observation, and imagining). Marker numbers 1, 2, 3, and 4, indicated the figure activated on the screen to the participant perform the task corresponding to 1. actively imagining the sit-to-stand movement (labeled as MotorImageryA), 2. sitting motionless without imagining the sit-to-stand movement (labeled as IdleStateA), 3. standing motionless while actively imagining the stand-to-sit movement (labeled as MotorImageryB), or 4. standing motionless without imagining the stand-to-sit movement (labeled as IdleStateB). Finally, marker numbers 101, 102, 103, and 104, indicated the task detected by the BCI in real time during the online experiment: 101. MotorImageryA, 102. IdleStateA, 103. MotorImageryB, or 104. IdleStateB.",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005342",
+    "exists": true,
+    "description": "OpenNeuro dataset - EEG data offline and online during motor imagery for standing and sitting",
+    "created_at": "2024-07-15T19:31:36+00:00",
+    "updated_at": "2024-07-15T19:33:33+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

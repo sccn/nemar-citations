@@ -1,0 +1,46 @@
+{
+  "dataset_id": "ds005688",
+  "date_retrieved": "2025-07-31T00:12:00.869184+00:00",
+  "dataset_description": {
+    "Name": "visStim",
+    "BIDSVersion": "1.8.0",
+    "License": "CC0",
+    "Authors": [
+      "Henry Tan",
+      "Devon Griggs",
+      "Lucas Chen",
+      "Kahte Culevski",
+      "Kat Floerchinger",
+      "Alissa Phutirat",
+      "Gabe Koh",
+      "Nels Schimek",
+      "Pierre Mourad"
+    ],
+    "Acknowledgements": "An immense thanks to all contributors for their support.",
+    "HowToAcknowledge": "Please cite: Tan, H. et al., 2024",
+    "Funding": [
+      "R01 NS119395"
+    ],
+    "EthicsApprovals": [
+      "All animal procedures were vetted and approved by the University of Washington’s Institutional Animal Care and Use Committee under protocol number 4084-10"
+    ],
+    "ReferencesAndLinks": [
+      "https://in_submission_for_publication.com/VisStim"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds005688.v1.0.1"
+  },
+  "readme_content": "Dataset description\n===================\n\nThis dataset was collected for the study \"Diagnostic ultrasound enhances, then reduces, exogenously induced brain activity of mice\" by Tan et al. (2024). The research demonstrates how transcranially delivered diagnostic ultrasound (tDUS) modulates the brain's receptivity to external stimuli, using a blinking light stimulus in a mouse model.\nThe study findings highlight the potential for diagnostic ultrasound to intentionally modulate brain function, paving the way for possible future clinical and therapeutic applications.\nPlease cite the following paper when using this dataset:\n\nTan H, Griggs DJ, Chen L, et al. Diagnostic ultrasound enhances, then reduces, exogenously induced brain activity of mice. Frontiers in Neuroscience. 2024. DOI: [in peer review].\n\n\nLicense\n-------\n\nThis dataset is proprietary to the Department of Neurological Surgery, University of Washington, Seattle, WA, USA.  \nUsage is restricted to academic and non-commercial research. Redistribution, modification, or commercial use is prohibited without prior permission.  \nFor inquiries, contact: Pierre D. Mourad (doumitt@uw.edu).\n\n\nAcknowledgements\n----------------\n\nWe thank the Department of Neurological Surgery, University of Washington, for internal funding.  \nThis research was supported by R01 NS119395 and P51 OD010425 (DJG) and the Mary Gates Research Scholarship** (HT).\n\n\nDataset Overview\n-----------------\n\nThis dataset comprises electrocorticography (ECoG) recordings from three cohorts of C57BL/6 mice exposed to combinations of diagnostic ultrasound (tDUS) and blinking light stimuli. The study investigates how tDUS influences the visual cortex's response to external visual stimulation.\n\nKey Features:\n- Subjects: 20 C57BL/6 mice divided into three experimental cohorts:\n  1. Light-only cohort: Exposed to blinking light only.\n  2. US-only cohort: Exposed to tDUS without light.\n  3. US+Light cohort: Exposed to blinking light combined with tDUS.\n- Electrode Placement: ECoG electrodes targeted visual and somatosensory cortices.\n- Recording Conditions: Data recorded at 20 kS/s, filtered (5–55 Hz), and analyzed with MATLAB.\n\n\nData Structure\n---------------\n\nData Files:\n- Raw ECoG Data: Continuous brain activity recordings.\n- Event-Triggered Data: Segment-specific RMS values for blinking light events.\n- Processed Data: Filtered and normalized brain activity traces.\n\nMetadata:\n- Experimental conditions, cohort allocation, and baseline brain activity.\n\n\nMethodology\n-----------\n\n- Stimulation Protocols: Mice were exposed to blinking light stimuli (10 seconds per event) and tDUS delivered through a P21x5-1 scan head (Sonosite MicroMaxx system).\n- Data Collection: Baseline and event-triggered ECoG signals were recorded using LabChart software.\n- Analysis: RMS values normalized to baseline activity for comparative statistical analysis.\n\n\nOutcomes\n________\n\nKey Findings:\n1. Enhanced Brain Activity: Simultaneous tDUS and blinking light increased cortical activity compared to light alone.\n2. Persistent Effects: tDUS effects on brain activity persisted after stimulation ceased.\n3. No Effect of tDUS Alone: tDUS without light did not activate cortical activity but reduced subsequent activity.\n\n\nReferences\n___________\n\nFor a complete list of references, please consult the manuscript.\n\n\n\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005688",
+    "exists": true,
+    "description": "OpenNeuro dataset - visStim",
+    "created_at": "2024-12-03T14:45:47+00:00",
+    "updated_at": "2024-12-03T14:57:59+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

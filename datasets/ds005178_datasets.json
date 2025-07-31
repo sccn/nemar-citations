@@ -1,0 +1,40 @@
+{
+  "dataset_id": "ds005178",
+  "date_retrieved": "2025-07-31T00:24:49.632599+00:00",
+  "dataset_description": {
+    "Name": "Ear-EEG Sleep Monitoring 2023 (EESM23)",
+    "BIDSVersion": "1.9.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Yousef Rezaei Tabar",
+      "Kaare Mikkelsen",
+      "Laura Birch",
+      "Nelly Shenton",
+      "Simon L Kappel",
+      "Astrid R Bertelsen",
+      "Reza Nikbakht",
+      "Hans O Toft",
+      "Chris H Henriksen",
+      "Martin C Hemmsen",
+      "Mike L Rank",
+      "Marit Otto",
+      "Preben Kidmose"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds005178.v1.0.0",
+    "License": "CC0"
+  },
+  "readme_content": "Ear-EEG Sleep Monitoring 2023 (EESM23) data set\r\n\r\n**Overview**\r\n\r\nThis dataset was collected as part of a research project on ear-EEG sleep monitoring which took place in 2020-2022.\r\n\r\nThe data set contains nightly EEG recordings from 10 healthy participants ('subjects'). The first two recordings consist of polysomnogrpahy (PSG) measurements and ear-EEG measurements. The remaining ten recordings consist of only ear-EEG measurements, though a few subjects were asked to repeat a recording. Only the accepted recordings can be found in the BIDS formatted data set.\r\n\r\nEach file consists of a video sequence followed by a sleep sequence. After the video sequence, the subject sent triggers to distinguish between the two sequences. Due to potential variability in triggering the device, the sequences remain in one file though it should be possible to manually sort the file into distinct video and sleep sequences.\r\nThere are no events.tsv files for Ear-EEG.\r\n\r\n\r\n**Task description**\r\n\r\nThe patient performed tasks prior to going to bed. These recordings are labeled with 'video' as task. After his, the real recording started, which took place during the night and began when the subject went to bed. These recordings are labeled as having task 'sleep'.\r\nFor the first two recordings, the recording equipment was mounted in the afternoon. For the remaining recordings, the subject mounted the ear-EEG equipment by themselves immediately prior to going to bed. All recordings took place at the subject's home.\r\n\r\nAs can be seen in the diaries accompanying the recordings, the subjects wrote down recording start, electrode test start, when they went to bed, lights-out and recording end, and marked these in the data files using the trigger button on the equipment.\r\n\r\n\r\n**Format**\r\n\r\nThe dataset is formatted according to the Brain Imaging Data Structure. See the 'dataset_description.json' file for the specific BIDS version used. The EEG data format chosen is the '.set' format of EEGLAB.\r\n\r\nFor more information, see the following link:\r\nhttps://bids-specification.readthedocs.io/en/stable/01-introduction.html\r\n\r\n\r\n**Contact**\r\n\r\nFor questions regarding this data set, contact: \r\nPreben Kidmose, pki@ece.au.dk, https://orcid.org/0000-0001-8628-8057 \r\nKaare Mikkelsen, Mikkelsen.kaare@ece.au.dk, https://orcid.org/0000-0002-7360-8629",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005178",
+    "exists": true,
+    "description": "OpenNeuro dataset - Ear-EEG Sleep Monitoring 2023 (EESM23)",
+    "created_at": "2025-01-29T12:33:07+00:00",
+    "updated_at": "2025-03-04T05:55:13+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

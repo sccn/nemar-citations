@@ -1,0 +1,46 @@
+{
+  "dataset_id": "ds002799",
+  "date_retrieved": "2025-07-31T00:15:57.975427+00:00",
+  "dataset_description": {
+    "Name": "Human es-fMRI Resource: Concurrent deep-brain stimulation and whole-brain functional MRI",
+    "BIDSVersion": "1.0.0",
+    "License": "CC0",
+    "Authors": [
+      "Thompson WH*",
+      "Nair R*",
+      "Oya H*",
+      "Esteban O",
+      "Shine JM",
+      "Petkov CI",
+      "Poldrack RA",
+      "Howard M",
+      "Adolphs R†",
+      "*equally contributing, †corresponding author"
+    ],
+    "DatasetDOI": "10.18112/openneuro.ds002799.v1.0.4",
+    "Funding": [
+      "Funded by NIH grant U01NS103780 (RP, RA and MH)",
+      "The Simons Foundation Collaboration on the Global Brain (RA)",
+      "Knut and Alice Wallenberg Foundation grant 2016.0473 (WHT) ",
+      "UK Wellcome Trust (CIP) and European Research Council (CIP)",
+      "The OpenNeuro repository is funded by NIH Grant R24MH117179 (RP)"
+    ],
+    "ReferencesAndLinks": [
+      "https://rdcu.be/b57kz"
+    ]
+  },
+  "readme_content": "Link to published paper for this data resource: https://rdcu.be/b57kz\n\nThis collection contains data from 26 human patients who underwent electrical stimulation during functional magnetic resonance imaging (es-fMRI). The patients had medically refractory epilepsy requiring surgically implanted intracranial electrodes in cortical and subcortical locations. One or multiple contacts on these electrodes were stimulated while simultaneously recording BOLD-fMRI activity in a block design. Multiple runs exist for patients with different stimulation sites. \nData is organized in two sessions : Pre-op (pre electrode implantation) and Post-op (post electrode implantation). Raw data is provided in BIDS format and consists of T1s, T2s, resting state scans (pre-op), es-fMRI scans(post-op) , any associated field-maps and stimulation electrode coordinates and stimulation parameters. Pre-processed data (fMRIprep and Freesurfer) is present in the ‘derivatives’ folder.   \n\nNotes:\n1. Subject IDs 339, 369 and 394 do not have stimulation electrode location data available.\n2. Electrodes are in chA-chB format (chA gets leading positive phase of the stimulation). This information is stored in the \"channel\" file for each stimulation run.\n3. In some cases, two distant sites were stimulated simultaneously as indicated by the electrode listed under the appropriate run IDs within the ieeg folders.",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds002799",
+    "exists": true,
+    "description": null,
+    "created_at": "2020-07-13T20:22:25+00:00",
+    "updated_at": "2024-11-23T10:04:01+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "dataset_id": "ds003922",
+  "date_retrieved": "2025-07-31T00:24:25.138214+00:00",
+  "dataset_description": {
+    "Name": "Multisensory Correlation Detector",
+    "BIDSVersion": "1.6.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Pesnot Lerousseau, J.",
+      "Parise, C.",
+      "Ernst, MO.",
+      "van Wassenhove, V."
+    ],
+    "License": "CC0",
+    "Acknowledgements": "We thank the members of UNIACT for their logistical help on the recruitment of volunteers at NeuroSpin. We thank Leila Azizi for her help with the LED apparatus.",
+    "Funding": [
+      "ERC-YStG-263584",
+      "ANR-16-CE37-0004-04"
+    ],
+    "EthicsApprovals": [
+      "Local Ethics Committee on Human Research at NeuroSpin (Gif-sur-Yvette, France)"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds003922.v1.0.1",
+    "ReferencesAndLinks": [
+      "Pesnot Lerousseau, J., Parise, C., Ernst, MO., van Wassenhove, V. (2022). Multisensory correlation computations in the human brain identified by a time-resolved encoding model. *Nature Communications*. http://doi.org/10.1038/s41467-022-29687-6"
+    ]
+  },
+  "readme_content": "### DESCRIPTION\nMagnetoencephalography (MEG) dataset recorded during the presentation of audiovisual sequences with a causality judgment task and temporal order judgment task. This MEG dataset was prepared in the Brain Imaging Data Structure (MEG-BIDS, Niso et al. 2018) format using MNE-BIDS (Appelhoff et al. 2019).\n\n### PUBLISHED IN\nPesnot Lerousseau, J., Parise, C., Ernst, MO., van Wassenhove, V. (2022). Multisensory correlation computations in the human brain identified by a time-resolved encoding model. *Nature Communications*. http://doi.org/10.1038/s41467-022-29687-6\n\n### PARTICIPANTS\nThe dataset contains 13 participants (Ab140232, Jl150443, Mm150194, Al150424, Mp110340, Rt160359, Cb140229, Cc160310, Lb160367, Mb160304, Mk150295, Sl160372, Mp150285). \n\n### EXPERIMENT\nThe experiment consisted of 10 consecutive recording blocks of 8 minutes each, whose order was counterbalanced across participants. Three blocks tested participants on a Causality judgement, and three blocks tested participants with a Temporal order judgement. Importantly, the same audiovisual sequences were used in both tasks in order to maintain a constant flow of feedforward multisensory inputs while manipulating the endogenous task requirements. Each block was composed of 25 repetitions of the 6 possible audiovisual sequences. A total of 75 presentations of each stimulus sequence were thus tested in each task. Four additional recording blocks consisted of participants passively hearing (auditory localizer, 2 blocks) or viewing (visual localizer, 2 blocks) one constitutive modality of the audiovisual sequence. Each localizer block was composed of 25 repetitions of the 6 possible stimuli (auditory or visual part of each stimuli), yielding a total of 50 presentations of each auditory and visual stimuli (2 tasks x 3 blocks x 25 repetitions x 6 sequences + 2 modalities x 25 repetitions x 2 blocks x 6 sequences = 1500 trials in total). \n\n### STIMULI\nSix audiovisual sequences were presented (DD, DC, CC, AA, AV, VV). \n\n### BLOCKS\nTen blocks were presented (3 Causality, 3 Temporal, 2 Auditory, 2 Visual). \n\n### EVENTS\n- 'Causality/DD':11\n- 'Causality/DC':12\n- 'Causality/CC':13\n- 'Causality/AA':14\n- 'Causality/AV':15\n- 'Causality/VV':16\n- 'Temporal/DD':21\n- 'Temporal/DC':22\n- 'Temporal/CC':23\n- 'Temporal/AA':24\n- 'Temporal/AV':25\n- 'Temporal/VV':26\n- 'Auditory/DD':41\n- 'Auditory/DC':42\n- 'Auditory/CC':43\n- 'Auditory/AA':44\n- 'Auditory/AV':45\n- 'Auditory/VV':46\n- 'Visual/DD':51\n- 'Visual/DC':52\n- 'Visual/CC':53\n- 'Visual/AA':54\n- 'Visual/AV':55\n- 'Visual/VV':56\n\n### MEG\nBrain magnetic fields were recorded in a MSR using a 306 MEG system (Neuromag Elekta LTD, Helsinki). MEG recordings were sampled at 1 kHz and band-pass filtered between 0.03 Hz and 330 Hz.\n\nFour head position coils (HPI) measured the head position of participants before each block; three fiducial markers (nasion and pre-auricular points) were used for digitization and anatomicalMRI (aMRI) immediately following MEG acquisition.\n\nElectrooculograms (EOG, horizontal and vertical eye movements) and electrocardiogram (ECG) were simultaneously recorded. Prior to the session, 2 min of empty room recordings was acquired for the computation of the noise covariance matrix.\n\nBad MEG channels were marked manually.\n\n### MRI\nThe T1 weighted aMRI was recorded using a 3-T Siemens Trio MRI scanner. Parameters of the sequence were: voxel size: 1.0 × 1.0 × 1.1 mm; acquisition time: 466 s; repetition time TR = 2300 ms; and echo time TE = 2.98 ms\n\n### BEHAVIOR\n\nFile sourcedata/behavioral_data.txt\n\n### REFERENCES\n\nPesnot Lerousseau, J., Parise, C., Ernst, MO., van Wassenhove, V. (2022). Multisensory correlation computations in the human brain identified by a time-resolved encoding model. Nature Communications. http://doi.org/10.1038/s41467-022-29687-6\n\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nNiso, G., Gorgolewski, K. J., Bock, E., Brooks, T. L., Flandin, G., Gramfort, A., Henson, R. N., Jas, M., Litvak, V., Moreau, J., Oostenveld, R., Schoffelen, J., Tadel, F., Wexler, J., Baillet, S. (2018). MEG-BIDS, the brain imaging data structure extended to magnetoencephalography. Scientific Data, 5, 180110. http://doi.org/10.1038/sdata.2018.110",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds003922",
+    "exists": true,
+    "description": "OpenNeuro dataset available at https://openneuro.org/datasets/ds003922",
+    "created_at": "2022-05-02T14:15:09+00:00",
+    "updated_at": "2022-05-02T14:15:09+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

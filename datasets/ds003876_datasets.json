@@ -1,0 +1,71 @@
+{
+  "dataset_id": "ds003876",
+  "date_retrieved": "2025-07-31T00:14:14.083504+00:00",
+  "dataset_description": {
+    "Name": "Epilepsy-iEEG-Interictal-Multicenter-Dataset",
+    "BIDSVersion": "1.6.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Gunnarsdottir, Kristin",
+      "Li, Adam",
+      "Smith, Rachel",
+      "Kang, Joon",
+      "Korzeniewska, Anna",
+      "Crone, Nathan",
+      "Rouse, Adam",
+      "Cheng, Jennifer",
+      "Kinsman, Michael",
+      "Landazuri, Patrick",
+      "Uysal, Utku",
+      "Ulloa, Carol",
+      "Cameron, Nathaniel",
+      "Cajigas, Iahn",
+      "Jagid, Jonathan",
+      "Kanner, Andres",
+      "Elarjani, Turki",
+      "Bicchi, Manuel",
+      "Inati, Sara",
+      "Zaghloul, Kareem",
+      "Boerwinkle, Varina",
+      "Wyckoff, Sarah",
+      "Barot, Niravkumar",
+      "Gonzalez-Martinez, Jorge",
+      "Sarma, Sridevi"
+    ],
+    "HowToAcknowledge": "Please cite the following papers: https://www.biorxiv.org/content/10.1101/2021.10.15.464594v1 and https://www.nature.com/articles/s41593-021-00901-w",
+    "Funding": [
+      "NIH T32 EB003383",
+      "NSF GRFP (DGE-1746891)",
+      "ARCS Scholarship",
+      "Whitaker Fellowship",
+      "Chateaubriand Fellowship",
+      "NIH R21 NS103113",
+      "US NSF Career Award 1055560",
+      "Burroughs Well CASI Award 1007274"
+    ],
+    "License": "CC0",
+    "EthicsApprovals": [
+      "IRBs at JHH, NIH, KUMC, UMF, CClinic"
+    ],
+    "ReferencesAndLinks": [
+      "https://www.nature.com/articles/s41593-021-00901-w",
+      "https://www.biorxiv.org/content/10.1101/2021.10.15.464594v1 "
+    ],
+    "Acknowledgements": "MNE-BIDS was used for converting datasets to BIDS format. ",
+    "DatasetDOI": "doi:10.18112/openneuro.ds003876.v1.0.2"
+  },
+  "readme_content": "Epilepsy Interictal Dataset\n=====================\n\nThis dataset was updated and prepared for release as part of a manuscript by Bernabei & Li et al. (in preparation). A subset of the data has been featured in [1] and [2].\n\nSummary\n-------------\n\nThis dataset comprises of de-identified subjects with interictal iEEG recordings possibly with sleep or awake state annotated. The subjects come from the following centers:\n\n- National Institute of Health (NIH)\n- Johns Hopkins Hospital (JHH)\n- University of Miami Florida Jackson Memorial Hospital (UMF)\n\nIn the actual study, there is also data from Kansas University Medical Center (KUMC), University of Pittsburgh Medical Center and Cleveland Clinic, whose data is not shared due to restrictions imposed by the centers there.\n\nSome subjects, namely with the ``rns`` prefix in their subject ID were treated with RNS rather then surgical resection/ablation.\n\nDerivatives\n----------------\n\nThe processed data corresponding to the ``source-sink`` analysis and ``hfo`` comparisons are shown in the ``derivatives/`` folder. The HFO analysis consists of two folders, one is an RMS detector and the other is a Hilbert detector. See the paper for details.\n\nTies to Other Datasets\n--------------------------------\n\nNIH ``pt1, pt2, pt3``, JHH ``jh103, jh105`` subjects are also datasets in ``https://openneuro.org/datasets/ds003029``, where the ictal snapshots are stored. These correspond to the following:\n\n- pt1: pt01\n- pt2: pt2\n- pt3: pt3\n- jh103: jh103\n- jh105: jh105\n\nMoreover, the cclinic subjects are used in that study, but not open-access due to data sharing limitations at Cleveland Clinic. Those ictal datasets were analyzed in https://www.nature.com/articles/s41593-021-00901-w. \n\nReferences\n----------------\n\n[1] Li, A., Huynh, C., Fitzgerald, Z. et al. Neural fragility as an EEG marker of the seizure onset zone. Nat Neurosci 24, 1465â1474 (2021). https://doi.org/10.1038/s41593-021-00901-w\n\n[2] Kristin M. Gunnarsdottir, Adam Li, Rachel J. Smith, Joon-Yi Kang, Nathan E. Crone, Anna Korzeniewska, Adam Rouse, Nathaniel Cameron, Iahn Cajigas, Sara Inati, Kareem A. Zaghloul, Varina L. Boerwinkle, Sarah Wyckoff, Nirav Barot, Jorge Gonzalez-Martinez, Sridevi V. Sarma. Source-sink connectivity: a novel resting-state EEG marker of the epileptogenic zone. bioRxiv 2021.10.15.464594; doi: https://doi.org/10.1101/2021.10.15.464594\n\n[3] Appelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., HÃ¶chenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\n[4] Holdgraf, C., Appelhoff, S., Bickel, S., Bouchard, K., D'Ambrosio, S., David, O., â¦ Hermes, D. (2019). iEEG-BIDS, extending the Brain Imaging Data Structure specification to human intracranial electrophysiology. Scientific Data, 6, 102. https://doi.org/10.1038/s41597-019-0105-7\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds003876",
+    "exists": true,
+    "description": "OpenNeuro dataset available at https://openneuro.org/datasets/ds003876",
+    "created_at": "2022-08-04T18:02:16+00:00",
+    "updated_at": "2022-08-04T18:02:16+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

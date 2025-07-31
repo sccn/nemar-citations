@@ -1,0 +1,33 @@
+{
+  "dataset_id": "ds003498",
+  "date_retrieved": "2025-07-31T00:20:08.226852+00:00",
+  "dataset_description": {
+    "Name": "interictal iEEG during slow-wave sleep with HFO markings",
+    "BIDSVersion": "1.4.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Fedele T",
+      "Krayenbühl N",
+      "Hilfiker P",
+      "Adam Li",
+      "Sarnthein J."
+    ],
+    "Acknowledgements": "Adam Li (github: adam2392) converted the dataset from the original format into BIDS. He used mne-bids to do so, and uses the dataset to validate mne-hfo, a Python open-source implementation of HFO detection algorithms. See 10.5281/zenodo.4485036.",
+    "DatasetDOI": "10.18112/openneuro.ds003498.v1.0.1",
+    "License": "CC0"
+  },
+  "readme_content": "Zurich iEEG HFO Dataset\n====================\nThis dataset was obtained from the publication [1].\n\nThere are 20 subjects with HFO events. We converted the dataset into BIDS format. \n\nThe original uploader: adam2392 obtained explicit permission from the authors of the dataset to upload this to openneuro. Adam worked on an open-source Python implementation of HFO detection algorithms, and uses this dataset in validation. Even though the publication involves a ``Morphology`` HFO detector, we have implemented our interpretation of the RMS, LineLength and Hilbert detectors in the [mne-hfo repository] (https://github.com/adam2392/mne-hfo) [2].For more information, visit: https://github.com/adam2392/mne-hfo.\n\n# Note from the paper\n\"We excluded all electrode contacts where electrical stimulation evoked motor or language responses (Table S1).\nIn TLE patients, we included only the 3 most mesial bipolar channels\".\n\nBIDS Conversion\n-----------------------\nMNE-BIDS was used to convert the dataset into BIDS format. The code inside `code/` was used to generate the\ndata.\n\nHFO Events From Original Paper\n---------------------------------------------\nThe HFO events from the original paper that were validated and detected are stored in the `*events.tsv` file per dataset run. The format is similar to ``mne-hfo`` and can be easily read in using ``mne-bids`` and/or ``mne-python``.\n\nEach row in the events.tsv file corresponds to a HFO detected in the original source dataset. The ``trial_type`` column stores the information pertaining type of HFO (e.g. ``ripple``, ``fr`` for fast ripple, or ``frandr`` for fast ripple and ripple). The channel name (possibly in bipolar reference) is `\"-\"` character delimited and appended to the type of HFO with a `\"_\"` separating. For example: ``<hfo_type>_<channel_name>`` is the form. \n\nReference Dataset\n--------------------------\nThe following website was where the original data was downloaded.\n\nhttp://crcns.org/data-sets/methods/ieeg-1\n\nReferences\n---------------\n[1] Fedele T, Burnos S, Boran E, Krayenbühl N, Hilfiker P, Grunwald T, Sarnthein J.\nResection of high frequency oscillations predicts seizure outcome in the individual patient.\nScientific Reports. 2017;7(1):13836.\nhttps://www.nature.com/articles/s41598-017-13064-1\ndoi:10.1038/s41598-017-13064-1\n\n[2] Dataset meta analysis with mne-hfo. 10.5281/zenodo.4485036\n\n[3] Appelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\n[4] Holdgraf, C., Appelhoff, S., Bickel, S., Bouchard, K., D'Ambrosio, S., David, O., … Hermes, D. (2019). iEEG-BIDS, extending the Brain Imaging Data Structure specification to human intracranial electrophysiology. Scientific Data, 6, 102. https://doi.org/10.1038/s41597-019-0105-7\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds003498",
+    "exists": true,
+    "description": null,
+    "created_at": "2021-03-10T16:45:33+00:00",
+    "updated_at": "2021-04-14T11:04:32+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

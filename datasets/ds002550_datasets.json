@@ -1,0 +1,41 @@
+{
+  "dataset_id": "ds002550",
+  "date_retrieved": "2025-07-31T00:15:23.533918+00:00",
+  "dataset_description": {
+    "Name": "Differential brain mechanisms of selection and maintenance of information during working memory (MEG data)",
+    "License": "CC0",
+    "Authors": [
+      "Romain Quentin",
+      "Jean-Remi King",
+      "Etienne Sallard",
+      "Nathan Fishman",
+      "Ryan Thompson",
+      "Ethan Buch",
+      "Leonardo Cohen"
+    ],
+    "Acknowledgements": "The intramural NINDS, DIR, NIH as well as the NIMH MEG and FMRIF facilities on the NIH campus in Bethesda (MD) contributed to this research. This project received funding from the FYSSEN foundation, the Bettencourt Schueller Foundation and the Philippe Foundation. We thank Dr. R. Coppola and Dr. T. Holroyd for their help in managing the NIH MEG facility",
+    "HowToAcknowledge": "If you reference this dataset in your publications, please acknowledge its authors. Also, please include the following message: 'This data was obtained from the Open Neuro database.'",
+    "Funding": [
+      "NINDS/HCPS",
+      "FYSSEN foundation",
+      "Bettencourt Schueller Foundation"
+    ],
+    "ReferencesAndLinks": [],
+    "DatasetDOI": "10.18112/openneuro.ds002550.v1.0.1",
+    "BIDSVersion": "1.1.1"
+  },
+  "readme_content": "OpenNeuro curator note: This dataset was previously accessible at ds001750. The dataset was reuploaded due to privacy considerations. \n\n# Data folder corresponding to [this manuscript](https://www.biorxiv.org/content/early/2018/03/16/283234)\n#### Differential brain mechanisms of selection and maintenance of information during working memory\n\nNote: One participant didn't sign a sharing data agreement so data of 22 participants are available here (vs. 23 in the manuscript). Results and conclusion are not different with only 22 participants.\n\nParticipant folder are organized as:\n- ##### 'ses-mri/anat':\ncontains T1 MRI of the participant\n- ##### ses-01:\ncontains MEG data in BIDS format, behavioral data and HPI position in surface RAS MRI coordinates for session 1\n- ##### ses-02:\ncontains MEG data in BIDS format, behavioral data and HPI position in surface RAS MRI coordinates for session 2\n\n##### Description of non-MEG files:\n- ##### behavioral task scripts:\nMatlab (psychtoolbox 3) script for Working Memory (WorkMem) and one-back control task (LocaCue)\n- ##### hpi_mri_surf.txt:\nContains the X, Y Z coordinates of the nasion, left and right HPI (head position indicator) in surface MRI coordinates. Names of the electrode are NEC (nasion), LEC (left) and REC (right). Others coordinates are for co-registration during the session (not useful here). These HPI coordinates have been acquired from the neuronavigation system brainsight (https://www.rogue-research.com/tms/brainsight-tms/)\n- ##### WorkMem+subNumber+date.csv:\n###### Contains behavioral results:\n- NbTrial: trial number\n- FixNbTrial: trial number with good eye fixation\n- isFixed: whether the participant fixed the central dot during the trial (1:correct fixation, 0:broke fixation)\n- GaborLeft: left gabor (25 possible, 5 spatial frequency* 5 orientations)\n- GaborRight: right gabor (25 possible, 5 spatial frequency* 5 orientations)\n- Cue: cue (4 possible, 1: left dotted, 2: left solid, 3: right dotted, 4: left solid)\n- Change: whether the cued stimulus attribute is different from the corresponding probe attribute (1: different, 0: same)\n- sfLeft: spatial frequency of the left gabor (5 possible)\n- orientLeft: line orientation of the left gabor (5 possible)\n- phaseLeft: phase of the left gabor (5 possible)\n- sfRight: spatial frequency of the right gabor (5 possible)\n- orientRight: line orientation of the right gabor (5 possible)\n- phaseRight: phase of the right gabor (5 possible)\n- randomSF: probe spatial frequency if change=1\n- randomOrient: line orientation if change=1\n- phaseResp: phase of the probe\n- Response: response of the participant (1: different, 0: similar)\n- isCorrect: correctness of the response (1: correct, 0: uncorrect)\n- reactionTime: reaction time from probe onset to participant response\n- TrialTime: total trial duration\n- runningTime: running time\n- fixcrossTime: duration of the fixation dot presentation before stimulus onset (should be between 0.350 and 0.450 s)\n- gaborTime: duration of stimulus presentation (should be 0.1 s)\n- precueTime: duration between stimulus offset and cue onset (should be between 0.75 and 0.85 s)\n- cueTime: duration of the cue presentation (should be 0.1 s)\n- postcueTime: duration between cue offset and probe onset (should be between 1.45 and 1.55 s)\n- feedbackTime: duration of the feedback (green or red dot, should be 0.1 s)\n- triggGabor: trigger sent to MEG acquisition at the stimulus onset\n- triggCue: trigger sent to MEG acquisition at the cue onset\n- triggProbe: trigger sent to MEG acquisition at the probe onset\n- ##### locacue+subNumber+date.csv:\n- NbTrial: trial number\n- FixNbTrial: trial number with good eye fixation\n- isFixed: whether the participant fixed the central dot during the trial (1:correct fixation, 0:broke fixation)\n- same: whether 2 consecutive lines are similar (1: similar, 0: different)\n- Cue: cue (4 possible, 1: left dotted, 2: left solid, 3: right dotted, 4: left solid)\n- Side: side of the cue (1: right, 0: left)\n- Press: whether the participant press the button (1: press, 0: no press)\n- isCorrect: correctness of the response (1: correct, 0: uncorrect)\n- ReactionTime: reaction time when a button is pressed\n- TrialTime: total trial duration\n- runningTime: running time\n- fixcrossTime: duration of the fixation dot\n- cueTime: duration of the cue presentation (should be 0.1 s)\n- postcueTime: duration between the cue offset and the beginning of the next trial (should be 1.2 s)",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds002550",
+    "exists": true,
+    "description": null,
+    "created_at": "2021-04-01T23:49:59+00:00",
+    "updated_at": "2022-02-16T17:36:01+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}
