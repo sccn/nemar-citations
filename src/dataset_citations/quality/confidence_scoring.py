@@ -445,7 +445,7 @@ class SentenceTransformerModel:
     """Simple wrapper for SentenceTransformer for CLI usage."""
 
     def __init__(
-        self, model_name: str = "Qwen/Qwen2.5-0.5B-Instruct", device: str = "auto"
+        self, model_name: str = "Qwen/Qwen3-Embedding-0.6B", device: str = "auto"
     ):
         """
         Initialize the sentence transformer model.

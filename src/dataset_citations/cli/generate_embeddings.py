@@ -78,7 +78,7 @@ def load_dataset_metadata(dataset_id: str, datasets_dir: Path) -> Optional[str]:
 def generate_dataset_embeddings(
     datasets_dir: Path,
     embeddings_dir: Path,
-    model_name: str = "Qwen/Qwen2.5-0.5B-Instruct",
+    model_name: str = "Qwen/Qwen3-Embedding-0.6B",
     batch_size: int = 10,
     force_regenerate: bool = False,
 ) -> int:
@@ -174,7 +174,7 @@ def generate_dataset_embeddings(
 def generate_citation_embeddings(
     citations_dir: Path,
     embeddings_dir: Path,
-    model_name: str = "Qwen/Qwen2.5-0.5B-Instruct",
+    model_name: str = "Qwen/Qwen3-Embedding-0.6B",
     batch_size: int = 50,
     force_regenerate: bool = False,
     min_confidence: float = 0.4,
@@ -355,7 +355,7 @@ Examples:
 
   # Force regenerate with custom model
   dataset-citations-generate-embeddings --datasets datasets/ --citations citations/ \\
-    --force-regenerate --model Qwen/Qwen2.5-0.5B-Instruct
+    --force-regenerate --model Qwen/Qwen3-Embedding-0.6B
 
   # Generate with higher confidence threshold
   dataset-citations-generate-embeddings --citations citations/ \\
@@ -393,8 +393,8 @@ Examples:
 
     parser.add_argument(
         "--model",
-        default="Qwen/Qwen2.5-0.5B-Instruct",
-        help="Sentence transformer model name (default: Qwen/Qwen2.5-0.5B-Instruct)",
+        default="Qwen/Qwen3-Embedding-0.6B",
+        help="Sentence transformer model name (default: Qwen/Qwen3-Embedding-0.6B)",
     )
 
     parser.add_argument(

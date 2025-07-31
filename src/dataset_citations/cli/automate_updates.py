@@ -213,7 +213,7 @@ class EmbeddingUpdateAutomator:
     def update_embeddings(
         self,
         outdated_embeddings: Dict[str, List[str]],
-        model_name: str = "Qwen/Qwen2.5-0.5B-Instruct",
+        model_name: str = "Qwen/Qwen3-Embedding-0.6B",
         min_confidence: float = 0.4,
     ) -> Dict[str, int]:
         """
@@ -273,7 +273,7 @@ class EmbeddingUpdateAutomator:
     def run_automated_update(
         self,
         check_interval_hours: int = 24,
-        model_name: str = "Qwen/Qwen2.5-0.5B-Instruct",
+        model_name: str = "Qwen/Qwen3-Embedding-0.6B",
         min_confidence: float = 0.4,
         max_age_days: int = 7,
     ) -> Dict:
@@ -441,8 +441,8 @@ Examples:
 
     parser.add_argument(
         "--model",
-        default="Qwen/Qwen2.5-0.5B-Instruct",
-        help="Embedding model to use (default: Qwen/Qwen2.5-0.5B-Instruct)",
+        default="Qwen/Qwen3-Embedding-0.6B",
+        help="Embedding model to use (default: Qwen/Qwen3-Embedding-0.6B)",
     )
 
     parser.add_argument(
