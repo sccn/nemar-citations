@@ -69,9 +69,13 @@ def save_analysis_results(
         temporal_df: Temporal network evolution
         output_dir: Directory to save results
     """
-    output_dir.mkdir(parents=True, exist_ok=True)
+    # Create organized subdirectories
+    csv_dir = output_dir / "csv_exports"
+    summary_dir = output_dir / "summary_reports"
+    csv_dir.mkdir(parents=True, exist_ok=True)
+    summary_dir.mkdir(parents=True, exist_ok=True)
 
-    # Save all analysis DataFrames as CSV
+    # Save all analysis DataFrames as CSV in organized structure
     datasets_to_save = [
         (multi_dataset_df, "multi_dataset_citations.csv"),
         (co_citation_df, "dataset_co_citations.csv"),
@@ -85,7 +89,7 @@ def save_analysis_results(
 
     for df, filename in datasets_to_save:
         if not df.empty:
-            df.to_csv(output_dir / filename, index=False)
+            df.to_csv(csv_dir / filename, index=False)
             logger.info(f"Saved {filename} with {len(df)} records")
 
     # Save summary statistics
@@ -110,11 +114,13 @@ def save_analysis_results(
     }
 
     with open(
-        output_dir / "neo4j_network_analysis_summary.json", "w", encoding="utf-8"
+        summary_dir / "neo4j_network_analysis_summary.json", "w", encoding="utf-8"
     ) as f:
         json.dump(summary_stats, f, indent=2, ensure_ascii=False)
 
-    logger.info("Saved comprehensive summary to neo4j_network_analysis_summary.json")
+    logger.info(
+        "Saved comprehensive summary to summary_reports/neo4j_network_analysis_summary.json"
+    )
 
 
 def print_summary_stats(
@@ -254,8 +260,8 @@ def main() -> None:
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default="neo4j_network_analysis_output",
-        help="Directory to save analysis results (default: neo4j_network_analysis_output)",
+        default="results/network_analysis",
+        help="Directory to save analysis results (default: results/network_analysis)",
     )
     parser.add_argument(
         "--confidence-threshold",
