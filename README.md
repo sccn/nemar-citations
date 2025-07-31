@@ -8,16 +8,19 @@ Automated BIDS dataset citation tracking and JSON generation system for scientif
 
 ## Overview
 
-This system automatically discovers, tracks, and manages citations for BIDS (Brain Imaging Data Structure) datasets. It provides a complete workflow from dataset discovery to citation tracking with web-friendly JSON output format.
+This system automatically discovers, tracks, and manages citations for BIDS (Brain Imaging Data Structure) datasets. It provides a complete workflow from dataset discovery to citation tracking with web-friendly JSON output format, enhanced with AI-powered citation confidence scoring.
 
 ### Key Features
 
-- 🔍 **Automated Dataset Discovery**: Finds relevant BIDS datasets using configurable search patterns
-- 📊 **Citation Tracking**: Fetches and tracks citation counts and detailed citation information from Google Scholar
-- 🌐 **Web-Ready Output**: Generates clean JSON files perfect for website integration
-- 🔄 **Format Migration**: Converts legacy pickle files to modern JSON format
-- 🚀 **CI/CD Integration**: GitHub Actions workflow for automated updates
-- 📈 **Trend Analysis**: Track citation trends over time, (look for sample scripts)
+- **Automated Dataset Discovery**: Finds relevant BIDS datasets using configurable search patterns
+- **Citation Tracking**: Fetches and tracks citation counts and detailed citation information from Google Scholar
+- **Web-Ready Output**: Generates clean JSON files perfect for website integration
+- **Format Migration**: Converts legacy pickle files to modern JSON format
+- **CI/CD Integration**: GitHub Actions workflow for automated updates
+- **Package Structure**: Professional Python package with CLI entry points
+- **Citation Confidence Scoring**: AI-powered relevance scoring using sentence transformers
+- **Dataset Metadata Retrieval**: Automated extraction of dataset descriptions and README files
+- **Quality Assurance**: Type hints, comprehensive testing, and code quality standards
 
 ## Installation
 
@@ -44,6 +47,8 @@ The package automatically installs these core dependencies:
 - `beautifulsoup4>=4.9.0` - HTML parsing
 - `free-proxy>=1.1.0` - Proxy management
 - `python-dotenv>=0.19.0` - Environment variable management
+- `sentence-transformers>=2.0.0` - AI-powered citation confidence scoring
+- `PyGithub>=1.55.0` - GitHub API integration for metadata retrieval
 
 ## Quick Start
 
@@ -59,23 +64,31 @@ SCRAPERAPI_KEY=your_scraperapi_key_here
 
 ```bash
 # Discover relevant datasets
-python discover_datasets.py --output-file discovered_datasets.txt
+dataset-citations-discover --output-file discovered_datasets.txt
 
 # Update citations for discovered datasets
-python update_citations.py \
+dataset-citations-update \
     --dataset-list-file discovered_datasets.txt \
     --previous-citations-file citations/previous_citations.csv \
     --output-dir citations/ \
     --output-format both
 
 # Migrate existing pickle files to JSON
-python migrate_pickle_to_json.py
+dataset-citations-migrate
+
+# Retrieve dataset metadata for confidence scoring
+dataset-citations-retrieve-metadata --citations-dir citations/json --output-dir datasets
+
+# Calculate citation confidence scores
+dataset-citations-score-confidence --citations-dir citations/json --datasets-dir datasets
 ```
 
 ### 3. Using as Python Package
 
 ```python
-import citation_utils
+from dataset_citations.core import citation_utils
+from dataset_citations.quality.confidence_scoring import CitationConfidenceScorer
+from dataset_citations.quality.dataset_metadata import DatasetMetadataRetriever
 
 # Convert pickle to JSON
 json_path = citation_utils.migrate_pickle_to_json(
@@ -87,64 +100,177 @@ json_path = citation_utils.migrate_pickle_to_json(
 # Load citation data
 citations = citation_utils.load_citation_json(json_path)
 print(f"Dataset {citations['dataset_id']} has {citations['num_citations']} citations")
+
+# Calculate confidence scores
+scorer = CitationConfidenceScorer()
+confidence_scores = scorer.score_citations_for_dataset('ds002718', citations, dataset_metadata)
+
+# Retrieve dataset metadata
+retriever = DatasetMetadataRetriever()
+metadata = retriever.get_dataset_metadata('ds002718')
 ```
 
 ## Project Structure
 
 ```
 dataset_citations/
-├── citations/                  # Citation data storage
-│   ├── json/                  # JSON format citations (302 files)
-│   ├── pickle/                # Legacy pickle format (302 files, will develop further) 
+├── src/
+│   └── dataset_citations/     # Main package source
+│       ├── __init__.py        # Public API exports
+│       ├── core/              # Core citation functionality
+│       │   ├── citation_utils.py    # JSON handling & utilities
+│       │   └── getCitations.py     # Google Scholar API integration
+│       ├── quality/           # Citation quality & confidence scoring
+│       │   ├── confidence_scoring.py # AI-powered similarity scoring
+│       │   └── dataset_metadata.py  # GitHub metadata retrieval
+│       ├── cli/               # Command line interface
+│       │   ├── discover.py          # Dataset discovery CLI
+│       │   ├── update.py            # Citation update CLI
+│       │   ├── migrate.py           # Migration CLI
+│       │   ├── retrieve_metadata.py # Metadata retrieval CLI
+│       │   └── score_confidence.py  # Confidence scoring CLI
+│       ├── graph/             # Future: Visualization & analytics
+│       └── utils/             # Shared utilities
+├── citations/                 # Citation data storage
+│   ├── json/                  # JSON format citations (302+ files)
+│   ├── pickle/                # Legacy pickle format 
 │   └── *.csv                  # Summary and tracking files
-├── scripts/                   # Utility scripts
-├── tasks/                     # Task management
+├── datasets/                  # Dataset metadata files
 ├── tests/                     # Test suite
 ├── .github/workflows/         # CI/CD automation
-├── citation_utils.py          # Core citation handling utilities
-├── update_citations.py        # Main citation update script
-├── migrate_pickle_to_json.py  # Migration utility
-├── discover_datasets.py       # Dataset discovery
 ├── pyproject.toml            # Package configuration
 └── README.md                 # This file
 ```
 
-## Usage Guide
+## CLI Reference
 
-### Command Line Interface
+All commands are available as package entry points after installation. Use `--help` with any command for detailed usage information.
 
-#### Update Citations
+### Dataset Discovery
 
 ```bash
-python update_citations.py \
-    --dataset-list-file datasets.txt \
-    --previous-citations-file citations/previous_citations.csv \
-    --output-dir citations/ \
-    --output-format json \
-    --workers 5
+dataset-citations-discover [options]
 ```
 
-**Options:**
-- `--output-format`: Choose `pickle`, `json`, or `both`
+**Purpose**: Automatically discover BIDS datasets from OpenNeuro GitHub organization.
+
+**Key Options**:
+- `--output-file`: Output file for discovered dataset IDs (default: `discovered_datasets.txt`)
+- `--search-terms`: Comma-separated BIDS modalities to search for (default: `eeg,ieeg,meg`)
+- `--limit`: Maximum number of datasets to discover
+- `--github-token`: GitHub API token for higher rate limits
+
+**Example**:
+```bash
+dataset-citations-discover --output-file datasets.txt --search-terms "eeg,meg" --limit 50
+```
+
+### Citation Updates
+
+```bash
+dataset-citations-update [options]
+```
+
+**Purpose**: Update citation counts and detailed citation information for datasets.
+
+**Key Options**:
+- `--dataset-list-file`: File containing dataset IDs to process
+- `--previous-citations-file`: CSV file with previous citation counts
+- `--output-dir`: Directory to save citation files (default: `citations/`)
+- `--output-format`: Choose `pickle`, `json`, or `both` (default: `both`)
 - `--workers`: Number of parallel workers (default: 5)
 - `--no-update-num-cites`: Skip citation count updates
 
-#### Migrate Data
-
+**Example**:
 ```bash
-python migrate_pickle_to_json.py \
-    --input-dir citations/pickle/ \
-    --output-dir citations/json/ \
-    --overwrite
+dataset-citations-update \
+    --dataset-list-file discovered_datasets.txt \
+    --previous-citations-file citations/previous_citations.csv \
+    --output-format json \
+    --workers 3
 ```
 
-#### Discover Datasets
+### Data Migration
 
 ```bash
-python discover_datasets.py \
-    --output-file discovered_datasets.txt \
-    --search-terms "fMRI,EEG,MEG" \
-    --limit 100
+dataset-citations-migrate [options]
+```
+
+**Purpose**: Convert legacy pickle files to modern JSON format.
+
+**Key Options**:
+- `--input-dir`: Directory containing pickle files (default: `citations/pickle/`)
+- `--output-dir`: Directory to save JSON files (default: `citations/json/`)
+- `--overwrite`: Overwrite existing JSON files
+- `--dataset-id`: Process specific dataset only
+
+**Example**:
+```bash
+dataset-citations-migrate --input-dir citations/pickle --output-dir citations/json --overwrite
+```
+
+### Dataset Metadata Retrieval
+
+```bash
+dataset-citations-retrieve-metadata [options]
+```
+
+**Purpose**: Retrieve dataset descriptions and README files from GitHub for confidence scoring.
+
+**Key Options**:
+- `--citations-dir`: Directory containing citation JSON files
+- `--output-dir`: Directory to save metadata files (default: `datasets/`)
+- `--dataset-ids`: Specific dataset IDs to process (space-separated)
+- `--github-token`: GitHub API token for authentication
+
+**Example**:
+```bash
+dataset-citations-retrieve-metadata \
+    --citations-dir citations/json \
+    --output-dir datasets \
+    --dataset-ids ds002718 ds000117
+```
+
+### Citation Confidence Scoring
+
+```bash
+dataset-citations-score-confidence [options]
+```
+
+**Purpose**: Calculate AI-powered confidence scores for citations using semantic similarity.
+
+**Key Options**:
+- `--citations-dir`: Directory containing citation JSON files
+- `--datasets-dir`: Directory containing dataset metadata files
+- `--output-dir`: Directory to save confidence scores (default: `confidence_scores/`)
+- `--model-name`: Sentence transformer model (default: `Qwen/Qwen3-Embedding-0.6B`)
+- `--device`: Computing device (`mps`, `auto`, `cpu`, `cuda`)
+- `--dataset-ids`: Specific dataset IDs to process
+
+**Example**:
+```bash
+dataset-citations-score-confidence \
+    --citations-dir citations/json \
+    --datasets-dir datasets \
+    --output-dir confidence_scores \
+    --device mps
+```
+
+### Regenerate CSV
+
+```bash
+dataset-citations-regenerate [options]
+```
+
+**Purpose**: Generate CSV summary files from JSON citation data.
+
+**Key Options**:
+- `--json-dir`: Directory containing JSON citation files (default: `citations/json/`)
+- `--output-file`: Output CSV file path (default: `citations/regenerated_citations.csv`)
+
+**Example**:
+```bash
+dataset-citations-regenerate --json-dir citations/json --output-file citations/current_citations.csv
 ```
 
 ### JSON Output Format
@@ -172,19 +298,42 @@ Each dataset gets a `{dataset-id}_citations.json` file:
       "abstract": "This paper investigates brain network connectivity...",
       "publisher": "Frontiers Media SA",
       "volume": "14",
-      "pages": "610388"
+      "pages": "610388",
+      "confidence_score": 0.82
     }
   ]
 }
 ```
 
+**New Features in JSON Format**:
+- `confidence_score`: AI-powered relevance score (0.0-1.0) comparing dataset metadata to citation content
+- Enhanced metadata structure with processing versions
+- Full abstract text for citation network analysis
+
+### Citation Confidence Scoring
+
+The system includes AI-powered confidence scoring that evaluates how relevant each citation is to the actual dataset:
+
+**How it works**:
+1. **Dataset Metadata**: Retrieves `dataset_description.json` and README files from GitHub
+2. **Semantic Analysis**: Uses sentence transformers (Qwen3-Embedding-0.6B) to compare dataset descriptions with citation abstracts
+3. **Confidence Score**: Outputs similarity score (0.0-1.0) indicating citation relevance
+
+**Use Cases**:
+- Filter high-confidence citations for dataset homepages
+- Identify potentially misattributed citations
+- Quality assurance for citation tracking
+- Research impact analysis
+
 ### GitHub Actions Workflow
 
 The project includes automated CI/CD via GitHub Actions (`.github/workflows/update_citations.yml`):
 
-- Automatically discovers new datasets
-- Updates citation counts and detailed information
-- Migrates data to JSON format
+- Automatically discovers new datasets using `dataset-citations-discover`
+- Updates citation counts and detailed information with `dataset-citations-update`
+- Retrieves dataset metadata with `dataset-citations-retrieve-metadata`
+- Calculates confidence scores with `dataset-citations-score-confidence`
+- Migrates data to JSON format with `dataset-citations-migrate`
 - Creates pull requests with changes
 - Runs monthly or on manual trigger
 
@@ -293,14 +442,24 @@ def migrate_pickle_to_json(pickle_filepath: str, output_dir: str,
     """Convert pickle file to JSON format."""
 ```
 
-### Command Line Scripts
+### Package API
 
-All scripts support `--help` for detailed usage information:
+The package provides a clean public API through its main modules:
 
-```bash
-python update_citations.py --help
-python migrate_pickle_to_json.py --help
-python discover_datasets.py --help
+```python
+# Core citation functionality
+from dataset_citations.core import citation_utils, getCitations
+
+# Quality and confidence scoring
+from dataset_citations.quality import confidence_scoring, dataset_metadata
+
+# All CLI commands support --help for detailed usage
+dataset-citations-discover --help
+dataset-citations-update --help
+dataset-citations-migrate --help
+dataset-citations-retrieve-metadata --help
+dataset-citations-score-confidence --help
+dataset-citations-regenerate --help
 ```
 
 ## Configuration
@@ -313,11 +472,18 @@ Create a `.env` file:
 # Required
 SCRAPERAPI_KEY=your_scraperapi_key_here
 
-# Optional
-GITHUB_TOKEN=your_github_token_for_actions
+# Required for metadata retrieval and confidence scoring
+GITHUB_TOKEN=your_github_token_here
+
+# Optional (for future enhancements)
 ANTHROPIC_API_KEY=your_anthropic_key
 PERPLEXITY_API_KEY=your_perplexity_key
 ```
+
+**API Key Requirements**:
+- **SCRAPERAPI_KEY**: Required for Google Scholar citation fetching
+- **GITHUB_TOKEN**: Required for dataset metadata retrieval from OpenNeuro GitHub repositories
+- Other keys are optional and used for future AI-powered enhancements
 
 ### Configuration Files
 
@@ -347,12 +513,35 @@ PERPLEXITY_API_KEY=your_perplexity_key
    ```
    **Solution**: This is handled automatically in v1.0.0+
 
+4. **Sentence Transformers Issues**
+   ```bash
+   ImportError: No module named 'sentence_transformers'
+   ```
+   **Solution**: Install with `pip install sentence-transformers` or reinstall the package
+
+5. **GitHub API Rate Limiting**
+   ```bash
+   API rate limit exceeded
+   ```
+   **Solution**: Add GITHUB_TOKEN to `.env` file for higher rate limits
+
+6. **MPS Device Issues (macOS)**
+   ```bash
+   RuntimeError: MPS backend out of memory
+   ```
+   **Solution**: Use `--device cpu` flag for confidence scoring on limited memory systems
+
 ### Debug Mode
 
 Enable verbose logging:
 
 ```bash
-python update_citations.py --verbose --workers 1
+dataset-citations-update --verbose --workers 1
+```
+
+For confidence scoring debugging:
+```bash
+dataset-citations-score-confidence --verbose --device cpu
 ```
 
 ### Support
