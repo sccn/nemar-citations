@@ -53,6 +53,9 @@ dependencies = [
     "matplotlib>=3.5.0",
     "seaborn>=0.11.0",
     "plotly>=5.0.0",
+    "umap-learn>=0.5.0",
+    "scikit-learn>=1.0.0",
+    "wordcloud>=1.8.0",
 ]
 
 [project.optional-dependencies]
@@ -87,6 +90,12 @@ dataset-citations-load-graph = "dataset_citations.cli.load_graph:main"
 dataset-citations-analyze-networks = "dataset_citations.cli.analyze_networks:main"
 dataset-citations-create-visualizations = "dataset_citations.cli.create_visualizations:main"
 dataset-citations-create-network-visualizations = "dataset_citations.cli.create_network_visualizations:main"
+dataset-citations-generate-embeddings = "dataset_citations.cli.generate_embeddings:main"
+dataset-citations-analyze-umap = "dataset_citations.cli.analyze_umap:main"
+dataset-citations-create-theme-networks = "dataset_citations.cli.create_theme_networks:main"
+dataset-citations-manage-embeddings = "dataset_citations.cli.manage_embeddings:main"
+dataset-citations-analyze-temporal-themes = "dataset_citations.cli.analyze_temporal_themes:main"
+dataset-citations-automate-updates = "dataset_citations.cli.automate_updates:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
