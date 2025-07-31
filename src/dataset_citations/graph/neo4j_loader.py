@@ -19,9 +19,18 @@ def create_constraints(tx: ManagedTransaction) -> None:
     Args:
         tx: A Neo4j transaction object
     """
-    tx.run("CREATE CONSTRAINT FOR (d:Dataset) REQUIRE d.uid IS UNIQUE")
-    tx.run("CREATE CONSTRAINT FOR (c:Citation) REQUIRE c.uid IS UNIQUE")
-    tx.run("CREATE CONSTRAINT FOR (y:Year) REQUIRE y.value IS UNIQUE")
+    # Create constraints if they don't exist
+    constraints = [
+        "CREATE CONSTRAINT IF NOT EXISTS FOR (d:Dataset) REQUIRE d.uid IS UNIQUE",
+        "CREATE CONSTRAINT IF NOT EXISTS FOR (c:Citation) REQUIRE c.uid IS UNIQUE",
+        "CREATE CONSTRAINT IF NOT EXISTS FOR (y:Year) REQUIRE y.value IS UNIQUE",
+    ]
+
+    for constraint in constraints:
+        try:
+            tx.run(constraint)
+        except Exception as e:
+            logger.warning(f"Constraint creation warning: {e}")
 
 
 def create_indexes(tx: ManagedTransaction) -> None:
@@ -31,13 +40,22 @@ def create_indexes(tx: ManagedTransaction) -> None:
     Args:
         tx: A Neo4j transaction object
     """
-    tx.run("CREATE INDEX FOR (d:Dataset) ON (d.name)")
-    tx.run("CREATE INDEX FOR (d:Dataset) ON (d.data_type)")
-    tx.run("CREATE INDEX FOR (d:Dataset) ON (d.modality)")
-    tx.run("CREATE INDEX FOR (c:Citation) ON (c.title)")
-    tx.run("CREATE INDEX FOR (c:Citation) ON (c.year)")
-    tx.run("CREATE INDEX FOR (c:Citation) ON (c.confidence_score)")
-    tx.run("CREATE INDEX FOR (c:Citation) ON (c.dataset_id)")
+    # Create indexes if they don't exist
+    indexes = [
+        "CREATE INDEX IF NOT EXISTS FOR (d:Dataset) ON (d.name)",
+        "CREATE INDEX IF NOT EXISTS FOR (d:Dataset) ON (d.data_type)",
+        "CREATE INDEX IF NOT EXISTS FOR (d:Dataset) ON (d.modality)",
+        "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.title)",
+        "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.year)",
+        "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.confidence_score)",
+        "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.dataset_id)",
+    ]
+
+    for index in indexes:
+        try:
+            tx.run(index)
+        except Exception as e:
+            logger.warning(f"Index creation warning: {e}")
 
 
 def create_vector_index(
