@@ -221,6 +221,7 @@ def create_citation_relationships(
     # Create CITED_IN_YEAR relationships between citations and years
     year_citation_query = """
     UNWIND $citations as citation
+    WITH citation
     WHERE citation.year IS NOT NULL AND citation.year > 0
     MATCH (c:Citation {uid: citation.uid})
     MERGE (y:Year {value: citation.year})
