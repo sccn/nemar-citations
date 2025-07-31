@@ -49,13 +49,18 @@ class Neo4jNetworkAnalyzer:
         query = """
         MATCH (d:Dataset)-[:HAS_CITATION]->(c:Citation)
         WHERE c.confidence_score >= $confidence_threshold
-        WITH c, collect(DISTINCT d.uid) as datasets
+        AND c.title IS NOT NULL AND c.title <> ""
+        WITH c.title as citation_title, collect(DISTINCT d.uid) as datasets, 
+             collect(DISTINCT c.author)[0] as citation_author,
+             collect(DISTINCT c.year)[0] as citation_year,
+             max(c.cited_by) as citation_impact,
+             avg(c.confidence_score) as avg_confidence
         WHERE size(datasets) > 1
-        RETURN c.title as citation_title,
-               c.author as citation_author,
-               c.year as citation_year,
-               c.cited_by as citation_impact,
-               c.confidence_score as confidence_score,
+        RETURN citation_title,
+               citation_author,
+               citation_year,
+               citation_impact,
+               avg_confidence as confidence_score,
                datasets,
                size(datasets) as num_datasets_cited
         ORDER BY num_datasets_cited DESC, citation_impact DESC
@@ -82,10 +87,15 @@ class Neo4jNetworkAnalyzer:
             DataFrame with dataset co-citation analysis
         """
         query = """
-        MATCH (d1:Dataset)-[:HAS_CITATION]->(c:Citation)<-[:HAS_CITATION]-(d2:Dataset)
-        WHERE c.confidence_score >= $confidence_threshold 
+        MATCH (d1:Dataset)-[:HAS_CITATION]->(c1:Citation)
+        MATCH (d2:Dataset)-[:HAS_CITATION]->(c2:Citation)
+        WHERE c1.confidence_score >= $confidence_threshold 
+        AND c2.confidence_score >= $confidence_threshold
         AND d1.uid < d2.uid  // Avoid duplicate pairs
-        WITH d1, d2, count(c) as shared_citations, collect(c.title) as shared_citation_titles
+        AND c1.title = c2.title  // Same title = same paper
+        AND c1.title IS NOT NULL AND c1.title <> ""
+        WITH d1, d2, count(DISTINCT c1.title) as shared_citations, 
+             collect(DISTINCT c1.title) as shared_citation_titles
         RETURN d1.uid as dataset1,
                d1.name as dataset1_name,
                d1.total_cumulative_citations as dataset1_total_citations,
@@ -265,14 +275,21 @@ class Neo4jNetworkAnalyzer:
         query = """
         MATCH (d:Dataset)-[:HAS_CITATION]->(c:Citation)
         WHERE c.confidence_score >= $confidence_threshold
-        WITH c, collect(DISTINCT d.uid) as datasets, collect(DISTINCT d.data_type) as data_types
+        AND c.title IS NOT NULL AND c.title <> ""
+        WITH c.title as bridge_paper_title, collect(DISTINCT d.uid) as datasets, 
+             collect(DISTINCT d.data_type) as data_types,
+             collect(DISTINCT c.author)[0] as bridge_paper_author,
+             collect(DISTINCT c.year)[0] as bridge_paper_year,
+             collect(DISTINCT c.venue)[0] as venue,
+             max(c.cited_by) as citation_impact,
+             avg(c.confidence_score) as avg_confidence
         WHERE size(datasets) >= 2
-        RETURN c.title as bridge_paper_title,
-               c.author as bridge_paper_author,
-               c.year as bridge_paper_year,
-               c.venue as venue,
-               c.cited_by as citation_impact,
-               c.confidence_score as confidence_score,
+        RETURN bridge_paper_title,
+               bridge_paper_author,
+               bridge_paper_year,
+               venue,
+               citation_impact,
+               avg_confidence as confidence_score,
                datasets as datasets_bridged,
                size(datasets) as num_datasets_bridged,
                data_types as data_types_bridged,
