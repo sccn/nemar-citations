@@ -63,7 +63,7 @@ Examples:
   dataset-citations-score-confidence --dataset-ids ds000117,ds000246 --citations-dir citations/json --datasets-dir datasets
 
   # Use custom model and save to different directory
-  dataset-citations-score-confidence --citations-dir citations/json --datasets-dir datasets --output-dir scored_citations --model all-MiniLM-L6-v2
+  dataset-citations-score-confidence --citations-dir citations/json --datasets-dir datasets --output-dir scored_citations --model Qwen/Qwen3-Embedding-0.6B
         """,
     )
 
@@ -98,6 +98,14 @@ Examples:
         type=str,
         default="Qwen/Qwen3-Embedding-0.6B",
         help="Sentence transformer model to use (default: Qwen/Qwen3-Embedding-0.6B)",
+    )
+
+    parser.add_argument(
+        "--device",
+        type=str,
+        default="mps",
+        choices=["auto", "cpu", "cuda", "mps"],
+        help="Device to use for sentence transformers ('mps' for Metal GPU on macOS, default: mps)",
     )
 
     parser.add_argument(
@@ -189,7 +197,7 @@ Examples:
             from ..quality.confidence_scoring import score_dataset_citations
 
             score_dataset_citations(
-                citation_file, metadata_file, output_file, args.model
+                citation_file, metadata_file, output_file, args.model, args.device
             )
 
             successful += 1

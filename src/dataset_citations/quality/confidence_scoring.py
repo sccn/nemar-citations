@@ -28,34 +28,89 @@ logger = logging.getLogger(__name__)
 class CitationConfidenceScorer:
     """Calculate confidence scores for citations using semantic similarity."""
 
-    def __init__(self, model_name: str = "Qwen/Qwen3-Embedding-0.6B"):
+    def __init__(
+        self, model_name: str = "Qwen/Qwen3-Embedding-0.6B", device: str = "mps"
+    ):
         """
         Initialize the confidence scorer.
 
         Args:
             model_name: Name of the sentence transformer model to use
+            device: Device to use ('mps', 'auto', 'cpu', 'cuda', or specific device)
         """
         self.model_name = model_name
+        self.device = self._determine_device(device)
         self.model = None
         self._load_model()
+
+    def _determine_device(self, device: str) -> str:
+        """
+        Determine the best device to use for sentence transformers.
+
+        Args:
+            device: Device preference ('auto', 'cpu', 'cuda', 'mps', or specific device)
+
+        Returns:
+            Device string to use
+        """
+        if device != "auto":
+            logger.info(f"Using user-specified device: {device}")
+            return device
+
+        try:
+            # Lazy import to avoid import errors during CLI help
+            import torch
+
+            # Check for MPS (Metal Performance Shaders on macOS)
+            if torch.backends.mps.is_available():
+                logger.info("GPU acceleration available: Using MPS (Metal)")
+                return "mps"
+            # Check for CUDA
+            elif torch.cuda.is_available():
+                logger.info("GPU acceleration available: Using CUDA")
+                return "cuda"
+            else:
+                logger.info("GPU acceleration not available, using CPU")
+                return "cpu"
+        except ImportError:
+            logger.warning("PyTorch not available, defaulting to CPU")
+            return "cpu"
 
     def _load_model(self):
         """Load the sentence transformer model."""
         try:
             # Lazy import to avoid import errors during CLI help
             from sentence_transformers import SentenceTransformer
+            import torch
 
             logger.info(f"Loading sentence transformer model: {self.model_name}")
-            self.model = SentenceTransformer(self.model_name)
-            logger.info("Model loaded successfully")
+            logger.info(f"Using device: {self.device}")
+
+            # Initialize model with device
+            self.model = SentenceTransformer(self.model_name, device=self.device)
+
+            # Explicitly move model to device if it's not already there
+            if hasattr(torch, "device"):
+                device_obj = torch.device(self.device)
+                self.model.to(device_obj)
+
+            logger.info(f"Model loaded successfully on {self.device}")
         except Exception as e:
             logger.error(f"Failed to load model {self.model_name}: {e}")
             # Fallback to a smaller, more commonly available model
             logger.info("Falling back to all-MiniLM-L6-v2 model")
             try:
                 from sentence_transformers import SentenceTransformer
+                import torch
 
-                self.model = SentenceTransformer("all-MiniLM-L6-v2")
+                self.model = SentenceTransformer("all-MiniLM-L6-v2", device=self.device)
+
+                # Explicitly move model to device
+                if hasattr(torch, "device"):
+                    device_obj = torch.device(self.device)
+                    self.model.to(device_obj)
+
+                logger.info(f"Fallback model loaded successfully on {self.device}")
             except Exception as fallback_error:
                 logger.error(f"Failed to load fallback model: {fallback_error}")
                 raise RuntimeError(
@@ -110,8 +165,8 @@ class CitationConfidenceScorer:
             return 0.0
 
         try:
-            # Encode both texts
-            embeddings = self.model.encode([text1, text2])
+            # Encode both texts with device specification
+            embeddings = self.model.encode([text1, text2], device=self.device)
 
             # Calculate cosine similarity
             similarity_matrix = self.model.similarity(embeddings, embeddings)
@@ -293,6 +348,7 @@ def score_dataset_citations(
     dataset_metadata_file: str,
     output_file: Optional[str] = None,
     model_name: str = "Qwen/Qwen3-Embedding-0.6B",
+    device: str = "mps",
 ) -> str:
     """
     Score citations for a single dataset and save results.
@@ -302,6 +358,7 @@ def score_dataset_citations(
         dataset_metadata_file: Path to dataset metadata JSON file
         output_file: Output file path (if None, overwrites citations_file)
         model_name: Sentence transformer model to use
+        device: Device to use ('mps', 'auto', 'cpu', 'cuda', or specific device)
 
     Returns:
         Path to output file
@@ -313,7 +370,7 @@ def score_dataset_citations(
     dataset_metadata = load_dataset_metadata(dataset_metadata_file)
 
     # Score citations
-    scorer = CitationConfidenceScorer(model_name)
+    scorer = CitationConfidenceScorer(model_name, device)
     scored_data = scorer.score_all_citations(citations_data, dataset_metadata)
 
     # Save results
@@ -330,6 +387,7 @@ def batch_score_citations(
     datasets_dir: str,
     output_dir: Optional[str] = None,
     model_name: str = "Qwen/Qwen3-Embedding-0.6B",
+    device: str = "mps",
 ) -> List[str]:
     """
     Score citations for multiple datasets in batch.
@@ -339,11 +397,11 @@ def batch_score_citations(
         datasets_dir: Directory containing dataset metadata JSON files
         output_dir: Output directory (if None, overwrites original files)
         model_name: Sentence transformer model to use
+        device: Device to use ('mps', 'auto', 'cpu', 'cuda', or specific device)
 
     Returns:
         List of output file paths
     """
-    CitationConfidenceScorer(model_name)
     output_files = []
 
     # Find matching citation and dataset files
@@ -372,7 +430,7 @@ def batch_score_citations(
 
             # Score citations
             output_file = score_dataset_citations(
-                citations_path, dataset_path, output_path, model_name
+                citations_path, dataset_path, output_path, model_name, device
             )
             output_files.append(output_file)
 
