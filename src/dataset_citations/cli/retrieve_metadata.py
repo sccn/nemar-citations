@@ -5,7 +5,7 @@ CLI command for retrieving dataset metadata from GitHub.
 This script retrieves dataset_description.json and README files from OpenNeuro
 GitHub repositories for use in citation confidence scoring.
 
-Copyright (c) 2024 Seyed Yahya Shirazi (neuromechanist)
+Copyright (c) 2025 Seyed Yahya Shirazi (neuromechanist)
 All rights reserved.
 
 Author: Seyed Yahya Shirazi

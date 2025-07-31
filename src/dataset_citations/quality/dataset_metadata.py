@@ -5,7 +5,7 @@ Dataset metadata retrieval from GitHub API.
 This module retrieves dataset metadata (dataset_description.json and README files)
 from the OpenNeuro GitHub repository for confidence scoring.
 
-Copyright (c) 2024 Seyed Yahya Shirazi (neuromechanist)
+Copyright (c) 2025 Seyed Yahya Shirazi (neuromechanist)
 All rights reserved.
 
 Author: Seyed Yahya Shirazi

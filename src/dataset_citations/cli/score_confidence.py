@@ -5,7 +5,7 @@ CLI command for calculating citation confidence scores.
 This script calculates confidence scores for citations using semantic similarity
 between dataset metadata and citation content.
 
-Copyright (c) 2024 Seyed Yahya Shirazi (neuromechanist)
+Copyright (c) 2025 Seyed Yahya Shirazi (neuromechanist)
 All rights reserved.
 
 Author: Seyed Yahya Shirazi

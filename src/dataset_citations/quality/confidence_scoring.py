@@ -5,7 +5,7 @@ Citation confidence scoring using sentence transformers.
 This module calculates confidence scores for citations by comparing
 dataset metadata with citation content using semantic similarity.
 
-Copyright (c) 2024 Seyed Yahya Shirazi (neuromechanist)
+Copyright (c) 2025 Seyed Yahya Shirazi (neuromechanist)
 All rights reserved.
 
 Author: Seyed Yahya Shirazi
