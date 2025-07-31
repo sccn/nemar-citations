@@ -25499,12 +25499,40 @@
     }
   },
   "analysis": {
-    "umap_projections": [],
-    "clustering": []
+    "umap_projections": [
+      {
+        "file": "analysis/umap_projections/both_umap_2d_v1_20250731_160730.pkl",
+        "created": "2025-07-31T16:07:30.655585",
+        "parameters": {
+          "n_components": 2,
+          "n_neighbors": 15,
+          "min_dist": 0.1,
+          "metric": "cosine",
+          "random_state": 42
+        },
+        "status": "current",
+        "input_embeddings": 1139,
+        "embedding_type": "both"
+      }
+    ],
+    "clustering": [
+      {
+        "file": "analysis/clustering/both_clusters_dbscan_v1_20250731_160730.pkl",
+        "created": "2025-07-31T16:07:30.691143",
+        "parameters": {
+          "eps": 0.5,
+          "min_samples": 5
+        },
+        "status": "current",
+        "n_clusters": 4,
+        "method": "dbscan",
+        "silhouette_score": -0.018443306908011436
+      }
+    ]
   },
   "metadata": {
     "created": "2025-07-31T16:01:54.747576",
-    "last_updated": "2025-07-31T16:05:46.086133",
+    "last_updated": "2025-07-31T16:07:30.695145",
     "version": "1.0"
   }
 }
