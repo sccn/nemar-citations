@@ -46,9 +46,17 @@ def create_indexes(tx: ManagedTransaction) -> None:
         "CREATE INDEX IF NOT EXISTS FOR (d:Dataset) ON (d.data_type)",
         "CREATE INDEX IF NOT EXISTS FOR (d:Dataset) ON (d.modality)",
         "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.title)",
+        "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.author)",
+        "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.venue)",
         "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.year)",
         "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.confidence_score)",
+        "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.similarity_score)",
+        "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.cited_by)",
+        "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.pub_type)",
+        "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.journal)",
+        "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.publisher)",
         "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.dataset_id)",
+        "CREATE INDEX IF NOT EXISTS FOR (c:Citation) ON (c.is_high_confidence)",
     ]
 
     for index in indexes:
@@ -156,17 +164,22 @@ def batch_add_citations(tx: ManagedTransaction, citations: List[Dict]) -> None:
     MERGE (c:Citation {uid: citation.uid})
     SET c.title = citation.title,
         c.author = citation.author,
+        c.short_author = citation.short_author,
         c.venue = citation.venue,
         c.year = citation.year,
         c.abstract = citation.abstract,
         c.cited_by = citation.cited_by,
         c.confidence_score = citation.confidence_score,
+        c.similarity_score = citation.similarity_score,
         c.url = citation.url,
+        c.pages = citation.pages,
+        c.volume = citation.volume,
+        c.journal = citation.journal,
+        c.publisher = citation.publisher,
+        c.pub_type = citation.pub_type,
+        c.bib_id = citation.bib_id,
         c.dataset_id = citation.dataset_id,
-        c.is_high_confidence = CASE 
-            WHEN citation.confidence_score >= 0.4 THEN true 
-            ELSE false 
-        END
+        c.is_high_confidence = citation.is_high_confidence
     """
     execute_query_with_logging(tx, query, {"citations": citations})
 
@@ -184,6 +197,36 @@ def batch_add_years(tx: ManagedTransaction, years: List[Dict]) -> None:
     MERGE (y:Year {value: year.value})
     """
     execute_query_with_logging(tx, query, {"years": years})
+
+
+def create_citation_relationships(
+    tx: ManagedTransaction, citations: List[Dict]
+) -> None:
+    """
+    Create relationships between citations, datasets, and years.
+
+    Args:
+        tx: A Neo4j transaction object
+        citations: A list of citation dictionaries
+    """
+    # Create CITES relationships between datasets and citations
+    dataset_citation_query = """
+    UNWIND $citations as citation
+    MATCH (d:Dataset {uid: citation.dataset_id})
+    MATCH (c:Citation {uid: citation.uid})
+    MERGE (d)-[:HAS_CITATION]->(c)
+    """
+    execute_query_with_logging(tx, dataset_citation_query, {"citations": citations})
+
+    # Create CITED_IN_YEAR relationships between citations and years
+    year_citation_query = """
+    UNWIND $citations as citation
+    WHERE citation.year IS NOT NULL AND citation.year > 0
+    MATCH (c:Citation {uid: citation.uid})
+    MERGE (y:Year {value: citation.year})
+    MERGE (c)-[:CITED_IN_YEAR]->(y)
+    """
+    execute_query_with_logging(tx, year_citation_query, {"citations": citations})
 
 
 def batch_add_dataset_cites_citation(
@@ -328,7 +371,10 @@ def load_citations_from_json(
             citation_details = data.get("citation_details", [])
 
             for i, citation in enumerate(citation_details):
-                confidence = citation.get("confidence_score", 0.0)
+                # Extract confidence score from nested structure
+                confidence_data = citation.get("confidence_scoring", {})
+                confidence = confidence_data.get("confidence_score", 0.0)
+                similarity_score = confidence_data.get("similarity_score", 0.0)
 
                 # Only include high-confidence citations
                 if confidence < confidence_threshold:
@@ -340,13 +386,22 @@ def load_citations_from_json(
                         "uid": citation_uid,
                         "title": citation.get("title", ""),
                         "author": citation.get("author"),
+                        "short_author": citation.get("short_author"),
                         "venue": citation.get("venue"),
-                        "year": citation.get("year"),
+                        "year": citation.get("year", 0),
                         "abstract": citation.get("abstract"),
                         "cited_by": citation.get("cited_by", 0),
                         "confidence_score": confidence,
+                        "similarity_score": similarity_score,
                         "url": citation.get("url"),
+                        "pages": citation.get("pages"),
+                        "volume": citation.get("volume"),
+                        "journal": citation.get("journal"),
+                        "publisher": citation.get("publisher"),
+                        "pub_type": citation.get("pub_type"),
+                        "bib_id": citation.get("bib_id"),
                         "dataset_id": dataset_id,
+                        "is_high_confidence": confidence >= confidence_threshold,
                     }
                 )
 
@@ -421,26 +476,11 @@ def load_citation_graph(
     with driver.session() as session:
         session.execute_write(batch_add_years, year_dicts)
 
-    # Create dataset-citation relationships
-    dataset_citation_rels = [
-        {"dataset_uid": c["dataset_id"], "citation_uid": c["uid"]} for c in citations
-    ]
-
-    with driver.session() as session:
-        for i in range(0, len(dataset_citation_rels), batch_size):
-            batch = dataset_citation_rels[i : i + batch_size]
-            session.execute_write(batch_add_dataset_cites_citation, batch)
-
-    # Create citation-year relationships
-    citation_year_rels = [
-        {"citation_uid": c["uid"], "year_value": c["year"]}
-        for c in citations
-        if c["year"] and 1900 <= c["year"] <= 2030
-    ]
-
-    with driver.session() as session:
-        for i in range(0, len(citation_year_rels), batch_size):
-            batch = citation_year_rels[i : i + batch_size]
-            session.execute_write(batch_add_citation_cited_in_year, batch)
+    # Create citation relationships (dataset-citation and citation-year)
+    if citations:
+        with driver.session() as session:
+            for i in range(0, len(citations), batch_size):
+                batch = citations[i : i + batch_size]
+                session.execute_write(create_citation_relationships, batch)
 
     logger.info("Citation graph loading completed successfully")
