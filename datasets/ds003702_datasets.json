@@ -1,0 +1,35 @@
+{
+  "dataset_id": "ds003702",
+  "date_retrieved": "2025-07-31T00:18:00.064141+00:00",
+  "dataset_description": {
+    "Name": "Social Memory cuing",
+    "ReferencesAndLinks": [
+      "Gregory, S., Wang, H., & Kessler, K. (2021, June 17). EEG alpha and theta signatures of socially and non-socially cued working memory in virtual reality. https://doi.org/10.31234/osf.io/mkags"
+    ],
+    "Authors": [
+      "Samantha Gregory",
+      "Hongfang Wang",
+      "Klaus Kessler"
+    ],
+    "BIDSVersion": "1.6.0",
+    "License": "CC0",
+    "Funding": [
+      "This work was supported by a Leverhulme Trust early career fellowship [ECF-2018-130] awarded to S.E.A. Gregory.)."
+    ],
+    "DatasetDOI": "10.18112/openneuro.ds003702.v1.0.1"
+  },
+  "readme_content": "EEG Raw and processed data for a memory task presented in virtual reality, \r\nThe full task is on OSF: https://osf.io/s9xmu/files\r\n\r\nDerviatives:\r\nBehavioral data from the task in derivatives\r\nProcessed data is in the derivatives \r\n\r\nCode\r\nEvent codes are listed in the code file\r\nTrial function, preprocessing, data cleaning and analysis are also in the code file. \r\n\r\n\r\nTask:\r\nWearing a head mounted display to display the task in virtual reality participants completed a visual working memory task \r\nIn the task they had to remember the status of and details about presented objects. \r\nA person or a stick cued the items such that it could look left or right and items could appear on the left or right. Sometimes the cue was valid \r\n(i.e. pointed where objects appeared) and sometimes it was invalid (pointed away from where objects appeared) \r\nThe objects were always a bowl, a cup, a plate and a teapot. Each could have a different status that needed to be remembered \r\npraticipants were probed on memory for item location and then item status\r\n\r\n\r\nPreprint  to be added\r\n\r\n\r\nEvent codes within the data set are as follows. Trial function is included in code folder. \r\nFor the avatar cue\r\ns3021 Character shown - i.e. moment the avatar appears\r\ns3022 Objects shown - i.e. moment that the memory targets appear\r\ns3023 Maintenance interal - i.e. moment the memory objects leave the screen and the blank maintenance interval occurs\r\ns3024 Probe object shown - i.e. moment that participantis presented with location probe\r\ns3025 Resp 1 made - i.e. moment that the participants have responded to the location probe\r\ns3026 Q2 shown - i.e. moment that participants are asked a question about the status of the objects\r\ns3027 Resp 2 made - i.e. moment that the participants have responded to the status probe\r\n\r\nFor the stick cue\r\ns3041 Stick shown - i.e. moment the stick appears\r\ns3042 Objects shown - i.e. moment that the memory targets appear\r\ns3043 Maintenance interal - i.e. moment the memory objects leave the screen and the blank maintenance interval occurs\r\ns3044 Probe object shown - i.e. moment that participantis presented with location probe\r\ns3045 Resp 1 made - i.e. moment that the participants have responded to the location probe\r\ns3046 Q2 shown - i.e. moment that participants are asked a question about the status of the objects\r\ns3047 Resp 2 made - i.e. moment that the participants have responded to the status probe\r\n\r\n\r\nTrial info EEG processed data\r\n\r\n1: Main condition (MainCon)\r\n\t1 = Stick Congruent \r\n\t2 = Stick Incongruenct\r\n\t3 = Avatar Congruent\r\n\t4 = Avatar Incongruent\r\n2: Cue condition left or right (MConCueLR)\r\n\t1 = Stick Congruent Cue shifts left\r\n\t2 = Stick Congruent Cue shifts right\r\n\t3 = Stick Incongruent Cue shifts left\r\n\t4 = Stick Incongruent Cue shifts right\r\n\t5 = Avatar Congruent Cue shifts left\r\n\t6 = Avatar Congruent Cue shifts right\r\n\t7 = Avatar Incongruent Cue shifts left\r\n\t8 = Avatar Incongruent Cue shifts right\r\n3: Condition from experiment build (con) \r\n\t1 = Congruent, cueshift L, items Left, same location \r\n\t2 = Congruent, cueshift L, items Left, dif location \r\n\t3 = Congruent, cueshift R, items Right, same location \r\n\t4 = Congruent, cueshift R, items Right, dif location \r\n\t5 = Incongruent, cueshift L, items Right, same location \r\n\t6 = Incongruent, cueshift L, items Right, dif location \r\n\t7 = Incongruent, cueshift R, items Left, same location \r\n\t8 = Incongruent, cueshift R, items Left, dif location \r\n4: Validity \r\n\t1 = valid (congruent)\r\n\t2= invalid (incongruent)\r\n\r\n5: Location\r\n\t1 = Same (i.e. probe at same location as when initially presented)\r\n\t2 = Different (i.e. probe at different location as when initially presented)\r\n6 Cue \r\n\t1 = Stick cue\r\n\t2 = Avatar cue\r\n7 Left or Right cue (LorR) specific to  the cue shift\r\n\t1 = Left Stick\r\n\t2 = Right Stick\r\n\t3 = Left Avatar\r\n\t4 = Right Avatar\r\n8 Start: Sample time for start of the trial\r\n9 Cue: Sample time for cue onset\r\n10 Targets: Sample time for target onset\r\n11 Maintenance: Sample time for start of mainanance interval \r\n12 Location probe: Sample time for location probe being shown\r\n13 Location response time: Sample time for response to location probe being made\r\n14 Status question: Sample time for status question being asked\r\n15 Status response time: Sample time for response to status question being made\r\n16 Accuracy for the location question\r\n17 Accuracy for the status question",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds003702",
+    "exists": true,
+    "description": null,
+    "created_at": "2021-06-15T17:59:05+00:00",
+    "updated_at": "2021-06-18T08:51:06+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "dataset_id": "ds003620",
+  "date_retrieved": "2025-07-31T00:18:38.934120+00:00",
+  "dataset_description": {
+    "Name": "Runabout: A mobile EEG study of auditory oddball processing in laboratory and real-world conditions",
+    "BIDSVersion": "1.4",
+    "License": "CC0",
+    "Authors": [
+      "Magnus Liebherr",
+      "Andrew W. Corcoran",
+      "Phillip M. Alday",
+      "Scott Coussens",
+      "Valeria Bellan",
+      "Caitlin A. Howlett",
+      "Maarten A. Immink",
+      "Mark Kohler",
+      "Matthias Schlesewsky",
+      "Ina Bornkessel-Schlesewsky"
+    ],
+    "Acknowledgements": "AWC and CAH are supported by Australian Government Research Training Program (RTP) scholarships. IBS acknowledges the support of an Australian Research Council Future Fellowship (FT160100437). This research was funded by the University of South Australia under the Research Themes Investment Scheme. We would also like to thank the undergraduate students in course BEHL 3021 ('Cognitive Neuroscience') at the University of South Australia who participated in this study and helped with data collection as part of their class project.",
+    "HowToAcknowledge": "In addition to citing this OpenNeuro dataset, please cite the accompanying manuscript (linked below).",
+    "Funding": [
+      "FT160100437"
+    ],
+    "ReferencesAndLinks": [
+      "Liebherr, Corcoran, et al. (2021). EEG and behavioral correlates of attentional processing while walking and navigating naturalistic environments. Sci Rep 11, 22325. doi: 10.1038/s41598-021-01772-8"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds003620.v1.1.1",
+    "EthicsApprovals": [
+      "0000034991"
+    ]
+  },
+  "readme_content": "### Overview\r\n\r\nThis dataset contains raw and pre-processed EEG data from a mobile EEG study investigating the effects of cognitive task demands, motor demands, and environmental complexity on attentional processing (see below for experiment details).\r\n\r\nAll preprocessing and analysis code is deposited in the `code` directory. The entire MATLAB pipeline can be reproduced by executing the `run_pipeline.m` script. In order to run these scripts, you will need to ensure you have the required MATLAB toolboxes and R packages on your system. You will also need to adapt `def_local.m` to specify local paths to MATLAB and EEGLAB. Descriptive statistics and mixed-effects models can be reproduced in R by running the `stat_analysis.R` script.\r\n\r\nSee below for software details.\r\n\r\n### Citing this dataset\r\n\r\nIn addition to citing this dataset, please cite the original manuscript reporting data collection and experimental procedures.\r\nFor more information, see the `dataset_description.json` file.\r\n\r\n### License\r\n\r\nODC Open Database License (ODbL). For more information, see the `LICENCE` file.\r\n\r\n### Format\r\n\r\nDataset is formatted according to the EEG-BIDS extension (Pernet et al., 2019) and the BIDS extension proposal for common electrophysiological derivatives (BEP021) v0.0.1, which can be found here:\r\n\r\nhttps://docs.google.com/document/d/1PmcVs7vg7Th-cGC-UrX8rAhKUHIzOI-uIOh69_mvdlw/edit#heading=h.mqkmyp254xh6\r\n\r\nNote that BEP021 is still a work in progress as of 2021-03-01.\r\n\r\nGenerally, you can find data in the .tsv files and descriptions in the\r\naccompanying .json files.\r\n\r\nAn important BIDS definition to consider is the \"Inheritance Principle\" (see 3.5 in the BIDS specification: http://bids.neuroimaging.io/bids_spec.pdf), which states:\r\n\r\n> Any metadata file (.json, .bvec, .tsv, etc.) may be defined at any directory level. The values from the top level are inherited by all lower levels unless they are overridden by a file at the lower level.\r\n\r\n### Details about the experiment\r\n\r\nForty-four healthy adults aged 18-40 performed an oddball task involving complex tone (piano and horn) stimuli in three settings: \r\n(1) sitting in a quiet room in the lab (LAB);\r\n(2) walking around a sports field (FIELD);\r\n(3) navigating a route through a university campus (CAMPUS).\r\n\r\nParticipants performed each environmental condition twice: once while attending to oddball stimuli (i.e. counting the number of presented deviant tones; COUNT), and once while disregarding or ignoring the tone stimuli (IGNORE).\r\n\r\nEEG signals were recorded from 32 active electrodes using a Brain Vision LiveAmp 32 amplifier. See manuscript for further details.\r\n\r\n### MATLAB software details\r\n\r\nMATLAB Version: 9.7.0.1319299 (R2019b) Update 5\r\nMATLAB License Number: 678256\r\nOperating System: Microsoft Windows 10 Enterprise Version 10.0 (Build 18363)\r\nJava Version: Java 1.8.0_202-b08 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode\r\n\r\n* MATLAB (v9.7)\r\n* Simulink (v10.0)\r\n* Curve Fitting Toolbox (v3.5.10)\r\n* DSP System Toolbox (v9.9)\r\n* Image Processing Toolbox (v11.0)\r\n* MATLAB Compiler (v7.1)\r\n* MATLAB Compiler SDK (v6.7)\r\n* Parallel Computing Toolbox (v7.1)\r\n* Signal Processing Toolbox (v8.3)\r\n* Statistics and Machine Learning Toolbox (v11.6)\r\n* Symbolic Math Toolbox (v8.4)\r\n* Wavelet Toolbox (v5.3)\r\n\r\n**The following toolboxes/helper functions were also used:**\r\n\r\n* EEGLAB (v2019.1)\r\n* ERPLAB (v8.10)\r\n* ICLabel (v1.3)\r\n* clean_rawdata (v2.3)\r\n* bids-matlab-tools (v5.2)\r\n* dipfit (v3.4)\r\n* firfilt (v2.4)\r\n* export_fig (v3.12)\r\n* ColorBrewer (v3.1.0)\r\n\r\n### R software details\r\n\r\n**R version 3.6.2 (2019-12-12)**\r\n\r\n**Platform:** x86_64-w64-mingw32/x64 (64-bit) \r\n\r\n**locale:**\r\n_LC_COLLATE=English_Australia.1252_, _LC_CTYPE=English_Australia.1252_, _LC_MONETARY=English_Australia.1252_, _LC_NUMERIC=C_ and _LC_TIME=English_Australia.1252_\r\n\r\n**attached base packages:** \r\n\r\n* stats \r\n* graphics \r\n* grDevices \r\n* utils \r\n* datasets \r\n* methods \r\n* base \r\n\r\n**other attached packages:** \r\n\r\n* sjPlot(v.2.8.7) \r\n* emmeans(v.1.5.1) \r\n* car(v.3.0-10) \r\n* carData(v.3.0-4) \r\n* lme4(v.1.1-23) \r\n* Matrix(v.1.2-18) \r\n* data.table(v.1.13.0) \r\n* forcats(v.0.5.0) \r\n* stringr(v.1.4.0) \r\n* dplyr(v.1.0.2) \r\n* purrr(v.0.3.4) \r\n* readr(v.1.4.0) \r\n* tidyr(v.1.1.2) \r\n* tibble(v.3.0.4) \r\n* ggplot2(v.3.3.2) \r\n* tidyverse(v.1.3.0) \r\n\r\n**loaded via a namespace (and not attached):** \r\n\r\n* nlme(v.3.1-149) \r\n* pbkrtest(v.0.4-8.6) \r\n* fs(v.1.5.0) \r\n* lubridate(v.1.7.9) \r\n* insight(v.0.12.0) \r\n* httr(v.1.4.2) \r\n* numDeriv(v.2016.8-1.1) \r\n* tools(v.3.6.2) \r\n* backports(v.1.1.10) \r\n* utf8(v.1.1.4) \r\n* R6(v.2.4.1) \r\n* sjlabelled(v.1.1.7) \r\n* DBI(v.1.1.0) \r\n* colorspace(v.1.4-1) \r\n* withr(v.2.3.0) \r\n* tidyselect(v.1.1.0) \r\n* curl(v.4.3) \r\n* compiler(v.3.6.2) \r\n* performance(v.0.5.0) \r\n* cli(v.2.1.0) \r\n* rvest(v.0.3.6) \r\n* xml2(v.1.3.2) \r\n* sandwich(v.3.0-0) \r\n* labeling(v.0.3) \r\n* bayestestR(v.0.7.2) \r\n* scales(v.1.1.1) \r\n* mvtnorm(v.1.1-1) \r\n* digest(v.0.6.25) \r\n* foreign(v.0.8-76) \r\n* minqa(v.1.2.4) \r\n* rio(v.0.5.16) \r\n* pkgconfig(v.2.0.3) \r\n* dbplyr(v.1.4.4) \r\n* rlang(v.0.4.8) \r\n* readxl(v.1.3.1) \r\n* rstudioapi(v.0.11) \r\n* farver(v.2.0.3) \r\n* generics(v.0.0.2) \r\n* zoo(v.1.8-8) \r\n* jsonlite(v.1.7.1) \r\n* zip(v.2.1.1) \r\n* magrittr(v.1.5) \r\n* parameters(v.0.8.6) \r\n* Rcpp(v.1.0.5) \r\n* munsell(v.0.5.0) \r\n* fansi(v.0.4.1) \r\n* abind(v.1.4-5) \r\n* lifecycle(v.0.2.0) \r\n* stringi(v.1.4.6) \r\n* multcomp(v.1.4-14) \r\n* MASS(v.7.3-53) \r\n* plyr(v.1.8.6) \r\n* grid(v.3.6.2) \r\n* blob(v.1.2.1) \r\n* parallel(v.3.6.2) \r\n* sjmisc(v.2.8.6) \r\n* crayon(v.1.3.4) \r\n* lattice(v.0.20-41) \r\n* ggeffects(v.0.16.0) \r\n* haven(v.2.3.1) \r\n* splines(v.3.6.2) \r\n* pander(v.0.6.3) \r\n* sjstats(v.0.18.1) \r\n* hms(v.0.5.3) \r\n* knitr(v.1.30) \r\n* pillar(v.1.4.6) \r\n* boot(v.1.3-25) \r\n* estimability(v.1.3) \r\n* effectsize(v.0.3.3) \r\n* codetools(v.0.2-16) \r\n* reprex(v.0.3.0) \r\n* glue(v.1.4.2) \r\n* modelr(v.0.1.8) \r\n* vctrs(v.0.3.4) \r\n* nloptr(v.1.2.2.2) \r\n* cellranger(v.1.1.0) \r\n* gtable(v.0.3.0) \r\n* assertthat(v.0.2.1) \r\n* xfun(v.0.18) \r\n* openxlsx(v.4.2.2) \r\n* xtable(v.1.8-4) \r\n* broom(v.0.7.1) \r\n* coda(v.0.19-4) \r\n* survival(v.3.2-7) \r\n* lmerTest(v.3.1-3) \r\n* statmod(v.1.4.34) \r\n* TH.data(v.1.0-10) \r\n* ellipsis(v.0.3.1) ",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds003620",
+    "exists": true,
+    "description": null,
+    "created_at": "2021-04-20T02:38:23+00:00",
+    "updated_at": "2024-01-19T22:32:02+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

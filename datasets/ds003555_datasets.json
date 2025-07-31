@@ -1,0 +1,44 @@
+{
+  "dataset_id": "ds003555",
+  "date_retrieved": "2025-07-31T00:11:31.975135+00:00",
+  "dataset_description": {
+    "Name": "Dataset of EEG recordings of pediatric patients with epilepsy based on the 10-20 system ",
+    "BIDSVersion": "1.4.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Dorottya Cserpan",
+      "Ece Boran",
+      "Richard Rosch",
+      "San Pietro Lo Biundo",
+      "Georgia Ramantani",
+      "Johannes Sarnthein"
+    ],
+    "Acknowledgements": "We thank C. Carosio, L. Glaser, P. Hieber, and G. Selmin for their assistance with EEG recordings and data analysis and V. Dimakopoulos for fruitful discussions.",
+    "HowToAcknowledge": "Please cite this paper: to be filled when DOI confirmed",
+    "Funding": [
+      "Swiss National Science Foundation (CRSK-3_190895 to G.R. and J.S.). "
+    ],
+    "EthicsApprovals": [
+      "Kantonale Ethikkommission Zürich ( KEK-ZH PB-2016-02055)"
+    ],
+    "ReferencesAndLinks": [
+      "TBD"
+    ],
+    "DatasetDOI": "10.18112/openneuro.ds003555.v1.0.1"
+  },
+  "readme_content": "# Dataset of EEG recordings containing HFO markings for 30 pediatric patients with epilepsy \n\n## Summary\nHigh-frequency oscillations in scalp EEG are promising non-invasive biomarkers of epileptogenicity. However, it is unclear how high-frequency oscillations are impacted by age in the pediatric population. \nWe recorded and processed the first 3 hours of sleep EEG data in 30 children and adolescents with focal or generalized epilepsy. We used an automated and clinically validated high-frequency oscillation detector to determine ripple rates (80-250 Hz) in bipolar channels. The software for the detection of HFOs is freely available at the GitHub repository (https://github.com/ZurichNCH/Automatic-High-Frequency-Oscillation-Detector). Furthermore HFO markings are also added in this database for the selected N3 intervals.\n\n\n## Repository structure\n\n### Main directory (hfo/)\nContains metadata files in the BIDS standard about the participants and the study. Folders are explained below.\n\n### Subfolders\n* hfo/sub-**/\nContains folders for each subject, named sub-<subject number> and session information.\n* hfo/sub-**/ses-01/eeg\nContains the raw eeg data in .edf format for each subject. The duration is typically 3 hours, that was recorded in the beginning of the sleep. Details about the channels are given in the corresponding .tsv file. \n* hfo/derivatives\nBesides containingsubfolders for the raw data, there are two .json files. The events_description.json explains the meaning of the columns of the event description tsv files (in the subfolders).\nThe interval_description.json explains the meaning of the columns of the interval description tsv files (in the subfolders).\n\n* hfo/derivatives/sub-**/ses-01/eeg/\nContains processed data for each subject. Based on the sleep annotations, first we identified the sleep stages. Then we cut 5 minutes data intervals from the N3 sleep stages. We applied bipolar referencing by considering all nearest neighbour chanels, thus resulting in 52 bipolar channels. Each run corresponds to one 5 minute data interval. The DataIntervals.tsv file provides information about how the various runs are related to the raw data by providing the start and end indeces. Besides the .edf and channel descriptor .tsv files there is an other .tsv file containing the detected candidate event details. Eg. sub-26_ses-01_task-hfo_run-01_events.tsv contains for subject 26 for the first processed data interval the event markings as indeces with additional features of this event described in the abovementioned events_description.json file.\n\n\n## Related materials\nThe code for HFO detection is available at https://github.com/ZurichNCH/Automatic-High-Frequency-Oscillation-Detector\n\n\n## Support\nFor questions on the dataset or the task, contact Johannes Sarnthein at [johannes.sarnthein@usz.ch](johannes.sarnthein@usz.ch).\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds003555",
+    "exists": true,
+    "description": null,
+    "created_at": "2021-03-06T02:15:14+00:00",
+    "updated_at": "2021-11-20T12:31:08+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

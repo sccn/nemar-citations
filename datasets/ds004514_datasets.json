@@ -1,0 +1,30 @@
+{
+  "dataset_id": "ds004514",
+  "date_retrieved": "2025-07-31T00:26:10.344399+00:00",
+  "dataset_description": {
+    "Name": "Simultaneous EEG and fNIRS recordings for semantic decoding of imagined animals and tools",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Milan Rybář",
+      "Riccardo Poli",
+      "Ian Daly"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds004514.v1.1.2",
+    "License": "CC0"
+  },
+  "readme_content": "﻿### Description\nThis dataset contains simultaneous electroencephalography (EEG) and near-infrared spectroscopy (fNIRS) signals recorded from 12 participants while performing a silent naming task and three sensory-based imagery tasks using visual, auditory, and tactile perception.\nParticipants were asked to visualize an object in their minds, imagine the sounds made by the object, and imagine the feeling of touching the object.\n\n\n### EEG\nEEG data were acquired with a BioSemi ActiveTwo system with 64 electrodes positioned according to the international 10-20 system, plus one electrode on each earlobe as references ('EXG1' channel is the left ear electrode and 'EXG2' channel is the right ear electrode).\nAdditionally, 2 electrodes placed on the left hand measured galvanic skin response ('GSR1' channel) and a respiration belt around the waist measured respiration ('Resp' channel).\nThe sampling rate was 2048 Hz.\n\nThe electrode names were saved in a default BioSemi labeling scheme (A1-A32, B1-B32). See the Biosemi documentation for the corresponding international 10-20 naming scheme (https://www.biosemi.com/pics/cap_64_layout_medium.jpg, https://www.biosemi.com/headcap.htm).\n\nFor convenience, the following ordered channels\n```\n['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A12', 'A13', 'A14', 'A15', 'A16', 'A17', 'A18', 'A19', 'A20', 'A21', 'A22', 'A23', 'A24', 'A25', 'A26', 'A27', 'A28', 'A29', 'A30', 'A31', 'A32', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'B11', 'B12', 'B13', 'B14', 'B15', 'B16', 'B17', 'B18', 'B19', 'B20', 'B21', 'B22', 'B23', 'B24', 'B25', 'B26', 'B27', 'B28', 'B29', 'B30', 'B31', 'B32']\n```\ncan thus be renamed to\n```\n['Fp1', 'AF7', 'AF3', 'F1', 'F3', 'F5', 'F7', 'FT7', 'FC5', 'FC3', 'FC1', 'C1', 'C3', 'C5', 'T7', 'TP7', 'CP5', 'CP3', 'CP1', 'P1', 'P3', 'P5', 'P7', 'P9', 'PO7', 'PO3', 'O1', 'Iz', 'Oz', 'POz', 'Pz', 'CPz', 'Fpz', 'Fp2', 'AF8', 'AF4', 'AFz', 'Fz', 'F2', 'F4', 'F6', 'F8', 'FT8', 'FC6', 'FC4', 'FC2', 'FCz', 'Cz', 'C2', 'C4', 'C6', 'T8', 'TP8', 'CP6', 'CP4', 'CP2', 'P2', 'P4', 'P6', 'P8', 'P10', 'PO8', 'PO4', 'O2']\n```\n\n\n### fNIRS\nfNIRS data were acquired with a NIRx NIRScoutXP continuous wave imaging system equipped with 4 light detectors, 8 light emitters (sources), and low-profile fNIRS optodes.\nBoth electrodes and optodes were placed in a NIRx NIRScap for integrated fNIRS-EEG layouts.\nTwo different montages were used: frontal and temporal, see references for more information.\n\n\n### Stimulus\nFolder 'stimuli' contains all images of the semantic categories of animals and tools presented to participants.\n\n\n### Example code\nWe have prepared example scripts to demonstrate how to load the EEG and fNIRS data into Python using MNE and MNE-BIDS packages. These scripts are located in the 'code' directory.\n\n\n### References\nThis dataset was analyzed in the following publications:\n\n[1] Rybář, M., Poli, R. and Daly, I., 2024. Using data from cue presentations results in grossly overestimating semantic BCI performance. Scientific Reports, 14(1), p.28003.\n\n[2] Rybář, M., Poli, R. and Daly, I., 2021. Decoding of semantic categories of imagined concepts of animals and tools in fNIRS. Journal of Neural Engineering, 18(4), p.046035.\n\n[3] Rybář, M., 2023. Towards EEG/fNIRS-based semantic brain-computer interfacing (Doctoral dissertation, University of Essex).\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds004514",
+    "exists": true,
+    "description": "OpenNeuro dataset - Simultaneous EEG and fNIRS recordings for semantic decoding of imagined animals and tools",
+    "created_at": "2025-02-28T21:37:29+00:00",
+    "updated_at": "2025-04-03T23:42:10+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

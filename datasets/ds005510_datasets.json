@@ -1,0 +1,61 @@
+{
+  "dataset_id": "ds005510",
+  "date_retrieved": "2025-07-31T00:19:06.534327+00:00",
+  "dataset_description": {
+    "Name": "Healthy Brain Network (HBN) EEG - Release 6",
+    "License": "CC-BY-SA 4.0",
+    "Authors": [
+      "Seyed Yahya Shirazi",
+      "Alexandre Franco",
+      "Maurício Scopel Hoffmann",
+      "Nathalia B. Esper",
+      "Dung Truong",
+      "Arnaud Delorme",
+      "Michael Milham",
+      "Scott Makeig"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.1101/2024.10.03.615261",
+      "https://dx.doi.org/10.1038/sdata.2017.181",
+      "https://dx.doi.org/10.1038/sdata.2017.40"
+    ],
+    "HowToAcknowledge": "Please cite the dataset paper (https://doi.org/10.1101/2024.10.03.615261) as well as the original HBN publication (https://dx.doi.org/10.1038/sdata.2017.181).",
+    "EthicsApprovals": [
+      "Chesapeake Institutional Review Board"
+    ],
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.3.0",
+    "SourceDatesets": [
+      {
+        "URL": "s3://fcp-indi/data/Projects/HBN"
+      }
+    ],
+    "DatasetType": "raw",
+    "Funding": [
+      "See https://childmind.org/science/global-open-science/healthy-brain-network/#donors",
+      "NIH/NIMH R01MH125934 for BIDS data preparation"
+    ],
+    "Acknowledgements": "We thank the participants and their families for their time and effort. We also thank the NeuroScience Gateway team for providing computational resources.",
+    "GeneratedBy": [
+      {
+        "Name": "bids-matlab-tools",
+        "Version": "9.1"
+      }
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds005510.v1.0.1"
+  },
+  "readme_content": "# The HBN-EEG Dataset\nThis is **Release 6** of HBN-EEG, the EEG and (soon-released) Eye-Tracking Section of the Child Mind Network Healthy Brain Network (HBN) Project, curated into the Brain Imaging Data Structure (BIDS) format. This dataset is part of a larger initiative to advance the understanding of child and adolescent mental health through collecting and analyzing neuroimaging, behavioral, and genetic data (Alexander et al., Sci Data 2017).\n\n## Data Description\nThis dataset comprises electroencephalogram (EEG) data and behavioral responses collected during EEG experiments from >3000 participants (5-21 yo) involved in the HBN project. The data has been released in 11 separate Releases, each containing data from a different set of participants.\n\n### Tasks\nThe HBN-EEG dataset includes EEG recordings from participants performing six distinct tasks, which are categorized into passive and active tasks based on the presence of user input and interaction in the experiment.\n\n#### Passive Tasks\n1. **Resting State**: Participants rested with their heads on a chin rest, following instructions to open or close their eyes and fixate on a central cross.\n\n2. **Surround Suppression**: Participants viewed flashing peripheral disks with contrasting backgrounds, while event markers and conditions were recorded.\n\n3. **Movie Watching**: Participants watched four short movies with different themes, with event markers recording the start and stop times of presentations.\n\n#### Active Tasks\n4. **Contrast Change Detection**: Participants identified flickering disks with dominant contrast changes and received feedback based on their responses.\n\n5. **Sequence Learning**: Participants memorized and repeated sequences of flashed circles on the screen, designed for different age groups.\n\n6. **Symbol Search**: Participants performed a computerized symbol search task, identifying target symbols from rows of search symbols.\n\n### Contents\n* **EEG Data:** High-resolution EEG recordings capture a wide range of neural activity during various tasks.\n* **Behavioral Responses:** Participant responses during EEG tasks, including reaction times and accuracy. This data was originally recorded within the behavior directory of the HBN data. The data is now included with the EEG data within the `events.tsv` files.\n\n### Special Features\n* **Hierarchical Event Descriptors (HED):** Events, including the original EEG events and the included behavioral events, have clear explanations, including proper HED annotation suitable for systematic meta and mega analysis of the data.\n* **P-Factor, Attention, Internalization and Externalization:** Derived from the CBCL questionnaire, these factors provide valuable insights into the psychopathology of the participants, adding a rich layer of interpretation to the EEG and behavioral data.\n* **Data quality and availability:** We performed minimal quality control to ensure that the data was not corrupted, each task had its necessary events, and was ready for preprocessing. The results of this quality control are available in the `participants.tsv` file.\n* **Future Releases:** We are committed to enhancing this dataset with additional, valuable features in its next stages, including:\n  * **Personalized EEG Electrode Locations:** To offer more detailed insights into individual neural activity patterns.\n  * **Personalized Lead Field Matrix:** Enabling better understanding and interpretation of EEG data.\n  * **Eye-Tracking Data:** Providing a window into the visual attention and processing mechanisms during EEG experiments.\n\n## Other HBN-EEG Datasets\nFor access all releases of the HBN-EEG dataset, follow this [link on NEMAR.org](https://nemar.org/dataexplorer/local?search=HBN-EEG). The links to the individual releases are below:\n\n#### **Release 1** | [DS005505](https://nemar.org/dataexplorer/detail?dataset_id=ds005505)\n- **S3 URI:** `s3://fcp-indi/data/Projects/HBN/BIDS_EEG/cmi_bids_R1`\n- **Total subjects:** 136\n\n#### **Release 2** | [DS005506](https://nemar.org/dataexplorer/detail?dataset_id=ds005506)\n- **S3 URI:** `s3://fcp-indi/data/Projects/HBN/BIDS_EEG/cmi_bids_R2`\n- **Total subjects:** 152\n\n#### **Release 3** | [DS005507](https://nemar.org/dataexplorer/detail?dataset_id=ds005507)\n- **S3 URI:** `s3://fcp-indi/data/Projects/HBN/BIDS_EEG/cmi_bids_R3`\n- **Total subjects:** 183\n\n#### **Release 4** | [DS005508](https://nemar.org/dataexplorer/detail?dataset_id=ds005508)\n- **S3 URI:** `s3://fcp-indi/data/Projects/HBN/BIDS_EEG/cmi_bids_R4`\n- **Total subjects:** 324\n\n#### **Release 5** | [DS005509](https://nemar.org/dataexplorer/detail?dataset_id=ds005509)\n- **S3 URI:** `s3://fcp-indi/data/Projects/HBN/BIDS_EEG/cmi_bids_R5`\n- **Total subjects:** 330\n\n#### **Release 6** | [DS05510](https://nemar.org/dataexplorer/detail?dataset_id=ds005510)\n- **S3 URI:** `s3://fcp-indi/data/Projects/HBN/BIDS_EEG/cmi_bids_R6`\n- **Total subjects:** 134\n\n#### **Release 7** | [DS005511](https://nemar.org/dataexplorer/detail?dataset_id=ds005511)\n- **S3 URI:** `s3://fcp-indi/data/Projects/HBN/BIDS_EEG/cmi_bids_R7`\n- **Total subjects:** 381\n\n#### **Release 8** | [DS005512](https://nemar.org/dataexplorer/detail?dataset_id=ds005512)\n- **S3 URI:** `s3://fcp-indi/data/Projects/HBN/BIDS_EEG/cmi_bids_R8`\n- **Total subjects:** 257\n\n#### **Release 9** | [DS005514](https://nemar.org/dataexplorer/detail?dataset_id=ds005514)\n- **S3 URI:** `s3://fcp-indi/data/Projects/HBN/BIDS_EEG/cmi_bids_R9`\n- **Total subjects:** 295\n\n#### **Release 10** | [DS005515](https://nemar.org/dataexplorer/detail?dataset_id=ds005515)\n- **S3 URI:** `s3://fcp-indi/data/Projects/HBN/BIDS_EEG/cmi_bids_R10`\n- **Total subjects:** 533\n\n#### **Release 11** | [DS005516](https://nemar.org/dataexplorer/detail?dataset_id=ds005516)\n- **S3 URI:** `s3://fcp-indi/data/Projects/HBN/BIDS_EEG/cmi_bids_R11`\n- **Total subjects:** 430\n\n#### **Release NC** | *--NOT FOR COMMERCIAL USE-- This dataset is intended for research purposes only under the CC-BY-NC-SA-4.0 License and is not currently hosted on OpenNeuro/NEMAR. Any commercial use is prohibited.*\n- **S3 URI:** `s3://fcp-indi/data/Projects/HBN/BIDS_EEG/cmi_bids_NC`\n- **Total subjects:** 458\n\n## Copyright and License\nThe HBN-EEG dataset is licensed under the Creative Commons Attribution 4.0 International License (CC BY SA 4.0), except for the Not-for-Commercial-Use dataset. Please cite the dataset paper (https://doi.org/10.1101/2024.10.03.615261) as well as the original HBN publication (https://dx.doi.org/10.1038/sdata.2017.181).\n\n## Acknowledgments\nWe would like to express our gratitude to all participants and their families, whose contributions have made this project possible. We also thank our dedicated team of researchers and clinicians for their efforts in collecting, processing, and curating this data.\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005510",
+    "exists": true,
+    "description": "OpenNeuro dataset - Healthy Brain Network (HBN) EEG - Release 6",
+    "created_at": "2024-10-04T20:32:03+00:00",
+    "updated_at": "2025-03-11T02:42:26+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

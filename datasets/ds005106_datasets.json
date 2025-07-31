@@ -1,0 +1,50 @@
+{
+  "dataset_id": "ds005106",
+  "date_retrieved": "2025-07-31T00:26:45.526723+00:00",
+  "dataset_description": {
+    "Name": "200 Objects Infants EEG",
+    "BIDSVersion": "1.10.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Tijl Grootswagers",
+      "Genevieve Quek",
+      "Zhen Zeng",
+      "Manuel Varlet"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds005106.v1.5.0",
+    "HowToAcknowledge": "Tijl Grootswagers, Genevieve Quek, Zhen Zeng, Manuel Varlet. 2025. “Human Infant EEG Recordings for 200 Object Images Presented in Rapid Visual Streams.” Scientific Data",
+    "ReferencesAndLinks": [
+      "https://osf.io/preprints/psyarxiv/dzrkq",
+      "https://doi.org/10.31234/osf.io/dzrkq",
+      "https://doi.org/10.1038/s41597-025-04744-z"
+    ],
+    "GeneratedBy": [
+      {
+        "Name": "PsychoPy",
+        "Version": "2023.3.1",
+        "Description": "Used to program and run the experiment."
+      },
+      {
+        "Name": "Python",
+        "Version": "3.9.13",
+        "Description": "Used for scripting and experiment control."
+      }
+    ],
+    "SourceDatasets": []
+  },
+  "readme_content": "Data and code for the paper:\nTijl Grootswagers, Genevieve Quek, Zhen Zeng, & Manuel Varlet. 2025. “Human Infant EEG Recordings for 200 Object Images Presented in Rapid Visual Streams.” Scientific Data. https://doi.org/10.1038/s41597-025-04744-z\n\nSee the linked paper for details.\n\nThe \"code\" directory contains all the code to reproduce the figures in the paper.\nIt requires fieldtrip and cosmomvpa, change the paths to these toolboxes at the top of each script (or remove the lines and add them to the path manually).\n\nThen run the scripts to reproduce each step reported in the paper:\n1. run_preprocessing.m (preprocess and epoch data)\n2. run_rsa.m (makes the individual RDMs)\n3. stats_rsa.m (computes the RSA correlations)\n4. plot_design.m (produces Figure 1 in the paper)\n5. plot_peaks.m (produces Figure 2 in the paper)\n6. plot_rsa.m (produces Figure 3 in the paper)\n\nEach script can also run standalone, as intermediate results are saved in the derivates folder\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005106",
+    "exists": true,
+    "description": "OpenNeuro dataset - 200 Objects Infants EEG",
+    "created_at": "2024-04-26T05:35:11+00:00",
+    "updated_at": "2025-03-05T22:48:19+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

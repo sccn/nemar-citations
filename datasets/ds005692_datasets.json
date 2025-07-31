@@ -1,0 +1,43 @@
+{
+  "dataset_id": "ds005692",
+  "date_retrieved": "2025-07-31T00:11:18.285501+00:00",
+  "dataset_description": {
+    "Acknowledgements": "We would like to thank Hans-Juergen Warmbold and Anne Katrin Baum for their technical support.",
+    "Authors": [
+      "Max-Philipp Stenner",
+      "Cindy Marquez Nossa",
+      "Tino Zaehle",
+      "Elena Azanon",
+      "Hans-Jochen Heinze",
+      "Matthias Deliano",
+      "Lars Buentjen"
+    ],
+    "BIDSVersion": "1.6",
+    "DatasetType": "raw",
+    "Funding": [
+      "M.-P.S. was supported by a VolkswagenStiftung Freigeist Fellowship project-ID 92977.",
+      "M.-P.S. and E.A. received funding from a Deutsche Forschungsgemeinschaft Sonderforschungsbereich SFB-1436 TPC03 project-ID 425899996."
+    ],
+    "HowToAcknowledge": "Stenner, Marquez Nossa, Zaehle, Azañon, Heinze, Deliano, and Büntjen, Prior Knowledge Changes Initial Sensory Processing in the Human Spinal Cord. Science Advances, accepted",
+    "License": "CC0",
+    "Name": "SpinalExpect_NonInvasive",
+    "EthicsApprovals": [
+      "Ethics Committee at the Medical Faculty at Otto-von-Guericke University Magdeburg, Germany"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds005692.v1.0.0"
+  },
+  "readme_content": "Contact person: \nMax-Philipp Stenner, email: max-philipp.stenner@med.ovgu.de or max-philipp.stenner@lin-magdeburg.de, ORCID: 0000-0002-3694-1887\n\nBrief overview of the tasks in the experiment:\nThe goal was to reveal whether temporal expectation influences initial sensory processing in the human spinal cord. In each trial, subjects (n=30, healthy, young) received at least one electric median nerve stimulation on the left wrist. Their task was to silently count in how many (rare) trials in each block (~5 min) there were two median nerve stimuli in rapid succession (80 ms ISI), and to report that number at the end of each block. In each trial, the median nerve stimulation was preceded by an auditory cue. In alternating blocks, the time interval between the auditory cue and the (first) median nerve stimulation was either fixed at 1100 ms, or varied randomly (uniform distribution) between 100 and 2100 ms. Each subject (except for sub-24) completed two days of testing. Whether a session began with a constant-interval block or variable-interval block was counterbalanced across subjects.\n\nMontage: \nAdapted from/extended beyond Chander, B. S., Deliano, M., Azañón, E., Büntjen, L., & Stenner, M. P. (2022). Non-invasive recording of high-frequency signals from the human spinal cord. NeuroImage, 253, 119050, as follows. Electrodes were placed in three rings around the neck. \"Sr\" in the channel names stands for \"spinal ring\". There was a caudal, middle, and cranial ring of electrodes. The middle ring was connecting a point above the spinous process of the sixth cervical vertebra (SrC6), and a point above the thyroid cartilage (\"SrF\"). Between these two electrodes, the remaining six electrodes for the middle ring were evenly spaced around the neck. \"L\" in channel names means left, \"R\" means right, \"B\" means \"back\", \"F\" means front, and \"M\" means middle. For the caudal and cranial rings, electrodes were placed approximately 2 cm below (\"_b\") and 2 cm above (\"_a\") the corresponding electrodes of the middle ring, respectively.\n\nEvents:\nThere are three events of interest. \"S1\" is a keypress of the experimenter, to advance the task upon breaks. \"S1\" can therefore be used to identify the start of each new block. \"S70\" corresponds to the auditory cue. \"S130\" corresponds to median nerve stimulation. \"S99\" is a \"placeholder\" that corresponds to no stimulus at all. The placeholder was used to enable \"double stimuli\", i.e., a rapid succession of two median nerve stimulations with an ISI of 80 ms. Most trials follow a sequence of \"S70\" - \"S130\" - \"S99\". Deviant trials have \"S70\" - \"S130\" - \"S130\". \n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005692",
+    "exists": true,
+    "description": "OpenNeuro dataset - SpinalExpect_NonInvasive",
+    "created_at": "2024-12-04T16:15:37+00:00",
+    "updated_at": "2024-12-04T16:54:58+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

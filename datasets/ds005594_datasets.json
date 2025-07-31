@@ -1,0 +1,42 @@
+{
+  "dataset_id": "ds005594",
+  "date_retrieved": "2025-07-31T00:25:54.567488+00:00",
+  "dataset_description": {
+    "Name": "Alphabetic Decision Task (Arial Light Font)",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Jack E. Taylor",
+      "Rasmus Sinn",
+      "Cosimo Iaia",
+      "Christian J. Fiebach"
+    ],
+    "Funding": [
+      "Goethe University Fokus"
+    ],
+    "EthicsApprovals": [
+      "Goethe University Ethics Commission for Psychology and Sport Science 2023-43"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds005594.v1.0.3",
+    "ReferencesAndLinks": [
+      "https://doi.org/10.1101/2024.11.11.622929",
+      "https://gin.g-node.org/JackEdTaylor/lettersim-ot-rsa"
+    ],
+    "Acknowledgements": "Taylor, J.E., Sinn, R., Iaia, C., & Fiebach, C. J. (2024). Beyond Letters: Optimal Transport as a Model for Sub-Letter Orthographic Processing. https://doi.org/10.1101/2024.11.11.622929"
+  },
+  "readme_content": "Generated from raw data by MNE-BIDS (Appelhoff et al., 2019) and custom code to join to behavioural data, stimulus information, and metadata.\n\n## Notes on the Data\n\nFor full details on this dataset, see our preprint: Taylor et al. (2024) https://doi.org/10.1101/2024.11.11.622929\n\nGeneral notes:\n\n* An issue during recording meant that sub-05 completed the first block without data being saved. The experiment was restarted from the beginning for this participant. This participant was not included in our analyses, but the data are included in this dataset. They are also identified with the `recording_restarted` field in `participants.tsv`.\n\n* A separate issue during recording meant that EEG data for some trials were lost for `sub-01`, though enough trials were recorded in total to meet our criteria for inclusion in the analysis. The raw data comprised two separate recordings. In this dataset, the two recordings are concatenated end-to-end into one file. The point at which the files are joined is marked with a boundary event. This participant is identified with the `recording_interrupted` field in `participants.tsv`.\n\n* During the course of the experiment, we identified an issue with the wiring in one splitter box, which meant that voltages from channels FT7 and FC3 were swapped in the raw recorded data. We elected to keep the wiring as it was for the duration of the experiment, and then swapped the data from the two channels in the code that generated this BIDS dataset. This means that this issue has been corrected in this BIDS version of the data.\n\n* \"BAD\" periods (MNE term) for key presses and break periods are included in the events files.\n\n* Recording dates/times have been anonymised by shifting all recordings backwards in time by a constant number of days (same constant for all participants). This obscures information that may be used to identify participants, but preserves time-of-day information, and the relative times elapsed between different recordings.\n\n## References\n\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005594",
+    "exists": true,
+    "description": "OpenNeuro dataset - Alphabetic Decision Task (Arial Light Font)",
+    "created_at": "2024-11-09T16:17:32+00:00",
+    "updated_at": "2024-11-12T09:42:43+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

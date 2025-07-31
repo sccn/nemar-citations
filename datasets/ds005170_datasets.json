@@ -1,0 +1,38 @@
+{
+  "dataset_id": "ds005170",
+  "date_retrieved": "2025-07-31T00:25:29.012349+00:00",
+  "dataset_description": {
+    "Name": "Chisco",
+    "BIDSVersion": "1.6.0",
+    "License": "CC0",
+    "Authors": [
+      "Zihan Zhang",
+      "Yi Zhao",
+      "Yu Bao",
+      "Xiao Ding"
+    ],
+    "Acknowledgements": "We would like to express our heartfelt gratitude to everyone who supported and assisted in the research and construction of this dataset. First and foremost, we thank the Social Computing and Information Retrieval Laboratory at Harbin Institute of Technology for their support and resources, which made this research possible. We are especially grateful to our advisor, Professor Xiao Ding, for his guidance, advice, and encouragement throughout the entire research process. We also extend our thanks to all the volunteers who participated in the data collection process, providing valuable data and time. Without their active participation, the completion of our dataset would not have been possible.Finally, we thank all the members of our team, who made significant contributions to data collection, experimental design, and data processing. Without their efforts, the construction of this dataset would not have been achievable.",
+    "HowToAcknowledge": "Please refer to https://github.com/zhangzihan-is-good/Chisco",
+    "Funding": [
+      "National Natural Science Foundation of China under Grants 62176079"
+    ],
+    "EthicsApprovals": [
+      "HIT2024035"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds005170.v1.1.2"
+  },
+  "readme_content": "# Chisco Dataset\n\nThis dataset is a Chinese imagined speech dataset with five participants, identified as sub-01 to sub-05. The dataset includes raw data and preprocessed data in both fif and pkl formats. Information also can be found in https://github.com/zhangzihan-is-good/Chisco\n\n## Supplementary Information\n\nThe initial dataset release encompassed data from three participants (sub-01 to sub-03) as detailed in related Chisco publications. Subsequently, data from two additional subjects (sub-04 and sub-05) were incorporated. During the interval between the original dataset release and the addition of the new data, the BIDS protocol underwent updates. To preserve the integrity of the data processing code presented in our publications, the supplementary data continue to adhere to the previous version of the BIDS protocol. Consequently, the BIDS validator on our website may report errors; however, these do not compromise the usability of the dataset.\n\nFuture releases will include data from sub-06 and sub-07, who participated under a new experimental paradigm. These will be published as part of a new dataset, Chisco 2.0. We invite you to stay tuned for further updates.\n\n## Dataset Structure\n\n### Root Directory\n\n- `dataset_description.json`\n- `participants.tsv`\n- `README`\n- `derivatives/`\n- `sub-01/` to `sub-05/`\n- `textdataset/`\n- `json/`\n\n### Raw Data\n\nThe root directory contains folders `sub-01` to `sub-05` with raw data. Each participant's folder contains 5-6 session folders, corresponding to data collected over 5-6 days.\n\n### Preprocessed Data\n\nPreprocessed data is stored in the `derivatives` folder in both fif and pkl formats.\n\n### Text Data\n\nThe `textdataset` folder and `json` folder contain text data used to stimulate the participants.\n\n### File Structure\n```\n/Chisco\n    /sub-01\n        /ses-01\n            /eeg\n                sub-01_ses-01_task-imagine_eeg.edf\n        ...\n    /sub-02\n        ...\n    /sub-03\n        ...\n    /derivatives\n        /fif\n            /sub-01\n                ...\n            /sub-02\n                ...\n            /sub-03\n                ...\n        /pkl\n            /sub-01\n                ...\n            /sub-02\n                ...\n            /sub-03\n                ...\n    /textdataset\n        ...\n    /json\n        ...\n    dataset_description.json\n    README\n    participants.tsv\n\n```\n## License\nThis dataset is licensed under the CC0 license. You are free to use the dataset for non-commercial purposes, but the original author needs to be properly indicated.\n\n## Citation\nIf you use this dataset in your research, please cite the following link:\n\nhttps://github.com/zhangzihan-is-good/Chisco\n\n## Contact Information\nFor any questions, please contact the dataset authors.\nThank you for using the Chisco!",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005170",
+    "exists": true,
+    "description": "OpenNeuro dataset - Chisco",
+    "created_at": "2024-05-24T08:20:31+00:00",
+    "updated_at": "2024-12-12T06:43:28+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

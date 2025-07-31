@@ -1,0 +1,39 @@
+{
+  "dataset_id": "ds005095",
+  "date_retrieved": "2025-07-31T00:22:42.286320+00:00",
+  "dataset_description": {
+    "Name": "STERNBERG DIFFICULT",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Natalia Zhozhikashvili",
+      "Maria Protopova",
+      "Tatiana Shkurenko",
+      "Marie Arsalidou",
+      "Ilya Zakharov",
+      "Boris Kotchoubey",
+      "Sergey Malykh",
+      "Yuri Pavlov"
+    ],
+    "EthicsApprovals": [
+      "Ethics committee of the Psychological Institute of Russian Academy of Education"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds005095.v1.0.1",
+    "License": "CC0",
+    "HowToAcknowledge": "https://doi.org/10.1016/j.ijpsycho.2024.112355"
+  },
+  "readme_content": "# Overview\n\nThis is the \"Sternberg Difficult\" dataset contain RAW EEG data. Raven Progressive Standard Matrices scores for each participant are provided in participants.tsv\n\n# Task\nParticipants completed a version of the Sternberg task (Sternberg, 1966; Fig 1) during EEG recording. Stimuli were all consonants of the Russian alphabet letters, except for “щ”[sch] and “й” [ij], presented in sets of 3, 6, 9, 12, and 15 letters. No letter repeated within a set. Each trial was preceded by a 500-1000 ms fixation cross. Encoding (letter set), retention (blank screen), and retrieval (probe letter) phases were allocated 1500ms, 2000ms and 1500ms, respectively. After 1500 ms period, the probe letter disappeared from the screen. Participants were asked to recall whether the probe letter was in the letter set presented during encoding phase. They had unlimited time to respond by pressing a button: the “left arrow” for “no” and the “right arrow” for “yes”. The trial concluded immediately after a response was made, regardless of the reaction time. Participants completed 200 trials in total with 40 trials in difficulty blocks corresponding to each particular set size (i.e., 3, 6, 9, 12, and 15 letters) with an opportunity to take a break after each block. The order of blocks was random, and the number of positive and negative probes was equal in each block. All stimuli were presented and responses were recorded using Psychopy2. \n\n# Event triggers\nImportant: Triggers in the dataset correspond only to the beginning of the stimulus presentation. No additional triggers were implemented to mark the onset of the retention and retrieval periods. However, these timepoints can be computed based on the experimental design. Each sample was presented for 1500 ms, meaning that the retention time occurred strictly 1500 ms after the trigger point appeared in the data. Similarly, the time of retrieval (when participants had to explicitly state whether a new letter had been shown previously) could be marked at 3500 ms relative to the trial onset.\n\n\n\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005095",
+    "exists": true,
+    "description": "OpenNeuro dataset - STERNBERG DIFFICULT",
+    "created_at": "2024-04-19T22:01:15+00:00",
+    "updated_at": "2024-05-10T23:40:35+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

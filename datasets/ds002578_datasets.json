@@ -1,0 +1,32 @@
+{
+  "dataset_id": "ds002578",
+  "date_retrieved": "2025-07-31T00:19:09.677454+00:00",
+  "dataset_description": {
+    "Name": "Visual Oddball Task (256 channels)",
+    "ReferencesAndLinks": [
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6673364/"
+    ],
+    "BIDSVersion": "v1.2.1",
+    "License": "CC0",
+    "Authors": [
+      "Arnaud Delorme",
+      "Scott Makeig"
+    ],
+    "DatasetDOI": "10.18112/openneuro.ds002578.v1.1.0",
+    "HEDVersion": "8.0.0"
+  },
+  "readme_content": "Data for this selective attention task was collected in 2004\nat the Swartz Center for Computational Neuroscience at UCSD.\nThese datasets are part of a larger corpus of 32-channel data\ncollected a few years prior. The experiment is identical\nalthough the number of channel is larger (256), the electrode\npositions are scanned and the anatomical MRI is provided\n(allowing for precise source localization). See publication\nfor more details.\n\nRaw data manipulation before export:\n- Fuse all BDF BIOSEMI files and reference to electrode 135 (see loadallbdf_2020.m)\n- Fuse with presentation file information (see loadallbdf_2020.m)\n- Remove spurious events of type 'condition' and '201' (see clean_events.m)\n- Add HED tags (see addHEDTags.m)\n- Convert MRI to NIFTI format (MRIcron) and reorient (MRIcrogl) (see convert_nifti.m)\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds002578",
+    "exists": true,
+    "description": null,
+    "created_at": "2020-02-21T19:43:24+00:00",
+    "updated_at": "2022-11-02T18:02:35+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

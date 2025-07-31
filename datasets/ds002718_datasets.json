@@ -1,0 +1,35 @@
+{
+  "dataset_id": "ds002718",
+  "date_retrieved": "2025-07-31T00:15:26.901431+00:00",
+  "dataset_description": {
+    "Name": "Face processing EEG dataset for EEGLAB",
+    "BIDSVersion": "v1.2.0",
+    "HEDVersion": "7.1.2",
+    "License": "CC0",
+    "Authors": [
+      "Daniel G. Wakeman",
+      "Richard N Henson"
+    ],
+    "ReferencesAndLinks": [
+      "Wakeman, D., Henson, R. A multi-subject, multi-modal human neuroimaging dataset. Sci Data 2, 150001 (2015). https://doi.org/10.1038/sdata.2015.1"
+    ],
+    "Funding": [
+      "This work was supported by the UK Medical Research Council (MC_A060_5PR10) and Elekta Ltd."
+    ],
+    "DatasetDOI": "10.18112/openneuro.ds002718.v1.0.5"
+  },
+  "readme_content": "Multi-subject, multi-modal (sMRI+EEG) neuroimaging dataset\non face processing. Original data described at https://www.nature.com/articles/sdata20151\nThis is repackaged version of the EEG data in EEGLAB format. The data has gone through\nminimal preprocessing including (see wh_extracteeg_BIDS.m):\n- Ignoring fMRI and MEG data (sMRI preserved for EEG source localization)\n- Extracting EEG channels out of the MEG/EEG fif data\n- Adding fiducials\n- Renaming EOG and EKG channels\n- Extracting events from event channel\n- Removing spurious events 5, 6, 7, 13, 14, 15, 17, 18 and 19\n- Removing spurious event 24 for subject 3 run 4\n- Renaming events taking into account button assigned to each subject\n- Correcting event latencies (events have a shift of 34 ms)\n- Resampling data to 250 Hz (this is a step that is done because\n  this dataset is used as tutorial for EEGLAB and need to be lightweight)\n- Merging run 1 to 6\n- Removing event fields urevent and duration \n- Filling up empty fields for events boundary and stim_file.\n- Saving as EEGLAB .set format\n\nRamon Martinez, Dung Truong, Scott Makeig, Arnaud Delorme (UCSD, La Jolla, CA, USA)\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds002718",
+    "exists": true,
+    "description": null,
+    "created_at": "2020-04-21T23:25:13+00:00",
+    "updated_at": "2024-04-16T16:17:12+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}
