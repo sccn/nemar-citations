@@ -88,6 +88,7 @@ class InteractiveReportGenerator:
         # Collect network analysis results
         network_dir = self.results_dir / "network_analysis"
         if network_dir.exists():
+            # First check for CSV files directly in network_analysis/
             for csv_file in network_dir.glob("*.csv"):
                 try:
                     if PANDAS_AVAILABLE:
@@ -98,6 +99,36 @@ class InteractiveReportGenerator:
                     logging.info(f"Loaded network analysis: {csv_file.name}")
                 except Exception as e:
                     logging.warning(f"Could not load {csv_file}: {e}")
+
+            # Also check for CSV files in csv_exports subdirectory (main data location)
+            csv_exports_dir = network_dir / "csv_exports"
+            if csv_exports_dir.exists():
+                for csv_file in csv_exports_dir.glob("*.csv"):
+                    try:
+                        if PANDAS_AVAILABLE:
+                            df = pd.read_csv(csv_file)
+                            analysis_data["network_analysis"][csv_file.stem] = (
+                                df.to_dict("records")
+                            )
+                        logging.info(
+                            f"Loaded network analysis from csv_exports: {csv_file.name}"
+                        )
+                    except Exception as e:
+                        logging.warning(f"Could not load {csv_file}: {e}")
+
+            # Load network analysis summary JSON
+            summary_reports_dir = network_dir / "summary_reports"
+            if summary_reports_dir.exists():
+                summary_json = (
+                    summary_reports_dir / "neo4j_network_analysis_summary.json"
+                )
+                if summary_json.exists():
+                    try:
+                        with open(summary_json) as f:
+                            analysis_data["network_analysis"]["summary"] = json.load(f)
+                        logging.info("Loaded network analysis summary")
+                    except Exception as e:
+                        logging.warning(f"Could not load network summary: {e}")
 
         # Collect temporal analysis
         temporal_dir = self.results_dir / "temporal_analysis"
@@ -172,11 +203,30 @@ class InteractiveReportGenerator:
 
         # Extract counts from network analysis if available
         if analysis_data.get("network_analysis"):
+            # Get summary statistics from neo4j analysis summary
+            if "summary" in analysis_data["network_analysis"]:
+                summary = analysis_data["network_analysis"]["summary"]
+                stats["total_datasets"] = summary.get("total_datasets_analyzed", 0)
+                stats["bridge_papers"] = summary.get("total_bridge_papers", 0)
+                stats["total_citations"] = summary.get("total_high_impact_citations", 0)
+
+            # Also extract from individual CSV data files
             for analysis_name, data in analysis_data["network_analysis"].items():
-                if "bridge" in analysis_name.lower() and isinstance(data, list):
+                if "bridge_papers" == analysis_name and isinstance(data, list):
                     stats["bridge_papers"] = len(data)
-                elif "dataset" in analysis_name.lower() and isinstance(data, list):
-                    stats["total_datasets"] = len(data)
+                elif "dataset_popularity" == analysis_name and isinstance(data, list):
+                    if len(data) > stats["total_datasets"]:
+                        stats["total_datasets"] = len(data)
+                elif "dataset_co_citations" == analysis_name and isinstance(data, list):
+                    # Count unique datasets from co-citation data
+                    unique_datasets = set()
+                    for relation in data:
+                        if "dataset1" in relation:
+                            unique_datasets.add(relation["dataset1"])
+                        if "dataset2" in relation:
+                            unique_datasets.add(relation["dataset2"])
+                    if len(unique_datasets) > stats["total_datasets"]:
+                        stats["total_datasets"] = len(unique_datasets)
 
         # Extract temporal data if available
         if analysis_data.get("temporal_analysis"):
@@ -298,6 +348,45 @@ class InteractiveReportGenerator:
             color: white;
             padding: 2rem 0;
             margin-top: 3rem;
+        }
+        
+        /* Network visualization styles */
+        #networkViz {
+            background: #fafafa;
+            border-radius: 8px;
+        }
+        
+        /* Highlighted network elements */
+        .highlighted {
+            opacity: 1 !important;
+            z-index: 999 !important;
+        }
+        
+        /* Fade non-highlighted elements when selection is active */
+        .cy-container:has(.highlighted) .cytoscape-element:not(.highlighted) {
+            opacity: 0.3 !important;
+        }
+        
+        /* Network info panel styling */
+        #network-info-panel {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        #network-info-panel .card {
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        #network-info-panel .card-header {
+            background-color: rgba(46, 134, 171, 0.1);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        /* Responsive network container */
+        @media (max-width: 768px) {
+            .network-container {
+                height: 400px;
+            }
         }
     </style>
 </head>
@@ -662,19 +751,144 @@ class InteractiveReportGenerator:
             Plotly.newPlot('summaryChart', data, layout, {responsive: true});
         }
         
+        function buildNetworkElements() {
+            // Build network elements from actual data
+            const elements = [];
+            const nodeIds = new Set();
+            
+            // Get network analysis data
+            const networkData = analysisData.network_analysis || {};
+            
+            // Add datasets from co-citation data
+            if (networkData.dataset_co_citations && networkData.dataset_co_citations.length > 0) {
+                // Take first 50 co-citation relationships for performance
+                const coCitations = networkData.dataset_co_citations.slice(0, 50);
+                
+                coCitations.forEach(function(relation, index) {
+                    const dataset1 = relation.dataset1;
+                    const dataset2 = relation.dataset2;
+                    const dataset1Name = relation.dataset1_name || dataset1;
+                    const dataset2Name = relation.dataset2_name || dataset2;
+                    
+                    // Add dataset nodes if not already added
+                    if (!nodeIds.has(dataset1)) {
+                        elements.push({
+                            data: {
+                                id: dataset1,
+                                label: dataset1Name.length > 30 ? dataset1Name.substring(0, 30) + '...' : dataset1Name,
+                                type: 'dataset',
+                                citations: relation.dataset1_total_citations || 0,
+                                fullName: dataset1Name
+                            }
+                        });
+                        nodeIds.add(dataset1);
+                    }
+                    
+                    if (!nodeIds.has(dataset2)) {
+                        elements.push({
+                            data: {
+                                id: dataset2,
+                                label: dataset2Name.length > 30 ? dataset2Name.substring(0, 30) + '...' : dataset2Name,
+                                type: 'dataset',
+                                citations: relation.dataset2_total_citations || 0,
+                                fullName: dataset2Name
+                            }
+                        });
+                        nodeIds.add(dataset2);
+                    }
+                    
+                    // Add co-citation edge
+                    elements.push({
+                        data: {
+                            id: 'cocite_' + index,
+                            source: dataset1,
+                            target: dataset2,
+                            type: 'co_citation',
+                            weight: relation.shared_citations || 1,
+                            sharedCitations: relation.shared_citations || 0
+                        }
+                    });
+                });
+            }
+            
+            // Add bridge papers as special nodes
+            if (networkData.bridge_papers && networkData.bridge_papers.length > 0) {
+                // Take first 20 bridge papers for performance
+                const bridgePapers = networkData.bridge_papers.slice(0, 20);
+                
+                bridgePapers.forEach(function(paper, index) {
+                    const paperId = 'bridge_' + index;
+                    const paperTitle = paper.bridge_paper_title || 'Bridge Paper ' + index;
+                    
+                    // Add bridge paper node
+                    elements.push({
+                        data: {
+                            id: paperId,
+                            label: paperTitle.length > 40 ? paperTitle.substring(0, 40) + '...' : paperTitle,
+                            type: 'bridge',
+                            confidence: paper.confidence_score || 0,
+                            datasetsConnected: paper.num_datasets_bridged || 0,
+                            fullTitle: paperTitle,
+                            author: paper.bridge_paper_author || 'Unknown'
+                        }
+                    });
+                    
+                    // Connect bridge paper to datasets it bridges
+                    if (paper.datasets_bridged && Array.isArray(paper.datasets_bridged)) {
+                        // Connect to first few datasets to avoid overcrowding
+                        const datasetsToConnect = paper.datasets_bridged.slice(0, 5);
+                        datasetsToConnect.forEach(function(datasetId, dsIndex) {
+                            if (nodeIds.has(datasetId)) {
+                                elements.push({
+                                    data: {
+                                        id: 'bridge_edge_' + index + '_' + dsIndex,
+                                        source: paperId,
+                                        target: datasetId,
+                                        type: 'bridges',
+                                        confidence: paper.confidence_score || 0
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+            
+            // Add some highly cited datasets if we don't have enough nodes
+            if (networkData.dataset_popularity && elements.filter(e => e.data.type === 'dataset').length < 10) {
+                const topDatasets = networkData.dataset_popularity.slice(0, 15);
+                topDatasets.forEach(function(dataset, index) {
+                    const datasetId = dataset.dataset_id || 'ds' + index;
+                    if (!nodeIds.has(datasetId)) {
+                        elements.push({
+                            data: {
+                                id: datasetId,
+                                label: (dataset.dataset_name || datasetId).length > 30 ? 
+                                       (dataset.dataset_name || datasetId).substring(0, 30) + '...' : 
+                                       (dataset.dataset_name || datasetId),
+                                type: 'dataset',
+                                citations: dataset.total_cumulative_citations || 0,
+                                fullName: dataset.dataset_name || datasetId
+                            }
+                        });
+                        nodeIds.add(datasetId);
+                    }
+                });
+            }
+            
+            console.log('Built network with', elements.filter(e => !e.data.source).length, 'nodes and', 
+                       elements.filter(e => e.data.source).length, 'edges');
+            
+            return elements;
+        }
+        
         function createNetworkVisualization() {
-            // Create a sample network visualization with Cytoscape.js
+            // Build network from actual analysis data
+            const elements = buildNetworkElements();
+            
             const cy = cytoscape({
                 container: document.getElementById('networkViz'),
-                
-                elements: [
-                    // Sample nodes and edges - replace with actual data
-                    { data: { id: 'dataset1', label: 'Dataset 1', type: 'dataset' } },
-                    { data: { id: 'citation1', label: 'Citation 1', type: 'citation' } },
-                    { data: { id: 'bridge1', label: 'Bridge Paper', type: 'bridge' } },
-                    { data: { id: 'e1', source: 'dataset1', target: 'citation1' } },
-                    { data: { id: 'e2', source: 'citation1', target: 'bridge1' } }
-                ],
+                elements: elements,
                 
                 style: [
                     {
@@ -682,17 +896,15 @@ class InteractiveReportGenerator:
                         style: {
                             'background-color': colorScheme.dataset,
                             'label': 'data(label)',
-                            'width': 30,
-                            'height': 30
-                        }
-                    },
-                    {
-                        selector: 'node[type="citation"]',
-                        style: {
-                            'background-color': colorScheme.citation,
-                            'label': 'data(label)',
-                            'width': 25,
-                            'height': 25
+                            'width': 'mapData(citations, 0, 1000, 20, 50)',
+                            'height': 'mapData(citations, 0, 1000, 20, 50)',
+                            'font-size': '12px',
+                            'text-outline-width': 2,
+                            'text-outline-color': '#fff',
+                            'text-valign': 'center',
+                            'text-halign': 'center',
+                            'border-width': 2,
+                            'border-color': '#fff'
                         }
                     },
                     {
@@ -700,15 +912,57 @@ class InteractiveReportGenerator:
                         style: {
                             'background-color': colorScheme.bridge,
                             'label': 'data(label)',
-                            'width': 35,
-                            'height': 35
+                            'width': 'mapData(datasetsConnected, 1, 25, 30, 60)',
+                            'height': 'mapData(datasetsConnected, 1, 25, 30, 60)',
+                            'font-size': '11px',
+                            'text-outline-width': 2,
+                            'text-outline-color': '#fff',
+                            'text-valign': 'center',
+                            'text-halign': 'center',
+                            'border-width': 3,
+                            'border-color': '#fff',
+                            'shape': 'diamond'
                         }
                     },
                     {
-                        selector: 'edge',
+                        selector: 'edge[type="co_citation"]',
                         style: {
-                            'width': 2,
-                            'line-color': colorScheme.border
+                            'width': 'mapData(weight, 1, 10, 1, 6)',
+                            'line-color': colorScheme.primary,
+                            'target-arrow-color': colorScheme.primary,
+                            'opacity': 0.7,
+                            'curve-style': 'bezier'
+                        }
+                    },
+                    {
+                        selector: 'edge[type="bridges"]',
+                        style: {
+                            'width': 3,
+                            'line-color': colorScheme.bridge,
+                            'target-arrow-color': colorScheme.bridge,
+                            'line-style': 'dashed',
+                            'opacity': 0.8
+                        }
+                    },
+                    {
+                        selector: 'node:selected',
+                        style: {
+                            'border-width': 4,
+                            'border-color': colorScheme.accent,
+                            'overlay-color': colorScheme.accent,
+                            'overlay-padding': '6px',
+                            'overlay-opacity': 0.3
+                        }
+                    },
+                    {
+                        selector: 'edge:selected',
+                        style: {
+                            'line-color': colorScheme.accent,
+                            'target-arrow-color': colorScheme.accent,
+                            'width': 4,
+                            'overlay-color': colorScheme.accent,
+                            'overlay-padding': '3px',
+                            'overlay-opacity': 0.3
                         }
                     }
                 ],
@@ -722,6 +976,177 @@ class InteractiveReportGenerator:
                     padding: 30
                 }
             });
+            
+            // Add interactive hover tooltips
+            cy.on('mouseover', 'node', function(evt) {
+                const node = evt.target;
+                const data = node.data();
+                let tooltip = '';
+                
+                if (data.type === 'dataset') {
+                    tooltip = `<strong>${data.fullName || data.label}</strong><br/>` +
+                             `Dataset ID: ${data.id}<br/>` +
+                             `Total Citations: ${data.citations || 0}`;
+                } else if (data.type === 'bridge') {
+                    tooltip = `<strong>Bridge Paper</strong><br/>` +
+                             `Title: ${data.fullTitle || data.label}<br/>` +
+                             `Author: ${data.author || 'Unknown'}<br/>` +
+                             `Datasets Connected: ${data.datasetsConnected || 0}<br/>` +
+                             `Confidence: ${(data.confidence * 100).toFixed(1)}%`;
+                }
+                
+                // Create or update tooltip element
+                let tooltipEl = document.getElementById('network-tooltip');
+                if (!tooltipEl) {
+                    tooltipEl = document.createElement('div');
+                    tooltipEl.id = 'network-tooltip';
+                    tooltipEl.style.cssText = `
+                        position: absolute;
+                        background: rgba(0,0,0,0.9);
+                        color: white;
+                        padding: 8px 12px;
+                        border-radius: 4px;
+                        font-size: 12px;
+                        pointer-events: none;
+                        z-index: 1000;
+                        max-width: 250px;
+                        line-height: 1.4;
+                    `;
+                    document.body.appendChild(tooltipEl);
+                }
+                
+                tooltipEl.innerHTML = tooltip;
+                tooltipEl.style.display = 'block';
+            });
+            
+            cy.on('mouseout', 'node', function(evt) {
+                const tooltipEl = document.getElementById('network-tooltip');
+                if (tooltipEl) {
+                    tooltipEl.style.display = 'none';
+                }
+            });
+            
+            cy.on('mousemove', function(evt) {
+                const tooltipEl = document.getElementById('network-tooltip');
+                if (tooltipEl && tooltipEl.style.display === 'block') {
+                    tooltipEl.style.left = (evt.originalEvent.pageX + 10) + 'px';
+                    tooltipEl.style.top = (evt.originalEvent.pageY - 10) + 'px';
+                }
+            });
+            
+            // Add edge hover tooltips
+            cy.on('mouseover', 'edge', function(evt) {
+                const edge = evt.target;
+                const data = edge.data();
+                let tooltip = '';
+                
+                if (data.type === 'co_citation') {
+                    tooltip = `<strong>Co-Citation Relationship</strong><br/>` +
+                             `Shared Citations: ${data.sharedCitations || 0}<br/>` +
+                             `Edge Weight: ${data.weight || 1}`;
+                } else if (data.type === 'bridges') {
+                    tooltip = `<strong>Bridge Connection</strong><br/>` +
+                             `Confidence: ${(data.confidence * 100).toFixed(1)}%`;
+                }
+                
+                let tooltipEl = document.getElementById('network-tooltip');
+                if (!tooltipEl) {
+                    tooltipEl = document.createElement('div');
+                    tooltipEl.id = 'network-tooltip';
+                    tooltipEl.style.cssText = `
+                        position: absolute;
+                        background: rgba(0,0,0,0.9);
+                        color: white;
+                        padding: 8px 12px;
+                        border-radius: 4px;
+                        font-size: 12px;
+                        pointer-events: none;
+                        z-index: 1000;
+                        max-width: 250px;
+                        line-height: 1.4;
+                    `;
+                    document.body.appendChild(tooltipEl);
+                }
+                
+                tooltipEl.innerHTML = tooltip;
+                tooltipEl.style.display = 'block';
+            });
+            
+            cy.on('mouseout', 'edge', function(evt) {
+                const tooltipEl = document.getElementById('network-tooltip');
+                if (tooltipEl) {
+                    tooltipEl.style.display = 'none';
+                }
+            });
+            
+            // Add click events for detailed information
+            cy.on('tap', 'node', function(evt) {
+                const node = evt.target;
+                const data = node.data();
+                
+                // Highlight connected nodes and edges
+                cy.elements().removeClass('highlighted');
+                node.addClass('highlighted');
+                node.connectedEdges().addClass('highlighted');
+                node.neighborhood().addClass('highlighted');
+                
+                // Update info panel
+                updateNetworkInfoPanel(data);
+            });
+        }
+        
+        function updateNetworkInfoPanel(nodeData) {
+            // Update the network info panel with detailed node information
+            let infoHTML = '';
+            
+            if (nodeData.type === 'dataset') {
+                infoHTML = `
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0"><i class="fas fa-database me-2"></i>Dataset Information</h6>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Dataset ID:</strong> ${nodeData.id}</p>
+                            <p><strong>Name:</strong> ${nodeData.fullName || nodeData.label}</p>
+                            <p><strong>Total Citations:</strong> ${nodeData.citations || 0}</p>
+                            <div class="mt-3">
+                                <small class="text-muted">Click on other nodes to explore connections</small>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (nodeData.type === 'bridge') {
+                infoHTML = `
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0"><i class="fas fa-link me-2"></i>Bridge Paper</h6>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Title:</strong> ${nodeData.fullTitle || nodeData.label}</p>
+                            <p><strong>Author:</strong> ${nodeData.author || 'Unknown'}</p>
+                            <p><strong>Datasets Connected:</strong> ${nodeData.datasetsConnected || 0}</p>
+                            <p><strong>Confidence Score:</strong> ${(nodeData.confidence * 100).toFixed(1)}%</p>
+                            <div class="mt-3">
+                                <small class="text-muted">This paper connects multiple research areas</small>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Update the info panel if it exists
+            const infoPanelEl = document.getElementById('network-info-panel');
+            if (infoPanelEl) {
+                infoPanelEl.innerHTML = infoHTML;
+            } else {
+                // Create info panel if it doesn't exist
+                const networkSection = document.getElementById('networkViz').parentElement;
+                const infoPanelDiv = document.createElement('div');
+                infoPanelDiv.id = 'network-info-panel';
+                infoPanelDiv.className = 'mt-3';
+                infoPanelDiv.innerHTML = infoHTML;
+                networkSection.appendChild(infoPanelDiv);
+            }
         }
         
         function createTemporalChart() {
