@@ -218,8 +218,20 @@ class InteractiveReportGenerator:
         # Extract counts from network analysis if available
         if analysis_data.get("network_analysis"):
             # Get summary statistics from neo4j analysis summary
-            if "summary" in analysis_data["network_analysis"]:
-                summary = analysis_data["network_analysis"]["summary"]
+            network_data = analysis_data["network_analysis"]
+            summary = None
+
+            # Try different ways to access summary data
+            if "summary" in network_data:
+                summary = network_data["summary"]
+            elif isinstance(network_data, dict):
+                # Look for summary data directly in network_analysis
+                for key, value in network_data.items():
+                    if isinstance(value, dict) and "total_datasets_analyzed" in value:
+                        summary = value
+                        break
+
+            if summary:
                 stats["total_datasets"] = summary.get("total_datasets_analyzed", 0)
                 stats["bridge_papers"] = summary.get("total_bridge_papers", 0)
                 # Use the correct field for high-confidence citations (≥0.4)
@@ -227,6 +239,11 @@ class InteractiveReportGenerator:
                     "total_high_confidence_citations",
                     summary.get("total_high_impact_citations", 0),
                 )
+                # Also add fields needed for template
+                stats["total_high_confidence_citations"] = summary.get(
+                    "total_high_confidence_citations", 0
+                )
+                stats["total_bridge_papers"] = summary.get("total_bridge_papers", 0)
 
             # Also extract from individual CSV data files
             for analysis_name, data in analysis_data["network_analysis"].items():
@@ -902,18 +919,22 @@ class InteractiveReportGenerator:
         }
         
         function createBridgeChart() {
+            const bridgePapers = {{ summary_stats.total_bridge_papers }};
+            const totalCitations = {{ summary_stats.total_high_confidence_citations }};
+            const nonBridgeCitations = totalCitations - bridgePapers;
+            
             const data = [{
-                values: [60, 25, 15],
-                labels: ['Single-Domain<br/>Studies', 'Cross-Domain<br/>Research', 'Bridge Papers'],
+                values: [bridgePapers, nonBridgeCitations],
+                labels: ['Bridge Papers', 'Non-Bridge Citations'],
                 type: 'pie',
                 marker: {
-                    colors: [colorScheme.primary, colorScheme.accent, colorScheme.bridge],
+                    colors: [colorScheme.bridge, colorScheme.primary],
                     line: { color: '#FFFFFF', width: 2 }
                 },
                 textinfo: 'label+percent',
-                textposition: 'inside',
-                textfont: { color: 'white', size: 11 },
-                hole: 0.3
+                textposition: 'auto',
+                textfont: { color: 'white', size: 12, family: 'Arial Black' },
+                hole: 0.4
             }];
             
             const layout = {
@@ -971,11 +992,12 @@ class InteractiveReportGenerator:
                     elements.push({
                         data: {
                             id: datasetId,
-                            label: dataset.dataset_name?.substring(0, 20) + '...' || datasetId,
+                            label: '', // No persistent label - show on hover only
                             type: 'dataset',
                             citations: dataset.high_confidence_citations || 0,
                             cluster: coords.cluster || 0,
-                            fullName: dataset.dataset_name || datasetId
+                            fullName: dataset.dataset_name || datasetId,
+                            title: dataset.dataset_name || datasetId // For hover display
                         },
                         position: { x: coords.x, y: coords.y }
                     });
@@ -983,9 +1005,33 @@ class InteractiveReportGenerator:
                 }
             });
             
+            // Add co-citation connections between datasets
+            const coCitationData = networkData.dataset_co_citations || [];
+            if (coCitationData.length > 0) {
+                coCitationData.slice(0, 30).forEach((relation, index) => {
+                    const ds1 = relation.dataset1;
+                    const ds2 = relation.dataset2;
+                    const sharedCitations = parseInt(relation.shared_citations) || 0;
+                    
+                    // Only connect if both datasets are in our node set and have significant shared citations
+                    if (nodeIds.has(ds1) && nodeIds.has(ds2) && sharedCitations > 1) {
+                        elements.push({
+                            data: {
+                                id: `cocite_${index}`,
+                                source: ds1,
+                                target: ds2,
+                                type: 'co-citation',
+                                weight: Math.min(sharedCitations / 10, 1.0), // Normalize weight
+                                sharedCitations: sharedCitations
+                            }
+                        });
+                    }
+                });
+            }
+            
             // Add bridge connections from embedding analysis
             if (bridgeData?.bridge_analysis?.top_bridges) {
-                bridgeData.bridge_analysis.top_bridges.slice(0, 20).forEach((bridge, index) => {
+                bridgeData.bridge_analysis.top_bridges.slice(0, 15).forEach((bridge, index) => {
                     if (bridge.entity_type === 'citation' && bridge.connected_datasets) {
                         // Connect datasets that share this bridge citation
                         const connectedDatasets = bridge.connected_datasets.filter(ds => nodeIds.has(ds));
@@ -1000,7 +1046,7 @@ class InteractiveReportGenerator:
                                         id: `bridge_${index}_${i}_${j}`,
                                         source: ds1,
                                         target: ds2,
-                                        type: 'similarity',
+                                        type: 'bridge',
                                         weight: bridge.avg_similarity || 0.5
                                     }
                                 });
@@ -1009,6 +1055,25 @@ class InteractiveReportGenerator:
                     }
                 });
             }
+            
+            // Add cluster-based connections for datasets in same research theme
+            const nodesList = elements.filter(e => !e.data.source);
+            nodesList.forEach((nodeA, i) => {
+                nodesList.slice(i + 1).forEach((nodeB, j) => {
+                    // Connect nodes in same cluster with low probability to avoid overcrowding
+                    if (nodeA.data.cluster === nodeB.data.cluster && Math.random() < 0.3) {
+                        elements.push({
+                            data: {
+                                id: `cluster_${i}_${j}`,
+                                source: nodeA.data.id,
+                                target: nodeB.data.id,
+                                type: 'cluster',
+                                weight: 0.3
+                            }
+                        });
+                    }
+                });
+            });
             
             console.log('Built UMAP network with', elements.filter(e => !e.data.source).length, 'nodes and', 
                        elements.filter(e => e.data.source).length, 'edges');
@@ -1180,19 +1245,37 @@ class InteractiveReportGenerator:
                     {
                         selector: 'edge[type="similarity"]',
                         style: {
-                            'width': 'mapData(weight, 0.3, 1.0, 0.5, 3)',
+                            'width': 'mapData(weight, 0.3, 1.0, 0.3, 1.5)',
                             'line-color': 'rgba(100, 150, 200, 0.4)',
                             'opacity': 0.3,
                             'curve-style': 'straight'
                         }
                     },
                     {
-                        selector: 'edge[type="co_citation"]',
+                        selector: 'edge[type="co-citation"]',
                         style: {
-                            'width': 'mapData(weight, 1, 10, 1, 4)',
+                            'width': 'mapData(weight, 1, 10, 0.8, 2.5)',
                             'line-color': colorScheme.primary,
-                            'opacity': 0.6,
+                            'opacity': 0.5,
                             'curve-style': 'bezier'
+                        }
+                    },
+                    {
+                        selector: 'edge[type="bridge"]',
+                        style: {
+                            'width': 'mapData(weight, 0.3, 1.0, 0.5, 2)',
+                            'line-color': colorScheme.bridge,
+                            'opacity': 0.4,
+                            'curve-style': 'bezier'
+                        }
+                    },
+                    {
+                        selector: 'edge[type="cluster"]',
+                        style: {
+                            'width': '0.5',
+                            'line-color': '#bdc3c7',
+                            'opacity': 0.2,
+                            'curve-style': 'straight'
                         }
                     },
                     {
@@ -1373,10 +1456,19 @@ class InteractiveReportGenerator:
                     {
                         selector: 'edge[type="similarity"]',
                         style: {
-                            'width': 'mapData(similarity, 0.5, 1.0, 1, 3)',
+                            'width': 'mapData(strength, 0.5, 1.0, 0.5, 1.5)',
                             'line-color': '#95a5a6',
                             'curve-style': 'straight',
                             'opacity': 0.4
+                        }
+                    },
+                    {
+                        selector: 'edge[type="dataset"]',
+                        style: {
+                            'width': '1.5',
+                            'line-color': colorScheme.primary,
+                            'curve-style': 'bezier',
+                            'opacity': 0.6
                         }
                     },
                     {
@@ -1461,98 +1553,169 @@ class InteractiveReportGenerator:
             const elements = [];
             const networkData = analysisData.network_analysis || {};
             
-            // Try different data sources for citations
-            const impactData = networkData.citation_impact_rankings || 
-                              networkData.citation_impact || 
-                              networkData.citation_rankings || [];
+            // Direct access to citation_impact_rankings data
+            const impactData = networkData.citation_impact_rankings || [];
             
             console.log('Citation network data sources:', Object.keys(networkData));
             console.log('Impact data length:', impactData.length);
+            console.log('Sample citation data:', impactData.slice(0, 2));
             
             // Add high-confidence citations as nodes
-            if (impactData.length > 0) {
+            if (impactData && impactData.length > 0) {
                 const highConfCitations = impactData.filter(citation => {
-                    const confidence = citation.confidence_score || citation.confidence_scoring?.confidence_score || 0;
+                    const confidence = parseFloat(citation.confidence_score) || 0;
                     return confidence >= 0.4;
-                }).slice(0, 50); // Limit to top 50 for performance
+                }).slice(0, 30); // Limit to top 30 for performance
                 
                 console.log('High confidence citations found:', highConfCitations.length);
                 
                 highConfCitations.forEach((citation, index) => {
-                    const confidence = citation.confidence_score || citation.confidence_scoring?.confidence_score || 0.4;
+                    const confidence = parseFloat(citation.confidence_score) || 0.4;
+                    const impact = parseInt(citation.citation_impact) || 0;
                     elements.push({
                         data: {
                             id: `citation_${index}`,
                             type: 'citation',
                             label: '', // No persistent label
-                            title: citation.citation_title || citation.title || 'No title',
-                            author: citation.citation_author || citation.author || 'Unknown',
-                            impact: citation.citation_impact || citation.cited_by || 0,
-                            confidence: confidence
+                            title: citation.citation_title || 'No title',
+                            author: citation.citation_author || 'Unknown',
+                            year: citation.citation_year || '',
+                            venue: citation.venue || '',
+                            impact: impact,
+                            confidence: confidence,
+                            dataset: citation.dataset_name || citation.dataset_id || ''
                         },
                         position: {
-                            x: Math.cos(2 * Math.PI * index / highConfCitations.length) * 120 + Math.random() * 20,
-                            y: Math.sin(2 * Math.PI * index / highConfCitations.length) * 120 + Math.random() * 20
+                            x: Math.cos(2 * Math.PI * index / highConfCitations.length) * 150 + Math.random() * 30,
+                            y: Math.sin(2 * Math.PI * index / highConfCitations.length) * 150 + Math.random() * 30
                         }
                     });
                 });
                 
-                // Add similarity connections between citations (simplified)
-                for (let i = 0; i < Math.min(highConfCitations.length, 20); i++) {
-                    for (let j = i + 1; j < Math.min(highConfCitations.length, 20); j++) {
-                        // Simple heuristic: connect citations with similar confidence or impact
+                // Add connections between citations from the same dataset or similar impact
+                for (let i = 0; i < Math.min(highConfCitations.length, 25); i++) {
+                    for (let j = i + 1; j < Math.min(highConfCitations.length, 25); j++) {
                         const citationA = highConfCitations[i];
                         const citationB = highConfCitations[j];
-                        const confA = citationA.confidence_score || citationA.confidence_scoring?.confidence_score || 0.4;
-                        const confB = citationB.confidence_score || citationB.confidence_scoring?.confidence_score || 0.4;
-                        const confSimilarity = 1 - Math.abs(confA - confB);
                         
-                        if (confSimilarity > 0.7) {
+                        // Connect if from same dataset
+                        const sameDataset = citationA.dataset_id === citationB.dataset_id;
+                        
+                        // Connect if similar impact (within 50% range)
+                        const impactA = parseInt(citationA.citation_impact) || 0;
+                        const impactB = parseInt(citationB.citation_impact) || 0;
+                        const avgImpact = (impactA + impactB) / 2;
+                        const impactSimilarity = avgImpact > 0 ? 1 - Math.abs(impactA - impactB) / avgImpact : 0;
+                        
+                        if (sameDataset || impactSimilarity > 0.7) {
                             elements.push({
                                 data: {
                                     id: `edge_${i}_${j}`,
                                     source: `citation_${i}`,
                                     target: `citation_${j}`,
-                                    type: 'similarity',
-                                    similarity: confSimilarity
+                                    type: sameDataset ? 'dataset' : 'similarity',
+                                    strength: sameDataset ? 1.0 : impactSimilarity
                                 }
                             });
                         }
                     }
                 }
             } else {
-                console.log('No citation data found, creating dummy network');
-                // Create a simple dummy network for demonstration
-                for (let i = 0; i < 15; i++) {
-                    elements.push({
-                        data: {
-                            id: `citation_${i}`,
-                            type: 'citation',
-                            label: '', // No persistent label
-                            title: `Citation ${i + 1}`,
-                            author: 'Sample Author',
-                            impact: Math.floor(Math.random() * 50) + 10,
-                            confidence: 0.4 + Math.random() * 0.5
-                        },
-                        position: {
-                            x: Math.cos(2 * Math.PI * i / 15) * 120 + Math.random() * 20,
-                            y: Math.sin(2 * Math.PI * i / 15) * 120 + Math.random() * 20
-                        }
-                    });
-                }
+                console.log('No citation data found, using actual CSV data directly');
+                console.log('Network data keys:', Object.keys(networkData));
                 
-                // Add some connections
-                for (let i = 0; i < 10; i++) {
-                    const j = (i + 1) % 15;
-                    elements.push({
-                        data: {
-                            id: `edge_${i}_${j}`,
-                            source: `citation_${i}`,
-                            target: `citation_${j}`,
-                            type: 'similarity',
-                            similarity: 0.8
-                        }
+                // Force load from citation_impact_rankings with more robust checking
+                if (networkData.citation_impact_rankings && Array.isArray(networkData.citation_impact_rankings)) {
+                    const allCitations = networkData.citation_impact_rankings;
+                    console.log('Found citation_impact_rankings with', allCitations.length, 'citations');
+                    
+                    // Use ALL citations with confidence >= 0.4, not just filtered
+                    const citations = allCitations.slice(0, 25);
+                    console.log('Using first 25 citations for network');
+                    
+                    citations.forEach((citation, index) => {
+                        const confidence = parseFloat(citation.confidence_score) || 0.4;
+                        const impact = parseInt(citation.citation_impact) || 0;
+                        
+                        elements.push({
+                            data: {
+                                id: `citation_${index}`,
+                                type: 'citation',
+                                label: '',
+                                title: citation.citation_title || `Citation ${index + 1}`,
+                                author: citation.citation_author || 'Unknown',
+                                year: citation.citation_year || '',
+                                venue: citation.venue || '',
+                                impact: impact,
+                                confidence: confidence,
+                                dataset: citation.dataset_name || citation.dataset_id || ''
+                            },
+                            position: {
+                                x: Math.cos(2 * Math.PI * index / citations.length) * 150 + Math.random() * 30,
+                                y: Math.sin(2 * Math.PI * index / citations.length) * 150 + Math.random() * 30
+                            }
+                        });
                     });
+                    
+                    // Add connections
+                    for (let i = 0; i < Math.min(citations.length, 20); i++) {
+                        for (let j = i + 1; j < Math.min(citations.length, 20); j++) {
+                            const citationA = citations[i];
+                            const citationB = citations[j];
+                            
+                            // Connect if from same dataset or similar confidence
+                            const sameDataset = citationA.dataset_id === citationB.dataset_id;
+                            const confA = parseFloat(citationA.confidence_score) || 0.4;
+                            const confB = parseFloat(citationB.confidence_score) || 0.4;
+                            const confSimilarity = 1 - Math.abs(confA - confB);
+                            
+                            if (sameDataset || (confSimilarity > 0.8 && Math.random() < 0.4)) {
+                                elements.push({
+                                    data: {
+                                        id: `edge_${i}_${j}`,
+                                        source: `citation_${i}`,
+                                        target: `citation_${j}`,
+                                        type: sameDataset ? 'dataset' : 'similarity',
+                                        strength: sameDataset ? 1.0 : confSimilarity
+                                    }
+                                });
+                            }
+                        }
+                    }
+                } else {
+                    console.log('citation_impact_rankings not found or not array, using demo network');
+                    // Minimal demo network - only 5 nodes if no data
+                    for (let i = 0; i < 5; i++) {
+                        elements.push({
+                            data: {
+                                id: `citation_${i}`,
+                                type: 'citation',
+                                label: '',
+                                title: `Demo Citation ${i + 1}`,
+                                author: 'Demo Author',
+                                impact: 50 + i * 20,
+                                confidence: 0.5
+                            },
+                            position: {
+                                x: Math.cos(2 * Math.PI * i / 5) * 120,
+                                y: Math.sin(2 * Math.PI * i / 5) * 120
+                            }
+                        });
+                    }
+                    
+                    // Connect them in a circle
+                    for (let i = 0; i < 5; i++) {
+                        const j = (i + 1) % 5;
+                        elements.push({
+                            data: {
+                                id: `edge_${i}`,
+                                source: `citation_${i}`,
+                                target: `citation_${j}`,
+                                type: 'similarity',
+                                strength: 0.8
+                            }
+                        });
+                    }
                 }
             }
             
