@@ -25,6 +25,9 @@ tasks/
 # Local execution logs
 logs/
 
+# Analysis results are now included for sharing and reproducibility
+# (Note: Results can be regenerated using CLI commands documented in README files)
+
 # plan is personal
 plan.md
 scratch_notes.md
@@ -32,4 +35,5 @@ scratch_notes.md
 # Python build artifacts
 *.egg-info/
 build/
-dist/
+dist/# Prevent large embedding similarity files from being committed
+results/research_context_networks/embedding_similarities_*.json

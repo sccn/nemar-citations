@@ -439,3 +439,83 @@ def batch_score_citations(
 
     logger.info(f"Completed batch scoring for {len(output_files)} datasets")
     return output_files
+
+
+class SentenceTransformerModel:
+    """Simple wrapper for SentenceTransformer for CLI usage."""
+
+    def __init__(
+        self, model_name: str = "Qwen/Qwen3-Embedding-0.6B", device: str = "auto"
+    ):
+        """
+        Initialize the sentence transformer model.
+
+        Args:
+            model_name: Name of the model to use
+            device: Device to use for computation
+        """
+        self.model_name = model_name
+        self.device = self._determine_device(device)
+        self.model = None
+        self._load_model()
+
+    def _determine_device(self, device: str) -> str:
+        """Determine the best device to use."""
+        if device == "auto":
+            try:
+                import torch
+
+                if torch.backends.mps.is_available():
+                    return "mps"
+                elif torch.cuda.is_available():
+                    return "cuda"
+                else:
+                    return "cpu"
+            except ImportError:
+                return "cpu"
+        return device
+
+    def _load_model(self):
+        """Load the sentence transformer model."""
+        try:
+            from sentence_transformers import SentenceTransformer
+
+            logger.info(f"Loading model: {self.model_name} on {self.device}")
+            self.model = SentenceTransformer(self.model_name, device=self.device)
+            logger.info("Model loaded successfully")
+        except Exception as e:
+            logger.error(f"Failed to load model {self.model_name}: {e}")
+            # Fallback to a commonly available model
+            try:
+                from sentence_transformers import SentenceTransformer
+
+                logger.info("Falling back to all-MiniLM-L6-v2 model")
+                self.model = SentenceTransformer("all-MiniLM-L6-v2", device=self.device)
+                logger.info("Fallback model loaded successfully")
+            except Exception as fallback_error:
+                logger.error(f"Failed to load fallback model: {fallback_error}")
+                raise RuntimeError(
+                    "Could not load any sentence transformer model"
+                ) from fallback_error
+
+    def encode(self, texts: List[str]) -> np.ndarray:
+        """
+        Encode texts into embeddings.
+
+        Args:
+            texts: List of texts to encode
+
+        Returns:
+            Array of embeddings
+        """
+        if self.model is None:
+            raise RuntimeError("Model not loaded")
+
+        try:
+            embeddings = self.model.encode(
+                texts, convert_to_tensor=False, show_progress_bar=False
+            )
+            return np.array(embeddings)
+        except Exception as e:
+            logger.error(f"Error encoding texts: {e}")
+            raise

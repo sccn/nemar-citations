@@ -1,12 +1,16 @@
 """
-Citation network graph and visualization functionality.
+Dataset Citations Graph Analysis Module
 
-This module will contain Phase 4 features including:
-- Temporal citation analysis
-- Cumulative citation visualization  
-- Citation network graphs
-- Neo4j database integration
-- Abstract clustering and thematic analysis
+This module provides graph-based analysis and visualization capabilities for dataset citations,
+including Neo4j integration, temporal analysis, and network analytics.
 """
 
-__all__ = []
+from .schemas import Dataset, Citation, Year
+from .neo4j_network_analysis import Neo4jNetworkAnalyzer
+
+__all__ = [
+    "Dataset",
+    "Citation",
+    "Year",
+    "Neo4jNetworkAnalyzer",
+]

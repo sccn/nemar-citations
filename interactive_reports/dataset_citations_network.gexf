@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://www.gexf.net/1.2draft" version="1.2">
+    <meta lastmodifieddate="2025-08-01">
+        <creator>Dataset Citations Analysis</creator>
+        <description>BIDS Dataset Citation Network</description>
+    </meta>
+    <graph mode="static" defaultedgetype="undirected">
+        <attributes class="node">
+            <attribute id="0" title="type" type="string"/>
+            <attribute id="1" title="confidence" type="float"/>
+            <attribute id="2" title="cited_by" type="integer"/>
+        </attributes>
+        <nodes>
+            <node id="dataset_001" label="Dataset 001">
+                <attvalues>
+                    <attvalue for="0" value="dataset"/>
+                    <attvalue for="1" value="1.0"/>
+                    <attvalue for="2" value="15"/>
+                </attvalues>
+            </node>
+            <node id="citation_001" label="Paper A">
+                <attvalues>
+                    <attvalue for="0" value="citation"/>
+                    <attvalue for="1" value="0.8"/>
+                    <attvalue for="2" value="25"/>
+                </attvalues>
+            </node>
+            <node id="bridge_001" label="Bridge Paper">
+                <attvalues>
+                    <attvalue for="0" value="bridge"/>
+                    <attvalue for="1" value="0.9"/>
+                    <attvalue for="2" value="40"/>
+                </attvalues>
+            </node>
+        </nodes>
+        <edges>
+            <edge id="e1" source="dataset_001" target="citation_001"/>
+            <edge id="e2" source="citation_001" target="bridge_001"/>
+        </edges>
+    </graph>
+</gexf>
