@@ -94,13 +94,54 @@ def save_analysis_results(
 
     # Save summary statistics
     import json
+    from pathlib import Path
+
+    # Count actual high-confidence citations (≥0.4) across all datasets
+    def count_high_confidence_citations(
+        citations_dir: Path, confidence_threshold: float = 0.4
+    ) -> int:
+        """Count total citations with confidence >= threshold."""
+        high_confidence_count = 0
+        json_files = list(citations_dir.glob("*_citations.json"))
+
+        for json_file in json_files:
+            try:
+                with open(json_file, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+
+                citation_details = data.get("citation_details", [])
+                for citation in citation_details:
+                    confidence_data = citation.get("confidence_scoring", {})
+                    confidence = confidence_data.get("confidence_score", 0.0)
+
+                    if confidence >= confidence_threshold:
+                        high_confidence_count += 1
+
+            except Exception as e:
+                logger.warning(
+                    f"Error counting high-confidence citations in {json_file}: {e}"
+                )
+                continue
+
+        return high_confidence_count
+
+    # Count high-confidence citations from the citations directory
+    citations_dir = Path("citations/json")
+    if not citations_dir.exists():
+        # Try relative path from current working directory
+        citations_dir = Path.cwd() / "citations" / "json"
+
+    total_high_confidence_citations = (
+        count_high_confidence_citations(citations_dir) if citations_dir.exists() else 0
+    )
 
     summary_stats = {
         "total_multi_dataset_citations": len(multi_dataset_df),
         "total_dataset_pairs_with_shared_citations": len(co_citation_df),
         "total_author_overlaps": len(author_overlap_df),
         "total_influential_authors": len(author_influence_df),
-        "total_high_impact_citations": len(impact_df),
+        "total_high_impact_citations": len(impact_df),  # Keep for reference
+        "total_high_confidence_citations": total_high_confidence_citations,  # Correct count
         "total_datasets_analyzed": len(popularity_df),
         "total_bridge_papers": len(bridge_papers_df),
         "years_analyzed": len(temporal_df),
