@@ -11,7 +11,6 @@ import json
 from pathlib import Path
 from typing import Dict, List, Any
 from datetime import datetime
-import base64
 
 try:
     import pandas as pd
@@ -147,11 +146,43 @@ class InteractiveReportGenerator:
                 # Load JSON files
                 for json_file in dir_path.glob("*.json"):
                     try:
-                        with open(json_file) as f:
-                            analysis_data["theme_analysis"][json_file.stem] = json.load(
-                                f
+                        # Handle large embedding similarities files specially
+                        if json_file.name.startswith("embedding_similarities_"):
+                            with open(json_file) as f:
+                                full_data = json.load(f)
+
+                            # Create a limited subset for dashboard performance
+                            # Sort by similarity to keep the highest quality connections
+                            dataset_sims = sorted(
+                                full_data.get("dataset_similarities", []),
+                                key=lambda x: x.get("similarity", 0),
+                                reverse=True,
+                            )[:3000]  # Increased for better connectivity
+                            citation_sims = sorted(
+                                full_data.get("citation_similarities", []),
+                                key=lambda x: x.get("similarity", 0),
+                                reverse=True,
+                            )[:5000]  # Increased for better connectivity
+
+                            limited_data = {
+                                "analysis_metadata": full_data.get(
+                                    "analysis_metadata", {}
+                                ),
+                                "dataset_similarities": dataset_sims,
+                                "citation_similarities": citation_sims,
+                            }
+                            analysis_data["theme_analysis"][json_file.stem] = (
+                                limited_data
                             )
-                        logging.info(f"Loaded theme analysis: {json_file.name}")
+                            logging.info(
+                                f"Loaded theme analysis (limited): {json_file.name} - {len(limited_data['dataset_similarities'])} dataset + {len(limited_data['citation_similarities'])} citation similarities"
+                            )
+                        else:
+                            with open(json_file) as f:
+                                analysis_data["theme_analysis"][json_file.stem] = (
+                                    json.load(f)
+                                )
+                            logging.info(f"Loaded theme analysis: {json_file.name}")
                     except Exception as e:
                         logging.warning(f"Could not load {json_file}: {e}")
 
@@ -182,16 +213,18 @@ class InteractiveReportGenerator:
                     # Store path for embedding
                     analysis_data["visualizations"][viz_file.stem] = str(viz_file)
                 for viz_file in dir_path.glob("*.png"):
-                    # Convert to base64 for embedding
+                    # Copy image to output directory and use relative path
                     try:
-                        with open(viz_file, "rb") as f:
-                            img_data = base64.b64encode(f.read()).decode()
+                        import shutil
+
+                        dest_file = self.output_dir / viz_file.name
+                        shutil.copy2(viz_file, dest_file)
                         analysis_data["visualizations"][f"{viz_file.stem}_png"] = (
-                            f"data:image/png;base64,{img_data}"
+                            viz_file.name
                         )
-                        logging.info(f"Embedded visualization: {viz_file.name}")
+                        logging.info(f"Copied visualization: {viz_file.name}")
                     except Exception as e:
-                        logging.warning(f"Could not embed {viz_file}: {e}")
+                        logging.warning(f"Could not copy {viz_file}: {e}")
 
         # Generate summary statistics
         analysis_data["summary_stats"] = self._generate_summary_stats(analysis_data)
@@ -548,12 +581,7 @@ class InteractiveReportGenerator:
                     <i class="fas fa-tags me-2"></i>Research Themes
                 </button>
             </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="exports-tab" data-bs-toggle="pill" data-bs-target="#exports" 
-                        type="button" role="tab">
-                    <i class="fas fa-download me-2"></i>Data Export
-                </button>
-            </li>
+
         </ul>
 
         <!-- Tab Content -->
@@ -578,9 +606,9 @@ class InteractiveReportGenerator:
                             </div>
                             <div class="card-body">
                                 <div id="growthChart" class="viz-container"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <div class="col-md-4">
                         <div class="card analysis-card mb-4">
                             <div class="card-header">
@@ -589,11 +617,11 @@ class InteractiveReportGenerator:
                             <div class="card-body">
                                 <div id="bridgeChart" class="viz-container"></div>
                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
+                
             <!-- Network Analysis Tab -->
             <div class="tab-pane fade" id="network" role="tabpanel">
                 <h2 class="section-header">Network Analysis</h2>
@@ -607,7 +635,7 @@ class InteractiveReportGenerator:
                     <div class="col-md-6">
                         <div class="card analysis-card mb-4 h-100">
                             <div class="card-header">
-                                <h5><i class="fas fa-network-wired me-2"></i>Dataset Network</h5>
+                                <h5><i class="fas fa-network-wired me-2"></i>Dataset Map</h5>
                                 <small class="text-muted">
                                     Datasets positioned using semantic coordinates, sized by citation count
                                 </small>
@@ -620,18 +648,18 @@ class InteractiveReportGenerator:
                     <div class="col-md-6">
                         <div class="card analysis-card mb-4 h-100">
                             <div class="card-header">
-                                <h5><i class="fas fa-quote-left me-2"></i>Citation Network</h5>
+                                <h5><i class="fas fa-quote-left me-2"></i>Citation Map</h5>
                                 <small class="text-muted">
                                     Citations positioned using semantic coordinates, connected by embedding similarity.
                                 </small>
                             </div>
                             <div class="card-body">
                                 <div id="citationNetworkViz" class="network-container" style="height: 500px;"></div>
-                            </div>
                         </div>
                     </div>
                 </div>
-                
+            </div>
+
                 <div class="alert alert-secondary mt-3">
                     <i class="fas fa-lightbulb me-2"></i>
                     <strong>Network Visualization Insights:</strong> 
@@ -655,72 +683,52 @@ class InteractiveReportGenerator:
                     <div class="col-md-6 mb-4">
                         <div class="card analysis-card">
                             <div class="card-header">
-                                <h5><i class="fas fa-cloud me-2"></i>Research Theme 0 - Core EEG</h5>
+                                <h5><i class="fas fa-cloud me-2"></i>Theme 1 - Core EEG</h5>
                                 <small class="text-muted">Primary neuroscience datasets</small>
                             </div>
                             <div class="card-body text-center">
                                 {% if visualizations.theme_0_wordcloud_png %}
                                 <img src="{{ visualizations.theme_0_wordcloud_png }}" 
-                                     alt="Theme 0 Word Cloud" class="img-fluid rounded" 
-                                     style="max-height: 300px; width: auto;">
-                                {% else %}
-                                <div class="text-muted p-4">
-                                    <i class="fas fa-cloud fa-3x mb-3"></i>
-                                    <p>Word cloud not available</p>
-                                </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="card analysis-card">
-                            <div class="card-header">
-                                <h5><i class="fas fa-cloud me-2"></i>Research Theme 1 - Audio & Stimulation</h5>
-                                <small class="text-muted">Auditory processing studies</small>
-                            </div>
-                            <div class="card-body text-center">
-                                {% if visualizations.theme_1_wordcloud_png %}
-                                <img src="{{ visualizations.theme_1_wordcloud_png }}" 
                                      alt="Theme 1 Word Cloud" class="img-fluid rounded" 
                                      style="max-height: 300px; width: auto;">
                                 {% else %}
                                 <div class="text-muted p-4">
                                     <i class="fas fa-cloud fa-3x mb-3"></i>
                                     <p>Word cloud not available</p>
-                                </div>
-                                {% endif %}
                             </div>
+                                {% endif %}
                         </div>
+                    </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <div class="card analysis-card">
                             <div class="card-header">
-                                <h5><i class="fas fa-cloud me-2"></i>Research Theme 2 - Task Performance</h5>
-                                <small class="text-muted">Cognitive and behavioral tasks</small>
+                                <h5><i class="fas fa-cloud me-2"></i>Theme 2 - Audio & Stimulation</h5>
+                                <small class="text-muted">Auditory processing studies</small>
                             </div>
                             <div class="card-body text-center">
-                                {% if visualizations.theme_2_wordcloud_png %}
-                                <img src="{{ visualizations.theme_2_wordcloud_png }}" 
+                                {% if visualizations.theme_1_wordcloud_png %}
+                                <img src="{{ visualizations.theme_1_wordcloud_png }}" 
                                      alt="Theme 2 Word Cloud" class="img-fluid rounded" 
                                      style="max-height: 300px; width: auto;">
                                 {% else %}
                                 <div class="text-muted p-4">
                                     <i class="fas fa-cloud fa-3x mb-3"></i>
                                     <p>Word cloud not available</p>
-                                </div>
-                                {% endif %}
                             </div>
+                                {% endif %}
                         </div>
                     </div>
+                </div>
                     <div class="col-md-6 mb-4">
                         <div class="card analysis-card">
                             <div class="card-header">
-                                <h5><i class="fas fa-cloud me-2"></i>Research Theme 3 - Advanced Methods</h5>
-                                <small class="text-muted">Methodological and analytical approaches</small>
+                                <h5><i class="fas fa-cloud me-2"></i>Theme 3 - Task Performance</h5>
+                                <small class="text-muted">Cognitive and behavioral tasks</small>
                             </div>
                             <div class="card-body text-center">
-                                {% if visualizations.theme_3_wordcloud_png %}
-                                <img src="{{ visualizations.theme_3_wordcloud_png }}" 
+                                {% if visualizations.theme_2_wordcloud_png %}
+                                <img src="{{ visualizations.theme_2_wordcloud_png }}" 
                                      alt="Theme 3 Word Cloud" class="img-fluid rounded" 
                                      style="max-height: 300px; width: auto;">
                                 {% else %}
@@ -732,82 +740,33 @@ class InteractiveReportGenerator:
                             </div>
                         </div>
                     </div>
-
-                </div>
-            </div>
-
-            <!-- Data Export Tab -->
-            <div class="tab-pane fade" id="exports" role="tabpanel">
-                <h2 class="section-header">Data Export & External Tools</h2>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card analysis-card mb-4">
+                    <div class="col-md-6 mb-4">
+                        <div class="card analysis-card">
                             <div class="card-header">
-                                <h5><i class="fas fa-external-link-alt me-2"></i>Network Analysis Tools</h5>
+                                <h5><i class="fas fa-cloud me-2"></i>Theme 4 - Advanced Methods</h5>
+                                <small class="text-muted">Methodological and analytical approaches</small>
                             </div>
-                            <div class="card-body">
-                                <p>Export network data for advanced analysis in specialized tools:</p>
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-outline-primary" onclick="exportToGephi()">
-                                        <i class="fas fa-download me-2"></i>Export to Gephi (GEXF)
-                                    </button>
-                                    <button class="btn btn-outline-primary" onclick="exportToCytoscape()">
-                                        <i class="fas fa-download me-2"></i>Export to Cytoscape (CX)
-                                    </button>
-                                    <button class="btn btn-outline-secondary" onclick="exportToGraphML()">
-                                        <i class="fas fa-download me-2"></i>Export as GraphML
-                                    </button>
+                            <div class="card-body text-center">
+                                {% if visualizations.theme_3_wordcloud_png %}
+                                <img src="{{ visualizations.theme_3_wordcloud_png }}" 
+                                     alt="Theme 4 Word Cloud" class="img-fluid rounded" 
+                                     style="max-height: 300px; width: auto;">
+                                {% else %}
+                                <div class="text-muted p-4">
+                                    <i class="fas fa-cloud fa-3x mb-3"></i>
+                                    <p>Word cloud not available</p>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card analysis-card mb-4">
-                            <div class="card-header">
-                                <h5><i class="fas fa-table me-2"></i>Data Tables</h5>
-                            </div>
-                            <div class="card-body">
-                                <p>Download analysis results as CSV files:</p>
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-outline-success" onclick="exportNetworkCSV()">
-                                        <i class="fas fa-file-csv me-2"></i>Network Analysis CSV
-                                    </button>
-                                    <button class="btn btn-outline-success" onclick="exportTemporalCSV()">
-                                        <i class="fas fa-file-csv me-2"></i>Temporal Data CSV
-                                    </button>
-                                    <button class="btn btn-outline-success" onclick="exportThemesCSV()">
-                                        <i class="fas fa-file-csv me-2"></i>Theme Analysis CSV
-                                    </button>
-                                </div>
-                            </div>
+                                {% endif %}
                         </div>
                     </div>
                 </div>
                 
-                <div class="card analysis-card">
-                    <div class="card-header">
-                        <h5><i class="fas fa-info-circle me-2"></i>Export Information</h5>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <h6>Gephi (GEXF)</h6>
-                                <p class="text-muted">Best for: Large network visualization, layout algorithms, community detection</p>
                             </div>
-                            <div class="col-md-4">
-                                <h6>Cytoscape (CX)</h6>
-                                <p class="text-muted">Best for: Biological networks, pathway analysis, advanced styling</p>
+
+
                             </div>
-                            <div class="col-md-4">
-                                <h6>GraphML</h6>
-                                <p class="text-muted">Best for: Universal format, programmatic analysis, custom tools</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Detail Modals -->
     <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
@@ -816,10 +775,10 @@ class InteractiveReportGenerator:
                 <div class="modal-header">
                     <h5 class="modal-title" id="detailModalLabel">Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+                        </div>
                 <div class="modal-body" id="detailModalBody">
                     <!-- Dynamic content will be inserted here -->
-                </div>
+                    </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
@@ -1027,75 +986,92 @@ class InteractiveReportGenerator:
                 }
             });
             
-            // Add co-citation connections between datasets
-            const coCitationData = networkData.dataset_co_citations || [];
-            if (coCitationData.length > 0) {
-                coCitationData.slice(0, 30).forEach((relation, index) => {
-                    const ds1 = relation.dataset1;
-                    const ds2 = relation.dataset2;
-                    const sharedCitations = parseInt(relation.shared_citations) || 0;
+            // Get real dataset similarity connections (like citation network)
+            let datasetSimilarities = null;
+            
+            // Look for embedding similarities file (updated format with both dataset and citation similarities)
+            const embeddingKeys = Object.keys(analysisData.theme_analysis || {}).filter(key => 
+                key.startsWith('embedding_similarities_')
+            );
+            if (embeddingKeys.length > 0) {
+                // Use the most recent one
+                const latestKey = embeddingKeys.sort().pop();
+                datasetSimilarities = analysisData.theme_analysis[latestKey];
+                console.log('Loaded dataset similarities:', latestKey, datasetSimilarities?.dataset_similarities?.length || 0);
+            }
+            
+            // Add real embedding similarity connections for datasets
+            if (datasetSimilarities?.dataset_similarities) {
+                const similarities = datasetSimilarities.dataset_similarities;
+                let edgeCount = 0;
+                const maxEdges = 400; // Increased limit for better connectivity
+                
+                console.log('Total dataset similarities available:', similarities.length);
+                
+                // Smart filtering: find similarities involving datasets in our network
+                const nodeDatasetIds = Array.from(nodeIds);
+                const networkSims = similarities.filter(sim => {
+                    const sourceId = sim.source_info?.source_id;
+                    const targetId = sim.target_info?.source_id;
+                    return nodeIds.has(sourceId) && nodeIds.has(targetId) && sourceId !== targetId;
+                });
+                
+                // Take top similarities for our network (sorted by similarity)
+                const filteredSims = networkSims.slice(0, 500); // Increased for better connectivity
+                console.log('Dataset similarities available:', similarities.length);
+                console.log('Similarities involving our network datasets:', networkSims.length);
+                console.log('Using filtered similarities for dataset network:', filteredSims.length);
+                
+                for (const sim of filteredSims) {
+                    if (edgeCount >= maxEdges) break;
                     
-                    // Only connect if both datasets are in our node set and have significant shared citations
-                    if (nodeIds.has(ds1) && nodeIds.has(ds2) && sharedCitations > 1) {
+                    // Extract dataset IDs from embedding source/target
+                    const sourceDatasetId = sim.source_info?.source_id;
+                    const targetDatasetId = sim.target_info?.source_id;
+                    
+                    // Only connect if both datasets are in our network
+                    if (nodeIds.has(sourceDatasetId) && nodeIds.has(targetDatasetId) && sourceDatasetId !== targetDatasetId) {
                         elements.push({
                             data: {
-                                id: `cocite_${index}`,
-                                source: ds1,
-                                target: ds2,
-                                type: 'co-citation',
-                                weight: Math.min(sharedCitations / 10, 0.01), // Normalize weight
-                                sharedCitations: sharedCitations
+                                id: `similarity_${edgeCount}`,
+                                source: sourceDatasetId,
+                                target: targetDatasetId,
+                                type: 'similarity',
+                                weight: sim.similarity, // Use real similarity score
+                                similarity: sim.similarity
                             }
                         });
+                        edgeCount++;
                     }
-                });
-            }
-            
-            // Add bridge connections from embedding analysis
-            if (bridgeData?.bridge_analysis?.top_bridges) {
-                bridgeData.bridge_analysis.top_bridges.slice(0, 15).forEach((bridge, index) => {
-                    if (bridge.entity_type === 'citation' && bridge.connected_datasets) {
-                        // Connect datasets that share this bridge citation
-                        const connectedDatasets = bridge.connected_datasets.filter(ds => nodeIds.has(ds));
+                }
+                
+                console.log('Added dataset similarity edges:', edgeCount);
+            } else {
+                console.log('No dataset similarities available - using fallback co-citation data');
+                
+                // Fallback to co-citation data if no embedding similarities
+                const coCitationData = networkData.dataset_co_citations || [];
+                if (coCitationData.length > 0) {
+                    coCitationData.slice(0, 15).forEach((relation, index) => {
+                        const ds1 = relation.dataset1;
+                        const ds2 = relation.dataset2;
+                        const sharedCitations = parseInt(relation.shared_citations) || 0;
                         
-                        for (let i = 0; i < connectedDatasets.length; i++) {
-                            for (let j = i + 1; j < connectedDatasets.length; j++) {
-                                const ds1 = connectedDatasets[i];
-                                const ds2 = connectedDatasets[j];
-                                
-                                elements.push({
-                                    data: {
-                                        id: `bridge_${index}_${i}_${j}`,
-                                        source: ds1,
-                                        target: ds2,
-                                        type: 'bridge',
-                                        weight: bridge.avg_similarity || 0.01
-                                    }
-                                });
-                            }
+                        if (nodeIds.has(ds1) && nodeIds.has(ds2) && sharedCitations > 2) {
+                            elements.push({
+                                data: {
+                                    id: `cocite_${index}`,
+                                    source: ds1,
+                                    target: ds2,
+                                    type: 'similarity',
+                                    weight: Math.min(sharedCitations / 10, 1.0),
+                                    sharedCitations: sharedCitations
+                                }
+                            });
                         }
-                    }
-                });
+                    });
+                }
             }
-            
-            // Add cluster-based connections for datasets in same research theme
-            const nodesList = elements.filter(e => !e.data.source);
-            nodesList.forEach((nodeA, i) => {
-                nodesList.slice(i + 1).forEach((nodeB, j) => {
-                    // Connect nodes in same cluster with low probability to avoid overcrowding
-                    if (nodeA.data.cluster === nodeB.data.cluster && Math.random() < 0.3) {
-                        elements.push({
-                            data: {
-                                id: `cluster_${i}_${j}`,
-                                source: nodeA.data.id,
-                                target: nodeB.data.id,
-                                type: 'cluster',
-                                weight: 0.01
-                            }
-                        });
-                    }
-                });
-            });
             
             console.log('Built UMAP network with', elements.filter(e => !e.data.source).length, 'nodes and', 
                        elements.filter(e => e.data.source).length, 'edges');
@@ -1246,7 +1222,7 @@ class InteractiveReportGenerator:
                             'label': '', // Remove persistent labels
                             'width': 'mapData(citations, 0, 100, 8, 25)',
                             'height': 'mapData(citations, 0, 100, 8, 25)',
-                            'border-width': 1,
+                            'border-width': 0.5,
                             'border-color': '#fff',
                             'opacity': 0.85
                         }
@@ -1258,50 +1234,32 @@ class InteractiveReportGenerator:
                             'label': '', // Remove persistent labels
                             'width': 'mapData(datasetsConnected, 1, 25, 12, 30)',
                             'height': 'mapData(datasetsConnected, 1, 25, 12, 30)',
-                            'border-width': 2,
+                            'border-width': 1,
                             'border-color': '#fff',
                             'shape': 'diamond',
                             'opacity': 0.8
                         }
                     },
                     {
-                        selector: 'edge[type="co-citation"]',
+                         selector: 'edge[type="similarity"]',
                         style: {
-                            'width': 'mapData(weight, 1, 10, 0.8, 2.5)',
-                            'line-color': '#bdc3c7',
-                            'opacity': 0.5,
-                            'curve-style': 'bezier'
-                        }
-                    },
-                    {
-                        selector: 'edge[type="bridge"]',
-                        style: {
-                            'width': '0.5',
-                            'line-color': '#bdc3c7',
-                            'opacity': 0.4,
-                            'curve-style': 'bezier'
-                        }
-                    },
-                    {
-                        selector: 'edge[type="cluster"]',
-                        style: {
-                            'width': '0.5',
-                            'line-color': '#bdc3c7',
-                            'opacity': 0.4,
-                            'curve-style': 'straight'
-                        }
-                    },
+                             'width': 'mapData(weight, 0.5, 1.0, 0.6, 1.6)', // Map similarity range to line width - doubled thickness
+                             'line-color': 'rgba(100, 150, 200, 0.4)',
+                             'opacity': 'mapData(weight, 0.5, 1.0, 0.3, 0.6)', // Opacity reflects similarity strength
+                             'curve-style': 'straight'
+                         }
+                     },
                     {
                         selector: 'node:selected',
                         style: {
-                            'border-width': 4,
+                            'border-width': 2,
                             'border-color': colorScheme.accent
                         }
                     },
                     {
                         selector: 'node:hover',
                         style: {
-                            'border-width': 3,
+                            'border-width': 1.5,
                             'border-color': colorScheme.accent,
                             'opacity': 1,
                             'z-index': 999,
@@ -1461,34 +1419,26 @@ class InteractiveReportGenerator:
                             'font-size': '0px',
                             'width': 'mapData(impact, 0, 100, 6, 18)', // Smaller nodes based on citation count
                             'height': 'mapData(impact, 0, 100, 6, 18)', // Smaller nodes based on citation count
-                            'border-width': 1,
+                            'border-width': 0.5,
                             'border-color': '#fff',
                             'opacity': 0.85,
                             'shape': 'ellipse'
                         }
                     },
                     {
-                        selector: 'edge[type="similarity"]',
-                        style: {
-                            'width': 'mapData(strength, 0.6, 1.0, 0.9, 0.8)', // Use real similarity for width - balanced
-                            'line-color': 'mapData(strength, 0.6, 1.0, "#bdc3c7", "#3498db")', // Color by similarity strength
-                            'curve-style': 'straight',
-                            'opacity': 'mapData(strength, 0.6, 1.0, 0.3, 0.8)' // Opacity reflects similarity
+                                                  selector: 'edge[type="similarity"]',
+                          style: {
+                              'width': 'mapData(strength, 0.5, 1.0, 0.6, 1.6)', // Use real similarity for width - doubled thickness
+                              'line-color': 'mapData(strength, 0.5, 1.0, "#bdc3c7", "#3498db")', // Color by similarity strength
+                              'curve-style': 'straight',
+                              'opacity': 'mapData(strength, 0.5, 1.0, 0.3, 0.8)' // Opacity reflects similarity
                         }
                     },
-                    {
-                        selector: 'edge[type="dataset"]',
-                        style: {
-                            'width': '0.01',
-                            'line-color': colorScheme.primary,
-                            'curve-style': 'bezier',
-                            'opacity': 0.6
-                        }
-                    },
+
                     {
                         selector: 'node[type="citation"]:hover',
                         style: {
-                            'border-width': 3,
+                            'border-width': 1.5,
                             'border-color': '#f39c12',
                             'opacity': 1,
                             'z-index': 999
@@ -1589,12 +1539,12 @@ class InteractiveReportGenerator:
             
             // Get real citation similarity connections
             let citationSimilarities = null;
-            // Look for citation similarities file (try different possible keys)
+            // Look for embedding similarities file (new format with both dataset and citation similarities)
             const possibleKeys = Object.keys(analysisData.theme_analysis || {}).filter(key => 
-                key.startsWith('citation_similarities_')
+                key.startsWith('embedding_similarities_') || key.startsWith('citation_similarities_')
             );
             if (possibleKeys.length > 0) {
-                // Use the most recent one
+                // Use the most recent one (prefer embedding_similarities over citation_similarities)
                 const latestKey = possibleKeys.sort().pop();
                 citationSimilarities = analysisData.theme_analysis[latestKey];
                 console.log('Loaded citation similarities:', latestKey, citationSimilarities?.citation_similarities?.length || 0);
@@ -1641,85 +1591,111 @@ class InteractiveReportGenerator:
             console.log('Combined citation data length:', uniqueImpactData.length);
             console.log('Sample combined citation data:', uniqueImpactData.slice(0, 2));
             
-            // Create citation network using UMAP coordinates and real similarity connections
-            if (Object.keys(citationUmapCoords).length > 0 && citationSimilarities) {
-                const similarities = citationSimilarities.citation_similarities || [];
-                console.log('Real citation similarities available:', similarities.length);
-                if (similarities.length > 0) {
-                    console.log('Sample similarity source/target IDs:', similarities.slice(0, 3).map(s => `${s.source} -> ${s.target}`));
+            // Include ALL high-confidence citations, use UMAP when available
+            const allHighConfCitations = uniqueImpactData.filter(citation => {
+                const confidence = parseFloat(citation.confidence_score) || 0;
+                return confidence >= 0.4;
+            });
+            
+            console.log('ALL high confidence citations (≥0.4):', allHighConfCitations.length);
+            
+            // Sort by impact (citation count) and take top papers
+            allHighConfCitations.sort((a, b) => {
+                const impactA = parseInt(a.citation_impact) || 0;
+                const impactB = parseInt(b.citation_impact) || 0;
+                return impactB - impactA; // Descending order
+            });
+            
+            // Take top 150 for comprehensive network
+            const selectedHighConfCitations = allHighConfCitations.slice(0, Math.min(allHighConfCitations.length, 150));
+            console.log('Using top high-confidence citations for network:', selectedHighConfCitations.length);
+            console.log('Top 3 papers by impact:', selectedHighConfCitations.slice(0, 3).map(c => `${c.citation_title} (${c.citation_impact} citations)`));
+            
+            // Get similarity data if available
+            const similarities = citationSimilarities?.citation_similarities || [];
+            console.log('Citation similarities available:', similarities.length);
+                
+            // Create nodes for all high-confidence citations
+            selectedHighConfCitations.forEach((citation, index) => {
+                const confidence = parseFloat(citation.confidence_score) || 0.4;
+                const impact = parseInt(citation.citation_impact) || 0;
+                
+                // Try to find UMAP coordinates for this citation
+                let position = null;
+                let cluster = 0;
+                
+                // Look for UMAP coordinates by trying to match citation
+                for (const [embeddingId, coords] of Object.entries(citationUmapCoords)) {
+                    // Try to match by finding in similarity data
+                    const matchFound = similarities.some(sim => {
+                        const sourceMatch = sim.source === embeddingId && 
+                                         sim.source_info?.title === citation.citation_title;
+                        const targetMatch = sim.target === embeddingId && 
+                                         sim.target_info?.title === citation.citation_title;
+                        return sourceMatch || targetMatch;
+                    });
+                    
+                    if (matchFound) {
+                        position = { x: coords.x, y: coords.y };
+                        cluster = coords.cluster;
+                        break;
+                    }
                 }
                 
-                // Extract all citation IDs that have both UMAP coords and similarity connections
-                const allCitationIds = new Set();
-                let coordMatchCount = 0;
-                similarities.forEach(sim => {
-                    if (citationUmapCoords[sim.source]) {
-                        allCitationIds.add(sim.source);
-                        coordMatchCount++;
-                    }
-                    if (citationUmapCoords[sim.target]) {
-                        allCitationIds.add(sim.target);
-                        coordMatchCount++;
-                    }
+                // Fallback positioning if no UMAP coordinates
+                if (!position) {
+                    position = {
+                        x: Math.cos(2 * Math.PI * index / selectedHighConfCitations.length) * 150 + Math.random() * 50,
+                        y: Math.sin(2 * Math.PI * index / selectedHighConfCitations.length) * 150 + Math.random() * 50
+                    };
+                }
+                
+                elements.push({
+                    data: {
+                        id: `citation_${index}`,
+                        type: 'citation',
+                        label: '', // No persistent label
+                        title: citation.citation_title || 'No title',
+                        author: citation.citation_author || 'Unknown',
+                        year: citation.citation_year || '',
+                        venue: citation.venue || '',
+                        cluster: cluster,
+                        impact: impact,
+                        confidence: confidence,
+                        dataset: citation.dataset_name || citation.dataset_id || ''
+                    },
+                    position: position
                 });
+            });
                 
-                console.log('Citations with both UMAP coords and similarities:', allCitationIds.size);
-                console.log('Total coordinate matches found:', coordMatchCount);
-                
-                // Take a representative sample for performance (up to 100 citations)
-                const selectedCitations = Array.from(allCitationIds).slice(0, Math.min(allCitationIds.size, 100));
-                console.log('Using citations for UMAP network with real similarities:', selectedCitations.length);
-                
-                // Create nodes with UMAP positioning and real citation data
-                selectedCitations.forEach((citationId, index) => {
-                    const coords = citationUmapCoords[citationId];
-                    const cluster = coords.cluster;
-                    
-                    // Find citation info from similarity data
-                    let citationInfo = null;
-                    for (const sim of similarities) {
-                        if (sim.source === citationId && sim.source_info) {
-                            citationInfo = sim.source_info;
-                            break;
-                        } else if (sim.target === citationId && sim.target_info) {
-                            citationInfo = sim.target_info;
-                            break;
-                        }
-                    }
-                    
-                    elements.push({
-                        data: {
-                            id: citationId,
-                            type: 'citation',
-                            label: '', // No persistent label
-                            title: citationInfo?.title || `Citation ${citationId.split('_')[1].slice(0,8)}...`,
-                            author: citationInfo?.author || 'Research Paper',
-                            year: citationInfo?.year || '',
-                            venue: citationInfo?.venue || '',
-                            cluster: cluster,
-                            impact: parseInt(citationInfo?.cited_by) || parseInt(citationInfo?.citation_impact) || 10,
-                            confidence: citationInfo?.confidence_score || 0.5,
-                            embeddingId: citationId
-                        },
-                        position: { x: coords.x, y: coords.y }
-                    });
+            // Add similarity-based connections when available
+            if (similarities.length > 0) {
+                // Create a mapping from citation titles to node IDs
+                const titleToNodeId = {};
+                selectedHighConfCitations.forEach((citation, index) => {
+                    titleToNodeId[citation.citation_title] = `citation_${index}`;
                 });
-                
-                // Add real similarity-based connections
-                const selectedSet = new Set(selectedCitations);
                 let edgeCount = 0;
-                const maxEdges = 200; // Limit edges for performance
+                const maxEdges = 500; // Increased limit for better connectivity
+                
+                console.log('Citation similarities available for network:', similarities.length);
                 
                 for (const sim of similarities) {
                     if (edgeCount >= maxEdges) break;
                     
-                    // Only add edges between selected citations
-                    if (selectedSet.has(sim.source) && selectedSet.has(sim.target)) {
+                    // Find citations by matching titles
+                    const sourceTitle = sim.source_info?.title;
+                    const targetTitle = sim.target_info?.title;
+                    
+                    const sourceNodeId = titleToNodeId[sourceTitle];
+                    const targetNodeId = titleToNodeId[targetTitle];
+                    
+                    if (sourceNodeId && targetNodeId && sourceNodeId !== targetNodeId) {
                         elements.push({
                             data: {
-                                id: `sim_${sim.source}_${sim.target}`,
-                                source: sim.source,
-                                target: sim.target,
+                                id: `sim_${edgeCount}`,
+                                source: sourceNodeId,
+                                target: targetNodeId,
                                 type: 'similarity',
                                 strength: sim.similarity,
                                 similarity: sim.similarity
@@ -1729,7 +1705,7 @@ class InteractiveReportGenerator:
                     }
                 }
                 
-                console.log('Added real similarity edges:', edgeCount);
+                console.log('Added similarity edges:', edgeCount);
             } else {
                 console.log('🚨 FALLBACK TRIGGERED!');
                 console.log('UMAP coords available:', Object.keys(citationUmapCoords).length);
@@ -1921,16 +1897,16 @@ class InteractiveReportGenerator:
                 }
             } else {
                 // Handle dataset network info panel
-                if (infoPanelEl) {
-                    infoPanelEl.innerHTML = infoHTML;
-                } else {
+            if (infoPanelEl) {
+                infoPanelEl.innerHTML = infoHTML;
+            } else {
                     // Create dataset info panel if it doesn't exist
-                    const networkSection = document.getElementById('networkViz').parentElement;
-                    const infoPanelDiv = document.createElement('div');
-                    infoPanelDiv.id = 'network-info-panel';
-                    infoPanelDiv.className = 'mt-3';
-                    infoPanelDiv.innerHTML = infoHTML;
-                    networkSection.appendChild(infoPanelDiv);
+                const networkSection = document.getElementById('networkViz').parentElement;
+                const infoPanelDiv = document.createElement('div');
+                infoPanelDiv.id = 'network-info-panel';
+                infoPanelDiv.className = 'mt-3';
+                infoPanelDiv.innerHTML = infoHTML;
+                networkSection.appendChild(infoPanelDiv);
                 }
             }
         }
@@ -2042,33 +2018,7 @@ class InteractiveReportGenerator:
             Plotly.newPlot('umapChart', data, layout, {responsive: true});
         }
         
-        // Export functions
-        function exportToGephi() {
-            // Implementation for GEXF export
-            alert('Exporting to Gephi GEXF format...');
-        }
-        
-        function exportToCytoscape() {
-            // Implementation for Cytoscape CX export
-            alert('Exporting to Cytoscape CX format...');
-        }
-        
-        function exportToGraphML() {
-            // Implementation for GraphML export
-            alert('Exporting to GraphML format...');
-        }
-        
-        function exportNetworkCSV() {
-            alert('Exporting network analysis CSV...');
-        }
-        
-        function exportTemporalCSV() {
-            alert('Exporting temporal data CSV...');
-        }
-        
-        function exportThemesCSV() {
-            alert('Exporting themes analysis CSV...');
-        }
+
         
         // Helper function to calculate string similarity
         function stringSimilarity(str1, str2) {
@@ -3032,17 +2982,13 @@ def main() -> int:
         # Generate dashboard
         dashboard_file = generator.generate_dashboard(analysis_data)
 
-        # Create export files
-        export_files = generator.create_export_files(analysis_data)
+        # Skip export files to reduce HTML size
+        # export_files = generator.create_export_files(analysis_data)
 
         # Report summary
         print("\n🎉 Interactive Reports Generated Successfully!")
         print(f"\n📊 Main Dashboard: {dashboard_file}")
         print(f"🌐 Open in browser: file://{dashboard_file.absolute()}")
-
-        print(f"\n📁 Export Files ({len(export_files)} created):")
-        for file_path in export_files:
-            print(f"   • {file_path.name}")
 
         print("\n📈 Analysis Summary:")
         print(
