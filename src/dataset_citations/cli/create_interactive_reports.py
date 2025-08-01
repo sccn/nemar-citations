@@ -1000,78 +1000,8 @@ class InteractiveReportGenerator:
                 console.log('Loaded dataset similarities:', latestKey, datasetSimilarities?.dataset_similarities?.length || 0);
             }
             
-            // Add real embedding similarity connections for datasets
-            if (datasetSimilarities?.dataset_similarities) {
-                const similarities = datasetSimilarities.dataset_similarities;
-                let edgeCount = 0;
-                const maxEdges = 400; // Increased limit for better connectivity
-                
-                console.log('Total dataset similarities available:', similarities.length);
-                
-                // Smart filtering: find similarities involving datasets in our network
-                const nodeDatasetIds = Array.from(nodeIds);
-                const networkSims = similarities.filter(sim => {
-                    const sourceId = sim.source_info?.source_id;
-                    const targetId = sim.target_info?.source_id;
-                    return nodeIds.has(sourceId) && nodeIds.has(targetId) && sourceId !== targetId;
-                });
-                
-                // Take top similarities for our network (sorted by similarity)
-                const filteredSims = networkSims.slice(0, 500); // Increased for better connectivity
-                console.log('Dataset similarities available:', similarities.length);
-                console.log('Similarities involving our network datasets:', networkSims.length);
-                console.log('Using filtered similarities for dataset network:', filteredSims.length);
-                
-                for (const sim of filteredSims) {
-                    if (edgeCount >= maxEdges) break;
-                    
-                    // Extract dataset IDs from embedding source/target
-                    const sourceDatasetId = sim.source_info?.source_id;
-                    const targetDatasetId = sim.target_info?.source_id;
-                    
-                    // Only connect if both datasets are in our network
-                    if (nodeIds.has(sourceDatasetId) && nodeIds.has(targetDatasetId) && sourceDatasetId !== targetDatasetId) {
-                        elements.push({
-                            data: {
-                                id: `similarity_${edgeCount}`,
-                                source: sourceDatasetId,
-                                target: targetDatasetId,
-                                type: 'similarity',
-                                weight: sim.similarity, // Use real similarity score
-                                similarity: sim.similarity
-                            }
-                        });
-                        edgeCount++;
-                    }
-                }
-                
-                console.log('Added dataset similarity edges:', edgeCount);
-            } else {
-                console.log('No dataset similarities available - using fallback co-citation data');
-                
-                // Fallback to co-citation data if no embedding similarities
-                const coCitationData = networkData.dataset_co_citations || [];
-                if (coCitationData.length > 0) {
-                    coCitationData.slice(0, 15).forEach((relation, index) => {
-                        const ds1 = relation.dataset1;
-                        const ds2 = relation.dataset2;
-                        const sharedCitations = parseInt(relation.shared_citations) || 0;
-                        
-                        if (nodeIds.has(ds1) && nodeIds.has(ds2) && sharedCitations > 2) {
-                            elements.push({
-                                data: {
-                                    id: `cocite_${index}`,
-                                    source: ds1,
-                                    target: ds2,
-                                    type: 'similarity',
-                                    weight: Math.min(sharedCitations / 10, 1.0),
-                                    sharedCitations: sharedCitations
-                                }
-                            });
-                        }
-                    });
-                }
-            }
+            // Dataset network: No connections - only show positioned nodes
+            console.log('Dataset network: showing only positioned nodes without connections');
             
             console.log('Built UMAP network with', elements.filter(e => !e.data.source).length, 'nodes and', 
                        elements.filter(e => e.data.source).length, 'edges');
@@ -1240,15 +1170,7 @@ class InteractiveReportGenerator:
                             'opacity': 0.8
                         }
                     },
-                    {
-                         selector: 'edge[type="similarity"]',
-                        style: {
-                             'width': 'mapData(weight, 0.5, 1.0, 0.6, 1.6)', // Map similarity range to line width - doubled thickness
-                             'line-color': 'rgba(100, 150, 200, 0.4)',
-                             'opacity': 'mapData(weight, 0.5, 1.0, 0.3, 0.6)', // Opacity reflects similarity strength
-                             'curve-style': 'straight'
-                         }
-                     },
+
                     {
                         selector: 'node:selected',
                         style: {
