@@ -25513,6 +25513,20 @@
         "status": "current",
         "input_embeddings": 1139,
         "embedding_type": "both"
+      },
+      {
+        "file": "analysis/umap_projections/citations_umap_2d_v1_20250731_192903.pkl",
+        "created": "2025-07-31T19:29:03.632572",
+        "parameters": {
+          "n_components": 2,
+          "n_neighbors": 15,
+          "min_dist": 0.1,
+          "metric": "cosine",
+          "random_state": 42
+        },
+        "status": "current",
+        "input_embeddings": 854,
+        "embedding_type": "citations"
       }
     ],
     "clustering": [
@@ -25527,12 +25541,23 @@
         "n_clusters": 4,
         "method": "dbscan",
         "silhouette_score": -0.018443306908011436
+      },
+      {
+        "file": "analysis/clustering/citations_clusters_kmeans_v1_20250731_192903.pkl",
+        "created": "2025-07-31T19:29:03.699841",
+        "parameters": {
+          "n_clusters": 4
+        },
+        "status": "current",
+        "n_clusters": 4,
+        "method": "kmeans",
+        "silhouette_score": 0.3828371465206146
       }
     ]
   },
   "metadata": {
     "created": "2025-07-31T16:01:54.747576",
-    "last_updated": "2025-07-31T16:07:30.695145",
+    "last_updated": "2025-07-31T19:29:03.703541",
     "version": "1.0"
   }
 }
