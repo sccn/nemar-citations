@@ -428,6 +428,21 @@ class InteractiveReportGenerator:
             border-bottom: 1px solid var(--border-color);
         }
         
+        /* Citation info panel styling */
+        #citation-info-panel {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        #citation-info-panel .card {
+            border-left: 4px solid #e67e22;
+        }
+        
+        #citation-info-panel .card-header {
+            background-color: rgba(230, 126, 34, 0.1);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
         /* Responsive network container */
         @media (max-width: 768px) {
             .network-container {
@@ -1455,9 +1470,9 @@ class InteractiveReportGenerator:
                         style: {
                             'background-color': 'mapData(cluster, 0, 3, "#e67e22", "#9b59b6")',
                             'label': '', // No persistent labels
-                            'width': 'mapData(confidence, 0.4, 1.0, 12, 25)',
-                            'height': 'mapData(confidence, 0.4, 1.0, 12, 25)',
-                            'border-width': 1.5,
+                            'width': 'mapData(impact, 0, 100, 6, 18)', // Smaller nodes based on citation count
+                            'height': 'mapData(impact, 0, 100, 6, 18)', // Smaller nodes based on citation count
+                            'border-width': 1,
                             'border-color': '#fff',
                             'opacity': 0.85,
                             'shape': 'ellipse'
@@ -1545,6 +1560,13 @@ class InteractiveReportGenerator:
                 if (tooltipEl) {
                     tooltipEl.style.display = 'none';
                 }
+            });
+            
+            // Add click event for citation info panel
+            cy.on('tap', 'node', function(evt) {
+                const node = evt.target;
+                const data = node.data();
+                updateNetworkInfoPanel(data);
             });
             
             cy.on('mousemove', function(evt) {
@@ -1688,7 +1710,7 @@ class InteractiveReportGenerator:
                             year: citationInfo?.year || '',
                             venue: citationInfo?.venue || '',
                             cluster: cluster,
-                            impact: Math.floor((citationInfo?.confidence_score || 0.5) * 100),
+                            impact: parseInt(citationInfo?.cited_by) || parseInt(citationInfo?.citation_impact) || 10,
                             confidence: citationInfo?.confidence_score || 0.5,
                             embeddingId: citationId
                         },
@@ -1855,6 +1877,25 @@ class InteractiveReportGenerator:
                         </div>
                     </div>
                 `;
+            } else if (nodeData.type === 'citation') {
+                infoHTML = `
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0"><i class="fas fa-quote-left me-2"></i>Citation Information</h6>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Title:</strong> ${nodeData.title || 'No title available'}</p>
+                            <p><strong>Author:</strong> ${nodeData.author || 'Unknown'}</p>
+                            <p><strong>Year:</strong> ${nodeData.year || 'N/A'}</p>
+                            <p><strong>Venue:</strong> ${nodeData.venue || 'N/A'}</p>
+                            <p><strong>Citations:</strong> ${nodeData.impact || 0}</p>
+                            <p><strong>Confidence Score:</strong> ${((nodeData.confidence || 0) * 100).toFixed(1)}%</p>
+                            <div class="mt-3">
+                                <small class="text-muted">Part of research cluster ${nodeData.cluster || 'N/A'}</small>
+                            </div>
+                        </div>
+                    </div>
+                `;
             } else if (nodeData.type === 'bridge') {
                 infoHTML = `
                     <div class="card">
@@ -1876,16 +1917,34 @@ class InteractiveReportGenerator:
             
             // Update the info panel if it exists
             const infoPanelEl = document.getElementById('network-info-panel');
-            if (infoPanelEl) {
-                infoPanelEl.innerHTML = infoHTML;
+            const citationInfoPanelEl = document.getElementById('citation-info-panel');
+            
+            if (nodeData.type === 'citation') {
+                // Handle citation network info panel
+                if (citationInfoPanelEl) {
+                    citationInfoPanelEl.innerHTML = infoHTML;
+                } else {
+                    // Create citation info panel if it doesn't exist
+                    const citationNetworkSection = document.getElementById('citationNetworkViz').parentElement;
+                    const infoPanelDiv = document.createElement('div');
+                    infoPanelDiv.id = 'citation-info-panel';
+                    infoPanelDiv.className = 'mt-3';
+                    infoPanelDiv.innerHTML = infoHTML;
+                    citationNetworkSection.appendChild(infoPanelDiv);
+                }
             } else {
-                // Create info panel if it doesn't exist
-                const networkSection = document.getElementById('networkViz').parentElement;
-                const infoPanelDiv = document.createElement('div');
-                infoPanelDiv.id = 'network-info-panel';
-                infoPanelDiv.className = 'mt-3';
-                infoPanelDiv.innerHTML = infoHTML;
-                networkSection.appendChild(infoPanelDiv);
+                // Handle dataset network info panel
+                if (infoPanelEl) {
+                    infoPanelEl.innerHTML = infoHTML;
+                } else {
+                    // Create dataset info panel if it doesn't exist
+                    const networkSection = document.getElementById('networkViz').parentElement;
+                    const infoPanelDiv = document.createElement('div');
+                    infoPanelDiv.id = 'network-info-panel';
+                    infoPanelDiv.className = 'mt-3';
+                    infoPanelDiv.innerHTML = infoHTML;
+                    networkSection.appendChild(infoPanelDiv);
+                }
             }
         }
         
