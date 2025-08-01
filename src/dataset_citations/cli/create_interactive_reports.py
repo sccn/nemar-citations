@@ -475,11 +475,11 @@ class InteractiveReportGenerator:
                 <div class="jumbotron bg-light p-5 rounded">
                     <h1 class="display-4">
                         <i class="fas fa-chart-network me-3"></i>
-                        BIDS Dataset Citation Analysis
+                        NEMAR Dataset Citation Analysis
                     </h1>
                     <p class="lead">
                         Comprehensive analysis of citation patterns, research themes, and network relationships 
-                        across {{ summary_stats.total_datasets }} BIDS datasets with confidence-filtered citations.
+                        across {{ summary_stats.total_datasets }} BIDS datasets on NEMAR with confidence-filtered citations.
                     </p>
                     <hr class="my-4">
                     <div class="row">
@@ -603,21 +603,13 @@ class InteractiveReportGenerator:
                     Hover over nodes to see detailed information.
                 </p>
                 
-                <div class="alert alert-info mb-4">
-                    <i class="fas fa-lightbulb me-2"></i>
-                    <strong>Network Visualization Insights:</strong> 
-                    Edge thickness optimized for clarity: similarity edges (0.3-1.5), co-citation edges (0.8-2.5), 
-                    bridge edges (0.5-2), cluster edges (0.5). Reduced opacity (20-60%) provides better visual hierarchy 
-                    while maintaining connection visibility across different relationship types.
-                </div>
-                
                 <div class="row h-100">
                     <div class="col-md-6">
                         <div class="card analysis-card mb-4 h-100">
                             <div class="card-header">
-                                <h5><i class="fas fa-network-wired me-2"></i>Dataset Network (UMAP)</h5>
+                                <h5><i class="fas fa-network-wired me-2"></i>Dataset Network</h5>
                                 <small class="text-muted">
-                                    Datasets positioned using UMAP embedding coordinates, colored by research clusters
+                                    Datasets positioned using semantic coordinates, sized by citation count
                                 </small>
                             </div>
                             <div class="card-body">
@@ -628,10 +620,9 @@ class InteractiveReportGenerator:
                     <div class="col-md-6">
                         <div class="card analysis-card mb-4 h-100">
                             <div class="card-header">
-                                <h5><i class="fas fa-quote-left me-2"></i>Citation Network (UMAP + Similarity)</h5>
+                                <h5><i class="fas fa-quote-left me-2"></i>Citation Network</h5>
                                 <small class="text-muted">
-                                    Citations positioned using UMAP coordinates, connected by real embedding similarity (≥0.6). 
-                                    Displaying up to 100 citations from 17,531 computed citation similarities.
+                                    Citations positioned using semantic coordinates, connected by embedding similarity.
                                 </small>
                             </div>
                             <div class="card-body">
@@ -639,6 +630,14 @@ class InteractiveReportGenerator:
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="alert alert-secondary mt-3">
+                    <i class="fas fa-lightbulb me-2"></i>
+                    <strong>Network Visualization Insights:</strong> 
+                    Dataset proximity reflects semantic similarity through content analysis. Node size indicates citation volume. 
+                    Citation proximity shows research theme clustering with connections representing embedding similarity. 
+                    Citation node size reflects paper impact (citation count).
                 </div>
             </div>
 
@@ -831,19 +830,18 @@ class InteractiveReportGenerator:
     <!-- Footer -->
     <footer class="footer">
         <div class="container text-center">
-            <p>&copy; 2025 <strong>NEMAR Dataset Citation Analysis</strong>. Generated from BIDS dataset citation tracking system.</p>
+            <p>&copy; 2025 <strong>NEMAR Dataset Citation Analysis</strong>.</p>
             <p class="text-muted mb-2">
-                <strong>NEMAR</strong> is a window to <a href="https://openneuro.org" target="_blank" class="text-decoration-none">OpenNeuro</a> 
+                <a href="https://nemar.org" target="_blank" class="text-decoration-none"><strong>NEMAR</strong></a> is a window to <a href="https://openneuro.org" target="_blank" class="text-decoration-none">OpenNeuro</a> 
                 for hosting and analyzing electrophysiological data (EEG, MEG, iEEG) from around the world.
             </p>
             <p class="text-muted mb-2">
-                Created by <strong>Seyed Yahya Shirazi</strong> 
-                (<a href="https://github.com/neuromechanist" target="_blank" class="text-decoration-none">@neuromechanist</a>)
+                Created by
+                <a href="https://github.com/neuromechanist" target="_blank" class="text-decoration-none">Seyed Yahya Shirazi</a>
                 <br/>
-                <em>Swartz Center for Computational Neuroscience, UC San Diego</em> • NEMAR Team Member
+                <em>Swartz Center for Computational Neuroscience, UC San Diego</em>
             </p>
             <p class="text-muted small">
-                Made with ❤️ for open science neuroscience | 
                 Confidence threshold: ≥{{ summary_stats.confidence_threshold }} | 
                 Analysis: {{ summary_stats.analysis_date }}
             </p>
@@ -1045,7 +1043,7 @@ class InteractiveReportGenerator:
                                 source: ds1,
                                 target: ds2,
                                 type: 'co-citation',
-                                weight: Math.min(sharedCitations / 10, 1.0), // Normalize weight
+                                weight: Math.min(sharedCitations / 10, 0.01), // Normalize weight
                                 sharedCitations: sharedCitations
                             }
                         });
@@ -1071,7 +1069,7 @@ class InteractiveReportGenerator:
                                         source: ds1,
                                         target: ds2,
                                         type: 'bridge',
-                                        weight: bridge.avg_similarity || 0.5
+                                        weight: bridge.avg_similarity || 0.01
                                     }
                                 });
                             }
@@ -1092,7 +1090,7 @@ class InteractiveReportGenerator:
                                 source: nodeA.data.id,
                                 target: nodeB.data.id,
                                 type: 'cluster',
-                                weight: 0.3
+                                weight: 0.01
                             }
                         });
                     }
@@ -1267,19 +1265,10 @@ class InteractiveReportGenerator:
                         }
                     },
                     {
-                        selector: 'edge[type="similarity"]',
-                        style: {
-                            'width': 'mapData(weight, 0.3, 1.0, 0.3, 1.5)',
-                            'line-color': 'rgba(100, 150, 200, 0.4)',
-                            'opacity': 0.3,
-                            'curve-style': 'straight'
-                        }
-                    },
-                    {
                         selector: 'edge[type="co-citation"]',
                         style: {
                             'width': 'mapData(weight, 1, 10, 0.8, 2.5)',
-                            'line-color': colorScheme.primary,
+                            'line-color': '#bdc3c7',
                             'opacity': 0.5,
                             'curve-style': 'bezier'
                         }
@@ -1287,8 +1276,8 @@ class InteractiveReportGenerator:
                     {
                         selector: 'edge[type="bridge"]',
                         style: {
-                            'width': 'mapData(weight, 0.3, 1.0, 0.5, 2)',
-                            'line-color': colorScheme.bridge,
+                            'width': '0.5',
+                            'line-color': '#bdc3c7',
                             'opacity': 0.4,
                             'curve-style': 'bezier'
                         }
@@ -1298,7 +1287,7 @@ class InteractiveReportGenerator:
                         style: {
                             'width': '0.5',
                             'line-color': '#bdc3c7',
-                            'opacity': 0.2,
+                            'opacity': 0.4,
                             'curve-style': 'straight'
                         }
                     },
@@ -1306,10 +1295,7 @@ class InteractiveReportGenerator:
                         selector: 'node:selected',
                         style: {
                             'border-width': 4,
-                            'border-color': colorScheme.accent,
-                            'overlay-color': colorScheme.accent,
-                            'overlay-padding': '6px',
-                            'overlay-opacity': 0.3
+                            'border-color': colorScheme.accent
                         }
                     },
                     {
@@ -1469,7 +1455,10 @@ class InteractiveReportGenerator:
                         selector: 'node[type="citation"]',
                         style: {
                             'background-color': 'mapData(cluster, 0, 3, "#e67e22", "#9b59b6")',
-                            'label': '', // No persistent labels
+                            'label': '',
+                            'text-valign': 'center',
+                            'text-halign': 'center',
+                            'font-size': '0px',
                             'width': 'mapData(impact, 0, 100, 6, 18)', // Smaller nodes based on citation count
                             'height': 'mapData(impact, 0, 100, 6, 18)', // Smaller nodes based on citation count
                             'border-width': 1,
@@ -1481,7 +1470,7 @@ class InteractiveReportGenerator:
                     {
                         selector: 'edge[type="similarity"]',
                         style: {
-                            'width': 'mapData(strength, 0.6, 1.0, 0.5, 2.0)', // Use real similarity for width
+                            'width': 'mapData(strength, 0.6, 1.0, 0.9, 0.8)', // Use real similarity for width - balanced
                             'line-color': 'mapData(strength, 0.6, 1.0, "#bdc3c7", "#3498db")', // Color by similarity strength
                             'curve-style': 'straight',
                             'opacity': 'mapData(strength, 0.6, 1.0, 0.3, 0.8)' // Opacity reflects similarity
@@ -1490,21 +1479,19 @@ class InteractiveReportGenerator:
                     {
                         selector: 'edge[type="dataset"]',
                         style: {
-                            'width': '1.5',
+                            'width': '0.01',
                             'line-color': colorScheme.primary,
                             'curve-style': 'bezier',
                             'opacity': 0.6
                         }
                     },
                     {
-                        selector: 'node:hover',
+                        selector: 'node[type="citation"]:hover',
                         style: {
-                            'border-width': 4,
+                            'border-width': 3,
                             'border-color': '#f39c12',
                             'opacity': 1,
-                            'z-index': 999,
-                            'overlay-opacity': 0.2,
-                            'overlay-color': '#f39c12'
+                            'z-index': 999
                         }
                     }
                 ],
@@ -2317,6 +2304,7 @@ class InteractiveReportGenerator:
         function generateBridgeDetails() {
             const networkData = analysisData.network_analysis || {};
             const rawBridgeData = networkData.bridge_papers || [];
+            const crossDomainData = networkData.multi_dataset_citations || [];
             
             // Deduplicate bridge papers based on title similarity
             const bridgeData = deduplicateBridgePapers(rawBridgeData);
@@ -2330,17 +2318,39 @@ class InteractiveReportGenerator:
                     </p>
                 </div>
                 
-                <div class="row">
-                    <div class="col-md-4">
+                <div class="row mb-4">
+                    <div class="col-md-6">
                         <div class="card border-primary">
                             <div class="card-body text-center">
                                 <h4 class="text-primary">{{ summary_stats.bridge_papers }}</h4>
-                                <p class="mb-0">Total Bridge Papers</p>
+                                <p class="mb-0">Bridge Papers</p>
+                                <small class="text-muted">High confidence + multiple datasets</small>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8">
-                        <h6><i class="fas fa-list me-2"></i>Top Bridge Papers</h6>
+                    <div class="col-md-6">
+                        <div class="card border-info">
+                            <div class="card-body text-center">
+                                <h4 class="text-info">${crossDomainData.length}</h4>
+                                <p class="mb-0">Cross-Domain Papers</p>
+                                <small class="text-muted">All papers citing multiple datasets</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h6><i class="fas fa-share-alt me-2"></i>What are Cross-Domain Papers?</h6>
+                    <p class="text-muted small">
+                        Cross-domain papers cite multiple BIDS datasets from different research domains, 
+                        indicating interdisciplinary research that spans multiple neuroscience areas 
+                        (e.g., combining EEG motor tasks with cognitive experiments).
+                    </p>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-bridge me-2"></i>Top Bridge Papers</h6>
                         <div class="list-group">`;
                         
             if (bridgeData.length > 0) {
@@ -2348,7 +2358,7 @@ class InteractiveReportGenerator:
                     content += `
                         <div class="list-group-item">
                             <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1 small">${(paper.bridge_paper_title || 'No title').substring(0, 60)}${(paper.bridge_paper_title || '').length > 60 ? '...' : ''}</h6>
+                                <h6 class="mb-1 small">${(paper.bridge_paper_title || 'No title').substring(0, 50)}${(paper.bridge_paper_title || '').length > 50 ? '...' : ''}</h6>
                                 <small class="text-muted">${paper.num_datasets_bridged || 0} datasets</small>
                             </div>
                             <p class="mb-1 small text-muted">${paper.bridge_paper_author || 'Unknown author'}</p>
@@ -2362,16 +2372,49 @@ class InteractiveReportGenerator:
             content += `
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-share-alt me-2"></i>Top Cross-Domain Papers</h6>
+                        <div class="list-group">`;
+                        
+            if (crossDomainData.length > 0) {
+                crossDomainData.slice(0, 3).forEach((paper, index) => {
+                    content += `
+                        <div class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1 small">${(paper.citation_title || 'No title').substring(0, 50)}${(paper.citation_title || '').length > 50 ? '...' : ''}</h6>
+                                <small class="text-muted">${paper.num_datasets_cited || 0} datasets</small>
+                            </div>
+                            <p class="mb-1 small text-muted">${paper.citation_author || 'Unknown author'}</p>
+                            <small>Confidence: ${((paper.confidence_score || 0) * 100).toFixed(1)}% | Year: ${paper.citation_year || 'N/A'}</small>
+                        </div>`;
+                });
+            } else {
+                content += '<div class="list-group-item">No cross-domain papers data available</div>';
+            }
+            
+            content += `
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="mt-3">
-                    <h6><i class="fas fa-network-wired me-2"></i>Bridge Analysis Benefits</h6>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-check text-success me-2"></i>Identify cross-domain research opportunities</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Find collaborative research patterns</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Discover methodological innovations</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Map interdisciplinary knowledge flow</li>
-                    </ul>
+                <div class="mt-4">
+                    <h6><i class="fas fa-lightbulb me-2"></i>Research Analysis Benefits</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="small text-primary">Bridge Papers Help:</h6>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check text-success me-2"></i>Identify high-confidence cross-domain opportunities</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Find proven methodological innovations</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="small text-info">Cross-Domain Papers Help:</h6>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check text-success me-2"></i>Map interdisciplinary knowledge flow</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Discover collaborative research patterns</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>`;
                 
             return content;
@@ -2598,7 +2641,7 @@ def export_to_graphml(network_data, output_file):
             <data key="weight">%s</data>
         </edge>""" % (
             edge['source'], edge['target'],
-            edge.get('weight', 1.0)
+            edge.get('weight', 0.05)
         )
     
     graphml_content = graphml_template.format(nodes=nodes_xml, edges=edges_xml)
@@ -2889,7 +2932,7 @@ def export_to_graphml(network_data, output_file):
         for edge in network_data.get("edges", []):
             graphml_content += f'''
         <edge source="{edge["source"]}" target="{edge["target"]}">
-            <data key="weight">{edge.get("weight", 1.0)}</data>
+            <data key="weight">{edge.get("weight", 0.05)}</data>
         </edge>'''
 
         graphml_content += """
