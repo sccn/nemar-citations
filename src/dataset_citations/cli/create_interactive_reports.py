@@ -613,10 +613,10 @@ class InteractiveReportGenerator:
                     <div class="col-md-6">
                         <div class="card analysis-card mb-4 h-100">
                             <div class="card-header">
-                                <h5><i class="fas fa-quote-left me-2"></i>Citation Network (UMAP)</h5>
+                                <h5><i class="fas fa-quote-left me-2"></i>Citation Network (UMAP + Similarity)</h5>
                                 <small class="text-muted">
-                                    Citations positioned using UMAP embedding coordinates, showing semantic similarity. 
-                                    Displaying up to 100 citations from 854 available citation embeddings.
+                                    Citations positioned using UMAP coordinates, connected by real embedding similarity (≥0.6). 
+                                    Displaying up to 100 citations from 17,531 computed citation similarities.
                                 </small>
                             </div>
                             <div class="card-body">
@@ -1466,10 +1466,10 @@ class InteractiveReportGenerator:
                     {
                         selector: 'edge[type="similarity"]',
                         style: {
-                            'width': 'mapData(strength, 0.5, 1.0, 0.5, 1.5)',
-                            'line-color': '#95a5a6',
+                            'width': 'mapData(strength, 0.6, 1.0, 0.5, 2.0)', // Use real similarity for width
+                            'line-color': 'mapData(strength, 0.6, 1.0, "#bdc3c7", "#3498db")', // Color by similarity strength
                             'curve-style': 'straight',
-                            'opacity': 0.4
+                            'opacity': 'mapData(strength, 0.6, 1.0, 0.3, 0.8)' // Opacity reflects similarity
                         }
                     },
                     {
@@ -1495,9 +1495,7 @@ class InteractiveReportGenerator:
                 ],
                 
                 layout: {
-                    name: 'circle',
-                    radius: 150,
-                    startAngle: -Math.PI/2,
+                    name: 'preset', // Use preset layout to respect UMAP coordinates
                     animate: true,
                     animationDuration: 1000,
                     fit: true,
@@ -1559,7 +1557,7 @@ class InteractiveReportGenerator:
         }
         
         function buildCitationNetworkElements() {
-            // Build citation network using UMAP coordinates for semantic positioning
+            // Build citation network using UMAP coordinates and real similarity connections
             const elements = [];
             const networkData = analysisData.network_analysis || {};
             
@@ -1580,7 +1578,21 @@ class InteractiveReportGenerator:
                 });
             }
             
+            // Get real citation similarity connections
+            let citationSimilarities = null;
+            // Look for citation similarities file (try different possible keys)
+            const possibleKeys = Object.keys(analysisData.theme_analysis || {}).filter(key => 
+                key.startsWith('citation_similarities_')
+            );
+            if (possibleKeys.length > 0) {
+                // Use the most recent one
+                const latestKey = possibleKeys.sort().pop();
+                citationSimilarities = analysisData.theme_analysis[latestKey];
+                console.log('Loaded citation similarities:', latestKey, citationSimilarities?.citation_similarities?.length || 0);
+            }
+            
             console.log('Citation UMAP coordinates loaded:', Object.keys(citationUmapCoords).length);
+            console.log('Sample UMAP IDs:', Object.keys(citationUmapCoords).slice(0, 5));
             
             // Combine multiple citation data sources for comprehensive network
             let impactData = [];
@@ -1620,103 +1632,139 @@ class InteractiveReportGenerator:
             console.log('Combined citation data length:', uniqueImpactData.length);
             console.log('Sample combined citation data:', uniqueImpactData.slice(0, 2));
             
-            // Create citation network using UMAP coordinates
-            if (Object.keys(citationUmapCoords).length > 0) {
-                // Use citations that have UMAP coordinates
-                const availableCitationIds = Object.keys(citationUmapCoords);
-                console.log('Available citation UMAP IDs:', availableCitationIds.length);
+            // Create citation network using UMAP coordinates and real similarity connections
+            if (Object.keys(citationUmapCoords).length > 0 && citationSimilarities) {
+                const similarities = citationSimilarities.citation_similarities || [];
+                console.log('Real citation similarities available:', similarities.length);
+                if (similarities.length > 0) {
+                    console.log('Sample similarity source/target IDs:', similarities.slice(0, 3).map(s => `${s.source} -> ${s.target}`));
+                }
+                
+                // Extract all citation IDs that have both UMAP coords and similarity connections
+                const allCitationIds = new Set();
+                let coordMatchCount = 0;
+                similarities.forEach(sim => {
+                    if (citationUmapCoords[sim.source]) {
+                        allCitationIds.add(sim.source);
+                        coordMatchCount++;
+                    }
+                    if (citationUmapCoords[sim.target]) {
+                        allCitationIds.add(sim.target);
+                        coordMatchCount++;
+                    }
+                });
+                
+                console.log('Citations with both UMAP coords and similarities:', allCitationIds.size);
+                console.log('Total coordinate matches found:', coordMatchCount);
                 
                 // Take a representative sample for performance (up to 100 citations)
-                const selectedCitations = availableCitationIds.slice(0, Math.min(availableCitationIds.length, 100));
-                console.log('Using citations for UMAP network:', selectedCitations.length);
+                const selectedCitations = Array.from(allCitationIds).slice(0, Math.min(allCitationIds.size, 100));
+                console.log('Using citations for UMAP network with real similarities:', selectedCitations.length);
                 
+                // Create nodes with UMAP positioning and real citation data
                 selectedCitations.forEach((citationId, index) => {
                     const coords = citationUmapCoords[citationId];
                     const cluster = coords.cluster;
+                    
+                    // Find citation info from similarity data
+                    let citationInfo = null;
+                    for (const sim of similarities) {
+                        if (sim.source === citationId && sim.source_info) {
+                            citationInfo = sim.source_info;
+                            break;
+                        } else if (sim.target === citationId && sim.target_info) {
+                            citationInfo = sim.target_info;
+                            break;
+                        }
+                    }
                     
                     elements.push({
                         data: {
                             id: citationId,
                             type: 'citation',
                             label: '', // No persistent label
-                            title: `Citation ${citationId.split('_')[1].slice(0,8)}...`, // Use hash for title
-                            author: 'Research Paper',
+                            title: citationInfo?.title || `Citation ${citationId.split('_')[1].slice(0,8)}...`,
+                            author: citationInfo?.author || 'Research Paper',
+                            year: citationInfo?.year || '',
+                            venue: citationInfo?.venue || '',
                             cluster: cluster,
-                            impact: 10 + Math.random() * 100, // Placeholder impact
-                            confidence: 0.4 + Math.random() * 0.5, // Placeholder confidence
+                            impact: Math.floor((citationInfo?.confidence_score || 0.5) * 100),
+                            confidence: citationInfo?.confidence_score || 0.5,
                             embeddingId: citationId
                         },
                         position: { x: coords.x, y: coords.y }
                     });
                 });
                 
-                // Add connections between citations in same cluster or nearby in UMAP space
-                const nodes = selectedCitations.map(id => ({ id, coords: citationUmapCoords[id] }));
+                // Add real similarity-based connections
+                const selectedSet = new Set(selectedCitations);
+                let edgeCount = 0;
+                const maxEdges = 200; // Limit edges for performance
                 
-                for (let i = 0; i < Math.min(nodes.length, 80); i++) {
-                    for (let j = i + 1; j < Math.min(nodes.length, 80); j++) {
-                        const nodeA = nodes[i];
-                        const nodeB = nodes[j];
-                        
-                        // Calculate UMAP distance
-                        const dx = nodeA.coords.x - nodeB.coords.x;
-                        const dy = nodeA.coords.y - nodeB.coords.y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-                        
-                        // Connect if same cluster or close in UMAP space
-                        const sameCluster = nodeA.coords.cluster === nodeB.coords.cluster;
-                        const closeDistance = distance < 50; // Adjust threshold as needed
-                        
-                        if ((sameCluster && Math.random() < 0.3) || (closeDistance && Math.random() < 0.2)) {
-                            elements.push({
-                                data: {
-                                    id: `edge_${i}_${j}`,
-                                    source: nodeA.id,
-                                    target: nodeB.id,
-                                    type: sameCluster ? 'cluster' : 'similarity',
-                                    strength: sameCluster ? 0.8 : Math.max(0.3, 1 - distance / 100)
-                                }
-                            });
-                        }
+                for (const sim of similarities) {
+                    if (edgeCount >= maxEdges) break;
+                    
+                    // Only add edges between selected citations
+                    if (selectedSet.has(sim.source) && selectedSet.has(sim.target)) {
+                        elements.push({
+                            data: {
+                                id: `sim_${sim.source}_${sim.target}`,
+                                source: sim.source,
+                                target: sim.target,
+                                type: 'similarity',
+                                strength: sim.similarity,
+                                similarity: sim.similarity
+                            }
+                        });
+                        edgeCount++;
                     }
                 }
-            } else if (uniqueImpactData && uniqueImpactData.length > 0) {
-                // Fallback to combined citation data if no UMAP coordinates
-                const allHighConfCitations = uniqueImpactData.filter(citation => {
-                    const confidence = parseFloat(citation.confidence_score) || 0;
-                    return confidence >= 0.4;
-                });
                 
-                console.log('FALLBACK: Total high confidence citations (≥0.4):', allHighConfCitations.length);
-                console.log('FALLBACK: Total combined data:', uniqueImpactData.length);
+                console.log('Added real similarity edges:', edgeCount);
+            } else {
+                console.log('🚨 FALLBACK TRIGGERED!');
+                console.log('UMAP coords available:', Object.keys(citationUmapCoords).length);
+                console.log('Citation similarities available:', citationSimilarities ? 'YES' : 'NO');
+                console.log('Similarities length:', citationSimilarities?.citation_similarities?.length || 0);
                 
-                // Use more citations for a meaningful network (up to 100 for better representation)
-                const highConfCitations = allHighConfCitations.slice(0, Math.min(allHighConfCitations.length, 100));
-                
-                console.log('FALLBACK: Using citations for network:', highConfCitations.length);
-                
-                highConfCitations.forEach((citation, index) => {
-                    const confidence = parseFloat(citation.confidence_score) || 0.4;
-                    const impact = parseInt(citation.citation_impact) || 0;
-                    elements.push({
-                        data: {
-                            id: `citation_${index}`,
-                            type: 'citation',
-                            label: '', // No persistent label
-                            title: citation.citation_title || 'No title',
-                            author: citation.citation_author || 'Unknown',
-                            year: citation.citation_year || '',
-                            venue: citation.venue || '',
-                            impact: impact,
-                            confidence: confidence,
-                            dataset: citation.dataset_name || citation.dataset_id || ''
-                        },
-                        position: {
-                            x: Math.cos(2 * Math.PI * index / highConfCitations.length) * 150 + Math.random() * 30,
-                            y: Math.sin(2 * Math.PI * index / highConfCitations.length) * 150 + Math.random() * 30
-                        }
+                if (uniqueImpactData && uniqueImpactData.length > 0) {
+                    // Fallback to combined citation data if no UMAP coordinates
+                    const allHighConfCitations = uniqueImpactData.filter(citation => {
+                        const confidence = parseFloat(citation.confidence_score) || 0;
+                        return confidence >= 0.4;
                     });
-                });
+                    
+                    console.log('FALLBACK: Total high confidence citations (≥0.4):', allHighConfCitations.length);
+                    console.log('FALLBACK: Total combined data:', uniqueImpactData.length);
+                    
+                    // Use more citations for a meaningful network (up to 100 for better representation)
+                    const highConfCitations = allHighConfCitations.slice(0, Math.min(allHighConfCitations.length, 100));
+                    
+                    console.log('FALLBACK: Using citations for network:', highConfCitations.length);
+                    
+                    highConfCitations.forEach((citation, index) => {
+                        const confidence = parseFloat(citation.confidence_score) || 0.4;
+                        const impact = parseInt(citation.citation_impact) || 0;
+                        elements.push({
+                            data: {
+                                id: `citation_${index}`,
+                                type: 'citation',
+                                label: '', // No persistent label
+                                title: citation.citation_title || 'No title',
+                                author: citation.citation_author || 'Unknown',
+                                year: citation.citation_year || '',
+                                venue: citation.venue || '',
+                                impact: impact,
+                                confidence: confidence,
+                                dataset: citation.dataset_name || citation.dataset_id || ''
+                            },
+                            position: {
+                                x: Math.cos(2 * Math.PI * index / highConfCitations.length) * 150 + Math.random() * 30,
+                                y: Math.sin(2 * Math.PI * index / highConfCitations.length) * 150 + Math.random() * 30
+                            }
+                        });
+                    });
+                }
                 
                 // Add connections between citations from the same dataset or similar impact
                 for (let i = 0; i < Math.min(highConfCitations.length, 25); i++) {
@@ -1746,9 +1794,11 @@ class InteractiveReportGenerator:
                         }
                     }
                 }
-            } else {
-                console.log('No combined citation data available for network visualization');
-                // Simple fallback network with 5 demo nodes
+            }
+            
+            // Final fallback: If no elements were created, create demo nodes
+            if (elements.length === 0) {
+                console.log('No citation network data available - creating demo nodes');
                 for (let i = 0; i < 5; i++) {
                     elements.push({
                         data: {

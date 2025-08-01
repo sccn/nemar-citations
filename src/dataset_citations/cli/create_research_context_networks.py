@@ -470,7 +470,61 @@ class ResearchContextNetworkAnalyzer:
         if bridge_file:
             created_files.append(bridge_file)
 
+        # Save connections data for citation network
+        connections_file = self._save_connections_data(filtered_connections, output_dir)
+        if connections_file:
+            created_files.append(connections_file)
+
         return created_files
+
+    def _save_connections_data(
+        self, connections: List[Dict[str, Any]], output_dir: Path
+    ) -> Optional[Path]:
+        """Save connections data for use in citation network visualization."""
+        try:
+            # Filter for citation-to-citation connections only
+            citation_connections = []
+            for conn in connections:
+                if (
+                    conn["source_type"] == "citation"
+                    and conn["target_type"] == "citation"
+                ):
+                    # Simplify connection data for citation network
+                    citation_conn = {
+                        "source": conn["source"],
+                        "target": conn["target"],
+                        "similarity": conn["similarity"],
+                        "source_info": conn.get("source_info", {}),
+                        "target_info": conn.get("target_info", {}),
+                    }
+                    citation_connections.append(citation_conn)
+
+            # Save to JSON file
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            connections_file = output_dir / f"citation_similarities_{timestamp}.json"
+
+            output_data = {
+                "analysis_metadata": {
+                    "total_connections": len(connections),
+                    "citation_to_citation_connections": len(citation_connections),
+                    "similarity_threshold": 0.6,  # TODO: Make this configurable
+                    "confidence_threshold": 0.4,
+                    "timestamp": timestamp,
+                },
+                "citation_similarities": citation_connections,
+            }
+
+            with open(connections_file, "w", encoding="utf-8") as f:
+                json.dump(output_data, f, indent=2, ensure_ascii=False)
+
+            logging.info(
+                f"Saved {len(citation_connections)} citation similarities to: {connections_file}"
+            )
+            return connections_file
+
+        except Exception as e:
+            logging.error(f"Error saving connections data: {e}")
+            return None
 
     def _create_static_network_plot(
         self, G: nx.Graph, bridges: Dict[str, Any], output_dir: Path
