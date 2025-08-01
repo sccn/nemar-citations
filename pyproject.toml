@@ -56,6 +56,7 @@ dependencies = [
     "umap-learn>=0.5.0",
     "scikit-learn>=1.0.0",
     "wordcloud>=1.8.0",
+    "jinja2>=3.0.0",
 ]
 
 [project.optional-dependencies]
@@ -97,6 +98,9 @@ dataset-citations-create-research-context-networks = "dataset_citations.cli.crea
 dataset-citations-manage-embeddings = "dataset_citations.cli.manage_embeddings:main"
 dataset-citations-analyze-temporal-themes = "dataset_citations.cli.analyze_temporal_themes:main"
 dataset-citations-automate-updates = "dataset_citations.cli.automate_updates:main"
+dataset-citations-create-interactive-reports = "dataset_citations.cli.create_interactive_reports:main"
+dataset-citations-export-external-tools = "dataset_citations.cli.export_external_tools:main"
+dataset-citations-automate-visualization-updates = "dataset_citations.cli.automate_visualization_updates:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
