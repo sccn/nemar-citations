@@ -1,8 +1,8 @@
-# Dataset Citations
+# NEMAR Citations
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: Copyright Reserved](https://img.shields.io/badge/License-Copyright%20Reserved-red.svg)](#license)
-[![GitHub](https://img.shields.io/badge/GitHub-neuromechanist%2Fdataset__citations-blue)](https://github.com/neuromechanist/dataset_citations)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![GitHub](https://img.shields.io/badge/GitHub-sccn%2Fnemar--citations-blue)](https://github.com/sccn/nemar-citations)
 
 Automated BIDS dataset citation tracking and JSON generation system for scientific research datasets.
 
@@ -33,8 +33,8 @@ This system automatically discovers, tracks, and manages citations for BIDS (Bra
 ### Install from Source
 
 ```bash
-git clone https://github.com/neuromechanist/dataset_citations.git
-cd dataset_citations
+git clone https://github.com/sccn/nemar-citations.git
+cd nemar-citations
 pip install -e .
 ```
 
@@ -113,7 +113,7 @@ metadata = retriever.get_dataset_metadata('ds002718')
 ## Project Structure
 
 ```
-dataset_citations/
+nemar-citations/
 ├── src/
 │   └── dataset_citations/     # Main package source
 │       ├── __init__.py        # Public API exports
@@ -123,20 +123,48 @@ dataset_citations/
 │       ├── quality/           # Citation quality & confidence scoring
 │       │   ├── confidence_scoring.py # AI-powered similarity scoring
 │       │   └── dataset_metadata.py  # GitHub metadata retrieval
-│       ├── cli/               # Command line interface
+│       ├── cli/               # Command line interface (20+ commands)
 │       │   ├── discover.py          # Dataset discovery CLI
 │       │   ├── update.py            # Citation update CLI
 │       │   ├── migrate.py           # Migration CLI
 │       │   ├── retrieve_metadata.py # Metadata retrieval CLI
-│       │   └── score_confidence.py  # Confidence scoring CLI
-│       ├── graph/             # Future: Visualization & analytics
+│       │   ├── score_confidence.py  # Confidence scoring CLI
+│       │   └── analyze_*.py         # Network & temporal analysis tools
+│       ├── graph/             # Network analysis & visualization
+│       │   ├── neo4j_loader.py      # Neo4j database integration
+│       │   └── visualization/       # Graph visualization tools
+│       ├── embeddings/        # Embedding management system
+│       │   ├── storage_manager.py   # Embedding storage & retrieval
+│       │   └── embedding_registry.py # Registry for embedding metadata
 │       └── utils/             # Shared utilities
-├── citations/                 # Citation data storage
-│   ├── json/                  # JSON format citations (302+ files)
-│   ├── pickle/                # Legacy pickle format 
+├── citations/                 # Citation data storage (300+ datasets)
+│   ├── json/                  # JSON format citations (300+ files)
+│   ├── pickle/                # Legacy pickle format (300+ files)
 │   └── *.csv                  # Summary and tracking files
-├── datasets/                  # Dataset metadata files
+├── datasets/                  # Dataset metadata files (300+ files)
+│   └── ds*_datasets.json      # GitHub-sourced dataset descriptions
+├── embeddings/                # AI embeddings for semantic analysis
+│   ├── analysis/              # Clustering & theme analysis results
+│   │   ├── clustering/        # DBSCAN, K-means clustering results
+│   │   ├── themes/            # Research theme summaries
+│   │   └── umap_projections/  # UMAP dimensionality reduction
+│   ├── citation_embeddings/   # Citation text embeddings (860+ files)
+│   ├── dataset_embeddings/    # Dataset description embeddings (280+ files)
+│   ├── composite_embeddings/  # Combined embedding analyses
+│   └── metadata/              # Embedding registry & content hashes
+├── interactive_reports/       # Web-ready analysis outputs
+│   ├── author_influence.csv   # Author network analysis
+│   ├── bridge_papers.csv      # Cross-domain citation bridges
+│   ├── *.png                  # Network visualizations
+│   └── *.cx                   # Cytoscape network files
+├── results/                   # Comprehensive analysis results
+│   ├── network_analysis/      # Citation network analysis
+│   ├── temporal_analysis/     # Time-series citation trends
+│   ├── theme_analysis/        # Research theme clustering
+│   ├── author_networks/       # Author collaboration networks
+│   └── network_visualizations/ # Interactive HTML visualizations
 ├── tests/                     # Test suite
+├── docs/                      # Documentation
 ├── .github/workflows/         # CI/CD automation
 ├── pyproject.toml            # Package configuration
 └── README.md                 # This file
@@ -343,8 +371,8 @@ The project includes automated CI/CD via GitHub Actions (`.github/workflows/upda
 
 1. **Clone and install:**
    ```bash
-   git clone https://github.com/neuromechanist/dataset_citations.git
-   cd dataset_citations
+   git clone https://github.com/sccn/nemar-citations.git
+   cd nemar-citations
    pip install -e ".[dev]"
    ```
 
@@ -546,8 +574,7 @@ dataset-citations-score-confidence --verbose --device cpu
 
 ### Support
 
-- **Issues**: [GitHub Issues](https://github.com/neuromechanist/dataset_citations/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/neuromechanist/dataset_citations/discussions)
+- **Issues**: [GitHub Issues](https://github.com/sccn/nemar-citations/issues)
 - **Email**: shirazi@ieee.org
 
 ## Contributing
@@ -571,30 +598,41 @@ We welcome contributions! Please see our contributing guidelines:
 
 ## License
 
-**Copyright (c) 2025 Seyed Yahya Shirazi (neuromechanist)**  
-All rights reserved.
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
-This software is proprietary and confidential. Unauthorized copying, distribution, or use is strictly prohibited.
+To view a copy of this license, visit: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+**You are free to:**
+- **Share** — copy and redistribute the material in any medium or format
+- **Adapt** — remix, transform, and build upon the material
+
+**Under the following terms:**
+- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made
+- **NonCommercial** — You may not use the material for commercial purposes  
+- **ShareAlike** — If you remix, transform, or build upon the material, you must distribute your contributions under the same license
 
 ## Citation
 
 If you use this software in your research, please cite:
 
 ```bibtex
-@software{shirazi2024datasetcitations,
-  title={Dataset Citations: Automated BIDS Dataset Citation Tracking System},
+@software{shirazi2025nemarcitations,
+  title={NEMAR Citations: Automated BIDS Dataset Citation Tracking System},
   author={Shirazi, Seyed Yahya},
   year={2025},
-  url={https://github.com/neuromechanist/dataset_citations}
+  url={https://github.com/sccn/nemar-citations},
+  organization={Swartz Center for Computational Neuroscience (SCCN)}
 }
 ```
 
 ## Acknowledgments
 
 - **Author**: [Seyed Yahya Shirazi](https://github.com/neuromechanist)
+- **Organization**: [Swartz Center for Computational Neuroscience (SCCN)](https://sccn.ucsd.edu/)
+- **Project**: [NEMAR - NeuroElectroMagnetic Archive](https://nemar.org/)
 - **GitHub**: [@neuromechanist](https://github.com/neuromechanist)
 
-Built with ❤️ for the neuroscience open science.
+Built with ❤️ for NEMAR and the neuroscience open science community.
 
 ---
 
