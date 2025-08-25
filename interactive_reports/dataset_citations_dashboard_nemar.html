@@ -14,164 +14,414 @@
     <!-- Cytoscape.js -->
     <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
     
-    <style>
-        :root {
-            --primary-color: #2E86AB;
-            --secondary-color: #A23B72;
-            --accent-color: #F18F01;
-            --dataset-color: #4A90E2;
-            --citation-color: #E94B3C;
-            --bridge-color: #50C878;
-            --bg-color: #F8F9FA;
-            --text-color: #212529;
-            --border-color: #DEE2E6;
-        }
-        
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        .navbar {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .card {
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease-in-out;
-        }
-        
-        .card:hover {
-            transform: translateY(-2px);
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        
-        .stat-card:active {
-            transform: translateY(-2px);
-        }
-        
-        .analysis-card {
-            border-left: 4px solid var(--primary-color);
-        }
-        
-        .viz-container {
-            min-height: 400px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-        
-        .network-container {
-            height: 600px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-        }
-        
-        .section-header {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .badge-dataset {
-            background-color: var(--dataset-color);
-        }
-        
-        .badge-citation {
-            background-color: var(--citation-color);
-        }
-        
-        .badge-bridge {
-            background-color: var(--bridge-color);
-        }
-        
-        .nav-pills .nav-link.active {
-            background-color: var(--primary-color);
-        }
-        
-        .progress-bar {
-            background-color: var(--primary-color);
-        }
-        
-        .footer {
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            color: white;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-        
-        /* Network visualization styles */
-        #networkViz {
-            background: #fafafa;
-            border-radius: 8px;
-        }
-        
-        /* Highlighted network elements */
-        .highlighted {
-            opacity: 1 !important;
-            z-index: 999 !important;
-        }
-        
-        /* Fade non-highlighted elements when selection is active */
-        .cy-container:has(.highlighted) .cytoscape-element:not(.highlighted) {
-            opacity: 0.3 !important;
-        }
-        
-        /* Network info panel styling */
-        #network-info-panel {
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        
-        #network-info-panel .card {
-            border-left: 4px solid var(--accent-color);
-        }
-        
-        #network-info-panel .card-header {
-            background-color: rgba(46, 134, 171, 0.1);
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        /* Citation info panel styling */
-        #citation-info-panel {
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        
-        #citation-info-panel .card {
-            border-left: 4px solid #e67e22;
-        }
-        
-        #citation-info-panel .card-header {
-            background-color: rgba(230, 126, 34, 0.1);
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        /* Responsive network container */
-        @media (max-width: 768px) {
-            .network-container {
-                height: 400px;
-            }
-        }
-    </style>
+    
 
-    <style>
-    /* Loading states */
+    
+    
+
+
+<style>
+
+    /* NEMAR Theme - Comprehensive Refinement */
+    
+    /* Import Open Sans font */
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+    
+    /* Color Variables */
+    :root {
+        --nemar-primary-blue: #083d94;
+        --nemar-text-gray: #555555;
+        --nemar-accent-gold: #e1d295;
+        --nemar-light-gray: #f8f9fa;
+        --nemar-border-gray: #dee2e6;
+        --nemar-dark-blue: #052963;
+        --nemar-link-blue: #0056b3;
+        --nemar-white: #ffffff;
+        --nemar-light-blue: #e8f0ff;
+    }
+    
+    /* Global Typography */
+    body {
+        font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        color: var(--nemar-text-gray);
+        font-size: 14px;
+        line-height: 1.6;
+        background-color: var(--nemar-white);
+        font-weight: 400;
+    }
+    
+    /* Headings */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Open Sans', Arial, sans-serif;
+        color: var(--nemar-primary-blue);
+        font-weight: 600;
+        margin-top: 0;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 3px solid var(--nemar-accent-gold);
+        padding-bottom: 0.75rem;
+        font-weight: 700;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    /* Info Cards - Statistics */
+    .info-card {
+        background: var(--nemar-white) !important;
+        border: 2px solid var(--nemar-border-gray) !important;
+        border-radius: 8px !important;
+        padding: 1.75rem 1.5rem !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        cursor: pointer;
+        height: 100%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .info-card:hover {
+        border-color: var(--nemar-primary-blue) !important;
+        box-shadow: 0 6px 20px rgba(8, 61, 148, 0.12) !important;
+        transform: translateY(-3px);
+    }
+    
+    .info-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--nemar-primary-blue), var(--nemar-accent-gold));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .info-card:hover::before {
+        opacity: 1;
+    }
+    
+    .info-card h3 {
+        color: var(--nemar-primary-blue) !important;
+        font-size: 2.5rem !important;
+        font-weight: 700 !important;
+        margin-bottom: 0.5rem !important;
+        background: none !important;
+        line-height: 1.2;
+    }
+    
+    .info-card p {
+        color: var(--nemar-text-gray) !important;
+        font-size: 1rem !important;
+        font-weight: 500 !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .info-card small {
+        color: var(--nemar-text-gray) !important;
+        opacity: 0.7;
+        font-size: 0.85rem !important;
+        font-style: italic;
+    }
+    
+    /* Navigation Tabs */
+    .nav-tabs {
+        border-bottom: 2px solid var(--nemar-accent-gold);
+        margin-bottom: 2rem;
+    }
+    
+    .nav-tabs .nav-link {
+        color: var(--nemar-text-gray);
+        background-color: var(--nemar-white) !important;
+        border: 2px solid transparent;
+        border-radius: 8px 8px 0 0;
+        padding: 0.875rem 1.5rem;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        margin-right: 0.25rem;
+    }
+    
+    .nav-tabs .nav-link:hover {
+        color: var(--nemar-primary-blue);
+        background-color: var(--nemar-light-blue) !important;
+        border-color: var(--nemar-light-blue);
+    }
+    
+    .nav-tabs .nav-link.active {
+        color: var(--nemar-primary-blue);
+        background-color: var(--nemar-white) !important;
+        border-color: var(--nemar-accent-gold) var(--nemar-accent-gold) var(--nemar-white);
+        border-bottom: 3px solid var(--nemar-white);
+        font-weight: 600;
+    }
+    
+    /* Cards with blue headers - CRITICAL FIXES */
+    .card {
+        border: 1px solid var(--nemar-border-gray);
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+        transition: box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    
+    .card:hover {
+        box-shadow: 0 4px 16px rgba(8, 61, 148, 0.12);
+    }
+    
+    /* Card Headers - Ensure ALL text is white */
+    .card-header,
+    .theme-card-header,
+    div[style*="background-color: #083d94"],
+    div[style*="background: #083d94"],
+    div[style*="background-color: rgb(8, 61, 148)"],
+    .bg-primary {
+        background-color: var(--nemar-primary-blue) !important;
+        color: var(--nemar-white) !important;
+        padding: 1.25rem !important;
+        font-weight: 600 !important;
+        border-bottom: 3px solid var(--nemar-accent-gold) !important;
+    }
+    
+    /* ALL elements inside blue backgrounds MUST be white */
+    .card-header *,
+    .theme-card-header *,
+    div[style*="background-color: #083d94"] *,
+    div[style*="background: #083d94"] *,
+    div[style*="background-color: rgb(8, 61, 148)"] *,
+    .bg-primary * {
+        color: var(--nemar-white) !important;
+    }
+    
+    /* Specific fixes for theme card headers and subtitles */
+    .card-header h5,
+    .card-header h6,
+    .card-header .card-title {
+        color: var(--nemar-white) !important;
+        margin: 0 !important;
+        font-size: 1.25rem !important;
+        font-weight: 600 !important;
+    }
+    
+    /* Fix for subtitle text on blue backgrounds */
+    .card-header p,
+    .theme-card-subtitle,
+    .card-header small,
+    .card-header .text-muted {
+        color: rgba(255, 255, 255, 0.95) !important;
+        font-size: 0.95rem !important;
+        margin-top: 0.25rem !important;
+        margin-bottom: 0 !important;
+        font-weight: 400 !important;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+        background: var(--nemar-white) !important;
+    }
+    
+    /* Buttons - Refined */
+    .btn {
+        border-radius: 6px;
+        font-weight: 500;
+        padding: 0.625rem 1.5rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-transform: none;
+        border: 2px solid;
+        font-size: 0.95rem;
+        letter-spacing: 0.025em;
+    }
+    
+    .btn-primary {
+        background-color: var(--nemar-primary-blue);
+        border-color: var(--nemar-primary-blue);
+        color: var(--nemar-white);
+    }
+    
+    .btn-primary:hover {
+        background-color: var(--nemar-dark-blue);
+        border-color: var(--nemar-dark-blue);
+        box-shadow: 0 4px 12px rgba(8, 61, 148, 0.25);
+        transform: translateY(-1px);
+    }
+    
+    /* Tables - Refined */
+    .table {
+        background: var(--nemar-white) !important;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .table thead th {
+        background-color: var(--nemar-primary-blue);
+        color: var(--nemar-white) !important;
+        border-bottom: 3px solid var(--nemar-accent-gold);
+        font-weight: 600;
+        padding: 1rem;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    
+    .table tbody tr {
+        background: var(--nemar-white) !important;
+        transition: background-color 0.2s ease;
+    }
+    
+    .table tbody tr:nth-child(even) {
+        background-color: rgba(248, 249, 250, 0.5) !important;
+    }
+    
+    .table tbody tr:hover {
+        background-color: var(--nemar-light-blue) !important;
+    }
+    
+    /* Modals - Refined */
+    .modal-header {
+        background-color: var(--nemar-primary-blue);
+        color: var(--nemar-white);
+        border-bottom: 3px solid var(--nemar-accent-gold);
+        border-radius: 8px 8px 0 0;
+        padding: 1.25rem 1.5rem;
+    }
+    
+    .modal-header * {
+        color: var(--nemar-white) !important;
+    }
+    
+    .modal-header .modal-title {
+        font-weight: 600;
+        font-size: 1.25rem;
+    }
+    
+    .modal-header .close,
+    .modal-header .btn-close {
+        color: var(--nemar-white) !important;
+        opacity: 0.9;
+        font-size: 1.5rem;
+    }
+    
+    .modal-header .close:hover,
+    .modal-header .btn-close:hover {
+        opacity: 1;
+    }
+    
+    .modal-content {
+        border-radius: 8px;
+        border: none;
+        box-shadow: 0 10px 40px rgba(8, 61, 148, 0.15);
+    }
+    
+    .modal-body {
+        background: var(--nemar-white) !important;
+        padding: 1.5rem;
+    }
+    
+    /* Links */
+    a {
+        color: var(--nemar-link-blue);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        font-weight: 500;
+    }
+    
+    a:hover {
+        color: var(--nemar-dark-blue);
+        text-decoration: underline;
+    }
+    
+    /* Charts Container */
+    .chart-container {
+        background-color: var(--nemar-white) !important;
+        border: 1px solid var(--nemar-border-gray);
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    }
+    
+    .chart-title {
+        color: var(--nemar-primary-blue);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--nemar-accent-gold);
+    }
+    
+    /* Tab Content */
+    .tab-content {
+        padding-top: 1.5rem;
+        background: transparent !important;
+    }
+    
+    .tab-pane {
+        background: transparent !important;
+        animation: fadeIn 0.4s ease-in;
+    }
+    
+    @keyframes fadeIn {
+        from { 
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to { 
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Footer - Refined */
+    footer {
+        background: linear-gradient(to bottom, var(--nemar-white), var(--nemar-light-gray)) !important;
+        border-top: 3px solid var(--nemar-accent-gold);
+        padding: 2rem 0 1.5rem;
+        margin-top: 3rem;
+    }
+    
+    footer p {
+        color: var(--nemar-text-gray);
+        margin-bottom: 0.5rem;
+    }
+    
+    footer a {
+        color: var(--nemar-primary-blue);
+        font-weight: 600;
+    }
+    
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: var(--nemar-light-gray);
+        border-radius: 6px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: var(--nemar-primary-blue);
+        border-radius: 6px;
+        border: 2px solid var(--nemar-light-gray);
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--nemar-dark-blue);
+    }
+    
+    /* Loading states - Refined */
     .data-loading {
         position: relative;
         min-height: 400px;
@@ -183,24 +433,56 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 1.2rem;
-        color: #666;
+        font-size: 1.1rem;
+        color: var(--nemar-primary-blue);
+        font-weight: 500;
         animation: pulse 1.5s ease-in-out infinite;
     }
     
     @keyframes pulse {
-        0%, 100% { opacity: 0.6; }
-        50% { opacity: 1; }
+        0%, 100% { 
+            opacity: 0.6;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        50% { 
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.05);
+        }
     }
     
-    /* Optimize large data rendering */
-    .tab-pane:not(.active) {
-        display: none !important;
+    /* Ensure no gradient backgrounds anywhere */
+    * {
+        background-image: none !important;
     }
-    </style>
     
+    /* Special override for any remaining contrast issues */
+    .text-dark {
+        color: var(--nemar-text-gray) !important;
+    }
+    
+    .text-white {
+        color: var(--nemar-white) !important;
+    }
+    
+    /* Responsive improvements */
+    @media (max-width: 768px) {
+        .info-card h3 {
+            font-size: 2rem !important;
+        }
+        
+        h1 {
+            font-size: 1.75rem;
+        }
+        
+        .nav-tabs .nav-link {
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+    }
+    
+</style>
 </head>
-<body>
+<body style="background-color: #ffffff;">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
@@ -308,7 +590,7 @@
                     <div class="col-md-4">
                         <div class="card analysis-card mb-4">
                             <div class="card-header">
-                                <h5><i class="fas fa-chart-bar me-2"></i>Citation Quality</h5>
+                                <h5 style="color: #ffffff !important;"><i class="fas fa-chart-bar me-2"></i>Citation Quality</h5>
                             </div>
                             <div class="card-body">
                                 <div id="qualityChart" class="viz-container"></div>
@@ -318,7 +600,7 @@
                     <div class="col-md-4">
                         <div class="card analysis-card mb-4">
                             <div class="card-header">
-                                <h5><i class="fas fa-chart-line me-2"></i>Growth Timeline</h5>
+                                <h5 style="color: #ffffff !important;"><i class="fas fa-chart-line me-2"></i>Growth Timeline</h5>
                             </div>
                             <div class="card-body">
                                 <div id="growthChart" class="viz-container"></div>
@@ -328,7 +610,7 @@
                     <div class="col-md-4">
                         <div class="card analysis-card mb-4">
                             <div class="card-header">
-                                <h5><i class="fas fa-sitemap me-2"></i>Research Bridge Analysis</h5>
+                                <h5 style="color: #ffffff !important;"><i class="fas fa-sitemap me-2"></i>Research Bridge Analysis</h5>
                             </div>
                             <div class="card-body">
                                 <div id="bridgeChart" class="viz-container"></div>
@@ -351,8 +633,8 @@
                     <div class="col-md-6">
                         <div class="card analysis-card mb-4 h-100">
                             <div class="card-header">
-                                <h5><i class="fas fa-network-wired me-2"></i>Dataset Map</h5>
-                                <small class="text-muted">
+                                <h5 style="color: #ffffff !important;"><i class="fas fa-network-wired me-2"></i>Dataset Map</h5>
+                                <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">
                                     Datasets positioned using semantic coordinates, sized by citation count
                                 </small>
                             </div>
@@ -364,8 +646,8 @@
                     <div class="col-md-6">
                         <div class="card analysis-card mb-4 h-100">
                             <div class="card-header">
-                                <h5><i class="fas fa-quote-left me-2"></i>Citation Map</h5>
-                                <small class="text-muted">
+                                <h5 style="color: #ffffff !important;"><i class="fas fa-quote-left me-2"></i>Citation Map</h5>
+                                <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">
                                     Citations positioned using semantic coordinates, connected by embedding similarity.
                                 </small>
                             </div>
@@ -399,8 +681,8 @@
                     <div class="col-md-6 mb-4">
                         <div class="card analysis-card">
                             <div class="card-header">
-                                <h5><i class="fas fa-cloud me-2"></i>Theme 1 - Core EEG</h5>
-                                <small class="text-muted">Primary neuroscience datasets</small>
+                                <h5 style="color: #ffffff !important;"><i class="fas fa-cloud me-2"></i>Theme 1 - Core EEG</h5>
+                                <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">Primary neuroscience datasets</small>
                             </div>
                             <div class="card-body text-center">
                                 
@@ -414,8 +696,8 @@
                     <div class="col-md-6 mb-4">
                         <div class="card analysis-card">
                             <div class="card-header">
-                                <h5><i class="fas fa-cloud me-2"></i>Theme 2 - Audio & Stimulation</h5>
-                                <small class="text-muted">Auditory processing studies</small>
+                                <h5 style="color: #ffffff !important;"><i class="fas fa-cloud me-2"></i>Theme 2 - Audio & Stimulation</h5>
+                                <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">Auditory processing studies</small>
                             </div>
                             <div class="card-body text-center">
                                 
@@ -429,8 +711,8 @@
                     <div class="col-md-6 mb-4">
                         <div class="card analysis-card">
                             <div class="card-header">
-                                <h5><i class="fas fa-cloud me-2"></i>Theme 3 - Task Performance</h5>
-                                <small class="text-muted">Cognitive and behavioral tasks</small>
+                                <h5 style="color: #ffffff !important;"><i class="fas fa-cloud me-2"></i>Theme 3 - Task Performance</h5>
+                                <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">Cognitive and behavioral tasks</small>
                             </div>
                             <div class="card-body text-center">
                                 
@@ -444,8 +726,8 @@
                     <div class="col-md-6 mb-4">
                         <div class="card analysis-card">
                             <div class="card-header">
-                                <h5><i class="fas fa-cloud me-2"></i>Theme 4 - Advanced Methods</h5>
-                                <small class="text-muted">Methodological and analytical approaches</small>
+                                <h5 style="color: #ffffff !important;"><i class="fas fa-cloud me-2"></i>Theme 4 - Advanced Methods</h5>
+                                <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">Methodological and analytical approaches</small>
                             </div>
                             <div class="card-body text-center">
                                 
@@ -566,10 +848,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Refresh network visualizations with full data
                 const networkTab = document.querySelector('[role="tab"][aria-controls="network"]');
                 if (networkTab && networkTab.classList.contains('active')) {
-                    // If network tab is active, refresh it
-                    document.querySelector('#datasetNetworkChart').innerHTML = '';
-                    document.querySelector('#citationNetworkChart').innerHTML = '';
-                    createNetworkVisualization();
+                    // If network tab is currently active, refresh it
+                    setTimeout(function() {
+                        const datasetChart = document.querySelector('#datasetNetworkChart');
+                        const citationChart = document.querySelector('#citationNetworkChart');
+                        if (datasetChart && citationChart) {
+                            datasetChart.innerHTML = '';
+                            citationChart.innerHTML = '';
+                            createNetworkVisualization();
+                            createCitationNetworkVisualization();
+                        }
+                    }, 100);
                 }
             }
         });
@@ -599,10 +888,9 @@ window.handleTabSwitch = function(tabName) {
             createQualityChart();
             createGrowthChart();
             createBridgeChart();
-            
-            // Initialize network visualizations
-            createNetworkVisualization();
-            createCitationNetworkVisualization();
+            // Network visualizations will be initialized when tab is shown
+            // createNetworkVisualization();
+            // createCitationNetworkVisualization();
         }
         
         function createQualityChart() {
@@ -1524,7 +1812,7 @@ window.handleTabSwitch = function(tabName) {
                 infoHTML = `
                     <div class="card">
                         <div class="card-header">
-                            <h6 class="mb-0"><i class="fas fa-database me-2"></i>Dataset Information</h6>
+                            <h6 class="mb-0" style="color: #ffffff !important;"><i class="fas fa-database me-2"></i>Dataset Information</h6>
                         </div>
                         <div class="card-body">
                             <p><strong>Dataset ID:</strong> ${nodeData.id}</p>
@@ -1540,7 +1828,7 @@ window.handleTabSwitch = function(tabName) {
                 infoHTML = `
                     <div class="card">
                         <div class="card-header">
-                            <h6 class="mb-0"><i class="fas fa-quote-left me-2"></i>Citation Information</h6>
+                            <h6 class="mb-0" style="color: #ffffff !important;"><i class="fas fa-quote-left me-2"></i>Citation Information</h6>
                         </div>
                         <div class="card-body">
                             <p><strong>Title:</strong> ${nodeData.title || 'No title available'}</p>
@@ -1559,7 +1847,7 @@ window.handleTabSwitch = function(tabName) {
                 infoHTML = `
                     <div class="card">
                         <div class="card-header">
-                            <h6 class="mb-0"><i class="fas fa-link me-2"></i>Bridge Paper</h6>
+                            <h6 class="mb-0" style="color: #ffffff !important;"><i class="fas fa-link me-2"></i>Bridge Paper</h6>
                         </div>
                         <div class="card-body">
                             <p><strong>Title:</strong> ${nodeData.fullTitle || nodeData.label}</p>
@@ -2137,5 +2425,13 @@ window.handleTabSwitch = function(tabName) {
                 </div>`;
         }
     </script>
+
+    <footer class="mt-5 py-3 text-center" style="border-top: 3px solid var(--nemar-accent-gold);">
+        <p class="text-muted mb-0">
+            Powered by NEMAR Citation Tracking System | 
+            <a href="https://nemar.org" target="_blank">nemar.org</a>
+        </p>
+    </footer>
+    
 </body>
 </html>
