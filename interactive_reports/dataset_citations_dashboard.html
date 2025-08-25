@@ -16,6 +16,9 @@
     <!-- Cytoscape.js -->
     <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
     
+    <!-- Dashboard Templates -->
+    <script src="dashboard_templates.js"></script>
+    
     
 
     
@@ -924,7 +927,12 @@ window.handleTabSwitch = function(tabName) {
                 yaxis: { title: 'Count' }
             };
             
-            Plotly.newPlot('qualityChart', data, layout, {responsive: true});
+            // Use standardized chart creation from templates
+            if (typeof VisualizationHelpers !== 'undefined') {
+                VisualizationHelpers.createChart('qualityChart', data, layout);
+            } else {
+                Plotly.newPlot('qualityChart', data, layout, {responsive: true});
+            }
         }
         
         function createGrowthChart() {
@@ -960,7 +968,12 @@ window.handleTabSwitch = function(tabName) {
                 yaxis: { title: 'Citations per Year' }
             };
             
-            Plotly.newPlot('growthChart', data, layout, {responsive: true});
+            // Use standardized chart creation from templates
+            if (typeof VisualizationHelpers !== 'undefined') {
+                VisualizationHelpers.createChart('growthChart', data, layout);
+            } else {
+                Plotly.newPlot('growthChart', data, layout, {responsive: true});
+            }
         }
         
         function createBridgeChart() {
@@ -990,7 +1003,12 @@ window.handleTabSwitch = function(tabName) {
                 margin: { t: 20, b: 20, l: 20, r: 20 }
             };
             
-            Plotly.newPlot('bridgeChart', data, layout, {responsive: true});
+            // Use standardized chart creation from templates
+            if (typeof VisualizationHelpers !== 'undefined') {
+                VisualizationHelpers.createChart('bridgeChart', data, layout);
+            } else {
+                Plotly.newPlot('bridgeChart', data, layout, {responsive: true});
+            }
         }
         
         function buildUMAPNetworkElements() {
@@ -1916,7 +1934,12 @@ window.handleTabSwitch = function(tabName) {
                 paper_bgcolor: 'rgba(0,0,0,0)'
             };
             
-            Plotly.newPlot('temporalChart', data, layout, {responsive: true});
+            // Use standardized chart creation from templates
+            if (typeof VisualizationHelpers !== 'undefined') {
+                VisualizationHelpers.createChart('temporalChart', data, layout);
+            } else {
+                Plotly.newPlot('temporalChart', data, layout, {responsive: true});
+            }
         }
         
         function createBridgeChart() {
@@ -1935,7 +1958,12 @@ window.handleTabSwitch = function(tabName) {
                 font: {family: 'Segoe UI'}
             };
             
-            Plotly.newPlot('bridgeChart', data, layout, {responsive: true});
+            // Use standardized chart creation from templates
+            if (typeof VisualizationHelpers !== 'undefined') {
+                VisualizationHelpers.createChart('bridgeChart', data, layout);
+            } else {
+                Plotly.newPlot('bridgeChart', data, layout, {responsive: true});
+            }
         }
         
         function createPopularityChart() {
@@ -1956,7 +1984,12 @@ window.handleTabSwitch = function(tabName) {
                 paper_bgcolor: 'rgba(0,0,0,0)'
             };
             
-            Plotly.newPlot('popularityChart', data, layout, {responsive: true});
+            // Use standardized chart creation from templates
+            if (typeof VisualizationHelpers !== 'undefined') {
+                VisualizationHelpers.createChart('popularityChart', data, layout);
+            } else {
+                Plotly.newPlot('popularityChart', data, layout, {responsive: true});
+            }
         }
         
         function createThemesChart() {
@@ -1975,7 +2008,12 @@ window.handleTabSwitch = function(tabName) {
                 paper_bgcolor: 'rgba(0,0,0,0)'
             };
             
-            Plotly.newPlot('themesChart', data, layout, {responsive: true});
+            // Use standardized chart creation from templates
+            if (typeof VisualizationHelpers !== 'undefined') {
+                VisualizationHelpers.createChart('themesChart', data, layout);
+            } else {
+                Plotly.newPlot('themesChart', data, layout, {responsive: true});
+            }
         }
         
         function createUMAPChart() {
@@ -2001,7 +2039,12 @@ window.handleTabSwitch = function(tabName) {
                 paper_bgcolor: 'rgba(0,0,0,0)'
             };
             
-            Plotly.newPlot('umapChart', data, layout, {responsive: true});
+            // Use standardized chart creation from templates
+            if (typeof VisualizationHelpers !== 'undefined') {
+                VisualizationHelpers.createChart('umapChart', data, layout);
+            } else {
+                Plotly.newPlot('umapChart', data, layout, {responsive: true});
+            }
         }
         
 
