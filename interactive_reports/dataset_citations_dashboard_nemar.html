@@ -11,6 +11,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Plotly.js -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- jQuery (required for Bootstrap tabs) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- Cytoscape.js -->
     <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
     
@@ -2424,7 +2426,58 @@ window.handleTabSwitch = function(tabName) {
                     </p>
                 </div>`;
         }
-    </script>
+    
+        
+        // Auto-trigger network visualizations on tab click
+        $(document).ready(function() {
+            // Wait for DOM to be fully ready
+            setTimeout(function() {
+                // Find all tabs
+                const tabs = document.querySelectorAll('[role="tab"]');
+                let networkTab = null;
+                
+                tabs.forEach(function(tab) {
+                    if (tab.textContent.includes('Network Analysis')) {
+                        networkTab = tab;
+                    }
+                });
+                
+                if (networkTab) {
+                    // Add click listener with 300ms delay for auto-trigger
+                    networkTab.addEventListener('click', function() {
+                        console.log('Network tab clicked, auto-triggering in 100ms...');
+                        
+                        setTimeout(function() {
+                            const networkViz = document.getElementById('networkViz');
+                            const citationViz = document.getElementById('citationNetworkViz');
+                            
+                            if (networkViz && citationViz) {
+                                // Clear containers
+                                networkViz.innerHTML = '';
+                                citationViz.innerHTML = '';
+                                
+                                // Check if we have the required data
+                                if (typeof createNetworkVisualization === 'function' && 
+                                    analysisData.network_analysis && 
+                                    analysisData.network_analysis.dataset_popularity) {
+                                    
+                                    try {
+                                        createNetworkVisualization();
+                                        createCitationNetworkVisualization();
+                                        console.log('✅ Network visualizations auto-triggered successfully');
+                                    } catch (error) {
+                                        console.error('Error creating visualizations:', error);
+                                    }
+                                }
+                            }
+                        }, 300);
+                    });
+                    
+                    console.log('Network tab auto-trigger handler installed');
+                }
+            }, 500); // Small delay to ensure all elements are ready
+        });
+</script>
 
     <footer class="mt-5 py-3 text-center" style="border-top: 3px solid var(--nemar-accent-gold);">
         <p class="text-muted mb-0">
