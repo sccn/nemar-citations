@@ -940,11 +940,19 @@ window.handleTabSwitch = function(tabName) {
         
         function createGrowthChart() {
             const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
-            const citationGrowth = [20, 45, 85, 150, 220, 280, 290, 100];
+            const citationsPerYear = [20, 45, 85, 150, 220, 280, 290, 100];
+            
+            // Calculate cumulative citations
+            const cumulativeCitations = [];
+            let total = 0;
+            for (let i = 0; i < citationsPerYear.length; i++) {
+                total += citationsPerYear[i];
+                cumulativeCitations.push(total);
+            }
             
             const data = [{
                 x: years,
-                y: citationGrowth,
+                y: cumulativeCitations,
                 type: 'scatter',
                 mode: 'lines+markers',
                 line: { 
@@ -968,7 +976,7 @@ window.handleTabSwitch = function(tabName) {
                 showlegend: false,
                 margin: { t: 20, b: 50, l: 50, r: 20 },
                 xaxis: { title: 'Year' },
-                yaxis: { title: 'Citations per Year' }
+                yaxis: { title: 'Cumulative Citations' }
             };
             
             // Use standardized chart creation from templates
