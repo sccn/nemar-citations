@@ -837,15 +837,15 @@ class InteractiveReportGenerator:
             const lowConfCitations = totalCitations - highConfCitations;
             
             const data = [{
-                x: ['High-Confidence<br/>(≥0.4)', 'Low-Confidence<br/>(<0.4)'],
+                x: ['High-Confidence\\n(≥0.4)', 'Low-Confidence\\n(<0.4)'],
                 y: [highConfCitations, lowConfCitations],
                 type: 'bar',
                 marker: {
                     color: [colorScheme.citation, '#BDC3C7'],
                     line: { color: '#FFFFFF', width: 2 }
                 },
-                text: [highConfCitations + '<br/>(' + Math.round(highConfCitations/totalCitations*100) + '%)', 
-                       lowConfCitations + '<br/>(' + Math.round(lowConfCitations/totalCitations*100) + '%)'],
+                text: [highConfCitations + '<br>(' + Math.round(highConfCitations/totalCitations*100) + '%)', 
+                       lowConfCitations + '<br>(' + Math.round(lowConfCitations/totalCitations*100) + '%)'],
                 textposition: 'inside',
                 textfont: { color: 'white', size: 12, family: 'Arial Black' }
             }];
@@ -865,11 +865,19 @@ class InteractiveReportGenerator:
         
         function createGrowthChart() {
             const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
-            const citationGrowth = [20, 45, 85, 150, 220, 280, 290, 100];
+            const citationsPerYear = [20, 45, 85, 150, 220, 280, 290, 100];
+            
+            // Calculate cumulative citations
+            const cumulativeCitations = [];
+            let total = 0;
+            for (let i = 0; i < citationsPerYear.length; i++) {
+                total += citationsPerYear[i];
+                cumulativeCitations.push(total);
+            }
             
             const data = [{
                 x: years,
-                y: citationGrowth,
+                y: cumulativeCitations,
                 type: 'scatter',
                 mode: 'lines+markers',
                 line: { 
@@ -893,7 +901,7 @@ class InteractiveReportGenerator:
                 showlegend: false,
                 margin: { t: 20, b: 50, l: 50, r: 20 },
                 xaxis: { title: 'Year' },
-                yaxis: { title: 'Citations per Year' }
+                yaxis: { title: 'Cumulative Citations' }
             };
             
             Plotly.newPlot('growthChart', data, layout, {responsive: true});
