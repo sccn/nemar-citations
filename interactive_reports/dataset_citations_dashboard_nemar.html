@@ -907,15 +907,15 @@ window.handleTabSwitch = function(tabName) {
             const lowConfCitations = totalCitations - highConfCitations;
             
             const data = [{
-                x: ['High-Confidence<br/>(≥0.4)', 'Low-Confidence<br/>(<0.4)'],
+                x: ['High-Confidence\n(≥0.4)', 'Low-Confidence\n(<0.4)'],
                 y: [highConfCitations, lowConfCitations],
                 type: 'bar',
                 marker: {
                     color: [colorScheme.citation, '#BDC3C7'],
                     line: { color: '#FFFFFF', width: 2 }
                 },
-                text: [highConfCitations + '<br/>(' + Math.round(highConfCitations/totalCitations*100) + '%)', 
-                       lowConfCitations + '<br/>(' + Math.round(lowConfCitations/totalCitations*100) + '%)'],
+                text: [highConfCitations + '<br>(' + Math.round(highConfCitations/totalCitations*100) + '%)', 
+                       lowConfCitations + '<br>(' + Math.round(lowConfCitations/totalCitations*100) + '%)'],
                 textposition: 'inside',
                 textfont: { color: 'white', size: 12, family: 'Arial Black' }
             }];
