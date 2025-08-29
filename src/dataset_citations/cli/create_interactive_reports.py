@@ -2073,14 +2073,14 @@ class InteractiveReportGenerator:
                     </div>
                     <div class="col-md-6">
                         <h6><i class="fas fa-star me-2"></i>Top Cited Datasets</h6>
-                        <div class="list-group">`;
+                        <div class="list-group" style="max-height: 400px; overflow-y: auto;">`;
                         
             if (popularityData.length > 0) {
-                // Filter datasets with high-confidence citations and get top 5
+                // Filter datasets with high-confidence citations and get top 20 for scrollable list
                 const highConfDatasets = popularityData
                     .filter(dataset => (dataset.high_confidence_citations || 0) > 0)
                     .sort((a, b) => (b.high_confidence_citations || 0) - (a.high_confidence_citations || 0))
-                    .slice(0, 5);
+                    .slice(0, 20);
                 
                 if (highConfDatasets.length > 0) {
                     highConfDatasets.forEach((dataset, index) => {
@@ -2160,10 +2160,10 @@ class InteractiveReportGenerator:
                     </div>
                     <div class="col-md-6">
                         <h6><i class="fas fa-trophy me-2"></i>Highest Impact Citations</h6>
-                        <div class="list-group">`;
+                        <div class="list-group" style="max-height: 400px; overflow-y: auto;">`;
                         
             if (impactData.length > 0) {
-                impactData.slice(0, 5).forEach((citation, index) => {
+                impactData.slice(0, 20).forEach((citation, index) => {
                     // Use actual paper URL if available, otherwise fall back to Google Scholar search
                     const paperUrl = citation.citation_url || citation.url || 
                         `https://scholar.google.com/scholar?q=${encodeURIComponent(citation.citation_title || 'No title')}`;
@@ -2243,10 +2243,10 @@ class InteractiveReportGenerator:
                 <div class="row">
                     <div class="col-md-6">
                         <h6><i class="fas fa-bridge me-2"></i>Top Bridge Papers</h6>
-                        <div class="list-group">`;
+                        <div class="list-group" style="max-height: 350px; overflow-y: auto;">`;
                         
             if (bridgeData.length > 0) {
-                bridgeData.slice(0, 3).forEach((paper, index) => {
+                bridgeData.slice(0, 10).forEach((paper, index) => {
                     // Use actual paper URL if available, otherwise fall back to Google Scholar search
                     const paperUrl = paper.bridge_paper_url || paper.url || 
                         `https://scholar.google.com/scholar?q=${encodeURIComponent(paper.bridge_paper_title || 'No title')}`;
@@ -2273,10 +2273,10 @@ class InteractiveReportGenerator:
                     </div>
                     <div class="col-md-6">
                         <h6><i class="fas fa-share-alt me-2"></i>Top Cross-Domain Papers</h6>
-                        <div class="list-group">`;
+                        <div class="list-group" style="max-height: 350px; overflow-y: auto;">`;
                         
             if (crossDomainData.length > 0) {
-                crossDomainData.slice(0, 3).forEach((paper, index) => {
+                crossDomainData.slice(0, 10).forEach((paper, index) => {
                     // Use actual paper URL if available, otherwise fall back to Google Scholar search
                     const paperUrl = paper.citation_url || paper.url || 
                         `https://scholar.google.com/scholar?q=${encodeURIComponent(paper.citation_title || 'No title')}`;
