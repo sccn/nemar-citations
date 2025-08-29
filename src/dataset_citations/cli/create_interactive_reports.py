@@ -234,34 +234,40 @@ class InteractiveReportGenerator:
                     import csv
                     from collections import Counter
 
+                    # For NEMAR, only count electrophysiological modalities
+                    electrophys_modalities = ["eeg", "meg", "ieeg"]
                     modality_counts = Counter()
+                    electrophys_dataset_count = 0
+
                     with open(modalities_file, "r") as f:
                         reader = csv.DictReader(f)
                         for row in reader:
                             modalities = row["modalities"].split(",")
+                            # Check if dataset has any electrophysiological data
+                            has_electrophys = False
                             for modality in modalities:
-                                cleaned = modality.strip()
-                                if cleaned and cleaned not in [
-                                    "",
-                                    ".ipynb_checkpoints",
-                                    "tmp_dcm2bids",
-                                ]:
+                                cleaned = modality.strip().lower()
+                                if cleaned in electrophys_modalities:
+                                    has_electrophys = True
                                     modality_counts[cleaned] += 1
 
-                    # Get top modalities and group small ones as "Other"
-                    top_modalities = dict(modality_counts.most_common(8))
-                    other_count = sum(
-                        count
-                        for mod, count in modality_counts.items()
-                        if mod not in top_modalities
-                    )
-                    if other_count > 0:
-                        top_modalities["Other"] = other_count
+                            if has_electrophys:
+                                electrophys_dataset_count += 1
+
+                    # Only include EEG, MEG, iEEG for NEMAR dashboard
+                    nemar_modalities = {}
+                    for mod in electrophys_modalities:
+                        if mod in modality_counts:
+                            # Capitalize properly for display
+                            display_name = (
+                                mod.upper() if mod in ["eeg", "meg"] else "iEEG"
+                            )
+                            nemar_modalities[display_name] = modality_counts[mod]
 
                     analysis_data["modality_data"] = {
-                        "modality_counts": dict(top_modalities),
-                        "total_datasets": sum(1 for _ in open(modalities_file))
-                        - 1,  # Subtract header
+                        "modality_counts": nemar_modalities,
+                        "total_datasets": electrophys_dataset_count,
+                        "is_nemar_filtered": True,  # Flag to indicate NEMAR-specific filtering
                     }
                     logging.info(
                         f"Loaded modality data for {analysis_data['modality_data']['total_datasets']} datasets"
@@ -1979,7 +1985,7 @@ class InteractiveReportGenerator:
                 
                 const layout = {
                     title: {
-                        text: 'Dataset Modalities Distribution',
+                        text: 'NEMAR Electrophysiology Modalities',
                         font: { size: 16, color: colorScheme.text }
                     },
                     showlegend: true,
