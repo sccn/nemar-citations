@@ -1811,52 +1811,82 @@ class InteractiveReportGenerator:
             let infoHTML = '';
             
             if (nodeData.type === 'dataset') {
+                const datasetUrl = `https://openneuro.org/datasets/${nodeData.id}`;
                 infoHTML = `
                     <div class="card">
                         <div class="card-header">
                             <h6 class="mb-0"><i class="fas fa-database me-2"></i>Dataset Information</h6>
                         </div>
                         <div class="card-body">
-                            <p><strong>Dataset ID:</strong> ${nodeData.id}</p>
+                            <p><strong>Dataset ID:</strong> 
+                                <a href="${datasetUrl}" target="_blank" rel="noopener noreferrer">
+                                    ${nodeData.id} <i class="fas fa-external-link-alt fa-xs"></i>
+                                </a>
+                            </p>
                             <p><strong>Name:</strong> ${nodeData.fullName || nodeData.label}</p>
                             <p><strong>Total Citations:</strong> ${nodeData.citations || 0}</p>
                             <div class="mt-3">
+                                <a href="${datasetUrl}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i> View on OpenNeuro
+                                </a>
+                            </div>
+                            <div class="mt-2">
                                 <small class="text-muted">Click on other nodes to explore connections</small>
                             </div>
                         </div>
                     </div>
                 `;
             } else if (nodeData.type === 'citation') {
+                const paperUrl = nodeData.url || `https://scholar.google.com/scholar?q=${encodeURIComponent(nodeData.title || 'No title')}`;
                 infoHTML = `
                     <div class="card">
                         <div class="card-header">
                             <h6 class="mb-0"><i class="fas fa-quote-left me-2"></i>Citation Information</h6>
                         </div>
                         <div class="card-body">
-                            <p><strong>Title:</strong> ${nodeData.title || 'No title available'}</p>
+                            <p><strong>Title:</strong> 
+                                <a href="${paperUrl}" target="_blank" rel="noopener noreferrer">
+                                    ${nodeData.title || 'No title available'} <i class="fas fa-external-link-alt fa-xs"></i>
+                                </a>
+                            </p>
                             <p><strong>Author:</strong> ${nodeData.author || 'Unknown'}</p>
                             <p><strong>Year:</strong> ${nodeData.year || 'N/A'}</p>
                             <p><strong>Venue:</strong> ${nodeData.venue || 'N/A'}</p>
                             <p><strong>Citations:</strong> ${nodeData.impact || 0}</p>
                             <p><strong>Confidence Score:</strong> ${((nodeData.confidence || 0) * 100).toFixed(1)}%</p>
                             <div class="mt-3">
+                                <a href="${paperUrl}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i> View Paper
+                                </a>
+                            </div>
+                            <div class="mt-2">
                                 <small class="text-muted">Part of research cluster ${nodeData.cluster || 'N/A'}</small>
                             </div>
                         </div>
                     </div>
                 `;
             } else if (nodeData.type === 'bridge') {
+                const paperUrl = nodeData.url || `https://scholar.google.com/scholar?q=${encodeURIComponent(nodeData.fullTitle || nodeData.label)}`;
                 infoHTML = `
                     <div class="card">
                         <div class="card-header">
                             <h6 class="mb-0"><i class="fas fa-link me-2"></i>Bridge Paper</h6>
                         </div>
                         <div class="card-body">
-                            <p><strong>Title:</strong> ${nodeData.fullTitle || nodeData.label}</p>
+                            <p><strong>Title:</strong> 
+                                <a href="${paperUrl}" target="_blank" rel="noopener noreferrer">
+                                    ${nodeData.fullTitle || nodeData.label} <i class="fas fa-external-link-alt fa-xs"></i>
+                                </a>
+                            </p>
                             <p><strong>Author:</strong> ${nodeData.author || 'Unknown'}</p>
                             <p><strong>Datasets Connected:</strong> ${nodeData.datasetsConnected || 0}</p>
                             <p><strong>Confidence Score:</strong> ${(nodeData.confidence * 100).toFixed(1)}%</p>
                             <div class="mt-3">
+                                <a href="${paperUrl}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i> View Paper
+                                </a>
+                            </div>
+                            <div class="mt-2">
                                 <small class="text-muted">This paper connects multiple research areas</small>
                             </div>
                         </div>
