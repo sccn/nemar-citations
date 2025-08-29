@@ -2088,10 +2088,15 @@ class InteractiveReportGenerator:
                         const highConfCitations = dataset.high_confidence_citations || 0;
                         const lowConfCitations = totalCitations - highConfCitations;
                         
+                        const datasetUrl = `https://openneuro.org/datasets/${dataset.dataset_id}`;
                         content += `
                             <div class="list-group-item">
                                 <div class="d-flex w-100 justify-content-between">
-                                    <h6 class="mb-1">${dataset.dataset_id || 'N/A'}</h6>
+                                    <h6 class="mb-1">
+                                        <a href="${datasetUrl}" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                            ${dataset.dataset_id || 'N/A'} <i class="fas fa-external-link-alt fa-xs"></i>
+                                        </a>
+                                    </h6>
                                     <small class="text-muted">${highConfCitations} high-conf citations</small>
                                 </div>
                                 <p class="mb-1">${(dataset.dataset_name || 'No name available').substring(0, 60)}${(dataset.dataset_name || '').length > 60 ? '...' : ''}</p>
@@ -2159,10 +2164,17 @@ class InteractiveReportGenerator:
                         
             if (impactData.length > 0) {
                 impactData.slice(0, 5).forEach((citation, index) => {
+                    // Use actual paper URL if available, otherwise fall back to Google Scholar search
+                    const paperUrl = citation.citation_url || citation.url || 
+                        `https://scholar.google.com/scholar?q=${encodeURIComponent(citation.citation_title || 'No title')}`;
                     content += `
                         <div class="list-group-item">
                             <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1 small">${(citation.citation_title || 'No title').substring(0, 50)}${(citation.citation_title || '').length > 50 ? '...' : ''}</h6>
+                                <h6 class="mb-1 small">
+                                    <a href="${paperUrl}" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                        ${(citation.citation_title || 'No title').substring(0, 50)}${(citation.citation_title || '').length > 50 ? '...' : ''} <i class="fas fa-external-link-alt fa-xs"></i>
+                                    </a>
+                                </h6>
                                 <small class="text-muted">${citation.citation_impact || 0} citations</small>
                             </div>
                             <p class="mb-1 small text-muted">${citation.citation_author || 'Unknown author'}</p>
@@ -2235,10 +2247,17 @@ class InteractiveReportGenerator:
                         
             if (bridgeData.length > 0) {
                 bridgeData.slice(0, 3).forEach((paper, index) => {
+                    // Use actual paper URL if available, otherwise fall back to Google Scholar search
+                    const paperUrl = paper.bridge_paper_url || paper.url || 
+                        `https://scholar.google.com/scholar?q=${encodeURIComponent(paper.bridge_paper_title || 'No title')}`;
                     content += `
                         <div class="list-group-item">
                             <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1 small">${(paper.bridge_paper_title || 'No title').substring(0, 50)}${(paper.bridge_paper_title || '').length > 50 ? '...' : ''}</h6>
+                                <h6 class="mb-1 small">
+                                    <a href="${paperUrl}" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                        ${(paper.bridge_paper_title || 'No title').substring(0, 50)}${(paper.bridge_paper_title || '').length > 50 ? '...' : ''} <i class="fas fa-external-link-alt fa-xs"></i>
+                                    </a>
+                                </h6>
                                 <small class="text-muted">${paper.num_datasets_bridged || 0} datasets</small>
                             </div>
                             <p class="mb-1 small text-muted">${paper.bridge_paper_author || 'Unknown author'}</p>
@@ -2258,10 +2277,17 @@ class InteractiveReportGenerator:
                         
             if (crossDomainData.length > 0) {
                 crossDomainData.slice(0, 3).forEach((paper, index) => {
+                    // Use actual paper URL if available, otherwise fall back to Google Scholar search
+                    const paperUrl = paper.citation_url || paper.url || 
+                        `https://scholar.google.com/scholar?q=${encodeURIComponent(paper.citation_title || 'No title')}`;
                     content += `
                         <div class="list-group-item">
                             <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1 small">${(paper.citation_title || 'No title').substring(0, 50)}${(paper.citation_title || '').length > 50 ? '...' : ''}</h6>
+                                <h6 class="mb-1 small">
+                                    <a href="${paperUrl}" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                        ${(paper.citation_title || 'No title').substring(0, 50)}${(paper.citation_title || '').length > 50 ? '...' : ''} <i class="fas fa-external-link-alt fa-xs"></i>
+                                    </a>
+                                </h6>
                                 <small class="text-muted">${paper.num_datasets_cited || 0} datasets</small>
                             </div>
                             <p class="mb-1 small text-muted">${paper.citation_author || 'Unknown author'}</p>
