@@ -665,18 +665,10 @@ class InteractiveReportGenerator:
                     <div class="col-md-4">
                         <div class="card analysis-card mb-4">
                             <div class="card-header">
-                                <h5><i class="fas fa-brain me-2"></i>Data Modalities</h5>
+                                <h5><i class="fas fa-brain me-2"></i>NEMAR Data Modalities</h5>
                             </div>
                             <div class="card-body">
                                 <div id="modalityChart" class="viz-container"></div>
-                            </div>
-                        </div>
-                        <div class="card analysis-card mb-4">
-                            <div class="card-header">
-                                <h5><i class="fas fa-sitemap me-2"></i>Research Bridge Analysis</h5>
-                            </div>
-                            <div class="card-body">
-                                <div id="bridgeChart" class="viz-container"></div>
                             </div>
                         </div>
                     </div>
@@ -886,7 +878,6 @@ class InteractiveReportGenerator:
             createQualityChart();
             createGrowthChart();
             createModalityChart();
-            createBridgeChart();
             
             // Initialize network visualizations
             createNetworkVisualization();
