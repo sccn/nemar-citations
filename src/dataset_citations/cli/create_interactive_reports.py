@@ -226,6 +226,53 @@ class InteractiveReportGenerator:
                     except Exception as e:
                         logging.warning(f"Could not copy {viz_file}: {e}")
 
+        # Load dataset modalities data
+        modalities_file = Path("citations/dataset_modalities_lookup.csv")
+        if modalities_file.exists():
+            try:
+                if PANDAS_AVAILABLE:
+                    import csv
+                    from collections import Counter
+
+                    modality_counts = Counter()
+                    with open(modalities_file, "r") as f:
+                        reader = csv.DictReader(f)
+                        for row in reader:
+                            modalities = row["modalities"].split(",")
+                            for modality in modalities:
+                                cleaned = modality.strip()
+                                if cleaned and cleaned not in [
+                                    "",
+                                    ".ipynb_checkpoints",
+                                    "tmp_dcm2bids",
+                                ]:
+                                    modality_counts[cleaned] += 1
+
+                    # Get top modalities and group small ones as "Other"
+                    top_modalities = dict(modality_counts.most_common(8))
+                    other_count = sum(
+                        count
+                        for mod, count in modality_counts.items()
+                        if mod not in top_modalities
+                    )
+                    if other_count > 0:
+                        top_modalities["Other"] = other_count
+
+                    analysis_data["modality_data"] = {
+                        "modality_counts": dict(top_modalities),
+                        "total_datasets": sum(1 for _ in open(modalities_file))
+                        - 1,  # Subtract header
+                    }
+                    logging.info(
+                        f"Loaded modality data for {analysis_data['modality_data']['total_datasets']} datasets"
+                    )
+            except Exception as e:
+                logging.warning(f"Could not load modality data: {e}")
+                analysis_data["modality_data"] = {}
+        else:
+            analysis_data["modality_data"] = {}
+            logging.info("Modality data file not found")
+
         # Generate summary statistics
         analysis_data["summary_stats"] = self._generate_summary_stats(analysis_data)
 
@@ -612,13 +659,21 @@ class InteractiveReportGenerator:
                     <div class="col-md-4">
                         <div class="card analysis-card mb-4">
                             <div class="card-header">
+                                <h5><i class="fas fa-brain me-2"></i>Data Modalities</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="modalityChart" class="viz-container"></div>
+                            </div>
+                        </div>
+                        <div class="card analysis-card mb-4">
+                            <div class="card-header">
                                 <h5><i class="fas fa-sitemap me-2"></i>Research Bridge Analysis</h5>
                             </div>
                             <div class="card-body">
                                 <div id="bridgeChart" class="viz-container"></div>
                             </div>
-                            </div>
                         </div>
+                    </div>
                     </div>
                 </div>
                 
@@ -824,6 +879,7 @@ class InteractiveReportGenerator:
             // Initialize overview charts
             createQualityChart();
             createGrowthChart();
+            createModalityChart();
             createBridgeChart();
             
             // Initialize network visualizations
@@ -1863,15 +1919,74 @@ class InteractiveReportGenerator:
             Plotly.newPlot('temporalChart', data, layout, {responsive: true});
         }
         
+        function createModalityChart() {
+            // Dataset modality distribution chart
+            const modalityData = analysisData.modality_data || {};
+            const modalityCounts = modalityData.modality_counts || {};
+            
+            if (Object.keys(modalityCounts).length > 0) {
+                const data = [{
+                    values: Object.values(modalityCounts),
+                    labels: Object.keys(modalityCounts).map(m => m.charAt(0).toUpperCase() + m.slice(1)),
+                    type: 'pie',
+                    marker: {
+                        colors: [
+                            colorScheme.primary,
+                            colorScheme.dataset,
+                            colorScheme.citation,
+                            colorScheme.bridge,
+                            '#FF6B6B',
+                            '#4ECDC4',
+                            '#45B7D1',
+                            '#96CEB4',
+                            '#DDA0DD'
+                        ]
+                    },
+                    textinfo: 'label+percent',
+                    textposition: 'outside',
+                    hovertemplate: '%{label}: %{value} datasets<br>%{percent}<extra></extra>'
+                }];
+                
+                const layout = {
+                    title: {
+                        text: 'Dataset Modalities Distribution',
+                        font: { size: 16, color: colorScheme.text }
+                    },
+                    showlegend: true,
+                    legend: {
+                        orientation: 'v',
+                        y: 0.5,
+                        x: 1.05
+                    },
+                    margin: { l: 50, r: 150, t: 50, b: 50 },
+                    font: { family: 'Segoe UI', size: 12 },
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    paper_bgcolor: 'rgba(0,0,0,0)'
+                };
+                
+                Plotly.newPlot('modalityChart', data, layout, {responsive: true});
+            } else {
+                // Show placeholder if no data
+                document.getElementById('modalityChart').innerHTML = '<p class="text-center text-muted">Modality data not available</p>';
+            }
+        }
+        
         function createBridgeChart() {
-            // Placeholder for bridge analysis
+            // Bridge papers analysis chart  
+            const networkData = analysisData.network_analysis || {};
+            const bridgePapers = (networkData.bridge_papers || []).length;
+            const multiDatasetCitations = (networkData.multi_dataset_citations || []).length;
+            const singleDataset = Math.max(0, 1004 - bridgePapers - multiDatasetCitations); // Total citations minus multi-dataset
+            
             const data = [{
-                values: [60, 25, 15],
-                labels: ['Single Domain', 'Cross-Domain', 'Bridge Papers'],
+                values: [singleDataset, multiDatasetCitations, bridgePapers],
+                labels: ['Single Dataset', 'Multi-Dataset', 'Bridge Papers (High Conf)'],
                 type: 'pie',
                 marker: {
                     colors: [colorScheme.dataset, colorScheme.citation, colorScheme.bridge]
-                }
+                },
+                textinfo: 'label+percent',
+                hovertemplate: '%{label}: %{value} papers<br>%{percent}<extra></extra>'
             }];
             
             const layout = {
