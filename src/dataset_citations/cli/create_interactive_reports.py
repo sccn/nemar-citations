@@ -226,6 +226,59 @@ class InteractiveReportGenerator:
                     except Exception as e:
                         logging.warning(f"Could not copy {viz_file}: {e}")
 
+        # Load dataset modalities data
+        modalities_file = Path("citations/dataset_modalities_lookup.csv")
+        if modalities_file.exists():
+            try:
+                if PANDAS_AVAILABLE:
+                    import csv
+                    from collections import Counter
+
+                    # For NEMAR, only count electrophysiological modalities
+                    electrophys_modalities = ["eeg", "meg", "ieeg"]
+                    modality_counts = Counter()
+                    electrophys_dataset_count = 0
+
+                    with open(modalities_file, "r") as f:
+                        reader = csv.DictReader(f)
+                        for row in reader:
+                            modalities = row["modalities"].split(",")
+                            # Check if dataset has any electrophysiological data
+                            has_electrophys = False
+                            for modality in modalities:
+                                cleaned = modality.strip().lower()
+                                if cleaned in electrophys_modalities:
+                                    has_electrophys = True
+                                    modality_counts[cleaned] += 1
+
+                            if has_electrophys:
+                                electrophys_dataset_count += 1
+
+                    # Only include EEG, MEG, iEEG for NEMAR dashboard
+                    nemar_modalities = {}
+                    for mod in electrophys_modalities:
+                        if mod in modality_counts:
+                            # Capitalize properly for display
+                            display_name = (
+                                mod.upper() if mod in ["eeg", "meg"] else "iEEG"
+                            )
+                            nemar_modalities[display_name] = modality_counts[mod]
+
+                    analysis_data["modality_data"] = {
+                        "modality_counts": nemar_modalities,
+                        "total_datasets": electrophys_dataset_count,
+                        "is_nemar_filtered": True,  # Flag to indicate NEMAR-specific filtering
+                    }
+                    logging.info(
+                        f"Loaded modality data for {analysis_data['modality_data']['total_datasets']} datasets"
+                    )
+            except Exception as e:
+                logging.warning(f"Could not load modality data: {e}")
+                analysis_data["modality_data"] = {}
+        else:
+            analysis_data["modality_data"] = {}
+            logging.info("Modality data file not found")
+
         # Generate summary statistics
         analysis_data["summary_stats"] = self._generate_summary_stats(analysis_data)
 
@@ -612,13 +665,13 @@ class InteractiveReportGenerator:
                     <div class="col-md-4">
                         <div class="card analysis-card mb-4">
                             <div class="card-header">
-                                <h5><i class="fas fa-sitemap me-2"></i>Research Bridge Analysis</h5>
+                                <h5><i class="fas fa-brain me-2"></i>NEMAR Data Modalities</h5>
                             </div>
                             <div class="card-body">
-                                <div id="bridgeChart" class="viz-container"></div>
-                            </div>
+                                <div id="modalityChart" class="viz-container"></div>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
                 
@@ -824,7 +877,7 @@ class InteractiveReportGenerator:
             // Initialize overview charts
             createQualityChart();
             createGrowthChart();
-            createBridgeChart();
+            createModalityChart();
             
             // Initialize network visualizations
             createNetworkVisualization();
@@ -1755,52 +1808,82 @@ class InteractiveReportGenerator:
             let infoHTML = '';
             
             if (nodeData.type === 'dataset') {
+                const datasetUrl = `https://openneuro.org/datasets/${nodeData.id}`;
                 infoHTML = `
                     <div class="card">
                         <div class="card-header">
                             <h6 class="mb-0"><i class="fas fa-database me-2"></i>Dataset Information</h6>
                         </div>
                         <div class="card-body">
-                            <p><strong>Dataset ID:</strong> ${nodeData.id}</p>
+                            <p><strong>Dataset ID:</strong> 
+                                <a href="${datasetUrl}" target="_blank" rel="noopener noreferrer">
+                                    ${nodeData.id} <i class="fas fa-external-link-alt fa-xs"></i>
+                                </a>
+                            </p>
                             <p><strong>Name:</strong> ${nodeData.fullName || nodeData.label}</p>
                             <p><strong>Total Citations:</strong> ${nodeData.citations || 0}</p>
                             <div class="mt-3">
+                                <a href="${datasetUrl}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i> View on OpenNeuro
+                                </a>
+                            </div>
+                            <div class="mt-2">
                                 <small class="text-muted">Click on other nodes to explore connections</small>
                             </div>
                         </div>
                     </div>
                 `;
             } else if (nodeData.type === 'citation') {
+                const paperUrl = nodeData.url || `https://scholar.google.com/scholar?q=${encodeURIComponent(nodeData.title || 'No title')}`;
                 infoHTML = `
                     <div class="card">
                         <div class="card-header">
                             <h6 class="mb-0"><i class="fas fa-quote-left me-2"></i>Citation Information</h6>
                         </div>
                         <div class="card-body">
-                            <p><strong>Title:</strong> ${nodeData.title || 'No title available'}</p>
+                            <p><strong>Title:</strong> 
+                                <a href="${paperUrl}" target="_blank" rel="noopener noreferrer">
+                                    ${nodeData.title || 'No title available'} <i class="fas fa-external-link-alt fa-xs"></i>
+                                </a>
+                            </p>
                             <p><strong>Author:</strong> ${nodeData.author || 'Unknown'}</p>
                             <p><strong>Year:</strong> ${nodeData.year || 'N/A'}</p>
                             <p><strong>Venue:</strong> ${nodeData.venue || 'N/A'}</p>
                             <p><strong>Citations:</strong> ${nodeData.impact || 0}</p>
                             <p><strong>Confidence Score:</strong> ${((nodeData.confidence || 0) * 100).toFixed(1)}%</p>
                             <div class="mt-3">
+                                <a href="${paperUrl}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i> View Paper
+                                </a>
+                            </div>
+                            <div class="mt-2">
                                 <small class="text-muted">Part of research cluster ${nodeData.cluster || 'N/A'}</small>
                             </div>
                         </div>
                     </div>
                 `;
             } else if (nodeData.type === 'bridge') {
+                const paperUrl = nodeData.url || `https://scholar.google.com/scholar?q=${encodeURIComponent(nodeData.fullTitle || nodeData.label)}`;
                 infoHTML = `
                     <div class="card">
                         <div class="card-header">
                             <h6 class="mb-0"><i class="fas fa-link me-2"></i>Bridge Paper</h6>
                         </div>
                         <div class="card-body">
-                            <p><strong>Title:</strong> ${nodeData.fullTitle || nodeData.label}</p>
+                            <p><strong>Title:</strong> 
+                                <a href="${paperUrl}" target="_blank" rel="noopener noreferrer">
+                                    ${nodeData.fullTitle || nodeData.label} <i class="fas fa-external-link-alt fa-xs"></i>
+                                </a>
+                            </p>
                             <p><strong>Author:</strong> ${nodeData.author || 'Unknown'}</p>
                             <p><strong>Datasets Connected:</strong> ${nodeData.datasetsConnected || 0}</p>
                             <p><strong>Confidence Score:</strong> ${(nodeData.confidence * 100).toFixed(1)}%</p>
                             <div class="mt-3">
+                                <a href="${paperUrl}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i> View Paper
+                                </a>
+                            </div>
+                            <div class="mt-2">
                                 <small class="text-muted">This paper connects multiple research areas</small>
                             </div>
                         </div>
@@ -1863,15 +1946,74 @@ class InteractiveReportGenerator:
             Plotly.newPlot('temporalChart', data, layout, {responsive: true});
         }
         
+        function createModalityChart() {
+            // Dataset modality distribution chart
+            const modalityData = analysisData.modality_data || {};
+            const modalityCounts = modalityData.modality_counts || {};
+            
+            if (Object.keys(modalityCounts).length > 0) {
+                const data = [{
+                    values: Object.values(modalityCounts),
+                    labels: Object.keys(modalityCounts).map(m => m.charAt(0).toUpperCase() + m.slice(1)),
+                    type: 'pie',
+                    marker: {
+                        colors: [
+                            colorScheme.primary,
+                            colorScheme.dataset,
+                            colorScheme.citation,
+                            colorScheme.bridge,
+                            '#FF6B6B',
+                            '#4ECDC4',
+                            '#45B7D1',
+                            '#96CEB4',
+                            '#DDA0DD'
+                        ]
+                    },
+                    textinfo: 'label+percent',
+                    textposition: 'outside',
+                    hovertemplate: '%{label}: %{value} datasets<br>%{percent}<extra></extra>'
+                }];
+                
+                const layout = {
+                    title: {
+                        text: 'NEMAR Electrophysiology Modalities',
+                        font: { size: 16, color: colorScheme.text }
+                    },
+                    showlegend: true,
+                    legend: {
+                        orientation: 'v',
+                        y: 0.5,
+                        x: 1.05
+                    },
+                    margin: { l: 50, r: 150, t: 50, b: 50 },
+                    font: { family: 'Segoe UI', size: 12 },
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    paper_bgcolor: 'rgba(0,0,0,0)'
+                };
+                
+                Plotly.newPlot('modalityChart', data, layout, {responsive: true});
+            } else {
+                // Show placeholder if no data
+                document.getElementById('modalityChart').innerHTML = '<p class="text-center text-muted">Modality data not available</p>';
+            }
+        }
+        
         function createBridgeChart() {
-            // Placeholder for bridge analysis
+            // Bridge papers analysis chart  
+            const networkData = analysisData.network_analysis || {};
+            const bridgePapers = (networkData.bridge_papers || []).length;
+            const multiDatasetCitations = (networkData.multi_dataset_citations || []).length;
+            const singleDataset = Math.max(0, 1004 - bridgePapers - multiDatasetCitations); // Total citations minus multi-dataset
+            
             const data = [{
-                values: [60, 25, 15],
-                labels: ['Single Domain', 'Cross-Domain', 'Bridge Papers'],
+                values: [singleDataset, multiDatasetCitations, bridgePapers],
+                labels: ['Single Dataset', 'Multi-Dataset', 'Bridge Papers (High Conf)'],
                 type: 'pie',
                 marker: {
                     colors: [colorScheme.dataset, colorScheme.citation, colorScheme.bridge]
-                }
+                },
+                textinfo: 'label+percent',
+                hovertemplate: '%{label}: %{value} papers<br>%{percent}<extra></extra>'
             }];
             
             const layout = {
@@ -2073,14 +2215,14 @@ class InteractiveReportGenerator:
                     </div>
                     <div class="col-md-6">
                         <h6><i class="fas fa-star me-2"></i>Top Cited Datasets</h6>
-                        <div class="list-group">`;
+                        <div class="list-group" style="max-height: 400px; overflow-y: auto;">`;
                         
             if (popularityData.length > 0) {
-                // Filter datasets with high-confidence citations and get top 5
+                // Filter datasets with high-confidence citations and get top 20 for scrollable list
                 const highConfDatasets = popularityData
                     .filter(dataset => (dataset.high_confidence_citations || 0) > 0)
                     .sort((a, b) => (b.high_confidence_citations || 0) - (a.high_confidence_citations || 0))
-                    .slice(0, 5);
+                    .slice(0, 20);
                 
                 if (highConfDatasets.length > 0) {
                     highConfDatasets.forEach((dataset, index) => {
@@ -2088,10 +2230,15 @@ class InteractiveReportGenerator:
                         const highConfCitations = dataset.high_confidence_citations || 0;
                         const lowConfCitations = totalCitations - highConfCitations;
                         
+                        const datasetUrl = `https://openneuro.org/datasets/${dataset.dataset_id}`;
                         content += `
                             <div class="list-group-item">
                                 <div class="d-flex w-100 justify-content-between">
-                                    <h6 class="mb-1">${dataset.dataset_id || 'N/A'}</h6>
+                                    <h6 class="mb-1">
+                                        <a href="${datasetUrl}" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                            ${dataset.dataset_id || 'N/A'} <i class="fas fa-external-link-alt fa-xs"></i>
+                                        </a>
+                                    </h6>
                                     <small class="text-muted">${highConfCitations} high-conf citations</small>
                                 </div>
                                 <p class="mb-1">${(dataset.dataset_name || 'No name available').substring(0, 60)}${(dataset.dataset_name || '').length > 60 ? '...' : ''}</p>
@@ -2155,14 +2302,21 @@ class InteractiveReportGenerator:
                     </div>
                     <div class="col-md-6">
                         <h6><i class="fas fa-trophy me-2"></i>Highest Impact Citations</h6>
-                        <div class="list-group">`;
+                        <div class="list-group" style="max-height: 400px; overflow-y: auto;">`;
                         
             if (impactData.length > 0) {
-                impactData.slice(0, 5).forEach((citation, index) => {
+                impactData.slice(0, 20).forEach((citation, index) => {
+                    // Use actual paper URL if available, otherwise fall back to Google Scholar search
+                    const paperUrl = citation.citation_url || citation.url || 
+                        `https://scholar.google.com/scholar?q=${encodeURIComponent(citation.citation_title || 'No title')}`;
                     content += `
                         <div class="list-group-item">
                             <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1 small">${(citation.citation_title || 'No title').substring(0, 50)}${(citation.citation_title || '').length > 50 ? '...' : ''}</h6>
+                                <h6 class="mb-1 small">
+                                    <a href="${paperUrl}" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                        ${(citation.citation_title || 'No title').substring(0, 50)}${(citation.citation_title || '').length > 50 ? '...' : ''} <i class="fas fa-external-link-alt fa-xs"></i>
+                                    </a>
+                                </h6>
                                 <small class="text-muted">${citation.citation_impact || 0} citations</small>
                             </div>
                             <p class="mb-1 small text-muted">${citation.citation_author || 'Unknown author'}</p>
@@ -2231,14 +2385,21 @@ class InteractiveReportGenerator:
                 <div class="row">
                     <div class="col-md-6">
                         <h6><i class="fas fa-bridge me-2"></i>Top Bridge Papers</h6>
-                        <div class="list-group">`;
+                        <div class="list-group" style="max-height: 350px; overflow-y: auto;">`;
                         
             if (bridgeData.length > 0) {
-                bridgeData.slice(0, 3).forEach((paper, index) => {
+                bridgeData.slice(0, 10).forEach((paper, index) => {
+                    // Use actual paper URL if available, otherwise fall back to Google Scholar search
+                    const paperUrl = paper.bridge_paper_url || paper.url || 
+                        `https://scholar.google.com/scholar?q=${encodeURIComponent(paper.bridge_paper_title || 'No title')}`;
                     content += `
                         <div class="list-group-item">
                             <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1 small">${(paper.bridge_paper_title || 'No title').substring(0, 50)}${(paper.bridge_paper_title || '').length > 50 ? '...' : ''}</h6>
+                                <h6 class="mb-1 small">
+                                    <a href="${paperUrl}" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                        ${(paper.bridge_paper_title || 'No title').substring(0, 50)}${(paper.bridge_paper_title || '').length > 50 ? '...' : ''} <i class="fas fa-external-link-alt fa-xs"></i>
+                                    </a>
+                                </h6>
                                 <small class="text-muted">${paper.num_datasets_bridged || 0} datasets</small>
                             </div>
                             <p class="mb-1 small text-muted">${paper.bridge_paper_author || 'Unknown author'}</p>
@@ -2254,14 +2415,21 @@ class InteractiveReportGenerator:
                     </div>
                     <div class="col-md-6">
                         <h6><i class="fas fa-share-alt me-2"></i>Top Cross-Domain Papers</h6>
-                        <div class="list-group">`;
+                        <div class="list-group" style="max-height: 350px; overflow-y: auto;">`;
                         
             if (crossDomainData.length > 0) {
-                crossDomainData.slice(0, 3).forEach((paper, index) => {
+                crossDomainData.slice(0, 10).forEach((paper, index) => {
+                    // Use actual paper URL if available, otherwise fall back to Google Scholar search
+                    const paperUrl = paper.citation_url || paper.url || 
+                        `https://scholar.google.com/scholar?q=${encodeURIComponent(paper.citation_title || 'No title')}`;
                     content += `
                         <div class="list-group-item">
                             <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1 small">${(paper.citation_title || 'No title').substring(0, 50)}${(paper.citation_title || '').length > 50 ? '...' : ''}</h6>
+                                <h6 class="mb-1 small">
+                                    <a href="${paperUrl}" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                        ${(paper.citation_title || 'No title').substring(0, 50)}${(paper.citation_title || '').length > 50 ? '...' : ''} <i class="fas fa-external-link-alt fa-xs"></i>
+                                    </a>
+                                </h6>
                                 <small class="text-muted">${paper.num_datasets_cited || 0} datasets</small>
                             </div>
                             <p class="mb-1 small text-muted">${paper.citation_author || 'Unknown author'}</p>

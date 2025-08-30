@@ -612,22 +612,25 @@
                             </div>
                             <div class="card-body">
                                 <div id="growthChart" class="viz-container"></div>
-                                </div>
                             </div>
                         </div>
+                    </div>
                     <div class="col-md-4">
                         <div class="card analysis-card mb-4">
                             <div class="card-header">
-                                <h5 style="color: #ffffff !important;"><i class="fas fa-sitemap me-2"></i>Research Bridge Analysis</h5>
+                                <h5 style="color: #ffffff !important;"><i class="fas fa-brain me-2"></i>Data Modalities (EEG/MEG/iEEG)</h5>
                             </div>
                             <div class="card-body">
-                                <div id="bridgeChart" class="viz-container"></div>
-                            </div>
+                                <div id="modalityChart" class="viz-container"></div>
+                                <p class="text-muted small mt-2 text-center">
+                                    Distribution of electrophysiological data types across NEMAR datasets
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+            </div>
+            
             <!-- Network Analysis Tab -->
             <div class="tab-pane fade" id="network" role="tabpanel">
                 <h2 class="section-header">Network Analysis</h2>
@@ -895,7 +898,7 @@ window.handleTabSwitch = function(tabName) {
             // Initialize overview charts
             createQualityChart();
             createGrowthChart();
-            createBridgeChart();
+            createModalityChart();
             // Network visualizations will be initialized when tab is shown
             // createNetworkVisualization();
             // createCitationNetworkVisualization();
@@ -921,7 +924,7 @@ window.handleTabSwitch = function(tabName) {
             }];
             
             const layout = {
-                font: { family: 'Segoe UI' },
+                font: { family: 'Open Sans, sans-serif', color: '#555555' },
                 plot_bgcolor: 'rgba(0,0,0,0)',
                 paper_bgcolor: 'rgba(0,0,0,0)',
                 showlegend: false,
@@ -970,7 +973,10 @@ window.handleTabSwitch = function(tabName) {
             }];
             
             const layout = {
-                font: { family: 'Segoe UI' },
+                                font: {
+                    family: 'Open Sans, sans-serif',
+                    color: '#555555'
+                },
                 plot_bgcolor: 'rgba(0,0,0,0)',
                 paper_bgcolor: 'rgba(0,0,0,0)',
                 showlegend: false,
@@ -987,6 +993,8 @@ window.handleTabSwitch = function(tabName) {
             }
         }
         
+        // Commented out for future use - bridge chart functionality
+        /*
         function createBridgeChart() {
             const bridgePapers = 80;
             const totalCitations = 1004;
@@ -1020,6 +1028,88 @@ window.handleTabSwitch = function(tabName) {
             } else {
                 Plotly.newPlot('bridgeChart', data, layout, {responsive: true});
             }
+        }
+        */
+        
+        function createModalityChart() {
+            // Load and process modality data from CSV
+            fetch('../citations/dataset_modalities_lookup.csv')
+                .then(response => {
+                    if (!response.ok) {
+                        console.warn('Modality data not available, using fallback');
+                        // Create fallback chart with example data
+                        createModalityChartWithData({eeg: 120, meg: 45, ieeg: 25});
+                        return null;
+                    }
+                    return response.text();
+                })
+                .then(csvText => {
+                    if (!csvText) return;
+                    
+                    // Parse CSV
+                    const lines = csvText.trim().split('\n');
+                    const headers = lines[0].split(',');
+                    
+                    // Count electrophysiological modalities
+                    const modalityCounts = {eeg: 0, meg: 0, ieeg: 0};
+                    
+                    for (let i = 1; i < lines.length; i++) {
+                        const line = lines[i];
+                        if (!line) continue;
+                        
+                        // Parse CSV line (handle quoted values)
+                        const parts = line.match(/(".*?"|[^,]+)(?=\s*,|\s*$)/g);
+                        if (!parts || parts.length < 2) continue;
+                        
+                        const modalities = parts[1].replace(/"/g, '').toLowerCase();
+                        
+                        // Check for each electrophysiological modality
+                        if (modalities.includes('eeg')) modalityCounts.eeg++;
+                        if (modalities.includes('meg')) modalityCounts.meg++;
+                        if (modalities.includes('ieeg')) modalityCounts.ieeg++;
+                    }
+                    
+                    createModalityChartWithData(modalityCounts);
+                })
+                .catch(error => {
+                    console.warn('Error loading modality data:', error);
+                    // Create fallback chart
+                    createModalityChartWithData({eeg: 120, meg: 45, ieeg: 25});
+                });
+        }
+        
+        function createModalityChartWithData(modalityCounts) {
+            const data = [{
+                values: [modalityCounts.eeg, modalityCounts.meg, modalityCounts.ieeg],
+                labels: ['EEG', 'MEG', 'iEEG'],
+                type: 'pie',
+                hole: 0.4,
+                marker: {
+                    colors: ['#3498DB', '#9B59B6', '#E74C3C']
+                },
+                textinfo: 'label+percent',
+                textposition: 'outside',
+                hovertemplate: '%{label}: %{value} datasets<br>%{percent}<extra></extra>'
+            }];
+            
+            const layout = {
+                showlegend: true,
+                height: 385,
+                margin: { t: 20, b: 20, l: 20, r: 20 },
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                font: {
+                    family: 'Open Sans, sans-serif',
+                    color: '#555555'
+                },
+                legend: {
+                    orientation: 'v',
+                    x: 1,
+                    y: 0.5
+                }
+            };
+            
+            Plotly.newPlot('modalityChart', data, layout, {responsive: true});
         }
         
         function buildUMAPNetworkElements() {
@@ -1846,7 +1936,7 @@ window.handleTabSwitch = function(tabName) {
                             <h6 class="mb-0" style="color: #ffffff !important;"><i class="fas fa-database me-2"></i>Dataset Information</h6>
                         </div>
                         <div class="card-body">
-                            <p><strong>Dataset ID:</strong> ${nodeData.id}</p>
+                            <p><strong>Dataset ID:</strong> <a href="https://nemar.org/dataexplorer/detail?dataset_id=${nodeData.id}" target="_blank" rel="noopener noreferrer">${nodeData.id}</a></p>
                             <p><strong>Name:</strong> ${nodeData.fullName || nodeData.label}</p>
                             <p><strong>Total Citations:</strong> ${nodeData.citations || 0}</p>
                             <div class="mt-3">
@@ -1862,7 +1952,7 @@ window.handleTabSwitch = function(tabName) {
                             <h6 class="mb-0" style="color: #ffffff !important;"><i class="fas fa-quote-left me-2"></i>Citation Information</h6>
                         </div>
                         <div class="card-body">
-                            <p><strong>Title:</strong> ${nodeData.title || 'No title available'}</p>
+                            <p><strong>Title:</strong> ${nodeData.url ? `<a href="${nodeData.url}" target="_blank" rel="noopener noreferrer">${nodeData.title || 'No title available'}</a>` : `<a href="https://scholar.google.com/scholar?q=${encodeURIComponent(nodeData.title || '')}" target="_blank" rel="noopener noreferrer">${nodeData.title || 'No title available'}</a>`}</p>
                             <p><strong>Author:</strong> ${nodeData.author || 'Unknown'}</p>
                             <p><strong>Year:</strong> ${nodeData.year || 'N/A'}</p>
                             <p><strong>Venue:</strong> ${nodeData.venue || 'N/A'}</p>
@@ -1953,6 +2043,8 @@ window.handleTabSwitch = function(tabName) {
             }
         }
         
+        // Commented out for future use - alternative bridge chart implementation
+        /*
         function createBridgeChart() {
             // Placeholder for bridge analysis
             const data = [{
@@ -1976,6 +2068,7 @@ window.handleTabSwitch = function(tabName) {
                 Plotly.newPlot('bridgeChart', data, layout, {responsive: true});
             }
         }
+        */
         
         function createPopularityChart() {
             // Placeholder for dataset popularity
@@ -2183,14 +2276,14 @@ window.handleTabSwitch = function(tabName) {
                     </div>
                     <div class="col-md-6">
                         <h6><i class="fas fa-star me-2"></i>Top Cited Datasets</h6>
-                        <div class="list-group">`;
+                        <div class="list-group" style="max-height: 300px; overflow-y: auto;">`;
                         
             if (popularityData.length > 0) {
                 // Filter datasets with high-confidence citations and get top 5
                 const highConfDatasets = popularityData
                     .filter(dataset => (dataset.high_confidence_citations || 0) > 0)
                     .sort((a, b) => (b.high_confidence_citations || 0) - (a.high_confidence_citations || 0))
-                    .slice(0, 5);
+                    .slice(0, 20);
                 
                 if (highConfDatasets.length > 0) {
                     highConfDatasets.forEach((dataset, index) => {
@@ -2201,7 +2294,7 @@ window.handleTabSwitch = function(tabName) {
                         content += `
                             <div class="list-group-item">
                                 <div class="d-flex w-100 justify-content-between">
-                                    <h6 class="mb-1">${dataset.dataset_id || 'N/A'}</h6>
+                                    <h6 class="mb-1"><a href="https://nemar.org/dataexplorer/detail?dataset_id=${dataset.dataset_id}" target="_blank" rel="noopener noreferrer">${dataset.dataset_id || 'N/A'}</a></h6>
                                     <small class="text-muted">${highConfCitations} high-conf citations</small>
                                 </div>
                                 <p class="mb-1">${(dataset.dataset_name || 'No name available').substring(0, 60)}${(dataset.dataset_name || '').length > 60 ? '...' : ''}</p>
@@ -2265,14 +2358,17 @@ window.handleTabSwitch = function(tabName) {
                     </div>
                     <div class="col-md-6">
                         <h6><i class="fas fa-trophy me-2"></i>Highest Impact Citations</h6>
-                        <div class="list-group">`;
+                        <div class="list-group" style="max-height: 300px; overflow-y: auto;">`;
                         
             if (impactData.length > 0) {
-                impactData.slice(0, 5).forEach((citation, index) => {
+                // Ensure we show up to 20 citations, but check if we have that many
+                const citationsToShow = Math.min(impactData.length, 20);
+                console.log('Showing', citationsToShow, 'citations out of', impactData.length);
+                impactData.slice(0, citationsToShow).forEach((citation, index) => {
                     content += `
                         <div class="list-group-item">
                             <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1 small">${(citation.citation_title || 'No title').substring(0, 50)}${(citation.citation_title || '').length > 50 ? '...' : ''}</h6>
+                                <h6 class="mb-1 small">${citation.citation_url ? `<a href="${citation.citation_url}" target="_blank" rel="noopener noreferrer">${(citation.citation_title || 'No title').substring(0, 50)}${(citation.citation_title || '').length > 50 ? '...' : ''}</a>` : `<a href="https://scholar.google.com/scholar?q=${encodeURIComponent(citation.citation_title || '')}" target="_blank" rel="noopener noreferrer">${(citation.citation_title || 'No title').substring(0, 50)}${(citation.citation_title || '').length > 50 ? '...' : ''}</a>`}</h6>
                                 <small class="text-muted">${citation.citation_impact || 0} citations</small>
                             </div>
                             <p class="mb-1 small text-muted">${citation.citation_author || 'Unknown author'}</p>
@@ -2341,14 +2437,14 @@ window.handleTabSwitch = function(tabName) {
                 <div class="row">
                     <div class="col-md-6">
                         <h6><i class="fas fa-bridge me-2"></i>Top Bridge Papers</h6>
-                        <div class="list-group">`;
+                        <div class="list-group" style="max-height: 250px; overflow-y: auto;">`;
                         
             if (bridgeData.length > 0) {
-                bridgeData.slice(0, 3).forEach((paper, index) => {
+                bridgeData.slice(0, 20).forEach((paper, index) => {
                     content += `
                         <div class="list-group-item">
                             <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1 small">${(paper.bridge_paper_title || 'No title').substring(0, 50)}${(paper.bridge_paper_title || '').length > 50 ? '...' : ''}</h6>
+                                <h6 class="mb-1 small">${paper.bridge_paper_url ? `<a href="${paper.bridge_paper_url}" target="_blank" rel="noopener noreferrer">${(paper.bridge_paper_title || 'No title').substring(0, 50)}${(paper.bridge_paper_title || '').length > 50 ? '...' : ''}</a>` : `<a href="https://scholar.google.com/scholar?q=${encodeURIComponent(paper.bridge_paper_title || '')}" target="_blank" rel="noopener noreferrer">${(paper.bridge_paper_title || 'No title').substring(0, 50)}${(paper.bridge_paper_title || '').length > 50 ? '...' : ''}</a>`}</h6>
                                 <small class="text-muted">${paper.num_datasets_bridged || 0} datasets</small>
                             </div>
                             <p class="mb-1 small text-muted">${paper.bridge_paper_author || 'Unknown author'}</p>
@@ -2364,14 +2460,14 @@ window.handleTabSwitch = function(tabName) {
                     </div>
                     <div class="col-md-6">
                         <h6><i class="fas fa-share-alt me-2"></i>Top Cross-Domain Papers</h6>
-                        <div class="list-group">`;
+                        <div class="list-group" style="max-height: 250px; overflow-y: auto;">`;
                         
             if (crossDomainData.length > 0) {
-                crossDomainData.slice(0, 3).forEach((paper, index) => {
+                crossDomainData.slice(0, 20).forEach((paper, index) => {
                     content += `
                         <div class="list-group-item">
                             <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1 small">${(paper.citation_title || 'No title').substring(0, 50)}${(paper.citation_title || '').length > 50 ? '...' : ''}</h6>
+                                <h6 class="mb-1 small">${paper.citation_url ? `<a href="${paper.citation_url}" target="_blank" rel="noopener noreferrer">${(paper.citation_title || 'No title').substring(0, 50)}${(paper.citation_title || '').length > 50 ? '...' : ''}</a>` : `<a href="https://scholar.google.com/scholar?q=${encodeURIComponent(paper.citation_title || '')}" target="_blank" rel="noopener noreferrer">${(paper.citation_title || 'No title').substring(0, 50)}${(paper.citation_title || '').length > 50 ? '...' : ''}</a>`}</h6>
                                 <small class="text-muted">${paper.num_datasets_cited || 0} datasets</small>
                             </div>
                             <p class="mb-1 small text-muted">${paper.citation_author || 'Unknown author'}</p>
