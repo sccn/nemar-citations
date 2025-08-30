@@ -1091,8 +1091,7 @@ window.handleTabSwitch = function(tabName) {
             
             const layout = {
                 showlegend: true,
-                height: 300,
-                margin: {l: 40, r: 40, t: 40, b: 40},
+                margin: {l: 40, r: 40, t: 20, b: 50},
                 paper_bgcolor: 'rgba(0,0,0,0)',
                 plot_bgcolor: 'rgba(0,0,0,0)',
                 font: {
@@ -2358,7 +2357,10 @@ window.handleTabSwitch = function(tabName) {
                         <div class="list-group" style="max-height: 300px; overflow-y: auto;">`;
                         
             if (impactData.length > 0) {
-                impactData.slice(0, 20).forEach((citation, index) => {
+                // Ensure we show up to 20 citations, but check if we have that many
+                const citationsToShow = Math.min(impactData.length, 20);
+                console.log('Showing', citationsToShow, 'citations out of', impactData.length);
+                impactData.slice(0, citationsToShow).forEach((citation, index) => {
                     content += `
                         <div class="list-group-item">
                             <div class="d-flex w-100 justify-content-between">
