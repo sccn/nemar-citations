@@ -4,6 +4,7 @@ HTML template builder for dashboard generation.
 
 from typing import Dict, Any, Optional
 from pathlib import Path
+from .nemar_simple import generate_nemar_dashboard
 
 
 class TemplateBuilder:
@@ -93,9 +94,9 @@ class TemplateBuilder:
         timestamp: str,
     ) -> str:
         """Build NEMAR-styled dashboard."""
-        # This is a placeholder - the full implementation would generate
-        # the complete NEMAR dashboard HTML
-        return self.build_minimal_dashboard(stats, timestamp)
+        return generate_nemar_dashboard(
+            stats, charts, networks, themes, modals, data, data_file, timestamp
+        )
 
     def _build_standard_dashboard(
         self,
