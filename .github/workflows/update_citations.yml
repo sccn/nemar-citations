@@ -239,33 +239,68 @@ jobs:
             echo "CSV files generated from JSON data"
           fi
 
+      - name: Generate analysis results and dashboard
+        id: generate_dashboard
+        run: |
+          echo "Generating analysis results for dashboard..."
+          
+          # Create results directory structure
+          mkdir -p results/temporal_analysis
+          mkdir -p results/network_analysis
+          
+          echo "Running temporal analysis..."
+          dataset-citations-analyze-temporal \
+            --citations-dir citations/json \
+            --output-dir results/temporal_analysis \
+            --log-level INFO || echo "Temporal analysis failed (non-critical)"
+          
+          echo "Running network analysis..."
+          dataset-citations-analyze-networks \
+            --citations-dir citations/json \
+            --output-dir results/network_analysis \
+            --log-level INFO || echo "Network analysis failed (non-critical)"
+          
+          echo "Generating interactive dashboard..."
+          dataset-citations-create-interactive-reports \
+            --results-dir results/ \
+            --output-dir interactive_reports/ \
+            --verbose || echo "Dashboard generation failed (non-critical)"
+          
+          # Check if dashboard was created
+          if [ -f "interactive_reports/dataset_citations_dashboard.html" ]; then
+            echo "Dashboard generated successfully"
+            ls -lh interactive_reports/*.html
+          else
+            echo "Warning: Dashboard generation may have failed"
+          fi
+
       - name: Check for changes
         id: check_changes
         run: |
           # Refresh Git status to detect new or modified files
           git add -A
           
-          # Check if there are any unstaged changes in the citations, citations, and datasets directories
-          if ! git diff --cached --quiet -- citations/ citations/ datasets/; then
+          # Check if there are any unstaged changes in the citations, datasets, results, and interactive_reports directories
+          if ! git diff --cached --quiet -- citations/ datasets/ results/ interactive_reports/; then
             echo "CHANGES_DETECTED=true" >> $GITHUB_ENV
             echo "changes_detected=true" >> $GITHUB_OUTPUT
             
-            # Count changed files for reporting (including JSON files)
-            CHANGED_FILES=$(git diff --cached --name-only -- citations/ citations/ datasets/ | grep -E '\.(csv|pkl|txt|json)$' | wc -l)
+            # Count changed files for reporting (including JSON, HTML files)
+            CHANGED_FILES=$(git diff --cached --name-only -- citations/ datasets/ results/ interactive_reports/ | grep -E '\.(csv|pkl|txt|json|html|png)$' | wc -l)
             echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
             echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
             
-            # List changed files for the commit message (including JSON files)
-            CHANGED_FILES_LIST=$(git diff --cached --name-only -- citations/ citations/ datasets/ | grep -E '\.(csv|pkl|txt|json)$')
+            # List changed files for the commit message (including JSON, HTML files)
+            CHANGED_FILES_LIST=$(git diff --cached --name-only -- citations/ datasets/ results/ interactive_reports/ | grep -E '\.(csv|pkl|txt|json|html|png)$')
             echo "CHANGED_FILES_LIST<<EOF" >> $GITHUB_ENV
             echo "$CHANGED_FILES_LIST" >> $GITHUB_ENV
             echo "EOF" >> $GITHUB_ENV
             
-            echo "Detected $CHANGED_FILES changed files in citations, citations, and datasets directories"
+            echo "Detected $CHANGED_FILES changed files in citations, datasets, results, and interactive_reports directories"
           else
             echo "CHANGES_DETECTED=false" >> $GITHUB_ENV
             echo "changes_detected=false" >> $GITHUB_OUTPUT
-            echo "No changes detected in citations, citations, or datasets directories"
+            echo "No changes detected in tracked directories"
           fi
 
       - name: Display change detection results
@@ -284,7 +319,7 @@ jobs:
         if: ${{ env.CHANGES_DETECTED == 'true' && steps.update_citations.outcome == 'success' && steps.update_previous.outcome == 'success' }}
         run: |
           # Stage all changes for commit
-          git add citations/ citations/ datasets/
+          git add citations/ datasets/ results/ interactive_reports/
           
           # Create a descriptive commit message
           COMMIT_DATE=$(date +'%Y-%m-%d')
