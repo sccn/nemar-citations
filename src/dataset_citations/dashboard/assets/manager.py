@@ -53,7 +53,9 @@ class AssetManager:
             source_file = source_dir / file_name
             if source_file.exists():
                 dest_file = self.output_dir / file_name
-                shutil.copy2(source_file, dest_file)
+                # Only copy if source and destination are different
+                if source_file.resolve() != dest_file.resolve():
+                    shutil.copy2(source_file, dest_file)
 
     def copy_theme_images(self, image_files: List[str]):
         """
@@ -68,7 +70,9 @@ class AssetManager:
             source_file = source_dir / image_file
             if source_file.exists():
                 dest_file = self.output_dir / image_file
-                shutil.copy2(source_file, dest_file)
+                # Only copy if source and destination are different
+                if source_file.resolve() != dest_file.resolve():
+                    shutil.copy2(source_file, dest_file)
 
     def _clean_data_for_web(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """

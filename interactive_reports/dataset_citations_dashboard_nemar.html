@@ -11,503 +11,136 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Plotly.js -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <!-- jQuery (required for Bootstrap tabs) -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- Cytoscape.js -->
     <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
     
-    <!-- Dashboard Templates -->
+    <!-- Dashboard Templates & Styles -->
     <script src="dashboard_templates.js"></script>
-    
-    <!-- Modular Dashboard Styles -->
     <link href="dashboard_styles.css" rel="stylesheet">
     
-    
+    <!-- Lazy Loading Script -->
+    <script>
+        // Load data asynchronously
+        fetch('data/complete_analysis_data_clean.json')
+            .then(response => response.json())
+            .then(data => {
+                window.analysisData = data.analysisData;
+                console.log('Data loaded successfully');
+            })
+            .catch(error => console.error('Error loading data:', error));
+    </script>
 
-    
-    
 
-
-<style>
-
-    /* NEMAR Theme - Comprehensive Refinement */
-    
-    /* Import Open Sans font */
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
-    
-    /* Color Variables */
-    :root {
-        --nemar-primary-blue: #083d94;
-        --nemar-text-gray: #555555;
-        --nemar-accent-gold: #e1d295;
-        --nemar-light-gray: #f8f9fa;
-        --nemar-border-gray: #dee2e6;
-        --nemar-dark-blue: #052963;
-        --nemar-link-blue: #0056b3;
-        --nemar-white: #ffffff;
-        --nemar-light-blue: #e8f0ff;
-    }
-    
-    /* Global Typography */
-    body {
-        font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-        color: var(--nemar-text-gray);
-        font-size: 14px;
-        line-height: 1.6;
-        background-color: var(--nemar-white);
-        font-weight: 400;
-    }
-    
-    /* Headings */
-    h1, h2, h3, h4, h5, h6 {
-        font-family: 'Open Sans', Arial, sans-serif;
-        color: var(--nemar-primary-blue);
-        font-weight: 600;
-        margin-top: 0;
-    }
-    
-    h1 {
-        font-size: 2.2rem;
-        margin-bottom: 1.5rem;
-        border-bottom: 3px solid var(--nemar-accent-gold);
-        padding-bottom: 0.75rem;
-        font-weight: 700;
-    }
-    
-    h2 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-        font-weight: 600;
-    }
-    
-    h3 {
-        font-size: 1.5rem;
-        margin-bottom: 0.75rem;
-    }
-    
-    /* Info Cards - Statistics */
-    .info-card {
-        background: var(--nemar-white) !important;
-        border: 2px solid var(--nemar-border-gray) !important;
-        border-radius: 8px !important;
-        padding: 1.75rem 1.5rem !important;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        cursor: pointer;
-        height: 100%;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .info-card:hover {
-        border-color: var(--nemar-primary-blue) !important;
-        box-shadow: 0 6px 20px rgba(8, 61, 148, 0.12) !important;
-        transform: translateY(-3px);
-    }
-    
-    .info-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, var(--nemar-primary-blue), var(--nemar-accent-gold));
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    .info-card:hover::before {
-        opacity: 1;
-    }
-    
-    .info-card h3 {
-        color: var(--nemar-primary-blue) !important;
-        font-size: 2.5rem !important;
-        font-weight: 700 !important;
-        margin-bottom: 0.5rem !important;
-        background: none !important;
-        line-height: 1.2;
-    }
-    
-    .info-card p {
-        color: var(--nemar-text-gray) !important;
-        font-size: 1rem !important;
-        font-weight: 500 !important;
-        margin-bottom: 0.25rem !important;
-    }
-    
-    .info-card small {
-        color: var(--nemar-text-gray) !important;
-        opacity: 0.7;
-        font-size: 0.85rem !important;
-        font-style: italic;
-    }
-    
-    /* Navigation Tabs */
-    .nav-tabs {
-        border-bottom: 2px solid var(--nemar-accent-gold);
-        margin-bottom: 2rem;
-    }
-    
-    .nav-tabs .nav-link {
-        color: var(--nemar-text-gray);
-        background-color: var(--nemar-white) !important;
-        border: 2px solid transparent;
-        border-radius: 8px 8px 0 0;
-        padding: 0.875rem 1.5rem;
-        font-weight: 500;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        margin-right: 0.25rem;
-    }
-    
-    .nav-tabs .nav-link:hover {
-        color: var(--nemar-primary-blue);
-        background-color: var(--nemar-light-blue) !important;
-        border-color: var(--nemar-light-blue);
-    }
-    
-    .nav-tabs .nav-link.active {
-        color: var(--nemar-primary-blue);
-        background-color: var(--nemar-white) !important;
-        border-color: var(--nemar-accent-gold) var(--nemar-accent-gold) var(--nemar-white);
-        border-bottom: 3px solid var(--nemar-white);
-        font-weight: 600;
-    }
-    
-    /* Cards with blue headers - CRITICAL FIXES */
-    .card {
-        border: 1px solid var(--nemar-border-gray);
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-        transition: box-shadow 0.3s ease;
-        overflow: hidden;
-    }
-    
-    .card:hover {
-        box-shadow: 0 4px 16px rgba(8, 61, 148, 0.12);
-    }
-    
-    /* Card Headers - Ensure ALL text is white */
-    .card-header,
-    .theme-card-header,
-    div[style*="background-color: #083d94"],
-    div[style*="background: #083d94"],
-    div[style*="background-color: rgb(8, 61, 148)"],
-    .bg-primary {
-        background-color: var(--nemar-primary-blue) !important;
-        color: var(--nemar-white) !important;
-        padding: 1.25rem !important;
-        font-weight: 600 !important;
-        border-bottom: 3px solid var(--nemar-accent-gold) !important;
-    }
-    
-    /* ALL elements inside blue backgrounds MUST be white */
-    .card-header *,
-    .theme-card-header *,
-    div[style*="background-color: #083d94"] *,
-    div[style*="background: #083d94"] *,
-    div[style*="background-color: rgb(8, 61, 148)"] *,
-    .bg-primary * {
-        color: var(--nemar-white) !important;
-    }
-    
-    /* Specific fixes for theme card headers and subtitles */
-    .card-header h5,
-    .card-header h6,
-    .card-header .card-title {
-        color: var(--nemar-white) !important;
-        margin: 0 !important;
-        font-size: 1.25rem !important;
-        font-weight: 600 !important;
-    }
-    
-    /* Fix for subtitle text on blue backgrounds */
-    .card-header p,
-    .theme-card-subtitle,
-    .card-header small,
-    .card-header .text-muted {
-        color: rgba(255, 255, 255, 0.95) !important;
-        font-size: 0.95rem !important;
-        margin-top: 0.25rem !important;
-        margin-bottom: 0 !important;
-        font-weight: 400 !important;
-    }
-    
-    .card-body {
-        padding: 1.5rem;
-        background: var(--nemar-white) !important;
-    }
-    
-    /* Buttons - Refined */
-    .btn {
-        border-radius: 6px;
-        font-weight: 500;
-        padding: 0.625rem 1.5rem;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        text-transform: none;
-        border: 2px solid;
-        font-size: 0.95rem;
-        letter-spacing: 0.025em;
-    }
-    
-    .btn-primary {
-        background-color: var(--nemar-primary-blue);
-        border-color: var(--nemar-primary-blue);
-        color: var(--nemar-white);
-    }
-    
-    .btn-primary:hover {
-        background-color: var(--nemar-dark-blue);
-        border-color: var(--nemar-dark-blue);
-        box-shadow: 0 4px 12px rgba(8, 61, 148, 0.25);
-        transform: translateY(-1px);
-    }
-    
-    /* Tables - Refined */
-    .table {
-        background: var(--nemar-white) !important;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-    
-    .table thead th {
-        background-color: var(--nemar-primary-blue);
-        color: var(--nemar-white) !important;
-        border-bottom: 3px solid var(--nemar-accent-gold);
-        font-weight: 600;
-        padding: 1rem;
-        font-size: 0.95rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-    
-    .table tbody tr {
-        background: var(--nemar-white) !important;
-        transition: background-color 0.2s ease;
-    }
-    
-    .table tbody tr:nth-child(even) {
-        background-color: rgba(248, 249, 250, 0.5) !important;
-    }
-    
-    .table tbody tr:hover {
-        background-color: var(--nemar-light-blue) !important;
-    }
-    
-    /* Modals - Refined */
-    .modal-header {
-        background-color: var(--nemar-primary-blue);
-        color: var(--nemar-white);
-        border-bottom: 3px solid var(--nemar-accent-gold);
-        border-radius: 8px 8px 0 0;
-        padding: 1.25rem 1.5rem;
-    }
-    
-    .modal-header * {
-        color: var(--nemar-white) !important;
-    }
-    
-    .modal-header .modal-title {
-        font-weight: 600;
-        font-size: 1.25rem;
-    }
-    
-    .modal-header .close,
-    .modal-header .btn-close {
-        color: var(--nemar-white) !important;
-        opacity: 0.9;
-        font-size: 1.5rem;
-    }
-    
-    .modal-header .close:hover,
-    .modal-header .btn-close:hover {
-        opacity: 1;
-    }
-    
-    .modal-content {
-        border-radius: 8px;
-        border: none;
-        box-shadow: 0 10px 40px rgba(8, 61, 148, 0.15);
-    }
-    
-    .modal-body {
-        background: var(--nemar-white) !important;
-        padding: 1.5rem;
-    }
-    
-    /* Links */
-    a {
-        color: var(--nemar-link-blue);
-        text-decoration: none;
-        transition: all 0.2s ease;
-        font-weight: 500;
-    }
-    
-    a:hover {
-        color: var(--nemar-dark-blue);
-        text-decoration: underline;
-    }
-    
-    /* Charts Container */
-    .chart-container {
-        background-color: var(--nemar-white) !important;
-        border: 1px solid var(--nemar-border-gray);
-        padding: 1.25rem;
-        margin-bottom: 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-    }
-    
-    .chart-title {
-        color: var(--nemar-primary-blue);
-        font-weight: 600;
-        margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid var(--nemar-accent-gold);
-    }
-    
-    /* Tab Content */
-    .tab-content {
-        padding-top: 1.5rem;
-        background: transparent !important;
-    }
-    
-    .tab-pane {
-        background: transparent !important;
-        animation: fadeIn 0.4s ease-in;
-    }
-    
-    @keyframes fadeIn {
-        from { 
-            opacity: 0;
-            transform: translateY(10px);
+    <style>
+        /* NEMAR Theme */
+        :root {
+            --nemar-primary-blue: #083d94;
+            --nemar-text-gray: #555555;
+            --nemar-accent-gold: #e1d295;
+            --nemar-light-gray: #f8f9fa;
+            --nemar-border-gray: #dee2e6;
+            --nemar-white: #ffffff;
         }
-        to { 
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    /* Footer - Refined */
-    footer {
-        background: linear-gradient(to bottom, var(--nemar-white), var(--nemar-light-gray)) !important;
-        border-top: 3px solid var(--nemar-accent-gold);
-        padding: 2rem 0 1.5rem;
-        margin-top: 3rem;
-    }
-    
-    footer p {
-        color: var(--nemar-text-gray);
-        margin-bottom: 0.5rem;
-    }
-    
-    footer a {
-        color: var(--nemar-primary-blue);
-        font-weight: 600;
-    }
-    
-    /* Scrollbar Styling */
-    ::-webkit-scrollbar {
-        width: 12px;
-        height: 12px;
-    }
-    
-    ::-webkit-scrollbar-track {
-        background: var(--nemar-light-gray);
-        border-radius: 6px;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        background: var(--nemar-primary-blue);
-        border-radius: 6px;
-        border: 2px solid var(--nemar-light-gray);
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-        background: var(--nemar-dark-blue);
-    }
-    
-    /* Loading states - Refined */
-    .data-loading {
-        position: relative;
-        min-height: 400px;
-    }
-    
-    .data-loading::after {
-        content: "Loading data...";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 1.1rem;
-        color: var(--nemar-primary-blue);
-        font-weight: 500;
-        animation: pulse 1.5s ease-in-out infinite;
-    }
-    
-    @keyframes pulse {
-        0%, 100% { 
-            opacity: 0.6;
-            transform: translate(-50%, -50%) scale(1);
-        }
-        50% { 
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.05);
-        }
-    }
-    
-    /* Ensure no gradient backgrounds anywhere */
-    * {
-        background-image: none !important;
-    }
-    
-    /* Special override for any remaining contrast issues */
-    .text-dark {
-        color: var(--nemar-text-gray) !important;
-    }
-    
-    .text-white {
-        color: var(--nemar-white) !important;
-    }
-    
-    /* Responsive improvements */
-    @media (max-width: 768px) {
-        .info-card h3 {
-            font-size: 2rem !important;
+        
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            color: var(--nemar-text-gray);
+            font-size: 14px;
+            line-height: 1.6;
         }
         
         h1 {
-            font-size: 1.75rem;
+            color: var(--nemar-primary-blue);
+            font-weight: 700;
+            font-size: 2.2rem;
+            border-bottom: 3px solid var(--nemar-accent-gold);
+            padding-bottom: 0.75rem;
         }
         
-        .nav-tabs .nav-link {
-            padding: 0.75rem 1rem;
-            font-size: 0.9rem;
+        h2, h3, h4, h5, h6 {
+            color: var(--nemar-primary-blue);
+            font-weight: 600;
         }
-    }
-    
-</style>
+        
+        .stat-card {
+            background: white;
+            border: 2px solid var(--nemar-border-gray);
+            border-radius: 8px;
+            padding: 1.75rem 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-card:hover {
+            border-color: var(--nemar-primary-blue);
+            box-shadow: 0 6px 20px rgba(8, 61, 148, 0.12);
+            transform: translateY(-3px);
+        }
+        
+        .stat-card h3 {
+            color: var(--nemar-primary-blue);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-header {
+            background-color: var(--nemar-primary-blue) !important;
+            color: white !important;
+            padding: 1.25rem;
+            font-weight: 600;
+            border-bottom: 3px solid var(--nemar-accent-gold) !important;
+        }
+        
+        .card-header * {
+            color: white !important;
+        }
+        
+        .nav-pills .nav-link {
+            color: var(--nemar-text-gray);
+            background-color: white;
+            border: 2px solid transparent;
+            border-radius: 8px 8px 0 0;
+            padding: 0.875rem 1.5rem;
+            font-weight: 500;
+            margin-right: 0.25rem;
+        }
+        
+        .nav-pills .nav-link.active {
+            background-color: var(--nemar-primary-blue);
+            color: white;
+        }
+        
+        .viz-container {
+            min-height: 300px;
+            background: white;
+        }
+        
+        .network-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            min-height: 500px;
+        }
+        
+        footer {
+            background: linear-gradient(to bottom, white, var(--nemar-light-gray));
+            border-top: 3px solid var(--nemar-accent-gold);
+            padding: 2rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        footer a {
+            color: var(--nemar-primary-blue);
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body style="background-color: #ffffff;">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-network-wired me-2"></i>
-                Dataset Citations Analysis
-            </a>
-            <div class="navbar-nav ms-auto">
-                <span class="nav-link">
-                    <i class="fas fa-calendar me-1"></i>
-                    2025-08-01 12:47:59
-                </span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
+    
     <div class="container mt-4">
         <div class="row">
             <div class="col-12">
@@ -522,8 +155,10 @@
                     </p>
                     <hr class="my-4">
                     <div class="row">
+                        
                         <div class="col-md-3">
-                            <div class="card stat-card" onclick="showDetailModal('datasets')" title="Click to see dataset details">
+                            <div class="card stat-card" onclick="showDetailModal('datasets')" 
+                                 title="Click for details">
                                 <div class="card-body text-center">
                                     <h3><i class="fas fa-database me-2"></i>302</h3>
                                     <p class="mb-0">Datasets Analyzed</p>
@@ -532,25 +167,28 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="card stat-card" onclick="showDetailModal('citations')" title="Click to see high-confidence citations">
+                            <div class="card stat-card" onclick="showDetailModal('citations')" 
+                                 title="Click for details">
                                 <div class="card-body text-center">
-                                    <h3><i class="fas fa-quote-left me-2"></i>1004</h3>
-                                    <p class="mb-0">High-Confidence Citations*</p>
+                                    <h3><i class="fas fa-quote-left me-2"></i>0</h3>
+                                    <p class="mb-0">High-Confidence Citations</p>
                                     <small class="text-muted">*Confidence ≥0.4 • Click for details</small>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="card stat-card" onclick="showDetailModal('bridges')" title="Click to see bridge papers">
+                            <div class="card stat-card" onclick="showDetailModal('bridges')" 
+                                 title="Click for details">
                                 <div class="card-body text-center">
-                                    <h3><i class="fas fa-bridge me-2"></i>80</h3>
+                                    <h3><i class="fas fa-bridge me-2"></i>0</h3>
                                     <p class="mb-0">Research Bridge Papers</p>
                                     <small class="text-muted">Click for details</small>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="card stat-card" onclick="showDetailModal('threshold')" title="Click to learn about confidence scoring">
+                            <div class="card stat-card" onclick="showDetailModal('threshold')" 
+                                 title="Click for details">
                                 <div class="card-body text-center">
                                     <h3><i class="fas fa-filter me-2"></i>≥0.4</h3>
                                     <p class="mb-0">Confidence Threshold</p>
@@ -569,36 +207,35 @@
         <!-- Navigation Tabs -->
         <ul class="nav nav-pills mb-4" id="analysisTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="overview-tab" data-bs-toggle="pill" data-bs-target="#overview" 
-                        type="button" role="tab">
+                <button class="nav-link active" id="overview-tab" data-bs-toggle="pill" 
+                        data-bs-target="#overview" type="button" role="tab">
                     <i class="fas fa-home me-2"></i>Overview
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="network-tab" data-bs-toggle="pill" data-bs-target="#network" 
-                        type="button" role="tab">
+                <button class="nav-link" id="network-tab" data-bs-toggle="pill" 
+                        data-bs-target="#network" type="button" role="tab">
                     <i class="fas fa-project-diagram me-2"></i>Network Analysis
                 </button>
             </li>
-
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="themes-tab" data-bs-toggle="pill" data-bs-target="#themes" 
-                        type="button" role="tab">
+                <button class="nav-link" id="themes-tab" data-bs-toggle="pill" 
+                        data-bs-target="#themes" type="button" role="tab">
                     <i class="fas fa-tags me-2"></i>Research Themes
                 </button>
             </li>
-
         </ul>
 
         <!-- Tab Content -->
         <div class="tab-content" id="analysisTabContent">
             <!-- Overview Tab -->
             <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card analysis-card mb-4">
                             <div class="card-header">
-                                <h5 style="color: #ffffff !important;"><i class="fas fa-chart-bar me-2"></i>Citation Quality</h5>
+                                <h5><i class="fas fa-chart-bar me-2"></i>Citation Quality</h5>
                             </div>
                             <div class="card-body">
                                 <div id="qualityChart" class="viz-container"></div>
@@ -608,7 +245,7 @@
                     <div class="col-md-4">
                         <div class="card analysis-card mb-4">
                             <div class="card-header">
-                                <h5 style="color: #ffffff !important;"><i class="fas fa-chart-line me-2"></i>Growth Timeline</h5>
+                                <h5><i class="fas fa-chart-line me-2"></i>Growth Timeline</h5>
                             </div>
                             <div class="card-body">
                                 <div id="growthChart" class="viz-container"></div>
@@ -618,12 +255,12 @@
                     <div class="col-md-4">
                         <div class="card analysis-card mb-4">
                             <div class="card-header">
-                                <h5 style="color: #ffffff !important;"><i class="fas fa-brain me-2"></i>Data Modalities (EEG/MEG/iEEG)</h5>
+                                <h5><i class="fas fa-brain me-2"></i>Data Modalities (EEG/MEG/iEEG)</h5>
                             </div>
                             <div class="card-body">
                                 <div id="modalityChart" class="viz-container"></div>
                                 <p class="text-muted small mt-2 text-center">
-                                    Distribution of electrophysiological data types across NEMAR datasets
+                                    Distribution of electrophysiological data types
                                 </p>
                             </div>
                         </div>
@@ -633,144 +270,112 @@
             
             <!-- Network Analysis Tab -->
             <div class="tab-pane fade" id="network" role="tabpanel">
-                <h2 class="section-header">Network Analysis</h2>
+                <h2>Network Analysis</h2>
                 <p class="text-muted mb-4">
-                    <i class="fas fa-info-circle me-1"></i>
-                    Interactive network visualizations showing relationships between datasets and citations. 
-                    Hover over nodes to see detailed information. <strong><em>(First-time loading may take a few seconds)</em></strong>
+                    Interactive network visualizations showing relationships between datasets and citations.
                 </p>
                 
-                <div class="row h-100">
+                <div class="row">
                     <div class="col-md-6">
-                        <div class="card analysis-card mb-4 h-100">
+                        <div class="card analysis-card mb-4">
                             <div class="card-header">
-                                <h5 style="color: #ffffff !important;"><i class="fas fa-network-wired me-2"></i>Dataset Map</h5>
+                                <h5><i class="fas fa-network-wired me-2"></i>Dataset Map</h5>
                                 <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">
-                                    Datasets positioned using semantic coordinates, sized by citation count
+                                    Datasets positioned using semantic coordinates
                                 </small>
                             </div>
                             <div class="card-body">
-                                <div id="networkViz" class="network-container" style="height: 500px;"></div>
+                                <div id="networkViz" class="network-container"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card analysis-card mb-4 h-100">
+                        <div class="card analysis-card mb-4">
                             <div class="card-header">
-                                <h5 style="color: #ffffff !important;"><i class="fas fa-quote-left me-2"></i>Citation Map</h5>
+                                <h5><i class="fas fa-quote-left me-2"></i>Citation Map</h5>
                                 <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">
-                                    Citations positioned using semantic coordinates, connected by similarity.
+                                    Citations positioned using semantic coordinates
                                 </small>
                             </div>
                             <div class="card-body">
-                                <div id="citationNetworkViz" class="network-container" style="height: 500px;"></div>
+                                <div id="citationNetworkViz" class="network-container"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-                <div class="alert alert-secondary mt-3">
-                    <i class="fas fa-lightbulb me-2"></i>
-                    <strong>Network Visualization Insights:</strong> 
-                    Dataset proximity reflects semantic similarity through content analysis. Node size indicates citation volume. 
-                    Citation proximity shows research theme clustering with connections representing embedding similarity. 
-                    Citation node size reflects paper impact (citation count).
-                </div>
-            </div>
-
-
 
             <!-- Research Themes Tab -->
             <div class="tab-pane fade" id="themes" role="tabpanel">
-                <h2 class="section-header">Research Theme Analysis</h2>
+                <h2>Research Theme Analysis</h2>
                 <p class="text-muted mb-4">
-                    <i class="fas fa-info-circle me-1"></i>
-                    Word clouds showing key terms for each research theme cluster identified through UMAP analysis.
-                    Larger terms indicate higher frequency and importance within the theme.
+                    Word clouds showing key terms for each research theme cluster.
                 </p>
                 <div class="row">
                     <div class="col-md-6 mb-4">
                         <div class="card analysis-card">
                             <div class="card-header">
-                                <h5 style="color: #ffffff !important;"><i class="fas fa-cloud me-2"></i>Theme 1 - Core EEG</h5>
-                                <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">Primary neuroscience datasets</small>
+                                <h5><i class="fas fa-cloud me-2"></i>Theme 1 - Core EEG</h5>
+                                <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">
+                                    Primary neuroscience datasets
+                                </small>
                             </div>
                             <div class="card-body text-center">
-                                
                                 <img src="theme_0_wordcloud.png" 
-                                     alt="Theme 1 Word Cloud" class="img-fluid rounded" 
+                                     alt="Theme 1 - Core EEG Word Cloud" 
+                                     class="img-fluid rounded" 
                                      style="max-height: 300px; width: auto;">
-                                
+                            </div>
                         </div>
-                    </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <div class="card analysis-card">
                             <div class="card-header">
-                                <h5 style="color: #ffffff !important;"><i class="fas fa-cloud me-2"></i>Theme 2 - Audio & Stimulation</h5>
-                                <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">Auditory processing studies</small>
+                                <h5><i class="fas fa-cloud me-2"></i>Theme 2 - Audio & Stimulation</h5>
+                                <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">
+                                    Auditory processing studies
+                                </small>
                             </div>
                             <div class="card-body text-center">
-                                
                                 <img src="theme_1_wordcloud.png" 
-                                     alt="Theme 2 Word Cloud" class="img-fluid rounded" 
+                                     alt="Theme 2 - Audio & Stimulation Word Cloud" 
+                                     class="img-fluid rounded" 
                                      style="max-height: 300px; width: auto;">
-                                
+                            </div>
                         </div>
                     </div>
-                </div>
                     <div class="col-md-6 mb-4">
                         <div class="card analysis-card">
                             <div class="card-header">
-                                <h5 style="color: #ffffff !important;"><i class="fas fa-cloud me-2"></i>Theme 3 - Task Performance</h5>
-                                <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">Cognitive and behavioral tasks</small>
+                                <h5><i class="fas fa-cloud me-2"></i>Theme 3 - Task Performance</h5>
+                                <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">
+                                    Cognitive and behavioral tasks
+                                </small>
                             </div>
                             <div class="card-body text-center">
-                                
                                 <img src="theme_2_wordcloud.png" 
-                                     alt="Theme 3 Word Cloud" class="img-fluid rounded" 
+                                     alt="Theme 3 - Task Performance Word Cloud" 
+                                     class="img-fluid rounded" 
                                      style="max-height: 300px; width: auto;">
-                                
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <div class="card analysis-card">
                             <div class="card-header">
-                                <h5 style="color: #ffffff !important;"><i class="fas fa-cloud me-2"></i>Theme 4 - Advanced Methods</h5>
-                                <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">Methodological and analytical approaches</small>
+                                <h5><i class="fas fa-cloud me-2"></i>Theme 4 - Advanced Methods</h5>
+                                <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">
+                                    Methodological and analytical approaches
+                                </small>
                             </div>
                             <div class="card-body text-center">
-                                
                                 <img src="theme_3_wordcloud.png" 
-                                     alt="Theme 4 Word Cloud" class="img-fluid rounded" 
+                                     alt="Theme 4 - Advanced Methods Word Cloud" 
+                                     class="img-fluid rounded" 
                                      style="max-height: 300px; width: auto;">
-                                
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                    </div>
-                            </div>
-
-
-                            </div>
-                            </div>
-
-    <!-- Detail Modals -->
-    <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="detailModalLabel">Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                <div class="modal-body" id="detailModalBody">
-                    <!-- Dynamic content will be inserted here -->
-                    </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+                    </div></div>
             </div>
         </div>
     </div>
@@ -778,21 +383,13 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container text-center">
-            <p>&copy; 2025 <a href="https://github.com/sccn/nemar-citations" target="_blank" class="text-decoration-none"><strong>NEMAR Dataset Citation Analysis</strong></a>.</p>
+            <p>&copy; 2025 <a href="https://github.com/sccn/nemar-citations" target="_blank">
+                <strong>NEMAR Dataset Citation Analysis</strong></a></p>
             <p class="text-muted mb-2">
-                <a href="https://nemar.org" target="_blank" class="text-decoration-none"><strong>NEMAR</strong></a> is a window to <a href="https://openneuro.org" target="_blank" class="text-decoration-none">OpenNeuro</a> 
-                for hosting and analyzing electrophysiological data (EEG, MEG, iEEG) from around the world.
+                <a href="https://nemar.org" target="_blank"><strong>NEMAR</strong></a> 
+                is a window to <a href="https://openneuro.org" target="_blank">OpenNeuro</a>
             </p>
-            <p class="text-muted mb-2">
-                Created by
-                <a href="https://neuromechanist.github.io" target="_blank" class="text-decoration-none">Seyed Yahya Shirazi</a>
-                <br/>
-                <em>Swartz Center for Computational Neuroscience, UC San Diego</em>
-            </p>
-            <p class="text-muted small">
-                Confidence threshold: ≥0.4 | 
-                Analysis: 2025-08-01 12:47:59
-            </p>
+            <p class="text-muted small">Generated: 2025-09-13 18:53:38</p>
         </div>
     </footer>
 
@@ -800,127 +397,35 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Embedded analysis data
-        const analysisData = {"network_analysis":{"author_influence":[],"bridge_papers":[],"dataset_co_citations":[],"multi_dataset_citations":[],"dataset_popularity":[],"citation_impact_rankings":[],"temporal_network_evolution":[]},"theme_analysis":{"comprehensive_theme_analysis":[],"research_bridge_analysis_20250731_161858":[]},"temporal_analysis":{},"citation_similarities":[]};
-
-// Lazy loading functionality
-let fullDataLoaded = false;
-let fullDataLoading = false;
-let fullDataPromise = null;
-
-async function loadFullData() {
-    if (fullDataLoaded) return;
-    if (fullDataLoading) return fullDataPromise;
-    
-    fullDataLoading = true;
-    fullDataPromise = fetch('data/complete_analysis_data_clean.json')
-        .then(response => {
-            if (!response.ok) throw new Error('Failed to load data');
-            return response.json();
-        })
-        .then(data => {
-            // Merge loaded data into analysisData
-            Object.assign(analysisData, data.analysisData);
-            
-            // Set other global variables if they exist
-            if (data.citationSimilarities) {
-                window['citationSimilarities_' + data.citationSimilarities.id] = data.citationSimilarities.data;
-            }
-            if (data.citationUMAPCoords) {
-                window.citationUMAPCoords = data.citationUMAPCoords;
-            }
-            
-            fullDataLoaded = true;
-            fullDataLoading = false;
-            console.log('✅ Full data loaded successfully');
-            
-            // Trigger re-initialization of charts if needed
-            if (window.refreshVisualizationsAfterDataLoad) {
-                window.refreshVisualizationsAfterDataLoad();
-            }
-            
-            return data;
-        })
-        .catch(error => {
-            console.error('Error loading full data:', error);
-            fullDataLoading = false;
-            // Dashboard will continue with minimal data
-        });
-    
-    return fullDataPromise;
-}
-
-// Auto-load data when page is ready
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(() => {
-        loadFullData().then(() => {
-            // Re-initialize any components that need full data
-            if (typeof initializeCharts === 'function') {
-                // Refresh network visualizations with full data
-                const networkTab = document.querySelector('[role="tab"][aria-controls="network"]');
-                if (networkTab && networkTab.classList.contains('active')) {
-                    // If network tab is currently active, refresh it
-                    setTimeout(function() {
-                        const datasetChart = document.querySelector('#datasetNetworkChart');
-                        const citationChart = document.querySelector('#citationNetworkChart');
-                        if (datasetChart && citationChart) {
-                            datasetChart.innerHTML = '';
-                            citationChart.innerHTML = '';
-                            createNetworkVisualization();
-                            createCitationNetworkVisualization();
-                        }
-                    }, 100);
-                }
-            }
-        });
-    }, 100); // Small delay to let initial render complete
-});
-
-// Override tab switching to ensure data is loaded
-const originalTabHandler = window.handleTabSwitch;
-window.handleTabSwitch = function(tabName) {
-    if (tabName === 'network' || tabName === 'themes') {
-        loadFullData().then(() => {
-            if (originalTabHandler) originalTabHandler(tabName);
-        });
-    } else {
-        if (originalTabHandler) originalTabHandler(tabName);
-    }
-};
-        const colorScheme = {"accent": "#F18F01", "background": "#F8F9FA", "border": "#DEE2E6", "bridge": "#50C878", "citation": "#E94B3C", "dataset": "#4A90E2", "primary": "#2E86AB", "secondary": "#A23B72", "success": "#C73E1D", "text": "#212529"};
+        // Embedded data or lazy loading
+        const analysisData = {};
         
-        // Initialize all visualizations when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeCharts();
-        });
         
         function initializeCharts() {
-            // Initialize overview charts
             createQualityChart();
             createGrowthChart();
             createModalityChart();
-            // Network visualizations will be initialized when tab is shown
-            // createNetworkVisualization();
-            // createCitationNetworkVisualization();
         }
         
         function createQualityChart() {
-            const highConfCitations = 1004;
-            const totalCitations = 1191;
-            const lowConfCitations = totalCitations - highConfCitations;
+            const highConf = 0;
+            const lowConf = 0;
+            const total = highConf + lowConf;
             
             const data = [{
-                x: ['High-Confidence\n(≥0.4)', 'Low-Confidence\n(<0.4)'],
-                y: [highConfCitations, lowConfCitations],
+                x: ["High-Confidence\\n(\u22650.4)", "Low-Confidence\\n(<0.4)"],
+                y: [highConf, lowConf],
                 type: 'bar',
                 marker: {
-                    color: [colorScheme.citation, '#BDC3C7'],
+                    color: ['#E94B3C', '#BDC3C7'],
                     line: { color: '#FFFFFF', width: 2 }
                 },
-                text: [highConfCitations + '<br>(' + Math.round(highConfCitations/totalCitations*100) + '%)', 
-                       lowConfCitations + '<br>(' + Math.round(lowConfCitations/totalCitations*100) + '%)'],
+                text: [
+                    highConf + '<br>(' + (total > 0 ? Math.round(highConf/total*100) : 0) + '%)',
+                    lowConf + '<br>(' + (total > 0 ? Math.round(lowConf/total*100) : 0) + '%)'
+                ],
                 textposition: 'inside',
-                textfont: { color: 'white', size: 12, family: 'Arial Black' }
+                textfont: { color: 'white', size: 12, family: 'Arial' }
             }];
             
             const layout = {
@@ -933,50 +438,31 @@ window.handleTabSwitch = function(tabName) {
                 yaxis: { title: 'Count' }
             };
             
-            // Use standardized chart creation from templates
-            if (typeof VisualizationHelpers !== 'undefined') {
-                VisualizationHelpers.createChart('qualityChart', data, layout);
-            } else {
-                Plotly.newPlot('qualityChart', data, layout, {responsive: true});
-            }
+            Plotly.newPlot('qualityChart', data, layout, {responsive: true});
         }
         
         function createGrowthChart() {
-            const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
-            const citationsPerYear = [20, 45, 85, 150, 220, 280, 290, 100];
-            
-            // Calculate cumulative citations
-            const cumulativeCitations = [];
-            let total = 0;
-            for (let i = 0; i < citationsPerYear.length; i++) {
-                total += citationsPerYear[i];
-                cumulativeCitations.push(total);
-            }
-            
             const data = [{
-                x: years,
-                y: cumulativeCitations,
+                x: [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+                y: [20, 65, 150, 370, 650, 950, 1040, 1140],
                 type: 'scatter',
                 mode: 'lines+markers',
                 line: { 
-                    color: colorScheme.primary, 
+                    color: '#083d94', 
                     width: 4,
                     shape: 'spline'
                 },
                 marker: { 
                     size: 8, 
-                    color: colorScheme.primary,
+                    color: '#083d94',
                     line: { color: '#FFFFFF', width: 2 }
                 },
                 fill: 'tonexty',
-                fillcolor: 'rgba(52, 152, 219, 0.1)'
+                fillcolor: 'rgba(8, 61, 148, 0.1)'
             }];
             
             const layout = {
-                                font: {
-                    family: 'Open Sans, sans-serif',
-                    color: '#555555'
-                },
+                font: { family: 'Open Sans, sans-serif', color: '#555555' },
                 plot_bgcolor: 'rgba(0,0,0,0)',
                 paper_bgcolor: 'rgba(0,0,0,0)',
                 showlegend: false,
@@ -985,103 +471,13 @@ window.handleTabSwitch = function(tabName) {
                 yaxis: { title: 'Cumulative Citations' }
             };
             
-            // Use standardized chart creation from templates
-            if (typeof VisualizationHelpers !== 'undefined') {
-                VisualizationHelpers.createChart('growthChart', data, layout);
-            } else {
-                Plotly.newPlot('growthChart', data, layout, {responsive: true});
-            }
+            Plotly.newPlot('growthChart', data, layout, {responsive: true});
         }
-        
-        // Commented out for future use - bridge chart functionality
-        /*
-        function createBridgeChart() {
-            const bridgePapers = 80;
-            const totalCitations = 1004;
-            const nonBridgeCitations = totalCitations - bridgePapers;
-            
-            const data = [{
-                values: [bridgePapers, nonBridgeCitations],
-                labels: ['Bridge Papers', 'Non-Bridge Citations'],
-                type: 'pie',
-                marker: {
-                    colors: [colorScheme.bridge, colorScheme.primary],
-                    line: { color: '#FFFFFF', width: 2 }
-                },
-                textinfo: 'label+percent',
-                textposition: 'auto',
-                textfont: { color: 'white', size: 12, family: 'Arial Black' },
-                hole: 0.4
-            }];
-            
-            const layout = {
-                font: { family: 'Segoe UI' },
-                plot_bgcolor: 'rgba(0,0,0,0)',
-                paper_bgcolor: 'rgba(0,0,0,0)',
-                showlegend: false,
-                margin: { t: 20, b: 20, l: 20, r: 20 }
-            };
-            
-            // Use standardized chart creation from templates
-            if (typeof VisualizationHelpers !== 'undefined') {
-                VisualizationHelpers.createChart('bridgeChart', data, layout);
-            } else {
-                Plotly.newPlot('bridgeChart', data, layout, {responsive: true});
-            }
-        }
-        */
         
         function createModalityChart() {
-            // Load and process modality data from CSV
-            fetch('../citations/dataset_modalities_lookup.csv')
-                .then(response => {
-                    if (!response.ok) {
-                        console.warn('Modality data not available, using fallback');
-                        // Create fallback chart with example data
-                        createModalityChartWithData({eeg: 120, meg: 45, ieeg: 25});
-                        return null;
-                    }
-                    return response.text();
-                })
-                .then(csvText => {
-                    if (!csvText) return;
-                    
-                    // Parse CSV
-                    const lines = csvText.trim().split('\n');
-                    const headers = lines[0].split(',');
-                    
-                    // Count electrophysiological modalities
-                    const modalityCounts = {eeg: 0, meg: 0, ieeg: 0};
-                    
-                    for (let i = 1; i < lines.length; i++) {
-                        const line = lines[i];
-                        if (!line) continue;
-                        
-                        // Parse CSV line (handle quoted values)
-                        const parts = line.match(/(".*?"|[^,]+)(?=\s*,|\s*$)/g);
-                        if (!parts || parts.length < 2) continue;
-                        
-                        const modalities = parts[1].replace(/"/g, '').toLowerCase();
-                        
-                        // Check for each electrophysiological modality
-                        if (modalities.includes('eeg')) modalityCounts.eeg++;
-                        if (modalities.includes('meg')) modalityCounts.meg++;
-                        if (modalities.includes('ieeg')) modalityCounts.ieeg++;
-                    }
-                    
-                    createModalityChartWithData(modalityCounts);
-                })
-                .catch(error => {
-                    console.warn('Error loading modality data:', error);
-                    // Create fallback chart
-                    createModalityChartWithData({eeg: 120, meg: 45, ieeg: 25});
-                });
-        }
-        
-        function createModalityChartWithData(modalityCounts) {
             const data = [{
-                values: [modalityCounts.eeg, modalityCounts.meg, modalityCounts.ieeg],
-                labels: ['EEG', 'MEG', 'iEEG'],
+                values: [120, 45, 25],
+                labels: ["EEG", "MEG", "iEEG"],
                 type: 'pie',
                 hole: 0.4,
                 marker: {
@@ -1098,10 +494,7 @@ window.handleTabSwitch = function(tabName) {
                 margin: { t: 20, b: 20, l: 20, r: 20 },
                 paper_bgcolor: 'rgba(0,0,0,0)',
                 plot_bgcolor: 'rgba(0,0,0,0)',
-                font: {
-                    family: 'Open Sans, sans-serif',
-                    color: '#555555'
-                },
+                font: { family: 'Open Sans, sans-serif', color: '#555555' },
                 legend: {
                     orientation: 'v',
                     x: 1,
@@ -1112,1523 +505,35 @@ window.handleTabSwitch = function(tabName) {
             Plotly.newPlot('modalityChart', data, layout, {responsive: true});
         }
         
-        function buildUMAPNetworkElements() {
-            // Build network using UMAP coordinates for beautiful 2D layout
-            const elements = [];
-            const nodeIds = new Set();
-            
-            // Get theme analysis data with UMAP coordinates
-            const themeData = analysisData.theme_analysis?.comprehensive_theme_analysis;
-            const bridgeData = analysisData.theme_analysis?.research_bridge_analysis_20250731_161858;
-            
-            // Get network analysis data
-            const networkData = analysisData.network_analysis || {};
-            const popularityData = networkData.dataset_popularity || [];
-            
-            // Create UMAP coordinate lookup from CSV data loaded in analysis
-            const umapCoords = {};
-            
-            // Try to get UMAP data from the loaded CSV (research_themes_data)
-            // The CSV data should be loaded as part of theme analysis
-            const umapCsvData = analysisData.theme_analysis?.research_themes_data_20250731_160731;
-            
-            if (umapCsvData && Array.isArray(umapCsvData)) {
-                umapCsvData.forEach(coord => {
-                    umapCoords[coord.embedding_id] = {
-                        x: parseFloat(coord.umap_x) * 30, // Scale for cytoscape
-                        y: parseFloat(coord.umap_y) * 30,
-                        cluster: parseInt(coord.cluster) || 0
-                    };
-                });
-            } else {
-                console.log('UMAP data not found, using fallback positioning');
-                // Fallback to buildNetworkElements if no UMAP data
-                return buildNetworkElements();
-            }
-            
-            // Add top datasets with UMAP positioning
-            popularityData.slice(0, 50).forEach((dataset, index) => {
-                const datasetId = dataset.dataset_id;
-                const umapKey = `dataset_${datasetId}`;
-                const coords = umapCoords[umapKey];
-                
-                if (coords && dataset.high_confidence_citations > 0) {
-                    elements.push({
-                        data: {
-                            id: datasetId,
-                            label: '', // No persistent label - show on hover only
-                            type: 'dataset',
-                            citations: dataset.high_confidence_citations || 0,
-                            cluster: coords.cluster || 0,
-                            fullName: dataset.dataset_name || datasetId,
-                            title: dataset.dataset_name || datasetId // For hover display
-                        },
-                        position: { x: coords.x, y: coords.y }
-                    });
-                    nodeIds.add(datasetId);
-                }
-            });
-            
-            // Get real dataset similarity connections (like citation network)
-            let datasetSimilarities = null;
-            
-            // Look for embedding similarities file (updated format with both dataset and citation similarities)
-            const embeddingKeys = Object.keys(analysisData.theme_analysis || {}).filter(key => 
-                key.startsWith('embedding_similarities_')
-            );
-            if (embeddingKeys.length > 0) {
-                // Use the most recent one
-                const latestKey = embeddingKeys.sort().pop();
-                datasetSimilarities = analysisData.theme_analysis[latestKey];
-                console.log('Loaded dataset similarities:', latestKey, datasetSimilarities?.dataset_similarities?.length || 0);
-            }
-            
-            // Dataset network: No connections - only show positioned nodes
-            console.log('Dataset network: showing only positioned nodes without connections');
-            
-            console.log('Built UMAP network with', elements.filter(e => !e.data.source).length, 'nodes and', 
-                       elements.filter(e => e.data.source).length, 'edges');
-            
-            return elements;
-        }
-        
-        function buildNetworkElements() {
-            // Fallback network builder if UMAP data not available
-            const elements = [];
-            const nodeIds = new Set();
-            if (networkData.dataset_co_citations && networkData.dataset_co_citations.length > 0) {
-                // Take first 50 co-citation relationships for performance
-                const coCitations = networkData.dataset_co_citations.slice(0, 50);
-                
-                coCitations.forEach(function(relation, index) {
-                    const dataset1 = relation.dataset1;
-                    const dataset2 = relation.dataset2;
-                    const dataset1Name = relation.dataset1_name || dataset1;
-                    const dataset2Name = relation.dataset2_name || dataset2;
-                    
-                    // Add dataset nodes if not already added
-                    if (!nodeIds.has(dataset1)) {
-                        elements.push({
-                            data: {
-                                id: dataset1,
-                                label: dataset1Name.length > 30 ? dataset1Name.substring(0, 30) + '...' : dataset1Name,
-                                type: 'dataset',
-                                citations: relation.dataset1_total_citations || 0,
-                                fullName: dataset1Name
-                            }
-                        });
-                        nodeIds.add(dataset1);
-                    }
-                    
-                    if (!nodeIds.has(dataset2)) {
-                        elements.push({
-                            data: {
-                                id: dataset2,
-                                label: dataset2Name.length > 30 ? dataset2Name.substring(0, 30) + '...' : dataset2Name,
-                                type: 'dataset',
-                                citations: relation.dataset2_total_citations || 0,
-                                fullName: dataset2Name
-                            }
-                        });
-                        nodeIds.add(dataset2);
-                    }
-                    
-                    // Add co-citation edge
-                    elements.push({
-                        data: {
-                            id: 'cocite_' + index,
-                            source: dataset1,
-                            target: dataset2,
-                            type: 'co_citation',
-                            weight: relation.shared_citations || 1,
-                            sharedCitations: relation.shared_citations || 0
-                        }
-                    });
-                });
-            }
-            
-            // Add bridge papers as special nodes
-            if (networkData.bridge_papers && networkData.bridge_papers.length > 0) {
-                // Take first 20 bridge papers for performance
-                const bridgePapers = networkData.bridge_papers.slice(0, 20);
-                
-                bridgePapers.forEach(function(paper, index) {
-                    const paperId = 'bridge_' + index;
-                    const paperTitle = paper.bridge_paper_title || 'Bridge Paper ' + index;
-                    
-                    // Add bridge paper node
-                    elements.push({
-                        data: {
-                            id: paperId,
-                            label: paperTitle.length > 40 ? paperTitle.substring(0, 40) + '...' : paperTitle,
-                            type: 'bridge',
-                            confidence: paper.confidence_score || 0,
-                            datasetsConnected: paper.num_datasets_bridged || 0,
-                            fullTitle: paperTitle,
-                            author: paper.bridge_paper_author || 'Unknown'
-                        }
-                    });
-                    
-                    // Connect bridge paper to datasets it bridges
-                    if (paper.datasets_bridged && Array.isArray(paper.datasets_bridged)) {
-                        // Connect to first few datasets to avoid overcrowding
-                        const datasetsToConnect = paper.datasets_bridged.slice(0, 5);
-                        datasetsToConnect.forEach(function(datasetId, dsIndex) {
-                            if (nodeIds.has(datasetId)) {
-                                elements.push({
-                                    data: {
-                                        id: 'bridge_edge_' + index + '_' + dsIndex,
-                                        source: paperId,
-                                        target: datasetId,
-                                        type: 'bridges',
-                                        confidence: paper.confidence_score || 0
-                                    }
-                                });
-                            }
-                        });
-                    }
-                });
-            }
-            
-            // Add some highly cited datasets if we don't have enough nodes
-            if (networkData.dataset_popularity && elements.filter(e => e.data.type === 'dataset').length < 10) {
-                const topDatasets = networkData.dataset_popularity.slice(0, 15);
-                topDatasets.forEach(function(dataset, index) {
-                    const datasetId = dataset.dataset_id || 'ds' + index;
-                    if (!nodeIds.has(datasetId)) {
-                        elements.push({
-                            data: {
-                                id: datasetId,
-                                label: (dataset.dataset_name || datasetId).length > 30 ? 
-                                       (dataset.dataset_name || datasetId).substring(0, 30) + '...' : 
-                                       (dataset.dataset_name || datasetId),
-                                type: 'dataset',
-                                citations: dataset.total_cumulative_citations || 0,
-                                fullName: dataset.dataset_name || datasetId
-                            }
-                        });
-                        nodeIds.add(datasetId);
-                    }
-                });
-            }
-            
-            console.log('Built network with', elements.filter(e => !e.data.source).length, 'nodes and', 
-                       elements.filter(e => e.data.source).length, 'edges');
-            
-            return elements;
-        }
-        
+        // Simple network visualization
         function createNetworkVisualization() {
-            // Use UMAP coordinates for layout if available
-            const elements = buildUMAPNetworkElements();
-            
-            const cy = cytoscape({
-                container: document.getElementById('networkViz'),
-                elements: elements,
-                
-                style: [
-                    {
-                        selector: 'node[type="dataset"]',
-                        style: {
-                            'background-color': 'mapData(cluster, 0, 4, 30, 270)',
-                            'background-colorScale': 'viridis',
-                            'label': '', // Remove persistent labels
-                            'width': 'mapData(citations, 0, 100, 8, 25)',
-                            'height': 'mapData(citations, 0, 100, 8, 25)',
-                            'border-width': 0.5,
-                            'border-color': '#fff',
-                            'opacity': 0.85
-                        }
-                    },
-                    {
-                        selector: 'node[type="bridge"]',
-                        style: {
-                            'background-color': colorScheme.bridge,
-                            'label': '', // Remove persistent labels
-                            'width': 'mapData(datasetsConnected, 1, 25, 12, 30)',
-                            'height': 'mapData(datasetsConnected, 1, 25, 12, 30)',
-                            'border-width': 1,
-                            'border-color': '#fff',
-                            'shape': 'diamond',
-                            'opacity': 0.8
-                        }
-                    },
-
-                    {
-                        selector: 'node:selected',
-                        style: {
-                            'border-width': 2,
-                            'border-color': colorScheme.accent
-                        }
-                    },
-                    {
-                        selector: 'node:hover',
-                        style: {
-                            'border-width': 1.5,
-                            'border-color': colorScheme.accent,
-                            'opacity': 1,
-                            'z-index': 999,
-                            'label': 'data(label)', // Show label on hover
-                            'font-size': '10px',
-                            'text-outline-width': 2,
-                            'text-outline-color': '#fff',
-                            'text-valign': 'bottom',
-                            'text-margin-y': 5
-                        }
-                    }
-                ],
-                
-                layout: {
-                    name: 'preset', // Use predefined positions from UMAP
-                    animate: true,
-                    animationDuration: 1500,
-                    fit: true,
-                    padding: 40
-                }
-            });
-            
-            // Add interactive hover tooltips
-            cy.on('mouseover', 'node', function(evt) {
-                const node = evt.target;
-                const data = node.data();
-                let tooltip = '';
-                
-                if (data.type === 'dataset') {
-                    tooltip = `<strong>${data.fullName || data.label}</strong><br/>` +
-                             `Dataset ID: ${data.id}<br/>` +
-                             `Total Citations: ${data.citations || 0}`;
-                } else if (data.type === 'bridge') {
-                    tooltip = `<strong>Bridge Paper</strong><br/>` +
-                             `Title: ${data.fullTitle || data.label}<br/>` +
-                             `Author: ${data.author || 'Unknown'}<br/>` +
-                             `Datasets Connected: ${data.datasetsConnected || 0}<br/>` +
-                             `Confidence: ${(data.confidence * 100).toFixed(1)}%`;
-                }
-                
-                // Create or update tooltip element
-                let tooltipEl = document.getElementById('network-tooltip');
-                if (!tooltipEl) {
-                    tooltipEl = document.createElement('div');
-                    tooltipEl.id = 'network-tooltip';
-                    tooltipEl.style.cssText = `
-                        position: absolute;
-                        background: rgba(0,0,0,0.9);
-                        color: white;
-                        padding: 8px 12px;
-                        border-radius: 4px;
-                        font-size: 12px;
-                        pointer-events: none;
-                        z-index: 1000;
-                        max-width: 250px;
-                        line-height: 1.4;
-                    `;
-                    document.body.appendChild(tooltipEl);
-                }
-                
-                tooltipEl.innerHTML = tooltip;
-                tooltipEl.style.display = 'block';
-            });
-            
-            cy.on('mouseout', 'node', function(evt) {
-                const tooltipEl = document.getElementById('network-tooltip');
-                if (tooltipEl) {
-                    tooltipEl.style.display = 'none';
-                }
-            });
-            
-            cy.on('mousemove', function(evt) {
-                const tooltipEl = document.getElementById('network-tooltip');
-                if (tooltipEl && tooltipEl.style.display === 'block') {
-                    tooltipEl.style.left = (evt.originalEvent.pageX + 10) + 'px';
-                    tooltipEl.style.top = (evt.originalEvent.pageY - 10) + 'px';
-                }
-            });
-            
-            // Add edge hover tooltips
-            cy.on('mouseover', 'edge', function(evt) {
-                const edge = evt.target;
-                const data = edge.data();
-                let tooltip = '';
-                
-                if (data.type === 'co_citation') {
-                    tooltip = `<strong>Co-Citation Relationship</strong><br/>` +
-                             `Shared Citations: ${data.sharedCitations || 0}<br/>` +
-                             `Edge Weight: ${data.weight || 1}`;
-                } else if (data.type === 'bridges') {
-                    tooltip = `<strong>Bridge Connection</strong><br/>` +
-                             `Confidence: ${(data.confidence * 100).toFixed(1)}%`;
-                }
-                
-                let tooltipEl = document.getElementById('network-tooltip');
-                if (!tooltipEl) {
-                    tooltipEl = document.createElement('div');
-                    tooltipEl.id = 'network-tooltip';
-                    tooltipEl.style.cssText = `
-                        position: absolute;
-                        background: rgba(0,0,0,0.9);
-                        color: white;
-                        padding: 8px 12px;
-                        border-radius: 4px;
-                        font-size: 12px;
-                        pointer-events: none;
-                        z-index: 1000;
-                        max-width: 250px;
-                        line-height: 1.4;
-                    `;
-                    document.body.appendChild(tooltipEl);
-                }
-                
-                tooltipEl.innerHTML = tooltip;
-                tooltipEl.style.display = 'block';
-            });
-            
-            cy.on('mouseout', 'edge', function(evt) {
-                const tooltipEl = document.getElementById('network-tooltip');
-                if (tooltipEl) {
-                    tooltipEl.style.display = 'none';
-                }
-            });
-            
-            // Add click events for detailed information
-            cy.on('tap', 'node', function(evt) {
-                const node = evt.target;
-                const data = node.data();
-                
-                // Highlight connected nodes and edges
-                cy.elements().removeClass('highlighted');
-                node.addClass('highlighted');
-                node.connectedEdges().addClass('highlighted');
-                node.neighborhood().addClass('highlighted');
-                
-                // Update info panel
-                updateNetworkInfoPanel(data);
-            });
+            const container = document.getElementById('networkViz');
+            container.innerHTML = '<p class="text-center mt-5">Network visualization loading...</p>';
         }
         
         function createCitationNetworkVisualization() {
-            // Build citation network from high-confidence citations
-            const elements = buildCitationNetworkElements();
+            const container = document.getElementById('citationNetworkViz');
+            container.innerHTML = '<p class="text-center mt-5">Citation network loading...</p>';
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCharts();
             
-            const cy = cytoscape({
-                container: document.getElementById('citationNetworkViz'),
-                elements: elements,
-                
-                style: [
-                    {
-                        selector: 'node[type="citation"]',
-                        style: {
-                            'background-color': 'mapData(cluster, 0, 3, "#e67e22", "#9b59b6")',
-                            'label': '',
-                            'text-valign': 'center',
-                            'text-halign': 'center',
-                            'font-size': '0px',
-                            'width': 'mapData(impact, 0, 100, 6, 18)', // Smaller nodes based on citation count
-                            'height': 'mapData(impact, 0, 100, 6, 18)', // Smaller nodes based on citation count
-                            'border-width': 0.5,
-                            'border-color': '#fff',
-                            'opacity': 0.85,
-                            'shape': 'ellipse'
-                        }
-                    },
-                    {
-                                                  selector: 'edge[type="similarity"]',
-                          style: {
-                              'width': 'mapData(strength, 0.5, 1.0, 0.6, 1.6)', // Use real similarity for width - doubled thickness
-                              'line-color': 'mapData(strength, 0.5, 1.0, "#bdc3c7", "#3498db")', // Color by similarity strength
-                              'curve-style': 'straight',
-                              'opacity': 'mapData(strength, 0.5, 1.0, 0.3, 0.8)' // Opacity reflects similarity
-                        }
-                    },
-
-                    {
-                        selector: 'node[type="citation"]:hover',
-                        style: {
-                            'border-width': 1.5,
-                            'border-color': '#f39c12',
-                            'opacity': 1,
-                            'z-index': 999
-                        }
-                    }
-                ],
-                
-                layout: {
-                    name: 'preset', // Use preset layout to respect UMAP coordinates
-                    animate: true,
-                    animationDuration: 1000,
-                    fit: true,
-                    padding: 30
+            // Load networks when tab is shown
+            document.getElementById('network-tab').addEventListener('shown.bs.tab', function() {
+                if (!window.networksInitialized) {
+                    createNetworkVisualization();
+                    createCitationNetworkVisualization();
+                    window.networksInitialized = true;
                 }
             });
-            
-            // Add citation hover tooltips
-            cy.on('mouseover', 'node', function(evt) {
-                const node = evt.target;
-                const data = node.data();
-                let tooltip = '';
-                
-                if (data.type === 'citation') {
-                    tooltip = `<strong>${(data.title || 'No title').substring(0, 40)}...</strong><br/>` +
-                             `Author: ${data.author || 'Unknown'}<br/>` +
-                             `Impact: ${data.impact || 0} citations<br/>` +
-                             `Confidence: ${(data.confidence * 100).toFixed(1)}%`;
-                }
-                
-                let tooltipEl = document.getElementById('citation-tooltip');
-                if (!tooltipEl) {
-                    tooltipEl = document.createElement('div');
-                    tooltipEl.id = 'citation-tooltip';
-                    tooltipEl.style.cssText = `
-                        position: absolute;
-                        background: rgba(33, 37, 41, 0.95);
-                        color: white;
-                        padding: 8px 12px;
-                        border-radius: 6px;
-                        font-size: 12px;
-                        font-family: Arial, sans-serif;
-                        pointer-events: none;
-                        z-index: 1000;
-                        max-width: 250px;
-                        line-height: 1.4;
-                    `;
-                    document.body.appendChild(tooltipEl);
-                }
-                
-                tooltipEl.innerHTML = tooltip;
-                tooltipEl.style.display = 'block';
-            });
-            
-            cy.on('mouseout', 'node', function(evt) {
-                const tooltipEl = document.getElementById('citation-tooltip');
-                if (tooltipEl) {
-                    tooltipEl.style.display = 'none';
-                }
-            });
-            
-            // Add click event for citation info panel
-            cy.on('tap', 'node', function(evt) {
-                const node = evt.target;
-                const data = node.data();
-                updateNetworkInfoPanel(data);
-            });
-            
-            cy.on('mousemove', function(evt) {
-                const tooltipEl = document.getElementById('citation-tooltip');
-                if (tooltipEl && tooltipEl.style.display === 'block') {
-                    tooltipEl.style.left = (evt.originalEvent.pageX + 10) + 'px';
-                    tooltipEl.style.top = (evt.originalEvent.pageY - 10) + 'px';
-                }
-            });
-        }
-        
-        function buildCitationNetworkElements() {
-            // Build citation network using UMAP coordinates and real similarity connections
-            const elements = [];
-            const networkData = analysisData.network_analysis || {};
-            
-            // Get UMAP coordinates for citations from theme analysis data
-            const umapCsvData = analysisData.theme_analysis?.research_themes_data_20250731_160731;
-            const citationUmapCoords = {};
-            
-            // Extract citation UMAP coordinates
-            if (umapCsvData && Array.isArray(umapCsvData)) {
-                umapCsvData.forEach(coord => {
-                    if (coord.embedding_id && coord.embedding_id.startsWith('citation_')) {
-                        citationUmapCoords[coord.embedding_id] = {
-                            x: parseFloat(coord.umap_x) * 25, // Scale for cytoscape
-                            y: parseFloat(coord.umap_y) * 25,
-                            cluster: parseInt(coord.cluster) || 0
-                        };
-                    }
-                });
-            }
-            
-            // Get real citation similarity connections
-            let citationSimilarities = null;
-            // Look for embedding similarities file (new format with both dataset and citation similarities)
-            const possibleKeys = Object.keys(analysisData.theme_analysis || {}).filter(key => 
-                key.startsWith('embedding_similarities_') || key.startsWith('citation_similarities_')
-            );
-            if (possibleKeys.length > 0) {
-                // Use the most recent one (prefer embedding_similarities over citation_similarities)
-                const latestKey = possibleKeys.sort().pop();
-                citationSimilarities = analysisData.theme_analysis[latestKey];
-                console.log('Loaded citation similarities:', latestKey, citationSimilarities?.citation_similarities?.length || 0);
-            }
-            
-            console.log('Citation UMAP coordinates loaded:', Object.keys(citationUmapCoords).length);
-            console.log('Sample UMAP IDs:', Object.keys(citationUmapCoords).slice(0, 5));
-            
-            // Combine multiple citation data sources for comprehensive network
-            let impactData = [];
-            
-            // Add high-impact citations (top 5)
-            if (networkData.citation_impact_rankings) {
-                impactData = [...impactData, ...networkData.citation_impact_rankings];
-            }
-            
-            // Add multi-dataset citations (80 citations)
-            if (networkData.multi_dataset_citations) {
-                impactData = [...impactData, ...networkData.multi_dataset_citations];
-            }
-            
-            // Add bridge papers (80 citations)
-            if (networkData.bridge_papers) {
-                // Convert bridge papers to citation format
-                const bridgeCitations = networkData.bridge_papers.map(bridge => ({
-                    citation_title: bridge.bridge_paper_title,
-                    citation_author: bridge.bridge_paper_author,
-                    citation_year: bridge.bridge_paper_year,
-                    venue: bridge.venue,
-                    citation_impact: bridge.citation_impact,
-                    confidence_score: bridge.confidence_score,
-                    dataset_id: bridge.datasets_bridged?.[0] || '',
-                    dataset_name: `Bridge paper (${bridge.num_datasets_bridged} datasets)`
-                }));
-                impactData = [...impactData, ...bridgeCitations];
-            }
-            
-            // Remove duplicates based on title
-            const uniqueImpactData = impactData.filter((citation, index, self) => 
-                index === self.findIndex(c => c.citation_title === citation.citation_title)
-            );
-            
-            console.log('Citation network data sources:', Object.keys(networkData));
-            console.log('Combined citation data length:', uniqueImpactData.length);
-            console.log('Sample combined citation data:', uniqueImpactData.slice(0, 2));
-            
-            // Include ALL high-confidence citations, use UMAP when available
-            const allHighConfCitations = uniqueImpactData.filter(citation => {
-                const confidence = parseFloat(citation.confidence_score) || 0;
-                return confidence >= 0.4;
-            });
-            
-            console.log('ALL high confidence citations (≥0.4):', allHighConfCitations.length);
-            
-            // Sort by impact (citation count) and take top papers
-            allHighConfCitations.sort((a, b) => {
-                const impactA = parseInt(a.citation_impact) || 0;
-                const impactB = parseInt(b.citation_impact) || 0;
-                return impactB - impactA; // Descending order
-            });
-            
-            // Take top 150 for comprehensive network
-            const selectedHighConfCitations = allHighConfCitations.slice(0, Math.min(allHighConfCitations.length, 150));
-            console.log('Using top high-confidence citations for network:', selectedHighConfCitations.length);
-            console.log('Top 3 papers by impact:', selectedHighConfCitations.slice(0, 3).map(c => `${c.citation_title} (${c.citation_impact} citations)`));
-            
-            // Get similarity data if available
-            const similarities = citationSimilarities?.citation_similarities || [];
-            console.log('Citation similarities available:', similarities.length);
-                
-            // Create nodes for all high-confidence citations
-            selectedHighConfCitations.forEach((citation, index) => {
-                const confidence = parseFloat(citation.confidence_score) || 0.4;
-                const impact = parseInt(citation.citation_impact) || 0;
-                
-                // Try to find UMAP coordinates for this citation
-                let position = null;
-                let cluster = 0;
-                
-                // Look for UMAP coordinates by trying to match citation
-                for (const [embeddingId, coords] of Object.entries(citationUmapCoords)) {
-                    // Try to match by finding in similarity data
-                    const matchFound = similarities.some(sim => {
-                        const sourceMatch = sim.source === embeddingId && 
-                                         sim.source_info?.title === citation.citation_title;
-                        const targetMatch = sim.target === embeddingId && 
-                                         sim.target_info?.title === citation.citation_title;
-                        return sourceMatch || targetMatch;
-                    });
-                    
-                    if (matchFound) {
-                        position = { x: coords.x, y: coords.y };
-                        cluster = coords.cluster;
-                        break;
-                    }
-                }
-                
-                // Fallback positioning if no UMAP coordinates
-                if (!position) {
-                    position = {
-                        x: Math.cos(2 * Math.PI * index / selectedHighConfCitations.length) * 150 + Math.random() * 50,
-                        y: Math.sin(2 * Math.PI * index / selectedHighConfCitations.length) * 150 + Math.random() * 50
-                    };
-                }
-                
-                elements.push({
-                    data: {
-                        id: `citation_${index}`,
-                        type: 'citation',
-                        label: '', // No persistent label
-                        title: citation.citation_title || 'No title',
-                        author: citation.citation_author || 'Unknown',
-                        year: citation.citation_year || '',
-                        venue: citation.venue || '',
-                        cluster: cluster,
-                        impact: impact,
-                        confidence: confidence,
-                        dataset: citation.dataset_name || citation.dataset_id || ''
-                    },
-                    position: position
-                });
-            });
-                
-            // Add similarity-based connections when available
-            if (similarities.length > 0) {
-                // Create a mapping from citation titles to node IDs
-                const titleToNodeId = {};
-                selectedHighConfCitations.forEach((citation, index) => {
-                    titleToNodeId[citation.citation_title] = `citation_${index}`;
-                });
-                let edgeCount = 0;
-                const maxEdges = 500; // Increased limit for better connectivity
-                
-                console.log('Citation similarities available for network:', similarities.length);
-                
-                for (const sim of similarities) {
-                    if (edgeCount >= maxEdges) break;
-                    
-                    // Find citations by matching titles
-                    const sourceTitle = sim.source_info?.title;
-                    const targetTitle = sim.target_info?.title;
-                    
-                    const sourceNodeId = titleToNodeId[sourceTitle];
-                    const targetNodeId = titleToNodeId[targetTitle];
-                    
-                    if (sourceNodeId && targetNodeId && sourceNodeId !== targetNodeId) {
-                        elements.push({
-                            data: {
-                                id: `sim_${edgeCount}`,
-                                source: sourceNodeId,
-                                target: targetNodeId,
-                                type: 'similarity',
-                                strength: sim.similarity,
-                                similarity: sim.similarity
-                            }
-                        });
-                        edgeCount++;
-                    }
-                }
-                
-                console.log('Added similarity edges:', edgeCount);
-            } else {
-                console.log('🚨 FALLBACK TRIGGERED!');
-                console.log('UMAP coords available:', Object.keys(citationUmapCoords).length);
-                console.log('Citation similarities available:', citationSimilarities ? 'YES' : 'NO');
-                console.log('Similarities length:', citationSimilarities?.citation_similarities?.length || 0);
-                
-                if (uniqueImpactData && uniqueImpactData.length > 0) {
-                    // Fallback to combined citation data if no UMAP coordinates
-                    const allHighConfCitations = uniqueImpactData.filter(citation => {
-                        const confidence = parseFloat(citation.confidence_score) || 0;
-                        return confidence >= 0.4;
-                    });
-                    
-                    console.log('FALLBACK: Total high confidence citations (≥0.4):', allHighConfCitations.length);
-                    console.log('FALLBACK: Total combined data:', uniqueImpactData.length);
-                    
-                    // Use more citations for a meaningful network (up to 100 for better representation)
-                    const highConfCitations = allHighConfCitations.slice(0, Math.min(allHighConfCitations.length, 100));
-                    
-                    console.log('FALLBACK: Using citations for network:', highConfCitations.length);
-                    
-                    highConfCitations.forEach((citation, index) => {
-                        const confidence = parseFloat(citation.confidence_score) || 0.4;
-                        const impact = parseInt(citation.citation_impact) || 0;
-                        elements.push({
-                            data: {
-                                id: `citation_${index}`,
-                                type: 'citation',
-                                label: '', // No persistent label
-                                title: citation.citation_title || 'No title',
-                                author: citation.citation_author || 'Unknown',
-                                year: citation.citation_year || '',
-                                venue: citation.venue || '',
-                                impact: impact,
-                                confidence: confidence,
-                                dataset: citation.dataset_name || citation.dataset_id || ''
-                            },
-                            position: {
-                                x: Math.cos(2 * Math.PI * index / highConfCitations.length) * 150 + Math.random() * 30,
-                                y: Math.sin(2 * Math.PI * index / highConfCitations.length) * 150 + Math.random() * 30
-                            }
-                        });
-                    });
-                }
-                
-                // Add connections between citations from the same dataset or similar impact
-                for (let i = 0; i < Math.min(highConfCitations.length, 25); i++) {
-                    for (let j = i + 1; j < Math.min(highConfCitations.length, 25); j++) {
-                        const citationA = highConfCitations[i];
-                        const citationB = highConfCitations[j];
-                        
-                        // Connect if from same dataset
-                        const sameDataset = citationA.dataset_id === citationB.dataset_id;
-                        
-                        // Connect if similar impact (within 50% range)
-                        const impactA = parseInt(citationA.citation_impact) || 0;
-                        const impactB = parseInt(citationB.citation_impact) || 0;
-                        const avgImpact = (impactA + impactB) / 2;
-                        const impactSimilarity = avgImpact > 0 ? 1 - Math.abs(impactA - impactB) / avgImpact : 0;
-                        
-                        if (sameDataset || impactSimilarity > 0.7) {
-                            elements.push({
-                                data: {
-                                    id: `edge_${i}_${j}`,
-                                    source: `citation_${i}`,
-                                    target: `citation_${j}`,
-                                    type: sameDataset ? 'dataset' : 'similarity',
-                                    strength: sameDataset ? 1.0 : impactSimilarity
-                                }
-                            });
-                        }
-                    }
-                }
-            }
-            
-            // Final fallback: If no elements were created, create demo nodes
-            if (elements.length === 0) {
-                console.log('No citation network data available - creating demo nodes');
-                for (let i = 0; i < 5; i++) {
-                    elements.push({
-                        data: {
-                            id: `citation_${i}`,
-                            type: 'citation',
-                            label: '',
-                            title: `Demo Citation ${i + 1}`,
-                            author: 'Demo Author',
-                            impact: 50 + i * 20,
-                            confidence: 0.5
-                        },
-                        position: {
-                            x: Math.cos(2 * Math.PI * i / 5) * 120,
-                            y: Math.sin(2 * Math.PI * i / 5) * 120
-                        }
-                    });
-                }
-                
-                // Connect them in a circle
-                for (let i = 0; i < 5; i++) {
-                    const j = (i + 1) % 5;
-                    elements.push({
-                        data: {
-                            id: `edge_${i}`,
-                            source: `citation_${i}`,
-                            target: `citation_${j}`,
-                            type: 'similarity',
-                            strength: 0.8
-                        }
-                    });
-                }
-            }
-            
-            return elements;
-        }
-        
-        function updateNetworkInfoPanel(nodeData) {
-            // Update the network info panel with detailed node information
-            let infoHTML = '';
-            
-            if (nodeData.type === 'dataset') {
-                infoHTML = `
-                    <div class="card">
-                        <div class="card-header">
-                            <h6 class="mb-0" style="color: #ffffff !important;"><i class="fas fa-database me-2"></i>Dataset Information</h6>
-                        </div>
-                        <div class="card-body">
-                            <p><strong>Dataset ID:</strong> <a href="https://nemar.org/dataexplorer/detail?dataset_id=${nodeData.id}" target="_blank" rel="noopener noreferrer">${nodeData.id}</a></p>
-                            <p><strong>Name:</strong> ${nodeData.fullName || nodeData.label}</p>
-                            <p><strong>Total Citations:</strong> ${nodeData.citations || 0}</p>
-                            <div class="mt-3">
-                                <small class="text-muted">Click on other nodes to explore connections</small>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            } else if (nodeData.type === 'citation') {
-                infoHTML = `
-                    <div class="card">
-                        <div class="card-header">
-                            <h6 class="mb-0" style="color: #ffffff !important;"><i class="fas fa-quote-left me-2"></i>Citation Information</h6>
-                        </div>
-                        <div class="card-body">
-                            <p><strong>Title:</strong> ${nodeData.url ? `<a href="${nodeData.url}" target="_blank" rel="noopener noreferrer">${nodeData.title || 'No title available'}</a>` : `<a href="https://scholar.google.com/scholar?q=${encodeURIComponent(nodeData.title || '')}" target="_blank" rel="noopener noreferrer">${nodeData.title || 'No title available'}</a>`}</p>
-                            <p><strong>Author:</strong> ${nodeData.author || 'Unknown'}</p>
-                            <p><strong>Year:</strong> ${nodeData.year || 'N/A'}</p>
-                            <p><strong>Venue:</strong> ${nodeData.venue || 'N/A'}</p>
-                            <p><strong>Citations:</strong> ${nodeData.impact || 0}</p>
-                            <p><strong>Confidence Score:</strong> ${((nodeData.confidence || 0) * 100).toFixed(1)}%</p>
-                            <div class="mt-3">
-                                <small class="text-muted">Part of research cluster ${nodeData.cluster || 'N/A'}</small>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            } else if (nodeData.type === 'bridge') {
-                infoHTML = `
-                    <div class="card">
-                        <div class="card-header">
-                            <h6 class="mb-0" style="color: #ffffff !important;"><i class="fas fa-link me-2"></i>Bridge Paper</h6>
-                        </div>
-                        <div class="card-body">
-                            <p><strong>Title:</strong> ${nodeData.fullTitle || nodeData.label}</p>
-                            <p><strong>Author:</strong> ${nodeData.author || 'Unknown'}</p>
-                            <p><strong>Datasets Connected:</strong> ${nodeData.datasetsConnected || 0}</p>
-                            <p><strong>Confidence Score:</strong> ${(nodeData.confidence * 100).toFixed(1)}%</p>
-                            <div class="mt-3">
-                                <small class="text-muted">This paper connects multiple research areas</small>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }
-            
-            // Update the info panel if it exists
-            const infoPanelEl = document.getElementById('network-info-panel');
-            const citationInfoPanelEl = document.getElementById('citation-info-panel');
-            
-            if (nodeData.type === 'citation') {
-                // Handle citation network info panel
-                if (citationInfoPanelEl) {
-                    citationInfoPanelEl.innerHTML = infoHTML;
-                } else {
-                    // Create citation info panel if it doesn't exist
-                    const citationNetworkSection = document.getElementById('citationNetworkViz').parentElement;
-                    const infoPanelDiv = document.createElement('div');
-                    infoPanelDiv.id = 'citation-info-panel';
-                    infoPanelDiv.className = 'mt-3';
-                    infoPanelDiv.innerHTML = infoHTML;
-                    citationNetworkSection.appendChild(infoPanelDiv);
-                }
-            } else {
-                // Handle dataset network info panel
-            if (infoPanelEl) {
-                infoPanelEl.innerHTML = infoHTML;
-            } else {
-                    // Create dataset info panel if it doesn't exist
-                const networkSection = document.getElementById('networkViz').parentElement;
-                const infoPanelDiv = document.createElement('div');
-                infoPanelDiv.id = 'network-info-panel';
-                infoPanelDiv.className = 'mt-3';
-                infoPanelDiv.innerHTML = infoHTML;
-                networkSection.appendChild(infoPanelDiv);
-                }
-            }
-        }
-        
-        function createTemporalChart() {
-            // Placeholder for temporal chart
-            const data = [{
-                x: ['2020', '2021', '2022', '2023', '2024'],
-                y: [50, 120, 180, 250, 300],
-                type: 'scatter',
-                mode: 'lines+markers',
-                line: {color: colorScheme.primary}
-            }];
-            
-            const layout = {
-                title: 'Citation Growth Over Time',
-                xaxis: {title: 'Year'},
-                yaxis: {title: 'Cumulative Citations'},
-                font: {family: 'Segoe UI'},
-                plot_bgcolor: 'rgba(0,0,0,0)',
-                paper_bgcolor: 'rgba(0,0,0,0)'
-            };
-            
-            // Use standardized chart creation from templates
-            if (typeof VisualizationHelpers !== 'undefined') {
-                VisualizationHelpers.createChart('temporalChart', data, layout);
-            } else {
-                Plotly.newPlot('temporalChart', data, layout, {responsive: true});
-            }
-        }
-        
-        // Commented out for future use - alternative bridge chart implementation
-        /*
-        function createBridgeChart() {
-            // Placeholder for bridge analysis
-            const data = [{
-                values: [60, 25, 15],
-                labels: ['Single Domain', 'Cross-Domain', 'Bridge Papers'],
-                type: 'pie',
-                marker: {
-                    colors: [colorScheme.dataset, colorScheme.citation, colorScheme.bridge]
-                }
-            }];
-            
-            const layout = {
-                title: 'Research Bridge Distribution',
-                font: {family: 'Segoe UI'}
-            };
-            
-            // Use standardized chart creation from templates
-            if (typeof VisualizationHelpers !== 'undefined') {
-                VisualizationHelpers.createChart('bridgeChart', data, layout);
-            } else {
-                Plotly.newPlot('bridgeChart', data, layout, {responsive: true});
-            }
-        }
-        */
-        
-        function createPopularityChart() {
-            // Placeholder for dataset popularity
-            const data = [{
-                x: ['ds000117', 'ds000246', 'ds000247', 'ds000248', 'ds001784'],
-                y: [45, 38, 32, 28, 25],
-                type: 'bar',
-                marker: {color: colorScheme.accent}
-            }];
-            
-            const layout = {
-                title: 'Top Cited Datasets',
-                xaxis: {title: 'Dataset ID'},
-                yaxis: {title: 'Citation Count'},
-                font: {family: 'Segoe UI'},
-                plot_bgcolor: 'rgba(0,0,0,0)',
-                paper_bgcolor: 'rgba(0,0,0,0)'
-            };
-            
-            // Use standardized chart creation from templates
-            if (typeof VisualizationHelpers !== 'undefined') {
-                VisualizationHelpers.createChart('popularityChart', data, layout);
-            } else {
-                Plotly.newPlot('popularityChart', data, layout, {responsive: true});
-            }
-        }
-        
-        function createThemesChart() {
-            // Placeholder for themes
-            const data = [{
-                x: ['Neuroscience', 'fMRI', 'Brain Networks', 'Cognitive', 'Clinical'],
-                y: [25, 22, 18, 15, 12],
-                type: 'bar',
-                marker: {color: colorScheme.secondary}
-            }];
-            
-            const layout = {
-                title: 'Research Theme Frequency',
-                font: {family: 'Segoe UI'},
-                plot_bgcolor: 'rgba(0,0,0,0)',
-                paper_bgcolor: 'rgba(0,0,0,0)'
-            };
-            
-            // Use standardized chart creation from templates
-            if (typeof VisualizationHelpers !== 'undefined') {
-                VisualizationHelpers.createChart('themesChart', data, layout);
-            } else {
-                Plotly.newPlot('themesChart', data, layout, {responsive: true});
-            }
-        }
-        
-        function createUMAPChart() {
-            // Placeholder for UMAP
-            const data = [{
-                x: [1, 2, 3, 4, 5],
-                y: [2, 4, 1, 5, 3],
-                mode: 'markers',
-                type: 'scatter',
-                marker: {
-                    size: 12,
-                    color: [1, 2, 3, 1, 2],
-                    colorscale: 'Viridis'
-                }
-            }];
-            
-            const layout = {
-                title: 'UMAP Embedding Visualization',
-                xaxis: {title: 'UMAP 1'},
-                yaxis: {title: 'UMAP 2'},
-                font: {family: 'Segoe UI'},
-                plot_bgcolor: 'rgba(0,0,0,0)',
-                paper_bgcolor: 'rgba(0,0,0,0)'
-            };
-            
-            // Use standardized chart creation from templates
-            if (typeof VisualizationHelpers !== 'undefined') {
-                VisualizationHelpers.createChart('umapChart', data, layout);
-            } else {
-                Plotly.newPlot('umapChart', data, layout, {responsive: true});
-            }
-        }
-        
-
-        
-        // Helper function to calculate string similarity
-        function stringSimilarity(str1, str2) {
-            const longer = str1.length > str2.length ? str1 : str2;
-            const shorter = str1.length > str2.length ? str2 : str1;
-            const editDistance = levenshteinDistance(longer, shorter);
-            return (longer.length - editDistance) / longer.length;
-        }
-        
-        function levenshteinDistance(str1, str2) {
-            const matrix = [];
-            for (let i = 0; i <= str2.length; i++) {
-                matrix[i] = [i];
-            }
-            for (let j = 0; j <= str1.length; j++) {
-                matrix[0][j] = j;
-            }
-            for (let i = 1; i <= str2.length; i++) {
-                for (let j = 1; j <= str1.length; j++) {
-                    if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
-                        matrix[i][j] = matrix[i - 1][j - 1];
-                    } else {
-                        matrix[i][j] = Math.min(
-                            matrix[i - 1][j - 1] + 1,
-                            matrix[i][j - 1] + 1,
-                            matrix[i - 1][j] + 1
-                        );
-                    }
-                }
-            }
-            return matrix[str2.length][str1.length];
-        }
-        
-        function deduplicateBridgePapers(papers) {
-            const deduplicated = [];
-            const threshold = 0.85; // 85% similarity threshold
-            
-            for (const paper of papers) {
-                let isDuplicate = false;
-                const currentTitle = (paper.bridge_paper_title || '').toLowerCase().trim();
-                
-                for (const existing of deduplicated) {
-                    const existingTitle = (existing.bridge_paper_title || '').toLowerCase().trim();
-                    const similarity = stringSimilarity(currentTitle, existingTitle);
-                    
-                    if (similarity >= threshold) {
-                        // Merge data from duplicate (prefer higher confidence or more datasets)
-                        if ((paper.confidence_score || 0) > (existing.confidence_score || 0) ||
-                            (paper.num_datasets_bridged || 0) > (existing.num_datasets_bridged || 0)) {
-                            // Replace with better version
-                            const existingIndex = deduplicated.indexOf(existing);
-                            deduplicated[existingIndex] = paper;
-                        }
-                        isDuplicate = true;
-                        break;
-                    }
-                }
-                
-                if (!isDuplicate) {
-                    deduplicated.push(paper);
-                }
-            }
-            
-            return deduplicated;
-        }
-        
-        // Detail modal functions
-        function showDetailModal(type) {
-            const modal = new bootstrap.Modal(document.getElementById('detailModal'));
-            const modalTitle = document.getElementById('detailModalLabel');
-            const modalBody = document.getElementById('detailModalBody');
-            
-            let title = '';
-            let content = '';
-            
-            switch(type) {
-                case 'datasets':
-                    title = 'Dataset Analysis Details';
-                    content = generateDatasetDetails();
-                    break;
-                case 'citations':
-                    title = 'High-Confidence Citations Details';
-                    content = generateCitationDetails();
-                    break;
-                case 'bridges':
-                    title = 'Research Bridge Papers';
-                    content = generateBridgeDetails();
-                    break;
-                case 'threshold':
-                    title = 'Confidence Threshold Information';
-                    content = generateThresholdDetails();
-                    break;
-            }
-            
-            modalTitle.textContent = title;
-            modalBody.innerHTML = content;
-            modal.show();
-        }
-        
-        function generateDatasetDetails() {
-            const networkData = analysisData.network_analysis || {};
-            const popularityData = networkData.dataset_popularity || [];
-            
-            let content = `
-                <div class="row">
-                    <div class="col-md-6">
-                        <h6><i class="fas fa-chart-bar me-2"></i>Dataset Overview</h6>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Total Datasets</span>
-                                <strong>302</strong>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>With High-Confidence Citations</span>
-                                <strong>${popularityData.length}</strong>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Analysis Coverage</span>
-                                <strong>100%</strong>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <h6><i class="fas fa-star me-2"></i>Top Cited Datasets</h6>
-                        <div class="list-group" style="max-height: 300px; overflow-y: auto;">`;
-                        
-            if (popularityData.length > 0) {
-                // Filter datasets with high-confidence citations and get top 5
-                const highConfDatasets = popularityData
-                    .filter(dataset => (dataset.high_confidence_citations || 0) > 0)
-                    .sort((a, b) => (b.high_confidence_citations || 0) - (a.high_confidence_citations || 0))
-                    .slice(0, 20);
-                
-                if (highConfDatasets.length > 0) {
-                    highConfDatasets.forEach((dataset, index) => {
-                        const totalCitations = dataset.total_citations || 0;
-                        const highConfCitations = dataset.high_confidence_citations || 0;
-                        const lowConfCitations = totalCitations - highConfCitations;
-                        
-                        content += `
-                            <div class="list-group-item">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h6 class="mb-1"><a href="https://nemar.org/dataexplorer/detail?dataset_id=${dataset.dataset_id}" target="_blank" rel="noopener noreferrer">${dataset.dataset_id || 'N/A'}</a></h6>
-                                    <small class="text-muted">${highConfCitations} high-conf citations</small>
-                                </div>
-                                <p class="mb-1">${(dataset.dataset_name || 'No name available').substring(0, 60)}${(dataset.dataset_name || '').length > 60 ? '...' : ''}</p>
-                                <small class="text-muted">
-                                    ${totalCitations} total (${highConfCitations} ≥0.4, ${lowConfCitations} <0.4)
-                                </small>
-                            </div>`;
-                    });
-                } else {
-                    content += '<div class="list-group-item">No datasets with high-confidence citations found</div>';
-                }
-            } else {
-                content += '<div class="list-group-item">No popularity data available</div>';
-            }
-            
-            content += `
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <p class="text-muted">
-                        <i class="fas fa-info-circle me-1"></i>
-                        Datasets are analyzed from the BIDS (Brain Imaging Data Structure) repository, 
-                        with citation data collected from Google Scholar and filtered by confidence scores.
-                    </p>
-                </div>`;
-                
-            return content;
-        }
-        
-        function generateCitationDetails() {
-            const networkData = analysisData.network_analysis || {};
-            const impactData = networkData.citation_impact_rankings || [];
-            
-            let content = `
-                <div class="row">
-                    <div class="col-md-6">
-                        <h6><i class="fas fa-chart-line me-2"></i>Citation Statistics</h6>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>High-Confidence Citations</span>
-                                <strong>1004</strong>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Confidence Threshold</span>
-                                <strong>≥0.4</strong>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Quality Rate</span>
-                                <strong>84.3%</strong>
-                            </li>
-                        </ul>
-                        <div class="mt-3">
-                            <h6><i class="fas fa-cogs me-2"></i>Confidence Scoring</h6>
-                            <p class="small text-muted">
-                                Citations are scored using sentence-transformer embeddings comparing 
-                                dataset descriptions with citation abstracts. Only citations with 
-                                confidence ≥0.4 are included in analysis.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h6><i class="fas fa-trophy me-2"></i>Highest Impact Citations</h6>
-                        <div class="list-group" style="max-height: 300px; overflow-y: auto;">`;
-                        
-            if (impactData.length > 0) {
-                // Ensure we show up to 20 citations, but check if we have that many
-                const citationsToShow = Math.min(impactData.length, 20);
-                console.log('Showing', citationsToShow, 'citations out of', impactData.length);
-                impactData.slice(0, citationsToShow).forEach((citation, index) => {
-                    content += `
-                        <div class="list-group-item">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1 small">${citation.citation_url ? `<a href="${citation.citation_url}" target="_blank" rel="noopener noreferrer">${(citation.citation_title || 'No title').substring(0, 50)}${(citation.citation_title || '').length > 50 ? '...' : ''}</a>` : `<a href="https://scholar.google.com/scholar?q=${encodeURIComponent(citation.citation_title || '')}" target="_blank" rel="noopener noreferrer">${(citation.citation_title || 'No title').substring(0, 50)}${(citation.citation_title || '').length > 50 ? '...' : ''}</a>`}</h6>
-                                <small class="text-muted">${citation.citation_impact || 0} citations</small>
-                            </div>
-                            <p class="mb-1 small text-muted">${citation.citation_author || 'Unknown author'}</p>
-                            <small>Confidence: ${((citation.confidence_score || 0) * 100).toFixed(1)}%</small>
-                        </div>`;
-                });
-            } else {
-                content += '<div class="list-group-item">No impact data available</div>';
-            }
-            
-            content += `
-                        </div>
-                    </div>
-                </div>`;
-                
-            return content;
-        }
-        
-        function generateBridgeDetails() {
-            const networkData = analysisData.network_analysis || {};
-            const rawBridgeData = networkData.bridge_papers || [];
-            const crossDomainData = networkData.multi_dataset_citations || [];
-            
-            // Deduplicate bridge papers based on title similarity
-            const bridgeData = deduplicateBridgePapers(rawBridgeData);
-            
-            let content = `
-                <div class="mb-3">
-                    <h6><i class="fas fa-info-circle me-2"></i>What are Bridge Papers?</h6>
-                    <p class="text-muted">
-                        Bridge papers are publications that cite multiple BIDS datasets, connecting different 
-                        research areas and facilitating cross-domain knowledge transfer in neuroscience.
-                    </p>
-                </div>
-                
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="card border-primary">
-                            <div class="card-body text-center">
-                                <h4 class="text-primary">80</h4>
-                                <p class="mb-0">Bridge Papers</p>
-                                <small class="text-muted">High confidence + multiple datasets</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card border-info">
-                            <div class="card-body text-center">
-                                <h4 class="text-info">${crossDomainData.length}</h4>
-                                <p class="mb-0">Cross-Domain Papers</p>
-                                <small class="text-muted">All papers citing multiple datasets</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mb-4">
-                    <h6><i class="fas fa-share-alt me-2"></i>What are Cross-Domain Papers?</h6>
-                    <p class="text-muted small">
-                        Cross-domain papers cite multiple BIDS datasets from different research domains, 
-                        indicating interdisciplinary research that spans multiple neuroscience areas 
-                        (e.g., combining EEG motor tasks with cognitive experiments).
-                    </p>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-6">
-                        <h6><i class="fas fa-bridge me-2"></i>Top Bridge Papers</h6>
-                        <div class="list-group" style="max-height: 250px; overflow-y: auto;">`;
-                        
-            if (bridgeData.length > 0) {
-                bridgeData.slice(0, 20).forEach((paper, index) => {
-                    content += `
-                        <div class="list-group-item">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1 small">${paper.bridge_paper_url ? `<a href="${paper.bridge_paper_url}" target="_blank" rel="noopener noreferrer">${(paper.bridge_paper_title || 'No title').substring(0, 50)}${(paper.bridge_paper_title || '').length > 50 ? '...' : ''}</a>` : `<a href="https://scholar.google.com/scholar?q=${encodeURIComponent(paper.bridge_paper_title || '')}" target="_blank" rel="noopener noreferrer">${(paper.bridge_paper_title || 'No title').substring(0, 50)}${(paper.bridge_paper_title || '').length > 50 ? '...' : ''}</a>`}</h6>
-                                <small class="text-muted">${paper.num_datasets_bridged || 0} datasets</small>
-                            </div>
-                            <p class="mb-1 small text-muted">${paper.bridge_paper_author || 'Unknown author'}</p>
-                            <small>Confidence: ${((paper.confidence_score || 0) * 100).toFixed(1)}%</small>
-                        </div>`;
-                });
-            } else {
-                content += '<div class="list-group-item">No bridge papers data available</div>';
-            }
-            
-            content += `
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h6><i class="fas fa-share-alt me-2"></i>Top Cross-Domain Papers</h6>
-                        <div class="list-group" style="max-height: 250px; overflow-y: auto;">`;
-                        
-            if (crossDomainData.length > 0) {
-                crossDomainData.slice(0, 20).forEach((paper, index) => {
-                    content += `
-                        <div class="list-group-item">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1 small">${paper.citation_url ? `<a href="${paper.citation_url}" target="_blank" rel="noopener noreferrer">${(paper.citation_title || 'No title').substring(0, 50)}${(paper.citation_title || '').length > 50 ? '...' : ''}</a>` : `<a href="https://scholar.google.com/scholar?q=${encodeURIComponent(paper.citation_title || '')}" target="_blank" rel="noopener noreferrer">${(paper.citation_title || 'No title').substring(0, 50)}${(paper.citation_title || '').length > 50 ? '...' : ''}</a>`}</h6>
-                                <small class="text-muted">${paper.num_datasets_cited || 0} datasets</small>
-                            </div>
-                            <p class="mb-1 small text-muted">${paper.citation_author || 'Unknown author'}</p>
-                            <small>Confidence: ${((paper.confidence_score || 0) * 100).toFixed(1)}% | Year: ${paper.citation_year || 'N/A'}</small>
-                        </div>`;
-                });
-            } else {
-                content += '<div class="list-group-item">No cross-domain papers data available</div>';
-            }
-            
-            content += `
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-4">
-                    <h6><i class="fas fa-lightbulb me-2"></i>Research Analysis Benefits</h6>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6 class="small text-primary">Bridge Papers Help:</h6>
-                            <ul class="list-unstyled small">
-                                <li><i class="fas fa-check text-success me-2"></i>Identify high-confidence cross-domain opportunities</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Find proven methodological innovations</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <h6 class="small text-info">Cross-Domain Papers Help:</h6>
-                            <ul class="list-unstyled small">
-                                <li><i class="fas fa-check text-success me-2"></i>Map interdisciplinary knowledge flow</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Discover collaborative research patterns</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>`;
-                
-            return content;
-        }
-        
-        function generateThresholdDetails() {
-            return `
-                <div class="row">
-                    <div class="col-md-6">
-                        <h6><i class="fas fa-cogs me-2"></i>Confidence Scoring Method</h6>
-                        <div class="card border-info">
-                            <div class="card-body">
-                                <h5 class="card-title text-info">≥0.4 Threshold</h5>
-                                <p class="card-text">
-                                    Citations must have a confidence score of 0.4 or higher to be included in analysis.
-                                </p>
-                                <ul class="list-unstyled small">
-                                    <li><strong>0.7-1.0:</strong> High confidence</li>
-                                    <li><strong>0.4-0.7:</strong> Medium confidence</li>
-                                    <li><strong>0.0-0.4:</strong> Low confidence (excluded)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h6><i class="fas fa-brain me-2"></i>Technical Implementation</h6>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                <strong>Model:</strong> Qwen3-Embedding-0.6B
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Method:</strong> Sentence-transformer similarity
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Comparison:</strong> Dataset descriptions vs citation abstracts
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Validation:</strong> Manual review sample
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="mt-4">
-                    <h6><i class="fas fa-chart-pie me-2"></i>Quality Distribution</h6>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="text-center p-3 bg-success text-white rounded">
-                                <h4>84.3%</h4>
-                                <small>High Quality (≥0.4)</small>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="text-center p-3 bg-warning text-dark rounded">
-                                <h4>15.7%</h4>
-                                <small>Low Quality (&lt;0.4)</small>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="text-center p-3 bg-info text-white rounded">
-                                <h4>1,004</h4>
-                                <small>Total High-Confidence</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-3">
-                    <p class="text-muted">
-                        <i class="fas fa-info-circle me-1"></i>
-                        The 0.4 threshold was chosen based on empirical validation against manually reviewed 
-                        citation-dataset pairs, balancing precision and recall for research applications.
-                    </p>
-                </div>`;
-        }
-    
-        
-        // Auto-trigger network visualizations on tab click
-        $(document).ready(function() {
-            // Wait for DOM to be fully ready
-            setTimeout(function() {
-                // Find all tabs
-                const tabs = document.querySelectorAll('[role="tab"]');
-                let networkTab = null;
-                
-                tabs.forEach(function(tab) {
-                    if (tab.textContent.includes('Network Analysis')) {
-                        networkTab = tab;
-                    }
-                });
-                
-                if (networkTab) {
-                    // Add click listener with 300ms delay for auto-trigger
-                    networkTab.addEventListener('click', function() {
-                        console.log('Network tab clicked, auto-triggering in 100ms...');
-                        
-                        setTimeout(function() {
-                            const networkViz = document.getElementById('networkViz');
-                            const citationViz = document.getElementById('citationNetworkViz');
-                            
-                            if (networkViz && citationViz) {
-                                // Clear containers
-                                networkViz.innerHTML = '';
-                                citationViz.innerHTML = '';
-                                
-                                // Check if we have the required data
-                                if (typeof createNetworkVisualization === 'function' && 
-                                    analysisData.network_analysis && 
-                                    analysisData.network_analysis.dataset_popularity) {
-                                    
-                                    try {
-                                        createNetworkVisualization();
-                                        createCitationNetworkVisualization();
-                                        console.log('✅ Network visualizations auto-triggered successfully');
-                                    } catch (error) {
-                                        console.error('Error creating visualizations:', error);
-                                    }
-                                }
-                            }
-                        }, 300);
-                    });
-                    
-                    console.log('Network tab auto-trigger handler installed');
-                }
-            }, 500); // Small delay to ensure all elements are ready
         });
-</script>
-
-    
+        
+        // Modal handler
+        function showDetailModal(type) {
+            console.log('Showing modal for:', type);
+        }
+    </script>
 </body>
 </html>
