@@ -2,65 +2,97 @@
 Network visualization component for dashboard.
 """
 
-from typing import Dict, Any
+from typing import Dict, Any, Optional
+from pathlib import Path
+from .network_data import NetworkDataExtractor
 
 
 class NetworkGenerator:
     """Generate network visualization configurations."""
 
+    def __init__(self, embeddings_dir: Optional[Path] = None):
+        """
+        Initialize the network generator.
+
+        Args:
+            embeddings_dir: Path to embeddings directory
+        """
+        self.data_extractor = NetworkDataExtractor(embeddings_dir)
+
     def generate_networks(self, data: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Generate network visualization data.
+        Generate network visualization data with UMAP coordinates.
 
         Args:
             data: Aggregated data from DataAggregator
 
         Returns:
-            Dictionary containing network configurations
+            Dictionary containing network configurations with Cytoscape.js format
         """
+        # Use the new data extractor to get UMAP-enriched network data
+        network_data = self.data_extractor.prepare_network_data(data)
+
         return {
-            "dataset_network": self._generate_dataset_network(data),
-            "citation_network": self._generate_citation_network(data),
+            "dataset_network": network_data["dataset_network"],
+            "citation_network": network_data["citation_network"],
+            "umap_bounds": network_data["umap_bounds"],
+            "cytoscape_config": self._generate_cytoscape_config(),
         }
 
-    def _generate_dataset_network(self, data: Dict[str, Any]) -> Dict[str, Any]:
-        """Generate dataset network configuration."""
-        network_data = data.get("network_analysis", {})
-        popularity = network_data.get("dataset_popularity", [])
-
-        nodes = []
-        for i, dataset in enumerate(popularity[:50]):  # Top 50 datasets
-            nodes.append(
-                {
-                    "id": dataset.get("dataset_id", f"ds{i}"),
-                    "label": dataset.get("dataset_name", ""),
-                    "citations": int(dataset.get("citations", 0)),
-                }
-            )
-
+    def _generate_cytoscape_config(self) -> Dict[str, Any]:
+        """Generate Cytoscape.js configuration."""
         return {
-            "nodes": nodes,
-            "edges": [],  # No edges for dataset network in NEMAR dashboard
-            "layout": "preset",  # Use UMAP coordinates
-        }
-
-    def _generate_citation_network(self, data: Dict[str, Any]) -> Dict[str, Any]:
-        """Generate citation network configuration."""
-        network_data = data.get("network_analysis", {})
-        citations = network_data.get("citation_impact_rankings", [])
-
-        nodes = []
-        for i, citation in enumerate(citations[:100]):  # Top 100 citations
-            nodes.append(
+            "style": [
                 {
-                    "id": f"citation_{i}",
-                    "title": citation.get("citation_title", ""),
-                    "impact": int(citation.get("citation_impact", 0)),
-                }
-            )
-
-        return {
-            "nodes": nodes,
-            "edges": [],  # Would be populated from similarity data
-            "layout": "preset",
+                    "selector": "node[type='dataset']",
+                    "style": {
+                        "background-color": "#4CAF50",
+                        "label": "data(label)",
+                        "width": "mapData(citations, 0, 100, 20, 60)",
+                        "height": "mapData(citations, 0, 100, 20, 60)",
+                        "font-size": "10px",
+                        "text-valign": "center",
+                        "text-halign": "center",
+                        "text-outline-color": "#fff",
+                        "text-outline-width": 2,
+                        "text-wrap": "wrap",
+                        "text-max-width": "80px",
+                    },
+                },
+                {
+                    "selector": "node[type='citation']",
+                    "style": {
+                        "background-color": "#2196F3",
+                        "label": "data(label)",
+                        "width": "mapData(impact, 0, 10, 15, 40)",
+                        "height": "mapData(impact, 0, 10, 15, 40)",
+                        "font-size": "9px",
+                        "text-valign": "center",
+                        "text-halign": "center",
+                        "text-outline-color": "#fff",
+                        "text-outline-width": 1,
+                        "text-wrap": "wrap",
+                        "text-max-width": "100px",
+                    },
+                },
+                {
+                    "selector": "edge",
+                    "style": {
+                        "width": "mapData(weight, 1, 10, 1, 5)",
+                        "line-color": "#ccc",
+                        "target-arrow-color": "#ccc",
+                        "curve-style": "bezier",
+                        "opacity": 0.6,
+                    },
+                },
+                {
+                    "selector": "node:selected",
+                    "style": {
+                        "background-color": "#FF5722",
+                        "border-width": 3,
+                        "border-color": "#000",
+                    },
+                },
+            ],
+            "layout": {"name": "preset", "fit": True, "padding": 50},
         }
