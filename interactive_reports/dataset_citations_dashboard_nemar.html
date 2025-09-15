@@ -391,7 +391,7 @@
                 <a href="https://nemar.org" target="_blank"><strong>NEMAR</strong></a> 
                 is a window to <a href="https://openneuro.org" target="_blank">OpenNeuro</a>
             </p>
-            <p class="text-muted small">Generated: 2025-09-14 21:27:27</p>
+            <p class="text-muted small">Generated: 2025-09-14 22:28:22</p>
         </div>
     </footer>
     
@@ -429,9 +429,9 @@
   "datasets": {
     "title": "Dataset Analysis Details",
     "content": {
-      "total_datasets": 0,
-      "with_citations": 0,
-      "coverage": "100%",
+      "total_datasets": 302,
+      "with_citations": 290,
+      "coverage": "96%",
       "top_datasets": [
         {
           "dataset_id": "ds000117",
@@ -660,12 +660,12 @@
   "citations": {
     "title": "Citation Analysis",
     "content": {
-      "high_confidence": 0,
-      "low_confidence": 1191,
+      "high_confidence": 1004,
+      "low_confidence": 187,
       "total": 1191,
-      "percentage": 0.0,
+      "percentage": 84.3,
       "threshold": 0.4,
-      "quality_rate": 0.0,
+      "quality_rate": 84.3,
       "top_citations": [
         {
           "citation_title": "Autoreject: Automated artifact rejection for MEG and EEG data",
@@ -983,7 +983,7 @@
       "method": "Sentence-transformer similarity",
       "comparison": "Dataset descriptions vs citation abstracts",
       "validation": "Manual review sample",
-      "quality_rate": 0.0
+      "quality_rate": 84.2989084802687
     }
   }
 };
@@ -1030,26 +1030,26 @@
                     content = `
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <div class="card bg-primary text-white">
+                                <div class="card border-primary">
                                     <div class="card-body text-center">
-                                        <h2>${data.content?.total_datasets || 0}</h2>
-                                        <p class="mb-0">Total Datasets</p>
+                                        <h2 class="text-primary">${data.content?.total_datasets || 0}</h2>
+                                        <p class="mb-0 text-dark">Total Datasets</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="card bg-success text-white">
+                                <div class="card border-success">
                                     <div class="card-body text-center">
-                                        <h2>${data.content?.with_citations || 0}</h2>
-                                        <p class="mb-0">With Citations</p>
+                                        <h2 class="text-success">${data.content?.with_citations || 0}</h2>
+                                        <p class="mb-0 text-dark">With High-Conf Citations</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="card bg-info text-white">
+                                <div class="card border-warning">
                                     <div class="card-body text-center">
-                                        <h2>${data.content?.coverage || '100%'}</h2>
-                                        <p class="mb-0">Coverage</p>
+                                        <h2 class="text-warning">${data.content?.coverage || '100%'}</h2>
+                                        <p class="mb-0 text-dark">Coverage</p>
                                     </div>
                                 </div>
                             </div>
@@ -1152,7 +1152,7 @@
                                                target="_blank" class="text-primary">${title}</a>
                                         </h6>
                                         <p class="mb-1 text-muted small">${authors} ${year ? `(${year})` : ''}</p>
-                                        <span class="badge bg-info">${numDatasets} datasets</span>
+                                        <span class="badge bg-secondary">${numDatasets} datasets</span>
                                         ${datasets ? `<div class="text-muted small mt-1">Datasets: ${datasets}</div>` : ''}
                                     </div>
                                 </div>
@@ -1164,22 +1164,13 @@
                         <h6 class="mb-3"><i class="fas fa-link me-2"></i>What are Bridge Papers?</h6>
                         <p>${data.content?.description || 'Bridge papers cite multiple BIDS datasets.'}</p>
                         
-                        <div class="row mb-3">
+                        <div class="row mb-3 justify-content-center">
                             <div class="col-md-6">
-                                <div class="card bg-primary text-white">
+                                <div class="card border-primary">
                                     <div class="card-body text-center">
-                                        <h2>${data.content?.total || 0}</h2>
-                                        <p class="mb-0">Total Bridge Papers</p>
-                                        <small>Citing multiple datasets</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card bg-info text-white">
-                                    <div class="card-body text-center">
-                                        <h2>${papers.length || 0}</h2>
-                                        <p class="mb-0">High-Impact Papers</p>
-                                        <small>Top papers by dataset count</small>
+                                        <h2 class="text-primary">${data.content?.total || 0}</h2>
+                                        <p class="mb-0 text-dark">Total Bridge Papers</p>
+                                        <small class="text-muted">Papers citing multiple datasets</small>
                                     </div>
                                 </div>
                             </div>
@@ -1304,6 +1295,7 @@
                 plot_bgcolor: 'rgba(0,0,0,0)',
                 paper_bgcolor: 'rgba(0,0,0,0)',
                 showlegend: false,
+                height: 350,
                 margin: { t: 20, b: 50, l: 50, r: 20 },
                 xaxis: { title: '' },
                 yaxis: { title: 'Count' }
@@ -1337,6 +1329,7 @@
                 plot_bgcolor: 'rgba(0,0,0,0)',
                 paper_bgcolor: 'rgba(0,0,0,0)',
                 showlegend: false,
+                height: 350,
                 margin: { t: 20, b: 50, l: 50, r: 20 },
                 xaxis: { title: 'Year' },
                 yaxis: { title: 'Cumulative Citations' }
@@ -1361,7 +1354,7 @@
             
             const layout = {
                 showlegend: true,
-                height: 385,
+                height: 350,
                 margin: { t: 20, b: 20, l: 20, r: 20 },
                 paper_bgcolor: 'rgba(0,0,0,0)',
                 plot_bgcolor: 'rgba(0,0,0,0)',
