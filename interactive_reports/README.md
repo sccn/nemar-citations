@@ -160,28 +160,26 @@ dataset-citations-automate-visualization-updates \
 
 ### **Required Files for Dashboard Deployment**
 
-When deploying the NEMAR dashboard (`dataset_citations_dashboard_nemar.html`), you must include these files in the same relative directory structure:
+When deploying the NEMAR dashboard (`dataset_citations_dashboard_nemar.html`), you must include these files in the same directory structure:
 
 ```text
 interactive_reports/
 ├── dataset_citations_dashboard_nemar.html  # Main dashboard
 ├── dashboard_styles.css                    # Required: CSS styles
 ├── data/
-│   └── complete_analysis_data_clean.json   # Required: Main data file
+│   ├── complete_analysis_data_clean.json   # Required: Main data file
+│   └── themes/                             # Required: Theme visualizations
+│       ├── theme_0_wordcloud.png
+│       ├── theme_1_wordcloud.png
+│       ├── theme_2_wordcloud.png
+│       └── theme_3_wordcloud.png
 └── README.md                               # This file
-
-../dashboard_data/                          # Required: Must be one level up
-├── themes/                                 # Required: Theme visualizations
-│   ├── theme_0_wordcloud.png
-│   ├── theme_1_wordcloud.png
-│   ├── theme_2_wordcloud.png
-│   └── theme_3_wordcloud.png
-└── [other optional visualization files]
 ```
 
-**Important**: The dashboard references files in both:
-- `data/` subdirectory (for JSON data)
-- `../dashboard_data/` parent directory (for theme images)
+**Important**: The dashboard is now fully self-contained. All required files are within the `interactive_reports/` directory:
+- CSS styles in the same directory
+- JSON data in `data/` subdirectory
+- Theme images in `data/themes/` subdirectory
 
 ### **Complete File Structure**
 
