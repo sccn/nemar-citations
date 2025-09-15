@@ -10,6 +10,7 @@ from .components.styles import get_nemar_styles
 from .components.hero import generate_hero_section
 from .modal_handler import ModalHandler
 from .components.charts import generate_chart_containers, generate_chart_javascript
+from .components.network_viz import NetworkVisualization
 
 
 def generate_nemar_dashboard(
@@ -28,7 +29,7 @@ def generate_nemar_dashboard(
 
     # Build HTML sections
     header = generate_header(data_file=data_file)
-    styles = get_nemar_styles()
+    styles = get_nemar_styles() + NetworkVisualization.generate_styles()
     hero = generate_hero_section(cards)
     chart_containers = generate_chart_containers()
     chart_js = generate_chart_javascript(stats, charts)
@@ -171,29 +172,11 @@ def generate_nemar_dashboard(
         
         {chart_js}
         
-        // Simple network visualization
-        function createNetworkVisualization() {{
-            const container = document.getElementById('networkViz');
-            container.innerHTML = '<p class="text-center mt-5">Network visualization loading...</p>';
-        }}
-        
-        function createCitationNetworkVisualization() {{
-            const container = document.getElementById('citationNetworkViz');
-            container.innerHTML = '<p class="text-center mt-5">Citation network loading...</p>';
-        }}
+        {NetworkVisualization.generate_javascript(networks)}
         
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {{
             initializeCharts();
-            
-            // Load networks when tab is shown
-            document.getElementById('network-tab').addEventListener('shown.bs.tab', function() {{
-                if (!window.networksInitialized) {{
-                    createNetworkVisualization();
-                    createCitationNetworkVisualization();
-                    window.networksInitialized = true;
-                }}
-            }});
         }});
     </script>
 </body>

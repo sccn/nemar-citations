@@ -51,7 +51,11 @@ class DashboardGenerator:
         )
         self.stats_generator = StatisticsGenerator()
         self.chart_generator = ChartGenerator()
-        self.network_generator = NetworkGenerator()
+        # Pass embeddings directory to NetworkGenerator
+        embeddings_dir = self.results_dir.parent / "embeddings"
+        if not embeddings_dir.exists():
+            embeddings_dir = Path("embeddings")  # Fallback to current directory
+        self.network_generator = NetworkGenerator(embeddings_dir=embeddings_dir)
         self.theme_generator = ThemeGenerator()
         self.modal_generator = ModalGenerator()
         self.template_builder = TemplateBuilder()

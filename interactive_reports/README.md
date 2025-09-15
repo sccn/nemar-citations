@@ -1,8 +1,8 @@
-# Phase 4.7: Interactive Reports & External Tool Integration
+# NEMAR Dataset Citations Dashboard
 
 ## 🎯 **Overview**
 
-Phase 4.7 completes the dataset citations analysis system with **unified interactive reports** and **comprehensive export capabilities** for external analysis tools. This phase provides a web-hostable, open-source visualization solution with consistent theming across all analysis components.
+This directory contains the **NEMAR Dataset Citations Dashboard** - an interactive web-based visualization of citation patterns, research themes, and network relationships for 302 BIDS datasets hosted on NEMAR.org. The dashboard provides comprehensive analysis with confidence-filtered citations to ensure only relevant neuroscience papers are included.
 
 ## ✨ **Key Features**
 
@@ -27,17 +27,45 @@ Phase 4.7 completes the dataset citations analysis system with **unified interac
 
 ## 🚀 **Quick Start**
 
-### **1. Generate Interactive Dashboard**
+### **1. Generate NEMAR Dashboard**
 
 ```bash
-# Create comprehensive interactive reports
-dataset-citations-create-interactive-reports \
-  --results-dir results/ \
-  --output-dir interactive_reports/ \
-  --verbose
+# Activate conda environment
+conda activate dataset-citations
+
+# Generate the dashboard
+python -c "
+from dataset_citations.dashboard.core import DashboardGenerator
+from pathlib import Path
+
+gen = DashboardGenerator(
+    results_dir=Path('dashboard_data'),
+    output_dir=Path('interactive_reports'),
+    citations_dir=Path('citations/json')
+)
+
+output_path = gen.generate_dashboard(dashboard_type='nemar', lazy_load=True)
+print(f'Dashboard generated: {output_path}')
+"
 ```
 
-**Output**: Self-contained HTML dashboard at `interactive_reports/dataset_citations_dashboard.html`
+Or without activating the environment:
+```bash
+~/miniconda3/bin/conda run -n dataset-citations python -c "
+from dataset_citations.dashboard.core import DashboardGenerator
+from pathlib import Path
+
+gen = DashboardGenerator(
+    results_dir=Path('dashboard_data'),
+    output_dir=Path('interactive_reports'),
+    citations_dir=Path('citations/json')
+)
+
+output_path = gen.generate_dashboard(dashboard_type='nemar', lazy_load=True)
+"
+```
+
+**Output**: Self-contained HTML dashboard at `interactive_reports/dataset_citations_dashboard_nemar.html`
 
 ### **2. Export for External Tools**
 
@@ -69,11 +97,25 @@ dataset-citations-automate-visualization-updates \
 ## 📊 **Dashboard Components**
 
 ### **Navigation Tabs**
-1. **Overview**: Summary statistics and analysis availability
-2. **Network Analysis**: Interactive network visualization with bridge analysis
-3. **Temporal Trends**: Citation growth timelines and patterns
-4. **Research Themes**: UMAP clustering and word clouds
-5. **Data Export**: Download links for external tools
+1. **Overview**: 
+   - Summary cards showing 302 datasets analyzed
+   - 1000+ high-confidence citations (≥0.4 score)
+   - 80 research bridge papers
+   - Interactive charts for citation trends and modality distribution
+
+2. **Network Analysis**: 
+   - **Dataset Map**: 285 datasets with UMAP semantic positioning
+     - Node sizes based on `num_citations` from JSON files (0-78 range)
+     - Click nodes to view dataset details with NEMAR.org links
+   - **Citation Map**: 500+ high-confidence neuroscience papers
+     - Node sizes based on `cited_by` count (0-522 range)
+     - Only includes papers with confidence ≥ 0.4
+     - Real paper titles displayed on click
+
+3. **Research Themes**: 
+   - Word clouds for different research clusters
+   - Theme evolution visualizations
+   - UMAP-based semantic clustering
 
 ### **Visualization Features**
 - **Interactive Networks**: Zoom, pan, hover information
