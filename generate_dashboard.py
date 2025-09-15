@@ -19,7 +19,9 @@ logger = logging.getLogger(__name__)
 
 
 def generate_dashboard(
-    dashboard_type: str = "nemar", output_dir: str = ".", lazy_load: bool = True
+    dashboard_type: str = "nemar",
+    output_dir: str = "interactive_reports",
+    lazy_load: bool = True,
 ):
     """
     Generate the citation analysis dashboard.

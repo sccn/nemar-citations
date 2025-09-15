@@ -42,7 +42,7 @@ def generate_header(
     <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
     
     <!-- Dashboard Templates & Styles -->
-    <script src="dashboard_templates.js"></script>
+    <!-- Templates embedded in HTML -->
     <link href="dashboard_styles.css" rel="stylesheet">
     {lazy_load_script}
 """
