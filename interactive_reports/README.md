@@ -158,26 +158,55 @@ dataset-citations-automate-visualization-updates \
 
 ## 📁 **File Structure**
 
+### **Required Files for Dashboard Deployment**
+
+When deploying the NEMAR dashboard (`dataset_citations_dashboard_nemar.html`), you must include these files in the same relative directory structure:
+
 ```text
 interactive_reports/
-├── dataset_citations_dashboard.html    # Main dashboard
-└── README.md                          # Usage instructions
+├── dataset_citations_dashboard_nemar.html  # Main dashboard
+├── dashboard_styles.css                    # Required: CSS styles
+├── data/
+│   └── complete_analysis_data_clean.json   # Required: Main data file
+└── README.md                               # This file
+
+../dashboard_data/                          # Required: Must be one level up
+├── themes/                                 # Required: Theme visualizations
+│   ├── theme_0_wordcloud.png
+│   ├── theme_1_wordcloud.png
+│   ├── theme_2_wordcloud.png
+│   └── theme_3_wordcloud.png
+└── [other optional visualization files]
+```
+
+**Important**: The dashboard references files in both:
+- `data/` subdirectory (for JSON data)
+- `../dashboard_data/` parent directory (for theme images)
+
+### **Complete File Structure**
+
+```text
+interactive_reports/
+├── dataset_citations_dashboard_nemar.html  # Main dashboard
+├── dashboard_styles.css                    # CSS styles
+├── data/
+│   └── complete_analysis_data_clean.json   # Analysis data
+├── dataset_citations_network.gexf          # Gephi format
+├── dataset_citations_network.cx            # Cytoscape CX
+├── dataset_citations_network.graphml       # Universal GraphML
+└── README.md                               # Usage instructions
 
 exports/
-├── dataset_citations_network.gexf     # Gephi format
-├── dataset_citations_network.cx       # Cytoscape CX
-├── dataset_citations_network.sif      # Cytoscape SIF  
-├── dataset_citations_network.graphml  # Universal GraphML
-├── network_analysis_nodes.csv         # Node data
-├── network_analysis_edges.csv         # Edge data
-└── README.md                          # Export guide
+├── network_analysis_nodes.csv              # Node data
+├── network_analysis_edges.csv              # Edge data
+└── README.md                               # Export guide
 
 results/
-├── network_analysis/                  # Network analysis results
-├── temporal_analysis/                 # Timeline data
-├── theme_analysis/                    # UMAP clustering
-├── research_context_networks/         # Context networks
-└── README.md                         # Results overview
+├── network_analysis/                       # Network analysis results
+├── temporal_analysis/                      # Timeline data
+├── theme_analysis/                         # UMAP clustering
+├── research_context_networks/              # Context networks
+└── README.md                               # Results overview
 ```
 
 ## 🔧 **Advanced Usage**
