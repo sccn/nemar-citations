@@ -46,33 +46,21 @@ class NetworkGenerator:
                 {
                     "selector": "node[type='dataset']",
                     "style": {
-                        "background-color": "#4CAF50",
-                        "label": "data(label)",
-                        "width": "mapData(citations, 0, 100, 20, 60)",
-                        "height": "mapData(citations, 0, 100, 20, 60)",
-                        "font-size": "10px",
-                        "text-valign": "center",
-                        "text-halign": "center",
-                        "text-outline-color": "#fff",
-                        "text-outline-width": 2,
-                        "text-wrap": "wrap",
-                        "text-max-width": "80px",
+                        "background-color": "#FFA500",  # Orange like in reference
+                        "width": "mapData(citations, 0, 100, 15, 80)",
+                        "height": "mapData(citations, 0, 100, 15, 80)",
+                        "border-width": 2,
+                        "border-color": "#FF8C00",
                     },
                 },
                 {
                     "selector": "node[type='citation']",
                     "style": {
-                        "background-color": "#2196F3",
-                        "label": "data(label)",
-                        "width": "mapData(impact, 0, 10, 15, 40)",
-                        "height": "mapData(impact, 0, 10, 15, 40)",
-                        "font-size": "9px",
-                        "text-valign": "center",
-                        "text-halign": "center",
-                        "text-outline-color": "#fff",
-                        "text-outline-width": 1,
-                        "text-wrap": "wrap",
-                        "text-max-width": "100px",
+                        "background-color": "#FFA500",  # Orange for citations too
+                        "width": "mapData(citations, 0, 500, 10, 60)",
+                        "height": "mapData(citations, 0, 500, 10, 60)",
+                        "border-width": 1,
+                        "border-color": "#FF8C00",
                     },
                 },
                 {
@@ -88,9 +76,17 @@ class NetworkGenerator:
                 {
                     "selector": "node:selected",
                     "style": {
-                        "background-color": "#FF5722",
-                        "border-width": 3,
-                        "border-color": "#000",
+                        "background-color": "#0074D9",  # Blue when selected
+                        "border-width": 4,
+                        "border-color": "#001f3f",
+                    },
+                },
+                {
+                    "selector": "node:active",
+                    "style": {
+                        "overlay-opacity": 0.2,
+                        "overlay-color": "#0074D9",
+                        "overlay-padding": 10,
                     },
                 },
             ],

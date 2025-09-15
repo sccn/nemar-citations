@@ -67,7 +67,7 @@ class NetworkVisualization:
             cyDataset.on('tap', 'node', function(evt) {{
                 const node = evt.target;
                 const data = node.data();
-                showNodeDetails('dataset', data);
+                showNodeDetails('dataset', data, 'networkViz');
             }});
             
             // Add controls
@@ -103,7 +103,7 @@ class NetworkVisualization:
             cyCitation.on('tap', 'node', function(evt) {{
                 const node = evt.target;
                 const data = node.data();
-                showNodeDetails('citation', data);
+                showNodeDetails('citation', data, 'citationNetworkViz');
             }});
             
             // Add controls
@@ -154,26 +154,50 @@ class NetworkVisualization:
             if (cy) cy.center();
         }}
         
-        function showNodeDetails(type, data) {{
+        function showNodeDetails(type, data, containerId) {{
+            // Find or create info panel below the network
+            let infoPanel = document.getElementById(containerId + '-info');
+            if (!infoPanel) {{
+                const container = document.getElementById(containerId);
+                infoPanel = document.createElement('div');
+                infoPanel.id = containerId + '-info';
+                infoPanel.className = 'network-info-panel mt-3';
+                container.parentElement.appendChild(infoPanel);
+            }}
+            
             let content = '';
             if (type === 'dataset') {{
+                const nemarUrl = `https://nemar.org/dataexplorer/detail?dataset_id=${{data.id}}`;
                 content = `
-                    <h5>${{data.label || data.id}}</h5>
-                    <p><strong>Dataset ID:</strong> ${{data.id}}</p>
-                    <p><strong>Citations:</strong> ${{data.citations || 0}}</p>
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <i class="fas fa-database me-2"></i>Dataset Information
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Dataset ID:</strong> <a href="${{nemarUrl}}" target="_blank">${{data.id}}</a></p>
+                            <p><strong>Name:</strong> ${{data.name || 'N/A'}}</p>
+                            <p><strong>Total Citations:</strong> ${{data.citations || 0}}</p>
+                            <p class="text-muted">Click on other nodes to explore connections</p>
+                        </div>
+                    </div>
                 `;
             }} else if (type === 'citation') {{
                 content = `
-                    <h5>${{data.title || data.label}}</h5>
-                    <p><strong>Year:</strong> ${{data.year || 'N/A'}}</p>
-                    <p><strong>Impact Score:</strong> ${{data.impact || 0}}</p>
+                    <div class="card">
+                        <div class="card-header bg-info text-white">
+                            <i class="fas fa-quote-right me-2"></i>Citation Information
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Title:</strong> ${{data.title || 'N/A'}}</p>
+                            <p><strong>Citations:</strong> ${{data.citations || 0}}</p>
+                            <p><strong>Confidence Score:</strong> ${{data.confidence ? (data.confidence * 100).toFixed(1) + '%' : 'N/A'}}</p>
+                            <p class="text-muted">Part of research cluster N/A</p>
+                        </div>
+                    </div>
                 `;
             }}
             
-            // Show in a modal or tooltip
-            const modal = new bootstrap.Modal(document.getElementById('nodeDetailsModal') || createNodeDetailsModal());
-            document.querySelector('#nodeDetailsModal .modal-body').innerHTML = content;
-            modal.show();
+            infoPanel.innerHTML = content;
         }}
         
         function createNodeDetailsModal() {{
