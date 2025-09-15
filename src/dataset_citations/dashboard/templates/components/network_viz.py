@@ -177,21 +177,31 @@ class NetworkVisualization:
                             <p><strong>Dataset ID:</strong> <a href="${{nemarUrl}}" target="_blank">${{data.id}}</a></p>
                             <p><strong>Name:</strong> ${{data.name || 'N/A'}}</p>
                             <p><strong>Total Citations:</strong> ${{data.citations || 0}}</p>
-                            <p class="text-muted">Click on other nodes to explore connections</p>
                         </div>
                     </div>
                 `;
             }} else if (type === 'citation') {{
+                // Create Google Scholar search URL
+                const googleScholarUrl = data.title ? 
+                    `https://scholar.google.com/scholar?q=${{encodeURIComponent(data.title)}}` : 
+                    '#';
+                
                 content = `
                     <div class="card">
                         <div class="card-header bg-info text-white">
                             <i class="fas fa-quote-right me-2"></i>Citation Information
                         </div>
                         <div class="card-body">
-                            <p><strong>Title:</strong> ${{data.title || 'N/A'}}</p>
+                            <p><strong>Title:</strong> ${{data.title ? 
+                                `<a href="${{googleScholarUrl}}" target="_blank" class="text-decoration-none">
+                                    ${{data.title}} <i class="fas fa-external-link-alt ms-1 small"></i>
+                                </a>` : 
+                                'N/A'}}</p>
                             <p><strong>Citations:</strong> ${{data.citations || 0}}</p>
                             <p><strong>Confidence Score:</strong> ${{data.confidence ? (data.confidence * 100).toFixed(1) + '%' : 'N/A'}}</p>
-                            <p class="text-muted">Part of research cluster N/A</p>
+                            <p class="text-muted small mt-2">
+                                <i class="fas fa-search me-1"></i>Click title to search on Google Scholar
+                            </p>
                         </div>
                     </div>
                 `;
