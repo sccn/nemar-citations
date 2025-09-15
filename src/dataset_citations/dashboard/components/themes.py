@@ -25,25 +25,25 @@ class ThemeGenerator:
                 "id": 0,
                 "title": "Theme 1 - Core EEG",
                 "subtitle": "Primary neuroscience datasets",
-                "wordcloud": "theme_0_wordcloud.png",
+                "wordcloud": "../dashboard_data/themes/theme_0_wordcloud.png",
             },
             {
                 "id": 1,
                 "title": "Theme 2 - Audio & Stimulation",
                 "subtitle": "Auditory processing studies",
-                "wordcloud": "theme_1_wordcloud.png",
+                "wordcloud": "../dashboard_data/themes/theme_1_wordcloud.png",
             },
             {
                 "id": 2,
                 "title": "Theme 3 - Task Performance",
                 "subtitle": "Cognitive and behavioral tasks",
-                "wordcloud": "theme_2_wordcloud.png",
+                "wordcloud": "../dashboard_data/themes/theme_2_wordcloud.png",
             },
             {
                 "id": 3,
                 "title": "Theme 4 - Advanced Methods",
                 "subtitle": "Methodological and analytical approaches",
-                "wordcloud": "theme_3_wordcloud.png",
+                "wordcloud": "../dashboard_data/themes/theme_3_wordcloud.png",
             },
         ]
 

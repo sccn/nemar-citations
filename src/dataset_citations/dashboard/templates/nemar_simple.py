@@ -155,6 +155,24 @@ def generate_nemar_dashboard(
             <p class="text-muted small">Generated: {timestamp}</p>
         </div>
     </footer>
+    
+    <!-- Modals -->
+    <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailModalLabel">Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="detailModalBody">
+                    <!-- Content will be dynamically inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -192,7 +210,79 @@ def generate_nemar_dashboard(
         
         // Modal handler
         function showDetailModal(type) {{
-            console.log('Showing modal for:', type);
+            const modal = new bootstrap.Modal(document.getElementById('detailModal'));
+            const modalTitle = document.getElementById('detailModalLabel');
+            const modalBody = document.getElementById('detailModalBody');
+            
+            let content = '';
+            
+            switch(type) {{
+                case 'datasets':
+                    modalTitle.textContent = 'Dataset Analysis Details';
+                    content = `
+                        <h6>Overview</h6>
+                        <p>Analyzing <strong>302 BIDS datasets</strong> from the NEMAR/OpenNeuro repository.</p>
+                        <ul>
+                            <li>Total datasets analyzed: 302</li>
+                            <li>Datasets with citations: 302</li>
+                            <li>Coverage: 100%</li>
+                        </ul>
+                        <p class="text-muted">Datasets are from the Brain Imaging Data Structure (BIDS) repository, 
+                        with citation data collected from Google Scholar and filtered by confidence scores.</p>
+                    `;
+                    break;
+                    
+                case 'citations':
+                    modalTitle.textContent = 'Citation Details';
+                    content = `
+                        <h6>High-Confidence Citations</h6>
+                        <p>Found <strong>1004 high-confidence citations</strong> out of 1191 total citations.</p>
+                        <ul>
+                            <li>High-confidence (≥0.4): 1004 citations (84%)</li>
+                            <li>Low-confidence (<0.4): 187 citations (16%)</li>
+                            <li>Confidence threshold: 0.4</li>
+                        </ul>
+                        <p class="text-muted">Citations are scored using AI-based relevance matching with 
+                        sentence transformers to ensure accuracy.</p>
+                    `;
+                    break;
+                    
+                case 'bridges':
+                    modalTitle.textContent = 'Research Bridge Papers';
+                    content = `
+                        <h6>Papers Connecting Multiple Datasets</h6>
+                        <p>Identified <strong>80 research bridge papers</strong> that cite multiple datasets.</p>
+                        <p>These papers represent interdisciplinary research that connects different datasets, 
+                        enabling cross-dataset analysis and validation.</p>
+                        <p class="text-muted">Bridge papers are crucial for understanding relationships between 
+                        different neuroscience datasets and research domains.</p>
+                    `;
+                    break;
+                    
+                case 'threshold':
+                    modalTitle.textContent = 'Confidence Scoring Methodology';
+                    content = `
+                        <h6>AI-Based Confidence Scoring</h6>
+                        <p>Using confidence threshold of <strong>≥0.4</strong> for citation filtering.</p>
+                        <h6>How it works:</h6>
+                        <ul>
+                            <li>Citations are embedded using sentence transformers</li>
+                            <li>Semantic similarity is computed between citation and dataset descriptions</li>
+                            <li>Confidence scores range from 0 (unrelated) to 1 (perfect match)</li>
+                            <li>Threshold of 0.4 ensures high-quality, relevant citations</li>
+                        </ul>
+                        <p class="text-muted">This approach reduces false positives and ensures that only 
+                        genuinely relevant citations are included in the analysis.</p>
+                    `;
+                    break;
+                    
+                default:
+                    modalTitle.textContent = 'Information';
+                    content = '<p>No additional information available.</p>';
+            }}
+            
+            modalBody.innerHTML = content;
+            modal.show();
         }}
     </script>
 </body>

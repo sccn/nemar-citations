@@ -110,7 +110,7 @@ class DashboardGenerator:
             data_file = None
 
         self.asset_manager.copy_support_files()
-        self.asset_manager.copy_theme_images(themes.get("wordcloud_images", []))
+        # Theme images now use relative paths, no need to copy
 
         # Step 8: Build final HTML
         self.logger.info("Building final HTML")
