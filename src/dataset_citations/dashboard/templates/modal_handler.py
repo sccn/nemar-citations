@@ -35,9 +35,12 @@ class ModalHandler:
     @staticmethod
     def generate_modal_javascript(modals: Dict[str, Any]) -> str:
         """Generate JavaScript for modal functionality."""
+        # Format the JSON with proper indentation to avoid parser issues
+        modal_json = json.dumps(modals, indent=2) if modals else "{}"
+
         return f"""
         // Modal data from server - ensure it's in window scope
-        window.modalData = {json.dumps(modals) if modals else "{}"};
+        window.modalData = {modal_json};
         
         // Modal handler - ensure it's in window scope
         window.showDetailModal = function(type) {{
@@ -49,21 +52,25 @@ class ModalHandler:
             let content = '';
             
             switch(type) {{
-                case 'datasets':
+                case 'datasets': {{
                     {ModalHandler._generate_datasets_case()}
                     break;
+                }}
                     
-                case 'citations':
+                case 'citations': {{
                     {ModalHandler._generate_citations_case()}
                     break;
+                }}
                     
-                case 'bridges':
+                case 'bridges': {{
                     {ModalHandler._generate_bridges_case()}
                     break;
+                }}
                     
-                case 'threshold':
+                case 'threshold': {{
                     {ModalHandler._generate_threshold_case()}
                     break;
+                }}
                     
                 default:
                     modalTitle.textContent = 'Information';
@@ -276,7 +283,7 @@ class ModalHandler:
         """Generate JavaScript case for threshold modal."""
         return """
                     modalTitle.textContent = data.title || 'Confidence Threshold Information';
-                    const threshold = data.content?.threshold || 0.4;
+                    const thresholdValue = data.content?.threshold || 0.4;
                     const qualityRate = data.content?.quality_rate || 0;
                     const highQuality = qualityRate.toFixed(1);
                     const lowQuality = (100 - qualityRate).toFixed(1);
@@ -287,7 +294,7 @@ class ModalHandler:
                                 <h5><i class="fas fa-brain me-2"></i>Confidence Scoring Method</h5>
                                 <div class="card bg-light mb-3">
                                     <div class="card-body">
-                                        <h4 class="text-info">≥${threshold} Threshold</h4>
+                                        <h4 class="text-info">≥${thresholdValue} Threshold</h4>
                                         <p>${data.content?.description || 'Citations must have a confidence score of 0.4 or higher to be included in analysis.'}</p>
                                         <ul class="small">
                                             <li><strong>0.7-1.0:</strong> High confidence</li>
@@ -303,7 +310,7 @@ class ModalHandler:
                                         <div class="card bg-success text-white">
                                             <div class="card-body text-center">
                                                 <h4>${highQuality}%</h4>
-                                                <small>High Quality (≥${threshold})</small>
+                                                <small>High Quality (≥${thresholdValue})</small>
                                             </div>
                                         </div>
                                     </div>
@@ -311,7 +318,7 @@ class ModalHandler:
                                         <div class="card bg-warning text-white">
                                             <div class="card-body text-center">
                                                 <h4>${lowQuality}%</h4>
-                                                <small>Low Quality (<${threshold})</small>
+                                                <small>Low Quality (<${thresholdValue})</small>
                                             </div>
                                         </div>
                                     </div>
@@ -332,7 +339,7 @@ class ModalHandler:
                         
                         <div class="alert alert-info mt-3">
                             <i class="fas fa-info-circle me-2"></i>
-                            The ${threshold} threshold was chosen based on empirical validation against manually reviewed citation-dataset pairs,
+                            The ${thresholdValue} threshold was chosen based on empirical validation against manually reviewed citation-dataset pairs,
                             balancing precision and recall for research applications.
                         </div>
                     `;
