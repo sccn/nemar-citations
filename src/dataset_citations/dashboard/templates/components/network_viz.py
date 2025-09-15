@@ -176,7 +176,7 @@ class NetworkVisualization:
                         <div class="card-body">
                             <p><strong>Dataset ID:</strong> <a href="${{nemarUrl}}" target="_blank">${{data.id}}</a></p>
                             <p><strong>Name:</strong> ${{data.name || 'N/A'}}</p>
-                            <p><strong>Total Citations:</strong> ${{data.citations || 0}}</p>
+                            <p><strong>High-Confidence Citations:</strong> ${{data.citations || 0}}</p>
                         </div>
                     </div>
                 `;

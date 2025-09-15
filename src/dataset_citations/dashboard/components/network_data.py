@@ -229,7 +229,7 @@ class NetworkDataExtractor:
         return {"nodes": nodes, "edges": edges}
 
     def _get_dataset_citation_count(self, dataset_id: str) -> int:
-        """Get the number of citations for a dataset from its JSON file."""
+        """Get the number of HIGH-CONFIDENCE citations for a dataset from its JSON file."""
         json_file = Path(f"citations/json/{dataset_id}_citations.json")
 
         if not json_file.exists():
@@ -238,7 +238,14 @@ class NetworkDataExtractor:
         try:
             with open(json_file, "r") as f:
                 data = json.load(f)
-                return data.get("num_citations", 0)
+                # Count only high-confidence citations (>= 0.4)
+                citations = data.get("citation_details", [])
+                high_conf_count = sum(
+                    1
+                    for c in citations
+                    if c.get("confidence_scoring", {}).get("confidence_score", 0) >= 0.4
+                )
+                return high_conf_count
         except Exception as e:
             logger.warning(f"Error loading citations for {dataset_id}: {e}")
             return 0

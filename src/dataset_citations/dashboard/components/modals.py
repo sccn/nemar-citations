@@ -90,12 +90,12 @@ class ModalGenerator:
         network_data = data.get("network_analysis", {})
         citation_rankings = network_data.get("citation_impact_rankings", [])
 
-        # Sort by citation impact and get top 5
+        # Sort by citation impact and get top 20
         top_citations = sorted(
             citation_rankings,
             key=lambda x: int(x.get("citation_impact", 0)),
             reverse=True,
-        )[:5]
+        )[:20]
 
         return {
             "title": "Citation Analysis",
