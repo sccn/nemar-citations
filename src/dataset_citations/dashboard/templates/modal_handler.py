@@ -116,26 +116,26 @@ class ModalHandler:
                     content = `
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <div class="card bg-primary text-white">
+                                <div class="card border-primary">
                                     <div class="card-body text-center">
-                                        <h2>${data.content?.total_datasets || 0}</h2>
-                                        <p class="mb-0">Total Datasets</p>
+                                        <h2 class="text-primary">${data.content?.total_datasets || 0}</h2>
+                                        <p class="mb-0 text-dark">Total Datasets</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="card bg-success text-white">
+                                <div class="card border-success">
                                     <div class="card-body text-center">
-                                        <h2>${data.content?.with_citations || 0}</h2>
-                                        <p class="mb-0">With Citations</p>
+                                        <h2 class="text-success">${data.content?.with_citations || 0}</h2>
+                                        <p class="mb-0 text-dark">With High-Conf Citations</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="card bg-info text-white">
+                                <div class="card border-warning">
                                     <div class="card-body text-center">
-                                        <h2>${data.content?.coverage || '100%'}</h2>
-                                        <p class="mb-0">Coverage</p>
+                                        <h2 class="text-warning">${data.content?.coverage || '100%'}</h2>
+                                        <p class="mb-0 text-dark">Coverage</p>
                                     </div>
                                 </div>
                             </div>
@@ -238,7 +238,7 @@ class ModalHandler:
                                                target="_blank" class="text-primary">${title}</a>
                                         </h6>
                                         <p class="mb-1 text-muted small">${authors} ${year ? `(${year})` : ''}</p>
-                                        <span class="badge bg-info">${numDatasets} datasets</span>
+                                        <span class="badge bg-secondary">${numDatasets} datasets</span>
                                         ${datasets ? `<div class="text-muted small mt-1">Datasets: ${datasets}</div>` : ''}
                                     </div>
                                 </div>
@@ -250,22 +250,13 @@ class ModalHandler:
                         <h6 class="mb-3"><i class="fas fa-link me-2"></i>What are Bridge Papers?</h6>
                         <p>${data.content?.description || 'Bridge papers cite multiple BIDS datasets.'}</p>
                         
-                        <div class="row mb-3">
+                        <div class="row mb-3 justify-content-center">
                             <div class="col-md-6">
-                                <div class="card bg-primary text-white">
+                                <div class="card border-primary">
                                     <div class="card-body text-center">
-                                        <h2>${data.content?.total || 0}</h2>
-                                        <p class="mb-0">Total Bridge Papers</p>
-                                        <small>Citing multiple datasets</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card bg-info text-white">
-                                    <div class="card-body text-center">
-                                        <h2>${papers.length || 0}</h2>
-                                        <p class="mb-0">High-Impact Papers</p>
-                                        <small>Top papers by dataset count</small>
+                                        <h2 class="text-primary">${data.content?.total || 0}</h2>
+                                        <p class="mb-0 text-dark">Total Bridge Papers</p>
+                                        <small class="text-muted">Papers citing multiple datasets</small>
                                     </div>
                                 </div>
                             </div>

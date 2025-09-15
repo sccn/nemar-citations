@@ -53,8 +53,10 @@ class StatisticsGenerator:
             ],
             "summary": {
                 "total_citations": stats.get("total_citations", 0),
+                "high_confidence_citations": stats.get("high_confidence_citations", 0),
                 "analysis_date": stats.get("analysis_date", ""),
                 "datasets_with_citations": self._count_datasets_with_citations(data),
+                "unique_datasets": stats.get("total_datasets", 0),
             },
         }
 

@@ -36,6 +36,25 @@ class ModalGenerator:
         network_data = data.get("network_analysis", {})
         dataset_popularity = network_data.get("dataset_popularity", [])
 
+        # Count datasets with citations
+        total_datasets = len(dataset_popularity)
+
+        # Count datasets with actual high-confidence citations
+        datasets_with_high_conf = len(
+            [
+                d
+                for d in dataset_popularity
+                if int(d.get("high_confidence_citations", 0) or 0) > 0
+            ]
+        )
+
+        # Calculate coverage percentage based on high-confidence citations
+        coverage = (
+            f"{(datasets_with_high_conf / total_datasets * 100):.0f}%"
+            if total_datasets > 0
+            else "0%"
+        )
+
         # Sort by high confidence citations and get top 20
         top_datasets = sorted(
             [
@@ -50,9 +69,9 @@ class ModalGenerator:
         return {
             "title": "Dataset Analysis Details",
             "content": {
-                "total_datasets": stats["summary"].get("unique_datasets", 0),
-                "with_citations": stats["summary"].get("unique_datasets", 0),
-                "coverage": "100%",
+                "total_datasets": total_datasets,
+                "with_citations": datasets_with_high_conf,
+                "coverage": coverage,
                 "top_datasets": top_datasets,
                 "description": "Datasets are analyzed from the BIDS (Brain Imaging Data Structure) repository, with citation data collected from Google Scholar and filtered by confidence scores.",
             },

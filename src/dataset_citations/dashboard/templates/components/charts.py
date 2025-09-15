@@ -98,6 +98,7 @@ def generate_chart_javascript(stats: Dict[str, Any], charts: Dict[str, Any]) -> 
                 plot_bgcolor: 'rgba(0,0,0,0)',
                 paper_bgcolor: 'rgba(0,0,0,0)',
                 showlegend: false,
+                height: 350,
                 margin: {{ t: 20, b: 50, l: 50, r: 20 }},
                 xaxis: {{ title: '' }},
                 yaxis: {{ title: 'Count' }}
@@ -131,6 +132,7 @@ def generate_chart_javascript(stats: Dict[str, Any], charts: Dict[str, Any]) -> 
                 plot_bgcolor: 'rgba(0,0,0,0)',
                 paper_bgcolor: 'rgba(0,0,0,0)',
                 showlegend: false,
+                height: 350,
                 margin: {{ t: 20, b: 50, l: 50, r: 20 }},
                 xaxis: {{ title: 'Year' }},
                 yaxis: {{ title: 'Cumulative Citations' }}
@@ -155,7 +157,7 @@ def generate_chart_javascript(stats: Dict[str, Any], charts: Dict[str, Any]) -> 
             
             const layout = {{
                 showlegend: true,
-                height: 385,
+                height: 350,
                 margin: {{ t: 20, b: 20, l: 20, r: 20 }},
                 paper_bgcolor: 'rgba(0,0,0,0)',
                 plot_bgcolor: 'rgba(0,0,0,0)',
