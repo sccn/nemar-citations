@@ -57,8 +57,8 @@ class NetworkGenerator:
                     "selector": "node[type='citation']",
                     "style": {
                         "background-color": "#FFA500",  # Orange for citations too
-                        "width": "mapData(citations, 0, 600, 3, 12)",  # Scale for high-conf range: 0-522
-                        "height": "mapData(citations, 0, 600, 3, 12)",
+                        "width": "mapData(citations, 0, 600, 8, 32)",  # Larger: 8-32 pixels
+                        "height": "mapData(citations, 0, 600, 8, 32)",
                         "border-width": 1,
                         "border-color": "#FF8C00",
                     },
