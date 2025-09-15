@@ -187,7 +187,7 @@
                     </h1>
                     <p class="lead">
                         Comprehensive analysis of citation patterns, research themes, and network relationships 
-                        across 0 BIDS datasets on NEMAR with confidence-filtered citations.
+                        across 302 BIDS datasets on NEMAR with confidence-filtered citations.
                     </p>
                     <hr class="my-4">
                     <div class="row">
@@ -196,7 +196,7 @@
                             <div class="card stat-card" onclick="showDetailModal('datasets')" 
                                  title="Click for details">
                                 <div class="card-body text-center">
-                                    <h3><i class="fas fa-database me-2"></i>0</h3>
+                                    <h3><i class="fas fa-database me-2"></i>302</h3>
                                     <p class="mb-0">Datasets Analyzed</p>
                                     <small class="text-muted">Click for details</small>
                                 </div>
@@ -206,7 +206,7 @@
                             <div class="card stat-card" onclick="showDetailModal('citations')" 
                                  title="Click for details">
                                 <div class="card-body text-center">
-                                    <h3><i class="fas fa-quote-left me-2"></i>0</h3>
+                                    <h3><i class="fas fa-quote-left me-2"></i>1004</h3>
                                     <p class="mb-0">High-Confidence Citations</p>
                                     <small class="text-muted">*Confidence ≥0.4 • Click for details</small>
                                 </div>
@@ -425,7 +425,7 @@
                 <a href="https://nemar.org" target="_blank"><strong>NEMAR</strong></a> 
                 is a window to <a href="https://openneuro.org" target="_blank">OpenNeuro</a>
             </p>
-            <p class="text-muted small">Generated: 2025-09-14 23:18:03</p>
+            <p class="text-muted small">Generated: 2025-09-14 23:24:19</p>
         </div>
     </footer>
     
@@ -694,12 +694,12 @@
   "citations": {
     "title": "Citation Analysis",
     "content": {
-      "high_confidence": 0,
-      "low_confidence": 0,
-      "total": 0,
-      "percentage": 0,
+      "high_confidence": 1004,
+      "low_confidence": 187,
+      "total": 1191,
+      "percentage": 84.3,
       "threshold": 0.4,
-      "quality_rate": 0,
+      "quality_rate": 84.3,
       "top_citations": [
         {
           "citation_title": "Autoreject: Automated artifact rejection for MEG and EEG data",
@@ -1017,7 +1017,7 @@
       "method": "Sentence-transformer similarity",
       "comparison": "Dataset descriptions vs citation abstracts",
       "validation": "Manual review sample",
-      "quality_rate": 0
+      "quality_rate": 84.2989084802687
     }
   }
 };
@@ -1304,8 +1304,8 @@
         }
         
         function createQualityChart() {
-            const highConf = 0;
-            const lowConf = 0;
+            const highConf = 1004;
+            const lowConf = 187;
             const total = highConf + lowConf;
             
             const data = [{
@@ -1561,7 +1561,6 @@
                             <p><strong>Dataset ID:</strong> <a href="${nemarUrl}" target="_blank">${data.id}</a></p>
                             <p><strong>Name:</strong> ${data.name || 'N/A'}</p>
                             <p><strong>Total Citations:</strong> ${data.citations || 0}</p>
-                            <p class="text-muted">Click on other nodes to explore connections</p>
                         </div>
                     </div>
                 `;
