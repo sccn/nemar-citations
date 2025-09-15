@@ -36,16 +36,16 @@ class ModalHandler:
     def generate_modal_javascript(modals: Dict[str, Any]) -> str:
         """Generate JavaScript for modal functionality."""
         return f"""
-        // Modal data from server
-        const modalData = {json.dumps(modals) if modals else "{}"};
+        // Modal data from server - ensure it's in window scope
+        window.modalData = {json.dumps(modals) if modals else "{}"};
         
-        // Modal handler
-        function showDetailModal(type) {{
+        // Modal handler - ensure it's in window scope
+        window.showDetailModal = function(type) {{
             const modal = new bootstrap.Modal(document.getElementById('detailModal'));
             const modalTitle = document.getElementById('detailModalLabel');
             const modalContent = document.getElementById('modalContent');
             
-            const data = modalData[type] || {{}};
+            const data = window.modalData[type] || {{}};
             let content = '';
             
             switch(type) {{
