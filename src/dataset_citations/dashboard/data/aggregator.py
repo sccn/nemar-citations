@@ -28,6 +28,13 @@ class DataAggregator:
             datasets_dir: Optional directory containing dataset metadata
         """
         self.results_dir = Path(results_dir)
+        # Check if dashboard_data exists as primary location
+        dashboard_data_dir = Path("dashboard_data")
+        if dashboard_data_dir.exists() and not self.results_dir.exists():
+            self.results_dir = dashboard_data_dir
+            self.logger = logging.getLogger(__name__)
+            self.logger.info("Using dashboard_data directory as primary source")
+
         self.citations_dir = Path(citations_dir) if citations_dir else None
         self.datasets_dir = Path(datasets_dir) if datasets_dir else None
         self.logger = logging.getLogger(__name__)
@@ -65,7 +72,12 @@ class DataAggregator:
     def _load_network_analysis(self) -> Dict[str, Any]:
         """Load network analysis results."""
         network_data = {}
-        network_dir = self.results_dir / "network_analysis"
+
+        # Try new consolidated location first
+        network_dir = self.results_dir / "network"
+        if not network_dir.exists():
+            # Fallback to old location
+            network_dir = self.results_dir / "network_analysis"
 
         if network_dir.exists():
             # Load CSV files
@@ -79,22 +91,35 @@ class DataAggregator:
             ]
 
             for csv_file in csv_files:
-                file_path = network_dir / csv_file
-                if file_path.exists():
-                    try:
-                        network_data[csv_file.replace(".csv", "")] = (
-                            self._read_csv_to_dict(file_path)
-                        )
-                        self.logger.info(f"Loaded network analysis: {csv_file}")
-                    except Exception as e:
-                        self.logger.warning(f"Could not load {csv_file}: {e}")
+                # Try multiple possible locations
+                possible_paths = [
+                    network_dir / csv_file,
+                    network_dir / "csv_exports" / csv_file,
+                    self.results_dir / "network_analysis" / "csv_exports" / csv_file,
+                ]
+
+                for file_path in possible_paths:
+                    if file_path.exists():
+                        try:
+                            network_data[csv_file.replace(".csv", "")] = (
+                                self._read_csv_to_dict(file_path)
+                            )
+                            self.logger.info(f"Loaded network analysis: {csv_file}")
+                            break
+                        except Exception as e:
+                            self.logger.warning(f"Could not load {csv_file}: {e}")
 
         return network_data
 
     def _load_temporal_analysis(self) -> Dict[str, Any]:
         """Load temporal analysis results."""
         temporal_data = {}
-        temporal_dir = self.results_dir / "temporal_analysis"
+
+        # Try new consolidated location first
+        temporal_dir = self.results_dir / "temporal"
+        if not temporal_dir.exists():
+            # Fallback to old location
+            temporal_dir = self.results_dir / "temporal_analysis"
 
         if temporal_dir.exists():
             # Load temporal CSV files
@@ -110,16 +135,22 @@ class DataAggregator:
     def _load_theme_analysis(self) -> Dict[str, Any]:
         """Load theme analysis results."""
         theme_data = {}
-        theme_dir = self.results_dir / "theme_analysis"
+
+        # Try new consolidated location first
+        theme_dir = self.results_dir / "themes"
+        if not theme_dir.exists():
+            # Fallback to old location for compatibility
+            theme_dir = self.results_dir / "theme_analysis"
 
         if theme_dir.exists():
-            # Load theme CSV files
-            for csv_file in theme_dir.glob("*.csv"):
+            # Load theme JSON files
+            for json_file in theme_dir.glob("*.json"):
                 try:
-                    theme_data[csv_file.stem] = self._read_csv_to_dict(csv_file)
-                    self.logger.info(f"Loaded theme analysis: {csv_file.name}")
+                    with open(json_file, "r") as f:
+                        theme_data[json_file.stem] = json.load(f)
+                    self.logger.info(f"Loaded theme analysis: {json_file.name}")
                 except Exception as e:
-                    self.logger.warning(f"Could not load {csv_file}: {e}")
+                    self.logger.warning(f"Could not load {json_file}: {e}")
 
         return theme_data
 
@@ -158,14 +189,22 @@ class DataAggregator:
                 try:
                     with open(json_file, "r") as f:
                         data = json.load(f)
-                        citations = data.get("citations", [])
+                        # Try both possible keys for citations
+                        citations = data.get(
+                            "citation_details", data.get("citations", [])
+                        )
                         stats["total_citations"] += len(citations)
 
                         # Count high-confidence citations
                         high_conf = [
                             c
                             for c in citations
-                            if c.get("confidence_score", 0)
+                            if (
+                                c.get("confidence_scoring", {}).get(
+                                    "confidence_score", 0
+                                )
+                                or c.get("confidence_score", 0)
+                            )
                             >= stats["confidence_threshold"]
                         ]
                         stats["high_confidence_citations"] += len(high_conf)
@@ -173,7 +212,16 @@ class DataAggregator:
                     self.logger.warning(f"Could not process {json_file}: {e}")
 
         # Count bridge papers from network analysis
-        bridge_file = self.results_dir / "network_analysis" / "bridge_papers.csv"
+        bridge_file = self.results_dir / "network" / "bridge_papers.csv"
+        if not bridge_file.exists():
+            # Fallback to old location
+            bridge_file = (
+                self.results_dir
+                / "network_analysis"
+                / "csv_exports"
+                / "bridge_papers.csv"
+            )
+
         if bridge_file.exists():
             try:
                 bridge_data = self._read_csv_to_dict(bridge_file)

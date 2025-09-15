@@ -30,8 +30,8 @@ def main():
     parser.add_argument(
         "--results-dir",
         type=str,
-        default="analysis_results",
-        help="Directory containing analysis results (default: analysis_results)",
+        default="dashboard_data",
+        help="Directory containing analysis results (default: dashboard_data)",
     )
 
     parser.add_argument(
