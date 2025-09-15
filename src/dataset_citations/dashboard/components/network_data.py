@@ -182,18 +182,28 @@ class NetworkDataExtractor:
         nodes = []
         edges = []
 
-        # Load citation titles from JSON files if available
+        # Load actual citation titles and data from JSON files
         citation_titles = self._load_citation_titles()
 
-        # Use all available citation UMAP coordinates
-        for i, (citation_id, coords) in enumerate(
-            list(umap_coords.items())[:500]
-        ):  # Top 500 citations
-            # Try to get actual title from loaded data
-            title = citation_titles.get(citation_id, {}).get(
-                "title", f"Citation {citation_id[:8]}"
-            )
-            cited_by = citation_titles.get(citation_id, {}).get("cited_by", i * 2 + 10)
+        # Map UMAP coordinates to actual citations by index
+        # Since we can't match the exact IDs, we'll assign by position
+        umap_list = list(umap_coords.items())[:500]  # Top 500 UMAP points
+
+        for i, (citation_id, coords) in enumerate(umap_list):
+            # Get citation data by index (fallback to empty if not enough citations)
+            indexed_key = f"index_{i}"
+            if indexed_key in citation_titles:
+                cit_data = citation_titles[indexed_key]
+                title = cit_data.get("title", f"Citation {i}")
+                cited_by = cit_data.get(
+                    "cited_by", 0
+                )  # Actual citation count from data
+                confidence = cit_data.get("confidence", 0.5)
+            else:
+                # No more citation data available
+                title = f"Citation {i}"
+                cited_by = 0
+                confidence = 0.5
 
             nodes.append(
                 {
@@ -203,14 +213,12 @@ class NetworkDataExtractor:
                         if len(title) > 100
                         else title,  # Truncate long titles
                         "type": "citation",
-                        "citations": int(cited_by),  # Use actual citation count
-                        "confidence": citation_titles.get(citation_id, {}).get(
-                            "confidence", 0.5
-                        ),
+                        "citations": int(cited_by),  # Use actual cited_by count
+                        "confidence": confidence,
                     },
                     "position": {
-                        "x": coords["x"] * 40,  # Increased spacing
-                        "y": coords["y"] * 40,
+                        "x": coords["x"] * 50,  # More spacing for citations
+                        "y": coords["y"] * 50,
                     },
                 }
             )
@@ -236,8 +244,9 @@ class NetworkDataExtractor:
             return 0
 
     def _load_citation_titles(self) -> Dict[str, Dict[str, Any]]:
-        """Load citation titles from JSON files."""
+        """Load citation titles from JSON files and build reverse index."""
         citation_data = {}
+        all_citations = []  # Store all citations to build index
         citations_dir = Path("citations/json")
 
         if not citations_dir.exists():
@@ -245,28 +254,34 @@ class NetworkDataExtractor:
             return citation_data
 
         try:
-            # Load all citation files
+            # First, collect only HIGH CONFIDENCE citations (>= 0.4)
             for json_file in citations_dir.glob("*.json"):
                 with open(json_file, "r") as f:
                     data = json.load(f)
+                    for citation in data.get("citation_details", []):
+                        # Only include citations with confidence >= 0.4
+                        confidence = citation.get("confidence_scoring", {}).get(
+                            "confidence_score", 0
+                        )
+                        if citation.get("title") and confidence >= 0.4:
+                            all_citations.append(citation)
 
-                # Extract citations from this dataset
-                for citation in data.get("citation_details", []):
-                    # Create a hash ID from title for matching with UMAP
-                    # This is a simplified approach - ideally we'd match the exact IDs
-                    cit_id = str(hash(citation.get("title", "")))[
-                        1:9
-                    ]  # Simple hash-based ID
+            # Sort citations by cited_by count (highest first) to assign to UMAP points
+            all_citations.sort(key=lambda x: x.get("cited_by", 0), reverse=True)
 
-                    citation_data[f"citation_{cit_id}"] = {
-                        "title": citation.get("title", ""),
-                        "cited_by": citation.get("cited_by", 0),
-                        "confidence": citation.get("confidence_scoring", {}).get(
-                            "confidence_score", 0.5
-                        ),
-                        "year": citation.get("year", ""),
-                        "url": citation.get("url", ""),
-                    }
+            # Now assign citations to UMAP IDs by index
+            # This is a workaround since we don't have exact ID mapping
+            for i, citation in enumerate(all_citations):
+                # Create a simple indexed mapping
+                citation_data[f"index_{i}"] = {
+                    "title": citation.get("title", ""),
+                    "cited_by": citation.get("cited_by", 0),
+                    "confidence": citation.get("confidence_scoring", {}).get(
+                        "confidence_score", 0.5
+                    ),
+                    "year": citation.get("year", ""),
+                    "url": citation.get("url", ""),
+                }
 
         except Exception as e:
             logger.error(f"Error loading citation titles: {e}")
