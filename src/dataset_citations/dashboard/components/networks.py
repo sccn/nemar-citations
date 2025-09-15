@@ -47,9 +47,9 @@ class NetworkGenerator:
                     "selector": "node[type='dataset']",
                     "style": {
                         "background-color": "#FFA500",  # Orange like in reference
-                        "width": "mapData(citations, 0, 100, 15, 80)",
-                        "height": "mapData(citations, 0, 100, 15, 80)",
-                        "border-width": 2,
+                        "width": "mapData(citations, 0, 80, 5, 25)",  # Much smaller: 5-25 pixels
+                        "height": "mapData(citations, 0, 80, 5, 25)",
+                        "border-width": 1,
                         "border-color": "#FF8C00",
                     },
                 },
@@ -57,8 +57,8 @@ class NetworkGenerator:
                     "selector": "node[type='citation']",
                     "style": {
                         "background-color": "#FFA500",  # Orange for citations too
-                        "width": "mapData(citations, 0, 500, 10, 60)",
-                        "height": "mapData(citations, 0, 500, 10, 60)",
+                        "width": "mapData(citations, 0, 500, 4, 20)",  # Much smaller for citations
+                        "height": "mapData(citations, 0, 500, 4, 20)",
                         "border-width": 1,
                         "border-color": "#FF8C00",
                     },
