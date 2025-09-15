@@ -67,6 +67,17 @@ class ModalGenerator:
         low_conf = total - high_conf
         percentage = round((high_conf / total * 100) if total > 0 else 0, 1)
 
+        # Get top cited papers from citation impact rankings
+        network_data = data.get("network_analysis", {})
+        citation_rankings = network_data.get("citation_impact_rankings", [])
+
+        # Sort by citation impact and get top 5
+        top_citations = sorted(
+            citation_rankings,
+            key=lambda x: int(x.get("citation_impact", 0)),
+            reverse=True,
+        )[:5]
+
         return {
             "title": "Citation Analysis",
             "content": {
@@ -75,6 +86,8 @@ class ModalGenerator:
                 "total": total,
                 "percentage": percentage,
                 "threshold": 0.4,
+                "quality_rate": percentage,  # Same as percentage for high-confidence
+                "top_citations": top_citations,
             },
         }
 
@@ -104,9 +117,18 @@ class ModalGenerator:
     def _generate_threshold_modal(self, stats: Dict[str, Any]) -> Dict[str, Any]:
         """Generate confidence threshold explanation modal."""
         return {
-            "title": "Confidence Scoring",
+            "title": "Confidence Threshold Information",
             "content": {
                 "threshold": 0.4,
-                "description": "Citations are scored using AI-based relevance matching. Only citations with confidence ≥0.4 are included in the analysis.",
+                "description": "Citations must have a confidence score of 0.4 or higher to be included in analysis.",
+                "model": "Qwen3-Embedding-0.6B",
+                "method": "Sentence-transformer similarity",
+                "comparison": "Dataset descriptions vs citation abstracts",
+                "validation": "Manual review sample",
+                "quality_rate": stats["summary"].get("high_confidence_citations", 0)
+                / stats["summary"].get("total_citations", 1)
+                * 100
+                if stats["summary"].get("total_citations", 0) > 0
+                else 0,
             },
         }

@@ -148,66 +148,60 @@ class ModalHandler:
     def _generate_citations_case() -> str:
         """Generate JavaScript case for citations modal."""
         return """
-                    modalTitle.textContent = data.title || 'Citation Analysis';
+                    modalTitle.textContent = 'High-Confidence Citations Details';
                     const highConf = data.content?.high_confidence || 0;
                     const lowConf = data.content?.low_confidence || 0;
                     const total = data.content?.total || 0;
                     const percentage = data.content?.percentage || 0;
                     const threshold = data.content?.threshold || 0.4;
+                    const qualityRate = data.content?.quality_rate || percentage;
+                    const topCitations = data.content?.top_citations || [];
+                    
+                    // Generate top citations list
+                    let citationsList = '';
+                    topCitations.forEach(citation => {
+                        const title = citation.citation_title || 'Unknown';
+                        const authors = citation.citation_author || 'Unknown';
+                        const year = citation.citation_year || '';
+                        const impact = citation.citation_impact || 0;
+                        const confidence = (parseFloat(citation.confidence_score) * 100 || 0).toFixed(1);
+                        
+                        citationsList += `
+                            <div class="mb-3 p-2 border-bottom">
+                                <div class="d-flex justify-content-between">
+                                    <div class="flex-grow-1">
+                                        <a href="https://scholar.google.com/scholar?q=${encodeURIComponent(title)}" 
+                                           target="_blank" class="text-primary fw-bold">${title}</a>
+                                        <div class="text-muted small">${authors}</div>
+                                        <div class="text-muted small">Confidence: ${confidence}%</div>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="badge bg-info">${impact} citations</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
                     
                     content = `
-                        <div class="row mb-4">
-                            <div class="col-md-4">
-                                <div class="card bg-success text-white">
-                                    <div class="card-body text-center">
-                                        <h2>${highConf}</h2>
-                                        <p class="mb-0">High-Confidence</p>
-                                        <small>≥${threshold} score</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card bg-warning text-white">
-                                    <div class="card-body text-center">
-                                        <h2>${lowConf}</h2>
-                                        <p class="mb-0">Low-Confidence</p>
-                                        <small><${threshold} score</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card bg-primary text-white">
-                                    <div class="card-body text-center">
-                                        <h2>${total}</h2>
-                                        <p class="mb-0">Total Citations</p>
-                                        <small>${percentage}% high-conf</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <h6 class="mb-3"><i class="fas fa-info-circle me-2"></i>Citation Confidence Scoring</h6>
-                        <p>Citations are collected from Google Scholar and analyzed using AI-based semantic similarity matching.</p>
-                        
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <div class="alert alert-success mb-2">
-                                    <strong>High Confidence (≥${threshold}):</strong><br>
-                                    Papers that directly reference the dataset with clear mentions in title, abstract, or methods.
-                                </div>
+                                <h5><i class="fas fa-chart-line me-2"></i>Citation Statistics</h5>
+                                <table class="table">
+                                    <tr><td>High-Confidence Citations</td><td class="text-end fw-bold">${highConf}</td></tr>
+                                    <tr><td>Confidence Threshold</td><td class="text-end">≥${threshold}</td></tr>
+                                    <tr><td>Quality Rate</td><td class="text-end">${qualityRate.toFixed(1)}%</td></tr>
+                                </table>
+                                
+                                <h6 class="mt-3"><i class="fas fa-cog me-2"></i>Confidence Scoring</h6>
+                                <p class="small">Citations are scored using sentence-transformer embeddings comparing dataset descriptions with citation abstracts. Only citations with confidence ≥${threshold} are included in analysis.</p>
                             </div>
                             <div class="col-md-6">
-                                <div class="alert alert-warning mb-2">
-                                    <strong>Low Confidence (<${threshold}):</strong><br>
-                                    Papers with indirect or unclear references, excluded from primary analysis.
+                                <h5><i class="fas fa-trophy me-2"></i>Highest Impact Citations</h5>
+                                <div style="max-height: 300px; overflow-y: auto;">
+                                    ${citationsList || '<p class="text-muted">No citation data available</p>'}
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="alert alert-info">
-                            <i class="fas fa-chart-line me-2"></i>
-                            <strong>Coverage Analysis:</strong> ${total} total citations discovered, with ${highConf} (${percentage}%) 
-                            meeting the confidence threshold for inclusion in the analysis.
                         </div>
                     `;
         """
@@ -282,39 +276,64 @@ class ModalHandler:
         """Generate JavaScript case for threshold modal."""
         return """
                     modalTitle.textContent = data.title || 'Confidence Threshold Information';
+                    const threshold = data.content?.threshold || 0.4;
+                    const qualityRate = data.content?.quality_rate || 0;
+                    const highQuality = qualityRate.toFixed(1);
+                    const lowQuality = (100 - qualityRate).toFixed(1);
+                    
                     content = `
                         <div class="row">
                             <div class="col-md-6">
-                                <h6><i class="fas fa-brain me-2"></i>Confidence Scoring Method</h6>
+                                <h5><i class="fas fa-brain me-2"></i>Confidence Scoring Method</h5>
                                 <div class="card bg-light mb-3">
                                     <div class="card-body">
-                                        <h4 class="text-info">≥${data.content?.threshold || 0.4} Threshold</h4>
-                                        <p>${data.content?.description || 'Citations are scored using AI-based relevance matching.'}</p>
+                                        <h4 class="text-info">≥${threshold} Threshold</h4>
+                                        <p>${data.content?.description || 'Citations must have a confidence score of 0.4 or higher to be included in analysis.'}</p>
                                         <ul class="small">
-                                            <li><strong>0.7-1.0:</strong> High confidence - Clear dataset reference</li>
-                                            <li><strong>0.4-0.7:</strong> Medium confidence - Likely reference</li>
-                                            <li><strong>0.0-0.4:</strong> Low confidence - Excluded from analysis</li>
+                                            <li><strong>0.7-1.0:</strong> High confidence</li>
+                                            <li><strong>0.4-0.7:</strong> Medium confidence</li>
+                                            <li><strong>0.0-0.4:</strong> Low confidence (excluded)</li>
                                         </ul>
+                                    </div>
+                                </div>
+                                
+                                <h5 class="mt-3"><i class="fas fa-chart-pie me-2"></i>Quality Distribution</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="card bg-success text-white">
+                                            <div class="card-body text-center">
+                                                <h4>${highQuality}%</h4>
+                                                <small>High Quality (≥${threshold})</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card bg-warning text-white">
+                                            <div class="card-body text-center">
+                                                <h4>${lowQuality}%</h4>
+                                                <small>Low Quality (<${threshold})</small>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <h6><i class="fas fa-robot me-2"></i>AI Model Details</h6>
+                                <h5><i class="fas fa-microchip me-2"></i>Technical Implementation</h5>
                                 <div class="card bg-light mb-3">
                                     <div class="card-body">
-                                        <p><strong>Model:</strong> Sentence-BERT</p>
-                                        <p><strong>Method:</strong> Semantic similarity matching</p>
-                                        <p><strong>Input:</strong> Citation text + dataset metadata</p>
-                                        <p><strong>Output:</strong> Confidence score (0-1)</p>
+                                        <p><strong>Model:</strong> ${data.content?.model || 'Qwen3-Embedding-0.6B'}</p>
+                                        <p><strong>Method:</strong> ${data.content?.method || 'Sentence-transformer similarity'}</p>
+                                        <p><strong>Comparison:</strong> ${data.content?.comparison || 'Dataset descriptions vs citation abstracts'}</p>
+                                        <p><strong>Validation:</strong> ${data.content?.validation || 'Manual review sample'}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="alert alert-info">
+                        <div class="alert alert-info mt-3">
                             <i class="fas fa-info-circle me-2"></i>
-                            <strong>Why ${data.content?.threshold || 0.4}?</strong> This threshold balances precision and recall, 
-                            ensuring we capture relevant citations while filtering out noise.
+                            The ${threshold} threshold was chosen based on empirical validation against manually reviewed citation-dataset pairs,
+                            balancing precision and recall for research applications.
                         </div>
                     `;
         """
