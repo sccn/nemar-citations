@@ -203,6 +203,11 @@ Examples:
             successful += 1
             logger.info(f"Successfully scored citations for {dataset_id}")
 
+            # Force garbage collection to free memory
+            import gc
+
+            gc.collect()
+
         except Exception as e:
             failed += 1
             logger.error(f"Error scoring citations for {dataset_id}: {e}")

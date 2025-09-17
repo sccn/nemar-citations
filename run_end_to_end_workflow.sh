@@ -353,7 +353,7 @@ run_full_workflow() {
     ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-score-confidence \
         --citations-dir citations/json \
         --datasets-dir datasets \
-        --model Qwen/Qwen2.5-3B-Instruct \
+        --model Qwen/Qwen3-Embedding-0.6B \
         --skip-existing \
         --log-level INFO 2>&1 | tee -a "$LOG_FILE"
 
