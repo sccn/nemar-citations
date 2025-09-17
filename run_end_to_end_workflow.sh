@@ -221,7 +221,10 @@ EOF
     print_status "Executing GitHub Actions test workflow locally..."
     act push -W .github/workflows/test.yml --secret-file .secrets --verbose 2>&1 | tee "$LOG_FILE"
 
-    if [ ${PIPESTATUS[0]} -eq 0 ]; then
+    # Capture the exit status
+    local exit_status=${PIPESTATUS[0]}
+
+    if [ "$exit_status" -eq 0 ]; then
         print_status "CI/CD test workflow completed successfully ✓"
     else
         print_error "CI/CD test workflow failed. Check log: $LOG_FILE"
@@ -247,7 +250,10 @@ EOF
     print_status "Executing GitHub Actions update workflow locally..."
     act workflow_dispatch -W .github/workflows/update_citations.yml --secret-file .secrets --verbose 2>&1 | tee "$LOG_FILE"
 
-    if [ ${PIPESTATUS[0]} -eq 0 ]; then
+    # Capture the exit status
+    local exit_status=${PIPESTATUS[0]}
+
+    if [ "$exit_status" -eq 0 ]; then
         print_status "CI/CD update workflow completed successfully ✓"
         print_info "The workflow created a branch and PR automatically"
     else
