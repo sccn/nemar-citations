@@ -66,13 +66,14 @@ class TestDiscoverDatasets(unittest.TestCase):
         found_modalities = check_repository_for_modalities(
             "ds000002", "OpenNeuroDatasets", headers
         )
+        # Now returns ALL modalities, not just target ones
         self.assertIn("eeg", found_modalities)
         self.assertIn("meg", found_modalities)
-        self.assertNotIn("anat", found_modalities)
-        self.assertEqual(len(found_modalities), 2)
+        self.assertIn("anat", found_modalities)  # Changed: now included
+        self.assertEqual(len(found_modalities), 3)  # Changed: 3 instead of 2
 
     @patch("dataset_citations.cli.discover.get_github_api_response")
-    def test_check_repository_for_modalities_no_target_modalities(
+    def test_check_repository_for_modalities_only_non_target_modalities(
         self, mock_get_api_response
     ):
         mock_root_response = self._mock_response(
@@ -91,7 +92,10 @@ class TestDiscoverDatasets(unittest.TestCase):
         found_modalities = check_repository_for_modalities(
             "ds000003", "OpenNeuroDatasets", headers
         )
-        self.assertEqual(len(found_modalities), 0)
+        # Now returns ALL modalities including non-target ones
+        self.assertEqual(len(found_modalities), 2)  # Changed: returns anat and func
+        self.assertIn("anat", found_modalities)
+        self.assertIn("func", found_modalities)
 
     @patch("dataset_citations.cli.discover.get_github_api_response")
     def test_check_repository_for_modalities_no_sub_directories(
