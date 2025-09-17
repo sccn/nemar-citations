@@ -288,14 +288,17 @@ run_full_workflow() {
     # Get current branch name (save for later)
     ORIGINAL_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-    # Check if we're on main/master or a feature branch
+    # Determine the base branch for PR
     if [ "$ORIGINAL_BRANCH" = "main" ] || [ "$ORIGINAL_BRANCH" = "master" ]; then
+        PR_BASE_BRANCH="main"
         print_status "Currently on main branch. Creating new branch from main..."
         # Ensure we have latest main
         git pull origin main --ff-only 2>/dev/null || true
     else
+        PR_BASE_BRANCH="$ORIGINAL_BRANCH"
         print_info "Currently on branch: $ORIGINAL_BRANCH"
         print_info "Creating new branch from current branch to preserve fixes..."
+        print_info "PR will be created against: $PR_BASE_BRANCH"
     fi
 
     # Ensure working directory is clean
@@ -309,14 +312,14 @@ run_full_workflow() {
     git checkout -b "$BRANCH_NAME"
 
     # Use existing directories instead of creating new ones
-    print_status "Step 1/8: Discovering datasets..."
+    print_status "Step 1/9: Discovering datasets..."
     ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-discover \
         --output-file "discovered_datasets.txt" 2>&1 | tee -a "$LOG_FILE"
 
     DATASET_COUNT=$(wc -l < "discovered_datasets.txt" | tr -d ' ')
     print_info "Found $DATASET_COUNT datasets"
 
-    print_status "Step 2/8: Migrating existing pickle files..."
+    print_status "Step 2/9: Migrating existing pickle files..."
     if [ -d "citations/pickle" ]; then
         ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-migrate \
             --input-dir citations/pickle \
@@ -324,7 +327,7 @@ run_full_workflow() {
             --overwrite 2>&1 | tee -a "$LOG_FILE"
     fi
 
-    print_status "Step 3/8: Updating citations (this may take a while)..."
+    print_status "Step 3/9: Updating citations (this may take a while)..."
     # Use previous citations if available, or create empty file
     if [ ! -f "citations/previous_citations.csv" ]; then
         print_warning "No previous citations file found, creating empty one"
@@ -339,22 +342,22 @@ run_full_workflow() {
         --output-format json \
         --workers 5 2>&1 | tee -a "$LOG_FILE"
 
-    print_status "Step 4/8: Retrieving dataset metadata..."
+    print_status "Step 4/9: Retrieving dataset metadata..."
     ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-retrieve-metadata \
         --citations-dir citations/json \
         --output-dir datasets \
         --skip-existing \
         --log-level INFO 2>&1 | tee -a "$LOG_FILE"
 
-    print_status "Step 5/8: Calculating confidence scores..."
+    print_status "Step 5/9: Calculating confidence scores..."
     ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-score-confidence \
         --citations-dir citations/json \
         --datasets-dir datasets \
-        --model all-MiniLM-L6-v2 \
+        --model Qwen/Qwen3-Embedding-0.6B \
         --skip-existing \
         --log-level INFO 2>&1 | tee -a "$LOG_FILE"
 
-    print_status "Step 6/8: Running analysis..."
+    print_status "Step 6/9: Running analysis..."
     mkdir -p results/temporal_analysis results/network_analysis
 
     # Temporal analysis (positional argument for citations_dir)
@@ -368,7 +371,7 @@ run_full_workflow() {
         --output-dir results/network_analysis \
         --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "Network analysis failed"
 
-    print_status "Step 7/8: Generating interactive dashboard..."
+    print_status "Step 7/9: Generating interactive dashboard..."
     ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-create-interactive-reports \
         --results-dir results \
         --output-dir interactive_reports \
@@ -386,7 +389,21 @@ run_full_workflow() {
         print_error "Dashboard generation failed"
     fi
 
-    print_status "Step 8/8: Creating Pull Request..."
+    print_status "Step 8/9: Updating previous_citations.csv for next run..."
+    TODAY_DATE=$(date +%d%m%Y)
+    LATEST_CITATIONS_FILE="citations/citations_${TODAY_DATE}.csv"
+    TARGET_PREVIOUS_FILE="citations/previous_citations.csv"
+
+    if [ -f "$LATEST_CITATIONS_FILE" ]; then
+        print_info "Found $LATEST_CITATIONS_FILE. Copying to $TARGET_PREVIOUS_FILE..."
+        cp "$LATEST_CITATIONS_FILE" "$TARGET_PREVIOUS_FILE"
+        print_status "Successfully updated $TARGET_PREVIOUS_FILE ✓"
+    else
+        print_warning "Today's citation file ($LATEST_CITATIONS_FILE) not found."
+        print_info "previous_citations.csv not updated"
+    fi
+
+    print_status "Step 9/9: Creating Pull Request..."
 
     # Check for changes
     git add -A
@@ -413,7 +430,7 @@ Updated: $(git diff --cached --name-only | wc -l) files
 
         # Create PR using gh CLI if available
         if command -v gh &> /dev/null; then
-            print_status "Creating Pull Request..."
+            print_status "Creating Pull Request against $PR_BASE_BRANCH..."
             PR_TITLE="[Auto] Update citations - $(date +'%Y-%m-%d')"
             PR_BODY="## Automated Citation Update
 
@@ -432,7 +449,7 @@ $(git diff origin/main..HEAD --name-only | head -20)
 *Generated by run_end_to_end_workflow.sh*"
 
             if gh pr create \
-                --base main \
+                --base "$PR_BASE_BRANCH" \
                 --head "$BRANCH_NAME" \
                 --title "$PR_TITLE" \
                 --body "$PR_BODY" \

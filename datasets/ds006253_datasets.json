@@ -1,0 +1,49 @@
+{
+  "dataset_id": "ds006253",
+  "date_retrieved": "2025-09-17T20:12:52.973384+00:00",
+  "dataset_description": {
+    "Name": "MetaRDK",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Dorian Goueytes",
+      "Francois Stockart",
+      "Alexis Robin",
+      "Lucien Gyger",
+      "Martin Rouy",
+      "Dominique Hoffmann",
+      "Lorella Minotti",
+      "Philippe Kahane",
+      "Michael Pereira",
+      "Nathan Faivre"
+    ],
+    "Acknowledgements": "NF, MP developed the study concept. NF implemented experiments. DG, FS, LG, MR, NF collected data. DG, LG, MP, NF analysed data. DH performed surgeries. LM, PK, AR provided clinical data. DG, NF, MP drafted the paper. All authors provided critical revisions and approved the final version of the paper for submission. ",
+    "Funding": [
+      "ERC Metaction 803122",
+      "ERC LEAP 101077874",
+      "ERC VOLTA 101125379"
+    ],
+    "EthicsApprovals": [
+      "MapCog_SEEG 2017-A03248-45"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.1101/2024.03.23.586414"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds006253.v1.0.3"
+  },
+  "readme_content": "## Evidence accumulation in the pre-supplementary motor area and insula drives confidence and changes of mind\n\nGoueytes, D., Gigyer, L., Rouy, M., Hoffmann, D., Minotti, L., Kahane, P., Pereira, M., and Faivre, N. Evidence accumulation in the pre-supplementary motor area and insula drives confidence and changes of mind.\n\n## Overview\n\n### Overview of the task\n\nMetaRDK is a project aiming to understand the neural correlates of decision making and decision making-related metacognition. Epileptic patient with pharmacology intractable epilepsy performed a perceptual decision making task associated with a confidence judgement task.\nThe patients had to decide within a window of 6s if a a cloud of dot displayed at the center of the screen was moving right or left, and provide their answer by moving a computer mouse and clicking on the corresponding right/left target. The difficulty of the task was titrated for all patients at 70% correct using an adaptive staircase.\nAfter each answer patients were prompted to evaluate how confidence they felt in their decision on a scale from 0 to 100 (0 : Sure to be wrong, 50 : answered at random, 100 : Sure to be right\n\nAll scripts for the task, data processing and analysis are available here  : doi: 10.17605/OSF.IO/2KT97\n\n### Description of the contents of the dataset\n\nThis dataset contains the high-gamma content (average power modulation in five non-overlapping frequency bands between 70 and 150Hz) of the patient while they performed the task. The data are segmented, and each segment contain high-gamma activity from trial onset (clicking on the start button) to trial offset (following the confidence judgement response), sampled at 512Hz.\nAll information regarding the behavior of the patients (stimulus onset, response time, confidence judgements) are available in the derivative/beh directory as a separated .csv table for each patient.\n\nThe data provided were screened in order to remove trials and iEEG channels with high epilepsy-related artifact.\n\n## Methods\n\n### Subjects\n\nAll participants were patients with pharmacologically intractable epilepsy.\n\n\n### Apparatus\n\nRecordings were performed at the bedside of the patients using a micromed recording system. The implantation schema was decided by the medical team solely based on the medical status of the patients.\n\n### Initial setup\n\nThe patient sat reclined in their hospital bed, with a laptop and a mouse in front of them. The task was explained to them, and they were instructed to sample the stimuli as long as required within 6s to form their decision. The confidence judgement scale was explained, and they were explicitly instructed to use the whole confidence scale.\n\n### Task organization\n\n-   The patients first perform a short initial staircase session to titrate difficulty at 70% (the staircase procedure was maintained during the task\n-   The staircase was followed by the main task, corresponding to the data shared in this dataset.\n\n### Task details\n\n\nEach trial was initiated by clicking on a ‘start’ button at the bottom of the screen. This click corresponds to the trial onset. After a fixed delay, the stimulus was presented (stimonset). The decision was recorded as soon as the participants started to move the mouse (decision time), and the response was recorded upon clicking on the target button (response/R1). The confidence scale was then displayed after a fixed delay (VAS onset), and the click on the confidence scale was also recorded (R2). After a 500 ms delay, the trial ended (trial offset). For each trial, we also recorded outcome (correct), the presence of change of mind (ch_mind) and their timing (rt_chmind), as well as the coherence of the stimulus (stim_int) and the max velocity of the computer mouse (vmax). The identity and timing of all this elements is available in the derivates/beh directory\n\n\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds006253",
+    "exists": true,
+    "description": "OpenNeuro dataset - MetaRDK",
+    "created_at": "2025-05-21T15:16:34+00:00",
+    "updated_at": "2025-07-25T09:13:39+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}
