@@ -42,11 +42,11 @@ chmod +x run_end_to_end_workflow.sh
 
 The `run_end_to_end_workflow.sh` script automates the entire workflow:
 
-| Mode | Description | Runtime | API Calls |
-|------|-------------|---------|----------|
-| `test` | Controlled test data (3-8 citations) | ~1 min | None |
-| `local` | Process existing data | ~5-10 min | None |
-| `full` | Complete pipeline | 1-3 hours | Google Scholar, GitHub |
+| Mode | Description | Runtime | API Calls | Steps Executed |
+|------|-------------|---------|-----------|----------------|
+| `test` | Controlled test data (3-8 citations) | ~1 min | None | 4-5 only (Analyze, Generate) |
+| `local` | Process existing data | ~5-10 min | None | 3-5 (Enhance, Analyze, Generate) |
+| `full` | Complete pipeline | 1-3 hours | Google Scholar, GitHub | 1-5 (All steps) |
 
 **Workflow Steps**:
 1. **Discover** → Find BIDS datasets (EEG/MEG/iEEG)
