@@ -81,14 +81,19 @@ ruff check --fix src/ tests/
 ## Running Tests
 
 ```bash
-# Quick tests
+# Quick tests (no API calls, < 5 seconds)
 pytest tests/ -v
 
 # With coverage
-pytest --cov=dataset_citations tests/
+pytest --cov=dataset_citations --cov-report=term-missing tests/
 
 # Specific test
 pytest tests/test_integration_workflow.py -v
+
+# End-to-end workflow tests
+./run_end_to_end_workflow.sh test      # Test mode, no API calls
+./run_end_to_end_workflow.sh full      # Full pipeline (recommended)
+./run_end_to_end_workflow.sh local-ci  # Test CI/CD workflow via Docker
 ```
 
 ## Important Dependencies

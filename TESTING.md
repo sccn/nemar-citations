@@ -106,12 +106,13 @@ act workflow_dispatch --secret-file .secrets
 
 ## Performance Benchmarks
 
-| Test Suite | Execution Time | Coverage |
-|------------|---------------|----------|
-| Unit Tests | < 5 seconds | 75%+ |
-| Integration Tests | < 30 seconds | 60%+ |
-| End-to-End (test mode) | < 1 minute | - |
-| End-to-End (full mode) | 1-2 hours | - |
+| Test Suite | Execution Time | Coverage | API Calls |
+|------------|---------------|----------|-----------|
+| Unit Tests | < 5 seconds | 75%+ | None |
+| Integration Tests | < 30 seconds | 60%+ | None |
+| End-to-End (test) | < 1 minute | - | None |
+| End-to-End (full) | 1-3 hours | - | Real |
+| End-to-End (local-ci) | 10-30 min | - | Real |
 
 ## Writing Tests
 

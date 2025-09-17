@@ -31,9 +31,9 @@ echo "GITHUB_TOKEN=your_token_here" >> .env
 
 # 2. Run complete pipeline
 chmod +x run_end_to_end_workflow.sh
-./run_end_to_end_workflow.sh test   # Test mode (no API calls)
-./run_end_to_end_workflow.sh local  # Process existing data
-./run_end_to_end_workflow.sh full   # Full pipeline with API calls
+./run_end_to_end_workflow.sh test      # Test mode (no API calls)
+./run_end_to_end_workflow.sh full      # Full pipeline (recommended)
+./run_end_to_end_workflow.sh local-ci  # Test CI/CD workflow locally
 ```
 
 ## Pipeline Workflow
@@ -45,8 +45,8 @@ The `run_end_to_end_workflow.sh` script automates the entire workflow:
 | Mode | Description | Runtime | API Calls | Steps Executed | Branch/PR |
 |------|-------------|---------|-----------|----------------|-----------|
 | `test` | Controlled test data (3-8 citations) | ~1 min | None | 4-5 only (Analyze, Generate) | No |
-| `local` | Process with GitHub Actions locally | ~10-30 min | Via act | 1-5 (All steps) | Yes (auto) |
-| `full` | Complete pipeline | 1-3 hours | Google Scholar, GitHub | 1-5 (All steps) | Yes (auto) |
+| `full` | **Recommended**: Direct pipeline execution | 1-3 hours | Google Scholar, GitHub | 1-5 (All steps) | Yes (auto) |
+| `local-ci` | Run CI/CD workflow locally via Docker | ~10-30 min | Real API calls | 1-5 (All steps) | Yes (auto) |
 
 **Workflow Steps**:
 1. **Discover** → Find BIDS datasets (EEG/MEG/iEEG)
@@ -55,7 +55,12 @@ The `run_end_to_end_workflow.sh` script automates the entire workflow:
 4. **Analyze** → Network, temporal, theme analysis
 5. **Generate** → Interactive HTML dashboard
 
-**Branch Protection**: Both `local` and `full` modes automatically create a feature branch and pull request to protect the main branch from direct commits.
+**Mode Selection Guide**:
+- Use `test` for quick validation during development
+- Use `full` for actual citation updates (runs natively, faster)
+- Use `local-ci` only to test/debug GitHub Actions workflow issues
+
+**Branch Protection**: Both `full` and `local-ci` modes automatically create a feature branch and pull request to protect the main branch from direct commits.
 
 ### Automated Updates (Cron)
 

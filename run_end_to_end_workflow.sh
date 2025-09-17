@@ -32,6 +32,11 @@ cd "$SCRIPT_DIR"
 
 # Default settings
 MODE="${1:-help}"
+# Support both 'local' (deprecated) and 'local-ci' names
+if [ "$MODE" = "local" ]; then
+    print_warning "'local' mode is deprecated. Use 'local-ci' instead."
+    MODE="local-ci"
+fi
 LOG_DIR="logs"
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 LOG_FILE="${LOG_DIR}/workflow_${TIMESTAMP}.log"
@@ -63,7 +68,7 @@ check_requirements() {
     # Check Python environment
     if ! conda env list | grep -q "dataset-citations"; then
         print_error "Conda environment 'dataset-citations' not found"
-        print_info "Create it with: conda create -n dataset-citations python=3.10"
+        print_info "Create it with: conda create -n dataset-citations python=3.11"
         return 1
     fi
 
@@ -79,10 +84,10 @@ check_requirements() {
         fi
     fi
 
-    # Check if act is installed for local mode
-    if [ "$MODE" = "local" ]; then
+    # Check if act is installed for local-ci mode
+    if [ "$MODE" = "local-ci" ]; then
         if ! command -v act &> /dev/null; then
-            print_error "act not installed. Required for local mode."
+            print_error "act not installed. Required for local-ci mode."
             print_info "Install with: brew install act"
             return 1
         fi
@@ -198,13 +203,13 @@ print('Test metadata generated')
     fi
 }
 
-# Function to run local workflow with act
-run_local_workflow() {
-    print_status "Running local workflow with act..."
+# Function to run local CI/CD workflow with act
+run_local_ci_workflow() {
+    print_status "Testing CI/CD workflow locally with act..."
 
     # Note: The GitHub Actions workflow already creates its own branch
     # act will handle branch creation via the workflow itself
-    print_info "Note: GitHub Actions workflow will create its own branch"
+    print_info "Note: This tests the GitHub Actions workflow locally for CI/CD validation"
 
     # Check for .secrets file
     if [ ! -f ".secrets" ]; then
@@ -216,14 +221,14 @@ EOF
         print_info "Edit .secrets file with your API keys"
     fi
 
-    print_status "Executing workflow with act..."
+    print_status "Executing GitHub Actions workflow locally..."
     act workflow_dispatch --secret-file .secrets --verbose 2>&1 | tee "$LOG_FILE"
 
     if [ ${PIPESTATUS[0]} -eq 0 ]; then
-        print_status "Local workflow completed successfully ✓"
+        print_status "CI/CD workflow test completed successfully ✓"
         print_info "The workflow created a branch and PR automatically"
     else
-        print_error "Local workflow failed. Check log: $LOG_FILE"
+        print_error "CI/CD workflow test failed. Check log: $LOG_FILE"
         return 1
     fi
 }
@@ -402,26 +407,25 @@ Dataset Citations - End-to-End Workflow Runner
 Usage: $0 [mode]
 
 Modes:
-  test    Run with test dataset (fast, no API calls)
-          - Uses controlled test data
-          - No external API calls
-          - Validates pipeline components
-          - ~30 seconds runtime
+  test      Run with test dataset (fast, no API calls)
+            - Uses controlled test data
+            - No external API calls
+            - Validates pipeline components
+            - ~30 seconds runtime
 
-  local   Run full workflow locally with act
-          - Uses GitHub Actions locally
-          - Creates branch and PR automatically
-          - Requires act and Docker
-          - Needs .secrets file
-          - ~10-30 minutes runtime
+  local-ci  Test GitHub Actions workflow locally
+            - Runs the CI/CD workflow via Docker
+            - Tests exact GitHub Actions behavior
+            - Useful for debugging CI/CD issues
+            - Requires act and Docker
+            - ~10-30 minutes runtime
 
-  full    Run full workflow with real data
-          - Creates feature branch automatically
-          - Live API calls to ScraperAPI
-          - Requires SCRAPERAPI_KEY
-          - Full dataset processing
-          - Creates PR for review
-          - ~1-2 hours runtime
+  full      Run full pipeline directly (recommended)
+            - Runs pipeline natively with conda
+            - Creates feature branch automatically
+            - Live API calls to Google Scholar
+            - Creates PR for review
+            - ~1-2 hours runtime
 
   help    Show this help message
 
@@ -433,20 +437,20 @@ Examples:
   # Quick test run
   $0 test
 
-  # Local workflow with act
+  # Test CI/CD workflow locally
   export SCRAPERAPI_KEY=your_key
   export GITHUB_TOKEN=your_token
-  $0 local
+  $0 local-ci
 
-  # Full production run
+  # Full production run (recommended for actual updates)
   export SCRAPERAPI_KEY=your_key
   export GITHUB_TOKEN=your_token
   $0 full
 
 Output:
-  Test mode:  test_output_<timestamp>/ (temporary directory)
-  Local mode: Creates branch with PR (via GitHub Actions)
-  Full mode:  Updates repository on new branch, creates PR
+  test:      test_output_<timestamp>/ (temporary directory)
+  local-ci:  Creates branch with PR (via GitHub Actions in Docker)
+  full:      Updates repository on new branch, creates PR
 
 Logs are saved to: logs/workflow_<timestamp>.log
 
@@ -464,9 +468,9 @@ main() {
             check_requirements || exit 1
             run_test_workflow
             ;;
-        local)
+        local-ci)
             check_requirements || exit 1
-            run_local_workflow
+            run_local_ci_workflow
             ;;
         full)
             check_requirements || exit 1
