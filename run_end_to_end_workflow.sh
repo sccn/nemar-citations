@@ -62,9 +62,23 @@ print_info() {
     echo -e "${BLUE}[INFO]${NC} $1"
 }
 
+# Function to load secrets from .secrets file if available
+load_secrets() {
+    if [ -f ".secrets" ]; then
+        print_info "Loading secrets from .secrets file..."
+        # Source the .secrets file to load environment variables
+        set -a  # Mark all new variables for export
+        source .secrets
+        set +a  # Turn off auto-export
+    fi
+}
+
 # Function to check requirements
 check_requirements() {
     print_status "Checking requirements..."
+
+    # Load secrets if available and not already set
+    load_secrets
 
     # Check Python environment
     if ! conda env list | grep -q "dataset-citations"; then
@@ -77,11 +91,12 @@ check_requirements() {
     if [ "$MODE" = "full" ]; then
         if [ -z "$SCRAPERAPI_KEY" ]; then
             print_error "SCRAPERAPI_KEY not set. Required for full mode."
-            print_info "Set it with: export SCRAPERAPI_KEY=your_key"
+            print_info "Set it with: export SCRAPERAPI_KEY=your_key or add to .secrets file"
             return 1
         fi
         if [ -z "$GITHUB_TOKEN" ]; then
             print_warning "GITHUB_TOKEN not set. Discovery may be limited."
+            print_info "Set it with: export GITHUB_TOKEN=your_token or add to .secrets file"
         fi
     fi
 
