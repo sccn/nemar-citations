@@ -152,14 +152,13 @@ print('Test metadata generated')
 "
 
     print_status "Step 5/6: Running analysis..."
-    # Temporal analysis
+    # Temporal analysis (positional argument for citations_dir)
     conda run -n dataset-citations dataset-citations-analyze-temporal \
-        --citations-dir "$TEST_OUTPUT_DIR/citations/json" \
+        "$TEST_OUTPUT_DIR/citations/json" \
         --output-dir "$TEST_OUTPUT_DIR/results/temporal_analysis" || true
 
-    # Network analysis
+    # Network analysis (no citations_dir argument needed)
     conda run -n dataset-citations dataset-citations-analyze-networks \
-        --citations-dir "$TEST_OUTPUT_DIR/citations/json" \
         --output-dir "$TEST_OUTPUT_DIR/results/network_analysis" || true
 
     print_status "Step 6/6: Generating dashboard..."
@@ -278,17 +277,16 @@ run_full_workflow() {
         --log-level INFO 2>&1 | tee -a "$LOG_FILE"
 
     print_status "Step 6/7: Running analysis..."
-    # Temporal analysis
+    # Temporal analysis (positional argument for citations_dir)
     conda run -n dataset-citations dataset-citations-analyze-temporal \
-        --citations-dir "$OUTPUT_DIR/citations/json" \
+        "$OUTPUT_DIR/citations/json" \
         --output-dir "$OUTPUT_DIR/results/temporal_analysis" \
-        --log-level INFO 2>&1 | tee -a "$LOG_FILE" || print_warning "Temporal analysis failed"
+        --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "Temporal analysis failed"
 
-    # Network analysis
+    # Network analysis (no citations_dir argument needed)
     conda run -n dataset-citations dataset-citations-analyze-networks \
-        --citations-dir "$OUTPUT_DIR/citations/json" \
         --output-dir "$OUTPUT_DIR/results/network_analysis" \
-        --log-level INFO 2>&1 | tee -a "$LOG_FILE" || print_warning "Network analysis failed"
+        --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "Network analysis failed"
 
     print_status "Step 7/7: Generating interactive dashboard..."
     conda run -n dataset-citations dataset-citations-create-interactive-reports \
