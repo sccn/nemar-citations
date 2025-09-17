@@ -91,6 +91,25 @@ pytest --cov=dataset_citations tests/
 pytest tests/test_integration_workflow.py -v
 ```
 
+## Important Dependencies
+
+### httpx Version Lock
+
+**WARNING**: Do not upgrade httpx beyond version 0.27.0. There's a compatibility issue with the scholarly package that causes errors with newer versions.
+
+```bash
+# Correct version
+pip install httpx==0.27.0
+
+# DO NOT upgrade to latest
+# pip install --upgrade httpx  # This will break scholarly!
+```
+
+If you accidentally upgrade httpx:
+```bash
+pip install httpx==0.27.0 --force-reinstall
+```
+
 ## Troubleshooting
 
 ### ImportError with type unions
