@@ -6,11 +6,11 @@ combining all analysis results with a consistent visual theme and interactive ex
 """
 
 import argparse
-import logging
-import json
-from pathlib import Path
-from typing import Dict, List, Any
 from datetime import datetime
+import json
+import logging
+from pathlib import Path
+from typing import Any, Dict, List
 
 try:
     import pandas as pd
@@ -157,12 +157,16 @@ class InteractiveReportGenerator:
                                 full_data.get("dataset_similarities", []),
                                 key=lambda x: x.get("similarity", 0),
                                 reverse=True,
-                            )[:3000]  # Increased for better connectivity
+                            )[
+                                :3000
+                            ]  # Increased for better connectivity
                             citation_sims = sorted(
                                 full_data.get("citation_similarities", []),
                                 key=lambda x: x.get("similarity", 0),
                                 reverse=True,
-                            )[:5000]  # Increased for better connectivity
+                            )[
+                                :5000
+                            ]  # Increased for better connectivity
 
                             limited_data = {
                                 "analysis_metadata": full_data.get(
@@ -171,9 +175,9 @@ class InteractiveReportGenerator:
                                 "dataset_similarities": dataset_sims,
                                 "citation_similarities": citation_sims,
                             }
-                            analysis_data["theme_analysis"][json_file.stem] = (
-                                limited_data
-                            )
+                            analysis_data["theme_analysis"][
+                                json_file.stem
+                            ] = limited_data
                             logging.info(
                                 f"Loaded theme analysis (limited): {json_file.name} - {len(limited_data['dataset_similarities'])} dataset + {len(limited_data['citation_similarities'])} citation similarities"
                             )
@@ -219,9 +223,9 @@ class InteractiveReportGenerator:
 
                         dest_file = self.output_dir / viz_file.name
                         shutil.copy2(viz_file, dest_file)
-                        analysis_data["visualizations"][f"{viz_file.stem}_png"] = (
-                            viz_file.name
-                        )
+                        analysis_data["visualizations"][
+                            f"{viz_file.stem}_png"
+                        ] = viz_file.name
                         logging.info(f"Copied visualization: {viz_file.name}")
                     except Exception as e:
                         logging.warning(f"Could not copy {viz_file}: {e}")
@@ -231,15 +235,15 @@ class InteractiveReportGenerator:
         if modalities_file.exists():
             try:
                 if PANDAS_AVAILABLE:
-                    import csv
                     from collections import Counter
+                    import csv
 
                     # For NEMAR, only count electrophysiological modalities
                     electrophys_modalities = ["eeg", "meg", "ieeg"]
                     modality_counts = Counter()
                     electrophys_dataset_count = 0
 
-                    with open(modalities_file, "r") as f:
+                    with open(modalities_file) as f:
                         reader = csv.DictReader(f)
                         for row in reader:
                             modalities = row["modalities"].split(",")
@@ -312,7 +316,7 @@ class InteractiveReportGenerator:
                 summary = network_data["summary"]
             elif isinstance(network_data, dict):
                 # Look for summary data directly in network_analysis
-                for key, value in network_data.items():
+                for _key, value in network_data.items():
                     if isinstance(value, dict) and "total_datasets_analyzed" in value:
                         summary = value
                         break
@@ -371,7 +375,7 @@ class InteractiveReportGenerator:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dataset Citations Analysis Dashboard</title>
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -380,7 +384,7 @@ class InteractiveReportGenerator:
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <!-- Cytoscape.js -->
     <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
-    
+
     <style>
         :root {
             --primary-color: {{ color_scheme.primary }};
@@ -393,142 +397,142 @@ class InteractiveReportGenerator:
             --text-color: {{ color_scheme.text }};
             --border-color: {{ color_scheme.border }};
         }
-        
+
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         .navbar {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        
+
         .card {
             border: none;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s ease-in-out;
         }
-        
+
         .card:hover {
             transform: translateY(-2px);
         }
-        
+
         .stat-card {
             background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             color: white;
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .stat-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
-        
+
         .stat-card:active {
             transform: translateY(-2px);
         }
-        
+
         .analysis-card {
             border-left: 4px solid var(--primary-color);
         }
-        
+
         .viz-container {
             min-height: 400px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
         }
-        
+
         .network-container {
             height: 600px;
             border: 1px solid var(--border-color);
             border-radius: 8px;
         }
-        
+
         .section-header {
             color: var(--primary-color);
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 0.5rem;
             margin-bottom: 1.5rem;
         }
-        
+
         .badge-dataset {
             background-color: var(--dataset-color);
         }
-        
+
         .badge-citation {
             background-color: var(--citation-color);
         }
-        
+
         .badge-bridge {
             background-color: var(--bridge-color);
         }
-        
+
         .nav-pills .nav-link.active {
             background-color: var(--primary-color);
         }
-        
+
         .progress-bar {
             background-color: var(--primary-color);
         }
-        
+
         .footer {
             background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
             color: white;
             padding: 2rem 0;
             margin-top: 3rem;
         }
-        
+
         /* Network visualization styles */
         #networkViz {
             background: #fafafa;
             border-radius: 8px;
         }
-        
+
         /* Highlighted network elements */
         .highlighted {
             opacity: 1 !important;
             z-index: 999 !important;
         }
-        
+
         /* Fade non-highlighted elements when selection is active */
         .cy-container:has(.highlighted) .cytoscape-element:not(.highlighted) {
             opacity: 0.3 !important;
         }
-        
+
         /* Network info panel styling */
         #network-info-panel {
             max-height: 300px;
             overflow-y: auto;
         }
-        
+
         #network-info-panel .card {
             border-left: 4px solid var(--accent-color);
         }
-        
+
         #network-info-panel .card-header {
             background-color: rgba(46, 134, 171, 0.1);
             border-bottom: 1px solid var(--border-color);
         }
-        
+
         /* Citation info panel styling */
         #citation-info-panel {
             max-height: 300px;
             overflow-y: auto;
         }
-        
+
         #citation-info-panel .card {
             border-left: 4px solid #e67e22;
         }
-        
+
         #citation-info-panel .card-header {
             background-color: rgba(230, 126, 34, 0.1);
             border-bottom: 1px solid var(--border-color);
         }
-        
+
         /* Responsive network container */
         @media (max-width: 768px) {
             .network-container {
@@ -564,7 +568,7 @@ class InteractiveReportGenerator:
                         NEMAR Dataset Citation Analysis
                     </h1>
                     <p class="lead">
-                        Comprehensive analysis of citation patterns, research themes, and network relationships 
+                        Comprehensive analysis of citation patterns, research themes, and network relationships
                         across {{ summary_stats.total_datasets }} BIDS datasets on NEMAR with confidence-filtered citations.
                     </p>
                     <hr class="my-4">
@@ -616,20 +620,20 @@ class InteractiveReportGenerator:
         <!-- Navigation Tabs -->
         <ul class="nav nav-pills mb-4" id="analysisTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="overview-tab" data-bs-toggle="pill" data-bs-target="#overview" 
+                <button class="nav-link active" id="overview-tab" data-bs-toggle="pill" data-bs-target="#overview"
                         type="button" role="tab">
                     <i class="fas fa-home me-2"></i>Overview
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="network-tab" data-bs-toggle="pill" data-bs-target="#network" 
+                <button class="nav-link" id="network-tab" data-bs-toggle="pill" data-bs-target="#network"
                         type="button" role="tab">
                     <i class="fas fa-project-diagram me-2"></i>Network Analysis
                 </button>
             </li>
 
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="themes-tab" data-bs-toggle="pill" data-bs-target="#themes" 
+                <button class="nav-link" id="themes-tab" data-bs-toggle="pill" data-bs-target="#themes"
                         type="button" role="tab">
                     <i class="fas fa-tags me-2"></i>Research Themes
                 </button>
@@ -674,16 +678,16 @@ class InteractiveReportGenerator:
                     </div>
                     </div>
                 </div>
-                
+
             <!-- Network Analysis Tab -->
             <div class="tab-pane fade" id="network" role="tabpanel">
                 <h2 class="section-header">Network Analysis</h2>
                 <p class="text-muted mb-4">
                     <i class="fas fa-info-circle me-1"></i>
-                    Interactive network visualizations showing relationships between datasets and citations. 
+                    Interactive network visualizations showing relationships between datasets and citations.
                     Hover over nodes to see detailed information.
                 </p>
-                
+
                 <div class="row h-100">
                     <div class="col-md-6">
                         <div class="card analysis-card mb-4 h-100">
@@ -715,9 +719,9 @@ class InteractiveReportGenerator:
 
                 <div class="alert alert-secondary mt-3">
                     <i class="fas fa-lightbulb me-2"></i>
-                    <strong>Network Visualization Insights:</strong> 
-                    Dataset proximity reflects semantic similarity through content analysis. Node size indicates citation volume. 
-                    Citation proximity shows research theme clustering with connections representing embedding similarity. 
+                    <strong>Network Visualization Insights:</strong>
+                    Dataset proximity reflects semantic similarity through content analysis. Node size indicates citation volume.
+                    Citation proximity shows research theme clustering with connections representing embedding similarity.
                     Citation node size reflects paper impact (citation count).
                 </div>
             </div>
@@ -741,8 +745,8 @@ class InteractiveReportGenerator:
                             </div>
                             <div class="card-body text-center">
                                 {% if visualizations.theme_0_wordcloud_png %}
-                                <img src="{{ visualizations.theme_0_wordcloud_png }}" 
-                                     alt="Theme 1 Word Cloud" class="img-fluid rounded" 
+                                <img src="{{ visualizations.theme_0_wordcloud_png }}"
+                                     alt="Theme 1 Word Cloud" class="img-fluid rounded"
                                      style="max-height: 300px; width: auto;">
                                 {% else %}
                                 <div class="text-muted p-4">
@@ -761,8 +765,8 @@ class InteractiveReportGenerator:
                             </div>
                             <div class="card-body text-center">
                                 {% if visualizations.theme_1_wordcloud_png %}
-                                <img src="{{ visualizations.theme_1_wordcloud_png }}" 
-                                     alt="Theme 2 Word Cloud" class="img-fluid rounded" 
+                                <img src="{{ visualizations.theme_1_wordcloud_png }}"
+                                     alt="Theme 2 Word Cloud" class="img-fluid rounded"
                                      style="max-height: 300px; width: auto;">
                                 {% else %}
                                 <div class="text-muted p-4">
@@ -781,8 +785,8 @@ class InteractiveReportGenerator:
                             </div>
                             <div class="card-body text-center">
                                 {% if visualizations.theme_2_wordcloud_png %}
-                                <img src="{{ visualizations.theme_2_wordcloud_png }}" 
-                                     alt="Theme 3 Word Cloud" class="img-fluid rounded" 
+                                <img src="{{ visualizations.theme_2_wordcloud_png }}"
+                                     alt="Theme 3 Word Cloud" class="img-fluid rounded"
                                      style="max-height: 300px; width: auto;">
                                 {% else %}
                                 <div class="text-muted p-4">
@@ -801,8 +805,8 @@ class InteractiveReportGenerator:
                             </div>
                             <div class="card-body text-center">
                                 {% if visualizations.theme_3_wordcloud_png %}
-                                <img src="{{ visualizations.theme_3_wordcloud_png }}" 
-                                     alt="Theme 4 Word Cloud" class="img-fluid rounded" 
+                                <img src="{{ visualizations.theme_3_wordcloud_png }}"
+                                     alt="Theme 4 Word Cloud" class="img-fluid rounded"
                                      style="max-height: 300px; width: auto;">
                                 {% else %}
                                 <div class="text-muted p-4">
@@ -813,7 +817,7 @@ class InteractiveReportGenerator:
                         </div>
                     </div>
                 </div>
-                
+
                     </div>
                             </div>
 
@@ -844,7 +848,7 @@ class InteractiveReportGenerator:
         <div class="container text-center">
             <p>&copy; 2025 <strong>NEMAR Dataset Citation Analysis</strong>.</p>
             <p class="text-muted mb-2">
-                <a href="https://nemar.org" target="_blank" class="text-decoration-none"><strong>NEMAR</strong></a> is a window to <a href="https://openneuro.org" target="_blank" class="text-decoration-none">OpenNeuro</a> 
+                <a href="https://nemar.org" target="_blank" class="text-decoration-none"><strong>NEMAR</strong></a> is a window to <a href="https://openneuro.org" target="_blank" class="text-decoration-none">OpenNeuro</a>
                 for hosting and analyzing electrophysiological data (EEG, MEG, iEEG) from around the world.
             </p>
             <p class="text-muted mb-2">
@@ -854,7 +858,7 @@ class InteractiveReportGenerator:
                 <em>Swartz Center for Computational Neuroscience, UC San Diego</em>
             </p>
             <p class="text-muted small">
-                Confidence threshold: ≥{{ summary_stats.confidence_threshold }} | 
+                Confidence threshold: ≥{{ summary_stats.confidence_threshold }} |
                 Analysis: {{ summary_stats.analysis_date }}
             </p>
         </div>
@@ -862,33 +866,33 @@ class InteractiveReportGenerator:
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <script>
         // Embedded analysis data
         const analysisData = {{ analysis_data | tojson }};
         const colorScheme = {{ color_scheme | tojson }};
-        
+
         // Initialize all visualizations when page loads
         document.addEventListener('DOMContentLoaded', function() {
             initializeCharts();
         });
-        
+
         function initializeCharts() {
             // Initialize overview charts
             createQualityChart();
             createGrowthChart();
             createModalityChart();
-            
+
             // Initialize network visualizations
             createNetworkVisualization();
             createCitationNetworkVisualization();
         }
-        
+
         function createQualityChart() {
             const highConfCitations = {{ summary_stats.total_citations }};
             const totalCitations = 1191;
             const lowConfCitations = totalCitations - highConfCitations;
-            
+
             const data = [{
                 x: ['High-Confidence\\n(≥0.4)', 'Low-Confidence\\n(<0.4)'],
                 y: [highConfCitations, lowConfCitations],
@@ -897,12 +901,12 @@ class InteractiveReportGenerator:
                     color: [colorScheme.citation, '#BDC3C7'],
                     line: { color: '#FFFFFF', width: 2 }
                 },
-                text: [highConfCitations + '<br>(' + Math.round(highConfCitations/totalCitations*100) + '%)', 
+                text: [highConfCitations + '<br>(' + Math.round(highConfCitations/totalCitations*100) + '%)',
                        lowConfCitations + '<br>(' + Math.round(lowConfCitations/totalCitations*100) + '%)'],
                 textposition: 'inside',
                 textfont: { color: 'white', size: 12, family: 'Arial Black' }
             }];
-            
+
             const layout = {
                 font: { family: 'Segoe UI' },
                 plot_bgcolor: 'rgba(0,0,0,0)',
@@ -912,14 +916,14 @@ class InteractiveReportGenerator:
                 xaxis: { title: '' },
                 yaxis: { title: 'Count' }
             };
-            
+
             Plotly.newPlot('qualityChart', data, layout, {responsive: true});
         }
-        
+
         function createGrowthChart() {
             const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
             const citationsPerYear = [20, 45, 85, 150, 220, 280, 290, 100];
-            
+
             // Calculate cumulative citations
             const cumulativeCitations = [];
             let total = 0;
@@ -927,26 +931,26 @@ class InteractiveReportGenerator:
                 total += citationsPerYear[i];
                 cumulativeCitations.push(total);
             }
-            
+
             const data = [{
                 x: years,
                 y: cumulativeCitations,
                 type: 'scatter',
                 mode: 'lines+markers',
-                line: { 
-                    color: colorScheme.primary, 
+                line: {
+                    color: colorScheme.primary,
                     width: 4,
                     shape: 'spline'
                 },
-                marker: { 
-                    size: 8, 
+                marker: {
+                    size: 8,
                     color: colorScheme.primary,
                     line: { color: '#FFFFFF', width: 2 }
                 },
                 fill: 'tonexty',
                 fillcolor: 'rgba(52, 152, 219, 0.1)'
             }];
-            
+
             const layout = {
                 font: { family: 'Segoe UI' },
                 plot_bgcolor: 'rgba(0,0,0,0)',
@@ -956,15 +960,15 @@ class InteractiveReportGenerator:
                 xaxis: { title: 'Year' },
                 yaxis: { title: 'Cumulative Citations' }
             };
-            
+
             Plotly.newPlot('growthChart', data, layout, {responsive: true});
         }
-        
+
         function createBridgeChart() {
             const bridgePapers = {{ summary_stats.total_bridge_papers }};
             const totalCitations = {{ summary_stats.total_high_confidence_citations }};
             const nonBridgeCitations = totalCitations - bridgePapers;
-            
+
             const data = [{
                 values: [bridgePapers, nonBridgeCitations],
                 labels: ['Bridge Papers', 'Non-Bridge Citations'],
@@ -978,7 +982,7 @@ class InteractiveReportGenerator:
                 textfont: { color: 'white', size: 12, family: 'Arial Black' },
                 hole: 0.4
             }];
-            
+
             const layout = {
                 font: { family: 'Segoe UI' },
                 plot_bgcolor: 'rgba(0,0,0,0)',
@@ -986,30 +990,30 @@ class InteractiveReportGenerator:
                 showlegend: false,
                 margin: { t: 20, b: 20, l: 20, r: 20 }
             };
-            
+
             Plotly.newPlot('bridgeChart', data, layout, {responsive: true});
         }
-        
+
         function buildUMAPNetworkElements() {
             // Build network using UMAP coordinates for beautiful 2D layout
             const elements = [];
             const nodeIds = new Set();
-            
+
             // Get theme analysis data with UMAP coordinates
             const themeData = analysisData.theme_analysis?.comprehensive_theme_analysis;
             const bridgeData = analysisData.theme_analysis?.research_bridge_analysis_20250731_161858;
-            
+
             // Get network analysis data
             const networkData = analysisData.network_analysis || {};
             const popularityData = networkData.dataset_popularity || [];
-            
+
             // Create UMAP coordinate lookup from CSV data loaded in analysis
             const umapCoords = {};
-            
+
             // Try to get UMAP data from the loaded CSV (research_themes_data)
             // The CSV data should be loaded as part of theme analysis
             const umapCsvData = analysisData.theme_analysis?.research_themes_data_20250731_160731;
-            
+
             if (umapCsvData && Array.isArray(umapCsvData)) {
                 umapCsvData.forEach(coord => {
                     umapCoords[coord.embedding_id] = {
@@ -1023,13 +1027,13 @@ class InteractiveReportGenerator:
                 // Fallback to buildNetworkElements if no UMAP data
                 return buildNetworkElements();
             }
-            
+
             // Add top datasets with UMAP positioning
             popularityData.slice(0, 50).forEach((dataset, index) => {
                 const datasetId = dataset.dataset_id;
                 const umapKey = `dataset_${datasetId}`;
                 const coords = umapCoords[umapKey];
-                
+
                 if (coords && dataset.high_confidence_citations > 0) {
                     elements.push({
                         data: {
@@ -1046,12 +1050,12 @@ class InteractiveReportGenerator:
                     nodeIds.add(datasetId);
                 }
             });
-            
+
             // Get real dataset similarity connections (like citation network)
             let datasetSimilarities = null;
-            
+
             // Look for embedding similarities file (updated format with both dataset and citation similarities)
-            const embeddingKeys = Object.keys(analysisData.theme_analysis || {}).filter(key => 
+            const embeddingKeys = Object.keys(analysisData.theme_analysis || {}).filter(key =>
                 key.startsWith('embedding_similarities_')
             );
             if (embeddingKeys.length > 0) {
@@ -1060,16 +1064,16 @@ class InteractiveReportGenerator:
                 datasetSimilarities = analysisData.theme_analysis[latestKey];
                 console.log('Loaded dataset similarities:', latestKey, datasetSimilarities?.dataset_similarities?.length || 0);
             }
-            
+
             // Dataset network: No connections - only show positioned nodes
             console.log('Dataset network: showing only positioned nodes without connections');
-            
-            console.log('Built UMAP network with', elements.filter(e => !e.data.source).length, 'nodes and', 
+
+            console.log('Built UMAP network with', elements.filter(e => !e.data.source).length, 'nodes and',
                        elements.filter(e => e.data.source).length, 'edges');
-            
+
             return elements;
         }
-        
+
         function buildNetworkElements() {
             // Fallback network builder if UMAP data not available
             const elements = [];
@@ -1077,13 +1081,13 @@ class InteractiveReportGenerator:
             if (networkData.dataset_co_citations && networkData.dataset_co_citations.length > 0) {
                 // Take first 50 co-citation relationships for performance
                 const coCitations = networkData.dataset_co_citations.slice(0, 50);
-                
+
                 coCitations.forEach(function(relation, index) {
                     const dataset1 = relation.dataset1;
                     const dataset2 = relation.dataset2;
                     const dataset1Name = relation.dataset1_name || dataset1;
                     const dataset2Name = relation.dataset2_name || dataset2;
-                    
+
                     // Add dataset nodes if not already added
                     if (!nodeIds.has(dataset1)) {
                         elements.push({
@@ -1097,7 +1101,7 @@ class InteractiveReportGenerator:
                         });
                         nodeIds.add(dataset1);
                     }
-                    
+
                     if (!nodeIds.has(dataset2)) {
                         elements.push({
                             data: {
@@ -1110,7 +1114,7 @@ class InteractiveReportGenerator:
                         });
                         nodeIds.add(dataset2);
                     }
-                    
+
                     // Add co-citation edge
                     elements.push({
                         data: {
@@ -1124,16 +1128,16 @@ class InteractiveReportGenerator:
                     });
                 });
             }
-            
+
             // Add bridge papers as special nodes
             if (networkData.bridge_papers && networkData.bridge_papers.length > 0) {
                 // Take first 20 bridge papers for performance
                 const bridgePapers = networkData.bridge_papers.slice(0, 20);
-                
+
                 bridgePapers.forEach(function(paper, index) {
                     const paperId = 'bridge_' + index;
                     const paperTitle = paper.bridge_paper_title || 'Bridge Paper ' + index;
-                    
+
                     // Add bridge paper node
                     elements.push({
                         data: {
@@ -1146,7 +1150,7 @@ class InteractiveReportGenerator:
                             author: paper.bridge_paper_author || 'Unknown'
                         }
                     });
-                    
+
                     // Connect bridge paper to datasets it bridges
                     if (paper.datasets_bridged && Array.isArray(paper.datasets_bridged)) {
                         // Connect to first few datasets to avoid overcrowding
@@ -1167,7 +1171,7 @@ class InteractiveReportGenerator:
                     }
                 });
             }
-            
+
             // Add some highly cited datasets if we don't have enough nodes
             if (networkData.dataset_popularity && elements.filter(e => e.data.type === 'dataset').length < 10) {
                 const topDatasets = networkData.dataset_popularity.slice(0, 15);
@@ -1177,8 +1181,8 @@ class InteractiveReportGenerator:
                         elements.push({
                             data: {
                                 id: datasetId,
-                                label: (dataset.dataset_name || datasetId).length > 30 ? 
-                                       (dataset.dataset_name || datasetId).substring(0, 30) + '...' : 
+                                label: (dataset.dataset_name || datasetId).length > 30 ?
+                                       (dataset.dataset_name || datasetId).substring(0, 30) + '...' :
                                        (dataset.dataset_name || datasetId),
                                 type: 'dataset',
                                 citations: dataset.total_cumulative_citations || 0,
@@ -1189,21 +1193,21 @@ class InteractiveReportGenerator:
                     }
                 });
             }
-            
-            console.log('Built network with', elements.filter(e => !e.data.source).length, 'nodes and', 
+
+            console.log('Built network with', elements.filter(e => !e.data.source).length, 'nodes and',
                        elements.filter(e => e.data.source).length, 'edges');
-            
+
             return elements;
         }
-        
+
         function createNetworkVisualization() {
             // Use UMAP coordinates for layout if available
             const elements = buildUMAPNetworkElements();
-            
+
             const cy = cytoscape({
                 container: document.getElementById('networkViz'),
                 elements: elements,
-                
+
                 style: [
                     {
                         selector: 'node[type="dataset"]',
@@ -1255,7 +1259,7 @@ class InteractiveReportGenerator:
                         }
                     }
                 ],
-                
+
                 layout: {
                     name: 'preset', // Use predefined positions from UMAP
                     animate: true,
@@ -1264,13 +1268,13 @@ class InteractiveReportGenerator:
                     padding: 40
                 }
             });
-            
+
             // Add interactive hover tooltips
             cy.on('mouseover', 'node', function(evt) {
                 const node = evt.target;
                 const data = node.data();
                 let tooltip = '';
-                
+
                 if (data.type === 'dataset') {
                     tooltip = `<strong>${data.fullName || data.label}</strong><br/>` +
                              `Dataset ID: ${data.id}<br/>` +
@@ -1282,7 +1286,7 @@ class InteractiveReportGenerator:
                              `Datasets Connected: ${data.datasetsConnected || 0}<br/>` +
                              `Confidence: ${(data.confidence * 100).toFixed(1)}%`;
                 }
-                
+
                 // Create or update tooltip element
                 let tooltipEl = document.getElementById('network-tooltip');
                 if (!tooltipEl) {
@@ -1302,18 +1306,18 @@ class InteractiveReportGenerator:
                     `;
                     document.body.appendChild(tooltipEl);
                 }
-                
+
                 tooltipEl.innerHTML = tooltip;
                 tooltipEl.style.display = 'block';
             });
-            
+
             cy.on('mouseout', 'node', function(evt) {
                 const tooltipEl = document.getElementById('network-tooltip');
                 if (tooltipEl) {
                     tooltipEl.style.display = 'none';
                 }
             });
-            
+
             cy.on('mousemove', function(evt) {
                 const tooltipEl = document.getElementById('network-tooltip');
                 if (tooltipEl && tooltipEl.style.display === 'block') {
@@ -1321,13 +1325,13 @@ class InteractiveReportGenerator:
                     tooltipEl.style.top = (evt.originalEvent.pageY - 10) + 'px';
                 }
             });
-            
+
             // Add edge hover tooltips
             cy.on('mouseover', 'edge', function(evt) {
                 const edge = evt.target;
                 const data = edge.data();
                 let tooltip = '';
-                
+
                 if (data.type === 'co_citation') {
                     tooltip = `<strong>Co-Citation Relationship</strong><br/>` +
                              `Shared Citations: ${data.sharedCitations || 0}<br/>` +
@@ -1336,7 +1340,7 @@ class InteractiveReportGenerator:
                     tooltip = `<strong>Bridge Connection</strong><br/>` +
                              `Confidence: ${(data.confidence * 100).toFixed(1)}%`;
                 }
-                
+
                 let tooltipEl = document.getElementById('network-tooltip');
                 if (!tooltipEl) {
                     tooltipEl = document.createElement('div');
@@ -1355,42 +1359,42 @@ class InteractiveReportGenerator:
                     `;
                     document.body.appendChild(tooltipEl);
                 }
-                
+
                 tooltipEl.innerHTML = tooltip;
                 tooltipEl.style.display = 'block';
             });
-            
+
             cy.on('mouseout', 'edge', function(evt) {
                 const tooltipEl = document.getElementById('network-tooltip');
                 if (tooltipEl) {
                     tooltipEl.style.display = 'none';
                 }
             });
-            
+
             // Add click events for detailed information
             cy.on('tap', 'node', function(evt) {
                 const node = evt.target;
                 const data = node.data();
-                
+
                 // Highlight connected nodes and edges
                 cy.elements().removeClass('highlighted');
                 node.addClass('highlighted');
                 node.connectedEdges().addClass('highlighted');
                 node.neighborhood().addClass('highlighted');
-                
+
                 // Update info panel
                 updateNetworkInfoPanel(data);
             });
         }
-        
+
         function createCitationNetworkVisualization() {
             // Build citation network from high-confidence citations
             const elements = buildCitationNetworkElements();
-            
+
             const cy = cytoscape({
                 container: document.getElementById('citationNetworkViz'),
                 elements: elements,
-                
+
                 style: [
                     {
                         selector: 'node[type="citation"]',
@@ -1428,7 +1432,7 @@ class InteractiveReportGenerator:
                         }
                     }
                 ],
-                
+
                 layout: {
                     name: 'preset', // Use preset layout to respect UMAP coordinates
                     animate: true,
@@ -1437,20 +1441,20 @@ class InteractiveReportGenerator:
                     padding: 30
                 }
             });
-            
+
             // Add citation hover tooltips
             cy.on('mouseover', 'node', function(evt) {
                 const node = evt.target;
                 const data = node.data();
                 let tooltip = '';
-                
+
                 if (data.type === 'citation') {
                     tooltip = `<strong>${(data.title || 'No title').substring(0, 40)}...</strong><br/>` +
                              `Author: ${data.author || 'Unknown'}<br/>` +
                              `Impact: ${data.impact || 0} citations<br/>` +
                              `Confidence: ${(data.confidence * 100).toFixed(1)}%`;
                 }
-                
+
                 let tooltipEl = document.getElementById('citation-tooltip');
                 if (!tooltipEl) {
                     tooltipEl = document.createElement('div');
@@ -1470,25 +1474,25 @@ class InteractiveReportGenerator:
                     `;
                     document.body.appendChild(tooltipEl);
                 }
-                
+
                 tooltipEl.innerHTML = tooltip;
                 tooltipEl.style.display = 'block';
             });
-            
+
             cy.on('mouseout', 'node', function(evt) {
                 const tooltipEl = document.getElementById('citation-tooltip');
                 if (tooltipEl) {
                     tooltipEl.style.display = 'none';
                 }
             });
-            
+
             // Add click event for citation info panel
             cy.on('tap', 'node', function(evt) {
                 const node = evt.target;
                 const data = node.data();
                 updateNetworkInfoPanel(data);
             });
-            
+
             cy.on('mousemove', function(evt) {
                 const tooltipEl = document.getElementById('citation-tooltip');
                 if (tooltipEl && tooltipEl.style.display === 'block') {
@@ -1497,16 +1501,16 @@ class InteractiveReportGenerator:
                 }
             });
         }
-        
+
         function buildCitationNetworkElements() {
             // Build citation network using UMAP coordinates and real similarity connections
             const elements = [];
             const networkData = analysisData.network_analysis || {};
-            
+
             // Get UMAP coordinates for citations from theme analysis data
             const umapCsvData = analysisData.theme_analysis?.research_themes_data_20250731_160731;
             const citationUmapCoords = {};
-            
+
             // Extract citation UMAP coordinates
             if (umapCsvData && Array.isArray(umapCsvData)) {
                 umapCsvData.forEach(coord => {
@@ -1519,11 +1523,11 @@ class InteractiveReportGenerator:
                     }
                 });
             }
-            
+
             // Get real citation similarity connections
             let citationSimilarities = null;
             // Look for embedding similarities file (new format with both dataset and citation similarities)
-            const possibleKeys = Object.keys(analysisData.theme_analysis || {}).filter(key => 
+            const possibleKeys = Object.keys(analysisData.theme_analysis || {}).filter(key =>
                 key.startsWith('embedding_similarities_') || key.startsWith('citation_similarities_')
             );
             if (possibleKeys.length > 0) {
@@ -1532,23 +1536,23 @@ class InteractiveReportGenerator:
                 citationSimilarities = analysisData.theme_analysis[latestKey];
                 console.log('Loaded citation similarities:', latestKey, citationSimilarities?.citation_similarities?.length || 0);
             }
-            
+
             console.log('Citation UMAP coordinates loaded:', Object.keys(citationUmapCoords).length);
             console.log('Sample UMAP IDs:', Object.keys(citationUmapCoords).slice(0, 5));
-            
+
             // Combine multiple citation data sources for comprehensive network
             let impactData = [];
-            
+
             // Add high-impact citations (top 5)
             if (networkData.citation_impact_rankings) {
                 impactData = [...impactData, ...networkData.citation_impact_rankings];
             }
-            
+
             // Add multi-dataset citations (80 citations)
             if (networkData.multi_dataset_citations) {
                 impactData = [...impactData, ...networkData.multi_dataset_citations];
             }
-            
+
             // Add bridge papers (80 citations)
             if (networkData.bridge_papers) {
                 // Convert bridge papers to citation format
@@ -1564,67 +1568,67 @@ class InteractiveReportGenerator:
                 }));
                 impactData = [...impactData, ...bridgeCitations];
             }
-            
+
             // Remove duplicates based on title
-            const uniqueImpactData = impactData.filter((citation, index, self) => 
+            const uniqueImpactData = impactData.filter((citation, index, self) =>
                 index === self.findIndex(c => c.citation_title === citation.citation_title)
             );
-            
+
             console.log('Citation network data sources:', Object.keys(networkData));
             console.log('Combined citation data length:', uniqueImpactData.length);
             console.log('Sample combined citation data:', uniqueImpactData.slice(0, 2));
-            
+
             // Include ALL high-confidence citations, use UMAP when available
             const allHighConfCitations = uniqueImpactData.filter(citation => {
                 const confidence = parseFloat(citation.confidence_score) || 0;
                 return confidence >= 0.4;
             });
-            
+
             console.log('ALL high confidence citations (≥0.4):', allHighConfCitations.length);
-            
+
             // Sort by impact (citation count) and take top papers
             allHighConfCitations.sort((a, b) => {
                 const impactA = parseInt(a.citation_impact) || 0;
                 const impactB = parseInt(b.citation_impact) || 0;
                 return impactB - impactA; // Descending order
             });
-            
+
             // Take top 150 for comprehensive network
             const selectedHighConfCitations = allHighConfCitations.slice(0, Math.min(allHighConfCitations.length, 150));
             console.log('Using top high-confidence citations for network:', selectedHighConfCitations.length);
             console.log('Top 3 papers by impact:', selectedHighConfCitations.slice(0, 3).map(c => `${c.citation_title} (${c.citation_impact} citations)`));
-            
+
             // Get similarity data if available
             const similarities = citationSimilarities?.citation_similarities || [];
             console.log('Citation similarities available:', similarities.length);
-                
+
             // Create nodes for all high-confidence citations
             selectedHighConfCitations.forEach((citation, index) => {
                 const confidence = parseFloat(citation.confidence_score) || 0.4;
                 const impact = parseInt(citation.citation_impact) || 0;
-                
+
                 // Try to find UMAP coordinates for this citation
                 let position = null;
                 let cluster = 0;
-                
+
                 // Look for UMAP coordinates by trying to match citation
                 for (const [embeddingId, coords] of Object.entries(citationUmapCoords)) {
                     // Try to match by finding in similarity data
                     const matchFound = similarities.some(sim => {
-                        const sourceMatch = sim.source === embeddingId && 
+                        const sourceMatch = sim.source === embeddingId &&
                                          sim.source_info?.title === citation.citation_title;
-                        const targetMatch = sim.target === embeddingId && 
+                        const targetMatch = sim.target === embeddingId &&
                                          sim.target_info?.title === citation.citation_title;
                         return sourceMatch || targetMatch;
                     });
-                    
+
                     if (matchFound) {
                         position = { x: coords.x, y: coords.y };
                         cluster = coords.cluster;
                         break;
                     }
                 }
-                
+
                 // Fallback positioning if no UMAP coordinates
                 if (!position) {
                     position = {
@@ -1632,7 +1636,7 @@ class InteractiveReportGenerator:
                         y: Math.sin(2 * Math.PI * index / selectedHighConfCitations.length) * 150 + Math.random() * 50
                     };
                 }
-                
+
                 elements.push({
                     data: {
                         id: `citation_${index}`,
@@ -1650,7 +1654,7 @@ class InteractiveReportGenerator:
                     position: position
                 });
             });
-                
+
             // Add similarity-based connections when available
             if (similarities.length > 0) {
                 // Create a mapping from citation titles to node IDs
@@ -1660,19 +1664,19 @@ class InteractiveReportGenerator:
                 });
                 let edgeCount = 0;
                 const maxEdges = 500; // Increased limit for better connectivity
-                
+
                 console.log('Citation similarities available for network:', similarities.length);
-                
+
                 for (const sim of similarities) {
                     if (edgeCount >= maxEdges) break;
-                    
+
                     // Find citations by matching titles
                     const sourceTitle = sim.source_info?.title;
                     const targetTitle = sim.target_info?.title;
-                    
+
                     const sourceNodeId = titleToNodeId[sourceTitle];
                     const targetNodeId = titleToNodeId[targetTitle];
-                    
+
                     if (sourceNodeId && targetNodeId && sourceNodeId !== targetNodeId) {
                         elements.push({
                             data: {
@@ -1687,29 +1691,29 @@ class InteractiveReportGenerator:
                         edgeCount++;
                     }
                 }
-                
+
                 console.log('Added similarity edges:', edgeCount);
             } else {
                 console.log('🚨 FALLBACK TRIGGERED!');
                 console.log('UMAP coords available:', Object.keys(citationUmapCoords).length);
                 console.log('Citation similarities available:', citationSimilarities ? 'YES' : 'NO');
                 console.log('Similarities length:', citationSimilarities?.citation_similarities?.length || 0);
-                
+
                 if (uniqueImpactData && uniqueImpactData.length > 0) {
                     // Fallback to combined citation data if no UMAP coordinates
                     const allHighConfCitations = uniqueImpactData.filter(citation => {
                         const confidence = parseFloat(citation.confidence_score) || 0;
                         return confidence >= 0.4;
                     });
-                    
+
                     console.log('FALLBACK: Total high confidence citations (≥0.4):', allHighConfCitations.length);
                     console.log('FALLBACK: Total combined data:', uniqueImpactData.length);
-                    
+
                     // Use more citations for a meaningful network (up to 100 for better representation)
                     const highConfCitations = allHighConfCitations.slice(0, Math.min(allHighConfCitations.length, 100));
-                    
+
                     console.log('FALLBACK: Using citations for network:', highConfCitations.length);
-                    
+
                     highConfCitations.forEach((citation, index) => {
                         const confidence = parseFloat(citation.confidence_score) || 0.4;
                         const impact = parseInt(citation.citation_impact) || 0;
@@ -1733,22 +1737,22 @@ class InteractiveReportGenerator:
                         });
                     });
                 }
-                
+
                 // Add connections between citations from the same dataset or similar impact
                 for (let i = 0; i < Math.min(highConfCitations.length, 25); i++) {
                     for (let j = i + 1; j < Math.min(highConfCitations.length, 25); j++) {
                         const citationA = highConfCitations[i];
                         const citationB = highConfCitations[j];
-                        
+
                         // Connect if from same dataset
                         const sameDataset = citationA.dataset_id === citationB.dataset_id;
-                        
+
                         // Connect if similar impact (within 50% range)
                         const impactA = parseInt(citationA.citation_impact) || 0;
                         const impactB = parseInt(citationB.citation_impact) || 0;
                         const avgImpact = (impactA + impactB) / 2;
                         const impactSimilarity = avgImpact > 0 ? 1 - Math.abs(impactA - impactB) / avgImpact : 0;
-                        
+
                         if (sameDataset || impactSimilarity > 0.7) {
                             elements.push({
                                 data: {
@@ -1763,7 +1767,7 @@ class InteractiveReportGenerator:
                     }
                 }
             }
-            
+
             // Final fallback: If no elements were created, create demo nodes
             if (elements.length === 0) {
                 console.log('No citation network data available - creating demo nodes');
@@ -1784,7 +1788,7 @@ class InteractiveReportGenerator:
                         }
                     });
                 }
-                
+
                 // Connect them in a circle
                 for (let i = 0; i < 5; i++) {
                     const j = (i + 1) % 5;
@@ -1799,14 +1803,14 @@ class InteractiveReportGenerator:
                     });
                 }
             }
-            
+
             return elements;
         }
-        
+
         function updateNetworkInfoPanel(nodeData) {
             // Update the network info panel with detailed node information
             let infoHTML = '';
-            
+
             if (nodeData.type === 'dataset') {
                 const datasetUrl = `https://openneuro.org/datasets/${nodeData.id}`;
                 infoHTML = `
@@ -1815,7 +1819,7 @@ class InteractiveReportGenerator:
                             <h6 class="mb-0"><i class="fas fa-database me-2"></i>Dataset Information</h6>
                         </div>
                         <div class="card-body">
-                            <p><strong>Dataset ID:</strong> 
+                            <p><strong>Dataset ID:</strong>
                                 <a href="${datasetUrl}" target="_blank" rel="noopener noreferrer">
                                     ${nodeData.id} <i class="fas fa-external-link-alt fa-xs"></i>
                                 </a>
@@ -1841,7 +1845,7 @@ class InteractiveReportGenerator:
                             <h6 class="mb-0"><i class="fas fa-quote-left me-2"></i>Citation Information</h6>
                         </div>
                         <div class="card-body">
-                            <p><strong>Title:</strong> 
+                            <p><strong>Title:</strong>
                                 <a href="${paperUrl}" target="_blank" rel="noopener noreferrer">
                                     ${nodeData.title || 'No title available'} <i class="fas fa-external-link-alt fa-xs"></i>
                                 </a>
@@ -1870,7 +1874,7 @@ class InteractiveReportGenerator:
                             <h6 class="mb-0"><i class="fas fa-link me-2"></i>Bridge Paper</h6>
                         </div>
                         <div class="card-body">
-                            <p><strong>Title:</strong> 
+                            <p><strong>Title:</strong>
                                 <a href="${paperUrl}" target="_blank" rel="noopener noreferrer">
                                     ${nodeData.fullTitle || nodeData.label} <i class="fas fa-external-link-alt fa-xs"></i>
                                 </a>
@@ -1890,11 +1894,11 @@ class InteractiveReportGenerator:
                     </div>
                 `;
             }
-            
+
             // Update the info panel if it exists
             const infoPanelEl = document.getElementById('network-info-panel');
             const citationInfoPanelEl = document.getElementById('citation-info-panel');
-            
+
             if (nodeData.type === 'citation') {
                 // Handle citation network info panel
                 if (citationInfoPanelEl) {
@@ -1923,7 +1927,7 @@ class InteractiveReportGenerator:
                 }
             }
         }
-        
+
         function createTemporalChart() {
             // Placeholder for temporal chart
             const data = [{
@@ -1933,7 +1937,7 @@ class InteractiveReportGenerator:
                 mode: 'lines+markers',
                 line: {color: colorScheme.primary}
             }];
-            
+
             const layout = {
                 title: 'Citation Growth Over Time',
                 xaxis: {title: 'Year'},
@@ -1942,15 +1946,15 @@ class InteractiveReportGenerator:
                 plot_bgcolor: 'rgba(0,0,0,0)',
                 paper_bgcolor: 'rgba(0,0,0,0)'
             };
-            
+
             Plotly.newPlot('temporalChart', data, layout, {responsive: true});
         }
-        
+
         function createModalityChart() {
             // Dataset modality distribution chart
             const modalityData = analysisData.modality_data || {};
             const modalityCounts = modalityData.modality_counts || {};
-            
+
             if (Object.keys(modalityCounts).length > 0) {
                 const data = [{
                     values: Object.values(modalityCounts),
@@ -1973,7 +1977,7 @@ class InteractiveReportGenerator:
                     textposition: 'outside',
                     hovertemplate: '%{label}: %{value} datasets<br>%{percent}<extra></extra>'
                 }];
-                
+
                 const layout = {
                     title: {
                         text: 'NEMAR Electrophysiology Modalities',
@@ -1990,21 +1994,21 @@ class InteractiveReportGenerator:
                     plot_bgcolor: 'rgba(0,0,0,0)',
                     paper_bgcolor: 'rgba(0,0,0,0)'
                 };
-                
+
                 Plotly.newPlot('modalityChart', data, layout, {responsive: true});
             } else {
                 // Show placeholder if no data
                 document.getElementById('modalityChart').innerHTML = '<p class="text-center text-muted">Modality data not available</p>';
             }
         }
-        
+
         function createBridgeChart() {
-            // Bridge papers analysis chart  
+            // Bridge papers analysis chart
             const networkData = analysisData.network_analysis || {};
             const bridgePapers = (networkData.bridge_papers || []).length;
             const multiDatasetCitations = (networkData.multi_dataset_citations || []).length;
             const singleDataset = Math.max(0, 1004 - bridgePapers - multiDatasetCitations); // Total citations minus multi-dataset
-            
+
             const data = [{
                 values: [singleDataset, multiDatasetCitations, bridgePapers],
                 labels: ['Single Dataset', 'Multi-Dataset', 'Bridge Papers (High Conf)'],
@@ -2015,15 +2019,15 @@ class InteractiveReportGenerator:
                 textinfo: 'label+percent',
                 hovertemplate: '%{label}: %{value} papers<br>%{percent}<extra></extra>'
             }];
-            
+
             const layout = {
                 title: 'Research Bridge Distribution',
                 font: {family: 'Segoe UI'}
             };
-            
+
             Plotly.newPlot('bridgeChart', data, layout, {responsive: true});
         }
-        
+
         function createPopularityChart() {
             // Placeholder for dataset popularity
             const data = [{
@@ -2032,7 +2036,7 @@ class InteractiveReportGenerator:
                 type: 'bar',
                 marker: {color: colorScheme.accent}
             }];
-            
+
             const layout = {
                 title: 'Top Cited Datasets',
                 xaxis: {title: 'Dataset ID'},
@@ -2041,10 +2045,10 @@ class InteractiveReportGenerator:
                 plot_bgcolor: 'rgba(0,0,0,0)',
                 paper_bgcolor: 'rgba(0,0,0,0)'
             };
-            
+
             Plotly.newPlot('popularityChart', data, layout, {responsive: true});
         }
-        
+
         function createThemesChart() {
             // Placeholder for themes
             const data = [{
@@ -2053,17 +2057,17 @@ class InteractiveReportGenerator:
                 type: 'bar',
                 marker: {color: colorScheme.secondary}
             }];
-            
+
             const layout = {
                 title: 'Research Theme Frequency',
                 font: {family: 'Segoe UI'},
                 plot_bgcolor: 'rgba(0,0,0,0)',
                 paper_bgcolor: 'rgba(0,0,0,0)'
             };
-            
+
             Plotly.newPlot('themesChart', data, layout, {responsive: true});
         }
-        
+
         function createUMAPChart() {
             // Placeholder for UMAP
             const data = [{
@@ -2077,7 +2081,7 @@ class InteractiveReportGenerator:
                     colorscale: 'Viridis'
                 }
             }];
-            
+
             const layout = {
                 title: 'UMAP Embedding Visualization',
                 xaxis: {title: 'UMAP 1'},
@@ -2086,12 +2090,12 @@ class InteractiveReportGenerator:
                 plot_bgcolor: 'rgba(0,0,0,0)',
                 paper_bgcolor: 'rgba(0,0,0,0)'
             };
-            
+
             Plotly.newPlot('umapChart', data, layout, {responsive: true});
         }
-        
 
-        
+
+
         // Helper function to calculate string similarity
         function stringSimilarity(str1, str2) {
             const longer = str1.length > str2.length ? str1 : str2;
@@ -2099,7 +2103,7 @@ class InteractiveReportGenerator:
             const editDistance = levenshteinDistance(longer, shorter);
             return (longer.length - editDistance) / longer.length;
         }
-        
+
         function levenshteinDistance(str1, str2) {
             const matrix = [];
             for (let i = 0; i <= str2.length; i++) {
@@ -2123,19 +2127,19 @@ class InteractiveReportGenerator:
             }
             return matrix[str2.length][str1.length];
         }
-        
+
         function deduplicateBridgePapers(papers) {
             const deduplicated = [];
             const threshold = 0.85; // 85% similarity threshold
-            
+
             for (const paper of papers) {
                 let isDuplicate = false;
                 const currentTitle = (paper.bridge_paper_title || '').toLowerCase().trim();
-                
+
                 for (const existing of deduplicated) {
                     const existingTitle = (existing.bridge_paper_title || '').toLowerCase().trim();
                     const similarity = stringSimilarity(currentTitle, existingTitle);
-                    
+
                     if (similarity >= threshold) {
                         // Merge data from duplicate (prefer higher confidence or more datasets)
                         if ((paper.confidence_score || 0) > (existing.confidence_score || 0) ||
@@ -2148,24 +2152,24 @@ class InteractiveReportGenerator:
                         break;
                     }
                 }
-                
+
                 if (!isDuplicate) {
                     deduplicated.push(paper);
                 }
             }
-            
+
             return deduplicated;
         }
-        
+
         // Detail modal functions
         function showDetailModal(type) {
             const modal = new bootstrap.Modal(document.getElementById('detailModal'));
             const modalTitle = document.getElementById('detailModalLabel');
             const modalBody = document.getElementById('detailModalBody');
-            
+
             let title = '';
             let content = '';
-            
+
             switch(type) {
                 case 'datasets':
                     title = 'Dataset Analysis Details';
@@ -2184,16 +2188,16 @@ class InteractiveReportGenerator:
                     content = generateThresholdDetails();
                     break;
             }
-            
+
             modalTitle.textContent = title;
             modalBody.innerHTML = content;
             modal.show();
         }
-        
+
         function generateDatasetDetails() {
             const networkData = analysisData.network_analysis || {};
             const popularityData = networkData.dataset_popularity || [];
-            
+
             let content = `
                 <div class="row">
                     <div class="col-md-6">
@@ -2216,20 +2220,20 @@ class InteractiveReportGenerator:
                     <div class="col-md-6">
                         <h6><i class="fas fa-star me-2"></i>Top Cited Datasets</h6>
                         <div class="list-group" style="max-height: 400px; overflow-y: auto;">`;
-                        
+
             if (popularityData.length > 0) {
                 // Filter datasets with high-confidence citations and get top 20 for scrollable list
                 const highConfDatasets = popularityData
                     .filter(dataset => (dataset.high_confidence_citations || 0) > 0)
                     .sort((a, b) => (b.high_confidence_citations || 0) - (a.high_confidence_citations || 0))
                     .slice(0, 20);
-                
+
                 if (highConfDatasets.length > 0) {
                     highConfDatasets.forEach((dataset, index) => {
                         const totalCitations = dataset.total_citations || 0;
                         const highConfCitations = dataset.high_confidence_citations || 0;
                         const lowConfCitations = totalCitations - highConfCitations;
-                        
+
                         const datasetUrl = `https://openneuro.org/datasets/${dataset.dataset_id}`;
                         content += `
                             <div class="list-group-item">
@@ -2253,7 +2257,7 @@ class InteractiveReportGenerator:
             } else {
                 content += '<div class="list-group-item">No popularity data available</div>';
             }
-            
+
             content += `
                         </div>
                     </div>
@@ -2261,18 +2265,18 @@ class InteractiveReportGenerator:
                 <div class="mt-3">
                     <p class="text-muted">
                         <i class="fas fa-info-circle me-1"></i>
-                        Datasets are analyzed from the BIDS (Brain Imaging Data Structure) repository, 
+                        Datasets are analyzed from the BIDS (Brain Imaging Data Structure) repository,
                         with citation data collected from Google Scholar and filtered by confidence scores.
                     </p>
                 </div>`;
-                
+
             return content;
         }
-        
+
         function generateCitationDetails() {
             const networkData = analysisData.network_analysis || {};
             const impactData = networkData.citation_impact_rankings || [];
-            
+
             let content = `
                 <div class="row">
                     <div class="col-md-6">
@@ -2294,8 +2298,8 @@ class InteractiveReportGenerator:
                         <div class="mt-3">
                             <h6><i class="fas fa-cogs me-2"></i>Confidence Scoring</h6>
                             <p class="small text-muted">
-                                Citations are scored using sentence-transformer embeddings comparing 
-                                dataset descriptions with citation abstracts. Only citations with 
+                                Citations are scored using sentence-transformer embeddings comparing
+                                dataset descriptions with citation abstracts. Only citations with
                                 confidence ≥0.4 are included in analysis.
                             </p>
                         </div>
@@ -2303,11 +2307,11 @@ class InteractiveReportGenerator:
                     <div class="col-md-6">
                         <h6><i class="fas fa-trophy me-2"></i>Highest Impact Citations</h6>
                         <div class="list-group" style="max-height: 400px; overflow-y: auto;">`;
-                        
+
             if (impactData.length > 0) {
                 impactData.slice(0, 20).forEach((citation, index) => {
                     // Use actual paper URL if available, otherwise fall back to Google Scholar search
-                    const paperUrl = citation.citation_url || citation.url || 
+                    const paperUrl = citation.citation_url || citation.url ||
                         `https://scholar.google.com/scholar?q=${encodeURIComponent(citation.citation_title || 'No title')}`;
                     content += `
                         <div class="list-group-item">
@@ -2326,32 +2330,32 @@ class InteractiveReportGenerator:
             } else {
                 content += '<div class="list-group-item">No impact data available</div>';
             }
-            
+
             content += `
                         </div>
                     </div>
                 </div>`;
-                
+
             return content;
         }
-        
+
         function generateBridgeDetails() {
             const networkData = analysisData.network_analysis || {};
             const rawBridgeData = networkData.bridge_papers || [];
             const crossDomainData = networkData.multi_dataset_citations || [];
-            
+
             // Deduplicate bridge papers based on title similarity
             const bridgeData = deduplicateBridgePapers(rawBridgeData);
-            
+
             let content = `
                 <div class="mb-3">
                     <h6><i class="fas fa-info-circle me-2"></i>What are Bridge Papers?</h6>
                     <p class="text-muted">
-                        Bridge papers are publications that cite multiple BIDS datasets, connecting different 
+                        Bridge papers are publications that cite multiple BIDS datasets, connecting different
                         research areas and facilitating cross-domain knowledge transfer in neuroscience.
                     </p>
                 </div>
-                
+
                 <div class="row mb-4">
                     <div class="col-md-6">
                         <div class="card border-primary">
@@ -2372,25 +2376,25 @@ class InteractiveReportGenerator:
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="mb-4">
                     <h6><i class="fas fa-share-alt me-2"></i>What are Cross-Domain Papers?</h6>
                     <p class="text-muted small">
-                        Cross-domain papers cite multiple BIDS datasets from different research domains, 
-                        indicating interdisciplinary research that spans multiple neuroscience areas 
+                        Cross-domain papers cite multiple BIDS datasets from different research domains,
+                        indicating interdisciplinary research that spans multiple neuroscience areas
                         (e.g., combining EEG motor tasks with cognitive experiments).
                     </p>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-6">
                         <h6><i class="fas fa-bridge me-2"></i>Top Bridge Papers</h6>
                         <div class="list-group" style="max-height: 350px; overflow-y: auto;">`;
-                        
+
             if (bridgeData.length > 0) {
                 bridgeData.slice(0, 10).forEach((paper, index) => {
                     // Use actual paper URL if available, otherwise fall back to Google Scholar search
-                    const paperUrl = paper.bridge_paper_url || paper.url || 
+                    const paperUrl = paper.bridge_paper_url || paper.url ||
                         `https://scholar.google.com/scholar?q=${encodeURIComponent(paper.bridge_paper_title || 'No title')}`;
                     content += `
                         <div class="list-group-item">
@@ -2409,18 +2413,18 @@ class InteractiveReportGenerator:
             } else {
                 content += '<div class="list-group-item">No bridge papers data available</div>';
             }
-            
+
             content += `
                         </div>
                     </div>
                     <div class="col-md-6">
                         <h6><i class="fas fa-share-alt me-2"></i>Top Cross-Domain Papers</h6>
                         <div class="list-group" style="max-height: 350px; overflow-y: auto;">`;
-                        
+
             if (crossDomainData.length > 0) {
                 crossDomainData.slice(0, 10).forEach((paper, index) => {
                     // Use actual paper URL if available, otherwise fall back to Google Scholar search
-                    const paperUrl = paper.citation_url || paper.url || 
+                    const paperUrl = paper.citation_url || paper.url ||
                         `https://scholar.google.com/scholar?q=${encodeURIComponent(paper.citation_title || 'No title')}`;
                     content += `
                         <div class="list-group-item">
@@ -2439,12 +2443,12 @@ class InteractiveReportGenerator:
             } else {
                 content += '<div class="list-group-item">No cross-domain papers data available</div>';
             }
-            
+
             content += `
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="mt-4">
                     <h6><i class="fas fa-lightbulb me-2"></i>Research Analysis Benefits</h6>
                     <div class="row">
@@ -2464,10 +2468,10 @@ class InteractiveReportGenerator:
                         </div>
                     </div>
                 </div>`;
-                
+
             return content;
         }
-        
+
         function generateThresholdDetails() {
             return `
                 <div class="row">
@@ -2505,7 +2509,7 @@ class InteractiveReportGenerator:
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="mt-4">
                     <h6><i class="fas fa-chart-pie me-2"></i>Quality Distribution</h6>
                     <div class="row">
@@ -2529,11 +2533,11 @@ class InteractiveReportGenerator:
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="mt-3">
                     <p class="text-muted">
                         <i class="fas fa-info-circle me-1"></i>
-                        The 0.4 threshold was chosen based on empirical validation against manually reviewed 
+                        The 0.4 threshold was chosen based on empirical validation against manually reviewed
                         citation-dataset pairs, balancing precision and recall for research applications.
                     </p>
                 </div>`;
@@ -2583,10 +2587,10 @@ def export_to_gexf(network_data, output_file):
         </edges>
     </graph>
 </gexf>"""
-    
+
     nodes_xml = ""
     edges_xml = ""
-    
+
     # Generate nodes XML
     for node in network_data.get("nodes", []):
         nodes_xml += """
@@ -2602,19 +2606,19 @@ def export_to_gexf(network_data, output_file):
             node.get('confidence', 0.0),
             node.get('cited_by', 0)
         )
-    
+
     # Generate edges XML
     for edge in network_data.get("edges", []):
         edges_xml += """
         <edge id="%s" source="%s" target="%s"/>""" % (
             edge['id'], edge['source'], edge['target']
         )
-    
+
     gexf_content = gexf_template.format(nodes=nodes_xml, edges=edges_xml)
-    
+
     with open(output_file, 'w') as f:
         f.write(gexf_content)
-    
+
     return output_file
 '''
 
@@ -2632,14 +2636,14 @@ def export_to_cytoscape_cx(network_data, output_file):
             {"name": "edgeAttributes", "elementCount": 0}
         ]},
         {"nodes": [{"@id": i, "n": node["label"]} for i, node in enumerate(network_data.get("nodes", []))]},
-        {"edges": [{"@id": i, "s": edge["source"], "t": edge["target"]} 
+        {"edges": [{"@id": i, "s": edge["source"], "t": edge["target"]}
                   for i, edge in enumerate(network_data.get("edges", []))]},
         {"status": [{"error": "", "success": True}]}
     ]
-    
+
     with open(output_file, 'w') as f:
         json.dump(cx_data, f, indent=2)
-    
+
     return output_file
 '''
 
@@ -2653,21 +2657,21 @@ def export_to_graphml(network_data, output_file):
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
          http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
-    
+
     <key id="type" for="node" attr.name="type" attr.type="string"/>
     <key id="confidence" for="node" attr.name="confidence" attr.type="double"/>
     <key id="cited_by" for="node" attr.name="cited_by" attr.type="int"/>
     <key id="weight" for="edge" attr.name="weight" attr.type="double"/>
-    
+
     <graph id="dataset_citations" edgedefault="undirected">
         {nodes}
         {edges}
     </graph>
 </graphml>"""
-    
+
     nodes_xml = ""
     edges_xml = ""
-    
+
     # Generate nodes
     for node in network_data.get("nodes", []):
         nodes_xml += """
@@ -2681,7 +2685,7 @@ def export_to_graphml(network_data, output_file):
             node.get('confidence', 0.0),
             node.get('cited_by', 0)
         )
-    
+
     # Generate edges
     for edge in network_data.get("edges", []):
         edges_xml += """
@@ -2691,12 +2695,12 @@ def export_to_graphml(network_data, output_file):
             edge['source'], edge['target'],
             edge.get('weight', 0.05)
         )
-    
+
     graphml_content = graphml_template.format(nodes=nodes_xml, edges=edges_xml)
-    
+
     with open(output_file, 'w') as f:
         f.write(graphml_content)
-    
+
     return output_file
 '''
 
@@ -2961,12 +2965,12 @@ def export_to_graphml(network_data, output_file):
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
          http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
-    
+
     <key id="type" for="node" attr.name="type" attr.type="string"/>
     <key id="confidence" for="node" attr.name="confidence" attr.type="double"/>
     <key id="cited_by" for="node" attr.name="cited_by" attr.type="int"/>
     <key id="weight" for="edge" attr.name="weight" attr.type="double"/>
-    
+
     <graph id="dataset_citations" edgedefault="undirected">"""
 
         for node in network_data.get("nodes", []):
