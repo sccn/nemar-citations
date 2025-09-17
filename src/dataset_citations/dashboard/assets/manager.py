@@ -3,9 +3,9 @@ Asset management for dashboard files and resources.
 """
 
 import json
-import shutil
 from pathlib import Path
-from typing import Dict, Any, List
+import shutil
+from typing import Any, Dict, List
 
 
 class AssetManager:

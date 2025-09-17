@@ -13,12 +13,13 @@ GitHub: https://github.com/neuromechanist
 Email: shirazi@ieee.org
 """
 
-import pandas as pd
-import json
-import os
 from datetime import datetime, timezone
-from typing import Dict, Any, Optional
+import json
 import logging
+import os
+from typing import Any, Dict, Optional
+
+import pandas as pd
 
 logger = logging.getLogger(__name__)
 
@@ -223,7 +224,7 @@ def save_citation_json(
         logger.error(
             f"Failed to save citation JSON for {dataset_id} to {filepath}. Error: {e}"
         )
-        raise IOError(f"Could not save JSON file: {e}")
+        raise OSError(f"Could not save JSON file: {e}")
 
 
 def load_citation_json(filepath: str) -> Dict[str, Any]:
@@ -241,7 +242,7 @@ def load_citation_json(filepath: str) -> Dict[str, Any]:
         json.JSONDecodeError: If file is not valid JSON
     """
     try:
-        with open(filepath, "r", encoding="utf-8") as f:
+        with open(filepath, encoding="utf-8") as f:
             return json.load(f)  # type: ignore
     except FileNotFoundError:
         logger.error(f"Citation JSON file not found: {filepath}")
@@ -326,7 +327,7 @@ def load_citations_from_json(file_path: str) -> Dict[str, Any]:
         json.JSONDecodeError: If the file contains invalid JSON
     """
     try:
-        with open(file_path, "r", encoding="utf-8") as f:
+        with open(file_path, encoding="utf-8") as f:
             data = json.load(f)
 
         logger.debug(f"Loaded citations from {file_path}")

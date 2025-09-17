@@ -3,8 +3,8 @@
 import argparse
 import logging
 import os
-import sys
 from pathlib import Path
+import sys
 
 import pandas as pd
 
@@ -106,7 +106,7 @@ def save_analysis_results(
 
         for json_file in json_files:
             try:
-                with open(json_file, "r", encoding="utf-8") as f:
+                with open(json_file, encoding="utf-8") as f:
                     data = json.load(f)
 
                 citation_details = data.get("citation_details", [])

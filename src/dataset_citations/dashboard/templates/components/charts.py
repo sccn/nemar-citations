@@ -1,7 +1,7 @@
 """Chart visualization components."""
 
 import json
-from typing import Dict, Any
+from typing import Any, Dict
 
 
 def generate_chart_containers() -> str:

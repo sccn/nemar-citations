@@ -5,13 +5,14 @@ This module provides visualization functions for citation analysis results,
 creating publication-ready charts and network diagrams.
 """
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import networkx as nx
+import logging
 from pathlib import Path
 from typing import Tuple
-import logging
+
+import matplotlib.pyplot as plt
+import networkx as nx
+import pandas as pd
+import seaborn as sns
 
 # Set up matplotlib for better-looking plots
 plt.style.use("default")

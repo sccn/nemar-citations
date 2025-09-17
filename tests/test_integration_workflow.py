@@ -3,13 +3,13 @@ Integration tests for the complete dataset citations workflow.
 These tests use controlled real data to validate the entire pipeline.
 """
 
-import json
 import csv
-import tempfile
-import shutil
-from pathlib import Path
-from unittest import TestCase, skipUnless
+import json
 import os
+from pathlib import Path
+import shutil
+import tempfile
+from unittest import TestCase, skipUnless
 
 from dataset_citations.dashboard.data.aggregator import DataAggregator
 
@@ -162,7 +162,7 @@ class TestIntegrationWorkflow(TestCase):
         confidence_threshold = 0.4
 
         for json_file in self.citations_dir.glob("*.json"):
-            with open(json_file, "r") as f:
+            with open(json_file) as f:
                 data = json.load(f)
                 citations = data.get("citations", [])
                 total_citations += len(citations)
@@ -178,7 +178,7 @@ class TestIntegrationWorkflow(TestCase):
     def test_dataset_discovery(self):
         """Test that all datasets are discovered correctly."""
         dataset_list_path = self.test_dir / "discovered_datasets.txt"
-        with open(dataset_list_path, "r") as f:
+        with open(dataset_list_path) as f:
             datasets = [line.strip() for line in f if line.strip()]
 
         self.assertEqual(len(datasets), 4)
@@ -193,7 +193,7 @@ class TestIntegrationWorkflow(TestCase):
         citation_counts = {}
 
         for json_file in self.citations_dir.glob("*.json"):
-            with open(json_file, "r") as f:
+            with open(json_file) as f:
                 data = json.load(f)
                 dataset_id = data["dataset_id"]
                 citations = data.get("citations", [])
@@ -208,7 +208,7 @@ class TestIntegrationWorkflow(TestCase):
                 writer.writerow([dataset_id, count, "success"])
 
         # Verify CSV
-        with open(csv_path, "r") as f:
+        with open(csv_path) as f:
             reader = csv.DictReader(f)
             rows = list(reader)
 
@@ -268,7 +268,7 @@ class TestIntegrationWorkflow(TestCase):
         """Test handling of incremental citation updates."""
         # Simulate adding a new citation to ds_small
         json_path = self.citations_dir / "ds_small.json"
-        with open(json_path, "r") as f:
+        with open(json_path) as f:
             data = json.load(f)
 
         # Add new citation
@@ -286,7 +286,7 @@ class TestIntegrationWorkflow(TestCase):
             json.dump(data, f, indent=2)
 
         # Verify update
-        with open(json_path, "r") as f:
+        with open(json_path) as f:
             updated_data = json.load(f)
 
         self.assertEqual(len(updated_data["citations"]), 4)  # Was 3, now 4
@@ -366,7 +366,7 @@ class TestEdgeCases(TestCase):
                 json.dump(unicode_data, f, ensure_ascii=False, indent=2)
 
             # Should handle Unicode properly
-            with open(json_path, "r", encoding="utf-8") as f:
+            with open(json_path, encoding="utf-8") as f:
                 loaded_data = json.load(f)
 
             self.assertEqual(

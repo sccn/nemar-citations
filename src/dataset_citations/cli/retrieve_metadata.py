@@ -13,9 +13,9 @@ GitHub: https://github.com/neuromechanist
 Email: shirazi@ieee.org
 """
 
-import os
 import argparse
 import logging
+import os
 from typing import List
 
 from ..quality.dataset_metadata import DatasetMetadataRetriever, save_dataset_metadata

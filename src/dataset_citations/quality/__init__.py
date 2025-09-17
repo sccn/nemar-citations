@@ -11,9 +11,9 @@ This module contains Phase 3 features including:
 # Import only dataset_metadata to avoid sentence-transformers import issues during CLI help
 from .dataset_metadata import (
     DatasetMetadataRetriever,
-    save_dataset_metadata,
-    load_dataset_metadata,
     extract_dataset_text,
+    load_dataset_metadata,
+    save_dataset_metadata,
 )
 
 
@@ -41,10 +41,10 @@ def batch_score_citations(*args, **kwargs):
 
 __all__ = [
     "DatasetMetadataRetriever",
-    "save_dataset_metadata",
-    "load_dataset_metadata",
+    "batch_score_citations",
     "extract_dataset_text",
     "get_confidence_scorer",
+    "load_dataset_metadata",
+    "save_dataset_metadata",
     "score_dataset_citations",
-    "batch_score_citations",
 ]

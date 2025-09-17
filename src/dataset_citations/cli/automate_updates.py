@@ -3,19 +3,19 @@ CLI command for automated embedding updates when new citations are added.
 """
 
 import argparse
-import logging
-from pathlib import Path
-from typing import Dict, List, Optional
-import json
-import time
 from datetime import datetime, timedelta
 import hashlib
+import json
+import logging
+from pathlib import Path
+import time
+from typing import Dict, List, Optional
 
 from ..core.citation_utils import load_citations_from_json
 from ..embeddings.storage_manager import EmbeddingStorageManager
 from .generate_embeddings import (
-    generate_dataset_embeddings,
     generate_citation_embeddings,
+    generate_dataset_embeddings,
 )
 
 
@@ -47,7 +47,7 @@ class EmbeddingUpdateAutomator:
     def load_update_state(self) -> Dict:
         """Load the current update state."""
         if self.state_file.exists():
-            with open(self.state_file, "r") as f:
+            with open(self.state_file) as f:
                 return json.load(f)
         else:
             return {

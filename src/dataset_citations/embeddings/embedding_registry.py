@@ -2,12 +2,12 @@
 Embedding registry system for tracking embedding versions and metadata.
 """
 
-import json
-import hashlib
 from datetime import datetime
+import hashlib
+import json
+import logging
 from pathlib import Path
 from typing import Dict, List, Optional, Union
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -45,7 +45,7 @@ class EmbeddingRegistry:
     def _load_registry(self):
         """Load registry from JSON file or initialize empty registry."""
         if self.registry_file.exists():
-            with open(self.registry_file, "r") as f:
+            with open(self.registry_file) as f:
                 self.registry = json.load(f)
         else:
             self.registry = {
@@ -223,7 +223,7 @@ class EmbeddingRegistry:
         """Update dataset content hashes."""
         # Load existing hashes
         if self.dataset_hashes_file.exists():
-            with open(self.dataset_hashes_file, "r") as f:
+            with open(self.dataset_hashes_file) as f:
                 hashes = json.load(f)
         else:
             hashes = {}
@@ -264,7 +264,7 @@ class EmbeddingRegistry:
         """Update citation content hashes."""
         # Load existing hashes
         if self.citation_hashes_file.exists():
-            with open(self.citation_hashes_file, "r") as f:
+            with open(self.citation_hashes_file) as f:
                 hashes = json.load(f)
         else:
             hashes = {}

@@ -2,8 +2,9 @@
 Network visualization component for dashboard.
 """
 
-from typing import Dict, Any, Optional
 from pathlib import Path
+from typing import Any, Dict, Optional
+
 from .network_data import NetworkDataExtractor
 
 

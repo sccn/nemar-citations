@@ -3,10 +3,10 @@ CLI command for UMAP analysis and research theme identification.
 """
 
 import argparse
+import json
 import logging
 from pathlib import Path
 import time
-import json
 
 from ..embeddings.umap_analyzer import UMAPAnalyzer
 

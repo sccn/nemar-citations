@@ -8,7 +8,6 @@ from typing import Dict, List, Optional
 from neo4j import Driver, ManagedTransaction
 from neo4j.exceptions import Neo4jError
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -289,7 +288,7 @@ def load_datasets_from_json(
         dataset_id = json_file.stem.replace("_citations", "")
 
         try:
-            with open(json_file, "r", encoding="utf-8") as f:
+            with open(json_file, encoding="utf-8") as f:
                 data = json.load(f)
 
             # Extract metadata if available
@@ -324,7 +323,7 @@ def load_datasets_from_json(
 
             if dataset_id in datasets:
                 try:
-                    with open(metadata_file, "r", encoding="utf-8") as f:
+                    with open(metadata_file, encoding="utf-8") as f:
                         metadata = json.load(f)
 
                     dataset_desc = metadata.get("dataset_description", {})
@@ -366,7 +365,7 @@ def load_citations_from_json(
         dataset_id = json_file.stem.replace("_citations", "")
 
         try:
-            with open(json_file, "r", encoding="utf-8") as f:
+            with open(json_file, encoding="utf-8") as f:
                 data = json.load(f)
 
             citation_details = data.get("citation_details", [])

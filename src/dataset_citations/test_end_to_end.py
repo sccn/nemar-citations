@@ -6,12 +6,12 @@ This script tests the complete workflow with a small subset of datasets
 to ensure the package structure works correctly before running on all datasets.
 """
 
-import os
-import sys
 import logging
-import tempfile
-import shutil
+import os
 from pathlib import Path
+import shutil
+import sys
+import tempfile
 from typing import List
 
 # Configure logging
@@ -137,6 +137,7 @@ def test_citation_json_structure() -> bool:
     """Test citation JSON structure creation."""
     try:
         import pandas as pd
+
         from dataset_citations.core import citation_utils
 
         # Create mock citation data
@@ -193,8 +194,7 @@ def test_citation_retrieval_with_secrets(
 
         logger.info("Found SCRAPERAPI_KEY in .secrets file")
 
-        from dataset_citations.core import getCitations as gc
-        from dataset_citations.core import citation_utils
+        from dataset_citations.core import citation_utils, getCitations as gc
 
         logger.info("Setting up proxy for citation retrieval...")
         gc.get_working_proxy()

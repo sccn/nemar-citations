@@ -13,11 +13,11 @@ GitHub: https://github.com/neuromechanist
 Email: shirazi@ieee.org
 """
 
-import os
 import argparse
-import logging
-from typing import List
 import json
+import logging
+import os
+from typing import List
 
 # Lazy import to avoid sentence-transformers issues during CLI help
 
@@ -177,7 +177,7 @@ Examples:
         # Skip if file already has confidence scores and skip-existing is enabled
         if args.skip_existing:
             try:
-                with open(citation_file, "r", encoding="utf-8") as f:
+                with open(citation_file, encoding="utf-8") as f:
                     existing_data = json.load(f)
 
                 if "confidence_scoring" in existing_data:

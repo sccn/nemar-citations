@@ -1,6 +1,6 @@
 """Hero section component."""
 
-from typing import List, Dict, Any
+from typing import Any, Dict, List
 
 
 def generate_hero_section(cards: List[Dict[str, Any]]) -> str:

@@ -6,14 +6,14 @@ and other network analysis tools with proper format specifications.
 """
 
 import argparse
-import logging
-import json
 import csv
-from pathlib import Path
-from typing import Dict, List, Any, Optional, Union
 from datetime import datetime
-import xml.etree.ElementTree as ET
+import json
+import logging
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Union
 from xml.dom import minidom
+import xml.etree.ElementTree as ET
 
 try:
     import pandas as pd

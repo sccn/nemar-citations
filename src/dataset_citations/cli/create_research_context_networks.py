@@ -6,19 +6,20 @@ through embedding similarity, identifying research bridges and thematic relation
 """
 
 import argparse
-import logging
-import json
-import numpy as np
-from pathlib import Path
-from typing import Dict, List, Tuple, Any, Optional
-from datetime import datetime
 from collections import defaultdict
+from datetime import datetime
 import hashlib
+import json
+import logging
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
+
+import numpy as np
 
 try:
-    import networkx as nx
-    import matplotlib.pyplot as plt
     import matplotlib.patches as mpatches
+    import matplotlib.pyplot as plt
+    import networkx as nx
 
     NETWORKX_AVAILABLE = True
 except ImportError:
@@ -31,8 +32,8 @@ try:
 except ImportError:
     PLOTLY_AVAILABLE = False
 
-from ..embeddings.storage_manager import EmbeddingStorageManager
 from ..core.citation_utils import load_citations_from_json
+from ..embeddings.storage_manager import EmbeddingStorageManager
 
 
 def setup_logging(verbose: bool):
@@ -278,7 +279,7 @@ class ResearchContextNetworkAnalyzer:
         dataset_files = list(self.datasets_dir.glob("ds*_datasets.json"))
         for dataset_file in dataset_files:
             try:
-                with open(dataset_file, "r") as f:
+                with open(dataset_file) as f:
                     data = json.load(f)
                 dataset_id = dataset_file.stem.replace("_datasets", "")
                 dataset_data_cache[dataset_id] = data

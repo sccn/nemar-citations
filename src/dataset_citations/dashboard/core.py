@@ -2,19 +2,19 @@
 Core dashboard generator orchestrating all components.
 """
 
+from datetime import datetime
 import logging
 from pathlib import Path
 from typing import Optional
-from datetime import datetime
 
-from .data.aggregator import DataAggregator
-from .components.statistics import StatisticsGenerator
-from .components.charts import ChartGenerator
-from .components.networks import NetworkGenerator
-from .components.themes import ThemeGenerator
-from .components.modals import ModalGenerator
-from .templates.builder import TemplateBuilder
 from .assets.manager import AssetManager
+from .components.charts import ChartGenerator
+from .components.modals import ModalGenerator
+from .components.networks import NetworkGenerator
+from .components.statistics import StatisticsGenerator
+from .components.themes import ThemeGenerator
+from .data.aggregator import DataAggregator
+from .templates.builder import TemplateBuilder
 
 
 class DashboardGenerator:

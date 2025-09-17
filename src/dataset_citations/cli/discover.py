@@ -4,12 +4,13 @@ that contain EEG, iEEG, or MEG data, based on BIDS directory structures.
 """
 
 import argparse
+from datetime import datetime  # For rate limit logging and processed_date
+import logging
 import os
 import time
-import logging
-import requests  # Using requests for simplicity, consider httpx for async later if needed
+
 import pandas as pd  # For lookup table
-from datetime import datetime  # For rate limit logging and processed_date
+import requests  # Using requests for simplicity, consider httpx for async later if needed
 
 # Configure logging
 logging.basicConfig(
@@ -476,7 +477,7 @@ def main():
             logging.info(
                 f"Successfully saved relevant dataset names to {args.output_file}"
             )
-        except IOError as e:
+        except OSError as e:
             logging.error(f"Error writing to output file {args.output_file}: {e}")
     else:
         logging.info(

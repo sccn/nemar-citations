@@ -5,12 +5,13 @@ This module creates interactive network graphs showing actual citation relations
 similar to what citation-graph produces, using Neo4j data and NetworkX/Plotly.
 """
 
-import pandas as pd
-import networkx as nx
-import plotly.graph_objects as go
-from pathlib import Path
 import logging
+from pathlib import Path
+
 from neo4j import GraphDatabase
+import networkx as nx
+import pandas as pd
+import plotly.graph_objects as go
 
 logger = logging.getLogger(__name__)
 

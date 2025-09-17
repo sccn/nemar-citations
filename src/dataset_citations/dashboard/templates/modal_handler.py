@@ -2,8 +2,8 @@
 Modal HTML and JavaScript generation for NEMAR dashboard.
 """
 
-from typing import Dict, Any
 import json
+from typing import Any, Dict
 
 
 class ModalHandler:
@@ -216,7 +216,7 @@ class ModalHandler:
     @staticmethod
     def _generate_bridges_case() -> str:
         """Generate JavaScript case for bridge papers modal."""
-        return """
+        return r"""
                     modalTitle.textContent = data.title || 'Research Bridge Papers';
                     const papers = data.content?.top_papers || [];
                     let paperList = '';

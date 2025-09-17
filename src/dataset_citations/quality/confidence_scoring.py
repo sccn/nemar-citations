@@ -13,12 +13,13 @@ GitHub: https://github.com/neuromechanist
 Email: shirazi@ieee.org
 """
 
-import numpy as np
-import pandas as pd
 import json
 import logging
-from typing import Dict, List, Any, Optional
 import os
+from typing import Any, Dict, List, Optional
+
+import numpy as np
+import pandas as pd
 
 from .dataset_metadata import extract_dataset_text, load_dataset_metadata
 
@@ -364,7 +365,7 @@ def score_dataset_citations(
         Path to output file
     """
     # Load data
-    with open(citations_file, "r", encoding="utf-8") as f:
+    with open(citations_file, encoding="utf-8") as f:
         citations_data = json.load(f)
 
     dataset_metadata = load_dataset_metadata(dataset_metadata_file)

@@ -2,11 +2,11 @@
 Tests for the dashboard data aggregator module.
 """
 
-import json
 import csv
+import json
 from pathlib import Path
-import tempfile
 import shutil
+import tempfile
 from unittest import TestCase
 
 from dataset_citations.dashboard.data.aggregator import DataAggregator

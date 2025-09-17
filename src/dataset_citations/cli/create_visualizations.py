@@ -4,14 +4,15 @@ CLI for creating visualizations from network analysis results.
 
 import argparse
 import logging
-import pandas as pd
 from pathlib import Path
 
+import pandas as pd
+
 from ..graph.visualizations import (
-    create_temporal_growth_chart,
-    create_citation_impact_dashboard,
     create_author_network_diagram,
+    create_citation_impact_dashboard,
     create_dataset_popularity_ranking,
+    create_temporal_growth_chart,
 )
 
 logger = logging.getLogger(__name__)

@@ -2,11 +2,11 @@
 Extract and prepare network data including UMAP coordinates for visualization.
 """
 
-import pickle
 import json
-from pathlib import Path
-from typing import Dict, List, Any, Optional
 import logging
+from pathlib import Path
+import pickle
+from typing import Any, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -236,7 +236,7 @@ class NetworkDataExtractor:
             return 0
 
         try:
-            with open(json_file, "r") as f:
+            with open(json_file) as f:
                 data = json.load(f)
                 # Count only high-confidence citations (>= 0.4)
                 citations = data.get("citation_details", [])
@@ -263,7 +263,7 @@ class NetworkDataExtractor:
         try:
             # First, collect only HIGH CONFIDENCE citations (>= 0.4)
             for json_file in citations_dir.glob("*.json"):
-                with open(json_file, "r") as f:
+                with open(json_file) as f:
                     data = json.load(f)
                     for citation in data.get("citation_details", []):
                         # Only include citations with confidence >= 0.4

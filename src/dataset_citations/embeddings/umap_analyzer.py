@@ -2,14 +2,15 @@
 UMAP analysis for thematic clustering and dimensionality reduction of embeddings.
 """
 
+from datetime import datetime
+import json
+import logging
+from pathlib import Path
+import pickle
+from typing import Any, Dict, Optional, Union
+
 import numpy as np
 import pandas as pd
-from pathlib import Path
-from typing import Dict, Optional, Union, Any
-from datetime import datetime
-import logging
-import pickle
-import json
 
 try:
     import umap

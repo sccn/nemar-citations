@@ -19,13 +19,14 @@ Usage:
 - Full API test: `RUN_SLOW_INTEGRATION_TESTS=1 pytest tests/test_getCitations.py::TestGetCitations::test_integration_full_api_workflow -v`
 """
 
-import unittest
+import logging
 import os
 import sys
-import pandas as pd
-import logging
+import unittest
 from unittest.mock import patch
+
 from dotenv import load_dotenv
+import pandas as pd
 
 # Add src to path for imports
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))

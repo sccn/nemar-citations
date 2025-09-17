@@ -2,15 +2,15 @@
 Simplified NEMAR dashboard template using modular components.
 """
 
-from typing import Dict, Any, Optional
 import json
+from typing import Any, Dict, Optional
 
-from .components.header import generate_header
-from .components.styles import get_nemar_styles
-from .components.hero import generate_hero_section
-from .modal_handler import ModalHandler
 from .components.charts import generate_chart_containers, generate_chart_javascript
+from .components.header import generate_header
+from .components.hero import generate_hero_section
 from .components.network_viz import NetworkVisualization
+from .components.styles import get_nemar_styles
+from .modal_handler import ModalHandler
 
 
 def generate_nemar_dashboard(

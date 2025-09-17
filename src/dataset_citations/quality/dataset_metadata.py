@@ -13,11 +13,12 @@ GitHub: https://github.com/neuromechanist
 Email: shirazi@ieee.org
 """
 
-import json
-import os
-from typing import Dict, List, Any, Optional
 from datetime import datetime, timezone
+import json
 import logging
+import os
+from typing import Any, Dict, List, Optional
+
 from github import Github
 from github.GithubException import GithubException
 
@@ -95,7 +96,7 @@ class DatasetMetadataRetriever:
 
         except GithubException as e:
             logger.warning(f"Repository {dataset_id} not found or not accessible: {e}")
-            metadata["retrieval_status"]["repository"] = f"error: {str(e)}"
+            metadata["retrieval_status"]["repository"] = f"error: {e!s}"
             return metadata
 
         # Retrieve dataset_description.json
@@ -212,7 +213,7 @@ def load_dataset_metadata(filepath: str) -> Dict[str, Any]:
     Returns:
         Dataset metadata dict
     """
-    with open(filepath, "r", encoding="utf-8") as f:
+    with open(filepath, encoding="utf-8") as f:
         metadata = json.load(f)
 
     return metadata

@@ -1,8 +1,8 @@
 """Temporal analysis functions for dataset citations."""
 
+from collections import defaultdict
 import json
 import logging
-from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -32,7 +32,7 @@ def extract_years_from_citations(citation_file: Path) -> List[int]:
         raise FileNotFoundError(f"Citation file not found: {citation_file}")
 
     try:
-        with open(citation_file, "r", encoding="utf-8") as f:
+        with open(citation_file, encoding="utf-8") as f:
             data = json.load(f)
     except json.JSONDecodeError as e:
         raise ValueError(f"Invalid JSON in {citation_file}: {e}")
@@ -85,7 +85,7 @@ def analyze_citation_timeline(
         dataset_id = json_file.stem.replace("_citations", "")
 
         try:
-            with open(json_file, "r", encoding="utf-8") as f:
+            with open(json_file, encoding="utf-8") as f:
                 data = json.load(f)
 
             citation_details = data.get("citation_details", [])
@@ -214,7 +214,7 @@ def create_citation_year_relationships(
         dataset_id = json_file.stem.replace("_citations", "")
 
         try:
-            with open(json_file, "r", encoding="utf-8") as f:
+            with open(json_file, encoding="utf-8") as f:
                 data = json.load(f)
 
             citation_details = data.get("citation_details", [])
