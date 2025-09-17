@@ -434,8 +434,7 @@ def main():
                     logging.info(
                         f"Dataset {repo_name} found in lookup table with modalities: {cached_modalities}. Using cached data."
                     )
-                    # Still update the processed_date to track when it was last confirmed
-                    lookup_df.loc[repo_name, "processed_date"] = current_time_iso
+                    # Don't update the processed_date since we didn't actually check the repository
 
             if not needs_update:
                 continue  # Skip API calls, use cached modalities
