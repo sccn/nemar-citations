@@ -59,6 +59,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          # Install CPU-only PyTorch first to avoid CUDA dependencies
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
           pip install -e ".[dev,test]"
 
       - name: Run fast tests with coverage
@@ -96,6 +98,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          # Install CPU-only PyTorch first to avoid CUDA dependencies
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
           pip install -e ".[dev,test]"
 
       - name: Create test data directory
@@ -161,6 +165,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          # Install CPU-only PyTorch first to avoid CUDA dependencies
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
           pip install -e ".[dev,test]"
 
       - name: Run end-to-end workflow test
