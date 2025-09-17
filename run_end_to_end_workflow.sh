@@ -281,17 +281,30 @@ EOF
 run_full_workflow() {
     print_status "Running full end-to-end workflow..."
 
-    # Step 0: Create branch FIRST to protect main
+    # Step 0: Create branch to protect current work
     print_status "Creating feature branch..."
     BRANCH_NAME="auto-update/$(date +'%Y-%m-%d_%H-%M')"
 
-    # Ensure we start from clean main
-    print_status "Ensuring clean working directory..."
-    git stash push -m "Stashing changes before workflow" 2>/dev/null || true
-    git checkout main
-    git pull origin main --ff-only 2>/dev/null || true
+    # Get current branch name (save for later)
+    ORIGINAL_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-    # Create and checkout new branch
+    # Check if we're on main/master or a feature branch
+    if [ "$ORIGINAL_BRANCH" = "main" ] || [ "$ORIGINAL_BRANCH" = "master" ]; then
+        print_status "Currently on main branch. Creating new branch from main..."
+        # Ensure we have latest main
+        git pull origin main --ff-only 2>/dev/null || true
+    else
+        print_info "Currently on branch: $ORIGINAL_BRANCH"
+        print_info "Creating new branch from current branch to preserve fixes..."
+    fi
+
+    # Ensure working directory is clean
+    if [ -n "$(git status --porcelain)" ]; then
+        print_status "Stashing uncommitted changes..."
+        git stash push -m "Stashing changes before workflow"
+    fi
+
+    # Create and checkout new branch from current position
     print_status "Creating new branch: $BRANCH_NAME"
     git checkout -b "$BRANCH_NAME"
 
@@ -379,8 +392,8 @@ run_full_workflow() {
     git add -A
     if git diff --cached --quiet; then
         print_warning "No changes detected. Nothing to commit."
-        print_info "Switching back to main branch..."
-        git checkout main
+        print_info "Switching back to original branch: $ORIGINAL_BRANCH"
+        git checkout "$ORIGINAL_BRANCH"
         return 0
     fi
 
@@ -443,6 +456,10 @@ $(git diff origin/main..HEAD --name-only | head -20)
     print_status "Full workflow completed ✓"
     print_info "Branch: $BRANCH_NAME"
     print_info "Log file: $LOG_FILE"
+
+    # Switch back to original branch
+    print_info "Switching back to original branch: $ORIGINAL_BRANCH"
+    git checkout "$ORIGINAL_BRANCH"
 }
 
 # Function to show help
