@@ -134,13 +134,6 @@ jobs:
           dataset-citations-discover --output-file discovered_datasets.txt
           echo "dataset_list_file=discovered_datasets.txt" >> $GITHUB_OUTPUT
 
-      - name: Migrate existing pickle files to JSON
-        id: migrate_pickle
-        run: |
-          echo "Migrating existing pickle files to JSON format..."
-          dataset-citations-migrate --input-dir citations/pickle/ --output-dir citations/json/ --overwrite
-          echo "Migration completed"
-
       - name: Update citation information
         id: update_citations
         env:
