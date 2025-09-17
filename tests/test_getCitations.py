@@ -304,7 +304,7 @@ class TestGetCitations(unittest.TestCase):
         """Test error handling patterns in the module."""
         # Test that functions don't crash with various invalid inputs
 
-        # Empty string dataset
+        # Empty string dataset - returns 0 without API call
         result = gc.get_citation_numbers("")
         self.assertEqual(result, 0)
 
@@ -329,6 +329,10 @@ class TestGetCitationsEdgeCases(unittest.TestCase):
             with patch("builtins.print"):  # Suppress error output
                 gc.get_working_proxy("ScraperAPI")
 
+    @unittest.skipUnless(
+        os.getenv("RUN_SLOW_INTEGRATION_TESTS"),
+        "Skipping test that requires Google Scholar access",
+    )
     def test_get_citations_boundary_conditions(self):
         """Test get_citations with boundary conditions."""
         # Test with very large number (should be handled gracefully)
@@ -339,6 +343,10 @@ class TestGetCitationsEdgeCases(unittest.TestCase):
         result = gc.get_citations("test_dataset", -1)
         self.assertIsInstance(result, pd.DataFrame)
 
+    @unittest.skipUnless(
+        os.getenv("RUN_SLOW_INTEGRATION_TESTS"),
+        "Skipping test that requires Google Scholar access",
+    )
     def test_dataframe_column_consistency(self):
         """Test that all functions return DataFrames with consistent columns."""
         expected_columns = [
