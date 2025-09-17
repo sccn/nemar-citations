@@ -404,12 +404,41 @@ def main():
         current_time_iso = datetime.now().isoformat()
 
         if not args.force_rescan_all and repo_name in lookup_df.index:
-            logging.info(
-                f"Dataset {repo_name} found in lookup table. Using cached modalities."
-            )
-            # Still update the processed_date to track when it was last confirmed
-            lookup_df.loc[repo_name, "processed_date"] = current_time_iso
-            continue  # Skip API calls, use cached modalities unless forcing rescan
+            # Check if this entry needs updating (empty or only has target modalities)
+            cached_modalities = lookup_df.loc[repo_name, "modalities"]
+            needs_update = False
+
+            if pd.isna(cached_modalities) or cached_modalities == "":
+                # Empty entry - needs update to get ALL modalities
+                needs_update = True
+                logging.info(
+                    f"Dataset {repo_name} has empty modalities. Rescanning for ALL modalities..."
+                )
+            else:
+                # Check if only contains target modalities (legacy entries)
+                cached_mods_set = set(cached_modalities.split(","))
+                # If it only contains subsets of target modalities, it's likely from old scan
+                if (
+                    cached_mods_set.issubset(TARGET_MODALITIES)
+                    and len(cached_mods_set) > 0
+                ):
+                    # This might be a legacy entry with only target modalities
+                    # Check if there could be other modalities by rescanning
+                    logging.info(
+                        f"Dataset {repo_name} only has target modalities ({cached_modalities}). "
+                        f"Rescanning to check for ALL modalities..."
+                    )
+                    needs_update = True
+                else:
+                    # Has non-target modalities, likely already updated
+                    logging.info(
+                        f"Dataset {repo_name} found in lookup table with modalities: {cached_modalities}. Using cached data."
+                    )
+                    # Still update the processed_date to track when it was last confirmed
+                    lookup_df.loc[repo_name, "processed_date"] = current_time_iso
+
+            if not needs_update:
+                continue  # Skip API calls, use cached modalities
 
         total_to_process_display = (
             len(all_gh_repositories) if args.max_repos is None else args.max_repos
