@@ -3,9 +3,9 @@ Asset management for dashboard files and resources.
 """
 
 import json
-import shutil
 from pathlib import Path
-from typing import Dict, Any, List
+import shutil
+from typing import Any, Dict, List
 
 
 class AssetManager:
@@ -95,9 +95,11 @@ class AssetManager:
                     clean_data[key] = self._clean_data_for_web(value)
                 elif isinstance(value, list):
                     clean_data[key] = [
-                        self._clean_data_for_web(item)
-                        if isinstance(item, dict)
-                        else item
+                        (
+                            self._clean_data_for_web(item)
+                            if isinstance(item, dict)
+                            else item
+                        )
                         for item in value
                     ]
                 else:

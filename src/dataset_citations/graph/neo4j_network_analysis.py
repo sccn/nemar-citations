@@ -3,8 +3,8 @@
 import logging
 from typing import Tuple
 
-import pandas as pd
 from neo4j import GraphDatabase
+import pandas as pd
 
 logger = logging.getLogger(__name__)
 

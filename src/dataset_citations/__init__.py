@@ -18,34 +18,33 @@ __email__ = "shirazi@ieee.org"
 __license__ = "Copyright Reserved"
 
 # Core functionality exports
-from .core import citation_utils
-from .core import getCitations
+from .core import citation_utils, getCitations
 
 # Main functions from citation_utils
 from .core.citation_utils import (
-    save_citation_json,
-    load_citation_json,
-    migrate_pickle_to_json,
     create_citation_json_structure,
     get_citation_summary_from_json,
+    load_citation_json,
+    migrate_pickle_to_json,
+    save_citation_json,
 )
 
 # Main functions from getCitations
 from .core.getCitations import (
-    get_working_proxy,
     get_citation_numbers,
     get_citations,
+    get_working_proxy,
 )
 
 __all__ = [
     "citation_utils",
+    "create_citation_json_structure",
     "getCitations",
-    "save_citation_json", 
+    "get_citation_numbers",
+    "get_citation_summary_from_json",
+    "get_citations",
+    "get_working_proxy",
     "load_citation_json",
     "migrate_pickle_to_json",
-    "create_citation_json_structure",
-    "get_citation_summary_from_json",
-    "get_working_proxy",
-    "get_citation_numbers",
-    "get_citations",
+    "save_citation_json",
 ]

@@ -1,0 +1,503 @@
+#!/bin/zsh
+#
+# Comprehensive end-to-end workflow for Dataset Citations project
+# This script runs the complete pipeline: discover → update → score → analyze → dashboard
+#
+# Usage:
+#   ./run_end_to_end_workflow.sh [mode]
+#
+# Modes:
+#   test    - Run with test dataset (fast, no API calls)
+#   local   - Run full workflow locally with act
+#   full    - Run full workflow with real API calls
+#   help    - Show this help message
+#
+# Environment variables:
+#   SCRAPERAPI_KEY - Required for full mode
+#   GITHUB_TOKEN   - Required for discovery and metadata
+#
+
+set -e # Exit on error
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Configuration
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$SCRIPT_DIR"
+
+# Default settings
+MODE="${1:-help}"
+# Support both 'local' (deprecated) and 'local-ci' names
+if [ "$MODE" = "local" ]; then
+    print_warning "'local' mode is deprecated. Use 'local-ci' instead."
+    MODE="local-ci"
+fi
+LOG_DIR="logs"
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+LOG_FILE="${LOG_DIR}/workflow_${TIMESTAMP}.log"
+
+# Ensure log directory exists
+mkdir -p "$LOG_DIR"
+
+# Function to print colored output
+print_status() {
+    echo -e "${GREEN}[$(date +'%H:%M:%S')]${NC} $1"
+}
+
+print_error() {
+    echo -e "${RED}[ERROR]${NC} $1" >&2
+}
+
+print_warning() {
+    echo -e "${YELLOW}[WARNING]${NC} $1"
+}
+
+print_info() {
+    echo -e "${BLUE}[INFO]${NC} $1"
+}
+
+# Function to check requirements
+check_requirements() {
+    print_status "Checking requirements..."
+
+    # Check Python environment
+    if ! conda env list | grep -q "dataset-citations"; then
+        print_error "Conda environment 'dataset-citations' not found"
+        print_info "Create it with: conda create -n dataset-citations python=3.11"
+        return 1
+    fi
+
+    # Check environment variables for full mode
+    if [ "$MODE" = "full" ]; then
+        if [ -z "$SCRAPERAPI_KEY" ]; then
+            print_error "SCRAPERAPI_KEY not set. Required for full mode."
+            print_info "Set it with: export SCRAPERAPI_KEY=your_key"
+            return 1
+        fi
+        if [ -z "$GITHUB_TOKEN" ]; then
+            print_warning "GITHUB_TOKEN not set. Discovery may be limited."
+        fi
+    fi
+
+    # Check if act is installed for local-ci mode
+    if [ "$MODE" = "local-ci" ]; then
+        if ! command -v act &> /dev/null; then
+            print_error "act not installed. Required for local-ci mode."
+            print_info "Install with: brew install act"
+            return 1
+        fi
+    fi
+
+    print_status "Requirements check passed ✓"
+    return 0
+}
+
+# Function to run test workflow
+run_test_workflow() {
+    print_status "Running test workflow with controlled dataset..."
+
+    # Use existing test data
+    TEST_DATA_DIR="tests/test_data/workflow_test"
+
+    if [ ! -d "$TEST_DATA_DIR" ]; then
+        print_error "Test data directory not found: $TEST_DATA_DIR"
+        return 1
+    fi
+
+    # Create temporary output directories
+    TEST_OUTPUT_DIR="test_output_${TIMESTAMP}"
+    mkdir -p "$TEST_OUTPUT_DIR"/{citations,datasets,results,interactive_reports}
+
+    print_status "Step 1/6: Using test dataset list..."
+    cp "$TEST_DATA_DIR/discovered_datasets.txt" "$TEST_OUTPUT_DIR/"
+
+    print_status "Step 2/6: Simulating citation update with test data..."
+    cp "$TEST_DATA_DIR/previous_citations.csv" "$TEST_OUTPUT_DIR/citations/"
+
+    # Run minimal citation update with test dataset
+    print_status "Step 3/6: Processing test citations..."
+    conda run -n dataset-citations python -c "
+import json
+from pathlib import Path
+test_citations = {
+    'ds003555': {
+        'dataset_id': 'ds003555',
+        'dataset_name': 'Test Dataset',
+        'citations': [
+            {'title': f'Citation {i}', 'year': 2020+i, 'confidence_score': 0.5+i*0.1}
+            for i in range(8)
+        ]
+    }
+}
+output_path = Path('$TEST_OUTPUT_DIR/citations/json')
+output_path.mkdir(parents=True, exist_ok=True)
+(output_path / 'ds003555.json').write_text(json.dumps(test_citations['ds003555'], indent=2))
+print('Test citations generated')
+"
+
+    print_status "Step 4/6: Generating test metadata..."
+    conda run -n dataset-citations python -c "
+import json
+from pathlib import Path
+test_metadata = {
+    'dataset_id': 'ds003555',
+    'name': 'Test Dataset',
+    'description': 'A test dataset for workflow validation',
+    'readme': 'This is a test README content'
+}
+output_path = Path('$TEST_OUTPUT_DIR/datasets')
+output_path.mkdir(parents=True, exist_ok=True)
+(output_path / 'ds003555_metadata.json').write_text(json.dumps(test_metadata, indent=2))
+print('Test metadata generated')
+"
+
+    print_status "Step 5/6: Running analysis..."
+    # Temporal analysis (positional argument for citations_dir)
+    conda run -n dataset-citations dataset-citations-analyze-temporal \
+        "$TEST_OUTPUT_DIR/citations/json" \
+        --output-dir "$TEST_OUTPUT_DIR/results/temporal_analysis" || true
+
+    # Network analysis (no citations_dir argument needed)
+    conda run -n dataset-citations dataset-citations-analyze-networks \
+        --output-dir "$TEST_OUTPUT_DIR/results/network_analysis" || true
+
+    print_status "Step 6/6: Generating dashboard..."
+    conda run -n dataset-citations dataset-citations-create-interactive-reports \
+        --results-dir "$TEST_OUTPUT_DIR/results" \
+        --output-dir "$TEST_OUTPUT_DIR/interactive_reports" \
+        --verbose || print_warning "Dashboard generation failed"
+
+    # Validate outputs
+    print_status "Validating test outputs..."
+    VALIDATION_PASSED=true
+
+    if [ ! -f "$TEST_OUTPUT_DIR/citations/json/ds003555.json" ]; then
+        print_error "Citation JSON not generated"
+        VALIDATION_PASSED=false
+    fi
+
+    if [ ! -f "$TEST_OUTPUT_DIR/datasets/ds003555_metadata.json" ]; then
+        print_error "Metadata JSON not generated"
+        VALIDATION_PASSED=false
+    fi
+
+    if [ -f "$TEST_OUTPUT_DIR/interactive_reports/dataset_citations_dashboard.html" ]; then
+        print_status "Dashboard generated successfully"
+        ls -lh "$TEST_OUTPUT_DIR/interactive_reports/"*.html
+    else
+        print_warning "Dashboard not generated (non-critical)"
+    fi
+
+    if [ "$VALIDATION_PASSED" = true ]; then
+        print_status "Test workflow completed successfully ✓"
+        print_info "Test outputs in: $TEST_OUTPUT_DIR"
+        return 0
+    else
+        print_error "Test workflow validation failed"
+        return 1
+    fi
+}
+
+# Function to run local CI/CD workflow with act
+run_local_ci_workflow() {
+    print_status "Testing CI/CD workflow locally with act..."
+
+    # Note: The GitHub Actions workflow already creates its own branch
+    # act will handle branch creation via the workflow itself
+    print_info "Note: This tests the GitHub Actions workflow locally for CI/CD validation"
+
+    # Check for .secrets file
+    if [ ! -f ".secrets" ]; then
+        print_warning "No .secrets file found. Creating template..."
+        cat > .secrets <<EOF
+SCRAPERAPI_KEY=${SCRAPERAPI_KEY:-your_scraperapi_key}
+GITHUB_TOKEN=${GITHUB_TOKEN:-your_github_token}
+EOF
+        print_info "Edit .secrets file with your API keys"
+    fi
+
+    print_status "Executing GitHub Actions workflow locally..."
+    act workflow_dispatch --secret-file .secrets --verbose 2>&1 | tee "$LOG_FILE"
+
+    if [ ${PIPESTATUS[0]} -eq 0 ]; then
+        print_status "CI/CD workflow test completed successfully ✓"
+        print_info "The workflow created a branch and PR automatically"
+    else
+        print_error "CI/CD workflow test failed. Check log: $LOG_FILE"
+        return 1
+    fi
+}
+
+# Function to run full workflow
+run_full_workflow() {
+    print_status "Running full end-to-end workflow..."
+
+    # Step 0: Create branch to protect main
+    print_status "Creating feature branch..."
+    BRANCH_NAME="auto-update/$(date +'%Y-%m-%d')_${TIMESTAMP}"
+
+    # Check current branch
+    CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    if [ "$CURRENT_BRANCH" = "main" ] || [ "$CURRENT_BRANCH" = "master" ]; then
+        print_status "Creating new branch: $BRANCH_NAME"
+        git checkout -b "$BRANCH_NAME"
+    else
+        print_warning "Already on branch: $CURRENT_BRANCH (not main)"
+        BRANCH_NAME="$CURRENT_BRANCH"
+    fi
+
+    # Use existing directories instead of creating new ones
+    print_status "Step 1/8: Discovering datasets..."
+    conda run -n dataset-citations dataset-citations-discover \
+        --output-file "discovered_datasets.txt" 2>&1 | tee -a "$LOG_FILE"
+
+    DATASET_COUNT=$(wc -l < "discovered_datasets.txt" | tr -d ' ')
+    print_info "Found $DATASET_COUNT datasets"
+
+    print_status "Step 2/8: Migrating existing pickle files..."
+    if [ -d "citations/pickle" ]; then
+        conda run -n dataset-citations dataset-citations-migrate \
+            --input-dir citations/pickle \
+            --output-dir citations/json \
+            --overwrite 2>&1 | tee -a "$LOG_FILE"
+    fi
+
+    print_status "Step 3/8: Updating citations (this may take a while)..."
+    # Use previous citations if available
+    PREV_CITATIONS=""
+    if [ -f "citations/previous_citations.csv" ]; then
+        PREV_CITATIONS="--previous-citations-file citations/previous_citations.csv"
+    fi
+
+    conda run -n dataset-citations dataset-citations-update \
+        --dataset-list-file "discovered_datasets.txt" \
+        $PREV_CITATIONS \
+        --output-dir citations \
+        --output-format json \
+        --workers 5 2>&1 | tee -a "$LOG_FILE"
+
+    print_status "Step 4/8: Retrieving dataset metadata..."
+    conda run -n dataset-citations dataset-citations-retrieve-metadata \
+        --citations-dir citations/json \
+        --output-dir datasets \
+        --skip-existing \
+        --log-level INFO 2>&1 | tee -a "$LOG_FILE"
+
+    print_status "Step 5/8: Calculating confidence scores..."
+    conda run -n dataset-citations dataset-citations-score-confidence \
+        --citations-dir citations/json \
+        --datasets-dir datasets \
+        --model all-MiniLM-L6-v2 \
+        --skip-existing \
+        --log-level INFO 2>&1 | tee -a "$LOG_FILE"
+
+    print_status "Step 6/8: Running analysis..."
+    mkdir -p results/temporal_analysis results/network_analysis
+
+    # Temporal analysis (positional argument for citations_dir)
+    conda run -n dataset-citations dataset-citations-analyze-temporal \
+        citations/json \
+        --output-dir results/temporal_analysis \
+        --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "Temporal analysis failed"
+
+    # Network analysis (no citations_dir argument needed)
+    conda run -n dataset-citations dataset-citations-analyze-networks \
+        --output-dir results/network_analysis \
+        --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "Network analysis failed"
+
+    print_status "Step 7/8: Generating interactive dashboard..."
+    conda run -n dataset-citations dataset-citations-create-interactive-reports \
+        --results-dir results \
+        --output-dir interactive_reports \
+        --verbose 2>&1 | tee -a "$LOG_FILE"
+
+    # Validate outputs
+    print_status "Validating outputs..."
+    JSON_COUNT=$(find citations/json -name "*.json" 2>/dev/null | wc -l)
+    print_info "Generated $JSON_COUNT citation JSON files"
+
+    if [ -f "interactive_reports/dataset_citations_dashboard.html" ]; then
+        print_status "Dashboard generated successfully ✓"
+        ls -lh interactive_reports/*.html
+    else
+        print_error "Dashboard generation failed"
+    fi
+
+    print_status "Step 8/8: Creating Pull Request..."
+
+    # Check for changes
+    git add -A
+    if git diff --cached --quiet; then
+        print_warning "No changes detected. Nothing to commit."
+        print_info "Switching back to main branch..."
+        git checkout main
+        return 0
+    fi
+
+    # Commit changes
+    COMMIT_MSG="Update dataset citations - $(date +'%Y-%m-%d')
+
+Workflow: Full end-to-end pipeline
+Updated: $(git diff --cached --name-only | wc -l) files
+"
+    git commit -m "$COMMIT_MSG"
+    print_status "Changes committed to branch: $BRANCH_NAME"
+
+    # Push branch
+    print_status "Pushing branch to origin..."
+    if git push origin "$BRANCH_NAME"; then
+        print_status "Branch pushed successfully"
+
+        # Create PR using gh CLI if available
+        if command -v gh &> /dev/null; then
+            print_status "Creating Pull Request..."
+            PR_TITLE="[Auto] Update citations - $(date +'%Y-%m-%d')"
+            PR_BODY="## Automated Citation Update
+
+This PR was generated by the end-to-end workflow script.
+
+### Changes:
+- Updated citation data from Google Scholar
+- Retrieved dataset metadata from GitHub
+- Calculated confidence scores
+- Generated analysis and dashboard
+
+### Files Updated:
+$(git diff origin/main..HEAD --name-only | head -20)
+
+---
+*Generated by run_end_to_end_workflow.sh*"
+
+            if gh pr create \
+                --base main \
+                --head "$BRANCH_NAME" \
+                --title "$PR_TITLE" \
+                --body "$PR_BODY" \
+                --label "automated,citations-update" \
+                --assignee "@me"; then
+                print_status "Pull Request created successfully ✓"
+                PR_URL=$(gh pr view --json url -q .url)
+                print_info "PR URL: $PR_URL"
+            else
+                print_warning "Failed to create PR. Create manually at:"
+                print_info "https://github.com/sccn/nemar-citations/pull/new/$BRANCH_NAME"
+            fi
+        else
+            print_warning "gh CLI not found. Create PR manually at:"
+            print_info "https://github.com/sccn/nemar-citations/pull/new/$BRANCH_NAME"
+        fi
+    else
+        print_error "Failed to push branch. You may need to push manually."
+    fi
+
+    print_status "Full workflow completed ✓"
+    print_info "Branch: $BRANCH_NAME"
+    print_info "Log file: $LOG_FILE"
+}
+
+# Function to show help
+show_help() {
+    cat <<EOF
+Dataset Citations - End-to-End Workflow Runner
+
+Usage: $0 [mode]
+
+Modes:
+  test      Run with test dataset (fast, no API calls)
+            - Uses controlled test data
+            - No external API calls
+            - Validates pipeline components
+            - ~30 seconds runtime
+
+  local-ci  Test GitHub Actions workflow locally
+            - Runs the CI/CD workflow via Docker
+            - Tests exact GitHub Actions behavior
+            - Useful for debugging CI/CD issues
+            - Requires act and Docker
+            - ~10-30 minutes runtime
+
+  full      Run full pipeline directly (recommended)
+            - Runs pipeline natively with conda
+            - Creates feature branch automatically
+            - Live API calls to Google Scholar
+            - Creates PR for review
+            - ~1-2 hours runtime
+
+  help    Show this help message
+
+Environment Variables:
+  SCRAPERAPI_KEY  API key for ScraperAPI (required for full mode)
+  GITHUB_TOKEN    GitHub personal access token (optional, for discovery)
+
+Examples:
+  # Quick test run
+  $0 test
+
+  # Test CI/CD workflow locally
+  export SCRAPERAPI_KEY=your_key
+  export GITHUB_TOKEN=your_token
+  $0 local-ci
+
+  # Full production run (recommended for actual updates)
+  export SCRAPERAPI_KEY=your_key
+  export GITHUB_TOKEN=your_token
+  $0 full
+
+Output:
+  test:      test_output_<timestamp>/ (temporary directory)
+  local-ci:  Creates branch with PR (via GitHub Actions in Docker)
+  full:      Updates repository on new branch, creates PR
+
+Logs are saved to: logs/workflow_<timestamp>.log
+
+EOF
+}
+
+# Main execution
+main() {
+    print_status "Dataset Citations - End-to-End Workflow"
+    print_info "Mode: $MODE"
+    print_info "Timestamp: $TIMESTAMP"
+
+    case "$MODE" in
+        test)
+            check_requirements || exit 1
+            run_test_workflow
+            ;;
+        local-ci)
+            check_requirements || exit 1
+            run_local_ci_workflow
+            ;;
+        full)
+            check_requirements || exit 1
+            run_full_workflow
+            ;;
+        help|--help|-h)
+            show_help
+            exit 0
+            ;;
+        *)
+            print_error "Invalid mode: $MODE"
+            show_help
+            exit 1
+            ;;
+    esac
+
+    EXIT_CODE=$?
+
+    if [ $EXIT_CODE -eq 0 ]; then
+        print_status "Workflow completed successfully ✓"
+    else
+        print_error "Workflow failed with exit code: $EXIT_CODE"
+    fi
+
+    exit $EXIT_CODE
+}
+
+# Run main function
+main

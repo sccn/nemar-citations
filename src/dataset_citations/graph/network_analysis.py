@@ -1,8 +1,8 @@
 """Network analysis functions for dataset citations and author collaboration."""
 
+from collections import defaultdict
 import json
 import logging
-from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Tuple
 
@@ -42,7 +42,7 @@ def find_multi_dataset_citations(
         try:
             dataset_id = citation_file.stem.replace("_citations", "")
 
-            with open(citation_file, "r", encoding="utf-8") as f:
+            with open(citation_file, encoding="utf-8") as f:
                 data = json.load(f)
 
             citation_details = data.get("citation_details", [])
@@ -144,7 +144,7 @@ def extract_author_networks(
         try:
             dataset_id = dataset_file.stem.replace("_datasets", "")
 
-            with open(dataset_file, "r", encoding="utf-8") as f:
+            with open(dataset_file, encoding="utf-8") as f:
                 data = json.load(f)
 
             authors = data.get("Authors", [])
@@ -165,7 +165,7 @@ def extract_author_networks(
         try:
             dataset_id = citation_file.stem.replace("_citations", "")
 
-            with open(citation_file, "r", encoding="utf-8") as f:
+            with open(citation_file, encoding="utf-8") as f:
                 data = json.load(f)
 
             citation_details = data.get("citation_details", [])
@@ -273,7 +273,7 @@ def analyze_citation_impact(
         try:
             dataset_id = citation_file.stem.replace("_citations", "")
 
-            with open(citation_file, "r", encoding="utf-8") as f:
+            with open(citation_file, encoding="utf-8") as f:
                 data = json.load(f)
 
             citation_details = data.get("citation_details", [])

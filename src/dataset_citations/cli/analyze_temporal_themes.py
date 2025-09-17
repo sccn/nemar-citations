@@ -3,14 +3,15 @@ CLI command for temporal analysis of research theme evolution.
 """
 
 import argparse
+from collections import Counter, defaultdict
+from datetime import datetime
+import json
 import logging
 from pathlib import Path
-from typing import Dict, List, Optional
-import json
 import pickle
+from typing import Dict, List, Optional
+
 import numpy as np
-from datetime import datetime
-from collections import defaultdict, Counter
 
 try:
     import matplotlib.pyplot as plt
@@ -19,8 +20,8 @@ try:
 except ImportError:
     PLOTTING_AVAILABLE = False
 
-from ..embeddings.umap_analyzer import UMAPAnalyzer
 from ..core.citation_utils import load_citations_from_json
+from ..embeddings.umap_analyzer import UMAPAnalyzer
 
 
 def setup_logging(verbose: bool = False):
@@ -518,9 +519,11 @@ class TemporalThemeAnalyzer:
                             str(matrix[i][j]),
                             ha="center",
                             va="center",
-                            color="white"
-                            if matrix[i][j] > max(max(row) for row in matrix) * 0.5
-                            else "black",
+                            color=(
+                                "white"
+                                if matrix[i][j] > max(max(row) for row in matrix) * 0.5
+                                else "black"
+                            ),
                             fontsize=8,
                         )
 
@@ -842,9 +845,9 @@ Examples:
             export_data = {
                 "analysis_metadata": {
                     "timestamp": datetime.now().isoformat(),
-                    "clustering_file": str(args.clustering_file)
-                    if args.clustering_file
-                    else "latest",
+                    "clustering_file": (
+                        str(args.clustering_file) if args.clustering_file else "latest"
+                    ),
                     "year_window": args.year_window,
                     "total_themes": len(evolution_analysis["theme_lifespans"]),
                 },

@@ -2,8 +2,9 @@
 HTML template builder for dashboard generation.
 """
 
-from typing import Dict, Any, Optional
 from pathlib import Path
+from typing import Any, Dict, Optional
+
 from .nemar_simple import generate_nemar_dashboard
 
 

@@ -2,12 +2,12 @@
 Data aggregation module for collecting and organizing analysis results.
 """
 
+import csv
+from datetime import datetime
 import json
 import logging
 from pathlib import Path
-from typing import Dict, Any, List, Optional
-import csv
-from datetime import datetime
+from typing import Any, Dict, List, Optional
 
 
 class DataAggregator:
@@ -146,7 +146,7 @@ class DataAggregator:
             # Load theme JSON files
             for json_file in theme_dir.glob("*.json"):
                 try:
-                    with open(json_file, "r") as f:
+                    with open(json_file) as f:
                         theme_data[json_file.stem] = json.load(f)
                     self.logger.info(f"Loaded theme analysis: {json_file.name}")
                 except Exception as e:
@@ -187,7 +187,7 @@ class DataAggregator:
             # Count citations
             for json_file in json_files:
                 try:
-                    with open(json_file, "r") as f:
+                    with open(json_file) as f:
                         data = json.load(f)
                         # Try both possible keys for citations
                         citations = data.get(
@@ -239,9 +239,9 @@ class DataAggregator:
             "timestamp": datetime.now().isoformat(),
             "data_sources": {
                 "results_dir": str(self.results_dir),
-                "citations_dir": str(self.citations_dir)
-                if self.citations_dir
-                else None,
+                "citations_dir": (
+                    str(self.citations_dir) if self.citations_dir else None
+                ),
                 "datasets_dir": str(self.datasets_dir) if self.datasets_dir else None,
             },
         }
@@ -249,7 +249,7 @@ class DataAggregator:
     def _read_csv_to_dict(self, file_path: Path) -> List[Dict[str, Any]]:
         """Read CSV file and convert to list of dictionaries."""
         data = []
-        with open(file_path, "r", encoding="utf-8") as f:
+        with open(file_path, encoding="utf-8") as f:
             reader = csv.DictReader(f)
             for row in reader:
                 data.append(dict(row))

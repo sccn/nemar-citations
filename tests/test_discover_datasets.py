@@ -1,7 +1,8 @@
-import unittest
-from unittest.mock import patch, MagicMock
 import os
 import sys
+import unittest
+from unittest.mock import MagicMock, patch
+
 import requests  # Import requests for requests.Response
 
 # Add src to path for imports

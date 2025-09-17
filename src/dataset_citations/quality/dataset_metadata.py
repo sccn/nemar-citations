@@ -13,11 +13,12 @@ GitHub: https://github.com/neuromechanist
 Email: shirazi@ieee.org
 """
 
-import json
-import os
-from typing import Dict, List, Any, Optional
 from datetime import datetime, timezone
+import json
 import logging
+import os
+from typing import Any, Dict, List, Optional
+
 from github import Github
 from github.GithubException import GithubException
 
@@ -81,12 +82,12 @@ class DatasetMetadataRetriever:
             metadata["github_info"].update(
                 {
                     "description": repo.description,
-                    "created_at": repo.created_at.isoformat()
-                    if repo.created_at
-                    else None,
-                    "updated_at": repo.updated_at.isoformat()
-                    if repo.updated_at
-                    else None,
+                    "created_at": (
+                        repo.created_at.isoformat() if repo.created_at else None
+                    ),
+                    "updated_at": (
+                        repo.updated_at.isoformat() if repo.updated_at else None
+                    ),
                     "default_branch": repo.default_branch,
                 }
             )
@@ -95,7 +96,7 @@ class DatasetMetadataRetriever:
 
         except GithubException as e:
             logger.warning(f"Repository {dataset_id} not found or not accessible: {e}")
-            metadata["retrieval_status"]["repository"] = f"error: {str(e)}"
+            metadata["retrieval_status"]["repository"] = f"error: {e!s}"
             return metadata
 
         # Retrieve dataset_description.json
@@ -212,7 +213,7 @@ def load_dataset_metadata(filepath: str) -> Dict[str, Any]:
     Returns:
         Dataset metadata dict
     """
-    with open(filepath, "r", encoding="utf-8") as f:
+    with open(filepath, encoding="utf-8") as f:
         metadata = json.load(f)
 
     return metadata

@@ -3,13 +3,13 @@ CLI command for creating word clouds and context networks from research themes.
 """
 
 import argparse
+from collections import Counter, defaultdict
+import json
 import logging
 from pathlib import Path
-from typing import Dict, List, Optional
-import json
 import pickle
-from collections import Counter, defaultdict
 import re
+from typing import Dict, List, Optional
 
 try:
     from wordcloud import WordCloud
@@ -19,15 +19,15 @@ except ImportError:
     WORDCLOUD_AVAILABLE = False
 
 try:
-    import networkx as nx
     import matplotlib.pyplot as plt
+    import networkx as nx
 
     NETWORKX_AVAILABLE = True
 except ImportError:
     NETWORKX_AVAILABLE = False
 
-from ..embeddings.umap_analyzer import UMAPAnalyzer
 from ..core.citation_utils import load_citations_from_json
+from ..embeddings.umap_analyzer import UMAPAnalyzer
 
 
 def setup_logging(verbose: bool = False):
@@ -176,7 +176,7 @@ class ThemeNetworkGenerator:
 
                 if dataset_file.exists():
                     try:
-                        with open(dataset_file, "r") as f:
+                        with open(dataset_file) as f:
                             dataset_data = json.load(f)
 
                         # Extract relevant text
@@ -381,7 +381,6 @@ class ThemeNetworkGenerator:
             "study",
             "data",
             "using",
-            "used",
             "analysis",
             "results",
             "show",
@@ -571,7 +570,6 @@ class ThemeNetworkGenerator:
             "initial",
             "final",
             "first",
-            "second",
             "third",
             "last",
             "next",
@@ -616,7 +614,6 @@ class ThemeNetworkGenerator:
             "references",
             "bibliography",
             "published",
-            "published",
             "review",
             "reviews",
             "meta",
@@ -636,9 +633,6 @@ class ThemeNetworkGenerator:
             "hundred",
             "thousand",
             "million",
-            "first",
-            "second",
-            "third",
             "fourth",
             "fifth",
             "half",

@@ -2,14 +2,15 @@
 UMAP analysis for thematic clustering and dimensionality reduction of embeddings.
 """
 
+from datetime import datetime
+import json
+import logging
+from pathlib import Path
+import pickle
+from typing import Any, Dict, Optional, Union
+
 import numpy as np
 import pandas as pd
-from pathlib import Path
-from typing import Dict, Optional, Union, Any
-from datetime import datetime
-import logging
-import pickle
-import json
 
 try:
     import umap
@@ -446,9 +447,11 @@ class UMAPAnalyzer:
                     "embedding_id": emb_id,
                     "cluster": cluster_label,
                     "umap_x": clustering_results["umap_embeddings"][i, 0],
-                    "umap_y": clustering_results["umap_embeddings"][i, 1]
-                    if clustering_results["umap_embeddings"].shape[1] > 1
-                    else 0,
+                    "umap_y": (
+                        clustering_results["umap_embeddings"][i, 1]
+                        if clustering_results["umap_embeddings"].shape[1] > 1
+                        else 0
+                    ),
                 }
             )
 
@@ -480,9 +483,11 @@ class UMAPAnalyzer:
         analysis_record = {
             "file": f"analysis/{analysis_type}/{filename}",
             "created": results["created"],
-            "parameters": results.get("umap_params", {})
-            if analysis_type == "umap_projections"
-            else results.get("parameters", {}),
+            "parameters": (
+                results.get("umap_params", {})
+                if analysis_type == "umap_projections"
+                else results.get("parameters", {})
+            ),
             "status": "current",
         }
 

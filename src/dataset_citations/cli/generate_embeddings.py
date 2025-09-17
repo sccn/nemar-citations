@@ -3,15 +3,15 @@ CLI command for generating embeddings from existing dataset and citation data.
 """
 
 import argparse
+import json
 import logging
 from pathlib import Path
-from typing import Optional
-import json
 import time
+from typing import Optional
 
 from ..core.citation_utils import load_citations_from_json
-from ..quality.confidence_scoring import SentenceTransformerModel
 from ..embeddings.storage_manager import EmbeddingStorageManager
+from ..quality.confidence_scoring import SentenceTransformerModel
 
 
 def setup_logging(verbose: bool = False):
@@ -40,7 +40,7 @@ def load_dataset_metadata(dataset_id: str, datasets_dir: Path) -> Optional[str]:
         return None
 
     try:
-        with open(dataset_file, "r") as f:
+        with open(dataset_file) as f:
             dataset_data = json.load(f)
 
         # Combine relevant metadata fields

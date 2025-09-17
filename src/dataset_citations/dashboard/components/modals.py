@@ -2,10 +2,10 @@
 Modal content generation component for dashboard.
 """
 
-from typing import Dict, Any, List
-from pathlib import Path
-import json
 from collections import defaultdict
+import json
+from pathlib import Path
+from typing import Any, Dict, List
 
 
 class ModalGenerator:
@@ -151,11 +151,13 @@ class ModalGenerator:
                 "method": "Sentence-transformer similarity",
                 "comparison": "Dataset descriptions vs citation abstracts",
                 "validation": "Manual review sample",
-                "quality_rate": stats["summary"].get("high_confidence_citations", 0)
-                / stats["summary"].get("total_citations", 1)
-                * 100
-                if stats["summary"].get("total_citations", 0) > 0
-                else 0,
+                "quality_rate": (
+                    stats["summary"].get("high_confidence_citations", 0)
+                    / stats["summary"].get("total_citations", 1)
+                    * 100
+                    if stats["summary"].get("total_citations", 0) > 0
+                    else 0
+                ),
             },
         }
 
@@ -181,7 +183,7 @@ class ModalGenerator:
             dataset_id = json_file.stem.replace("_citations", "")
 
             try:
-                with open(json_file, "r") as f:
+                with open(json_file) as f:
                     data = json.load(f)
 
                 for citation in data.get("citation_details", []):

@@ -3,8 +3,8 @@
 import argparse
 import logging
 import os
-import sys
 from pathlib import Path
+import sys
 
 import pandas as pd
 
@@ -106,7 +106,7 @@ def save_analysis_results(
 
         for json_file in json_files:
             try:
-                with open(json_file, "r", encoding="utf-8") as f:
+                with open(json_file, encoding="utf-8") as f:
                     data = json.load(f)
 
                 citation_details = data.get("citation_details", [])
@@ -146,12 +146,12 @@ def save_analysis_results(
         "total_bridge_papers": len(bridge_papers_df),
         "years_analyzed": len(temporal_df),
         "top_cited_paper": impact_df.iloc[0].to_dict() if not impact_df.empty else None,
-        "most_co_cited_datasets": co_citation_df.iloc[0].to_dict()
-        if not co_citation_df.empty
-        else None,
-        "top_bridge_paper": bridge_papers_df.iloc[0].to_dict()
-        if not bridge_papers_df.empty
-        else None,
+        "most_co_cited_datasets": (
+            co_citation_df.iloc[0].to_dict() if not co_citation_df.empty else None
+        ),
+        "top_bridge_paper": (
+            bridge_papers_df.iloc[0].to_dict() if not bridge_papers_df.empty else None
+        ),
     }
 
     with open(

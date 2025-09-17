@@ -4,14 +4,15 @@ CLI for creating visualizations from network analysis results.
 
 import argparse
 import logging
-import pandas as pd
 from pathlib import Path
 
+import pandas as pd
+
 from ..graph.visualizations import (
-    create_temporal_growth_chart,
-    create_citation_impact_dashboard,
     create_author_network_diagram,
+    create_citation_impact_dashboard,
     create_dataset_popularity_ranking,
+    create_temporal_growth_chart,
 )
 
 logger = logging.getLogger(__name__)
@@ -163,7 +164,8 @@ def main() -> None:
         create_all_visualizations(data, args.output_dir, args.top_n)
 
         logger.info("✅ Visualization creation completed!")
-        print(f"""
+        print(
+            f"""
 🎉 Visualizations created successfully!
 
 📁 Output locations:
@@ -173,7 +175,8 @@ def main() -> None:
    🏆 Dataset popularity: {args.output_dir}/dataset_popularity/
 
 🔍 Use these for publications, presentations, or further analysis!
-        """)
+        """
+        )
 
     except Exception as e:
         logger.error(f"❌ Error during visualization creation: {e}")

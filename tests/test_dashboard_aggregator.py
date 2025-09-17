@@ -2,11 +2,11 @@
 Tests for the dashboard data aggregator module.
 """
 
-import json
 import csv
+import json
 from pathlib import Path
-import tempfile
 import shutil
+import tempfile
 from unittest import TestCase
 
 from dataset_citations.dashboard.data.aggregator import DataAggregator
@@ -47,11 +47,17 @@ class TestDataAggregator(TestCase):
         network_dir = self.results_dir / "network_analysis"
         network_dir.mkdir()
 
-        # Bridge papers CSV
+        # Create csv_exports subdirectory for bridge papers (matches expected path)
+        csv_exports_dir = network_dir / "csv_exports"
+        csv_exports_dir.mkdir()
+
+        # Bridge papers CSV in expected location
         bridge_papers = [
             {"paper_id": "1", "title": "Test Paper 1", "confidence": "0.8"},
             {"paper_id": "2", "title": "Test Paper 2", "confidence": "0.7"},
         ]
+        self._write_csv(csv_exports_dir / "bridge_papers.csv", bridge_papers)
+        # Also write to main directory for backward compatibility
         self._write_csv(network_dir / "bridge_papers.csv", bridge_papers)
 
         # Dataset popularity CSV

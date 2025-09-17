@@ -27,13 +27,13 @@ Usage:
 (c) 2024, Seyed Yahya Shirazi
 """
 
-from scholarly import scholarly
-from scholarly import ProxyGenerator
-import pandas as pd
-import os
 import logging
+import os
 import time
 from typing import Optional
+
+import pandas as pd
+from scholarly import ProxyGenerator, scholarly
 
 # Configure basic logging
 logging.basicConfig(

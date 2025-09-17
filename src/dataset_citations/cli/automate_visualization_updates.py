@@ -6,13 +6,13 @@ and regenerates visualizations, interactive reports, and export files accordingl
 """
 
 import argparse
-import logging
-import json
-import subprocess
-from pathlib import Path
-from typing import Dict, List, Any, Optional
 from datetime import datetime, timedelta
 import hashlib
+import json
+import logging
+from pathlib import Path
+import subprocess
+from typing import Any, Dict, List, Optional
 
 
 def setup_logging(verbose: bool = False) -> None:
@@ -233,9 +233,9 @@ class VisualizationUpdatePipeline:
 
             # Record stage completion
             if success:
-                self.pipeline_state["stage_timestamps"][stage_name] = (
-                    start_time.isoformat()
-                )
+                self.pipeline_state["stage_timestamps"][
+                    stage_name
+                ] = start_time.isoformat()
                 if stage_name in self.pipeline_state.get("failed_stages", []):
                     self.pipeline_state["failed_stages"].remove(stage_name)
                 logging.info(f"Stage '{stage_name}' completed successfully")

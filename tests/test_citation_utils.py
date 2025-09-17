@@ -6,15 +6,16 @@ Tests all functions in citation_utils.py using real data without mocks.
 Uses existing citation JSON files as test data to ensure comprehensive coverage.
 """
 
-import unittest
-import tempfile
-import shutil
-import os
-import json
-import pandas as pd
 from datetime import datetime, timezone
+import json
+import os
 from pathlib import Path
+import shutil
 import sys
+import tempfile
+import unittest
+
+import pandas as pd
 
 # Add src to path for imports
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
@@ -219,7 +220,7 @@ class TestCitationUtils(unittest.TestCase):
         self.assertTrue(os.path.exists(filepath))
 
         # Verify file content
-        with open(filepath, "r", encoding="utf-8") as f:
+        with open(filepath, encoding="utf-8") as f:
             saved_data = json.load(f)
 
         self.assertEqual(saved_data["dataset_id"], dataset_id)
