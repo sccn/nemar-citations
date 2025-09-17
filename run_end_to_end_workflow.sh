@@ -378,7 +378,8 @@ $(git diff origin/main..HEAD --name-only | head -20)
                 --head "$BRANCH_NAME" \
                 --title "$PR_TITLE" \
                 --body "$PR_BODY" \
-                --label "automated,citations-update"; then
+                --label "automated,citations-update" \
+                --assignee "@me"; then
                 print_status "Pull Request created successfully ✓"
                 PR_URL=$(gh pr view --json url -q .url)
                 print_info "PR URL: $PR_URL"

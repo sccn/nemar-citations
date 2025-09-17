@@ -439,6 +439,7 @@ jobs:
             --title "$PR_TITLE" \
             --body "$PR_BODY" \
             --label "$PR_LABELS" \
+            --assignee "@me" \
             --repo "${{ github.repository }}"
           echo "gh pr create command executed."
 
