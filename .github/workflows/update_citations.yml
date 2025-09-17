@@ -430,7 +430,7 @@ jobs:
           BRANCH_NAME: ${{ env.BRANCH_NAME }}
           PR_TITLE: ${{ steps.pr-content.outputs.pr_title || 'Update dataset citations' }}
           PR_BODY: ${{ steps.pr-content.outputs.pr_body || 'This PR updates the dataset citation database.' }}
-          PR_LABELS: ${{ steps.pr-content.outputs.pr_labels || 'automated,monthly-update' }}
+          PR_LABELS: ${{ steps.pr-content.outputs.pr_labels || 'automated,citations-update' }}
         run: |
           echo "Attempting to create Pull Request for branch: $BRANCH_NAME"
           gh pr create \
