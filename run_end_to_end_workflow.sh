@@ -202,6 +202,10 @@ print('Test metadata generated')
 run_local_workflow() {
     print_status "Running local workflow with act..."
 
+    # Note: The GitHub Actions workflow already creates its own branch
+    # act will handle branch creation via the workflow itself
+    print_info "Note: GitHub Actions workflow will create its own branch"
+
     # Check for .secrets file
     if [ ! -f ".secrets" ]; then
         print_warning "No .secrets file found. Creating template..."
@@ -217,6 +221,7 @@ EOF
 
     if [ ${PIPESTATUS[0]} -eq 0 ]; then
         print_status "Local workflow completed successfully ✓"
+        print_info "The workflow created a branch and PR automatically"
     else
         print_error "Local workflow failed. Check log: $LOG_FILE"
         return 1
@@ -227,87 +232,165 @@ EOF
 run_full_workflow() {
     print_status "Running full end-to-end workflow..."
 
-    # Create output directories
-    OUTPUT_DIR="workflow_output_${TIMESTAMP}"
-    mkdir -p "$OUTPUT_DIR"/{citations,datasets,results,interactive_reports}
+    # Step 0: Create branch to protect main
+    print_status "Creating feature branch..."
+    BRANCH_NAME="auto-update/$(date +'%Y-%m-%d')_${TIMESTAMP}"
 
-    print_status "Step 1/7: Discovering datasets..."
+    # Check current branch
+    CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    if [ "$CURRENT_BRANCH" = "main" ] || [ "$CURRENT_BRANCH" = "master" ]; then
+        print_status "Creating new branch: $BRANCH_NAME"
+        git checkout -b "$BRANCH_NAME"
+    else
+        print_warning "Already on branch: $CURRENT_BRANCH (not main)"
+        BRANCH_NAME="$CURRENT_BRANCH"
+    fi
+
+    # Use existing directories instead of creating new ones
+    print_status "Step 1/8: Discovering datasets..."
     conda run -n dataset-citations dataset-citations-discover \
-        --output-file "$OUTPUT_DIR/discovered_datasets.txt" 2>&1 | tee -a "$LOG_FILE"
+        --output-file "discovered_datasets.txt" 2>&1 | tee -a "$LOG_FILE"
 
-    DATASET_COUNT=$(wc -l < "$OUTPUT_DIR/discovered_datasets.txt" | tr -d ' ')
+    DATASET_COUNT=$(wc -l < "discovered_datasets.txt" | tr -d ' ')
     print_info "Found $DATASET_COUNT datasets"
 
-    print_status "Step 2/7: Migrating existing pickle files..."
+    print_status "Step 2/8: Migrating existing pickle files..."
     if [ -d "citations/pickle" ]; then
         conda run -n dataset-citations dataset-citations-migrate \
             --input-dir citations/pickle \
-            --output-dir "$OUTPUT_DIR/citations/json" \
+            --output-dir citations/json \
             --overwrite 2>&1 | tee -a "$LOG_FILE"
     fi
 
-    print_status "Step 3/7: Updating citations (this may take a while)..."
+    print_status "Step 3/8: Updating citations (this may take a while)..."
     # Use previous citations if available
     PREV_CITATIONS=""
     if [ -f "citations/previous_citations.csv" ]; then
-        cp "citations/previous_citations.csv" "$OUTPUT_DIR/citations/"
-        PREV_CITATIONS="--previous-citations-file $OUTPUT_DIR/citations/previous_citations.csv"
+        PREV_CITATIONS="--previous-citations-file citations/previous_citations.csv"
     fi
 
     conda run -n dataset-citations dataset-citations-update \
-        --dataset-list-file "$OUTPUT_DIR/discovered_datasets.txt" \
+        --dataset-list-file "discovered_datasets.txt" \
         $PREV_CITATIONS \
-        --output-dir "$OUTPUT_DIR/citations" \
+        --output-dir citations \
         --output-format json \
         --workers 5 2>&1 | tee -a "$LOG_FILE"
 
-    print_status "Step 4/7: Retrieving dataset metadata..."
+    print_status "Step 4/8: Retrieving dataset metadata..."
     conda run -n dataset-citations dataset-citations-retrieve-metadata \
-        --citations-dir "$OUTPUT_DIR/citations/json" \
-        --output-dir "$OUTPUT_DIR/datasets" \
+        --citations-dir citations/json \
+        --output-dir datasets \
         --skip-existing \
         --log-level INFO 2>&1 | tee -a "$LOG_FILE"
 
-    print_status "Step 5/7: Calculating confidence scores..."
+    print_status "Step 5/8: Calculating confidence scores..."
     conda run -n dataset-citations dataset-citations-score-confidence \
-        --citations-dir "$OUTPUT_DIR/citations/json" \
-        --datasets-dir "$OUTPUT_DIR/datasets" \
+        --citations-dir citations/json \
+        --datasets-dir datasets \
         --model all-MiniLM-L6-v2 \
         --skip-existing \
         --log-level INFO 2>&1 | tee -a "$LOG_FILE"
 
-    print_status "Step 6/7: Running analysis..."
+    print_status "Step 6/8: Running analysis..."
+    mkdir -p results/temporal_analysis results/network_analysis
+
     # Temporal analysis (positional argument for citations_dir)
     conda run -n dataset-citations dataset-citations-analyze-temporal \
-        "$OUTPUT_DIR/citations/json" \
-        --output-dir "$OUTPUT_DIR/results/temporal_analysis" \
+        citations/json \
+        --output-dir results/temporal_analysis \
         --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "Temporal analysis failed"
 
     # Network analysis (no citations_dir argument needed)
     conda run -n dataset-citations dataset-citations-analyze-networks \
-        --output-dir "$OUTPUT_DIR/results/network_analysis" \
+        --output-dir results/network_analysis \
         --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "Network analysis failed"
 
-    print_status "Step 7/7: Generating interactive dashboard..."
+    print_status "Step 7/8: Generating interactive dashboard..."
     conda run -n dataset-citations dataset-citations-create-interactive-reports \
-        --results-dir "$OUTPUT_DIR/results" \
-        --output-dir "$OUTPUT_DIR/interactive_reports" \
+        --results-dir results \
+        --output-dir interactive_reports \
         --verbose 2>&1 | tee -a "$LOG_FILE"
 
     # Validate outputs
     print_status "Validating outputs..."
-    JSON_COUNT=$(find "$OUTPUT_DIR/citations/json" -name "*.json" | wc -l)
+    JSON_COUNT=$(find citations/json -name "*.json" 2>/dev/null | wc -l)
     print_info "Generated $JSON_COUNT citation JSON files"
 
-    if [ -f "$OUTPUT_DIR/interactive_reports/dataset_citations_dashboard.html" ]; then
+    if [ -f "interactive_reports/dataset_citations_dashboard.html" ]; then
         print_status "Dashboard generated successfully ✓"
-        ls -lh "$OUTPUT_DIR/interactive_reports/"*.html
+        ls -lh interactive_reports/*.html
     else
         print_error "Dashboard generation failed"
     fi
 
+    print_status "Step 8/8: Creating Pull Request..."
+
+    # Check for changes
+    git add -A
+    if git diff --cached --quiet; then
+        print_warning "No changes detected. Nothing to commit."
+        print_info "Switching back to main branch..."
+        git checkout main
+        return 0
+    fi
+
+    # Commit changes
+    COMMIT_MSG="Update dataset citations - $(date +'%Y-%m-%d')
+
+Workflow: Full end-to-end pipeline
+Updated: $(git diff --cached --name-only | wc -l) files
+"
+    git commit -m "$COMMIT_MSG"
+    print_status "Changes committed to branch: $BRANCH_NAME"
+
+    # Push branch
+    print_status "Pushing branch to origin..."
+    if git push origin "$BRANCH_NAME"; then
+        print_status "Branch pushed successfully"
+
+        # Create PR using gh CLI if available
+        if command -v gh &> /dev/null; then
+            print_status "Creating Pull Request..."
+            PR_TITLE="[Auto] Update citations - $(date +'%Y-%m-%d')"
+            PR_BODY="## Automated Citation Update
+
+This PR was generated by the end-to-end workflow script.
+
+### Changes:
+- Updated citation data from Google Scholar
+- Retrieved dataset metadata from GitHub
+- Calculated confidence scores
+- Generated analysis and dashboard
+
+### Files Updated:
+$(git diff origin/main..HEAD --name-only | head -20)
+
+---
+*Generated by run_end_to_end_workflow.sh*"
+
+            if gh pr create \
+                --base main \
+                --head "$BRANCH_NAME" \
+                --title "$PR_TITLE" \
+                --body "$PR_BODY" \
+                --label "automated,citations-update"; then
+                print_status "Pull Request created successfully ✓"
+                PR_URL=$(gh pr view --json url -q .url)
+                print_info "PR URL: $PR_URL"
+            else
+                print_warning "Failed to create PR. Create manually at:"
+                print_info "https://github.com/sccn/nemar-citations/pull/new/$BRANCH_NAME"
+            fi
+        else
+            print_warning "gh CLI not found. Create PR manually at:"
+            print_info "https://github.com/sccn/nemar-citations/pull/new/$BRANCH_NAME"
+        fi
+    else
+        print_error "Failed to push branch. You may need to push manually."
+    fi
+
     print_status "Full workflow completed ✓"
-    print_info "Outputs in: $OUTPUT_DIR"
+    print_info "Branch: $BRANCH_NAME"
     print_info "Log file: $LOG_FILE"
 }
 
@@ -327,14 +410,17 @@ Modes:
 
   local   Run full workflow locally with act
           - Uses GitHub Actions locally
+          - Creates branch and PR automatically
           - Requires act and Docker
           - Needs .secrets file
           - ~10-30 minutes runtime
 
   full    Run full workflow with real data
+          - Creates feature branch automatically
           - Live API calls to ScraperAPI
           - Requires SCRAPERAPI_KEY
           - Full dataset processing
+          - Creates PR for review
           - ~1-2 hours runtime
 
   help    Show this help message
@@ -358,9 +444,9 @@ Examples:
   $0 full
 
 Output:
-  Test mode:  test_output_<timestamp>/
-  Local mode: Current repository directories
-  Full mode:  workflow_output_<timestamp>/
+  Test mode:  test_output_<timestamp>/ (temporary directory)
+  Local mode: Creates branch with PR (via GitHub Actions)
+  Full mode:  Updates repository on new branch, creates PR
 
 Logs are saved to: logs/workflow_<timestamp>.log
 

@@ -42,11 +42,11 @@ chmod +x run_end_to_end_workflow.sh
 
 The `run_end_to_end_workflow.sh` script automates the entire workflow:
 
-| Mode | Description | Runtime | API Calls | Steps Executed |
-|------|-------------|---------|-----------|----------------|
-| `test` | Controlled test data (3-8 citations) | ~1 min | None | 4-5 only (Analyze, Generate) |
-| `local` | Process existing data | ~5-10 min | None | 3-5 (Enhance, Analyze, Generate) |
-| `full` | Complete pipeline | 1-3 hours | Google Scholar, GitHub | 1-5 (All steps) |
+| Mode | Description | Runtime | API Calls | Steps Executed | Branch/PR |
+|------|-------------|---------|-----------|----------------|-----------|
+| `test` | Controlled test data (3-8 citations) | ~1 min | None | 4-5 only (Analyze, Generate) | No |
+| `local` | Process with GitHub Actions locally | ~10-30 min | Via act | 1-5 (All steps) | Yes (auto) |
+| `full` | Complete pipeline | 1-3 hours | Google Scholar, GitHub | 1-5 (All steps) | Yes (auto) |
 
 **Workflow Steps**:
 1. **Discover** → Find BIDS datasets (EEG/MEG/iEEG)
@@ -54,6 +54,8 @@ The `run_end_to_end_workflow.sh` script automates the entire workflow:
 3. **Enhance** → Add metadata & AI confidence scores
 4. **Analyze** → Network, temporal, theme analysis
 5. **Generate** → Interactive HTML dashboard
+
+**Branch Protection**: Both `local` and `full` modes automatically create a feature branch and pull request to protect the main branch from direct commits.
 
 ### Automated Updates (Cron)
 
