@@ -153,8 +153,8 @@ def check_repository_for_modalities(
     repo_name: str, org_name: str, headers: dict
 ) -> list[str]:
     """
-    Checks a given repository for target BIDS modalities (eeg, ieeg, meg) by inspecting subdirectories
-    within the first found subject directory (e.g., sub-01).
+    Checks a given repository for ALL BIDS modalities by inspecting subdirectories
+    within the first found subject directory (e.g., sub-01), including session directories if present.
 
     Args:
         repo_name (str): The name of the repository.
@@ -162,8 +162,8 @@ def check_repository_for_modalities(
         headers (dict): Headers for GitHub API requests (including auth).
 
     Returns:
-        list[str]: A list of target modality directory names found within the first subject directory
-                   (e.g., ["eeg", "meg"]). Returns an empty list if no target modalities are found,
+        list[str]: A list of ALL modality directory names found within the first subject directory
+                   (e.g., ["anat", "eeg", "func", "meg"]). Returns an empty list if no modalities are found,
                    no subject directory is found, or if errors occur.
     """
     all_found_modalities_in_repo = set()  # Using a more generic name now
@@ -258,22 +258,14 @@ def check_repository_for_modalities(
                 )
 
             # We only check the first representative subject directory to save API calls.
-            # Filter to return only target modalities found within this first subject directory.
-            target_modalities_found = [
-                mod for mod in all_found_modalities_in_repo if mod in TARGET_MODALITIES
-            ]
-            return sorted(target_modalities_found)
+            # Return ALL modalities found within this first subject directory.
+            return sorted(list(all_found_modalities_in_repo))
 
     if subject_dirs_found == 0:
         logger.info(f"No 'sub-' directories found in the root of {repo_name}.")
 
-    # Filter to return only target modalities found
-    target_modalities_found = [
-        mod for mod in all_found_modalities_in_repo if mod in TARGET_MODALITIES
-    ]
-    return sorted(
-        target_modalities_found
-    )  # Should be empty if we exited early or no sub-dirs
+    # Return ALL modalities found (even if no subject directories were found)
+    return sorted(list(all_found_modalities_in_repo))
 
 
 def main():
@@ -295,7 +287,7 @@ def main():
     parser.add_argument(
         "--force-rescan-all",
         action="store_true",
-        help="Force a full rescan of all repositories, ignoring the lookup table for fetching modalities.",
+        help="Force a full rescan of all repositories, ignoring the lookup table cache. Use quarterly for full updates.",
     )
     args = parser.parse_args()
 
@@ -415,15 +407,15 @@ def main():
             logging.info(
                 f"Dataset {repo_name} found in lookup table. Using cached modalities."
             )
-            # Optionally, update processed_date if we want to track when it was last seen/confirmed
-            # lookup_df.loc[repo_name, 'processed_date'] = current_time_iso
-            continue  # Already processed and in table, unless forcing rescan
+            # Still update the processed_date to track when it was last confirmed
+            lookup_df.loc[repo_name, "processed_date"] = current_time_iso
+            continue  # Skip API calls, use cached modalities unless forcing rescan
 
         total_to_process_display = (
             len(all_gh_repositories) if args.max_repos is None else args.max_repos
         )
         logging.info(
-            f"Processing {repo_name} (New or --force-rescan-all)... "
+            f"Processing {repo_name} {'(forced rescan)' if args.force_rescan_all else '(new/updated)'}... "
             f"({processed_repo_count}/{total_to_process_display})"
         )
         all_modalities_found = check_repository_for_modalities(
@@ -434,8 +426,8 @@ def main():
             sorted(list(set(all_modalities_found)))
         )  # Ensure unique and sorted for consistency
 
-        # Update or add to lookup DataFrame
-        if repo_name in lookup_df.index:  # If force_rescan_all, update existing
+        # Always update or add to lookup DataFrame (datasets can change over time)
+        if repo_name in lookup_df.index:  # Update existing entry
             lookup_df.loc[repo_name, "modalities"] = modalities_str
             lookup_df.loc[repo_name, "processed_date"] = current_time_iso
         else:  # New entry
