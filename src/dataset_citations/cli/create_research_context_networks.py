@@ -331,9 +331,11 @@ class ResearchContextNetworkAnalyzer:
                         confidence_data = citation.get("confidence_scoring", {})
                         return {
                             "title": title,
-                            "abstract": abstract[:200] + "..."
-                            if len(abstract) > 200
-                            else abstract,
+                            "abstract": (
+                                abstract[:200] + "..."
+                                if len(abstract) > 200
+                                else abstract
+                            ),
                             "author": citation.get("author", ""),
                             "year": citation.get("year"),
                             "venue": citation.get("venue", ""),

@@ -163,7 +163,8 @@ def main() -> None:
         create_all_visualizations(data, args.output_dir, args.top_n)
 
         logger.info("✅ Visualization creation completed!")
-        print(f"""
+        print(
+            f"""
 🎉 Visualizations created successfully!
 
 📁 Output locations:
@@ -173,7 +174,8 @@ def main() -> None:
    🏆 Dataset popularity: {args.output_dir}/dataset_popularity/
 
 🔍 Use these for publications, presentations, or further analysis!
-        """)
+        """
+        )
 
     except Exception as e:
         logger.error(f"❌ Error during visualization creation: {e}")

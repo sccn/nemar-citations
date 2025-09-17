@@ -473,18 +473,26 @@ class EmbeddingStorageManager:
                 "total_file_size_mb": total_size / (1024 * 1024),
                 "total_files": file_count,
                 "directories": {
-                    "dataset_embeddings": len(list(self.dataset_dir.glob("*.pkl")))
-                    if self.dataset_dir.exists()
-                    else 0,
-                    "citation_embeddings": len(list(self.citation_dir.glob("*.pkl")))
-                    if self.citation_dir.exists()
-                    else 0,
-                    "composite_embeddings": len(list(self.composite_dir.rglob("*.pkl")))
-                    if self.composite_dir.exists()
-                    else 0,
-                    "analysis": len(list(self.analysis_dir.rglob("*.pkl")))
-                    if self.analysis_dir.exists()
-                    else 0,
+                    "dataset_embeddings": (
+                        len(list(self.dataset_dir.glob("*.pkl")))
+                        if self.dataset_dir.exists()
+                        else 0
+                    ),
+                    "citation_embeddings": (
+                        len(list(self.citation_dir.glob("*.pkl")))
+                        if self.citation_dir.exists()
+                        else 0
+                    ),
+                    "composite_embeddings": (
+                        len(list(self.composite_dir.rglob("*.pkl")))
+                        if self.composite_dir.exists()
+                        else 0
+                    ),
+                    "analysis": (
+                        len(list(self.analysis_dir.rglob("*.pkl")))
+                        if self.analysis_dir.exists()
+                        else 0
+                    ),
                 },
             }
         )

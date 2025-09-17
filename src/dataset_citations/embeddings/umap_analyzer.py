@@ -446,9 +446,11 @@ class UMAPAnalyzer:
                     "embedding_id": emb_id,
                     "cluster": cluster_label,
                     "umap_x": clustering_results["umap_embeddings"][i, 0],
-                    "umap_y": clustering_results["umap_embeddings"][i, 1]
-                    if clustering_results["umap_embeddings"].shape[1] > 1
-                    else 0,
+                    "umap_y": (
+                        clustering_results["umap_embeddings"][i, 1]
+                        if clustering_results["umap_embeddings"].shape[1] > 1
+                        else 0
+                    ),
                 }
             )
 
@@ -480,9 +482,11 @@ class UMAPAnalyzer:
         analysis_record = {
             "file": f"analysis/{analysis_type}/{filename}",
             "created": results["created"],
-            "parameters": results.get("umap_params", {})
-            if analysis_type == "umap_projections"
-            else results.get("parameters", {}),
+            "parameters": (
+                results.get("umap_params", {})
+                if analysis_type == "umap_projections"
+                else results.get("parameters", {})
+            ),
             "status": "current",
         }
 

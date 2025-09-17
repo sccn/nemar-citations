@@ -40,7 +40,7 @@ from .core.getCitations import (
 __all__ = [
     "citation_utils",
     "getCitations",
-    "save_citation_json", 
+    "save_citation_json",
     "load_citation_json",
     "migrate_pickle_to_json",
     "create_citation_json_structure",

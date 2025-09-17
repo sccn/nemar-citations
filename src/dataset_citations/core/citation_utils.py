@@ -107,9 +107,11 @@ def create_citation_json_structure(
         "num_citations": len(citations_df),
         "date_last_updated": fetch_date.isoformat(),
         "metadata": {
-            "total_cumulative_citations": int(total_cumulative_citations)
-            if pd.notna(total_cumulative_citations)
-            else 0,
+            "total_cumulative_citations": (
+                int(total_cumulative_citations)
+                if pd.notna(total_cumulative_citations)
+                else 0
+            ),
             "fetch_date": fetch_date.isoformat(),
             "processing_version": "1.0",
         },

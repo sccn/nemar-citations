@@ -518,9 +518,11 @@ class TemporalThemeAnalyzer:
                             str(matrix[i][j]),
                             ha="center",
                             va="center",
-                            color="white"
-                            if matrix[i][j] > max(max(row) for row in matrix) * 0.5
-                            else "black",
+                            color=(
+                                "white"
+                                if matrix[i][j] > max(max(row) for row in matrix) * 0.5
+                                else "black"
+                            ),
                             fontsize=8,
                         )
 
@@ -842,9 +844,9 @@ Examples:
             export_data = {
                 "analysis_metadata": {
                     "timestamp": datetime.now().isoformat(),
-                    "clustering_file": str(args.clustering_file)
-                    if args.clustering_file
-                    else "latest",
+                    "clustering_file": (
+                        str(args.clustering_file) if args.clustering_file else "latest"
+                    ),
                     "year_window": args.year_window,
                     "total_themes": len(evolution_analysis["theme_lifespans"]),
                 },

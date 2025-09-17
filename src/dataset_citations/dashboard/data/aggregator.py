@@ -239,9 +239,9 @@ class DataAggregator:
             "timestamp": datetime.now().isoformat(),
             "data_sources": {
                 "results_dir": str(self.results_dir),
-                "citations_dir": str(self.citations_dir)
-                if self.citations_dir
-                else None,
+                "citations_dir": (
+                    str(self.citations_dir) if self.citations_dir else None
+                ),
                 "datasets_dir": str(self.datasets_dir) if self.datasets_dir else None,
             },
         }

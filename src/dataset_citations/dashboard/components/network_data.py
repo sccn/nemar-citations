@@ -209,9 +209,9 @@ class NetworkDataExtractor:
                 {
                     "data": {
                         "id": citation_id,
-                        "title": title[:100]
-                        if len(title) > 100
-                        else title,  # Truncate long titles
+                        "title": (
+                            title[:100] if len(title) > 100 else title
+                        ),  # Truncate long titles
                         "type": "citation",
                         "citations": int(cited_by),  # Use actual cited_by count
                         "confidence": confidence,

@@ -81,12 +81,12 @@ class DatasetMetadataRetriever:
             metadata["github_info"].update(
                 {
                     "description": repo.description,
-                    "created_at": repo.created_at.isoformat()
-                    if repo.created_at
-                    else None,
-                    "updated_at": repo.updated_at.isoformat()
-                    if repo.updated_at
-                    else None,
+                    "created_at": (
+                        repo.created_at.isoformat() if repo.created_at else None
+                    ),
+                    "updated_at": (
+                        repo.updated_at.isoformat() if repo.updated_at else None
+                    ),
                     "default_branch": repo.default_branch,
                 }
             )

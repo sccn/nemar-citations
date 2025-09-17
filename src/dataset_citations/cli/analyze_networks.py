@@ -146,12 +146,12 @@ def save_analysis_results(
         "total_bridge_papers": len(bridge_papers_df),
         "years_analyzed": len(temporal_df),
         "top_cited_paper": impact_df.iloc[0].to_dict() if not impact_df.empty else None,
-        "most_co_cited_datasets": co_citation_df.iloc[0].to_dict()
-        if not co_citation_df.empty
-        else None,
-        "top_bridge_paper": bridge_papers_df.iloc[0].to_dict()
-        if not bridge_papers_df.empty
-        else None,
+        "most_co_cited_datasets": (
+            co_citation_df.iloc[0].to_dict() if not co_citation_df.empty else None
+        ),
+        "top_bridge_paper": (
+            bridge_papers_df.iloc[0].to_dict() if not bridge_papers_df.empty else None
+        ),
     }
 
     with open(

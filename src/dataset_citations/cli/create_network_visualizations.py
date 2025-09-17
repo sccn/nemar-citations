@@ -130,7 +130,8 @@ def main() -> None:
         logger.info("✅ Network visualization creation completed!")
 
         if not args.static_only:
-            print(f"""
+            print(
+                f"""
 🎉 Interactive Network Visualizations Created!
 
 📁 Output locations:
@@ -142,14 +143,17 @@ def main() -> None:
    - Hover over nodes for details
    - Zoom and pan to explore
    - Node sizes represent citation counts/influence
-            """)
+            """
+            )
         else:
-            print(f"""
+            print(
+                f"""
 🎉 Static Network Visualizations Created!
 
 📁 Output location:
    📊 Static network graph: {args.output_dir}/dataset_co_citation_network.png
-            """)
+            """
+            )
 
     except Exception as e:
         logger.error(f"❌ Error during network visualization creation: {e}")

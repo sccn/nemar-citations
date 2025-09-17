@@ -2877,22 +2877,22 @@ def export_to_graphml(network_data, output_file):
         )
 
         for node in network_data.get("nodes", []):
-            gexf_content += f'''
+            gexf_content += f"""
             <node id="{node["id"]}" label="{node["label"]}">
                 <attvalues>
                     <attvalue for="0" value="{node.get("type", "unknown")}"/>
                     <attvalue for="1" value="{node.get("confidence", 0.0)}"/>
                     <attvalue for="2" value="{node.get("cited_by", 0)}"/>
                 </attvalues>
-            </node>'''
+            </node>"""
 
         gexf_content += """
         </nodes>
         <edges>"""
 
         for edge in network_data.get("edges", []):
-            gexf_content += f'''
-            <edge id="{edge["id"]}" source="{edge["source"]}" target="{edge["target"]}"/>'''
+            gexf_content += f"""
+            <edge id="{edge["id"]}" source="{edge["source"]}" target="{edge["target"]}"/>"""
 
         gexf_content += """
         </edges>
@@ -2970,18 +2970,18 @@ def export_to_graphml(network_data, output_file):
     <graph id="dataset_citations" edgedefault="undirected">"""
 
         for node in network_data.get("nodes", []):
-            graphml_content += f'''
+            graphml_content += f"""
         <node id="{node["id"]}">
             <data key="type">{node.get("type", "unknown")}</data>
             <data key="confidence">{node.get("confidence", 0.0)}</data>
             <data key="cited_by">{node.get("cited_by", 0)}</data>
-        </node>'''
+        </node>"""
 
         for edge in network_data.get("edges", []):
-            graphml_content += f'''
+            graphml_content += f"""
         <edge source="{edge["source"]}" target="{edge["target"]}">
             <data key="weight">{edge.get("weight", 0.05)}</data>
-        </edge>'''
+        </edge>"""
 
         graphml_content += """
     </graph>

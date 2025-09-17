@@ -151,11 +151,13 @@ class ModalGenerator:
                 "method": "Sentence-transformer similarity",
                 "comparison": "Dataset descriptions vs citation abstracts",
                 "validation": "Manual review sample",
-                "quality_rate": stats["summary"].get("high_confidence_citations", 0)
-                / stats["summary"].get("total_citations", 1)
-                * 100
-                if stats["summary"].get("total_citations", 0) > 0
-                else 0,
+                "quality_rate": (
+                    stats["summary"].get("high_confidence_citations", 0)
+                    / stats["summary"].get("total_citations", 1)
+                    * 100
+                    if stats["summary"].get("total_citations", 0) > 0
+                    else 0
+                ),
             },
         }
 
