@@ -1,0 +1,40 @@
+{
+  "dataset_id": "ds005207",
+  "date_retrieved": "2025-09-17T20:12:27.480022+00:00",
+  "dataset_description": {
+    "Name": "Surrey cEEGrid sleep data set",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Kaare B. Mikkelsen",
+      "James K Ebajemito",
+      "Maria A Bonmati-Carrion",
+      "Nayantara Santhi",
+      "Victoria L Revell",
+      "Giuseppe Atzori",
+      "Laura Birch",
+      "Ciro Della Monica",
+      "Stefan Debener",
+      "Derk-Jan Dijk",
+      "Annette Sterr",
+      "Maarten De Vos"
+    ],
+    "License": "CC0",
+    "HowToAcknowledge": "Please cite Mikkelsen et al 2018: https://doi.org/10.1111/jsr.12786",
+    "DatasetDOI": "doi:10.18112/openneuro.ds005207.v1.0.0"
+  },
+  "readme_content": "Surrey sleep data set\r\n\r\n**Overview**\r\n\r\nThis dataset was collected as part of a research project on wearable sleep monitoring which took place in spring 2017.\r\n\r\nThe data set contains nightly EEG recordings from 20 healthy participants ('subjects'). Some recordings are full polysomnography (PSG) measurements, others are cEEGrid measurements. Most subjects have both PSG and ceegrid recordings from the same night, though a few are missing one or the other.\r\n\r\n**Format**\r\n\r\nThe dataset is formatted according to the Brain Imaging Data Structure. See the 'dataset_description.json' file for the specific BIDS version used. The EEG data format chosen is the '.set' format of EEGLAB.\r\n\r\nFor more information, see the following link:\r\nhttps://bids-specification.readthedocs.io/en/stable/01-introduction.html\r\n\r\n\r\n**Task description**\r\n\r\nThe patient performed no tasks. The recording equipment was mounted immediately prior to bedtime, and the recordings took place at the sleep laboratory of the Surrey Clinical Research Centre.\r\n\r\nNote that due to a miscommunication during the study, alignment information between cEEGrid and PSG recordings has not been saved. This means that to obtain a useful comparison between the two methods, for instance to align the manual scoring with the cEEGrid recordings, some post processing has to be performed. In the derivative dataset, 'aligned1', we have shared our own best attempt at alignment. \r\n\r\nThe data set was previously described in the paper \r\n'Machine-learning-derived sleep–wake staging from around-the-ear electroencephalogram outperforms manual scoring and actigraphy', Mikkelsen et al 2018, https://doi.org/10.1111/jsr.12786\r\n\r\n**Contact**\r\n\r\nFor questions regarding this data set, contact: \r\nKaare Mikkelsen, Mikkelsen.kaare@ece.au.dk, https://orcid.org/0000-0002-7360-8629",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005207",
+    "exists": true,
+    "description": "OpenNeuro dataset - Surrey cEEGrid sleep data set",
+    "created_at": "2024-06-01T19:05:47+00:00",
+    "updated_at": "2024-06-01T19:35:23+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}
