@@ -228,4 +228,4 @@ Built with ❤️ for NEMAR and the neuroscience open science community.
 
 ---
 
-*Last updated: July 31, 2025*
+*Last updated: September 17, 2025*
