@@ -26,7 +26,7 @@ class StatisticsGenerator:
                     "id": "datasets",
                     "icon": "fas fa-database",
                     "value": stats.get("total_datasets", 0),
-                    "label": "Datasets Analyzed",
+                    "label": "Datasets (with Citations)",
                     "detail": "Click for details",
                 },
                 {
