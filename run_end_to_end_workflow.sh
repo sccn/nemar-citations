@@ -290,6 +290,9 @@ EOF
 run_full_workflow() {
     print_status "Running full end-to-end workflow..."
 
+    # Save current directory for later
+    ORIGINAL_DIR=$(pwd)
+
     # Step 0: Create branch to protect current work
     print_status "Creating feature branch..."
     BRANCH_NAME="auto-update/$(date +'%Y-%m-%d_%H-%M')"
@@ -483,6 +486,57 @@ $(git diff origin/main..HEAD --name-only | head -20)
     print_status "Full workflow completed ✓"
     print_info "Branch: $BRANCH_NAME"
     print_info "Log file: $LOG_FILE"
+
+    # Deploy dashboard to GitHub Pages
+    print_status "Deploying dashboard to GitHub Pages..."
+
+    # Create a temporary directory for the GitHub Pages repo
+    TEMP_DIR=$(mktemp -d)
+    print_info "Using temp directory: $TEMP_DIR"
+
+    # Clone the GitHub Pages repository
+    print_info "Cloning neuromechanist.github.io repository..."
+    if git clone https://${GITHUB_TOKEN}@github.com/neuromechanist/neuromechanist.github.io.git "$TEMP_DIR/github-pages" 2>/dev/null; then
+        cd "$TEMP_DIR/github-pages"
+
+        # Configure git for commits
+        git config user.name "citations-bot"
+        git config user.email "shirazi@ieee.org"
+
+        # Create static directory if it doesn't exist
+        mkdir -p static
+
+        # Copy dashboard files
+        print_info "Copying dashboard files to static directory..."
+        cp "$ORIGINAL_DIR/interactive_reports/dataset_citations_dashboard_nemar.html" static/ 2>/dev/null || print_warning "Dashboard HTML not found"
+        cp -r "$ORIGINAL_DIR/interactive_reports/data" static/ 2>/dev/null || print_warning "Data directory not found"
+        cp "$ORIGINAL_DIR/interactive_reports/dashboard_styles.css" static/ 2>/dev/null || print_warning "Styles CSS not found"
+
+        # Check if there are changes to commit
+        if ! git diff --quiet; then
+            print_info "Committing dashboard updates..."
+            git add static/
+            git commit -m "Update NEMAR citations dashboard - $(date +'%Y-%m-%d %H:%M')"
+
+            # Push to GitHub Pages
+            if git push origin main; then
+                print_status "Dashboard deployed successfully to GitHub Pages ✓"
+                print_info "Dashboard URL: https://neuromechanist.github.io/static/dataset_citations_dashboard_nemar.html"
+            else
+                print_warning "Failed to push dashboard to GitHub Pages"
+            fi
+        else
+            print_info "No changes in dashboard files, skipping deployment"
+        fi
+
+        # Return to original directory
+        cd "$ORIGINAL_DIR"
+    else
+        print_warning "Failed to clone GitHub Pages repository. Skipping dashboard deployment."
+    fi
+
+    # Clean up temp directory
+    rm -rf "$TEMP_DIR"
 
     # Switch back to original branch
     print_info "Switching back to original branch: $ORIGINAL_BRANCH"
