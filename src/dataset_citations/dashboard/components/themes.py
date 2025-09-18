@@ -23,26 +23,26 @@ class ThemeGenerator:
         themes = [
             {
                 "id": 0,
-                "title": "Theme 1 - Core EEG",
-                "subtitle": "Primary neuroscience datasets",
+                "title": "Theme 1",
+                "subtitle": "note: themes update regularly with new data",
                 "wordcloud": "data/themes/theme_0_wordcloud.png",
             },
             {
                 "id": 1,
-                "title": "Theme 2 - Audio & Stimulation",
-                "subtitle": "Auditory processing studies",
+                "title": "Theme 2",
+                "subtitle": "note: themes update regularly with new data",
                 "wordcloud": "data/themes/theme_1_wordcloud.png",
             },
             {
                 "id": 2,
-                "title": "Theme 3 - Task Performance",
-                "subtitle": "Cognitive and behavioral tasks",
+                "title": "Theme 3",
+                "subtitle": "note: themes update regularly with new data",
                 "wordcloud": "data/themes/theme_2_wordcloud.png",
             },
             {
                 "id": 3,
-                "title": "Theme 4 - Advanced Methods",
-                "subtitle": "Methodological and analytical approaches",
+                "title": "Theme 4",
+                "subtitle": "note: themes update regularly with new data",
                 "wordcloud": "data/themes/theme_3_wordcloud.png",
             },
         ]
