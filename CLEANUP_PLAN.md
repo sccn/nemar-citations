@@ -10,7 +10,7 @@ Consolidate all analysis outputs to `dashboard_data/` and remove obsolete compon
 - `test_output_*/` - Multiple test output directories
 - `test_modular_output/` - Test modular output
 - `test_output_nemar/` - Test NEMAR output
-- `.playwright-mcp/` - Screenshot directory (move needed files first)
+- `.playwright-mcp/` - Screenshot directory (Not needed anymore)
 
 ### Obsolete Analysis Directories
 - `results/` - Old results directory (check for needed files first)
@@ -28,7 +28,8 @@ Consolidate all analysis outputs to `dashboard_data/` and remove obsolete compon
 ## Consolidation Plan
 
 ### Target Structure
-```
+
+```bash
 dashboard_data/
 ├── aggregated_data.json     # Main aggregated data
 ├── network/                 # Network analysis results
