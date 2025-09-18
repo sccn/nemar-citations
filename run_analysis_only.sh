@@ -190,7 +190,8 @@ from pathlib import Path
 
 gen = DashboardGenerator(
     results_dir=Path('.'),
-    output_dir=Path('interactive_reports')
+    output_dir=Path('interactive_reports'),
+    citations_dir=Path('citations/json')
 )
 
 output_path = gen.generate_dashboard(dashboard_type='nemar', lazy_load=True)
