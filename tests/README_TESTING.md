@@ -49,3 +49,23 @@ export RUN_SLOW_INTEGRATION_TESTS=1
 1. **Regular development**: `pytest tests/` (5 seconds)
 2. **Before commits**: `pytest tests/` + manual integration test if needed
 3. **Before releases**: Run full integration test suite
+4. **Test workflows**: Use `./run_end_to_end_workflow.sh test` for pipeline validation
+
+## End-to-End Workflow Testing
+```bash
+# Test the complete pipeline with mock data
+./run_end_to_end_workflow.sh test
+
+# Test GitHub Actions workflows locally with act
+./run_end_to_end_workflow.sh local-ci-test    # Test workflow
+./run_end_to_end_workflow.sh local-ci-update  # Update workflow
+
+# Run full pipeline (creates branch and PR)
+./run_end_to_end_workflow.sh full
+```
+
+## GitHub Actions & CI/CD
+- **Automatic testing**: Tests run on every push and PR
+- **CPU-only PyTorch**: Faster CI/CD without CUDA dependencies
+- **Local testing**: Use `act` to test workflows before pushing
+- **Branch protection**: Full and update workflows create feature branches automatically

@@ -91,9 +91,10 @@ pytest --cov=dataset_citations --cov-report=term-missing tests/
 pytest tests/test_integration_workflow.py -v
 
 # End-to-end workflow tests
-./run_end_to_end_workflow.sh test      # Test mode, no API calls
-./run_end_to_end_workflow.sh full      # Full pipeline (recommended)
-./run_end_to_end_workflow.sh local-ci  # Test CI/CD workflow via Docker
+./run_end_to_end_workflow.sh test              # Test mode, no API calls
+./run_end_to_end_workflow.sh full              # Full pipeline (recommended)
+./run_end_to_end_workflow.sh local-ci-test     # Test CI/CD test workflow via Docker
+./run_end_to_end_workflow.sh local-ci-update   # Test CI/CD update workflow via Docker
 ```
 
 ## Important Dependencies
@@ -113,6 +114,49 @@ pip install httpx==0.27.0
 If you accidentally upgrade httpx:
 ```bash
 pip install httpx==0.27.0 --force-reinstall
+```
+
+## Workflow and CI/CD
+
+### Workflow Modes
+
+The `run_end_to_end_workflow.sh` script supports multiple modes:
+
+- **test**: Quick validation with mock data (no API calls)
+- **full**: Complete pipeline with real API calls (creates branch/PR)
+- **local-ci-test**: Test GitHub Actions test workflow locally using `act`
+- **local-ci-update**: Test GitHub Actions update workflow locally using `act`
+
+### API Keys and Secrets
+
+The workflow script now auto-loads credentials from `.secrets` file:
+
+```bash
+# Create .secrets file (auto-loaded by workflow)
+cat > .secrets << EOF
+SCRAPERAPI_KEY=your_key_here
+GITHUB_TOKEN=your_token_here
+EOF
+
+# Or use environment variables
+export SCRAPERAPI_KEY=your_key_here
+export GITHUB_TOKEN=your_token_here
+```
+
+### Branch Protection
+
+Both `full` and `local-ci-update` modes automatically:
+1. Create a feature branch before making changes
+2. Run the complete pipeline
+3. Create a pull request for review
+
+### PyTorch Installation
+
+The project uses CPU-only PyTorch to avoid CUDA dependencies:
+
+```bash
+# Install CPU-only PyTorch (done automatically in CI/CD)
+pip install torch --index-url https://download.pytorch.org/whl/cpu
 ```
 
 ## Troubleshooting

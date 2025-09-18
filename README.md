@@ -25,15 +25,21 @@ pip install -e ".[dev,test]"
 ## Quick Start
 
 ```bash
-# 1. Setup environment
+# 1. Setup environment (choose .env or .secrets)
+# Option A: Using .env file
 echo "SCRAPERAPI_KEY=your_key_here" > .env
 echo "GITHUB_TOKEN=your_token_here" >> .env
 
+# Option B: Using .secrets file (auto-loaded by workflow script)
+echo "SCRAPERAPI_KEY=your_key_here" > .secrets
+echo "GITHUB_TOKEN=your_token_here" >> .secrets
+
 # 2. Run complete pipeline
 chmod +x run_end_to_end_workflow.sh
-./run_end_to_end_workflow.sh test      # Test mode (no API calls)
-./run_end_to_end_workflow.sh full      # Full pipeline (recommended)
-./run_end_to_end_workflow.sh local-ci  # Test CI/CD workflow locally
+./run_end_to_end_workflow.sh test              # Test mode (no API calls)
+./run_end_to_end_workflow.sh full              # Full pipeline (recommended)
+./run_end_to_end_workflow.sh local-ci-test     # Test CI/CD test workflow locally
+./run_end_to_end_workflow.sh local-ci-update   # Test CI/CD update workflow locally
 ```
 
 ## Pipeline Workflow
@@ -46,7 +52,8 @@ The `run_end_to_end_workflow.sh` script automates the entire workflow:
 |------|-------------|---------|-----------|----------------|-----------|
 | `test` | Controlled test data (3-8 citations) | ~1 min | None | 4-5 only (Analyze, Generate) | No |
 | `full` | **Recommended**: Direct pipeline execution | 1-3 hours | Google Scholar, GitHub | 1-5 (All steps) | Yes (auto) |
-| `local-ci` | Run CI/CD workflow locally via Docker | ~10-30 min | Real API calls | 1-5 (All steps) | Yes (auto) |
+| `local-ci-test` | Test GitHub Actions test workflow via Docker | ~5-10 min | None | Runs test suite | No |
+| `local-ci-update` | Test GitHub Actions update workflow via Docker | ~10-30 min | Real API calls | 1-5 (All steps) | Yes (auto) |
 
 **Workflow Steps**:
 1. **Discover** → Find BIDS datasets (EEG/MEG/iEEG)
@@ -58,9 +65,10 @@ The `run_end_to_end_workflow.sh` script automates the entire workflow:
 **Mode Selection Guide**:
 - Use `test` for quick validation during development
 - Use `full` for actual citation updates (runs natively, faster)
-- Use `local-ci` only to test/debug GitHub Actions workflow issues
+- Use `local-ci-test` to test/debug GitHub Actions test workflow issues
+- Use `local-ci-update` to test/debug GitHub Actions update workflow issues
 
-**Branch Protection**: Both `full` and `local-ci` modes automatically create a feature branch and pull request to protect the main branch from direct commits.
+**Branch Protection**: Both `full` and `local-ci-update` modes automatically create a feature branch and pull request to protect the main branch from direct commits.
 
 ### Automated Updates (Cron)
 

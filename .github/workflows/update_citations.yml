@@ -28,6 +28,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          # Install CPU-only PyTorch first to avoid CUDA dependencies
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements.txt
           pip install -e .  # Install package with CLI entry points
 
@@ -132,13 +134,6 @@ jobs:
           dataset-citations-discover --output-file discovered_datasets.txt
           echo "dataset_list_file=discovered_datasets.txt" >> $GITHUB_OUTPUT
 
-      - name: Migrate existing pickle files to JSON
-        id: migrate_pickle
-        run: |
-          echo "Migrating existing pickle files to JSON format..."
-          dataset-citations-migrate --input-dir citations/pickle/ --output-dir citations/json/ --overwrite
-          echo "Migration completed"
-
       - name: Update citation information
         id: update_citations
         env:
@@ -171,7 +166,7 @@ jobs:
           dataset-citations-score-confidence \
             --citations-dir citations/json \
             --datasets-dir datasets \
-            --model all-MiniLM-L6-v2 \
+            --model Qwen/Qwen3-Embedding-0.6B \
             --skip-existing \
             --log-level INFO
           echo "Citation confidence scoring completed"
@@ -261,13 +256,22 @@ jobs:
             --log-level INFO || echo "Network analysis failed (non-critical)"
           
           echo "Generating interactive dashboard..."
-          dataset-citations-create-interactive-reports \
-            --results-dir results/ \
-            --output-dir interactive_reports/ \
-            --verbose || echo "Dashboard generation failed (non-critical)"
-          
+          python -c "
+from dataset_citations.dashboard.core import DashboardGenerator
+from pathlib import Path
+
+gen = DashboardGenerator(
+    results_dir=Path('dashboard_data'),
+    output_dir=Path('interactive_reports'),
+    citations_dir=Path('citations/json'),
+)
+
+output_path = gen.generate_dashboard(dashboard_type='nemar', lazy_load=True)
+print(f'Dashboard generated: {output_path}')
+" || echo "Dashboard generation failed (non-critical)"
+
           # Check if dashboard was created
-          if [ -f "interactive_reports/dataset_citations_dashboard.html" ]; then
+          if [ -f "interactive_reports/dataset_citations_dashboard_nemar.html" ]; then
             echo "Dashboard generated successfully"
             ls -lh interactive_reports/*.html
           else
