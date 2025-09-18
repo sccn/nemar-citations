@@ -42,38 +42,47 @@ class ModalGenerator:
         # Count datasets with citations
         total_datasets = len(dataset_popularity)
 
-        # Count datasets with actual high-confidence citations
-        datasets_with_high_conf = len(
-            [
-                d
-                for d in dataset_popularity
-                if int(d.get("high_confidence_citations", 0) or 0) > 0
-            ]
+        # Count datasets with actual citations (using citation_count field)
+        datasets_with_citations = len(
+            [d for d in dataset_popularity if int(d.get("citation_count", 0) or 0) > 0]
         )
 
-        # Calculate coverage percentage based on high-confidence citations
+        # Calculate coverage percentage based on datasets with citations
         coverage = (
-            f"{(datasets_with_high_conf / total_datasets * 100):.0f}%"
+            f"{(datasets_with_citations / total_datasets * 100):.0f}%"
             if total_datasets > 0
             else "0%"
         )
 
-        # Sort by high confidence citations and get top 20
-        top_datasets = sorted(
-            [
-                d
-                for d in dataset_popularity
-                if int(d.get("high_confidence_citations", 0) or 0) > 0
-            ],
-            key=lambda x: int(x.get("high_confidence_citations", 0) or 0),
+        # Sort by citation_count and get top 20, and format for template
+        filtered_datasets = [
+            d for d in dataset_popularity if int(d.get("citation_count", 0) or 0) > 0
+        ]
+
+        top_datasets = []
+        for ds in sorted(
+            filtered_datasets,
+            key=lambda x: int(x.get("citation_count", 0) or 0),
             reverse=True,
-        )[:20]
+        )[:20]:
+            top_datasets.append(
+                {
+                    "dataset_id": ds.get("dataset_id", ""),
+                    "dataset_name": ds.get(
+                        "dataset_id", ""
+                    ),  # Use ID as name if name not available
+                    "high_confidence_citations": ds.get(
+                        "citation_count", 0
+                    ),  # Map citation_count to expected field
+                    "total_citations": ds.get("citation_count", 0),
+                }
+            )
 
         return {
             "title": "Dataset Analysis Details",
             "content": {
                 "total_datasets": total_datasets,
-                "with_citations": datasets_with_high_conf,
+                "with_citations": datasets_with_citations,
                 "coverage": coverage,
                 "top_datasets": top_datasets,
                 "description": "Datasets are analyzed from the BIDS (Brain Imaging Data Structure) repository, with citation data collected from Google Scholar and filtered by confidence scores.",
@@ -124,10 +133,26 @@ class ModalGenerator:
         network_data = data.get("network_analysis", {})
         bridge_papers = network_data.get("bridge_papers", [])
 
+        # Fix field names and sort by number of datasets bridged
+        fixed_papers = []
+        for paper in bridge_papers:
+            fixed_papers.append(
+                {
+                    "bridge_paper_title": paper.get("title", "Unknown Title"),
+                    "bridge_paper_author": paper.get("author", "Unknown Authors"),
+                    "num_datasets_bridged": int(paper.get("num_datasets", 0)),
+                    "datasets_bridged": (
+                        paper.get("datasets_bridged", "").split(",")
+                        if paper.get("datasets_bridged")
+                        else []
+                    ),
+                }
+            )
+
         # Sort by number of datasets bridged and get top 20
         top_papers = sorted(
-            bridge_papers,
-            key=lambda x: int(x.get("num_datasets_bridged", 0)),
+            fixed_papers,
+            key=lambda x: x["num_datasets_bridged"],
             reverse=True,
         )[:20]
 
