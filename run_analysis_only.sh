@@ -168,7 +168,7 @@ import json
 
 # Create aggregator
 aggregator = DataAggregator(
-    results_dir=Path('.'),
+    results_dir=Path('dashboard_data'),
     citations_dir=Path('citations/json')
 )
 
@@ -189,7 +189,7 @@ from dataset_citations.dashboard.core import DashboardGenerator
 from pathlib import Path
 
 gen = DashboardGenerator(
-    results_dir=Path('.'),
+    results_dir=Path('dashboard_data'),
     output_dir=Path('interactive_reports'),
     citations_dir=Path('citations/json')
 )

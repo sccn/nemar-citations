@@ -59,11 +59,11 @@ run_full_analysis() {
 
     # Clean up and prepare directories
     print_status "Step 1/8: Preparing directories..."
-    rm -rf dashboard_data/network/*
-    rm -rf dashboard_data/themes/*
-    rm -rf dashboard_data/temporal/*
-    rm -rf dashboard_data/visualizations/*
-    rm -rf interactive_reports/data/*
+    rm -rf dashboard_data/network 2>/dev/null || true
+    rm -rf dashboard_data/themes 2>/dev/null || true
+    rm -rf dashboard_data/temporal 2>/dev/null || true
+    rm -rf dashboard_data/visualizations 2>/dev/null || true
+    rm -rf interactive_reports/data 2>/dev/null || true
 
     mkdir -p dashboard_data/{network,themes,temporal,visualizations}
     mkdir -p interactive_reports/data/themes
@@ -91,156 +91,23 @@ run_full_analysis() {
         --create-visualizations \
         --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "UMAP analysis had issues"
 
-    # Generate temporal themes with wordclouds
+    # Generate theme analysis with wordclouds
     print_status "Step 4/8: Generating theme analysis with wordclouds..."
-    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-analyze-temporal-themes \
-        --embeddings-dir embeddings \
+    ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_themes \
         --citations-dir citations/json \
-        --output-dir dashboard_data/themes \
-        --create-visualizations \
-        --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "Theme analysis had issues"
+        --output-dir dashboard_data/themes 2>&1 | tee -a "$LOG_FILE" || print_warning "Theme generation had issues"
 
-    # Generate network analysis data (without Neo4j)
+    # Generate network analysis data
     print_status "Step 5/8: Generating network analysis data..."
-    ~/miniconda3/bin/conda run -n dataset-citations python -c "
-import json
-import csv
-from pathlib import Path
-from collections import defaultdict, Counter
-
-# Prepare output directory
-network_dir = Path('dashboard_data/network')
-network_dir.mkdir(parents=True, exist_ok=True)
-
-# Initialize data structures
-author_datasets = defaultdict(set)
-dataset_citations = defaultdict(int)
-dataset_co_citations = defaultdict(int)
-bridge_papers = []
-multi_dataset_citations = []
-
-# Process all citation files
-citations_dir = Path('citations/json')
-for json_file in citations_dir.glob('*.json'):
-    dataset_id = json_file.stem.replace('_citations', '')
-
-    with open(json_file) as f:
-        data = json.load(f)
-        citations = data.get('citation_details', [])
-        dataset_citations[dataset_id] = len(citations)
-
-        # Process each citation
-        for citation in citations:
-            if citation.get('confidence_score', 0) >= 0.4:
-                # Track authors
-                authors = citation.get('authors', '')
-                if authors:
-                    author_datasets[authors].add(dataset_id)
-
-                # Check for multi-dataset citations (simplified)
-                title = citation.get('title', '').lower()
-                if any(term in title for term in ['multiple', 'comparison', 'benchmark', 'survey']):
-                    multi_dataset_citations.append({
-                        'title': citation.get('title'),
-                        'datasets': dataset_id,
-                        'confidence': citation.get('confidence_score')
-                    })
-
-# Identify bridge papers (papers citing multiple datasets)
-for author, datasets in author_datasets.items():
-    if len(datasets) > 1:
-        bridge_papers.append({
-            'author': author,
-            'datasets_bridged': list(datasets),
-            'num_datasets': len(datasets)
-        })
-
-# Save author influence data
-with open(network_dir / 'author_influence.csv', 'w', newline='') as f:
-    writer = csv.DictWriter(f, fieldnames=['author', 'datasets_cited', 'num_datasets'])
-    writer.writeheader()
-    for author, datasets in author_datasets.items():
-        writer.writerow({
-            'author': author,
-            'datasets_cited': ','.join(list(datasets)),
-            'num_datasets': len(datasets)
-        })
-
-# Save bridge papers data
-with open(network_dir / 'bridge_papers.csv', 'w', newline='') as f:
-    writer = csv.DictWriter(f, fieldnames=['author', 'datasets_bridged', 'num_datasets'])
-    writer.writeheader()
-    writer.writerows(bridge_papers[:80])  # Top 80 bridge papers
-
-# Save dataset popularity
-with open(network_dir / 'dataset_popularity.csv', 'w', newline='') as f:
-    writer = csv.DictWriter(f, fieldnames=['dataset_id', 'citation_count'])
-    writer.writeheader()
-    for dataset_id, count in sorted(dataset_citations.items(), key=lambda x: x[1], reverse=True):
-        writer.writerow({'dataset_id': dataset_id, 'citation_count': count})
-
-# Save multi-dataset citations
-with open(network_dir / 'multi_dataset_citations.csv', 'w', newline='') as f:
-    writer = csv.DictWriter(f, fieldnames=['title', 'datasets', 'confidence'])
-    writer.writeheader()
-    writer.writerows(multi_dataset_citations[:100])
-
-print(f'Generated network analysis data: {len(bridge_papers)} bridge papers identified')
-" 2>&1 | tee -a "$LOG_FILE"
+    ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_network \
+        --citations-dir citations/json \
+        --output-dir dashboard_data/network 2>&1 | tee -a "$LOG_FILE"
 
     # Generate temporal analysis
     print_status "Step 6/8: Generating temporal analysis..."
-    ~/miniconda3/bin/conda run -n dataset-citations python -c "
-import json
-import csv
-from pathlib import Path
-from collections import defaultdict
-
-# Prepare output directory
-temporal_dir = Path('dashboard_data/temporal')
-temporal_dir.mkdir(parents=True, exist_ok=True)
-
-# Initialize data structures
-yearly_citations = defaultdict(int)
-yearly_datasets = defaultdict(set)
-
-# Process all citation files
-citations_dir = Path('citations/json')
-for json_file in citations_dir.glob('*.json'):
-    dataset_id = json_file.stem.replace('_citations', '')
-
-    with open(json_file) as f:
-        data = json.load(f)
-        citations = data.get('citation_details', [])
-
-        for citation in citations:
-            year = citation.get('year', 0)
-            if year and year > 2000 and year < 2025:
-                yearly_citations[year] += 1
-                yearly_datasets[year].add(dataset_id)
-
-# Save temporal summary
-with open(temporal_dir / 'temporal_summary.csv', 'w', newline='') as f:
-    writer = csv.DictWriter(f, fieldnames=['year', 'total_citations', 'unique_datasets'])
-    writer.writeheader()
-    for year in sorted(yearly_citations.keys()):
-        writer.writerow({
-            'year': year,
-            'total_citations': yearly_citations[year],
-            'unique_datasets': len(yearly_datasets[year])
-        })
-
-# Save as JSON too
-temporal_data = {
-    'yearly_citations': dict(yearly_citations),
-    'yearly_datasets': {str(k): len(v) for k, v in yearly_datasets.items()}
-}
-
-with open(temporal_dir / 'temporal_analysis.json', 'w') as f:
-    json.dump(temporal_data, f, indent=2)
-
-print(f'Generated temporal analysis data: {len(yearly_citations)} years of data')
-" 2>&1 | tee -a "$LOG_FILE"
+    ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_temporal \
+        --citations-dir citations/json \
+        --output-dir dashboard_data/temporal 2>&1 | tee -a "$LOG_FILE"
 
     # Aggregate all data
     print_status "Step 7/8: Aggregating data for dashboard..."
@@ -251,7 +118,7 @@ import json
 
 # Create aggregator
 aggregator = DataAggregator(
-    results_dir=Path('.'),
+    results_dir=Path('dashboard_data'),
     citations_dir=Path('citations/json')
 )
 
@@ -274,7 +141,7 @@ from dataset_citations.dashboard.core import DashboardGenerator
 from pathlib import Path
 
 gen = DashboardGenerator(
-    results_dir=Path('.'),
+    results_dir=Path('dashboard_data'),
     output_dir=Path('interactive_reports'),
     citations_dir=Path('citations/json')
 )
