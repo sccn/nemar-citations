@@ -256,13 +256,22 @@ jobs:
             --log-level INFO || echo "Network analysis failed (non-critical)"
           
           echo "Generating interactive dashboard..."
-          dataset-citations-create-interactive-reports \
-            --results-dir results/ \
-            --output-dir interactive_reports/ \
-            --verbose || echo "Dashboard generation failed (non-critical)"
-          
+          python -c "
+from dataset_citations.dashboard.core import DashboardGenerator
+from pathlib import Path
+
+gen = DashboardGenerator(
+    results_dir=Path('dashboard_data'),
+    output_dir=Path('interactive_reports'),
+    citations_dir=Path('citations/json'),
+)
+
+output_path = gen.generate_dashboard(dashboard_type='nemar', lazy_load=True)
+print(f'Dashboard generated: {output_path}')
+" || echo "Dashboard generation failed (non-critical)"
+
           # Check if dashboard was created
-          if [ -f "interactive_reports/dataset_citations_dashboard.html" ]; then
+          if [ -f "interactive_reports/dataset_citations_dashboard_nemar.html" ]; then
             echo "Dashboard generated successfully"
             ls -lh interactive_reports/*.html
           else

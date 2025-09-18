@@ -183,10 +183,19 @@ print('Test metadata generated')
         --output-dir "$TEST_OUTPUT_DIR/results/network_analysis" || true
 
     print_status "Step 6/6: Generating dashboard..."
-    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-create-interactive-reports \
-        --results-dir "$TEST_OUTPUT_DIR/results" \
-        --output-dir "$TEST_OUTPUT_DIR/interactive_reports" \
-        --verbose || print_warning "Dashboard generation failed"
+    ~/miniconda3/bin/conda run -n dataset-citations python -c "
+from dataset_citations.dashboard.core import DashboardGenerator
+from pathlib import Path
+
+gen = DashboardGenerator(
+    results_dir=Path('$TEST_OUTPUT_DIR/dashboard_data'),
+    output_dir=Path('$TEST_OUTPUT_DIR/interactive_reports'),
+    citations_dir=Path('$TEST_OUTPUT_DIR/citations/json'),
+)
+
+output_path = gen.generate_dashboard(dashboard_type='nemar', lazy_load=True)
+print(f'Dashboard generated: {output_path}')
+" || print_warning "Dashboard generation failed"
 
     # Validate outputs
     print_status "Validating test outputs..."
@@ -364,17 +373,26 @@ run_full_workflow() {
         --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "Network analysis failed"
 
     print_status "Step 6/8: Generating interactive dashboard..."
-    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-create-interactive-reports \
-        --results-dir results \
-        --output-dir interactive_reports \
-        --verbose 2>&1 | tee -a "$LOG_FILE"
+    ~/miniconda3/bin/conda run -n dataset-citations python -c "
+from dataset_citations.dashboard.core import DashboardGenerator
+from pathlib import Path
+
+gen = DashboardGenerator(
+    results_dir=Path('dashboard_data'),
+    output_dir=Path('interactive_reports'),
+    citations_dir=Path('citations/json'),
+)
+
+output_path = gen.generate_dashboard(dashboard_type='nemar', lazy_load=True)
+print(f'Dashboard generated: {output_path}')
+" 2>&1 | tee -a "$LOG_FILE"
 
     # Validate outputs
     print_status "Validating outputs..."
     JSON_COUNT=$(find citations/json -name "*.json" 2>/dev/null | wc -l)
     print_info "Generated $JSON_COUNT citation JSON files"
 
-    if [ -f "interactive_reports/dataset_citations_dashboard.html" ]; then
+    if [ -f "interactive_reports/dataset_citations_dashboard_nemar.html" ]; then
         print_status "Dashboard generated successfully ✓"
         ls -lh interactive_reports/*.html
     else
