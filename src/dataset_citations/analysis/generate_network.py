@@ -27,7 +27,11 @@ def generate_network(citations_dir: Path, output_dir: Path):
         with open(json_file) as f:
             data = json.load(f)
             citations = data.get("citation_details", [])
-            dataset_citations[dataset_id] = len(citations)
+
+            # Count high and low confidence citations separately
+            high_conf_count = 0
+            low_conf_count = 0
+            total_count = len(citations)
 
             # Process each citation
             for citation in citations:
@@ -36,6 +40,11 @@ def generate_network(citations_dir: Path, output_dir: Path):
                 confidence = confidence_data.get(
                     "confidence_score", citation.get("confidence_score", 0)
                 )
+
+                if confidence >= 0.4:
+                    high_conf_count += 1
+                else:
+                    low_conf_count += 1
 
                 if confidence >= 0.4:
                     # Track authors
@@ -65,6 +74,13 @@ def generate_network(citations_dir: Path, output_dir: Path):
                                 "confidence": confidence,
                             }
                         )
+
+            # Store all citation counts for this dataset
+            dataset_citations[dataset_id] = {
+                "high_conf": high_conf_count,
+                "low_conf": low_conf_count,
+                "total": total_count,
+            }
 
     # Identify bridge papers (papers citing multiple datasets)
     for (title, author), paper_info in paper_to_datasets.items():
@@ -121,14 +137,29 @@ def generate_network(citations_dir: Path, output_dir: Path):
                 ["title", "author", "year", "datasets_bridged", "num_datasets"]
             )
 
-    # Save dataset popularity
+    # Save dataset popularity with high/low confidence breakdown
     with open(output_dir / "dataset_popularity.csv", "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=["dataset_id", "citation_count"])
+        writer = csv.DictWriter(
+            f,
+            fieldnames=[
+                "dataset_id",
+                "high_conf_citations",
+                "low_conf_citations",
+                "total_citations",
+            ],
+        )
         writer.writeheader()
-        for dataset_id, count in sorted(
-            dataset_citations.items(), key=lambda x: x[1], reverse=True
+        for dataset_id, counts in sorted(
+            dataset_citations.items(), key=lambda x: x[1]["high_conf"], reverse=True
         ):
-            writer.writerow({"dataset_id": dataset_id, "citation_count": count})
+            writer.writerow(
+                {
+                    "dataset_id": dataset_id,
+                    "high_conf_citations": counts["high_conf"],
+                    "low_conf_citations": counts["low_conf"],
+                    "total_citations": counts["total"],
+                }
+            )
 
     # Save multi-dataset citations
     with open(output_dir / "multi_dataset_citations.csv", "w", newline="") as f:
