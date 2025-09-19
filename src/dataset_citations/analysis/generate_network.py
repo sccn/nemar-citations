@@ -17,6 +17,9 @@ def generate_network(citations_dir: Path, output_dir: Path):
     bridge_papers = []
     multi_dataset_citations = []
 
+    # Track papers (title+author) to datasets for bridge papers
+    paper_to_datasets = defaultdict(lambda: {"datasets": set(), "year": None})
+
     # Process all citation files
     for json_file in citations_dir.glob("*.json"):
         dataset_id = json_file.stem.replace("_citations", "")
@@ -40,6 +43,15 @@ def generate_network(citations_dir: Path, output_dir: Path):
                     if author and author.strip():
                         author_datasets[author].add(dataset_id)
 
+                        # Track individual papers for bridge paper analysis
+                        title = citation.get("title", "")
+                        year = citation.get("year", "")
+                        if title and title.strip():
+                            # Use title+author as unique key for a paper
+                            paper_key = (title.strip(), author.strip())
+                            paper_to_datasets[paper_key]["datasets"].add(dataset_id)
+                            paper_to_datasets[paper_key]["year"] = year
+
                     # Check for multi-dataset citations (simplified)
                     title = citation.get("title", "").lower()
                     if any(
@@ -54,14 +66,16 @@ def generate_network(citations_dir: Path, output_dir: Path):
                             }
                         )
 
-    # Identify bridge papers (authors citing multiple datasets)
-    for author, datasets in author_datasets.items():
-        if len(datasets) > 1:
+    # Identify bridge papers (papers citing multiple datasets)
+    for (title, author), paper_info in paper_to_datasets.items():
+        if len(paper_info["datasets"]) > 1:
             bridge_papers.append(
                 {
+                    "title": title,
                     "author": author,
-                    "datasets_bridged": ",".join(sorted(list(datasets))),
-                    "num_datasets": len(datasets),
+                    "year": paper_info["year"] or "",
+                    "datasets_bridged": ",".join(sorted(list(paper_info["datasets"]))),
+                    "num_datasets": len(paper_info["datasets"]),
                 }
             )
 
@@ -90,13 +104,22 @@ def generate_network(citations_dir: Path, output_dir: Path):
     with open(output_dir / "bridge_papers.csv", "w", newline="") as f:
         if bridge_papers:
             writer = csv.DictWriter(
-                f, fieldnames=["author", "datasets_bridged", "num_datasets"]
+                f,
+                fieldnames=[
+                    "title",
+                    "author",
+                    "year",
+                    "datasets_bridged",
+                    "num_datasets",
+                ],
             )
             writer.writeheader()
             writer.writerows(bridge_papers[:80])  # Top 80 bridge papers
         else:
             writer = csv.writer(f)
-            writer.writerow(["author", "datasets_bridged", "num_datasets"])
+            writer.writerow(
+                ["title", "author", "year", "datasets_bridged", "num_datasets"]
+            )
 
     # Save dataset popularity
     with open(output_dir / "dataset_popularity.csv", "w", newline="") as f:
