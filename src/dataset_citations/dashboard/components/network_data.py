@@ -129,6 +129,9 @@ class NetworkDataExtractor:
         nodes = []
         edges = []
 
+        # Load dataset names from metadata files
+        dataset_names = self._load_dataset_names()
+
         # Create nodes from all datasets with UMAP coordinates
         for dataset in popularity:  # All datasets
             dataset_id = dataset.get("dataset_id", "")
@@ -136,13 +139,14 @@ class NetworkDataExtractor:
                 # Load actual citation count from JSON file
                 num_citations = self._get_dataset_citation_count(dataset_id)
 
+                # Get the actual dataset name from metadata
+                dataset_name = dataset_names.get(dataset_id, dataset_id)
+
                 nodes.append(
                     {
                         "data": {
                             "id": dataset_id,
-                            "name": dataset.get(
-                                "dataset_name", dataset_id
-                            ),  # Store name but don't display as label
+                            "name": dataset_name,  # Use actual dataset name
                             "citations": num_citations,  # Use num_citations from JSON files
                             "type": "dataset",
                         },
@@ -249,6 +253,32 @@ class NetworkDataExtractor:
         except Exception as e:
             logger.warning(f"Error loading citations for {dataset_id}: {e}")
             return 0
+
+    def _load_dataset_names(self) -> Dict[str, str]:
+        """Load dataset names from metadata JSON files."""
+        dataset_names = {}
+        datasets_dir = Path("datasets")
+
+        if not datasets_dir.exists():
+            logger.warning("Datasets directory not found")
+            return dataset_names
+
+        for json_file in datasets_dir.glob("*_datasets.json"):
+            try:
+                with open(json_file) as f:
+                    data = json.load(f)
+                    dataset_id = data.get("dataset_id", "")
+                    dataset_desc = data.get("dataset_description")
+                    if dataset_desc and isinstance(dataset_desc, dict):
+                        dataset_name = dataset_desc.get("Name", dataset_id)
+                    else:
+                        dataset_name = dataset_id
+                    if dataset_id:
+                        dataset_names[dataset_id] = dataset_name
+            except Exception as e:
+                logger.warning(f"Error loading dataset from {json_file}: {e}")
+
+        return dataset_names
 
     def _load_citation_titles(self) -> Dict[str, Dict[str, Any]]:
         """Load citation titles from JSON files and build reverse index."""

@@ -59,18 +59,22 @@ class ModalGenerator:
             d for d in dataset_popularity if int(d.get("citation_count", 0) or 0) > 0
         ]
 
+        # Load dataset names from metadata files
+        dataset_names = self._load_dataset_names()
+
         top_datasets = []
         for ds in sorted(
             filtered_datasets,
             key=lambda x: int(x.get("citation_count", 0) or 0),
             reverse=True,
         )[:20]:
+            dataset_id = ds.get("dataset_id", "")
             top_datasets.append(
                 {
-                    "dataset_id": ds.get("dataset_id", ""),
-                    "dataset_name": ds.get(
-                        "dataset_id", ""
-                    ),  # Use ID as name if name not available
+                    "dataset_id": dataset_id,
+                    "dataset_name": dataset_names.get(
+                        dataset_id, dataset_id
+                    ),  # Use actual dataset name from metadata
                     "high_confidence_citations": ds.get(
                         "citation_count", 0
                     ),  # Map citation_count to expected field
@@ -244,3 +248,28 @@ class ModalGenerator:
         )
 
         return sorted_citations[:limit]
+
+    def _load_dataset_names(self) -> Dict[str, str]:
+        """Load dataset names from metadata JSON files."""
+        dataset_names = {}
+        datasets_dir = Path("datasets")
+
+        if not datasets_dir.exists():
+            return dataset_names
+
+        for json_file in datasets_dir.glob("*_datasets.json"):
+            try:
+                with open(json_file) as f:
+                    data = json.load(f)
+                    dataset_id = data.get("dataset_id", "")
+                    dataset_desc = data.get("dataset_description")
+                    if dataset_desc and isinstance(dataset_desc, dict):
+                        dataset_name = dataset_desc.get("Name", dataset_id)
+                    else:
+                        dataset_name = dataset_id
+                    if dataset_id:
+                        dataset_names[dataset_id] = dataset_name
+            except Exception:
+                continue
+
+        return dataset_names
