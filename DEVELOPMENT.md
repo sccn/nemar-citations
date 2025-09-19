@@ -118,11 +118,35 @@ pip install httpx==0.27.0 --force-reinstall
 
 ## Workflow and CI/CD
 
+### Available Shell Scripts
+
+The project includes several workflow scripts:
+
+1. **`run_end_to_end_workflow.sh`**: Complete pipeline from data discovery to dashboard generation
+   - Discovers datasets from GitHub
+   - Fetches citations from Google Scholar
+   - Calculates confidence scores
+   - Generates all analysis outputs
+   - Creates interactive dashboard
+
+2. **`run_full_analysis.sh`**: Analysis-only workflow for existing citation data
+   - Generates embeddings for citations
+   - Performs UMAP dimensionality reduction
+   - Creates theme analysis with wordclouds
+   - Generates network visualizations
+   - Produces temporal trend analysis
+   - Creates interactive dashboard
+
+3. **`migrate_to_json.sh`**: One-time migration from pickle to JSON format
+   - Converts all pickle files to web-ready JSON
+   - Preserves all citation data
+   - Adds proper metadata structure
+
 ### Workflow Modes
 
 The `run_end_to_end_workflow.sh` script supports multiple modes:
 
-- **test**: Quick validation with mock data (no API calls)
+- **test**: Quick validation with controlled test data (no API calls)
 - **full**: Complete pipeline with real API calls (creates branch/PR)
 - **local-ci-test**: Test GitHub Actions test workflow locally using `act`
 - **local-ci-update**: Test GitHub Actions update workflow locally using `act`
@@ -157,6 +181,44 @@ The project uses CPU-only PyTorch to avoid CUDA dependencies:
 ```bash
 # Install CPU-only PyTorch (done automatically in CI/CD)
 pip install torch --index-url https://download.pytorch.org/whl/cpu
+```
+
+## Analysis Modules
+
+The project includes standalone analysis modules in `src/dataset_citations/analysis/`:
+
+### Theme Analysis (`generate_themes.py`)
+- Generates comprehensive theme analysis from citation data
+- Creates word clouds for visualization
+- Outputs JSON with theme clusters and top words
+
+### Network Analysis (`generate_network.py`)
+- Analyzes citation networks and relationships
+- Identifies bridge papers (authors citing multiple datasets)
+- Tracks dataset popularity and citation patterns
+
+### Temporal Analysis (`generate_temporal.py`)
+- Analyzes citation trends over time
+- Tracks growth patterns for datasets
+- Generates temporal statistics
+
+These modules are used by both workflow scripts and can be run independently:
+
+```bash
+# Run theme analysis
+python -m dataset_citations.analysis.generate_themes \
+    --citations-dir citations/json \
+    --output-dir dashboard_data/themes
+
+# Run network analysis
+python -m dataset_citations.analysis.generate_network \
+    --citations-dir citations/json \
+    --output-dir dashboard_data/network
+
+# Run temporal analysis
+python -m dataset_citations.analysis.generate_temporal \
+    --citations-dir citations/json \
+    --output-dir dashboard_data/temporal
 ```
 
 ## Troubleshooting
