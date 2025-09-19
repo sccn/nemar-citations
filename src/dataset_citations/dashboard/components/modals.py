@@ -140,6 +140,7 @@ class ModalGenerator:
                 {
                     "bridge_paper_title": paper.get("title", "Unknown Title"),
                     "bridge_paper_author": paper.get("author", "Unknown Authors"),
+                    "bridge_paper_year": paper.get("year", ""),
                     "num_datasets_bridged": int(paper.get("num_datasets", 0)),
                     "datasets_bridged": (
                         paper.get("datasets_bridged", "").split(",")
