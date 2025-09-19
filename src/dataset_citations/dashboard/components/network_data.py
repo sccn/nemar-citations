@@ -136,8 +136,8 @@ class NetworkDataExtractor:
         for dataset in popularity:  # All datasets
             dataset_id = dataset.get("dataset_id", "")
             if dataset_id in umap_coords:
-                # Load actual citation count from JSON file
-                num_citations = self._get_dataset_citation_count(dataset_id)
+                # Use the high-confidence citation count from the CSV
+                high_conf_citations = int(dataset.get("high_conf_citations", 0) or 0)
 
                 # Get the actual dataset name from metadata
                 dataset_name = dataset_names.get(dataset_id, dataset_id)
@@ -147,7 +147,7 @@ class NetworkDataExtractor:
                         "data": {
                             "id": dataset_id,
                             "name": dataset_name,  # Use actual dataset name
-                            "citations": num_citations,  # Use num_citations from JSON files
+                            "citations": high_conf_citations,  # Use high-conf count from CSV
                             "type": "dataset",
                         },
                         "position": {
@@ -231,28 +231,6 @@ class NetworkDataExtractor:
         # This would require processing similarity data
 
         return {"nodes": nodes, "edges": edges}
-
-    def _get_dataset_citation_count(self, dataset_id: str) -> int:
-        """Get the number of HIGH-CONFIDENCE citations for a dataset from its JSON file."""
-        json_file = Path(f"citations/json/{dataset_id}_citations.json")
-
-        if not json_file.exists():
-            return 0
-
-        try:
-            with open(json_file) as f:
-                data = json.load(f)
-                # Count only high-confidence citations (>= 0.4)
-                citations = data.get("citation_details", [])
-                high_conf_count = sum(
-                    1
-                    for c in citations
-                    if c.get("confidence_scoring", {}).get("confidence_score", 0) >= 0.4
-                )
-                return high_conf_count
-        except Exception as e:
-            logger.warning(f"Error loading citations for {dataset_id}: {e}")
-            return 0
 
     def _load_dataset_names(self) -> Dict[str, str]:
         """Load dataset names from metadata JSON files."""

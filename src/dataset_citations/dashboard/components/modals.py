@@ -42,9 +42,13 @@ class ModalGenerator:
         # Count datasets with citations
         total_datasets = len(dataset_popularity)
 
-        # Count datasets with actual citations (using citation_count field)
+        # Count datasets with high-confidence citations
         datasets_with_citations = len(
-            [d for d in dataset_popularity if int(d.get("citation_count", 0) or 0) > 0]
+            [
+                d
+                for d in dataset_popularity
+                if int(d.get("high_conf_citations", 0) or 0) > 0
+            ]
         )
 
         # Calculate coverage percentage based on datasets with citations
@@ -54,9 +58,11 @@ class ModalGenerator:
             else "0%"
         )
 
-        # Sort by citation_count and get top 20, and format for template
+        # Sort by high_conf_citations and get top 20, and format for template
         filtered_datasets = [
-            d for d in dataset_popularity if int(d.get("citation_count", 0) or 0) > 0
+            d
+            for d in dataset_popularity
+            if int(d.get("high_conf_citations", 0) or 0) > 0
         ]
 
         # Load dataset names from metadata files
@@ -65,20 +71,23 @@ class ModalGenerator:
         top_datasets = []
         for ds in sorted(
             filtered_datasets,
-            key=lambda x: int(x.get("citation_count", 0) or 0),
+            key=lambda x: int(x.get("high_conf_citations", 0) or 0),
             reverse=True,
         )[:20]:
             dataset_id = ds.get("dataset_id", "")
+            high_conf = int(ds.get("high_conf_citations", 0) or 0)
+            low_conf = int(ds.get("low_conf_citations", 0) or 0)
+            total = int(ds.get("total_citations", 0) or 0)
+
             top_datasets.append(
                 {
                     "dataset_id": dataset_id,
                     "dataset_name": dataset_names.get(
                         dataset_id, dataset_id
                     ),  # Use actual dataset name from metadata
-                    "high_confidence_citations": ds.get(
-                        "citation_count", 0
-                    ),  # Map citation_count to expected field
-                    "total_citations": ds.get("citation_count", 0),
+                    "high_confidence_citations": high_conf,
+                    "low_confidence_citations": low_conf,
+                    "total_citations": total,
                 }
             )
 
