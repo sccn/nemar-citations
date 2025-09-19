@@ -227,7 +227,11 @@ class ModalHandler:
                         const authors = paper.bridge_paper_author || 'Unknown Authors';
                         const year = paper.bridge_paper_year || '';
                         const numDatasets = paper.num_datasets_bridged || 0;
-                        const datasets = paper.datasets_bridged ? paper.datasets_bridged.replace(/[\[\]']/g, '').split(', ').slice(0, 3).join(', ') : '';
+                        const datasets = paper.datasets_bridged ?
+                            (Array.isArray(paper.datasets_bridged) ?
+                                paper.datasets_bridged.slice(0, 3).join(', ') :
+                                paper.datasets_bridged.replace(/[\[\]']/g, '').split(', ').slice(0, 3).join(', '))
+                            : '';
                         
                         paperList += `
                             <div class="list-group-item">

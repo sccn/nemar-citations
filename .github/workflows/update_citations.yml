@@ -238,23 +238,47 @@ jobs:
         id: generate_dashboard
         run: |
           echo "Generating analysis results for dashboard..."
-          
-          # Create results directory structure
-          mkdir -p results/temporal_analysis
-          mkdir -p results/network_analysis
-          
-          echo "Running temporal analysis..."
-          dataset-citations-analyze-temporal \
+
+          # Clean up and prepare directories
+          rm -rf dashboard_data/network dashboard_data/themes dashboard_data/temporal 2>/dev/null || true
+          mkdir -p dashboard_data/{network,themes,temporal,visualizations}
+
+          echo "Generating embeddings for analysis..."
+          dataset-citations-generate-embeddings \
+            --citations citations/json \
+            --datasets datasets \
+            --embeddings-dir embeddings \
+            --embedding-type both \
+            --batch-size 32 \
+            --verbose || echo "Some embeddings may have failed (non-critical)"
+
+          echo "Running UMAP analysis for theme identification..."
+          dataset-citations-analyze-umap \
+            --embeddings-dir embeddings \
+            --output-dir dashboard_data \
+            --embedding-type both \
+            --n-components 2 \
+            --clustering \
+            --clustering-method kmeans \
+            --n-clusters 4 \
+            --create-visualizations \
+            --verbose || echo "UMAP analysis had issues (non-critical)"
+
+          echo "Generating theme analysis with wordclouds..."
+          python -m dataset_citations.analysis.generate_themes \
             --citations-dir citations/json \
-            --output-dir results/temporal_analysis \
-            --log-level INFO || echo "Temporal analysis failed (non-critical)"
-          
-          echo "Running network analysis..."
-          dataset-citations-analyze-networks \
+            --output-dir dashboard_data/themes || echo "Theme generation had issues (non-critical)"
+
+          echo "Generating network analysis..."
+          python -m dataset_citations.analysis.generate_network \
             --citations-dir citations/json \
-            --output-dir results/network_analysis \
-            --log-level INFO || echo "Network analysis failed (non-critical)"
-          
+            --output-dir dashboard_data/network || echo "Network analysis failed (non-critical)"
+
+          echo "Generating temporal analysis..."
+          python -m dataset_citations.analysis.generate_temporal \
+            --citations-dir citations/json \
+            --output-dir dashboard_data/temporal || echo "Temporal analysis failed (non-critical)"
+
           echo "Generating interactive dashboard..."
           python -c "
 from dataset_citations.dashboard.core import DashboardGenerator
@@ -283,24 +307,24 @@ print(f'Dashboard generated: {output_path}')
         run: |
           # Refresh Git status to detect new or modified files
           git add -A
-          
-          # Check if there are any unstaged changes in the citations, datasets, results, and interactive_reports directories
-          if ! git diff --cached --quiet -- citations/ datasets/ results/ interactive_reports/; then
+
+          # Check if there are any unstaged changes in the relevant directories
+          if ! git diff --cached --quiet -- citations/ datasets/ dashboard_data/ embeddings/ interactive_reports/; then
             echo "CHANGES_DETECTED=true" >> $GITHUB_ENV
             echo "changes_detected=true" >> $GITHUB_OUTPUT
-            
+
             # Count changed files for reporting (including JSON, HTML files)
-            CHANGED_FILES=$(git diff --cached --name-only -- citations/ datasets/ results/ interactive_reports/ | grep -E '\.(csv|pkl|txt|json|html|png)$' | wc -l)
+            CHANGED_FILES=$(git diff --cached --name-only -- citations/ datasets/ dashboard_data/ embeddings/ interactive_reports/ | grep -E '\.(csv|pkl|txt|json|html|png)$' | wc -l)
             echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_ENV
             echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
-            
+
             # List changed files for the commit message (including JSON, HTML files)
-            CHANGED_FILES_LIST=$(git diff --cached --name-only -- citations/ datasets/ results/ interactive_reports/ | grep -E '\.(csv|pkl|txt|json|html|png)$')
+            CHANGED_FILES_LIST=$(git diff --cached --name-only -- citations/ datasets/ dashboard_data/ embeddings/ interactive_reports/ | grep -E '\.(csv|pkl|txt|json|html|png)$')
             echo "CHANGED_FILES_LIST<<EOF" >> $GITHUB_ENV
             echo "$CHANGED_FILES_LIST" >> $GITHUB_ENV
             echo "EOF" >> $GITHUB_ENV
-            
-            echo "Detected $CHANGED_FILES changed files in citations, datasets, results, and interactive_reports directories"
+
+            echo "Detected $CHANGED_FILES changed files in tracked directories"
           else
             echo "CHANGES_DETECTED=false" >> $GITHUB_ENV
             echo "changes_detected=false" >> $GITHUB_OUTPUT
@@ -323,7 +347,7 @@ print(f'Dashboard generated: {output_path}')
         if: ${{ env.CHANGES_DETECTED == 'true' && steps.update_citations.outcome == 'success' && steps.update_previous.outcome == 'success' }}
         run: |
           # Stage all changes for commit
-          git add citations/ datasets/ results/ interactive_reports/
+          git add citations/ datasets/ dashboard_data/ embeddings/ interactive_reports/
           
           # Create a descriptive commit message
           COMMIT_DATE=$(date +'%Y-%m-%d')

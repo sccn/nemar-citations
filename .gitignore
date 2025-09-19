@@ -53,3 +53,38 @@ CLAUDE.md
 .playwright-mcp/*
 .context/
 .rules/
+# Test outputs
+test_output*/
+test_debug*/
+test_trace/
+test_modular*/
+
+# Temporary analysis outputs
+after_*.txt
+reference_metrics.txt
+
+# Backup files
+*_old.json
+reference_dashboard*.html
+reference_dashboard_data/
+
+# Generated dashboard outputs (regenerate with run_full_analysis.sh)
+dashboard_data/aggregated_data.json
+dashboard_data/comprehensive_theme_analysis.json
+dashboard_data/network/
+dashboard_data/temporal/
+dashboard_data/themes/
+dashboard_data/visualizations/
+dashboard_data/*.csv
+dashboard_data/*.png
+
+# Interactive report outputs
+interactive_reports/*.html
+interactive_reports/data/
+
+# Embeddings analysis outputs (can be regenerated)
+embeddings/analysis/
+embeddings/metadata/embedding_registry.json
+embeddings/citation_embeddings/
+embeddings/dataset_embeddings/
+

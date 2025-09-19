@@ -23,13 +23,15 @@ pytest tests/test_integration_workflow.py -v
 # Test mode (no API calls, ~30 seconds)
 ./run_end_to_end_workflow.sh test
 
-# Local mode with act (requires Docker)
-./run_end_to_end_workflow.sh local
-
-# Full production mode (requires API keys)
-export SCRAPERAPI_KEY=your_key
-export GITHUB_TOKEN=your_token
+# Full production mode (requires API keys, creates branch/PR)
 ./run_end_to_end_workflow.sh full
+
+# Test CI/CD locally with act (requires Docker)
+./run_end_to_end_workflow.sh local-ci-test    # Test workflow
+./run_end_to_end_workflow.sh local-ci-update  # Update workflow
+
+# Analysis only (when citations already exist)
+./run_full_analysis.sh
 ```
 
 ## Test Categories
@@ -44,11 +46,33 @@ Fast, focused tests for individual components:
 Tests with controlled real data:
 - `test_integration_workflow.py` - Full pipeline with test datasets
 - `test_getCitations.py` - Citation fetching with API simulation
+- `test_dashboard_aggregator.py` - Dashboard data aggregation with real citations
 
 ### 3. End-to-End Tests
 Complete workflow validation:
 - `run_end_to_end_workflow.sh` - Three modes for different scenarios
 - GitHub Actions workflow tests
+
+## Testing Analysis Modules
+
+The analysis modules can be tested independently:
+
+```bash
+# Test theme analysis
+python -m dataset_citations.analysis.generate_themes \
+    --citations-dir test_citations/json \
+    --output-dir test_output/themes
+
+# Test network analysis
+python -m dataset_citations.analysis.generate_network \
+    --citations-dir test_citations/json \
+    --output-dir test_output/network
+
+# Test temporal analysis
+python -m dataset_citations.analysis.generate_temporal \
+    --citations-dir test_citations/json \
+    --output-dir test_output/temporal
+```
 
 ## Test Data Strategy
 
@@ -112,7 +136,9 @@ act workflow_dispatch --secret-file .secrets
 | Integration Tests | < 30 seconds | 60%+ | None |
 | End-to-End (test) | < 1 minute | - | None |
 | End-to-End (full) | 1-3 hours | - | Real |
-| End-to-End (local-ci) | 10-30 min | - | Real |
+| End-to-End (local-ci-test) | 5-10 min | - | None |
+| End-to-End (local-ci-update) | 10-30 min | - | Real |
+| Analysis Only | 10-30 min | - | None |
 
 ## Writing Tests
 

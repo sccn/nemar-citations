@@ -362,18 +362,46 @@ run_full_workflow() {
         --log-level INFO 2>&1 | tee -a "$LOG_FILE"
 
     print_status "Step 5/8: Running analysis..."
-    mkdir -p results/temporal_analysis results/network_analysis
 
-    # Temporal analysis (positional argument for citations_dir)
-    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-analyze-temporal \
-        citations/json \
-        --output-dir results/temporal_analysis \
-        --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "Temporal analysis failed"
+    # Clean up and prepare directories
+    rm -rf dashboard_data/network dashboard_data/themes dashboard_data/temporal 2>/dev/null || true
+    mkdir -p dashboard_data/{network,themes,temporal,visualizations}
 
-    # Network analysis (no citations_dir argument needed)
-    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-analyze-networks \
-        --output-dir results/network_analysis \
-        --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "Network analysis failed"
+    # Generate embeddings (required for UMAP and theme analysis)
+    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-generate-embeddings \
+        --citations citations/json \
+        --datasets datasets \
+        --embeddings-dir embeddings \
+        --embedding-type both \
+        --batch-size 32 \
+        --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "Some embeddings may have failed"
+
+    # Run UMAP analysis for theme identification
+    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-analyze-umap \
+        --embeddings-dir embeddings \
+        --output-dir dashboard_data \
+        --embedding-type both \
+        --n-components 2 \
+        --clustering \
+        --clustering-method kmeans \
+        --n-clusters 4 \
+        --create-visualizations \
+        --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "UMAP analysis had issues"
+
+    # Generate theme analysis with wordclouds
+    ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_themes \
+        --citations-dir citations/json \
+        --output-dir dashboard_data/themes 2>&1 | tee -a "$LOG_FILE" || print_warning "Theme generation had issues"
+
+    # Generate network analysis data
+    ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_network \
+        --citations-dir citations/json \
+        --output-dir dashboard_data/network 2>&1 | tee -a "$LOG_FILE"
+
+    # Generate temporal analysis
+    ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_temporal \
+        --citations-dir citations/json \
+        --output-dir dashboard_data/temporal 2>&1 | tee -a "$LOG_FILE"
 
     print_status "Step 6/8: Generating interactive dashboard..."
     ~/miniconda3/bin/conda run -n dataset-citations python -c "
@@ -383,7 +411,7 @@ from pathlib import Path
 gen = DashboardGenerator(
     results_dir=Path('dashboard_data'),
     output_dir=Path('interactive_reports'),
-    citations_dir=Path('citations/json'),
+    citations_dir=Path('citations/json')
 )
 
 output_path = gen.generate_dashboard(dashboard_type='nemar', lazy_load=True)

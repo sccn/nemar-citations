@@ -42,6 +42,16 @@ chmod +x run_end_to_end_workflow.sh
 ./run_end_to_end_workflow.sh local-ci-update   # Test CI/CD update workflow locally
 ```
 
+## Shell Scripts
+
+The repository includes several shell scripts for different workflows:
+
+| Script | Purpose | Runtime | When to Use |
+|--------|---------|---------|-------------|
+| `run_end_to_end_workflow.sh` | Complete pipeline from discovery to dashboard | 1-3 hours | Production updates, full analysis |
+| `run_full_analysis.sh` | Analysis and dashboard generation only | 10-30 min | When citations already exist |
+| `migrate_to_json.sh` | Convert pickle files to JSON format | 1-2 min | One-time migration |
+
 ## Pipeline Workflow
 
 ### Running the Complete Pipeline
@@ -243,4 +253,4 @@ Built with ❤️ for NEMAR and the neuroscience open science community.
 
 ---
 
-*Last updated: September 17, 2025*
+*Last updated: September 19, 2025*

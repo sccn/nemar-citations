@@ -18,33 +18,35 @@ class ThemeGenerator:
         Returns:
             Dictionary containing theme configurations
         """
-        data.get("theme_analysis", {})
+        theme_data = data.get("theme_analysis", {}).get(
+            "comprehensive_theme_analysis", {}
+        )
+        generated_themes = theme_data.get("themes", [])
 
-        themes = [
-            {
-                "id": 0,
-                "title": "Theme 1 - Core EEG",
-                "subtitle": "Primary neuroscience datasets",
-                "wordcloud": "data/themes/theme_0_wordcloud.png",
-            },
-            {
-                "id": 1,
-                "title": "Theme 2 - Audio & Stimulation",
-                "subtitle": "Auditory processing studies",
-                "wordcloud": "data/themes/theme_1_wordcloud.png",
-            },
-            {
-                "id": 2,
-                "title": "Theme 3 - Task Performance",
-                "subtitle": "Cognitive and behavioral tasks",
-                "wordcloud": "data/themes/theme_2_wordcloud.png",
-            },
-            {
-                "id": 3,
-                "title": "Theme 4 - Advanced Methods",
-                "subtitle": "Methodological and analytical approaches",
-                "wordcloud": "data/themes/theme_3_wordcloud.png",
-            },
-        ]
+        themes = []
+        for theme in generated_themes:
+            theme_id = theme.get("id", 0)
+            theme_name = theme.get("name", f"Theme {theme_id + 1}")
+            theme_size = theme.get("size", 0)
+
+            themes.append(
+                {
+                    "id": theme_id,
+                    "title": f"Theme {theme_id + 1} - {theme_name}",
+                    "subtitle": f"{theme_size} citations in this cluster",
+                    "wordcloud": f"data/themes/theme_{theme_id}_wordcloud.png",
+                }
+            )
+
+        # Fallback if no themes are generated
+        if not themes:
+            themes = [
+                {
+                    "id": 0,
+                    "title": "Theme 1",
+                    "subtitle": "Themes will be generated when analysis is run",
+                    "wordcloud": "data/themes/theme_0_wordcloud.png",
+                }
+            ]
 
         return {"themes": themes, "wordcloud_images": [t["wordcloud"] for t in themes]}
