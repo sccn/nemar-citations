@@ -534,11 +534,12 @@ $(git diff origin/main..HEAD --name-only | head -20)
         # Create static directory if it doesn't exist
         mkdir -p static
 
-        # Copy dashboard files
+        # Copy dashboard files (rename _nemar.html to .html for deployment)
         print_info "Copying dashboard files to static directory..."
-        cp "$ORIGINAL_DIR/interactive_reports/dataset_citations_dashboard_nemar.html" static/ 2>/dev/null || print_warning "Dashboard HTML not found"
+        cp "$ORIGINAL_DIR/interactive_reports/dataset_citations_dashboard_nemar.html" static/dataset_citations_dashboard.html 2>/dev/null || print_warning "Dashboard HTML not found"
         cp -r "$ORIGINAL_DIR/interactive_reports/data" static/ 2>/dev/null || print_warning "Data directory not found"
         cp "$ORIGINAL_DIR/interactive_reports/dashboard_styles.css" static/ 2>/dev/null || print_warning "Styles CSS not found"
+        cp "$ORIGINAL_DIR/interactive_reports/dashboard_templates.js" static/ 2>/dev/null || print_warning "Dashboard templates not found"
 
         # Check if there are changes to commit
         if ! git diff --quiet; then
@@ -550,7 +551,11 @@ $(git diff origin/main..HEAD --name-only | head -20)
             PAGES_BRANCH=$(git rev-parse --abbrev-ref HEAD)
             if git push origin "$PAGES_BRANCH"; then
                 print_status "Dashboard deployed successfully to GitHub Pages ✓"
+<<<<<<< Updated upstream
                 print_info "Dashboard URL: https://neuromechanist.github.io/dataset_citations_dashboard_nemar.html"
+=======
+                print_info "Dashboard URL: https://neuromechanist.github.io/dataset_citations_dashboard.html"
+>>>>>>> Stashed changes
             else
                 print_warning "Failed to push dashboard to GitHub Pages"
             fi
