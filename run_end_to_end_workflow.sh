@@ -546,10 +546,11 @@ $(git diff origin/main..HEAD --name-only | head -20)
             git add static/
             git commit -m "Update NEMAR citations dashboard - $(date +'%Y-%m-%d %H:%M')"
 
-            # Push to GitHub Pages
-            if git push origin main; then
+            # Push to GitHub Pages (detect current branch instead of hardcoding)
+            PAGES_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+            if git push origin "$PAGES_BRANCH"; then
                 print_status "Dashboard deployed successfully to GitHub Pages ✓"
-                print_info "Dashboard URL: https://neuromechanist.github.io/static/dataset_citations_dashboard_nemar.html"
+                print_info "Dashboard URL: https://neuromechanist.github.io/dataset_citations_dashboard_nemar.html"
             else
                 print_warning "Failed to push dashboard to GitHub Pages"
             fi
