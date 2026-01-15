@@ -286,44 +286,36 @@ EOF
     fi
 }
 
-# Function to run full workflow
+# Function to run full workflow using git worktree (keeps main directory untouched)
 run_full_workflow() {
     print_status "Running full end-to-end workflow..."
 
-    # Save current directory for later
+    # Save current directory - this will NOT be modified
     ORIGINAL_DIR=$(pwd)
-
-    # Step 0: Create branch to protect current work
-    print_status "Creating feature branch..."
     BRANCH_NAME="auto-update/$(date +'%Y-%m-%d_%H-%M')"
+    PR_BASE_BRANCH="main"
 
-    # Get current branch name (save for later)
-    ORIGINAL_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    # Create worktree in temp directory
+    WORKTREE_DIR=$(mktemp -d)
+    print_status "Creating isolated worktree at: $WORKTREE_DIR"
 
-    # Determine the base branch for PR
-    if [ "$ORIGINAL_BRANCH" = "main" ] || [ "$ORIGINAL_BRANCH" = "master" ]; then
-        PR_BASE_BRANCH="main"
-        print_status "Currently on main branch. Creating new branch from main..."
-        # Ensure we have latest main
-        git pull origin main --ff-only 2>/dev/null || true
-    else
-        PR_BASE_BRANCH="$ORIGINAL_BRANCH"
-        print_info "Currently on branch: $ORIGINAL_BRANCH"
-        print_info "Creating new branch from current branch to preserve fixes..."
-        print_info "PR will be created against: $PR_BASE_BRANCH"
-    fi
+    # Fetch latest from origin first
+    print_info "Fetching latest changes from origin..."
+    git fetch origin main --quiet
 
-    # Ensure working directory is clean
-    if [ -n "$(git status --porcelain)" ]; then
-        print_status "Stashing uncommitted changes..."
-        git stash push -m "Stashing changes before workflow"
-    fi
+    # Create new branch and worktree from origin/main
+    print_status "Creating branch: $BRANCH_NAME"
+    git worktree add -b "$BRANCH_NAME" "$WORKTREE_DIR" origin/main 2>&1 | tee -a "$LOG_FILE"
 
-    # Create and checkout new branch from current position
-    print_status "Creating new branch: $BRANCH_NAME"
-    git checkout -b "$BRANCH_NAME"
+    # Change to worktree directory - all work happens here
+    cd "$WORKTREE_DIR"
+    print_info "Working in isolated directory: $(pwd)"
 
-    # Use existing directories instead of creating new ones
+    # Configure git in worktree
+    git config user.name "citations-bot"
+    git config user.email "shirazi@ieee.org"
+
+    # Step 1: Discovering datasets
     print_status "Step 1/8: Discovering datasets..."
     ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-discover \
         --output-file "discovered_datasets.txt" 2>&1 | tee -a "$LOG_FILE"
@@ -331,8 +323,8 @@ run_full_workflow() {
     DATASET_COUNT=$(wc -l < "discovered_datasets.txt" | tr -d ' ')
     print_info "Found $DATASET_COUNT datasets"
 
+    # Step 2: Updating citations
     print_status "Step 2/8: Updating citations (this may take a while)..."
-    # Use previous citations if available, or create empty file
     if [ ! -f "citations/previous_citations.csv" ]; then
         print_warning "No previous citations file found, creating empty one"
         mkdir -p citations
@@ -346,6 +338,7 @@ run_full_workflow() {
         --output-format json \
         --workers 5 2>&1 | tee -a "$LOG_FILE"
 
+    # Step 3: Retrieving dataset metadata
     print_status "Step 3/8: Retrieving dataset metadata..."
     ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-retrieve-metadata \
         --citations-dir citations/json \
@@ -353,6 +346,7 @@ run_full_workflow() {
         --skip-existing \
         --log-level INFO 2>&1 | tee -a "$LOG_FILE"
 
+    # Step 4: Calculating confidence scores
     print_status "Step 4/8: Calculating confidence scores..."
     ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-score-confidence \
         --citations-dir citations/json \
@@ -361,13 +355,12 @@ run_full_workflow() {
         --skip-existing \
         --log-level INFO 2>&1 | tee -a "$LOG_FILE"
 
+    # Step 5: Running analysis
     print_status "Step 5/8: Running analysis..."
 
-    # Clean up and prepare directories
     rm -rf dashboard_data/network dashboard_data/themes dashboard_data/temporal 2>/dev/null || true
     mkdir -p dashboard_data/{network,themes,temporal,visualizations}
 
-    # Generate embeddings (required for UMAP and theme analysis)
     ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-generate-embeddings \
         --citations citations/json \
         --datasets datasets \
@@ -376,7 +369,6 @@ run_full_workflow() {
         --batch-size 32 \
         --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "Some embeddings may have failed"
 
-    # Run UMAP analysis for theme identification
     ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-analyze-umap \
         --embeddings-dir embeddings \
         --output-dir dashboard_data \
@@ -388,21 +380,19 @@ run_full_workflow() {
         --create-visualizations \
         --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "UMAP analysis had issues"
 
-    # Generate theme analysis with wordclouds
     ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_themes \
         --citations-dir citations/json \
         --output-dir dashboard_data/themes 2>&1 | tee -a "$LOG_FILE" || print_warning "Theme generation had issues"
 
-    # Generate network analysis data
     ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_network \
         --citations-dir citations/json \
         --output-dir dashboard_data/network 2>&1 | tee -a "$LOG_FILE"
 
-    # Generate temporal analysis
     ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_temporal \
         --citations-dir citations/json \
         --output-dir dashboard_data/temporal 2>&1 | tee -a "$LOG_FILE"
 
+    # Step 6: Generating interactive dashboard
     print_status "Step 6/8: Generating interactive dashboard..."
     ~/miniconda3/bin/conda run -n dataset-citations python -c "
 from dataset_citations.dashboard.core import DashboardGenerator
@@ -430,6 +420,7 @@ print(f'Dashboard generated: {output_path}')
         print_error "Dashboard generation failed"
     fi
 
+    # Step 7: Updating previous_citations.csv
     print_status "Step 7/8: Updating previous_citations.csv for next run..."
     TODAY_DATE=$(date +%d%m%Y)
     LATEST_CITATIONS_FILE="citations/citations_${TODAY_DATE}.csv"
@@ -444,14 +435,16 @@ print(f'Dashboard generated: {output_path}')
         print_info "previous_citations.csv not updated"
     fi
 
+    # Step 8: Creating Pull Request
     print_status "Step 8/8: Creating Pull Request..."
 
     # Check for changes
     git add -A
     if git diff --cached --quiet; then
         print_warning "No changes detected. Nothing to commit."
-        print_info "Switching back to original branch: $ORIGINAL_BRANCH"
-        git checkout "$ORIGINAL_BRANCH"
+        cd "$ORIGINAL_DIR"
+        git worktree remove "$WORKTREE_DIR" --force 2>/dev/null || rm -rf "$WORKTREE_DIR"
+        git branch -D "$BRANCH_NAME" 2>/dev/null || true
         return 0
     fi
 
@@ -459,7 +452,7 @@ print(f'Dashboard generated: {output_path}')
     COMMIT_MSG="Update dataset citations - $(date +'%Y-%m-%d')
 
 Workflow: Full end-to-end pipeline
-Updated: $(git diff --cached --name-only | wc -l) files
+Updated: $(git diff --cached --name-only | wc -l | tr -d ' ') files
 "
     git commit -m "$COMMIT_MSG"
     print_status "Changes committed to branch: $BRANCH_NAME"
@@ -497,8 +490,10 @@ $(git diff origin/main..HEAD --name-only | head -20)
                 --label "automated,citations-update" \
                 --assignee "@me"; then
                 print_status "Pull Request created successfully ✓"
-                PR_URL=$(gh pr view --json url -q .url)
-                print_info "PR URL: $PR_URL"
+                PR_URL=$(gh pr view --json url -q .url 2>/dev/null || echo "")
+                if [ -n "$PR_URL" ]; then
+                    print_info "PR URL: $PR_URL"
+                fi
             else
                 print_warning "Failed to create PR. Create manually at:"
                 print_info "https://github.com/sccn/nemar-citations/pull/new/$BRANCH_NAME"
@@ -511,6 +506,9 @@ $(git diff origin/main..HEAD --name-only | head -20)
         print_error "Failed to push branch. You may need to push manually."
     fi
 
+    # Save dashboard path for deployment
+    DASHBOARD_PATH="$WORKTREE_DIR/interactive_reports"
+
     print_status "Full workflow completed ✓"
     print_info "Branch: $BRANCH_NAME"
     print_info "Log file: $LOG_FILE"
@@ -518,36 +516,28 @@ $(git diff origin/main..HEAD --name-only | head -20)
     # Deploy dashboard to GitHub Pages
     print_status "Deploying dashboard to GitHub Pages..."
 
-    # Create a temporary directory for the GitHub Pages repo
     TEMP_DIR=$(mktemp -d)
-    print_info "Using temp directory: $TEMP_DIR"
+    print_info "Using temp directory for GitHub Pages: $TEMP_DIR"
 
-    # Clone the GitHub Pages repository
-    print_info "Cloning neuromechanist.github.io repository..."
     if git clone https://${GITHUB_TOKEN}@github.com/neuromechanist/neuromechanist.github.io.git "$TEMP_DIR/github-pages" 2>/dev/null; then
         cd "$TEMP_DIR/github-pages"
 
-        # Configure git for commits
         git config user.name "citations-bot"
         git config user.email "shirazi@ieee.org"
 
-        # Create static directory if it doesn't exist
         mkdir -p static
 
-        # Copy dashboard files (rename _nemar.html to .html for deployment)
         print_info "Copying dashboard files to static directory..."
-        cp "$ORIGINAL_DIR/interactive_reports/dataset_citations_dashboard_nemar.html" static/dataset_citations_dashboard.html 2>/dev/null || print_warning "Dashboard HTML not found"
-        cp -r "$ORIGINAL_DIR/interactive_reports/data" static/ 2>/dev/null || print_warning "Data directory not found"
-        cp "$ORIGINAL_DIR/interactive_reports/dashboard_styles.css" static/ 2>/dev/null || print_warning "Styles CSS not found"
-        cp "$ORIGINAL_DIR/interactive_reports/dashboard_templates.js" static/ 2>/dev/null || print_warning "Dashboard templates not found"
+        cp "$DASHBOARD_PATH/dataset_citations_dashboard_nemar.html" static/dataset_citations_dashboard.html 2>/dev/null || print_warning "Dashboard HTML not found"
+        cp -r "$DASHBOARD_PATH/data" static/ 2>/dev/null || print_warning "Data directory not found"
+        cp "$DASHBOARD_PATH/dashboard_styles.css" static/ 2>/dev/null || print_warning "Styles CSS not found"
+        cp "$DASHBOARD_PATH/dashboard_templates.js" static/ 2>/dev/null || print_warning "Dashboard templates not found"
 
-        # Check if there are changes to commit
         if ! git diff --quiet; then
             print_info "Committing dashboard updates..."
             git add static/
             git commit -m "Update NEMAR citations dashboard - $(date +'%Y-%m-%d %H:%M')"
 
-            # Push to GitHub Pages (detect current branch instead of hardcoding)
             PAGES_BRANCH=$(git rev-parse --abbrev-ref HEAD)
             if git push origin "$PAGES_BRANCH"; then
                 print_status "Dashboard deployed successfully to GitHub Pages ✓"
@@ -558,19 +548,19 @@ $(git diff origin/main..HEAD --name-only | head -20)
         else
             print_info "No changes in dashboard files, skipping deployment"
         fi
-
-        # Return to original directory
-        cd "$ORIGINAL_DIR"
     else
         print_warning "Failed to clone GitHub Pages repository. Skipping dashboard deployment."
     fi
 
-    # Clean up temp directory
+    # Clean up temp directory for GitHub Pages
     rm -rf "$TEMP_DIR"
 
-    # Switch back to original branch
-    print_info "Switching back to original branch: $ORIGINAL_BRANCH"
-    git checkout "$ORIGINAL_BRANCH"
+    # Return to original directory and clean up worktree
+    cd "$ORIGINAL_DIR"
+    print_status "Cleaning up worktree..."
+    git worktree remove "$WORKTREE_DIR" --force 2>/dev/null || rm -rf "$WORKTREE_DIR"
+
+    print_status "Workflow completed - original directory unchanged ✓"
 }
 
 # Function to show help
