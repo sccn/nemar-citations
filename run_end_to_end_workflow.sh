@@ -551,11 +551,7 @@ $(git diff origin/main..HEAD --name-only | head -20)
             PAGES_BRANCH=$(git rev-parse --abbrev-ref HEAD)
             if git push origin "$PAGES_BRANCH"; then
                 print_status "Dashboard deployed successfully to GitHub Pages ✓"
-<<<<<<< Updated upstream
-                print_info "Dashboard URL: https://neuromechanist.github.io/dataset_citations_dashboard_nemar.html"
-=======
-                print_info "Dashboard URL: https://neuromechanist.github.io/dataset_citations_dashboard.html"
->>>>>>> Stashed changes
+                print_info "Dashboard URL: https://sccn.github.io/nemar-citations/dataset_citations_dashboard_nemar.html"
             else
                 print_warning "Failed to push dashboard to GitHub Pages"
             fi
