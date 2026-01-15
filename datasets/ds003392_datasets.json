@@ -1,0 +1,39 @@
+{
+  "dataset_id": "ds003392",
+  "date_retrieved": "2026-01-15T01:48:39.630358+00:00",
+  "dataset_description": {
+    "Name": "NeuroSpin hMT+ Localizer DATA (MEG & aMRI)",
+    "BIDSVersion": "?",
+    "Authors": [
+      "Nicolas Zilber",
+      "Philippe Ciuciu",
+      "Alexandre Gramfort",
+      "Leila Azizi",
+      "Virginie van Wassenhove"
+    ],
+    "Acknowledgements": "We are grateful to the NeuroSpin nursing staff for their help in recruiting and preparing participants for MEG data acquisition, and to Antoine Grigis for help with the anonymization of the MRIs.",
+    "Funding": [
+      "This work was supported by a Marie Curie IRG-249222 and an ERC-StG-263584 to V.vW and an ANR Schubert ANR-0909-JCJC-071 to P.C."
+    ],
+    "License": "CC0",
+    "DatasetDOI": "10.18112/openneuro.ds003392.v1.0.4",
+    "ReferencesAndLinks": [
+      "https://doi.org/10.1016/j.neuroimage.2014.02.017"
+    ],
+    "HowToAcknowledge": "Please cite: \n\nZilber, N., Ciuciu, P., Gramfort, A., Azizi, L., & Van Wassenhove, V. (2014). Supramodal processing optimizes visual perceptual learning and plasticity. Neuroimage, 93, 32-46.\n\n"
+  },
+  "readme_content": "﻿Dataset description: Magnetoencephalography (MEG) dataset recorded during a hMT+ (human visual motion area) localizer task\n\nPublished in: \nZilber, N., Ciuciu, P., Gramfort, A., Azizi, L., & Van Wassenhove, V. (2014). Supramodal processing optimizes visual perceptual learning and plasticity. Neuroimage, 93, 32-46.\n\nData curation: Sophie Herbst, Alexandre Gramfort\n\nThis MEG dataset was prepared in the Brain Imaging Data Structure (MEG-BIDS, Niso et al. 2018) format using MNE-BIDS (Appelhoff et al. 2019).\n\nThe dataset contains 10 of the 12 participants from the vision-only training group. \n\nTwo participants were removed, one due to problems with the trigger channel, and one due to different settings in the acquisition preventing us from processing the dataset without prior adjustment. \n\n\n## EXPERIMENT\n\nParticipants were presented with a cloud of moving dots, always starting with incoherent movement (up or down result in equal display, due to the incoherence). \nAfter 500 ms, the movement became coherent in 50% of the trials (95% coherence, up or down) and remained incoherent in the other 50%, lasting for 1000 ms. Participants were instructed to passively view the stimuli for a total of 120 trials. \n\nEvents: \n\n1: coherent / down\n2: coherent / up\n3: incoherent / down\n4: incoherent / up\n\n\n## MEG\n\nBrain magnetic fields were recorded in a MSR using a 306 MEG system (Neuromag Elekta LTD, Helsinki). MEG recordings were sampled at\n2 kHz and band-pass filtered between 0.03 and 600 Hz. \n\nFour head position coils (HPI) measured the head position of participants before each\nblock; three fiducial markers (nasion and pre-auricular points) were\nused for digitization and anatomicalMRI (aMRI) immediately following\nMEG acquisition. \n\nElectrooculograms (EOG, horizontal and vertical eye\nmovements) and electrocardiogram (ECG) were simultaneously recorded.\nPrior to the session, 5 min of empty room recordings was acquired\nfor the computation of the noise covariance matrix.\n\nBad MEG channels were marked manually.\n\n\n## MRI\n\nThe T1 weighted aMRI was recorded using a 3-T Siemens Trio MRI\nscanner. Parameters of the sequence were: voxel size: 1.0 × 1.0 ×\n1.1 mm; acquisition time: 466 s; repetition time TR = 2300 ms; and\necho time TE = 2.98 ms\n\n\n## References\n\nZilber, N., Ciuciu, P., Gramfort, A., Azizi, L., & Van Wassenhove, V. (2014). Supramodal processing optimizes visual perceptual learning and plasticity. Neuroimage, 93, 32-46.\n\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nNiso, G., Gorgolewski, K. J., Bock, E., Brooks, T. L., Flandin, G., Gramfort, A., Henson, R. N., Jas, M., Litvak, V., Moreau, J., Oostenveld, R., Schoffelen, J., Tadel, F., Wexler, J., Baillet, S. (2018). MEG-BIDS, the brain imaging data structure extended to magnetoencephalography. Scientific Data, 5, 180110. http://doi.org/10.1038/sdata.2018.110\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds003392",
+    "exists": true,
+    "description": null,
+    "created_at": "2020-12-07T23:24:29+00:00",
+    "updated_at": "2021-05-18T15:35:13+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}
