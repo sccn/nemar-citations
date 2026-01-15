@@ -1,0 +1,35 @@
+{
+  "dataset_id": "ds003104",
+  "date_retrieved": "2026-01-15T01:48:36.815892+00:00",
+  "dataset_description": {
+    "Name": "MNE-somato-data-bids dataset (anonymized)",
+    "BIDSVersion": "1.4.0",
+    "License": "CC0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Lauri Parkkonen",
+      "Stefan Appelhoff",
+      "Alexandre Gramfort",
+      "Mainak Jas",
+      "Richard Höchenberger"
+    ],
+    "ReferencesAndLinks": [
+      "https://mne.tools/stable/overview/datasets_index.html#somatosensory"
+    ],
+    "DatasetDOI": "10.18112/openneuro.ds003104.v1.0.0"
+  },
+  "readme_content": "MNE-somato-data-bids\n====================\n\nThis dataset contains the MNE-somato-data in BIDS format.\n\nThe conversion can be reproduced through the Python script stored in the\n`/code` directory of this dataset. See the README in that directory.\n\nThe `/derivatives` directory contains the outputs of running the FreeSurfer\npipeline `recon-all` on the MRI data with no additional commandline options\n(only defaults were used):\n\n$ recon-all -i sub-01_T1w.nii.gz -s 01 -all\n\nAfter the `recon-all` call, there were further FreeSurfer calls from the MNE\nAPI:\n\n$ mne make_scalp_surfaces -s 01 --force\n$ mne watershed_bem -s 01\n\nThe derivatives also contain the forward model `*-fwd.fif`, which was produced\nusing the source space definition, a `*-trans.fif` file, and the boundary\nelement model (=conductor model) that lives in\n`freesurfer/subjects/01/bem/*-bem-sol.fif`.\n\nThe `*-trans.fif` file is not saved, but can be recovered from the anatomical\nlandmarks in the `sub-01/anat/T1w.json` file and MNE-BIDS' function\n`get_head_mri_transform`.\n\nSee: https://github.com/mne-tools/mne-bids for more information.\n\nNotes on FreeSurfer\n===================\nthe FreeSurfer pipeline `recon-all` was run new for the sake of converting the\nsomato data to BIDS format. This needed to be done to change the \"somato\"\nsubject name to the BIDS subject label \"01\". Note, that this is NOT \"sub-01\",\nbecause in BIDS, the \"sub-\" is just a prefix, whereas the \"01\" is the subject\nlabel.\n\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds003104",
+    "exists": true,
+    "description": null,
+    "created_at": "2020-09-02T03:18:39+00:00",
+    "updated_at": "2020-09-02T03:18:55+00:00",
+    "default_branch": "master"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

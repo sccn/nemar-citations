@@ -1,0 +1,43 @@
+{
+  "dataset_id": "ds005620",
+  "date_retrieved": "2026-01-15T01:48:55.271238+00:00",
+  "dataset_description": {
+    "Name": "A repeated awakening study exploring the capacity of complexity measures to capture dreaming during propofol sedation",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Imad J. Bajwa1",
+      "Andre S. Nilsen1",
+      "René Skukies1,3",
+      "Arnfinn Aamodt1",
+      "Gernot Ernst2",
+      "Johan F. Storm1",
+      "Bjørn E. Juel1,2"
+    ],
+    "Acknowledgements": "We thank the participants and the supporting research staff.",
+    "EthicsApprovals": [
+      "Approved by the Regional Committees for Medical Research Ethics South East Norway (REK), ref. 2015/1520"
+    ],
+    "License": "CC0",
+    "Affiliations": {
+      "1": "University of Oslo, Department of Molecular Medicine, Physiology, Oslo, 0317, Norway",
+      "2": "Vestre Viken, Kongsberg Hospital, Kongsberg, 3612, Norway",
+      "3": "University Stuttgart, Stuttgart Center for Simulation Science, 70174 Stuttgart, Germany"
+    },
+    "DatasetDOI": "doi:10.18112/openneuro.ds005620.v1.0.0"
+  },
+  "readme_content": "# A Repeated Awakening Study Exploring the Capacity of Complexity Measures to Capture Dreaming During Propofol Sedation\n\n## Description\nThis dataset contains EEG data from a study investigating the effects of propofol sedation on dreaming and the applicability of complexity measures in capturing this phenomenon. The study aims to understand the dynamics of consciousness during sedation and the potential for EEG complexity measures to reflect subjective experiences.\n\n## Authors\n- Imad J. Bajwa\n- Andre S. Nilsen\n- René Skukies\n- Arnfinn Aamodt\n- Gernot Ernst\n- Johan F. Storm\n- Bjørn E. Juel\n\n## Ethics Statement\nApproved by the Regional Committees for Medical Research Ethics South East Norway (REK), ref. 2015/1520.\n\n## License\nThis dataset is licensed under CC-BY-4.0.\n\n## File Structure\n\nThe dataset is organized by subject, with each subject's EEG files stored in a dedicated directory. Below is the structure for the EEG data associated with a sample subject (sub-1016).\n\n### Directory Structure\n```\n/Volumes/IMADS SSD/Anesthesia_conciousness_paper/project_BIDS/\n└── sub-1016/\n    └── eeg/\n        ├── sub-1016_task-awake_acq-EC_channels.tsv\n        ├── sub-1016_task-awake_acq-EC_eeg.eeg\n        ├── sub-1016_task-awake_acq-EC_eeg.json\n        ├── sub-1016_task-awake_acq-EC_eeg.vhdr\n        ├── sub-1016_task-awake_acq-EC_eeg.vmrk\n        ├── sub-1016_task-awake_acq-EC_events.json\n        ├── sub-1016_task-awake_acq-EC_events.tsv\n        ├── ...\n```\n\n### File Naming Convention\nEEG files are named in the format:\n`sub-<subject_id>_task-<task_name>_acq-<acquisition>_run-<run_number>.<extension>`\n\n### Example Filenames\n- `sub-1016_task-awake_acq-EC_channels.tsv`\n- `sub-1016_task-sed_acq-rest_run-1_eeg.eeg`\n\n### Filename Components\n- **sub-<subject_id>**: Identifier for the subject (e.g., `sub-1016`).\n- **task-<task_name>**: Indicates the task condition:\n  - `awake`: Wakefulness\n  - `sed`: Sedation condition\n  - `sed2`: One-minute resting EEG recorded just before an awakening\n- **acq-<acquisition>**: Type of acquisition:\n  - `EC`: Eyes Closed (during wakefulness)\n  - `EO`: Eyes Open (during wakefulness)\n  - `tms`: Session with Transcranial Magnetic Stimulation\n  - `rest`: Rest condition (during sedation)\n- **run-<run_number>**: Specifies the run number for the data collection:\n  - `run-1`, `run-2`, `run-3` (indicating different awakenings in sedation)\n- **.<extension>**: File extension indicating the type of file (e.g., `.eeg`, `.vhdr`, `.vmrk`, etc.).\n\n### File Types\n- **.eeg**: Raw EEG data.\n- **.vhdr**: BrainVision header file.\n- **.vmrk**: BrainVision marker file.\n- **_events.json / _events.tsv**: Event markers.\n- **_channels.tsv / _eeg.json**: Channel information and metadata.\n\n## Usage Instructions\nTo analyze the data, you may need software such as Python with MNE-Python. Please refer to the MNE documentation for details on how to load and manipulate the datasets.\n\n## Contact Information\nFor questions regarding this dataset, please contact:\nImad J. Bajwa  \nEmail: imadjb@uio.no\n\nBjørn E. Juel\nEmail: Bjorneju@gmail.com\n\n## Acknowledgements\nWe thank the participants and the supporting research staff for their contributions to this study.\n\nReferences\n----------\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896).https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103.https://doi.org/10.1038/s41597-019-0104-8\n\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005620",
+    "exists": true,
+    "description": "OpenNeuro dataset - A repeated awakening study exploring the capacity of complexity measures to capture dreaming during propofol sedation",
+    "created_at": "2024-11-06T16:46:07+00:00",
+    "updated_at": "2024-11-06T17:30:00+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}
