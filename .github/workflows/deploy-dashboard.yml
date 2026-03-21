@@ -1,0 +1,31 @@
+name: Deploy Citation Dashboard
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "interactive_reports/**"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to Cloudflare Pages
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare deploy directory
+        run: |
+          mkdir -p deploy/citations
+          cp interactive_reports/dataset_citations_dashboard_nemar.html deploy/citations/index.html
+          cp interactive_reports/dashboard_styles.css deploy/citations/
+          cp interactive_reports/dashboard_templates.js deploy/citations/
+          cp -r interactive_reports/data deploy/citations/data
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy deploy --project-name nemar-dashboard --branch main
