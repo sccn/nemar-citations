@@ -297,10 +297,26 @@ jobs:
           # Check if dashboard was created
           if [ -f "interactive_reports/dataset_citations_dashboard_nemar.html" ]; then
             echo "Dashboard generated successfully"
+            echo "DASHBOARD_GENERATED=true" >> $GITHUB_ENV
             ls -lh interactive_reports/*.html
           else
             echo "Warning: Dashboard generation may have failed"
+            echo "DASHBOARD_GENERATED=false" >> $GITHUB_ENV
           fi
+
+      - name: Deploy dashboard to Cloudflare Pages
+        if: ${{ env.DASHBOARD_GENERATED == 'true' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          preCommands: |
+            mkdir -p deploy/citations
+            cp interactive_reports/dataset_citations_dashboard_nemar.html deploy/citations/index.html
+            cp interactive_reports/dashboard_styles.css deploy/citations/
+            cp interactive_reports/dashboard_templates.js deploy/citations/
+            cp -r interactive_reports/data deploy/citations/data
+          command: pages deploy deploy --project-name nemar-dashboard --branch main
 
       - name: Check for changes
         id: check_changes
