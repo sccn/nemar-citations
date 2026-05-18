@@ -17,7 +17,7 @@ Track and analyze citations for OpenNeuro datasets with a complete pipeline from
 ```bash
 git clone https://github.com/nemarOrg/nemar-citations.git
 cd nemar-citations
-pip install -e ".[dev,test]"
+uv sync --all-extras
 ```
 
 **Requirements**: Python 3.13+ • ScraperAPI key • GitHub token (optional)
@@ -87,9 +87,7 @@ The `run_end_to_end_workflow.sh` script automates the entire workflow:
 cat > ~/update_citations.sh << 'EOF'
 #!/bin/bash
 cd /path/to/dataset_citations
-source ~/miniconda3/etc/profile.d/conda.sh
-conda activate dataset-citations
-./run_end_to_end_workflow.sh full
+uv run ./run_end_to_end_workflow.sh full
 EOF
 chmod +x ~/update_citations.sh
 
@@ -135,18 +133,18 @@ metadata = retriever.get_dataset_metadata('ds002718')
 
 ```bash
 # Discovery & Updates
-dataset-citations-discover                    # Find datasets
-dataset-citations-update                      # Fetch citations
-dataset-citations-migrate                     # Pickle→JSON
+uv run dataset-citations-discover                    # Find datasets
+uv run dataset-citations-update                      # Fetch citations
+uv run dataset-citations-migrate                     # Pickle->JSON
 
 # Quality & Analysis
-dataset-citations-retrieve-metadata           # Get GitHub data
-dataset-citations-score-confidence            # AI scoring
-dataset-citations-analyze-temporal            # Trends
-dataset-citations-analyze-networks            # Networks
+uv run dataset-citations-retrieve-metadata           # Get GitHub data
+uv run dataset-citations-score-confidence            # AI scoring
+uv run dataset-citations-analyze-temporal            # Trends
+uv run dataset-citations-analyze-networks            # Networks
 
 # Dashboards
-dataset-citations-create-interactive-reports  # Generate HTML
+uv run dataset-citations-create-reports              # Generate HTML
 
 # All commands support --help for detailed usage
 ```
@@ -173,20 +171,19 @@ AI-powered relevance scoring (0.0-1.0) using sentence transformers to compare da
 ## Development
 
 ```bash
-# Setup
+# Setup (UV installs Python and dependencies)
 git clone https://github.com/nemarOrg/nemar-citations.git
 cd nemar-citations
-conda create -n dataset-citations python=3.13
-conda activate dataset-citations
-pip install -e ".[dev,test]"
+uv sync --all-extras
 
 # Testing
-pytest tests/ -v                    # Fast tests
-pytest --cov=dataset_citations      # With coverage
+uv run pytest tests/ -v                # Fast tests
+uv run pytest --cov=dataset_citations  # With coverage
 
 # Code quality
-ruff format src/ tests/             # Format
-ruff check --fix src/ tests/        # Lint
+uv run ruff format src/ tests/         # Format
+uv run ruff check --fix src/ tests/    # Lint
+uv run ty check src/                   # Type check
 ```
 
 ## Architecture
@@ -209,7 +206,7 @@ ruff check --fix src/ tests/        # Lint
 | Google Scholar rate limit | Wait for proxy rotation |
 | GitHub API rate limit | Add `GITHUB_TOKEN` to `.env` |
 | MPS memory error (macOS) | Use `--device cpu` |
-| Import errors | Reinstall: `pip install -e ".[dev,test]"` |
+| Import errors | Reinstall: `uv sync --reinstall --all-extras` |
 
 **Debug**: Add `--verbose` flag to any command
 
@@ -219,7 +216,7 @@ ruff check --fix src/ tests/        # Lint
 
 1. Fork & create feature branch
 2. Make changes with tests
-3. Run `pytest` and `ruff format`
+3. Run `uv run pytest`, `uv run ruff format`, and `uv run ty check`
 4. Submit PR with issue reference
 
 **Guidelines**: Type hints • Docstrings • Tests • No mocks
@@ -249,8 +246,4 @@ If you use this software in your research, please cite:
 - **Project**: [NEMAR - NeuroElectroMagnetic Archive](https://nemar.org/)
 - **GitHub**: [@neuromechanist](https://github.com/neuromechanist)
 
-Built with ❤️ for NEMAR and the neuroscience open science community.
-
----
-
-*Last updated: September 19, 2025*
+Built for NEMAR and the neuroscience open science community.
