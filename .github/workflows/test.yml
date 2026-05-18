@@ -97,25 +97,31 @@ jobs:
           UV_INDEX_STRATEGY: unsafe-best-match
         run: uv sync --python 3.13 --all-extras
 
-      - name: Create test data directory
-        run: |
-          mkdir -p tests/test_data/workflow_test
-          echo "ds003555" > tests/test_data/workflow_test/discovered_datasets.txt
-          cat > tests/test_data/workflow_test/previous_citations.csv << 'EOF'
-          dataset_id,citation_count,last_updated
-          ds003555,8,2024-01-01
-          EOF
-
       - name: Run integration tests
+        env:
+          # Optional opencite keys; opencite degrades to unauthenticated
+          # access if missing, so this step does not require them.
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+          PUBMED_API_KEY: ${{ secrets.PUBMED_API_KEY }}
         run: |
-          uv run pytest tests/test_getCitations.py::TestGetCitations::test_minimal_workflow \
+          # opencite-anchored sources + backend integration suite.
+          uv run pytest \
+            tests/test_sources_doi.py \
+            tests/test_sources_nemar_metadata.py \
+            tests/test_sources_bids_metadata.py \
+            tests/test_sources_github_error.py \
+            tests/test_backends_opencite.py \
+            tests/test_core_opencite_pipeline.py \
+            tests/test_cli_update_backend.py \
+            tests/test_citation_utils_provenance.py \
             -v --tb=short
-        continue-on-error: true
 
       - name: Test CLI commands
         run: |
           uv run dataset-citations-discover --help
           uv run dataset-citations-migrate --help
+          uv run dataset-citations-update --help
 
           mkdir -p test_results/temporal_analysis test_results/network_analysis
           echo '{"test": "data"}' > test_results/temporal_analysis/results.json
