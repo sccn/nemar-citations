@@ -46,7 +46,16 @@ class DataAggregator:
         self.logger = logging.getLogger(__name__)
 
     def _resolve_opencite_dir(self, explicit: Optional[Path]) -> Optional[Path]:
-        """Pick the opencite citations dir: explicit > sibling > None."""
+        """Pick the opencite citations dir: explicit > sibling > None.
+
+        Auto-detection assumes `citations_dir` points at the `json/`
+        subdirectory of the citations tree (e.g., `citations/json`) and
+        looks for `<parent>/json_opencite`. The CLI writes to
+        `<output-dir>/json_opencite/`, which matches this layout. Callers
+        that pass `citations_dir=citations/` directly will miss
+        auto-detection; pass `citations_opencite_dir=...` explicitly in
+        that case.
+        """
         if explicit is not None:
             p = Path(explicit)
             return p if p.exists() else None

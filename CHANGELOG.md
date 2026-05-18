@@ -6,10 +6,12 @@ All notable changes to this project. The format loosely follows
 ## [Unreleased]
 
 ### Added
-- `dataset-citations-update --backend opencite` runs the new DOI-anchored
-  pipeline alongside the legacy scholarly path. Output lands at
-  `<output-dir>/json_opencite/<id>_citations.json` (side-by-side; the
-  legacy `citations/json/` tree is untouched).
+- `dataset-citations-update --backend opencite` selects the new DOI-anchored
+  pipeline instead of the legacy scholarly path; the two backends are
+  mutually exclusive per invocation. Output lands at
+  `<output-dir>/json_opencite/<id>_citations.json`, so the legacy
+  `citations/json/` tree is untouched and both outputs can coexist on disk
+  for side-by-side parity comparison before Phase 4 retires scholarly.
 - `src/dataset_citations/core/opencite_pipeline.py` orchestrates source
   extraction (nm or ds prefix), opencite lookup, dedup across anchors,
   and emits the schema-v2 citation JSON.

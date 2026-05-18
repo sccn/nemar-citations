@@ -52,8 +52,8 @@ def _make_work(
 
 
 class _StubBackend(OpenCiteBackend):
-    """Real OpenCiteBackend subclass; overrides the batch method to return
-    a hand-built map. Not a mock; this is the project's no-mocks pattern."""
+    """OpenCiteBackend test double that returns a preset batch result without
+    touching the network."""
 
     def __init__(self, batch_outcome: dict[str, FetchSuccess | FetchError]):
         # Skip parent init so we don't try to read OPENCITE config.

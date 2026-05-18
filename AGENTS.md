@@ -120,7 +120,7 @@ uv run dataset-citations-score-confidence --citations-dir citations/json --datas
 
 ## Key Data Formats
 - **Citation JSON** (`citations/json/`) — legacy scholarly path, web-ready, includes confidence scores
-- **Citation JSON v2** (`citations/json_opencite/`) — Phase 3 opencite path. Same shape plus `metadata.schema_version="2.0"`, `metadata.discovery_backend="opencite"`, per-citation `source_doi` + `source_relation` (one of `References`, `IsDerivedFrom`, `IsIdenticalTo`, `IsVersionOf`)
+- **Citation JSON v2** (`citations/json_opencite/`), Phase 3 opencite path. Same shape plus `metadata.schema_version="2.0"`, `metadata.discovery_backend="opencite"`, per-citation `source_doi` + `source_relation` (one of `References`, `IsDerivedFrom`, `IsIdenticalTo`, `IsVersionOf`)
 - **Dataset metadata** (`datasets/`) — GitHub-sourced descriptions
 - **Embeddings** (`embeddings/`) — semantic vectors + registry
 
