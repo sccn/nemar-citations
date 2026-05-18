@@ -10,11 +10,11 @@ pytest tests/ -v
 
 ## Test Categories
 
-### Fast Tests (5 seconds) ✅
+### Fast Tests (5 seconds)
 - **Core functionality**: DataFrame operations, data processing
-- **Error handling**: Edge cases, invalid inputs
-- **Unit tests**: Function validation without external dependencies  
-- **Mock-based tests**: API interface validation
+- **Error handling**: edge cases, invalid inputs
+- **Pure parser tests**: `parse_nemar_metadata`, `parse_bids_description`, `add_discovery_provenance` exercised with frozen real-data fixtures (no mocks per project policy)
+- **CLI smoke tests**: argparse + dispatch verification using setattr-substituted test doubles (not `unittest.mock`)
 
 ### Skipped Tests (for speed) ⏭️
 - **Live opencite calls**: hits OpenAlex / Semantic Scholar / PubMed; gated by `RUN_INTEGRATION_TESTS=1`

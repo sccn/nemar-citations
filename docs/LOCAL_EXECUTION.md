@@ -86,10 +86,8 @@ A helper script `run_local_workflow.sh` is provided in the project root to simpl
     act workflow_dispatch -j <job_id>
     ```
 
-    **Note on Concurrency for Citation Updates:**
-    The `dataset-citations-update` CLI command, when run via the GitHub Action (and thus by `act`), supports parallel processing for fetching citations. This is controlled by the `--workers` argument. The GitHub workflow file (`update_citations.yml`) calls this CLI command. If you need to adjust the concurrency when running locally via `act`, you would modify the `dataset-citations-update` command line within the `update_citations.yml` workflow file to change the `--workers` value.
-
-    The default number of workers is 10. You can change this by modifying the `--workers` parameter in the workflow file.
+    **Note on opencite Rate Limits:**
+    `dataset-citations-update` calls the opencite library, which queries OpenAlex / Semantic Scholar / PubMed. Concurrency is bounded internally by opencite. To raise per-API rate limits, set `SEMANTIC_SCHOLAR_API_KEY`, `OPENALEX_API_KEY`, or `PUBMED_API_KEY` in your `.secrets` file (act loads them via `--secret-file`). Missing keys degrade gracefully to unauthenticated access.
 
 ## Scheduled Local Execution (using `cron` on macOS/Linux)
 

@@ -21,7 +21,7 @@ src/dataset_citations/
 tests/           # Real-data tests (NO MOCKS)
 .github/workflows/
 ├── test.yml             # Lint, ruff format check, ty, pytest, integration
-├── update_citations.yml # Monthly citation fetch + dashboard deploy
+├── update_citations.yml # Weekly cron + workflow_dispatch: opencite fetch + dashboard deploy
 └── deploy-dashboard.yml # Manual dashboard rebuild + Cloudflare Pages deploy
 ```
 
@@ -53,7 +53,7 @@ echo "GITHUB_TOKEN=..."  > .env
 ## [CRITICAL] Core Principles - Never Compromise
 
 ### [FUNDAMENTAL] NO MOCKS - Test Reality Only
-- Use real OpenNeuro datasets (subsets are fine — keep small controlled fixtures)
+- Use real OpenNeuro datasets (subsets are fine; keep small controlled fixtures)
 - No mocked GitHub or opencite responses; use real fixtures or skip the test
 - If real testing is impossible, no test is better than a fake passing test
 **Details:** `.rules/testing.md`
@@ -112,18 +112,18 @@ uv run dataset-citations-score-confidence --citations-dir citations/json_opencit
 ```
 
 ## Data Flow
-1. **Discovery** — Find BIDS datasets via GitHub API (`cli/discover.py`)
-2. **DOI extraction** — `sources/nemar_metadata.py` reads `.nemar/metadata.json` for nm-datasets; `sources/bids_metadata.py` reads `dataset_description.json` for legacy ds-datasets. Returns DOI/PMID/arXiv anchors with relation types (`References`, `IsDerivedFrom`, `IsIdenticalTo`, `IsVersionOf`).
-3. **Citation fetching** — `backends/opencite_backend.py` (sync facade over opencite) queries OpenAlex / Semantic Scholar / PubMed for papers citing each anchor.
-4. **Processing** — `core/opencite_pipeline.py` deduplicates across anchors and produces schema-v2 citation JSON.
-5. **Quality scoring** — Sentence-transformer similarity between dataset metadata and citation abstract.
-6. **Analysis** — Network, temporal, and theme analyses with embeddings.
-7. **Dashboard** — Interactive HTML + D3 deployed to Cloudflare Pages.
+1. **Discovery**: Find BIDS datasets via GitHub API (`cli/discover.py`).
+2. **DOI extraction**: `sources/nemar_metadata.py` reads `.nemar/metadata.json` for nm-datasets; `sources/bids_metadata.py` reads `dataset_description.json` for legacy ds-datasets. Returns DOI/PMID/arXiv anchors with relation types (`References`, `IsDerivedFrom`, `IsIdenticalTo`, `IsVersionOf`).
+3. **Citation fetching**: `backends/opencite_backend.py` (sync facade over opencite) queries OpenAlex / Semantic Scholar / PubMed for papers citing each anchor.
+4. **Processing**: `core/opencite_pipeline.py` deduplicates across anchors and produces schema-v2 citation JSON.
+5. **Quality scoring**: sentence-transformer similarity between dataset metadata and citation abstract.
+6. **Analysis**: network, temporal, and theme analyses with embeddings.
+7. **Dashboard**: interactive HTML + D3 deployed to Cloudflare Pages.
 
 ## Key Data Formats
 - **Citation JSON** (`citations/json_opencite/`), the canonical output. Schema v2: top-level `dataset_id`, `num_citations`, `date_last_updated`, `citation_details[]`, `metadata.{schema_version="2.0", discovery_backend="opencite", fetch_status, anchor_count, anchor_errors, ...}`; per-citation `source_doi` + `source_relation` (one of `References`, `IsDerivedFrom`, `IsIdenticalTo`, `IsVersionOf`).
-- **Dataset metadata** (`datasets/`) — GitHub-sourced descriptions.
-- **Embeddings** (`embeddings/`) — semantic vectors + registry.
+- **Dataset metadata** (`datasets/`): GitHub-sourced descriptions.
+- **Embeddings** (`embeddings/`): semantic vectors + registry.
 
 ## [REFERENCE] Rules Directory
 ### Core Standards
@@ -152,7 +152,7 @@ uv run dataset-citations-score-confidence --citations-dir citations/json_opencit
 
 ## CI/CD
 - `.github/workflows/test.yml` — Lint (ruff format/check, ty), pytest 3.13, integration tests
-- `.github/workflows/update_citations.yml` — `workflow_dispatch` only (no schedule): fetch citations via opencite, regenerate dashboard, deploy to Cloudflare Pages, open PR.
+- `.github/workflows/update_citations.yml`: weekly cron (Sunday 06:00 UTC) plus `workflow_dispatch`. Fetches citations via opencite, regenerates the dashboard, deploys to Cloudflare Pages, opens PR.
 - `.github/workflows/deploy-dashboard.yml` — Manual rebuild + deploy
 - Required secrets: `GITHUB_TOKEN`, `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`. Optional: `SEMANTIC_SCHOLAR_API_KEY`, `OPENALEX_API_KEY` for opencite rate-limit relief.
 

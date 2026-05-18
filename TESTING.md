@@ -99,13 +99,12 @@ We use **controlled real data** instead of mocks:
 Runs on all PRs and pushes to main:
 
 1. **Lint Stage**
-   - Black formatting
-   - isort import sorting
+   - Ruff format check
    - Ruff linting
-   - mypy type checking
+   - Ty type checking (preview; non-failing)
 
 2. **Test Stage**
-   - Matrix testing: Python 3.9, 3.10, 3.11
+   - Python 3.13
    - Fast tests only
    - Coverage reporting to Codecov
 

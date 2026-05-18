@@ -58,31 +58,26 @@ dataset-citations-update [OPTIONS]
 ```
 
 **Options**:
-- `--dataset-list-file TEXT`: File containing dataset IDs to process (one per line)
+- `--dataset-list-file TEXT`: File containing dataset IDs to process (one per line, e.g. `nm000103` or `ds000117`)
 - `--output-dir TEXT`: Directory to save citation files (default: `citations/`). Output lands under `<output-dir>/json_opencite/<id>_citations.json`.
-- `--workers INTEGER`: Number of parallel workers (default: 5)
-- `--no-update-num-cites`: Skip citation count updates
-- `--verbose`: Enable verbose logging
 - `--help`: Show help message
+
+**Exit codes**:
+- `0`: success or partial success (some datasets without DOIs are fine).
+- `2`: every dataset failed to write (disk full / read-only output dir).
+- `3`: every dataset stubbed out with an opencite API failure (rate_limit / auth / network / not_found / parse / other). `no_doi_references` is treated as success.
 
 **Examples**:
 ```bash
-# Basic usage with JSON output only
+# Standard run
 dataset-citations-update \
     --dataset-list-file discovered_datasets.txt \
-    --previous-citations-file citations/previous_citations.csv \
-    --output-format json
+    --output-dir citations/
 
-# Parallel processing with 3 workers
-dataset-citations-update \
-    --dataset-list-file datasets.txt \
-    --workers 3 \
-    --verbose
-
-# Skip citation count updates (only get detailed citations)
-dataset-citations-update \
-    --dataset-list-file datasets.txt \
-    --no-update-num-cites
+# With opencite rate-limit relief
+export SEMANTIC_SCHOLAR_API_KEY=your_key
+export OPENALEX_API_KEY=your_key
+dataset-citations-update --dataset-list-file datasets.txt
 ```
 
 ---
@@ -244,19 +239,19 @@ dataset-citations-regenerate --verbose
 # 1. Discover datasets
 dataset-citations-discover --output-file datasets.txt
 
-# 2. Update citations
+# 2. Update citations via opencite
 dataset-citations-update \
     --dataset-list-file datasets.txt \
-    --output-format json
+    --output-dir citations/
 
 # 3. Retrieve metadata for confidence scoring
 dataset-citations-retrieve-metadata \
-    --citations-dir citations/json \
+    --citations-dir citations/json_opencite \
     --output-dir datasets
 
 # 4. Calculate confidence scores
 dataset-citations-score-confidence \
-    --citations-dir citations/json \
+    --citations-dir citations/json_opencite \
     --datasets-dir datasets
 
 # 5. Generate summary report
@@ -319,19 +314,18 @@ GITHUB_TOKEN=your_github_token_here
 
 ### Debug Mode
 
-Add `--verbose` to any command for detailed logging:
+Add `--verbose` where supported (most CLIs other than `dataset-citations-update`):
 
 ```bash
-dataset-citations-update --verbose --workers 1
 dataset-citations-score-confidence --verbose --device cpu
 ```
 
 ## Performance Tips
 
-1. **Parallel Processing**: Adjust `--workers` based on your system (default: 5)
-2. **Device Selection**: Use `--device mps` on Apple Silicon, `--device cuda` on NVIDIA GPUs
-3. **Batch Processing**: Process datasets in smaller batches if memory is limited
-4. **API Limits**: Use GitHub token to avoid rate limiting during metadata retrieval
+1. **opencite Rate Limits**: Set `SEMANTIC_SCHOLAR_API_KEY` / `OPENALEX_API_KEY` / `PUBMED_API_KEY` env vars for higher API limits.
+2. **Device Selection**: Use `--device mps` on Apple Silicon, `--device cuda` on NVIDIA GPUs.
+3. **Batch Processing**: Process datasets in smaller batches if memory is limited.
+4. **GitHub API Limits**: Use `GITHUB_TOKEN` to avoid rate limiting during metadata retrieval.
 
 ## Output Files
 

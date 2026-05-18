@@ -32,9 +32,13 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
     """Run the opencite pipeline against each dataset in the input list.
 
     Writes results to `<output-dir>/json_opencite/<id>_citations.json`.
-    Returns normally on success or partial-success; raises SystemExit(2) only
-    when every single dataset failed to write (e.g. disk full / read-only
-    output directory) so automation can detect wholesale failure.
+    Returns normally on success or partial-success. Raises non-zero
+    `SystemExit` so automation (cron / CI) can detect degraded runs:
+      - exit 2 when every single dataset failed to write (disk full, read-only).
+      - exit 3 when zero datasets returned citing works AND every empty
+        result was an API failure (rate_limit, auth, network, etc.). A run
+        where datasets legitimately lack DOIs (`no_doi_references`) is
+        considered success and does NOT trigger this.
     """
     json_dir = os.path.join(args.output_dir, "json_opencite")
     os.makedirs(json_dir, exist_ok=True)
