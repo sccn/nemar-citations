@@ -48,9 +48,22 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
         json_dir,
     )
 
+    # Statuses that indicate a genuine API failure rather than legitimately
+    # absent DOIs. If every dataset stubs out with one of these, we should
+    # exit non-zero so automation (cron / CI) can detect a fully-degraded
+    # run instead of silently producing a PR full of empty JSONs.
+    api_failure_statuses = {
+        "rate_limit",
+        "auth",
+        "network",
+        "not_found",
+        "parse",
+        "other",
+    }
     successes = 0
     stub_only = 0
     write_failures = 0
+    api_failures = 0
     for dataset_id in dataset_ids:
         payload = fetch_dataset_citations_via_opencite(dataset_id)
         filepath = os.path.join(json_dir, f"{dataset_id}_citations.json")
@@ -66,18 +79,28 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
         else:
             stub_only += 1
             status = payload.get("metadata", {}).get("fetch_status", "empty")
+            if status in api_failure_statuses:
+                api_failures += 1
             logger.info("%s: 0 citations (status=%s)", dataset_id, status)
 
     logger.info(
-        "opencite run complete: %d with citations, %d empty/stub, "
-        "%d write failures, %d total.",
+        "opencite run complete: %d with citations, %d empty/stub "
+        "(%d API-failure), %d write failures, %d total.",
         successes,
         stub_only,
+        api_failures,
         write_failures,
         len(dataset_ids),
     )
-    if write_failures and write_failures == len(dataset_ids):
+    total = len(dataset_ids)
+    if total and write_failures == total:
+        # Every write failed (disk full, read-only output). Exit 2.
         raise SystemExit(2)
+    if total and successes == 0 and api_failures == total:
+        # Zero successes and every stub was an API failure (not just a
+        # dataset without DOIs). Exit 3 so cron can detect the degraded
+        # run before downstream steps regenerate empty CSVs.
+        raise SystemExit(3)
 
 
 def main():

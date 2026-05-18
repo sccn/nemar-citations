@@ -91,6 +91,85 @@ class RunOpenciteBackendTests(TestCase):
             self.assertIn("unsupported_prefix", payload["metadata"]["fetch_status"])
             self.assertFalse((Path(out_dir) / "json").exists())
 
+    def test_all_api_failures_raises_systemexit_3(self) -> None:
+        """When every dataset stubs out with an API-failure status (and no
+        write succeeded), exit 3 so cron / CI catches the degraded run.
+
+        Phase 4 review finding: a fully-rate-limited run would otherwise
+        proceed silently and downstream steps would regenerate empty CSVs.
+        Substitute the pipeline call with a recording function via setattr.
+        """
+        import argparse
+
+        from dataset_citations.cli import update as cli_module
+
+        with tempfile.TemporaryDirectory() as out_dir:
+            list_file = Path(out_dir) / "list.txt"
+            list_file.write_text("ds111111\nds222222\n")
+
+            def stub_pipeline(dataset_id, **_):
+                return {
+                    "dataset_id": dataset_id,
+                    "num_citations": 0,
+                    "date_last_updated": "2026-01-01T00:00:00",
+                    "metadata": {
+                        "schema_version": "2.0",
+                        "discovery_backend": "opencite",
+                        "fetch_status": "rate_limit",
+                    },
+                    "citation_details": [],
+                }
+
+            original = cli_module.fetch_dataset_citations_via_opencite
+            cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
+            args = argparse.Namespace(
+                dataset_list_file=str(list_file),
+                output_dir=out_dir,
+            )
+            try:
+                with self.assertRaises(SystemExit) as ctx:
+                    cli_update.run_opencite_backend(args)
+                self.assertEqual(ctx.exception.code, 3)
+            finally:
+                cli_module.fetch_dataset_citations_via_opencite = original  # type: ignore[assignment]
+
+    def test_no_doi_references_does_not_exit_nonzero(self) -> None:
+        """A run where every dataset legitimately has no DOI references
+        should NOT exit non-zero; that's a normal outcome (e.g., new nm
+        datasets without metadata.json yet)."""
+        import argparse
+
+        from dataset_citations.cli import update as cli_module
+
+        with tempfile.TemporaryDirectory() as out_dir:
+            list_file = Path(out_dir) / "list.txt"
+            list_file.write_text("nm999999\n")
+
+            def stub_pipeline(dataset_id, **_):
+                return {
+                    "dataset_id": dataset_id,
+                    "num_citations": 0,
+                    "date_last_updated": "2026-01-01T00:00:00",
+                    "metadata": {
+                        "schema_version": "2.0",
+                        "discovery_backend": "opencite",
+                        "fetch_status": "no_doi_references",
+                    },
+                    "citation_details": [],
+                }
+
+            original = cli_module.fetch_dataset_citations_via_opencite
+            cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
+            args = argparse.Namespace(
+                dataset_list_file=str(list_file),
+                output_dir=out_dir,
+            )
+            try:
+                # Should return normally, no SystemExit.
+                cli_update.run_opencite_backend(args)
+            finally:
+                cli_module.fetch_dataset_citations_via_opencite = original  # type: ignore[assignment]
+
     def test_total_write_failure_raises_systemexit(self) -> None:
         """When every write fails, surface non-zero exit.
 
