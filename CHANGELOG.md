@@ -6,6 +6,20 @@ All notable changes to this project. The format loosely follows
 ## [Unreleased]
 
 ### Added
+- `dataset-citations-update --backend opencite` runs the new DOI-anchored
+  pipeline alongside the legacy scholarly path. Output lands at
+  `<output-dir>/json_opencite/<id>_citations.json` (side-by-side; the
+  legacy `citations/json/` tree is untouched).
+- `src/dataset_citations/core/opencite_pipeline.py` orchestrates source
+  extraction (nm or ds prefix), opencite lookup, dedup across anchors,
+  and emits the schema-v2 citation JSON.
+- `core.citation_utils.add_discovery_provenance` augments a citation JSON
+  with `metadata.schema_version` (`"2.0"`), `metadata.discovery_backend`,
+  and per-citation `discovery_backend` markers. Opencite-path citations
+  additionally carry `source_doi` and `source_relation`.
+- `dashboard.data.aggregator.DataAggregator.summary_by_backend()` returns
+  `{dataset_id: {"scholarly": N, "opencite": M}}` for side-by-side parity
+  reporting before scholarly is retired.
 - `src/dataset_citations/sources/` subpackage with `NemarMetadataSource` and
   `BidsMetadataSource` for DOI-anchored citation discovery. Reads
   `.nemar/metadata.json` from `nemarDatasets` (DataCite-style
@@ -19,9 +33,6 @@ All notable changes to this project. The format loosely follows
   empty results from rate limits / network failures.
 - `opencite` declared as a git-ref dependency pinned to `v0.4.0` (PyPI lags;
   switch tracked in #43 + neuromechanist/opencite#31).
-
-Not yet wired to any CLI; Phase 3 of epic #37 will add the
-`dataset-citations-update --backend opencite` path.
 
 ### Changed
 - `pyproject.toml`: added `opencite` to `dependencies` and regenerated
