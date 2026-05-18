@@ -1,6 +1,6 @@
 # NEMAR Citations
 
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.13+](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/downloads/)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![Tests](https://github.com/nemarOrg/nemar-citations/actions/workflows/test.yml/badge.svg)](https://github.com/nemarOrg/nemar-citations/actions)
 
@@ -20,7 +20,7 @@ cd nemar-citations
 pip install -e ".[dev,test]"
 ```
 
-**Requirements**: Python 3.11+ • ScraperAPI key • GitHub token (optional)
+**Requirements**: Python 3.13+ • ScraperAPI key • GitHub token (optional)
 
 ## Quick Start
 
@@ -176,7 +176,7 @@ AI-powered relevance scoring (0.0-1.0) using sentence transformers to compare da
 # Setup
 git clone https://github.com/nemarOrg/nemar-citations.git
 cd nemar-citations
-conda create -n dataset-citations python=3.11
+conda create -n dataset-citations python=3.13
 conda activate dataset-citations
 pip install -e ".[dev,test]"
 
