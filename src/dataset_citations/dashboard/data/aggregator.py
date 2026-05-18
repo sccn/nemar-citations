@@ -78,13 +78,25 @@ class DataAggregator:
                 out[entry[0]]["opencite"] = entry[1]
         return out
 
-    @staticmethod
-    def _counts_from_dir(directory: Path):
-        """Yield (dataset_id, num_citations) from each *_citations.json."""
+    def _counts_from_dir(self, directory: Path):
+        """Yield (dataset_id, num_citations) from each *_citations.json.
+
+        Unreadable or malformed files are logged at warning level and skipped.
+        Phase 1 review flagged silent skip as a cache-poisoning anti-pattern
+        for parity reporting: a corrupted scholarly file silently dropping to
+        0 could trick a parity-gate decision. The warning log makes the
+        occurrence visible.
+        """
         for path in sorted(directory.glob("*_citations.json")):
             try:
                 payload = json.loads(path.read_text())
-            except (OSError, json.JSONDecodeError):
+            except OSError as e:
+                self.logger.warning("summary_by_backend: cannot read %s: %s", path, e)
+                continue
+            except json.JSONDecodeError as e:
+                self.logger.warning(
+                    "summary_by_backend: malformed JSON in %s: %s", path, e
+                )
                 continue
             dataset_id = payload.get(
                 "dataset_id", path.name.removesuffix("_citations.json")
