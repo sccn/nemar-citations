@@ -17,11 +17,14 @@ import json
 import logging
 import os
 from datetime import datetime, timezone
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Literal, Optional
 
 import pandas as pd
 
 logger = logging.getLogger(__name__)
+
+DiscoveryBackend = Literal["scholarly", "opencite"]
+SCHEMA_VERSION_V2 = "2.0"
 
 
 def create_citation_json_structure(
@@ -120,6 +123,33 @@ def create_citation_json_structure(
     }
 
     return json_structure
+
+
+def add_discovery_provenance(
+    citation_json: Dict[str, Any],
+    *,
+    discovery_backend: DiscoveryBackend,
+    schema_version: str = SCHEMA_VERSION_V2,
+) -> Dict[str, Any]:
+    """Attach Phase 3 discovery-provenance fields to an existing citation JSON.
+
+    Mutates and returns the input dict. Fills in:
+      - top-level `metadata.schema_version` (default `2.0`)
+      - top-level `metadata.discovery_backend` (`scholarly` or `opencite`)
+      - per-citation `discovery_backend` (only if missing)
+
+    Per-citation `source_doi` and `source_relation` are NOT set here, because
+    they only make sense for the opencite path where the orchestrator knows
+    which DOI/relation each citing work was discovered through. Scholarly
+    citations leave both fields absent so consumers can distinguish them via
+    `.get("source_doi")`.
+    """
+    metadata = citation_json.setdefault("metadata", {})
+    metadata["schema_version"] = schema_version
+    metadata["discovery_backend"] = discovery_backend
+    for entry in citation_json.get("citation_details", []) or []:
+        entry.setdefault("discovery_backend", discovery_backend)
+    return citation_json
 
 
 def _safe_get_value(row: pd.Series, key: str, default: str = "n/a") -> str:
