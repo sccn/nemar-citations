@@ -175,9 +175,7 @@ def classify_error(exc: BaseException, identifier: str) -> FetchError:
         return FetchError("not_found", msg)
     if "timeout" in text or "timed out" in text or "connect" in text:
         return FetchError("network", msg)
-    logger.exception(
-        "unclassified opencite failure for %s", identifier, exc_info=exc
-    )
+    logger.exception("unclassified opencite failure for %s", identifier, exc_info=exc)
     return FetchError("other", msg)
 
 

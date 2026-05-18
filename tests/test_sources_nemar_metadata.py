@@ -21,8 +21,8 @@ def load_fixture(name: str) -> dict:
 
 
 class ParseNm000103(TestCase):
-    """nm000103 (Healthy Brain Network EEG) — has References, IsDerivedFrom,
-    IsDescribedBy, IsIdenticalTo entries."""
+    """nm000103 (Healthy Brain Network EEG) carries References, IsDescribedBy,
+    and IsIdenticalTo entries (verified against the checked-in fixture)."""
 
     def setUp(self) -> None:
         self.payload = load_fixture("nm000103.metadata.json")

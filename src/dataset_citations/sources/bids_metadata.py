@@ -97,7 +97,7 @@ def _references_from_description(desc: dict[str, Any]) -> list[DoiReference]:
         value = desc.get(field_name)
         for ident, kind in _identifiers_from_value(value):
             if kind == "doi" and is_openneuro_dataset_doi(ident):
-                # Keep for record linkage only — not sent to opencite.
+                # Keep for record linkage only; not sent to opencite.
                 continue
             key = (ident, relation)
             if key in seen:

@@ -84,7 +84,7 @@ def validate_identifier(identifier: str) -> bool:
 def is_openneuro_dataset_doi(identifier: str) -> bool:
     """True for OpenNeuro `DatasetDOI` strings that are not indexed in OpenAlex.
 
-    These are useful for record linkage but should not be sent to opencite —
+    These are useful for record linkage but should not be sent to opencite;
     OpenAlex / Semantic Scholar return zero results for them.
     """
     return bool(_OPENNEURO_DOI.match(identifier))

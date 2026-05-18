@@ -12,7 +12,7 @@ All notable changes to this project. The format loosely follows
   `related_identifiers`) and `dataset_description.json` from
   `OpenNeuroDatasets` (`DatasetDOI` / `HowToAcknowledge` /
   `ReferencesAndLinks`).
-- `src/dataset_citations/backends/opencite_backend.py` — sync facade over
+- `src/dataset_citations/backends/opencite_backend.py`, a sync facade over
   `opencite.citations.CitationExplorer` for looking up papers that cite a
   given DOI / PMID / arXiv ID.
 - `FetchSuccess` / `FetchError` result wrappers so callers can distinguish
@@ -20,7 +20,7 @@ All notable changes to this project. The format loosely follows
 - `opencite` declared as a git-ref dependency pinned to `v0.4.0` (PyPI lags;
   switch tracked in #43 + neuromechanist/opencite#31).
 
-Not yet wired to any CLI — Phase 3 of epic #37 will add the
+Not yet wired to any CLI; Phase 3 of epic #37 will add the
 `dataset-citations-update --backend opencite` path.
 
 ### Changed

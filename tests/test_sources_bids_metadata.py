@@ -32,7 +32,7 @@ class ParseDs000117(TestCase):
         self.assertGreater(len(self.refs), 0)
 
     def test_openneuro_dataset_doi_dropped(self) -> None:
-        # ds000117's DatasetDOI is 10.18112/openneuro.ds000117.* — not indexed
+        # ds000117's DatasetDOI is 10.18112/openneuro.ds000117.*; not indexed
         # in OpenAlex, must not appear in the output.
         identifiers = {r.identifier for r in self.refs}
         for ident in identifiers:
@@ -62,7 +62,7 @@ class ParseDs000117(TestCase):
 
 
 class ParseDs002001(TestCase):
-    """ds002001 has only DatasetDOI (OpenNeuro) — the output should be empty
+    """ds002001 has only DatasetDOI (OpenNeuro); the output should be empty
     once we strip OpenNeuro DOIs that aren't indexed in OpenAlex."""
 
     def setUp(self) -> None:
