@@ -192,3 +192,71 @@ class TestDataAggregator(TestCase):
         data = aggregator.aggregate_all_data()
         self.assertIsNotNone(data)
         self.assertEqual(data["summary_stats"]["total_datasets"], 0)
+
+
+class TestSummaryByBackend(TestCase):
+    """Phase 3: aggregator surfaces per-dataset counts for scholarly vs opencite."""
+
+    def setUp(self):
+        self.temp_dir = tempfile.mkdtemp()
+        self.results_dir = Path(self.temp_dir) / "results"
+        self.results_dir.mkdir(parents=True)
+        self.citations_dir = Path(self.temp_dir) / "citations" / "json"
+        self.citations_dir.mkdir(parents=True)
+        self.opencite_dir = Path(self.temp_dir) / "citations" / "json_opencite"
+        self.opencite_dir.mkdir(parents=True)
+
+    def tearDown(self):
+        shutil.rmtree(self.temp_dir)
+
+    def _write(self, directory: Path, dataset_id: str, num: int):
+        (directory / f"{dataset_id}_citations.json").write_text(
+            json.dumps({"dataset_id": dataset_id, "num_citations": num})
+        )
+
+    def test_auto_detects_sibling_opencite_dir(self):
+        self._write(self.citations_dir, "ds000117", 75)
+        self._write(self.opencite_dir, "ds000117", 100)
+        agg = DataAggregator(
+            results_dir=self.results_dir, citations_dir=self.citations_dir
+        )
+        # Auto-detection picked up the sibling directory.
+        self.assertEqual(agg.citations_opencite_dir, self.opencite_dir)
+        summary = agg.summary_by_backend()
+        self.assertEqual(summary, {"ds000117": {"scholarly": 75, "opencite": 100}})
+
+    def test_dataset_only_in_opencite(self):
+        # ds-only-in-opencite is what we expect for nm-datasets that the
+        # legacy scholarly path never produced output for.
+        self._write(self.opencite_dir, "nm000103", 174)
+        agg = DataAggregator(
+            results_dir=self.results_dir,
+            citations_dir=self.citations_dir,
+            citations_opencite_dir=self.opencite_dir,
+        )
+        summary = agg.summary_by_backend()
+        self.assertEqual(summary["nm000103"], {"scholarly": 0, "opencite": 174})
+
+    def test_dataset_only_in_scholarly(self):
+        self._write(self.citations_dir, "ds002001", 5)
+        agg = DataAggregator(
+            results_dir=self.results_dir,
+            citations_dir=self.citations_dir,
+            citations_opencite_dir=self.opencite_dir,
+        )
+        summary = agg.summary_by_backend()
+        self.assertEqual(summary["ds002001"], {"scholarly": 5, "opencite": 0})
+
+    def test_explicit_opencite_dir_overrides_autodetect(self):
+        # Explicit param wins even when a sibling exists.
+        alt = Path(self.temp_dir) / "alt_opencite"
+        alt.mkdir()
+        self._write(alt, "ds000117", 42)
+        self._write(self.opencite_dir, "ds000117", 999)
+        agg = DataAggregator(
+            results_dir=self.results_dir,
+            citations_dir=self.citations_dir,
+            citations_opencite_dir=alt,
+        )
+        summary = agg.summary_by_backend()
+        self.assertEqual(summary["ds000117"]["opencite"], 42)
