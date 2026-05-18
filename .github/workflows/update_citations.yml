@@ -1,7 +1,9 @@
-name: ManUpdate  # Manually update dataset citations
+name: Update citations  # Run the opencite-backed citation pipeline
 
 on:
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch:        # Manual trigger from the Actions UI
+  schedule:
+    - cron: "0 6 * * 0"    # Weekly: Sunday 06:00 UTC
 
 # Permissions needed for creating pull requests
 permissions:
@@ -134,6 +136,13 @@ jobs:
 
       - name: Update citation information
         id: update_citations
+        env:
+          # opencite reads these from the environment for higher API limits.
+          # Each is optional; opencite degrades gracefully to unauthenticated
+          # rates if a key is missing.
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+          PUBMED_API_KEY: ${{ secrets.PUBMED_API_KEY }}
         run: |
           uv run dataset-citations-update \
             --dataset-list-file ${{ steps.discover.outputs.dataset_list_file }} \
