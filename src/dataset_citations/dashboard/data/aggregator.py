@@ -18,6 +18,7 @@ class DataAggregator:
         results_dir: Path,
         citations_dir: Optional[Path] = None,
         datasets_dir: Optional[Path] = None,
+        citations_opencite_dir: Optional[Path] = None,
     ):
         """
         Initialize data aggregator.
@@ -26,6 +27,10 @@ class DataAggregator:
             results_dir: Directory containing analysis results
             citations_dir: Optional directory containing citation JSON files
             datasets_dir: Optional directory containing dataset metadata
+            citations_opencite_dir: Optional directory containing opencite-
+                produced citation JSON files (Phase 3 side-by-side output).
+                If None, the aggregator auto-detects `citations/json_opencite`
+                next to `citations_dir`.
         """
         self.results_dir = Path(results_dir)
         # Check if dashboard_data exists as primary location
@@ -37,7 +42,54 @@ class DataAggregator:
 
         self.citations_dir = Path(citations_dir) if citations_dir else None
         self.datasets_dir = Path(datasets_dir) if datasets_dir else None
+        self.citations_opencite_dir = self._resolve_opencite_dir(citations_opencite_dir)
         self.logger = logging.getLogger(__name__)
+
+    def _resolve_opencite_dir(self, explicit: Optional[Path]) -> Optional[Path]:
+        """Pick the opencite citations dir: explicit > sibling > None."""
+        if explicit is not None:
+            p = Path(explicit)
+            return p if p.exists() else None
+        if self.citations_dir is not None:
+            sibling = self.citations_dir.parent / "json_opencite"
+            if sibling.exists():
+                return sibling
+        return None
+
+    def summary_by_backend(self) -> Dict[str, Dict[str, int]]:
+        """Return per-dataset citation counts split by discovery backend.
+
+        Shape: `{dataset_id: {"scholarly": N, "opencite": M}}`. Used by Phase 3
+        side-by-side reporting to confirm opencite parity before scholarly
+        is retired in Phase 4. Datasets that appear in only one directory
+        get a 0 for the missing backend.
+        """
+        out: Dict[str, Dict[str, int]] = {}
+        if self.citations_dir is not None and self.citations_dir.exists():
+            for entry in self._counts_from_dir(self.citations_dir):
+                out.setdefault(entry[0], {"scholarly": 0, "opencite": 0})
+                out[entry[0]]["scholarly"] = entry[1]
+        if (
+            self.citations_opencite_dir is not None
+            and self.citations_opencite_dir.exists()
+        ):
+            for entry in self._counts_from_dir(self.citations_opencite_dir):
+                out.setdefault(entry[0], {"scholarly": 0, "opencite": 0})
+                out[entry[0]]["opencite"] = entry[1]
+        return out
+
+    @staticmethod
+    def _counts_from_dir(directory: Path):
+        """Yield (dataset_id, num_citations) from each *_citations.json."""
+        for path in sorted(directory.glob("*_citations.json")):
+            try:
+                payload = json.loads(path.read_text())
+            except (OSError, json.JSONDecodeError):
+                continue
+            dataset_id = payload.get(
+                "dataset_id", path.name.removesuffix("_citations.json")
+            )
+            yield dataset_id, int(payload.get("num_citations") or 0)
 
     def aggregate_all_data(self) -> Dict[str, Any]:
         """
