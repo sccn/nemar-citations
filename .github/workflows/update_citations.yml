@@ -134,15 +134,10 @@ jobs:
 
       - name: Update citation information
         id: update_citations
-        env:
-          SCRAPERAPI_KEY: ${{ secrets.SCRAPERAPI_KEY }}
         run: |
           uv run dataset-citations-update \
             --dataset-list-file ${{ steps.discover.outputs.dataset_list_file }} \
-            --previous-citations-file citations/previous_citations.csv \
-            --output-dir citations/ \
-            --workers 5 \
-            --output-format json
+            --output-dir citations/
 
       - name: Retrieve dataset metadata from GitHub
         id: retrieve_metadata
@@ -151,7 +146,7 @@ jobs:
         run: |
           echo "Retrieving dataset metadata from OpenNeuro GitHub repositories..."
           uv run dataset-citations-retrieve-metadata \
-            --citations-dir citations/json \
+            --citations-dir citations/json_opencite \
             --output-dir datasets \
             --skip-existing \
             --log-level INFO
@@ -162,7 +157,7 @@ jobs:
         run: |
           echo "Calculating citation confidence scores using semantic similarity..."
           uv run dataset-citations-score-confidence \
-            --citations-dir citations/json \
+            --citations-dir citations/json_opencite \
             --datasets-dir datasets \
             --model Qwen/Qwen3-Embedding-0.6B \
             --skip-existing \
@@ -188,7 +183,7 @@ jobs:
             echo "Attempting to regenerate CSV files from JSON data as fallback..."
             # Regenerate CSV files from JSON data
             uv run dataset-citations-regenerate \
-              --json-dir citations/json \
+              --json-dir citations/json_opencite \
               --output-dir citations \
               --date-suffix ${TODAY_DATE} \
               --update-previous
@@ -214,7 +209,7 @@ jobs:
             if [ "$NON_ZERO_COUNT" -lt 50 ]; then
               echo "CSV appears to have incorrect data (too many zeros). Regenerating from JSON..."
               uv run dataset-citations-regenerate \
-                --json-dir citations/json \
+                --json-dir citations/json_opencite \
                 --output-dir citations \
                 --date-suffix ${TODAY_DATE} \
                 --update-previous
@@ -225,7 +220,7 @@ jobs:
           else
             echo "No CSV file found. Generating from JSON data..."
             uv run dataset-citations-regenerate \
-              --json-dir citations/json \
+              --json-dir citations/json_opencite \
               --output-dir citations \
               --date-suffix ${TODAY_DATE} \
               --update-previous
@@ -243,7 +238,7 @@ jobs:
 
           echo "Generating embeddings for analysis..."
           uv run dataset-citations-generate-embeddings \
-            --citations citations/json \
+            --citations citations/json_opencite \
             --datasets datasets \
             --embeddings-dir embeddings \
             --embedding-type both \
@@ -264,17 +259,17 @@ jobs:
 
           echo "Generating theme analysis with wordclouds..."
           uv run python -m dataset_citations.analysis.generate_themes \
-            --citations-dir citations/json \
+            --citations-dir citations/json_opencite \
             --output-dir dashboard_data/themes || echo "Theme generation had issues (non-critical)"
 
           echo "Generating network analysis..."
           uv run python -m dataset_citations.analysis.generate_network \
-            --citations-dir citations/json \
+            --citations-dir citations/json_opencite \
             --output-dir dashboard_data/network || echo "Network analysis failed (non-critical)"
 
           echo "Generating temporal analysis..."
           uv run python -m dataset_citations.analysis.generate_temporal \
-            --citations-dir citations/json \
+            --citations-dir citations/json_opencite \
             --output-dir dashboard_data/temporal || echo "Temporal analysis failed (non-critical)"
 
           echo "Generating interactive dashboard..."
@@ -285,7 +280,7 @@ jobs:
           gen = DashboardGenerator(
               results_dir=Path('dashboard_data'),
               output_dir=Path('interactive_reports'),
-              citations_dir=Path('citations/json'),
+              citations_dir=Path('citations/json_opencite'),
           )
 
           output_path = gen.generate_dashboard(dashboard_type='nemar', lazy_load=True)
