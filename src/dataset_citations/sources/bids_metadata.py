@@ -71,7 +71,16 @@ class BidsMetadataSource:
         if not isinstance(payload, dict):
             return FetchError("parse", "dataset_description.json root is not an object")
 
-        return FetchSuccess(_references_from_description(payload))
+        return FetchSuccess(parse_bids_description(payload))
+
+
+def parse_bids_description(desc: dict[str, Any]) -> list[DoiReference]:
+    """Pure function: convert parsed `dataset_description.json` into DoiReferences.
+
+    Exposed for unit testing with fixture files. The GitHub-fetching class
+    delegates here after decoding bytes to JSON.
+    """
+    return _references_from_description(desc)
 
 
 def _references_from_description(desc: dict[str, Any]) -> list[DoiReference]:

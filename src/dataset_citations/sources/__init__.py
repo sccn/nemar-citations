@@ -6,7 +6,10 @@ OpenNeuroDatasets ds-prefixed repos. Both return `FetchResult[list[DoiReference]
 so callers distinguish errors from "no DOIs found".
 """
 
-from dataset_citations.sources.bids_metadata import BidsMetadataSource
+from dataset_citations.sources.bids_metadata import (
+    BidsMetadataSource,
+    parse_bids_description,
+)
 from dataset_citations.sources.doi import (
     extract_identifiers,
     is_openneuro_dataset_doi,
@@ -19,7 +22,10 @@ from dataset_citations.sources.models import (
     FetchResult,
     FetchSuccess,
 )
-from dataset_citations.sources.nemar_metadata import NemarMetadataSource
+from dataset_citations.sources.nemar_metadata import (
+    NemarMetadataSource,
+    parse_nemar_metadata,
+)
 
 __all__ = [
     "BidsMetadataSource",
@@ -31,5 +37,7 @@ __all__ = [
     "extract_identifiers",
     "is_openneuro_dataset_doi",
     "normalize_doi",
+    "parse_bids_description",
+    "parse_nemar_metadata",
     "validate_identifier",
 ]

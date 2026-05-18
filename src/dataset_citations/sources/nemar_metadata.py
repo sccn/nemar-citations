@@ -73,14 +73,22 @@ class NemarMetadataSource:
 
         if not isinstance(payload, dict):
             return FetchError("parse", "metadata.json root is not an object")
+        return FetchSuccess(parse_nemar_metadata(payload))
 
-        related = payload.get("related_identifiers") or []
-        refs: list[DoiReference] = []
-        for entry in related:
-            ref = _entry_to_reference(entry)
-            if ref is not None:
-                refs.append(ref)
-        return FetchSuccess(refs)
+
+def parse_nemar_metadata(payload: dict[str, Any]) -> list[DoiReference]:
+    """Pure function: convert parsed `.nemar/metadata.json` into DoiReferences.
+
+    Exposed for unit testing with fixture files. The GitHub-fetching class
+    delegates here after decoding bytes to JSON.
+    """
+    related = payload.get("related_identifiers") or []
+    refs: list[DoiReference] = []
+    for entry in related:
+        ref = _entry_to_reference(entry)
+        if ref is not None:
+            refs.append(ref)
+    return refs
 
 
 def _entry_to_reference(entry: Any) -> DoiReference | None:
