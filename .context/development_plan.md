@@ -1,5 +1,7 @@
 # Development Plan - Dataset Citations (Revised)
 
+> **Historical note (Phase 4 of epic #37):** The scholarly + ScraperAPI integration referenced below was retired in May 2026. Lines that say "ScraperAPI integration confirmed working" describe the state of the world before the opencite pivot. The current automation runs through `core/opencite_pipeline.py`; see AGENTS.md "Data Flow" for the live architecture.
+
 ## Core Problem
 The automation pipeline is BROKEN - dashboard generation was never integrated into the workflow. We need to fix this first before we can test anything.
 

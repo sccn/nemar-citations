@@ -20,25 +20,22 @@ echo "  - Input: discovered_datasets.txt (1 dataset)"
 echo "  - Previous: 8 citations"
 echo "  - Expected: Should find 10 citations"
 
-# This will actually call the API - comment out for dry run
+# This will actually call the API - uncomment to run
 # dataset-citations-update \
 #   --dataset-list-file discovered_datasets.txt \
-#   --previous-citations-file previous_citations.csv \
-#   --output-dir citations/ \
-#   --workers 1 \
-#   --output-format json
+#   --output-dir citations/
 
 echo ""
 echo "Step 4: Retrieve metadata (would need GitHub token)"
 # dataset-citations-retrieve-metadata \
-#   --citations-dir citations/json \
+#   --citations-dir citations/json_opencite \
 #   --output-dir datasets \
 #   --skip-existing
 
 echo ""
 echo "Step 5: Calculate confidence scores"
 # dataset-citations-score-confidence \
-#   --citations-dir citations/json \
+#   --citations-dir citations/json_opencite \
 #   --datasets-dir datasets \
 #   --model all-MiniLM-L6-v2 \
 #   --skip-existing
@@ -47,7 +44,7 @@ echo ""
 echo "Step 6: Generate CSV from JSON"
 TODAY_DATE=$(date +%d%m%Y)
 # dataset-citations-regenerate \
-#   --json-dir citations/json \
+#   --json-dir citations/json_opencite \
 #   --output-dir citations \
 #   --date-suffix ${TODAY_DATE} \
 #   --update-previous

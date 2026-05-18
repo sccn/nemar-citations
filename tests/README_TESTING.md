@@ -10,33 +10,31 @@ pytest tests/ -v
 
 ## Test Categories
 
-### Fast Tests (5 seconds) ✅
+### Fast Tests (5 seconds)
 - **Core functionality**: DataFrame operations, data processing
-- **Error handling**: Edge cases, invalid inputs
-- **Unit tests**: Function validation without external dependencies  
-- **Mock-based tests**: API interface validation
+- **Error handling**: edge cases, invalid inputs
+- **Pure parser tests**: `parse_nemar_metadata`, `parse_bids_description`, `add_discovery_provenance` exercised with frozen real-data fixtures (no mocks per project policy)
+- **CLI smoke tests**: argparse + dispatch verification using setattr-substituted test doubles (not `unittest.mock`)
 
 ### Skipped Tests (for speed) ⏭️
-- **API calls**: Google Scholar integration (use integration test when needed)
+- **Live opencite calls**: hits OpenAlex / Semantic Scholar / PubMed; gated by `RUN_INTEGRATION_TESTS=1`
 - **File I/O**: JSON/pickle save/load operations
 - **Real data access**: Tests using actual citation files
 
 ## Slow Integration Tests (When Needed)
 ```bash
-# Full API workflow test - runs in ~5-10 minutes  
-RUN_SLOW_INTEGRATION_TESTS=1 pytest tests/test_getCitations.py::TestGetCitations::test_integration_full_api_workflow -v
-
-# Re-enable specific slow tests (development only)
-# Remove @unittest.skip decorators in test files
+# Full opencite + sources integration tests
+RUN_INTEGRATION_TESTS=1 pytest tests/test_backends_opencite.py tests/test_core_opencite_pipeline.py -v
 ```
 
 ## Environment Setup
 ```bash
-# Required for any API testing
-echo "SCRAPERAPI_KEY=your_key_here" > .secrets
+# Optional: raise opencite rate limits
+echo "SEMANTIC_SCHOLAR_API_KEY=your_key" > .secrets
+echo "OPENALEX_API_KEY=your_key" >> .secrets
 
-# Optional: Enable slow integration tests
-export RUN_SLOW_INTEGRATION_TESTS=1
+# Enable integration tests
+export RUN_INTEGRATION_TESTS=1
 ```
 
 ## Performance Improvements Made

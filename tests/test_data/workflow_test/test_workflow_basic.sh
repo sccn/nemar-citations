@@ -19,13 +19,13 @@ echo ""
 
 echo "Step 3: Check current citation file"
 echo "Current citations in test JSON:"
-jq '.num_citations' citations/json/ds003555_citations.json
+jq '.num_citations' citations/json_opencite/ds003555_citations.json
 echo ""
 
 echo "Step 4: Test CSV regeneration (should work)"
 TODAY_DATE=$(date +%d%m%Y)
 (cd "$REPO_ROOT" && uv run dataset-citations-regenerate \
-  --json-dir tests/test_data/workflow_test/citations/json \
+  --json-dir tests/test_data/workflow_test/citations/json_opencite \
   --output-dir tests/test_data/workflow_test/citations \
   --date-suffix ${TODAY_DATE} \
   --update-previous)
