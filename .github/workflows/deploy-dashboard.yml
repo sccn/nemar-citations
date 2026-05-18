@@ -13,39 +13,38 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: "3.13"
+          enable-cache: true
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install torch --index-url https://download.pytorch.org/whl/cpu
-          pip install -r requirements.txt
-          pip install -e .
+      - name: Sync project (CPU-only torch)
+        env:
+          UV_EXTRA_INDEX_URL: https://download.pytorch.org/whl/cpu
+          UV_INDEX_STRATEGY: unsafe-best-match
+        run: uv sync --python 3.13 --all-extras
 
       - name: Generate dashboard
         run: |
           mkdir -p dashboard_data/{network,themes,temporal,visualizations}
 
           echo "Generating theme analysis..."
-          python -m dataset_citations.analysis.generate_themes \
+          uv run python -m dataset_citations.analysis.generate_themes \
             --citations-dir citations/json \
             --output-dir dashboard_data/themes || echo "Theme generation had issues"
 
           echo "Generating network analysis..."
-          python -m dataset_citations.analysis.generate_network \
+          uv run python -m dataset_citations.analysis.generate_network \
             --citations-dir citations/json \
             --output-dir dashboard_data/network || echo "Network analysis had issues"
 
           echo "Generating temporal analysis..."
-          python -m dataset_citations.analysis.generate_temporal \
+          uv run python -m dataset_citations.analysis.generate_temporal \
             --citations-dir citations/json \
             --output-dir dashboard_data/temporal || echo "Temporal analysis had issues"
 
           echo "Building dashboard..."
-          python -c "
+          uv run python -c "
           from dataset_citations.dashboard.core import DashboardGenerator
           from pathlib import Path
           gen = DashboardGenerator(

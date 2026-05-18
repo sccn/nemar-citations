@@ -7,30 +7,34 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+env:
+  UV_PYTHON: "3.13"
+  UV_PYTHON_PREFERENCE: only-managed
+
 jobs:
   lint:
     name: Lint Code
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: '3.13'
+          enable-cache: true
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install ruff
+      - name: Install ruff + ty
+        run: uv tool install ruff && uv tool install ty
 
-      - name: Run ruff format check
-        run: ruff format --check src/ tests/
+      - name: Ruff format check
+        run: uv tool run ruff format --check src/ tests/
 
-      - name: Run ruff lint
-        run: ruff check src/ tests/
+      - name: Ruff lint
+        run: uv tool run ruff check src/ tests/
+
+      - name: Ty type check
+        run: uv tool run ty check src/ || true  # ty is preview; do not fail CI yet
 
   test:
     name: Test Python ${{ matrix.python-version }}
@@ -41,31 +45,23 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
 
-      - name: Cache pip packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt', '**/pyproject.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          # Install CPU-only PyTorch first to avoid CUDA dependencies
-          pip install torch --index-url https://download.pytorch.org/whl/cpu
-          pip install -e ".[dev,test]"
+      - name: Sync project (CPU-only torch index)
+        env:
+          UV_EXTRA_INDEX_URL: https://download.pytorch.org/whl/cpu
+          UV_INDEX_STRATEGY: unsafe-best-match
+        run: uv sync --python ${{ matrix.python-version }} --all-extras
 
       - name: Run fast tests with coverage
         run: |
-          pytest tests/ \
+          uv run pytest tests/ \
             --cov=dataset_citations \
             --cov-report=xml \
             --cov-report=term-missing \
@@ -74,7 +70,7 @@ jobs:
 
       - name: Upload coverage to Codecov
         if: matrix.python-version == '3.13'
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           file: ./coverage.xml
           flags: unittests
@@ -88,28 +84,23 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: '3.13'
+          enable-cache: true
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          # Install CPU-only PyTorch first to avoid CUDA dependencies
-          pip install torch --index-url https://download.pytorch.org/whl/cpu
-          pip install -e ".[dev,test]"
+      - name: Sync project
+        env:
+          UV_EXTRA_INDEX_URL: https://download.pytorch.org/whl/cpu
+          UV_INDEX_STRATEGY: unsafe-best-match
+        run: uv sync --python 3.13 --all-extras
 
       - name: Create test data directory
         run: |
           mkdir -p tests/test_data/workflow_test
-
-          # Create minimal test dataset list
           echo "ds003555" > tests/test_data/workflow_test/discovered_datasets.txt
-
-          # Create previous citations CSV
           cat > tests/test_data/workflow_test/previous_citations.csv << 'EOF'
           dataset_id,citation_count,last_updated
           ds003555,8,2024-01-01
@@ -117,30 +108,23 @@ jobs:
 
       - name: Run integration tests
         run: |
-          # Run workflow test with test data
-          python -m pytest tests/test_getCitations.py::TestGetCitations::test_minimal_workflow \
-            -v \
-            --tb=short
+          uv run pytest tests/test_getCitations.py::TestGetCitations::test_minimal_workflow \
+            -v --tb=short
         continue-on-error: true
 
       - name: Test CLI commands
         run: |
-          # Test discovery
-          dataset-citations-discover --help
+          uv run dataset-citations-discover --help
+          uv run dataset-citations-migrate --help
 
-          # Test migration
-          dataset-citations-migrate --help
-
-          # Test dashboard generation with mock data
           mkdir -p test_results/temporal_analysis test_results/network_analysis
           echo '{"test": "data"}' > test_results/temporal_analysis/results.json
 
-          dataset-citations-create-interactive-reports \
+          uv run dataset-citations-create-reports \
             --results-dir test_results \
             --output-dir test_output \
             --verbose || true
 
-          # Check if dashboard was created
           if [ -f "test_output/dataset_citations_dashboard.html" ]; then
             echo "Dashboard generated successfully"
             ls -lh test_output/*.html
@@ -155,29 +139,24 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: '3.13'
+          enable-cache: true
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          # Install CPU-only PyTorch first to avoid CUDA dependencies
-          pip install torch --index-url https://download.pytorch.org/whl/cpu
-          pip install -e ".[dev,test]"
+      - name: Sync project
+        env:
+          UV_EXTRA_INDEX_URL: https://download.pytorch.org/whl/cpu
+          UV_INDEX_STRATEGY: unsafe-best-match
+        run: uv sync --python 3.13 --all-extras
 
       - name: Run end-to-end workflow test
         run: |
-          # Make script executable
           chmod +x run_end_to_end_workflow.sh
-
-          # Run test mode (no API calls)
           ./run_end_to_end_workflow.sh test
 
-          # Check outputs
           if [ -d "test_output_*" ]; then
             echo "Test outputs created successfully"
             find test_output_* -type f -name "*.html" -o -name "*.json" | head -20
@@ -185,7 +164,7 @@ jobs:
 
       - name: Upload test artifacts
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-outputs
           path: |
@@ -196,10 +175,9 @@ jobs:
   security-check:
     name: Security Check
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run Trivy security scan
         uses: aquasecurity/trivy-action@master
@@ -211,7 +189,7 @@ jobs:
           severity: 'HIGH,CRITICAL'
 
       - name: Upload Trivy results
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         if: always()
         with:
           sarif_file: 'trivy-results.sarif'
