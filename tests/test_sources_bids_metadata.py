@@ -126,3 +126,17 @@ class ParseSyntheticEdgeCases(TestCase):
 
     def test_empty_description(self) -> None:
         self.assertEqual(parse_bids_description({}), [])
+
+    def test_recurses_into_dict_valued_field(self) -> None:
+        # Some BIDS authors put structured content in HowToAcknowledge.
+        refs = parse_bids_description(
+            {
+                "HowToAcknowledge": {
+                    "text": "Please cite this paper",
+                    "citation": "https://doi.org/10.1038/sdata.2015.1",
+                },
+            }
+        )
+        self.assertEqual(len(refs), 1)
+        self.assertEqual(refs[0].identifier, "10.1038/sdata.2015.1")
+        self.assertEqual(refs[0].relation_type, "IsDerivedFrom")

@@ -40,6 +40,14 @@ class NormalizeDoiTests(TestCase):
         # "see (10.1038/sdata.2015.1)" parsed; the trailing `)` should drop.
         self.assertEqual(normalize_doi("10.1038/sdata.2015.1)"), "10.1038/sdata.2015.1")
 
+    def test_balances_multiple_trailing_parens(self) -> None:
+        # Stripping multiple unmatched trailing parens.
+        self.assertEqual(normalize_doi("10.1234/foo)))"), "10.1234/foo")
+
+    def test_balances_paren_with_one_match_kept(self) -> None:
+        # Inner `(` matches the first `)`; the second `)` is stray and drops.
+        self.assertEqual(normalize_doi("10.1234/foo(bar))"), "10.1234/foo(bar)")
+
     def test_keeps_internal_parens(self) -> None:
         self.assertEqual(normalize_doi("10.1234/foo(bar)baz"), "10.1234/foo(bar)baz")
 

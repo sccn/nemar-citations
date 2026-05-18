@@ -147,3 +147,19 @@ class ParseSyntheticEdgeCases(TestCase):
             }
         )
         self.assertEqual(len(refs), 1)
+
+    def test_isversionof_kept(self) -> None:
+        # IsVersionOf is in the citation-relations allow-list; should survive.
+        refs = parse_nemar_metadata(
+            {
+                "related_identifiers": [
+                    {
+                        "identifier": "10.1038/older.2014.5",
+                        "identifier_type": "DOI",
+                        "relation_type": "IsVersionOf",
+                    },
+                ]
+            }
+        )
+        self.assertEqual(len(refs), 1)
+        self.assertEqual(refs[0].relation_type, "IsVersionOf")
