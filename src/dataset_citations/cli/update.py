@@ -27,6 +27,9 @@ from dataset_citations.core import (
 from dataset_citations.core import (
     getCitations as gc,
 )
+from dataset_citations.core.opencite_pipeline import (
+    fetch_dataset_citations_via_opencite,
+)
 
 # Configure basic logging for the script
 logging.basicConfig(
@@ -404,6 +407,62 @@ def save_updated_dataset_summary(
         return None
 
 
+def run_opencite_backend(args: argparse.Namespace) -> None:
+    """Run the Phase 3 opencite pipeline against each dataset in the input list.
+
+    Writes results to `<output-dir>/json_opencite/<id>_citations.json` so the
+    legacy scholarly tree (`<output-dir>/json/`) is untouched. This is the
+    side-by-side mode the Phase 3 design calls for; Phase 4 retires the
+    scholarly path once parity is verified in production.
+    """
+    import json
+
+    json_dir = os.path.join(args.output_dir, "json_opencite")
+    os.makedirs(json_dir, exist_ok=True)
+
+    with open(args.dataset_list_file, encoding="utf-8") as f:
+        dataset_ids = [line.strip() for line in f if line.strip()]
+
+    logger.info(
+        "Running opencite backend for %d dataset(s) -> %s",
+        len(dataset_ids),
+        json_dir,
+    )
+
+    successes = 0
+    stub_only = 0
+    write_failures = 0
+    for dataset_id in dataset_ids:
+        payload = fetch_dataset_citations_via_opencite(dataset_id)
+        filepath = os.path.join(json_dir, f"{dataset_id}_citations.json")
+        try:
+            with open(filepath, "w", encoding="utf-8") as f:
+                json.dump(payload, f, indent=2, ensure_ascii=False)
+        except OSError as e:
+            logger.error("Failed to write %s: %s", filepath, e)
+            write_failures += 1
+            continue
+        if payload["num_citations"] > 0:
+            successes += 1
+        else:
+            stub_only += 1
+            status = payload.get("metadata", {}).get("fetch_status", "empty")
+            logger.info("%s: 0 citations (status=%s)", dataset_id, status)
+
+    logger.info(
+        "opencite run complete: %d with citations, %d empty/stub, "
+        "%d write failures, %d total.",
+        successes,
+        stub_only,
+        write_failures,
+        len(dataset_ids),
+    )
+    if write_failures and write_failures == len(dataset_ids):
+        # Every single write failed; surface as non-zero exit so automation
+        # (cron, CI) can detect the wholesale failure.
+        raise SystemExit(2)
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Update dataset citation numbers and lists."
@@ -447,6 +506,20 @@ def main():
         default="both",
         help="Output format for detailed citation data (default: both).",
     )
+    parser.add_argument(
+        "--backend",
+        choices=["scholarly", "opencite"],
+        default="scholarly",
+        help=(
+            "Citation discovery backend (default: scholarly). With 'opencite', "
+            "lookups are anchored on DOIs surfaced by .nemar/metadata.json or "
+            "dataset_description.json; output is written to "
+            "<output-dir>/json_opencite/<id>_citations.json (side-by-side with "
+            "the legacy citations/json/ tree). In opencite mode, "
+            "--previous-citations-file, --workers, --output-format, and the "
+            "--no-update-* flags are ignored."
+        ),
+    )
     parser.set_defaults(update_num_cites=True, update_cite_list=True)
 
     args = parser.parse_args()
@@ -455,6 +528,10 @@ def main():
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
         logger.info(f"Created output directory: {args.output_dir}")
+
+    if args.backend == "opencite":
+        run_opencite_backend(args)
+        return
 
     # Initialize proxy after parsing args, as it might be needed by gc functions
     # gc.get_working_proxy() is called, its internal logging will be used.
