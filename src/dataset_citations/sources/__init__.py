@@ -1,0 +1,35 @@
+"""DOI source extractors for the opencite-backed citation pipeline.
+
+`nemar_metadata` reads `.nemar/metadata.json` from nm-prefixed nemarDatasets
+repos. `bids_metadata` reads `dataset_description.json` from legacy
+OpenNeuroDatasets ds-prefixed repos. Both return `FetchResult[list[DoiReference]]`
+so callers distinguish errors from "no DOIs found".
+"""
+
+from dataset_citations.sources.bids_metadata import BidsMetadataSource
+from dataset_citations.sources.doi import (
+    extract_identifiers,
+    is_openneuro_dataset_doi,
+    normalize_doi,
+    validate_identifier,
+)
+from dataset_citations.sources.models import (
+    DoiReference,
+    FetchError,
+    FetchResult,
+    FetchSuccess,
+)
+from dataset_citations.sources.nemar_metadata import NemarMetadataSource
+
+__all__ = [
+    "BidsMetadataSource",
+    "DoiReference",
+    "FetchError",
+    "FetchResult",
+    "FetchSuccess",
+    "NemarMetadataSource",
+    "extract_identifiers",
+    "is_openneuro_dataset_doi",
+    "normalize_doi",
+    "validate_identifier",
+]
