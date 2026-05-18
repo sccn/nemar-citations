@@ -18,6 +18,7 @@ import json
 import logging
 import os
 
+from dataset_citations.backends import OpenCiteBackend
 from dataset_citations.core.opencite_pipeline import (
     fetch_dataset_citations_via_opencite,
 )
@@ -46,10 +47,21 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
     with open(args.dataset_list_file, encoding="utf-8") as f:
         dataset_ids = [line.strip() for line in f if line.strip()]
 
+    # OPENCITE_CONCURRENCY caps the anchor fan-out inside one dataset. The CI
+    # workflow sets it to 1 to avoid Semantic Scholar 429s when canonical
+    # anchor papers are shared across datasets (issue #49). Construct ONE
+    # backend instance and pass it to every per-dataset call so the
+    # CitationExplorer session and rate-limit headers are reused.
+    try:
+        concurrency = max(1, int(os.environ.get("OPENCITE_CONCURRENCY", "4")))
+    except ValueError:
+        concurrency = 4
+    backend = OpenCiteBackend(concurrency=concurrency)
     logger.info(
-        "Running opencite backend for %d dataset(s) -> %s",
+        "Running opencite backend for %d dataset(s) -> %s (concurrency=%d)",
         len(dataset_ids),
         json_dir,
+        concurrency,
     )
 
     # Statuses that indicate a genuine API failure rather than legitimately
@@ -69,7 +81,7 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
     write_failures = 0
     api_failures = 0
     for dataset_id in dataset_ids:
-        payload = fetch_dataset_citations_via_opencite(dataset_id)
+        payload = fetch_dataset_citations_via_opencite(dataset_id, backend=backend)
         filepath = os.path.join(json_dir, f"{dataset_id}_citations.json")
         try:
             with open(filepath, "w", encoding="utf-8") as f:
