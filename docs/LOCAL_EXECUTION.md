@@ -33,12 +33,14 @@ This document describes how to set up and run the GitHub Actions workflows for t
         This should list the workflows found in `.github/workflows/`.
 
 2.  **Configure Secrets (`.secrets` file):**
-    *   `act` needs access to secrets your workflow uses (e.g., `GITHUB_TOKEN`, `SCRAPERAPI_KEY`).
+    *   `act` needs access to secrets your workflow uses (e.g., `GITHUB_TOKEN`, optional opencite keys).
     *   In the root of this project (`dataset_citations/`), create a file named `.secrets`.
     *   Add your secrets to this file in the format `KEY=VALUE`, one per line. Refer to `.secrets.example` for the required keys:
         ```
         GITHUB_TOKEN=your_actual_github_personal_access_token
-        SCRAPERAPI_KEY=your_actual_scraperapi_key
+        # Optional, raise opencite rate limits:
+        # SEMANTIC_SCHOLAR_API_KEY=your_key
+        # OPENALEX_API_KEY=your_key
         ```
     *   **Important:** The `.secrets` file is ignored by Git (via `.gitignore`) and should **never** be committed.
     *   The `GITHUB_TOKEN` should be a Personal Access Token (PAT) with `repo` and `workflow` scopes.
@@ -58,7 +60,7 @@ A helper script `run_local_workflow.sh` is provided in the project root to simpl
     chmod +x run_local_workflow.sh
     ```
 
-2.  **Ensure your `.secrets` file is populated** with your `GITHUB_TOKEN` and `SCRAPERAPI_KEY`.
+2.  **Ensure your `.secrets` file is populated** with at least `GITHUB_TOKEN` (and optionally `SEMANTIC_SCHOLAR_API_KEY` / `OPENALEX_API_KEY` for opencite rate-limit relief).
 
 3.  **Execute the local run script:**
     ```bash

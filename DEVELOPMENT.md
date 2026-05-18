@@ -99,22 +99,9 @@ pytest tests/test_integration_workflow.py -v
 
 ## Important Dependencies
 
-### httpx Version Lock
+### httpx
 
-**WARNING**: Do not upgrade httpx beyond version 0.27.0. There's a compatibility issue with the scholarly package that causes errors with newer versions.
-
-```bash
-# Correct version
-pip install httpx==0.27.0
-
-# DO NOT upgrade to latest
-# pip install --upgrade httpx  # This will break scholarly!
-```
-
-If you accidentally upgrade httpx:
-```bash
-pip install httpx==0.27.0 --force-reinstall
-```
+`httpx>=0.27.0` is required by opencite. The previous `<=0.27.0` upper bound (which existed for scholarly compatibility) was lifted in Phase 4 of epic #37 when scholarly was retired.
 
 ## Workflow and CI/CD
 
@@ -124,7 +111,7 @@ The project includes several workflow scripts:
 
 1. **`run_end_to_end_workflow.sh`**: Complete pipeline from data discovery to dashboard generation
    - Discovers datasets from GitHub
-   - Fetches citations from Google Scholar
+   - Fetches citing works via opencite anchored on each dataset's reference DOIs
    - Calculates confidence scores
    - Generates all analysis outputs
    - Creates interactive dashboard
@@ -158,12 +145,13 @@ The workflow script now auto-loads credentials from `.secrets` file:
 ```bash
 # Create .secrets file (auto-loaded by workflow)
 cat > .secrets << EOF
-SCRAPERAPI_KEY=your_key_here
 GITHUB_TOKEN=your_token_here
+# Optional, raise opencite rate limits:
+# SEMANTIC_SCHOLAR_API_KEY=your_key
+# OPENALEX_API_KEY=your_key
 EOF
 
 # Or use environment variables
-export SCRAPERAPI_KEY=your_key_here
 export GITHUB_TOKEN=your_token_here
 ```
 

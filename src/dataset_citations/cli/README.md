@@ -50,7 +50,7 @@ dataset-citations-discover --limit 50 --github-token $GITHUB_TOKEN
 
 ### `dataset-citations-update`
 
-**Purpose**: Update citation counts and detailed citation information for specified datasets using Google Scholar.
+**Purpose**: Update citation data via the opencite pipeline. For each dataset listed in the input file, the command extracts reference DOIs from `.nemar/metadata.json` (nm datasets) or `dataset_description.json` (legacy ds datasets), queries opencite for citing works, deduplicates across anchors, and writes one citation JSON per dataset.
 
 **Usage**:
 ```bash
@@ -58,10 +58,8 @@ dataset-citations-update [OPTIONS]
 ```
 
 **Options**:
-- `--dataset-list-file TEXT`: File containing dataset IDs to process
-- `--previous-citations-file TEXT`: CSV file with previous citation counts
-- `--output-dir TEXT`: Directory to save citation files (default: `citations/`)
-- `--output-format [pickle|json|both]`: Output format (default: `both`)
+- `--dataset-list-file TEXT`: File containing dataset IDs to process (one per line)
+- `--output-dir TEXT`: Directory to save citation files (default: `citations/`). Output lands under `<output-dir>/json_opencite/<id>_citations.json`.
 - `--workers INTEGER`: Number of parallel workers (default: 5)
 - `--no-update-num-cites`: Skip citation count updates
 - `--verbose`: Enable verbose logging
@@ -302,11 +300,12 @@ dataset-citations-score-confidence \
 Set these in your `.env` file:
 
 ```bash
-# Required for citation updates
-SCRAPERAPI_KEY=your_scraperapi_key_here
-
 # Required for metadata retrieval and better GitHub API limits
 GITHUB_TOKEN=your_github_token_here
+
+# Optional, raise opencite rate limits:
+# SEMANTIC_SCHOLAR_API_KEY=your_key
+# OPENALEX_API_KEY=your_key
 ```
 
 ## Troubleshooting

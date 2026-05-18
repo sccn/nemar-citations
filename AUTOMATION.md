@@ -12,8 +12,10 @@ The system automatically runs the full citation update workflow on the 24th of e
 
 1. Ensure `.secrets` file exists with your API keys:
    ```bash
-   SCRAPERAPI_KEY=your_key_here
    GITHUB_TOKEN=your_token_here
+   # Optional, raise opencite rate limits:
+   # SEMANTIC_SCHOLAR_API_KEY=your_key
+   # OPENALEX_API_KEY=your_key
    ```
 
 2. Ensure PR #26 (deployment fixes) is merged to main
@@ -41,7 +43,7 @@ To manually trigger the monthly update:
 1. **Updates main branch** - Pulls latest changes
 2. **Runs full workflow**:
    - Discovers datasets from OpenNeuro
-   - Fetches citations from Google Scholar
+   - Fetches citing works via opencite (OpenAlex / Semantic Scholar / PubMed) anchored on each dataset's reference DOIs
    - Retrieves dataset metadata
    - Calculates confidence scores
    - Generates analysis (network, temporal, themes)
