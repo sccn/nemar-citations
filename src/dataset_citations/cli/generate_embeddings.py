@@ -5,8 +5,8 @@ CLI command for generating embeddings from existing dataset and citation data.
 import argparse
 import json
 import logging
-from pathlib import Path
 import time
+from pathlib import Path
 from typing import Optional
 
 from ..core.citation_utils import load_citations_from_json

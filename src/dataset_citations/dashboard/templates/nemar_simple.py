@@ -148,7 +148,7 @@ def generate_nemar_dashboard(
     <!-- Footer -->
     <footer class="footer">
         <div class="container text-center">
-            <p>&copy; 2025 <a href="https://github.com/sccn/nemar-citations" target="_blank">
+            <p>&copy; 2025 <a href="https://github.com/nemarOrg/nemar-citations" target="_blank">
                 <strong>NEMAR Dataset Citation Analysis</strong></a>, by <a href="https://neuromechanist.github.io" target="_blank">Seyed Yahya Shirazi</a></p>
             <p class="text-muted mb-2">
                 <a href="https://nemar.org" target="_blank"><strong>NEMAR</strong></a> 

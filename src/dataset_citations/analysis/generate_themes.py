@@ -3,12 +3,12 @@
 
 import json
 import sys
-from pathlib import Path
 from collections import defaultdict
+from pathlib import Path
 
 try:
-    from wordcloud import WordCloud
     import matplotlib.pyplot as plt
+    from wordcloud import WordCloud
 except ImportError:
     print("Installing required packages...")
     import subprocess
@@ -16,8 +16,8 @@ except ImportError:
     subprocess.check_call(
         [sys.executable, "-m", "pip", "install", "wordcloud", "matplotlib"]
     )
-    from wordcloud import WordCloud
     import matplotlib.pyplot as plt
+    from wordcloud import WordCloud
 
 
 def generate_themes(citations_dir: Path, output_dir: Path):
@@ -124,7 +124,7 @@ def generate_themes(citations_dir: Path, output_dir: Path):
     with open(output_dir / "comprehensive_theme_analysis.json", "w") as f:
         json.dump(theme_data, f, indent=2)
 
-    print(f'Theme analysis complete: {len(theme_data["themes"])} themes generated')
+    print(f"Theme analysis complete: {len(theme_data['themes'])} themes generated")
 
 
 if __name__ == "__main__":

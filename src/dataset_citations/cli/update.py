@@ -15,16 +15,18 @@ Email: shirazi@ieee.org
 # %% initialize
 import argparse
 import concurrent.futures  # Added for parallelism
-from datetime import datetime
 import logging  # Added import
 import os
+from datetime import datetime
 
 import pandas as pd
 
 from dataset_citations.core import (
     citation_utils,
-    getCitations as gc,
 )  # Added for JSON citation format support
+from dataset_citations.core import (
+    getCitations as gc,
+)
 
 # Configure basic logging for the script
 logging.basicConfig(

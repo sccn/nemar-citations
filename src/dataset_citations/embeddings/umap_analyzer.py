@@ -2,11 +2,11 @@
 UMAP analysis for thematic clustering and dimensionality reduction of embeddings.
 """
 
-from datetime import datetime
 import json
 import logging
-from pathlib import Path
 import pickle
+from datetime import datetime
+from pathlib import Path
 from typing import Any, Dict, Optional, Union
 
 import numpy as np

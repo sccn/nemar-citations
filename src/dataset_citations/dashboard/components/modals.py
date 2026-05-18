@@ -2,8 +2,8 @@
 Modal content generation component for dashboard.
 """
 
-from collections import defaultdict
 import json
+from collections import defaultdict
 from pathlib import Path
 from typing import Any, Dict, List
 

@@ -1,8 +1,8 @@
 """Temporal analysis functions for dataset citations."""
 
-from collections import defaultdict
 import json
 import logging
+from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Optional
 

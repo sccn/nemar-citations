@@ -4,9 +4,9 @@ Tests for the dashboard data aggregator module.
 
 import csv
 import json
-from pathlib import Path
 import shutil
 import tempfile
+from pathlib import Path
 from unittest import TestCase
 
 from dataset_citations.dashboard.data.aggregator import DataAggregator

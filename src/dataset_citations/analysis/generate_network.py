@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 """Generate network analysis data from citation JSON files."""
 
-import json
 import csv
+import json
 import sys
+from collections import Counter, defaultdict
 from pathlib import Path
-from collections import defaultdict, Counter
 
 
 def generate_network(citations_dir: Path, output_dir: Path):

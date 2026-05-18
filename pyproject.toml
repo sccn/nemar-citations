@@ -59,8 +59,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pytest>=6.0",
-    "black>=21.0",
-    "ruff>=0.1.0",
+    "ruff>=0.6.0",
     "mypy>=0.910",
     "pre-commit>=2.15",
 ]
@@ -71,10 +70,10 @@ test = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/neuromechanist/dataset_citations"
-Repository = "https://github.com/neuromechanist/dataset_citations"
-Documentation = "https://github.com/neuromechanist/dataset_citations/blob/main/README.md"
-"Bug Reports" = "https://github.com/neuromechanist/dataset_citations/issues"
+Homepage = "https://github.com/nemarOrg/nemar-citations"
+Repository = "https://github.com/nemarOrg/nemar-citations"
+Documentation = "https://github.com/nemarOrg/nemar-citations/blob/main/README.md"
+"Bug Reports" = "https://github.com/nemarOrg/nemar-citations/issues"
 
 [project.scripts]
 dataset-citations-discover = "dataset_citations.cli.discover:main"
@@ -102,27 +101,25 @@ dataset-citations-automate-visualization-updates = "dataset_citations.cli.automa
 [tool.setuptools.packages.find]
 where = ["src"]
 
-[tool.black]
+[tool.ruff]
 line-length = 88
-target-version = ['py38']
-include = '\.pyi?$'
-extend-exclude = '''
-/(
-  | \.git
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-)/
-'''
+target-version = "py311"
+extend-exclude = [
+    ".git",
+    ".mypy_cache",
+    ".tox",
+    ".venv",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+]
 
-[tool.isort]
-profile = "black"
-multi_line_output = 3
-line_length = 88
+[tool.ruff.lint]
+extend-select = ["I"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["dataset_citations"]
 
 [tool.mypy]
 python_version = "3.8"

@@ -2,7 +2,7 @@
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-[![Tests](https://github.com/sccn/nemar-citations/actions/workflows/test.yml/badge.svg)](https://github.com/sccn/nemar-citations/actions)
+[![Tests](https://github.com/nemarOrg/nemar-citations/actions/workflows/test.yml/badge.svg)](https://github.com/nemarOrg/nemar-citations/actions)
 
 Automated BIDS dataset citation tracking system with AI-powered confidence scoring for 300+ neuroscience datasets.
 
@@ -15,7 +15,7 @@ Track and analyze citations for OpenNeuro datasets with a complete pipeline from
 ## Installation
 
 ```bash
-git clone https://github.com/sccn/nemar-citations.git
+git clone https://github.com/nemarOrg/nemar-citations.git
 cd nemar-citations
 pip install -e ".[dev,test]"
 ```
@@ -174,7 +174,7 @@ AI-powered relevance scoring (0.0-1.0) using sentence transformers to compare da
 
 ```bash
 # Setup
-git clone https://github.com/sccn/nemar-citations.git
+git clone https://github.com/nemarOrg/nemar-citations.git
 cd nemar-citations
 conda create -n dataset-citations python=3.11
 conda activate dataset-citations
@@ -185,7 +185,7 @@ pytest tests/ -v                    # Fast tests
 pytest --cov=dataset_citations      # With coverage
 
 # Code quality
-black src/ tests/                   # Format
+ruff format src/ tests/             # Format
 ruff check --fix src/ tests/        # Lint
 ```
 
@@ -213,13 +213,13 @@ ruff check --fix src/ tests/        # Lint
 
 **Debug**: Add `--verbose` flag to any command
 
-**Support**: [GitHub Issues](https://github.com/sccn/nemar-citations/issues)
+**Support**: [GitHub Issues](https://github.com/nemarOrg/nemar-citations/issues)
 
 ## Contributing
 
 1. Fork & create feature branch
 2. Make changes with tests
-3. Run `pytest` and `black`
+3. Run `pytest` and `ruff format`
 4. Submit PR with issue reference
 
 **Guidelines**: Type hints • Docstrings • Tests • No mocks
@@ -237,7 +237,7 @@ If you use this software in your research, please cite:
   title={NEMAR Citations: Automated BIDS Dataset Citation Tracking System},
   author={Shirazi, Seyed Yahya},
   year={2025},
-  url={https://github.com/sccn/nemar-citations},
+  url={https://github.com/nemarOrg/nemar-citations},
   organization={Swartz Center for Computational Neuroscience (SCCN)}
 }
 ```

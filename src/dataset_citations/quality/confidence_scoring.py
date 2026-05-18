@@ -81,8 +81,8 @@ class CitationConfidenceScorer:
         """Load the sentence transformer model."""
         try:
             # Lazy import to avoid import errors during CLI help
-            from sentence_transformers import SentenceTransformer
             import torch
+            from sentence_transformers import SentenceTransformer
 
             logger.info(f"Loading sentence transformer model: {self.model_name}")
             logger.info(f"Using device: {self.device}")
@@ -101,8 +101,8 @@ class CitationConfidenceScorer:
             # Fallback to a smaller, more commonly available model
             logger.info("Falling back to all-MiniLM-L6-v2 model")
             try:
-                from sentence_transformers import SentenceTransformer
                 import torch
+                from sentence_transformers import SentenceTransformer
 
                 self.model = SentenceTransformer("all-MiniLM-L6-v2", device=self.device)
 

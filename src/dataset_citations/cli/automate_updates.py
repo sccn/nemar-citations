@@ -3,12 +3,12 @@ CLI command for automated embedding updates when new citations are added.
 """
 
 import argparse
-from datetime import datetime, timedelta
 import hashlib
 import json
 import logging
-from pathlib import Path
 import time
+from datetime import datetime, timedelta
+from pathlib import Path
 from typing import Dict, List, Optional
 
 from ..core.citation_utils import load_citations_from_json

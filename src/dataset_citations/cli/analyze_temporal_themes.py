@@ -3,12 +3,12 @@ CLI command for temporal analysis of research theme evolution.
 """
 
 import argparse
-from collections import Counter, defaultdict
-from datetime import datetime
 import json
 import logging
-from pathlib import Path
 import pickle
+from collections import Counter, defaultdict
+from datetime import datetime
+from pathlib import Path
 from typing import Dict, List, Optional
 
 import numpy as np
