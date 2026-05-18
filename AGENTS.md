@@ -150,7 +150,7 @@ uv run dataset-citations-score-confidence --citations-dir citations/json --datas
 
 ## CI/CD
 - `.github/workflows/test.yml` — Lint (ruff format/check, ty), pytest 3.13, integration tests
-- `.github/workflows/update_citations.yml` — Monthly scheduled + workflow_dispatch: fetch citations, regenerate dashboard, deploy to Cloudflare Pages, open PR
+- `.github/workflows/update_citations.yml` — `workflow_dispatch` only (no schedule): fetch citations, regenerate dashboard, deploy to Cloudflare Pages, open PR. ScraperAPI access has lapsed; this workflow does not run successfully today and is pending the epic #37 pivot to opencite.
 - `.github/workflows/deploy-dashboard.yml` — Manual rebuild + deploy
 - Secrets: `SCRAPERAPI_KEY`, `GITHUB_TOKEN`, `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
 
