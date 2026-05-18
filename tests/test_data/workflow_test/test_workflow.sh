@@ -5,12 +5,8 @@ echo "=== Test Workflow for Single Dataset ==="
 echo "Testing with ds003555 (8 citations in test, should find 10)"
 echo ""
 
-# Activate conda environment
-source ~/miniconda3/etc/profile.d/conda.sh
-conda activate dataset-citations
-
-# Set working directory
-cd /Users/yahya/Documents/git/dataset_citations/tests/test_data/workflow_test
+REPO_ROOT="$(git -C "$(dirname "$0")" rev-parse --show-toplevel)"
+cd "$REPO_ROOT/tests/test_data/workflow_test"
 
 echo "Step 1: Skip discovery (using pre-made discovered_datasets.txt)"
 echo "  - Dataset: ds003555"

@@ -7,11 +7,8 @@ echo "Current citations in test: 8"
 echo "Expected to find: 10 (2 missing citations)"
 echo ""
 
-# Activate conda environment
-source ~/miniconda3/etc/profile.d/conda.sh
-conda activate dataset-citations
-
-cd /Users/yahya/Documents/git/dataset_citations/tests/test_data/workflow_test
+REPO_ROOT="$(git -C "$(dirname "$0")" rev-parse --show-toplevel)"
+cd "$REPO_ROOT/tests/test_data/workflow_test"
 
 echo "Step 1: Current state"
 echo "Previous citations CSV shows:"
@@ -26,8 +23,8 @@ echo "This should find the 2 missing citations..."
 echo ""
 
 # Load and EXPORT environment variables from .secrets
-if [ -f "/Users/yahya/Documents/git/dataset_citations/.secrets" ]; then
-    source /Users/yahya/Documents/git/dataset_citations/.secrets
+if [ -f "$REPO_ROOT/.secrets" ]; then
+    source "$REPO_ROOT/.secrets"
     export SCRAPERAPI_KEY
     export GITHUB_TOKEN
     echo "Environment variables loaded and exported"
@@ -35,12 +32,12 @@ if [ -f "/Users/yahya/Documents/git/dataset_citations/.secrets" ]; then
 fi
 
 # Run the actual citation update
-dataset-citations-update \
-  --dataset-list-file discovered_datasets.txt \
-  --previous-citations-file previous_citations.csv \
-  --output-dir citations/ \
+(cd "$REPO_ROOT" && uv run dataset-citations-update \
+  --dataset-list-file tests/test_data/workflow_test/discovered_datasets.txt \
+  --previous-citations-file tests/test_data/workflow_test/previous_citations.csv \
+  --output-dir tests/test_data/workflow_test/citations/ \
   --workers 1 \
-  --output-format json
+  --output-format json)
 
 echo ""
 echo "Step 3: Check results"
@@ -54,11 +51,11 @@ jq '.citation_details[:3] | .[].title' citations/json/ds003555_citations.json
 echo ""
 echo "Step 4: Regenerate CSV from updated JSON"
 TODAY_DATE=$(date +%d%m%Y)
-dataset-citations-regenerate \
-  --json-dir citations/json \
-  --output-dir citations \
+(cd "$REPO_ROOT" && uv run dataset-citations-regenerate \
+  --json-dir tests/test_data/workflow_test/citations/json \
+  --output-dir tests/test_data/workflow_test/citations \
   --date-suffix ${TODAY_DATE} \
-  --update-previous
+  --update-previous)
 
 echo ""
 echo "Step 5: Final check"
