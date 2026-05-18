@@ -6,14 +6,14 @@ Tests all functions in citation_utils.py using real data without mocks.
 Uses existing citation JSON files as test data to ensure comprehensive coverage.
 """
 
-from datetime import datetime, timezone
 import json
 import os
-from pathlib import Path
 import shutil
 import sys
 import tempfile
 import unittest
+from datetime import datetime, timezone
+from pathlib import Path
 
 import pandas as pd
 

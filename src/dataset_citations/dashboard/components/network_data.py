@@ -4,8 +4,8 @@ Extract and prepare network data including UMAP coordinates for visualization.
 
 import json
 import logging
-from pathlib import Path
 import pickle
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 logger = logging.getLogger(__name__)

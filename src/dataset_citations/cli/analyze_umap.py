@@ -5,8 +5,8 @@ CLI command for UMAP analysis and research theme identification.
 import argparse
 import json
 import logging
-from pathlib import Path
 import time
+from pathlib import Path
 
 from ..embeddings.umap_analyzer import UMAPAnalyzer
 

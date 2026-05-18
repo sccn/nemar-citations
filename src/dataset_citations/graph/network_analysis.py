@@ -1,8 +1,8 @@
 """Network analysis functions for dataset citations and author collaboration."""
 
-from collections import defaultdict
 import json
 import logging
+from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Tuple
 

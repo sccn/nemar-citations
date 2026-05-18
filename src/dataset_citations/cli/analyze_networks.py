@@ -3,8 +3,8 @@
 import argparse
 import logging
 import os
-from pathlib import Path
 import sys
+from pathlib import Path
 
 import pandas as pd
 

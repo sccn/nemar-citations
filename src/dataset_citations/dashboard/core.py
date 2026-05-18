@@ -2,8 +2,8 @@
 Core dashboard generator orchestrating all components.
 """
 
-from datetime import datetime
 import logging
+from datetime import datetime
 from pathlib import Path
 from typing import Optional
 

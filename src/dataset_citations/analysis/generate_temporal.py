@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 """Generate temporal analysis data from citation JSON files."""
 
-import json
 import csv
+import json
 import sys
-from pathlib import Path
 from collections import defaultdict
+from pathlib import Path
 
 
 def generate_temporal(citations_dir: Path, output_dir: Path):

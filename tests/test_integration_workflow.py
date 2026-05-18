@@ -6,9 +6,9 @@ These tests use controlled real data to validate the entire pipeline.
 import csv
 import json
 import os
-from pathlib import Path
 import shutil
 import tempfile
+from pathlib import Path
 from unittest import TestCase, skipUnless
 
 from dataset_citations.dashboard.data.aggregator import DataAggregator

@@ -5,8 +5,8 @@ CLI command for embedding management and maintenance operations.
 import argparse
 import json
 import logging
-from pathlib import Path
 import time
+from pathlib import Path
 from typing import Dict
 
 from ..embeddings.storage_manager import EmbeddingStorageManager

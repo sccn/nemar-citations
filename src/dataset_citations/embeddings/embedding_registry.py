@@ -2,10 +2,10 @@
 Embedding registry system for tracking embedding versions and metadata.
 """
 
-from datetime import datetime
 import hashlib
 import json
 import logging
+from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Union
 

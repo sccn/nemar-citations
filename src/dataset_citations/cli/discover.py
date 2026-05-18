@@ -4,10 +4,10 @@ that contain EEG, iEEG, or MEG data, based on BIDS directory structures.
 """
 
 import argparse
-from datetime import datetime  # For rate limit logging and processed_date
 import logging
 import os
 import time
+from datetime import datetime  # For rate limit logging and processed_date
 
 import pandas as pd  # For lookup table
 import requests  # Using requests for simplicity, consider httpx for async later if needed

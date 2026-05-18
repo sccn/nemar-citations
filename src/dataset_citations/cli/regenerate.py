@@ -15,9 +15,9 @@ Email: shirazi@ieee.org
 """
 
 import argparse
-from datetime import datetime
 import logging
 import os
+from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
