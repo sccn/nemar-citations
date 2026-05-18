@@ -65,6 +65,11 @@ class NemarMetadataSource:
 
         if isinstance(content, list):
             return FetchError("parse", "expected file, got directory listing")
+        if not hasattr(content, "decoded_content"):
+            return FetchError(
+                "parse",
+                f"unexpected get_contents return shape: {type(content).__name__}",
+            )
         try:
             payload: Any = json.loads(content.decoded_content.decode("utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError) as e:
