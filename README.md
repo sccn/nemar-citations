@@ -185,7 +185,7 @@ pytest tests/ -v                    # Fast tests
 pytest --cov=dataset_citations      # With coverage
 
 # Code quality
-black src/ tests/                   # Format
+ruff format src/ tests/             # Format
 ruff check --fix src/ tests/        # Lint
 ```
 
@@ -219,7 +219,7 @@ ruff check --fix src/ tests/        # Lint
 
 1. Fork & create feature branch
 2. Make changes with tests
-3. Run `pytest` and `black`
+3. Run `pytest` and `ruff format`
 4. Submit PR with issue reference
 
 **Guidelines**: Type hints • Docstrings • Tests • No mocks
