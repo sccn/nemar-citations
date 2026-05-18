@@ -4,9 +4,9 @@
 
 ### 1. Citation Fetching Pipeline
 - **Entry Point:** `dataset-citations-update` CLI command
-- **Core Module:** `src/dataset_citations/core/getCitations.py`
-- **Data Source:** Google Scholar via ScraperAPI
-- **Output:** JSON files in `citations/json/` with citation details and metadata
+- **Core Module:** `src/dataset_citations/core/opencite_pipeline.py`, with DOI extractors in `src/dataset_citations/sources/` and the opencite adapter in `src/dataset_citations/backends/opencite_backend.py`
+- **Data Sources:** `.nemar/metadata.json` (nm datasets) and `dataset_description.json` (legacy ds datasets) provide DOI/PMID anchors; opencite then queries OpenAlex / Semantic Scholar / PubMed for papers citing each anchor.
+- **Output:** JSON files in `citations/json_opencite/` (schema v2) with citation details, source_doi/source_relation provenance, and discovery metadata.
 
 ### 2. Confidence Scoring System
 - **Module:** `src/dataset_citations/quality/`
@@ -35,13 +35,15 @@
 ## Data Flow
 
 ```
-OpenNeuro GitHub API
+GitHub API (OpenNeuroDatasets, nemarDatasets)
         ↓
 Dataset Discovery
         ↓
-Google Scholar (via ScraperAPI)
+DOI extraction (.nemar/metadata.json | dataset_description.json)
         ↓
-Citation JSON Files
+opencite (OpenAlex / Semantic Scholar / PubMed)
+        ↓
+Citation JSON files (citations/json_opencite/, schema v2)
         ↓
 Confidence Scoring
         ↓
@@ -52,7 +54,7 @@ Interactive HTML Reports
 
 ## Key Directories
 
-- `citations/json/` - Citation data files
+- `citations/json_opencite/` - Citation data files (schema v2)
 - `datasets/` - Dataset metadata from GitHub
 - `interactive_reports/` - Generated dashboards
 - `embeddings/` - Semantic vectors for similarity

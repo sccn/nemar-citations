@@ -216,29 +216,19 @@ python migrate_pickle_to_json.py --overwrite
 python migrate_pickle_to_json.py --dry-run
 ```
 
-### Citation Update with JSON Output
+### Running the Citation Update
 
-The main citation update script now supports JSON output:
+`dataset-citations-update` writes schema-v2 JSON to `<output-dir>/json_opencite/`:
 
 ```bash
-# Generate only JSON files
 dataset-citations-update \
   --dataset-list-file datasets.txt \
-  --previous-citations-file previous.csv \
-  --output-format json
-
-# Generate both pickle and JSON files
-dataset-citations-update \
-  --dataset-list-file datasets.txt \
-  --previous-citations-file previous.csv \
-  --output-format both
-
-# Generate only pickle files (legacy mode)
-dataset-citations-update \
-  --dataset-list-file datasets.txt \
-  --previous-citations-file previous.csv \
-  --output-format pickle
+  --output-dir citations/
 ```
+
+The CLI takes no other flags after the Phase 4 cleanup; raise opencite rate
+limits by exporting `SEMANTIC_SCHOLAR_API_KEY` / `OPENALEX_API_KEY` /
+`PUBMED_API_KEY` (all optional).
 
 ### Testing the JSON Format
 

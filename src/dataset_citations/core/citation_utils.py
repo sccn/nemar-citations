@@ -17,11 +17,14 @@ import json
 import logging
 import os
 from datetime import datetime, timezone
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Literal, Optional
 
 import pandas as pd
 
 logger = logging.getLogger(__name__)
+
+DiscoveryBackend = Literal["scholarly", "opencite"]
+SCHEMA_VERSION_V2 = "2.0"
 
 
 def create_citation_json_structure(
@@ -120,6 +123,41 @@ def create_citation_json_structure(
     }
 
     return json_structure
+
+
+def add_discovery_provenance(
+    citation_json: Dict[str, Any],
+    *,
+    discovery_backend: DiscoveryBackend,
+    schema_version: str = SCHEMA_VERSION_V2,
+) -> Dict[str, Any]:
+    """Stamp a citation JSON with Phase 3 discovery-provenance markers.
+
+    Mutates and returns the input dict. Always overwrites the top-level
+    `metadata.schema_version` and `metadata.discovery_backend` keys: callers
+    are explicitly declaring the schema/backend identity of this output, so
+    any prior values were either stale or wrong. Per-citation
+    `discovery_backend` is set only when missing (`entry.setdefault`) so the
+    orchestrator can pre-populate the field with finer-grained labels in the
+    future without this helper clobbering them.
+
+    Per-citation `source_doi` and `source_relation` are NOT set here. The
+    opencite orchestrator writes them per-citation while building the JSON
+    because it alone knows which anchor surfaced each citing work. The
+    helper is only responsible for the top-level provenance markers and the
+    per-citation `discovery_backend` label.
+
+    The legacy scholarly path does not yet call this helper, so historical
+    scholarly JSONs lack the markers (treat them as schema v1 by absence).
+    Phase 4 retires the scholarly path; wiring it through here is not
+    needed in the interim.
+    """
+    metadata = citation_json.setdefault("metadata", {})
+    metadata["schema_version"] = schema_version
+    metadata["discovery_backend"] = discovery_backend
+    for entry in citation_json.get("citation_details", []) or []:
+        entry.setdefault("discovery_backend", discovery_backend)
+    return citation_json
 
 
 def _safe_get_value(row: pd.Series, key: str, default: str = "n/a") -> str:

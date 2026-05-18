@@ -14,8 +14,10 @@
 #   help            - Show this help message
 #
 # Environment variables:
-#   SCRAPERAPI_KEY - Required for full mode
-#   GITHUB_TOKEN   - Required for discovery and metadata
+#   GITHUB_TOKEN              - Recommended for discovery and metadata
+#   SEMANTIC_SCHOLAR_API_KEY  - Optional; raises opencite rate limits
+#   OPENALEX_API_KEY          - Optional; raises opencite rate limits
+#   PUBMED_API_KEY            - Optional; raises opencite rate limits
 #
 
 set -e # Exit on error
@@ -80,20 +82,18 @@ check_requirements() {
     # Load secrets if available and not already set
     load_secrets
 
-    # Check Python environment
-    if ! conda env list | grep -q "dataset-citations"; then
-        print_error "Conda environment 'dataset-citations' not found"
-        print_info "Create it with: conda create -n dataset-citations python=3.11"
+    # Check Python environment (uv-managed)
+    if ! command -v uv &> /dev/null; then
+        print_error "uv not found; install from https://docs.astral.sh/uv/"
         return 1
+    fi
+    if [ ! -d ".venv" ]; then
+        print_warning ".venv not found; bootstrapping with 'uv sync --all-extras'"
+        uv sync --all-extras || return 1
     fi
 
     # Check environment variables for full mode
     if [ "$MODE" = "full" ]; then
-        if [ -z "$SCRAPERAPI_KEY" ]; then
-            print_error "SCRAPERAPI_KEY not set. Required for full mode."
-            print_info "Set it with: export SCRAPERAPI_KEY=your_key or add to .secrets file"
-            return 1
-        fi
         if [ -z "$GITHUB_TOKEN" ]; then
             print_warning "GITHUB_TOKEN not set. Discovery may be limited."
             print_info "Set it with: export GITHUB_TOKEN=your_token or add to .secrets file"
@@ -137,7 +137,7 @@ run_test_workflow() {
 
     # Run minimal citation update with test dataset
     print_status "Step 3/6: Processing test citations..."
-    ~/miniconda3/bin/conda run -n dataset-citations python -c "
+    uv runpython -c "
 import json
 from pathlib import Path
 test_citations = {
@@ -157,7 +157,7 @@ print('Test citations generated')
 "
 
     print_status "Step 4/6: Generating test metadata..."
-    ~/miniconda3/bin/conda run -n dataset-citations python -c "
+    uv runpython -c "
 import json
 from pathlib import Path
 test_metadata = {
@@ -174,16 +174,16 @@ print('Test metadata generated')
 
     print_status "Step 5/6: Running analysis..."
     # Temporal analysis (positional argument for citations_dir)
-    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-analyze-temporal \
+    uv rundataset-citations-analyze-temporal \
         "$TEST_OUTPUT_DIR/citations/json" \
         --output-dir "$TEST_OUTPUT_DIR/results/temporal_analysis" || true
 
     # Network analysis (no citations_dir argument needed)
-    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-analyze-networks \
+    uv rundataset-citations-analyze-networks \
         --output-dir "$TEST_OUTPUT_DIR/results/network_analysis" || true
 
     print_status "Step 6/6: Generating dashboard..."
-    ~/miniconda3/bin/conda run -n dataset-citations python -c "
+    uv runpython -c "
 from dataset_citations.dashboard.core import DashboardGenerator
 from pathlib import Path
 
@@ -265,8 +265,11 @@ run_local_ci_update_workflow() {
     if [ ! -f ".secrets" ]; then
         print_warning "No .secrets file found. Creating template..."
         cat > .secrets <<EOF
-SCRAPERAPI_KEY=${SCRAPERAPI_KEY:-your_scraperapi_key}
 GITHUB_TOKEN=${GITHUB_TOKEN:-your_github_token}
+# Optional, raise opencite rate limits:
+# SEMANTIC_SCHOLAR_API_KEY=your_key
+# OPENALEX_API_KEY=your_key
+# PUBMED_API_KEY=your_key
 EOF
         print_info "Edit .secrets file with your API keys"
     fi
@@ -317,7 +320,7 @@ run_full_workflow() {
 
     # Step 1: Discovering datasets
     print_status "Step 1/8: Discovering datasets..."
-    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-discover \
+    uv rundataset-citations-discover \
         --output-file "discovered_datasets.txt" 2>&1 | tee -a "$LOG_FILE"
 
     DATASET_COUNT=$(wc -l < "discovered_datasets.txt" | tr -d ' ')
@@ -331,16 +334,13 @@ run_full_workflow() {
         echo "Dataset,Title,Year,Authors,DOI,URL" > citations/previous_citations.csv
     fi
 
-    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-update \
+    uv run dataset-citations-update \
         --dataset-list-file "discovered_datasets.txt" \
-        --previous-citations-file citations/previous_citations.csv \
-        --output-dir citations \
-        --output-format json \
-        --workers 5 2>&1 | tee -a "$LOG_FILE"
+        --output-dir citations 2>&1 | tee -a "$LOG_FILE"
 
     # Step 3: Retrieving dataset metadata
     print_status "Step 3/8: Retrieving dataset metadata..."
-    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-retrieve-metadata \
+    uv rundataset-citations-retrieve-metadata \
         --citations-dir citations/json \
         --output-dir datasets \
         --skip-existing \
@@ -348,7 +348,7 @@ run_full_workflow() {
 
     # Step 4: Calculating confidence scores
     print_status "Step 4/8: Calculating confidence scores..."
-    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-score-confidence \
+    uv rundataset-citations-score-confidence \
         --citations-dir citations/json \
         --datasets-dir datasets \
         --model Qwen/Qwen3-Embedding-0.6B \
@@ -361,7 +361,7 @@ run_full_workflow() {
     rm -rf dashboard_data/network dashboard_data/themes dashboard_data/temporal 2>/dev/null || true
     mkdir -p dashboard_data/{network,themes,temporal,visualizations}
 
-    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-generate-embeddings \
+    uv rundataset-citations-generate-embeddings \
         --citations citations/json \
         --datasets datasets \
         --embeddings-dir embeddings \
@@ -369,7 +369,7 @@ run_full_workflow() {
         --batch-size 32 \
         --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "Some embeddings may have failed"
 
-    ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-analyze-umap \
+    uv rundataset-citations-analyze-umap \
         --embeddings-dir embeddings \
         --output-dir dashboard_data \
         --embedding-type both \
@@ -380,21 +380,21 @@ run_full_workflow() {
         --create-visualizations \
         --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "UMAP analysis had issues"
 
-    ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_themes \
+    uv runpython -m dataset_citations.analysis.generate_themes \
         --citations-dir citations/json \
         --output-dir dashboard_data/themes 2>&1 | tee -a "$LOG_FILE" || print_warning "Theme generation had issues"
 
-    ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_network \
+    uv runpython -m dataset_citations.analysis.generate_network \
         --citations-dir citations/json \
         --output-dir dashboard_data/network 2>&1 | tee -a "$LOG_FILE"
 
-    ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_temporal \
+    uv runpython -m dataset_citations.analysis.generate_temporal \
         --citations-dir citations/json \
         --output-dir dashboard_data/temporal 2>&1 | tee -a "$LOG_FILE"
 
     # Step 6: Generating interactive dashboard
     print_status "Step 6/8: Generating interactive dashboard..."
-    ~/miniconda3/bin/conda run -n dataset-citations python -c "
+    uv runpython -c "
 from dataset_citations.dashboard.core import DashboardGenerator
 from pathlib import Path
 
@@ -471,7 +471,7 @@ Updated: $(git diff --cached --name-only | wc -l | tr -d ' ') files
 This PR was generated by the end-to-end workflow script.
 
 ### Changes:
-- Updated citation data from Google Scholar
+- Updated citation data from opencite (OpenAlex / Semantic Scholar / PubMed)
 - Retrieved dataset metadata from GitHub
 - Calculated confidence scores
 - Generated analysis and dashboard
@@ -592,17 +592,19 @@ Modes:
             - ~10-30 minutes runtime
 
   full      Run full pipeline directly (recommended)
-            - Runs pipeline natively with conda
+            - Runs pipeline natively with uv
             - Creates feature branch automatically
-            - Live API calls to Google Scholar
+            - Live opencite API calls (OpenAlex / Semantic Scholar / PubMed)
             - Creates PR for review
-            - ~1-2 hours runtime
+            - ~30-90 minutes runtime
 
   help    Show this help message
 
 Environment Variables:
-  SCRAPERAPI_KEY  API key for ScraperAPI (required for full mode)
-  GITHUB_TOKEN    GitHub personal access token (optional, for discovery)
+  GITHUB_TOKEN              GitHub personal access token (recommended for higher GitHub API limits)
+  SEMANTIC_SCHOLAR_API_KEY  Optional; raises opencite rate limits
+  OPENALEX_API_KEY          Optional; raises opencite rate limits
+  PUBMED_API_KEY            Optional; raises opencite rate limits
 
 Examples:
   # Quick test run
@@ -613,12 +615,10 @@ Examples:
   $0 local-ci-test
 
   # Test the update workflow locally
-  export SCRAPERAPI_KEY=your_key
   export GITHUB_TOKEN=your_token
   $0 local-ci-update
 
   # Full production run (recommended for actual updates)
-  export SCRAPERAPI_KEY=your_key
   export GITHUB_TOKEN=your_token
   $0 full
 

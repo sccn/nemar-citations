@@ -6,7 +6,7 @@ The dataset citations package provides a comprehensive suite of command-line too
 
 ### Data Management Commands
 - `dataset-citations-discover` - Discover and catalog BIDS datasets
-- `dataset-citations-update` - Update citation data from Google Scholar
+- `dataset-citations-update` - Update citation data via opencite (DOI-anchored)
 - `dataset-citations-retrieve-metadata` - Fetch dataset metadata from GitHub
 - `dataset-citations-migrate` - Migrate legacy pickle files to JSON format
 

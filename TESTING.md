@@ -45,7 +45,8 @@ Fast, focused tests for individual components:
 ### 2. Integration Tests
 Tests with controlled real data:
 - `test_integration_workflow.py` - Full pipeline with test datasets
-- `test_getCitations.py` - Citation fetching with API simulation
+- `test_backends_opencite.py` - Live opencite lookups (gated by `RUN_INTEGRATION_TESTS=1`)
+- `test_core_opencite_pipeline.py::FetchViaOpenCiteIntegration` - End-to-end orchestrator run
 - `test_dashboard_aggregator.py` - Dashboard data aggregation with real citations
 
 ### 3. End-to-End Tests
@@ -98,13 +99,12 @@ We use **controlled real data** instead of mocks:
 Runs on all PRs and pushes to main:
 
 1. **Lint Stage**
-   - Black formatting
-   - isort import sorting
+   - Ruff format check
    - Ruff linting
-   - mypy type checking
+   - Ty type checking (preview; non-failing)
 
 2. **Test Stage**
-   - Matrix testing: Python 3.9, 3.10, 3.11
+   - Python 3.13
    - Fast tests only
    - Coverage reporting to Codecov
 
@@ -224,12 +224,13 @@ python -c "import dataset_citations; print(dataset_citations.__file__)"
 ### 2. API Key Issues
 ```bash
 # For local testing
-export SCRAPERAPI_KEY=your_key
 export GITHUB_TOKEN=your_token
+# Optional, higher opencite rate limits:
+# export SEMANTIC_SCHOLAR_API_KEY=your_key
+# export OPENALEX_API_KEY=your_key
 
 # For act
-echo "SCRAPERAPI_KEY=your_key" > .secrets
-echo "GITHUB_TOKEN=your_token" >> .secrets
+echo "GITHUB_TOKEN=your_token" > .secrets
 ```
 
 ### 3. Path Issues
