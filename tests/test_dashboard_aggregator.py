@@ -260,3 +260,107 @@ class TestSummaryByBackend(TestCase):
         )
         summary = agg.summary_by_backend()
         self.assertEqual(summary["ds000117"]["opencite"], 42)
+
+    def test_explicit_opencite_dir_nonexistent_falls_back_to_none(self):
+        """Phase 3 review: branch when explicit path doesn't exist."""
+        agg = DataAggregator(
+            results_dir=self.results_dir,
+            citations_dir=self.citations_dir,
+            citations_opencite_dir=Path("/nonexistent/path/does-not-exist"),
+        )
+        self.assertIsNone(agg.citations_opencite_dir)
+        # summary still works from citations_dir alone:
+        self._write(self.citations_dir, "ds000117", 7)
+        self.assertEqual(
+            agg.summary_by_backend()["ds000117"], {"scholarly": 7, "opencite": 0}
+        )
+
+    def test_malformed_opencite_json_is_logged_and_skipped(self):
+        """Phase 3 review: silent skip was a cache-poisoning anti-pattern.
+        Verify that a corrupted JSON is skipped AND emits a warning log."""
+        import logging
+
+        # One valid file, one corrupted.
+        self._write(self.opencite_dir, "good", 5)
+        (self.opencite_dir / "corrupt_citations.json").write_text("{not valid json")
+        agg = DataAggregator(
+            results_dir=self.results_dir,
+            citations_dir=self.citations_dir,
+            citations_opencite_dir=self.opencite_dir,
+        )
+        with self.assertLogs(
+            "dataset_citations.dashboard.data.aggregator", level=logging.WARNING
+        ) as cm:
+            summary = agg.summary_by_backend()
+        # Good file present, corrupted skipped:
+        self.assertEqual(summary["good"], {"scholarly": 0, "opencite": 5})
+        self.assertNotIn("corrupt", summary)
+        # Warning emitted with the path:
+        self.assertTrue(
+            any("corrupt_citations.json" in msg for msg in cm.output),
+            f"expected warning log mentioning corrupt file, got: {cm.output}",
+        )
+
+
+class TestOpenCiteJsonReadback(TestCase):
+    """Phase 3 review: regression test that opencite-shape JSONs can be read
+    by the existing aggregator paths without crashing.
+
+    A schema drift that broke `_calculate_summary_stats` would otherwise ship
+    undetected until the dashboard run."""
+
+    def setUp(self):
+        self.temp_dir = tempfile.mkdtemp()
+        self.results_dir = Path(self.temp_dir) / "results"
+        self.results_dir.mkdir(parents=True)
+        self.citations_dir = Path(self.temp_dir) / "citations" / "json_opencite"
+        self.citations_dir.mkdir(parents=True)
+
+    def tearDown(self):
+        shutil.rmtree(self.temp_dir)
+
+    def test_opencite_schema_readable_by_summary_stats(self):
+        from dataset_citations.core.citation_utils import (
+            SCHEMA_VERSION_V2,
+            add_discovery_provenance,
+        )
+
+        payload = {
+            "dataset_id": "ds000117",
+            "num_citations": 1,
+            "date_last_updated": "2026-01-01T00:00:00",
+            "metadata": {
+                "total_cumulative_citations": 10,
+                "fetch_date": "2026-01-01T00:00:00",
+                "processing_version": "1.0",
+                "schema_version": SCHEMA_VERSION_V2,
+                "discovery_backend": "opencite",
+                "fetch_status": "success",
+                "anchor_count": 1,
+                "anchor_errors": {},
+            },
+            "citation_details": [
+                {
+                    "title": "Citing Paper",
+                    "author": "X. Y",
+                    "venue": "Journal of Tests",
+                    "year": 2023,
+                    "url": "https://doi.org/10.5/cite",
+                    "cited_by": 4,
+                    "doi": "10.5/cite",
+                    "source_doi": "10.1038/sdata.2015.1",
+                    "source_relation": "References",
+                    "discovery_backend": "opencite",
+                }
+            ],
+        }
+        add_discovery_provenance(payload, discovery_backend="opencite")
+        (self.citations_dir / "ds000117_citations.json").write_text(json.dumps(payload))
+        # Point the aggregator at the opencite tree as the citations_dir and
+        # verify _calculate_summary_stats walks it without crashing.
+        agg = DataAggregator(
+            results_dir=self.results_dir, citations_dir=self.citations_dir
+        )
+        stats = agg._calculate_summary_stats()
+        self.assertEqual(stats["total_datasets"], 1)
+        self.assertEqual(stats["total_citations"], 1)

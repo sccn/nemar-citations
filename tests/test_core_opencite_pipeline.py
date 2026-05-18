@@ -141,6 +141,9 @@ class FetchViaOpenCiteTests(TestCase):
         self.assertEqual(out["metadata"]["schema_version"], "2.0")
         self.assertEqual(out["metadata"]["discovery_backend"], "opencite")
         self.assertEqual(out["metadata"]["anchor_count"], 1)
+        # Phase 3 review: happy path must be distinguishable from "stub empty".
+        self.assertEqual(out["metadata"]["fetch_status"], "success")
+        self.assertEqual(out["metadata"]["anchor_errors"], {})
         entry = out["citation_details"][0]
         self.assertEqual(entry["title"], "Method paper")
         self.assertEqual(entry["source_doi"], "10.1038/sdata.2015.1")
@@ -205,6 +208,101 @@ class FetchViaOpenCiteTests(TestCase):
             out["metadata"]["anchor_errors"], {ref.identifier: "rate_limit"}
         )
         self.assertEqual(out["citation_details"], [])
+
+    def test_partial_failure_keeps_anchor_errors(self) -> None:
+        """When some anchors succeed and others fail, the successes survive
+        and the failing-anchor errors are recorded for downstream debugging."""
+        ref_ok = DoiReference(
+            identifier="10.1234/OK",
+            identifier_type="doi",
+            relation_type="References",
+            source="nemar_metadata",
+        )
+        ref_bad = DoiReference(
+            identifier="10.1234/BAD",
+            identifier_type="doi",
+            relation_type="IsDerivedFrom",
+            source="nemar_metadata",
+        )
+        nemar = _StubSource(FetchSuccess([ref_ok, ref_bad]))
+        backend = _StubBackend(
+            {
+                ref_ok.identifier: FetchSuccess(
+                    [
+                        _make_work(
+                            "good paper", doi="10.5/good", source_doi=ref_ok.identifier
+                        )
+                    ]
+                ),
+                ref_bad.identifier: FetchError("rate_limit", "429"),
+            }
+        )
+        out = fetch_dataset_citations_via_opencite(
+            "nm000103",
+            backend=backend,
+            nemar_source=nemar,
+            fetch_date=WHEN,
+        )
+        self.assertEqual(out["num_citations"], 1)
+        self.assertEqual(out["metadata"]["fetch_status"], "partial")
+        self.assertEqual(
+            out["metadata"]["anchor_errors"], {ref_bad.identifier: "rate_limit"}
+        )
+
+    def test_dominant_error_reason_tiebreak(self) -> None:
+        """When all anchors fail with mixed reasons, _dominant_error_reason
+        picks the most frequent. The tie-break path was previously untested."""
+        refs = [
+            DoiReference(
+                identifier=f"10.1234/{label}",
+                identifier_type="doi",
+                relation_type="References",
+                source="nemar_metadata",
+            )
+            for label in ("A", "B", "C")
+        ]
+        nemar = _StubSource(FetchSuccess(refs))
+        backend = _StubBackend(
+            {
+                refs[0].identifier: FetchError("rate_limit", "429"),
+                refs[1].identifier: FetchError("rate_limit", "429"),
+                refs[2].identifier: FetchError("not_found", "404"),
+            }
+        )
+        out = fetch_dataset_citations_via_opencite(
+            "nm000103",
+            backend=backend,
+            nemar_source=nemar,
+            fetch_date=WHEN,
+        )
+        # Two rate_limit vs one not_found; dominant should win.
+        self.assertEqual(out["metadata"]["fetch_status"], "rate_limit")
+
+    def test_nm_prefix_constructs_default_source_when_missing(self) -> None:
+        """fetch_dataset_citations_via_opencite("nm...") with no nemar_source
+        must construct a NemarMetadataSource. We substitute the class via
+        setattr so the test stays offline."""
+        import dataset_citations.core.opencite_pipeline as pipeline_module
+
+        recorded: list[str] = []
+
+        class RecordingNemarSource:
+            def __init__(self, github_token=None):  # noqa: ARG002
+                recorded.append("constructed")
+
+            def get_doi_references(self, dataset_id):  # noqa: ARG002
+                return FetchSuccess([])
+
+        original = pipeline_module.NemarMetadataSource
+        pipeline_module.NemarMetadataSource = RecordingNemarSource  # type: ignore[assignment,misc]
+        try:
+            out = fetch_dataset_citations_via_opencite(
+                "nm000103", backend=_StubBackend({}), fetch_date=WHEN
+            )
+        finally:
+            pipeline_module.NemarMetadataSource = original  # type: ignore[assignment]
+        self.assertEqual(recorded, ["constructed"])
+        self.assertEqual(out["metadata"]["fetch_status"], "no_doi_references")
 
 
 @skipUnless(
