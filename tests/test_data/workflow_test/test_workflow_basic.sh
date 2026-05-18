@@ -5,12 +5,9 @@ echo "=== Testing Basic Workflow (No Dashboard) ==="
 echo "Working directory: $(pwd)"
 echo ""
 
-# Activate conda environment
-source ~/miniconda3/etc/profile.d/conda.sh
-conda activate dataset-citations
-
-# Set working directory
-cd /Users/yahya/Documents/git/dataset_citations/tests/test_data/workflow_test
+# Run via uv from the repo root, then cd into the test data dir
+REPO_ROOT="$(git -C "$(dirname "$0")" rev-parse --show-toplevel)"
+cd "$REPO_ROOT/tests/test_data/workflow_test"
 
 echo "Step 1: Check discovered datasets"
 cat discovered_datasets.txt
@@ -27,11 +24,11 @@ echo ""
 
 echo "Step 4: Test CSV regeneration (should work)"
 TODAY_DATE=$(date +%d%m%Y)
-dataset-citations-regenerate \
-  --json-dir citations/json \
-  --output-dir citations \
+(cd "$REPO_ROOT" && uv run dataset-citations-regenerate \
+  --json-dir tests/test_data/workflow_test/citations/json \
+  --output-dir tests/test_data/workflow_test/citations \
   --date-suffix ${TODAY_DATE} \
-  --update-previous
+  --update-previous)
 
 echo ""
 echo "Step 5: Check generated CSV"
