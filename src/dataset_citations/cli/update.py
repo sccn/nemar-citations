@@ -431,6 +431,7 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
 
     successes = 0
     stub_only = 0
+    write_failures = 0
     for dataset_id in dataset_ids:
         payload = fetch_dataset_citations_via_opencite(dataset_id)
         filepath = os.path.join(json_dir, f"{dataset_id}_citations.json")
@@ -439,6 +440,7 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
                 json.dump(payload, f, indent=2, ensure_ascii=False)
         except OSError as e:
             logger.error("Failed to write %s: %s", filepath, e)
+            write_failures += 1
             continue
         if payload["num_citations"] > 0:
             successes += 1
@@ -448,11 +450,17 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
             logger.info("%s: 0 citations (status=%s)", dataset_id, status)
 
     logger.info(
-        "opencite run complete: %d with citations, %d empty/stub, %d total.",
+        "opencite run complete: %d with citations, %d empty/stub, "
+        "%d write failures, %d total.",
         successes,
         stub_only,
+        write_failures,
         len(dataset_ids),
     )
+    if write_failures and write_failures == len(dataset_ids):
+        # Every single write failed; surface as non-zero exit so automation
+        # (cron, CI) can detect the wholesale failure.
+        raise SystemExit(2)
 
 
 def main():
@@ -507,7 +515,9 @@ def main():
             "lookups are anchored on DOIs surfaced by .nemar/metadata.json or "
             "dataset_description.json; output is written to "
             "<output-dir>/json_opencite/<id>_citations.json (side-by-side with "
-            "the legacy citations/json/ tree)."
+            "the legacy citations/json/ tree). In opencite mode, "
+            "--previous-citations-file, --workers, --output-format, and the "
+            "--no-update-* flags are ignored."
         ),
     )
     parser.set_defaults(update_num_cites=True, update_cite_list=True)
