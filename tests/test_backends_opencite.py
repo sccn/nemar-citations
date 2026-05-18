@@ -69,32 +69,32 @@ class OpenCiteBackendUnitTests(TestCase):
         backend = OpenCiteBackend()
         self.assertEqual(backend.get_citing_works_batch([]), {})
 
-    def test_classify_error_rate_limit(self) -> None:
-        from dataset_citations.backends.opencite_backend import _classify_error
+    def testclassify_error_rate_limit(self) -> None:
+        from dataset_citations.backends.opencite_backend import classify_error
 
-        err = _classify_error(RuntimeError("HTTP 429 too many requests"), "x")
+        err = classify_error(RuntimeError("HTTP 429 too many requests"), "x")
         self.assertEqual(err.reason, "rate_limit")
 
-    def test_classify_error_not_found(self) -> None:
-        from dataset_citations.backends.opencite_backend import _classify_error
+    def testclassify_error_not_found(self) -> None:
+        from dataset_citations.backends.opencite_backend import classify_error
 
-        err = _classify_error(RuntimeError("HTTP 404 not found"), "x")
+        err = classify_error(RuntimeError("HTTP 404 not found"), "x")
         self.assertEqual(err.reason, "not_found")
 
-    def test_classify_error_auth(self) -> None:
-        from dataset_citations.backends.opencite_backend import _classify_error
+    def testclassify_error_auth(self) -> None:
+        from dataset_citations.backends.opencite_backend import classify_error
 
-        err = _classify_error(RuntimeError("HTTP 401 unauthorized"), "x")
+        err = classify_error(RuntimeError("HTTP 401 unauthorized"), "x")
         self.assertEqual(err.reason, "auth")
 
-    def test_classify_error_network(self) -> None:
-        from dataset_citations.backends.opencite_backend import _classify_error
+    def testclassify_error_network(self) -> None:
+        from dataset_citations.backends.opencite_backend import classify_error
 
-        err = _classify_error(TimeoutError("connection timeout"), "x")
+        err = classify_error(TimeoutError("connection timeout"), "x")
         self.assertEqual(err.reason, "network")
 
-    def test_classify_error_other(self) -> None:
-        from dataset_citations.backends.opencite_backend import _classify_error
+    def testclassify_error_other(self) -> None:
+        from dataset_citations.backends.opencite_backend import classify_error
 
-        err = _classify_error(RuntimeError("totally unexpected"), "x")
+        err = classify_error(RuntimeError("totally unexpected"), "x")
         self.assertEqual(err.reason, "other")

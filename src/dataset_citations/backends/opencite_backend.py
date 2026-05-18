@@ -67,11 +67,25 @@ class OpenCiteBackend:
         semaphore = asyncio.Semaphore(self._concurrency)
         async with CitationExplorer(self._config) as explorer:
 
-            async def run_one(ref: DoiReference) -> None:
+            async def run_one(ref: DoiReference) -> FetchResult[list[CitingWork]]:
                 async with semaphore:
-                    results[ref.identifier] = await self._lookup(explorer, ref)
+                    return await self._lookup(explorer, ref)
 
-            await asyncio.gather(*(run_one(r) for r in refs))
+            # return_exceptions=True isolates a single failing lookup from the
+            # whole batch; we convert each leak-through to FetchError below.
+            outcomes = await asyncio.gather(
+                *(run_one(r) for r in refs), return_exceptions=True
+            )
+        for ref, outcome in zip(refs, outcomes, strict=True):
+            if isinstance(outcome, BaseException):
+                logger.exception(
+                    "uncaught exception in opencite lookup for %s",
+                    ref.identifier,
+                    exc_info=outcome,
+                )
+                results[ref.identifier] = classify_error(outcome, ref.identifier)
+            else:
+                results[ref.identifier] = outcome
         return results
 
     async def _lookup(
@@ -83,8 +97,11 @@ class OpenCiteBackend:
                 max_results=self._max_results_per_doi,
                 sort="citations",
             )
-        except Exception as exc:  # opencite uses bare exceptions for HTTP fails
-            return _classify_error(exc, ref.identifier)
+        except Exception as exc:
+            # opencite raises bare Exception subclasses for HTTP / parse fails;
+            # narrow when neuromechanist/opencite#32 adds typed errors. We let
+            # KeyboardInterrupt / SystemExit / asyncio.CancelledError escape.
+            return classify_error(exc, ref.identifier)
 
         works = [
             _paper_to_citing_work(paper, ref)
@@ -126,22 +143,59 @@ def _to_author(a: Any) -> Author:
     )
 
 
-def _classify_error(exc: BaseException, identifier: str) -> FetchError:
-    """Map opencite / httpx exceptions to FetchError reasons.
+def classify_error(exc: BaseException, identifier: str) -> FetchError:
+    """Map an opencite / httpx exception to a FetchError reason.
 
-    opencite raises bare exceptions whose `str()` includes status codes for
-    HTTP failures; falling back to substring matching is the best we can do
-    without depending on opencite internals.
+    Precedence order (first match wins):
+      rate_limit -> auth -> not_found -> network -> other.
+    Rate-limit and auth signatures are checked first so that an upstream
+    error message that happens to mention 'not found' or 'connect' (e.g.,
+    'Cannot connect to host: not found in DNS' on a 429 reroute) is still
+    routed to the correct bucket.
+
+    Uses httpx's `response.status_code` when the exception exposes one; falls
+    back to substring matching of the stringified exception. Tracked for
+    cleanup in neuromechanist/opencite#32 (typed exceptions upstream).
     """
     msg = f"{type(exc).__name__}: {exc}"
-    text = str(exc).lower()
-    if "429" in text or "rate" in text:
+    status = _status_code_of(exc)
+    if status == 429:
         return FetchError("rate_limit", msg)
+    if status in (401, 403):
+        return FetchError("auth", msg)
+    if status == 404:
+        return FetchError("not_found", msg)
+
+    text = str(exc).lower()
+    if "429" in text or "rate limit" in text or "too many requests" in text:
+        return FetchError("rate_limit", msg)
+    if "401" in text or "403" in text or "unauthorized" in text or "forbidden" in text:
+        return FetchError("auth", msg)
     if "404" in text or "not found" in text:
         return FetchError("not_found", msg)
-    if "401" in text or "403" in text or "auth" in text:
-        return FetchError("auth", msg)
     if "timeout" in text or "timed out" in text or "connect" in text:
         return FetchError("network", msg)
-    logger.exception("opencite lookup failed for %s", identifier)
+    logger.exception(
+        "unclassified opencite failure for %s", identifier, exc_info=exc
+    )
     return FetchError("other", msg)
+
+
+def _status_code_of(exc: BaseException) -> int | None:
+    """Return the HTTP status code an exception carries, or None.
+
+    Handles httpx.HTTPStatusError-style exceptions where the response attr
+    exposes `.status_code`, plus the convention some libraries use of
+    setting `exc.status_code` directly.
+    """
+    response = getattr(exc, "response", None)
+    code = getattr(response, "status_code", None)
+    if isinstance(code, int):
+        return code
+    code = getattr(exc, "status_code", None)
+    if isinstance(code, int):
+        return code
+    code = getattr(exc, "status", None)
+    if isinstance(code, int):
+        return code
+    return None
