@@ -131,18 +131,26 @@ def add_discovery_provenance(
     discovery_backend: DiscoveryBackend,
     schema_version: str = SCHEMA_VERSION_V2,
 ) -> Dict[str, Any]:
-    """Attach Phase 3 discovery-provenance fields to an existing citation JSON.
+    """Stamp a citation JSON with Phase 3 discovery-provenance markers.
 
-    Mutates and returns the input dict. Fills in:
-      - top-level `metadata.schema_version` (default `2.0`)
-      - top-level `metadata.discovery_backend` (`scholarly` or `opencite`)
-      - per-citation `discovery_backend` (only if missing)
+    Mutates and returns the input dict. Always overwrites the top-level
+    `metadata.schema_version` and `metadata.discovery_backend` keys: callers
+    are explicitly declaring the schema/backend identity of this output, so
+    any prior values were either stale or wrong. Per-citation
+    `discovery_backend` is set only when missing (`entry.setdefault`) so the
+    orchestrator can pre-populate the field with finer-grained labels in the
+    future without this helper clobbering them.
 
-    Per-citation `source_doi` and `source_relation` are NOT set here, because
-    they only make sense for the opencite path where the orchestrator knows
-    which DOI/relation each citing work was discovered through. Scholarly
-    citations leave both fields absent so consumers can distinguish them via
-    `.get("source_doi")`.
+    Per-citation `source_doi` and `source_relation` are NOT set here. The
+    opencite orchestrator writes them per-citation while building the JSON
+    because it alone knows which anchor surfaced each citing work. The
+    helper is only responsible for the top-level provenance markers and the
+    per-citation `discovery_backend` label.
+
+    The legacy scholarly path does not yet call this helper, so historical
+    scholarly JSONs lack the markers (treat them as schema v1 by absence).
+    Phase 4 retires the scholarly path; wiring it through here is not
+    needed in the interim.
     """
     metadata = citation_json.setdefault("metadata", {})
     metadata["schema_version"] = schema_version

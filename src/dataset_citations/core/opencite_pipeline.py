@@ -51,6 +51,14 @@ def fetch_dataset_citations_via_opencite(
       3. Ask `OpenCiteBackend.get_citing_works_batch` for citing works.
       4. Aggregate works across anchors, dedupe by (normalized DOI || title).
       5. Build the JSON dict with discovery provenance fields.
+
+    Always returns a dict; never raises for expected fetch failures.
+    `metadata.fetch_status` distinguishes outcomes:
+      - "success": every anchor returned a successful result.
+      - "partial": at least one anchor returned a FetchError but others
+        produced citing works; see `metadata.anchor_errors` for details.
+      - Any other value (e.g. "rate_limit", "not_found", "no_doi_references",
+        "unsupported_prefix:...") indicates a stub payload with zero citations.
     """
     when = fetch_date or datetime.now(timezone.utc)
     backend = backend or OpenCiteBackend()
@@ -105,6 +113,7 @@ def fetch_dataset_citations_via_opencite(
             "processing_version": "1.0",
             "schema_version": SCHEMA_VERSION_V2,
             "discovery_backend": "opencite",
+            "fetch_status": "success" if not per_anchor_errors else "partial",
             "anchor_count": len(refs),
             "anchor_errors": per_anchor_errors,
         },
