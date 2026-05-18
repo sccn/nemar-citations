@@ -1,9 +1,10 @@
+"""Core citation tracking functionality.
+
+This module contains the JSON-shape helpers and the opencite pipeline
+orchestrator. (The legacy scholarly fetcher `getCitations` was removed in
+Phase 4 of epic #37.)
 """
-Core citation tracking functionality.
 
-This module contains the core logic for citation tracking and management.
-"""
+from . import citation_utils
 
-from . import citation_utils, getCitations
-
-__all__ = ["citation_utils", "getCitations"]
+__all__ = ["citation_utils"]
