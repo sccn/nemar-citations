@@ -8,7 +8,7 @@ Automated BIDS dataset citation tracking system with AI-powered confidence scori
 
 ## Overview
 
-Track and analyze citations for OpenNeuro datasets with a complete pipeline from discovery to interactive dashboards. Features Google Scholar integration, semantic similarity scoring, network analysis, and automated monthly updates via GitHub Actions.
+Track and analyze citations for OpenNeuro and NEMAR datasets with a complete pipeline from discovery to interactive dashboards. Citations are discovered via the [opencite](https://github.com/neuromechanist/opencite) library, anchored on DOIs surfaced by each dataset's `.nemar/metadata.json` (nm-datasets) or `dataset_description.json` (legacy ds-datasets). Features semantic similarity scoring, network analysis, and automated updates via GitHub Actions.
 
 **Key Features**: Dataset discovery • Citation tracking • AI confidence scoring • Network analysis • Interactive dashboards • JSON/CSV export • GitHub Actions automation
 
@@ -20,19 +20,20 @@ cd nemar-citations
 uv sync --all-extras
 ```
 
-**Requirements**: Python 3.13+ • ScraperAPI key • GitHub token (optional)
+**Requirements**: Python 3.13+ • GitHub token (recommended for higher API limits) • Optional Semantic Scholar / OpenAlex / PubMed API keys for opencite (higher rate limits)
 
 ## Quick Start
 
 ```bash
 # 1. Setup environment (choose .env or .secrets)
 # Option A: Using .env file
-echo "SCRAPERAPI_KEY=your_key_here" > .env
-echo "GITHUB_TOKEN=your_token_here" >> .env
+echo "GITHUB_TOKEN=your_token_here" > .env
+# Optional opencite keys for higher API rate limits:
+# echo "SEMANTIC_SCHOLAR_API_KEY=your_key" >> .env
+# echo "OPENALEX_API_KEY=your_key" >> .env
 
 # Option B: Using .secrets file (auto-loaded by workflow script)
-echo "SCRAPERAPI_KEY=your_key_here" > .secrets
-echo "GITHUB_TOKEN=your_token_here" >> .secrets
+echo "GITHUB_TOKEN=your_token_here" > .secrets
 
 # 2. Run complete pipeline
 chmod +x run_end_to_end_workflow.sh
@@ -61,13 +62,13 @@ The `run_end_to_end_workflow.sh` script automates the entire workflow:
 | Mode | Description | Runtime | API Calls | Steps Executed | Branch/PR |
 |------|-------------|---------|-----------|----------------|-----------|
 | `test` | Controlled test data (3-8 citations) | ~1 min | None | 4-5 only (Analyze, Generate) | No |
-| `full` | **Recommended**: Direct pipeline execution | 1-3 hours | Google Scholar, GitHub | 1-5 (All steps) | Yes (auto) |
+| `full` | **Recommended**: Direct pipeline execution | 30-90 min | opencite (OpenAlex / Semantic Scholar / PubMed), GitHub | 1-5 (All steps) | Yes (auto) |
 | `local-ci-test` | Test GitHub Actions test workflow via Docker | ~5-10 min | None | Runs test suite | No |
 | `local-ci-update` | Test GitHub Actions update workflow via Docker | ~10-30 min | Real API calls | 1-5 (All steps) | Yes (auto) |
 
 **Workflow Steps**:
 1. **Discover** → Find BIDS datasets (EEG/MEG/iEEG)
-2. **Collect** → Fetch citations from Google Scholar
+2. **Collect** → Fetch citing works for each dataset's reference DOIs via opencite
 3. **Enhance** → Add metadata & AI confidence scores
 4. **Analyze** → Network, temporal, theme analysis
 5. **Generate** → Interactive HTML dashboard
@@ -190,7 +191,7 @@ uv run ty check src/                   # Type check
 
 **Core Components**:
 - **Discovery**: Find BIDS datasets via GitHub API
-- **Collection**: Google Scholar citation fetching with proxy rotation
+- **Collection**: opencite (OpenAlex / Semantic Scholar / PubMed) citation graph traversal, DOI-anchored
 - **Processing**: Parallel processing, format conversion, validation
 - **Analysis**: Network graphs, temporal trends, theme clustering
 - **Dashboard**: Interactive HTML with D3.js visualizations
@@ -202,8 +203,7 @@ uv run ty check src/                   # Type check
 
 | Issue | Solution |
 |-------|----------|
-| ScraperAPI key not found | Add `SCRAPERAPI_KEY` to `.env` |
-| Google Scholar rate limit | Wait for proxy rotation |
+| opencite rate limit | Add `SEMANTIC_SCHOLAR_API_KEY` / `OPENALEX_API_KEY` to `.env` for higher limits |
 | GitHub API rate limit | Add `GITHUB_TOKEN` to `.env` |
 | MPS memory error (macOS) | Use `--device cpu` |
 | Import errors | Reinstall: `uv sync --reinstall --all-extras` |
