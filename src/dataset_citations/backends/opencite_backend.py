@@ -99,7 +99,7 @@ class OpenCiteBackend:
             )
         except Exception as exc:
             # opencite raises bare Exception subclasses for HTTP / parse fails;
-            # narrow when neuromechanist/opencite#32 adds typed errors. We let
+            # narrow when neuromechanist/opencite#33 adds typed errors. We let
             # KeyboardInterrupt / SystemExit / asyncio.CancelledError escape.
             return classify_error(exc, ref.identifier)
 
@@ -155,7 +155,7 @@ def classify_error(exc: BaseException, identifier: str) -> FetchError:
 
     Uses httpx's `response.status_code` when the exception exposes one; falls
     back to substring matching of the stringified exception. Tracked for
-    cleanup in neuromechanist/opencite#32 (typed exceptions upstream).
+    cleanup in neuromechanist/opencite#33 (typed exceptions upstream).
     """
     msg = f"{type(exc).__name__}: {exc}"
     status = _status_code_of(exc)
