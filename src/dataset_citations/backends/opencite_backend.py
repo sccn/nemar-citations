@@ -22,6 +22,7 @@ from opencite.citations import CitationExplorer
 from opencite.config import Config
 
 from dataset_citations.sources.models import (
+    Author,
     CitingWork,
     DoiReference,
     FetchError,
@@ -96,7 +97,9 @@ class OpenCiteBackend:
 def _paper_to_citing_work(paper: Any, ref: DoiReference) -> CitingWork:
     ids = paper.ids
     venue = paper.source_venue.name if paper.source_venue else None
-    authors = tuple(a.name for a in (paper.authors or []) if getattr(a, "name", None))
+    authors = tuple(
+        _to_author(a) for a in (paper.authors or []) if getattr(a, "name", None)
+    )
     return CitingWork(
         title=paper.title,
         doi=ids.doi or None,
@@ -111,6 +114,15 @@ def _paper_to_citing_work(paper: Any, ref: DoiReference) -> CitingWork:
         ),
         source_doi=ref.identifier,
         source_relation=ref.relation_type,
+    )
+
+
+def _to_author(a: Any) -> Author:
+    return Author(
+        name=a.name,
+        family=getattr(a, "family_name", None) or None,
+        given=getattr(a, "given_name", None) or None,
+        orcid=getattr(a, "orcid", None) or None,
     )
 
 

@@ -29,11 +29,12 @@ from dataset_citations.sources.models import (
     FetchResult,
     FetchSuccess,
     IdentifierType,
+    RelationType,
 )
 
 logger = logging.getLogger(__name__)
 
-_FIELD_RELATION: dict[str, str] = {
+_FIELD_RELATION: dict[str, RelationType] = {
     "DatasetDOI": "IsIdenticalTo",
     "HowToAcknowledge": "IsDerivedFrom",
     "ReferencesAndLinks": "References",

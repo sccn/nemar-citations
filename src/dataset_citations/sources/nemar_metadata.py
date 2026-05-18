@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import json
 import logging
-from typing import Any
+from typing import Any, cast, get_args
 
 from github import Github
 from github.GithubException import GithubException
@@ -26,13 +26,12 @@ from dataset_citations.sources.models import (
     FetchError,
     FetchResult,
     FetchSuccess,
+    RelationType,
 )
 
 logger = logging.getLogger(__name__)
 
-_CITATION_RELATIONS = frozenset(
-    {"References", "IsDerivedFrom", "IsIdenticalTo", "IsVersionOf"}
-)
+_CITATION_RELATIONS: frozenset[RelationType] = frozenset(get_args(RelationType))
 
 
 class NemarMetadataSource:
@@ -115,7 +114,7 @@ def _entry_to_reference(entry: Any) -> DoiReference | None:
     return DoiReference(
         identifier=normalized,
         identifier_type="doi",
-        relation_type=relation,
+        relation_type=cast(RelationType, relation),
         source="nemar_metadata",
         source_field="related_identifiers",
     )

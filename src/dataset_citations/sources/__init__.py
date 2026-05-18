@@ -17,10 +17,13 @@ from dataset_citations.sources.doi import (
     validate_identifier,
 )
 from dataset_citations.sources.models import (
+    Author,
+    CitingWork,
     DoiReference,
     FetchError,
     FetchResult,
     FetchSuccess,
+    RelationType,
 )
 from dataset_citations.sources.nemar_metadata import (
     NemarMetadataSource,
@@ -28,12 +31,15 @@ from dataset_citations.sources.nemar_metadata import (
 )
 
 __all__ = [
+    "Author",
     "BidsMetadataSource",
+    "CitingWork",
     "DoiReference",
     "FetchError",
     "FetchResult",
     "FetchSuccess",
     "NemarMetadataSource",
+    "RelationType",
     "extract_identifiers",
     "is_openneuro_dataset_doi",
     "normalize_doi",
