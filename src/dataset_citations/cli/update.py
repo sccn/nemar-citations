@@ -23,6 +23,7 @@ from dataset_citations.backends import OpenCiteBackend
 from dataset_citations.core.opencite_pipeline import (
     fetch_dataset_citations_via_opencite,
 )
+from dataset_citations.sources.doi import normalize_doi
 from dataset_citations.sources.models import FetchSuccess
 from dataset_citations.sources.nemar_catalog import get_or_fetch_catalog
 
@@ -39,10 +40,11 @@ def _load_catalog_doi_map(
 
     The catalog is fetched from `api.nemar.org/datasets` (or reused from the
     shared cache populated by the discover step earlier in the same workflow
-    run). DOIs are normalized to lowercase to match the opencite anchor
-    convention. Empty / missing entries are omitted: a missing catalog DOI
-    is not an error; the pipeline simply doesn't seed an extra anchor for
-    that dataset.
+    run). DOIs are run through `normalize_doi` (lowercased + prefix-stripped)
+    so the map values match what the pipeline's `_merge_anchors` produces
+    when deduping anchors. Empty / missing entries are omitted: a missing
+    catalog DOI is not an error; the pipeline simply doesn't seed an extra
+    anchor for that dataset.
 
     On fetch failure we log and return an empty map rather than aborting:
     the rest of the pipeline still produces citation JSON from the source-
@@ -58,7 +60,7 @@ def _load_catalog_doi_map(
             result.detail,
         )
         return {}
-    return {row.dataset_id: row.doi.lower() for row in result.value if row.doi}
+    return {row.dataset_id: normalize_doi(row.doi) for row in result.value if row.doi}
 
 
 def run_opencite_backend(args: argparse.Namespace) -> None:
