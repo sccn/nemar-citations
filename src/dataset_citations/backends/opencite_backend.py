@@ -9,6 +9,13 @@ Errors are surfaced through `FetchResult`, never silently absorbed. The
 Phase 1 review found that an opencite rate limit was being cached as
 "this DOI has zero citing works"; here a rate limit returns
 `FetchError("rate_limit", ...)` and the caller decides whether to retry.
+
+DOIs whose prefixes are known to 404 on Semantic Scholar are routed
+through OpenAlex directly, bypassing the CitationExplorer (which would
+otherwise fire S2 in parallel and burn retry budget on a guaranteed
+miss). See the May 2026 coverage probe in
+`.context/research/s2_vs_openalex_2026-05-19.json` and `S2_SKIP_PREFIXES`
+below for the list.
 """
 
 from __future__ import annotations
@@ -19,6 +26,7 @@ from collections.abc import Iterable
 from typing import Any
 
 from opencite.citations import CitationExplorer
+from opencite.clients.openalex import OpenAlexClient
 from opencite.config import Config
 
 from dataset_citations.sources.models import (
@@ -31,6 +39,26 @@ from dataset_citations.sources.models import (
 )
 
 logger = logging.getLogger(__name__)
+
+# DOI prefixes that the May 2026 coverage probe confirmed return 404 on
+# Semantic Scholar's `paper/cited_by` endpoint. For anchors matching any of
+# these, we call OpenAlex directly and skip the S2 round-trip entirely.
+# Keep this list lowercase; the matcher lowercases its input before checking.
+S2_SKIP_PREFIXES: tuple[str, ...] = (
+    "10.82901/nemar.",  # NEMAR-minted DOIs (too new for S2 index)
+    "10.5281/zenodo.",  # Zenodo data records (data, not papers)
+    "10.13026/",  # PhysioNet data records
+)
+
+
+def should_skip_s2(identifier: str) -> bool:
+    """Return True if this DOI is known to 404 on Semantic Scholar.
+
+    Pure function; safe to call from any layer. Lowercases the input so
+    matching is insensitive to the original DOI casing.
+    """
+    lowered = identifier.lower()
+    return any(lowered.startswith(p) for p in S2_SKIP_PREFIXES)
 
 
 class OpenCiteBackend:
@@ -65,10 +93,27 @@ class OpenCiteBackend:
     ) -> dict[str, FetchResult[list[CitingWork]]]:
         results: dict[str, FetchResult[list[CitingWork]]] = {}
         semaphore = asyncio.Semaphore(self._concurrency)
-        async with CitationExplorer(self._config) as explorer:
+        # Open both clients up-front so each batch can mix S2-skip and
+        # full-explorer paths without redundant session setup. The
+        # CitationExplorer owns its own internal OpenAlexClient; the second
+        # client below is what the S2-skip path uses.
+        async with (
+            CitationExplorer(self._config) as explorer,
+            OpenAlexClient(self._config) as openalex_base,
+        ):
+            # opencite's `__aenter__` returns the BaseClient bound; narrow
+            # back to OpenAlexClient so the method signature stays specific.
+            assert isinstance(openalex_base, OpenAlexClient), (
+                "opencite changed OpenAlexClient.__aenter__ return type; "
+                "expected an OpenAlexClient bound, got "
+                f"{type(openalex_base).__name__}"
+            )
+            openalex = openalex_base
 
             async def run_one(ref: DoiReference) -> FetchResult[list[CitingWork]]:
                 async with semaphore:
+                    if should_skip_s2(ref.identifier):
+                        return await self._lookup_openalex_only(openalex, ref)
                     return await self._lookup(explorer, ref)
 
             # return_exceptions=True isolates a single failing lookup from the
@@ -108,6 +153,33 @@ class OpenCiteBackend:
             for paper in (result.papers or [])
             if paper.title
         ]
+        return FetchSuccess(works)
+
+    async def _lookup_openalex_only(
+        self, openalex: OpenAlexClient, ref: DoiReference
+    ) -> FetchResult[list[CitingWork]]:
+        """Resolve `ref` via OpenAlex only, skipping Semantic Scholar.
+
+        Two HTTP requests: `lookup_doi` to get the OpenAlex work ID, then
+        `citing_papers` against that ID. Used for DOI families that the May
+        2026 probe confirmed return 404 on S2 (`S2_SKIP_PREFIXES`).
+        """
+        try:
+            paper = await openalex.lookup_doi(ref.identifier)
+            if paper is None or not paper.ids.openalex_id:
+                return FetchError(
+                    "not_found",
+                    f"{ref.identifier}: not found in OpenAlex (S2 skipped by prefix)",
+                )
+            cite_papers = await openalex.citing_papers(
+                paper.ids.openalex_id,
+                max_results=self._max_results_per_doi,
+                sort="citations",
+            )
+        except Exception as exc:
+            return classify_error(exc, ref.identifier)
+
+        works = [_paper_to_citing_work(p, ref) for p in cite_papers if p.title]
         return FetchSuccess(works)
 
 
