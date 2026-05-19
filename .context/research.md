@@ -123,3 +123,71 @@ Phase 2 design adjustments derived from Phase 1 findings:
 - **Skip OpenNeuro DatasetDOIs** from opencite lookups; treat them as record-linkage identifiers only.
 - **Treat scholarly snapshots and opencite results as complementary inputs**, not as competing implementations. The citation JSON schema should tag each citation with its discovery source (`scholarly_text_match`, `opencite_doi:<relation_type>`).
 - **Confidence scoring stays.** Phase 3 must keep the sentence-transformer pipeline on the new path; unfiltered opencite results carry ~30% off-topic noise.
+
+---
+
+# S2 vs OpenAlex coverage (2026-05-19)
+
+Phase A of issue #53. Probe script: `scripts/probe_s2_vs_openalex.py`. Raw output: `.context/research/s2_vs_openalex_2026-05-19.json`.
+
+## Method
+Twenty nm-* datasets from `api.nemar.org/datasets` (curated in `scripts/probe_datasets.json`), 44 DOI anchor entries collapsed to 30 unique DOIs. Each unique DOI run two ways:
+- **OpenAlex-only**: `OpenAlexClient.lookup_doi` -> `OpenAlexClient.citing_papers` on the resolved OpenAlex ID.
+- **Combined**: `CitationExplorer.citing_papers` — the production path, which fires OpenAlex and Semantic Scholar (S2) in parallel and merges.
+
+Per-anchor diff is computed by normalized citing-paper DOI. `max_results=100` per call.
+
+## Aggregate result
+
+| Metric | Value |
+|---|---:|
+| Unique DOIs probed | 30 |
+| Unresolved in OpenAlex | 0 |
+| Total citing papers (combined) | 1278 |
+| Total citing papers (OpenAlex-only) | 1199 |
+| Overlap (DOI matched on both sides) | 1116 |
+| **S2-unique (in combined but not OA-only)** | **120** |
+| OpenAlex-unique (in OA-only but not combined) | 76 |
+| **S2-unique as % of combined** | **9.39%** |
+| DOIs where S2 adds >=1 paper | 13 / 30 (43%) |
+| DOIs where S2 adds >=5 papers | 8 / 30 (27%) |
+
+## Where S2 helps and where it doesn't
+
+**Top S2 contributors (descending S2-unique count):**
+- `10.6084/m9.figshare.4244171.v2` -> 32 S2-unique (figshare data record)
+- `10.1038/s41597-023-02650-w` -> 18 (Scientific Data)
+- `10.1038/s41586-025-09255-w` -> 13 (Nature)
+- `10.1371/journal.pone.0162657` -> 13 (PLOS ONE)
+- `10.21105/joss.01896` -> 13 (JOSS)
+- `10.3390/data4010014` -> 9 (MDPI Data)
+- `10.1016/j.neucom.2016.01.007` -> 6 (Elsevier Neurocomputing)
+- `10.1371/journal.pone.0178385` -> 5 (PLOS ONE)
+
+**Zero S2 contribution (S2 returned 404 or empty):**
+- All 5 NEMAR-minted DOIs in the sample (`10.82901/nemar.nm*`). S2 has not indexed them.
+- All 6 Zenodo data records in the sample (`10.5281/zenodo.17287903`, ...). S2 does not index Zenodo data DOIs.
+- Two of the figshare records (`10.6084/m9.figshare.2068677.v1` and similar).
+- The PhysioNet `10.13026/*` family.
+
+## Recommendation: keep S2, but route smarter
+
+S2 is not negligible — it contributes a meaningful 9.39% of total coverage and helps on 43% of DOIs, concentrated in mainstream journals (Nature, Scientific Data, PLOS ONE, JOSS, Elsevier, MDPI). **Do not retire it.**
+
+However, S2 produces zero value (just 404s and wasted rate-limit budget) for three identifiable DOI families:
+- `10.82901/nemar.*` (NEMAR-minted DOIs — too new for S2)
+- `10.5281/zenodo.*` (data records, not papers)
+- `10.13026/*` (PhysioNet data records)
+- Some `10.6084/m9.figshare.*` (data records, not papers)
+
+These prefixes account for 11 of the 17 DOIs with zero S2 contribution in this sample.
+
+**Action items (NOT in this PR, follow-ups):**
+1. **Add a DOI-prefix pre-filter** in `backends/opencite_backend.py` that skips S2 entirely for known-zero-coverage prefixes. Keep OpenAlex as the only call for those. Saves rate budget without losing coverage.
+2. **Lower opencite's global `max_retries`** from 3 to 1 in CI. Combined with #51/#52 + the prefix filter, this should fit the full 594-dataset backfill inside the 6h GitHub Actions window.
+3. **Document the retention decision** in `.rules/cross_repo.md` (once PR #54 merges): replace "S2 retirement candidate" with "S2 retained; pre-filter known-404 prefixes; max_retries=1 in CI."
+4. **Re-run the probe quarterly.** As S2 indexes newer DOIs (and adds the NEMAR DOIs once they propagate), the cost/benefit shifts.
+
+## What this PR does
+
+This PR ships only the probe script + the captured data + this report. The behavioral changes listed above are deliberately deferred to focused follow-up PRs so the data and the decision are reviewable independently of the code change. Issue #53 is closeable as "Phase A complete; Phase B = follow-up issues."
