@@ -305,6 +305,212 @@ class FetchViaOpenCiteTests(TestCase):
         self.assertEqual(out["metadata"]["fetch_status"], "no_doi_references")
 
 
+class CatalogDoiSeeding(TestCase):
+    """The catalog_doi parameter adds an extra anchor with relation=References."""
+
+    def test_seeds_extra_anchor_when_no_overlap(self) -> None:
+        ref = DoiReference(
+            identifier="10.1038/source-ref.1",
+            identifier_type="doi",
+            relation_type="IsDerivedFrom",
+            source="nemar_metadata",
+        )
+        catalog_doi = "10.82901/nemar.nm000999"
+        catalog_work = _make_work(
+            "Paper citing the dataset",
+            doi="10.5555/cites-catalog",
+            source_doi=catalog_doi,
+        )
+        source_work = _make_work(
+            "Paper citing methods",
+            doi="10.5555/cites-source",
+            source_doi=ref.identifier,
+        )
+        nemar = _StubSource(FetchSuccess([ref]))
+        backend = _StubBackend(
+            {
+                ref.identifier: FetchSuccess([source_work]),
+                catalog_doi: FetchSuccess([catalog_work]),
+            }
+        )
+        out = fetch_dataset_citations_via_opencite(
+            "nm000999",
+            backend=backend,
+            nemar_source=nemar,
+            catalog_doi=catalog_doi,
+            fetch_date=WHEN,
+        )
+        self.assertEqual(out["metadata"]["anchor_count"], 2)
+        titles = {c["title"] for c in out["citation_details"]}
+        self.assertIn("Paper citing the dataset", titles)
+        self.assertIn("Paper citing methods", titles)
+
+    def test_catalog_doi_dedup_against_source_ref(self) -> None:
+        """When the catalog DOI is already in the source's related_identifiers,
+        it must not be added twice and the source's relation_type wins."""
+        shared = "10.1038/shared.1"
+        ref = DoiReference(
+            identifier=shared,
+            identifier_type="doi",
+            relation_type="IsIdenticalTo",
+            source="nemar_metadata",
+        )
+        nemar = _StubSource(FetchSuccess([ref]))
+        backend = _StubBackend({shared: FetchSuccess([])})
+        out = fetch_dataset_citations_via_opencite(
+            "nm000999",
+            backend=backend,
+            nemar_source=nemar,
+            catalog_doi=shared,
+            fetch_date=WHEN,
+        )
+        # Single anchor preserved; identity comes from the source-derived ref.
+        self.assertEqual(out["metadata"]["anchor_count"], 1)
+
+    def test_malformed_catalog_doi_ignored(self) -> None:
+        ref = DoiReference(
+            identifier="10.1038/keep.1",
+            identifier_type="doi",
+            relation_type="References",
+            source="nemar_metadata",
+        )
+        nemar = _StubSource(FetchSuccess([ref]))
+        backend = _StubBackend({ref.identifier: FetchSuccess([])})
+        out = fetch_dataset_citations_via_opencite(
+            "nm000999",
+            backend=backend,
+            nemar_source=nemar,
+            catalog_doi="not-a-doi",
+            fetch_date=WHEN,
+        )
+        self.assertEqual(out["metadata"]["anchor_count"], 1)
+
+
+class CheckpointResume(TestCase):
+    """Pipeline integrates with the CheckpointStore."""
+
+    def setUp(self) -> None:
+        from pathlib import Path
+
+        self.tmp = Path(__file__).parent / "test_data" / "_tmp_pipeline_ckpt"
+        if self.tmp.exists():
+            import shutil
+
+            shutil.rmtree(self.tmp)
+        self.tmp.mkdir(parents=True, exist_ok=True)
+
+        from dataset_citations.core.checkpoint import CheckpointStore
+
+        self.store = CheckpointStore(base_dir=self.tmp)
+
+    def tearDown(self) -> None:
+        import shutil
+
+        if self.tmp.exists():
+            shutil.rmtree(self.tmp)
+
+    def test_first_run_writes_checkpoint(self) -> None:
+        ref = DoiReference(
+            identifier="10.1038/anchor.1",
+            identifier_type="doi",
+            relation_type="References",
+            source="nemar_metadata",
+        )
+        nemar = _StubSource(FetchSuccess([ref]))
+        backend = _StubBackend(
+            {
+                ref.identifier: FetchSuccess(
+                    [_make_work("W", doi="10.5555/w", source_doi=ref.identifier)]
+                )
+            }
+        )
+        out = fetch_dataset_citations_via_opencite(
+            "nm000001",
+            backend=backend,
+            nemar_source=nemar,
+            fetch_date=WHEN,
+            checkpoint_store=self.store,
+            use_checkpoint=True,
+        )
+        # On full success, the checkpoint file is removed.
+        self.assertEqual(out["metadata"]["fetch_status"], "success")
+        self.assertFalse(self.store.path_for("nm000001").exists())
+
+    def test_partial_failure_preserves_checkpoint_for_resume(self) -> None:
+        ref_ok = DoiReference(
+            identifier="10.1038/ok.1",
+            identifier_type="doi",
+            relation_type="References",
+            source="nemar_metadata",
+        )
+        ref_fail = DoiReference(
+            identifier="10.1038/fail.1",
+            identifier_type="doi",
+            relation_type="References",
+            source="nemar_metadata",
+        )
+        nemar = _StubSource(FetchSuccess([ref_ok, ref_fail]))
+        backend = _StubBackend(
+            {
+                ref_ok.identifier: FetchSuccess(
+                    [_make_work("OK", doi="10.5555/ok", source_doi=ref_ok.identifier)]
+                ),
+                ref_fail.identifier: FetchError("rate_limit", "429"),
+            }
+        )
+        out = fetch_dataset_citations_via_opencite(
+            "nm000001",
+            backend=backend,
+            nemar_source=nemar,
+            fetch_date=WHEN,
+            checkpoint_store=self.store,
+            use_checkpoint=True,
+        )
+        self.assertEqual(out["metadata"]["fetch_status"], "partial")
+        # The successful anchor must be recorded so the next run skips it.
+        loaded = self.store.load("nm000001")
+        self.assertTrue(loaded.is_success(ref_ok.identifier))
+        self.assertFalse(loaded.is_success(ref_fail.identifier))
+
+    def test_second_run_reuses_checkpoint_and_skips_backend(self) -> None:
+        ref = DoiReference(
+            identifier="10.1038/anchor.1",
+            identifier_type="doi",
+            relation_type="References",
+            source="nemar_metadata",
+        )
+        # Pre-populate the checkpoint with a successful result.
+        self.store.record_anchor(
+            "nm000001",
+            ref.identifier,
+            FetchSuccess(
+                [_make_work("Cached", doi="10.5555/cached", source_doi=ref.identifier)]
+            ),
+        )
+
+        # A backend that would explode if called: we expect zero calls.
+        class _ExplodingBackend(_StubBackend):
+            def __init__(self) -> None:
+                super().__init__({})
+
+            def get_citing_works_batch(self, refs):  # type: ignore[override]
+                raise AssertionError(
+                    "backend should not be called when all anchors checkpointed"
+                )
+
+        nemar = _StubSource(FetchSuccess([ref]))
+        out = fetch_dataset_citations_via_opencite(
+            "nm000001",
+            backend=_ExplodingBackend(),
+            nemar_source=nemar,
+            fetch_date=WHEN,
+            checkpoint_store=self.store,
+            use_checkpoint=True,
+        )
+        self.assertEqual(out["num_citations"], 1)
+        self.assertEqual(out["citation_details"][0]["title"], "Cached")
+
+
 @skipUnless(
     os.getenv("RUN_INTEGRATION_TESTS"),
     "live opencite lookup; set RUN_INTEGRATION_TESTS=1 to enable",
