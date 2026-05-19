@@ -1,9 +1,24 @@
 # NEMAR Citations Instructions
 
 ## Project Context
-**Purpose:** Automated Brain Imaging Data Structure (BIDS) dataset citation tracking system for the NEMAR.org project. Discovers and tracks citations for 300+ neuroscience datasets from OpenNeuro and NEMAR, scores them with AI confidence, and renders an interactive dashboard hosted at `dashboard.nemar.org/citations/`.
+**Purpose:** Automated Brain Imaging Data Structure (BIDS) dataset citation tracking system for the NEMAR.org project. Discovers and tracks citations for ~594 neuroscience datasets (the live `api.nemar.org/datasets` total as of 2026-05-18) from OpenNeuro and NEMAR, scores them with AI confidence, and renders an interactive dashboard hosted at `dashboard.nemar.org/citations/`.
 **Tech Stack:** Python 3.13+, UV, Ruff, Ty, pytest, sentence-transformers, opencite (OpenAlex / Semantic Scholar / PubMed aggregator), PyGithub, Cloudflare Pages.
 **Architecture:** CLI-first package (`dataset_citations.*`) with discovery → DOI extraction → opencite lookup → scoring → analysis → dashboard pipeline. Automated via GitHub Actions.
+
+## Related Repositories
+Three sibling repos jointly produce the public NEMAR surface. They live under `/Users/yahya/Documents/git/nemar/` locally and under `github.com/nemarOrg/` remotely.
+
+| Repo | Path (local) | Role |
+|---|---|---|
+| `nemar-cli` | `../nemar/nemar-cli/` | Bun CLI for BIDS dataset upload/version/DOI. Cloudflare Worker backend serves `api.nemar.org` (D1 catalog) + `data.nemar.org` (S3-backed BIDS view). LLM enrichment writes `.nemar/metadata.json` into each dataset repo. |
+| `website` | `../nemar/website/` | Astro 6 SSR frontend for `nemar.org`, deployed to Cloudflare Pages. SSR reads dataset metadata at request time from `api.nemar.org` and `data.nemar.org`. No build-time data bundling. |
+| `dataset_citations` (this repo) | `../dataset_citations/` | Citation discovery, scoring, analysis, and dashboard. Reads `.nemar/metadata.json` for DOIs; publishes `citations/json_opencite/` and the dashboard at `dashboard.nemar.org/citations/`. |
+
+**Cross-repo contracts** (details: `.rules/cross_repo.md`):
+- `.nemar/metadata.json` schema (`NemarMetadataV2`) — producer: `nemar-cli/backend/src/services/enrich-dataset.ts`; consumer: `src/dataset_citations/sources/nemar_metadata.py`. Authoritative DOI source via `related_identifiers[]` with DataCite relation types.
+- `https://api.nemar.org/datasets` — public, no auth, returns full catalog (nm-* and on-* IDs). Preferred over GitHub API for discovery.
+- `https://data.nemar.org/<id>/metadata.json` — per-dataset neuroschema. Live for `nm-*` IDs; legacy `ds-*` still requires GitHub-based discovery.
+- Citation publishing back to the website is **not wired yet** — there is no `/datasets/:id/citations` endpoint and the website does not embed citation JSON. The canonical surface stays at `dashboard.nemar.org/citations/`. Adding a citations endpoint would be a `nemar-cli` backend change.
 
 ## Architecture Map
 ```
@@ -112,13 +127,33 @@ uv run dataset-citations-score-confidence --citations-dir citations/json_opencit
 ```
 
 ## Data Flow
-1. **Discovery**: Find BIDS datasets via GitHub API (`cli/discover.py`).
-2. **DOI extraction**: `sources/nemar_metadata.py` reads `.nemar/metadata.json` for nm-datasets; `sources/bids_metadata.py` reads `dataset_description.json` for legacy ds-datasets. Returns DOI/PMID/arXiv anchors with relation types (`References`, `IsDerivedFrom`, `IsIdenticalTo`, `IsVersionOf`).
-3. **Citation fetching**: `backends/opencite_backend.py` (sync facade over opencite) queries OpenAlex / Semantic Scholar / PubMed for papers citing each anchor.
+1. **Discovery**: Prefer `https://api.nemar.org/datasets` (D1 catalog, no auth, ~40KB for the full list of 594 datasets) for both nm-* and on-* (NEMAR-imported OpenNeuro) IDs. One request gives every dataset's `dataset_id`, `doi`, `concept_doi`, `source`, `source_id`, `github_repo`, and modality/task/author metadata. Legacy ds-* IDs not yet in the catalog still come from GitHub via `cli/discover.py`.
+2. **DOI extraction**: For nm-* / on-* — fetch `https://data.nemar.org/<id>/metadata.json` (the same neuroschema doc the worker generates from `.nemar/metadata.json` + D1 enrichment) and parse `related_identifiers[]` via `sources/nemar_metadata.py`. Confirmed shape: `{ identifier, identifier_type, relation_type }` with DataCite relation values. For legacy ds-* — fall back to `dataset_description.json` via `sources/bids_metadata.py`. The dataset's **own** DOI (from the catalog `doi` field) is also a citation anchor with `relation_type = References`. Relation types we consume: `References`, `IsDerivedFrom`, `IsIdenticalTo`, `IsVersionOf`.
+3. **Citation fetching**: `backends/opencite_backend.py` (sync facade over opencite) queries OpenAlex / Semantic Scholar / PubMed for papers citing each anchor. Concurrency throttled by `OPENCITE_MAX_CONCURRENCY` (CI sets to 1, see PR #50).
 4. **Processing**: `core/opencite_pipeline.py` deduplicates across anchors and produces schema-v2 citation JSON.
 5. **Quality scoring**: sentence-transformer similarity between dataset metadata and citation abstract.
 6. **Analysis**: network, temporal, and theme analyses with embeddings.
-7. **Dashboard**: interactive HTML + D3 deployed to Cloudflare Pages.
+7. **Dashboard**: interactive HTML + D3 deployed to Cloudflare Pages at `dashboard.nemar.org/citations/`.
+
+## Fetch Strategy & Rate Limits
+Both upstream sources we depend on have throttled us in production. Treat external APIs as scarce; cache, retry, and prefer the NEMAR backend.
+
+**Order of preference for dataset / DOI discovery:**
+1. `api.nemar.org/datasets` (D1, public, generous limits — primary).
+2. `data.nemar.org/<id>/metadata.json` (S3-backed, nm-* IDs only today — secondary).
+3. GitHub API on `nemarDatasets/` and `OpenNeuroDatasets/` (`GITHUB_TOKEN`, 5000/hr, hits ceiling on full reindex — fallback only).
+4. Local checkout under `~/Documents/git/nemar/` for development (offline).
+
+**Order of preference for citation backends inside opencite:**
+1. **OpenAlex** — free, no key required but `OPENALEX_API_KEY` raises politeness pool. Most reliable for `cited_by` queries against DOIs. Treat as primary.
+2. **PubMed** — free, NLM E-utilities limit (3 req/sec without API key, 10 with). Use for PMID anchors.
+3. **Semantic Scholar (S2)** — currently in opencite but **retirement candidate**: heavy throttling without enterprise key, frequent 429s on `paper/cited_by`. Document the decision in `.context/research.md` before flipping the switch; remove via opencite config rather than a code fork.
+
+**Guardrails to keep in code (not aspirational — already partially in place):**
+- Respect `OPENCITE_MAX_CONCURRENCY` and `OPENCITE_RATE_LIMIT_*` env vars in the backend facade.
+- Persist partial progress per anchor; resume on next invocation rather than refetch.
+- Shard discovery and fetch into chunks that fit GitHub Actions' 6h job limit (the May-18 full-catalog run was cancelled at 6h with concurrency=1).
+- Avoid push-on-every-dataset; batch commits to the auto-update branch.
 
 ## Key Data Formats
 - **Citation JSON** (`citations/json_opencite/`), the canonical output. Schema v2: top-level `dataset_id`, `num_citations`, `date_last_updated`, `citation_details[]`, `metadata.{schema_version="2.0", discovery_backend="opencite", fetch_status, anchor_count, anchor_errors, ...}`; per-citation `source_doi` + `source_relation` (one of `References`, `IsDerivedFrom`, `IsIdenticalTo`, `IsVersionOf`).
@@ -137,6 +172,9 @@ uv run dataset-citations-score-confidence --citations-dir citations/json_opencit
 - `.rules/ci_cd.md` — GitHub Actions setup
 - `.rules/git.md` — Branch + commit conventions
 
+### Cross-Repo
+- `.rules/cross_repo.md` — Contracts with `nemar-cli` and `website`; fetch strategy; rate-limit posture
+
 ### MCP Tools
 - `.rules/serena_mcp.md` — Code intelligence with Serena MCP
 
@@ -154,7 +192,8 @@ uv run dataset-citations-score-confidence --citations-dir citations/json_opencit
 - `.github/workflows/test.yml` — Lint (ruff format/check, ty), pytest 3.13, integration tests
 - `.github/workflows/update_citations.yml`: weekly cron (Sunday 06:00 UTC) plus `workflow_dispatch`. Fetches citations via opencite, regenerates the dashboard, deploys to Cloudflare Pages, opens PR.
 - `.github/workflows/deploy-dashboard.yml` — Manual rebuild + deploy
-- Required secrets: `GITHUB_TOKEN`, `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`. Optional: `SEMANTIC_SCHOLAR_API_KEY`, `OPENALEX_API_KEY` for opencite rate-limit relief.
+- Required secrets: `GITHUB_TOKEN`, `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`. Optional: `OPENALEX_API_KEY` (politeness pool), `SEMANTIC_SCHOLAR_API_KEY` (only while S2 is still wired in opencite — see retirement note in Fetch Strategy).
+- Known blocker (May 2026): the full opencite backfill has not yet produced data; `citations/json_opencite/` is empty and the public dashboard still shows January 2026 scholarly-format JSON. Last `workflow_dispatch` run (`26030534541`) was cancelled at the 6h GitHub Actions ceiling during the fetch step. Resolve before relying on cron output.
 
 ## Project-Specific Guidelines
 - **Domain:** NEMAR / OpenNeuro / BIDS / Hierarchical Event Descriptors (HED)

@@ -1,0 +1,85 @@
+# Cross-Repo Contracts (NEMAR triangle)
+
+This repo (`dataset_citations`) ships citation data and a dashboard. Two sibling repos jointly own the surrounding system; they live under `github.com/nemarOrg/` (locally: `/Users/yahya/Documents/git/nemar/`).
+
+| Repo | Surface | Role |
+|---|---|---|
+| `nemar-cli` | `api.nemar.org`, `data.nemar.org`, `.nemar/metadata.json` | Catalog + manifest + LLM enrichment |
+| `website` | `nemar.org` | Astro 6 SSR frontend |
+| `dataset_citations` (here) | `dashboard.nemar.org/citations/`, `citations/json_opencite/` | Citation discovery, scoring, dashboard |
+
+## The `.nemar/metadata.json` contract
+Each NEMAR-managed dataset repo (`github.com/nemarDatasets/<id>/`) carries `.nemar/metadata.json` at the root. This file is the authoritative DOI source for citation work.
+
+- **Schema:** `NemarMetadataV2` — defined in `nemar-cli/shared/datacite-constants.ts:160-185`.
+- **Producer:** `nemar-cli/backend/src/services/enrich-dataset.ts` (LLM enrichment job, committed via PR to the dataset repo).
+- **Consumer:** `src/dataset_citations/sources/nemar_metadata.py:83-125` (`parse_nemar_metadata()`).
+
+**DOI-bearing fields we consume:**
+- `related_identifiers[]` — array of `{ identifier, identifier_type, relation_type }`.
+  - `identifier_type` accepted: `"DOI"` only (PMID / arXiv / URL / handle are skipped by the parser today; widen here if you start needing them).
+  - `relation_type` accepted: `References`, `IsDerivedFrom`, `IsIdenticalTo`, `IsVersionOf` — these are the DataCite kernel-4.6 values we surface in citation JSON as `source_relation`.
+- OpenNeuro dataset DOIs are deduplicated; do not double-count when a dataset is mirrored under multiple IDs.
+
+**When producer and consumer drift:** treat as a contract break. Open issues in both repos; do not silently widen the parser to accept fields the producer doesn't yet emit.
+
+## api.nemar.org endpoints we depend on
+Public, no token required for any of these. Routes are mounted by `nemar-cli/backend/src/index.ts`; see `routes/datasets.ts` and `routes/data.ts` for handlers.
+
+| URL | Returns | Use for |
+|---|---|---|
+| `GET https://api.nemar.org/datasets` | Full catalog as `{datasets: [...]}` (~40KB, nm-* and on-* IDs) with `dataset_id`, `doi`, `concept_doi`, `source`, `source_id`, `modalities`, `participants`, `tasks`, `github_repo` | **Primary discovery source.** Replaces GitHub-API pagination of `OpenNeuroDatasets/` + `nemarDatasets/`. |
+| `GET https://api.nemar.org/datasets/:id` | Single dataset metadata + version list | Per-dataset enrichment without cloning the repo. |
+| `GET https://api.nemar.org/datasets/resolve/:sourceId` | nm-ID for a given OpenNeuro `ds*` ID | Mapping legacy ds-* to NEMAR-managed nm-*. |
+| `GET https://data.nemar.org/<id>/metadata.json` | Per-dataset neuroschema doc — includes `related_identifiers[]` with `{identifier, identifier_type, relation_type}` (DataCite values: `References`, `IsDerivedFrom`, `IsIdenticalTo`, `IsVersionOf`, `IsDescribedBy`, ...) | Per-dataset metadata + citation anchors for nm-* / on-* IDs. Legacy ds-* returns 404 here, fall back to GitHub. |
+| `GET https://data.nemar.org/<id>/<version>/manifest.json` | File-level BIDS manifest with presigned S3 URLs | Generally not needed for citations; reference for context. |
+
+There is **no citations endpoint** on the backend today. We do not publish citation JSON back into the D1 catalog. If/when we do, the natural shape is `GET /datasets/:id/citations.json` returning the schema-v2 payload — coordinate with `nemar-cli/backend/src/routes/`.
+
+## Citation JSON contract (we produce)
+Path: `citations/json_opencite/<id>_citations.json`. Schema v2 (see `AGENTS.md` § Key Data Formats).
+
+Downstream consumers of this artifact should treat:
+- `metadata.schema_version` as the version gate. Bump it on any breaking shape change.
+- `metadata.discovery_backend == "opencite"` as confirmation of provenance. Legacy `"scholarly"` files (under `citations/json/`) are read-only history.
+- `citation_details[].source_doi` + `source_relation` as required fields — they tell the website which DOI anchor surfaced the citation and what kind of link it is (`References` = "uses this dataset"; `IsDerivedFrom` / `IsIdenticalTo` / `IsVersionOf` = "related work via the dataset's own DOI graph").
+
+## Deploy targets
+- `dashboard.nemar.org/citations/` — Cloudflare Pages project `nemar-dashboard`. Canonical citation surface. Deployed from `.github/workflows/update_citations.yml` (and `deploy-dashboard.yml` for manual rebuilds).
+- `nemar.org` — Cloudflare Pages project owned by `nemar/website`. Does not embed citation data today.
+- `api.nemar.org` / `data.nemar.org` — Cloudflare Worker owned by `nemar/nemar-cli/backend/`.
+
+## Fetch strategy & rate-limit posture
+Two of our upstreams have throttled us in production: GitHub (on full-catalog discovery) and Semantic Scholar (on `cited_by` lookups). Default to the NEMAR backend; treat third-party APIs as scarce.
+
+### Dataset / DOI discovery — order of preference
+1. **`api.nemar.org/datasets`** — primary. One request gets the full catalog with DOIs.
+2. **`data.nemar.org/<id>/metadata.json`** — secondary, when you need richer per-dataset metadata than the catalog row.
+3. **Local checkout** at `/Users/yahya/Documents/git/nemar/<repo>/` — development / offline.
+4. **GitHub REST** — fallback only, for legacy `ds-*` IDs not yet ingested into the D1 catalog. Use a token; respect `X-RateLimit-Remaining`.
+
+### Citation backends inside opencite — order of preference
+1. **OpenAlex** — free, no key required. Set `OPENALEX_API_KEY` to enter the politeness pool. Most reliable for `cited_by(DOI)`. Treat as primary.
+2. **PubMed** (NCBI E-utilities) — free, 3 req/s without API key, 10 with. Use for PMID anchors and biomedical-only coverage.
+3. **Semantic Scholar (S2)** — **retirement candidate.** Throttles aggressively without an enterprise key; frequent 429s broke our last full backfill. Before flipping it off:
+   - Verify OpenAlex coverage on a sample of ~20 datasets that S2 currently surfaces unique citations for.
+   - Log the diff in `.context/research.md`.
+   - Retire via opencite config (env var or backend selection), not a code fork.
+
+### Guardrails (already partly in code; keep enforced)
+- `OPENCITE_MAX_CONCURRENCY` — env var, CI sets to 1 (PR #50). Don't raise in CI without sharding.
+- Per-anchor checkpointing — persist partial progress; resume rather than refetch on retry.
+- Sharded backfill — split discovery+fetch into chunks small enough to finish inside a single GitHub Actions job (≤6h). Full catalog at concurrency=1 does **not** fit.
+- Batch git operations — don't commit per dataset; one commit per shard, one PR per run.
+- Cache the catalog response locally during a CI run; don't refetch `api.nemar.org/datasets` between steps.
+
+## Where the website is *today* vs. where this might go
+Today: `website/src/lib/data-api.ts` SSR-fetches from `data.nemar.org` and `api.nemar.org` per request; nothing pulls from `dataset_citations`. The dashboard is a standalone link.
+
+If/when citations are surfaced inside `nemar.org` per-dataset pages, the integration path is:
+1. Publish `citations/json_opencite/<id>.json` to a known CDN URL (likely behind `data.nemar.org/<id>/citations.json` via the worker, or directly to a Pages route).
+2. Add `getCitations(id)` to `website/src/lib/data-api.ts` mirroring `getMetadata()` / `getManifest()`.
+3. Render a per-dataset panel that splits citations by `source_relation` (uses vs related).
+4. Schema gate via `metadata.schema_version`.
+
+The reverse direction — the website **producing** anything we consume — is not currently in scope.
