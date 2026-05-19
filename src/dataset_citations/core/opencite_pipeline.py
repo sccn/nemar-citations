@@ -21,7 +21,7 @@ from __future__ import annotations
 
 import logging
 from datetime import datetime, timezone
-from typing import Any, cast
+from typing import Any
 
 from dataset_citations.backends import OpenCiteBackend
 from dataset_citations.core.checkpoint import (
@@ -118,7 +118,7 @@ def fetch_dataset_citations_via_opencite(
     if not refs:
         return _stub_payload(dataset_id, when, fetch_status="no_doi_references")
 
-    pending_refs, checkpointed_works, prior_errors = _split_against_checkpoint(
+    pending_refs, checkpointed_works = _split_against_checkpoint(
         refs, store, dataset_id
     )
 
@@ -133,7 +133,7 @@ def fetch_dataset_citations_via_opencite(
                 store.record_anchor(dataset_id, ref.identifier, outcome, when=when)
 
     citing_works, per_anchor_errors = _flatten_batch(
-        batch, prior_works=checkpointed_works, prior_errors=prior_errors
+        batch, prior_works=checkpointed_works
     )
 
     if not citing_works and per_anchor_errors:
@@ -199,7 +199,7 @@ def _merge_anchors(
                 identifier=normalized,
                 identifier_type="doi",
                 relation_type="References",
-                source=cast(Any, "nemar_catalog"),
+                source="nemar_catalog",
                 source_field="catalog_doi",
             )
 
@@ -210,19 +210,21 @@ def _split_against_checkpoint(
     refs: list[DoiReference],
     store: CheckpointStore | None,
     dataset_id: str,
-) -> tuple[list[DoiReference], list[CitingWork], dict[str, str]]:
-    """Partition anchors into (to-fetch, already-fetched-works, prior-errors).
+) -> tuple[list[DoiReference], list[CitingWork]]:
+    """Partition anchors into (to-fetch, already-fetched-works).
 
     A checkpoint hit with status="success" yields its works directly; any
-    other status (or a miss) puts the anchor in the to-fetch bucket.
+    other status (including a miss) puts the anchor in the to-fetch bucket
+    so the backend retries it on this run. Prior non-success outcomes are
+    intentionally not surfaced as `errors` here: the current run will
+    re-attempt those anchors and the fresh outcome takes precedence.
     """
     if store is None:
-        return list(refs), [], {}
+        return list(refs), []
 
     checkpoint = store.load(dataset_id)
     pending: list[DoiReference] = []
     prior_works: list[CitingWork] = []
-    prior_errors: dict[str, str] = {}
 
     for ref in refs:
         if checkpoint.is_success(ref.identifier):
@@ -238,23 +240,25 @@ def _split_against_checkpoint(
             sum(1 for r in refs if checkpoint.is_success(r.identifier)),
         )
 
-    return pending, prior_works, prior_errors
+    return pending, prior_works
 
 
 def _flatten_batch(
     batch: dict[str, Any],
     *,
     prior_works: list[CitingWork] | None = None,
-    prior_errors: dict[str, str] | None = None,
 ) -> tuple[list[CitingWork], dict[str, str]]:
     """Dedupe citing works across all anchors; return (works, per-anchor errors).
 
-    `prior_works` and `prior_errors` carry results from previous checkpoint
-    hits and are merged with the fresh batch's outcome.
+    `prior_works` carries successful results from previous checkpoint hits
+    and is merged into the dedupe set before the fresh batch is consumed.
+    Errors come exclusively from the current run; checkpoint-resident errors
+    are not surfaced (the corresponding anchors are re-fetched and produce
+    a fresh outcome that lands here).
     """
     seen: set[tuple[str, str]] = set()
     works: list[CitingWork] = []
-    errors: dict[str, str] = dict(prior_errors or {})
+    errors: dict[str, str] = {}
 
     for work in prior_works or []:
         key = ((work.doi or "").lower(), _normalize_title(work.title))

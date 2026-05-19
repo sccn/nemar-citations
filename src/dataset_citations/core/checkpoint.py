@@ -92,14 +92,30 @@ class CheckpointStore:
         return _deserialize(payload, dataset_id)
 
     def save(self, checkpoint: Checkpoint) -> None:
-        """Persist the full checkpoint atomically (write to tmp, rename)."""
+        """Persist the full checkpoint atomically (write to tmp, rename).
+
+        Not safe for concurrent writers on the same dataset; the pipeline
+        currently calls `record_anchor` sequentially. If `write_text` or
+        `replace` raises (disk full, permission denied), the tmp file is
+        removed so a partial write doesn't accumulate on disk across runs.
+        """
         path = self.path_for(checkpoint.dataset_id)
         path.parent.mkdir(parents=True, exist_ok=True)
         tmp_path = path.with_suffix(".json.tmp")
-        tmp_path.write_text(
-            json.dumps(_serialize(checkpoint), indent=2, ensure_ascii=False)
-        )
-        tmp_path.replace(path)
+        try:
+            tmp_path.write_text(
+                json.dumps(_serialize(checkpoint), indent=2, ensure_ascii=False)
+            )
+            tmp_path.replace(path)
+        except OSError:
+            if tmp_path.exists():
+                try:
+                    tmp_path.unlink()
+                except OSError:
+                    logger.warning(
+                        "could not clean up partial checkpoint tmp %s", tmp_path
+                    )
+            raise
 
     def record_anchor(
         self,

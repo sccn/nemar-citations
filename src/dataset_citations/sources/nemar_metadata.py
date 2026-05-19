@@ -81,19 +81,24 @@ class NemarMetadataSource:
         Order of attempts:
           1. `data.nemar.org/<id>/metadata.json` (unless `prefer_data_api=False`).
           2. GitHub git tree on `<org>/<dataset_id>/.nemar/metadata.json`.
-        A 404 from path 1 triggers fallback to path 2. Other errors short-circuit.
+        Transient or absence-style errors from path 1 (not_found, rate_limit,
+        network) fall back to path 2 so a 30-second worker blip doesn't drop
+        every dataset in the window. Parse errors and unclassified failures
+        short-circuit so the operator can investigate a malformed payload.
         """
         if self.prefer_data_api:
             data_api_result = self._fetch_from_data_api(dataset_id)
             if isinstance(data_api_result, FetchSuccess):
                 return FetchSuccess(parse_nemar_metadata(data_api_result.value))
-            if data_api_result.reason != "not_found":
-                # Network or parse errors should not silently fall back to GitHub;
+            if data_api_result.reason not in {"not_found", "rate_limit", "network"}:
+                # Parse / auth / unknown errors should not silently fall back;
                 # surface them so the operator can investigate.
                 return data_api_result
             logger.info(
-                "data.nemar.org has no metadata.json for %s; falling back to GitHub",
+                "data.nemar.org %s for %s (%s); falling back to GitHub",
+                data_api_result.reason,
                 dataset_id,
+                data_api_result.detail,
             )
         return self._fetch_from_github(dataset_id, org)
 
