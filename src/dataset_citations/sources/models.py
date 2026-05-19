@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Callable, Generic, Literal, Never, TypeVar
 
 IdentifierType = Literal["doi", "pmid", "arxiv"]
-SourceKind = Literal["nemar_metadata", "openneuro_description"]
+SourceKind = Literal["nemar_metadata", "openneuro_description", "nemar_catalog"]
 RelationType = Literal["References", "IsDerivedFrom", "IsIdenticalTo", "IsVersionOf"]
 FetchErrorReason = Literal[
     "not_found", "auth", "network", "parse", "rate_limit", "other"
