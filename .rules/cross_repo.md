@@ -62,10 +62,11 @@ Two of our upstreams have throttled us in production: GitHub (on full-catalog di
 ### Citation backends inside opencite — order of preference
 1. **OpenAlex** — free, no key required. Set `OPENALEX_API_KEY` to enter the politeness pool. Most reliable for `cited_by(DOI)`. Treat as primary.
 2. **PubMed** (NCBI E-utilities) — free, 3 req/s without API key, 10 with. Use for PMID anchors and biomedical-only coverage.
-3. **Semantic Scholar (S2)** — **retirement candidate.** Throttles aggressively without an enterprise key; frequent 429s broke our last full backfill. Before flipping it off:
-   - Verify OpenAlex coverage on a sample of ~20 datasets that S2 currently surfaces unique citations for.
-   - Log the diff in `.context/research.md`.
-   - Retire via opencite config (env var or backend selection), not a code fork.
+3. **Semantic Scholar (S2)** — **retained, but routed selectively.** The May 2026 probe (`.context/research/s2_vs_openalex_2026-05-19.json`) showed S2 contributes 9.71% unique coverage on mainstream journals (Nature, Scientific Data, PLOS ONE, JOSS, Elsevier, MDPI); retiring it would lose those. To stop S2 from burning rate budget on DOI families it never indexes, the backend skips S2 entirely for anchors matching `S2_SKIP_PREFIXES` in `src/dataset_citations/backends/opencite_backend.py`:
+   - `10.82901/nemar.*` — NEMAR-minted DOIs (too new for S2)
+   - `10.5281/zenodo.*` — Zenodo data records (not papers)
+   - `10.13026/*` — PhysioNet data records
+   Those anchors are routed through OpenAlex directly via `OpenAlexClient.lookup_doi -> citing_papers`. Widen the prefix list (with probe evidence) rather than disabling S2 globally.
 
 ### Guardrails (already partly in code; keep enforced)
 - `OPENCITE_MAX_CONCURRENCY` — env var, CI sets to 1 (PR #50). Don't raise in CI without sharding.
