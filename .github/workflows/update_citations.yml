@@ -128,10 +128,17 @@ jobs:
       - name: Discover relevant datasets
         id: discover
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Or a specific PAT if needed
+          # GITHUB_TOKEN is only used by the legacy --source github fallback;
+          # the default --source catalog path is unauthenticated against
+          # api.nemar.org/datasets.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "Discovering relevant datasets..."
-          uv run dataset-citations-discover --output-file discovered_datasets.txt
+          echo "Discovering relevant datasets via api.nemar.org/datasets..."
+          # --source catalog: one paginated call to the NEMAR D1 catalog,
+          # no GitHub rate-limit pressure. Per #51.
+          uv run dataset-citations-discover \
+            --source catalog \
+            --output-file discovered_datasets.txt
           echo "dataset_list_file=discovered_datasets.txt" >> $GITHUB_OUTPUT
 
       - name: Update citation information
