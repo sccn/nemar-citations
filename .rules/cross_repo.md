@@ -70,6 +70,7 @@ Two of our upstreams have throttled us in production: GitHub (on full-catalog di
 
 ### Guardrails (already partly in code; keep enforced)
 - `OPENCITE_MAX_CONCURRENCY` — env var, CI sets to 1 (PR #50). Don't raise in CI without sharding.
+- `OPENCITE_MAX_RETRIES` — env var, CI sets to 1 (down from opencite's default 3). The retry budget was the main contributor to the May 2026 6h timeout; with the S2 prefix filter (#59) eliminating the worst 429 sources, one attempt is enough. Local dev keeps the default 3 for single-dataset debugging.
 - Per-anchor checkpointing — persist partial progress; resume rather than refetch on retry.
 - Sharded backfill — split discovery+fetch into chunks small enough to finish inside a single GitHub Actions job (≤6h). Full catalog at concurrency=1 does **not** fit.
 - Batch git operations — don't commit per dataset; one commit per shard, one PR per run.

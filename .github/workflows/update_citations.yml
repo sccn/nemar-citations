@@ -149,6 +149,14 @@ jobs:
           # for the HBN family). Concurrency=4 (the in-code default) bursts
           # the same seed lookup multiple times and 429s. Tracked in #49.
           OPENCITE_CONCURRENCY: "1"
+          # Per #60: drop opencite's per-request retry budget from the
+          # 3-attempt default to 1 in CI. Combined with the S2 prefix
+          # filter (#59), the per-anchor checkpoint (#52), and the
+          # catalog-first discovery (#51), this is what makes the full
+          # ~594-dataset backfill fit inside a single 6h Actions job.
+          # Local development still uses the in-code default (3) for
+          # easier debugging of a single dataset.
+          OPENCITE_MAX_RETRIES: "1"
         run: |
           uv run dataset-citations-update \
             --dataset-list-file ${{ steps.discover.outputs.dataset_list_file }} \
