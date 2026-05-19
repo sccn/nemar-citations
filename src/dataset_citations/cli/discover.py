@@ -385,9 +385,16 @@ def main() -> None:
             save_lookup_table(lookup_df, LOOKUP_TABLE_PATH)
 
     if args.source == "both":
-        already_covered = set(catalog_rows_by_source_id.keys())
+        # GitHub-discovered names are dropped if (a) their string ID matches a
+        # catalog source_id (openneuro ds-* mirrored as on-* in the catalog),
+        # or (b) their string ID matches a catalog dataset_id directly (when
+        # GitHub happens to list a repo named identically to a NEMAR-native
+        # nm-* row). Both checks keep the merge stable across either kind of
+        # collision.
+        catalog_name_set = set(catalog_names)
+        already_covered = set(catalog_rows_by_source_id.keys()) | catalog_name_set
         github_only = [name for name in github_names if name not in already_covered]
-        merged = sorted(set(catalog_names) | set(github_only))
+        merged = sorted(catalog_name_set | set(github_only))
         logger.info(
             "Merged discovery: %d catalog + %d github-only = %d total",
             len(catalog_names),

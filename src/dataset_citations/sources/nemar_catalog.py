@@ -146,7 +146,14 @@ def fetch_catalog(
             len(rows),
         )
 
-        if count < page_size:
+        # Terminate on the actual page length rather than the reported count.
+        # When `total_count` is an exact multiple of `page_size`, the API
+        # serves a full final page and only an extra empty request would
+        # signal the end via `count=0`; checking len(page) avoids that
+        # wasted round-trip.
+        if len(page) < page_size:
+            break
+        if isinstance(total, int) and len(rows) >= total:
             break
         offset += page_size
 
