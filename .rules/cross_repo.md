@@ -18,7 +18,8 @@ Each NEMAR-managed dataset repo (`github.com/nemarDatasets/<id>/`) carries `.nem
 **DOI-bearing fields we consume:**
 - `related_identifiers[]` — array of `{ identifier, identifier_type, relation_type }`.
   - `identifier_type` accepted: `"DOI"` only (PMID / arXiv / URL / handle are skipped by the parser today; widen here if you start needing them).
-  - `relation_type` accepted: `References`, `IsDerivedFrom`, `IsIdenticalTo`, `IsVersionOf` — these are the DataCite kernel-4.6 values we surface in citation JSON as `source_relation`.
+  - `relation_type` accepted: `References`, `IsDerivedFrom`, `IsIdenticalTo`, `IsVersionOf`. These are the four DataCite kernel-4.6 values we surface in citation JSON as `source_relation`. The producer (`nemar-cli`) emits a wider set — `IsDescribedBy` and `IsSupplementedBy` also appear in real payloads but are deliberately filtered out by the parser today because they point at human-navigation targets (the GitHub repo, the NEMAR landing page) rather than citation-worthy works. Note: `IsDescribedBy` entries are sometimes DOI-typed and may carry arXiv preprints; widening the parser to include them is a known gap, not an oversight to leave silent.
+- The specific relation-type mix varies per dataset. Reference dataset `nm000104` carries `IsVersionOf`, `IsIdenticalTo`, and `IsDescribedBy` in its live payload; other datasets (e.g. `nm000103`) carry `References` and `IsDerivedFrom`. Don't assume all four accepted types are present on any single dataset.
 - OpenNeuro dataset DOIs are deduplicated; do not double-count when a dataset is mirrored under multiple IDs.
 
 **When producer and consumer drift:** treat as a contract break. Open issues in both repos; do not silently widen the parser to accept fields the producer doesn't yet emit.
@@ -28,8 +29,8 @@ Public, no token required for any of these. Routes are mounted by `nemar-cli/bac
 
 | URL | Returns | Use for |
 |---|---|---|
-| `GET https://api.nemar.org/datasets` | Full catalog as `{datasets: [...]}` (~40KB, nm-* and on-* IDs) with `dataset_id`, `doi`, `concept_doi`, `source`, `source_id`, `modalities`, `participants`, `tasks`, `github_repo` | **Primary discovery source.** Replaces GitHub-API pagination of `OpenNeuroDatasets/` + `nemarDatasets/`. |
-| `GET https://api.nemar.org/datasets/:id` | Single dataset metadata + version list | Per-dataset enrichment without cloning the repo. |
+| `GET https://api.nemar.org/datasets` | Full catalog as `{datasets: [...], count, total_count, limit, offset}` (~40KB at default limit, nm-* and on-* IDs). Per-row fields: `dataset_id`, `doi`, `concept_doi`, `source`, `source_id`, `modalities`, `participants`, `tasks`, `github_repo` | **Primary discovery source.** Replaces GitHub-API pagination of `OpenNeuroDatasets/` + `nemarDatasets/`. Use `offset` + `limit` to paginate. |
+| `GET https://api.nemar.org/datasets/:id` | Single dataset wrapped as `{"dataset": {...}}` (note the wrap; not the bare row shape returned by the list endpoint), including the version list. | Per-dataset enrichment without cloning the repo. |
 | `GET https://api.nemar.org/datasets/resolve/:sourceId` | nm-ID for a given OpenNeuro `ds*` ID | Mapping legacy ds-* to NEMAR-managed nm-*. |
 | `GET https://data.nemar.org/<id>/metadata.json` | Per-dataset neuroschema doc — includes `related_identifiers[]` with `{identifier, identifier_type, relation_type}` (DataCite values: `References`, `IsDerivedFrom`, `IsIdenticalTo`, `IsVersionOf`, `IsDescribedBy`, ...) | Per-dataset metadata + citation anchors for nm-* / on-* IDs. Legacy ds-* returns 404 here, fall back to GitHub. |
 | `GET https://data.nemar.org/<id>/<version>/manifest.json` | File-level BIDS manifest with presigned S3 URLs | Generally not needed for citations; reference for context. |
@@ -42,7 +43,7 @@ Path: `citations/json_opencite/<id>_citations.json`. Schema v2 (see `AGENTS.md` 
 Downstream consumers of this artifact should treat:
 - `metadata.schema_version` as the version gate. Bump it on any breaking shape change.
 - `metadata.discovery_backend == "opencite"` as confirmation of provenance. Legacy `"scholarly"` files (under `citations/json/`) are read-only history.
-- `citation_details[].source_doi` + `source_relation` as required fields — they tell the website which DOI anchor surfaced the citation and what kind of link it is (`References` = "uses this dataset"; `IsDerivedFrom` / `IsIdenticalTo` / `IsVersionOf` = "related work via the dataset's own DOI graph").
+- `citation_details[].source_doi` + `source_relation` as required fields; they tell the website which DOI anchor surfaced the citation and what kind of link it is (`References` = "uses this dataset"; `IsDerivedFrom` / `IsIdenticalTo` / `IsVersionOf` = "related work via the dataset's own DOI graph").
 
 ## Deploy targets
 - `dashboard.nemar.org/citations/` — Cloudflare Pages project `nemar-dashboard`. Canonical citation surface. Deployed from `.github/workflows/update_citations.yml` (and `deploy-dashboard.yml` for manual rebuilds).
