@@ -17,16 +17,48 @@ import argparse
 import json
 import logging
 import os
+from pathlib import Path
 
 from dataset_citations.backends import OpenCiteBackend
 from dataset_citations.core.opencite_pipeline import (
     fetch_dataset_citations_via_opencite,
 )
+from dataset_citations.sources.models import FetchSuccess
+from dataset_citations.sources.nemar_catalog import get_or_fetch_catalog
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
+
+
+def _load_catalog_doi_map(
+    cache_path: Path | None, max_age_seconds: int
+) -> dict[str, str]:
+    """Return a {dataset_id: catalog_doi} map for catalog-indexed datasets.
+
+    The catalog is fetched from `api.nemar.org/datasets` (or reused from the
+    shared cache populated by the discover step earlier in the same workflow
+    run). DOIs are normalized to lowercase to match the opencite anchor
+    convention. Empty / missing entries are omitted: a missing catalog DOI
+    is not an error; the pipeline simply doesn't seed an extra anchor for
+    that dataset.
+
+    On fetch failure we log and return an empty map rather than aborting:
+    the rest of the pipeline still produces citation JSON from the source-
+    derived anchors. The catalog DOI is purely additive.
+    """
+    result = get_or_fetch_catalog(
+        cache_path=cache_path, max_age_seconds=max_age_seconds
+    )
+    if not isinstance(result, FetchSuccess):
+        logger.warning(
+            "could not load catalog (%s): %s; proceeding without catalog DOIs",
+            result.reason,
+            result.detail,
+        )
+        return {}
+    return {row.dataset_id: row.doi.lower() for row in result.value if row.doi}
 
 
 def run_opencite_backend(args: argparse.Namespace) -> None:
@@ -57,11 +89,20 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
     except ValueError:
         concurrency = 4
     backend = OpenCiteBackend(concurrency=concurrency)
+
+    # Load the catalog once so each dataset can be seeded with its own
+    # NEMAR-minted DOI as an additional opencite anchor. The catalog cache
+    # is shared with the discover step in the same workflow run, so this
+    # is typically a no-op disk read; the explicit fetch is a safety net
+    # for when update.py is invoked outside the workflow.
+    catalog_dois = _load_catalog_doi_map(args.catalog_cache, args.catalog_cache_max_age)
     logger.info(
-        "Running opencite backend for %d dataset(s) -> %s (concurrency=%d)",
+        "Running opencite backend for %d dataset(s) -> %s "
+        "(concurrency=%d, catalog rows known=%d)",
         len(dataset_ids),
         json_dir,
         concurrency,
+        len(catalog_dois),
     )
 
     # Statuses that indicate a genuine API failure rather than legitimately
@@ -81,7 +122,12 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
     write_failures = 0
     api_failures = 0
     for dataset_id in dataset_ids:
-        payload = fetch_dataset_citations_via_opencite(dataset_id, backend=backend)
+        payload = fetch_dataset_citations_via_opencite(
+            dataset_id,
+            backend=backend,
+            catalog_doi=catalog_dois.get(dataset_id),
+            use_checkpoint=True,
+        )
         filepath = os.path.join(json_dir, f"{dataset_id}_citations.json")
         try:
             with open(filepath, "w", encoding="utf-8") as f:
@@ -138,6 +184,22 @@ def main():
         "--output-dir",
         default="citations",
         help="Directory to save output files (default: citations/).",
+    )
+    parser.add_argument(
+        "--catalog-cache",
+        type=Path,
+        default=Path.home() / ".cache" / "dataset_citations" / "catalog.json",
+        help=(
+            "Path to a cached api.nemar.org/datasets response. Shared with "
+            "dataset-citations-discover so the catalog is fetched once per "
+            "workflow run."
+        ),
+    )
+    parser.add_argument(
+        "--catalog-cache-max-age",
+        type=int,
+        default=3600,
+        help="Seconds before the catalog cache is considered stale (default: 3600).",
     )
 
     args = parser.parse_args()

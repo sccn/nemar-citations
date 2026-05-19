@@ -6,6 +6,7 @@ matching the project's "no Mock objects" rule.
 
 from __future__ import annotations
 
+import argparse
 import io
 import json
 import sys
@@ -15,6 +16,46 @@ from pathlib import Path
 from unittest import TestCase
 
 from dataset_citations.cli import update as cli_update
+
+
+def _make_args(
+    list_file: Path,
+    out_dir: str,
+    *,
+    catalog_doi_map: dict[str, str] | None = None,
+) -> argparse.Namespace:
+    """Build the argparse.Namespace `run_opencite_backend` expects.
+
+    Writes an empty catalog cache so `_load_catalog_doi_map` returns an
+    empty map without hitting the network. Pass `catalog_doi_map` to
+    inject a non-empty mapping for tests that exercise catalog-DOI
+    seeding.
+    """
+    cache_path = Path(out_dir) / "catalog.json"
+    if catalog_doi_map:
+        rows = [
+            {
+                "dataset_id": did,
+                "doi": doi,
+                "concept_doi": doi,
+                "source": "openneuro" if did.startswith(("ds", "on")) else "nemar",
+                "source_id": None,
+                "github_repo": f"nemarDatasets/{did}",
+                "modalities": "eeg",
+                "name": None,
+                "visibility": "public",
+            }
+            for did, doi in catalog_doi_map.items()
+        ]
+        cache_path.write_text(json.dumps(rows))
+    else:
+        cache_path.write_text("[]")
+    return argparse.Namespace(
+        dataset_list_file=str(list_file),
+        output_dir=out_dir,
+        catalog_cache=cache_path,
+        catalog_cache_max_age=3600,
+    )
 
 
 class CliParserTests(TestCase):
@@ -74,15 +115,10 @@ class RunOpenciteBackendTests(TestCase):
     """Direct tests for run_opencite_backend's write/dispatch behavior."""
 
     def test_unsupported_prefix_still_writes_stub(self) -> None:
-        import argparse
-
         with tempfile.TemporaryDirectory() as out_dir:
             list_file = Path(out_dir) / "list.txt"
             list_file.write_text("xx123\n")
-            args = argparse.Namespace(
-                dataset_list_file=str(list_file),
-                output_dir=out_dir,
-            )
+            args = _make_args(list_file, out_dir)
             cli_update.run_opencite_backend(args)
             stub = Path(out_dir) / "json_opencite" / "xx123_citations.json"
             self.assertTrue(stub.exists())
@@ -99,8 +135,6 @@ class RunOpenciteBackendTests(TestCase):
         proceed silently and downstream steps would regenerate empty CSVs.
         Substitute the pipeline call with a recording function via setattr.
         """
-        import argparse
-
         from dataset_citations.cli import update as cli_module
 
         with tempfile.TemporaryDirectory() as out_dir:
@@ -122,10 +156,7 @@ class RunOpenciteBackendTests(TestCase):
 
             original = cli_module.fetch_dataset_citations_via_opencite
             cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
-            args = argparse.Namespace(
-                dataset_list_file=str(list_file),
-                output_dir=out_dir,
-            )
+            args = _make_args(list_file, out_dir)
             try:
                 with self.assertRaises(SystemExit) as ctx:
                     cli_update.run_opencite_backend(args)
@@ -137,8 +168,6 @@ class RunOpenciteBackendTests(TestCase):
         """A run where every dataset legitimately has no DOI references
         should NOT exit non-zero; that's a normal outcome (e.g., new nm
         datasets without metadata.json yet)."""
-        import argparse
-
         from dataset_citations.cli import update as cli_module
 
         with tempfile.TemporaryDirectory() as out_dir:
@@ -160,10 +189,7 @@ class RunOpenciteBackendTests(TestCase):
 
             original = cli_module.fetch_dataset_citations_via_opencite
             cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
-            args = argparse.Namespace(
-                dataset_list_file=str(list_file),
-                output_dir=out_dir,
-            )
+            args = _make_args(list_file, out_dir)
             try:
                 # Should return normally, no SystemExit.
                 cli_update.run_opencite_backend(args)
@@ -177,7 +203,6 @@ class RunOpenciteBackendTests(TestCase):
         read-only after run_opencite_backend creates it. We re-enter the
         function with the directory already in place but non-writable.
         """
-        import argparse
         import os
         import stat
 
@@ -190,10 +215,7 @@ class RunOpenciteBackendTests(TestCase):
             json_dir = Path(out_dir) / "json_opencite"
             json_dir.mkdir()
             os.chmod(json_dir, stat.S_IRUSR | stat.S_IXUSR)
-            args = argparse.Namespace(
-                dataset_list_file=str(list_file),
-                output_dir=out_dir,
-            )
+            args = _make_args(list_file, out_dir)
             try:
                 with self.assertRaises(SystemExit) as ctx:
                     cli_update.run_opencite_backend(args)
@@ -201,3 +223,52 @@ class RunOpenciteBackendTests(TestCase):
             finally:
                 # Restore write perm so tempfile cleanup works.
                 os.chmod(json_dir, stat.S_IRWXU)
+
+
+class CatalogDoiWiringTests(TestCase):
+    """run_opencite_backend forwards catalog_doi + use_checkpoint=True to
+    the pipeline. Substitutes the pipeline call to record arguments."""
+
+    def test_catalog_doi_and_checkpoint_forwarded(self) -> None:
+        from dataset_citations.cli import update as cli_module
+
+        with tempfile.TemporaryDirectory() as out_dir:
+            list_file = Path(out_dir) / "list.txt"
+            list_file.write_text("nm000104\nnm000999\n")
+
+            captured: list[dict] = []
+
+            def stub_pipeline(dataset_id, **kwargs):
+                captured.append({"dataset_id": dataset_id, **kwargs})
+                return {
+                    "dataset_id": dataset_id,
+                    "num_citations": 0,
+                    "date_last_updated": "2026-01-01T00:00:00",
+                    "metadata": {
+                        "schema_version": "2.0",
+                        "discovery_backend": "opencite",
+                        "fetch_status": "no_doi_references",
+                    },
+                    "citation_details": [],
+                }
+
+            original = cli_module.fetch_dataset_citations_via_opencite
+            cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
+            args = _make_args(
+                list_file,
+                out_dir,
+                catalog_doi_map={"nm000104": "10.82901/nemar.nm000104"},
+            )
+            try:
+                cli_update.run_opencite_backend(args)
+            finally:
+                cli_module.fetch_dataset_citations_via_opencite = original  # type: ignore[assignment]
+
+            self.assertEqual(len(captured), 2)
+            # nm000104 was in the catalog -> catalog_doi forwarded.
+            self.assertEqual(captured[0]["catalog_doi"], "10.82901/nemar.nm000104")
+            # nm000999 was NOT in the catalog -> catalog_doi=None.
+            self.assertIsNone(captured[1]["catalog_doi"])
+            # Both calls opt in to checkpoint resume.
+            self.assertTrue(captured[0]["use_checkpoint"])
+            self.assertTrue(captured[1]["use_checkpoint"])
