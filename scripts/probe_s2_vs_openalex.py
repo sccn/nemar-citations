@@ -142,14 +142,21 @@ async def _run(
 
     elapsed = time.time() - started
 
-    # Aggregate
+    # Aggregate. All five totals are computed in the same domain (the set of
+    # citing-paper DOIs returned by each path) so they reconcile: combined ==
+    # overlap + s2_unique, openalex_only == overlap + openalex_unique. Papers
+    # without a DOI returned by either backend are necessarily dropped here
+    # because they can't be cross-matched between paths.
     total_combined = 0
     total_oa_only = 0
+    total_combined_raw = 0
+    total_oa_only_raw = 0
     total_overlap = 0
     total_s2_unique = 0
     total_oa_unique = 0
     errors = 0
     no_openalex_id = 0
+    truncated_dois = 0
     for rec in per_doi.values():
         oa = rec["openalex_only"]
         comb = rec["combined"]
@@ -160,11 +167,15 @@ async def _run(
             errors += 1
             continue
         diff = rec["diff"]
-        total_combined += comb["count"]
-        total_oa_only += oa["count"]
+        total_combined += len(set(comb["dois"]))
+        total_oa_only += len(set(oa["dois"]))
+        total_combined_raw += comb["count"]
+        total_oa_only_raw += oa["count"]
         total_overlap += diff["overlap_count"]
         total_s2_unique += diff["s2_only_count"]
         total_oa_unique += diff["openalex_only_unique_count"]
+        if comb["count"] >= max_results or oa["count"] >= max_results:
+            truncated_dois += 1
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -174,9 +185,10 @@ async def _run(
         "unique_dois": len(unique_dois),
         "no_openalex_id": no_openalex_id,
         "errors": errors,
+        "truncated_dois": truncated_dois,
         "totals": {
-            "combined_papers": total_combined,
-            "openalex_only_papers": total_oa_only,
+            "combined_dois": total_combined,
+            "openalex_only_dois": total_oa_only,
             "overlap_dois": total_overlap,
             "s2_unique_dois": total_s2_unique,
             "openalex_unique_dois": total_oa_unique,
@@ -184,6 +196,13 @@ async def _run(
                 round(100.0 * total_s2_unique / total_combined, 2)
                 if total_combined
                 else 0.0
+            ),
+            "combined_papers_raw": total_combined_raw,
+            "openalex_only_papers_raw": total_oa_only_raw,
+            "_raw_vs_doi_note": (
+                "*_papers_raw counts include results without a usable DOI "
+                "(can't be cross-matched). *_dois counts are the DOI-set "
+                "domain used for diff arithmetic. These should not be mixed."
             ),
         },
         "per_doi": per_doi,
@@ -244,12 +263,17 @@ def main() -> int:
     print(f"unique DOIs probed: {report['unique_dois']}")
     print(f"unresolved in OpenAlex: {report['no_openalex_id']}")
     print(f"errors: {report['errors']}")
-    print(f"combined total citing papers: {totals['combined_papers']}")
-    print(f"openalex-only total: {totals['openalex_only_papers']}")
-    print(f"overlap (DOI matched on both): {totals['overlap_dois']}")
+    print(f"DOIs at max_results truncation: {report['truncated_dois']}")
+    print(f"combined DOIs (set domain): {totals['combined_dois']}")
+    print(f"openalex-only DOIs (set domain): {totals['openalex_only_dois']}")
+    print(f"overlap: {totals['overlap_dois']}")
     print(f"S2-unique (in combined but not OA-only): {totals['s2_unique_dois']}")
     print(f"OA-unique (in OA-only but not combined): {totals['openalex_unique_dois']}")
     print(f"S2-unique % of combined: {totals['s2_unique_pct_of_combined']}%")
+    print(
+        f"(raw paper counts including no-DOI: combined={totals['combined_papers_raw']}, "
+        f"openalex_only={totals['openalex_only_papers_raw']})"
+    )
     return 0
 
 

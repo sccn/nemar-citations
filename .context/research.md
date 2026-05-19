@@ -139,18 +139,27 @@ Per-anchor diff is computed by normalized citing-paper DOI. `max_results=100` pe
 
 ## Aggregate result
 
+All counts below are in the DOI-set domain (papers identified by normalized DOI). Citing-paper records without a usable DOI are dropped by both sides because they cannot be cross-matched; raw paper counts including DOI-less records are reported separately at the bottom of the table.
+
 | Metric | Value |
 |---|---:|
 | Unique DOIs probed | 30 |
 | Unresolved in OpenAlex | 0 |
-| Total citing papers (combined) | 1278 |
-| Total citing papers (OpenAlex-only) | 1199 |
-| Overlap (DOI matched on both sides) | 1116 |
-| **S2-unique (in combined but not OA-only)** | **120** |
-| OpenAlex-unique (in OA-only but not combined) | 76 |
-| **S2-unique as % of combined** | **9.39%** |
+| DOIs at `max_results=100` truncation (either path) | 9 |
+| Combined citing-paper DOIs | 1236 |
+| OpenAlex-only citing-paper DOIs | 1192 |
+| Overlap | 1116 |
+| **S2-unique (in combined, not in OA-only)** | **120** |
+| OpenAlex-unique (in OA-only, not in combined) | 76 |
+| **S2-unique as % of combined** | **9.71%** |
 | DOIs where S2 adds >=1 paper | 13 / 30 (43%) |
 | DOIs where S2 adds >=5 papers | 8 / 30 (27%) |
+| Raw citing papers, combined (DOI-less included) | 1278 |
+| Raw citing papers, OpenAlex-only (DOI-less included) | 1199 |
+
+The first three counts reconcile: `1236 = 1116 + 120` and `1192 = 1116 + 76`.
+
+**Truncation caveat.** Nine DOIs hit the per-call `max_results=100` ceiling on at least one path. For those, part of the per-DOI diff reflects which 100 papers each backend returned first, not a real index gap. The 9.71% figure is therefore an upper bound on S2's unique contribution; the true coverage gain is likely lower. The DOIs most affected are high-citation methodology papers (e.g. `10.21105/joss.01896`, `10.3390/data4010014`).
 
 ## Where S2 helps and where it doesn't
 
