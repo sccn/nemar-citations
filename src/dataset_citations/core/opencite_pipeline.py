@@ -63,7 +63,9 @@ def fetch_dataset_citations_via_opencite(
     when = fetch_date or datetime.now(timezone.utc)
     backend = backend or OpenCiteBackend()
 
-    if dataset_id.startswith("nm"):
+    if dataset_id.startswith("nm") or dataset_id.startswith("on"):
+        # nm-* = NEMAR-native; on-* = OpenNeuro imported into NEMAR. Both carry
+        # .nemar/metadata.json so the same source handles them.
         source: Any = nemar_source or NemarMetadataSource(github_token=github_token)
     elif dataset_id.startswith("ds"):
         source = bids_source or BidsMetadataSource(github_token=github_token)
