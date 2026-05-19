@@ -5,6 +5,13 @@ block. We honor a fixed allow-list of `relation_type` values that map to
 "citations of related work belong to this dataset" semantics: References,
 IsDerivedFrom, IsIdenticalTo, IsVersionOf. We skip URL-typed identifiers
 (they exist for human navigation, not literature lookup).
+
+Two fetch paths are supported. The default path GETs
+`https://data.nemar.org/<id>/metadata.json`, which is the same neuroschema
+document served from the worker without authentication or GitHub rate-limit
+pressure. The legacy path pulls the file from `nemarDatasets/<id>/.nemar/metadata.json`
+via the GitHub API and is retained as a fallback for IDs not yet covered
+by the data.nemar.org route.
 """
 
 from __future__ import annotations
@@ -13,6 +20,7 @@ import json
 import logging
 from typing import Any, cast, get_args
 
+import requests
 from github import Github
 from github.GithubException import GithubException
 
@@ -33,13 +41,32 @@ logger = logging.getLogger(__name__)
 
 _CITATION_RELATIONS: frozenset[RelationType] = frozenset(get_args(RelationType))
 
+DEFAULT_DATA_API_BASE = "https://data.nemar.org"
+DEFAULT_DATA_API_TIMEOUT = 15.0
+
 
 class NemarMetadataSource:
-    """Reads `.nemar/metadata.json` from a nemarDatasets repo and returns the
-    DOI references suitable for opencite lookup."""
+    """Reads `.nemar/metadata.json` and returns DOI references for opencite.
 
-    def __init__(self, github_token: str | None = None) -> None:
+    The default fetch path uses `data.nemar.org/<id>/metadata.json`. If
+    that returns 404, the source falls back to the GitHub git-tree read
+    on `nemarDatasets/<id>/.nemar/metadata.json`. Set `prefer_data_api=False`
+    to skip the data API entirely (useful for offline development and the
+    test environment).
+    """
+
+    def __init__(
+        self,
+        github_token: str | None = None,
+        *,
+        prefer_data_api: bool = True,
+        data_api_base: str = DEFAULT_DATA_API_BASE,
+        data_api_timeout: float = DEFAULT_DATA_API_TIMEOUT,
+    ) -> None:
         self.github = Github(github_token) if github_token else Github()
+        self.prefer_data_api = prefer_data_api
+        self.data_api_base = data_api_base.rstrip("/")
+        self.data_api_timeout = data_api_timeout
 
     def get_doi_references(
         self, dataset_id: str, org: str = "nemarDatasets"
@@ -49,8 +76,55 @@ class NemarMetadataSource:
         Empty success (`FetchSuccess([])`) means the metadata file was parsed
         but contained no DOI-typed related_identifiers in our allow-list.
         That is distinct from `FetchError("not_found", ...)` (no metadata
-        file).
+        file via either route).
+
+        Order of attempts:
+          1. `data.nemar.org/<id>/metadata.json` (unless `prefer_data_api=False`).
+          2. GitHub git tree on `<org>/<dataset_id>/.nemar/metadata.json`.
+        A 404 from path 1 triggers fallback to path 2. Other errors short-circuit.
         """
+        if self.prefer_data_api:
+            data_api_result = self._fetch_from_data_api(dataset_id)
+            if isinstance(data_api_result, FetchSuccess):
+                return FetchSuccess(parse_nemar_metadata(data_api_result.value))
+            if data_api_result.reason != "not_found":
+                # Network or parse errors should not silently fall back to GitHub;
+                # surface them so the operator can investigate.
+                return data_api_result
+            logger.info(
+                "data.nemar.org has no metadata.json for %s; falling back to GitHub",
+                dataset_id,
+            )
+        return self._fetch_from_github(dataset_id, org)
+
+    def _fetch_from_data_api(self, dataset_id: str) -> FetchResult[dict[str, Any]]:
+        url = f"{self.data_api_base}/{dataset_id}/metadata.json"
+        try:
+            response = requests.get(url, timeout=self.data_api_timeout)
+        except requests.exceptions.RequestException as exc:
+            return FetchError("network", f"GET {url}: {exc}")
+
+        if response.status_code == 404:
+            return FetchError("not_found", f"{url} returned 404")
+        if response.status_code == 429:
+            return FetchError("rate_limit", f"{url} returned 429")
+        if response.status_code != 200:
+            return FetchError(
+                "other",
+                f"GET {url}: HTTP {response.status_code} {response.text[:200]}",
+            )
+
+        try:
+            payload = response.json()
+        except ValueError as exc:
+            return FetchError("parse", f"invalid JSON from {url}: {exc}")
+        if not isinstance(payload, dict):
+            return FetchError("parse", f"{url} root is not an object")
+        return FetchSuccess(payload)
+
+    def _fetch_from_github(
+        self, dataset_id: str, org: str
+    ) -> FetchResult[list[DoiReference]]:
         try:
             repo = self.github.get_repo(f"{org}/{dataset_id}")
         except GithubException as e:
