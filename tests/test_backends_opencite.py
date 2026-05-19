@@ -161,12 +161,17 @@ class OpenAlexOnlyPathIntegration(TestCase):
 
     def test_zenodo_doi_resolves_via_openalex(self) -> None:
         # 10.5281/zenodo.* is in S2_SKIP_PREFIXES; the matcher diverts this
-        # to the OpenAlex-only path. We just need a result without crashing.
+        # to the OpenAlex-only path. Asserting on the result type proves the
+        # backend completed the round-trip without crashing (the bypass took
+        # the right branch). Either FetchSuccess or a typed FetchError is
+        # acceptable since OpenAlex's catalog may or may not cover the DOI.
         backend = OpenCiteBackend(max_results_per_doi=5)
-        # Use a Zenodo DOI we know is in OpenAlex; if OpenAlex returns
-        # not_found we still pass (the bypass took the right branch).
         ref = _ref("10.5281/zenodo.17287903")
         result = backend.get_citing_works(ref)
-        self.assertIsNotNone(result)
-        # Either success (works list, possibly empty) or a typed FetchError.
-        self.assertIn(getattr(result, "ok", None), (True, False))
+        self.assertIsInstance(result, (FetchSuccess, FetchError))
+        if isinstance(result, FetchSuccess):
+            # Works list may be empty (Zenodo data records rarely have OA
+            # citers), but the type contract must hold.
+            for work in result.value:
+                self.assertTrue(work.title)
+                self.assertEqual(work.source_doi, ref.identifier)

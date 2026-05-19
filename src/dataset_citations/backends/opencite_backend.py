@@ -103,7 +103,11 @@ class OpenCiteBackend:
         ):
             # opencite's `__aenter__` returns the BaseClient bound; narrow
             # back to OpenAlexClient so the method signature stays specific.
-            assert isinstance(openalex_base, OpenAlexClient)
+            assert isinstance(openalex_base, OpenAlexClient), (
+                "opencite changed OpenAlexClient.__aenter__ return type; "
+                "expected an OpenAlexClient bound, got "
+                f"{type(openalex_base).__name__}"
+            )
             openalex = openalex_base
 
             async def run_one(ref: DoiReference) -> FetchResult[list[CitingWork]]:
@@ -175,7 +179,7 @@ class OpenCiteBackend:
         except Exception as exc:
             return classify_error(exc, ref.identifier)
 
-        works = [_paper_to_citing_work(p, ref) for p in (cite_papers or []) if p.title]
+        works = [_paper_to_citing_work(p, ref) for p in cite_papers if p.title]
         return FetchSuccess(works)
 
 
