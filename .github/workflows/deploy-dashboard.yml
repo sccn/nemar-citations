@@ -30,17 +30,17 @@ jobs:
 
           echo "Generating theme analysis..."
           uv run python -m dataset_citations.analysis.generate_themes \
-            --citations-dir citations/json \
+            --citations-dir citations/json_opencite \
             --output-dir dashboard_data/themes || echo "Theme generation had issues"
 
           echo "Generating network analysis..."
           uv run python -m dataset_citations.analysis.generate_network \
-            --citations-dir citations/json \
+            --citations-dir citations/json_opencite \
             --output-dir dashboard_data/network || echo "Network analysis had issues"
 
           echo "Generating temporal analysis..."
           uv run python -m dataset_citations.analysis.generate_temporal \
-            --citations-dir citations/json \
+            --citations-dir citations/json_opencite \
             --output-dir dashboard_data/temporal || echo "Temporal analysis had issues"
 
           echo "Building dashboard..."
@@ -50,7 +50,7 @@ jobs:
           gen = DashboardGenerator(
               results_dir=Path('dashboard_data'),
               output_dir=Path('interactive_reports'),
-              citations_dir=Path('citations/json'),
+              citations_dir=Path('citations/json_opencite'),
           )
           output_path = gen.generate_dashboard(dashboard_type='nemar', lazy_load=True)
           print(f'Dashboard generated: {output_path}')
