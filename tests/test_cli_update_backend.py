@@ -55,6 +55,7 @@ def _make_args(
         output_dir=out_dir,
         catalog_cache=cache_path,
         catalog_cache_max_age=3600,
+        max_age_days=0,
     )
 
 
@@ -223,6 +224,143 @@ class RunOpenciteBackendTests(TestCase):
             finally:
                 # Restore write perm so tempfile cleanup works.
                 os.chmod(json_dir, stat.S_IRWXU)
+
+
+class SkipFreshSuccessTests(TestCase):
+    """run_opencite_backend skips datasets whose existing JSON is a recent
+    success. The pipeline call is patched so the test asserts on what would
+    have been re-fetched without doing any network."""
+
+    def test_fresh_success_is_skipped(self) -> None:
+        from datetime import datetime, timezone
+
+        from dataset_citations.cli import update as cli_module
+
+        with tempfile.TemporaryDirectory() as out_dir:
+            list_file = Path(out_dir) / "list.txt"
+            list_file.write_text("nm000104\n")
+
+            # Pre-create a "fresh success" JSON for nm000104.
+            json_dir = Path(out_dir) / "json_opencite"
+            json_dir.mkdir()
+            fresh_path = json_dir / "nm000104_citations.json"
+            fresh_path.write_text(
+                json.dumps(
+                    {
+                        "dataset_id": "nm000104",
+                        "num_citations": 5,
+                        "date_last_updated": datetime.now(timezone.utc).isoformat(),
+                        "metadata": {"fetch_status": "success"},
+                        "citation_details": [],
+                    }
+                )
+            )
+
+            called: list[str] = []
+
+            def stub_pipeline(dataset_id, **_):
+                called.append(dataset_id)
+                return {
+                    "dataset_id": dataset_id,
+                    "num_citations": 0,
+                    "metadata": {"fetch_status": "success"},
+                }
+
+            original = cli_module.fetch_dataset_citations_via_opencite
+            cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
+            args = _make_args(list_file, out_dir)
+            args.max_age_days = 7  # enable freshness skip
+            try:
+                cli_update.run_opencite_backend(args)
+            finally:
+                cli_module.fetch_dataset_citations_via_opencite = original  # type: ignore[assignment]
+            self.assertEqual(called, [], "skip should have prevented the call")
+
+    def test_stale_success_is_refetched(self) -> None:
+        from datetime import datetime, timedelta, timezone
+
+        from dataset_citations.cli import update as cli_module
+
+        with tempfile.TemporaryDirectory() as out_dir:
+            list_file = Path(out_dir) / "list.txt"
+            list_file.write_text("nm000104\n")
+            json_dir = Path(out_dir) / "json_opencite"
+            json_dir.mkdir()
+            stale = datetime.now(timezone.utc) - timedelta(days=30)
+            (json_dir / "nm000104_citations.json").write_text(
+                json.dumps(
+                    {
+                        "dataset_id": "nm000104",
+                        "num_citations": 5,
+                        "date_last_updated": stale.isoformat(),
+                        "metadata": {"fetch_status": "success"},
+                        "citation_details": [],
+                    }
+                )
+            )
+
+            called: list[str] = []
+
+            def stub_pipeline(dataset_id, **_):
+                called.append(dataset_id)
+                return {
+                    "dataset_id": dataset_id,
+                    "num_citations": 0,
+                    "metadata": {"fetch_status": "success"},
+                }
+
+            original = cli_module.fetch_dataset_citations_via_opencite
+            cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
+            args = _make_args(list_file, out_dir)
+            args.max_age_days = 7
+            try:
+                cli_update.run_opencite_backend(args)
+            finally:
+                cli_module.fetch_dataset_citations_via_opencite = original  # type: ignore[assignment]
+            self.assertEqual(called, ["nm000104"])
+
+    def test_prior_failure_is_refetched(self) -> None:
+        from datetime import datetime, timezone
+
+        from dataset_citations.cli import update as cli_module
+
+        with tempfile.TemporaryDirectory() as out_dir:
+            list_file = Path(out_dir) / "list.txt"
+            list_file.write_text("nm000104\n")
+            json_dir = Path(out_dir) / "json_opencite"
+            json_dir.mkdir()
+            (json_dir / "nm000104_citations.json").write_text(
+                json.dumps(
+                    {
+                        "dataset_id": "nm000104",
+                        "num_citations": 0,
+                        "date_last_updated": datetime.now(timezone.utc).isoformat(),
+                        # Fresh but not a success: prior run hit rate_limit.
+                        "metadata": {"fetch_status": "rate_limit"},
+                        "citation_details": [],
+                    }
+                )
+            )
+
+            called: list[str] = []
+
+            def stub_pipeline(dataset_id, **_):
+                called.append(dataset_id)
+                return {
+                    "dataset_id": dataset_id,
+                    "num_citations": 0,
+                    "metadata": {"fetch_status": "success"},
+                }
+
+            original = cli_module.fetch_dataset_citations_via_opencite
+            cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
+            args = _make_args(list_file, out_dir)
+            args.max_age_days = 7
+            try:
+                cli_update.run_opencite_backend(args)
+            finally:
+                cli_module.fetch_dataset_citations_via_opencite = original  # type: ignore[assignment]
+            self.assertEqual(called, ["nm000104"])
 
 
 class CatalogDoiWiringTests(TestCase):
