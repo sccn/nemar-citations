@@ -226,141 +226,123 @@ class RunOpenciteBackendTests(TestCase):
                 os.chmod(json_dir, stat.S_IRWXU)
 
 
-class SkipFreshSuccessTests(TestCase):
-    """run_opencite_backend skips datasets whose existing JSON is a recent
-    success. The pipeline call is patched so the test asserts on what would
-    have been re-fetched without doing any network."""
+class IsFreshSuccessTests(TestCase):
+    """Direct tests for the `_is_fresh_success` helper. Pure file reader,
+    no network, real JSON fixtures on disk — no stubs of any kind.
+    """
 
-    def test_fresh_success_is_skipped(self) -> None:
-        from datetime import datetime, timezone
+    def _write_json(self, path: Path, payload: dict) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(payload))
 
-        from dataset_citations.cli import update as cli_module
+    def test_returns_false_when_missing(self) -> None:
+        from dataset_citations.cli.update import _is_fresh_success
 
-        with tempfile.TemporaryDirectory() as out_dir:
-            list_file = Path(out_dir) / "list.txt"
-            list_file.write_text("nm000104\n")
-
-            # Pre-create a "fresh success" JSON for nm000104.
-            json_dir = Path(out_dir) / "json_opencite"
-            json_dir.mkdir()
-            fresh_path = json_dir / "nm000104_citations.json"
-            fresh_path.write_text(
-                json.dumps(
-                    {
-                        "dataset_id": "nm000104",
-                        "num_citations": 5,
-                        "date_last_updated": datetime.now(timezone.utc).isoformat(),
-                        "metadata": {"fetch_status": "success"},
-                        "citation_details": [],
-                    }
-                )
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertFalse(
+                _is_fresh_success(str(Path(tmp) / "absent.json"), 7 * 86400)
             )
 
-            called: list[str] = []
+    def test_returns_true_for_fresh_success(self) -> None:
+        from datetime import datetime, timezone
 
-            def stub_pipeline(dataset_id, **_):
-                called.append(dataset_id)
-                return {
-                    "dataset_id": dataset_id,
-                    "num_citations": 0,
+        from dataset_citations.cli.update import _is_fresh_success
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "nm000104_citations.json"
+            self._write_json(
+                path,
+                {
+                    "dataset_id": "nm000104",
+                    "num_citations": 5,
+                    "date_last_updated": datetime.now(timezone.utc).isoformat(),
                     "metadata": {"fetch_status": "success"},
-                }
+                },
+            )
+            self.assertTrue(_is_fresh_success(str(path), 7 * 86400))
 
-            original = cli_module.fetch_dataset_citations_via_opencite
-            cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
-            args = _make_args(list_file, out_dir)
-            args.max_age_days = 7  # enable freshness skip
-            try:
-                cli_update.run_opencite_backend(args)
-            finally:
-                cli_module.fetch_dataset_citations_via_opencite = original  # type: ignore[assignment]
-            self.assertEqual(called, [], "skip should have prevented the call")
-
-    def test_stale_success_is_refetched(self) -> None:
+    def test_returns_false_for_stale_success(self) -> None:
         from datetime import datetime, timedelta, timezone
 
-        from dataset_citations.cli import update as cli_module
+        from dataset_citations.cli.update import _is_fresh_success
 
-        with tempfile.TemporaryDirectory() as out_dir:
-            list_file = Path(out_dir) / "list.txt"
-            list_file.write_text("nm000104\n")
-            json_dir = Path(out_dir) / "json_opencite"
-            json_dir.mkdir()
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "nm000104_citations.json"
             stale = datetime.now(timezone.utc) - timedelta(days=30)
-            (json_dir / "nm000104_citations.json").write_text(
-                json.dumps(
-                    {
-                        "dataset_id": "nm000104",
-                        "num_citations": 5,
-                        "date_last_updated": stale.isoformat(),
-                        "metadata": {"fetch_status": "success"},
-                        "citation_details": [],
-                    }
-                )
-            )
-
-            called: list[str] = []
-
-            def stub_pipeline(dataset_id, **_):
-                called.append(dataset_id)
-                return {
-                    "dataset_id": dataset_id,
-                    "num_citations": 0,
+            self._write_json(
+                path,
+                {
+                    "dataset_id": "nm000104",
+                    "date_last_updated": stale.isoformat(),
                     "metadata": {"fetch_status": "success"},
-                }
+                },
+            )
+            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
 
-            original = cli_module.fetch_dataset_citations_via_opencite
-            cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
-            args = _make_args(list_file, out_dir)
-            args.max_age_days = 7
-            try:
-                cli_update.run_opencite_backend(args)
-            finally:
-                cli_module.fetch_dataset_citations_via_opencite = original  # type: ignore[assignment]
-            self.assertEqual(called, ["nm000104"])
-
-    def test_prior_failure_is_refetched(self) -> None:
+    def test_returns_false_for_non_success_status(self) -> None:
         from datetime import datetime, timezone
 
-        from dataset_citations.cli import update as cli_module
+        from dataset_citations.cli.update import _is_fresh_success
 
-        with tempfile.TemporaryDirectory() as out_dir:
-            list_file = Path(out_dir) / "list.txt"
-            list_file.write_text("nm000104\n")
-            json_dir = Path(out_dir) / "json_opencite"
-            json_dir.mkdir()
-            (json_dir / "nm000104_citations.json").write_text(
-                json.dumps(
-                    {
-                        "dataset_id": "nm000104",
-                        "num_citations": 0,
-                        "date_last_updated": datetime.now(timezone.utc).isoformat(),
-                        # Fresh but not a success: prior run hit rate_limit.
-                        "metadata": {"fetch_status": "rate_limit"},
-                        "citation_details": [],
-                    }
-                )
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "nm000104_citations.json"
+            self._write_json(
+                path,
+                {
+                    "dataset_id": "nm000104",
+                    "date_last_updated": datetime.now(timezone.utc).isoformat(),
+                    # Fresh but not a success: prior run hit rate_limit.
+                    "metadata": {"fetch_status": "rate_limit"},
+                },
             )
+            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
 
-            called: list[str] = []
+    def test_returns_false_for_malformed_json(self) -> None:
+        from dataset_citations.cli.update import _is_fresh_success
 
-            def stub_pipeline(dataset_id, **_):
-                called.append(dataset_id)
-                return {
-                    "dataset_id": dataset_id,
-                    "num_citations": 0,
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "broken.json"
+            path.write_text("not json at all")
+            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
+
+    def test_returns_false_for_missing_metadata(self) -> None:
+        from dataset_citations.cli.update import _is_fresh_success
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "headerless.json"
+            self._write_json(path, {"dataset_id": "x", "num_citations": 0})
+            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
+
+    def test_returns_false_for_unparseable_timestamp(self) -> None:
+        from dataset_citations.cli.update import _is_fresh_success
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bad_date.json"
+            self._write_json(
+                path,
+                {
+                    "date_last_updated": "not-a-real-iso-string",
                     "metadata": {"fetch_status": "success"},
-                }
+                },
+            )
+            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
 
-            original = cli_module.fetch_dataset_citations_via_opencite
-            cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
-            args = _make_args(list_file, out_dir)
-            args.max_age_days = 7
-            try:
-                cli_update.run_opencite_backend(args)
-            finally:
-                cli_module.fetch_dataset_citations_via_opencite = original  # type: ignore[assignment]
-            self.assertEqual(called, ["nm000104"])
+    def test_treats_naive_timestamp_as_utc(self) -> None:
+        from datetime import datetime, timezone
+
+        from dataset_citations.cli.update import _is_fresh_success
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "naive.json"
+            naive_now = datetime.now(timezone.utc).replace(tzinfo=None).isoformat()
+            self._write_json(
+                path,
+                {
+                    "date_last_updated": naive_now,
+                    "metadata": {"fetch_status": "success"},
+                },
+            )
+            self.assertTrue(_is_fresh_success(str(path), 7 * 86400))
 
 
 class CatalogDoiWiringTests(TestCase):

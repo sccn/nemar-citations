@@ -206,13 +206,18 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
         len(dataset_ids),
     )
     total = len(dataset_ids)
-    if total and write_failures == total:
-        # Every write failed (disk full, read-only output). Exit 2.
+    # The exit-2 / exit-3 sentinels must compare against the count of datasets
+    # we actually attempted, not the input list size: a maintenance run that
+    # skips most datasets as fresh would otherwise never trip exit-3 even
+    # when every processed dataset failed.
+    processed = total - skipped_fresh
+    if processed and write_failures == processed:
+        # Every write attempted failed (disk full, read-only output). Exit 2.
         raise SystemExit(2)
-    if total and successes == 0 and api_failures == total:
-        # Zero successes and every stub was an API failure (not just a
-        # dataset without DOIs). Exit 3 so cron can detect the degraded
-        # run before downstream steps regenerate empty CSVs.
+    if processed and successes == 0 and api_failures == processed:
+        # Zero successes among processed datasets and every stub was an API
+        # failure (not just a dataset without DOIs). Exit 3 so cron can detect
+        # the degraded run before downstream steps regenerate empty CSVs.
         raise SystemExit(3)
 
 
