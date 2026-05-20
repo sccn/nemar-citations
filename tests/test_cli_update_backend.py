@@ -55,6 +55,7 @@ def _make_args(
         output_dir=out_dir,
         catalog_cache=cache_path,
         catalog_cache_max_age=3600,
+        max_age_days=0,
     )
 
 
@@ -223,6 +224,125 @@ class RunOpenciteBackendTests(TestCase):
             finally:
                 # Restore write perm so tempfile cleanup works.
                 os.chmod(json_dir, stat.S_IRWXU)
+
+
+class IsFreshSuccessTests(TestCase):
+    """Direct tests for the `_is_fresh_success` helper. Pure file reader,
+    no network, real JSON fixtures on disk — no stubs of any kind.
+    """
+
+    def _write_json(self, path: Path, payload: dict) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(payload))
+
+    def test_returns_false_when_missing(self) -> None:
+        from dataset_citations.cli.update import _is_fresh_success
+
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertFalse(
+                _is_fresh_success(str(Path(tmp) / "absent.json"), 7 * 86400)
+            )
+
+    def test_returns_true_for_fresh_success(self) -> None:
+        from datetime import datetime, timezone
+
+        from dataset_citations.cli.update import _is_fresh_success
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "nm000104_citations.json"
+            self._write_json(
+                path,
+                {
+                    "dataset_id": "nm000104",
+                    "num_citations": 5,
+                    "date_last_updated": datetime.now(timezone.utc).isoformat(),
+                    "metadata": {"fetch_status": "success"},
+                },
+            )
+            self.assertTrue(_is_fresh_success(str(path), 7 * 86400))
+
+    def test_returns_false_for_stale_success(self) -> None:
+        from datetime import datetime, timedelta, timezone
+
+        from dataset_citations.cli.update import _is_fresh_success
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "nm000104_citations.json"
+            stale = datetime.now(timezone.utc) - timedelta(days=30)
+            self._write_json(
+                path,
+                {
+                    "dataset_id": "nm000104",
+                    "date_last_updated": stale.isoformat(),
+                    "metadata": {"fetch_status": "success"},
+                },
+            )
+            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
+
+    def test_returns_false_for_non_success_status(self) -> None:
+        from datetime import datetime, timezone
+
+        from dataset_citations.cli.update import _is_fresh_success
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "nm000104_citations.json"
+            self._write_json(
+                path,
+                {
+                    "dataset_id": "nm000104",
+                    "date_last_updated": datetime.now(timezone.utc).isoformat(),
+                    # Fresh but not a success: prior run hit rate_limit.
+                    "metadata": {"fetch_status": "rate_limit"},
+                },
+            )
+            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
+
+    def test_returns_false_for_malformed_json(self) -> None:
+        from dataset_citations.cli.update import _is_fresh_success
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "broken.json"
+            path.write_text("not json at all")
+            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
+
+    def test_returns_false_for_missing_metadata(self) -> None:
+        from dataset_citations.cli.update import _is_fresh_success
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "headerless.json"
+            self._write_json(path, {"dataset_id": "x", "num_citations": 0})
+            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
+
+    def test_returns_false_for_unparseable_timestamp(self) -> None:
+        from dataset_citations.cli.update import _is_fresh_success
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bad_date.json"
+            self._write_json(
+                path,
+                {
+                    "date_last_updated": "not-a-real-iso-string",
+                    "metadata": {"fetch_status": "success"},
+                },
+            )
+            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
+
+    def test_treats_naive_timestamp_as_utc(self) -> None:
+        from datetime import datetime, timezone
+
+        from dataset_citations.cli.update import _is_fresh_success
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "naive.json"
+            naive_now = datetime.now(timezone.utc).replace(tzinfo=None).isoformat()
+            self._write_json(
+                path,
+                {
+                    "date_last_updated": naive_now,
+                    "metadata": {"fetch_status": "success"},
+                },
+            )
+            self.assertTrue(_is_fresh_success(str(path), 7 * 86400))
 
 
 class CatalogDoiWiringTests(TestCase):

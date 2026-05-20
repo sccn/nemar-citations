@@ -17,6 +17,7 @@ import argparse
 import json
 import logging
 import os
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from dataset_citations.backends import OpenCiteBackend
@@ -31,6 +32,43 @@ logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
+
+
+def _is_fresh_success(filepath: str, max_age_seconds: int) -> bool:
+    """Return True if `filepath` is a successful, recent citation JSON.
+
+    Used by run_opencite_backend to skip datasets that were already
+    successfully fetched within the freshness window (typically the
+    weekly cron cadence). A JSON that doesn't parse, doesn't have a
+    success fetch_status, or has a stale date_last_updated triggers
+    a re-fetch.
+
+    Robust against missing fields and unparseable timestamps: any
+    failure to determine freshness returns False (refetch).
+    """
+    if not os.path.isfile(filepath):
+        return False
+    try:
+        with open(filepath, encoding="utf-8") as f:
+            payload = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return False
+    metadata = payload.get("metadata")
+    if not isinstance(metadata, dict):
+        return False
+    if metadata.get("fetch_status") != "success":
+        return False
+    raw_date = payload.get("date_last_updated")
+    if not isinstance(raw_date, str):
+        return False
+    try:
+        fetched_at = datetime.fromisoformat(raw_date)
+    except ValueError:
+        return False
+    if fetched_at.tzinfo is None:
+        fetched_at = fetched_at.replace(tzinfo=timezone.utc)
+    age = datetime.now(timezone.utc) - fetched_at
+    return age <= timedelta(seconds=max_age_seconds)
 
 
 def _load_catalog_doi_map(
@@ -119,18 +157,28 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
         "parse",
         "other",
     }
+    max_age_seconds = args.max_age_days * 86400 if args.max_age_days > 0 else None
     successes = 0
     stub_only = 0
     write_failures = 0
     api_failures = 0
+    skipped_fresh = 0
     for dataset_id in dataset_ids:
+        filepath = os.path.join(json_dir, f"{dataset_id}_citations.json")
+        if max_age_seconds is not None and _is_fresh_success(filepath, max_age_seconds):
+            logger.info(
+                "%s: skipping (existing JSON is fresh-success within %d days)",
+                dataset_id,
+                args.max_age_days,
+            )
+            skipped_fresh += 1
+            continue
         payload = fetch_dataset_citations_via_opencite(
             dataset_id,
             backend=backend,
             catalog_doi=catalog_dois.get(dataset_id),
             use_checkpoint=True,
         )
-        filepath = os.path.join(json_dir, f"{dataset_id}_citations.json")
         try:
             with open(filepath, "w", encoding="utf-8") as f:
                 json.dump(payload, f, indent=2, ensure_ascii=False)
@@ -149,21 +197,27 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
 
     logger.info(
         "opencite run complete: %d with citations, %d empty/stub "
-        "(%d API-failure), %d write failures, %d total.",
+        "(%d API-failure), %d write failures, %d skipped (fresh), %d total.",
         successes,
         stub_only,
         api_failures,
         write_failures,
+        skipped_fresh,
         len(dataset_ids),
     )
     total = len(dataset_ids)
-    if total and write_failures == total:
-        # Every write failed (disk full, read-only output). Exit 2.
+    # The exit-2 / exit-3 sentinels must compare against the count of datasets
+    # we actually attempted, not the input list size: a maintenance run that
+    # skips most datasets as fresh would otherwise never trip exit-3 even
+    # when every processed dataset failed.
+    processed = total - skipped_fresh
+    if processed and write_failures == processed:
+        # Every write attempted failed (disk full, read-only output). Exit 2.
         raise SystemExit(2)
-    if total and successes == 0 and api_failures == total:
-        # Zero successes and every stub was an API failure (not just a
-        # dataset without DOIs). Exit 3 so cron can detect the degraded
-        # run before downstream steps regenerate empty CSVs.
+    if processed and successes == 0 and api_failures == processed:
+        # Zero successes among processed datasets and every stub was an API
+        # failure (not just a dataset without DOIs). Exit 3 so cron can detect
+        # the degraded run before downstream steps regenerate empty CSVs.
         raise SystemExit(3)
 
 
@@ -202,6 +256,17 @@ def main():
         type=int,
         default=3600,
         help="Seconds before the catalog cache is considered stale (default: 3600).",
+    )
+    parser.add_argument(
+        "--max-age-days",
+        type=int,
+        default=7,
+        help=(
+            "Skip datasets whose existing JSON has fetch_status=success and "
+            "date_last_updated within this many days (default: 7, matching "
+            "the weekly cron cadence). Set to 0 to force re-fetch every "
+            "dataset on every invocation."
+        ),
     )
 
     args = parser.parse_args()
