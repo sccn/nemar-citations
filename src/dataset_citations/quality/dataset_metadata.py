@@ -25,6 +25,7 @@ Email: shirazi@ieee.org
 import json
 import logging
 import os
+import re
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
@@ -37,14 +38,24 @@ logger = logging.getLogger(__name__)
 # PyGithub forwards this to urllib3; the default is no timeout.
 _GITHUB_TIMEOUT_SECONDS = 30
 
+# Match a NEMAR-managed dataset id: prefix (nm or on) followed by digits.
+# Tighter than `startswith("nm")` so future ids like `nmr-phantom` or
+# `online-study-x` don't silently route to nemarDatasets/.
+_NEMAR_PREFIX_RE = re.compile(r"^(nm|on)\d")
+
 
 def _org_for_dataset(dataset_id: str) -> str:
     """Return the GitHub org that hosts the given dataset.
 
-    nm-* and on-* are NEMAR-managed (one in nemarDatasets per dataset);
-    everything else is treated as a legacy OpenNeuro repo.
+    Routing:
+      nm<digits...>  -> nemarDatasets   (NEMAR-native)
+      on<digits...>  -> nemarDatasets   (OpenNeuro imported into NEMAR)
+      everything else -> OpenNeuroDatasets (legacy)
+
+    Case-insensitive on the prefix; the project's canonical ids are
+    lowercase but a stray uppercase input shouldn't silently misroute.
     """
-    if dataset_id.startswith("nm") or dataset_id.startswith("on"):
+    if _NEMAR_PREFIX_RE.match(dataset_id.lower()):
         return "nemarDatasets"
     return "OpenNeuroDatasets"
 

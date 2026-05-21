@@ -37,3 +37,22 @@ class OrgForDatasetTests(TestCase):
         # keep the legacy behaviour for unknown prefixes so this helper
         # doesn't silently route to a wrong NEMAR repo.
         self.assertEqual(_org_for_dataset("xx12345"), "OpenNeuroDatasets")
+
+    def test_partial_word_match_does_not_misroute(self) -> None:
+        # Tighter than startswith("nm"): the prefix must be followed by a
+        # digit. Future ids like 'online-study-x' or 'nmr-phantom' must
+        # NOT silently route to nemarDatasets/.
+        for did in ("online-study-x", "nmr-phantom", "nm-no-digits"):
+            self.assertEqual(
+                _org_for_dataset(did),
+                "OpenNeuroDatasets",
+                f"{did!r} should not route to nemarDatasets",
+            )
+
+    def test_uppercase_prefix_normalized(self) -> None:
+        # Case-insensitive on the prefix. NEMAR's canonical ids are
+        # lowercase, but the helper should not silently misroute if a
+        # stray uppercase id ever flows through.
+        self.assertEqual(_org_for_dataset("NM000103"), "nemarDatasets")
+        self.assertEqual(_org_for_dataset("ON005261"), "nemarDatasets")
+        self.assertEqual(_org_for_dataset("DS000117"), "OpenNeuroDatasets")
