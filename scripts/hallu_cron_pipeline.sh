@@ -31,6 +31,17 @@ trap 'rc=$?; if [ $rc -ne 0 ]; then echo "FAILED rc=$rc at line $LINENO"; fi' EX
 echo "=== hallu-cron $TS start (host=$(hostname), pid=$$) ==="
 cd "$REPO_DIR"
 
+# Pull the GitHub token from gh CLI. cron jobs run with a minimal env;
+# without this, dataset-citations-retrieve-metadata falls back to the
+# unauthenticated public API (60 req/hr) and stalls after a handful of
+# repos. gh stores the token in ~/.config/gh/hosts.yml from a prior
+# `gh auth login`; we never have to write it to disk.
+export GITHUB_TOKEN="$(gh auth token 2>/dev/null)"
+if [ -z "${GITHUB_TOKEN:-}" ]; then
+  echo "ERROR: gh auth token returned empty; aborting" >&2
+  exit 2
+fi
+
 # Reset working tree to fresh main so each cron run starts from a known good state.
 git fetch --quiet origin main
 git checkout --quiet main
