@@ -97,6 +97,12 @@ Diffstat:
 $DIFFSTAT
 \`\`\`
 
-Merge to deploy a refreshed dashboard.")
+Auto-merging on green CI. Cloudflare deploy fires via deploy-dashboard.yml's push trigger.")
 echo "PR: $PR_URL"
+
+# Auto-merge once CI is green. Data PRs have no human-reviewable
+# content; CI is the only gate. --merge preserves commit history
+# (no squash), --delete-branch keeps the remote tidy.
+gh pr merge --auto --merge --delete-branch "$PR_URL"
+echo "auto-merge enabled on $PR_URL"
 echo "=== hallu-cron $TS done ==="
