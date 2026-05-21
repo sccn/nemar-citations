@@ -1,9 +1,21 @@
 name: Deploy Citation Dashboard
 
-# Manual deploy trigger only. Automatic deploys happen via update_citations.yml
-# after the full pipeline generates the dashboard.
+# Two triggers:
+#   1. workflow_dispatch — manual rebuild + deploy (e.g. after a code-only
+#      change to the dashboard generator).
+#   2. push to main when citations/json_opencite/ or datasets/ change —
+#      this is what closes the hallu cron loop: hallu opens a PR with
+#      refreshed data, CI auto-merges, the merge push fires this workflow,
+#      dashboard.nemar.org updates with no human in the loop.
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "citations/json_opencite/**"
+      - "datasets/**"
+      - ".github/workflows/deploy-dashboard.yml"
 
 jobs:
   deploy:
