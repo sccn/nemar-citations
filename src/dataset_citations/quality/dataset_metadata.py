@@ -3,7 +3,16 @@
 Dataset metadata retrieval from GitHub API.
 
 This module retrieves dataset metadata (dataset_description.json and README files)
-from the OpenNeuro GitHub repository for confidence scoring.
+from the dataset's GitHub repository for confidence scoring.
+
+The org each dataset lives in depends on its prefix:
+  ds-* -> github.com/OpenNeuroDatasets/<id>  (legacy OpenNeuro tree)
+  nm-* -> github.com/nemarDatasets/<id>      (NEMAR-native datasets)
+  on-* -> github.com/nemarDatasets/<id>      (OpenNeuro datasets imported into NEMAR)
+
+Before this fix the org was hardcoded to OpenNeuroDatasets, which made
+nm-* / on-* lookups 404 and PyGithub's default infinite socket timeout
+turned a single bad lookup into a multi-hour CLOSE_WAIT stall.
 
 Copyright (c) 2025 Seyed Yahya Shirazi (neuromechanist)
 All rights reserved.
@@ -16,6 +25,7 @@ Email: shirazi@ieee.org
 import json
 import logging
 import os
+import re
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
@@ -23,6 +33,31 @@ from github import Github
 from github.GithubException import GithubException
 
 logger = logging.getLogger(__name__)
+
+# Bound every GitHub call so a dropped socket can't hang the pipeline.
+# PyGithub forwards this to urllib3; the default is no timeout.
+_GITHUB_TIMEOUT_SECONDS = 30
+
+# Match a NEMAR-managed dataset id: prefix (nm or on) followed by digits.
+# Tighter than `startswith("nm")` so future ids like `nmr-phantom` or
+# `online-study-x` don't silently route to nemarDatasets/.
+_NEMAR_PREFIX_RE = re.compile(r"^(nm|on)\d")
+
+
+def _org_for_dataset(dataset_id: str) -> str:
+    """Return the GitHub org that hosts the given dataset.
+
+    Routing:
+      nm<digits...>  -> nemarDatasets   (NEMAR-native)
+      on<digits...>  -> nemarDatasets   (OpenNeuro imported into NEMAR)
+      everything else -> OpenNeuroDatasets (legacy)
+
+    Case-insensitive on the prefix; the project's canonical ids are
+    lowercase but a stray uppercase input shouldn't silently misroute.
+    """
+    if _NEMAR_PREFIX_RE.match(dataset_id.lower()):
+        return "nemarDatasets"
+    return "OpenNeuroDatasets"
 
 
 class DatasetMetadataRetriever:
@@ -35,8 +70,12 @@ class DatasetMetadataRetriever:
         Args:
             github_token: GitHub token for API access. If None, uses public access.
         """
-        self.github = Github(github_token) if github_token else Github()
-        self.openneuro_repo = "OpenNeuroDatasets"
+        # `timeout` caps how long PyGithub will wait on a single HTTP call
+        # before raising; without it a CLOSE_WAIT socket can hang forever.
+        if github_token:
+            self.github = Github(github_token, timeout=_GITHUB_TIMEOUT_SECONDS)
+        else:
+            self.github = Github(timeout=_GITHUB_TIMEOUT_SECONDS)
 
     def get_dataset_metadata(self, dataset_id: str) -> Dict[str, Any]:
         """
@@ -56,13 +95,14 @@ class DatasetMetadataRetriever:
         """
         logger.info(f"Retrieving metadata for dataset: {dataset_id}")
 
+        org = _org_for_dataset(dataset_id)
         metadata = {
             "dataset_id": dataset_id,
             "date_retrieved": datetime.now(timezone.utc).isoformat(),
             "dataset_description": None,
             "readme_content": None,
             "github_info": {
-                "repository_url": f"https://github.com/{self.openneuro_repo}/{dataset_id}",
+                "repository_url": f"https://github.com/{org}/{dataset_id}",
                 "exists": False,
             },
             "retrieval_status": {
@@ -74,7 +114,7 @@ class DatasetMetadataRetriever:
 
         try:
             # Get the repository
-            repo = self.github.get_repo(f"{self.openneuro_repo}/{dataset_id}")
+            repo = self.github.get_repo(f"{org}/{dataset_id}")
             metadata["github_info"]["exists"] = True
             metadata["retrieval_status"]["repository"] = "success"
 
