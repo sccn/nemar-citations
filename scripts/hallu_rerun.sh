@@ -8,7 +8,8 @@
 #   scripts/hallu_rerun.sh --judge-only      # just step 3a (anchor adjudication)
 #   scripts/hallu_rerun.sh --update-only     # just step 3b (opencite fetch)
 #   scripts/hallu_rerun.sh --score-only      # just step 4 (GPU scoring)
-#   scripts/hallu_rerun.sh --embeddings-only # just step 5 (GPU embeddings)
+#   scripts/hallu_rerun.sh --embeddings-only # just step 5a (GPU embeddings)
+#   scripts/hallu_rerun.sh --umap-only       # just step 5b (UMAP on embeddings)
 #   scripts/hallu_rerun.sh --dry-run         # print the steps that would run
 #
 # Assumes:
@@ -33,6 +34,7 @@ for arg in "$@"; do
     --update-only) MODE="update" ;;
     --score-only) MODE="score" ;;
     --embeddings-only) MODE="embeddings" ;;
+    --umap-only) MODE="umap" ;;
     --dry-run) DRY_RUN=1 ;;
     -h|--help)
       sed -n '2,18p' "$0"
@@ -138,6 +140,23 @@ embeddings() {
     --skip-existing
 }
 
+umap_analysis() {
+  # Reads `embeddings/` (produced by step 5a above) and writes UMAP outputs
+  # FLAT under `dashboard_data/` so the dashboard aggregator's
+  # `*similarities*.csv` glob picks them up. Writing under a
+  # `citation_similarities/` subdir would render the panel empty (the glob
+  # is non-recursive). Explicit guard mirrors the cron's `set -uo pipefail`
+  # semantics so a partial UMAP run does not poison a subsequent dashboard
+  # build.
+  run uv run dataset-citations-analyze-umap \
+    --embeddings-dir embeddings \
+    --output-dir dashboard_data \
+    --embedding-type citations || {
+    echo "ERROR: dataset-citations-analyze-umap failed; aborting." >&2
+    exit 2
+  }
+}
+
 case "$MODE" in
   judge)
     # judge-only needs the dataset list AND fresh dataset descriptions
@@ -174,6 +193,12 @@ case "$MODE" in
     fi
     embeddings
     ;;
+  umap)
+    # UMAP only needs the embeddings directory; no GitHub / opencite / Ollama
+    # traffic. Assumes step 5a (embeddings) has populated `embeddings/`;
+    # the analyze-umap CLI logs a clear error if the directory is missing.
+    umap_analysis
+    ;;
   full)
     discover
     retrieve_metadata
@@ -181,5 +206,6 @@ case "$MODE" in
     update_citations
     score_confidence
     embeddings
+    umap_analysis
     ;;
 esac
