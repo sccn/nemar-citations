@@ -70,10 +70,18 @@ uv run dataset-citations-discover \
 # adds a `--max-age-days` flag mirroring `update.py` so the freshness window
 # is configurable without an explicit wipe.
 echo "--- retrieve-metadata ---"
+# Guard: the cron uses `set -uo pipefail` (no -e), so a non-zero exit from
+# any step would otherwise let the script continue. Adding the same guard
+# pattern that the downstream steps already use so a GitHub rate-limit or
+# transient PyGithub failure aborts cleanly instead of feeding the next
+# step a stale `datasets/` tree.
 uv run dataset-citations-retrieve-metadata \
   --citations-dir citations/json_opencite \
   --output-dir datasets \
-  --skip-existing
+  --skip-existing || {
+  echo "ERROR: dataset-citations-retrieve-metadata failed; aborting." >&2
+  exit 2
+}
 
 # 3. Preflight: Ollama must be reachable for anchor adjudication. If the
 # daemon is down, abort cleanly instead of producing a citation update
@@ -118,16 +126,24 @@ echo "--- update (skip-existing default 7d) ---"
 OPENCITE_CONCURRENCY=4 \
   uv run dataset-citations-update \
     --dataset-list-file "$DATASETS_LIST" \
-    --output-dir citations/
+    --output-dir citations/ || {
+  echo "ERROR: dataset-citations-update failed; aborting before score." >&2
+  exit 2
+}
 
 # 4. Semantic confidence scoring on RTX 4090. --skip-existing is a small speedup
-#    for unchanged citation files.
+#    for unchanged citation files. Same `|| exit 2` guard as the other GPU
+#    steps so a CUDA OOM aborts cleanly instead of feeding empty scores
+#    downstream.
 echo "--- score-confidence (cuda) ---"
 uv run dataset-citations-score-confidence \
   --citations-dir citations/json_opencite \
   --datasets-dir datasets \
   --device cuda \
-  --skip-existing
+  --skip-existing || {
+  echo "ERROR: dataset-citations-score-confidence failed; aborting." >&2
+  exit 2
+}
 
 # 5a. Sentence-transformer embeddings on the RTX 4090. Phase 2 of epic #96
 #     (#98) moved this step off CI because CPU torch in GitHub Actions took
@@ -177,7 +193,11 @@ uv run dataset-citations-analyze-umap \
 }
 
 # Bail cleanly if no tracked data changed (typical when nothing is stale).
-if git diff --quiet citations/ datasets/ embeddings/; then
+# `dashboard_data/` and `embeddings/` are included because deploy-dashboard.yml
+# verifies their presence on a fresh CI checkout (epic #96 / #101 / #103). The
+# previous-pipeline gitignore patterns that excluded the analysis subdirs were
+# removed in the same epic so the cron can actually commit them.
+if git diff --quiet citations/ datasets/ embeddings/ dashboard_data/; then
   echo "no tracked data changes, nothing to commit"
   exit 0
 fi
@@ -185,7 +205,7 @@ fi
 # Commit + push to a timestamped branch; open a PR (manual merge gates the deploy).
 BRANCH="auto-update/$TS"
 git checkout -b "$BRANCH"
-git add citations/ datasets/ embeddings/
+git add citations/ datasets/ embeddings/ dashboard_data/
 DIFFSTAT="$(git diff --cached --stat | tail -5)"
 git commit -m "data: hallu nightly pipeline ($TS)
 

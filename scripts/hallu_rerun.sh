@@ -186,11 +186,13 @@ case "$MODE" in
     # dataset_description.json) under `datasets/` because the dataset
     # embedding text is built from those files. Discover first if the
     # list is missing, then refresh metadata so an iterating operator
-    # gets up-to-date dataset embeddings on every rerun.
+    # gets up-to-date dataset embeddings on every rerun. Mirrors the
+    # `judge` case (discover -> retrieve_metadata -> step).
     if [ ! -s "$DATASETS_LIST" ]; then
       echo "$DATASETS_LIST missing or empty; running discover first"
       discover
     fi
+    retrieve_metadata
     embeddings
     ;;
   umap)

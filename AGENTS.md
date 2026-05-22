@@ -143,8 +143,8 @@ uv run dataset-citations-score-confidence --citations-dir citations/json_opencit
 4. **Processing**: `core/opencite_pipeline.py` deduplicates across anchors and produces schema-v2 citation JSON.
 5. **Quality scoring**: sentence-transformer similarity between dataset metadata and citation abstract. Runs on hallu's RTX 4090 via `scripts/hallu_cron_pipeline.sh` (epic #76).
 6. **Embeddings**: `dataset-citations-generate-embeddings` writes per-dataset and per-citation sentence-transformer embeddings to `embeddings/` (registry-backed, deduped by content hash). Produced on hallu's RTX 4090 next to step 5 (phase 2 of epic #96 / #98); CI no longer runs the embedding step because CPU torch was ~10x slower than CUDA.
-7. **Analysis**: network, temporal, and theme analyses consume the embeddings (UMAP wiring lands in phase 3 of epic #96 / #99).
-8. **Dashboard**: interactive HTML + D3 deployed to Cloudflare Pages at `dashboard.nemar.org/citations/`.
+7. **Analysis**: network, temporal, theme, and UMAP analyses run on hallu next to the embedding step (epic #96 / #99 wired UMAP via `dataset-citations-analyze-umap`; CI no longer runs the heavy analysis). Outputs land in `dashboard_data/` (themes / network / temporal subdirs + `*similarities*.csv` flat for UMAP) so the deploy workflow consumes them on a fresh checkout.
+8. **Dashboard**: interactive HTML + D3 built by `deploy-dashboard.yml` against the hallu-produced inputs and deployed to Cloudflare Pages at `dashboard.nemar.org/citations/`. CI verifies the expected `dashboard_data/` + `embeddings/` shape before deploy (epic #96 / #101); a missing input fails the run cleanly so the previous deploy stays live.
 
 ## Fetch Strategy & Rate Limits
 Both upstream sources we depend on have throttled us in production. Treat external APIs as scarce; cache, retry, and prefer the NEMAR backend.
