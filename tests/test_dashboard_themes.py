@@ -230,22 +230,60 @@ def test_template_does_not_emit_empty_card_body():
 
 
 def test_smoke_full_dashboard_build(tmp_path: Path):
-    """End-to-end smoke test: regenerate the dashboard against a tiny fixture
-    and verify the HTML doesn't error and contains both the wordcloud images
-    and the tag-cloud fallback content."""
+    """End-to-end smoke test covering BOTH bug fixes from this PR:
+
+    - #79 (wordcloud): four real PNGs materialize and the HTML references
+      each one.
+    - #77 (growth chart): the growth chart's JS is embedded and its
+      cumulative endpoint matches the per-year high_confidence_citations
+      sum, NOT the hardcoded `[20, 65, ..., 1140]` placeholder.
+
+    The previous smoke test passed `charts={}` and so left #77 uncovered;
+    PR-#106 reviewer flagged that as a gap.
+    """
     pytest.importorskip("wordcloud")
+
+    # Avoid a circular-import-style dependency: defer the chart helpers
+    # to runtime so this themes-test file stays self-contained.
+    from dataset_citations.dashboard.components.charts import ChartGenerator
+    from dataset_citations.dashboard.templates.components.charts import (
+        generate_chart_javascript,
+    )
 
     results_dir = tmp_path / "results"
     output_dir = tmp_path / "out"
     results_dir.mkdir()
     output_dir.mkdir()
 
+    # Themes side of the smoke.
     gen = ThemeGenerator(output_dir=output_dir)
     themes_data = gen.generate_themes(_sample_themes_payload())
 
+    # Charts side: realistic per-year rows with high_confidence_citations
+    # so we can pin the endpoint against the headline.
+    temporal_rows = [
+        {
+            "year": str(y),
+            "total_citations": str(total),
+            "high_confidence_citations": str(high_conf),
+            "unique_datasets": str(d),
+        }
+        for y, total, high_conf, d in [
+            (2020, 1800, 1100, 60),
+            (2021, 3600, 2400, 120),
+            (2022, 4500, 3500, 180),
+            (2023, 4700, 3800, 210),
+            (2024, 3300, 2592, 190),
+        ]
+    ]
+    charts_data = ChartGenerator().generate_all_charts(
+        {"temporal_analysis": {"temporal_summary": temporal_rows}}
+    )
+    expected_endpoint = sum(int(r["high_confidence_citations"]) for r in temporal_rows)
+
     html = generate_nemar_dashboard(
         stats={"cards": []},
-        charts={},
+        charts=charts_data,
         networks={},
         themes=themes_data,
         modals={},
@@ -254,14 +292,21 @@ def test_smoke_full_dashboard_build(tmp_path: Path):
         timestamp="2026-05-22 00:00:00",
     )
 
-    # PNGs were materialized.
+    # #79: PNGs materialized + HTML references each path.
     pngs = list((output_dir / "data" / "themes").glob("*.png"))
     assert len(pngs) == 4
-
-    # HTML references each PNG path and ends with </html>.
     for theme_id in range(4):
         assert f"data/themes/theme_{theme_id}_wordcloud.png" in html
     assert html.strip().endswith("</html>")
+
+    # #77: growth-chart JS is embedded with the right endpoint.
+    js = generate_chart_javascript(stats={}, charts=charts_data)
+    assert str(expected_endpoint) in js, (
+        f"growth-chart JS does not embed the expected cumulative endpoint "
+        f"{expected_endpoint}; chart binding may have regressed."
+    )
+    # Hardcoded fallback must NOT appear.
+    assert "[20, 65, 150, 370, 650, 950, 1040, 1140]" not in js
 
     # Persist for downstream smoke inspection.
     out_html = output_dir / "dashboard.html"

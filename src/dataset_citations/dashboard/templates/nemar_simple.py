@@ -44,7 +44,10 @@ def generate_nemar_dashboard(
     for theme in theme_list:
         title = html_lib.escape(str(theme.get("title", "")))
         subtitle = html_lib.escape(str(theme.get("subtitle", "")))
-        wordcloud_src = html_lib.escape(str(theme.get("wordcloud", "")))
+        # `wordcloud` is None when PNG rendering failed (or no output_dir
+        # was supplied); only emit the <img> tag when a real path is set.
+        wordcloud_path = theme.get("wordcloud")
+        wordcloud_src = html_lib.escape(str(wordcloud_path)) if wordcloud_path else None
         top_words = theme.get("top_words", []) or []
         # Decaying font sizes (1.6rem -> ~0.75rem) so the first phrase is
         # visually the largest, mirroring the upstream ranking.
@@ -80,11 +83,17 @@ def generate_nemar_dashboard(
                                 </small>
                             </div>
                             <div class="card-body text-center">
-                                <img src="{wordcloud_src}"
-                                     alt="{title} Word Cloud"
-                                     class="img-fluid rounded theme-wordcloud-img"
-                                     style="max-height: 300px; width: auto;"
-                                     onerror="this.style.display='none';">
+                                {
+            (
+                f'<img src="{wordcloud_src}" '
+                f'alt="{title} Word Cloud" '
+                f'class="img-fluid rounded theme-wordcloud-img" '
+                f'style="max-height: 300px; width: auto;" '
+                f"onerror=\"this.style.display='none';\">"
+            )
+            if wordcloud_src
+            else ""
+        }
                                 {tags_html}
                             </div>
                         </div>

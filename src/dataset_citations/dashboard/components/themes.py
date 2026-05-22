@@ -61,21 +61,27 @@ class ThemeGenerator:
             theme_size = theme.get("size", 0)
             top_words = theme.get("top_words", []) or []
 
-            wordcloud_path = f"data/themes/theme_{theme_id}_wordcloud.png"
-
+            # Track whether the PNG was actually produced. If rendering fails
+            # (or no output_dir / empty top_words), `wordcloud` is set to None
+            # so the payload doesn't advertise a non-existent asset; the
+            # template's tag-cloud fallback covers the visual.
+            wordcloud_path: str | None = None
             if self.output_dir is not None and top_words:
                 target = self.output_dir / "data" / "themes"
                 try:
                     self._render_wordcloud_png(top_words, target, theme_id)
                 except Exception as exc:  # noqa: BLE001
                     # Defensive: never let a rendering failure kill the whole
-                    # dashboard build. Log and surface an empty card.
+                    # dashboard build. Log and leave wordcloud=None so the
+                    # template renders the tag-cloud fallback only.
                     logger.warning(
                         "Failed to render wordcloud for theme %s (%s): %s",
                         theme_id,
                         theme_name,
                         exc,
                     )
+                else:
+                    wordcloud_path = f"data/themes/theme_{theme_id}_wordcloud.png"
 
             themes.append(
                 {
@@ -94,14 +100,17 @@ class ThemeGenerator:
                     "id": 0,
                     "title": "Theme 1",
                     "subtitle": "Themes will be generated when analysis is run",
-                    "wordcloud": "data/themes/theme_0_wordcloud.png",
+                    "wordcloud": None,
                     "top_words": [],
                 }
             ]
 
         return {
             "themes": themes,
-            "wordcloud_images": [t["wordcloud"] for t in themes],
+            # Only advertise wordcloud paths that actually exist on disk;
+            # None entries are dropped so the template's <img> tags don't
+            # point at non-existent files.
+            "wordcloud_images": [t["wordcloud"] for t in themes if t["wordcloud"]],
         }
 
     @staticmethod

@@ -44,10 +44,17 @@ class ChartGenerator:
         """Generate citation growth timeline chart.
 
         Reads `temporal_analysis.temporal_summary` (list of per-year rows with
-        `year` and `total_citations`), sorts by year, and emits a cumulative
-        citation series. Closes #77: previously this returned a hardcoded
-        series that capped near 1,200 even though the headline showed 14k+
-        high-confidence citations — the chart never read the real data.
+        `year` and `high_confidence_citations`), sorts by year, and emits a
+        cumulative series whose endpoint matches the
+        `summary_stats.high_confidence_citations` headline KPI.
+
+        Closes #77: previously this returned a hardcoded array that capped
+        near 1,200 even though the headline showed ~14k. The first fix
+        bound the chart to `total_citations` instead, but `total_citations`
+        is all citations regardless of confidence — distinct from the
+        headline's high-confidence count. Binding to
+        `high_confidence_citations` keeps the two quantities consistent
+        (review finding on PR #106).
         """
         temporal = data.get("temporal_analysis", {})
         rows = temporal.get("temporal_summary", [])
@@ -56,7 +63,10 @@ class ChartGenerator:
         for row in rows:
             try:
                 year = int(row.get("year", 0))
-                count = int(row.get("total_citations", 0))
+                # Per-year high-confidence count so the cumulative endpoint
+                # reconciles with summary_stats.high_confidence_citations.
+                # `total_citations` (the previous binding) would over-count.
+                count = int(row.get("high_confidence_citations", 0))
             except (TypeError, ValueError):
                 continue
             if year <= 0:
