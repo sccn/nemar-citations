@@ -2,10 +2,11 @@
 """
 Ollama-backed LLM client for anchor adjudication.
 
-Epic #76 fixes citation inflation by asking a local LLM (Gemma 3 27B on the
-hallu RTX 4090, served by Ollama) to classify each DOI anchor in a dataset's
-metadata as one of five buckets. Phase 1 (#85) stands up the client + the
-prompt + a throwaway probe script; phase 2 (#86) productizes the storage.
+Epic #76 fixes citation inflation by asking a local LLM (the largest local
+Gemma checkpoint served by Ollama on the hallu RTX 4090; see _DEFAULT_MODEL)
+to classify each DOI anchor in a dataset's metadata as one of five buckets.
+Phase 1 (#85) stands up the client + the prompt + a throwaway probe script;
+phase 2 (#86) productizes the storage.
 
 This module is the single place where the prompt + classification taxonomy
 live. Phases 2, 3, and 4 all import from here so a prompt revision is a
@@ -53,19 +54,24 @@ ALLOWED_CLASSIFICATIONS: frozenset[str] = frozenset(
 
 # Env vars + defaults. The default base URL is localhost so the production
 # cron path (which runs on hallu next to the Ollama daemon) needs no
-# overrides; developer workstations reaching the daemon remotely set
-# OLLAMA_BASE_URL=http://hallucinating:11434 (or use an ssh tunnel).
+# overrides; developer workstations reach the daemon through an ssh tunnel
+# (the daemon binds localhost only) by running
+# `ssh -fN -L 11434:localhost:11434 hallu` once per session.
 # Default model tracks the largest Gemma checkpoint currently pulled on
-# hallu; epic #76 spec'd "Gemma 3 27B", the deployed model is Gemma 4 31B.
+# hallu; epic #76 spec'd Gemma 3 27B, but the live deployment is the
+# next-generation model. Update the constant when the pulled model
+# changes.
 _ENV_BASE_URL = "OLLAMA_BASE_URL"
 _ENV_MODEL = "OLLAMA_MODEL"
 _ENV_TIMEOUT = "OLLAMA_TIMEOUT_SECONDS"
 
 _DEFAULT_BASE_URL = "http://localhost:11434"
-_DEFAULT_MODEL = "gemma4:31b"
+# Single source of truth for the deployed model. Bump this one constant
+# (and re-run the probe) when a new checkpoint is pulled on hallu.
+_DEFAULT_MODEL = "gemma4:26b"
 _DEFAULT_TIMEOUT = 60
 
-# Truncate long dataset descriptions to keep the prompt under Gemma 3 27B's
+# Truncate long dataset descriptions to keep the prompt under the model's
 # practical context budget while leaving room for the candidate paper. The
 # probe script's hand-picked datasets all fit comfortably under this.
 _DATASET_DESCRIPTION_CHAR_LIMIT = 1500

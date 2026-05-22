@@ -8,7 +8,8 @@ Acceptance gate for epic #76 (LLM anchor adjudication). For each dataset in
   2. Fetches the dataset description via `DatasetMetadataRetriever`.
   3. Fetches each anchor paper's title + abstract via the new
      `OpenCiteBackend.get_paper(doi)` sync facade.
-  4. Asks the Ollama-served Gemma 3 27B model to classify each anchor as
+  4. Asks the Ollama-served Gemma model (default tracked in
+     `OllamaJudgmentClient._DEFAULT_MODEL`, deployed on hallu) to classify each anchor as
      one of `data_paper` / `umbrella` / `methodology` / `related_work` /
      `irrelevant`.
   5. Prints one row per anchor + a per-classification tally.
@@ -21,9 +22,14 @@ This script does NOT write any sidecar JSON to `citations/anchor_judgments/`;
 that's phase 2 (#86).
 
 Usage:
-    OLLAMA_BASE_URL=http://hallu:11434 \
-        uv run python scripts/probe_anchor_judgment.py \
-            --output .context/probe_anchor_judgment_$(date +%Y-%m-%d).json
+    # Workstation: tunnel to hallu's Ollama daemon, then default
+    # OLLAMA_BASE_URL=http://localhost:11434 works.
+    ssh -fN -L 11434:localhost:11434 hallu
+    uv run python scripts/probe_anchor_judgment.py \
+        --output .context/probe_anchor_judgment_$(date +%Y-%m-%d).json
+
+    # On hallu itself: no tunnel needed, defaults work.
+    uv run python scripts/probe_anchor_judgment.py --output …
 """
 
 from __future__ import annotations
@@ -57,22 +63,27 @@ from dataset_citations.sources.models import DoiReference
 logger = logging.getLogger("probe_anchor_judgment")
 
 # Hand-picked datasets covering the acceptance-gate cases from epic #76:
-#   - HBN sibling (ds005505): IsDerivedFrom anchor is the HBN umbrella paper;
-#     expect umbrella for the HBN paper, data_paper for the dataset preprint.
-#   - ds000117: a classic clean dataset with a Nature Scientific Data paper.
-#   - ds000246: MEG data, anchors include an MNE-Python methodology paper.
-# The remaining slots add diversity across nm-* and ds-* prefixes.
+#   - HBN siblings (ds005505, ds005516): IsDerivedFrom anchor is the HBN
+#     umbrella paper; expect umbrella for the HBN papers, data_paper for
+#     the dataset preprint.
+#   - ds000246: methodology anchor (Brainstorm / similar EEG/MEG tool).
+#   - ds002034: clean dataset whose anchor is its own data paper.
+# `ds002718` is intentionally absent: it is the dataset_id used in the
+# few-shot Example 2 inside build_anchor_prompt, so including it here
+# would let the model echo the example instead of judging the case.
+# nm-/on- slots use real catalog IDs from api.nemar.org/datasets so the
+# nemar metadata source has something to extract.
 PROBE_DATASETS: tuple[str, ...] = (
     "ds005505",
     "ds005516",
     "ds000117",
     "ds000246",
-    "ds002718",
     "ds002034",
     "ds001785",
     "ds001971",
-    "nm000001",
-    "on000001",
+    "nm000104",
+    "on001787",
+    "on002181",
 )
 
 

@@ -25,6 +25,7 @@ import logging
 from collections.abc import Iterable
 from typing import Any
 
+import httpx
 from opencite.citations import CitationExplorer
 from opencite.clients.openalex import OpenAlexClient
 from opencite.config import Config
@@ -104,6 +105,13 @@ class OpenCiteBackend:
         return asyncio.run(self._get_paper_async(doi))
 
     async def _get_paper_async(self, doi: str) -> FetchResult[CitingWork]:
+        # Narrow exception list: classify_error is built for network-shaped
+        # failures, so we only route those through it. Programmer errors
+        # (AttributeError on opencite API drift, AssertionError on the
+        # isinstance invariant below, TypeError) must propagate to surface
+        # the contract break instead of being silently demoted to
+        # FetchError("other", ...). Mirror this list against the existing
+        # _lookup branch's handling if it widens in the future.
         try:
             async with OpenAlexClient(self._config) as openalex_base:
                 assert isinstance(openalex_base, OpenAlexClient), (
@@ -112,7 +120,7 @@ class OpenCiteBackend:
                     f"{type(openalex_base).__name__}"
                 )
                 paper = await openalex_base.lookup_doi(doi)
-        except Exception as exc:
+        except (httpx.HTTPError, asyncio.TimeoutError, OSError) as exc:
             return classify_error(exc, doi)
 
         if paper is None or not paper.title:
