@@ -70,11 +70,20 @@ def test_preflight_exits_2_when_ollama_unreachable() -> None:
 
 
 def test_cron_script_has_preflight_block() -> None:
-    """Catch accidental removal of the preflight in future edits."""
+    """Catch accidental removal of the preflight in future edits.
+
+    The preflight URL is built from $OLLAMA_BASE_URL with a localhost
+    fallback so the cron probes the same daemon the CLI ends up calling;
+    we check for the shape rather than a literal URL.
+    """
     text = CRON_SCRIPT.read_text()
-    assert "curl -s --max-time 5 http://localhost:11434/api/tags" in text, (
+    assert "curl -s --max-time 5" in text, (
         "preflight curl missing from hallu_cron_pipeline.sh"
     )
+    assert "OLLAMA_BASE_URL" in text, (
+        "preflight should honor $OLLAMA_BASE_URL so probe + CLI agree"
+    )
+    assert "/api/tags" in text, "preflight is not hitting /api/tags"
     assert "exit 2" in text, "preflight exit-2 missing from hallu_cron_pipeline.sh"
     assert "dataset-citations-judge-anchors" in text, (
         "judge-anchors step missing from hallu_cron_pipeline.sh"

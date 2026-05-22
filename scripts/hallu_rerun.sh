@@ -93,10 +93,16 @@ preflight_ollama() {
 
 judge_anchors() {
   preflight_ollama
+  # `set -uo pipefail` does not abort on non-zero exit; explicit guard
+  # so a partial judgment run does not let `update_citations` proceed
+  # with a half-written sidecar tree.
   run uv run dataset-citations-judge-anchors \
     --datasets-list-file "$DATASETS_LIST" \
     --output-dir citations/anchor_judgments \
-    --skip-existing
+    --skip-existing || {
+    echo "ERROR: dataset-citations-judge-anchors failed; aborting." >&2
+    exit 2
+  }
 }
 
 update_citations() {

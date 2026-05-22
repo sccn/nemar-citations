@@ -67,12 +67,15 @@ uv run dataset-citations-retrieve-metadata \
   --citations-dir citations/json_opencite \
   --output-dir datasets
 
-# 3. Preflight: Ollama must be reachable on hallu for anchor adjudication
-# to run. If the daemon is down, abort cleanly instead of producing a
-# citation update with stale judgments. Exit 2 mirrors the contract
-# documented for `dataset-citations-judge-anchors` (phase 2, #86).
-curl -s --max-time 5 http://localhost:11434/api/tags >/dev/null || {
-  echo "ERROR: Ollama daemon at localhost:11434 not reachable; aborting." >&2
+# 3. Preflight: Ollama must be reachable for anchor adjudication. If the
+# daemon is down, abort cleanly instead of producing a citation update
+# with stale judgments. Exit 2 mirrors the contract documented for
+# `dataset-citations-judge-anchors` (phase 2, #86). Honors
+# $OLLAMA_BASE_URL so a non-default daemon URL is probed at the same
+# host the CLI ends up calling.
+OLLAMA_PROBE_URL="${OLLAMA_BASE_URL:-http://localhost:11434}"
+curl -s --max-time 5 "${OLLAMA_PROBE_URL}/api/tags" >/dev/null || {
+  echo "ERROR: Ollama daemon at ${OLLAMA_PROBE_URL} not reachable; aborting." >&2
   exit 2
 }
 
@@ -80,15 +83,29 @@ curl -s --max-time 5 http://localhost:11434/api/tags >/dev/null || {
 # methodology / related_work / irrelevant and write sidecars under
 # citations/anchor_judgments/. `--skip-existing` keeps steady-state runs cheap;
 # the full ~3000-anchor backfill happens on first run after the epic merges.
+# The cron uses `set -uo pipefail` (no -e), so a non-zero exit from the CLI
+# does NOT halt the script by default; the explicit `|| { exit; }` guard
+# below ensures a partial judgment run does not feed downstream `update`
+# with a half-written sidecar tree.
 echo "--- judge-anchors (gpu, ollama) ---"
 uv run dataset-citations-judge-anchors \
   --datasets-list-file "$DATASETS_LIST" \
   --output-dir citations/anchor_judgments \
-  --skip-existing
+  --skip-existing || {
+  echo "ERROR: dataset-citations-judge-anchors failed; aborting before update." >&2
+  exit 2
+}
 
 # 3b. Fetch citations via opencite. Phase 3 (#87) made this CLI consume the
 # sidecars from step 3a transparently; the invocation is unchanged from the
 # pre-phase-4 script. Skip-existing (7d) keeps the run cheap.
+#
+# OPERATIONAL NOTE: on the first run after a fresh anchor-judgment backfill,
+# `--max-age-days 7` (the `update` CLI default) will keep existing citation
+# JSONs "fresh" and skip them, so the new bucketing does not take effect on
+# already-cached datasets until the freshness window expires. To apply the
+# new judgments immediately, manually re-run `dataset-citations-update`
+# with `--max-age-days 0` once, then resume the normal weekly cron.
 echo "--- update (skip-existing default 7d) ---"
 OPENCITE_CONCURRENCY=4 \
   uv run dataset-citations-update \
