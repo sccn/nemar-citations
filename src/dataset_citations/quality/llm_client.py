@@ -51,15 +51,18 @@ ALLOWED_CLASSIFICATIONS: frozenset[str] = frozenset(
     {"data_paper", "umbrella", "methodology", "related_work", "irrelevant"}
 )
 
-# Env vars + defaults. Defaults point at hallu (the GPU host where the cron
-# pipeline runs). For local dev against an Ollama daemon on the workstation,
-# set OLLAMA_BASE_URL=http://localhost:11434.
+# Env vars + defaults. The default base URL is localhost so the production
+# cron path (which runs on hallu next to the Ollama daemon) needs no
+# overrides; developer workstations reaching the daemon remotely set
+# OLLAMA_BASE_URL=http://hallucinating:11434 (or use an ssh tunnel).
+# Default model tracks the largest Gemma checkpoint currently pulled on
+# hallu; epic #76 spec'd "Gemma 3 27B", the deployed model is Gemma 4 31B.
 _ENV_BASE_URL = "OLLAMA_BASE_URL"
 _ENV_MODEL = "OLLAMA_MODEL"
 _ENV_TIMEOUT = "OLLAMA_TIMEOUT_SECONDS"
 
-_DEFAULT_BASE_URL = "http://hallu:11434"
-_DEFAULT_MODEL = "gemma3:27b"
+_DEFAULT_BASE_URL = "http://localhost:11434"
+_DEFAULT_MODEL = "gemma4:31b"
 _DEFAULT_TIMEOUT = 60
 
 # Truncate long dataset descriptions to keep the prompt under Gemma 3 27B's
