@@ -71,8 +71,11 @@ _ENV_TIMEOUT = "OLLAMA_TIMEOUT_SECONDS"
 
 _DEFAULT_BASE_URL = "http://localhost:11434"
 # Single source of truth for the deployed model. Bump this one constant
-# (and re-run the probe) when a new checkpoint is pulled on hallu.
-_DEFAULT_MODEL = "gemma4:26b"
+# (and re-run the probe) when a new checkpoint is pulled on hallu. 31B
+# is the smallest checkpoint that handles the methodology-vs-data_paper
+# discrimination correctly on the acceptance-gate probe; 26B confused a
+# Brainstorm-tools anchor for a data paper.
+_DEFAULT_MODEL = "gemma4:31b"
 # Per-judgment timeout: most calls return in 3-10s, but cold loads + long
 # prompts on the 26B checkpoint have been observed at ~150s. 300s gives
 # headroom without hanging the probe forever on a stuck request.
