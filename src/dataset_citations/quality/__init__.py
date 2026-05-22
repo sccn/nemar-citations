@@ -6,14 +6,30 @@ This module contains Phase 3 features including:
 - Confidence score calculation
 - Sentence-transformers integration
 - Metadata retrieval and comparison
+
+Epic #76 (anchor adjudication) adds the LLM client + prompt builder here so
+phases 2, 3, and 4 import the prompt from one place.
 """
 
 # Import only dataset_metadata to avoid sentence-transformers import issues during CLI help
+from .anchor_judgment_io import (
+    DEFAULT_JUDGMENTS_DIR,
+    JudgmentSidecar,
+    canonical_anchor_key,
+    load_judgment_lookup,
+    load_judgment_sidecar,
+)
 from .dataset_metadata import (
     DatasetMetadataRetriever,
     extract_dataset_text,
     load_dataset_metadata,
     save_dataset_metadata,
+)
+from .llm_client import (
+    ALLOWED_CLASSIFICATIONS,
+    LlmJudgmentError,
+    OllamaJudgmentClient,
+    build_anchor_prompt,
 )
 
 
@@ -40,11 +56,20 @@ def batch_score_citations(*args, **kwargs):
 
 
 __all__ = [
+    "ALLOWED_CLASSIFICATIONS",
+    "DEFAULT_JUDGMENTS_DIR",
     "DatasetMetadataRetriever",
+    "JudgmentSidecar",
+    "LlmJudgmentError",
+    "OllamaJudgmentClient",
     "batch_score_citations",
+    "build_anchor_prompt",
+    "canonical_anchor_key",
     "extract_dataset_text",
     "get_confidence_scorer",
     "load_dataset_metadata",
+    "load_judgment_lookup",
+    "load_judgment_sidecar",
     "save_dataset_metadata",
     "score_dataset_citations",
 ]

@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import logging
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 
 from dataset_citations.backends import OpenCiteBackend
@@ -31,6 +32,12 @@ from dataset_citations.core.checkpoint import (
 from dataset_citations.core.citation_utils import (
     SCHEMA_VERSION_V2,
     add_discovery_provenance,
+)
+from dataset_citations.quality.anchor_judgment_io import (
+    DEFAULT_JUDGMENTS_DIR,
+    JudgmentSidecar,
+    canonical_anchor_key,
+    load_judgment_sidecar,
 )
 from dataset_citations.sources import (
     BidsMetadataSource,
@@ -47,6 +54,11 @@ from dataset_citations.sources.doi import (
 
 logger = logging.getLogger(__name__)
 
+# The single classification that survives the partition into "fetch citations
+# from this anchor". Everything else (umbrella, methodology, related_work,
+# irrelevant) is recorded as context only.
+_FETCH_CLASSIFICATION = "data_paper"
+
 
 def fetch_dataset_citations_via_opencite(
     dataset_id: str,
@@ -59,6 +71,7 @@ def fetch_dataset_citations_via_opencite(
     catalog_doi: str | None = None,
     checkpoint_store: CheckpointStore | None = None,
     use_checkpoint: bool = False,
+    judgments_dir: Path | str | None = None,
 ) -> dict[str, Any]:
     """Return a schema-v2 citation JSON dict for one dataset.
 
@@ -68,6 +81,14 @@ def fetch_dataset_citations_via_opencite(
       3. If `catalog_doi` is set, add it as an extra anchor with
          `relation_type=References` and `source=nemar_catalog`.
       4. Dedupe anchors by normalized identifier.
+      4a. *Anchor judgment* (epic #76 phase 3): load
+          `citations/anchor_judgments/<id>.json`. Anchors classified as
+          `data_paper` are kept for the backend call; everything else
+          (umbrella / methodology / related_work / irrelevant) becomes
+          context-only and lands in `metadata.context_anchors[]`. When the
+          sidecar is missing (or an anchor has no entry) the pipeline falls
+          back to its pre-phase-3 behavior and fetches that anchor — phase 4
+          flips this to mandatory once the backfill is complete.
       5. If `use_checkpoint=True`, consult the checkpoint store for any
          anchors already fetched successfully on a previous run; skip them
          in the backend call. (Default is off so unit tests aren't surprised
@@ -91,6 +112,9 @@ def fetch_dataset_citations_via_opencite(
     backend = backend or OpenCiteBackend()
     store = checkpoint_store or (
         CheckpointStore(base_dir=DEFAULT_CHECKPOINT_DIR) if use_checkpoint else None
+    )
+    sidecar_dir: Path | str = (
+        judgments_dir if judgments_dir is not None else DEFAULT_JUDGMENTS_DIR
     )
 
     if dataset_id.startswith("nm") or dataset_id.startswith("on"):
@@ -118,8 +142,23 @@ def fetch_dataset_citations_via_opencite(
     if not refs:
         return _stub_payload(dataset_id, when, fetch_status="no_doi_references")
 
+    sidecar = load_judgment_sidecar(dataset_id, judgments_dir=sidecar_dir)
+    fetch_refs, context_anchor_records = _partition_by_judgment(
+        refs, sidecar, dataset_id
+    )
+
+    if not fetch_refs:
+        return _stub_payload(
+            dataset_id,
+            when,
+            fetch_status="no_data_paper_anchor",
+            anchor_count=len(refs),
+            anchor_judgment_model=sidecar.model if sidecar.present else None,
+            context_anchors=context_anchor_records,
+        )
+
     pending_refs, checkpointed_works = _split_against_checkpoint(
-        refs, store, dataset_id
+        fetch_refs, store, dataset_id
     )
 
     batch: dict[str, Any] = {}
@@ -142,8 +181,10 @@ def fetch_dataset_citations_via_opencite(
             dataset_id,
             when,
             fetch_status=reason,
-            anchor_count=len(refs),
+            anchor_count=len(fetch_refs),
             anchor_errors=per_anchor_errors,
+            anchor_judgment_model=sidecar.model if sidecar.present else None,
+            context_anchors=context_anchor_records,
         )
 
     citation_details = [_citing_work_to_dict(w) for w in citing_works]
@@ -160,7 +201,7 @@ def fetch_dataset_citations_via_opencite(
             "schema_version": SCHEMA_VERSION_V2,
             "discovery_backend": "opencite",
             "fetch_status": "success" if not per_anchor_errors else "partial",
-            "anchor_count": len(refs),
+            "anchor_count": len(fetch_refs),
             "anchor_errors": per_anchor_errors,
         },
         "citation_details": citation_details,
@@ -169,7 +210,12 @@ def fetch_dataset_citations_via_opencite(
     if store is not None and not per_anchor_errors:
         store.clear(dataset_id)
 
-    return add_discovery_provenance(payload, discovery_backend="opencite")
+    return add_discovery_provenance(
+        payload,
+        discovery_backend="opencite",
+        anchor_judgment_model=sidecar.model if sidecar.present else None,
+        context_anchors=context_anchor_records,
+    )
 
 
 def _merge_anchors(
@@ -321,6 +367,8 @@ def _stub_payload(
     fetch_status: str,
     anchor_count: int = 0,
     anchor_errors: dict[str, str] | None = None,
+    anchor_judgment_model: str | None = None,
+    context_anchors: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     payload = {
         "dataset_id": dataset_id,
@@ -338,4 +386,112 @@ def _stub_payload(
         },
         "citation_details": [],
     }
-    return add_discovery_provenance(payload, discovery_backend="opencite")
+    return add_discovery_provenance(
+        payload,
+        discovery_backend="opencite",
+        anchor_judgment_model=anchor_judgment_model,
+        context_anchors=context_anchors,
+    )
+
+
+def _partition_by_judgment(
+    refs: list[DoiReference],
+    sidecar: JudgmentSidecar,
+    dataset_id: str,
+) -> tuple[list[DoiReference], list[dict[str, Any]]]:
+    """Split anchors into (fetch, context-only) based on phase 2's sidecar.
+
+    Rules:
+      * Sidecar missing entirely: log a single INFO line for the dataset and
+        return all anchors in the fetch bucket; no context anchors. This is
+        the legacy-compatible fallback the pipeline relies on while the
+        backfill is still in flight.
+      * Sidecar present, anchor classified `data_paper`: fetch bucket.
+      * Sidecar present, anchor classified anything else: context bucket;
+        records `classification` / `reason` / `paper_title` etc. so the
+        dashboard (phase 4) can render it without re-reading the sidecar.
+      * Sidecar present but anchor has no entry: fetch bucket. Treated as
+        "judgment missing, fall back to fetching" to stay safe; the operator
+        sees the missing entry by inspecting the sidecar directly.
+    """
+    if not sidecar.present:
+        logger.info(
+            "%s: anchor-judgment sidecar missing; fetching all %d anchors (fallback)",
+            dataset_id,
+            len(refs),
+        )
+        return list(refs), []
+
+    fetch_refs: list[DoiReference] = []
+    context_records: list[dict[str, Any]] = []
+    unjudged_count = 0
+
+    for ref in refs:
+        key = canonical_anchor_key(ref.identifier, ref.identifier_type)
+        classification = sidecar.lookup.get(key) if key is not None else None
+        if classification is None:
+            # Anchor not present in sidecar -> fall back to fetching it.
+            # Phase 4 will make judgment mandatory once the backfill is
+            # complete; until then we surface the drift via a single WARN
+            # per dataset so operators can see at-a-glance how many
+            # anchors slipped past the judgment step.
+            fetch_refs.append(ref)
+            unjudged_count += 1
+            continue
+        if classification == _FETCH_CLASSIFICATION:
+            fetch_refs.append(ref)
+            continue
+        details = sidecar.context_details.get(key) if key is not None else None
+        context_records.append(_build_context_record(ref, classification, details))
+
+    if unjudged_count:
+        logger.warning(
+            "%s: %d/%d anchors in this dataset have no judgment in the sidecar; "
+            "they will be fetched as fallback. Re-run dataset-citations-judge-anchors "
+            "to close the gap.",
+            dataset_id,
+            unjudged_count,
+            len(refs),
+        )
+
+    return fetch_refs, context_records
+
+
+def _build_context_record(
+    ref: DoiReference,
+    classification: str,
+    details: dict[str, Any] | None,
+) -> dict[str, Any]:
+    """Shape one entry of `metadata.context_anchors[]`.
+
+    Pulls the human-readable paper fields (title, reason) from the sidecar
+    when available so the dashboard doesn't have to re-load it. Falls back
+    to the `DoiReference` values for the identifier triplet so the record is
+    well-formed even if the sidecar lacked the optional fields.
+    """
+    record: dict[str, Any] = {
+        "anchor_identifier": ref.identifier,
+        "anchor_identifier_type": ref.identifier_type,
+        "source_relation": ref.relation_type,
+        "classification": classification,
+        "paper_title": None,
+        "paper_year": None,
+        "paper_venue": None,
+        "reason": None,
+    }
+    if details:
+        # Prefer the sidecar's identifier shape (DOI in its original case,
+        # PMID without the prefix) when available; otherwise keep the
+        # pipeline's canonical form for stability. paper_year / paper_venue
+        # are forwarded so phase 4's dashboard can render context anchors
+        # without re-opening the sidecar.
+        record["anchor_identifier"] = details.get("anchor_identifier") or ref.identifier
+        record["anchor_identifier_type"] = (
+            details.get("anchor_identifier_type") or ref.identifier_type
+        )
+        record["source_relation"] = details.get("source_relation") or ref.relation_type
+        record["paper_title"] = details.get("paper_title")
+        record["paper_year"] = details.get("paper_year")
+        record["paper_venue"] = details.get("paper_venue")
+        record["reason"] = details.get("reason")
+    return record
