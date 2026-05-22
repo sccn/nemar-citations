@@ -57,10 +57,12 @@ def generate_chart_javascript(stats: Dict[str, Any], charts: Dict[str, Any]) -> 
     )
     quality_y = quality.get("data", {}).get("y", [0, 0])
 
-    growth_x = growth.get("data", {}).get(
-        "x", [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
-    )
-    growth_y = growth.get("data", {}).get("y", [20, 65, 150, 370, 650, 950, 1040, 1140])
+    # Growth series comes from ChartGenerator._generate_growth_chart which
+    # reads `temporal_analysis.temporal_summary`. Default to empty arrays so
+    # we surface "no data" rather than a misleading hardcoded curve (the
+    # source of #77's 10x scale bug).
+    growth_x = growth.get("data", {}).get("x", [])
+    growth_y = growth.get("data", {}).get("y", [])
 
     modality_values = modality.get("data", {}).get("values", [120, 45, 25])
     modality_labels = modality.get("data", {}).get("labels", ["EEG", "MEG", "iEEG"])
