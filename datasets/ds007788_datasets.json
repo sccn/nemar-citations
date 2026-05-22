@@ -1,0 +1,39 @@
+{
+  "dataset_id": "ds007788",
+  "date_retrieved": "2026-05-21T18:41:41.923130+00:00",
+  "dataset_description": {
+    "Name": "Dataset: EEG-Controlled Exoskeleton for Walking and Standing - A Longitudinal Study of Healthy Individuals",
+    "BIDSVersion": "1.8.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Shantanu Sarkar",
+      "Kevin Nathan",
+      "Jose L. Contreras-Vidal"
+    ],
+    "Acknowledgements": "We acknowledge the invaluable collaboration and visionary support of the late Prof. Robert Grossman. This research would not have been possible without his contributions.",
+    "HowToAcknowledge": "Please cite the NeuroRex BMI dataset and reference the Data Descriptor when using these data.",
+    "Funding": [
+      "UH–Methodist Graduate Fellowship for Translational Research",
+      "NSF IUCRC BRAIN Center Award #2137255"
+    ],
+    "EthicsApprovals": [
+      "The Institutional Review Board of the University of Houston approved the experimental methods for this study (#12345: Human-Robot Interaction Project)."
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds007788.v1.0.1"
+  },
+  "readme_content": "## **EEG-Controlled Exoskeleton for Walking and Standing – A Longitudinal Motor Imagery Study in Healthy Adults**\n\n### **Dataset Overview**\nThis dataset comprises multimodal recordings from a brain–machine interface (BMI) training study involving seven healthy adult participants (ages 20–30 years; mean = 24.3, SD = 3.8). The study investigated both open-loop and closed-loop control of a lower-limb exoskeleton (Rex Bionics). The dataset includes 60-channel EEG, 4-channel EOG, motion data from two IMU sensors (mounted on the participant's forehead and the exoskeleton), and exoskeleton control and feedback signals. Each participant completed nine sessions over several weeks, with each session structured into a training phase followed by a closed-loop trial phase.\n\n### **Experimental Design**\n\n- **Participants:** 7 healthy adults (4 male, 3 female)\n- **Sessions:** 9 per participant\n- **Training Phase:** Motor imagery calibration\n- **Trial Phase:** Closed-loop BMI control (walk/stop)\n- **Conditions:** Walk / Stop (motor imagery)\n\n### **Task Structure**\n\n**Training:**\nParticipants perform motor imagery tasks without feedback to calibrate the BMI decoder.\n\n**TrialXX:**\nEach session includes 12 closed-loop BMI trials (trial01–trial12), during which participants use motor imagery to control the exoskeleton in real time.\n\n- **Block 1:** Trials 1–4\n- **Block 2:** Trials 5–8\n- **Block 3:** Trials 9–12\n\n**walk6min / stop6min:**\nAfter the 12 trials, participants complete two extended motor imagery tasks:\n\n- **walk6min:** Imagining continuous walking for 6 minutes\n- **stop6min:** Imagining standing still for 6 minutes\n\n### **Data Modalities**\n\n- **EEG:** 60 scalp channels + 4 EOG channels\n- **IMU:** 3-axis accelerometer, gyroscope, magnetometer, and quaternion\n- **Sensor Placement:** IMUs mounted on the participant's forehead and the exosuit back brace\n- **Decoder Signals / Feedback:** Logged control signals and BMI predictions\n\n### **Additional Materials**\n\n- **MIQ‑RS:** Motor Imagery Questionnaire – Revised Second Version (PDFs in `derivatives/MIQ-RS/`)\n- **Validation Tables:** Data availability, synchronization, and electrode placement (`derivatives/validation/`)\n- **Raw Data:** Provided without filtering or artifact removal\n\n### **Folder Structure**\n\n---\n\n```\ndataset-root/\n│\n├── sub-{SubNo}/\n│   └── ses-{SesNo}/\n│       ├── eeg/\n│       │   ├── sub-{SubNo}_ses-{SesNo}_coordsystem.json\n│       │   ├── sub-{SubNo}_ses-{SesNo}_electrodes.tsv\n│       │   ├── sub-{SubNo}_ses-{SesNo}_electrodes.json\n│       │   │\n│       │   ├── sub-{SubNo}_ses-{SesNo}_task-{Task}_eeg.edf\n│       │   ├── sub-{SubNo}_ses-{SesNo}_task-{Task}_eeg.json\n│       │   │\n│       │   ├── sub-{SubNo}_ses-{SesNo}_task-{Task}_acq-{AcqLabel}_events.tsv\n│       │   ├── sub-{SubNo}_ses-{SesNo}_task-{Task}_acq-{AcqLabel}_events.json\n│       │   │\n│       │   ├── sub-{SubNo}_ses-{SesNo}_task-{Task}_recording-{StimLabel}_stim.tsv.gz\n│       │   └── sub-{SubNo}_ses-{SesNo}_task-{Task}_recording-{StimLabel}_stim.json\n│       │\n│       └── motion/\n│           ├── sub-{SubNo}_ses-{SesNo}_task-{Task}_tracksys-{IMUPos}_motion.tsv\n│           ├── sub-{SubNo}_ses-{SesNo}_task-{Task}_tracksys-{IMUPos}_motion.json\n│           ├── sub-{SubNo}_ses-{SesNo}_task-{Task}_tracksys-{IMUPos}_channels.tsv\n│           └── sub-{SubNo}_ses-{SesNo}_task-{Task}_tracksys-{IMUPos}_channels.json\n│\n└── derivatives/\n    ├── MIQ-RS/\n    │   └── sub-{SubNo}_MIQ-RS.pdf\n    │\n    └── validation/\n        ├── BeepValidation.xls\n        ├── ExoIMU_Stats.xls\n        ├── ExoIMU_W_vs_S.xls\n        ├── HeadIMU_Stats.xls\n        ├── HeadIMU_W_vs_S.xls\n        ├── IMU_Orientation.xls\n        ├── Training-OpenLoop-Stats.xls\n        ├── Trial-CloseLoop-Stats.xls\n        ├── failCounterValidation.xls\n        ├── infoClosedLoopValidation.xls\n        ├── rexCommandValidation.xls\n        └── rexStateValidation.xls\n```\n\n### **Naming Convention**\n\n| Placeholder | Description | Values |\n|---|---|---|\n| `{SubNo}` | Participant ID | 01–07 |\n| `{SesNo}` | Session Number | 01–09 |\n| `{Task}` | Task name | `training`, `trial01–trial12`, `stop6min`, `walk6min` |\n| `{AcqLabel}` | Acquisition label | `infoclosedloop`, `rexcommand`, `rexstate` |\n| `{StimLabel}` | Stimulus label | `beep`, `failcounter` |\n| `{IMUPos}` | IMU position | `head`, `exo` |\n\n### **Citation**\nIf you use this dataset, please cite the associated study and acknowledge the contributors.\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds007788",
+    "exists": true,
+    "description": "OpenNeuro dataset - Dataset: EEG-Controlled Exoskeleton for Walking and Standing - A Longitudinal Study of Healthy Individuals",
+    "created_at": "2026-05-11T03:30:00+00:00",
+    "updated_at": "2026-05-11T20:17:41+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

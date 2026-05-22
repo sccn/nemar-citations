@@ -1,0 +1,56 @@
+{
+  "dataset_id": "ds007095",
+  "date_retrieved": "2026-05-21T18:58:56.435662+00:00",
+  "dataset_description": {
+    "Authors": [
+      "Chen Feng",
+      "Haoqi Ni",
+      "Zhoule Zhu",
+      "Hongjie Jiang",
+      "Zhe Zheng",
+      "Wenjie Ming",
+      "Shuang Wang",
+      "Kedi Xu",
+      "Junming Zhu"
+    ],
+    "BIDSVersion": "1.8.0",
+    "DatasetType": "raw",
+    "EthicsApprovals": [
+      "ChiCTR2200055247"
+    ],
+    "Funding": [
+      "National Science and Technology Major Project (2025ZD0215100)",
+      "Science and Technology Innovation 2030-Major Project (2021ZD0200404)",
+      "National Natural Science Foundation of China (Grant No. 82272112)",
+      "Outstanding Youth Program of Zhejiang Natural Science Foundation (LR23H180002)"
+    ],
+    "GeneratedBy": [
+      {
+        "Name": "FieldTrip",
+        "Version": "20250114",
+        "Description": "data2bids converter",
+        "URI": "https://www.fieldtriptoolbox.org"
+      }
+    ],
+    "License": "CC0",
+    "Name": "RNS_Epilepsy-iBIDS",
+    "ReferencesAndLinks": [
+      ""
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds007095.v1.0.0"
+  },
+  "readme_content": "﻿Dataset of long-term iEEG invasively recorded in epilepsy patients implanted with responsive neurostimulation system  (RNS)\n----------\nWe provided a long-term intracranial electroencephalography (iEEG) dataset of 8 epilepsy patients implanted with responsive neurostimulation (RNS) devices. The dataset was constituted by iEEG data recorded from bilateral epileptic lesion areas.\n\nEach recording contains 90 seconds of dual-channel iEEG around each stimulation, 60 seconds before the start of the stimulation, and about 30 seconds after the end of the stimulation. The stimulation markers are contained in the events.tsv files, including the onset and duration for each stimulus. The ieeg.json files contain the electrical stimulation parameters for the current session, which were set by the neurosurgeon during each regular clinical follow-up of epilepsy patients. \n\nThe iEEG data were saved in EDF format, stored as the Brain Imaging Data Structure (BIDS), and published on the OpenNeuro. The criterion for including patients in this dataset is to intracranially record the seizure events for more than six months. For each subject, one week is considered as a session, which includes all seizures within a day with high frequency seizure onset during that week.\n\nThe dataset can be used to evaluate the alterations of seizure onset pattern during the development of epilepsy, as well as the changes in iEEG characteristics after the electrical stimulation. We have technically validated the dataset through specific signal analysis, such as power spectral analysis, calculation of envelop length, and calculation of phase locking value.\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds007095",
+    "exists": true,
+    "description": "OpenNeuro dataset",
+    "created_at": "2025-12-16T02:23:19+00:00",
+    "updated_at": "2026-02-22T18:23:50+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "dataset_id": "nm000122",
+  "date_retrieved": "2026-05-21T18:42:00.015335+00:00",
+  "dataset_description": {
+    "Name": "Chen2017 – Single-flicker online SSVEP BCI dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC BY 4.0",
+    "Authors": [
+      "Jingjing Chen",
+      "Dan Zhang",
+      "Andreas K. Engel",
+      "Qin Gong",
+      "Alexander Maye"
+    ],
+    "Funding": [
+      "DFG TRR169/B1/Z2 Crossmodal Learning",
+      "Landesforschungsfoerderung Hamburg CROSS FV25"
+    ],
+    "EthicsApprovals": [
+      "Ethics committee of the medical association, Hamburg"
+    ],
+    "ReferencesAndLinks": [
+      "https://zenodo.org/records/580485"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.4.3"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1371/journal.pone.0178385",
+        "URL": "https://zenodo.org/records/580485"
+      }
+    ],
+    "Keywords": [
+      "SSVEP",
+      "BCI",
+      "spatial navigation",
+      "single-flicker",
+      "online BCI"
+    ],
+    "PublicationYear": 2017,
+    "ExperimentName": "Chen2017",
+    "Description": "Single-flicker online SSVEP BCI dataset.\n\n\nDataset summary:\n\n#Subj          12\n#Chan          32\n#Classes           4\n#Trials / class      varies\nTrials length       3.5 s\nFreq 512/2048 Hz\n#Sessions           2\n\n\nParticipants:\n\n- Population: healthy\n- Age: 23.5 (range: 19-32) years\n\n\nEquipment:\n\n- Amplifier: BioSemi ActiveTwo\n- Electrodes: active\n- Montage: biosemi32\n- Reference: CMS/DRL\n\n\nData Access:\n\n- DOI: 10.1371/journal.pone.0178385\n- Data URL: https://zenodo.org/records/580485\n- Repository: Zenodo\n\n\nExperimental Protocol:\n\n- Paradigm: ssvep\n- Task type: spatial navigation\n- Feedback: visual\n- Stimulus: single-flicker spatially coded\n\nDataset from [1]_.\n\nThis dataset uses a spatially coded SSVEP paradigm where a single white\nsquare flickers at 15 Hz in the center of the screen. Four non-flickering\ntarget squares are placed at the cardinal directions (N, E, W, S). The\nuser gazes at one target, producing a distinct spatial topography of the\n15 Hz SSVEP response for each direction.\n\nThe dataset contains 32-channel EEG recorded from 12 healthy subjects\n(7 female, 5 male, mean age 23.5, range 19-32) using a BioSemi ActiveTwo\nsystem.\n\nTwo sessions are available per subject:\n\n- Session \"0\" (training): Structured calibration data from ``.xdf``\nfiles recorded at 2048 Hz. Each subject has 2 runs of 100 trials\n(50 per direction, 200 total), with ~3.5 s per trial. Requires\n``pyxdf`` (install with ``pip install moabb[xdf]``).\n- Session \"1\" (online): Adaptive BCI game data from ``.mat`` files\nrecorded at 512 Hz. Variable-length trials from approximately 16 game\nrounds per subject.\n\nBoth sessions use the same BioSemi ActiveTwo cap with 32 EEG channels\n(A1-A32) and biosemi32 montage. The sampling rates differ between\nsessions (2048 Hz for training, 512 Hz for online).\n\nWarnings\n--------\nThis paradigm uses a SINGLE flicker frequency (15 Hz) with spatially-coded\ndirections. Standard frequency-based SSVEP analysis (CCA, FBCCA) will NOT\nwork. Use broadband spatial features or classification approaches instead.\n\nReferences\n----------\n.. [1] J. Chen, D. Zhang, A. K. Engel, Q. Gong, and A. Maye,\n\"Application of a single-flicker online SSVEP BCI for spatial\nnavigation,\" PLoS ONE, vol. 12, no. 5, e0178385, 2017.\nDOI: 10.1371/journal.pone.0178385",
+    "DatasetDOI": "10.82901/nemar.nm000122",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000122-blue)](https://doi.org/10.82901/nemar.nm000122)\n\n# Single-flicker online SSVEP BCI dataset\n\nSingle-flicker online SSVEP BCI dataset.\n\n## Dataset Overview\n\n- **Code**: Chen2017SingleFlicker\n- **Paradigm**: ssvep\n- **DOI**: 10.1371/journal.pone.0178385\n- **Subjects**: 12\n- **Sessions per subject**: 2\n- **Events**: north=1, east=2, west=3, south=4\n- **Trial interval**: [0.0, 3.5] s\n- **File format**: XDF/MAT\n\n## Acquisition\n\n- **Sampling rate**: 512.0 Hz\n- **Number of channels**: 32\n- **Channel types**: eeg=32\n- **Montage**: biosemi32\n- **Hardware**: BioSemi ActiveTwo\n- **Reference**: CMS/DRL\n- **Sensor type**: active\n- **Line frequency**: 50.0 Hz\n- **Cap manufacturer**: BioSemi\n- **Electrode material**: sintered Ag/AgCl\n\n## Participants\n\n- **Number of subjects**: 12\n- **Health status**: healthy\n- **Age**: mean=23.5, min=19, max=32\n- **Gender distribution**: male=5, female=7\n\n## Experimental Protocol\n\n- **Paradigm**: ssvep\n- **Task type**: spatial navigation\n- **Number of classes**: 4\n- **Class labels**: north, east, west, south\n- **Study design**: Spatial navigation with single 15 Hz flicker\n- **Feedback type**: visual\n- **Stimulus type**: single-flicker spatially coded\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: online\n- **Training/test split**: True\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  north\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/north\n\n  east\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/east\n\n  west\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/west\n\n  south\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/south\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: ssvep\n- **Stimulus frequencies**: [15.0] Hz\n\n## Signal Processing\n\n- **Classifiers**: LDA\n- **Feature extraction**: CCA\n- **Frequency bands**: bandpass=[1.0, 80.0] Hz\n- **Spatial filters**: CCA\n\n## Cross-Validation\n\n- **Evaluation type**: within_subject\n\n## BCI Application\n\n- **Applications**: spatial_navigation\n- **Environment**: lab\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: healthy\n- **Modality**: visual\n- **Type**: perception\n\n## Documentation\n\n- **DOI**: 10.1371/journal.pone.0178385\n- **License**: CC BY 4.0\n- **Investigators**: Jingjing Chen, Dan Zhang, Andreas K. Engel, Qin Gong, Alexander Maye\n- **Senior author**: Alexander Maye\n- **Institution**: University Medical Center Hamburg-Eppendorf\n- **Department**: Department of Neurophysiology and Pathophysiology, University Medical Center Hamburg-Eppendorf\n- **Country**: DE\n- **Repository**: Zenodo\n- **Data URL**: https://zenodo.org/records/580485\n- **Publication year**: 2017\n- **Funding**: DFG TRR169/B1/Z2 Crossmodal Learning; Landesforschungsfoerderung Hamburg CROSS FV25\n- **Ethics approval**: Ethics committee of the medical association, Hamburg\n- **Keywords**: SSVEP, BCI, spatial navigation, single-flicker, online BCI\n\n## References\n\nJ. Chen, D. Zhang, A. K. Engel, Q. Gong, and A. Maye, \"Application of a single-flicker online SSVEP BCI for spatial navigation,\" PLoS ONE, vol. 12, no. 5, e0178385, 2017. DOI: 10.1371/journal.pone.0178385\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.4.3 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000122",
+    "exists": true,
+    "description": "Chen2017 – Single-flicker online SSVEP BCI dataset",
+    "created_at": "2026-03-06T21:18:11+00:00",
+    "updated_at": "2026-05-12T04:20:23+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

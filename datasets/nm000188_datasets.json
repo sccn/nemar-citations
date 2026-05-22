@@ -1,0 +1,62 @@
+{
+  "dataset_id": "nm000188",
+  "date_retrieved": "2026-05-21T18:43:13.915179+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2014-009 P300 dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "P Aricò",
+      "F Aloise",
+      "F Schettini",
+      "S Salinari",
+      "D Mattia",
+      "F Cincotti"
+    ],
+    "EthicsApprovals": [
+      "Approved by local Ethics Committee"
+    ],
+    "ReferencesAndLinks": [
+      "10.3389/fnhum.2013.00732"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1088/1741-2560/11/3/035008"
+      }
+    ],
+    "Keywords": [
+      "P300 latency jitter",
+      "brain-computer interface",
+      "covert attention",
+      "wavelet analysis",
+      "single epoch"
+    ],
+    "PublicationYear": 2014,
+    "DatasetDOI": "10.82901/nemar.nm000188",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000188-blue)](https://doi.org/10.82901/nemar.nm000188)\n\n# BNCI 2014-009 P300 dataset\n\nBNCI 2014-009 P300 dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2014-009\n- **Paradigm**: p300\n- **DOI**: 10.1088/1741-2560/11/3/035008\n- **Subjects**: 10\n- **Sessions per subject**: 3\n- **Events**: Target=2, NonTarget=1\n- **Trial interval**: [0, 0.8] s\n- **File format**: MAT\n- **Data preprocessed**: True\n\n## Acquisition\n\n- **Sampling rate**: 256.0 Hz\n- **Number of channels**: 16\n- **Channel types**: eeg=16\n- **Channel names**: Fz, Cz, Pz, Oz, P3, P4, PO7, PO8, F3, F4, FCz, C3, C4, CP3, CPz, CP4\n- **Montage**: 10-10\n- **Hardware**: g.USBamp\n- **Software**: BCI2000\n- **Reference**: linked earlobes\n- **Ground**: right mastoid\n- **Sensor type**: Ag/AgCl\n- **Line frequency**: 50.0 Hz\n- **Online filters**: bandpass 0.1-20 Hz\n- **Impedance threshold**: 10.0 kOhm\n- **Cap manufacturer**: Electro-Cap International, Inc.\n\n## Participants\n\n- **Number of subjects**: 10\n- **Health status**: healthy\n- **Age**: mean=26.8, std=5.6\n- **Gender distribution**: female=10, male=0\n- **BCI experience**: experienced\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Task type**: spelling\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Trial duration**: 16.0 s\n- **Study design**: P300-based BCI with two interfaces: P300 Speller (overt attention) and GeoSpell (covert attention). 36 alphanumeric characters presented. Eight stimulation sequences per trial with 16 target intensifications.\n- **Feedback type**: none\n- **Stimulus type**: visual_intensification\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: offline\n- **Training/test split**: False\n- **Instructions**: Subject focused on one out of 36 different characters. At the beginning of each trial, the system prompted the subject with the character to attend. Target prompt appeared during a 2 s pre-trial interval.\n- **Stimulus presentation**: stimulus_duration_ms=125, isi_ms=125, soa_ms=250, n_sequences=8, n_intensifications_per_target=16, pre_trial_interval_s=2.0, tti_min_ms=500\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n- **Number of targets**: 36\n- **Number of repetitions**: 8\n- **Inter-stimulus interval**: 125.0 ms\n- **Stimulus onset asynchrony**: 250.0 ms\n\n## Data Structure\n\n- **Trials**: 18\n- **Blocks per session**: 3\n- **Trials context**: 6 trials × 3 runs per session\n\n## Preprocessing\n\n- **Data state**: preprocessed\n- **Preprocessing applied**: True\n- **Steps**: bandpass filtering\n- **Highpass filter**: 0.1 Hz\n- **Lowpass filter**: 20.0 Hz\n- **Bandpass filter**: {'low_cutoff_hz': 0.1, 'high_cutoff_hz': 20.0}\n- **Filter type**: Butterworth\n- **Filter order**: 8\n- **Re-reference**: linked earlobes\n- **Epoch window**: [0.0, 0.8]\n- **Notes**: EEG acquired using g.USBamp amplifier (g.Tec, Austria), digitized at 256 Hz\n\n## Signal Processing\n\n- **Classifiers**: LDA, SWLDA\n- **Feature extraction**: Wavelet, Time-Frequency, CWT\n- **Frequency bands**: analyzed=[1.0, 20.0] Hz\n\n## Cross-Validation\n\n- **Method**: cross-validation\n- **Folds**: 3\n- **Evaluation type**: within_session\n\n## Performance (Original Study)\n\n- **P300 Latency Jitter Correlation**: negative correlation with accuracy\n\n## BCI Application\n\n- **Applications**: communication, spelling\n- **Environment**: laboratory\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Visual\n- **Type**: P300, ERP\n\n## Documentation\n\n- **Description**: Complete record of P300 evoked potentials recorded with BCI2000 using two different paradigms: P300 Speller (overt attention) and GeoSpell (covert attention). 10 healthy subjects focused on one out of 36 different characters.\n- **DOI**: 10.1088/1741-2560/11/3/035008\n- **Associated paper DOI**: 10.3389/fnhum.2013.00732\n- **License**: CC-BY-NC-ND-4.0\n- **Investigators**: P Aricò, F Aloise, F Schettini, S Salinari, D Mattia, F Cincotti\n- **Senior author**: F Cincotti\n- **Contact**: p.arico@hsantalucia.it\n- **Institution**: Fondazione Santa Lucia IRCCS\n- **Department**: Neuroelectrical Imaging and BCI Lab\n- **Address**: Rome, Italy\n- **Country**: Italy\n- **Repository**: BNCI Horizon\n- **Publication year**: 2014\n- **Ethics approval**: Approved by local Ethics Committee\n- **Keywords**: P300 latency jitter, brain-computer interface, covert attention, wavelet analysis, single epoch\n\n## Abstract\n\nThis dataset represents a complete record of P300 evoked potentials recorded with BCI2000 using two different paradigms: a paradigm based on the P300 Speller originally described by Farwell and Donchin in overt attention condition and a paradigm based on the GeoSpell interface used in covert attention condition. In these sessions, 10 healthy subjects focused on one out of 36 different characters. The objective was to predict the correct character in each of the provided character selection epochs.\n\n## Methodology\n\nTen healthy subjects (10 female, mean age = 26.8 ± 5.6) with previous experience with P300-based BCIs attended 4 recording sessions. Scalp EEG potentials were measured using 16 Ag/AgCl electrodes arranged on an elastic cap per the 10-10 standard. Each electrode was referenced to the linked earlobes and grounded to the right mastoid. The EEG was acquired using a g.USBamp amplifier (g.Tec, Austria), digitized at 256 Hz, high pass- and low pass-filtered with cutoff frequencies of 0.1 Hz and 20 Hz, respectively. The electrode impedance did not exceed 10 kΩ. Visual stimulation, acquisition and online classification were performed with BCI2000. Each subject attended 4 recording sessions. During each session, the subject performed three runs with each of the stimulation interfaces. Each trial consisted of eight stimulation sequences, and thus, 16 intensifications of the target character. Each stimulus was intensified for 125 ms, with an inter stimulus interval (ISI) of 125 ms, yielding a 250 ms lag between the appearance of two stimuli (SOA). Pseudorandom stimulation sequences were assembled so that each target intensification would not occur within 500 ms after the previous one to avoid the attentional blink phenomenon.\n\n## References\n\nRiccio, A., Simione, L., Schettini, F., Pizzimenti, A., Inghilleri, M., Belardinelli, M. O., & Mattia, D. (2013). Attention and P300-based BCI performance in people with amyotrophic lateral sclerosis. Frontiers in human neuroscience, 7, 732. https://doi.org/10.3389/fnhum.2013.00732\n\nNotes\n\n.. note::\n\n``BNCI2014_009`` was previously named ``BNCI2014009``. ``BNCI2014009`` will be removed in version 1.1.\n\n.. versionadded:: 0.4.0\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000188",
+    "exists": true,
+    "description": "BNCI 2014-009 P300 dataset",
+    "created_at": "2026-03-23T23:02:57+00:00",
+    "updated_at": "2026-05-18T12:08:31+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

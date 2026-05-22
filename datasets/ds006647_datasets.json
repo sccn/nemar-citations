@@ -1,0 +1,38 @@
+{
+  "dataset_id": "ds006647",
+  "date_retrieved": "2026-05-21T18:57:50.224622+00:00",
+  "dataset_description": {
+    "Authors": [
+      "Soma Chaudhuri",
+      "Joydeep Bhattacharya"
+    ],
+    "Name": "Poetry Assessment EEG Dataset 2",
+    "License": "CC0",
+    "ReferencesAndLinks": [
+      ""
+    ],
+    "BIDSVersion": "1.8.0",
+    "HEDVersion": "8.1.0",
+    "GeneratedBy": [
+      {
+        "Name": "bids-matlab-tools",
+        "Version": "8.0"
+      }
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds006647.v1.0.1"
+  },
+  "readme_content": "Understanding how the brain engages with poetic language is key to advancing empirical research on aesthetic and creative cognition. This experiment involved 64-channel EEG recordings and behavioural ratings from 51 participants who read and evaluated 210 short English-language texts — 70 Haiku (nature-themed), 70 Senryu (emotion-themed), and 70 non-poetic Control texts. Each poem/text was rated on five subjective dimensions: Aesthetic Appeal, Vivid Imagery, Being Moved, Originality, and Creativity — using a 7-point scale.\r\n\r\nThe full study involved 51 participants, and the data were divided into two BIDS-compliant datasets to ensure technical validation and facilitate upload to OpenNeuro. \r\n\r\nPoetry Assessment EEG Dataset 1 contains data from 47 participants whose continuous EEG recordings passed technical validation and were used in the primary analyses. \r\n\r\nPoetry Assessment EEG Dataset 2 (this dataset) includes the remaining 4 participants (P105, P141, P142, P146), whose EEG recordings were acquired in segments due to session interruptions and later concatenated during preprocessing. These participants were excluded from the PSD analysis to avoid potential artifacts but are included here for completeness and transparency. In this dataset, the participants.tsv file maps anonymized BIDS IDs (sub-001 to sub-004) to the original participant codes used during data collection (P105–P146), as follows:\r\n\r\nsub-001 → P105  \r\nsub-002 → P141  \r\nsub-003 → P142  \r\nsub-004 → P146\r\n\r\n\r\nDataset Structure and Navigation: \r\nEach subject folder contains four core EEG files:\r\n\r\nchannels.tsv – EEG channel metadata\r\neeg.json – EEG recording metadata\r\neeg.set – Raw EEG data (EEGLAB format)\r\nevents.tsv – Event markers aligned with poem presentation\r\n\r\nThe /code/ directory includes:\r\n\r\nPreprocessing.m – MATLAB preprocessing script\r\nBioSemi64.loc – 64-channel coordinate file\r\n\r\nThe /derivatives/ directory contains:\r\n\r\nBehavioural_Ratings/ – One .csv file per participant (e.g., P105.csv), including trial-by-trial ratings across five dimensions: Aesthetic Appeal, Vivid Imagery, Emotional Impact (labeled as 'being moved'), Originality, and Creativity.\r\n\r\nPsychometric_Responses/ – A single .csv file with demographic and trait-level questionnaire responses per participant, including: PANAS (mood), Openness, Curiosity, VVIQ (visual imagery), AVIQ (auditory imagery), MAAS (mindfulness), and AReA (aesthetic responsiveness).\r\n\r\nAlso includes questionnaires.pdf with full questionnaire texts and scoring keys\r\n\r\nThe /stimuli/ directory includes:\r\n\r\nAll 210 texts used in the experiment: 70 Haiku (nature-themed poetry), 70 Senryu (emotion-themed poetry), 70 Control (non-poetic matched prose).\r\n\r\nBlock-wise trial assignments for all seven blocks\r\n\r\nResting-state EEG was recorded at the beginning and end of each session. These segments are embedded within the raw EEG files and can be identified using the following trigger codes in events.tsv:\r\n\r\n65285, 65286 → Resting state (before experiment); 65287, 65288 → Resting state (after experiment)\r\n\r\nInterested users are encouraged to consult Poetry Assessment EEG Dataset 1 to gain a complete understanding of the full experiment and its validated main dataset. All preprocessing steps, event markers, and metadata structures were applied identically across both datasets (Poetry Assessment EEG Dataset 1 and Poetry Assessment EEG Dataset 2), ensuring consistency. This enables users to apply their own quality control pipelines and include these data if desired.\r\n\r\nOf note, the anonymized participant IDs (e.g., PXXX) are used consistently across all data modalities, enabling reliable cross-referencing between EEG data, behavioural ratings, and psychometric responses. Data collection took place at the Department of Psychology at Goldsmiths, University of London, UK. The project was approved by the Local Ethics Committee at the Department of Psychology, Goldsmiths University of London. The experiment was conducted in accordance with the Declaration of Helsinki.\r\n\r\n\r\nAll EEG, behavioural, and psychometric data were anonymized. Participant identifiers were coded (P101–P151), and no names, dates of birth, or other direct identifiers are included.\r\n\r\n\r\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds006647",
+    "exists": true,
+    "description": "OpenNeuro dataset - Poetry Assessment EEG Dataset 2",
+    "created_at": "2025-10-10T00:48:05+00:00",
+    "updated_at": "2025-10-10T00:50:10+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

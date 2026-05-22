@@ -1,0 +1,51 @@
+{
+  "dataset_id": "nm000109",
+  "date_retrieved": "2026-05-21T18:41:44.923790+00:00",
+  "dataset_description": {
+    "Name": "EEG During Mental Arithmetic Tasks",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "derivative",
+    "License": "ODC-By-1.0",
+    "Authors": [
+      "Igor Zyma",
+      "Sergii Tukaev",
+      "Ivan Seleznov",
+      "Ken Kiyono",
+      "Anton Popov",
+      "Mariia Chernykh",
+      "Oleksii Shpenkov"
+    ],
+    "Acknowledgements": "Pierre Guetschel updated the data to BIDS format.",
+    "ReferencesAndLinks": [
+      "https://doi.org/10.3390/data4010014"
+    ],
+    "GeneratedBy": [
+      {
+        "Name": "MNE-BIDS",
+        "Version": "0.17.0",
+        "CodeURL": "https://mne.tools/mne-bids/"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "URL": "https://physionet.org/content/eegmat/1.0.0/"
+      }
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000109",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000109-blue)](https://doi.org/10.82901/nemar.nm000109)\n\n# EEG During Mental Arithmetic Tasks\n\n## Introduction\n\nThis dataset contains scalp EEG recordings from 36 healthy university students (9 male, 27 female; ages 18-26 years) during mental arithmetic tasks and resting-state periods. The study was designed to investigate EEG correlates of cognitive activity during intensive mental workload involving serial subtraction. The dataset provides brain electrical activity measurements for studying the neural mechanisms of mathematical cognition and cognitive stress responses, with potential applications in cognitive neuroscience research, mental workload assessment, and brain-computer interface development.\n\n## Overview of the experiment\n\nParticipants were recorded during two conditions: (1) resting-state with eyes closed, and (2) mental arithmetic task involving serial subtraction. During the resting state, participants sat comfortably in a dark, soundproof chamber and were instructed to relax. After a 3-minute adaptation period, a 3-minute resting-state EEG recording was made with eyes closed. Participants then performed a 4-minute mental arithmetic task during which they were presented with a 4-digit minuend and 2-digit subtrahend (e.g., 3141 - 42) and performed serial subtractions mentally. They were instructed to count accurately and quickly in their self-determined rhythm without speaking or using finger movements. The dataset stores the last 3 minutes of the rest period (180 seconds) and the first minute of mental arithmetic performance (60 seconds) for each participant. EEG was recorded using a Neurocom 23-channel monopolar system sampled at 500 Hz with electrodes placed according to the International 10/20 system and referenced to interconnected ear electrodes. Filters included a high-pass filter (0.5 Hz cut-off), low-pass filter (45 Hz cut-off), and power line notch filter (50 Hz). Participants were divided post-hoc into two performance groups based on the number of completed arithmetic operations: \"good counters\" (Group G, n=24, mean operations=21, SD=7.4) and \"bad counters\" (Group B, n=12, mean operations=7, SD=3.6).\n\n## Description of the preprocessing if any\n\nAll recordings included only artifact-free EEG segments, with 30 of 66 initially recorded participants excluded due to excessive oculographic and myographic artifacts. Channel names have been standardized to match the International 10-20 nomenclature. The raw EDF files have been converted to BIDS format with proper channel type assignments (EEG for brain signals). Subject birth years were calculated from age and recording year. Recording dates have been set to January 1st of the recording year due to privacy considerations in the original dataset. Impedance checks confirmed all electrodes were below 5 kΩ prior to recording.\n\n## Description of the event values if any\n\nNo events.tsv files are provided. The \"task\" field in the BIDS filenames indicates the experimental condition:\n- \"rest\": resting-state condition\n- \"mentalArithmetic\": mental arithmetic task condition\n\n## Citation\n\nWhen using this dataset, please cite:\n\n1. Zyma I, Tukaev S, Seleznov I, Kiyono K, Popov A, Chernykh M, Shpenkov O. Electroencephalograms during Mental Arithmetic Task Performance. Data. 2019; 4(1):14. https://doi.org/10.3390/data4010014\n\n2. PhysioNet database: https://doi.org/10.13026/C2JQ1P\n\n3. Goldberger, A., Amaral, L., Glass, L., Hausdorff, J., Ivanov, P. C., Mark, R., ... & Stanley, H. E. (2000). PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource for complex physiologic signals. Circulation [Online]. 101 (23), pp. e215–e220.\n\n**Data curators:**\nPierre Guetschel (BIDS conversion)\n\nOriginal data collection team:\n- Igor Zyma, PhD (National Technical University of Ukraine)\n- Sergii Tukaev (National Technical University of Ukraine)\n- Ivan Seleznov (National Technical University of Ukraine)\n- Ken Kiyono, PhD\n- Anton Popov (National Technical University of Ukraine)\n- Mariia Chernykh (National Technical University of Ukraine)\n- Oleksii Shpenkov (National Technical University of Ukraine)\n\n\n---\n\n## Automatic report\n\n*Report automatically generated by `mne_bids.make_report()`.*\n\n>  The EEG During Mental Arithmetic Tasks dataset was created by Igor Zyma, Sergii\nTukaev, Ivan Seleznov, Ken Kiyono, Anton Popov, Mariia Chernykh, and Oleksii\nShpenkov and conforms to BIDS version 1.7.0. This report was generated with MNE-\nBIDS (https://doi.org/10.21105/joss.01896). The dataset consists of 36\nparticipants (comprised of 9 male and 27 female participants; handedness were\nall unknown; ages ranged from 16.0 to 26.0 (mean = 18.25, std = 2.14)) . Data\nwas recorded using an EEG system sampled at 500.0 Hz with line noise at n/a Hz.\nThere were 72 scans in total. Recording durations ranged from 62.0 to 188.0\nseconds (mean = 120.5, std = 59.71), for a total of 8675.86 seconds of data\nrecorded over all scans. For each dataset, there were on average 21.0 (std =\n0.0) recording channels per scan, out of which 21.0 (std = 0.0) were used in\nanalysis (0.0 +/- 0.0 were removed from analysis).",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000109",
+    "exists": true,
+    "description": "EEG During Mental Arithmetic Tasks",
+    "created_at": "2026-02-24T08:01:31+00:00",
+    "updated_at": "2026-03-14T13:35:05+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

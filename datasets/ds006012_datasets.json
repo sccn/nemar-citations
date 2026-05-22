@@ -1,0 +1,62 @@
+{
+  "dataset_id": "ds006012",
+  "date_retrieved": "2026-05-21T18:58:23.807306+00:00",
+  "dataset_description": {
+    "Name": "A geometric shape regularity effect in the human brain: MEG dataset",
+    "BIDSVersion": "1.6.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Mathias Sablé-Meyer",
+      "Lucas Benjamin",
+      "Cassandra Potier Watkins",
+      "Chenxi He",
+      "Maxence Pajot",
+      "Théo Morfoisse",
+      "Fosca Al Roumi",
+      "Stanislas Dehaene"
+    ],
+    "Acknowledgements": "We are grateful to Ghislaine Dehaene‐Lambertz, Leila Azizi, Séverine Becuwe and the NeuroSpin support teams for help in data acquisition, and Lorenzo Ciccione, Christophe Pallier, Minye Zhan, Alexandre Gramfort and the MNE team for support in data processing.",
+    "HowToAcknowledge": "Please cite our preprint at https://doi.org/10.1101/2024.03.13.584141 or the published version of this paper",
+    "Funding": [
+      "ERC-ADG-2015 NeuroSyntax to Stanislas Dehaene",
+      "CEA to Stanislas Dehaene",
+      "INSERM to Stanislas Dehaene",
+      "Collège de France to Stanislas Dehaene",
+      "FYSSEN to Mathias Sablé-Meyer"
+    ],
+    "EthicsApprovals": [
+      "CPP_100049"
+    ],
+    "License": "CC0",
+    "GeneratedBy": [
+      {
+        "Name": "Mathias Sable-Meyer",
+        "Version": "29.y.o.",
+        "Description": "Manually arranged the raw files from the scanner in a BIDS structure, with the help of mne for anonymization.",
+        "CodeURL": "https://s-m.ac/"
+      },
+      {
+        "Name": "mne_bids",
+        "Version": "0.16.0",
+        "Description": "Used to anonymize + deface the data",
+        "CodeURL": "https://mne.tools/mne-bids/"
+      }
+    ],
+    "SourceDatasets": [],
+    "DatasetDOI": "doi:10.18112/openneuro.ds006012.v1.0.1"
+  },
+  "readme_content": "# A geometric shape regularity effect in the human brain: MEG dataset\n\nAuthors:\n\n* Mathias Sablé-Meyer*\n* Lucas Benjamin\n* Cassandra Potier Watkins\n* Chenxi He\n* Maxence Pajot\n* Théo Morfoisse\n* Fosca Al Roumi\n* Stanislas Dehaene\n\n*Corresponding author: [mathias.sable-meyer@ucl.ac.uk](mailto:mathias.sable-meyer@ucl.ac.uk)\n\n## Abstract\n\nThe perception and production of regular geometric shapes is a characteristic trait of human cultures since prehistory, whose neural mechanisms are unknown. Behavioral studies suggest that humans are attuned to discrete regularities such as symmetries and parallelism, and rely on their combinations to encode regular geometric shapes in a compressed form. To identify the relevant brain systems and their dynamics, we collected functional MRI and magnetoencephalography data in both adults and six-year-olds during the perception of simple shapes such as hexagons, triangles and quadrilaterals. The results revealed that geometric shapes, relative to other visual categories, induce a hypoactivation of ventral visual areas and an overactivation of the intraparietal and inferior temporal regions also involved in mathematical processing, whose activation is modulated by geometric regularity. While convolutional neural networks captured the early visual activity evoked by geometric shapes, they failed to account for subsequent dorsal parietal and prefrontal signals, which could only be captured by discrete geometric features or by more advanced transformer models of vision. We propose that the perception of abstract geometric regularities engages an additional symbolic mode of visual perception.\n\n## Notes about this dataset\n\nWe separately share the fMRI dataset at [https://openneuro.org/datasets/ds006010](https://openneuro.org/datasets/ds006010). Below are some notes about the\nMEG dataset of N=20 participants:\n\n* The code for the analyses associated to\n  [https://doi.org/10.1101/2024.03.13.584141](https://doi.org/10.1101/2024.03.13.584141)\n  are provided at\n  [https://github.com/mathias-sm/AGeometricShapeRegularityEffectHumanBrain](https://github.com/mathias-sm/AGeometricShapeRegularityEffectHumanBrain).  \n  However, these analyses have been performed on pre-processed data _without_\n  this defacing steps. I am not publishing this raw data, but should there be\n  discrepancies or problems coming from the defacing, I have a copy of the following\n  information, which I may ask for permission to share in specific cases:\n    1. The original data\n    2. The seed used for the anonymization procedure\n    3. The shuffling information.  \n* Anonymization (including defacing of the `anat` folder) has been performed\n  using the following command:  \n  `python -c 'import mne_bids; mne_bids.anonymize_dataset(\"<input>\", \"<output>\", random_state=<number>, daysback=<number>)'`  \n  This has shuffled the participant order, changed the dates, defaced the\n  anatomy, and stripped gender information from the dataset.\n* The data was pre-processed with the configuration file provided at\n  [https://github.com/mathias-sm/AGeometricShapeRegularityEffectHumanBrain/blob/main/MEG/POGS_MEG_config.py](https://github.com/mathias-sm/AGeometricShapeRegularityEffectHumanBrain/blob/main/MEG/POGS_MEG_config.py)\n  for `mne-bids-pipeline` with the development version at the time,\n  `bce60a79241731bdd03fccffa6cf315a35b33ab2` on\n  [https://github.com/mne-tools/mne-bids-pipeline/](https://github.com/mne-tools/mne-bids-pipeline/)\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds006012",
+    "exists": true,
+    "description": "OpenNeuro dataset - A geometric shape regularity effect in the human brain: MEG dataset",
+    "created_at": "2025-03-14T15:07:04+00:00",
+    "updated_at": "2025-03-14T17:05:25+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

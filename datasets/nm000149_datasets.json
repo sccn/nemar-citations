@@ -1,0 +1,69 @@
+{
+  "dataset_id": "nm000149",
+  "date_retrieved": "2026-05-21T18:42:40.348397+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2019-001 Motor Imagery dataset for Spinal Cord Injury patients",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Patrick Ofner",
+      "Andreas Schwarz",
+      "Joana Pereira",
+      "Daniela Wyss",
+      "Renate Wildburger",
+      "Gernot R. Müller-Putz"
+    ],
+    "Acknowledgements": "This work is supported by the European ICT Programme Project H2020-643955 'MoreGrasp'.",
+    "Funding": [
+      "European ICT Programme Project H2020-643955 'MoreGrasp'"
+    ],
+    "EthicsApprovals": [
+      "Ethics committee for the hospitals of the Austrian general accident insurance institution AUVA (approval number 3/2017)"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.5281/zenodo.2222268",
+      "10.1038/s41598-019-43594-9"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1038/s41598-019-43594-9",
+        "URL": "https://doi.org/10.5281/zenodo.2222268"
+      }
+    ],
+    "Keywords": [
+      "Spinal Cord Injury",
+      "Motor",
+      "imagery",
+      "neuroprosthetic",
+      "upper_limb_control",
+      "hand_grasp_control"
+    ],
+    "PublicationYear": 2019,
+    "DatasetDOI": "10.82901/nemar.nm000149",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000149-blue)](https://doi.org/10.82901/nemar.nm000149)\n\n# BNCI 2019-001 Motor Imagery dataset for Spinal Cord Injury patients\n\nBNCI 2019-001 Motor Imagery dataset for Spinal Cord Injury patients.\n\n## Dataset Overview\n\n- **Code**: BNCI2019-001\n- **Paradigm**: imagery\n- **DOI**: 10.1038/s41598-019-43594-9\n- **Subjects**: 10\n- **Sessions per subject**: 1\n- **Events**: supination=776, pronation=777, hand_open=779, palmar_grasp=925, lateral_grasp=926\n- **Trial interval**: [2, 5] s\n- **Runs per session**: 9\n- **File format**: GDF\n- **Contributing labs**: Graz University of Technology Institute of Neural Engineering BCI-Lab, AUVA rehabilitation clinic Tobelbad\n\n## Acquisition\n\n- **Sampling rate**: 256.0 Hz\n- **Number of channels**: 61\n- **Channel types**: eeg=61, eog=3\n- **Channel names**: AFz, C1, C2, C3, C4, C5, C6, CCP1h, CCP2h, CCP3h, CCP4h, CCP5h, CCP6h, CP1, CP2, CP3, CP4, CP5, CP6, CPP1h, CPP2h, CPP3h, CPP4h, CPP5h, CPP6h, CPz, Cz, F1, F2, F3, F4, FC1, FC2, FC3, FC4, FC5, FC6, FCC1h, FCC2h, FCC3h, FCC4h, FCC5h, FCC6h, FCz, FFC1h, FFC2h, FFC3h, FFC4h, FFC5h, FFC6h, Fz, P1, P2, P3, P4, P5, P6, POz, PPO1h, PPO2h, Pz, eog-l, eog-m, eog-r\n- **Montage**: 10-5\n- **Hardware**: g.tec\n- **Software**: EEGlab 14.1.1b\n- **Reference**: left earlobe\n- **Ground**: AFF2h\n- **Sensor type**: active electrode\n- **Line frequency**: 50.0 Hz\n- **Online filters**: 50 Hz notch, 0.01-100 Hz bandpass\n- **Cap manufacturer**: g.tec medical engineering GmbH\n- **Cap model**: g.GAMMAsys/g.LADYbird\n- **Electrode type**: active electrode\n- **Auxiliary channels**: EOG (3 ch, above nasion, below outer canthi left, below outer canthi right)\n\n## Participants\n\n- **Number of subjects**: 10\n- **Health status**: patients\n- **Clinical population**: spinal cord injury\n- **Age**: mean=49.8, min=20, max=78\n- **Gender distribution**: male=9, female=1\n- **Handedness**: right-handed (all participants originally)\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Task type**: attempted movement\n- **Number of classes**: 5\n- **Class labels**: supination, pronation, hand_open, palmar_grasp, lateral_grasp\n- **Trial duration**: 5.0 s\n- **Tasks**: hand_open, palmar_grasp, lateral_grasp, pronation, supination\n- **Study design**: motor imagery and attempted movements\n- **Feedback type**: visual feedback (online paradigm only - movement icon displayed when movement detected)\n- **Stimulus type**: visual cue\n- **Stimulus modalities**: visual, auditory\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: both\n- **Training/test split**: True\n- **Instructions**: Participants were instructed to attempt or execute movements based on class cue displayed on screen. They were asked to focus gaze on fixation cross, avoid eye movements, swallowing, and blinking during trial period.\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  supination\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Turn\n          ├─ Forearm\n          └─ Label/supination\n\n  pronation\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Turn\n          ├─ Forearm\n          └─ Label/pronation\n\n  hand_open\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine, Open, Hand\n\n  palmar_grasp\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine, Grasp, Hand\n\n  lateral_grasp\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Grasp\n          ├─ Hand\n          └─ Label/lateral\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: hand_open, palmar_grasp, lateral_grasp, pronation, supination\n- **Cue duration**: 3.0 s\n- **Imagery duration**: 3.0 s\n\n## Data Structure\n\n- **Trials**: 360\n- **Trials per class**: hand_open=72, palmar_grasp=72, lateral_grasp=72, pronation=72, supination=72\n- **Blocks per session**: 9\n- **Trials context**: total per subject (72 trials per class)\n\n## Preprocessing\n\n- **Data state**: raw (GDF format)\n- **Preprocessing applied**: True\n- **Steps**: bandpass filter, notch filter, ICA, artifact rejection\n- **Highpass filter**: 0.01 Hz\n- **Lowpass filter**: 100 Hz\n- **Bandpass filter**: {'low_cutoff_hz': 0.01, 'high_cutoff_hz': 100.0}\n- **Notch filter**: [50] Hz\n- **Filter type**: Chebyshev\n- **Filter order**: 8\n- **Artifact methods**: ICA, visual inspection, abnormal joint probability, abnormal kurtosis\n- **Re-reference**: CAR\n- **Notes**: Noisy channels were visually inspected and removed. AFz was removed by default as it is sensitive to eye blinks and eye movements. ICA was performed on 0.3-70 Hz filtered signals using extended infomax. PCA dimensionality reduction retained 99% variance. Artifact-contaminated ICs (muscle and eye-related) were removed. Trials with values above/below ±100 μV, abnormal joint probabilities, or abnormal kurtosis (5x SD threshold) were rejected. Final analysis used 0.3-3 Hz bandpass filter.\n\n## Signal Processing\n\n- **Classifiers**: Shrinkage LDA, sLDA\n- **Feature extraction**: time-domain low-frequency signals, MRCPs, ICA\n- **Frequency bands**: analyzed=[0.3, 3.0] Hz\n- **Spatial filters**: CAR\n\n## Cross-Validation\n\n- **Method**: 10x10-fold\n- **Folds**: 10\n- **Evaluation type**: within_subject, cross_validation\n\n## Performance (Original Study)\n\n- **Accuracy**: 45.3%\n- **Peak Accuracy 5Class**: 45.3\n- **Peak Latency 5Class S**: 1.1\n- **Confidence Interval Lower**: 40.3\n- **Confidence Interval Upper**: 50.3\n- **Chance Level 5Class**: 20.0\n- **Significance Level 5Class**: 22.3\n- **Peak Accuracy 3Class Subset**: 53.0\n- **Peak Latency 3Class Subset S**: 1.0\n- **Online Accuracy 2Class**: 68.4\n- **Online Tpr**: 31.75\n- **Online Fp Per Min**: 3.4\n\n## BCI Application\n\n- **Applications**: neuroprosthetic, upper_limb_control, hand_grasp_control\n- **Environment**: indoor\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Spinal Cord Injury\n- **Modality**: Motor\n- **Type**: Motor\n\n## Documentation\n\n- **Description**: This dataset investigates whether attempted arm and hand movements in persons with spinal cord injury can be decoded from low-frequency EEG signals (MRCPs). The study includes offline 5-class classification and online proof-of-concept for self-paced movement detection.\n- **DOI**: 10.1038/s41598-019-43594-9\n- **Associated paper DOI**: 10.1038/s41598-019-43594-9\n- **License**: CC-BY-4.0\n- **Investigators**: Patrick Ofner, Andreas Schwarz, Joana Pereira, Daniela Wyss, Renate Wildburger, Gernot R. Müller-Putz\n- **Senior author**: Gernot R. Müller-Putz\n- **Contact**: gernot.mueller@tugraz.at\n- **Institution**: Graz University of Technology\n- **Department**: Institute of Neural Engineering, BCI-Lab\n- **Address**: Graz, Austria\n- **Country**: Austria\n- **Repository**: Zenodo\n- **Data URL**: https://doi.org/10.5281/zenodo.2222268\n- **Publication year**: 2019\n- **Funding**: European ICT Programme Project H2020-643955 'MoreGrasp'\n- **Ethics approval**: Ethics committee for the hospitals of the Austrian general accident insurance institution AUVA (approval number 3/2017)\n- **Acknowledgements**: This work is supported by the European ICT Programme Project H2020-643955 'MoreGrasp'.\n\n## Abstract\n\nWe show that persons with spinal cord injury (SCI) retain decodable neural correlates of attempted arm and hand movements. We investigated hand open, palmar grasp, lateral grasp, pronation, and supination in 10 persons with cervical SCI. Discriminative movement information was provided by the time-domain of low-frequency electroencephalography (EEG) signals. Based on these signals, we obtained a maximum average classification accuracy of 45% (chance level was 20%) with respect to the five investigated classes. Pattern analysis indicates central motor areas as the origin of the discriminative signals. Furthermore, we introduce a proof-of-concept to classify movement attempts online in a closed loop, and tested it on a person with cervical SCI. We achieved here a modest classification performance of 68.4% with respect to palmar grasp vs hand open (chance level 50%).\n\n## Methodology\n\n10 participants with cervical SCI were recruited from a rehabilitation center (AUVA rehabilitation clinic, Tobelbad, Austria). Participants were aged 20-78 years with neurological level of injury C1-C7 and AIS scores A-D. They sat in wheelchairs and attempted/executed movements based on visual cues shown on screen. Each trial lasted 5 seconds with a fixation cross and beep at start, class cue displayed at 2 seconds. 9 runs with 40 trials per run were recorded (360 trials total, 72 per class). EEG was recorded from 61 electrodes using g.tec g.USBamps and g.GAMMAsys/g.LADYbird active electrode system at 256 Hz with 0.01-100 Hz bandpass and 50 Hz notch filter. Preprocessing included visual inspection, ICA artifact removal, trial rejection, and 0.3-3 Hz bandpass filtering. Classification used shrinkage LDA with 10x10 cross-validation. Online proof-of-concept used modified training paradigm with ready/go cues and 3-class classifier (hand open, palmar grasp, rest) with pre/post class detection logic.\n\n## References\n\nOfner, P. et al. (2019). Attempted arm and hand movements can be decoded from low-frequency EEG from persons with spinal cord injury. Scientific Reports, 9(1), 7134. https://doi.org/10.1038/s41598-019-43594-9\n\nNotes\n\n.. versionadded:: 1.2.0\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000149",
+    "exists": true,
+    "description": "BNCI 2019-001 Motor Imagery dataset for Spinal Cord Injury patients",
+    "created_at": "2026-03-22T18:59:04+00:00",
+    "updated_at": "2026-05-12T04:36:57+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

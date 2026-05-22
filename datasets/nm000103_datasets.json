@@ -1,0 +1,62 @@
+{
+  "dataset_id": "nm000103",
+  "date_retrieved": "2026-05-21T18:41:43.441468+00:00",
+  "dataset_description": {
+    "Name": "Healthy Brain Network EEG - Not for Commercial Use",
+    "License": "CC-BY-NC-SA 4.0",
+    "Authors": [
+      "Seyed Yahya Shirazi",
+      "Alexandre Franco",
+      "Maurício Scopel Hoffmann",
+      "Nathalia B. Esper",
+      "Dung Truong",
+      "Arnaud Delorme",
+      "Michael Milham",
+      "Scott Makeig"
+    ],
+    "ReferencesAndLinks": [
+      "https://dx.doi.org/10.1038/sdata.2017.181",
+      "https://dx.doi.org/10.1038/sdata.2017.40",
+      "add_BIDS_sdata_DOI_here"
+    ],
+    "HowToAcknowledge": "Please cite the following papers when using this dataset: https://dx.doi.org/10.1038/sdata.2017.181, https://dx.doi.org/10.1038/sdata.2017.40",
+    "EthicsApprovals": [
+      "Chesapeake Institutional Review Board"
+    ],
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.3.0",
+    "SourceDatesets": [
+      {
+        "URL": "s3://fcp-indi/data/Projects/HBN"
+      }
+    ],
+    "DatasetType": "raw",
+    "Funding": [
+      "See https://childmind.org/science/global-open-science/healthy-brain-network/#donors",
+      "NIH/NIMH R01MH125934 for BIDS data preparation"
+    ],
+    "Acknowledgements": "We thank the participants and their families for their time and effort. We also thank the NeuroScience Gateway team for providing computational resources.",
+    "GeneratedBy": [
+      {
+        "Name": "bids-matlab-tools",
+        "Version": "9.1"
+      }
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000103",
+    "Version": "2.0.0"
+  },
+  "readme_content": "## Overview\nThis is **NOT for Commercial-Use Release** of HBN-EEG, the EEG and (soon-released) Eye-Tracking Section of the Child Mind Network Healthy Brain Network (HBN) Project, curated into the Brain Imaging Data Structure (BIDS) format. This dataset is part of a larger initiative to advance the understanding of child and adolescent mental health through collecting and analyzing neuroimaging, behavioral, and genetic data (Alexander et al., Sci Data 2017).\n## Data Description\nThis dataset comprises electroencephalogram (EEG) data and behavioral responses collected during EEG experiments from participants involved in the HBN project.\n### Contents\n* **EEG Data:** High-resolution EEG recordings capture a wide range of neural activity during various tasks.\n* **Behavioral Responses:** Participant responses during EEG tasks, including reaction times and accuracy. This data was originally recorded within the behavior directory of the HBN data. This data is now included with the EEG data within the_events. tsv` files.\n\n### Special Features\n* **Hierarchical Event Descriptors (HED):** Events, including the original EEG events and the included behavioral events, have clear explanations, including proper HED annotation suitable for systematic meta and mega analysis of the data.\n* **P-Factor, Attention, Internalization and Externalization:** Derived from behavioral questionnaires, these factors provide valuable insights into the internalizing and externalizing behaviors of participants, adding a rich layer of psychological interpretation to the EEG and behavioral data.\n* **Data quality and availability:** We performed minimal quality control to ensure that the data was not corrupted, each task had its necessary events, and was ready for preprocessing. The results of this quality control are available in the `participants.tsv` file.\n\n## Copyright and License\nThis dataset is licensed under the non-commercial version of the Creative Common Attributions version 4.0 license (CC BY NC SA 4.0) based on the participant's consent. Subjects (or their legal gurdians) did NOT provide consent for their data to be used for any commercial pourposes.\n\n## Acknowledgments\nWe would like to express our gratitude to all participants and their families, whose contributions have made this project possible. We also thank our dedicated team of researchers and clinicians for their efforts in collecting, processing, and curating this data.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000103",
+    "exists": true,
+    "description": "Healthy Brain Network EEG - Not for Commercial Use - NEMAR Dataset",
+    "created_at": "2026-01-19T03:16:54+00:00",
+    "updated_at": "2026-03-23T17:58:07+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

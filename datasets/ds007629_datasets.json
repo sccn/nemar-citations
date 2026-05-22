@@ -1,0 +1,38 @@
+{
+  "dataset_id": "ds007629",
+  "date_retrieved": "2026-05-21T18:41:19.984451+00:00",
+  "dataset_description": {
+    "Name": "ROAMM",
+    "BIDSVersion": "1.9.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Haorui Sun",
+      "Ardyn Vivienne Olszko",
+      "Niharika Singh",
+      "David C. Jangraw"
+    ],
+    "GeneratedBy": [
+      {
+        "Name": "MNE-BIDS",
+        "Version": "0.18.0",
+        "CodeURL": "https://mne.tools/mne-bids/"
+      }
+    ],
+    "License": "CC0",
+    "DatasetDOI": "doi:10.18112/openneuro.ds007629.v1.0.2"
+  },
+  "readme_content": "# ROAMM: Reading Observed At Mindless Moments\n\n**ROAMM** is a large-scale multimodal dataset featuring simultaneous **EEG and eye-tracking** data collected during naturalistic reading with **span-level mind-wandering annotations**. ROAMM provides a benchmark dataset for MW detection and EEG-to-text decoding tasks, and enables the study of attention-related degradation in language decoding from brain activity in naturalistic reading.\n\n## Dataset Status\n* **Synchronized ML Dataset:** For researchers looking for the pre-processed, synchronized EEG and eye-tracking data (Pickle format), please navigate to:\n  `derivatives/synced/`\n* **Linguistic Content:** Reading materials (words with coordinate information) are stored in `derivatives/stimuli/wiki_stories`. Each word is assigned a unique key to enable mapping fixated words back to their original corpus.\n* **Raw EEG (BIDS):** **Work in Progress.** We are currently converting the full raw EEG dataset for all participants into BIDS-compliant format. \n\n## Project Details\n- **Task:** Naturalistic reading of standardized articles with retrospective self-report paradigm (ReMind task).\n- **Participants:** 44 subjects (50+ hours of data).\n- **Modalities:** \n    - EEG (BioSemi ActiveTwo 64 channels).\n    - Simultaneous Eye-Tracking (SR Research EyeLink 1000 Plus).\n    - Span-level mind-wandering annotations. \n    - Reading comprehension scores (page-level, multiple-choice questions).\n\n## Structure\nThis repository follows the Brain Imaging Data Structure (BIDS). \n- `participants.tsv`: Demographic information (age, sex, handedness, ADHD/Reading Disability status).\n- `derivatives/synced/`: Synchronized multi-modal data frames ready for Machine Learning pipelines.\n\n## Publication & Citation\nThe dataset paper describing the collection, synchronization, and baseline modeling of this data will be available online shortly. Once published, please use the citation provided here to credit the work.\n\n\n\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds007629",
+    "exists": true,
+    "description": "OpenNeuro dataset - ROAMM",
+    "created_at": "2026-04-03T21:41:19+00:00",
+    "updated_at": "2026-04-22T19:33:41+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "dataset_id": "nm000166",
+  "date_retrieved": "2026-05-21T18:42:56.544645+00:00",
+  "dataset_description": {
+    "Name": "M3CV: Multi-subject, Multi-session, Multi-task EEG Database",
+    "BIDSVersion": "1.9.0",
+    "DatasetType": "raw",
+    "License": "CC BY 4.0",
+    "Authors": [
+      "Gan Huang",
+      "Zhenxing Hu",
+      "Weize Chen",
+      "Shaorong Zhang",
+      "Zhen Liang",
+      "Linling Li",
+      "Li Zhang",
+      "Zhiguo Zhang"
+    ],
+    "HowToAcknowledge": "Please cite: Huang, G. et al. (2022). M3CV: A multi-subject, multi-session, and multi-task database for EEG-based biometrics challenge. NeuroImage, 264, 119666.",
+    "Funding": [
+      "National Natural Science Foundation of China (62271326, 81871443, 61906122, 81901831)",
+      "Shenzhen Municipality Science, Technology and Innovation Commission (JCYJ20190908181739182)",
+      "Shenzhen Science and Technology Program (JSGG20210713091811038)",
+      "Shenzhen Hong Kong Institute of Brain Science-Shenzhen Fundamental Research Institutions (2022SHIBS0003)",
+      "Shenzhen Sanming Project of Medicine (SZSM202111009)",
+      "Shenzhen Special Project for Sustainable Development (KCXFZ20201221173400001)"
+    ],
+    "EthicsApprovals": [
+      "Medical Ethics Committee, Health Science Center, Shenzhen University (No. 2019053)"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.1016/j.neuroimage.2022.119666",
+      "https://www.kaggle.com/competitions/eeg-based-biometric-competition",
+      "https://www.kaggle.com/competitions/eeg-biometric-competition"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000166",
+    "GeneratedBy": [
+      {
+        "Name": "convert_m3cv.py (EEGDash)",
+        "Description": "Reconstructed pseudo-continuous EEG from pre-epoched .mat files distributed via Kaggle. Epochs concatenated per subject/session/task. Original continuous recordings are not publicly available.",
+        "CodeURL": "https://github.com/bruaristimunha/EEGDash"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "URL": "https://www.kaggle.com/competitions/eeg-based-biometric-competition",
+        "Version": "2022-07-27"
+      },
+      {
+        "DOI": "doi:10.1016/j.neuroimage.2022.119666"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000166-blue)](https://doi.org/10.82901/nemar.nm000166)\n\nM3CV: Multi-subject, Multi-session, and Multi-task EEG Database\n================================================================\n\nOverview\n--------\nThis dataset contains 64-channel EEG from 95 healthy young adults (Age:\n21.3 +/- 2.2 years; 73 males, 22 females) from Shenzhen University, recorded\nacross 2 sessions on different days using a BrainAmp amplifier with 64-channel\nEasycap (standard 10-20 positions). Each subject performed 6 paradigms with 14\ntypes of EEG signals across 15 runs per session (~50 min recording, ~2 h total\nincluding setup and rest). The original paper describes 14 signal types; the\ndistributed data contains 13 task codes because nontarget P300 epochs were not\nincluded.\n\nThe original data was recorded at 1000 Hz and preprocessed using Matlab 2018b\nwith Letswave7 (letswave.cn), then distributed as individual 4-second epoched\n.mat files at 250 Hz.\n\nThis BIDS version reconstructs pseudo-continuous EEG by concatenating the\ndistributed epochs per subject/session/task. Event markers indicate epoch\nboundaries and stimulus onsets derived from the original marker channel.\n\nEthics: Medical Ethics Committee, Health Science Center, Shenzhen University\n(No. 2019053). All subjects gave informed consent.\n\nRecording Setup\n---------------\n- Amplifier: BrainAmp (Brain Products GmbH, Germany)\n- Cap: 64-channel Easycap, standard 10-20 positions\n- Online reference: FCz; Ground: AFz\n- Sampling rate: 1000 Hz (distributed at 250 Hz after preprocessing)\n- Impedance: < 20 kOhm\n- Subject distance: ~1 meter from screen\n- Screen: 24.5-inch Alienware AW2518H (1920x1080, 240 Hz refresh rate)\n- Visual stimuli: Psychtoolbox-3 in Matlab\n- Sensory stimuli: Arduino Uno platform via serial port to Matlab\n- LED: 3 W, 2 cm diameter circular shield, 45 cm from eyes, 1074 Lux\n  (measured by TES-1332A light meter)\n- Headphones: Nokia WH-102, 75 dB SPL average\n- Vibration motor: 1027 disk, 3 W rated, 80% efficiency, 10 mm x 2.7 mm,\n  placed on subject's left hand\n- Power line frequency: 50 Hz\n\nPreprocessing (applied before distribution, Table 3 of paper)\n--------------------------------------------------------------\nSoftware: Matlab 2018b & Letswave7 (letswave.cn)\n1. Bad channels identified manually, interpolated with mean of 3 surrounding\n   channels (22 of 95 subjects had bad channels)\n2. Channel FCz (online reference) added back\n3. Channel IO (EOG) removed\n4. Bandpass filter: 0.01-200 Hz, 4th-order Butterworth, 24 dB/octave, zero-phase\n5. Notch filter: 49-51 Hz bandstop, 4th-order Butterworth, 24 dB/octave, zero-phase\n6. Re-referenced to mean of TP9 and TP10 (linked mastoids)\n7. ICA artifact removal: eye blink and eye movement components identified by\n   visual inspection of scalp topographies, time courses, and spectra\n   (Huang et al., 2020)\n8. Downsampled to 250 Hz\n9. No bad epoch rejection (intentional for ML robustness/repeatability)\n\nNote: One subject was removed due to strong 10 Hz artifacts. The remaining 95\nsubjects are included in the distributed data.\n\nParadigms (14 signal types, 13 in distributed data, 15 runs/session)\n---------------------------------------------------------------------\nRun 01: Eyes Closed resting (restEC) — 1 min; fixate on LED (off)\nRun 02: Eyes Open resting (restEO) — 1 min; fixate ahead, minimal blink\nRun 03: Motor execution (motorFoot/motorRHand/motorLHand) — 20 trials each\nRun 04: Transient sensory (vep/aep/sep) — 30 trials each, random order, ~4.5 min\nRun 05: SSVEP (ssvep) — 10 Hz LED, 1 min\nRun 06: Motor execution — 20 trials each\nRun 07: P300 oddball (p300) — 600 stimuli (5% target=30, nontarget=570), 80 ms,\n        ISI 200 ms, 2 min; red/white 300x300 px squares; subjects count red\nRun 08: SSVEP-SA (ssvepSA) — 6 freq (7/8/9/11/13/15 Hz), 12 segments x 10 s\nRun 09: SSAEP (ssaep) — 45.38 Hz, 2 min\nRun 10: Motor execution — 20 trials each\nRun 11: Transient sensory — 30 trials each, random order\nRun 12: SSSEP (sssep) — 22.04 Hz vibration, 2 min\nRun 13: Motor execution — 20 trials each\nRun 14: Eyes Closed resting (restEC) — 1 min\nRun 15: Eyes Open resting (restEO) — 1 min\n\nMotor execution details: subjects gripped (LH/RH) or lifted ankle (FT) at\n~2x/sec, ~80% maximum voluntary contraction, 3 s duration until cue offset.\nNo feedback, metronome, or hint was provided. Experimenters monitored movement\nquality during recording.\n\nNotes on distributed data\n--------------------------\n- 14 signal types in the paper, 13 task codes in distributed data:\n  nontarget P300 (paper task 10, trigger S10) was not distributed\n- P300: Only 30 target trials stored per subject; 570 nontarget discarded\n- SSVEP-SA: 6 frequency classes not distinguishable in marker; all marker=13\n- Trigger codes in original recording (S1-S25) differ from CSV Task column\n  (1-13). CSV Task 10=FT, 11=RH, 12=LH (paper tasks 11-13, triggers S6-S8)\n- Epoch ordering within task may not reflect original temporal sequence\n- 11 \"intruder\" subjects in Testing set have hidden SubjectIDs (excluded here)\n\nSubjects and Sessions\n---------------------\n- 106 total subjects; 95 completed both sessions\n- Age: 21.3 +/- 2.2 years (95 subjects); 73 males, 22 females\n- Normal hearing, normal/corrected vision, no neurological history (self-report)\n- Between-session interval: 6 to 139 days (mean ~20 days)\n- ses-01 = session 1 (Enrollment set)\n- ses-02 = session 2 (Calibration + Testing sets)\n- 11 \"intruder\" subjects (session 2 only, hidden IDs) are excluded from BIDS\n\nCompetition context\n-------------------\nOriginally distributed for the M3CV EEG-based Biometric Competition on Kaggle\n(identification and verification tasks). Competition closed Apr 30, 2023; late\nsubmissions remain allowed.\n\nReference\n---------\nHuang, G., Hu, Z., Chen, W., Zhang, S., Liang, Z., Li, L., Zhang, L., &\nZhang, Z. (2022). M3CV: A multi-subject, multi-session, and multi-task\ndatabase for EEG-based biometrics challenge. NeuroImage, 264, 119666.\nhttps://doi.org/10.1016/j.neuroimage.2022.119666\n\n\nReferences\n----------\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896).https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103.https://doi.org/10.1038/s41597-019-0104-8\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000166",
+    "exists": true,
+    "description": "M3CV: Multi-subject, Multi-session, Multi-task EEG Database",
+    "created_at": "2026-04-08T08:32:30+00:00",
+    "updated_at": "2026-05-18T10:58:42+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

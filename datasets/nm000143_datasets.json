@@ -1,0 +1,62 @@
+{
+  "dataset_id": "nm000143",
+  "date_retrieved": "2026-05-21T18:42:32.747562+00:00",
+  "dataset_description": {
+    "Name": "BNCI2003_IVa Motor Imagery dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Guido Dornhege",
+      "Benjamin Blankertz",
+      "Gabriel Curio",
+      "Klaus-Robert Müller"
+    ],
+    "Funding": [
+      "Bundesministerium für Bildung und Forschung (BMBF) under Grants FKZ 01IBB02A and FKZ 01IBB02B"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1109/TBME.2004.827088"
+      }
+    ],
+    "Keywords": [
+      "brain-computer interface",
+      "BCI",
+      "common spatial patterns",
+      "electroencephalogram",
+      "EEG",
+      "event-related desynchronization",
+      "feature combination",
+      "movement related potential",
+      "multiclass",
+      "single-trial analysis"
+    ],
+    "PublicationYear": 2004,
+    "DatasetDOI": "10.82901/nemar.nm000143",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000143-blue)](https://doi.org/10.82901/nemar.nm000143)\n\n# BNCI2003_IVa Motor Imagery dataset\n\nBNCI2003_IVa Motor Imagery dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2003-004\n- **Paradigm**: imagery\n- **DOI**: 10.1109/TBME.2004.827088\n- **Subjects**: 5\n- **Sessions per subject**: 1\n- **Events**: right_hand=0, feet=1\n- **Trial interval**: [0, 3.5] s\n- **File format**: mat\n- **Data preprocessed**: True\n\n## Acquisition\n\n- **Sampling rate**: 100.0 Hz\n- **Number of channels**: 118\n- **Channel types**: eeg=118\n- **Channel names**: AF3, AF4, AF7, AF8, AFp1, AFp2, C1, C2, C3, C4, C5, C6, CCP1, CCP2, CCP3, CCP4, CCP5, CCP6, CCP7, CCP8, CFC1, CFC2, CFC3, CFC4, CFC5, CFC6, CFC7, CFC8, CP1, CP2, CP3, CP4, CP5, CP6, CPz, Cz, F1, F2, F3, F4, F5, F6, F7, F8, FAF1, FAF2, FAF5, FAF6, FC1, FC2, FC3, FC4, FC5, FC6, FCz, FFC1, FFC2, FFC3, FFC4, FFC5, FFC6, FFC7, FFC8, FT10, FT7, FT8, FT9, Fp1, Fp2, Fpz, Fz, I1, I2, O1, O2, OI1, OI2, OPO1, OPO2, Oz, P1, P10, P2, P3, P4, P5, P6, P7, P8, P9, PCP1, PCP2, PCP3, PCP4, PCP5, PCP6, PCP7, PCP8, PO1, PO2, PO3, PO4, PO7, PO8, POz, PPO1, PPO2, PPO5, PPO6, PPO7, PPO8, Pz, T7, T8, TP10, TP7, TP8, TP9\n- **Montage**: standard_1005\n- **Hardware**: BrainAmp\n- **Sensor type**: EEG\n- **Line frequency**: 50.0 Hz\n- **Online filters**: {'bandpass': [0.05, 200]}\n\n## Participants\n\n- **Number of subjects**: 5\n- **Health status**: healthy\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 2\n- **Class labels**: right_hand, feet\n- **Trial duration**: 3.5 s\n- **Stimulus type**: visual cue\n- **Mode**: offline\n- **Instructions**: subjects performed motor imagery (left hand, right hand, or right foot) according to visual cue for 3.5 seconds\n- **Stimulus presentation**: duration=3.5 s, interval=1.75-2.25 s random, modality=visual\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  right_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n  feet\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine, Move, Foot\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: right_hand, feet\n- **Cue duration**: 3.5 s\n\n## Data Structure\n\n- **Trials**: 280\n- **Trials context**: 280 cues per subject, split into labeled training and unlabeled test sets (varying per subject)\n\n## Preprocessing\n\n- **Data state**: downsampled to 100 Hz for offline analysis\n- **Preprocessing applied**: True\n- **Steps**: bandpass filtering, downsampling\n- **Bandpass filter**: {'low_cutoff_hz': 0.05, 'high_cutoff_hz': 200.0}\n- **Downsampled to**: 100 Hz\n- **Notes**: Band-pass filtered 0.05-200 Hz during acquisition at 1000 Hz with 16-bit (0.1 uV) accuracy, then downsampled to 100 Hz by picking each 10th sample. Original experiment also recorded EMG and EOG but these are not in the shared data files.\n\n## Signal Processing\n\n- **Classifiers**: LDA, regularized LDA\n- **Feature extraction**: CSP, SUB (MRP/slow potentials), AR\n- **Frequency bands**: alpha=[8, 13] Hz; beta=[15, 25] Hz; alpha_beta=[7, 30] Hz\n- **Spatial filters**: CSP, spatial Laplacian\n\n## Cross-Validation\n\n- **Method**: 10x10-fold cross validation\n- **Folds**: 10\n- **Evaluation type**: within-subject\n\n## BCI Application\n\n- **Applications**: motor_control\n- **Environment**: laboratory\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Motor\n- **Type**: Research\n\n## Documentation\n\n- **DOI**: 10.1109/TBME.2004.827088\n- **License**: CC-BY-4.0\n- **Investigators**: Guido Dornhege, Benjamin Blankertz, Gabriel Curio, Klaus-Robert Müller\n- **Senior author**: Klaus-Robert Müller\n- **Contact**: benjamin.blankertz@tu-berlin.de\n- **Institution**: Fraunhofer FIRST (IDA); Charité University Medicine Berlin\n- **Department**: Fraunhofer FIRST (IDA); Department of Neurology, Campus Benjamin Franklin\n- **Address**: 12489 Berlin, Germany; 12203 Berlin, Germany\n- **Country**: DE\n- **Repository**: BBCI\n- **Publication year**: 2004\n- **Funding**: Bundesministerium für Bildung und Forschung (BMBF) under Grants FKZ 01IBB02A and FKZ 01IBB02B\n- **Keywords**: brain-computer interface, BCI, common spatial patterns, electroencephalogram, EEG, event-related desynchronization, feature combination, movement related potential, multiclass, single-trial analysis\n\n## References\n\nGuido Dornhege, Benjamin Blankertz, Gabriel Curio, and Klaus-Robert Muller. Boosting bit rates in non-invasive EEG single-trial classifications by feature combination and multi-class paradigms. IEEE Trans. Biomed. Eng., 51(6):993-1002, June 2004.\n\nNotes\n\n.. versionadded:: 0.4.0\n\nThis is one of the earliest and most influential motor imagery BCI datasets, used extensively for benchmarking classification algorithms. The dataset was part of BCI Competition III and has been cited in hundreds of papers.\n\nSee Also\n\nBNCI2014_001 : BCI Competition IV 4-class motor imagery dataset BNCI2014_004 : BCI Competition 2008 2-class motor imagery dataset\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000143",
+    "exists": true,
+    "description": "BNCI2003_IVa Motor Imagery dataset",
+    "created_at": "2026-03-22T16:40:22+00:00",
+    "updated_at": "2026-05-12T04:37:33+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

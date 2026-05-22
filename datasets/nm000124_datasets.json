@@ -1,0 +1,68 @@
+{
+  "dataset_id": "nm000124",
+  "date_retrieved": "2026-05-21T18:42:03.103851+00:00",
+  "dataset_description": {
+    "Name": "Han2024 – SSVEP fatigue dataset with two frequency paradigms",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC BY 4.0",
+    "Authors": [
+      "Yuheng Han",
+      "Yufeng Ke",
+      "Ruiyan Wang",
+      "Tao Wang",
+      "Dong Ming"
+    ],
+    "Funding": [
+      "National Key Research and Development Program of China (Grant 2021YFF1200603)",
+      "National Natural Science Foundation of China (Grants 62276184, 61806141)"
+    ],
+    "EthicsApprovals": [
+      "Research Ethics Committee of Tianjin University"
+    ],
+    "ReferencesAndLinks": [
+      "https://zenodo.org/records/10507229"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.4.3"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1109/TNSRE.2024.3380635",
+        "URL": "https://zenodo.org/records/10507229"
+      }
+    ],
+    "Keywords": [
+      "SSVEP",
+      "BCI",
+      "fatigue",
+      "dynamic stopping",
+      "EEG"
+    ],
+    "PublicationYear": 2024,
+    "ExperimentName": "Han2024",
+    "Description": "SSVEP fatigue dataset with two frequency paradigms.\n\n\nDataset summary:\n\n#Subj      24\n#Chan      64\n#Classes      32\n#Trials / class    6-24\nTrials length     2 s\nFreq 1000 Hz\n#Sessions       2\n\n\nParticipants:\n\n- Population: healthy\n\n\nEquipment:\n\n- Amplifier: Synamps2 (Neuroscan)\n- Montage: standard_1005\n- Reference: Cz\n\n\nPreprocessing:\n\n- Data state: epoched\n\n\nData Access:\n\n- DOI: 10.1109/TNSRE.2024.3380635\n- Data URL: https://zenodo.org/records/10507229\n- Repository: Zenodo\n\n\nExperimental Protocol:\n\n- Paradigm: ssvep\n- Task type: gaze-shifting\n- Feedback: none\n- Stimulus: JFPM visual flicker\n\nDataset from [1]_.\n\nThis dataset contains 64-channel EEG recordings from 24 healthy subjects\n(12 males, 12 females, aged 18-26) performing two SSVEP-BCI tasks:\n\n- Low-frequency paradigm: 16 targets (8.0-15.5 Hz, 0.5 Hz step)\n- High-frequency paradigm: 16 targets (25.5-33.0 Hz, 0.5 Hz step)\n\nBoth paradigms used JFPM encoding with phases cycling through\n0, 0.5*pi, pi, 1.5*pi in a 4x4 matrix layout.\n\nThe experiment consisted of two phases: training (6 blocks per frequency\ncondition) and fatigue (24 blocks per condition). Each block contained\n16 trials (2 s stimulation per trial).\n\nEEG was recorded at 1000 Hz with a Synamps2 system (Neuroscan) and 64\nchannels. Each epoch spans 3000 samples (3 s at 1000 Hz).\n\n.. note::\n\nChannel selection is critical for this dataset. Using all 64 channels\nwith CCA-based methods yields near-chance accuracy because the high\nchannel-to-sample ratio causes overfitting. The paper uses 9 occipital\nchannels (PO7, PO3, POz, PO4, PO8, O1, Oz, O2, and one additional)\nand achieves >90% with TRCA. Users should pick occipital channels\nbefore classification.\n\nAdditionally, the cross-session evaluation (training on alert session\n'0', testing on fatigued session '1') is a challenging domain-shift\nproblem that standard CCA/TRCA may not handle well without\nfatigue-aware strategies.\n\nData is stored as [16, 64, 3000, N_blocks] matrices (targets, channels,\ntimepoints, blocks) in per-subject zip files on Zenodo. Each subject has\n4 separate files: low_frequency_train, low_frequency_fatigue,\nhigh_frequency_train, high_frequency_fatigue.\n\nIn MOABB, this is mapped as:\n- Session '0': Training blocks (6 blocks per condition, 12 total)\n- Session '1': Fatigue blocks (24 blocks per condition, 48 total)\n\nReferences\n----------\n.. [1] Y. Han, Y. Ke, R. Wang, T. Wang, and D. Ming, \"Enhancing\nSSVEP-BCI Performance Under Fatigue State Using Dynamic Stopping\nStrategy,\" IEEE Trans. Neural Syst. Rehab. Eng., vol. 32,\npp. 1407-1415, 2024. DOI: 10.1109/TNSRE.2024.3380635",
+    "DatasetDOI": "10.82901/nemar.nm000124",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000124-blue)](https://doi.org/10.82901/nemar.nm000124)\n\n# SSVEP fatigue dataset with two frequency paradigms\n\nSSVEP fatigue dataset with two frequency paradigms.\n\n## Dataset Overview\n\n- **Code**: Han2024Fatigue\n- **Paradigm**: ssvep\n- **DOI**: 10.1109/TNSRE.2024.3380635\n- **Subjects**: 24\n- **Sessions per subject**: 2\n- **Events**: 8=1, 8.5=2, 9=3, 9.5=4, 10=5, 10.5=6, 11=7, 11.5=8, 12=9, 12.5=10, 13=11, 13.5=12, 14=13, 14.5=14, 15=15, 15.5=16, 25.5=17, 26=18, 26.5=19, 27=20, 27.5=21, 28=22, 28.5=23, 29=24, 29.5=25, 30=26, 30.5=27, 31=28, 31.5=29, 32=30, 32.5=31, 33=32\n- **Trial interval**: [0.14, 2.14] s\n- **File format**: MAT\n\n## Acquisition\n\n- **Sampling rate**: 1000.0 Hz\n- **Number of channels**: 64\n- **Channel types**: eeg=64\n- **Channel names**: Fp1, Fpz, Fp2, AF3, AF4, F7, F5, F3, F1, Fz, F2, F4, F6, F8, FT7, FC5, FC3, FC1, FCz, FC2, FC4, FC6, FT8, T7, C5, C3, C1, Cz, C2, C4, C6, T8, M1, TP7, CP5, CP3, CP1, CPz, CP2, CP4, CP6, TP8, M2, P7, P5, P3, P1, Pz, P2, P4, P6, P8, PO7, PO5, PO3, POz, PO4, PO6, PO8, CB1, O1, Oz, O2, CB2\n- **Montage**: standard_1005\n- **Hardware**: Synamps2 (Neuroscan)\n- **Reference**: Cz\n- **Ground**: midway between Fz and FPz\n- **Line frequency**: 50.0 Hz\n- **Online filters**: {'bandpass_hz': [0.15, 200.0]}\n- **Impedance threshold**: 10 kOhm\n\n## Participants\n\n- **Number of subjects**: 24\n- **Health status**: healthy\n- **Age**: min=18, max=26\n- **Gender distribution**: male=12, female=12\n\n## Experimental Protocol\n\n- **Paradigm**: ssvep\n- **Task type**: gaze-shifting\n- **Number of classes**: 32\n- **Class labels**: 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5, 30, 30.5, 31, 31.5, 32, 32.5, 33\n- **Trial duration**: 2.0 s\n- **Feedback type**: none\n- **Stimulus type**: JFPM visual flicker\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: offline\n- **Training/test split**: True\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  8\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/8\n\n  8.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/8_5\n\n  9\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/9\n\n  9.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/9_5\n\n  10\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/10\n\n  10.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/10_5\n\n  11\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/11\n\n  11.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/11_5\n\n  12\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/12\n\n  12.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/12_5\n\n  13\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/13\n\n  13.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/13_5\n\n  14\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/14\n\n  14.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/14_5\n\n  15\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/15\n\n  15.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/15_5\n\n  25.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/25_5\n\n  26\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/26\n\n  26.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/26_5\n\n  27\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/27\n\n  27.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/27_5\n\n  28\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/28\n\n  28.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/28_5\n\n  29\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/29\n\n  29.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/29_5\n\n  30\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/30\n\n  30.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/30_5\n\n  31\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/31\n\n  31.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/31_5\n\n  32\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/32\n\n  32.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/32_5\n\n  33\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/33\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: ssvep\n- **Stimulus frequencies**: [8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0, 12.5, 13.0, 13.5, 14.0, 14.5, 15.0, 15.5, 25.5, 26.0, 26.5, 27.0, 27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0, 31.5, 32.0, 32.5, 33.0] Hz\n- **Frequency resolution**: 0.5 Hz\n\n## Data Structure\n\n- **Trials**: 960 per frequency band (16 targets x 60 blocks)\n- **Blocks per session**: 60\n- **Trials context**: 6 training + 24 fatigue blocks per frequency condition\n\n## Preprocessing\n\n- **Data state**: epoched\n\n## Signal Processing\n\n- **Classifiers**: TRCA\n- **Spatial filters**: TRCA\n\n## BCI Application\n\n- **Environment**: lab\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: healthy\n- **Modality**: visual\n- **Type**: perception\n\n## Documentation\n\n- **DOI**: 10.1109/TNSRE.2024.3380635\n- **License**: CC BY 4.0\n- **Investigators**: Yuheng Han, Yufeng Ke, Ruiyan Wang, Tao Wang, Dong Ming\n- **Senior author**: Dong Ming\n- **Institution**: Tianjin University\n- **Department**: Academy of Medical Engineering and Translational Medicine, Tianjin University\n- **Country**: CN\n- **Repository**: Zenodo\n- **Data URL**: https://zenodo.org/records/10507229\n- **Publication year**: 2024\n- **Funding**: National Key Research and Development Program of China (Grant 2021YFF1200603); National Natural Science Foundation of China (Grants 62276184, 61806141)\n- **Ethics approval**: Research Ethics Committee of Tianjin University\n- **Keywords**: SSVEP, BCI, fatigue, dynamic stopping, EEG\n\n## References\n\nY. Han, Y. Ke, R. Wang, T. Wang, and D. Ming, \"Enhancing SSVEP-BCI Performance Under Fatigue State Using Dynamic Stopping Strategy,\" IEEE Trans. Neural Syst. Rehab. Eng., vol. 32, pp. 1407-1415, 2024. DOI: 10.1109/TNSRE.2024.3380635\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.4.3 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000124",
+    "exists": true,
+    "description": "Han2024 – SSVEP fatigue dataset with two frequency paradigms",
+    "created_at": "2026-03-06T21:19:37+00:00",
+    "updated_at": "2026-05-12T04:39:53+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

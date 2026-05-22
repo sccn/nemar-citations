@@ -1,0 +1,60 @@
+{
+  "dataset_id": "nm000232",
+  "date_retrieved": "2026-05-21T18:43:20.096040+00:00",
+  "dataset_description": {
+    "Name": "THINGS-EEG2: A large and rich EEG dataset for modeling human visual object recognition",
+    "BIDSVersion": "1.9.0",
+    "Version": "1.0.1",
+    "DatasetType": "raw",
+    "License": "CC-BY 4.0",
+    "Authors": [
+      "Alessandro T. Gifford",
+      "Kshitij Dwivedi",
+      "Gemma Roig",
+      "Radoslaw M. Cichy"
+    ],
+    "Acknowledgements": "We thank all 10 participants and the Cichy and Roig labs at Freie Universität Berlin and Goethe University Frankfurt.",
+    "HowToAcknowledge": "Please cite: Gifford, A.T., Dwivedi, K., Roig, G., & Cichy, R.M. (2022). A large and rich EEG dataset for modeling human visual object recognition. NeuroImage, 264, 119754. https://doi.org/10.1016/j.neuroimage.2022.119754",
+    "Funding": [
+      "German Research Council (DFG) grants CI 241/1-1, CI 241/3-1, CI 241/1-7",
+      "European Research Council (ERC) Starting Grant ERC-2018-StG 803370",
+      "Hessian Ministry of Higher Education, Research, Science and the Arts (HMWK)"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000232",
+    "ReferencesAndLinks": [
+      "https://osf.io/3jk45/",
+      "https://doi.org/10.1016/j.neuroimage.2022.119754",
+      "https://github.com/gifale95/eeg_encoding"
+    ],
+    "SourceDatasets": [
+      {
+        "URL": "https://osf.io/3jk45/"
+      },
+      {
+        "DOI": "doi:10.17605/OSF.IO/3JK45"
+      }
+    ],
+    "GeneratedBy": [
+      {
+        "Name": "convert_thingseeg2.py (EEGDash)",
+        "Description": "Converted from the THINGS-EEG2 Source EEG component (original BrainVision files + behavioural .mat) to BIDS-EEG. Source files preserved in /sourcedata/. Authors' preprocessed data preserved in /derivatives/preprocessed_eeg/ and /derivatives/resting_state/. Image stimuli stored in /stimuli/.",
+        "CodeURL": "https://github.com/bruaristimunha/EEGDash"
+      }
+    ],
+    "HEDVersion": "8.2.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000232-blue)](https://doi.org/10.82901/nemar.nm000232)\n\nTHINGS-EEG2: A large and rich EEG dataset for modeling human visual object recognition\n========================================================================================\n\nOverview\n--------\nEEG dataset of 10 subjects who viewed 16,540 distinct training images and 200\ntest images (each repeated ~80 times) using rapid serial visual presentation\n(RSVP) at 5 Hz, recorded on a BrainVision actiCHamp system at 1000 Hz.\nThe source files store 63 EEG channels (the online reference electrode is\nnot stored). Stimuli are drawn from the THINGS database (Hebart et al. 2019).\n\nEach subject completed 4 separate sessions; each session contained:\n  - 5 training runs (~3,360 trials each) covering ~16,540 unique images\n  - 1 test run (~4,080 trials) of 200 images repeated 20× per session\n  - 2 resting-state runs (one before, one after the main experiment)\n\nTotal: ~32,540 training trials + ~16,000 test trials per subject across 4 sessions.\n\nRecording setup\n---------------\n- Manufacturer: Brain Products (actiCHamp)\n- 63 EEG channels (one electrode served as online reference and is not\n  stored in the source files)\n- 10-10 cap layout\n- Sampling rate: 1000 Hz\n- Online band-pass: 0.01-100 Hz\n- Triggers recorded as BrainVision stimulus annotations (not as a\n  dedicated stim channel)\n\nTasks (BIDS labels)\n-------------------\n- task-train: training run (RSVP of unique images)\n- task-test:  test run (RSVP of repeated test images)\n- task-rest:  resting state (eyes open, fixation cross)\n\nRun numbering\n-------------\n- task-train: run-01..run-05 per session (5 training parts)\n- task-test:  single run per session\n- task-rest:  run-01 (before main task) and run-02 (after main task)\n\nEvents\n------\nevents.tsv columns:\n  onset, duration, sample, value, trial_type\n  tot_img_number     - global image ID (1-16540 for train; 1-200 for test;\n                       'n/a' for target catch trials)\n  img_category       - integer category index\n  category_name      - human-readable category, e.g. \"01175_roller_coaster\"\n  block, sequence    - hierarchical position within the run\n  img_in_sequence    - image position within its 20-image sequence\n  soa                - actual stimulus onset asynchrony (~200 ms)\n\ntrial_type values:\n  image  - normal training/test image presentation\n  target - random catch trial (subject must press a button)\n  rest_marker - resting-state start/end marker\n\nSubject information\n-------------------\nparticipants.tsv contains age and sex (both extracted from the\nbehavioural .mat files in the source data).\n\nFolder layout\n-------------\n/sub-XX/ses-YY/eeg/        - main BIDS data (BDF + sidecars)\n/sourcedata/               - original BrainVision .eeg/.vhdr/.vmrk and\n                             behavioural .mat files\n/derivatives/preprocessed_eeg/   - authors' preprocessed train/test epochs\n/derivatives/resting_state/      - authors' preprocessed resting state\n/stimuli/                  - image set (training_images.zip, test_images.zip)\n                             plus image_metadata.npy\n/code/                     - this conversion script\n\nReference\n---------\nGifford, A.T., Dwivedi, K., Roig, G., & Cichy, R.M. (2022). A large and rich\nEEG dataset for modeling human visual object recognition. NeuroImage, 264,\n119754. https://doi.org/10.1016/j.neuroimage.2022.119754\n\nCode: https://github.com/gifale95/eeg_encoding\nOSF:  https://osf.io/3jk45/\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000232",
+    "exists": true,
+    "description": "THINGS-EEG2: A large and rich EEG dataset for modeling human visual object recognition",
+    "created_at": "2026-04-11T14:54:14+00:00",
+    "updated_at": "2026-05-12T04:22:17+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

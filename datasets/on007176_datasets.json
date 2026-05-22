@@ -1,0 +1,51 @@
+{
+  "dataset_id": "on007176",
+  "date_retrieved": "2026-05-21T18:44:37.314375+00:00",
+  "dataset_description": {
+    "Name": "Longitudinal EEG Test-Retest Reliability in Healthy Individuals",
+    "BIDSVersion": "1.8.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Verónica Henao Isaza",
+      "Valeria Cadavid Castro",
+      "Luisa María Zapata Saldarriaga",
+      "Yorguin-Jose Mantilla-Ramos",
+      "Jazmín Ximena Suarez Revelo",
+      "Carlos Andrés Tobón Quintero",
+      "John Fredy Ochoa Gómez"
+    ],
+    "Acknowledgements": "We thank all participants and staff involved in data collection.",
+    "HowToAcknowledge": "Please cite: Henao Isaza V, et al. Longitudinal test-retest reliability of quantitative EEG in healthy individuals using an automated preprocessing approach.",
+    "Funding": [
+      "Comité para el Desarrollo de la Investigación - CODI, Universidad de Antioquia"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.1016/j.bspc.2026.109484"
+    ],
+    "EthicsApprovals": [
+      "Approval by Universidad de Antioquia Ethics Committee"
+    ],
+    "DatasetDOI": "10.82901/nemar.on007176",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds007176.v1.0.1"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on007176-blue)](https://doi.org/10.82901/nemar.on007176)\n\nLongitudinal EEG Test-Retest Reliability in Healthy Individuals\n================================================================\n\nDataset Description\n-------------------\nThis dataset contains longitudinal resting-state EEG recordings from 43 healthy adults, \ncollected over four sessions spanning approximately two years, with an average interval \nof 7.2 months between sessions. The dataset includes raw EEG data and relevant metadata \nfollowing the BIDS standard.\n\nPurpose\n-------\nThe dataset was acquired to assess the test-retest reliability of EEG signals using \nan automated preprocessing pipeline, including independent component analysis and \nwavelet-enhanced artifact removal. It allows for analysis of neural components, \nrelative power in regions of interest (ROIs), and longitudinal stability of EEG measures.\n\nData Structure\n--------------\n- `dataset_description.json` : Dataset metadata and authorship information.\n- `participants.tsv` : Participant demographics and IDs.\n- `sub-XX/eeg/` : Folder for each participant containing EEG data files.\n\nEEG Data\n--------\nEach participant folder contains EEG recordings in BIDS-compliant format. Data \ninclude:\n- Raw EEG signals (`.eeg`, `.vhdr`, `.vmrk`)\n- Associated metadata files (`.json`) describing recording parameters and task information.\n\nUsage Notes\n-----------\n- All participants provided written informed consent. \n- Data are de-identified and do not contain personally identifiable information.\n- Users should cite the following paper when using this dataset:\n  Henao Isaza V, et al. Longitudinal test-retest reliability of quantitative EEG in \n  healthy individuals using an automated preprocessing approach. DOI: 10.1016/j.bspc.2026.109484\n\nLicense\n-------\nThis dataset is publicly available under a Creative Commons CC0 license.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on007176",
+    "exists": true,
+    "description": "Longitudinal EEG Test-Retest Reliability in Healthy Individuals",
+    "created_at": "2026-03-08T09:35:20+00:00",
+    "updated_at": "2026-03-08T09:43:59+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

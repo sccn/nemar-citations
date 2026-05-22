@@ -1,0 +1,33 @@
+{
+  "dataset_id": "ds005522",
+  "date_retrieved": "2026-05-21T22:55:17.637504+00:00",
+  "dataset_description": {
+    "Name": "Spatial Navigation Memory of Object Locations",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Haydn G. Herrema",
+      "Michael J. Kahana"
+    ],
+    "Funding": [
+      "DARPA RAM: N66001-14-2-4032"
+    ],
+    "License": "CC0",
+    "Acknowledgements": "We thank our collaborators who have helped in the collection of this data: Hospital of the University of Pennsylvania, Thomas Jefferson University Hospital, Dartmouth-Hitchcock Medical Center, Mayo Clinic, Columbia University Hospital, Emory University Hospital, University of Texas Southwestern Medical Center, University of Washington Medical Center.",
+    "DatasetDOI": "doi:10.18112/openneuro.ds005522.v1.0.0"
+  },
+  "readme_content": "### Spatial Navigation Memory of Object Locations\n\n#### Description\nThis dataset contains behavioral events and intracranial electrophysiological recordings from a spatial navigation memory task.  The experiment consists of participants encoding object locations during a guided navigation learning phase and then recalling the object locations during a self-navigation test phase.  The data was collected at clinical sites across the country as part of a collaboration with the Computational Memory Lab at the University of Pennsylvania.\n\nEach session contains 50 trials (2 practice and 48 experimental), and each overall \"trial\" contains 2 learning trials followed by 1 test trial with the same object at the same location.  For learning trial 1, participants are placed at a random location at a given radius from the object.  They are smoothly turned to face the object (1 s), automatically driven to the object location (3 s), and then paused at the object (1 s).  5 seconds later, participants are placed at a new random location and the process repeats for learning trial 2.  On test trials, participants are placed at a random location and orientation, with the object invisible.  They navigate to where they believe the object was located and press a button to record their response.  The environment for all sessions and trials is 64.8 x 36, with coordinates: x = (-32.4, 32.4), y = (-18.0, 18.0).\n\nThe trials are blocked by a counterbalanced scheme, so for every trial there is another trial with reflected object position, starting position, and orientation.  Each block contains 2 trials (i.e., 2 x (2 learning, 1 test)), with object (X, Y) and starting locations (x, y):\n- **(X1, Y1)**\n    - **(x1', y1')**\n    - **(x1'', y1'')**\n    - **(x1''', y1''')**\n- **(X2, Y2)**\n    - **(x2', y2')** \n    - **(x2'', y2'')**\n    - **(x2''', y2''')**\n\nThe paired block contains 2 trials in the opposite order with object and starting locations:\n- **(-X2, -Y2)**\n    - **(-x2', -y2')**\n    - **(-x2'', -y2'')**\n    - **(-x2''', -y2''')**\n- **(-X1, -Y1)**\n    - **(-x1', -y1')**\n    - **(-x1'', -y1'')** \n    - **(-x1''', -y1''')**\n\n#### To Note\n* The iEEG recordings are labeled either \"monopolar\" or \"bipolar.\"  The monopolar recordings are referenced (typically a mastoid reference), but should always be re-referenced before analysis.  The bipolar recordings are referenced according to a paired scheme indicated by the accompanying bipolar channels tables.\n* Each subject has a unique montage of electrode locations.  MNI and Talairach coordinates are provided when available.\n* Recordings done with the Blackrock system are in units of 250 nV, while recordings done with the Medtronic system are estimated through testing to have units of 0.1 uV.  We have completed the scaling to provide values in V.\n\n#### Contact\nFor questions or inquiries, please contact sas-kahana-sysadmin@sas.upenn.edu.",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005522",
+    "exists": true,
+    "description": "OpenNeuro dataset - Spatial Navigation Memory of Object Locations",
+    "created_at": "2024-09-24T17:29:47+00:00",
+    "updated_at": "2024-09-24T18:27:42+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

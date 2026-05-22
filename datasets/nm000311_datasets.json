@@ -1,0 +1,66 @@
+{
+  "dataset_id": "nm000311",
+  "date_retrieved": "2026-05-21T18:43:24.981668+00:00",
+  "dataset_description": {
+    "Name": "Multimodal upper-limb MI/ME EEG (Jeong et al. 2020)",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC0-1.0",
+    "Authors": [
+      "Ji-Hoon Jeong",
+      "Jeong-Hyun Cho",
+      "Kyung-Hwan Shim",
+      "Byoung-Hee Kwon",
+      "Byeong-Hoo Lee",
+      "Do-Yeun Lee",
+      "Dae-Hyeok Lee",
+      "Seong-Whan Lee"
+    ],
+    "ReferencesAndLinks": [
+      "https://zenodo.org/records/19021436"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000311",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1093/gigascience/giaa098",
+        "URL": "https://zenodo.org/records/19021436"
+      },
+      {
+        "DOI": "doi:10.1093/gigascience/giaa098"
+      }
+    ],
+    "Keywords": [
+      "Healthy",
+      "Motor",
+      "Research",
+      "imagery",
+      "motor_control",
+      "prosthetics"
+    ],
+    "PublicationYear": 2020,
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000311-blue)](https://doi.org/10.82901/nemar.nm000311)\n\nJeong2020\n=========\n\nMultimodal MI+ME dataset from Jeong et al 2020.\n\nDataset Overview\n----------------\n  Code: Jeong2020\n  Paradigm: imagery\n  DOI: 10.1093/gigascience/giaa098\n  Subjects: 25\n  Sessions per subject: 3\n  Events: reach_forward=1, reach_backward=2, reach_left=3, reach_right=4, reach_up=5, reach_down=6, grasp_cup=7, grasp_ball=8, grasp_card=9, twist_pronation=10, twist_supination=11\n  Trial interval: [0, 4] s\n  Runs per session: 3\n  File format: BrainVision\n\nAcquisition\n-----------\n  Sampling rate: 1000.0 Hz\n  Number of channels: 71\n  Channel types: eeg=60, eog=4, emg=7\n  Channel names: Fp1, AF7, AF3, AFz, F7, F5, F3, F1, Fz, FT7, FC5, FC3, FC1, T7, C5, C3, C1, Cz, TP7, CP5, CP3, CP1, CPz, P7, P5, P3, P1, Pz, PO7, PO3, POz, Fp2, AF4, AF8, F2, F4, F6, F8, FC2, FC4, FC6, FT8, C2, C4, C6, T8, CP2, CP4, CP6, TP8, P2, P4, P6, P8, PO4, PO8, O1, Oz, O2, Iz\n  Montage: standard_1005\n  Hardware: BrainAmp (BrainProducts GmbH)\n  Reference: FCz\n  Ground: Fpz\n  Sensor type: actiCap\n  Line frequency: 60.0 Hz\n  Online filters: {'highpass': 0.016, 'lowpass': 1000}\n\nParticipants\n------------\n  Number of subjects: 25\n  Health status: healthy\n  Age: min=24.0, max=32.0\n  Gender distribution: female=10, male=15\n  Handedness: right-handed\n  BCI experience: naive\n  Species: human\n\nExperimental Protocol\n---------------------\n  Paradigm: imagery\n  Number of classes: 11\n  Class labels: reach_forward, reach_backward, reach_left, reach_right, reach_up, reach_down, grasp_cup, grasp_ball, grasp_card, twist_pronation, twist_supination\n  Trial duration: 4.0 s\n  Study design: 11 intuitive upper-limb movement tasks: 6 reaching + 3 grasping + 2 wrist twisting. MI and real movement conditions, 3 sessions.\n  Feedback type: none\n  Stimulus type: text cues\n  Stimulus modalities: visual\n  Primary modality: visual\n  Synchronicity: synchronous\n  Mode: offline\n\nHED Event Annotations\n---------------------\n  Schema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n  reach_forward\n    ├─ Sensory-event\n    └─ Label/reach_forward\n\n  reach_backward\n    ├─ Sensory-event\n    └─ Label/reach_backward\n\n  reach_left\n    ├─ Sensory-event\n    └─ Label/reach_left\n\n  reach_right\n    ├─ Sensory-event\n    └─ Label/reach_right\n\n  reach_up\n    ├─ Sensory-event\n    └─ Label/reach_up\n\n  reach_down\n    ├─ Sensory-event\n    └─ Label/reach_down\n\n  grasp_cup\n    ├─ Sensory-event\n    └─ Label/grasp_cup\n\n  grasp_ball\n    ├─ Sensory-event\n    └─ Label/grasp_ball\n\n  grasp_card\n    ├─ Sensory-event\n    └─ Label/grasp_card\n\n  twist_pronation\n    ├─ Sensory-event\n    └─ Label/twist_pronation\n\n  twist_supination\n    ├─ Sensory-event\n    └─ Label/twist_supination\n\nParadigm-Specific Parameters\n----------------------------\n  Detected paradigm: motor_imagery\n  Imagery tasks: reach_forward, reach_backward, reach_left, reach_right, reach_up, reach_down, grasp_cup, grasp_ball, grasp_card, twist_pronation, twist_supination\n  Imagery duration: 4.0 s\n\nData Structure\n--------------\n  Trials: 41250\n  Trials context: 25 subjects x 3 sessions x 550 trials (300 reaching + 150 grasping + 100 twisting)\n\nSignal Processing\n-----------------\n  Classifiers: CSP+RLDA\n  Feature extraction: CSP\n  Frequency bands: mu_beta=[8.0, 30.0] Hz\n  Spatial filters: CSP\n\nCross-Validation\n----------------\n  Method: 10x10-fold\n  Folds: 10\n  Evaluation type: within_session\n\nBCI Application\n---------------\n  Applications: motor_control, prosthetics\n  Environment: laboratory\n  Online feedback: False\n\nTags\n----\n  Pathology: Healthy\n  Modality: Motor\n  Type: Research\n\nDocumentation\n-------------\n  DOI: 10.1093/gigascience/giaa098\n  License: CC0-1.0\n  Investigators: Ji-Hoon Jeong, Jeong-Hyun Cho, Kyung-Hwan Shim, Byoung-Hee Kwon, Byeong-Hoo Lee, Do-Yeun Lee, Dae-Hyeok Lee, Seong-Whan Lee\n  Institution: Korea University\n  Country: KR\n  Data URL: https://zenodo.org/records/19021436\n  Publication year: 2020\n\nReferences\n----------\nJeong, J.-H., Cho, J.-H., Shim, K.-H., et al. (2020). Multimodal signal dataset for 11 intuitive movement tasks from single upper extremity during multiple recording sessions. GigaScience, 9(10), giaa098. https://doi.org/10.1093/gigascience/giaa098\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000311",
+    "exists": true,
+    "description": "Multimodal upper-limb MI/ME EEG (Jeong et al. 2020)",
+    "created_at": "2026-03-28T02:34:26+00:00",
+    "updated_at": "2026-05-12T04:26:20+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

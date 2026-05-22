@@ -1,0 +1,43 @@
+{
+  "dataset_id": "on003825",
+  "date_retrieved": "2026-05-21T18:43:49.164353+00:00",
+  "dataset_description": {
+    "Name": "Human electroencephalography recordings from 50 subjects for 22,248 images from 1,854 object concepts",
+    "BIDSVersion": "1.0.2",
+    "License": "CC0",
+    "Authors": [
+      "Grootswagers, Tijl",
+      "Zhou, Ivy",
+      "Robinson, Amanda",
+      "Hebart, Martin",
+      "Carlson, Thomas"
+    ],
+    "Acknowledgements": "The authors acknowledge the University of Sydney HPC service for providing High Performance Computing resources.",
+    "Funding": [
+      "ARC DP160101300 (TAC)",
+      "ARC DP200101787 (TAC)",
+      "ARC DE200101159 (AKR)"
+    ],
+    "DatasetDOI": "10.82901/nemar.on003825",
+    "SourceDatasets": [
+      {
+        "DOI": "10.18112/openneuro.ds003825.v1.1.0"
+      }
+    ],
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on003825-blue)](https://doi.org/10.82901/nemar.on003825)\n\nExperiment Details\nHuman electroencephalography recordings from 50 subjects for 1,854 concepts and 22,248 images in the THINGS stimulus database.\nImages were presented in rapid serial visual presentation streams at 10Hz rates. Participants performed an orthogonal fixation colour change detection task.\n\nExperiment length: 1 hour\n\n## Stimuli\n\nThe 22,248 stimulus images are NOT bundled with this BIDS dataset: the\nTHINGS image archive (Hebart et al. 2019) is licensed for research /\nnon-commercial use and may not be redistributed without consent of the\ncopyright owners. Acquire the archive directly from the canonical OSF\nproject (https://osf.io/jum2f/, file `images_THINGS.zip`, ~5 GB,\npassword documented at osf.io/j6a3m), and unpack it under\n`stimuli/<concept>/<file>.jpg`.\n\nOnce the images are in place, every events.tsv `stim_file` column entry\nresolves to a real file. Two helpers are provided:\n\n```bash\n# 1) one-off normalisation: rewrites events.tsv to BIDS-canonical form\n#    (adds stim_file, drops stim/stimname, converts onset/duration to seconds)\npython code/normalize_events_to_bids.py\n\n# 2) sanity check after stimuli are placed\npython code/smoke_test.py\n```\n\n```python\nimport pandas as pd\nfrom code.align_stimuli import StimulusAligner\n\naligner = StimulusAligner('.')\nevents = pd.read_csv('sub-01/eeg/sub-01_task-rsvp_events.tsv', sep='\\t')\npaths = aligner.paths_for_events(events)   # list[Path | None]\n```\n\nSee `stimuli/README` for the license terms and `stimuli/stim-things_image.json`\nfor the BIDS stimulus sidecar.",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on003825",
+    "exists": true,
+    "description": "Human electroencephalography recordings from 50 subjects for 22,248 images from 1,854 object concepts",
+    "created_at": "2026-03-14T08:43:20+00:00",
+    "updated_at": "2026-05-01T01:53:20+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

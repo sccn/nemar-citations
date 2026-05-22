@@ -1,0 +1,65 @@
+{
+  "dataset_id": "nm000135",
+  "date_retrieved": "2026-05-21T18:42:20.350330+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2014-004 Motor Imagery dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-ND-4.0",
+    "Authors": [
+      "R. Leeb",
+      "C. Brunner",
+      "G. R. Müller-Putz",
+      "A. Schlögl",
+      "G. Pfurtscheller",
+      "F. Lee",
+      "C. Keinrath",
+      "R. Scherer",
+      "H. Bischof"
+    ],
+    "ReferencesAndLinks": [
+      "http://biosig.sourceforge.net/"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.4.3"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1109/TNSRE.2007.906956",
+        "URL": "http://biosig.sourceforge.net/"
+      }
+    ],
+    "Keywords": [
+      "brain-computer interface",
+      "BCI",
+      "electroencephalogram",
+      "EEG",
+      "motor imagery",
+      "BCI competition",
+      "smiley feedback"
+    ],
+    "PublicationYear": 2007,
+    "DatasetDOI": "10.82901/nemar.nm000135",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000135-blue)](https://doi.org/10.82901/nemar.nm000135)\n\n# BNCI 2014-004 Motor Imagery dataset\n\nBNCI 2014-004 Motor Imagery dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2014-004\n- **Paradigm**: imagery\n- **DOI**: 10.1109/TNSRE.2007.906956\n- **Subjects**: 9\n- **Sessions per subject**: 5\n- **Events**: left_hand=1, right_hand=2\n- **Trial interval**: [3, 7.5] s\n- **Session IDs**: 01T, 02T, 03T, 04E, 05E\n- **File format**: GDF\n\n## Acquisition\n\n- **Sampling rate**: 250.0 Hz\n- **Number of channels**: 3\n- **Channel types**: eeg=3, eog=3\n- **Channel names**: C3, C4, Cz, EOG1, EOG2, EOG3\n- **Montage**: standard_1020\n- **Hardware**: g.tec\n- **Software**: rtsBCI (MATLAB/Simulink)\n- **Reference**: left mastoid\n- **Ground**: Fz\n- **Sensor type**: EEG\n- **Line frequency**: 50.0 Hz\n- **Online filters**: 0.5-100 Hz bandpass, 50 Hz notch\n- **Cap manufacturer**: Easycap\n- **Electrode material**: Ag/AgCl\n- **Auxiliary channels**: EOG (3 ch, horizontal, vertical, radial)\n\n## Participants\n\n- **Number of subjects**: 9\n- **Health status**: healthy\n- **Age**: mean=24.7, std=3.3\n- **Handedness**: right\n- **BCI experience**: naive\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Task type**: motor_imagery\n- **Number of classes**: 2\n- **Class labels**: left_hand, right_hand\n- **Trial duration**: 7.5 s\n- **Tasks**: left_hand_imagery, right_hand_imagery\n- **Study design**: Two-class motor imagery: left hand and right hand. Screening sessions (01T, 02T) without feedback, feedback sessions (03T, 04E, 05E) with smiley feedback.\n- **Study domain**: brain-computer interface\n- **Feedback type**: visual\n- **Stimulus type**: arrow_cue\n- **Stimulus modalities**: visual, auditory\n- **Primary modality**: visual\n- **Synchronicity**: cue_based\n- **Mode**: both\n- **Training/test split**: True\n- **Instructions**: Subjects selected their best motor imagery strategy (e.g., squeezing a ball or pulling a brake) and performed kinesthetic motor imagery of left or right hand movements.\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  left_hand\n    ├─ Sensory-event\n    │  ├─ Experimental-stimulus\n    │  ├─ Visual-presentation\n    │  └─ Leftward, Arrow\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Left, Hand\n\n  right_hand\n    ├─ Sensory-event\n    │  ├─ Experimental-stimulus\n    │  ├─ Visual-presentation\n    │  └─ Rightward, Arrow\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: left_hand, right_hand\n- **Cue duration**: 1.25 s\n- **Imagery duration**: 4.0 s\n\n## Data Structure\n\n- **Trials**: {'screening': 120, 'feedback': 160}\n- **Trials context**: per session\n\n## Preprocessing\n\n- **Data state**: raw with online filtering\n- **Preprocessing applied**: True\n- **Steps**: bandpass filtering, notch filtering\n- **Highpass filter**: 0.5 Hz\n- **Lowpass filter**: 100.0 Hz\n- **Bandpass filter**: {'low_cutoff_hz': 0.5, 'high_cutoff_hz': 100.0}\n- **Notch filter**: [50.0] Hz\n- **Filter type**: analog\n- **Notes**: Online bandpass (0.5-100 Hz) and notch (50 Hz) filters applied during recording. Artifact trials marked with event type 1023. EOG channels provided for user-applied artifact correction.\n\n## Signal Processing\n\n- **Classifiers**: LDA\n- **Feature extraction**: Bandpower, BP\n\n## Cross-Validation\n\n- **Method**: 10x10 cross-validation\n- **Folds**: 10\n- **Evaluation type**: within_subject\n\n## BCI Application\n\n- **Applications**: motor_control\n- **Environment**: laboratory\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Motor\n- **Type**: Motor Imagery\n\n## Documentation\n\n- **Description**: BCI Competition 2008 - Graz data set B: Two-class motor imagery dataset (left/right hand) with screening sessions (no feedback) and smiley feedback sessions. 9 subjects, 3 bipolar EEG channels (C3, Cz, C4) + 3 EOG channels, 250 Hz.\n- **DOI**: 10.1109/TNSRE.2007.906956\n- **License**: CC-BY-ND-4.0\n- **Investigators**: R. Leeb, C. Brunner, G. R. Müller-Putz, A. Schlögl, G. Pfurtscheller, F. Lee, C. Keinrath, R. Scherer, H. Bischof\n- **Senior author**: G. Pfurtscheller\n- **Institution**: Graz University of Technology\n- **Department**: Institute for Knowledge Discovery\n- **Country**: AT\n- **Repository**: BNCI Horizon\n- **Data URL**: http://biosig.sourceforge.net/\n- **Publication year**: 2007\n- **Keywords**: brain-computer interface, BCI, electroencephalogram, EEG, motor imagery, BCI competition, smiley feedback\n\n## External Links\n\n- **Source**: http://biosig.sourceforge.net/\n\n## Abstract\n\nBCI Competition 2008 Graz data set B. EEG data from 9 subjects performing two-class motor imagery (left hand vs right hand). Two screening sessions without feedback (120 trials each) and three feedback sessions with smiley feedback (160 trials each). Three bipolar EEG channels (C3, Cz, C4) and three EOG channels recorded at 250 Hz.\n\n## Methodology\n\nSubjects performed kinesthetic motor imagery of left or right hand movements. Two screening sessions (01T, 02T) without feedback: 6 runs x 20 trials = 120 trials per session. Three feedback sessions (03T, 04E, 05E) with smiley feedback: 4 runs x 40 trials (20 per class) = 160 trials per session. Screening trials: fixation cross + beep at t=0, arrow cue at ~t=2 for 1.25s, imagery for 4s, break. Feedback trials: smiley at t=0, beep at t=2, cue from t=3 to t=7.5 with continuous smiley feedback. Three bipolar EEG channels (C3, Cz, C4) plus three monopolar EOG channels recorded at 250 Hz with 0.5-100 Hz bandpass and 50 Hz notch filter. EEG ground at Fz, EOG reference at left mastoid. Amplifier: g.tec. Software: rtsBCI (MATLAB/Simulink).\n\n## References\n\nTangermann, M., Muller, K.R., Aertsen, A., Birbaumer, N., Braun, C., Brunner, C., Leeb, R., Mehring, C., Miller, K.J., Mueller-Putz, G. and Nolte, G., 2012. Review of the BCI competition IV. Frontiers in neuroscience, 6, p.55.\n\nNotes\n\n.. note::\n\n``BNCI2014_004`` was previously named ``BNCI2014004``. ``BNCI2014004`` will be removed in version 1.1.\n\n.. versionadded:: 0.4.0\n\nThis dataset is commonly referred to as \"BCI Competition IV Dataset 2b\". It is widely used for binary motor imagery classification tasks.\n\nSee Also\n\nBNCI2014_001 : 4-class motor imagery (Dataset 2a) BNCI2014_002 : 2-class motor imagery with Laplacian derivations\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.4.3 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000135",
+    "exists": true,
+    "description": "BNCI 2014-004 Motor Imagery dataset",
+    "created_at": "2026-03-22T16:13:57+00:00",
+    "updated_at": "2026-05-12T04:37:48+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

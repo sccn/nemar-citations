@@ -1,0 +1,72 @@
+{
+  "dataset_id": "nm000238",
+  "date_retrieved": "2026-05-21T18:43:21.863384+00:00",
+  "dataset_description": {
+    "Name": "SparrKULee: A Speech-Evoked Auditory Response Repository from KU Leuven, Containing the EEG of 85 Participants",
+    "BIDSVersion": "1.9.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Bernd Accou",
+      "Lies Bollens",
+      "Marlies Gillis",
+      "Wendy Verheijen",
+      "Hugo Van hamme",
+      "Tom Francart"
+    ],
+    "AuthorsEmail": [
+      "bernd.accou@kuleuven.be",
+      "lies.bollens@kuleuven.be",
+      "marlies.gillis@kuleuven.be",
+      "wendy.verheijen@kuleuven.be",
+      "hugo.vanhamme@esat.kuleuven.be",
+      "tom.francart@kuleuven.be"
+    ],
+    "License": "Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0) for the EEG data. Stimuli can only be used for non-commercial purposes.",
+    "Acknowledgements": "Amelie Algoet, Jolien Smeulders, Lore Kerkhofs, Sara Peeters, Merel Dillen, Ilham Gamgami, Amber Verhoeven, Vitor Vasconselos, Jard Hendrickx, Lore Verbeke and Ana Carbajal Chavez",
+    "Funding": [
+      "KU Leuven Special Research Fund C24/18/099 (C2 project to Tom Francart and Hugo Van hamme)",
+      "PhD grant 1S89622N of the Research Foundation Flanders (FWO)",
+      "PhD grant 1SB1421N of the Research Foundation Flanders (FWO)",
+      "European Research Council (ERC) grant under the European Union’s Horizon 2020 research and innovation program (grant agreement No 637424, ERC Starting Grant to Tom Francart)"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000238",
+    "EthicsApprovals": [
+      "Medical Ethics Committee UZ KU Leuven/Research (KU Leuven, Belgium) with reference S57102"
+    ],
+    "ReferencesAndLinks": [
+      "Code to preprocess the data and run technical validation: 'https://github.com/exporl/auditory-eeg-dataset'",
+      "https://doi.org/10.3390/data9080094"
+    ],
+    "HEDVersion": "8.2.0",
+    "Notes": "IMPORTANT — 5 of the 85 original subjects (sub-019, sub-020, sub-021, sub-022, sub-026) are EXCLUDED from this NEMAR re-host because their raw EEG files are access-restricted on the KU Leuven Dataverse (HTTP 403 on download without a data-use agreement). Researchers who need these subjects should email sparrkulee@kuleuven.be to request access and download the data directly from https://rdr.kuleuven.be/dataset.xhtml?persistentId=doi:10.48804/K3VSND (DOI 10.48804/K3VSND). The re-host therefore contains 80 of the original 85 subjects, covering all 11 session types (shortstories01, varyingStories01..10).\n\nCohort demographics (from Accou et al., Data 2024, 9, 94, Section 2.1): 85 original participants, 74 female / 11 male, aged 21.4 ± 1.9 years (mean ± SD), inclusion window 18-30 years, all normal-hearing (≤30 dB HL, 125-8000 Hz), native Dutch/Flemish speakers. Per-subject numeric ages are not published by the SparrKULee authors for privacy reasons; `participants.tsv` only ships 3-year binned ages in the `age_range` column (see `participants.json` for details).",
+    "HowToAcknowledge": "Please cite the original SparrKULee data descriptor when using this dataset: Accou, B., Bollens, L., Gillis, M., Verheijen, W., Van hamme, H., & Francart, T. (2024). SparrKULee: A Speech-Evoked Auditory Response Repository from KU Leuven, Containing the EEG of 85 Participants. Data, 9(8), 94. https://doi.org/10.3390/data9080094",
+    "GeneratedBy": [
+      {
+        "Name": "convert_accou2023.py (EEGDash)",
+        "Description": "Prepared the original SparrKULee BIDS dataset for NEMAR re-hosting: excluded 5 access-restricted subjects (sub-019..022, sub-026), moved the string-range `age` column into `age_range` and set `age` to n/a, moved per-session `remarks/` text files into `/code/remarks/`, moved orphan top-level EEG sidecar into `/code/` (the raw EEG ships as `.bdf.gz` which the validator does not recognise as a BIDS data suffix), filled in recommended task-level metadata (TaskName/Description/Instructions/Institution*/StimulusPresentation) on the top-level `_beh.json` and `_events.json` sidecars, and added a prominent exclusion warning plus cohort demographics to README and dataset_description.json.",
+        "CodeURL": "https://github.com/bruaristimunha/EEGDash"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "URL": "https://rdr.kuleuven.be/dataset.xhtml?persistentId=doi:10.48804/K3VSND",
+        "DOI": "doi:10.48804/K3VSND"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000238-blue)](https://doi.org/10.82901/nemar.nm000238)\n\n=============================================================\nIMPORTANT — RESTRICTED SUBJECTS EXCLUDED FROM NEMAR RE-HOST\n=============================================================\n\nIMPORTANT — 5 of the 85 original subjects (sub-019, sub-020, sub-021, sub-022, sub-026) are EXCLUDED from this NEMAR re-host because their raw EEG files are access-restricted on the KU Leuven Dataverse (HTTP 403 on download without a data-use agreement). Researchers who need these subjects should email sparrkulee@kuleuven.be to request access and download the data directly from https://rdr.kuleuven.be/dataset.xhtml?persistentId=doi:10.48804/K3VSND (DOI 10.48804/K3VSND). The re-host therefore contains 80 of the original 85 subjects, covering all 11 session types (shortstories01, varyingStories01..10).\n\nExcluded subjects: sub-019, sub-020, sub-021, sub-022, sub-026\n\nCohort demographics\n-------------------\n\nCohort demographics (from Accou et al., Data 2024, 9, 94, Section 2.1): 85 original participants, 74 female / 11 male, aged 21.4 ± 1.9 years (mean ± SD), inclusion window 18-30 years, all normal-hearing (≤30 dB HL, 125-8000 Hz), native Dutch/Flemish speakers. Per-subject numeric ages are not published by the SparrKULee authors for privacy reasons; `participants.tsv` only ships 3-year binned ages in the `age_range` column (see `participants.json` for details).\n\nHow to cite\n-----------\n\nPlease cite the original SparrKULee data descriptor when using this dataset: Accou, B., Bollens, L., Gillis, M., Verheijen, W., Van hamme, H., & Francart, T. (2024). SparrKULee: A Speech-Evoked Auditory Response Repository from KU Leuven, Containing the EEG of 85 Participants. Data, 9(8), 94. https://doi.org/10.3390/data9080094\n\nWhere extra metadata lives (after NEMAR preparation)\n----------------------------------------------------\n\n  * `/code/task-listeningActive_eeg.json` — full recording-level EEG metadata (SamplingFrequency, Manufacturer, EEGChannelCount, EEGReference, PowerLineFrequency, ...). Relocated from the dataset root because the validator does not match the orphan top-level sidecar against the `.bdf.gz` data files.\n  * `/code/remarks/` — per-session free-form recording notes (`.txt` and `.docx`) originally placed under `sub-XX/ses-YY/remarks/`. Relocated so the validator does not see an arbitrary `remarks/` folder inside BIDS session directories.\n  * `/code/convert_accou2023.py` — the exact script that was run to produce this NEMAR re-host.\n\n-------------------------------------------------------------\n\nREADME\n======\n\n__SparrKULee__: A Speech-evoked Auditory Response Repository of the KU Leuven, containing EEG of 85 participants\n\nOverview\n--------\n\nAn overview of the dataset including details about the filetypes, methods and technical validation can be found in [our\npaper]()\n\n\nNotes\n-----\n\nCode to download, preprocess and validate the data can be found at https://github.com/exporl/auditory-eeg-dataset.\n\nDue to mistakes during recording, following recordings do not have an adequate number of triggers and can therefore not be accurately aligned with the stimulus:\n\n1. sub-006/ses-shortstories01/eeg/sub-006_ses-shortstories01_task-listeningActive_run-06_eeg.bdf.gz\n2. sub-017/ses-shortstories01/eeg/sub-017_ses-shortstories01_task-listeningActive_run-03_eeg.bdf.gz\n3. sub-048/ses-varyingStories05/eeg/sub-048_ses-varyingStories05_task-listeningActive_run-04_eeg.bdf.gz\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000238",
+    "exists": true,
+    "description": "SparrKULee: A Speech-Evoked Auditory Response Repository from KU Leuven, Containing the EEG of 85 Participants",
+    "created_at": "2026-04-11T17:48:05+00:00",
+    "updated_at": "2026-05-12T04:22:09+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

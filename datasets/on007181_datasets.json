@@ -1,0 +1,45 @@
+{
+  "dataset_id": "on007181",
+  "date_retrieved": "2026-05-21T18:44:40.314533+00:00",
+  "dataset_description": {
+    "Name": "Structural MRI, Resting-state fMRI, and PSG/EEG Dataset of Zoster-associated Neuralgia",
+    "BIDSVersion": "1.8.0",
+    "License": "CC0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Li Li",
+      "Qi Han",
+      "Haolei Bai",
+      "Xiaolong Zhang",
+      "Yong Liu",
+      "Chao He"
+    ],
+    "Author Contributions": [
+      "H.B. constructed and curated of the dataset. L.L. and Q.H. performed the measurements and collected the raw data. C.H., Y.L., and X.Z. were responsible for data quality control and overall data integrity."
+    ],
+    "SourceDatasets": [],
+    "HowToAcknowledge": "These data are associated with a manuscript currently under revision. Please cite the dataset DOI when using these data.",
+    "ReferencesAndLinks": [
+      "Code for data preprocessing and analysis: https://github.com/ellebai/zan-neuro"
+    ],
+    "EthicsApprovals": [
+      "Medical Ethics Committee of Second Affiliated Hospital of Army Medical University, PLA–approved protocol for human-subjects research involving neuroimaging and electrophysiological data (Approval No. 2021-045-01)."
+    ],
+    "DatasetDOI": "10.82901/nemar.on007181",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on007181-blue)](https://doi.org/10.82901/nemar.on007181)\n\n# Structural MRI, Resting-state fMRI, and PSG/EEG Dataset of Zoster-associated Neuralgia\n**Summary**  \nThis dataset includes anatomical T1-weighted MRI and raw multi-echo resting-state fMRI, as well as PSG data from a study investigating the difference between healthy controls (HC) and zoster-associated neuralgia (ZAN) patients.  \nMRI and PSG data were partially overlapping across participants. Participants with available data in at least one modality were included in the dataset, following the BIDS specification.\n\n- For project code and full analysis pipelines (including between-subject comparisons, functional connectivity analyses, and correlation-based statistical modeling), see:  \n  [project-zan-neuro](https://github.com/ellebai/zan-neuro)\n\n**Participants** \n- 29 healthy adults (HC) and 27 zoster-associated neuralgia adults (ZAN) for MRI data. \n- 32 healthy adults and 27 zoster-associated neuralgia adults for PSG data.\n- See `participants.tsv` for sex, age, group (HC vs. ZAN) \n\n**Tasks**  \n- Functional scans are resting-state.\n\n**What’s included**  \n- `sub-*/anat/`  \n  - Defaced T1w MRI: `sub-XX_T1w.nii.gz` (+ JSON sidecar if available).  \n- `sub-*/func/`  \n  - Raw multi-echo BOLD: `sub-XX_task-rest_bold.nii.gz`.\n- `sub-*/eeg/`  \n  - Defaced T1w MRI: `sub-XX_task-sleep_acq-PSG_eeg.edf`, `sub-XX_task-sleep_acq-PSG_channels.tsv`, `sub-XX_task-sleep_acq-PSG_events.tsv`.\n- Top-level: `participants.tsv`, `task-rest_bold.json`, `README.md`.\n\n**Notes on data quality & privacy**  \n- T1w images were defaced prior to sharing.  \n- Functional files are raw (converted with dcm2niix); files with SPM-style prefixes (r/w/y/s*) were excluded.\n- Sleep stages were manually scored based on polysomnography (PSG) data according to the criteria of the American Academy of Sleep Medicine (AASM). Sleep staging followed the standard AASM classification system, including Wake (W), Non-REM stages N1, N2, N3, and Rapid Eye Movement (REM) sleep. Stage N3 corresponds to slow-wave sleep as defined in the AASM manual; no separate N4 stage was used.\n- EEG signals were recorded with reference to linked mastoids (M1/M2), and channel names reflect the referenced configuration (e.g., Fp1–M2).\n\n**Folder conventions (BIDS)**  \n```\nzan/\n  sub-01/\n    anat/sub-01_T1w.nii.gz    \n    func/sub-01_task-rest_bold.nii.gz\n  sub-02/\n    anat/sub-02_T1w.nii.gz    \n    func/sub-02_task-rest_bold.nii.gz  \n    eeg/ sub-02_task-sleep_acq-PSG_eeg.edf  \n  sub-03/ ...\n```\n\n**How to cite**  \nThese data are associated with a manuscript currently under revision. Please cite the dataset DOI when using these data.\n\n**Contacts**  \n- Haolei Bai — ellebai83@gmail.com  \n(You may also contact the corresponding author from the manuscript.)\n\n**License**  \nThis dataset is shared under **CC0**.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on007181",
+    "exists": true,
+    "description": "Structural MRI, Resting-state fMRI, and PSG/EEG Dataset of Zoster-associated Neuralgia - DOI: 10.82901/nemar.on007181",
+    "created_at": "2026-03-04T17:46:51+00:00",
+    "updated_at": "2026-03-05T01:02:12+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

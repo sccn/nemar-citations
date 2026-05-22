@@ -1,0 +1,45 @@
+{
+  "dataset_id": "ds004105",
+  "date_retrieved": "2026-05-21T23:41:03.903585+00:00",
+  "dataset_description": {
+    "Name": "BCIT Auditory Cueing",
+    "BIDSVersion": "1.7.0",
+    "HEDVersion": "8.0.0",
+    "License": "CC0",
+    "Authors": [
+      "Javier Garcia (data)",
+      "Justin Brooks (data)",
+      "Scott Kerick (data)",
+      "Tony Johnson (data and curation)",
+      "Tim Mullen (data)",
+      "Jean Vettel (data)",
+      "Jonathan Touryan (curation)",
+      "Kay Robbins (curation)"
+    ],
+    "Acknowledgments": "Tony Johnson and Mike Dunkel from DCS Corporation originally curated the data in ESS (EEG Study Schema) format. Kay Robbins, Joe Lambeth and Jonathan Balraj of the University of Texas at San Antonio performed further curation and placed this dataset in BIDS format. The experiments were performed at Teledyne Laboratories (Durham, NC)  under contract with the US Army Research Laboratory. The study was reviewed and approved by the U.S. Army Human Research Protections Office (Protocol ARL 12-040) before the study began.",
+    "HowToAcknowledge": "Garcia, J.O., Brooks, J., Kerick, S., Johnson, T., Mullen, T.R., Vettel, J.M., 2017. Estimating direction in brain-behavior interactions: Proactive and reactive brain states in driving. NeuroImage 150, 239-249, https://doi.org/10.1016/j.neuroimage.2017.02.057.",
+    "Funding": [
+      "This research was sponsored by the Army Research Laboratory and was accomplished under Cooperative Agreement Number W911NF-10-0-0002."
+    ],
+    "ReferencesAndLinks": [
+      "Garcia, J.O., Brooks, J., Kerick, S., Johnson, T., Mullen, T.R., Vettel, J.M., 2017. Estimating direction in brain-behavior interactions: Proactive and reactive brain states in driving. NeuroImage 150, 239-249. https://doi.org/10.1016/j.neuroimage.2017.02.057.",
+      "Bigdely-Shamlo, N., Touryan, J., Ojeda, A., Kothe, C., Mullen, T., Robbins, K., 2019. Automated EEG mega-analysis I: Spectral and amplitude characteristics across studies, NeuroImage, p. 116361, https://doi.org/10.1016/j.neuroimage.2019.116361",
+      "Bigdely-Shamlo, N., Touryan, J., Ojeda, A., Kothe, C., Mullen, T., Robbins, K., 2019. Automated EEG mega-analysis II: Cognitive aspects of event related features, NeuroImage, p. 116054, https://doi.org/10.1016/j.neuroimage.2019.116054"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds004105.v1.0.0"
+  },
+  "readme_content": "### Introduction\r\n\r\n**Overview:** Subjects in the Auditory Cueing study performed a long-duration simulated driving task with\r\nperturbations and audio stimuli in a visually sparse environment.\r\n\r\nThe purpose of this effort was to supplement and extend the related driving research to collect\r\nprolonged time-on-task measurements of subjects performing a driving task in a simulated environment\r\nin order to assess fatigue-based performance through novel biomarkers.\r\n\r\nSimilar to the Baseline Driving study, the Auditory Cueing study was intended to identify periods\r\nof driver fatigue via predictive algorithms formulated from the analysis of driver EEG data,\r\nin comparison to the objective performance measures, and in contrast with the (non-fatigued)\r\nCalibration driving session for the subject. Auditory Cueing extended the Baseline Driving\r\nparadigm by adding predictive and non-predictive (random) pre-perturbation onset audio cues and\r\nincreasing the frequency and magnitude of perturbation events vs. baseline driving.\r\nFurther information is available on request from [cancta.net](https://cancta.net).\r\n\r\n\r\n### Methods   \r\n\r\n**Subjects:** Volunteers from the local community recruited through advertisements.  \r\n \r\n**Apparatus:**  Driving simulator with steering wheel and brake / foot pedals (Real Time Technologies; Dearborn, MI);\r\nVideo Refresh Rate (VRR) = 900 Hz; Vehicle data log file Sampling Rate (SR) = 100 Hz);\r\nEEG (BioSemi 64 (+8) channel systems with 4 eye and 2 mastoid channels recorded; SR=2048 Hz);\r\nEye Tracking (Sensomotoric Instruments (SMI); REDEYE250).\r\n\r\n**Initial setup:** Upon arrival to the lab, subjects were given an introduction to the\r\nprimary study for which they were recruited and provided informed consent and provided demographics information.\r\nThis was followed by a practice session, to acclimate the subject to the driving simulator.\r\nThe driving practice task lasted 10-15 min, until asymptotic performance in steering and speed control\r\nwas demonstrated and lack of motion sickness was reported.\r\nSubjects were then outfitted and prepped for eye tracking and EEG acquisition.\r\n\r\n**Task organization within the study:** Subjects always began recording sessions by performing\r\na Calibration Driving task, which was a 15-minute drive where the subject controlled only the steering\r\n(and speed was controlled by the simulator). Following this, subjects would perform Auditory Cueing\r\ncondition A and Auditory Cueing condition B, with counter-balancing used across subjects as to\r\nwhich of them came first. This study only contains the Auditory Cueing portion of the study.\r\n\r\n**Auditory cueing task details:** Auditory Cueing A was 45 minutes of continuous driving,\r\nwith subjects responsible for steering and maintaining speed, while a tone was played periodically at random.\r\nAuditory Cueing B was similar, but the tones were correlated with the onset of a perturbation event.\r\nBoth driving tasks were conducted on the same simulated long, straight road.\r\nIn each case, the subject was instructed to stay within the boundaries of the right-most lane,\r\nand to drive at the posted speed limits.\r\n\r\nThe vehicle was periodically subject to lateral perturbing forces, which could be applied to\r\neither side of the vehicle, pushing the vehicle out of the center of the lane;\r\nand the subject was instructed to execute corrective steering actions to return the vehicle to the center of the lane.\r\n\r\n**Independent variables:** Auditory Cue (randomly presented before perturbation vs. predictive) \r\n\r\n**Dependent variables:** Reaction times to perturbations, continuous performance based on\r\nvehicle log (steering wheel angle, lane position, heading error, etc.),\r\nreaction times to target vehicles (police), Task-Induced Fatigue Scale (TIFS),\r\nKarolinska Sleepiness Scale (KSS), Visual Analog Scale of Fatigue (VAS-F).\r\n\r\nNote: Questionnaire data is available upon request from [cancta.net](https://cancta.net).\r\n\r\n**Additional data acquired:** Participant Enrollment Questionnaire, Subject Questionnaire\r\nfor Current Session, Simulator Sickness Questionnaire.\r\n\r\n**Experimental Location:** Teledyne Corporation, Durham, NC.\r\n\r\n**Note:** This dataset has a corresponding dataset in the BCIT Calibration Driving ds004118 which has the\r\n15 minute driving task performed prior to this one.\r\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds004105",
+    "exists": true,
+    "description": "OpenNeuro dataset available at https://openneuro.org/datasets/ds004105",
+    "created_at": "2022-05-05T13:49:37+00:00",
+    "updated_at": "2022-05-05T13:49:37+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

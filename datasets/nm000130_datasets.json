@@ -1,0 +1,70 @@
+{
+  "dataset_id": "nm000130",
+  "date_retrieved": "2026-05-21T18:42:12.401178+00:00",
+  "dataset_description": {
+    "Name": "Liu2022 – eldBETA SSVEP benchmark dataset for elderly population",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC BY 4.0",
+    "Authors": [
+      "Bingchuan Liu",
+      "Yijun Wang",
+      "Xiaorong Gao",
+      "Xiaogang Chen"
+    ],
+    "Funding": [
+      "National Natural Science Foundation of China (No. 62171473)",
+      "Doctoral Brain+X Seed Grant Program of Tsinghua University",
+      "Strategic Priority Research Program of Chinese Academy of Sciences (No. XDB32040200)"
+    ],
+    "EthicsApprovals": [
+      "Institutional Review Board of Tsinghua University, No. 20210032"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.6084/m9.figshare.18032669"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.4.3"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1038/s41597-022-01372-9",
+        "URL": "https://doi.org/10.6084/m9.figshare.18032669"
+      }
+    ],
+    "Keywords": [
+      "SSVEP",
+      "BCI",
+      "EEG",
+      "elderly",
+      "aging",
+      "benchmark",
+      "JFPM"
+    ],
+    "PublicationYear": 2022,
+    "ExperimentName": "Liu2022",
+    "Description": "eldBETA SSVEP benchmark dataset for elderly population.\n\n\nDataset summary:\n\n#Subj     100\n#Chan      64\n#Classes       9\n#Trials / class       7\nTrials length     6 s\nFreq 1000 Hz\n#Sessions       7\n\n\nParticipants:\n\n- Population: healthy\n- Age: 63.17 (range: 51-81) years\n\n\nEquipment:\n\n- Amplifier: Synamps2 (Neuroscan)\n- Montage: standard_1005\n- Reference: Cz\n\n\nData Access:\n\n- DOI: 10.1038/s41597-022-01372-9\n- Data URL: https://doi.org/10.6084/m9.figshare.18032669\n- Repository: Figshare\n\n\nExperimental Protocol:\n\n- Paradigm: ssvep\n- Task type: 9-target SSVEP speller\n- Feedback: visual\n- Stimulus: JFPM visual flicker\n\nDataset from [1]_.\n\nThe eldBETA database contains 64-channel EEG recordings from 100 elderly\nparticipants (33 males, 67 females, aged 51-81, mean age 63.17) performing\na 9-target SSVEP-BCI task. Stimuli used joint frequency and phase\nmodulation (JFPM) with 9 targets in a 3x3 matrix. Frequencies ranged\nfrom 8.0 to 12.0 Hz (0.5 Hz step).\n\nEach subject completed 7 blocks of 9 trials. Each trial consisted of a\n4 s target cue followed by 5 s of SSVEP stimulation and 1 s rest (10 s\ntotal per trial). EEG was recorded at 1000 Hz with a Synamps2 system\n(Neuroscan) using 64 channels.\n\nData is loaded from the BIDS-formatted GDF files included in each\nsubject's Figshare archive. The GDF files contain continuous recordings\nat 1000 Hz with event annotations marking each stimulus onset.\n\nWarnings\n--------\nThe GDF files in the archive are mislabeled with ``.edf`` extension\nand contain an extra header block from the biosig4octave exporter.\nThis adapter patches the header on-the-fly before reading.\n\nLike Wang2016 and BETA, this dataset uses the same 64-channel Tsinghua\nNeuroscan cap layout including 'CB1' and 'CB2' channels.\n\nReferences\n----------\n.. [1] B. Liu, Y. Wang, X. Gao, and X. Chen, \"eldBETA: A Large\nEldercare-oriented Benchmark Database of SSVEP-BCI for the Aging\nPopulation,\" Scientific Data, vol. 9, p. 252, 2022.\nDOI: 10.1038/s41597-022-01372-9",
+    "DatasetDOI": "10.82901/nemar.nm000130",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000130-blue)](https://doi.org/10.82901/nemar.nm000130)\n\n# eldBETA SSVEP benchmark dataset for elderly population\n\neldBETA SSVEP benchmark dataset for elderly population.\n\n## Dataset Overview\n\n- **Code**: Liu2022EldBETA\n- **Paradigm**: ssvep\n- **DOI**: 10.1038/s41597-022-01372-9\n- **Subjects**: 100\n- **Sessions per subject**: 7\n- **Events**: 8=1, 9.5=2, 11=3, 8.5=4, 10=5, 11.5=6, 9=7, 10.5=8, 12=9\n- **Trial interval**: [0, 6.0] s\n- **File format**: GDF (BIDS)\n\n## Acquisition\n\n- **Sampling rate**: 1000.0 Hz\n- **Number of channels**: 64\n- **Channel types**: eeg=64\n- **Montage**: standard_1005\n- **Hardware**: Synamps2 (Neuroscan)\n- **Reference**: Cz\n- **Line frequency**: 50.0 Hz\n- **Impedance threshold**: 20 kOhm\n\n## Participants\n\n- **Number of subjects**: 100\n- **Health status**: healthy\n- **Age**: mean=63.17, std=6.05, min=51, max=81\n- **Gender distribution**: male=33, female=67\n\n## Experimental Protocol\n\n- **Paradigm**: ssvep\n- **Task type**: 9-target SSVEP speller\n- **Number of classes**: 9\n- **Class labels**: 8, 9.5, 11, 8.5, 10, 11.5, 9, 10.5, 12\n- **Trial duration**: 5.0 s\n- **Feedback type**: visual\n- **Stimulus type**: JFPM visual flicker\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: online\n- **Training/test split**: False\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  8\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/8\n\n  9.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/9_5\n\n  11\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/11\n\n  8.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/8_5\n\n  10\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/10\n\n  11.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/11_5\n\n  9\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/9\n\n  10.5\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/10_5\n\n  12\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/12\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: ssvep\n- **Stimulus frequencies**: [8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0] Hz\n- **Frequency resolution**: 0.5 Hz\n\n## Data Structure\n\n- **Trials**: 63\n- **Blocks per session**: 7\n\n## Signal Processing\n\n- **Classifiers**: TDCA, ms-eCCA, ensemble_msTRCA, ensemble_TRCA, Extended_CCA, ITCCA, L1MCCA, FBCCA, CVARS, tMSI, MEC, MSI, CCA\n- **Feature extraction**: TDCA, CCA, FBCCA, TRCA, ms-eCCA, msTRCA, Extended_CCA, ITCCA, L1MCCA, CVARS, tMSI, MEC, MSI\n- **Frequency bands**: bandpass=[6.0, 100.0] Hz\n- **Spatial filters**: TDCA, CCA, TRCA, ms-eCCA, msTRCA, Extended_CCA, ITCCA, L1MCCA, CVARS, MEC, MSI, tMSI\n\n## Cross-Validation\n\n- **Method**: leave-one-block-out\n- **Folds**: 7\n- **Evaluation type**: within_subject\n\n## BCI Application\n\n- **Applications**: speller\n- **Environment**: lab\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: healthy\n- **Modality**: visual\n- **Type**: perception\n\n## Documentation\n\n- **DOI**: 10.1038/s41597-022-01372-9\n- **License**: CC BY 4.0\n- **Investigators**: Bingchuan Liu, Yijun Wang, Xiaorong Gao, Xiaogang Chen\n- **Senior author**: Xiaogang Chen\n- **Institution**: Tsinghua University\n- **Department**: Department of Biomedical Engineering, School of Medicine, Tsinghua University\n- **Country**: CN\n- **Repository**: Figshare\n- **Data URL**: https://doi.org/10.6084/m9.figshare.18032669\n- **Publication year**: 2022\n- **Funding**: National Natural Science Foundation of China (No. 62171473); Doctoral Brain+X Seed Grant Program of Tsinghua University; Strategic Priority Research Program of Chinese Academy of Sciences (No. XDB32040200)\n- **Ethics approval**: Institutional Review Board of Tsinghua University, No. 20210032\n- **Keywords**: SSVEP, BCI, EEG, elderly, aging, benchmark, JFPM\n\n## References\n\nB. Liu, Y. Wang, X. Gao, and X. Chen, \"eldBETA: A Large Eldercare-oriented Benchmark Database of SSVEP-BCI for the Aging Population,\" Scientific Data, vol. 9, p. 252, 2022. DOI: 10.1038/s41597-022-01372-9\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.4.3 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000130",
+    "exists": true,
+    "description": "Liu2022 – eldBETA SSVEP benchmark dataset for elderly population",
+    "created_at": "2026-03-06T21:34:15+00:00",
+    "updated_at": "2026-05-12T04:39:09+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

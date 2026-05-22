@@ -1,0 +1,30 @@
+{
+  "dataset_id": "ds007537",
+  "date_retrieved": "2026-05-21T18:41:02.349567+00:00",
+  "dataset_description": {
+    "Name": "A multimodal dataset of EEG, eye-tracking, and physiological signals during smartphone interaction",
+    "BIDSVersion": "1.0.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Prakash Mishra",
+      "Tapan K. Gandhi",
+      "Saurabh R. Gandhi"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds007537.v1.0.0",
+    "License": "CC0"
+  },
+  "readme_content": "This dataset contains multimodal physiological recordings acquired during smartphone interaction and video viewing conditions. The dataset includes simultaneous electroencephalography (EEG), eye-tracking, photoplethysmography (PPG), and galvanic skin response (GSR) signals.\n\n## **Experimental Protocol**\n\nParticipants complete two experimental conditions while wearing a 64-channel EEG cap and a head-mounted eye tracker, with simultaneous PPG and GSR recordings:\n\n**Smartphone Monitor condition (10 min):**\nParticipants engage in naturalistic smartphone use using their personal devices. They are instructed to interact freely with one of their most frequently used applications (e.g., browsing, reading, or app interaction). No constraints are imposed on interaction style.\n\n**Video Monitor  condition (5 min):** \nParticipants view a standardized video presented on a monitor.\n\n## **Participants**\nNumber of participants: 23 (sub-01 to sub-23)\nParticipants are healthy adults. Detailed demographic and experimental information (age, sex, and smartphone application type) is provided on participants.tsv at the root of the dataset.\n\n## **Hardware Synchronization and Event Markers**\n\nSession boundaries are marked using hardware-based transistor–transistor logic (TTL) synchronization pulses. Five TTL pulses are delivered at ~1-second intervals to mark session onset and offset. Additional TTL pulses are generated every 20 seconds during the session. These triggers are embedded in both EEG and eye-tracking data streams, enabling precise temporal alignment across all modalities.\n\nEEG event markers are defined for two conditions: Smartphone Monitor (onset: S 12; offset: S 13) and Video Monitor (onset: S 22; offset: S 23).\n\nIn the eye-tracking data, session boundaries are identified using TTL bursts consisting of five pulses occuring at ~1-second intervals\nwith pulse characteristics (Type: sig; Direction: in; Value: 1.0). Additional synchronization pulses are present at ~20-second intervals during sessions. ",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds007537",
+    "exists": true,
+    "description": "OpenNeuro dataset - A multimodal dataset of EEG, eye-tracking, and physiological signals during smartphone interaction",
+    "created_at": "2026-03-19T09:28:43+00:00",
+    "updated_at": "2026-04-18T17:31:42+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

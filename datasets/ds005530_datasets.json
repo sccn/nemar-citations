@@ -1,0 +1,54 @@
+{
+  "dataset_id": "ds005530",
+  "date_retrieved": "2026-05-21T22:55:22.299870+00:00",
+  "dataset_description": {
+    "Name": "Depotentiation of emotional reactivity using TMR during REM sleep",
+    "BIDSVersion": "1.8.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Viviana Greco",
+      "Tamas A. Foldes",
+      "Neil A. Harrison",
+      "Kevin Murphy",
+      "Marta Wawrzuta",
+      "Mahmoud E. A. Abdellahi",
+      "Penelope A. Lewis"
+    ],
+    "Acknowledgements": "We thank Sophie Smith and Caterina Leitner for collaboration at the early and late phases of the study. We also acknowledge Sofia I.R. Pereira for her significant contribution to data collection.",
+    "HowToAcknowledge": "Please cite the associated publication (citation to be added upon publication).",
+    "Funding": [
+      "ERC consolidator grant SolutionSleep to Lewis P.A.",
+      "The Wellcome Trust [WT224267] to Murphy K"
+    ],
+    "EthicsApprovals": [
+      "Ethics Committee of the School of Psychology at Cardiff University"
+    ],
+    "ReferencesAndLinks": [],
+    "DatasetDOI": "doi:10.18112/openneuro.ds005530.v1.0.9",
+    "SourceDatasets": [],
+    "GeneratedBy": [
+      {
+        "Name": "ezBIDS",
+        "Version": "n/a",
+        "Description": "ezBIDS is a web-based tool for converting MRI datasets to BIDS, requiring neither coding nor knowledge of the BIDS specification",
+        "CodeURL": "https://brainlife.io/ezbids/"
+      }
+    ],
+    "HEDVersion": []
+  },
+  "readme_content": "# Disarming emotional memories using Targeted Memory Reactivation during Rapid Eye Movement sleep\n\nThis dataset contains fMRI and EEG data from a study investigating the effects of Targeted Memory Reactivation (TMR) during REM sleep on emotional reactivity. As well as behavioural data and ECG collected during behavioural tasks.\n\n## Study Design\n\nParticipants rated the arousal of 48 affective images paired with semantically matching sounds. Heart rate deceleration was used as a measure of their autonomic arousal. Half of these sounds were cued during REM in the subsequent overnight sleep cycle. Participants rated the images in an MRI scanner with pulse oximetry 48 hours after encoding, and they completed an online follow up two weeks later.\n\n### Sessions\n1. Baseline: Initial arousal ratings as well as overnight sleep with TMR\n2. Session 48-H: fMRI scanning, pulse oximetry and arousal ratings (48 hours after baseline)\n3. Session 2-Wk: Online follow-up (2 weeks after baseline)\n\n## Data Acquisition\n\n- **fMRI**: Acquired using a Siemens Magnetom Prisma 3T scanner with a 32-channel head coil\n- **Heart Rate**: Recorded using BrainVision BrainAmp ExG with ExG AUX box and multitrodes during the behavioural session and pulse oximetry during the fMRI session3\n- **Polysomnography**: Recorded using ten electrodes including 6 EEG channels (F3, F4, C3, C4, O1 and O2), 2 EMG channels and 2 EOG channels. All channels were live referenced to the average of left and right mastoids.\n\n## Dataset Contents\n\nThis initial upload contains:\n- T1-weighted structural images\n- Functional MRI data from Session 48-H\n- B0 field maps\n- Behavioural data from all sessions\n\n## Preprocessing\n\nfMRI data were preprocessed using fMRIPrep 20.2.7. Details of the preprocessing pipeline can be found in the methods section of the associated publication.\n\nT1-weighted structural scans were defaced using pydeface version 2.0.2 to ensure participant anonymity.\n\nWithin the behavioral data, the baseline ratings were centered within each participant. This was achieved by subtracting each participant's mean baseline rating from the item-specific ratings they gave to the stimuli.\n\n## Additional Information\n\nFor more detailed information about the study design, methods, and results, please refer to the associated publication (citation to be added upon publication).\n\nThis dataset was initially converted to BIDS format using ezBIDS (https://brainlife.io/ezbids).\n\n### Contact\n\nFor questions about the MRI dataset, please contact:\nDr Tamas Foldes\nfoldesta@cardiff.ac.uk\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds005530",
+    "exists": true,
+    "description": "OpenNeuro dataset - Depotentiation of emotional reactivity using TMR during REM sleep",
+    "created_at": "2024-09-25T19:11:14+00:00",
+    "updated_at": "2025-06-10T21:44:31+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}
