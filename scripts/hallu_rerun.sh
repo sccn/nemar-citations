@@ -4,11 +4,12 @@
 # scaffolding so an operator can iterate on a single stage.
 #
 # Usage:
-#   scripts/hallu_rerun.sh                # full pipeline (no lock, no PR)
-#   scripts/hallu_rerun.sh --judge-only   # just step 3a (anchor adjudication)
-#   scripts/hallu_rerun.sh --update-only  # just step 3b (opencite fetch)
-#   scripts/hallu_rerun.sh --score-only   # just step 4 (GPU scoring)
-#   scripts/hallu_rerun.sh --dry-run      # print the steps that would run
+#   scripts/hallu_rerun.sh                   # full pipeline (no lock, no PR)
+#   scripts/hallu_rerun.sh --judge-only      # just step 3a (anchor adjudication)
+#   scripts/hallu_rerun.sh --update-only     # just step 3b (opencite fetch)
+#   scripts/hallu_rerun.sh --score-only      # just step 4 (GPU scoring)
+#   scripts/hallu_rerun.sh --embeddings-only # just step 5 (GPU embeddings)
+#   scripts/hallu_rerun.sh --dry-run         # print the steps that would run
 #
 # Assumes:
 #   - cwd is the repo root (or $REPO_DIR is exported).
@@ -31,6 +32,7 @@ for arg in "$@"; do
     --judge-only) MODE="judge" ;;
     --update-only) MODE="update" ;;
     --score-only) MODE="score" ;;
+    --embeddings-only) MODE="embeddings" ;;
     --dry-run) DRY_RUN=1 ;;
     -h|--help)
       sed -n '2,18p' "$0"
@@ -120,6 +122,22 @@ score_confidence() {
     --skip-existing
 }
 
+embeddings() {
+  # Phase 2 of epic #96 (#98) moved sentence-transformer embedding
+  # generation off CI onto hallu's RTX 4090. `--skip-existing` is the
+  # explicit form of the CLI's default registry-skip behavior; mirrors
+  # the score-confidence convention. The cron guards this step with an
+  # explicit `|| exit 2` so a partial run does not feed downstream
+  # analysis; the rerun helper leaves error handling to the operator.
+  run uv run dataset-citations-generate-embeddings \
+    --citations citations/json_opencite \
+    --datasets datasets \
+    --embeddings-dir embeddings \
+    --embedding-type both \
+    --device cuda \
+    --skip-existing
+}
+
 case "$MODE" in
   judge)
     # judge-only needs the dataset list AND fresh dataset descriptions
@@ -144,11 +162,24 @@ case "$MODE" in
   score)
     score_confidence
     ;;
+  embeddings)
+    # embeddings-only needs the dataset metadata cache (READMEs +
+    # dataset_description.json) under `datasets/` because the dataset
+    # embedding text is built from those files. Discover first if the
+    # list is missing, then refresh metadata so an iterating operator
+    # gets up-to-date dataset embeddings on every rerun.
+    if [ ! -s "$DATASETS_LIST" ]; then
+      echo "$DATASETS_LIST missing or empty; running discover first"
+      discover
+    fi
+    embeddings
+    ;;
   full)
     discover
     retrieve_metadata
     judge_anchors
     update_citations
     score_confidence
+    embeddings
     ;;
 esac
