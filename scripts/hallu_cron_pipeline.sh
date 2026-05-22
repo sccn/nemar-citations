@@ -129,17 +129,17 @@ uv run dataset-citations-score-confidence \
   --device cuda \
   --skip-existing
 
-# 5. Sentence-transformer embeddings on the RTX 4090. Phase 2 of epic #96
-#    (#98) moved this step off CI because CPU torch in GitHub Actions took
-#    ~10x longer than CUDA on hallu. `--skip-existing` is consistent with
-#    the rest of the pipeline; the CLI also skips via the embedding
-#    registry by default, so the flag is explicit-intent rather than a
-#    behavior change. Outputs land under `embeddings/`, ready for the
-#    UMAP step phase 3 (#99) will wire in right after this block.
+# 5a. Sentence-transformer embeddings on the RTX 4090. Phase 2 of epic #96
+#     (#98) moved this step off CI because CPU torch in GitHub Actions took
+#     ~10x longer than CUDA on hallu. `--skip-existing` is consistent with
+#     the rest of the pipeline; the CLI also skips via the embedding
+#     registry by default, so the flag is explicit-intent rather than a
+#     behavior change. Outputs land under `embeddings/`, ready for the
+#     UMAP step phase 3 (#99) wires in right after this block.
 #
-#    Guard with `|| { exit 2; }` because the cron uses `set -uo pipefail`
-#    (no -e); a non-zero exit otherwise would not halt the script and we
-#    would publish a citation update without refreshed embeddings.
+#     Guard with `|| { exit 2; }` because the cron uses `set -uo pipefail`
+#     (no -e); a non-zero exit otherwise would not halt the script and we
+#     would publish a citation update without refreshed embeddings.
 echo "--- generate-embeddings (cuda) ---"
 uv run dataset-citations-generate-embeddings \
   --citations citations/json_opencite \
@@ -149,6 +149,30 @@ uv run dataset-citations-generate-embeddings \
   --device cuda \
   --skip-existing || {
   echo "ERROR: dataset-citations-generate-embeddings failed; aborting before commit." >&2
+  exit 2
+}
+
+# 5b. UMAP analysis on embeddings (closes #78 / phase 3 of epic #96). Reads
+#     from `embeddings/` (produced by step 5a) and writes 2D projections +
+#     similarity exports directly into `dashboard_data/`. The dashboard
+#     aggregator (`dashboard/data/aggregator.py::_load_citation_similarities`)
+#     globs `*similarities*.csv` at the top level of `dashboard_data/`, so
+#     the CSVs MUST land flat there — NOT under a `citation_similarities/`
+#     subdir, which would render the panel empty.
+#
+#     UMAP itself is CPU-bound and cheap; we keep it on hallu so the entire
+#     data refresh happens on one host instead of bouncing through CI. The
+#     CLI has no `--skip-existing` today (output filename is timestamped,
+#     see analyze_umap.py); rebuilding every run is acceptable since the
+#     compute is small. `set -uo pipefail` does not abort on non-zero
+#     exit, so the explicit guard prevents a half-written UMAP output from
+#     poisoning the dashboard build.
+echo "--- analyze-umap ---"
+uv run dataset-citations-analyze-umap \
+  --embeddings-dir embeddings \
+  --output-dir dashboard_data \
+  --embedding-type citations || {
+  echo "ERROR: dataset-citations-analyze-umap failed; aborting before commit." >&2
   exit 2
 }
 
