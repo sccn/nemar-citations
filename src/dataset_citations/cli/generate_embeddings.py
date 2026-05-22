@@ -81,6 +81,7 @@ def generate_dataset_embeddings(
     model_name: str = "Qwen/Qwen3-Embedding-0.6B",
     batch_size: int = 10,
     force_regenerate: bool = False,
+    device: str = "mps",
 ) -> int:
     """
     Generate embeddings for all datasets.
@@ -91,6 +92,7 @@ def generate_dataset_embeddings(
         model_name: Sentence transformer model name
         batch_size: Number of datasets to process at once
         force_regenerate: Whether to regenerate existing embeddings
+        device: Torch device for the sentence-transformer model
 
     Returns:
         Number of embeddings generated
@@ -99,10 +101,17 @@ def generate_dataset_embeddings(
 
     # Initialize components
     storage_manager = EmbeddingStorageManager(embeddings_dir)
-    model = SentenceTransformerModel(model_name=model_name)
+    model = SentenceTransformerModel(model_name=model_name, device=device)
 
-    # Find all dataset files
-    dataset_files = list(datasets_dir.glob("ds*_datasets.json"))
+    # Find all dataset files. NEMAR's catalog uses three prefixes: `ds-*`
+    # (legacy OpenNeuro), `nm-*` (NEMAR-native), `on-*` (OpenNeuro imported
+    # into NEMAR). A narrower `ds*` glob would silently skip every modern
+    # dataset; match all three prefixes explicitly.
+    dataset_files = sorted(
+        f
+        for pattern in ("ds*_datasets.json", "nm*_datasets.json", "on*_datasets.json")
+        for f in datasets_dir.glob(pattern)
+    )
     total_datasets = len(dataset_files)
 
     if total_datasets == 0:
@@ -171,6 +180,38 @@ def generate_dataset_embeddings(
     return generated_count
 
 
+def _resolve_citation_files(citations_dir: Path) -> tuple[Path, list[Path]]:
+    """Locate per-dataset citation JSON files under ``citations_dir``.
+
+    Historically the CLI assumed a `<citations_dir>/json/` layout. The
+    opencite pipeline writes flat to `<citations_dir>` (e.g.
+    `citations/json_opencite/<id>_citations.json`). Accept either layout
+    transparently: if `citations_dir` already contains citation JSON
+    files, use it directly; otherwise fall back to the legacy `/json`
+    subdirectory.
+
+    Matches all three NEMAR catalog prefixes (`ds-`, `nm-`, `on-`) so the
+    full ~594-dataset corpus is covered, not just legacy `ds-*` entries.
+    """
+
+    def _glob(root: Path) -> list[Path]:
+        return sorted(
+            f
+            for pattern in (
+                "ds*_citations.json",
+                "nm*_citations.json",
+                "on*_citations.json",
+            )
+            for f in root.glob(pattern)
+        )
+
+    direct = _glob(citations_dir)
+    if direct:
+        return citations_dir, direct
+    legacy = citations_dir / "json"
+    return legacy, _glob(legacy)
+
+
 def generate_citation_embeddings(
     citations_dir: Path,
     embeddings_dir: Path,
@@ -178,6 +219,7 @@ def generate_citation_embeddings(
     batch_size: int = 50,
     force_regenerate: bool = False,
     min_confidence: float = 0.4,
+    device: str = "mps",
 ) -> int:
     """
     Generate embeddings for all high-confidence citations.
@@ -189,6 +231,7 @@ def generate_citation_embeddings(
         batch_size: Number of citations to process at once
         force_regenerate: Whether to regenerate existing embeddings
         min_confidence: Minimum confidence score for citations
+        device: Torch device for the sentence-transformer model
 
     Returns:
         Number of embeddings generated
@@ -197,14 +240,14 @@ def generate_citation_embeddings(
 
     # Initialize components
     storage_manager = EmbeddingStorageManager(embeddings_dir)
-    model = SentenceTransformerModel(model_name=model_name)
+    model = SentenceTransformerModel(model_name=model_name, device=device)
 
-    # Find all citation files
-    citation_files = list((citations_dir / "json").glob("ds*_citations.json"))
+    # Find all citation files (accept both flat and legacy /json layouts).
+    search_dir, citation_files = _resolve_citation_files(citations_dir)
     total_files = len(citation_files)
 
     if total_files == 0:
-        logging.error(f"No citation files found in {citations_dir / 'json'}")
+        logging.error(f"No citation files found in {search_dir}")
         return 0
 
     logging.info(f"Found {total_files} citation files")
@@ -343,6 +386,37 @@ def process_citation_batch(
         return 0
 
 
+def _resolve_device(spec: str) -> str:
+    """Resolve a device spec to the actual torch device string.
+
+    `auto` picks the best available device on the host so the same
+    invocation works on hallu (NVIDIA → cuda) and Mac workstations
+    (Apple Silicon → mps) without flag changes. Mirrors the resolution
+    helper in `quality/confidence_scoring.py` — keep them in sync if
+    either changes. Non-`auto` values are returned verbatim so an
+    operator can still force a specific backend.
+    """
+    if spec != "auto":
+        return spec
+    try:
+        import torch
+
+        # Prefer the host's accelerator. cuda is checked first because hallu
+        # (the production cron host) is Linux+NVIDIA; on a Mac workstation
+        # cuda is unavailable so we fall through to mps; cpu is the last
+        # resort.
+        if torch.cuda.is_available():
+            logging.info("device=auto -> cuda detected")
+            return "cuda"
+        if hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+            logging.info("device=auto -> mps detected")
+            return "mps"
+    except ImportError:
+        pass
+    logging.info("device=auto -> falling back to cpu")
+    return "cpu"
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -420,6 +494,31 @@ Examples:
         help="Force regeneration of existing embeddings",
     )
 
+    parser.add_argument(
+        "--skip-existing",
+        action="store_true",
+        help=(
+            "Alias for the default behavior (the embedding registry already "
+            "skips datasets/citations with a matching content hash). Accepted "
+            "for invocation parity with score-confidence + update; sole "
+            "operational effect is to override --force-regenerate when both "
+            "are passed."
+        ),
+    )
+
+    parser.add_argument(
+        "--device",
+        type=str,
+        default="auto",
+        choices=["auto", "cpu", "cuda", "mps"],
+        help=(
+            "Torch device for sentence transformers. 'auto' (default) picks "
+            "cuda if available, then mps, then cpu — so the same invocation "
+            "works on hallu (NVIDIA) and Mac workstations (Apple Metal) "
+            "without explicit flags."
+        ),
+    )
+
     parser.add_argument("--verbose", action="store_true", help="Enable verbose logging")
 
     args = parser.parse_args()
@@ -439,6 +538,15 @@ Examples:
     # Create embeddings directory
     args.embeddings_dir.mkdir(parents=True, exist_ok=True)
 
+    # `--skip-existing` is the explicit form of the registry-skip default.
+    # If a caller passes both `--skip-existing` and `--force-regenerate`,
+    # the former wins (matches the score-confidence convention where
+    # skip-existing short-circuits before any regeneration work).
+    force_regenerate = args.force_regenerate and not args.skip_existing
+
+    # Resolve `auto` once so both embedding passes use the same device.
+    resolved_device = _resolve_device(args.device)
+
     # Track total generated
     total_generated = 0
     start_time = time.time()
@@ -455,7 +563,8 @@ Examples:
                 embeddings_dir=args.embeddings_dir,
                 model_name=args.model,
                 batch_size=args.batch_size // 5,  # Smaller batch for datasets
-                force_regenerate=args.force_regenerate,
+                force_regenerate=force_regenerate,
+                device=resolved_device,
             )
             total_generated += dataset_count
 
@@ -470,8 +579,9 @@ Examples:
                 embeddings_dir=args.embeddings_dir,
                 model_name=args.model,
                 batch_size=args.batch_size,
-                force_regenerate=args.force_regenerate,
+                force_regenerate=force_regenerate,
                 min_confidence=args.min_confidence,
+                device=resolved_device,
             )
             total_generated += citation_count
 

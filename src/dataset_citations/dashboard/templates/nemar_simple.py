@@ -2,6 +2,7 @@
 Simplified NEMAR dashboard template using modular components.
 """
 
+import html as html_lib
 import json
 from typing import Any, Dict, Optional
 
@@ -34,24 +35,66 @@ def generate_nemar_dashboard(
     chart_containers = generate_chart_containers()
     chart_js = generate_chart_javascript(stats, charts)
 
-    # Build themes section
+    # Build themes section. Closes #79: each card always renders the
+    # `top_words` as a styled tag cloud so the Research Themes tab has
+    # content even if the wordcloud PNG generation failed. When the PNG is
+    # present it is shown above the tags.
     theme_list = themes.get("themes", [])
     themes_html = '<div class="row">'
     for theme in theme_list:
+        title = html_lib.escape(str(theme.get("title", "")))
+        subtitle = html_lib.escape(str(theme.get("subtitle", "")))
+        # `wordcloud` is None when PNG rendering failed (or no output_dir
+        # was supplied); only emit the <img> tag when a real path is set.
+        wordcloud_path = theme.get("wordcloud")
+        wordcloud_src = html_lib.escape(str(wordcloud_path)) if wordcloud_path else None
+        top_words = theme.get("top_words", []) or []
+        # Decaying font sizes (1.6rem -> ~0.75rem) so the first phrase is
+        # visually the largest, mirroring the upstream ranking.
+        if top_words:
+            tags = []
+            n = max(len(top_words), 1)
+            for idx, phrase in enumerate(top_words):
+                phrase_text = html_lib.escape(str(phrase))
+                weight = 1 - (idx / (n + 1))
+                size_rem = round(0.75 + weight * 0.85, 2)
+                tags.append(
+                    f'<span class="theme-word" '
+                    f'style="display:inline-block;'
+                    f"margin:0.15rem 0.35rem;"
+                    f"font-size:{size_rem}rem;"
+                    f'color:#083d94;">{phrase_text}</span>'
+                )
+            tags_html = (
+                '<div class="theme-words" style="line-height:1.8;'
+                'text-align:center;margin-top:0.5rem;">' + "".join(tags) + "</div>"
+            )
+        else:
+            tags_html = (
+                '<p class="text-muted small">No top words available for this theme.</p>'
+            )
         themes_html += f"""
                     <div class="col-md-6 mb-4">
                         <div class="card analysis-card">
                             <div class="card-header">
-                                <h5><i class="fas fa-cloud me-2"></i>{theme["title"]}</h5>
+                                <h5><i class="fas fa-cloud me-2"></i>{title}</h5>
                                 <small class="text-muted" style="color: rgba(255, 255, 255, 0.9) !important;">
-                                    {theme["subtitle"]}
+                                    {subtitle}
                                 </small>
                             </div>
                             <div class="card-body text-center">
-                                <img src="{theme["wordcloud"]}" 
-                                     alt="{theme["title"]} Word Cloud" 
-                                     class="img-fluid rounded" 
-                                     style="max-height: 300px; width: auto;">
+                                {
+            (
+                f'<img src="{wordcloud_src}" '
+                f'alt="{title} Word Cloud" '
+                f'class="img-fluid rounded theme-wordcloud-img" '
+                f'style="max-height: 300px; width: auto;" '
+                f"onerror=\"this.style.display='none';\">"
+            )
+            if wordcloud_src
+            else ""
+        }
+                                {tags_html}
                             </div>
                         </div>
                     </div>"""

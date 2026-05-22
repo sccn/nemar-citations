@@ -56,7 +56,9 @@ class DashboardGenerator:
         if not embeddings_dir.exists():
             embeddings_dir = Path("embeddings")  # Fallback to current directory
         self.network_generator = NetworkGenerator(embeddings_dir=embeddings_dir)
-        self.theme_generator = ThemeGenerator()
+        # Pass output_dir so the generator can materialize wordcloud PNGs
+        # from each theme's `top_words` at build time (fix for #79).
+        self.theme_generator = ThemeGenerator(output_dir=self.output_dir)
         self.modal_generator = ModalGenerator()
         self.template_builder = TemplateBuilder()
         self.asset_manager = AssetManager(output_dir=self.output_dir)

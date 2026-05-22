@@ -4,11 +4,13 @@
 # scaffolding so an operator can iterate on a single stage.
 #
 # Usage:
-#   scripts/hallu_rerun.sh                # full pipeline (no lock, no PR)
-#   scripts/hallu_rerun.sh --judge-only   # just step 3a (anchor adjudication)
-#   scripts/hallu_rerun.sh --update-only  # just step 3b (opencite fetch)
-#   scripts/hallu_rerun.sh --score-only   # just step 4 (GPU scoring)
-#   scripts/hallu_rerun.sh --dry-run      # print the steps that would run
+#   scripts/hallu_rerun.sh                   # full pipeline (no lock, no PR)
+#   scripts/hallu_rerun.sh --judge-only      # just step 3a (anchor adjudication)
+#   scripts/hallu_rerun.sh --update-only     # just step 3b (opencite fetch)
+#   scripts/hallu_rerun.sh --score-only      # just step 4 (GPU scoring)
+#   scripts/hallu_rerun.sh --embeddings-only # just step 5a (GPU embeddings)
+#   scripts/hallu_rerun.sh --umap-only       # just step 5b (UMAP on embeddings)
+#   scripts/hallu_rerun.sh --dry-run         # print the steps that would run
 #
 # Assumes:
 #   - cwd is the repo root (or $REPO_DIR is exported).
@@ -31,6 +33,8 @@ for arg in "$@"; do
     --judge-only) MODE="judge" ;;
     --update-only) MODE="update" ;;
     --score-only) MODE="score" ;;
+    --embeddings-only) MODE="embeddings" ;;
+    --umap-only) MODE="umap" ;;
     --dry-run) DRY_RUN=1 ;;
     -h|--help)
       sed -n '2,18p' "$0"
@@ -120,6 +124,39 @@ score_confidence() {
     --skip-existing
 }
 
+embeddings() {
+  # Phase 2 of epic #96 (#98) moved sentence-transformer embedding
+  # generation off CI onto hallu's RTX 4090. `--skip-existing` is the
+  # explicit form of the CLI's default registry-skip behavior; mirrors
+  # the score-confidence convention. The cron guards this step with an
+  # explicit `|| exit 2` so a partial run does not feed downstream
+  # analysis; the rerun helper leaves error handling to the operator.
+  run uv run dataset-citations-generate-embeddings \
+    --citations citations/json_opencite \
+    --datasets datasets \
+    --embeddings-dir embeddings \
+    --embedding-type both \
+    --device cuda \
+    --skip-existing
+}
+
+umap_analysis() {
+  # Reads `embeddings/` (produced by step 5a above) and writes UMAP outputs
+  # FLAT under `dashboard_data/` so the dashboard aggregator's
+  # `*similarities*.csv` glob picks them up. Writing under a
+  # `citation_similarities/` subdir would render the panel empty (the glob
+  # is non-recursive). Explicit guard mirrors the cron's `set -uo pipefail`
+  # semantics so a partial UMAP run does not poison a subsequent dashboard
+  # build.
+  run uv run dataset-citations-analyze-umap \
+    --embeddings-dir embeddings \
+    --output-dir dashboard_data \
+    --embedding-type citations || {
+    echo "ERROR: dataset-citations-analyze-umap failed; aborting." >&2
+    exit 2
+  }
+}
+
 case "$MODE" in
   judge)
     # judge-only needs the dataset list AND fresh dataset descriptions
@@ -144,11 +181,33 @@ case "$MODE" in
   score)
     score_confidence
     ;;
+  embeddings)
+    # embeddings-only needs the dataset metadata cache (READMEs +
+    # dataset_description.json) under `datasets/` because the dataset
+    # embedding text is built from those files. Discover first if the
+    # list is missing, then refresh metadata so an iterating operator
+    # gets up-to-date dataset embeddings on every rerun. Mirrors the
+    # `judge` case (discover -> retrieve_metadata -> step).
+    if [ ! -s "$DATASETS_LIST" ]; then
+      echo "$DATASETS_LIST missing or empty; running discover first"
+      discover
+    fi
+    retrieve_metadata
+    embeddings
+    ;;
+  umap)
+    # UMAP only needs the embeddings directory; no GitHub / opencite / Ollama
+    # traffic. Assumes step 5a (embeddings) has populated `embeddings/`;
+    # the analyze-umap CLI logs a clear error if the directory is missing.
+    umap_analysis
+    ;;
   full)
     discover
     retrieve_metadata
     judge_anchors
     update_citations
     score_confidence
+    embeddings
+    umap_analysis
     ;;
 esac

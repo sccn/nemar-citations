@@ -3,10 +3,12 @@ name: Deploy Citation Dashboard
 # Two triggers:
 #   1. workflow_dispatch — manual rebuild + deploy (e.g. after a code-only
 #      change to the dashboard generator).
-#   2. push to main when citations/json_opencite/ or datasets/ change —
-#      this is what closes the hallu cron loop: hallu opens a PR with
-#      refreshed data, CI auto-merges, the merge push fires this workflow,
-#      dashboard.nemar.org updates with no human in the loop.
+#   2. push to main when citation data, analysis outputs, embeddings, or
+#      the workflow itself change. This closes the hallu cron loop: the
+#      hallu cron now produces `citations/json_opencite/`, `dashboard_data/`,
+#      and `embeddings/` itself (epic #96, phases 2 + 3). When its
+#      auto-update PR merges, the resulting push to main fires this
+#      workflow and Cloudflare Pages picks up the refreshed analysis.
 on:
   workflow_dispatch:
   push:
@@ -15,6 +17,8 @@ on:
     paths:
       - "citations/json_opencite/**"
       - "datasets/**"
+      - "dashboard_data/**"
+      - "embeddings/**"
       - ".github/workflows/deploy-dashboard.yml"
 
 jobs:
@@ -30,32 +34,66 @@ jobs:
         with:
           enable-cache: true
 
+      # CPU-only torch keeps this job light. The dashboard generator itself
+      # does not import torch, but `sentence-transformers` is a transitive
+      # dep of the package (used by score-confidence on hallu), so a plain
+      # `uv sync` would pull CUDA wheels onto a GitHub-hosted runner. The
+      # CPU index avoids that and keeps cold-start under a minute.
       - name: Sync project (CPU-only torch)
         env:
           UV_EXTRA_INDEX_URL: https://download.pytorch.org/whl/cpu
           UV_INDEX_STRATEGY: unsafe-best-match
         run: uv sync --python 3.13 --all-extras
 
+      # Fail-fast guard: the hallu cron is now the sole producer of
+      # `dashboard_data/themes/`, `dashboard_data/network/`,
+      # `dashboard_data/temporal/`, and `embeddings/`. If any of those
+      # are missing on main, something upstream broke (hallu cron
+      # skipped a step, PR landed without analysis outputs, etc.). We
+      # refuse to deploy a half-rendered dashboard over the live one;
+      # the previous deploy stays live on Cloudflare Pages until a fix
+      # lands. See epic #96, issue #101.
+      - name: Verify hallu-produced inputs are present
+        run: |
+          set -e
+          missing=0
+          for dir in \
+            "dashboard_data/themes" \
+            "dashboard_data/network" \
+            "dashboard_data/temporal" \
+            "embeddings" \
+            "citations/json_opencite"; do
+            if [ ! -d "$dir" ] || [ -z "$(ls -A "$dir" 2>/dev/null)" ]; then
+              echo "::error::Required input directory missing or empty: $dir"
+              missing=1
+            else
+              count=$(find "$dir" -type f | wc -l | tr -d ' ')
+              echo "OK: $dir ($count files)"
+            fi
+          done
+          # UMAP outputs (phase 3, #99) live FLAT in dashboard_data/ as
+          # *similarities*.csv so the aggregator's non-recursive glob picks
+          # them up. Missing CSVs would render an empty Citation Similarities
+          # panel without otherwise breaking the build; catch that here.
+          sim_count=$(find dashboard_data -maxdepth 1 -name "*similarities*.csv" -type f 2>/dev/null | wc -l | tr -d ' ')
+          if [ "$sim_count" -eq 0 ]; then
+            echo "::error::No *similarities*.csv files at dashboard_data/ top level"
+            echo "::error::Phase 3 of epic #96 expects hallu's analyze-umap step to write them flat there"
+            missing=1
+          else
+            echo "OK: dashboard_data/*similarities*.csv ($sim_count files)"
+          fi
+          if [ "$missing" -ne 0 ]; then
+            echo "::error::Refusing to deploy; hallu cron outputs are incomplete."
+            echo "::error::The previous Cloudflare Pages deploy stays live."
+            exit 1
+          fi
+
       - name: Generate dashboard
         run: |
-          mkdir -p dashboard_data/{network,themes,temporal,visualizations}
+          mkdir -p dashboard_data/visualizations
 
-          echo "Generating theme analysis..."
-          uv run python -m dataset_citations.analysis.generate_themes \
-            --citations-dir citations/json_opencite \
-            --output-dir dashboard_data/themes || echo "Theme generation had issues"
-
-          echo "Generating network analysis..."
-          uv run python -m dataset_citations.analysis.generate_network \
-            --citations-dir citations/json_opencite \
-            --output-dir dashboard_data/network || echo "Network analysis had issues"
-
-          echo "Generating temporal analysis..."
-          uv run python -m dataset_citations.analysis.generate_temporal \
-            --citations-dir citations/json_opencite \
-            --output-dir dashboard_data/temporal || echo "Temporal analysis had issues"
-
-          echo "Building dashboard..."
+          echo "Building dashboard from hallu-produced analysis outputs..."
           uv run python -c "
           from dataset_citations.dashboard.core import DashboardGenerator
           from pathlib import Path

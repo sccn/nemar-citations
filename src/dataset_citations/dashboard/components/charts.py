@@ -41,13 +41,52 @@ class ChartGenerator:
         }
 
     def _generate_growth_chart(self, data: Dict[str, Any]) -> Dict[str, Any]:
-        """Generate citation growth timeline chart."""
-        # This would use temporal analysis data
+        """Generate citation growth timeline chart.
+
+        Reads `temporal_analysis.temporal_summary` (list of per-year rows with
+        `year` and `high_confidence_citations`), sorts by year, and emits a
+        cumulative series whose endpoint matches the
+        `summary_stats.high_confidence_citations` headline KPI.
+
+        Closes #77: previously this returned a hardcoded array that capped
+        near 1,200 even though the headline showed ~14k. The first fix
+        bound the chart to `total_citations` instead, but `total_citations`
+        is all citations regardless of confidence — distinct from the
+        headline's high-confidence count. Binding to
+        `high_confidence_citations` keeps the two quantities consistent
+        (review finding on PR #106).
+        """
+        temporal = data.get("temporal_analysis", {})
+        rows = temporal.get("temporal_summary", [])
+
+        parsed: list[tuple[int, int]] = []
+        for row in rows:
+            try:
+                year = int(row.get("year", 0))
+                # Per-year high-confidence count so the cumulative endpoint
+                # reconciles with summary_stats.high_confidence_citations.
+                # `total_citations` (the previous binding) would over-count.
+                count = int(row.get("high_confidence_citations", 0))
+            except (TypeError, ValueError):
+                continue
+            if year <= 0:
+                continue
+            parsed.append((year, count))
+        parsed.sort(key=lambda yc: yc[0])
+
+        years: list[int] = []
+        cumulative: list[int] = []
+        running = 0
+        for year, count in parsed:
+            running += count
+            years.append(year)
+            cumulative.append(running)
+
         return {
             "type": "scatter",
             "data": {
-                "x": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
-                "y": [20, 65, 150, 370, 650, 950, 1040, 1140],
+                "x": years,
+                "y": cumulative,
                 "mode": "lines+markers",
             },
         }

@@ -62,10 +62,26 @@ uv run dataset-citations-discover \
 # Moved ahead of `update` in phase 4 (#88) so anchor adjudication has dataset
 # descriptions available, and the subsequent `update` step can consume the
 # anchor-judgment sidecars produced below.
+# `--skip-existing` keeps steady-state runs cheap and (more importantly) ducks
+# the GitHub secondary rate limit that bit us during the post-#76 backfill:
+# refetching ~3000 unchanged dataset_description.json + README files every
+# weekly run is wasted quota. Trade-off: a dataset's GitHub-side description
+# / README will only refresh when the cached file is deleted; #82 (follow-up)
+# adds a `--max-age-days` flag mirroring `update.py` so the freshness window
+# is configurable without an explicit wipe.
 echo "--- retrieve-metadata ---"
+# Guard: the cron uses `set -uo pipefail` (no -e), so a non-zero exit from
+# any step would otherwise let the script continue. Adding the same guard
+# pattern that the downstream steps already use so a GitHub rate-limit or
+# transient PyGithub failure aborts cleanly instead of feeding the next
+# step a stale `datasets/` tree.
 uv run dataset-citations-retrieve-metadata \
   --citations-dir citations/json_opencite \
-  --output-dir datasets
+  --output-dir datasets \
+  --skip-existing || {
+  echo "ERROR: dataset-citations-retrieve-metadata failed; aborting." >&2
+  exit 2
+}
 
 # 3. Preflight: Ollama must be reachable for anchor adjudication. If the
 # daemon is down, abort cleanly instead of producing a citation update
@@ -110,19 +126,78 @@ echo "--- update (skip-existing default 7d) ---"
 OPENCITE_CONCURRENCY=4 \
   uv run dataset-citations-update \
     --dataset-list-file "$DATASETS_LIST" \
-    --output-dir citations/
+    --output-dir citations/ || {
+  echo "ERROR: dataset-citations-update failed; aborting before score." >&2
+  exit 2
+}
 
 # 4. Semantic confidence scoring on RTX 4090. --skip-existing is a small speedup
-#    for unchanged citation files.
+#    for unchanged citation files. Same `|| exit 2` guard as the other GPU
+#    steps so a CUDA OOM aborts cleanly instead of feeding empty scores
+#    downstream.
 echo "--- score-confidence (cuda) ---"
 uv run dataset-citations-score-confidence \
   --citations-dir citations/json_opencite \
   --datasets-dir datasets \
   --device cuda \
-  --skip-existing
+  --skip-existing || {
+  echo "ERROR: dataset-citations-score-confidence failed; aborting." >&2
+  exit 2
+}
+
+# 5a. Sentence-transformer embeddings on the RTX 4090. Phase 2 of epic #96
+#     (#98) moved this step off CI because CPU torch in GitHub Actions took
+#     ~10x longer than CUDA on hallu. `--skip-existing` is consistent with
+#     the rest of the pipeline; the CLI also skips via the embedding
+#     registry by default, so the flag is explicit-intent rather than a
+#     behavior change. Outputs land under `embeddings/`, ready for the
+#     UMAP step phase 3 (#99) wires in right after this block.
+#
+#     Guard with `|| { exit 2; }` because the cron uses `set -uo pipefail`
+#     (no -e); a non-zero exit otherwise would not halt the script and we
+#     would publish a citation update without refreshed embeddings.
+echo "--- generate-embeddings (cuda) ---"
+uv run dataset-citations-generate-embeddings \
+  --citations citations/json_opencite \
+  --datasets datasets \
+  --embeddings-dir embeddings \
+  --embedding-type both \
+  --device cuda \
+  --skip-existing || {
+  echo "ERROR: dataset-citations-generate-embeddings failed; aborting before commit." >&2
+  exit 2
+}
+
+# 5b. UMAP analysis on embeddings (closes #78 / phase 3 of epic #96). Reads
+#     from `embeddings/` (produced by step 5a) and writes 2D projections +
+#     similarity exports directly into `dashboard_data/`. The dashboard
+#     aggregator (`dashboard/data/aggregator.py::_load_citation_similarities`)
+#     globs `*similarities*.csv` at the top level of `dashboard_data/`, so
+#     the CSVs MUST land flat there — NOT under a `citation_similarities/`
+#     subdir, which would render the panel empty.
+#
+#     UMAP itself is CPU-bound and cheap; we keep it on hallu so the entire
+#     data refresh happens on one host instead of bouncing through CI. The
+#     CLI has no `--skip-existing` today (output filename is timestamped,
+#     see analyze_umap.py); rebuilding every run is acceptable since the
+#     compute is small. `set -uo pipefail` does not abort on non-zero
+#     exit, so the explicit guard prevents a half-written UMAP output from
+#     poisoning the dashboard build.
+echo "--- analyze-umap ---"
+uv run dataset-citations-analyze-umap \
+  --embeddings-dir embeddings \
+  --output-dir dashboard_data \
+  --embedding-type citations || {
+  echo "ERROR: dataset-citations-analyze-umap failed; aborting before commit." >&2
+  exit 2
+}
 
 # Bail cleanly if no tracked data changed (typical when nothing is stale).
-if git diff --quiet citations/ datasets/; then
+# `dashboard_data/` and `embeddings/` are included because deploy-dashboard.yml
+# verifies their presence on a fresh CI checkout (epic #96 / #101 / #103). The
+# previous-pipeline gitignore patterns that excluded the analysis subdirs were
+# removed in the same epic so the cron can actually commit them.
+if git diff --quiet citations/ datasets/ embeddings/ dashboard_data/; then
   echo "no tracked data changes, nothing to commit"
   exit 0
 fi
@@ -130,12 +205,13 @@ fi
 # Commit + push to a timestamped branch; open a PR (manual merge gates the deploy).
 BRANCH="auto-update/$TS"
 git checkout -b "$BRANCH"
-git add citations/ datasets/
+git add citations/ datasets/ embeddings/ dashboard_data/
 DIFFSTAT="$(git diff --cached --stat | tail -5)"
 git commit -m "data: hallu nightly pipeline ($TS)
 
-GPU semantic scoring on RTX 4090. Pipeline:
-  catalog discover -> metadata -> judge-anchors -> opencite fetch -> score-confidence
+GPU semantic scoring + embeddings on RTX 4090. Pipeline:
+  catalog discover -> metadata -> judge-anchors -> opencite fetch
+  -> score-confidence -> generate-embeddings
 
 $(echo "$DIFFSTAT")"
 
