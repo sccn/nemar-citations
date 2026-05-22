@@ -45,6 +45,21 @@ done
 
 cd "$REPO_DIR"
 
+# Mirror the cron's GitHub auth path: pull the token from `gh` so the
+# downstream CLIs hit the authenticated GitHub API (5000 req/hr) instead
+# of falling back to the unauthenticated public API (60 req/hr). An
+# operator running this in a fresh login shell where gh is configured
+# but $GITHUB_TOKEN isn't exported would otherwise silently rate-limit
+# midway through retrieve-metadata.
+if [ -z "${GITHUB_TOKEN:-}" ]; then
+  if command -v gh >/dev/null 2>&1; then
+    export GITHUB_TOKEN="$(gh auth token 2>/dev/null)"
+  fi
+fi
+if [ -z "${GITHUB_TOKEN:-}" ]; then
+  echo "WARNING: GITHUB_TOKEN not set and gh auth token failed; GitHub API will rate-limit at 60 req/hr." >&2
+fi
+
 run() {
   echo "+ $*"
   if [ "$DRY_RUN" -eq 0 ]; then
@@ -101,11 +116,16 @@ score_confidence() {
 
 case "$MODE" in
   judge)
-    # judge-only assumes $DATASETS_LIST already exists; if not, discover first.
+    # judge-only needs the dataset list AND fresh dataset descriptions
+    # (README + dataset_description.json) under `datasets/` because the
+    # judgment prompt feeds them into the LLM context. Discover first if
+    # the list is missing, then refresh metadata so an iterating operator
+    # gets up-to-date descriptions on every rerun.
     if [ ! -s "$DATASETS_LIST" ]; then
       echo "$DATASETS_LIST missing or empty; running discover first"
       discover
     fi
+    retrieve_metadata
     judge_anchors
     ;;
   update)
