@@ -25,6 +25,7 @@ import logging
 from collections.abc import Iterable
 from typing import Any
 
+import httpx
 from opencite.citations import CitationExplorer
 from opencite.clients.openalex import OpenAlexClient
 from opencite.config import Config
@@ -87,6 +88,58 @@ class OpenCiteBackend:
         if not ref_list:
             return {}
         return asyncio.run(self._batch_async(ref_list))
+
+    def get_paper(self, doi: str) -> FetchResult[CitingWork]:
+        """Look up the anchor paper's own bib + abstract via OpenAlex.
+
+        Returns a `CitingWork` populated with the paper's title, abstract,
+        authors, venue, year, and ID fields. The `source_doi` is set to the
+        looked-up DOI and `source_relation` defaults to "References" since
+        the model only carries the four DataCite values; callers treating
+        this as a self-lookup should ignore both fields.
+
+        Used by epic #76's anchor adjudication path (probe + judge-anchors
+        CLI) to assemble the candidate paper context for the LLM prompt.
+        Sync facade over opencite's async `OpenAlexClient.lookup_doi`.
+        """
+        return asyncio.run(self._get_paper_async(doi))
+
+    async def _get_paper_async(self, doi: str) -> FetchResult[CitingWork]:
+        # Narrow exception list: classify_error is built for network-shaped
+        # failures, so we only route those through it. Programmer errors
+        # (AttributeError on opencite API drift, AssertionError on the
+        # isinstance invariant below, TypeError) must propagate to surface
+        # the contract break instead of being silently demoted to
+        # FetchError("other", ...). Mirror this list against the existing
+        # _lookup branch's handling if it widens in the future.
+        try:
+            async with OpenAlexClient(self._config) as openalex_base:
+                assert isinstance(openalex_base, OpenAlexClient), (
+                    "opencite changed OpenAlexClient.__aenter__ return type; "
+                    "expected an OpenAlexClient bound, got "
+                    f"{type(openalex_base).__name__}"
+                )
+                paper = await openalex_base.lookup_doi(doi)
+        except (httpx.HTTPError, asyncio.TimeoutError, OSError) as exc:
+            return classify_error(exc, doi)
+
+        if paper is None or not paper.title:
+            return FetchError(
+                "not_found", f"{doi}: not found in OpenAlex (anchor self-lookup)"
+            )
+
+        # Synthesize a self-referential anchor so we can reuse the existing
+        # paper -> CitingWork mapper. Callers treat source_relation as opaque
+        # for self-lookups; the dataclass invariant just requires a non-empty
+        # source_doi and a valid RelationType literal.
+        self_ref = DoiReference(
+            identifier=doi,
+            identifier_type="doi",
+            relation_type="References",
+            source="nemar_catalog",
+            source_field="self_lookup",
+        )
+        return FetchSuccess(_paper_to_citing_work(paper, self_ref))
 
     async def _batch_async(
         self, refs: list[DoiReference]

@@ -60,6 +60,19 @@ class OpenCiteBackendIntegration(TestCase):
         out = self.backend.get_citing_works_batch(refs)
         self.assertEqual(set(out.keys()), {r.identifier for r in refs})
 
+    def test_get_paper_returns_anchor_metadata(self) -> None:
+        # Real OpenAlex lookup of a well-indexed anchor paper.
+        result = self.backend.get_paper("10.1038/sdata.2015.1")
+        self.assertIsInstance(result, FetchSuccess)
+        assert isinstance(result, FetchSuccess)
+        paper = result.value
+        self.assertTrue(paper.title)
+        self.assertEqual(paper.source_doi, "10.1038/sdata.2015.1")
+
+    def test_get_paper_unknown_doi_returns_error(self) -> None:
+        result = self.backend.get_paper("10.99999/never-existed-zzz")
+        self.assertIsInstance(result, FetchError)
+
 
 class OpenCiteBackendUnitTests(TestCase):
     """Cheap tests that exercise the backend's error-classification path

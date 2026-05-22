@@ -200,3 +200,47 @@ These prefixes account for 11 of the 17 DOIs with zero S2 contribution in this s
 ## What this PR does
 
 This PR ships only the probe script + the captured data + this report. The behavioral changes listed above are deliberately deferred to focused follow-up PRs so the data and the decision are reviewable independently of the code change. Issue #53 is closeable as "Phase A complete; Phase B = follow-up issues."
+
+---
+
+# 2026-05-22 — Epic #76 Phase 1 acceptance-gate probe
+
+Status: PASS. Phase 1 (#85) ready for merge.
+
+## Setup
+
+- Model: `gemma4:31b` served by Ollama on hallu's RTX 4090.
+- Network path: `ssh -fN -L 21434:localhost:11434 hallu`; `OLLAMA_BASE_URL=http://localhost:21434`. (Do NOT forward to port 11434 if a local `ollama serve` is also running — see the docstring in `scripts/probe_anchor_judgment.py` for why.)
+- Probe: `scripts/probe_anchor_judgment.py` with the 5-class taxonomy + 3 in-prompt few-shot examples from `dataset_citations.quality.llm_client.build_anchor_prompt`.
+
+## Results (10 anchors classified, 1 skip from a malformed-DOI extraction in `bids_metadata.py`)
+
+| Dataset | Anchor DOI | Relation | Classification | Notes |
+|---|---|---|---|---|
+| ds005505 | 10.1101/2024.10.03.615261 | IsDerivedFrom | data_paper | HBN preprint, correct |
+| ds005505 | 10.1101/2024.10.03.615261 | References | data_paper | same anchor, different relation |
+| ds005505 | 10.1038/sdata.2017.181 | References | **umbrella** | HBN initiative paper, NOT this dataset's data paper — exactly the inflation case epic #76 exists to fix |
+| ds005505 | 10.1038/sdata.2017.40 | References | **umbrella** | HBN imaging-resource paper, same pattern |
+| ds000246 | 10.3389/fnins.2019.00076 | References | **methodology** | Brainstorm software paper, README explicitly cites it |
+| nm000104 | 10.5281/zenodo.17287903 | IsVersionOf | data_paper | EMG2Qwerty Zenodo record |
+| nm000104 | 10.5281/zenodo.17613953 | IsIdenticalTo | data_paper | EMG2Qwerty Zenodo mirror |
+| nm000104 | 10.82901/nemar.nm000104 | IsVersionOf | data_paper | NEMAR-minted DOI for the same dataset |
+| on001787 | 10.82901/nemar.on001787 | IsVersionOf | data_paper | EEG meditation study |
+| ds002034 | 10.1007/s10548-019-00725-9 | References | data_paper | Single source paper, correct |
+
+Distribution: 7 data_paper, 2 umbrella, 1 methodology — every classification matches the expected ground truth.
+
+## Gate cases from issue #76, status
+
+- ✅ HBN-derived dataset: classify HBN umbrella as `umbrella`, preprint as `data_paper`.
+- ✅ Clean nm-* dataset: data paper classified correctly.
+- ✅ Methodology-only anchor: classified as `methodology` (Brainstorm; equivalent to the spec'd MNE-Python case).
+
+## Notes on iteration
+
+- Earlier probe runs used `gemma4:26b`. 26B passed the HBN discrimination but **misclassified** the Brainstorm methodology anchor as `data_paper` and occasionally returned out-of-taxonomy labels (`"data_authors_paper"`). Default model updated to `gemma4:31b` in `OllamaJudgmentClient._DEFAULT_MODEL`.
+- The malformed DOI `10.1038/sdata.2017.181)` with a literal trailing `)` is extracted by `sources/bids_metadata.py` from `HowToAcknowledge` text. File as a separate issue under the citation pipeline (out of scope for #76).
+- A real Ollama daemon disconnect was observed during the probe run. The `_generate` wrapping now surfaces such errors as per-anchor SKIPs instead of aborting the batch.
+
+Raw probe payload + full per-anchor JSON: see PR #89 artifacts (not committed to git to keep the repo lean).
+
