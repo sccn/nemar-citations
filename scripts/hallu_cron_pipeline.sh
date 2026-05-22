@@ -49,25 +49,51 @@ git reset --quiet --hard origin/main
 git clean --quiet -fd citations/.checkpoints/ 2>/dev/null || true
 echo "main at $(git rev-parse --short HEAD)"
 
+DATASETS_LIST="/tmp/hallu_cron_discovered.txt"
+
 # 1. Discover via catalog (api.nemar.org/datasets, no GitHub for this step).
 echo "--- discover ---"
 uv run dataset-citations-discover \
   --source catalog \
-  --output-file /tmp/hallu_cron_discovered.txt \
+  --output-file "$DATASETS_LIST" \
   --no-catalog-cache
 
-# 2. Fetch citations via opencite. Skip-existing (7d) keeps the run cheap.
-echo "--- update (skip-existing default 7d) ---"
-OPENCITE_CONCURRENCY=4 \
-  uv run dataset-citations-update \
-    --dataset-list-file /tmp/hallu_cron_discovered.txt \
-    --output-dir citations/
-
-# 3. Retrieve dataset metadata from GitHub (hallu's own IP = own rate-limit budget).
+# 2. Retrieve dataset metadata from GitHub (hallu's own IP = own rate-limit budget).
+# Moved ahead of `update` in phase 4 (#88) so anchor adjudication has dataset
+# descriptions available, and the subsequent `update` step can consume the
+# anchor-judgment sidecars produced below.
 echo "--- retrieve-metadata ---"
 uv run dataset-citations-retrieve-metadata \
   --citations-dir citations/json_opencite \
   --output-dir datasets
+
+# 3. Preflight: Ollama must be reachable on hallu for anchor adjudication
+# to run. If the daemon is down, abort cleanly instead of producing a
+# citation update with stale judgments. Exit 2 mirrors the contract
+# documented for `dataset-citations-judge-anchors` (phase 2, #86).
+curl -s --max-time 5 http://localhost:11434/api/tags >/dev/null || {
+  echo "ERROR: Ollama daemon at localhost:11434 not reachable; aborting." >&2
+  exit 2
+}
+
+# 3a. Anchor adjudication: classify each anchor DOI as data_paper / umbrella /
+# methodology / related_work / irrelevant and write sidecars under
+# citations/anchor_judgments/. `--skip-existing` keeps steady-state runs cheap;
+# the full ~3000-anchor backfill happens on first run after the epic merges.
+echo "--- judge-anchors (gpu, ollama) ---"
+uv run dataset-citations-judge-anchors \
+  --datasets-list-file "$DATASETS_LIST" \
+  --output-dir citations/anchor_judgments \
+  --skip-existing
+
+# 3b. Fetch citations via opencite. Phase 3 (#87) made this CLI consume the
+# sidecars from step 3a transparently; the invocation is unchanged from the
+# pre-phase-4 script. Skip-existing (7d) keeps the run cheap.
+echo "--- update (skip-existing default 7d) ---"
+OPENCITE_CONCURRENCY=4 \
+  uv run dataset-citations-update \
+    --dataset-list-file "$DATASETS_LIST" \
+    --output-dir citations/
 
 # 4. Semantic confidence scoring on RTX 4090. --skip-existing is a small speedup
 #    for unchanged citation files.
@@ -92,7 +118,7 @@ DIFFSTAT="$(git diff --cached --stat | tail -5)"
 git commit -m "data: hallu nightly pipeline ($TS)
 
 GPU semantic scoring on RTX 4090. Pipeline:
-  catalog discover -> opencite fetch -> metadata -> score-confidence
+  catalog discover -> metadata -> judge-anchors -> opencite fetch -> score-confidence
 
 $(echo "$DIFFSTAT")"
 
