@@ -1,0 +1,57 @@
+{
+  "dataset_id": "nm000148",
+  "date_retrieved": "2026-05-21T18:42:38.868434+00:00",
+  "dataset_description": {
+    "Name": "Motor imagery BCI dataset with pupillometry augmentation",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC0 1.0",
+    "Authors": [
+      "David Rozado",
+      "Andreas Duenser",
+      "Ben Howell"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.7910/DVN/28932"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1371/journal.pone.0121262",
+        "URL": "https://doi.org/10.7910/DVN/28932"
+      }
+    ],
+    "Keywords": [
+      "motor imagery",
+      "BCI",
+      "pupillometry",
+      "EEG",
+      "brain-computer interface"
+    ],
+    "PublicationYear": 2015,
+    "DatasetDOI": "10.82901/nemar.nm000148",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000148-blue)](https://doi.org/10.82901/nemar.nm000148)\n\n# Motor imagery BCI dataset with pupillometry augmentation\n\nMotor imagery BCI dataset with pupillometry augmentation.\n\n## Dataset Overview\n\n- **Code**: Rozado2015\n- **Paradigm**: imagery\n- **DOI**: 10.1371/journal.pone.0121262\n- **Subjects**: 30\n- **Sessions per subject**: 1\n- **Events**: left_hand=1, rest=2\n- **Trial interval**: [0.0, 6.0] s\n- **Runs per session**: 2\n- **File format**: XDF\n\n## Acquisition\n\n- **Sampling rate**: 512.0 Hz\n- **Number of channels**: 32\n- **Channel types**: eeg=32\n- **Montage**: biosemi32\n- **Hardware**: BioSemi ActiveTwo\n- **Reference**: CMS/DRL\n- **Sensor type**: active\n- **Line frequency**: 50.0 Hz\n- **Cap manufacturer**: BioSemi\n- **Electrode material**: sintered Ag/AgCl\n\n## Participants\n\n- **Number of subjects**: 30\n- **Health status**: healthy\n- **Age**: mean=38.0, std=9.69, min=15, max=61\n- **Gender distribution**: male=15, female=15\n- **Handedness**: {'right': 27, 'left': 3}\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Task type**: left hand grasping imagery vs rest\n- **Number of classes**: 2\n- **Class labels**: left_hand, rest\n- **Trial duration**: 6.0 s\n- **Study design**: Motor imagery with pupillometry augmentation\n- **Feedback type**: none\n- **Stimulus type**: auditory cue\n- **Stimulus modalities**: auditory\n- **Primary modality**: auditory\n- **Synchronicity**: synchronous\n- **Mode**: offline\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  left_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Left, Hand\n\n  rest\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Rest\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: left hand grasping, rest\n- **Imagery duration**: 6.0 s\n\n## Data Structure\n\n- **Blocks per session**: 2\n- **Block duration**: 300.0 s\n- **Trials context**: 2 experiments of 25 trials each (50 trials total per subject). Each experiment is stored as one XDF file.\n\n## Signal Processing\n\n- **Classifiers**: LDA\n- **Feature extraction**: CSP, pupil_diameter\n- **Frequency bands**: bandpass=[8.0, 30.0] Hz\n- **Spatial filters**: CSP\n\n## Cross-Validation\n\n- **Method**: 10-fold\n- **Folds**: 10\n- **Evaluation type**: within_subject\n\n## BCI Application\n\n- **Environment**: lab\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: healthy\n- **Modality**: auditory\n- **Type**: motor_imagery\n\n## Documentation\n\n- **DOI**: 10.1371/journal.pone.0121262\n- **License**: CC0 1.0\n- **Investigators**: David Rozado, Andreas Duenser, Ben Howell\n- **Senior author**: David Rozado\n- **Institution**: CSIRO\n- **Department**: Digital Productivity Flagship\n- **Country**: AU\n- **Repository**: Harvard Dataverse\n- **Data URL**: https://doi.org/10.7910/DVN/28932\n- **Publication year**: 2015\n- **Keywords**: motor imagery, BCI, pupillometry, EEG, brain-computer interface\n\n## References\n\nD. Rozado, T. Duenser, and B. Gruen, \"Improving the performance of an EEG-based motor imagery brain computer interface using task evoked changes in pupil diameter,\" PLoS ONE, vol. 10, no. 3, e0121262, 2015. DOI: 10.1371/journal.pone.0121262\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000148",
+    "exists": true,
+    "description": "Motor imagery BCI dataset with pupillometry augmentation",
+    "created_at": "2026-03-22T18:58:39+00:00",
+    "updated_at": "2026-05-12T04:37:04+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

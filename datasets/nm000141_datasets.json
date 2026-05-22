@@ -1,0 +1,57 @@
+{
+  "dataset_id": "nm000141",
+  "date_retrieved": "2026-05-21T18:42:29.589221+00:00",
+  "dataset_description": {
+    "Name": "Motor execution dataset from Wairagkar et al 2018",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Maitreyee Wairagkar",
+      "Yoshikatsu Hayashi",
+      "Slawomir J. Nasuto"
+    ],
+    "ReferencesAndLinks": [
+      "https://researchdata.reading.ac.uk/117/"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.4.3"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1371/journal.pone.0193722",
+        "URL": "https://researchdata.reading.ac.uk/117/"
+      }
+    ],
+    "Keywords": [
+      "Healthy",
+      "Motor",
+      "Research",
+      "imagery",
+      "motor_control"
+    ],
+    "PublicationYear": 2018,
+    "DatasetDOI": "10.82901/nemar.nm000141",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000141-blue)](https://doi.org/10.82901/nemar.nm000141)\n\n# Motor execution dataset from Wairagkar et al 2018\n\nMotor execution dataset from Wairagkar et al 2018.\n\n## Dataset Overview\n\n- **Code**: Wairagkar2018\n- **Paradigm**: imagery\n- **DOI**: 10.1371/journal.pone.0193722\n- **Subjects**: 14\n- **Sessions per subject**: 1\n- **Events**: right_hand=1, rest=2, left_hand=3\n- **Trial interval**: [0, 3] s\n- **File format**: MAT\n- **Data preprocessed**: True\n\n## Acquisition\n\n- **Sampling rate**: 1024.0 Hz\n- **Number of channels**: 19\n- **Channel types**: eeg=19\n- **Channel names**: Fp1, Fp2, F7, F3, Fz, F4, F8, T7, C3, Cz, C4, T8, P7, P3, Pz, P4, P8, O1, O2\n- **Montage**: standard_1020\n- **Hardware**: Deymed TruScan 32\n- **Reference**: FCz\n- **Ground**: AFz\n- **Sensor type**: Ag/AgCl ring\n- **Line frequency**: 50.0 Hz\n- **Online filters**: {'highpass': 0.5, 'lowpass': 60, 'notch_hz': 50}\n\n## Participants\n\n- **Number of subjects**: 14\n- **Health status**: healthy\n- **Age**: mean=26.0, std=4.0\n- **Gender distribution**: female=8, male=6\n- **Handedness**: mixed (12 right, 2 left)\n- **BCI experience**: naive\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 3\n- **Class labels**: right_hand, rest, left_hand\n- **Trial duration**: 6.0 s\n- **Study design**: Asynchronous voluntary finger tapping: right tap, left tap, and resting state\n- **Feedback type**: none\n- **Stimulus type**: text cues\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: asynchronous\n- **Mode**: offline\n- **Instructions**: Participants were asked to tap their index finger at a self-chosen time within a 10-second window after the cue\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  right_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n  rest\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Rest\n\n  left_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Left, Hand\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: right_hand, left_hand, rest\n\n## Data Structure\n\n- **Trials**: 1665\n- **Trials context**: 14 subjects x 120 trials (40 per condition), except subject 2 with 105 trials (35 per condition)\n\n## Preprocessing\n\n- **Data state**: preprocessed\n- **Preprocessing applied**: True\n- **Steps**: DC offset removal, 0.5 Hz high-pass filter, 50 Hz notch filter, 60 Hz low-pass filter, ICA artifact removal (EEGLAB infomax), trial segmentation (-3 to +3 s around movement onset)\n- **Highpass filter**: 0.5 Hz\n- **Lowpass filter**: 60.0 Hz\n- **Notch filter**: 50.0 Hz\n\n## Signal Processing\n\n- **Classifiers**: LDA\n- **Feature extraction**: autocorrelation_relaxation_time, ERD\n- **Frequency bands**: broadband=[0.5, 30.0] Hz; mu=[8.0, 13.0] Hz; beta=[13.0, 30.0] Hz; low=[0.5, 8.0] Hz\n- **Spatial filters**: bipolar_montage\n\n## Cross-Validation\n\n- **Method**: 10x10-fold\n- **Folds**: 10\n- **Evaluation type**: within_subject\n\n## BCI Application\n\n- **Applications**: motor_control\n- **Environment**: laboratory\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Motor\n- **Type**: Research\n\n## Documentation\n\n- **DOI**: 10.1371/journal.pone.0193722\n- **License**: CC-BY-4.0\n- **Investigators**: Maitreyee Wairagkar, Yoshikatsu Hayashi, Slawomir J. Nasuto\n- **Senior author**: Slawomir J. Nasuto\n- **Institution**: University of Reading\n- **Department**: Brain Embodiment Lab, Biomedical Engineering\n- **Country**: GB\n- **Repository**: University of Reading Research Data Archive\n- **Data URL**: https://researchdata.reading.ac.uk/117/\n- **Publication year**: 2018\n\n## References\n\nWairagkar, M., Hayashi, Y., & Nasuto, S. J. (2018). Exploration of neural correlates of movement intention based on characterisation of temporal dependencies in electroencephalography. PLOS ONE, 13(3), e0193722. https://doi.org/10.1371/journal.pone.0193722\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.4.3 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000141",
+    "exists": true,
+    "description": "Motor execution dataset from Wairagkar et al 2018",
+    "created_at": "2026-03-17T22:04:53+00:00",
+    "updated_at": "2026-05-12T04:38:02+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

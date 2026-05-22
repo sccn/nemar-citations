@@ -1,0 +1,68 @@
+{
+  "dataset_id": "nm000167",
+  "date_retrieved": "2026-05-21T18:42:58.125325+00:00",
+  "dataset_description": {
+    "Name": "Motor imagery dataset from Ma et al. 2020",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Xuelin Ma",
+      "Shuang Qiu",
+      "Changde Du",
+      "Junfeng Xing",
+      "Huiguang He"
+    ],
+    "Funding": [
+      "National Key Research and Development Plan of China (No. 2017YFB1002502)",
+      "National Natural Science Foundation of China (No. 61976209)",
+      "National Natural Science Foundation of China (No. 61906188)"
+    ],
+    "EthicsApprovals": [
+      "Ethics Committee of the Institute of Automation, Chinese Academy of Sciences"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.7910/DVN/RBN3XG"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1038/s41597-020-0535-2",
+        "URL": "https://doi.org/10.7910/DVN/RBN3XG"
+      }
+    ],
+    "Keywords": [
+      "motor imagery",
+      "EEG",
+      "BCI",
+      "same limb",
+      "hand",
+      "elbow"
+    ],
+    "PublicationYear": 2020,
+    "DatasetDOI": "10.82901/nemar.nm000167",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000167-blue)](https://doi.org/10.82901/nemar.nm000167)\n\n# Motor imagery dataset from Ma et al. 2020\n\nMotor imagery dataset from Ma et al. 2020.\n\n## Dataset Overview\n\n- **Code**: Ma2020\n- **Paradigm**: imagery\n- **DOI**: 10.1038/s41597-020-0535-2\n- **Subjects**: 25\n- **Sessions per subject**: 15\n- **Events**: right_hand=1, right_elbow=2\n- **Trial interval**: [0, 4] s\n- **File format**: CNT\n\n## Acquisition\n\n- **Sampling rate**: 1000.0 Hz\n- **Number of channels**: 62\n- **Channel types**: eeg=62\n- **Channel names**: Fp1, Fpz, Fp2, AF3, AF4, F7, F5, F3, F1, Fz, F2, F4, F6, F8, FT7, FC5, FC3, FC1, FCz, FC2, FC4, FC6, FT8, T7, C5, C3, C1, Cz, C2, C4, C6, T8, TP7, CP5, CP3, CP1, CPz, CP2, CP4, CP6, TP8, P7, P5, P3, P1, Pz, P2, P4, P6, P8, PO7, PO5, PO3, POz, PO4, PO6, PO8, CB1, O1, Oz, O2, CB2\n- **Montage**: standard_1005\n- **Hardware**: Neuroscan SynAmps2\n- **Ground**: AFz\n- **Line frequency**: 50.0 Hz\n- **Impedance threshold**: 5 kOhm\n- **Auxiliary channels**: EOG (2 ch, horizontal, vertical), M2\n\n## Participants\n\n- **Number of subjects**: 25\n- **Health status**: healthy\n- **Age**: mean=25.56, min=23, max=29\n- **Gender distribution**: male=18, female=7\n- **Handedness**: {'right': 25}\n- **BCI experience**: naive\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Task type**: motor_imagery_same_limb\n- **Number of classes**: 2\n- **Class labels**: right_hand, right_elbow\n- **Trial duration**: 4.0 s\n- **Feedback type**: none\n- **Stimulus type**: visual cue\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: offline\n- **Training/test split**: False\n- **Instructions**: Subjects were asked to concentrate on performing the indicated motor imagery task (right hand or right elbow) using kinesthetic, not visual, motor imagery while avoiding any motion during imagination.\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  right_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n  right_elbow\n    ├─ Sensory-event\n    └─ Label/right_elbow\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: right_hand, right_elbow\n- **Cue duration**: 1.0 s\n- **Imagery duration**: 4.0 s\n\n## Data Structure\n\n- **Trials**: 600\n- **Trials per class**: right_hand=300, right_elbow=300\n- **Blocks per session**: 15\n- **Trials context**: 3 days x 5 MI sessions/day = 15 sessions, 40 trials/session (20 hand + 20 elbow)\n\n## Signal Processing\n\n- **Classifiers**: FBCSP+SVM\n- **Feature extraction**: FBCSP\n- **Frequency bands**: alpha=[8.0, 13.0] Hz; beta=[20.0, 25.0] Hz\n- **Spatial filters**: CAR, FBCSP\n\n## Cross-Validation\n\n- **Method**: 5-fold\n- **Folds**: 5\n- **Evaluation type**: within_subject\n\n## BCI Application\n\n- **Applications**: motor_rehabilitation, prosthetic_control\n- **Environment**: laboratory\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: healthy\n- **Modality**: motor\n- **Type**: imagery\n\n## Documentation\n\n- **DOI**: 10.1038/s41597-020-0535-2\n- **License**: CC-BY-4.0\n- **Investigators**: Xuelin Ma, Shuang Qiu, Changde Du, Junfeng Xing, Huiguang He\n- **Senior author**: Huiguang He\n- **Institution**: Chinese Academy of Sciences\n- **Department**: Institute of Automation\n- **Country**: CN\n- **Repository**: Harvard Dataverse\n- **Data URL**: https://doi.org/10.7910/DVN/RBN3XG\n- **Publication year**: 2020\n- **Funding**: National Key Research and Development Plan of China (No. 2017YFB1002502); National Natural Science Foundation of China (No. 61976209); National Natural Science Foundation of China (No. 61906188)\n- **Ethics approval**: Ethics Committee of the Institute of Automation, Chinese Academy of Sciences\n- **Keywords**: motor imagery, EEG, BCI, same limb, hand, elbow\n\n## References\n\nX. Ma, S. Qiu, C. Du, J. Xing, and H. He, \"Multi-channel EEG recording during motor imagery of different joints from the same limb,\" Scientific Data, vol. 7, no. 1, p. 191, 2020. DOI: 10.1038/s41597-020-0535-2\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000167",
+    "exists": true,
+    "description": "Motor imagery dataset from Ma et al. 2020",
+    "created_at": "2026-03-23T13:02:40+00:00",
+    "updated_at": "2026-05-18T11:18:12+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

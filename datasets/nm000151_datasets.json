@@ -1,0 +1,63 @@
+{
+  "dataset_id": "nm000151",
+  "date_retrieved": "2026-05-21T18:42:41.839528+00:00",
+  "dataset_description": {
+    "Name": "Motor imagery dataset for three imaginary states of the same upper extremity",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC0-1.0",
+    "Authors": [
+      "Mojgan Tavakolan",
+      "Zack Frehlick",
+      "Xinyi Yong",
+      "Carlo Menon"
+    ],
+    "EthicsApprovals": [
+      "Simon Fraser University Office of Research Ethics"
+    ],
+    "ReferencesAndLinks": [
+      "https://zenodo.org/records/18967205"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1371/journal.pone.0174161",
+        "URL": "https://zenodo.org/records/18967205"
+      }
+    ],
+    "Keywords": [
+      "motor imagery",
+      "EEG",
+      "upper extremity",
+      "same limb",
+      "time-domain features",
+      "SVM",
+      "BCI"
+    ],
+    "PublicationYear": 2017,
+    "DatasetDOI": "10.82901/nemar.nm000151",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000151-blue)](https://doi.org/10.82901/nemar.nm000151)\n\n# Motor imagery dataset for three imaginary states of the same upper extremity\n\nMotor imagery dataset for three imaginary states of the same upper extremity.\n\n## Dataset Overview\n\n- **Code**: Tavakolan2017\n- **Paradigm**: imagery\n- **DOI**: 10.1371/journal.pone.0174161\n- **Subjects**: 12\n- **Sessions per subject**: 4\n- **Events**: rest=1, right_hand=2, right_elbow_flexion=3\n- **Trial interval**: [0, 3] s\n- **File format**: BCI2000\n\n## Acquisition\n\n- **Sampling rate**: 1000.0 Hz\n- **Number of channels**: 32\n- **Channel types**: eeg=32\n- **Montage**: GSN-HydroCel-32\n- **Hardware**: EGI Geodesic Net Amps 400 series\n- **Reference**: Cz\n- **Sensor type**: Ag/AgCl sponge\n- **Line frequency**: 60.0 Hz\n- **Online filters**: {'bandpass': [0.1, 100]}\n- **Impedance threshold**: 50 kOhm\n\n## Participants\n\n- **Number of subjects**: 12\n- **Health status**: healthy\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 3\n- **Class labels**: rest, right_hand, right_elbow_flexion\n- **Trial duration**: 3.0 s\n- **Study design**: Three-class motor imagery of the same upper extremity: rest, grasping (MI-GRASP), and elbow flexion (MI-ELBOW). 20 trials per class per session, 4 sessions per subject.\n- **Feedback type**: none\n- **Stimulus type**: visual cue\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: offline\n- **Instructions**: REST: relax without movement. MI-GRASP: imagine opening and closing all fingers to grab an object. MI-ELBOW: imagine moving the forearm up and down.\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  rest\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Rest\n\n  right_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n  right_elbow_flexion\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Flex\n          └─ Right, Elbow\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: rest, right_hand, right_elbow_flexion\n- **Cue duration**: 3.0 s\n- **Imagery duration**: 3.0 s\n\n## Data Structure\n\n- **Trials**: 2880\n- **Trials per class**: rest=20, right_hand=20, right_elbow_flexion=20\n- **Trials context**: 12 subjects x 4 sessions x 60 trials (20 per class)\n\n## Preprocessing\n\n- **Data state**: continuous\n\n## Signal Processing\n\n- **Classifiers**: SVM-RBF\n- **Feature extraction**: autoregressive_coefficients, waveform_length, root_mean_square\n- **Frequency bands**: bandpass=[6.0, 35.0] Hz\n\n## Cross-Validation\n\n- **Method**: 10x10-fold\n- **Folds**: 10\n- **Evaluation type**: within_subject\n\n## BCI Application\n\n- **Applications**: motor_control, rehabilitation\n- **Environment**: laboratory\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Motor\n- **Type**: Research\n\n## Documentation\n\n- **DOI**: 10.1371/journal.pone.0174161\n- **License**: CC0-1.0\n- **Investigators**: Mojgan Tavakolan, Zack Frehlick, Xinyi Yong, Carlo Menon\n- **Senior author**: Carlo Menon\n- **Institution**: Simon Fraser University\n- **Department**: MENRVA Research Group, Schools of Mechatronic Systems Engineering and Engineering Science\n- **Country**: CA\n- **Repository**: Zenodo\n- **Data URL**: https://zenodo.org/records/18967205\n- **Publication year**: 2017\n- **Ethics approval**: Simon Fraser University Office of Research Ethics\n- **Keywords**: motor imagery, EEG, upper extremity, same limb, time-domain features, SVM, BCI\n\n## References\n\nM. Tavakolan, Z. Frehlick, X. Yong, and C. Menon, \"Classifying three imaginary states of the same upper extremity using time-domain features,\" PLoS ONE, vol. 12, no. 3, e0174161, 2017. DOI: 10.1371/journal.pone.0174161\n\nM. Tavakolan, Z. Frehlick, X. Yong, and C. Menon, \"Data from: Classifying three imaginary states of the same upper extremity using time-domain features,\" Dryad, 2017. DOI: 10.5061/dryad.6qs86\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000151",
+    "exists": true,
+    "description": "Motor imagery dataset for three imaginary states of the same upper extremity",
+    "created_at": "2026-03-22T19:17:30+00:00",
+    "updated_at": "2026-05-12T04:36:49+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

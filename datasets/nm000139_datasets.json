@@ -1,0 +1,70 @@
+{
+  "dataset_id": "nm000139",
+  "date_retrieved": "2026-05-21T18:42:26.552378+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2014-001 Motor Imagery dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-ND-4.0",
+    "Authors": [
+      "Michael Tangermann",
+      "Klaus-Robert Müller",
+      "Ad Aertsen",
+      "Niels Birbaumer",
+      "Christoph Braun",
+      "Clemens Brunner",
+      "Robert Leeb",
+      "Carsten Mehring",
+      "Kai J. Miller",
+      "Gernot R. Müller-Putz",
+      "Guido Nolte",
+      "Gert Pfurtscheller",
+      "Hubert Preissl",
+      "Gerwin Schalk",
+      "Alois Schlögl",
+      "Carmen Vidaurre",
+      "Stephan Waldert",
+      "Benjamin Blankertz"
+    ],
+    "ReferencesAndLinks": [
+      "http://www.bbci.de/competition/iv/"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.4.3"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.3389/fnins.2012.00055",
+        "URL": "http://www.bbci.de/competition/iv/"
+      }
+    ],
+    "Keywords": [
+      "brain-computer interface",
+      "BCI",
+      "competition"
+    ],
+    "PublicationYear": 2012,
+    "DatasetDOI": "10.82901/nemar.nm000139",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000139-blue)](https://doi.org/10.82901/nemar.nm000139)\n\n# BNCI 2014-001 Motor Imagery dataset\n\nBNCI 2014-001 Motor Imagery dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2014-001\n- **Paradigm**: imagery\n- **DOI**: 10.3389/fnins.2012.00055\n- **Subjects**: 9\n- **Sessions per subject**: 2\n- **Events**: left_hand=1, right_hand=2, feet=3, tongue=4\n- **Trial interval**: [2, 6] s\n- **Runs per session**: 6\n- **File format**: GDF\n- **Data preprocessed**: True\n\n## Acquisition\n\n- **Sampling rate**: 250.0 Hz\n- **Number of channels**: 25\n- **Channel types**: eeg=22, eog=3\n- **Channel names**: C1, C2, C3, C4, C5, C6, CP1, CP2, CP3, CP4, CPz, Cz, EOG1, EOG2, EOG3, FC1, FC2, FC3, FC4, FCz, Fz, P1, P2, POz, Pz\n- **Montage**: custom\n- **Hardware**: BrainAmp MR plus\n- **Software**: BCI2000\n- **Reference**: left mastoid\n- **Ground**: unknown\n- **Sensor type**: Ag/AgCl\n- **Line frequency**: 50.0 Hz\n- **Online filters**: bandpass 0.05-200 Hz\n- **Cap manufacturer**: EASYCAP GmbH\n\n## Participants\n\n- **Number of subjects**: 9\n- **Health status**: healthy\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 4\n- **Class labels**: left_hand, right_hand, feet, tongue\n- **Trial duration**: 4.0 s\n- **Study design**: Two-class motor imagery (selected from left hand, right hand, and foot) with asynchronous/continuous control periods\n- **Feedback type**: none\n- **Stimulus type**: arrow_cue\n- **Stimulus modalities**: visual, auditory\n- **Primary modality**: multisensory\n- **Synchronicity**: asynchronous\n- **Mode**: offline\n- **Instructions**: Subjects instructed to perform motor imagery during cued periods\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  left_hand\n    ├─ Sensory-event\n    │  ├─ Experimental-stimulus\n    │  ├─ Visual-presentation\n    │  └─ Leftward, Arrow\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Left, Hand\n\n  right_hand\n    ├─ Sensory-event\n    │  ├─ Experimental-stimulus\n    │  ├─ Visual-presentation\n    │  └─ Rightward, Arrow\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n  feet\n    ├─ Sensory-event\n    │  ├─ Experimental-stimulus\n    │  ├─ Visual-presentation\n    │  └─ Downward, Arrow\n    └─ Agent-action\n       └─ Imagine, Move, Foot\n\n  tongue\n    ├─ Sensory-event\n    │  ├─ Experimental-stimulus\n    │  ├─ Visual-presentation\n    │  └─ Upward, Arrow\n    └─ Agent-action\n       └─ Imagine, Move, Tongue\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: left_hand, right_hand, foot\n- **Cue duration**: 4.0 s\n- **Imagery duration**: 4.0 s\n\n## Data Structure\n\n- **Trials**: {'training': 200, 'test': 240}\n- **Blocks per session**: 6\n- **Trials context**: per subject (2 training runs + 4 test runs)\n\n## Preprocessing\n\n- **Data state**: minimally preprocessed (bandpass and notch filtered)\n- **Preprocessing applied**: True\n- **Steps**: bandpass filtering\n- **Highpass filter**: 0.05 Hz\n- **Lowpass filter**: 200 Hz\n- **Bandpass filter**: {'low_cutoff_hz': 0.05, 'high_cutoff_hz': 200.0}\n- **Filter type**: analog\n- **Re-reference**: none\n- **Downsampled to**: 100.0 Hz\n- **Notes**: Data provided in two versions: original at 1000 Hz and downsampled to 100 Hz (with Chebyshev Type II filter order 10, stop band ripple 50 dB, stop band edge 49 Hz)\n\n## Signal Processing\n\n- **Classifiers**: LDA, SVM, Neural Network, Naive Bayes, RBF Neural Network\n- **Feature extraction**: CSP, FBCSP, Bandpower, ERD, ERS\n- **Frequency bands**: mu=[8, 12] Hz; beta=[16, 24] Hz\n\n## Cross-Validation\n\n- **Method**: train-test split\n- **Evaluation type**: within_session\n\n## Performance (Original Study)\n\n- **Mse**: 0.382\n\n## BCI Application\n\n- **Applications**: cursor_control, communication\n- **Environment**: laboratory\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Motor\n- **Type**: Motor\n\n## Documentation\n\n- **Description**: Review of the BCI competition IV - Data set 1: Asynchronous Motor Imagery\n- **DOI**: 10.3389/fnins.2012.00055\n- **License**: CC-BY-ND-4.0\n- **Investigators**: Michael Tangermann, Klaus-Robert Müller, Ad Aertsen, Niels Birbaumer, Christoph Braun, Clemens Brunner, Robert Leeb, Carsten Mehring, Kai J. Miller, Gernot R. Müller-Putz, Guido Nolte, Gert Pfurtscheller, Hubert Preissl, Gerwin Schalk, Alois Schlögl, Carmen Vidaurre, Stephan Waldert, Benjamin Blankertz\n- **Senior author**: Michael Tangermann\n- **Contact**: michael.tangermann@tu-berlin.de\n- **Institution**: Berlin Institute of Technology\n- **Department**: Machine Learning Laboratory\n- **Address**: FR 6-9, Franklinstr. 28/29, 10587 Berlin, Germany\n- **Country**: AT\n- **Repository**: BNCI Horizon\n- **Data URL**: http://www.bbci.de/competition/iv/\n- **Publication year**: 2012\n- **Keywords**: brain-computer interface, BCI, competition\n\n## References\n\nTangermann, M., Muller, K.R., Aertsen, A., Birbaumer, N., Braun, C., Brunner, C., Leeb, R., Mehring, C., Miller, K.J., Mueller-Putz, G. and Nolte, G., 2012. Review of the BCI competition IV. Frontiers in neuroscience, 6, p.55.\n\nNotes\n\n.. note::\n\n``BNCI2014_001`` was previously named ``BNCI2014001``. ``BNCI2014001`` will be removed in version 1.1.\n\n.. versionadded:: 0.4.0\n\nThis is one of the most widely used motor imagery datasets in BCI research, commonly referred to as \"BCI Competition IV Dataset 2a\". It serves as a standard benchmark for 4-class motor imagery classification algorithms.\n\nThe dataset is particularly useful for:\n\n- Multi-class motor imagery classification (4 classes) - Transfer learning studies (9 subjects, 2 sessions each) - Cross-session variability analysis\n\nSee Also\n\nBNCI2014_004 : BCI Competition 2008 2-class motor imagery (Dataset B) BNCI2003_004 : BCI Competition III 2-class motor imagery\n\nExamples\n\n>>> from moabb.datasets import BNCI2014_001 >>> dataset = BNCI2014_001() >>> dataset.subject_list [1, 2, 3, 4, 5, 6, 7, 8, 9]\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.4.3 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000139",
+    "exists": true,
+    "description": "BNCI 2014-001 Motor Imagery dataset",
+    "created_at": "2026-03-17T21:59:57+00:00",
+    "updated_at": "2026-05-12T04:38:17+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

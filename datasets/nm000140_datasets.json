@@ -1,0 +1,58 @@
+{
+  "dataset_id": "nm000140",
+  "date_retrieved": "2026-05-21T18:42:28.109541+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2015-001 Motor Imagery dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "Josef Faller",
+      "Carmen Vidaurre",
+      "Teodoro Solis-Escalante",
+      "Christa Neuper",
+      "Reinhold Scherer"
+    ],
+    "Funding": [
+      "FP7 Framework EU Research Project BrainAble (No. 247447)"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.4.3"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1109/tnsre.2012.2189584"
+      }
+    ],
+    "Keywords": [
+      "Healthy",
+      "Motor",
+      "imagery",
+      "communication",
+      "control"
+    ],
+    "PublicationYear": 2012,
+    "DatasetDOI": "10.82901/nemar.nm000140",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000140-blue)](https://doi.org/10.82901/nemar.nm000140)\n\n# BNCI 2015-001 Motor Imagery dataset\n\nBNCI 2015-001 Motor Imagery dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2015-001\n- **Paradigm**: imagery\n- **DOI**: 10.1109/tnsre.2012.2189584\n- **Subjects**: 12\n- **Sessions per subject**: 2\n- **Events**: right_hand=1, feet=2\n- **Trial interval**: [0, 5] s\n- **File format**: gdf\n- **Data preprocessed**: True\n\n## Acquisition\n\n- **Sampling rate**: 512.0 Hz\n- **Number of channels**: 13\n- **Channel types**: eeg=13\n- **Channel names**: FC3, FCz, FC4, C5, C3, C1, Cz, C2, C4, C6, CP3, CPz, CP4\n- **Montage**: 10-20\n- **Hardware**: g.tec\n- **Software**: Matlab\n- **Reference**: Car\n- **Sensor type**: active electrode\n- **Line frequency**: 50.0 Hz\n- **Online filters**: 50 Hz notch\n- **Cap manufacturer**: g.tec\n- **Cap model**: g.GAMMAsys\n- **Auxiliary channels**: gsr\n\n## Participants\n\n- **Number of subjects**: 12\n- **Health status**: healthy\n- **Age**: mean=24.8\n- **Gender distribution**: male=7, female=5\n- **Handedness**: all right-handed\n- **BCI experience**: naive\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 2\n- **Class labels**: right_hand, feet\n- **Trial duration**: 11.0 s\n- **Study design**: Two-class motor imagery: sustained right hand movement imagery (palmar grip) versus both feet movement imagery (plantar extension)\n- **Feedback type**: visual\n- **Stimulus type**: cursor_feedback\n- **Stimulus modalities**: visual, auditory\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: training\n- **Instructions**: Relax during reference period (3s), perform sustained kinesthetic movement imagery during activity period. Condition 1 (arrow right): imagine palmar grip with right hand. Condition 2 (arrow down): imagine plantar extension of both feet.\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  right_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n  feet\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine, Move, Foot\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: right_hand_palmar_grip, both_feet_plantar_extension\n- **Cue duration**: 1.25 s\n- **Imagery duration**: 4.0 s\n\n## Data Structure\n\n- **Trials**: 200\n- **Trials per class**: right_hand=100, feet=100\n- **Trials context**: per_session\n\n## Preprocessing\n\n- **Data state**: filtered\n- **Preprocessing applied**: True\n- **Steps**: bandpass filter, notch filter\n- **Highpass filter**: 0.5 Hz\n- **Lowpass filter**: 100.0 Hz\n- **Bandpass filter**: {'low_cutoff_hz': 0.5, 'high_cutoff_hz': 100.0}\n- **Notch filter**: [50.0] Hz\n- **Re-reference**: car\n\n## Signal Processing\n\n- **Classifiers**: LDA\n- **Feature extraction**: logarithmic bandpower, CSP\n- **Frequency bands**: alpha=[10, 13] Hz; beta=[16, 24] Hz\n\n## Cross-Validation\n\n- **Method**: leave-one-out\n- **Evaluation type**: cross_session\n\n## Performance (Original Study)\n\n- **Accuracy**: 80.0%\n\n## BCI Application\n\n- **Applications**: communication, control\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Motor\n- **Type**: Motor\n\n## Documentation\n\n- **DOI**: 10.1109/tnsre.2012.2189584\n- **License**: CC-BY-NC-ND-4.0\n- **Investigators**: Josef Faller, Carmen Vidaurre, Teodoro Solis-Escalante, Christa Neuper, Reinhold Scherer\n- **Senior author**: Reinhold Scherer\n- **Contact**: josef.faller@tugraz.at; christa.neuper@uni-graz.at; carmen.vidaurre@tu-berlin.de\n- **Institution**: Graz University of Technology\n- **Department**: Institute of Knowledge Discovery\n- **Address**: 8010 Graz, Austria\n- **Country**: Austria\n- **Repository**: BNCI Horizon\n- **Publication year**: 2012\n- **Funding**: FP7 Framework EU Research Project BrainAble (No. 247447)\n\n## References\n\nFaller, J., Vidaurre, C., Solis-Escalante, T., Neuper, C., & Scherer, R. (2012). Autocalibration and recurrent adaptation: Towards a plug and play online ERD-BCI. IEEE Transactions on Neural Systems and Rehabilitation Engineering, 20(3), 313-319. https://doi.org/10.1109/tnsre.2012.2189584\n\nNotes\n\n.. note::\n\n``BNCI2015_001`` was previously named ``BNCI2015001``. ``BNCI2015001`` will be removed in version 1.1.\n\n.. versionadded:: 0.4.0\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.4.3 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000140",
+    "exists": true,
+    "description": "BNCI 2015-001 Motor Imagery dataset",
+    "created_at": "2026-03-17T22:03:15+00:00",
+    "updated_at": "2026-05-12T04:38:10+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

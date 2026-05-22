@@ -1,0 +1,61 @@
+{
+  "dataset_id": "nm000131",
+  "date_retrieved": "2026-05-21T18:42:14.039855+00:00",
+  "dataset_description": {
+    "Name": "Wang2021 – Combined SSVEP dataset with single stimulus location for two inputs",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC BY 4.0",
+    "Authors": [
+      "Lu Wang",
+      "Zhenhao Zhang",
+      "Dan Han",
+      "Zhijun Zhang",
+      "Zhifang Liu",
+      "Wei Liu"
+    ],
+    "ReferencesAndLinks": [
+      "https://zenodo.org/records/18873228"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.4.3"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1111/ejn.15030",
+        "URL": "https://zenodo.org/records/18873228"
+      }
+    ],
+    "Keywords": [
+      "healthy",
+      "visual",
+      "perception",
+      "ssvep"
+    ],
+    "PublicationYear": 2021,
+    "ExperimentName": "Wang2021",
+    "Description": "Combined SSVEP dataset with single stimulus location for two inputs.\n\n\nDataset summary:\n\n#Subj       8\n#Chan      32\n#Classes       4\n#Trials / class  varies\nTrials length     5 s\nFreq 1000 Hz\n#Sessions       1\n\n\nParticipants:\n\n- Population: healthy\n\n\nEquipment:\n\n- Amplifier: eego mylab (ANT Neuro)\n- Montage: standard_1005\n\n\nData Access:\n\n- DOI: 10.1111/ejn.15030\n- Data URL: https://zenodo.org/records/18873228\n- Repository: Zenodo\n\n\nExperimental Protocol:\n\n- Paradigm: ssvep\n- Task type: covert_attention\n- Feedback: none\n- Stimulus: overlapping SSVEP arrows (CRT 85 Hz)\n\nDataset from [1]_.\n\nThis dataset uses a one-to-two SSVEP paradigm where spatially overlapping\nstimuli are presented at the same location. Users attend to one of four\narrow directions (up, down, left, right), each flickering at a distinct\nfrequency derived from the 85 Hz CRT refresh rate.\n\n8 subjects are available across two experiments:\n\n- Experiment 1 (S01-S05): Scheme 1 (moving dot-formed arrows)\n- Experiment 2 (S06-S08): Scheme 2 (space-based attention) and\nScheme 3 (object-based attention)\n\nEEG was recorded at 1000 Hz with a 32-channel ANT Neuro system.\nEach trial consists of 500 ms fixation, 500 ms cue, and 5000 ms\nstimulation.\n\nWarnings\n--------\nThe Zenodo archive used by this adapter contains only 8 of the 20\nsubjects described in the paper. Subject numbering (S01-S08) is based\non alphabetical order of the original subject name prefixes.\n\nReferences\n----------\n.. [1] L. Wang, Z. Zhang, D. Han, Z. Zhang, Z. Liu, and W. Liu,\n\"Single stimulus location for two inputs: A combined brain-computer\ninterface based on Steady-State Visual Evoked Potential (SSVEP),\"\nEuropean Journal of Neuroscience, vol. 53, no. 3, pp. 861-875, 2021.\nDOI: 10.1111/ejn.15030",
+    "DatasetDOI": "10.82901/nemar.nm000131",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000131-blue)](https://doi.org/10.82901/nemar.nm000131)\n\n# Combined SSVEP dataset with single stimulus location for two inputs\n\nCombined SSVEP dataset with single stimulus location for two inputs.\n\n## Dataset Overview\n\n- **Code**: Wang2021Combined\n- **Paradigm**: ssvep\n- **DOI**: 10.1111/ejn.15030\n- **Subjects**: 8\n- **Sessions per subject**: 1\n- **Events**: 14.17=1, 12.14=2, 9.44=3, 7.73=4\n- **Trial interval**: [0.0, 5.0] s\n- **File format**: CNT\n\n## Acquisition\n\n- **Sampling rate**: 1000.0 Hz\n- **Number of channels**: 31\n- **Channel types**: eeg=31, eog=2\n- **Montage**: standard_1005\n- **Hardware**: eego mylab (ANT Neuro)\n- **Line frequency**: 50.0 Hz\n\n## Participants\n\n- **Number of subjects**: 8\n- **Health status**: healthy\n\n## Experimental Protocol\n\n- **Paradigm**: ssvep\n- **Task type**: covert_attention\n- **Number of classes**: 4\n- **Class labels**: 14.17, 12.14, 9.44, 7.73\n- **Trial duration**: 5.0 s\n- **Study design**: One-to-two combined SSVEP with overlapping stimuli\n- **Feedback type**: none\n- **Stimulus type**: overlapping SSVEP arrows (CRT 85 Hz)\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: offline\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  14.17\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/14_17\n\n  12.14\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/12_14\n\n  9.44\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/9_44\n\n  7.73\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/7_73\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: ssvep\n- **Stimulus frequencies**: [14.17, 12.14, 9.44, 7.73] Hz\n\n## Data Structure\n\n- **Blocks per session**: 2\n\n## BCI Application\n\n- **Environment**: lab\n\n## Tags\n\n- **Pathology**: healthy\n- **Modality**: visual\n- **Type**: perception\n\n## Documentation\n\n- **DOI**: 10.1111/ejn.15030\n- **License**: CC BY 4.0\n- **Investigators**: Lu Wang, Zhenhao Zhang, Dan Han, Zhijun Zhang, Zhifang Liu, Wei Liu\n- **Senior author**: Zhijun Zhang\n- **Institution**: Shandong University\n- **Country**: CN\n- **Repository**: Zenodo\n- **Data URL**: https://zenodo.org/records/18873228\n- **Publication year**: 2021\n\n## References\n\nL. Wang, Z. Zhang, D. Han, Z. Zhang, Z. Liu, and W. Liu, \"Single stimulus location for two inputs: A combined brain-computer interface based on Steady-State Visual Evoked Potential (SSVEP),\" European Journal of Neuroscience, vol. 53, no. 3, pp. 861-875, 2021. DOI: 10.1111/ejn.15030\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.4.3 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000131",
+    "exists": true,
+    "description": "Wang2021 – Combined SSVEP dataset with single stimulus location for two inputs",
+    "created_at": "2026-03-06T21:47:27+00:00",
+    "updated_at": "2026-05-12T04:39:02+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

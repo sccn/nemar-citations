@@ -1,0 +1,55 @@
+{
+  "dataset_id": "nm000145",
+  "date_retrieved": "2026-05-21T18:42:35.860288+00:00",
+  "dataset_description": {
+    "Name": "Munich Motor Imagery dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Moritz Grosse-Wentrup",
+      "Christian Liefhold",
+      "Klaus Gramann",
+      "Martin Buss"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1109/TBME.2008.2009768"
+      }
+    ],
+    "Keywords": [
+      "Beamforming",
+      "brain-computer interfaces",
+      "common spatial patterns",
+      "electroencephalography",
+      "motor imagery",
+      "spatial filtering"
+    ],
+    "PublicationYear": 2009,
+    "DatasetDOI": "10.82901/nemar.nm000145",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000145-blue)](https://doi.org/10.82901/nemar.nm000145)\n\n# Munich Motor Imagery dataset\n\nMunich Motor Imagery dataset.\n\n## Dataset Overview\n\n- **Code**: GrosseWentrup2009\n- **Paradigm**: imagery\n- **DOI**: 10.1109/TBME.2008.2009768\n- **Subjects**: 10\n- **Sessions per subject**: 1\n- **Events**: right_hand=2, left_hand=1\n- **Trial interval**: [0, 7] s\n- **File format**: set\n- **Data preprocessed**: True\n\n## Acquisition\n\n- **Sampling rate**: 500.0 Hz\n- **Number of channels**: 128\n- **Channel types**: eeg=128\n- **Channel names**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128\n- **Montage**: standard_1020\n- **Hardware**: BrainAmp\n- **Reference**: Cz\n- **Line frequency**: 50.0 Hz\n- **Online filters**: {'highpass_time_constant_s': 10}\n- **Impedance threshold**: 10 kOhm\n\n## Participants\n\n- **Number of subjects**: 10\n- **Health status**: healthy\n- **Age**: mean=25.6, std=2.5\n- **Gender distribution**: male=8, female=2\n- **Handedness**: {'right': 8}\n- **BCI experience**: mixed\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Task type**: motor_imagery\n- **Number of classes**: 2\n- **Class labels**: right_hand, left_hand\n- **Trial duration**: 10 s\n- **Tasks**: motor_imagery\n- **Study design**: two-class motor imagery with arrow cues\n- **Feedback type**: none\n- **Stimulus type**: arrow_cue\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: offline\n- **Instructions**: Subjects were instructed to perform haptic motor imagery of the left or the right hand during display of the arrow, as indicated by the direction of the arrow\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  right_hand\n    ├─ Sensory-event\n    │  ├─ Experimental-stimulus\n    │  ├─ Visual-presentation\n    │  └─ Rightward, Arrow\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n  left_hand\n    ├─ Sensory-event\n    │  ├─ Experimental-stimulus\n    │  ├─ Visual-presentation\n    │  └─ Leftward, Arrow\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Left, Hand\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: left_hand, right_hand\n- **Cue duration**: 7.0 s\n- **Imagery duration**: 7.0 s\n\n## Data Structure\n\n- **Trials**: 150\n- **Trials context**: per_class\n\n## Preprocessing\n\n- **Data state**: preprocessed\n- **Preprocessing applied**: True\n- **Artifact methods**: none\n- **Re-reference**: car\n- **Notes**: No trials were rejected and no artifact correction was performed. Data were re-referenced to common average reference offline.\n\n## Signal Processing\n\n- **Classifiers**: Logistic Regression\n- **Feature extraction**: CSP, Beamforming, Laplacian, Bandpower\n- **Frequency bands**: analyzed=[7.0, 30.0] Hz\n- **Spatial filters**: CSP, Beamforming, Laplacian\n\n## Cross-Validation\n\n- **Method**: bootstrapping\n- **Evaluation type**: within_subject\n\n## BCI Application\n\n- **Applications**: motor_control\n- **Environment**: shielded_room\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Motor\n- **Type**: Motor\n\n## Documentation\n\n- **DOI**: 10.1109/TBME.2008.2009768\n- **License**: CC-BY-4.0\n- **Investigators**: Moritz Grosse-Wentrup, Christian Liefhold, Klaus Gramann, Martin Buss\n- **Senior author**: Martin Buss\n- **Contact**: moritzgw@ieee.org\n- **Institution**: Technische Universität München\n- **Department**: Institute of Automatic Control Engineering (LSR)\n- **Country**: DE\n- **Repository**: Zenodo\n- **Publication year**: 2009\n- **Keywords**: Beamforming, brain-computer interfaces, common spatial patterns, electroencephalography, motor imagery, spatial filtering\n\n## References\n\nGrosse-Wentrup, Moritz, et al. \"Beamforming in noninvasive brain–computer interfaces.\" IEEE Transactions on Biomedical Engineering 56.4 (2009): 1209-1219.\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000145",
+    "exists": true,
+    "description": "Munich Motor Imagery dataset",
+    "created_at": "2026-03-22T17:19:24+00:00",
+    "updated_at": "2026-05-12T04:37:19+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

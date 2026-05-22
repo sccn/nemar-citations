@@ -1,0 +1,39 @@
+{
+  "dataset_id": "ds006945",
+  "date_retrieved": "2026-05-21T18:58:35.611097+00:00",
+  "dataset_description": {
+    "Name": "Dataset: T1-Weighted Structural MRI and fMRI of Participants Viewing Self-Avatar Exoskeleton Walking (11 SWS Cycles)",
+    "BIDSVersion": "1.8.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Shantanu Sarkar",
+      "Kevin Nathan",
+      "Jose L. Contreras-Vidal"
+    ],
+    "Acknowledgements": "We acknowledge the invaluable collaboration and visionary support of the late Prof. Robert Grossman. This research would not have been possible without his contributions.",
+    "HowToAcknowledge": "Please cite the NeuroRex BMI dataset and reference the Data Descriptor when using these data.",
+    "Funding": [
+      "UH–Methodist Graduate Fellowship for Translational Research",
+      "NSF IUCRC BRAIN Center Award #2137255"
+    ],
+    "EthicsApprovals": [
+      "The Institutional Review Board of the University of Houston approved the experimental methods for this study (#12345: Human-Robot Interaction Project)."
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds006945.v1.2.1"
+  },
+  "readme_content": "Neuroimaging Data Collected During Kinesthetic Motor Imagery of Walking vs. Rest\n-------------------------------------------------------------------------------\nThis dataset includes multimodal neuroimaging recordings from five participants performing kinesthetic motor imagery (KI) while viewing themselves walking in an exoskeleton. The dataset includes synchronized MRI (structural and functional) and EEG recordings organized according to the BIDS specification. Functional MRI data were acquired in two runs while participants viewed a 10-minute video, along with a separate baseline scan during which participants simulated a resting state for approximately 5 minutes.\n\nMRI sessions were conducted after participants completed nine sessions of EEG‑controlled exoskeleton walking and standing experiments. \nDataset link: <a href=\"https://openneuro.org/datasets/ds006940\" target=\"_blank\"> https://openneuro.org/datasets/ds006940 </a>\n\nMRI Acquisition:\n- Scanner: Philips Ingenia 3.0T (Koninklijke Philips N.V., The Netherlands)\n- Structural scans: T1‑weighted anatomical images\n- Functional scans (fMRI): Participants viewed a 10‑minute video of themselves walking in the exoskeleton, filmed from a first‑person perspective. The video contained 11 Stop‑Walk‑Stop (SWS) cycles. During viewing, participants were instructed to evoke KI in synchrony with the exoskeleton movements.\n- Baseline condition: Participants mentally simulated resting state for approximately 5 minutes while fMRI data was recorded.\n\nEEG Acquisition:\n- MR‑compatible EEG cap (Brain Products GmbH, Gilching, Germany)\n- Electrode locations are provided in EEGLAB format.\n- 59 scalp channels + 4 EOG channels + 1 ECG channel\n\nStimuli:\n- A video stimulus (`stimuli/walking_exoskeleton_S1.mp4`) was presented during walking tasks.\n\nParticipants:\nFive healthy adults out of seven participated in the EEG‑controlled exoskeleton experiments.\nParticipants S6 and S7 did not undergo MRI scanning due to a pause in data collection during the COVID‑19 pandemic.\n\n<h3>Folder Structure (Example: Participant S1)</h3>\n<hr>\n\n<pre>\n├── dataset_description.json\n├── README\n├── derivatives\n│   └── sub-01\n│       └── ses-01\n│           ├── anat\n│           │   └── sub-01_ses-01_T1w.nii\n│           ├── dwi\n│           │   ├── sub-01_ses-01_run-001_dwi.json\n│           │   ├── sub-01_ses-01_run-001_dwi.bval\n│           │   ├── sub-01_ses-01_run-001_dwi.bvec\n│           │   └── sub-01_ses-01_run-001_dwi.nii.gz\n│           │\n│           └── spm\n│               ├── sub-01_ses-01_beta_0001.nii\n│               ├── ...\n│               ├── sub-01_ses-01_beta_0008.nii\n│               ├── sub-01_ses-01_con_0001.nii\n│               ├── ...\n│               ├── sub-01_ses-01_con_0004.nii\n│               ├── sub-01_ses-01_smpt_0001.nii\n│               ├── ...\n│               ├── sub-01_ses-01_smpt_0004.nii\n│               ├── sub-01_ses-01_mask.mat\n│               ├── sub-01_ses-01_resms.mat\n│               ├── sub-01_ses-01_rpv.mat\n│               └── sub-01_ses-01_spm.mat\n│               \n├── stimuli\n│   └── walking_exoskeleton_S1.mp4\n│\n├── sub-01\n│   └── ses-01\n│       ├── anat\n│       │   ├── sub-01_ses-01_T1w.json\n│       │   └── sub-01_ses-01_T1w.nii\n│       ├── eeg\n│       │   ├── sub-01_ses-01_coordsystem.json\n│       │   ├── sub-01_ses-01_electrodes.json\n│       │   ├── sub-01_ses-01_electrodes.tsv\n│       │   ├── sub-01_ses-01_task-baseline_eeg.eeg\n│       │   ├── sub-01_ses-01_task-baseline_eeg.json\n│       │   ├── sub-01_ses-01_task-baseline_eeg.vhdr\n│       │   ├── sub-01_ses-01_task-baseline_eeg.vmrk\n│       │   ├── sub-01_ses-01_task-walking1_eeg.eeg\n│       │   ├── ...\n│       │   └── sub-01_ses-01_task-walking2_eeg.vmrk\n│       │\n│       └── func\n│           ├── sub-01_ses-01_task-baseline_run-001_bold.json\n│           ├── sub-01_ses-01_task-baseline_run-001_bold.nii.gz\n│           ├── sub-01_ses-01_task-walking1_run-001_bold.json\n│           ├── sub-01_ses-01_task-walking1_run-001_bold.nii.gz\n│           ├── sub-01_ses-01_task-walking2_run-001_bold.json\n│           └── sub-01_ses-01_task-walking2_run-001_bold.nii.gz\n</pre>\n\nValidation Data\n---------------\nA validation file (`derivatives/MRI_DataValidation.xls`) is provided to summarize dataset completeness and quality checks.\n\n- **Sheet: Files**  \n  Lists presence/absence of EEG, MRI, and SPM outputs across subjects (S1–S5).  \n  Includes counts for beta, con, spmT maps, and DTI volumes.\n\n- **Sheet: VMRK-R128**  \n  Reports event marker counts (R128 triggers) for baseline, walking1, and walking2 tasks.\n\n- **Sheet: EEG-Duration**  \n  Provides task durations (minutes) for 'baseline', 'walking1', and 'walking2' EEG recordings.\n\nNotes on Organization\n---------------------\n* Raw data (anat, func, eeg) are stored under each subject directory (sub-XX/ses-YY).\n\n* Derivatives: Preprocessed outputs are stored separately under derivatives/sub-XX/ses-YY, including:<br> \n&emsp;- Statistical Parametric Mapping (SPM) outputs<br> \n&emsp;- SPM-normalized (warped) anatomical scans<br> \n&emsp;- Diffusion Tensor Imaging (DTI) derivatives<br> \n&emsp;- Validation Excel file<br>\n\n* The video stimulus is stored in the top-level stimuli/ folder.\n\n* Naming conventions follow BIDS entities:<br>\n&emsp;- sub-&lt;label&gt;  : subject identifier<br>\n&emsp;- ses-&lt;label&gt;  : session identifier<br>\n&emsp;- task-&lt;label&gt; : task name (baseline, walking1, walking2)<br>\n&emsp;- run-&lt;index&gt;  : run number<br>\n\n\nCitation\n--------\nIf you use this dataset, please cite the associated study and acknowledge the contributors.",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds006945",
+    "exists": true,
+    "description": "OpenNeuro dataset - Dataset: T1-Weighted Structural MRI and fMRI of Participants Viewing Self-Avatar Exoskeleton Walking (11 SWS Cycles)",
+    "created_at": "2025-11-29T18:52:29+00:00",
+    "updated_at": "2026-02-18T07:13:07+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

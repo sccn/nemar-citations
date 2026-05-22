@@ -1,0 +1,56 @@
+{
+  "dataset_id": "nm000168",
+  "date_retrieved": "2026-05-21T18:42:59.602568+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2015-013 Error-Related Potentials dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "Ricardo Chavarriaga",
+      "José del R. Millán"
+    ],
+    "Funding": [
+      "EC under Contract BACS FP6-IST-027140"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1109/TNSRE.2010.2053387"
+      }
+    ],
+    "Keywords": [
+      "error-related potentials",
+      "ErrP",
+      "brain-computer interface",
+      "reinforcement learning",
+      "monitoring",
+      "error detection"
+    ],
+    "PublicationYear": 2010,
+    "DatasetDOI": "10.82901/nemar.nm000168",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000168-blue)](https://doi.org/10.82901/nemar.nm000168)\n\n# BNCI 2015-013 Error-Related Potentials dataset\n\nBNCI 2015-013 Error-Related Potentials dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2015-013\n- **Paradigm**: p300\n- **DOI**: 10.1109/TNSRE.2010.2053387\n- **Subjects**: 6\n- **Sessions per subject**: 20\n- **Events**: Target=1, NonTarget=2\n- **Trial interval**: [0, 0.6] s\n- **File format**: matlab\n\n## Acquisition\n\n- **Sampling rate**: 512.0 Hz\n- **Number of channels**: 64\n- **Channel types**: eeg=64\n- **Channel names**: Fp1, AF7, AF3, F1, F3, F5, F7, FT7, FC5, FC3, FC1, C1, C3, C5, T7, TP7, CP5, CP3, CP1, P1, P3, P5, P7, P9, PO7, PO3, O1, Iz, Oz, POz, Pz, CPz, Fpz, Fp2, AF8, AF4, AFz, Fz, F2, F4, F6, F8, FT8, FC6, FC4, FC2, FCz, Cz, C2, C4, C6, T8, TP8, CP6, CP4, CP2, P2, P4, P6, P8, P10, PO8, PO4, O2\n- **Montage**: standard_1020\n- **Hardware**: Biosemi ActiveTwo\n- **Sensor type**: active\n- **Line frequency**: 50.0 Hz\n\n## Participants\n\n- **Number of subjects**: 6\n- **Health status**: patients\n- **Clinical population**: Healthy\n- **Age**: mean=27.83, std=2.23\n- **Gender distribution**: male=5, female=1\n- **Handedness**: not reported\n- **BCI experience**: not reported\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Task type**: monitoring\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Trial duration**: 2.0 s\n- **Study design**: Error-related potential (ErrP) monitoring task where subjects observe a cursor moving towards a target. The cursor moves autonomously with 20% or 40% error probability. Subjects monitor performance without control.\n- **Feedback type**: visual\n- **Stimulus type**: cursor_movement\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: offline\n- **Training/test split**: True\n- **Instructions**: Subjects seat in front of a computer screen and monitor a moving cursor (green square) and target location (blue for left, red for right). No control over cursor movement, only assess whether it performs properly. Fixate center of screen.\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n\n## Data Structure\n\n- **Trials**: ~50 trials per block, ~64 trials per block for error_prob=0.20\n- **Blocks per session**: 10\n- **Block duration**: 180.0 s\n- **Trials context**: per_block\n\n## Preprocessing\n\n- **Data state**: raw\n- **Preprocessing applied**: False\n\n## Signal Processing\n\n- **Classifiers**: Gaussian classifier\n- **Feature extraction**: event-related potentials\n- **Frequency bands**: analyzed=[1.0, 10.0] Hz\n\n## Cross-Validation\n\n- **Method**: train-test split\n- **Evaluation type**: cross_session\n\n## Performance (Original Study)\n\n- **Accuracy**: 75.8%\n- **Correct Recognition Rate**: 63.2\n- **Error Recognition Rate**: 75.8\n\n## BCI Application\n\n- **Applications**: error_detection\n- **Environment**: laboratory\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Cognitive\n- **Type**: ErrP\n\n## Documentation\n\n- **Description**: Dataset on EEG error-related potentials (ErrPs) elicited when users monitor the behavior of an external autonomous agent. One of the first studies showing that error correlates can be observed and decoded during monitoring of external agents without user control.\n- **DOI**: 10.1109/TNSRE.2010.2053387\n- **License**: CC-BY-NC-ND-4.0\n- **Investigators**: Ricardo Chavarriaga, José del R. Millán\n- **Senior author**: José del R. Millán\n- **Contact**: ricardo.chavarriaga@epfl.ch; jose.millan@epfl.ch\n- **Institution**: Ecole Polytechnique Fédérale de Lausanne\n- **Department**: Defitech Chair in Brain-Machine Interface, CNBI, Center for Neuroprosthetics\n- **Country**: CH\n- **Repository**: BNCI Horizon\n- **Publication year**: 2010\n- **Funding**: EC under Contract BACS FP6-IST-027140\n- **Keywords**: error-related potentials, ErrP, brain-computer interface, reinforcement learning, monitoring, error detection\n\n## References\n\nChavarriaga, R., & Millán, J. D. R. (2010). Learning from EEG error-related potentials in noninvasive brain-computer interfaces. IEEE Trans. Neural Syst. Rehabil. Eng., 18(4), 381-388. https://doi.org/10.1109/TNSRE.2010.2053387\n\nNotes\n\n.. versionadded:: 1.2.0\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000168",
+    "exists": true,
+    "description": "BNCI 2015-013 Error-Related Potentials dataset",
+    "created_at": "2026-03-23T13:12:00+00:00",
+    "updated_at": "2026-05-18T11:18:38+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

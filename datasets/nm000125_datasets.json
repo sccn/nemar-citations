@@ -1,0 +1,68 @@
+{
+  "dataset_id": "nm000125",
+  "date_retrieved": "2026-05-21T18:42:04.530536+00:00",
+  "dataset_description": {
+    "Name": "Lee2021 – SSVEP paradigm of the Mobile BCI dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC BY 4.0",
+    "Authors": [
+      "Young-Eun Lee",
+      "Gi-Hwan Shin",
+      "Minji Lee",
+      "Seong-Whan Lee"
+    ],
+    "Funding": [
+      "IITP No. 2017-0-00451",
+      "IITP No. 2015-0-00185",
+      "IITP No. 2019-0-00079"
+    ],
+    "EthicsApprovals": [
+      "Institutional Review Board of Korea University, KUIRB-2019-0194-01"
+    ],
+    "ReferencesAndLinks": [
+      "https://osf.io/r7s9b/"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.4.3"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1038/s41597-021-01094-4",
+        "URL": "https://osf.io/r7s9b/"
+      }
+    ],
+    "Keywords": [
+      "SSVEP",
+      "ERP",
+      "mobile BCI",
+      "ear-EEG",
+      "locomotion"
+    ],
+    "PublicationYear": 2021,
+    "ExperimentName": "Lee2021",
+    "Description": "SSVEP paradigm of the Mobile BCI dataset.\n\n\nDataset summary:\n\n#Subj     24\n#Chan     32\n#Classes      3\n#Trials / class     20\nTrials length    5 s\nFreq 500 Hz\n#Sessions    4-5\n\nSee :class:`Lee2021Mobile` for full documentation.",
+    "DatasetDOI": "10.82901/nemar.nm000125",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000125-blue)](https://doi.org/10.82901/nemar.nm000125)\n\n# SSVEP paradigm of the Mobile BCI dataset\n\nSSVEP paradigm of the Mobile BCI dataset.\n\n## Dataset Overview\n\n- **Code**: Lee2021Mobile-SSVEP\n- **Paradigm**: ssvep\n- **DOI**: 10.1038/s41597-021-01094-4\n- **Subjects**: 23\n- **Sessions per subject**: 4\n- **Events**: 5.45=11, 8.57=12, 12.0=13\n- **Trial interval**: [0, 5] s\n- **File format**: BrainVision\n\n## Acquisition\n\n- **Sampling rate**: 100.0 Hz\n- **Number of channels**: 73\n- **Channel types**: eeg=73\n- **Montage**: standard_1005\n- **Hardware**: BrainAmp (Brain Product GmbH)\n- **Reference**: FCz\n- **Ground**: Fpz\n- **Sensor type**: Ag/AgCl\n- **Line frequency**: 60.0 Hz\n- **Impedance threshold**: 50 kOhm\n- **Electrode material**: Ag/AgCl\n- **Auxiliary channels**: EOG (4 ch, vertical, horizontal)\n\n## Participants\n\n- **Number of subjects**: 23\n- **Health status**: healthy\n- **Age**: mean=24.5, std=2.9, min=19, max=32\n- **Gender distribution**: male=13, female=10\n\n## Experimental Protocol\n\n- **Paradigm**: ssvep\n- **Number of classes**: 3\n- **Class labels**: 5.45, 8.57, 12.0\n- **Trial duration**: 5.0 s\n- **Study design**: BCI during motion (standing/walking/running)\n- **Stimulus type**: visual flicker\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: offline\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  5.45\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/5_45\n\n  8.57\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/8_57\n\n  12.0\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/12_0\n\n```\n## Signal Processing\n\n- **Classifiers**: rLDA, CCA\n- **Feature extraction**: power_over_time_intervals, CCA\n- **Frequency bands**: delta=[0.5, 3.5] Hz; theta=[3.5, 7.5] Hz; alpha=[7.5, 12.5] Hz; beta=[12.5, 30.0] Hz\n\n## Cross-Validation\n\n- **Method**: holdout\n- **Evaluation type**: within_subject\n\n## BCI Application\n\n- **Applications**: mobile_BCI\n- **Environment**: treadmill\n\n## Tags\n\n- **Pathology**: healthy\n- **Modality**: visual\n- **Type**: perception\n\n## Documentation\n\n- **DOI**: 10.1038/s41597-021-01094-4\n- **License**: CC BY 4.0\n- **Investigators**: Young-Eun Lee, Gi-Hwan Shin, Minji Lee, Seong-Whan Lee\n- **Senior author**: Seong-Whan Lee\n- **Institution**: Korea University\n- **Country**: KR\n- **Repository**: OSF\n- **Data URL**: https://osf.io/r7s9b/\n- **Publication year**: 2021\n- **Funding**: IITP No. 2017-0-00451; IITP No. 2015-0-00185; IITP No. 2019-0-00079\n- **Ethics approval**: Institutional Review Board of Korea University, KUIRB-2019-0194-01\n- **Keywords**: SSVEP, ERP, mobile BCI, ear-EEG, locomotion\n\n## References\n\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.4.3 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000125",
+    "exists": true,
+    "description": "Lee2021 – SSVEP paradigm of the Mobile BCI dataset",
+    "created_at": "2026-03-06T21:25:43+00:00",
+    "updated_at": "2026-05-12T04:39:46+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

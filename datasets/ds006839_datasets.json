@@ -1,0 +1,67 @@
+{
+  "dataset_id": "ds006839",
+  "date_retrieved": "2026-05-21T18:58:12.832256+00:00",
+  "dataset_description": {
+    "Name": "EEG recordings during sham neurofeedback in virtual reality",
+    "BIDSVersion": "1.9.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "C. Brigitte Aguilar Gonzales",
+      "Collaborators from the Experimental and Computational Neuroscience Group"
+    ],
+    "Acknowledgements": "We thank all participants for their contribution to this study and the research group for technical support.",
+    "HowToAcknowledge": "Please cite the associated manuscript and the MNE-BIDS toolbox (Appelhoff et al., 2019) when using these data.",
+    "Funding": [
+      "This work was supported by CONICET (Argentina) and Universidad Nacional de Entre Ríos."
+    ],
+    "ReferencesAndLinks": [
+      "https://osf.io/aumvk/",
+      "https://openneuro.org/",
+      "https://mne.tools/mne-bids"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds006839.v1.0.0",
+    "License": "CC0",
+    "GeneratedBy": [
+      {
+        "Name": "MNE-BIDS",
+        "Version": "0.15",
+        "Description": "Used for conversion of .cnt EEG recordings to BIDS format.",
+        "CodeURL": "https://github.com/mne-tools/mne-bids"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "URL": "https://osf.io/aumvk/",
+        "Description": "Original raw EEG data in .cnt format."
+      }
+    ],
+    "EthicsApprovals": [
+      "Approved by the Central Committee on Bioethics in Biomedical Practice and Research of Entre Ríos, Argentina"
+    ],
+    "InstitutionName": "Universidad Nacional de Entre Ríos",
+    "InstitutionAddress": "Ruta Provincial 11, Km 10,5, Oro Verde, Entre Ríos, Argentina",
+    "InstitutionalDepartmentName": "Facultad de Ingeniería - Experimental and Computational Neuroscience Group",
+    "Manufacturer": "Compumedics NeuroScan Inc.",
+    "ManufacturersModelName": "SynAmps RT",
+    "SoftwareVersions": "NeuroScan 4.5",
+    "PowerLineFrequency": 50,
+    "SoftwareFilters": "High-pass filter 0.1 Hz, low-pass filter 500 Hz, notch 50 Hz",
+    "TaskDescription": "Participants received sham neurofeedback (positive, negative, or no feedback) in a VR environment while EEG was recorded. The task aimed to assess the influence of feedback valence on alpha-band modulation during an attentional task. During the resting state task, two conditions were performed: eyes open (fixation cross) and eyes closed (1.5 min each conditon).",
+    "Instructions": "Participants were instructed to remain relaxed, minimize movements, and pay attention to the sound of an object in the VR environment",
+    "StimulusPresentation": "Visual and auditory stimuli were presented using a VR headset developed in Unity3D, synchronized with event markers sent to the EEG system."
+  },
+  "readme_content": "﻿EEG recordings during sham neurofeedback in virtual reality\r\n\r\nDescription\r\n\r\nThis dataset contains EEG recordings acquired during a sham neurofeedback experiment conducted in a virtual reality (VR) environment. The study aimed to investigate how feedback valence (positive, negative, or control) modulates alpha-band activity and during an attentional task. EEG signals were recorded using a 32-channel SynAmps RT amplifier (Compumedics NeuroScan Inc., Charlotte, NC, USA) and Ag/AgCl passive electrodes mounted on an elastic cap (Wuhan Greentek Pty. Ltd., China) following the extended 10–20 international system.\r\n\r\nEach participant completed four conditions:\r\n\r\nPositive feedback (S##_p.cnt) - sham feedback with a reinforcement valence.\r\n\r\nNegative feedback (S##_n.cnt) - sham feedback with a punishment valence.\r\n\r\nControl (S##_c.cnt) — participants observed the VR environment without any feedback.\r\n\r\nResting-state (S##_resting.cnt) — participants alternated between eyes open and eyes closed conditions.\r\n\r\nExperimental design\r\n\r\nFeedback blocks: Each feedback condition consisted of four blocks of approximately 2 minutes each.\r\n\r\nEvents:\r\n\r\n238 — marks the beginning of each 2-minute feedback block.\r\n\r\n222 — indicates an increase in brightness or volume of VR objects.\r\n\r\n190 — indicates a decrease in brightness or volume.\r\n\r\n126 — marks the beginning and end of eyes open/closed periods during the resting condition.\r\n\r\nResting-state order: Eyes open first, followed by eyes closed.\r\n\r\nData format\r\n\r\nOriginal EEG recordings were collected in .cnt format (NeuroScan).\r\n\r\nData were converted to the Brain Imaging Data Structure (BIDS) format using the MNE-BIDS toolbox (Appelhoff et al., 2019).\r\n\r\nEach subject folder (e.g., sub-01/) contains EEG data files (.eeg), event markers, and corresponding JSON sidecar files with acquisition parameters.\r\n\r\nData availability\r\n\r\nThe BIDS-formatted dataset is publicly available on the OpenNeuro repository and linked through the OSF Wiki project.\r\n\r\nReferences\r\n\r\nAppelhoff, S., Sanderson, M., Brooks, T. L., van Vliet, M., Quentin, R., Holdgraf, C., … Gramfort, A. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software, 4(44), 1896. https://doi.org/10.21105/joss.01896\r\n\r\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., & Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103.\r\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds006839",
+    "exists": true,
+    "description": "OpenNeuro dataset - EEG recordings during sham neurofeedback in virtual reality",
+    "created_at": "2025-10-29T13:27:00+00:00",
+    "updated_at": "2025-10-29T13:36:11+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

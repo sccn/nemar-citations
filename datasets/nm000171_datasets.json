@@ -1,0 +1,61 @@
+{
+  "dataset_id": "nm000171",
+  "date_retrieved": "2026-05-21T18:43:04.115103+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2014-002 Motor Imagery dataset",
+    "BIDSVersion": "1.9.0",
+    "Version": "1.0.1",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-ND-4.0",
+    "Authors": [
+      "David Steyrl",
+      "Reinhold Scherer",
+      "Oswin Förstner",
+      "Gernot R. Müller-Putz"
+    ],
+    "Funding": [
+      "FP7 BackHome (No. 288566)",
+      "FP7 ABC (No. 287774)"
+    ],
+    "ReferencesAndLinks": [
+      "10.3217/978-3-85125-378-8-61"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1007/s00500-012-0895-4"
+      }
+    ],
+    "Keywords": [
+      "brain-computer interfaces",
+      "machine learning",
+      "random forests",
+      "regularized linear discriminant analysis",
+      "sensorimotor rhythms"
+    ],
+    "PublicationYear": 2014,
+    "DatasetDOI": "10.82901/nemar.nm000171"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000171-blue)](https://doi.org/10.82901/nemar.nm000171)\n\n# BNCI 2014-002 Motor Imagery dataset\n\nBNCI 2014-002 Motor Imagery dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2014-002\n- **Paradigm**: imagery\n- **DOI**: 10.1007/s00500-012-0895-4\n- **Subjects**: 14\n- **Sessions per subject**: 1\n- **Events**: right_hand=1, feet=2\n- **Trial interval**: [3, 8] s\n- **Runs per session**: 8\n- **File format**: MAT\n- **Data preprocessed**: True\n\n## Acquisition\n\n- **Sampling rate**: 512.0 Hz\n- **Number of channels**: 15\n- **Channel types**: eeg=15\n- **Channel names**: EEG1, EEG2, EEG3, EEG4, EEG5, EEG6, EEG7, EEG8, EEG9, EEG10, EEG11, EEG12, EEG13, EEG14, EEG15\n- **Montage**: Laplacian\n- **Hardware**: g.USBamp\n- **Software**: BCI2000\n- **Reference**: left mastoid\n- **Ground**: right mastoid\n- **Sensor type**: Ag/AgCl\n- **Line frequency**: 50.0 Hz\n- **Online filters**: 8th order Butterworth band-pass filters\n- **Cap manufacturer**: Guger Technologies OG\n- **Cap model**: g.LADYbird\n- **Electrode type**: active\n- **Electrode material**: Ag/AgCl\n\n## Participants\n\n- **Number of subjects**: 14\n- **Health status**: healthy\n- **Age**: min=20.0, max=30.0\n- **BCI experience**: mixed\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 2\n- **Class labels**: right_hand, feet\n- **Trial duration**: 5.0 s\n- **Study design**: Two-class motor imagery: right hand and feet. Cue-guided Graz-BCI training paradigm with recording, training, and feedback within a single session.\n- **Feedback type**: continuous\n- **Stimulus type**: bar_graph\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: online\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  right_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n  feet\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine, Move, Foot\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: right_hand, feet\n- **Imagery duration**: 5.0 s\n\n## Data Structure\n\n- **Trials**: 160\n- **Trials per class**: right_hand=80, feet=80\n- **Blocks per session**: 8\n- **Trials context**: total per subject\n\n## Preprocessing\n\n- **Data state**: minimally preprocessed (online filtered)\n- **Preprocessing applied**: True\n- **Steps**: bandpass filtering\n- **Filter type**: Butterworth\n- **Filter order**: 8\n\n## Signal Processing\n\n- **Classifiers**: Random Forest, Shrinkage LDA\n- **Feature extraction**: CSP, DFT, Bandpower\n- **Frequency bands**: alpha=[6, 14] Hz; beta=[14, 40] Hz\n- **Spatial filters**: CSP, Laplacian\n\n## Cross-Validation\n\n- **Method**: train-test split\n- **Evaluation type**: within_subject\n\n## Performance (Original Study)\n\n- **Accuracy**: 79.3%\n- **Peak Accuracy**: 89.67\n- **Median Accuracy**: 80.42\n\n## BCI Application\n\n- **Applications**: communication, control\n- **Environment**: laboratory\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Motor\n- **Type**: Motor Imagery\n\n## Documentation\n\n- **DOI**: 10.1515/bmt-2014-0117\n- **Associated paper DOI**: 10.3217/978-3-85125-378-8-61\n- **License**: CC-BY-ND-4.0\n- **Investigators**: David Steyrl, Reinhold Scherer, Oswin Förstner, Gernot R. Müller-Putz\n- **Contact**: david.steyrl@tugraz.at; reinhold.scherer@tugraz.at; oswin.foerstner@student.tugraz.at; gernot.mueller@tugraz.at\n- **Institution**: Graz University of Technology\n- **Department**: Institute for Knowledge Discovery, Laboratory of Brain-Computer Interfaces\n- **Country**: Austria\n- **Repository**: BNCI Horizon\n- **Publication year**: 2014\n- **Funding**: FP7 BackHome (No. 288566); FP7 ABC (No. 287774)\n- **Keywords**: brain-computer interfaces, machine learning, random forests, regularized linear discriminant analysis, sensorimotor rhythms\n\n## References\n\nScherer, R., Faller, J., Balderas, D., Friedrich, E. V., & Müller-Putz, G. (2015). Brain-computer interfacing: more than the sum of its parts. Soft Computing, 19(11), 3173-3186. https://doi.org/10.1007/s00500-012-0895-4\n\nNotes\n\n.. note::\n\n``BNCI2014_002`` was previously named ``BNCI2014002``. ``BNCI2014002`` will be removed in version 1.1.\n\n.. versionadded:: 0.4.0\n\nSee Also\n\nBNCI2014_001 : 4-class motor imagery (BCI Competition IV Dataset 2a) BNCI2014_004 : 2-class motor imagery (Dataset B)\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000171",
+    "exists": true,
+    "description": "BNCI 2014-002 Motor Imagery dataset",
+    "created_at": "2026-03-23T14:19:18+00:00",
+    "updated_at": "2026-05-18T11:42:00+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

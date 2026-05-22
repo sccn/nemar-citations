@@ -1,0 +1,28 @@
+{
+  "dataset_id": "ds007558",
+  "date_retrieved": "2026-05-21T18:41:07.223194+00:00",
+  "dataset_description": {
+    "Name": "EEG Pre/Post Intervention Dataset",
+    "BIDSVersion": "1.8.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Mengsha Qi"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds007558.v1.0.0",
+    "License": "CC0"
+  },
+  "readme_content": "# Dataset Description\n\n## Overview\nThis dataset contains EEG recordings from a study investigating neural activity changes before and after an intervention. The data are organized following the Brain Imaging Data Structure (BIDS) specification.\n\nThe dataset includes multiple participant groups and timepoints:\n- Group 1, Group 2, Group 3\n- Pre-intervention (pre) and Post-intervention (post)\n\n## Participants\nParticipants are labeled using anonymized IDs (e.g., sub-001, sub-002, etc.). Demographic and session-related information are provided in the corresponding TSV files where applicable.\n\n## Data Structure\nThe dataset follows the BIDS format:\n\n- `sub-XXX/`\n  - `ses-pre/` or `ses-post/`\n    - `eeg/`\n      - EEG recordings (.edf)\n      - Metadata files (.json)\n      - Events files (.tsv)\n\nEach subject contains EEG recordings organized by session (pre/post).\n\n## Experimental Design\nThe study compares neural activity before and after an intervention. Participants are divided into different groups to evaluate potential differences in outcomes.\n\n## Data Acquisition\nEEG data were recorded using standard acquisition systems. Detailed acquisition parameters are stored in the accompanying JSON sidecar files.\n\n## Data Processing\nThe dataset has been reorganized into BIDS format. File naming, metadata, and structure have been standardized to ensure compatibility with BIDS-compliant tools.\n\n## Known Issues\n- Some warnings may appear during BIDS validation but do not affect data usability.\n- All critical validation errors have been resolved.\n\n## Usage Notes\nThis dataset can be used for:\n- EEG signal analysis\n- Functional connectivity studies\n- Pre/post intervention comparisons\n\n## License\nPlease refer to the dataset repository for licensing information.\n\n## Acknowledgements\nWe thank all participants and researchers involved in data collection and processing.",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds007558",
+    "exists": true,
+    "description": "OpenNeuro dataset - EEG Pre/Post Intervention Dataset",
+    "created_at": "2026-03-25T11:00:07+00:00",
+    "updated_at": "2026-03-25T11:16:55+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "dataset_id": "ds007554",
+  "date_retrieved": "2026-05-21T18:41:04.810286+00:00",
+  "dataset_description": {
+    "Name": "Multimodal dataset from the CMx7-MM Experiment",
+    "BIDSVersion": "1.8.0",
+    "License": "CC0",
+    "Authors": [
+      "Zaineb Ajra",
+      "Grégoire Vergotte",
+      "Stéphane Perrey",
+      "Lilian Evra",
+      "Simon Pla",
+      "Gérard Dray",
+      "Jacky Montmain",
+      "Binbin Xu"
+    ],
+    "DatasetType": "raw",
+    "GeneratedBy": [
+      {
+        "Name": "",
+        "Version": "",
+        "Description": ""
+      }
+    ],
+    "SourceDatasets": [],
+    "EthicsApprovals": [
+      "IRB 1912B"
+    ],
+    "Funding": [
+      "Z.A. received a doctoral fellowship from AXIAUM Université Montpellier-ISDM (ANR-20-THIA-0005-01) and ED I2S in France. G.V. was supported by the Occitanie Region, France, through the SKYPHYSIA project."
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds007554.v1.0.0"
+  },
+  "readme_content": "# Multimodal EEG-fNIRS-physio dataset during hierarchical cognitive-motor tasks\n\nThis repository contains a raw multimodal dataset acquired in healthy adults performing a hierarchy of cognitive, motor, and combined cognitive-motor tasks. Data include neurophysiological (EEG, fNIRS), physiological (ECG and EMG), behavioral (push-button, torque), and subjective measures (sleepiness and cognitive load ratings), organized according to the Brain Imaging Data Structure (BIDS).\n\nThe dataset is described in detail in a submitted data paper.\n\n---\n\n## 1. Dataset overview\n\n- **Participants**  \n  - 30 right-handed healthy adults (12 males, 18 females)  \n  - BIDS IDs: `sub-001` to `sub-030`  \n  - One participant (`sub-008`) has incomplete sessions; see `participants.tsv` for details.\n\n- **Sessions**  \n  - Three recording sessions per participant: `ses-01`, `ses-02`, `ses-03`  \n  - Approximate duration: 30 minutes per session (about 90 minutes total per participant)  \n  - All sessions took place in a quiet, dimly lit room with participants seated in a Biodex chair.\n\n- **Modalities**  \n  - EEG (32 channels, 10-20 system)  \n  - fNIRS (prefrontal and sensorimotor montages)  \n  - ECG (Delsys Trigno)  \n  - Biodex torque and kinematic measures  \n  - Push-button responses  \n  - Phenotypic / subjective measures (Karolinska Sleepiness Scale, cognitive load ratings, demographics, handedness)\n\n- **Tasks (7 total)**  \n  1. Mental arithmetic (MA)  \n  2. N-back (NB, 2-back, auditory)  \n  3. Motor imagery (MI)  \n  4. Passive motor (Pass-Mot, Biodex-driven arm movement)  \n  5. Active motor (Act-Mot, voluntary movement with Biodex)  \n  6. N-back arithmetic (NB-MA, combined N-back and mental arithmetic)  \n  7. Full task (NB-MA-Act-Mot, combined cognitive-motor condition)\n\nAll recordings shared here are **raw exports** from the acquisition systems with no offline preprocessing applied.\n\n---\n\n## 2. Experimental paradigm\n\nEach participant performed the seven tasks within each session. Tasks were presented in random order, with:\n\n- Task duration: 3 minutes per task  \n- Inter-task rest: 30 seconds  \n- Stimuli: auditory digits (0-9) and beeps, delivered via MATLAB/Psychtoolbox\n\nBrief task descriptions:\n\n- **MA (Mental arithmetic)**  \n  Auditory digits (0-9). On each trial, participants add or subtract numbers so that the result stays in the 0-9 range.  \n  - 72 events per task  \n  - Event duration: 1.5 s  \n  - Inter-event interval: 2.5 s\n\n- **NB (N-back, 2-back)**  \n  Auditory digits (0-9). Participants press a button when the current digit matches the digit presented two trials earlier.  \n  - 72 events total, 18 targets  \n  - Event duration: 0.5 s  \n  - Inter-event interval: 1.5 s\n\n- **MI (Motor imagery)**  \n  Participants imagine moving the right arm (no actual movement) when they hear a beep.  \n  - 18 targets  \n  - Inter-target interval: 10 ± 3 s\n\n- **Pass-Mot (Passive motor)**  \n  The participant’s right arm is moved by the Biodex device (external and internal rotation, 60° range).  \n  - Movement duration: 2 s  \n  - 18 movements per task  \n  - Inter-movement interval: 10 ± 3 s\n\n- **Act-Mot (Active motor)**  \n  Participants actively move the robotic arm in response to beeps.  \n  - 18 movements per task  \n  - Inter-target interval: 10 ± 3 s\n\n- **NB-MA (N-back arithmetic)**  \n  Participants press a button when the running sum of the last digits corresponds to the 2-back condition (combined N-back and arithmetic).  \n  - 72 events total, 18 targets  \n  - Event duration: 1.5 s  \n  - Inter-event interval: 2.5 s\n\n- **Full task (NB-MA-Act-Mot)**  \n  Same cognitive demands as NB-MA, but participants move their arm (instead of pressing a button) when the NB-MA condition is met.  \n  - 72 events total, 18 targets  \n  - Event duration: 1.5 s  \n  - Inter-event interval: 2.5 s\n\nSubjective ratings:\n\n- Karolinska Sleepiness Scale (KSS) before each session  \n- Mental load ratings after each task (9-point Likert and visual analogue scale)\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds007554",
+    "exists": true,
+    "description": "OpenNeuro dataset - Multimodal dataset from the CMx7-MM Experiment",
+    "created_at": "2026-03-23T19:20:27+00:00",
+    "updated_at": "2026-03-31T08:24:39+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

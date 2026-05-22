@@ -1,0 +1,72 @@
+{
+  "dataset_id": "nm000144",
+  "date_retrieved": "2026-05-21T18:42:34.309463+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2015-004 Mental tasks dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "Reinhold Scherer",
+      "Josef Faller",
+      "Elisabeth V. C. Friedrich",
+      "Eloy Opisso",
+      "Ursula Costa",
+      "Andrea Kübler",
+      "Gernot R. Müller-Putz"
+    ],
+    "Funding": [
+      "FP7 EU Research Projects BrainAble (No. 247447)",
+      "ABC (No. 287774)",
+      "BackHome (No. 288566)"
+    ],
+    "EthicsApprovals": [
+      "Comitè d'Ètica Assistencial de l'Institut Guttman"
+    ],
+    "ReferencesAndLinks": [
+      "https://bnci-horizon-2020.eu/database/data-sets"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1371/journal.pone.0123727",
+        "URL": "https://bnci-horizon-2020.eu/database/data-sets"
+      }
+    ],
+    "Keywords": [
+      "brain-computer interface",
+      "motor imagery",
+      "mental tasks",
+      "EEG",
+      "CNS tissue damage",
+      "stroke",
+      "spinal cord injury",
+      "binary classification"
+    ],
+    "PublicationYear": 2015,
+    "DatasetDOI": "10.82901/nemar.nm000144",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000144-blue)](https://doi.org/10.82901/nemar.nm000144)\n\n# BNCI 2015-004 Mental tasks dataset\n\nBNCI 2015-004 Mental tasks dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2015-004\n- **Paradigm**: imagery\n- **DOI**: 10.1371/journal.pone.0123727\n- **Subjects**: 9\n- **Sessions per subject**: 2\n- **Events**: math=1, letter=2, rotation=3, count=4, baseline=5\n- **Trial interval**: [0, 4] s\n- **File format**: gdf\n- **Data preprocessed**: True\n\n## Acquisition\n\n- **Sampling rate**: 256.0 Hz\n- **Number of channels**: 30\n- **Channel types**: eeg=30\n- **Channel names**: AFz, F7, F3, Fz, F4, F8, FC3, FCz, FC4, T3, C3, Cz, C4, T4, CP3, CPz, CP4, P7, P5, P3, P1, Pz, P2, P4, P6, P8, PO3, PO4, O1, O2\n- **Montage**: 10-20\n- **Hardware**: g.tec\n- **Reference**: left and right mastoid\n- **Ground**: left and right mastoid\n- **Sensor type**: active electrode\n- **Line frequency**: 50.0 Hz\n- **Online filters**: 0.5-100 Hz bandpass, 50 Hz notch\n- **Cap manufacturer**: g.tec\n- **Electrode type**: g.LADYbird active electrodes\n- **Auxiliary channels**: EOG (2 ch, horizontal, vertical)\n\n## Participants\n\n- **Number of subjects**: 9\n- **Health status**: CNS tissue damage\n- **Clinical population**: stroke and spinal cord injury\n- **Age**: mean=38.0, std=10.0, min=20, max=57\n- **Gender distribution**: male=2, female=7\n- **Handedness**: not specified\n- **BCI experience**: naive\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 5\n- **Class labels**: math, letter, rotation, count, baseline\n- **Trial duration**: 11.0 s\n- **Tasks**: word_association, mental_subtraction, spatial_navigation, right_hand_imagery, feet_imagery\n- **Study design**: Five mental tasks: word association (WORD), mental subtraction (SUB), spatial navigation (NAV), motor imagery of right hand (HAND), and motor imagery of both feet (FEET). Cue-guided paradigm with 7 seconds of continuous mental imagery per trial.\n- **Feedback type**: none\n- **Stimulus type**: visual cue\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: screening\n- **Instructions**: Participants were asked to continuously perform the specified mental imagery task for 7 seconds. For MI: kinesthetic imagination of movement (e.g., squeezing a rubber ball for hand, dorsiflexion for feet). For WORD: generate words beginning with presented letter. For SUB: successive elementary subtractions. For NAV: spatial navigation.\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  math\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Think\n          └─ Label/math\n\n  letter\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Think\n          └─ Label/letter\n\n  rotation\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Think\n          └─ Label/rotation\n\n  count\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine, Count\n\n  baseline\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Rest\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: right_hand, feet, word_association, mental_subtraction, spatial_navigation\n- **Cue duration**: 1.0 s\n- **Imagery duration**: 7.0 s\n\n## Data Structure\n\n- **Trials**: 40\n- **Blocks per session**: 8\n- **Trials context**: per_class_per_day\n\n## Preprocessing\n\n- **Data state**: filtered\n- **Preprocessing applied**: True\n- **Steps**: bandpass filter, notch filter, artifact rejection\n- **Highpass filter**: 0.5 Hz\n- **Lowpass filter**: 100.0 Hz\n- **Bandpass filter**: {'low_cutoff_hz': 0.5, 'high_cutoff_hz': 100.0}\n- **Notch filter**: [50] Hz\n- **Artifact methods**: manual artifact rejection based on EOG\n- **Re-reference**: left and right mastoid\n\n## Signal Processing\n\n- **Classifiers**: LDA\n- **Feature extraction**: bandpower, temporal features\n- **Frequency bands**: mu=[8, 12] Hz; beta=[13, 30] Hz\n\n## Cross-Validation\n\n- **Method**: 10-fold cross-validation\n- **Folds**: 10\n- **Evaluation type**: within_session, cross_session\n\n## Performance (Original Study)\n\n- **Accuracy**: 77.0%\n- **Best Task Pair Gmac**: 77.0\n- **Sub Vs Feet Gmac**: 77.0\n- **Word Vs Hand Gmac**: 70.0\n- **Hand Vs Feet Gmac**: 64.0\n- **Between Day Word Vs Hand Gmac**: 82.0\n\n## BCI Application\n\n- **Applications**: communication, motor_function_restoration\n- **Environment**: rehabilitation center\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Stroke, Spinal Cord Injury, CNS Damage\n- **Modality**: Motor, Cognitive\n- **Type**: Motor, Cognitive\n\n## Documentation\n\n- **DOI**: 10.1371/journal.pone.0123727\n- **License**: CC-BY-NC-ND-4.0\n- **Investigators**: Reinhold Scherer, Josef Faller, Elisabeth V. C. Friedrich, Eloy Opisso, Ursula Costa, Andrea Kübler, Gernot R. Müller-Putz\n- **Senior author**: Reinhold Scherer\n- **Contact**: reinhold.scherer@tugraz.at\n- **Institution**: Institut Guttmann\n- **Department**: Institut Universitari de Neurorehabilitació adscrit a la UAB\n- **Address**: 08916 Badalona, Barcelona, Spain\n- **Country**: Spain\n- **Repository**: BNCI Horizon 2020\n- **Data URL**: https://bnci-horizon-2020.eu/database/data-sets\n- **Publication year**: 2015\n- **Funding**: FP7 EU Research Projects BrainAble (No. 247447); ABC (No. 287774); BackHome (No. 288566)\n- **Ethics approval**: Comitè d'Ètica Assistencial de l'Institut Guttman\n- **Keywords**: brain-computer interface, motor imagery, mental tasks, EEG, CNS tissue damage, stroke, spinal cord injury, binary classification\n\n## References\n\nZhang, X., Yao, L., Zhang, Q., Kanhere, S., Sheng, M., & Liu, Y. (2017). A survey on deep learning based brain computer interface: Recent advances and new frontiers. IEEE Transactions on Cognitive and Developmental Systems, 10(2), 145-163.\n\nNotes\n\n.. note::\n\n``BNCI2015_004`` was previously named ``BNCI2015004``. ``BNCI2015004`` will be removed in version 1.1.\n\n.. versionadded:: 0.4.0\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000144",
+    "exists": true,
+    "description": "BNCI 2015-004 Mental tasks dataset - NEMAR Dataset",
+    "created_at": "2026-03-22T16:48:05+00:00",
+    "updated_at": "2026-05-12T04:37:26+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

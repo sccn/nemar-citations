@@ -1,0 +1,65 @@
+{
+  "dataset_id": "nm000127",
+  "date_retrieved": "2026-05-21T18:42:07.737088+00:00",
+  "dataset_description": {
+    "Name": "Kim2025 – 40-class beta-range SSVEP speller dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC BY 4.0",
+    "Authors": [
+      "Heegyu Kim",
+      "Kyungho Won",
+      "Minkyu Ahn",
+      "Sung Chan Jun"
+    ],
+    "EthicsApprovals": [
+      "GIST IRB, No. 20211201-HR-64-02-04"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.6084/m9.figshare.28806815.v2"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.4.3"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1038/s41597-025-06032-2",
+        "URL": "https://doi.org/10.6084/m9.figshare.28806815.v2"
+      }
+    ],
+    "Keywords": [
+      "SSVEP",
+      "BCI",
+      "beta range",
+      "visual fatigue",
+      "40-class speller",
+      "JFPM",
+      "EEG"
+    ],
+    "PublicationYear": 2025,
+    "ExperimentName": "Kim2025",
+    "Description": "40-class beta-range SSVEP speller dataset.\n\n\nDataset summary:\n\n#Subj      40\n#Chan      33\n#Classes      40\n#Trials / class       6\nTrials length     5 s\nFreq 1024 Hz\n#Sessions       6\n\n\nParticipants:\n\n- Population: healthy\n- Age: 22.8 (range: 20-35) years\n- BCI experience: 3 of 40 had prior SSVEP-BCI experience\n\n\nEquipment:\n\n- Amplifier: BioSemi ActiveTwo\n- Electrodes: active\n- Montage: standard_1005\n- Reference: CMS/DRL\n\n\nPreprocessing:\n\n- Data state: epoched\n\n\nData Access:\n\n- DOI: 10.1038/s41597-025-06032-2\n- Data URL: https://doi.org/10.6084/m9.figshare.28806815.v2\n- Repository: Figshare\n\n\nExperimental Protocol:\n\n- Paradigm: ssvep\n- Task type: speller\n- Feedback: none\n- Stimulus: JFPM visual flicker\n\nDataset from [1]_.\n\nThis dataset contains 33-channel EEG (31 scalp + 2 mastoid references)\nrecorded from 40 healthy subjects (25 males, 15 females, aged 20-35)\nperforming a 40-target SSVEP-BCI speller task using beta-range frequencies\n(14.0-21.8 Hz, 0.2 Hz step). The JFPM approach was used with phase\ndifferences of 0.5*pi between adjacent stimuli.\n\nEach subject completed 6 blocks of 40 trials. Trial structure was 1.5 s\nrest, 0.5 s cue, and 5.0 s SSVEP stimulation. EEG was recorded at 1024 Hz\nwith a BioSemi ActiveTwo system. Stored epochs span [-2000, 5000] ms\nrelative to stimulus onset (7168 samples at 1024 Hz). The event marker is\nplaced at stimulus onset (sample 2048), and interval=[0.0, 5.0] extracts\nthe 5 s stimulation window.\n\nThe stimuli were presented in a 5x8 matrix on a 120 Hz monitor.\n\nReferences\n----------\n.. [1] H. Kim, K. Won, M. Ahn, and S. C. Jun, \"A 40-class SSVEP speller\ndataset: beta range stimulation for low-fatigue BCI applications,\"\nScientific Data, vol. 12, p. 1751, 2025.\nDOI: 10.1038/s41597-025-06032-2",
+    "DatasetDOI": "10.82901/nemar.nm000127",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000127-blue)](https://doi.org/10.82901/nemar.nm000127)\n\n# 40-class beta-range SSVEP speller dataset\n\n40-class beta-range SSVEP speller dataset.\n\n## Dataset Overview\n\n- **Code**: Kim2025BetaRange\n- **Paradigm**: ssvep\n- **DOI**: 10.1038/s41597-025-06032-2\n- **Subjects**: 40\n- **Sessions per subject**: 6\n- **Events**: 14=1, 15=2, 16=3, 17=4, 18=5, 19=6, 20=7, 21=8, 14.2=9, 15.2=10, 16.2=11, 17.2=12, 18.2=13, 19.2=14, 20.2=15, 21.2=16, 14.4=17, 15.4=18, 16.4=19, 17.4=20, 18.4=21, 19.4=22, 20.4=23, 21.4=24, 14.6=25, 15.6=26, 16.6=27, 17.6=28, 18.6=29, 19.6=30, 20.6=31, 21.6=32, 14.8=33, 15.8=34, 16.8=35, 17.8=36, 18.8=37, 19.8=38, 20.8=39, 21.8=40\n- **Trial interval**: [0.0, 5.0] s\n- **File format**: MAT\n\n## Acquisition\n\n- **Sampling rate**: 1024.0 Hz\n- **Number of channels**: 31\n- **Channel types**: eeg=31, misc=2\n- **Montage**: standard_1005\n- **Hardware**: BioSemi ActiveTwo\n- **Software**: OpenViBE\n- **Reference**: CMS/DRL\n- **Ground**: CMS/DRL near Pz\n- **Sensor type**: active\n- **Line frequency**: 60.0 Hz\n- **Impedance threshold**: 5 kOhm\n- **Cap manufacturer**: BioSemi\n- **Electrode type**: wet\n- **Electrode material**: Ag/AgCl\n\n## Participants\n\n- **Number of subjects**: 40\n- **Health status**: healthy\n- **Age**: mean=22.8, std=3.34, min=20, max=35\n- **Gender distribution**: male=25, female=15\n- **BCI experience**: 3 of 40 had prior SSVEP-BCI experience\n\n## Experimental Protocol\n\n- **Paradigm**: ssvep\n- **Task type**: speller\n- **Number of classes**: 40\n- **Class labels**: 14, 15, 16, 17, 18, 19, 20, 21, 14.2, 15.2, 16.2, 17.2, 18.2, 19.2, 20.2, 21.2, 14.4, 15.4, 16.4, 17.4, 18.4, 19.4, 20.4, 21.4, 14.6, 15.6, 16.6, 17.6, 18.6, 19.6, 20.6, 21.6, 14.8, 15.8, 16.8, 17.8, 18.8, 19.8, 20.8, 21.8\n- **Trial duration**: 5.0 s\n- **Feedback type**: none\n- **Stimulus type**: JFPM visual flicker\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: offline\n- **Training/test split**: True\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  14\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/14\n\n  15\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/15\n\n  16\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/16\n\n  17\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/17\n\n  18\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/18\n\n  19\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/19\n\n  20\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/20\n\n  21\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/21\n\n  14.2\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/14_2\n\n  15.2\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/15_2\n\n  16.2\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/16_2\n\n  17.2\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/17_2\n\n  18.2\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/18_2\n\n  19.2\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/19_2\n\n  20.2\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/20_2\n\n  21.2\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/21_2\n\n  14.4\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/14_4\n\n  15.4\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/15_4\n\n  16.4\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/16_4\n\n  17.4\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/17_4\n\n  18.4\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/18_4\n\n  19.4\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/19_4\n\n  20.4\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/20_4\n\n  21.4\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/21_4\n\n  14.6\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/14_6\n\n  15.6\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/15_6\n\n  16.6\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/16_6\n\n  17.6\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/17_6\n\n  18.6\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/18_6\n\n  19.6\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/19_6\n\n  20.6\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/20_6\n\n  21.6\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/21_6\n\n  14.8\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/14_8\n\n  15.8\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/15_8\n\n  16.8\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/16_8\n\n  17.8\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/17_8\n\n  18.8\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/18_8\n\n  19.8\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/19_8\n\n  20.8\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/20_8\n\n  21.8\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/21_8\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: ssvep\n- **Stimulus frequencies**: [14.0, 14.2, 14.4, 14.6, 14.8, 15.0, 15.2, 15.4, 15.6, 15.8, 16.0, 16.2, 16.4, 16.6, 16.8, 17.0, 17.2, 17.4, 17.6, 17.8, 18.0, 18.2, 18.4, 18.6, 18.8, 19.0, 19.2, 19.4, 19.6, 19.8, 20.0, 20.2, 20.4, 20.6, 20.8, 21.0, 21.2, 21.4, 21.6, 21.8] Hz\n- **Frequency resolution**: 0.2 Hz\n\n## Data Structure\n\n- **Trials**: 240\n- **Blocks per session**: 6\n\n## Preprocessing\n\n- **Data state**: epoched\n\n## Signal Processing\n\n- **Classifiers**: CCA, FBCCA, ITCCA, TRCA, EEGNet\n- **Feature extraction**: CCA, FBCCA, TRCA\n- **Frequency bands**: stimulus_range=[14.0, 22.0] Hz; analysis=[13.0, 89.0] Hz\n- **Spatial filters**: CCA, TRCA\n\n## Cross-Validation\n\n- **Method**: leave-one-subject-out\n- **Folds**: 6\n- **Evaluation type**: within_subject, cross_subject\n\n## BCI Application\n\n- **Applications**: speller\n- **Environment**: lab\n\n## Tags\n\n- **Pathology**: healthy\n- **Modality**: visual\n- **Type**: perception\n\n## Documentation\n\n- **DOI**: 10.1038/s41597-025-06032-2\n- **License**: CC BY 4.0\n- **Investigators**: Heegyu Kim, Kyungho Won, Minkyu Ahn, Sung Chan Jun\n- **Senior author**: Sung Chan Jun\n- **Institution**: Gwangju Institute of Science and Technology\n- **Department**: School of Electrical Engineering and Computer Science, GIST\n- **Country**: KR\n- **Repository**: Figshare\n- **Data URL**: https://doi.org/10.6084/m9.figshare.28806815.v2\n- **Publication year**: 2025\n- **Ethics approval**: GIST IRB, No. 20211201-HR-64-02-04\n- **Keywords**: SSVEP, BCI, beta range, visual fatigue, 40-class speller, JFPM, EEG\n\n## References\n\nH. Kim, K. Won, M. Ahn, and S. C. Jun, \"A 40-class SSVEP speller dataset: beta range stimulation for low-fatigue BCI applications,\" Scientific Data, vol. 12, p. 1751, 2025. DOI: 10.1038/s41597-025-06032-2\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.4.3 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000127",
+    "exists": true,
+    "description": "Kim2025 – 40-class beta-range SSVEP speller dataset",
+    "created_at": "2026-03-06T21:28:30+00:00",
+    "updated_at": "2026-05-12T04:39:31+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

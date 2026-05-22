@@ -1,0 +1,47 @@
+{
+  "dataset_id": "nm000114",
+  "date_retrieved": "2026-05-21T18:41:50.951557+00:00",
+  "dataset_description": {
+    "Name": "MDD Patients and Healthy Controls EEG Data",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Wajid Mumtaz",
+      "Likun Xia",
+      "Syed Saad Azhar Ali",
+      "Mohd Azhar Mohd Yasin",
+      "Mazhar Hussain",
+      "Aamir Saeed Malik"
+    ],
+    "Acknowledgements": "Pierre Guetschel updated the data to BIDS format.",
+    "GeneratedBy": [
+      {
+        "Name": "MNE-BIDS",
+        "Version": "0.17.0",
+        "CodeURL": "https://mne.tools/mne-bids/"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "https://doi.org/10.6084/m9.figshare.4244171.v2"
+      }
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000114",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000114-blue)](https://doi.org/10.82901/nemar.nm000114)\n\n# MDD Patients and Healthy Controls EEG Data\n\n## Introduction\n\nThis dataset contains resting-state and task-based EEG recordings from patients diagnosed with Major Depressive Disorder (MDD) and healthy control participants (H). The data was collected to investigate differences in brain electrical activity between MDD patients and healthy individuals across different mental states. The dataset includes 34 participants (19 healthy controls and 15 MDD patients) with recordings during eyes-closed rest, eyes-open rest, and an auditory oddball P300 task. This dataset enables research on neurophysiological biomarkers of depression, comparative studies of brain activity patterns between clinical and healthy populations, and investigation of attentional processing differences in MDD.\n\n## Overview of the experiment\n\nParticipants underwent three recording conditions: (1) eyes-closed resting state, (2) eyes-open resting state, and (3) an auditory oddball P300 task. During the resting-state conditions, participants were instructed to sit quietly with either their eyes closed (EC) or eyes open (EO) for the duration of the recording. In the P300 task, participants were presented with auditory stimuli consisting of frequent standard tones (80% probability) and infrequent target tones (20% probability), and were required to mentally count the target tones. EEG was recorded using a 19-channel monopolar EEG system with electrodes positioned according to the International 10-20 system, referenced to linked ears (A1+A2). The sampling rate was 256 Hz. Hardware filters included a high-pass filter at 0.5 Hz and a low-pass filter at 70 Hz, with a 50 Hz notch filter to remove power line noise. All electrode impedances were maintained below 5 kΩ. The recordings were conducted in a controlled environment to minimize external artifacts. One participant (MDD S15) had two separate recording sessions, resulting in duplicate recordings for this subject.\n\n## Description of the preprocessing if any\n\nThe original EDF files have been converted to BIDS format. Channel names have been standardized by extracting the electrode names from the original \"EEG <electrode>-<reference>\" format. Channels originally referenced to the left ear (LE) are now labeled with just the electrode name, while other bipolar derivations (e.g., A2-A1, 23A-23R, 24A-24R) retain their bipolar notation in the format \"<electrode1>-<electrode2>\". The dataset includes 19 standard EEG channels plus three additional bipolar channels. Subject IDs have been prefixed with their diagnostic group (\"H\" for healthy controls, \"MDD\" for Major Depressive Disorder patients) to facilitate group comparisons. All recordings were artifact-free segments selected from longer recording sessions, with epochs containing excessive oculographic or myographic artifacts excluded during initial data collection.\n\n## Description of the event values if any\n\nNo events.tsv files are provided as the recordings represent continuous resting-state or task conditions without discrete trial markers. The experimental condition for each recording is indicated by the \"task\" field in the BIDS filename:\n- \"eyesClosed\": eyes-closed resting state\n- \"eyesOpen\": eyes-open resting state  \n- \"P300\": auditory oddball task (continuous recording during the entire task block)\n\nFor the P300 task recordings, while individual stimulus onsets are not marked in events.tsv files, the entire recording represents the period during which participants performed the auditory oddball counting task.\n\n## Citation\n\nWhen using this dataset, please cite:\n\n1. Mumtaz, W., Xia, L., Ali, S. S. A., Yasin, M. A. M., Hussain, M., & Malik, A. S. (2017). Electroencephalogram (EEG)-based computer-aided technique to diagnose major depressive disorder (MDD). Biomedical Signal Processing and Control, 31, 108-115. https://doi.org/10.1016/j.bspc.2016.07.006\n\n2. Mumtaz, Wajid (2016). MDD Patients and Healthy Controls EEG Data (New). figshare. Dataset. https://doi.org/10.6084/m9.figshare.4244171.v2\n\n**Data curators:**\nPierre Guetschel (BIDS conversion)\n\nOriginal data collection team:\n- Wajid Mumtaz (Universiti Teknologi PETRONAS)\n- Likun Xia (Universiti Teknologi PETRONAS)\n- Syed Saad Azhar Ali (Universiti Teknologi PETRONAS)\n- Mohd Azhar Mohd Yasin (Universiti Teknologi PETRONAS)\n- Mazhar Hussain (Universiti Teknologi PETRONAS)\n- Aamir Saeed Malik (Universiti Teknologi PETRONAS)\n\n\n---\n\n## Automatic report\n\n*Report automatically generated by `mne_bids.make_report()`.*\n\n>  The MDD Patients and Healthy Controls EEG Data dataset was created by Wajid\nMumtaz, Likun Xia, Syed Saad Azhar Ali, Mohd Azhar Mohd Yasin, Mazhar Hussain,\nand Aamir Saeed Malik and conforms to BIDS version 1.7.0. This report was\ngenerated with MNE-BIDS (https://doi.org/10.21105/joss.01896). The dataset\nconsists of 64 participants (sex were all unknown; handedness were all unknown;\nages all unknown) . Data was recorded using an EEG system sampled at 256.0 Hz\nwith line noise at n/a Hz. There were 181 scans in total. Recording durations\nranged from 180.0 to 686.0 seconds (mean = 408.84, std = 155.23), for a total of\n74000.29 seconds of data recorded over all scans. For each dataset, there were\non average 21.24 (std = 0.97) recording channels per scan, out of which 21.24\n(std = 0.97) were used in analysis (0.0 +/- 0.0 were removed from analysis).",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000114",
+    "exists": true,
+    "description": "MDD Patients and Healthy Controls EEG Data",
+    "created_at": "2026-02-24T22:26:47+00:00",
+    "updated_at": "2026-03-14T13:45:48+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

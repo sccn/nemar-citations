@@ -1,0 +1,58 @@
+{
+  "dataset_id": "nm000152",
+  "date_retrieved": "2026-05-21T18:42:43.363996+00:00",
+  "dataset_description": {
+    "Name": "Upper-limb elbow-centered motor imagery dataset (10 classes)",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC BY 4.0",
+    "Authors": [
+      "Xin Zhang",
+      "Xinyi Yong",
+      "Carlo Menon"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.6084/m9.figshare.5579461.v1"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1371/journal.pone.0188293",
+        "URL": "https://doi.org/10.6084/m9.figshare.5579461.v1"
+      }
+    ],
+    "Keywords": [
+      "motor imagery",
+      "upper limb",
+      "elbow",
+      "BCI",
+      "EEG",
+      "kinesthetic imagery"
+    ],
+    "PublicationYear": 2017,
+    "DatasetDOI": "10.82901/nemar.nm000152",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000152-blue)](https://doi.org/10.82901/nemar.nm000152)\n\n# Upper-limb elbow-centered motor imagery dataset (10 classes)\n\nUpper-limb elbow-centered motor imagery dataset (10 classes).\n\n## Dataset Overview\n\n- **Code**: Zhang2017\n- **Paradigm**: imagery\n- **DOI**: 10.1371/journal.pone.0188293\n- **Subjects**: 12\n- **Sessions per subject**: 1\n- **Events**: rest=1, elbow_flexion=2, drawer=3, soup=4, weight_lifting=5, door=6, plate_cleaning=7, combing=8, pizza_cutting=9, pick_and_place=10\n- **Trial interval**: [0, 4] s\n- **Runs per session**: 15\n- **File format**: BCI2000\n\n## Acquisition\n\n- **Sampling rate**: 1000.0 Hz\n- **Number of channels**: 17\n- **Channel types**: eeg=17\n- **Hardware**: EGI Geodesic Net Amps 400 series (N400)\n- **Software**: BCI2000 (Stimulus Presentation mode)\n- **Reference**: Cz\n- **Ground**: COM\n- **Sensor type**: Ag/AgCl sponge\n- **Line frequency**: 60.0 Hz\n- **Online filters**: {'bandpass': [0.1, 40]}\n\n## Participants\n\n- **Number of subjects**: 12\n- **Health status**: healthy\n- **Age**: min=20, max=33\n- **Gender distribution**: male=10, female=2\n- **Handedness**: {'right': 11, 'left': 1}\n- **BCI experience**: naive\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 10\n- **Class labels**: rest, elbow_flexion, drawer, soup, weight_lifting, door, plate_cleaning, combing, pizza_cutting, pick_and_place\n- **Trial duration**: 5.0 s\n- **Study design**: Upper-limb elbow-centered motor imagery with 9 goal-directed tasks plus rest. Each trial: 4-6 s cue (randomized) then 4-6 s rest (randomized).\n- **Feedback type**: none\n- **Stimulus type**: picture cues\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: offline\n- **Instructions**: Participants were asked to repetitively perform the kinesthetic motor imagery task displayed on the screen without actually moving.\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  rest\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Rest\n\n  elbow_flexion\n    ├─ Sensory-event\n    └─ Label/elbow_flexion\n\n  drawer\n    ├─ Sensory-event\n    └─ Label/drawer\n\n  soup\n    ├─ Sensory-event\n    └─ Label/soup\n\n  weight_lifting\n    ├─ Sensory-event\n    └─ Label/weight_lifting\n\n  door\n    ├─ Sensory-event\n    └─ Label/door\n\n  plate_cleaning\n    ├─ Sensory-event\n    └─ Label/plate_cleaning\n\n  combing\n    ├─ Sensory-event\n    └─ Label/combing\n\n  pizza_cutting\n    ├─ Sensory-event\n    └─ Label/pizza_cutting\n\n  pick_and_place\n    ├─ Sensory-event\n    └─ Label/pick_and_place\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: elbow_flexion, drawer, soup, weight_lifting, door, plate_cleaning, combing, pizza_cutting, pick_and_place\n- **Cue duration**: 5.0 s\n- **Imagery duration**: 5.0 s\n\n## Data Structure\n\n- **Trials**: 330\n- **Trials context**: 15 runs of 24 trials each (4 rest + 4 elbow + 2 each of 8 goal tasks). Total: 60 rest + 30 per MI task = 330.\n\n## Preprocessing\n\n- **Data state**: raw\n- **Preprocessing applied**: False\n\n## Signal Processing\n\n- **Classifiers**: LDA, DAL\n- **Feature extraction**: bandpower, CSP, FBCSP\n- **Frequency bands**: bandpass=[6.0, 35.0] Hz; mu=[7.0, 13.0] Hz; beta=[13.0, 30.0] Hz\n- **Spatial filters**: CSP, FBCSP\n\n## Cross-Validation\n\n- **Method**: 5x5-fold\n- **Folds**: 5\n- **Evaluation type**: within_subject\n\n## BCI Application\n\n- **Applications**: motor_control, rehabilitation\n- **Environment**: laboratory\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Motor\n- **Type**: Research\n\n## Documentation\n\n- **DOI**: 10.1371/journal.pone.0188293\n- **License**: CC BY 4.0\n- **Investigators**: Xin Zhang, Xinyi Yong, Carlo Menon\n- **Senior author**: Carlo Menon\n- **Institution**: Simon Fraser University\n- **Department**: School of Engineering Science\n- **Country**: CA\n- **Repository**: Figshare\n- **Data URL**: https://doi.org/10.6084/m9.figshare.5579461.v1\n- **Publication year**: 2017\n- **Keywords**: motor imagery, upper limb, elbow, BCI, EEG, kinesthetic imagery\n\n## References\n\nX. Zhang, X. Yong, and C. Menon, \"Evaluating the versatility of EEG models generated from motor imagery tasks: An exploratory investigation on upper-limb elbow-centered motor imagery tasks,\" PLoS ONE, vol. 12, no. 11, e0188293, 2017. DOI: 10.1371/journal.pone.0188293\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000152",
+    "exists": true,
+    "description": "Upper-limb elbow-centered motor imagery dataset (10 classes)",
+    "created_at": "2026-03-22T19:20:56+00:00",
+    "updated_at": "2026-05-12T04:36:42+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

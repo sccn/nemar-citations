@@ -1,0 +1,48 @@
+{
+  "dataset_id": "ds007609",
+  "date_retrieved": "2026-05-21T18:41:15.010126+00:00",
+  "dataset_description": {
+    "Name": "Resting-State EEG and Trait Anxiety",
+    "BIDSVersion": "1.9.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Tamari Shalamberidze",
+      "Kyle Nash",
+      "Jeremy B. Caplan"
+    ],
+    "HowToAcknowledge": "Please cite: Shalamberidze, T., Nash, K., & Caplan, J.B. (2025). Resting-state EEG and trait anxiety.",
+    "Funding": [
+      "Social Sciences and Humanities Research Council of Canada (SSHRC)",
+      "Natural Sciences and Engineering Research Council of Canada (NSERC)"
+    ],
+    "EthicsApprovals": [
+      "University of Alberta Research Ethics Board, Project: Physiological Bases of Human Memory, No. Pro00113334"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.1162/IMAG.a.44"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds007609.v1.0.0",
+    "SourceDatasets": [],
+    "GeneratedBy": [
+      {
+        "Name": "Custom MATLAB scripts",
+        "Description": "BIDS conversion scripts in code/ directory"
+      }
+    ]
+  },
+  "readme_content": "Resting-State EEG and Trait Anxiety\n====================================\n\nThis dataset contains resting-state EEG recordings from 51 participants,\ncollected as part of a study examining the relationship between resting-state\nEEG alpha/theta power, oscillatory dynamics, and trait anxiety.\n\nParticipants\n------------\n51 right-handed undergraduate students (25 female) from the University of\nAlberta, aged 17-51 years (mean = 20.4, SD = 4.9), participated for course\ncredit.\n\nAuthors\n-------\nTamari Shalamberidze (a), Kyle Nash (a,b), Jeremy B. Caplan (a,b)\n(a) Neuroscience and Mental Health Institute, University of Alberta, Edmonton, AB, Canada\n(b) Department of Psychology, University of Alberta, Edmonton, AB, Canada\n\nCorresponding Author: Tamari Shalamberidze (shalambe@ualberta.ca)\n\nRelated Publication\n-------------------\nShalamberidze, T., Nash, K., & Caplan, J.B. (2025). Resting-state EEG and\ntrait anxiety. Imaging Neuroscience. https://doi.org/10.1162/IMAG.a.44\n\nRecording\n---------\nEEG was recorded using a 256-channel EGI HydroCel Geodesic Sensor Net\nwith Net Amps amplifier. The original sampling rate was 500 Hz.\nOnline reference was Cz.\n\nParadigm\n--------\nParticipants completed a resting-state protocol consisting of alternating\n1-minute eyes-open (EO) and 1-minute eyes-closed (EC) blocks, repeated\ntwice (EO-EC-EO-EC), for a total of 4 minutes. Transitions between blocks\nwere signaled by an auditory beep.\n\nPreprocessing\n-------------\nData were preprocessed in EEGLAB (MATLAB) with the following steps:\n- Bandpass filter: 0.1-50 Hz\n- Line noise removal: CleanLine at 60 Hz and 120 Hz\n- Channel rejection: kurtosis-based (2x threshold), applied twice\n- Re-referencing to the average\n- ICA decomposition (runica, extended)\n- Artifact component removal via ICLabel (>0.8 probability threshold) + visual inspection\n- Spherical interpolation of removed channels\n\nPhenotype Data\n--------------\nThe phenotype/ directory contains anxiety and personality questionnaire scores:\n- STAI: State-Trait Anxiety Inventory (Spielberger et al., 1983)\n- TIPI: Ten-Item Personality Inventory, emotional stability subscale (Gosling et al., 2003)\n- BIS/FFFS: Behavioural Inhibition Scale and Fight-Flight-Freeze System\n  from the RST-PQ (Corr & Cooper, 2016), with Heym and Jackson factor structures.\n  BIS data are unavailable for the first 5 participants.\n\nEthics\n------\nThis study received ethics approval from the University of Alberta\nResearch Ethics Board. Project Name: \"Physiological Bases of Human Memory\",\nNo. Pro00113334.\n\nFunding\n-------\nPartly supported by the Social Sciences and Humanities Research Council\nin Canada (SSHRC), and the Natural Sciences and Engineering Research\nCouncil of Canada (NSERC).\n\nLicense\n-------\nThis dataset is made available under the Creative Commons Attribution 4.0\nInternational License (CC BY 4.0).\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds007609",
+    "exists": true,
+    "description": "OpenNeuro dataset - Resting-State EEG and Trait Anxiety",
+    "created_at": "2026-03-31T16:17:33+00:00",
+    "updated_at": "2026-03-31T19:17:04+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

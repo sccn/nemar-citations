@@ -1,0 +1,68 @@
+{
+  "dataset_id": "nm000170",
+  "date_retrieved": "2026-05-21T18:43:02.617094+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2025-002 Continuous 2D Trajectory Decoding dataset",
+    "BIDSVersion": "1.9.0",
+    "Version": "1.0.1",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Hannah S Pulferer",
+      "Brynja Ásgeirsdóttir",
+      "Valeria Mondini",
+      "Andreea I Sburlea",
+      "Gernot R Müller-Putz"
+    ],
+    "Funding": [
+      "European Research Council ERC-CoG 2015 681231 'Feel Your Reach'",
+      "NTU-TUG joint PhD program"
+    ],
+    "EthicsApprovals": [
+      "Medical University of Graz, votum number 32–583 ex 19/20"
+    ],
+    "ReferencesAndLinks": [
+      "https://github.com/sccn/labstreaminglayer"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1088/1741-2552/ac689f",
+        "URL": "https://github.com/sccn/labstreaminglayer"
+      }
+    ],
+    "Keywords": [
+      "electroencephalography",
+      "trajectory decoding",
+      "learning effects",
+      "source localization",
+      "motor control",
+      "neuroplasticity",
+      "brain-computer interface"
+    ],
+    "PublicationYear": 2022,
+    "DatasetDOI": "10.82901/nemar.nm000170"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000170-blue)](https://doi.org/10.82901/nemar.nm000170)\n\n# BNCI 2025-002 Continuous 2D Trajectory Decoding dataset\n\nBNCI 2025-002 Continuous 2D Trajectory Decoding dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2025-002\n- **Paradigm**: imagery\n- **DOI**: 10.1088/1741-2552/ac689f\n- **Subjects**: 10\n- **Sessions per subject**: 3\n- **Events**: snakerun=1, freerun=2, eyerun=3\n- **Trial interval**: [0, 8] s\n- **Runs per session**: 3\n- **File format**: gdf\n- **Data preprocessed**: True\n\n## Acquisition\n\n- **Sampling rate**: 200.0 Hz\n- **Number of channels**: 60\n- **Channel types**: eeg=60, eog=4\n- **Channel names**: AF3, AF4, AF7, AF8, AFz, C1, C2, C3, C4, C5, C6, CP1, CP2, CP3, CP4, CP5, CP6, CPz, Cz, F1, F2, F3, F4, F5, F6, F7, F8, FC1, FC2, FC3, FC4, FC5, FC6, FCz, FT7, FT8, Fz, HEOG1, HEOG2, O1, O2, Oz, P1, P2, P3, P4, P5, P6, P7, P8, PO3, PO4, PO7, PO8, POz, PPO1h, PPO2h, Pz, T7, T8, TP7, TP8, VEOG1, VEOG2\n- **Montage**: af7 af3 afz af4 af8 f7 f5 f3 f1 fz f2 f4 f6 f8 ft7 fc5 fc3 fc1 fcz fc2 fc4 fc6 ft8 t7 c5 c3 c1 cz c2 c4 c6 t8 tp7 cp5 cp3 cp1 cpz cp2 cp4 cp6 tp8 p7 p5 p3 p1 pz p2 p4 p6 p8 ppo1h ppo2h po7 po3 poz po4 po8 o1 oz o2\n- **Hardware**: actiCAP, Brain Products GmbH\n- **Software**: MATLAB 2015b, Psychtoolbox, EEGLAB\n- **Reference**: right mastoid\n- **Ground**: Fpz\n- **Sensor type**: EEG\n- **Line frequency**: 50.0 Hz\n- **Online filters**: anti-aliasing 25 Hz, notch 50 Hz\n- **Auxiliary channels**: EOG (4 ch, horizontal, vertical)\n\n## Participants\n\n- **Number of subjects**: 10\n- **Health status**: patients\n- **Clinical population**: Healthy (able-bodied participants) + 1 SCI participant\n- **Age**: mean=24.0, std=5.0\n- **Gender distribution**: male=5, female=5\n- **Handedness**: {'right': 10}\n- **BCI experience**: naive BCI users in terms of motor decoding; 4 had previous EEG experience\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Task type**: continuous 2D trajectory decoding\n- **Number of classes**: 3\n- **Class labels**: snakerun, freerun, eyerun\n- **Trial duration**: 23.0 s\n- **Study design**: Attempted movement paradigm: participants instructed to attempt lower arm movement as if wielding a computer mouse while arm was strapped to armrest. Two task types: snakeruns (target tracking) and freeruns (self-paced shape tracing). Offline calibration followed by online feedback in 50% and 100% EEG feedback conditions.\n- **Feedback type**: visual (green dot showing EEG-decoded trajectory position)\n- **Stimulus type**: visual targets (white snake/shapes on black screen)\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: continuous\n- **Mode**: attempted movement\n- **Training/test split**: True\n- **Instructions**: Track snake with gaze and simultaneously attempt movement of strapped lower arm/hand as if wielding computer mouse; for freeruns: trace static shapes at own pace\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  snakerun\n    ├─ Experiment-structure\n    └─ Label/snakerun\n\n  freerun\n    ├─ Experiment-structure\n    └─ Label/freerun\n\n  eyerun\n    ├─ Experiment-structure\n    └─ Label/eyerun\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: attempted arm/hand movement (2D continuous trajectory)\n\n## Data Structure\n\n- **Trials**: {'calibration_eyeruns': 38, 'calibration_snakeruns': 48, '50%_EEG_feedback_snakeruns': 36, '100%_EEG_feedback_snakeruns': 36, 'freeruns': 9}\n- **Trials context**: per_paradigm_type\n\n## Preprocessing\n\n- **Data state**: preprocessed\n- **Preprocessing applied**: True\n- **Steps**: anti-aliasing filter (25 Hz), notch filter (50 Hz), downsampling to 100 Hz, bad channel interpolation, eye artifact subtraction (SGEYESUB algorithm), removal of frontal (AF) row channels, high-pass filter (0.18 Hz), common average re-reference, pops and drifts attenuation (HEAR algorithm), low-pass filter (3 Hz), downsampling to 20 Hz\n- **Highpass filter**: 0.18 Hz\n- **Lowpass filter**: 3.0 Hz\n- **Notch filter**: [50] Hz\n- **Filter type**: Not specified\n- **Artifact methods**: SGEYESUB (eye artifact subtraction), HEAR (pops and drifts removal)\n- **Re-reference**: common average reference\n- **Downsampled to**: 20.0 Hz\n\n## Signal Processing\n\n- **Classifiers**: PLS regression with UKF smoothing\n- **Feature extraction**: Temporal features (7 time points × 55 channels = 385 features), sLORETA (source localization)\n- **Spatial filters**: Minimum norm imaging\n\n## Cross-Validation\n\n- **Method**: across-session\n- **Evaluation type**: within-subject, learning effects over sessions\n\n## Performance (Original Study)\n\n- **Normalized Correlation Mean**: 0.31\n- **Normalized Correlation Std**: 0.02\n- **Correlation Range Rc**: 0.4-0.5\n- **Nrmse Calibration**: 0.1\n- **Nrmse 100% Feedback**: 0.12\n\n## BCI Application\n\n- **Applications**: neuroprosthesis, robotic arm control, upper limb restoration\n- **Environment**: laboratory\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy, Spinal cord injury\n- **Modality**: Visual\n- **Type**: Motor attempt, Continuous decoding\n\n## Documentation\n\n- **Description**: Continuous 2D trajectory decoding from attempted movement: across-session performance in able-bodied and feasibility in a spinal cord injured participant\n- **DOI**: 10.1088/1741-2552/ac689f\n- **License**: CC-BY-4.0\n- **Investigators**: Hannah S Pulferer, Brynja Ásgeirsdóttir, Valeria Mondini, Andreea I Sburlea, Gernot R Müller-Putz\n- **Senior author**: Gernot R Müller-Putz\n- **Contact**: gernot.mueller@tugraz.at\n- **Institution**: Institute of Neural Engineering, Graz University of Technology\n- **Address**: Stremayrgasse 16/IV, 8010 Graz, Austria\n- **Country**: Austria\n- **Repository**: GitHub\n- **Data URL**: https://github.com/sccn/labstreaminglayer\n- **Publication year**: 2022\n- **Funding**: European Research Council ERC-CoG 2015 681231 'Feel Your Reach'; NTU-TUG joint PhD program\n- **Ethics approval**: Medical University of Graz, votum number 32–583 ex 19/20\n- **Keywords**: electroencephalography, trajectory decoding, learning effects, source localization, motor control, neuroplasticity, brain-computer interface\n\n## References\n\nKobler, R. J., Almeida, I., Sburlea, A. I., & Muller-Putz, G. R. (2022). Continuous 2D trajectory decoding from attempted movement: across-session performance in able-bodied and feasibility in a spinal cord injured participant. Journal of Neural Engineering, 19(3), 036005. https://doi.org/10.1088/1741-2552/ac689f\n\nNotes\n\n.. versionadded:: 1.3.0\n\nThis dataset is designed for continuous decoding research, specifically for predicting 2D hand movement trajectories from EEG. Unlike classification-based motor imagery datasets, this dataset contains continuous trajectory labels suitable for regression-based decoders.\n\nThe paradigm \"imagery\" is used for compatibility with MOABB's motor imagery processing pipelines, though the actual task involves attempted (rather than imagined) movements.\n\nSee Also\n\nBNCI2014_001 : 4-class motor imagery dataset BNCI2014_004 : 2-class motor imagery dataset\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000170",
+    "exists": true,
+    "description": "BNCI 2025-002 Continuous 2D Trajectory Decoding dataset",
+    "created_at": "2026-03-23T14:16:46+00:00",
+    "updated_at": "2026-05-18T11:21:13+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}
