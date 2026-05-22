@@ -41,13 +41,42 @@ class ChartGenerator:
         }
 
     def _generate_growth_chart(self, data: Dict[str, Any]) -> Dict[str, Any]:
-        """Generate citation growth timeline chart."""
-        # This would use temporal analysis data
+        """Generate citation growth timeline chart.
+
+        Reads `temporal_analysis.temporal_summary` (list of per-year rows with
+        `year` and `total_citations`), sorts by year, and emits a cumulative
+        citation series. Closes #77: previously this returned a hardcoded
+        series that capped near 1,200 even though the headline showed 14k+
+        high-confidence citations — the chart never read the real data.
+        """
+        temporal = data.get("temporal_analysis", {})
+        rows = temporal.get("temporal_summary", [])
+
+        parsed: list[tuple[int, int]] = []
+        for row in rows:
+            try:
+                year = int(row.get("year", 0))
+                count = int(row.get("total_citations", 0))
+            except (TypeError, ValueError):
+                continue
+            if year <= 0:
+                continue
+            parsed.append((year, count))
+        parsed.sort(key=lambda yc: yc[0])
+
+        years: list[int] = []
+        cumulative: list[int] = []
+        running = 0
+        for year, count in parsed:
+            running += count
+            years.append(year)
+            cumulative.append(running)
+
         return {
             "type": "scatter",
             "data": {
-                "x": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
-                "y": [20, 65, 150, 370, 650, 950, 1040, 1140],
+                "x": years,
+                "y": cumulative,
                 "mode": "lines+markers",
             },
         }
