@@ -129,8 +129,31 @@ uv run dataset-citations-score-confidence \
   --device cuda \
   --skip-existing
 
+# 5. Sentence-transformer embeddings on the RTX 4090. Phase 2 of epic #96
+#    (#98) moved this step off CI because CPU torch in GitHub Actions took
+#    ~10x longer than CUDA on hallu. `--skip-existing` is consistent with
+#    the rest of the pipeline; the CLI also skips via the embedding
+#    registry by default, so the flag is explicit-intent rather than a
+#    behavior change. Outputs land under `embeddings/`, ready for the
+#    UMAP step phase 3 (#99) will wire in right after this block.
+#
+#    Guard with `|| { exit 2; }` because the cron uses `set -uo pipefail`
+#    (no -e); a non-zero exit otherwise would not halt the script and we
+#    would publish a citation update without refreshed embeddings.
+echo "--- generate-embeddings (cuda) ---"
+uv run dataset-citations-generate-embeddings \
+  --citations citations/json_opencite \
+  --datasets datasets \
+  --embeddings-dir embeddings \
+  --embedding-type both \
+  --device cuda \
+  --skip-existing || {
+  echo "ERROR: dataset-citations-generate-embeddings failed; aborting before commit." >&2
+  exit 2
+}
+
 # Bail cleanly if no tracked data changed (typical when nothing is stale).
-if git diff --quiet citations/ datasets/; then
+if git diff --quiet citations/ datasets/ embeddings/; then
   echo "no tracked data changes, nothing to commit"
   exit 0
 fi
@@ -138,12 +161,13 @@ fi
 # Commit + push to a timestamped branch; open a PR (manual merge gates the deploy).
 BRANCH="auto-update/$TS"
 git checkout -b "$BRANCH"
-git add citations/ datasets/
+git add citations/ datasets/ embeddings/
 DIFFSTAT="$(git diff --cached --stat | tail -5)"
 git commit -m "data: hallu nightly pipeline ($TS)
 
-GPU semantic scoring on RTX 4090. Pipeline:
-  catalog discover -> metadata -> judge-anchors -> opencite fetch -> score-confidence
+GPU semantic scoring + embeddings on RTX 4090. Pipeline:
+  catalog discover -> metadata -> judge-anchors -> opencite fetch
+  -> score-confidence -> generate-embeddings
 
 $(echo "$DIFFSTAT")"
 
