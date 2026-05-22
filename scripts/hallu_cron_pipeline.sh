@@ -62,10 +62,18 @@ uv run dataset-citations-discover \
 # Moved ahead of `update` in phase 4 (#88) so anchor adjudication has dataset
 # descriptions available, and the subsequent `update` step can consume the
 # anchor-judgment sidecars produced below.
+# `--skip-existing` keeps steady-state runs cheap and (more importantly) ducks
+# the GitHub secondary rate limit that bit us during the post-#76 backfill:
+# refetching ~3000 unchanged dataset_description.json + README files every
+# weekly run is wasted quota. Trade-off: a dataset's GitHub-side description
+# / README will only refresh when the cached file is deleted; #82 (follow-up)
+# adds a `--max-age-days` flag mirroring `update.py` so the freshness window
+# is configurable without an explicit wipe.
 echo "--- retrieve-metadata ---"
 uv run dataset-citations-retrieve-metadata \
   --citations-dir citations/json_opencite \
-  --output-dir datasets
+  --output-dir datasets \
+  --skip-existing
 
 # 3. Preflight: Ollama must be reachable for anchor adjudication. If the
 # daemon is down, abort cleanly instead of producing a citation update
