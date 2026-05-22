@@ -279,6 +279,11 @@ class PipelineBucketingTests(TestCase):
         self.assertEqual(context[0]["anchor_identifier"], umbrella_ref.identifier)
         self.assertEqual(context[0]["paper_title"], "HBN umbrella paper")
         self.assertEqual(context[0]["source_relation"], "IsDerivedFrom")
+        # paper_year + paper_venue forwarded from the sidecar so phase 4's
+        # dashboard can render context anchors without re-opening it.
+        # _judgment() defaults these to 2024 / Journal of Stubs.
+        self.assertEqual(context[0]["paper_year"], 2024)
+        self.assertEqual(context[0]["paper_venue"], "Journal of Stubs")
 
     def test_no_sidecar_falls_back_to_fetch_all(self) -> None:
         """Without a sidecar, all anchors get fetched (legacy behavior)."""
@@ -500,6 +505,77 @@ class PipelineBucketingTests(TestCase):
         ]
         self.assertEqual(len(catalog_records), 1)
         self.assertEqual(catalog_records[0]["classification"], "umbrella")
+
+    def test_partial_sidecar_warns_per_dataset(self) -> None:
+        """When the sidecar covers some but not all anchors, the uncovered
+        anchors fall through to fetch AND a single per-dataset WARN logs
+        the gap so operators see the drift."""
+        judged_ref = DoiReference(
+            identifier="10.1038/judged-paper",
+            identifier_type="doi",
+            relation_type="References",
+            source="nemar_metadata",
+        )
+        unjudged_ref = DoiReference(
+            identifier="10.1038/unjudged-paper",
+            identifier_type="doi",
+            relation_type="References",
+            source="nemar_metadata",
+        )
+        nemar = _StubSource(FetchSuccess([judged_ref, unjudged_ref]))
+        backend = _StubBackend(
+            {
+                judged_ref.identifier: FetchSuccess(
+                    [
+                        _make_work(
+                            "Cites judged",
+                            doi="10.5/cj",
+                            source_doi=judged_ref.identifier,
+                        )
+                    ]
+                ),
+                unjudged_ref.identifier: FetchSuccess(
+                    [
+                        _make_work(
+                            "Cites unjudged",
+                            doi="10.5/cu",
+                            source_doi=unjudged_ref.identifier,
+                        )
+                    ]
+                ),
+            }
+        )
+        _write_sidecar(
+            self.judgments_dir,
+            "nm000015",
+            [_judgment(judged_ref.identifier, "data_paper")],
+        )
+        with self.assertLogs(
+            "dataset_citations.core.opencite_pipeline", level="WARNING"
+        ) as logs:
+            out = fetch_dataset_citations_via_opencite(
+                "nm000015",
+                backend=backend,
+                nemar_source=nemar,
+                fetch_date=WHEN,
+                judgments_dir=self.judgments_dir,
+            )
+        # Both anchors went to the backend (the judged one explicitly,
+        # the unjudged one as fallback).
+        self.assertEqual(
+            sorted(backend.calls[0]),
+            sorted([judged_ref.identifier, unjudged_ref.identifier]),
+        )
+        # Exactly one WARN per dataset, naming the gap count.
+        warns = [
+            r
+            for r in logs.records
+            if "have no judgment in the sidecar" in r.getMessage()
+        ]
+        self.assertEqual(len(warns), 1)
+        self.assertIn("1/2 anchors", warns[0].getMessage())
+        # No context_anchors because everything was fetched, not bucketed.
+        self.assertEqual(out["metadata"]["context_anchors"], [])
 
 
 class SidecarShapeRegressionTests(TestCase):

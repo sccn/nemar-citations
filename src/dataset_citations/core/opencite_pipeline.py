@@ -424,19 +424,35 @@ def _partition_by_judgment(
 
     fetch_refs: list[DoiReference] = []
     context_records: list[dict[str, Any]] = []
+    unjudged_count = 0
 
     for ref in refs:
         key = canonical_anchor_key(ref.identifier, ref.identifier_type)
         classification = sidecar.lookup.get(key) if key is not None else None
         if classification is None:
             # Anchor not present in sidecar -> fall back to fetching it.
+            # Phase 4 will make judgment mandatory once the backfill is
+            # complete; until then we surface the drift via a single WARN
+            # per dataset so operators can see at-a-glance how many
+            # anchors slipped past the judgment step.
             fetch_refs.append(ref)
+            unjudged_count += 1
             continue
         if classification == _FETCH_CLASSIFICATION:
             fetch_refs.append(ref)
             continue
         details = sidecar.context_details.get(key) if key is not None else None
         context_records.append(_build_context_record(ref, classification, details))
+
+    if unjudged_count:
+        logger.warning(
+            "%s: %d/%d anchors in this dataset have no judgment in the sidecar; "
+            "they will be fetched as fallback. Re-run dataset-citations-judge-anchors "
+            "to close the gap.",
+            dataset_id,
+            unjudged_count,
+            len(refs),
+        )
 
     return fetch_refs, context_records
 
@@ -459,17 +475,23 @@ def _build_context_record(
         "source_relation": ref.relation_type,
         "classification": classification,
         "paper_title": None,
+        "paper_year": None,
+        "paper_venue": None,
         "reason": None,
     }
     if details:
         # Prefer the sidecar's identifier shape (DOI in its original case,
         # PMID without the prefix) when available; otherwise keep the
-        # pipeline's canonical form for stability.
+        # pipeline's canonical form for stability. paper_year / paper_venue
+        # are forwarded so phase 4's dashboard can render context anchors
+        # without re-opening the sidecar.
         record["anchor_identifier"] = details.get("anchor_identifier") or ref.identifier
         record["anchor_identifier_type"] = (
             details.get("anchor_identifier_type") or ref.identifier_type
         )
         record["source_relation"] = details.get("source_relation") or ref.relation_type
         record["paper_title"] = details.get("paper_title")
+        record["paper_year"] = details.get("paper_year")
+        record["paper_venue"] = details.get("paper_venue")
         record["reason"] = details.get("reason")
     return record
