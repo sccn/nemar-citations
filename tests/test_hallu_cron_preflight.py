@@ -148,3 +148,53 @@ def test_rerun_script_supports_embeddings_only_flag() -> None:
     text = RERUN_SCRIPT.read_text()
     assert "--embeddings-only" in text
     assert "dataset-citations-generate-embeddings" in text
+
+
+def test_cron_script_invokes_analyze_umap() -> None:
+    """UMAP step must be wired into the nightly pipeline (#99 / closes #78).
+
+    The output dir must be flat `dashboard_data/` (NOT a subdir) so the
+    dashboard aggregator's `*similarities*.csv` glob picks up the CSVs.
+    """
+    text = CRON_SCRIPT.read_text()
+    assert "dataset-citations-analyze-umap" in text, (
+        "analyze-umap step missing from hallu_cron_pipeline.sh"
+    )
+    # The flag-and-value pair must appear with `dashboard_data` as the
+    # exact target — a `dashboard_data/citation_similarities/` subdir
+    # would silently produce an empty Citation Similarities panel.
+    umap_block_start = text.index("--- analyze-umap ---")
+    umap_block = text[umap_block_start : umap_block_start + 600]
+    assert "--output-dir dashboard_data" in umap_block, (
+        "UMAP output must target `dashboard_data/` directly (the aggregator's "
+        "non-recursive *similarities*.csv glob lives there)."
+    )
+    assert "citation_similarities/" not in umap_block, (
+        "UMAP output must NOT nest under a citation_similarities/ subdir — "
+        "see #78 root cause."
+    )
+    # Same explicit-guard contract as the judge-anchors and update steps:
+    # `set -uo pipefail` (no -e) means a non-zero exit does not halt the script
+    # unless we OR it with an explicit exit.
+    assert "exit 2" in umap_block, (
+        "analyze-umap step must guard with `|| { ...; exit 2; }` because "
+        "the cron uses `set -uo pipefail` (no -e)."
+    )
+
+
+def test_rerun_script_supports_umap_only_flag() -> None:
+    """The --umap-only flag must be recognised (regression guard for #99)."""
+    text = RERUN_SCRIPT.read_text()
+    assert "--umap-only" in text
+    assert "dataset-citations-analyze-umap" in text
+    assert 'MODE="umap"' in text, "rerun helper must map --umap-only to umap mode"
+    # Full-mode should call the UMAP step after score_confidence so we keep the
+    # cron + rerun stage ordering identical.
+    full_block_start = text.index("  full)")
+    full_block = text[full_block_start : full_block_start + 400]
+    assert "score_confidence" in full_block
+    assert "umap_analysis" in full_block
+    assert full_block.index("score_confidence") < full_block.index("umap_analysis"), (
+        "umap_analysis must run after score_confidence in the rerun helper's "
+        "full mode (matches cron ordering)."
+    )
