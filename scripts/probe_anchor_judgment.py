@@ -22,14 +22,22 @@ This script does NOT write any sidecar JSON to `citations/anchor_judgments/`;
 that's phase 2 (#86).
 
 Usage:
-    # Workstation: tunnel to hallu's Ollama daemon, then default
-    # OLLAMA_BASE_URL=http://localhost:11434 works.
-    ssh -fN -L 11434:localhost:11434 hallu
-    uv run python scripts/probe_anchor_judgment.py \
-        --output .context/probe_anchor_judgment_$(date +%Y-%m-%d).json
+    # Option A: run ON hallu via ssh — simplest, no port juggling.
+    ssh hallu 'cd ~/dataset_citations && \
+        uv run python scripts/probe_anchor_judgment.py \
+            --output .context/probe_anchor_judgment_$(date +%Y-%m-%d).json'
 
-    # On hallu itself: no tunnel needed, defaults work.
-    uv run python scripts/probe_anchor_judgment.py --output …
+    # Option B: workstation with an ssh tunnel.
+    # IMPORTANT: if you also run a local `ollama serve` on this machine, it
+    # already binds 0.0.0.0:11434. Forwarding hallu:11434 to localhost:11434
+    # then collides — connections will silently route to the local daemon
+    # instead of through the tunnel, which is hard to spot until the local
+    # ollama is paused or missing the right model. Use a different local
+    # port (e.g. 21434) and point OLLAMA_BASE_URL at it.
+    ssh -fN -L 21434:localhost:11434 hallu
+    OLLAMA_BASE_URL=http://localhost:21434 \
+        uv run python scripts/probe_anchor_judgment.py \
+            --output .context/probe_anchor_judgment_$(date +%Y-%m-%d).json
 """
 
 from __future__ import annotations

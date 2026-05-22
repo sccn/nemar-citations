@@ -54,9 +54,13 @@ ALLOWED_CLASSIFICATIONS: frozenset[str] = frozenset(
 
 # Env vars + defaults. The default base URL is localhost so the production
 # cron path (which runs on hallu next to the Ollama daemon) needs no
-# overrides; developer workstations reach the daemon through an ssh tunnel
-# (the daemon binds localhost only) by running
-# `ssh -fN -L 11434:localhost:11434 hallu` once per session.
+# overrides. Developer workstations reach the daemon either by ssh-ing
+# directly to hallu and running there, OR by forwarding a *non-default*
+# local port (e.g. `ssh -fN -L 21434:localhost:11434 hallu`) and setting
+# OLLAMA_BASE_URL=http://localhost:21434. Using 11434 for the tunnel
+# collides with a workstation-local `ollama serve` and silently routes
+# the request to the wrong daemon. See scripts/probe_anchor_judgment.py
+# docstring for the canonical workflow.
 # Default model tracks the largest Gemma checkpoint currently pulled on
 # hallu; epic #76 spec'd Gemma 3 27B, but the live deployment is the
 # next-generation model. Update the constant when the pulled model
@@ -69,7 +73,10 @@ _DEFAULT_BASE_URL = "http://localhost:11434"
 # Single source of truth for the deployed model. Bump this one constant
 # (and re-run the probe) when a new checkpoint is pulled on hallu.
 _DEFAULT_MODEL = "gemma4:26b"
-_DEFAULT_TIMEOUT = 60
+# Per-judgment timeout: most calls return in 3-10s, but cold loads + long
+# prompts on the 26B checkpoint have been observed at ~150s. 300s gives
+# headroom without hanging the probe forever on a stuck request.
+_DEFAULT_TIMEOUT = 300
 
 # Truncate long dataset descriptions to keep the prompt under the model's
 # practical context budget while leaving room for the candidate paper. The
@@ -312,22 +319,67 @@ class OllamaJudgmentClient:
         Split out so tests can subclass the client and override the HTTP step
         with a hand-built response (matches the no-mocks pattern used by
         `tests/test_core_opencite_pipeline.py`).
+
+        All httpx-level failures (timeout, connect, non-2xx) are wrapped in
+        `LlmJudgmentError` so the caller's per-anchor try/except catches them
+        uniformly and one slow / failed anchor doesn't abort a batch run.
+        Ollama's error JSON (when present) is surfaced in the message so the
+        operator sees, e.g., "model not found" instead of a generic 500.
         """
-        resp = self._client.post(
-            f"{self.base_url}/api/generate",
-            json={
-                "model": self.model,
-                "prompt": prompt,
-                "format": "json",
-                "stream": False,
-                "options": {"temperature": 0.0},
-            },
-        )
-        resp.raise_for_status()
-        payload = resp.json()
+        try:
+            resp = self._client.post(
+                f"{self.base_url}/api/generate",
+                json={
+                    "model": self.model,
+                    "prompt": prompt,
+                    "format": "json",
+                    "stream": False,
+                    "options": {"temperature": 0.0},
+                },
+            )
+            resp.raise_for_status()
+            payload = resp.json()
+        except httpx.HTTPStatusError as exc:
+            body_error = self._extract_ollama_error(exc.response)
+            raise LlmJudgmentError(
+                f"ollama HTTP {exc.response.status_code}"
+                + (f": {body_error}" if body_error else ""),
+                raw_response=exc.response.text,
+            ) from exc
+        except httpx.HTTPError as exc:
+            raise LlmJudgmentError(
+                f"ollama HTTP transport error ({type(exc).__name__}): {exc}"
+            ) from exc
+
+        if not isinstance(payload, dict):
+            raise LlmJudgmentError(
+                f"ollama payload is not a JSON object: {type(payload).__name__}"
+            )
+        upstream_err = payload.get("error")
+        if upstream_err:
+            raise LlmJudgmentError(f"ollama returned error: {upstream_err!r}")
         response_text = payload.get("response")
         if not isinstance(response_text, str):
             raise LlmJudgmentError(
                 f"ollama payload missing 'response' string field: {payload!r}"
             )
         return response_text
+
+    @staticmethod
+    def _extract_ollama_error(response: httpx.Response) -> str | None:
+        """Return Ollama's `error` field from a non-2xx response body, if any.
+
+        Ollama serves JSON error bodies like `{"error": "model 'foo' not
+        found, try pulling it first"}` for many failure modes. Surface that
+        string in `LlmJudgmentError` so the operator's debug loop is one
+        step shorter.
+        """
+        try:
+            body = response.json()
+        except ValueError:
+            return None
+        if isinstance(body, dict):
+            err = body.get("error")
+            if isinstance(err, str) and err:
+                return err
+        return None
