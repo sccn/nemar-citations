@@ -130,6 +130,8 @@ def add_discovery_provenance(
     *,
     discovery_backend: DiscoveryBackend,
     schema_version: str = SCHEMA_VERSION_V2,
+    anchor_judgment_model: Optional[str] = None,
+    context_anchors: Optional[list] = None,
 ) -> Dict[str, Any]:
     """Stamp a citation JSON with Phase 3 discovery-provenance markers.
 
@@ -147,6 +149,21 @@ def add_discovery_provenance(
     helper is only responsible for the top-level provenance markers and the
     per-citation `discovery_backend` label.
 
+    Phase 3 (#87) extends the schema with anchor-adjudication provenance:
+      * `metadata.anchor_judgment_model` carries the LLM name from phase 2's
+        sidecar (e.g. ``"gemma4:31b"``) so consumers can tell which model
+        bucketed each dataset's anchors. Falsy values are normalized to
+        ``None`` and persisted, since "no sidecar" is itself a meaningful
+        signal for downstream code.
+      * `metadata.context_anchors` is the list of non-`data_paper` anchors
+        the pipeline chose NOT to fetch citations from but kept visible so
+        the dashboard can render them as context. Each entry is a dict with
+        at least ``anchor_identifier``, ``anchor_identifier_type``,
+        ``source_relation``, ``classification``, ``reason``, and
+        ``paper_title``. Phase 4 will surface these in the dashboard;
+        keeping the field shape stable now lets that work land without a
+        second schema change.
+
     The legacy scholarly path does not yet call this helper, so historical
     scholarly JSONs lack the markers (treat them as schema v1 by absence).
     Phase 4 retires the scholarly path; wiring it through here is not
@@ -155,6 +172,8 @@ def add_discovery_provenance(
     metadata = citation_json.setdefault("metadata", {})
     metadata["schema_version"] = schema_version
     metadata["discovery_backend"] = discovery_backend
+    metadata["anchor_judgment_model"] = anchor_judgment_model or None
+    metadata["context_anchors"] = list(context_anchors) if context_anchors else []
     for entry in citation_json.get("citation_details", []) or []:
         entry.setdefault("discovery_backend", discovery_backend)
     return citation_json
