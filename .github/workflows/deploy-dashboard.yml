@@ -71,6 +71,18 @@ jobs:
               echo "OK: $dir ($count files)"
             fi
           done
+          # UMAP outputs (phase 3, #99) live FLAT in dashboard_data/ as
+          # *similarities*.csv so the aggregator's non-recursive glob picks
+          # them up. Missing CSVs would render an empty Citation Similarities
+          # panel without otherwise breaking the build; catch that here.
+          sim_count=$(find dashboard_data -maxdepth 1 -name "*similarities*.csv" -type f 2>/dev/null | wc -l | tr -d ' ')
+          if [ "$sim_count" -eq 0 ]; then
+            echo "::error::No *similarities*.csv files at dashboard_data/ top level"
+            echo "::error::Phase 3 of epic #96 expects hallu's analyze-umap step to write them flat there"
+            missing=1
+          else
+            echo "OK: dashboard_data/*similarities*.csv ($sim_count files)"
+          fi
           if [ "$missing" -ne 0 ]; then
             echo "::error::Refusing to deploy; hallu cron outputs are incomplete."
             echo "::error::The previous Cloudflare Pages deploy stays live."
