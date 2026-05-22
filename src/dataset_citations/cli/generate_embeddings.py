@@ -81,6 +81,7 @@ def generate_dataset_embeddings(
     model_name: str = "Qwen/Qwen3-Embedding-0.6B",
     batch_size: int = 10,
     force_regenerate: bool = False,
+    device: str = "mps",
 ) -> int:
     """
     Generate embeddings for all datasets.
@@ -91,6 +92,7 @@ def generate_dataset_embeddings(
         model_name: Sentence transformer model name
         batch_size: Number of datasets to process at once
         force_regenerate: Whether to regenerate existing embeddings
+        device: Torch device for the sentence-transformer model
 
     Returns:
         Number of embeddings generated
@@ -99,7 +101,7 @@ def generate_dataset_embeddings(
 
     # Initialize components
     storage_manager = EmbeddingStorageManager(embeddings_dir)
-    model = SentenceTransformerModel(model_name=model_name)
+    model = SentenceTransformerModel(model_name=model_name, device=device)
 
     # Find all dataset files
     dataset_files = list(datasets_dir.glob("ds*_datasets.json"))
@@ -171,6 +173,23 @@ def generate_dataset_embeddings(
     return generated_count
 
 
+def _resolve_citation_files(citations_dir: Path) -> tuple[Path, list[Path]]:
+    """Locate per-dataset citation JSON files under ``citations_dir``.
+
+    Historically the CLI assumed a `<citations_dir>/json/` layout. The
+    opencite pipeline writes flat to `<citations_dir>` (e.g.
+    `citations/json_opencite/<id>_citations.json`). Accept either layout
+    transparently: if `citations_dir` already contains `*_citations.json`
+    files, use it directly; otherwise fall back to the legacy `/json`
+    subdirectory.
+    """
+    direct = list(citations_dir.glob("ds*_citations.json"))
+    if direct:
+        return citations_dir, direct
+    legacy = citations_dir / "json"
+    return legacy, list(legacy.glob("ds*_citations.json"))
+
+
 def generate_citation_embeddings(
     citations_dir: Path,
     embeddings_dir: Path,
@@ -178,6 +197,7 @@ def generate_citation_embeddings(
     batch_size: int = 50,
     force_regenerate: bool = False,
     min_confidence: float = 0.4,
+    device: str = "mps",
 ) -> int:
     """
     Generate embeddings for all high-confidence citations.
@@ -189,6 +209,7 @@ def generate_citation_embeddings(
         batch_size: Number of citations to process at once
         force_regenerate: Whether to regenerate existing embeddings
         min_confidence: Minimum confidence score for citations
+        device: Torch device for the sentence-transformer model
 
     Returns:
         Number of embeddings generated
@@ -197,14 +218,14 @@ def generate_citation_embeddings(
 
     # Initialize components
     storage_manager = EmbeddingStorageManager(embeddings_dir)
-    model = SentenceTransformerModel(model_name=model_name)
+    model = SentenceTransformerModel(model_name=model_name, device=device)
 
-    # Find all citation files
-    citation_files = list((citations_dir / "json").glob("ds*_citations.json"))
+    # Find all citation files (accept both flat and legacy /json layouts).
+    search_dir, citation_files = _resolve_citation_files(citations_dir)
     total_files = len(citation_files)
 
     if total_files == 0:
-        logging.error(f"No citation files found in {citations_dir / 'json'}")
+        logging.error(f"No citation files found in {search_dir}")
         return 0
 
     logging.info(f"Found {total_files} citation files")
@@ -420,6 +441,28 @@ Examples:
         help="Force regeneration of existing embeddings",
     )
 
+    parser.add_argument(
+        "--skip-existing",
+        action="store_true",
+        help=(
+            "Skip datasets/citations that already have embeddings. The default "
+            "behavior already skips via the embedding registry; this flag is "
+            "accepted for parity with other CLIs (e.g. score-confidence) and "
+            "forces --force-regenerate off if both are passed."
+        ),
+    )
+
+    parser.add_argument(
+        "--device",
+        type=str,
+        default="mps",
+        choices=["auto", "cpu", "cuda", "mps"],
+        help=(
+            "Torch device for sentence transformers ('mps' for Apple Metal, "
+            "'cuda' for NVIDIA on hallu, default: mps)."
+        ),
+    )
+
     parser.add_argument("--verbose", action="store_true", help="Enable verbose logging")
 
     args = parser.parse_args()
@@ -439,6 +482,12 @@ Examples:
     # Create embeddings directory
     args.embeddings_dir.mkdir(parents=True, exist_ok=True)
 
+    # `--skip-existing` is the explicit form of the registry-skip default.
+    # If a caller passes both `--skip-existing` and `--force-regenerate`,
+    # the former wins (matches the score-confidence convention where
+    # skip-existing short-circuits before any regeneration work).
+    force_regenerate = args.force_regenerate and not args.skip_existing
+
     # Track total generated
     total_generated = 0
     start_time = time.time()
@@ -455,7 +504,8 @@ Examples:
                 embeddings_dir=args.embeddings_dir,
                 model_name=args.model,
                 batch_size=args.batch_size // 5,  # Smaller batch for datasets
-                force_regenerate=args.force_regenerate,
+                force_regenerate=force_regenerate,
+                device=args.device,
             )
             total_generated += dataset_count
 
@@ -470,8 +520,9 @@ Examples:
                 embeddings_dir=args.embeddings_dir,
                 model_name=args.model,
                 batch_size=args.batch_size,
-                force_regenerate=args.force_regenerate,
+                force_regenerate=force_regenerate,
                 min_confidence=args.min_confidence,
+                device=args.device,
             )
             total_generated += citation_count
 
