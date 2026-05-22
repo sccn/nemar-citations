@@ -117,3 +117,34 @@ def test_rerun_script_supports_judge_only_flag() -> None:
     text = RERUN_SCRIPT.read_text()
     assert "--judge-only" in text
     assert "dataset-citations-judge-anchors" in text
+
+
+def test_cron_script_wires_generate_embeddings() -> None:
+    """Phase 2 of epic #96 (#98) runs embeddings on hallu after scoring.
+
+    Catches accidental removal of the embeddings step or its guard.
+    """
+    text = CRON_SCRIPT.read_text()
+    assert "dataset-citations-generate-embeddings" in text, (
+        "generate-embeddings step missing from hallu_cron_pipeline.sh"
+    )
+    assert "--device cuda" in text, (
+        "embeddings step must target the RTX 4090 with --device cuda"
+    )
+    assert "--skip-existing" in text, (
+        "embeddings step must pass --skip-existing for cron parity"
+    )
+    # The step has to sit AFTER score-confidence so confidence scores are
+    # available for the citation-embedding confidence filter.
+    score_idx = text.index("dataset-citations-score-confidence")
+    embed_idx = text.index("dataset-citations-generate-embeddings")
+    assert score_idx < embed_idx, (
+        "generate-embeddings must run after score-confidence in the cron"
+    )
+
+
+def test_rerun_script_supports_embeddings_only_flag() -> None:
+    """The --embeddings-only flag must be recognised (regression guard for #98)."""
+    text = RERUN_SCRIPT.read_text()
+    assert "--embeddings-only" in text
+    assert "dataset-citations-generate-embeddings" in text

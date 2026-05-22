@@ -141,9 +141,10 @@ uv run dataset-citations-score-confidence --citations-dir citations/json_opencit
    - **3a. Anchor judgment**: `dataset-citations-judge-anchors` classifies each anchor DOI as `data_paper` / `umbrella` / `methodology` / `related_work` / `irrelevant` via an Ollama-served Gemma checkpoint (default `gemma4:31b` on hallu, swappable via `OLLAMA_MODEL`). Writes per-dataset sidecars to `citations/anchor_judgments/<id>.json`. Aborts with exit code 2 if the Ollama daemon is unreachable.
    - **3b. Pipeline bucketing + citation fetching**: `core/opencite_pipeline.py` reads the sidecar via `quality/anchor_judgment_io.py` and buckets anchors by classification: `data_paper` -> kept for the opencite fetch; everything else -> recorded in `metadata.context_anchors[]` as context only. Anchors not present in the sidecar (or with no sidecar at all) fall through to "fetch all" so the pipeline stays usable while the backfill is in progress; a per-dataset WARN logs the gap count. `backends/opencite_backend.py` (sync facade over opencite) then queries OpenAlex / Semantic Scholar / PubMed for the surviving `data_paper` anchors. Concurrency throttled by `OPENCITE_MAX_CONCURRENCY` (CI sets to 1, see PR #50).
 4. **Processing**: `core/opencite_pipeline.py` deduplicates across anchors and produces schema-v2 citation JSON.
-5. **Quality scoring**: sentence-transformer similarity between dataset metadata and citation abstract.
-6. **Analysis**: network, temporal, and theme analyses with embeddings.
-7. **Dashboard**: interactive HTML + D3 deployed to Cloudflare Pages at `dashboard.nemar.org/citations/`.
+5. **Quality scoring**: sentence-transformer similarity between dataset metadata and citation abstract. Runs on hallu's RTX 4090 via `scripts/hallu_cron_pipeline.sh` (epic #76).
+6. **Embeddings**: `dataset-citations-generate-embeddings` writes per-dataset and per-citation sentence-transformer embeddings to `embeddings/` (registry-backed, deduped by content hash). Produced on hallu's RTX 4090 next to step 5 (phase 2 of epic #96 / #98); CI no longer runs the embedding step because CPU torch was ~10x slower than CUDA.
+7. **Analysis**: network, temporal, and theme analyses consume the embeddings (UMAP wiring lands in phase 3 of epic #96 / #99).
+8. **Dashboard**: interactive HTML + D3 deployed to Cloudflare Pages at `dashboard.nemar.org/citations/`.
 
 ## Fetch Strategy & Rate Limits
 Both upstream sources we depend on have throttled us in production. Treat external APIs as scarce; cache, retry, and prefer the NEMAR backend.
