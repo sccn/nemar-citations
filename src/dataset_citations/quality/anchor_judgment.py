@@ -52,6 +52,7 @@ from typing import Any
 from dataset_citations.backends.opencite_backend import OpenCiteBackend
 from dataset_citations.quality.dataset_metadata import (
     DatasetMetadataRetriever,
+    _org_for_dataset,
     extract_dataset_text,
 )
 from dataset_citations.quality.llm_client import (
@@ -116,12 +117,13 @@ def _pick_source(
 ) -> NemarMetadataSource | BidsMetadataSource:
     """Route a dataset id to the right DOI source.
 
-    Mirrors `quality.dataset_metadata._org_for_dataset` so a single dataset
-    never has its description fetched from one org while its DOI refs are
-    fetched from another.
+    Delegates to `quality.dataset_metadata._org_for_dataset` so the
+    metadata fetch and the DOI-ref fetch agree on which org owns the
+    dataset (commit cbf595f tightened the prefix check from a loose
+    `startswith` to require a digit after `nm`/`on`; future ids like
+    `nmr-phantom` must NOT route to nemarDatasets).
     """
-    lowered = dataset_id.lower()
-    if lowered.startswith(("nm", "on")):
+    if _org_for_dataset(dataset_id) == "nemarDatasets":
         return nemar_source
     return bids_source
 

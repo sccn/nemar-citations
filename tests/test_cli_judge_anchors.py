@@ -323,19 +323,23 @@ class CliWritesJudgmentRecords(TestCase):
                     ],
                 }
 
+            # All rebinds + sys.argv mutation go inside the try block so a
+            # failure anywhere after the first assignment still triggers
+            # the restore in finally. Otherwise a single bad chmod/assign
+            # leaks substitutes across tests.
             original_client = cli_judge.OllamaJudgmentClient
             original_judge = cli_judge.judge_dataset_anchors
-            cli_judge.OllamaJudgmentClient = _UpClient  # type: ignore[assignment]
-            cli_judge.judge_dataset_anchors = fake_judge  # type: ignore[assignment]
             old_argv = sys.argv
-            sys.argv = [
-                "dataset-citations-judge-anchors",
-                "--datasets-list-file",
-                str(list_file),
-                "--output-dir",
-                str(output_dir),
-            ]
             try:
+                cli_judge.OllamaJudgmentClient = _UpClient  # type: ignore[assignment]
+                cli_judge.judge_dataset_anchors = fake_judge  # type: ignore[assignment]
+                sys.argv = [
+                    "dataset-citations-judge-anchors",
+                    "--datasets-list-file",
+                    str(list_file),
+                    "--output-dir",
+                    str(output_dir),
+                ]
                 rc = cli_judge.main()
             finally:
                 cli_judge.OllamaJudgmentClient = original_client  # type: ignore[assignment]
@@ -365,20 +369,22 @@ class CliWritesJudgmentRecords(TestCase):
                     "judgments": [],
                 }
 
+            # All mutation (rebinds, sys.argv, chmod) goes inside try so a
+            # failing chmod can't leak the rebinds to subsequent tests.
             original_client = cli_judge.OllamaJudgmentClient
             original_judge = cli_judge.judge_dataset_anchors
-            cli_judge.OllamaJudgmentClient = _UpClient  # type: ignore[assignment]
-            cli_judge.judge_dataset_anchors = fake_judge  # type: ignore[assignment]
             old_argv = sys.argv
-            sys.argv = [
-                "dataset-citations-judge-anchors",
-                "--datasets-list-file",
-                str(list_file),
-                "--output-dir",
-                str(output_dir),
-            ]
-            os.chmod(output_dir, stat.S_IRUSR | stat.S_IXUSR)
             try:
+                cli_judge.OllamaJudgmentClient = _UpClient  # type: ignore[assignment]
+                cli_judge.judge_dataset_anchors = fake_judge  # type: ignore[assignment]
+                sys.argv = [
+                    "dataset-citations-judge-anchors",
+                    "--datasets-list-file",
+                    str(list_file),
+                    "--output-dir",
+                    str(output_dir),
+                ]
+                os.chmod(output_dir, stat.S_IRUSR | stat.S_IXUSR)
                 rc = cli_judge.main()
             finally:
                 # Restore write so tempfile cleanup works regardless of result.
