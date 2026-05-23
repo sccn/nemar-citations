@@ -192,6 +192,41 @@ uv run dataset-citations-analyze-umap \
   exit 2
 }
 
+# 6. Theme / network / temporal analyses. Epic #96 phase 5 removed these
+#    invocations from `.github/workflows/deploy-dashboard.yml` on the
+#    expectation that the cron produces them; the initial epic ship only
+#    wired generate-embeddings + analyze-umap and missed these three. They
+#    are CPU-only and cheap; running here keeps the "hallu is the sole
+#    producer" invariant true so the CI verify step at deploy time finds
+#    the populated dirs. Each is guarded so a single analysis failure
+#    aborts cleanly under `set -uo pipefail` (no -e).
+echo "--- generate-themes ---"
+mkdir -p dashboard_data/themes
+uv run python -m dataset_citations.analysis.generate_themes \
+  --citations-dir citations/json_opencite \
+  --output-dir dashboard_data/themes || {
+  echo "ERROR: generate-themes failed; aborting before commit." >&2
+  exit 2
+}
+
+echo "--- generate-network ---"
+mkdir -p dashboard_data/network
+uv run python -m dataset_citations.analysis.generate_network \
+  --citations-dir citations/json_opencite \
+  --output-dir dashboard_data/network || {
+  echo "ERROR: generate-network failed; aborting before commit." >&2
+  exit 2
+}
+
+echo "--- generate-temporal ---"
+mkdir -p dashboard_data/temporal
+uv run python -m dataset_citations.analysis.generate_temporal \
+  --citations-dir citations/json_opencite \
+  --output-dir dashboard_data/temporal || {
+  echo "ERROR: generate-temporal failed; aborting before commit." >&2
+  exit 2
+}
+
 # Bail cleanly if no tracked data changed (typical when nothing is stale).
 # `dashboard_data/` and `embeddings/` are included because deploy-dashboard.yml
 # verifies their presence on a fresh CI checkout (epic #96 / #101 / #103). The
