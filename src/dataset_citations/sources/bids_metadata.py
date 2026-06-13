@@ -14,7 +14,6 @@ import json
 import logging
 from typing import Any
 
-from github import Github
 from github.GithubException import GithubException
 
 from dataset_citations.sources.doi import (
@@ -31,6 +30,7 @@ from dataset_citations.sources.models import (
     IdentifierType,
     RelationType,
 )
+from dataset_citations.utils.github_client import build_github
 
 logger = logging.getLogger(__name__)
 
@@ -46,7 +46,7 @@ class BidsMetadataSource:
     returns DOI/PMID/arXiv references suitable for opencite lookup."""
 
     def __init__(self, github_token: str | None = None) -> None:
-        self.github = Github(github_token) if github_token else Github()
+        self.github = build_github(github_token)
 
     def get_doi_references(
         self, dataset_id: str, org: str = "OpenNeuroDatasets"

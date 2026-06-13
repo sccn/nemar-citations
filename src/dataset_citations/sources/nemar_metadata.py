@@ -21,7 +21,6 @@ import logging
 from typing import Any, cast, get_args
 
 import requests
-from github import Github
 from github.GithubException import GithubException
 
 from dataset_citations.sources.doi import (
@@ -36,6 +35,7 @@ from dataset_citations.sources.models import (
     FetchSuccess,
     RelationType,
 )
+from dataset_citations.utils.github_client import build_github
 
 logger = logging.getLogger(__name__)
 
@@ -63,7 +63,7 @@ class NemarMetadataSource:
         data_api_base: str = DEFAULT_DATA_API_BASE,
         data_api_timeout: float = DEFAULT_DATA_API_TIMEOUT,
     ) -> None:
-        self.github = Github(github_token) if github_token else Github()
+        self.github = build_github(github_token)
         self.prefer_data_api = prefer_data_api
         self.data_api_base = data_api_base.rstrip("/")
         self.data_api_timeout = data_api_timeout
