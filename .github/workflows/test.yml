@@ -68,6 +68,17 @@ jobs:
             -v \
             --maxfail=5
 
+      - name: Citation attribution audit (report-only)
+        # Surfaces the summed-vs-unique inflation and over-spread umbrella
+        # anchors on every run. Report-only for now: flip to --fail-on-violation
+        # on the deploy workflow once the anchor-judgment backfill is complete.
+        continue-on-error: true
+        run: |
+          uv run dataset-citations-audit-attribution \
+            --citations-dir citations/json_opencite \
+            --max-datasets-per-anchor 5 \
+            --top 25
+
       - name: Upload coverage to Codecov
         if: matrix.python-version == '3.13'
         uses: codecov/codecov-action@v4
