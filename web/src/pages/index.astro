@@ -1,10 +1,13 @@
 ---
 import StatCard from "../components/StatCard.astro";
 import Base from "../layouts/Base.astro";
-import { loadOverview } from "../lib/citations";
+import { loadAll } from "../lib/data";
 
-const overview = loadOverview();
+const { overview, datasets } = loadAll();
 const fmt = (n: number) => n.toLocaleString("en-US");
+const top = datasets.slice(0, 30);
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const datasetLink = (id: string) => `${base}/dataset/${id}`;
 ---
 
 <Base title="NEMAR Citations">
@@ -25,6 +28,23 @@ const fmt = (n: number) => n.toLocaleString("en-US");
     />
     <StatCard value={fmt(overview.datasetsWithCitations)} label="Datasets with citations" />
   </section>
+
+  <section class="browse">
+    <h2>Most-cited datasets</h2>
+    <ol class="ds-list" role="list">
+      {
+        top.map((d) => (
+          <li class="ds">
+            <a class="ds__name" href={datasetLink(d.id)}>
+              {d.name}
+            </a>
+            <span class="ds__id">{d.id}</span>
+            <span class="ds__count">{fmt(d.numCitations)}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
 </Base>
 
 <style>
@@ -40,5 +60,45 @@ const fmt = (n: number) => n.toLocaleString("en-US");
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: var(--space-5);
+  }
+  .browse {
+    margin-top: var(--space-12);
+  }
+  .browse h2 {
+    margin-bottom: var(--space-4);
+  }
+  .ds-list {
+    list-style: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .ds {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: var(--space-4);
+    align-items: baseline;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .ds:last-child {
+    border-bottom: none;
+  }
+  .ds:hover {
+    background: var(--color-bg-subtle);
+  }
+  .ds__name {
+    font-weight: var(--fw-medium);
+    color: var(--color-fg);
+  }
+  .ds__id {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--color-fg-subtle);
+  }
+  .ds__count {
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--fw-semibold);
+    color: var(--brand-teal);
   }
 </style>

@@ -1,0 +1,56 @@
+---
+import type { Citation } from "../lib/data";
+
+interface Props {
+  citation: Citation;
+}
+
+const { citation } = Astro.props;
+const href = citation.url || (citation.doi ? `https://doi.org/${citation.doi}` : null);
+const meta = [citation.authors, citation.year ? String(citation.year) : "", citation.venue]
+  .filter((part) => part)
+  .join(" · ");
+---
+
+<li class="cite">
+  {
+    href ? (
+      <a class="cite__title" href={href} target="_blank" rel="noopener noreferrer">
+        {citation.title}
+      </a>
+    ) : (
+      <span class="cite__title">{citation.title}</span>
+    )
+  }
+  {meta && <p class="cite__meta">{meta}</p>}
+  {
+    citation.citedBy > 0 && (
+      <span class="cite__by">{citation.citedBy.toLocaleString("en-US")} citations</span>
+    )
+  }
+</li>
+
+<style>
+  .cite {
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .cite__title {
+    font-weight: var(--fw-medium);
+    color: var(--color-fg);
+  }
+  a.cite__title:hover {
+    color: var(--color-link-hover);
+  }
+  .cite__meta {
+    margin-top: var(--space-1);
+    font-size: var(--fs-sm);
+    color: var(--color-fg-muted);
+  }
+  .cite__by {
+    display: inline-block;
+    margin-top: var(--space-1);
+    font-size: var(--fs-xs);
+    color: var(--color-fg-subtle);
+  }
+</style>
