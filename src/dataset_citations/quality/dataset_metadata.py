@@ -29,8 +29,9 @@ import re
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
-from github import Github
 from github.GithubException import GithubException
+
+from dataset_citations.utils.github_client import build_github
 
 logger = logging.getLogger(__name__)
 
@@ -72,10 +73,8 @@ class DatasetMetadataRetriever:
         """
         # `timeout` caps how long PyGithub will wait on a single HTTP call
         # before raising; without it a CLOSE_WAIT socket can hang forever.
-        if github_token:
-            self.github = Github(github_token, timeout=_GITHUB_TIMEOUT_SECONDS)
-        else:
-            self.github = Github(timeout=_GITHUB_TIMEOUT_SECONDS)
+        # build_github also spaces requests to stay under the secondary limit.
+        self.github = build_github(github_token, timeout=_GITHUB_TIMEOUT_SECONDS)
 
     def get_dataset_metadata(self, dataset_id: str) -> Dict[str, Any]:
         """
