@@ -78,7 +78,8 @@ echo "--- retrieve-metadata ---"
 uv run dataset-citations-retrieve-metadata \
   --citations-dir citations/json_opencite \
   --output-dir datasets \
-  --skip-existing || {
+  --skip-existing \
+  --max-failures 10 || {
   echo "ERROR: dataset-citations-retrieve-metadata failed; aborting." >&2
   exit 2
 }

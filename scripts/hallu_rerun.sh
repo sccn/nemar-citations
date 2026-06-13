@@ -79,9 +79,12 @@ discover() {
 }
 
 retrieve_metadata() {
+  # --max-failures mirrors the cron: a few dead/undecodable repos must not
+  # abort a manual recovery run (issue #118).
   run uv run dataset-citations-retrieve-metadata \
     --citations-dir citations/json_opencite \
-    --output-dir datasets
+    --output-dir datasets \
+    --max-failures 10
 }
 
 preflight_ollama() {

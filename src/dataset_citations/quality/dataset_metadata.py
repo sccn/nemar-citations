@@ -162,10 +162,14 @@ class DatasetMetadataRetriever:
         except GithubException as e:
             logger.warning(f"dataset_description.json not found for {dataset_id}: {e}")
             return None
-        except json.JSONDecodeError as e:
-            logger.error(
-                f"Invalid JSON in dataset_description.json for {dataset_id}: {e}"
-            )
+        except (AssertionError, ValueError) as e:
+            # PyGithub's ContentFile.decoded_content raises
+            # AssertionError("unsupported encoding: None") for files it cannot
+            # base64-decode (e.g. a >1MB blob returned with encoding=none, as on
+            # ds002001). ValueError covers json.JSONDecodeError and
+            # UnicodeDecodeError. Treat the description as unavailable rather than
+            # letting one undecodable file abort the whole dataset retrieval.
+            logger.warning(f"dataset_description.json unreadable for {dataset_id}: {e}")
             return None
 
     def _get_readme_content(self, repo, dataset_id: str) -> Optional[str]:
@@ -179,8 +183,12 @@ class DatasetMetadataRetriever:
                 logger.info(f"Retrieved {readme_file} for {dataset_id}")
                 return readme_text
 
-            except GithubException:
-                continue  # Try next README file
+            except (GithubException, AssertionError, ValueError) as e:
+                # AssertionError/ValueError: PyGithub cannot decode an oversized
+                # or odd-encoding README; skip it instead of crashing the
+                # dataset retrieval. Try the next candidate filename.
+                logger.debug(f"{readme_file} unreadable for {dataset_id}: {e}")
+                continue
 
         logger.warning(f"No README file found for {dataset_id}")
         return None
