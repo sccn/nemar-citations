@@ -198,3 +198,61 @@ def test_rerun_script_supports_umap_only_flag() -> None:
         "umap_analysis must run after score_confidence in the rerun helper's "
         "full mode (matches cron ordering)."
     )
+
+
+# The theme/network/temporal analyses produced by the cron and required by
+# deploy-dashboard.yml's verify step. PR #108 added them to the cron only; the
+# tests below keep the rerun helper in sync so manual recovery can satisfy the
+# deploy gate (issue #113).
+_ANALYSIS_MODULES = (
+    "dataset_citations.analysis.generate_themes",
+    "dataset_citations.analysis.generate_network",
+    "dataset_citations.analysis.generate_temporal",
+)
+
+
+def test_cron_script_wires_analysis_stages() -> None:
+    """Catch accidental removal of the themes/network/temporal stages."""
+    text = CRON_SCRIPT.read_text()
+    for module in _ANALYSIS_MODULES:
+        assert module in text, f"{module} missing from hallu_cron_pipeline.sh"
+
+
+def test_rerun_full_mode_matches_cron_analysis_stages() -> None:
+    """Every analysis stage in the cron must also be in the rerun helper.
+
+    Otherwise an operator recovering via scripts/hallu_rerun.sh produces an
+    incomplete dashboard_data/ tree and deploy-dashboard.yml's verify fails.
+    """
+    rerun = RERUN_SCRIPT.read_text()
+    for module in _ANALYSIS_MODULES:
+        assert module in rerun, (
+            f"{module} is in the cron but missing from hallu_rerun.sh; "
+            "manual recovery would not satisfy deploy-dashboard.yml's verify"
+        )
+
+
+def test_rerun_script_supports_analysis_only_flag() -> None:
+    """The --analysis-only flag must run the three analysis stages (issue #113)."""
+    text = RERUN_SCRIPT.read_text()
+    assert "--analysis-only" in text
+    assert 'MODE="analysis"' in text, (
+        "rerun helper must map --analysis-only to analysis mode"
+    )
+
+
+def test_rerun_full_mode_runs_analysis_after_umap() -> None:
+    """Full mode must run the analysis stages after UMAP, matching cron order."""
+    text = RERUN_SCRIPT.read_text()
+    full_block_start = text.index("  full)")
+    full_block = text[full_block_start : full_block_start + 600]
+    for fn in (
+        "umap_analysis",
+        "themes_analysis",
+        "network_analysis",
+        "temporal_analysis",
+    ):
+        assert fn in full_block, f"{fn} missing from rerun full mode"
+    assert full_block.index("umap_analysis") < full_block.index("themes_analysis"), (
+        "analysis stages must run after umap_analysis in the rerun helper's full mode"
+    )

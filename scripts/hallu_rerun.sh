@@ -10,6 +10,7 @@
 #   scripts/hallu_rerun.sh --score-only      # just step 4 (GPU scoring)
 #   scripts/hallu_rerun.sh --embeddings-only # just step 5a (GPU embeddings)
 #   scripts/hallu_rerun.sh --umap-only       # just step 5b (UMAP on embeddings)
+#   scripts/hallu_rerun.sh --analysis-only   # just step 6 (themes + network + temporal)
 #   scripts/hallu_rerun.sh --dry-run         # print the steps that would run
 #
 # Assumes:
@@ -35,6 +36,7 @@ for arg in "$@"; do
     --score-only) MODE="score" ;;
     --embeddings-only) MODE="embeddings" ;;
     --umap-only) MODE="umap" ;;
+    --analysis-only) MODE="analysis" ;;
     --dry-run) DRY_RUN=1 ;;
     -h|--help)
       sed -n '2,18p' "$0"
@@ -157,6 +159,41 @@ umap_analysis() {
   }
 }
 
+# Step 6: theme / network / temporal analyses -> dashboard_data/{themes,network,
+# temporal}/. PR #108 added these to the cron but not here, so manual recovery
+# could not satisfy deploy-dashboard.yml's verify (it hard-requires the three
+# dirs be non-empty). Mirror the cron exactly: same CLIs, mkdir, and explicit
+# `|| exit 2` guard (the helper runs under `set -uo pipefail`, no -e).
+themes_analysis() {
+  mkdir -p dashboard_data/themes
+  run uv run python -m dataset_citations.analysis.generate_themes \
+    --citations-dir citations/json_opencite \
+    --output-dir dashboard_data/themes || {
+    echo "ERROR: generate-themes failed; aborting." >&2
+    exit 2
+  }
+}
+
+network_analysis() {
+  mkdir -p dashboard_data/network
+  run uv run python -m dataset_citations.analysis.generate_network \
+    --citations-dir citations/json_opencite \
+    --output-dir dashboard_data/network || {
+    echo "ERROR: generate-network failed; aborting." >&2
+    exit 2
+  }
+}
+
+temporal_analysis() {
+  mkdir -p dashboard_data/temporal
+  run uv run python -m dataset_citations.analysis.generate_temporal \
+    --citations-dir citations/json_opencite \
+    --output-dir dashboard_data/temporal || {
+    echo "ERROR: generate-temporal failed; aborting." >&2
+    exit 2
+  }
+}
+
 case "$MODE" in
   judge)
     # judge-only needs the dataset list AND fresh dataset descriptions
@@ -201,6 +238,14 @@ case "$MODE" in
     # the analyze-umap CLI logs a clear error if the directory is missing.
     umap_analysis
     ;;
+  analysis)
+    # Theme/network/temporal only; reads citations/json_opencite and writes
+    # the three dashboard_data/ subdirs deploy-dashboard.yml verifies. No
+    # GitHub / opencite / Ollama traffic.
+    themes_analysis
+    network_analysis
+    temporal_analysis
+    ;;
   full)
     discover
     retrieve_metadata
@@ -209,5 +254,8 @@ case "$MODE" in
     score_confidence
     embeddings
     umap_analysis
+    themes_analysis
+    network_analysis
+    temporal_analysis
     ;;
 esac
