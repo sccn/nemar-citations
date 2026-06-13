@@ -71,11 +71,18 @@ _ENV_TIMEOUT = "OLLAMA_TIMEOUT_SECONDS"
 
 _DEFAULT_BASE_URL = "http://localhost:11434"
 # Single source of truth for the deployed model. Bump this one constant
-# (and re-run the probe) when a new checkpoint is pulled on hallu. 31B
-# is the smallest checkpoint that handles the methodology-vs-data_paper
-# discrimination correctly on the acceptance-gate probe; 26B confused a
-# Brainstorm-tools anchor for a data paper.
-_DEFAULT_MODEL = "gemma4:31b"
+# (and re-run scripts/probe_anchor_judgment.py) when the pulled model changes.
+#
+# Trade-off (2026-06-13): the larger 31B checkpoint discriminates
+# methodology-vs-data_paper best (26B once confused a Brainstorm-tools anchor
+# for a data paper), but 31B (19GB) OOMs / blocks other GPU jobs on the shared
+# hallu host, so it is not a viable steady-state default. gemma4:e4b (9.6GB)
+# is the resource-fit choice that still emits clean JSON under format=json
+# (qwen3.5:9b does not). Net guardrail against any weaker-judge umbrella
+# leakage: the cross-dataset attribution audit (dataset-citations-audit-attribution)
+# flags anchors fanned across many datasets regardless of judgment quality.
+# Override with OLLAMA_MODEL=gemma4:31b on a dedicated host.
+_DEFAULT_MODEL = "gemma4:e4b"
 # Per-judgment timeout: most calls return in 3-10s, but cold loads + long
 # prompts on the 26B checkpoint have been observed at ~150s. 300s gives
 # headroom without hanging the probe forever on a stuck request.

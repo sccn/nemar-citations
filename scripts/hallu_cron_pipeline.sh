@@ -83,6 +83,12 @@ uv run dataset-citations-retrieve-metadata \
   exit 2
 }
 
+# Pin the anchor-judgment model. gemma4:e4b (9.6GB) is used instead of the
+# larger gemma4:31b (19GB) because hallu is a shared host and 31B OOMs /
+# blocks other GPU jobs. Honors an explicit OLLAMA_MODEL override for a
+# dedicated host. Keep in sync with llm_client._DEFAULT_MODEL.
+export OLLAMA_MODEL="${OLLAMA_MODEL:-gemma4:e4b}"
+
 # 3. Preflight: Ollama must be reachable for anchor adjudication. If the
 # daemon is down, abort cleanly instead of producing a citation update
 # with stale judgments. Exit 2 mirrors the contract documented for
