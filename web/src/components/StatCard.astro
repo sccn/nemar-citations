@@ -1,0 +1,43 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  hint?: string;
+}
+
+const { value, label, hint } = Astro.props;
+---
+
+<div class="stat">
+  <span class="stat__value">{value}</span>
+  <span class="stat__label">{label}</span>
+  {hint && <span class="stat__hint">{hint}</span>}
+</div>
+
+<style>
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+  }
+  .stat__value {
+    font-family: var(--font-display);
+    font-size: var(--fs-4xl);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    color: var(--color-fg);
+  }
+  .stat__label {
+    font-size: var(--fs-sm);
+    color: var(--color-fg-muted);
+  }
+  .stat__hint {
+    font-size: var(--fs-xs);
+    color: var(--color-fg-subtle);
+  }
+</style>

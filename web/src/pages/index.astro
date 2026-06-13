@@ -1,0 +1,44 @@
+---
+import StatCard from "../components/StatCard.astro";
+import Base from "../layouts/Base.astro";
+import { loadOverview } from "../lib/citations";
+
+const overview = loadOverview();
+const fmt = (n: number) => n.toLocaleString("en-US");
+---
+
+<Base title="NEMAR Citations">
+  <section class="hero">
+    <h1>Dataset citations</h1>
+    <p class="hero__sub">
+      Citations tracked across NEMAR and OpenNeuro neuroscience datasets, scored for relevance
+      and refreshed automatically from the NEMAR catalog.
+    </p>
+  </section>
+
+  <section class="stats" aria-label="Overview statistics">
+    <StatCard value={fmt(overview.datasetCount)} label="Datasets tracked" />
+    <StatCard
+      value={fmt(overview.uniqueCitations)}
+      label="Unique citing papers"
+      hint={`${fmt(overview.totalCitations)} total attributions`}
+    />
+    <StatCard value={fmt(overview.datasetsWithCitations)} label="Datasets with citations" />
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding-block: var(--space-6) var(--space-8);
+  }
+  .hero__sub {
+    max-width: var(--max-width-prose);
+    color: var(--color-fg-muted);
+    font-size: var(--fs-lg);
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-5);
+  }
+</style>
