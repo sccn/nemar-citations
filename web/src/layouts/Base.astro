@@ -18,8 +18,6 @@ const homeUrl = "https://nemar.org";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="preconnect" href="https://api.nemar.org" crossorigin />
-    <link rel="preconnect" href="https://data.nemar.org" crossorigin />
     <!-- Apply persisted theme before paint to avoid a flash (mirrors nemar.org). -->
     <script is:inline>
       (() => {
@@ -55,8 +53,19 @@ const homeUrl = "https://nemar.org";
 
     <script is:inline>
       document.getElementById("theme-toggle")?.addEventListener("click", () => {
-        const current = document.documentElement.getAttribute("data-theme");
-        const next = current === "dark" ? "light" : "dark";
+        // Resolve the CURRENT effective theme from the stored preference, falling
+        // back to the OS setting. Reading the data-theme attribute would be wrong
+        // on first click (it is unset so prefers-color-scheme drives CSS), which
+        // would always flip to dark and feel broken for dark-mode users.
+        let stored = null;
+        try {
+          stored = localStorage.getItem("nemar:theme");
+        } catch {
+          /* localStorage unavailable */
+        }
+        const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const currentIsDark = stored === "dark" || (stored === null && systemDark);
+        const next = currentIsDark ? "light" : "dark";
         document.documentElement.setAttribute("data-theme", next);
         try {
           localStorage.setItem("nemar:theme", next);

@@ -57,6 +57,15 @@ function citingKey(c: CitationDetail): string {
   return raw.toString().trim().toLowerCase();
 }
 
+// Opt-in to build an empty dashboard when no data is present (e.g. an initial
+// scaffold checkout). Off by default so a misconfigured build fails loudly
+// instead of silently publishing a zero-stat dashboard.
+const ALLOW_EMPTY = process.env.CITATIONS_ALLOW_EMPTY === "1";
+
+const EMPTY_HINT =
+  "Run the hallu pipeline (or check out a tree with citations/json_opencite/), " +
+  "or set CITATIONS_ALLOW_EMPTY=1 to intentionally build an empty dashboard.";
+
 export function loadOverview(): CitationOverview {
   const empty: CitationOverview = {
     datasetCount: 0,
@@ -66,10 +75,22 @@ export function loadOverview(): CitationOverview {
   };
   const citationsDir = findCitationsDir();
   if (!citationsDir) {
-    return empty;
+    if (ALLOW_EMPTY) {
+      console.warn(`[citations] citations/json_opencite/ not found; building empty. ${EMPTY_HINT}`);
+      return empty;
+    }
+    throw new Error(`[citations] Cannot locate citations/json_opencite/. ${EMPTY_HINT}`);
   }
 
   const files = readdirSync(citationsDir).filter((f) => f.endsWith("_citations.json"));
+  if (files.length === 0) {
+    if (ALLOW_EMPTY) {
+      console.warn(`[citations] ${citationsDir} has no *_citations.json; building empty.`);
+      return empty;
+    }
+    throw new Error(`[citations] ${citationsDir} has no *_citations.json files. ${EMPTY_HINT}`);
+  }
+
   let totalCitations = 0;
   let datasetsWithCitations = 0;
   const unique = new Set<string>();
@@ -78,7 +99,10 @@ export function loadOverview(): CitationOverview {
     let data: CitationFile;
     try {
       data = JSON.parse(readFileSync(join(citationsDir, name), "utf-8")) as CitationFile;
-    } catch {
+    } catch (err) {
+      // Skip an unreadable/corrupt file but surface it in build output so a bad
+      // cron write does not silently shrink the KPIs.
+      console.warn(`[citations] skipping ${name}: ${err instanceof Error ? err.message : err}`);
       continue;
     }
     const n = data.num_citations ?? 0;
