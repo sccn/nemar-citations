@@ -23,6 +23,20 @@ from ..quality.dataset_metadata import DatasetMetadataRetriever, save_dataset_me
 logger = logging.getLogger(__name__)
 
 
+def resolve_exit_code(
+    successful: int, skipped: int, failed: int, max_failures: int
+) -> int:
+    """Return the CLI exit code from the per-dataset retrieval tally.
+
+    retrieve-metadata is a best-effort refresh; a few dead, renamed, or
+    undecodable repos (e.g. ds002001's >1MB dataset_description.json) should
+    not abort the whole nightly pipeline. Exit non-zero only when the failure
+    count exceeds ``max_failures``. Default ``max_failures=0`` preserves the
+    original strict behavior; the hallu cron opts into tolerance (issue #118).
+    """
+    return 1 if failed > max_failures else 0
+
+
 def get_dataset_ids_from_citations_dir(citations_dir: str) -> List[str]:
     """Extract dataset IDs from citation JSON files."""
     dataset_ids = []
@@ -87,6 +101,17 @@ Examples:
         "--skip-existing",
         action="store_true",
         help="Skip datasets that already have metadata files",
+    )
+
+    parser.add_argument(
+        "--max-failures",
+        type=int,
+        default=0,
+        help=(
+            "Tolerate up to this many per-dataset retrieval failures before "
+            "exiting non-zero (default 0 = strict). The nightly cron passes a "
+            "small value so one dead/undecodable repo cannot abort the pipeline."
+        ),
     )
 
     parser.add_argument(
@@ -172,11 +197,19 @@ Examples:
     logger.info(f"  Failed: {failed}")
     logger.info(f"  Total processed: {len(dataset_ids)}")
 
-    if failed > 0:
-        logger.warning(f"{failed} datasets had retrieval failures")
-        return 1
+    exit_code = resolve_exit_code(successful, skipped, failed, args.max_failures)
+    if failed > args.max_failures:
+        logger.warning(
+            f"{failed} datasets had retrieval failures "
+            f"(> --max-failures={args.max_failures}); failing."
+        )
+    elif failed > 0:
+        logger.warning(
+            f"{failed} datasets had retrieval failures "
+            f"(within --max-failures={args.max_failures}); continuing."
+        )
 
-    return 0
+    return exit_code
 
 
 if __name__ == "__main__":
