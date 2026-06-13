@@ -59,7 +59,7 @@ echo "GITHUB_TOKEN=..."  > .env
 # workstation-local `ollama serve` (see scripts/probe_anchor_judgment.py
 # docstring for the canonical workflow).
 # export OLLAMA_BASE_URL=http://localhost:21434   # tunneled to hallu:11434
-# export OLLAMA_MODEL=gemma4:31b                  # tracks _DEFAULT_MODEL
+# export OLLAMA_MODEL=gemma4:e4b                  # tracks _DEFAULT_MODEL (31b OOMs on shared hallu)
 ```
 
 ## Development Workflow
@@ -138,7 +138,7 @@ uv run dataset-citations-score-confidence --citations-dir citations/json_opencit
 1. **Discovery**: Prefer `https://api.nemar.org/datasets` (D1 catalog, no auth, ~40KB for the full list of 594 datasets) for both nm-* and on-* (NEMAR-imported OpenNeuro) IDs. One request gives every dataset's `dataset_id`, `doi`, `concept_doi`, `source`, `source_id`, `github_repo`, and modality/task/author metadata. Legacy ds-* IDs not yet in the catalog still come from GitHub via `cli/discover.py`.
 2. **DOI extraction**: For nm-* / on-* — fetch `https://data.nemar.org/<id>/metadata.json` (the same neuroschema doc the worker generates from `.nemar/metadata.json` + D1 enrichment) and parse `related_identifiers[]` via `sources/nemar_metadata.py`. Confirmed shape: `{ identifier, identifier_type, relation_type }` with DataCite relation values. For legacy ds-* — fall back to `dataset_description.json` via `sources/bids_metadata.py`. The dataset's **own** DOI (from the catalog `doi` field) is also a citation anchor with `relation_type = References`. Relation types we consume: `References`, `IsDerivedFrom`, `IsIdenticalTo`, `IsVersionOf`.
 3. **Anchor judgment + citation fetching** (epic #76):
-   - **3a. Anchor judgment**: `dataset-citations-judge-anchors` classifies each anchor DOI as `data_paper` / `umbrella` / `methodology` / `related_work` / `irrelevant` via an Ollama-served Gemma checkpoint (default `gemma4:31b` on hallu, swappable via `OLLAMA_MODEL`). Writes per-dataset sidecars to `citations/anchor_judgments/<id>.json`. Aborts with exit code 2 if the Ollama daemon is unreachable.
+   - **3a. Anchor judgment**: `dataset-citations-judge-anchors` classifies each anchor DOI as `data_paper` / `umbrella` / `methodology` / `related_work` / `irrelevant` via an Ollama-served Gemma checkpoint (default `gemma4:e4b` on hallu, swappable via `OLLAMA_MODEL`; `gemma4:31b` discriminates better but OOMs on the shared host). Writes per-dataset sidecars to `citations/anchor_judgments/<id>.json`. Aborts with exit code 2 if the Ollama daemon is unreachable.
    - **3b. Pipeline bucketing + citation fetching**: `core/opencite_pipeline.py` reads the sidecar via `quality/anchor_judgment_io.py` and buckets anchors by classification: `data_paper` -> kept for the opencite fetch; everything else -> recorded in `metadata.context_anchors[]` as context only. Anchors not present in the sidecar (or with no sidecar at all) fall through to "fetch all" so the pipeline stays usable while the backfill is in progress; a per-dataset WARN logs the gap count. `backends/opencite_backend.py` (sync facade over opencite) then queries OpenAlex / Semantic Scholar / PubMed for the surviving `data_paper` anchors. Concurrency throttled by `OPENCITE_MAX_CONCURRENCY` (CI sets to 1, see PR #50).
 4. **Processing**: `core/opencite_pipeline.py` deduplicates across anchors and produces schema-v2 citation JSON.
 5. **Quality scoring**: sentence-transformer similarity between dataset metadata and citation abstract. Runs on hallu's RTX 4090 via `scripts/hallu_cron_pipeline.sh` (epic #76).
