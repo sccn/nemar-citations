@@ -209,7 +209,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--citations-dir",
         type=Path,
-        default=Path("citations/json"),
+        default=Path("citations/json_opencite"),
         help="Directory containing citation JSON files",
     )
     parser.add_argument(

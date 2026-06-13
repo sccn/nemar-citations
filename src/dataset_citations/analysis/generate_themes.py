@@ -6,18 +6,13 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-try:
-    import matplotlib.pyplot as plt
-    from wordcloud import WordCloud
-except ImportError:
-    print("Installing required packages...")
-    import subprocess
+import matplotlib
 
-    subprocess.check_call(
-        [sys.executable, "-m", "pip", "install", "wordcloud", "matplotlib"]
-    )
-    import matplotlib.pyplot as plt
-    from wordcloud import WordCloud
+# Non-interactive backend: the nightly pipeline runs headless on hallu, so
+# savefig must not require a display. Set before importing pyplot.
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt  # noqa: E402
+from wordcloud import WordCloud  # noqa: E402
 
 
 def generate_themes(citations_dir: Path, output_dir: Path):
@@ -136,7 +131,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--citations-dir",
         type=Path,
-        default=Path("citations/json"),
+        default=Path("citations/json_opencite"),
         help="Directory containing citation JSON files",
     )
     parser.add_argument(
