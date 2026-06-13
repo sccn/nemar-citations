@@ -71,15 +71,16 @@ jobs:
               echo "OK: $dir ($count files)"
             fi
           done
-          # UMAP outputs (phase 3, #99) live FLAT in dashboard_data/ as
-          # *similarities*.csv so the aggregator's non-recursive glob picks
-          # them up. Missing CSVs would render an empty Citation Similarities
-          # panel without otherwise breaking the build; catch that here.
+          # UMAP similarity exports were intended to live FLAT in dashboard_data/
+          # as *similarities*.csv, but no current producer writes them
+          # (analyze-umap emits a .pkl projection, not a CSV). The Citation
+          # Similarities panel degrades to empty when absent, and the surface is
+          # being replaced by the Astro rebuild (#127), so a missing CSV is a
+          # WARNING, not a hard failure (#132). The themes/network/temporal/
+          # embeddings checks above remain hard requirements.
           sim_count=$(find dashboard_data -maxdepth 1 -name "*similarities*.csv" -type f 2>/dev/null | wc -l | tr -d ' ')
           if [ "$sim_count" -eq 0 ]; then
-            echo "::error::No *similarities*.csv files at dashboard_data/ top level"
-            echo "::error::Phase 3 of epic #96 expects hallu's analyze-umap step to write them flat there"
-            missing=1
+            echo "::warning::No dashboard_data/*similarities*.csv (no producer yet, #132); Citation Similarities panel will be empty. Continuing."
           else
             echo "OK: dashboard_data/*similarities*.csv ($sim_count files)"
           fi
