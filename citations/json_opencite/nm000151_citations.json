@@ -1,16 +1,18 @@
 {
   "dataset_id": "nm000151",
   "num_citations": 44,
-  "date_last_updated": "2026-05-20T04:29:17.466435+00:00",
+  "date_last_updated": "2026-06-13T21:37:57.736524+00:00",
   "metadata": {
-    "total_cumulative_citations": 617,
-    "fetch_date": "2026-05-20T04:29:17.466435+00:00",
+    "total_cumulative_citations": 625,
+    "fetch_date": "2026-06-13T21:37:57.736524+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -42,7 +44,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2019,
       "url": "https://doi.org/10.1109/tnsre.2019.2953121",
-      "cited_by": 66,
+      "cited_by": 67,
       "abstract": "Motor imagery (MI) is an important brain-computer interface (BCI) paradigm, which can be applied without external stimulus. Imagining different joint movements from the same limb allows intuitive control of the outer devices. However, few researches focused on this field, and the decoding accuracy limited the applications for practical use. In this study, we aim to use deep learning methods to explore the ceiling of the decoding performance of three tasks: the resting state, the MI of right hand and right elbow. To represent the brain functional relationships, the correlation matrix that consists of correlation coefficients between electrodes (channels) was calculated as features. We proposed the Channel-Correlation Network to learn the overall representation among channels for classification. Ensemble learning was applied to integrate the output of multiple Channel-Correlation Networks. Our proposed method achieved the decoding accuracy of up to 87.03% in the 3-class scenario. The res",
       "doi": "10.1109/tnsre.2019.2953121",
       "pmid": "31725383",
@@ -88,7 +90,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2022,
       "url": "https://doi.org/10.1109/tnsre.2022.3154369",
-      "cited_by": 42,
+      "cited_by": 43,
       "abstract": "A brain-computer interface (BCI) based on motor imagery (MI) from the same limb can provide an intuitive control pathway but has received limited attention. It is still a challenge to classify multiple MI tasks from the same limb. The goal of this study is to propose a novel decoding method to classify the MI tasks of four joints of the same upper limb and the resting state. EEG signals were collected from 20 participants. A time-distributed attention network (TD-Atten) was proposed to adaptively assign different weights to different classes and frequency bands of the input multiband Common Spatial Pattern (CSP) features. The long short-term memory (LSTM) and dense layers were then used to learn sequential information from the reweight features and perform the classification. Our proposed method outperformed other baseline and deep learning-based methods and obtained the accuracies of 46.8% in the 5-class scenario and 53.4% in the 4-class scenario. The visualization results of attentio",
       "doi": "10.1109/tnsre.2022.3154369",
       "pmid": "35201988",
@@ -111,7 +113,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2023,
       "url": "https://doi.org/10.1109/tnsre.2023.3259730",
-      "cited_by": 41,
+      "cited_by": 43,
       "abstract": "In recent years, deep neural network-based transfer learning (TL) has shown outstanding performance in EEG-based motor imagery (MI) brain-computer interface (BCI). However, due to the long preparation for pre-trained models and the arbitrariness of source domain selection, using deep transfer learning on different datasets and models is still challenging. In this paper, we proposed a multi-direction transfer learning (MDTL) strategy for cross-subject MI EEG-based BCI. This strategy utilizes data from multi-source domains to the target domain as well as from one multi-source domain to another multi-source domain. This strategy is model-independent so that it can be quickly deployed on existing models. Three generic deep learning models for MI classification (DeepConvNet, ShallowConvNet, and EEGNet) and two public motor imagery datasets (BCIC IV dataset 2a and Lee2019) are used in this study to verify the proposed strategy. For the four-classes dataset BCIC IV dataset 2a, the proposed MD",
       "doi": "10.1109/tnsre.2023.3259730",
       "pmid": "37030758",
@@ -134,7 +136,7 @@
       "venue": "IEEE Transactions on Medical Robotics and Bionics",
       "year": 2020,
       "url": "https://doi.org/10.1109/tmrb.2020.3025364",
-      "cited_by": 30,
+      "cited_by": 31,
       "abstract": "Motor imagery (MI) tasks of different body parts have been successfully decoded by conventional classifiers, such as LDA and SVM. On the other hand, decoding MI tasks within the same limb is a challenging problem with these classifiers; however, it would provide more options to control robotic devices. This work proposes to improve the hand MI tasks decoding within the same limb in a brain-computer interface using convolutional neural networks (CNNs); the CNN EEGNet, LDA, and SVM classifiers were evaluated for two (flexion/extension) and three (flexion/extension/grasping) MI tasks. Our approach is the first attempt to apply CNNs for solving this problem to our best knowledge. In addition, visual and electrotactile stimulation were included as BCI training reinforcement after the MI task similar to feedback sessions; then, they were compared. The EEGNet achieved maximum mean accuracies of 78.46% (±12.50%) and 76.72% (±11.67%) for two and three classes, respectively. Outperforming conven",
       "doi": "10.1109/tmrb.2020.3025364",
       "pmid": null,
@@ -180,7 +182,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2023,
       "url": "https://doi.org/10.3389/fnins.2023.1129049",
-      "cited_by": 24,
+      "cited_by": 25,
       "abstract": "Motor imagery-based brain-computer interfaces (MI-BCI) have important application values in the field of neurorehabilitation and robot control. At present, MI-BCI mostly use bilateral upper limb motor tasks, but there are relatively few studies on single upper limb MI tasks. In this work, we conducted studies on the recognition of motor imagery EEG signals of the right upper limb and proposed a multi-branch fusion convolutional neural network (MF-CNN) for learning the features of the raw EEG signals as well as the two-dimensional time-frequency maps at the same time. The dataset used in this study contained three types of motor imagery tasks: extending the arm, rotating the wrist, and grasping the object, 25 subjects were included. In the binary classification experiment between the grasping object and the arm-extending tasks, MF-CNN achieved an average classification accuracy of 78.52% and kappa value of 0.57. When all three tasks were used for classification, the accuracy and kappa v",
       "doi": "10.3389/fnins.2023.1129049",
       "pmid": "36908782",
@@ -359,6 +361,29 @@
       }
     },
     {
+      "title": "TBEEG: A Two-Branch Manifold Domain Enhanced Transformer Algorithm for Learning EEG Decoding",
+      "author": "Yanjun Qin, Wenqi Zhang, Xiaoming Tao",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/tnsre.2024.3380595",
+      "cited_by": 14,
+      "abstract": "The electroencephalogram-based (EEG) brain-computer interface (BCI) has garnered significant attention in recent research. However, the practicality of EEG remains constrained by the lack of efficient EEG decoding technology. The challenge lies in effectively translating intricate EEG into meaningful, generalizable information. EEG signal decoding primarily relies on either time domain or frequency domain information. There lacks a method capable of simultaneously and effectively extracting both time and frequency domain features, as well as efficiently fuse these features. Addressing these limitations, a two-branch Manifold Domain enhanced transformer algorithm is designed to holistically capture EEG's spatio-temporal information. Our method projects the time-domain information of EEG signals into the Riemannian spaces to fully decode the time dependence of EEG signals. Using wavelet transform, the time domain information is converted into frequency domain information, and the spatial",
+      "doi": "10.1109/tnsre.2024.3380595",
+      "pmid": "38526885",
+      "openalex_id": "W4393140027",
+      "source_doi": "10.1371/journal.pone.0174161",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4366280946135521,
+        "similarity_score": 0.37803298234939575,
+        "citation_text_length": 1234,
+        "dataset_text_length": 2334,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A comprehensive review of the movement imaginary brain-computer interface methods: Challenges and future directions",
       "author": "Sadaf Khademi, Mehrnoosh Neghabi, Morteza Farahi, Mehdi Shirzadi, Hamid Reza Marateb",
       "venue": "Elsevier eBooks",
@@ -376,29 +401,6 @@
         "confidence_score": 0.5403877437114716,
         "similarity_score": 0.5146549940109253,
         "citation_text_length": 241,
-        "dataset_text_length": 2334,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "TBEEG: A Two-Branch Manifold Domain Enhanced Transformer Algorithm for Learning EEG Decoding",
-      "author": "Yanjun Qin, Wenqi Zhang, Xiaoming Tao",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/tnsre.2024.3380595",
-      "cited_by": 13,
-      "abstract": "The electroencephalogram-based (EEG) brain-computer interface (BCI) has garnered significant attention in recent research. However, the practicality of EEG remains constrained by the lack of efficient EEG decoding technology. The challenge lies in effectively translating intricate EEG into meaningful, generalizable information. EEG signal decoding primarily relies on either time domain or frequency domain information. There lacks a method capable of simultaneously and effectively extracting both time and frequency domain features, as well as efficiently fuse these features. Addressing these limitations, a two-branch Manifold Domain enhanced transformer algorithm is designed to holistically capture EEG's spatio-temporal information. Our method projects the time-domain information of EEG signals into the Riemannian spaces to fully decode the time dependence of EEG signals. Using wavelet transform, the time domain information is converted into frequency domain information, and the spatial",
-      "doi": "10.1109/tnsre.2024.3380595",
-      "pmid": "38526885",
-      "openalex_id": "W4393140027",
-      "source_doi": "10.1371/journal.pone.0174161",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4366280946135521,
-        "similarity_score": 0.37803298234939575,
-        "citation_text_length": 1234,
         "dataset_text_length": 2334,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -544,7 +546,7 @@
     },
     {
       "title": "A Hierarchical Recursive Feature Elimination Algorithm to develop Brain Computer Interface Application of User Behavior for Statistical reasoning and Decision making.",
-      "author": "Shams Al Ajrawi, Ramesh R. Rao, M. Sarkar",
+      "author": "Shams Al Ajrawi, Ramesh R. Rao, Mahasweta Sarkar",
       "venue": "Journal of neuroscience methods",
       "year": 2024,
       "url": "https://doi.org/10.1016/j.jneumeth.2024.110161",
@@ -557,9 +559,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4071775572001935,
-        "similarity_score": 0.352534681558609,
-        "citation_text_length": 1277,
+        "confidence_score": 0.404649869799614,
+        "similarity_score": 0.3503462076187134,
+        "citation_text_length": 1284,
         "dataset_text_length": 2334,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -675,6 +677,29 @@
         "confidence_score": 0.5972397208213807,
         "similarity_score": 0.5687997341156006,
         "citation_text_length": 221,
+        "dataset_text_length": 2334,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A coarse-to-fine adaptive spatial–temporal graph convolution network with residuals for motor imagery decoding from the same limb",
+      "author": "Lei Zhu, Jie Yuan, Aiai Huang, Jianhai Zhang",
+      "venue": "Biomedical Signal Processing and Control",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.bspc.2023.105885",
+      "cited_by": 3,
+      "abstract": null,
+      "doi": "10.1016/j.bspc.2023.105885",
+      "pmid": null,
+      "openalex_id": "W4390565118",
+      "source_doi": "10.1371/journal.pone.0174161",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5924091070890427,
+        "similarity_score": 0.5641991496086121,
+        "citation_text_length": 240,
         "dataset_text_length": 2334,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -813,29 +838,6 @@
         "confidence_score": 0.6109347438812257,
         "similarity_score": 0.5289478302001953,
         "citation_text_length": 1212,
-        "dataset_text_length": 2334,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "A coarse-to-fine adaptive spatial–temporal graph convolution network with residuals for motor imagery decoding from the same limb",
-      "author": "Lei Zhu, Jie Yuan, Aiai Huang, Jianhai Zhang",
-      "venue": "Biomedical Signal Processing and Control",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.bspc.2023.105885",
-      "cited_by": 2,
-      "abstract": null,
-      "doi": "10.1016/j.bspc.2023.105885",
-      "pmid": null,
-      "openalex_id": "W4390565118",
-      "source_doi": "10.1371/journal.pone.0174161",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5924091070890427,
-        "similarity_score": 0.5641991496086121,
-        "citation_text_length": 240,
         "dataset_text_length": 2334,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1028,13 +1030,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-05-22T00:23:43.828148+00:00",
+    "scoring_date": "2026-06-13T22:24:56.135823+00:00",
     "dataset_text_length": 2334,
     "num_citations_scored": 44,
     "summary_stats": {
-      "mean_confidence": 0.6365876565772025,
+      "mean_confidence": 0.6365302091362802,
       "median_confidence": 0.6490940481424332,
-      "std_confidence": 0.10082993146641595,
+      "std_confidence": 0.1009612551167434,
       "min_confidence": 0.4005421802401543,
       "max_confidence": 0.894522317647934,
       "high_confidence_count": 15,

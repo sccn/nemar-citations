@@ -1,0 +1,49 @@
+{
+  "dataset_id": "ds007808",
+  "date_retrieved": "2026-05-22T22:34:14.159985+00:00",
+  "dataset_description": {
+    "Name": "EEG-Speech Brain Decoding Dataset",
+    "BIDSVersion": "1.9.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Motoshige Sato",
+      "Ilya Horiguchi",
+      "Masakazu Inoue",
+      "Kenichi Tomeoka",
+      "Eri Hatakeyama",
+      "Yuya Kita",
+      "Atsushi Yamamoto",
+      "Ippei Fujisawa",
+      "Shuntaro Sasai"
+    ],
+    "Acknowledgements": "We thank Yasuo Kabe, Sensho Nobe, and Akito Yoshida for valuable discussions on the research direction and data collection strategy during the early stages of this project. We are grateful to Mayumi Shimizu for her support in data collection and administrative coordination, and to Ryu Miyata for administrative support. We thank Yukihito Yomogida for his continued administrative support, including the preparation of ethics committee documentation and other regulatory procedures essential to this study. We also thank Ryota Kanai for his guidance as program manager of the grant program and for discussions on the data collection strategy, and Kai Arulkumaran for helpful discussions on the data collection approach.",
+    "ReferencesAndLinks": [
+      "https://arxiv.org/abs/2407.07595",
+      "https://www.isca-archive.org/interspeech_2025/inoue25b_interspeech.pdf",
+      "https://iopscience.iop.org/article/10.1088/1741-2552/ae54d0/meta"
+    ],
+    "Funding": [
+      "JST, Moonshot R&D Grant Number JPMJMS2012"
+    ],
+    "EthicsApprovals": [
+      "Shiba Palace Clinic Ethics Review Committee",
+      "Declaration of Helsinki"
+    ],
+    "DatasetDOI": "doi:10.18112/openneuro.ds007808.v1.0.0"
+  },
+  "readme_content": "# EEG-Speech Brain Decoding Dataset\n\n## Overview\nThis dataset contains EEG recordings and audio data.\n\n## Sessions\nSessions are labeled by recording date in YYYYMMDD format.\n- Example: `ses-20240401` = recorded on April 1, 2024\n\nMultiple recordings on the same day are distinguished by run numbers:\n- `run-N`: Nth recording of the day\n\n## Tasks\n- **speechopen**: Overt speech production task\n  - Participants vocalize visually presented text\n- **listening**: Auditory listening task\n  - Participants listen to prerecorded speech stimuli\n- **listeningcovert**: Auditory listening followed by covert speech imagery\n\n## EEG Acquisition Devices\nRecordings are split by acquisition label:\n- **acq-pangolin**: g.tec g.Pangolin. Stored channels include 128 EEG channels plus audio monitor, EOG, EMG, trigger, and in 140-channel recordings one auxiliary mastoid/reference channel that is not used for analysis.\n- **acq-scarabeo**: g.tec g.SCARABEO. Stored channels include 64 EEG-related channels, with channels 62 and 63 corresponding to mastoid electrodes, plus audio monitor, EOG, EMG, and trigger channels.\n- **acq-eego**: ANT Neuro eego sports. Stored channels include EEG channels 0..30 and 32..63, channel 31 as miscellaneous, audio monitor, EOG, upper- and lower-lip EMG, miscellaneous auxiliary channels, and trigger.\n\nRun-level `*_channels.tsv` files provide the authoritative channel typing for each recording.\nFor g.Pangolin sessions, `*_electrodes.tsv` and `*_coordsystem.json` files provide 3D coordinates for EEG001..EEG128 from g.tec electrode digitization (`electrodes_uhd.xml`). Electrode coordinate files are not provided for g.SCARABEO or eego sports sessions because verified channel-to-position coordinate mappings are not available in this release.\n\n## File Format Notes\n\n### EEG Data\nRaw EEG data is stored:\n- **Path**: `sub-*/ses-*/eeg/*_eeg.edf`\n- **Note**: EDF files are included as the raw EEG recordings for this BIDS-EEG dataset.\n\n### Behavioral Data (Audio)\nTask audio files are stored in `beh/` directories:\n- **Speech production**: `sub-*/ses-*/beh/*_recording-vocal_beh.wav`\n- **Listening**: `sub-*/ses-*/beh/*_recording-audio_beh.wav`\n- **Note**: Not officially part of BIDS-EEG spec, but included for analysis convenience\n- Excluded in `.bidsignore`\n\n## Directory Structure\n```\ndataset_root/\n├── README                          (this file)\n├── CHANGES                         (version history)\n├── dataset_description.json        (dataset metadata)\n├── participants.tsv                (participant information)\n├── participants.json               (participant column descriptions)\n├── task-speechopen_acq-pangolin_eeg.json               (speech production EEG metadata)\n├── task-speechopen_acq-scarabeo_eeg.json               (speech production EEG metadata)\n├── task-speechopen_acq-eego_eeg.json                   (speech production EEG metadata)\n├── task-listening_acq-pangolin_eeg.json                (listening EEG metadata)\n├── task-speechopen_acq-pangolin_events.json            (speech production events column descriptions)\n├── task-speechopen_acq-pangolin_recording-vocal_beh.json\n├── task-listening_acq-pangolin_recording-audio_beh.json\n├── .bidsignore                     (files to ignore in validation)\n│\n├── code/                           (analysis and preprocessing code)\n│   ├── preprocessing/              (EEG and audio preprocessing)\n│   ├── training/                   (model training scripts)\n│   ├── evaluation/                 (evaluation metrics)\n│   └── bids/                       (BIDS conversion scripts)\n│\n├── sub-01/                         (participant data)\n│   └── ses-YYYYMMDD/              (session by date)\n│       ├── eeg/                    (EEG recordings)\n│       └── beh/                    (behavioral/audio data)\n│\n└── derivatives/                    (processed data)\n    └── pipeline-standard/          (standard preprocessing)\n```\n",
+  "github_info": {
+    "repository_url": "https://github.com/OpenNeuroDatasets/ds007808",
+    "exists": true,
+    "description": "OpenNeuro dataset - EEG-Speech Brain Decoding Dataset",
+    "created_at": "2026-05-14T15:09:25+00:00",
+    "updated_at": "2026-05-21T13:28:22+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,16 +1,18 @@
 {
   "dataset_id": "nm000311",
-  "num_citations": 81,
-  "date_last_updated": "2026-05-20T04:31:01.084061+00:00",
+  "num_citations": 85,
+  "date_last_updated": "2026-06-13T21:42:41.047440+00:00",
   "metadata": {
-    "total_cumulative_citations": 994,
-    "fetch_date": "2026-05-20T04:31:01.084061+00:00",
+    "total_cumulative_citations": 1047,
+    "fetch_date": "2026-06-13T21:42:41.047440+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -19,7 +21,7 @@
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2022,
       "url": "https://doi.org/10.1109/tbme.2022.3193277",
-      "cited_by": 107,
+      "cited_by": 113,
       "abstract": "OBJECT: Motor imagery (MI) is a mental process widely utilized as the experimental paradigm for brain-computer interfaces (BCIs) across a broad range of basic science and clinical studies. However, decoding intentions from MI remains challenging due to the inherent complexity of brain patterns relative to the small sample size available for machine learning. APPROACH: This paper proposes an end-to-end Filter-Bank Multiscale Convolutional Neural Network (FBMSNet) for MI classification. A filter bank is first employed to derive a multiview spectral representation of the EEG data. Mixed depthwise convolution is then applied to extract temporal features at multiple scales, followed by spatial filtering to mitigate volume conduction. Finally, with the joint supervision of cross-entropy and center loss, FBMSNet obtains features that maximize interclass dispersion and intraclass compactness. MAIN RESULTS: We compare FBMSNet with several state-of-the-art EEG decoding methods on two MI datasets",
       "doi": "10.1109/tbme.2022.3193277",
       "pmid": "35867371",
@@ -42,7 +44,7 @@
       "venue": "IEEE Transactions on Cybernetics",
       "year": 2021,
       "url": "https://doi.org/10.1109/tcyb.2021.3122969",
-      "cited_by": 107,
+      "cited_by": 109,
       "abstract": "Brain-computer interfaces (BCIs) have been widely employed to identify and estimate a user's intention to trigger a robotic device by decoding motor imagery (MI) from an electroencephalogram (EEG). However, developing a BCI system driven by MI related to natural hand-grasp tasks is challenging due to its high complexity. Although numerous BCI studies have successfully decoded large body parts, such as the movement intention of both hands, arms, or legs, research on MI decoding of high-level behaviors such as hand grasping is essential to further expand the versatility of MI-based BCIs. In this study, we propose NeuroGrasp, a dual-stage deep learning framework that decodes multiple hand grasping from EEG signals under the MI paradigm. The proposed method effectively uses an EEG and electromyography (EMG)-based learning, such that EEG-based inference at test phase becomes possible. The EMG guidance during model training allows BCIs to predict hand grasp types from EEG signals accurately.",
       "doi": "10.1109/tcyb.2021.3122969",
       "pmid": "34748509",
@@ -84,11 +86,11 @@
     },
     {
       "title": "Multimodal signal dataset for 11 intuitive movement tasks from single upper extremity during multiple recording sessions",
-      "author": "Ji-Hoon Jeong, Jeong-Hyun Cho, Kyung-Hwan Shim, Byoung-Hee Kwon, Byeong-Hoo Lee, Do-Yeun Lee, Dae-Hyeok Lee, Seong‐Whan Lee",
+      "author": "Ji-Hoon Jeong, Jeong-Hyun Cho, Kyung-Hwan Shim, Byoung-Hee Kwon, Byeong-Hoo Lee, Do-Yeun Lee, Dae-Hyeok Lee, Seong–Whan Lee",
       "venue": "GigaScience",
       "year": 2020,
       "url": "https://doi.org/10.1093/gigascience/giaa098",
-      "cited_by": 75,
+      "cited_by": 76,
       "abstract": "BACKGROUND: Non-invasive brain-computer interfaces (BCIs) have been developed for realizing natural bi-directional interaction between users and external robotic systems. However, the communication between users and BCI systems through artificial matching is a critical issue. Recently, BCIs have been developed to adopt intuitive decoding, which is the key to solving several problems such as a small number of classes and manually matching BCI commands with device control. Unfortunately, the advances in this area have been slow owing to the lack of large and uniform datasets. This study provides a large intuitive dataset for 11 different upper extremity movement tasks obtained during multiple recording sessions. The dataset includes 60-channel electroencephalography, 7-channel electromyography, and 4-channel electro-oculography of 25 healthy participants collected over 3-day sessions for a total of 82,500 trials across all the participants. FINDINGS: We validated our dataset via neurophy",
       "doi": "10.1093/gigascience/giaa098",
       "pmid": "33034634",
@@ -97,8 +99,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.7495125818252565,
-        "similarity_score": 0.6489286422729492,
+        "confidence_score": 0.7514129340648653,
+        "similarity_score": 0.6505739688873291,
         "citation_text_length": 1293,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
@@ -111,7 +113,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2022,
       "url": "https://doi.org/10.3389/fnhum.2022.898300",
-      "cited_by": 53,
+      "cited_by": 56,
       "abstract": "The brain-computer interface (BCI) has been investigated as a form of communication tool between the brain and external devices. BCIs have been extended beyond communication and control over the years. The 2020 international BCI competition aimed to provide high-quality neuroscientific data for open access that could be used to evaluate the current degree of technical advances in BCI. Although there are a variety of remaining challenges for future BCI advances, we discuss some of more recent application directions: (i) few-shot EEG learning, (ii) micro-sleep detection (iii) imagined speech decoding, (iv) cross-session classification, and (v) EEG(+ear-EEG) detection in an ambulatory environment. Not only did scientists from the BCI field compete, but scholars with a broad variety of backgrounds and nationalities participated in the competition to address these challenges. Each dataset was prepared and separated into three data that were released to the competitors in the form of trainin",
       "doi": "10.3389/fnhum.2022.898300",
       "pmid": "35937679",
@@ -130,11 +132,11 @@
     },
     {
       "title": "Motor Imagery Classification Using Inter-Task Transfer Learning via a Channel-Wise Variational Autoencoder-Based Convolutional Neural Network",
-      "author": "Do-Yeun Lee, Ji-Hoon Jeong, Byeong-Hoo Lee, Seong‐Whan Lee",
+      "author": "Do-Yeun Lee, Ji-Hoon Jeong, Byeong-Hoo Lee, Seong–Whan Lee",
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2022,
       "url": "https://doi.org/10.1109/tnsre.2022.3143836",
-      "cited_by": 47,
+      "cited_by": 49,
       "abstract": "Highly sophisticated control based on a brain-computer interface (BCI) requires decoding kinematic information from brain signals. The forearm is a region of the upper limb that is often used in everyday life, but intuitive movements within the same limb have rarely been investigated in previous BCI studies. In this study, we focused on various forearm movement decoding from electroencephalography (EEG) signals using a small number of samples. Ten healthy participants took part in an experiment and performed motor execution (ME) and motor imagery (MI) of the intuitive movement tasks (Dataset I). We propose a convolutional neural network using a channel-wise variational autoencoder (CVNet) based on inter-task transfer learning. We approached that training the reconstructed ME-EEG signals together will also achieve more sufficient classification performance with only a small amount of MI-EEG signals. The proposed CVNet was validated on our own Dataset I and a public dataset, BNCI Horizon",
       "doi": "10.1109/tnsre.2022.3143836",
       "pmid": "35041605",
@@ -143,8 +145,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6465431481599808,
-        "similarity_score": 0.5597776174545288,
+        "confidence_score": 0.6471858009696007,
+        "similarity_score": 0.5603340268135071,
         "citation_text_length": 1304,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
@@ -153,11 +155,11 @@
     },
     {
       "title": "Real-Time Deep Neurolinguistic Learning Enhances Noninvasive Neural Language Decoding for Brain–Machine Interaction",
-      "author": "Ji-Hoon Jeong, Jeong-Hyun Cho, Byeong-Hoo Lee, Seong‐Whan Lee",
+      "author": "Ji-Hoon Jeong, Jeong-Hyun Cho, Byeong-Hoo Lee, Seong–Whan Lee",
       "venue": "IEEE Transactions on Cybernetics",
       "year": 2022,
       "url": "https://doi.org/10.1109/tcyb.2022.3211694",
-      "cited_by": 43,
+      "cited_by": 46,
       "abstract": "Electroencephalogram (EEG)-based brain-machine interface (BMI) has been utilized to help patients regain motor function and has recently been validated for its use in healthy people because of its ability to directly decipher human intentions. In particular, neurolinguistic research using EEGs has been investigated as an intuitive and naturalistic communication tool between humans and machines. In this study, the human mind directly decoded the neural languages based on speech imagery using the proposed deep neurolinguistic learning. Through real-time experiments, we evaluated whether BMI-based cooperative tasks between multiple users could be accomplished using a variety of neural languages. We successfully demonstrated a BMI system that allows a variety of scenarios, such as essential activity, collaborative play, and emotional interaction. This outcome presents a novel BMI frontier that can interact at the level of human-like intelligence in real time and extends the boundaries of t",
       "doi": "10.1109/tcyb.2022.3211694",
       "pmid": "36251899",
@@ -166,8 +168,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5748969635367395,
-        "similarity_score": 0.4977462887763977,
+        "confidence_score": 0.5751123055815697,
+        "similarity_score": 0.4979327321052551,
         "citation_text_length": 1247,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
@@ -180,7 +182,7 @@
       "venue": "Neurocomputing",
       "year": 2024,
       "url": "https://doi.org/10.1016/j.neucom.2024.128577",
-      "cited_by": 39,
+      "cited_by": 43,
       "abstract": null,
       "doi": "10.1016/j.neucom.2024.128577",
       "pmid": null,
@@ -203,7 +205,7 @@
       "venue": "NeuroImage",
       "year": 2022,
       "url": "https://doi.org/10.1016/j.neuroimage.2022.119666",
-      "cited_by": 33,
+      "cited_by": 37,
       "abstract": "EEG signals exhibit commonality and variability across subjects, sessions, and tasks. But most existing EEG studies focus on mean group effects (commonality) by averaging signals over trials and subjects. The substantial intra- and inter-subject variability of EEG have often been overlooked. The recently significant technological advances in machine learning, especially deep learning, have brought technological innovations to EEG signal application in many aspects, but there are still great challenges in cross-session, cross-task, and cross-subject EEG decoding. In this work, an EEG-based biometric competition based on a large-scale M3CV (A Multi-subject, Multi-session, and Multi-task Database for investigation of EEG Commonality and Variability) database was launched to better characterize and harness the intra- and inter-subject variability and promote the development of machine learning algorithm in this field. In the M3CV database, EEG signals were recorded from 106 subjects, of wh",
       "doi": "10.1016/j.neuroimage.2022.119666",
       "pmid": "36206939",
@@ -221,12 +223,35 @@
       }
     },
     {
+      "title": "Automated Detection of Neurological and Mental Health Disorders Using <scp>EEG</scp> Signals and Artificial Intelligence: A Systematic Review",
+      "author": "Hakan Uyanık, Abdulkadir Sengur, Massimo Salvi, Ru‐San Tan, Jen Hong Tan, U. Rajendra Acharya",
+      "venue": "Wiley Interdisciplinary Reviews Data Mining and Knowledge Discovery",
+      "year": 2025,
+      "url": "https://doi.org/10.1002/widm.70002",
+      "cited_by": 36,
+      "abstract": "ABSTRACT Mental and neurological disorders significantly impact global health. This systematic review examines the use of artificial intelligence (AI) techniques to automatically detect these conditions using electroencephalography (EEG) signals. Guided by Preferred Reporting Items for Systematic Reviews and Meta‐Analysis (PRISMA), we reviewed 74 carefully selected studies published between 2013 and August 2024 that used machine learning (ML), deep learning (DL), or both of these two methods to detect neurological and mental health disorders automatically using EEG signals. The most common and most prevalent neurological and mental health disorder types were sourced from major databases, including Scopus, Web of Science, Science Direct, PubMed, and IEEE Xplore. Epilepsy, depression, and Alzheimer's disease are the most studied conditions that meet our evaluation criteria, 32, 12, and 10 studies were identified on these topics, respectively. Conversely, the number of studies meeting our",
+      "doi": "10.1002/widm.70002",
+      "pmid": null,
+      "openalex_id": "W4408342712",
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4816018813848496,
+        "similarity_score": 0.4169713258743286,
+        "citation_text_length": 1340,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Review of public motor imagery and execution datasets in brain-computer interfaces",
       "author": "Daeun Gwon, Kyungho Won, Minseok Song, Chang S. Nam, Sung Chan Jun, Minkyu Ahn",
       "venue": "Frontiers in Human Neuroscience",
       "year": 2023,
       "url": "https://doi.org/10.3389/fnhum.2023.1134869",
-      "cited_by": 28,
+      "cited_by": 30,
       "abstract": "The demand for public datasets has increased as data-driven methodologies have been introduced in the field of brain-computer interfaces (BCIs). Indeed, many BCI datasets are available in various platforms or repositories on the web, and the studies that have employed these datasets appear to be increasing. Motor imagery is one of the significant control paradigms in the BCI field, and many datasets related to motor tasks are open to the public already. However, to the best of our knowledge, these studies have yet to investigate and evaluate the datasets, although data quality is essential for reliable results and the design of subject- or system-independent BCIs. In this study, we conducted a thorough investigation of motor imagery/execution EEG datasets recorded from healthy participants published over the past 13 years. The 25 datasets were collected from six repositories and subjected to a meta-analysis. In particular, we reviewed the specifications of the recording settings and ex",
       "doi": "10.3389/fnhum.2023.1134869",
       "pmid": "37063105",
@@ -238,6 +263,29 @@
         "confidence_score": 0.670892839729786,
         "similarity_score": 0.5808596014976501,
         "citation_text_length": 1230,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Design of an EEG-based Drone Swarm Control System using Endogenous BCI Paradigms",
+      "author": "Dae-Hyeok Lee, Ji-Hoon Jeong, Hyung-Ju Ahn, Seong–Whan Lee",
+      "venue": "2021 9th International Winter Conference on Brain-Computer Interface (BCI)",
+      "year": 2021,
+      "url": "https://doi.org/10.1109/bci51272.2021.9385356",
+      "cited_by": 30,
+      "abstract": "Non-invasive brain-computer interface (BCI) has been developed for understanding users' intentions by using electroencephalogram (EEG) signals. With the recent development of artificial intelligence, there have been many developments in the drone control system. BCI characteristic that can reflect the users' intentions led to the BCI-based drone control system. When using drone swarm, we can have more advantages, such as mission diversity, than using a single drone. In particular, BCI-based drone swarm control could provide many advantages to various industries such as military service or industry disaster. BCI Paradigms consist of the exogenous and endogenous paradigms. The endogenous paradigms can operate with the users' intentions independently of any stimulus. In this study, we designed endogenous paradigms (i.e., motor imagery (MI), visual imagery (VI), and speech imagery (SI)) specialized in drone swarm control, and EEG-based various task classifications related to drone swarm co",
+      "doi": "10.1109/bci51272.2021.9385356",
+      "pmid": null,
+      "openalex_id": "W3112612924",
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.47736622452735905,
+        "similarity_score": 0.41330409049987793,
+        "citation_text_length": 1251,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -267,58 +315,12 @@
       }
     },
     {
-      "title": "Automated Detection of Neurological and Mental Health Disorders Using <scp>EEG</scp> Signals and Artificial Intelligence: A Systematic Review",
-      "author": "Hakan Uyanık, Abdulkadir Sengur, Massimo Salvi, Ru‐San Tan, Jen Hong Tan, U. Rajendra Acharya",
-      "venue": "Wiley Interdisciplinary Reviews Data Mining and Knowledge Discovery",
-      "year": 2025,
-      "url": "https://doi.org/10.1002/widm.70002",
-      "cited_by": 27,
-      "abstract": "ABSTRACT Mental and neurological disorders significantly impact global health. This systematic review examines the use of artificial intelligence (AI) techniques to automatically detect these conditions using electroencephalography (EEG) signals. Guided by Preferred Reporting Items for Systematic Reviews and Meta‐Analysis (PRISMA), we reviewed 74 carefully selected studies published between 2013 and August 2024 that used machine learning (ML), deep learning (DL), or both of these two methods to detect neurological and mental health disorders automatically using EEG signals. The most common and most prevalent neurological and mental health disorder types were sourced from major databases, including Scopus, Web of Science, Science Direct, PubMed, and IEEE Xplore. Epilepsy, depression, and Alzheimer's disease are the most studied conditions that meet our evaluation criteria, 32, 12, and 10 studies were identified on these topics, respectively. Conversely, the number of studies meeting our",
-      "doi": "10.1002/widm.70002",
-      "pmid": null,
-      "openalex_id": "W4408342712",
-      "source_doi": "10.1093/gigascience/giaa098",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4816018813848496,
-        "similarity_score": 0.4169713258743286,
-        "citation_text_length": 1340,
-        "dataset_text_length": 2351,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Design of an EEG-based Drone Swarm Control System using Endogenous BCI Paradigms",
-      "author": "Dae-Hyeok Lee, Ji-Hoon Jeong, Hyung-Ju Ahn, Seong‐Whan Lee",
-      "venue": "2021 9th International Winter Conference on Brain-Computer Interface (BCI)",
-      "year": 2021,
-      "url": "https://doi.org/10.1109/bci51272.2021.9385356",
-      "cited_by": 27,
-      "abstract": "Non-invasive brain-computer interface (BCI) has been developed for understanding users' intentions by using electroencephalogram (EEG) signals. With the recent development of artificial intelligence, there have been many developments in the drone control system. BCI characteristic that can reflect the users' intentions led to the BCI-based drone control system. When using drone swarm, we can have more advantages, such as mission diversity, than using a single drone. In particular, BCI-based drone swarm control could provide many advantages to various industries such as military service or industry disaster. BCI Paradigms consist of the exogenous and endogenous paradigms. The endogenous paradigms can operate with the users' intentions independently of any stimulus. In this study, we designed endogenous paradigms (i.e., motor imagery (MI), visual imagery (VI), and speech imagery (SI)) specialized in drone swarm control, and EEG-based various task classifications related to drone swarm co",
-      "doi": "10.1109/bci51272.2021.9385356",
-      "pmid": null,
-      "openalex_id": "W3112612924",
-      "source_doi": "10.1093/gigascience/giaa098",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4789534083008766,
-        "similarity_score": 0.41467827558517456,
-        "citation_text_length": 1251,
-        "dataset_text_length": 2351,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Recognition of single upper limb motor imagery tasks from EEG using multi-branch fusion convolutional neural network",
       "author": "Rui Zhang, Yadi Chen, Zongxin Xu, Lipeng Zhang, Yuxia Hu, Mingming Chen",
       "venue": "Frontiers in Neuroscience",
       "year": 2023,
       "url": "https://doi.org/10.3389/fnins.2023.1129049",
-      "cited_by": 24,
+      "cited_by": 25,
       "abstract": "Motor imagery-based brain-computer interfaces (MI-BCI) have important application values in the field of neurorehabilitation and robot control. At present, MI-BCI mostly use bilateral upper limb motor tasks, but there are relatively few studies on single upper limb MI tasks. In this work, we conducted studies on the recognition of motor imagery EEG signals of the right upper limb and proposed a multi-branch fusion convolutional neural network (MF-CNN) for learning the features of the raw EEG signals as well as the two-dimensional time-frequency maps at the same time. The dataset used in this study contained three types of motor imagery tasks: extending the arm, rotating the wrist, and grasping the object, 25 subjects were included. In the binary classification experiment between the grasping object and the arm-extending tasks, MF-CNN achieved an average classification accuracy of 78.52% and kappa value of 0.57. When all three tasks were used for classification, the accuracy and kappa v",
       "doi": "10.3389/fnins.2023.1129049",
       "pmid": "36908782",
@@ -382,6 +384,29 @@
       }
     },
     {
+      "title": "EMAHA-DB1: A New Upper Limb sEMG Dataset for Classification of Activities of Daily Living",
+      "author": "Naveen Kumar Karnam, Anish C. Turlapaty, Shiv Ram Dubey, Balakrishna Gokaraju",
+      "venue": "IEEE Transactions on Instrumentation and Measurement",
+      "year": 2023,
+      "url": "https://doi.org/10.1109/tim.2023.3279873",
+      "cited_by": 20,
+      "abstract": "In this paper, we present electromyography analysis of human activity - database 1 (EMAHA-DB1), a novel dataset of multi-channel surface electromyography (sEMG) signals to evaluate the activities of daily living (ADL). The dataset is acquired from 25 able-bodied subjects while performing 22 activities categorised according to functional arm activity behavioral system (FAABOS) (3 - full hand gestures, 6 - open/close office draw, 8 - grasping and holding of small office objects, 2 - flexion and extension of finger movements, 2 - writing and 1 - rest). The sEMG data is measured by a set of five Noraxon Ultium wireless sEMG sensors with Ag/Agcl electrodes placed on a human hand. The dataset is analyzed for hand activity recognition classification performance. The classification is performed using six state-of-the-art machine learning classifiers, including Random Forest (RF), Fine K-Nearest Neighbour (KNN), Ensemble KNN (sKNN), Linear Discriminant Analysis (LDA), Support Vector Machines (S",
+      "doi": "10.1109/tim.2023.3279873",
+      "pmid": null,
+      "openalex_id": "W4378194906",
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6899068263173104,
+        "similarity_score": 0.5973219275474548,
+        "citation_text_length": 1257,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A novel deep learning approach to predict subject arm movements from EEG-based signals",
       "author": "Sachin Kansal, Dhruv Garg, Aditya Upadhyay, Snehil Mittal, Guneet Singh Talwar",
       "venue": "Neural Computing and Applications",
@@ -405,35 +430,12 @@
       }
     },
     {
-      "title": "EMAHA-DB1: A New Upper Limb sEMG Dataset for Classification of Activities of Daily Living",
-      "author": "Naveen Kumar Karnam, Anish C. Turlapaty, Shiv Ram Dubey, Balakrishna Gokaraju",
-      "venue": "IEEE Transactions on Instrumentation and Measurement",
-      "year": 2023,
-      "url": "https://doi.org/10.1109/tim.2023.3279873",
-      "cited_by": 19,
-      "abstract": "In this paper, we present electromyography analysis of human activity - database 1 (EMAHA-DB1), a novel dataset of multi-channel surface electromyography (sEMG) signals to evaluate the activities of daily living (ADL). The dataset is acquired from 25 able-bodied subjects while performing 22 activities categorised according to functional arm activity behavioral system (FAABOS) (3 - full hand gestures, 6 - open/close office draw, 8 - grasping and holding of small office objects, 2 - flexion and extension of finger movements, 2 - writing and 1 - rest). The sEMG data is measured by a set of five Noraxon Ultium wireless sEMG sensors with Ag/Agcl electrodes placed on a human hand. The dataset is analyzed for hand activity recognition classification performance. The classification is performed using six state-of-the-art machine learning classifiers, including Random Forest (RF), Fine K-Nearest Neighbour (KNN), Ensemble KNN (sKNN), Linear Discriminant Analysis (LDA), Support Vector Machines (S",
-      "doi": "10.1109/tim.2023.3279873",
-      "pmid": null,
-      "openalex_id": "W4378194906",
-      "source_doi": "10.1093/gigascience/giaa098",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6899068263173104,
-        "similarity_score": 0.5973219275474548,
-        "citation_text_length": 1257,
-        "dataset_text_length": 2351,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "DTP-Net: Learning to Reconstruct EEG Signals in Time-Frequency Domain by Multi-Scale Feature Reuse",
       "author": "Yan Pei, Jiahui Xu, Qianhao Chen, Chenhao Wang, Feng Yu, Lisan Zhang, Wei Luo",
       "venue": "IEEE Journal of Biomedical and Health Informatics",
       "year": 2024,
       "url": "https://doi.org/10.1109/jbhi.2024.3358917",
-      "cited_by": 17,
+      "cited_by": 19,
       "abstract": "Electroencephalography (EEG) signals are prone to contamination by noise, such as ocular and muscle artifacts. Minimizing these artifacts is crucial for EEG-based downstream applications like disease diagnosis and brain-computer interface (BCI). This paper presents a new EEG denoising model, DTP-Net. It is a fully convolutional neural network comprising Densely-connected Temporal Pyramids (DTPs) placed between two learnable time-frequency transformations. In the time-frequency domain, DTPs facilitate efficient propagation of multi-scale features extracted from EEG signals of any length, leading to effective noise reduction. Comprehensive experiments on two public semi-simulated datasets demonstrate that the proposed DTP-Net consistently outperforms existing state-of-the-art methods on metrics including relative root mean square error (RRMSE) and signal-to-noise ratio improvement ( ∆SNR). Moreover, the proposed DTP-Net is applied to a BCI classification task, yielding an improvement of ",
       "doi": "10.1109/jbhi.2024.3358917",
       "pmid": "38277252",
@@ -456,7 +458,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2023,
       "url": "https://doi.org/10.1088/1741-2552/acf7f4",
-      "cited_by": 14,
+      "cited_by": 15,
       "abstract": "Abstract Objective. Motor imagery (MI) is widely used in brain-computer interfaces (BCIs). However, the decode of MI-EEG using convolutional neural networks (CNNs) remains a challenge due to individual variability. Approach. We propose a fully end-to-end CNN called SincMSNet to address this issue. SincMSNet employs the Sinc filter to extract subject-specific frequency band information and utilizes mixed-depth convolution to extract multi-scale temporal information for each band. It then applies a spatial convolutional block to extract spatial features and uses a temporal log-variance block to obtain classification features. The model of SincMSNet is trained under the joint supervision of cross-entropy and center loss to achieve inter-class separable and intra-class compact representations of EEG signals. Main results. We evaluated the performance of SincMSNet on the BCIC-IV-2a (four-class) and OpenBMI (two-class) datasets. SincMSNet achieves impressive results, surpassing benchmark met",
       "doi": "10.1088/1741-2552/acf7f4",
       "pmid": "37683664",
@@ -468,6 +470,29 @@
         "confidence_score": 0.6135321351885796,
         "similarity_score": 0.531196653842926,
         "citation_text_length": 1210,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "EEG-FM-Bench: A Comprehensive Benchmark for the Systematic Evaluation of EEG Foundation Models",
+      "author": "Wei Xiong, Jiangtong Li, Jie Li, Kun Zhu, Changjun Jiang",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2508.17742",
+      "cited_by": 14,
+      "abstract": "Electroencephalography foundation models (EEG-FMs) have advanced brain signal analysis, but the lack of standardized evaluation benchmarks impedes model comparison and scientific progress. Current evaluations rely on inconsistent protocols that render cross-model comparisons unreliable, while a lack of diagnostic analyses obscures the internal mechanisms driving transfer efficiency and scaling behaviors. To address this, we introduce \\textbf{EEG-FM-Bench}, a unified system for the standardized evaluation of EEG-FMs. The benchmark integrates 14 datasets across 10 paradigms and incorporates diverse experimental settings, including multiple fine-tuning strategies, task organizations, and classifier configurations, supported by tools for gradient and representation analysis. Our experiments and analysis reveal several critical insights: (1) multi-task learning acts as a critical regularizer to mitigate overfitting in data-scarce EEG contexts; (2) pre-training efficiency is currently limite",
+      "doi": "10.48550/arXiv.2508.17742",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5769475319981576,
+        "similarity_score": 0.4995216727256775,
+        "citation_text_length": 1194,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -497,29 +522,6 @@
       }
     },
     {
-      "title": "EEG-FM-Bench: A Comprehensive Benchmark for the Systematic Evaluation of EEG Foundation Models",
-      "author": "Wei Xiong, Jiangtong Li, Jie Li, Kun Zhu, Changjun Jiang",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2508.17742",
-      "cited_by": 11,
-      "abstract": "Electroencephalography foundation models (EEG-FMs) have advanced brain signal analysis, but the lack of standardized evaluation benchmarks impedes model comparison and scientific progress. Current evaluations rely on inconsistent protocols that render cross-model comparisons unreliable, while a lack of diagnostic analyses obscures the internal mechanisms driving transfer efficiency and scaling behaviors. To address this, we introduce \\textbf{EEG-FM-Bench}, a unified system for the standardized evaluation of EEG-FMs. The benchmark integrates 14 datasets across 10 paradigms and incorporates diverse experimental settings, including multiple fine-tuning strategies, task organizations, and classifier configurations, supported by tools for gradient and representation analysis. Our experiments and analysis reveal several critical insights: (1) multi-task learning acts as a critical regularizer to mitigate overfitting in data-scarce EEG contexts; (2) pre-training efficiency is currently limite",
-      "doi": "10.48550/arXiv.2508.17742",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1093/gigascience/giaa098",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5769475319981576,
-        "similarity_score": 0.4995216727256775,
-        "citation_text_length": 1194,
-        "dataset_text_length": 2351,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Recognizing Hand Movements Using EEG-Signal Classification",
       "author": "M. M. Abdelhamid, Amr Wael Abdelmawgod, Mohamed Tharwat Al-Metwally, Abdelrahman Mohamed Hossien, Howida A. Shedeed, Eslam Saeed Fouly, Aya Naser",
       "venue": "2023 Eleventh International Conference on Intelligent Computing and Information Systems (ICICIS)",
@@ -537,6 +539,29 @@
         "confidence_score": 0.7039965158700944,
         "similarity_score": 0.6095207929611206,
         "citation_text_length": 1338,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "EEG-EMG FAConformer: Frequency Aware Conv-Transformer for the fusion of EEG and EMG",
+      "author": "Zhao He, Minghong Cai, Letian Li, Siyuan Tian, Ren-Jie Dai",
+      "venue": "2024 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/bibm62325.2024.10821934",
+      "cited_by": 9,
+      "abstract": "Motor pattern recognition paradigms are the main forms of Brain-Computer Interfaces(BCI) aimed at motor function rehabilitation and are the most easily promoted applications. In recent years, many researchers have suggested encouraging patients to perform real motor control execution simultaneously in MI-based BCI rehabilitation training systems. Electromyography (EMG) signals are the most direct physiological signals that can assess the execution of movements. Multimodal signal fusion is practically significant for decoding motor patterns. Therefore, we introduce a multimodal motion pattern recognition algorithm for EEG and EMG signals: EEG-EMG FAConformer, a method with several attention modules correlated with temporal and frequency information for motor pattern recognition. We especially devise a frequency band attention module to encode EEG information accurately and efficiently. What’s more, modules like Multi-Scale Fusion Module, Independent ChannelSpecific Convolution Module(IC",
+      "doi": "10.1109/bibm62325.2024.10821934",
+      "pmid": null,
+      "openalex_id": "W4406260109",
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6933414906263352,
+        "similarity_score": 0.6002956628799438,
+        "citation_text_length": 1255,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -606,29 +631,6 @@
         "confidence_score": 0.5655873097479344,
         "similarity_score": 0.489685982465744,
         "citation_text_length": 1236,
-        "dataset_text_length": 2351,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "EEG-EMG FAConformer: Frequency Aware Conv-Transformer for the fusion of EEG and EMG",
-      "author": "Zhao He, Minghong Cai, Letian Li, Siyuan Tian, Ren-Jie Dai",
-      "venue": "2024 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/bibm62325.2024.10821934",
-      "cited_by": 7,
-      "abstract": "Motor pattern recognition paradigms are the main forms of Brain-Computer Interfaces(BCI) aimed at motor function rehabilitation and are the most easily promoted applications. In recent years, many researchers have suggested encouraging patients to perform real motor control execution simultaneously in MI-based BCI rehabilitation training systems. Electromyography (EMG) signals are the most direct physiological signals that can assess the execution of movements. Multimodal signal fusion is practically significant for decoding motor patterns. Therefore, we introduce a multimodal motion pattern recognition algorithm for EEG and EMG signals: EEG-EMG FAConformer, a method with several attention modules correlated with temporal and frequency information for motor pattern recognition. We especially devise a frequency band attention module to encode EEG information accurately and efficiently. What’s more, modules like Multi-Scale Fusion Module, Independent ChannelSpecific Convolution Module(IC",
-      "doi": "10.1109/bibm62325.2024.10821934",
-      "pmid": null,
-      "openalex_id": "W4406260109",
-      "source_doi": "10.1093/gigascience/giaa098",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6933414906263352,
-        "similarity_score": 0.6002956628799438,
-        "citation_text_length": 1255,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -957,6 +959,29 @@
       }
     },
     {
+      "title": "A multimodal biomechanics dataset with synchronized kinematics and internal tissue motions during reaching",
+      "author": "Roger Pallarès-López, Duarte Folgado, Uriel Magana-Salgado, Jessica Rosendorf, Enya Ryu, Micha Feigin-Almon, H. Gamboa, Luca Daniel, Brian W. Anthony, Praneeth Namburi",
+      "venue": "Scientific Data",
+      "year": 2026,
+      "url": "https://doi.org/10.1038/s41597-026-07019-3",
+      "cited_by": 3,
+      "abstract": "Tissue motions within body segments, such as the relative movements of muscles, fascia, and bone, remain largely unexplored despite their relevance to movement dysfunction, force transmission, and motor skill. Here, we present a time-synchronized multimodal dataset that bridges this gap by capturing both internal tissue dynamics and conventional biomechanical measurements during arm reaching. Thirty-six participants across three expertise levels (world-class athletes, regional athletes, and untrained individuals) performed slow, rhythmic reaching movements while we recorded data using B-mode ultrasound imaging, motion capture, electromyography, and accelerometry. The dataset includes processed signals, derived parameters (segmented reach events, tissue boundary motion, arm kinematics, tremor events, and muscle activation levels), and metadata. Notably, using the DUSTrack point-tracking workflow, we provide trajectories for 11 points across approximately 300,000 ultrasound frames from t",
+      "doi": "10.1038/s41597-026-07019-3",
+      "pmid": "41851191",
+      "openalex_id": null,
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6594704863429071,
+        "similarity_score": 0.5709701180458069,
+        "citation_text_length": 1327,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Real-Time Classification of Motor Imagery Using Dynamic Window-Level Granger Causality Analysis of fMRI Data",
       "author": "Tianyuan Liu, Bao Li, Chi Zhang, Panpan Chen, Weichen Zhao, Bin Yan",
       "venue": "Brain Sciences",
@@ -1050,7 +1075,7 @@
     },
     {
       "title": "Factorization Approach for Sparse Spatio-Temporal Brain-Computer Interface",
-      "author": "Byeong-Hoo Lee, Jeong-Hyun Cho, Byoung-Hee Kwon, Seong‐Whan Lee",
+      "author": "Byeong-Hoo Lee, Jeong-Hyun Cho, Byoung-Hee Kwon, Seong–Whan Lee",
       "venue": "2022 26th International Conference on Pattern Recognition (ICPR)",
       "year": 2022,
       "url": "https://doi.org/10.1109/icpr56361.2022.9956445",
@@ -1063,8 +1088,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.3996999630331994,
-        "similarity_score": 0.346060574054718,
+        "confidence_score": 0.39929148092865946,
+        "similarity_score": 0.34570690989494324,
         "citation_text_length": 1240,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
@@ -1302,6 +1327,29 @@
       }
     },
     {
+      "title": "A survey on multimodal explainable Artificial Intelligence",
+      "author": "Claudio Giovannoni, Carlo Metta, Anna Monreale, Salvatore Rinzivillo",
+      "venue": "Intelligent Systems with Applications",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.iswa.2026.200671",
+      "cited_by": 1,
+      "abstract": null,
+      "doi": "10.1016/j.iswa.2026.200671",
+      "pmid": null,
+      "openalex_id": "W7161781615",
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4376089498400688,
+        "similarity_score": 0.41677042841911316,
+        "citation_text_length": 190,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Deep Learning-Based EEG Signals Interpretation for Motor Imagery",
       "author": "Mariam Alkandari, Fajer Almanaye, Sarah Alhashan, Dana Alenezi, Alaa Eleyan",
       "venue": "2025 6th International Conference on Bio-engineering for Smart Technologies (BioSMART)",
@@ -1394,29 +1442,6 @@
       }
     },
     {
-      "title": "Research on combining motor imagery and somatosensory attentional orientation to enhance BCI performance",
-      "author": "wei jianqiu, Banghua Yang, Xiang Chen, Junhua Chen, Shuai Kuang",
-      "venue": "Biomedical Physics & Engineering Express",
-      "year": 2025,
-      "url": "https://doi.org/10.1088/2057-1976/ae2512",
-      "cited_by": 0,
-      "abstract": "In this study, we propose a motor imagery(MI) method based on Somatosensory Attentional Orientation(SAO) to enhance the performance of MI based brain-computer interfaces (BCI). In this BCI system, participants perform unilateral hand MI tasks while maintaining attention to the corresponding hand, as if the wrist skin is actually receiving tactile stimulation(TS). A total of 44 participants were recruited and randomly divided into the experimental group(SAO and MI joint group, SMI group) and control group(MI group). The MI group performed right hand MI tasks, and two sessions were conducted, the content of the two experiments was identical. Each session was divided into two stages: the first stage including 1 run was the right hand MI mental task with TS on the right wrist, and the second stage including 6 runs was the right hand MI mental task without TS . For SAO group, first session was the same with the MI group. However, the second stage for SAO group was the right hand MI mental t",
-      "doi": "10.1088/2057-1976/ae2512",
-      "pmid": "41308205",
-      "openalex_id": "W4416754099",
-      "source_doi": "10.1093/gigascience/giaa098",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5612824997305871,
-        "similarity_score": 0.48595887422561646,
-        "citation_text_length": 1246,
-        "dataset_text_length": 2351,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Use of Artificial Intelligence in the Classification of Upper-Limb Motion Using EEG and EMG Signals: A Review",
       "author": "Isabel Bandes, Yasuharu Koike",
       "venue": "Sensors",
@@ -1434,6 +1459,29 @@
         "confidence_score": 0.6540247696638108,
         "similarity_score": 0.5662552118301392,
         "citation_text_length": 1184,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Research on combining motor imagery and somatosensory attentional orientation to enhance BCI performance",
+      "author": "wei jianqiu, Banghua Yang, Xiang Chen, Junhua Chen, Shuai Kuang",
+      "venue": "Biomedical Physics & Engineering Express",
+      "year": 2025,
+      "url": "https://doi.org/10.1088/2057-1976/ae2512",
+      "cited_by": 0,
+      "abstract": "In this study, we propose a motor imagery(MI) method based on Somatosensory Attentional Orientation(SAO) to enhance the performance of MI based brain-computer interfaces (BCI). In this BCI system, participants perform unilateral hand MI tasks while maintaining attention to the corresponding hand, as if the wrist skin is actually receiving tactile stimulation(TS). A total of 44 participants were recruited and randomly divided into the experimental group(SAO and MI joint group, SMI group) and control group(MI group). The MI group performed right hand MI tasks, and two sessions were conducted, the content of the two experiments was identical. Each session was divided into two stages: the first stage including 1 run was the right hand MI mental task with TS on the right wrist, and the second stage including 6 runs was the right hand MI mental task without TS . For SAO group, first session was the same with the MI group. However, the second stage for SAO group was the right hand MI mental t",
+      "doi": "10.1088/2057-1976/ae2512",
+      "pmid": "41308205",
+      "openalex_id": "W4416754099",
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5612824997305871,
+        "similarity_score": 0.48595887422561646,
+        "citation_text_length": 1246,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1671,7 +1719,7 @@
     },
     {
       "title": "Developing Brain-Based Bare-Handed Human-Machine Interaction via On-Skin Input",
-      "author": "Myoung-Ki Kim, Hye-Bin Shin, Jeong-Hyun Cho, Seong‐Whan Lee",
+      "author": "Myoung-Ki Kim, Hye-Bin Shin, Jeong-Hyun Cho, Seong–Whan Lee",
       "venue": "IEEE Transactions on Cybernetics",
       "year": 2025,
       "url": "https://doi.org/10.1109/tcyb.2025.3533088",
@@ -1684,8 +1732,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.47996206685900694,
-        "similarity_score": 0.4155515730381012,
+        "confidence_score": 0.4799673333764077,
+        "similarity_score": 0.4155561327934265,
         "citation_text_length": 1208,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
@@ -1694,7 +1742,7 @@
     },
     {
       "title": "Sparse Multitask Learning for Efficient Neural Representation of Motor Imagery and Execution",
-      "author": "Hye-Bin Shin, Kang Yin, Seong‐Whan Lee",
+      "author": "Hye-Bin Shin, Kang Yin, Seong–Whan Lee",
       "venue": "2024 12th International Winter Conference on Brain-Computer Interface (BCI)",
       "year": 2024,
       "url": "https://doi.org/10.1109/bci60775.2024.10480502",
@@ -1707,8 +1755,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5138836710155011,
-        "similarity_score": 0.44492092728614807,
+        "confidence_score": 0.5135721203684808,
+        "similarity_score": 0.44465118646621704,
         "citation_text_length": 1244,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
@@ -1756,6 +1804,29 @@
         "confidence_score": 0.5519824683666229,
         "similarity_score": 0.5256975889205933,
         "citation_text_length": 373,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "PRiSE-EEG: A Prior-Guided Foundation Model with Depth-Stratified Experts for Cross-Paradigm EEG Representation Learning",
+      "author": "Wei Xiong, Jiangtong Li, Kun Zhu, Jie Li",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "EEG foundation models aim to learn reusable representations across heterogeneous paradigms, yet existing approaches often use uniform adaptation mechanisms and are typically reported under separate downstream fine-tuning protocols. In this work, we first analyze dense EEG Transformers from two complementary perspectives. Gradient similarity across six downstream datasets reveals substantial optimization conflicts among EEG paradigms, while CKA analysis on mixed-paradigm batches shows a consistent depth-wise transition: shallow layers preserve stronger cross-paradigm similarity, whereas deeper layers become increasingly specialized. Motivated by these findings, we propose \\textbf{PRiSE-EEG}, a prior-guided EEG foundation model with CKA-calibrated Depth-Stratified Experts. PRiSE-EEG forms continuous multi-channel EEG patches using weak static cortical and network priors and dynamic short-time channel interactions, then allocates shared and specialized experts across MoE Transformer block",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6008000367879869,
+        "similarity_score": 0.520173192024231,
+        "citation_text_length": 1201,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1831,6 +1902,29 @@
       }
     },
     {
+      "title": "Subject-Adaptive EEG-EMG Fusion Network for Motor Intention Decoding Across a Broad Impairment Spectrum",
+      "author": "Yihan Wang, Jiaxing Wang, Weiqun Wang, Jianqiang Su, Bin Hu, Yuze Feng, Shuai Han, Hao Li, Jianghong He, Z. Hou",
+      "venue": "IEEE Transactions on Instrumentation and Measurement",
+      "year": 2026,
+      "url": "https://doi.org/10.1109/TIM.2026.3697022",
+      "cited_by": 0,
+      "abstract": "The fusion of electroencephalography (EEG) and electromyography (EMG) holds significant potential for clinical motor intention decoding. However, existing methods are constrained by the dual challenges of data scarcity and high physiological heterogeneity across patient populations. To address these limitations, this article proposes the brain-muscle-based motor planning to execution network (BM-MP2E), a framework leveraging brain-muscle complementarity to ensure reliable decoding across the full impairment spectrum. We introduce a physiologically informed architecture that explicitly mirrors the neuromuscular transmission pathway. In particular, movement-related cortical potentials (MRCPs) for motor planning, $\\alpha \\beta $ bands for activation, and EMG for execution are extracted to constrain the model’s solution space. Furthermore, a subject-adaptive fusion module is designed to dynamically modulate modality contributions based on individual functional status. Experimental validati",
+      "doi": "10.1109/TIM.2026.3697022",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6269639575481416,
+        "similarity_score": 0.5428259372711182,
+        "citation_text_length": 1305,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "International Journal of Research Publication and Reviews",
       "author": "Jinlin Yan, Yu Chen",
       "venue": "n/a",
@@ -1879,17 +1973,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-05-22T00:26:53.571249+00:00",
+    "scoring_date": "2026-06-13T22:27:23.184896+00:00",
     "dataset_text_length": 2351,
-    "num_citations_scored": 81,
+    "num_citations_scored": 85,
     "summary_stats": {
-      "mean_confidence": 0.5881119906571176,
-      "median_confidence": 0.5871935963630677,
-      "std_confidence": 0.11534824038537912,
+      "mean_confidence": 0.5877926008333179,
+      "median_confidence": 0.5954649388790131,
+      "std_confidence": 0.11419090211454257,
       "min_confidence": 0.2245071530342102,
       "max_confidence": 0.7958670911192894,
       "high_confidence_count": 13,
-      "medium_confidence_count": 61,
+      "medium_confidence_count": 65,
       "low_confidence_count": 7
     }
   }

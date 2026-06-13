@@ -1,16 +1,18 @@
 {
   "dataset_id": "nm000163",
-  "num_citations": 18,
-  "date_last_updated": "2026-05-20T04:29:31.709365+00:00",
+  "num_citations": 23,
+  "date_last_updated": "2026-06-13T21:38:12.609084+00:00",
   "metadata": {
-    "total_cumulative_citations": 59,
-    "fetch_date": "2026-05-20T04:29:31.709365+00:00",
+    "total_cumulative_citations": 64,
+    "fetch_date": "2026-06-13T21:38:12.609084+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -19,7 +21,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2024,
       "url": "https://doi.org/10.1088/1741-2552/ad8ef7",
-      "cited_by": 13,
+      "cited_by": 14,
       "abstract": "Abstract Objective. Reactive brain–computer interfaces typically rely on repetitive visual stimuli, which can strain the eyes and cause attentional distraction. To address these challenges, we propose a novel approach rooted in visual neuroscience to design visual Stimuli for Augmented Response (StAR). The StAR stimuli consist of small randomly-oriented Gabor or Ricker patches that optimize foveal neural response while reducing peripheral distraction. Approach. In a factorial design study, 24 participants equipped with an 8-dry electrode EEG system focused on series of target flickers presented under three formats: traditional Plain flickers, Gabor -based, or Ricker -based flickers. These flickers were part of a five-class code visually evoked potentials paradigm featuring low frequency, short, and aperiodic visual flashes. Main results. Subjective ratings revealed that Gabor and Ricker stimuli were visually comfortable and nearly invisible in peripheral vision compared to plain flicke",
       "doi": "10.1088/1741-2552/ad8ef7",
       "pmid": "39500051",
@@ -83,6 +85,52 @@
       }
     },
     {
+      "title": "A Bayesian dynamic stopping method for evoked response brain-computer interfacing",
+      "author": "Sara Ahmadi, Peter Desain, Jordy Thielen",
+      "venue": "Frontiers in Human Neuroscience",
+      "year": 2024,
+      "url": "https://doi.org/10.3389/fnhum.2024.1437965",
+      "cited_by": 6,
+      "abstract": "Introduction: As brain-computer interfacing (BCI) systems transition fromassistive technology to more diverse applications, their speed, reliability, and user experience become increasingly important. Dynamic stopping methods enhance BCI system speed by deciding at any moment whether to output a result or wait for more information. Such approach leverages trial variance, allowing good trials to be detected earlier, thereby speeding up the process without significantly compromising accuracy. Existing dynamic stopping algorithms typically optimize measures such as symbols per minute (SPM) and information transfer rate (ITR). However, these metrics may not accurately reflect system performance for specific applications or user types. Moreover, many methods depend on arbitrary thresholds or parameters that require extensive training data. Methods: We propose a model-based approach that takes advantage of the analytical knowledge that we have about the underlying classification model. By us",
+      "doi": "10.3389/fnhum.2024.1437965",
+      "pmid": "39776784",
+      "openalex_id": "W4405763759",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4279543125629426,
+        "similarity_score": 0.37052321434020996,
+        "citation_text_length": 1191,
+        "dataset_text_length": 2311,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Streamlining cVEP Paradigms: Effects of a Minimized Electrode Montage on Brain–Computer Interface Performance",
+      "author": "Milán András Fodor, Atilla Cantürk, Gernot Heisenberg, Ivan Volosyak",
+      "venue": "Brain Sciences",
+      "year": 2025,
+      "url": "https://doi.org/10.3390/brainsci15060549",
+      "cited_by": 5,
+      "abstract": "(1) Background: Brain-computer interfaces (BCIs) enable direct communication between the brain and external devices using electroencephalography (EEG) signals, offering potential applications in assistive technology and neurorehabilitation. Code-modulated visual evoked potential (cVEP)-based BCIs employ code-pattern-based stimulation to evoke neural responses, which can then be classified to infer user intent. While increasing the number of EEG electrodes across the visual cortex enhances classification accuracy, it simultaneously reduces user comfort and increases setup complexity, duration, and hardware costs. (2) Methods: This online BCI study, involving thirty-eight able-bodied participants, investigated how reducing the electrode count from 16 to 6 affected performance. Three experimental conditions were tested: a baseline 16-electrode configuration, a reduced 6-electrode setup without retraining, and a reduced 6-electrode setup with retraining. (3) Results: Our results indicate t",
+      "doi": "10.3390/brainsci15060549",
+      "pmid": "40563723",
+      "openalex_id": "W4410695820",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6974991479516031,
+        "similarity_score": 0.603895366191864,
+        "citation_text_length": 1230,
+        "dataset_text_length": 2311,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Frequency tagging of spatial attention using periliminal flickers",
       "author": "Simon Ladouce, Frédéric Dehais",
       "venue": "Imaging Neuroscience",
@@ -106,29 +154,6 @@
       }
     },
     {
-      "title": "A Bayesian dynamic stopping method for evoked response brain-computer interfacing",
-      "author": "Sara Ahmadi, Peter Desain, Jordy Thielen",
-      "venue": "Frontiers in Human Neuroscience",
-      "year": 2024,
-      "url": "https://doi.org/10.3389/fnhum.2024.1437965",
-      "cited_by": 5,
-      "abstract": "Introduction: As brain-computer interfacing (BCI) systems transition fromassistive technology to more diverse applications, their speed, reliability, and user experience become increasingly important. Dynamic stopping methods enhance BCI system speed by deciding at any moment whether to output a result or wait for more information. Such approach leverages trial variance, allowing good trials to be detected earlier, thereby speeding up the process without significantly compromising accuracy. Existing dynamic stopping algorithms typically optimize measures such as symbols per minute (SPM) and information transfer rate (ITR). However, these metrics may not accurately reflect system performance for specific applications or user types. Moreover, many methods depend on arbitrary thresholds or parameters that require extensive training data. Methods: We propose a model-based approach that takes advantage of the analytical knowledge that we have about the underlying classification model. By us",
-      "doi": "10.3389/fnhum.2024.1437965",
-      "pmid": "39776784",
-      "openalex_id": "W4405763759",
-      "source_doi": "10.1016/j.neuroimage.2023.120446",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4279543125629426,
-        "similarity_score": 0.37052321434020996,
-        "citation_text_length": 1191,
-        "dataset_text_length": 2311,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Toward the integration of mixed reality and brain-computer interfaces based on code-modulated visual evoked potentials",
       "author": "Selene Moreno-Calderón, Víctor Martínez-Cagigal, Ana Martín-Fernández, Eduardo Santamaría-Vázquez, Roberto Hornero",
       "venue": "Journal of Applied Biomedicine",
@@ -146,29 +171,6 @@
         "confidence_score": 0.5933033385872841,
         "similarity_score": 0.5136825442314148,
         "citation_text_length": 1301,
-        "dataset_text_length": 2311,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Streamlining cVEP Paradigms: Effects of a Minimized Electrode Montage on Brain–Computer Interface Performance",
-      "author": "Milán András Fodor, Atilla Cantürk, Gernot Heisenberg, Ivan Volosyak",
-      "venue": "Brain Sciences",
-      "year": 2025,
-      "url": "https://doi.org/10.3390/brainsci15060549",
-      "cited_by": 4,
-      "abstract": "(1) Background: Brain-computer interfaces (BCIs) enable direct communication between the brain and external devices using electroencephalography (EEG) signals, offering potential applications in assistive technology and neurorehabilitation. Code-modulated visual evoked potential (cVEP)-based BCIs employ code-pattern-based stimulation to evoke neural responses, which can then be classified to infer user intent. While increasing the number of EEG electrodes across the visual cortex enhances classification accuracy, it simultaneously reduces user comfort and increases setup complexity, duration, and hardware costs. (2) Methods: This online BCI study, involving thirty-eight able-bodied participants, investigated how reducing the electrode count from 16 to 6 affected performance. Three experimental conditions were tested: a baseline 16-electrode configuration, a reduced 6-electrode setup without retraining, and a reduced 6-electrode setup with retraining. (3) Results: Our results indicate t",
-      "doi": "10.3390/brainsci15060549",
-      "pmid": "40563723",
-      "openalex_id": "W4410695820",
-      "source_doi": "10.1016/j.neuroimage.2023.120446",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6974991479516031,
-        "similarity_score": 0.603895366191864,
-        "citation_text_length": 1230,
         "dataset_text_length": 2311,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -244,6 +246,29 @@
       }
     },
     {
+      "title": "Amplitude Modulation Depth Coding Method for SSVEP-Based Brain–Computer Interfaces",
+      "author": "Ruxue Li, Zhenyu Wang, Xi Zhao, Guiying Xu, Honglin Hu, Ting Zhou, Tianheng Xu",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/tnsre.2025.3528409",
+      "cited_by": 1,
+      "abstract": "In steady-state visual evoked potential (SSVEP)-based brain-computer interfaces (BCIs), the limited availability of frequency resources inherently constrains the scale of the instruction set, presenting a substantial challenge for efficient communication. As the number of stimuli increases, the comfort level of the stimulus interface also becomes increasingly demanding due to the expanded flickering area. To address these issues, we proposed a novel amplitude modulation depth coding (AMDC) method that employs Amplitude Shift Keying (ASK) technique to modulate the luminance level of stimuli dynamically. Each stimulus with a single carrier frequency was assigned a specific binary sequence to operate two modulation depths. Two experiments were conducted to comprehensively assess the effectiveness of this approach. In Experiment 1, the time-frequency responses at two modulation depths across different frequencies were examined. A 36-target paradigm based on AMDC strategy was designed and e",
+      "doi": "10.1109/tnsre.2025.3528409",
+      "pmid": "40031046",
+      "openalex_id": "W4406322215",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5141979065537453,
+        "similarity_score": 0.44519299268722534,
+        "citation_text_length": 1265,
+        "dataset_text_length": 2311,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Learning from small datasets—review of workshop 6 of the 10th International BCI Meeting 2023",
       "author": "Michael Tangermann, Sylvain Chevallier, Matthias Dold, Pierre Guetschel, Reinmar J. Kobler, Théodore Papadopoulo, Jordy Thielen",
       "venue": "Journal of Neural Engineering",
@@ -290,6 +315,29 @@
       }
     },
     {
+      "title": "Rewiring Attention: Virtual Reality and Brain–Computer Interfaces in the Rehabilitation of Unilateral Spatial Neglect",
+      "author": "Alix Gouret, Alexandre Delaux, Solène Le Bars, Sylvie Chokron",
+      "venue": "Journal of Clinical Medicine",
+      "year": 2026,
+      "url": "https://doi.org/10.3390/jcm15031036",
+      "cited_by": 1,
+      "abstract": "Unilateral spatial neglect (USN) is a complex cognitive syndrome frequently observed after stroke. Characterized by a failure to attend, respond and orient to stimuli on the side opposite the brain lesion, USN significantly impairs patients' functional independence and presents significant challenges for rehabilitation. Current rehabilitation strategies often fall short in addressing the heterogenous manifestations of USN across perceptual modalities due to limited ecological validity, patient engagement and adaptability to individual needs. Recent advances in neurotechnologies such as virtual reality (VR) and brain-computer interfaces (BCIs) offer promising avenues for overcoming these limitations. These tools enable top-down rehabilitation strategies that directly engage cognitive recovery mechanisms to promote neuroplasticity, and support adaptive interventions tailored to individual profiles. This narrative review explores recent developments and future prospects of VR and BCI tech",
+      "doi": "10.3390/jcm15031036",
+      "pmid": "41682716",
+      "openalex_id": "W7125972707",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.309844226539135,
+        "similarity_score": 0.26826339960098267,
+        "citation_text_length": 1245,
+        "dataset_text_length": 2311,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Near-invisible c-VEP-based passive BCI for mental workload monitoring",
       "author": "Pietro Cimarosto, Sébastien Velut, Castillos-Cabrera Kalou, Torre Tresols Juan, Raphaëlle N. Roy, Frédéric Dehais",
       "venue": "Journal of Neural Engineering",
@@ -307,29 +355,6 @@
         "confidence_score": 0.6204442843794823,
         "similarity_score": 0.5371811985969543,
         "citation_text_length": 1250,
-        "dataset_text_length": 2311,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Amplitude Modulation Depth Coding Method for SSVEP-Based Brain–Computer Interfaces",
-      "author": "Ruxue Li, Zhenyu Wang, Xi Zhao, Guiying Xu, Honglin Hu, Ting Zhou, Tianheng Xu",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/tnsre.2025.3528409",
-      "cited_by": 0,
-      "abstract": "In steady-state visual evoked potential (SSVEP)-based brain-computer interfaces (BCIs), the limited availability of frequency resources inherently constrains the scale of the instruction set, presenting a substantial challenge for efficient communication. As the number of stimuli increases, the comfort level of the stimulus interface also becomes increasingly demanding due to the expanded flickering area. To address these issues, we proposed a novel amplitude modulation depth coding (AMDC) method that employs Amplitude Shift Keying (ASK) technique to modulate the luminance level of stimuli dynamically. Each stimulus with a single carrier frequency was assigned a specific binary sequence to operate two modulation depths. Two experiments were conducted to comprehensively assess the effectiveness of this approach. In Experiment 1, the time-frequency responses at two modulation depths across different frequencies were examined. A 36-target paradigm based on AMDC strategy was designed and e",
-      "doi": "10.1109/tnsre.2025.3528409",
-      "pmid": "40031046",
-      "openalex_id": "W4406322215",
-      "source_doi": "10.1016/j.neuroimage.2023.120446",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5141979065537453,
-        "similarity_score": 0.44519299268722534,
-        "citation_text_length": 1265,
         "dataset_text_length": 2311,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -361,21 +386,90 @@
     {
       "title": "c-VEP and Burst-VEP dataset from Castillos et al. (2023)",
       "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
-      "venue": "UC San Diego",
+      "venue": "Open MIND",
       "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000163.v1.0.0",
+      "url": "https://doi.org/10.82901/nemar.nm000163",
       "cited_by": 0,
       "abstract": "This dataset comprises code-modulated Visual Evoked Potential (c-VEP) EEG recordings from 12 healthy participants performing a 2-class reactive brain-computer interface task with 4 targets. The study compares novel burst c-VEP sequences with traditional m-sequences at two stimulus amplitude depths (100% and 40%), evaluating classification performance, calibration efficiency, and user experience. EEG was recorded at 500 Hz using a 32-channel BrainProducts system with convolutional neural network decoding achieving 95.6% accuracy.",
-      "doi": "10.82901/nemar.nm000163.v1.0.0",
+      "doi": "10.82901/nemar.nm000163",
       "pmid": null,
-      "openalex_id": "W7160853652",
+      "openalex_id": "W7160832225",
       "source_doi": "10.1016/j.neuroimage.2023.120446",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.9774506905674936,
-        "similarity_score": 0.84627765417099,
-        "citation_text_length": 712,
+        "confidence_score": 0.9794131395220758,
+        "similarity_score": 0.8479767441749573,
+        "citation_text_length": 709,
+        "dataset_text_length": 2311,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "CastillosBurstVEP100",
+      "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
+      "venue": "UC San Diego",
+      "year": 2026,
+      "url": "https://doi.org/10.82901/nemar.nm000344",
+      "cited_by": 0,
+      "abstract": "This dataset comprises EEG recordings from 12 healthy participants performing a 4-class code-modulated Visual Evoked Potential (c-VEP) brain-computer interface task. The study compares novel burst c-VEP sequences with traditional m-sequences at two stimulus amplitude depths (100% and 40%) to optimize classification performance while minimizing calibration requirements and enhancing user experience. Data were acquired at 500 Hz using a 32-channel BrainProducts system and processed with convolutional neural network architectures, achieving classification accuracies up to 95.6%.",
+      "doi": "10.82901/nemar.nm000344",
+      "pmid": null,
+      "openalex_id": "W7163364770",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.9347631230950357,
+        "similarity_score": 0.8093187212944031,
+        "citation_text_length": 724,
+        "dataset_text_length": 2311,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Optimization of cVEP Classification Approaches for 3D VR Based Brain Computer Interfaces",
+      "author": "Alix Gouret, Victor Woelffel, Alexandre Delaux, Solène Le Bars, Hazar Zilelioglu",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "https://doi.org/10.1109/iccraids67816.2026.11519663",
+      "cited_by": 0,
+      "abstract": "Brain-computer interface (BCI) classification models are often introduced and validated on curated datasets, recorded in well-controlled environments with unknown transferability to actual use case conditions. With this study, we aim to evaluate and optimize established classification approaches for the code-modulated visual evoked potential (c-VEP) paradigm in more challenging recording conditions: an immersive virtual reality (VR) headset providing a 3D stimulation environment and uncontrolled head movements. Two classifiers were considered and compared: (1) a canonical correlation analysis algorithm specialized for event-related potentials (eCCA) and (2) a convolutional neural network specifically designed for EEG signal classification (EEGNet). Tests with 15 participants showed that both models achieved <tex xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">$\\approx \\mathbf{9 0} \\%$</tex> accuracy, while maintaining prediction times below 3 m",
+      "doi": "10.1109/iccraids67816.2026.11519663",
+      "pmid": null,
+      "openalex_id": "W7162143953",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6655543810129166,
+        "similarity_score": 0.5762375593185425,
+        "citation_text_length": 1210,
+        "dataset_text_length": 2311,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "CastillosCVEP100",
+      "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
+      "venue": "UC San Diego",
+      "year": 2026,
+      "url": "https://doi.org/10.82901/nemar.nm000346.v1.0.0",
+      "cited_by": 0,
+      "abstract": "A derivative 4-class code-VEP brain-computer interface dataset processed from the original Zenodo dataset (10.5281/zenodo.8255618), comparing burst c-VEP and m-sequence stimulation paradigms at two amplitude depths (100% and 40%). The study evaluates classification performance and user experience using 32-channel EEG recorded at 500 Hz from 12 healthy participants. Burst c-VEP achieved superior accuracy of 95.6% (with 52.8s calibration) and 90.5% (with 17.6s calibration), compared to m-sequence performance of 85.0% and 71.4% respectively. CNN-based decoding with 250ms sliding windows enabled these results. This derivative dataset optimizes stimulus design for reactive BCI applications while maintaining visual comfort, with reduced amplitude (40%) showing minimal accuracy loss (94.2%) while substantially improving user experience.",
+      "doi": "10.82901/nemar.nm000346.v1.0.0",
+      "pmid": null,
+      "openalex_id": "W7163410702",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8504465237259866,
+        "similarity_score": 0.7363173365592957,
+        "citation_text_length": 979,
         "dataset_text_length": 2311,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -405,23 +499,46 @@
       }
     },
     {
-      "title": "Rewiring Attention: Virtual Reality and Brain–Computer Interfaces in the Rehabilitation of Unilateral Spatial Neglect",
-      "author": "Alix Gouret, Alexandre Delaux, Solène Le Bars, Sylvie Chokron",
-      "venue": "Journal of Clinical Medicine",
+      "title": "CastillosCVEP40",
+      "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
+      "venue": "UC San Diego",
       "year": 2026,
-      "url": "https://doi.org/10.3390/jcm15031036",
+      "url": "https://doi.org/10.82901/nemar.nm000342",
       "cited_by": 0,
-      "abstract": "Unilateral spatial neglect (USN) is a complex cognitive syndrome frequently observed after stroke. Characterized by a failure to attend, respond and orient to stimuli on the side opposite the brain lesion, USN significantly impairs patients' functional independence and presents significant challenges for rehabilitation. Current rehabilitation strategies often fall short in addressing the heterogenous manifestations of USN across perceptual modalities due to limited ecological validity, patient engagement and adaptability to individual needs. Recent advances in neurotechnologies such as virtual reality (VR) and brain-computer interfaces (BCIs) offer promising avenues for overcoming these limitations. These tools enable top-down rehabilitation strategies that directly engage cognitive recovery mechanisms to promote neuroplasticity, and support adaptive interventions tailored to individual profiles. This narrative review explores recent developments and future prospects of VR and BCI tech",
-      "doi": "10.3390/jcm15031036",
-      "pmid": "41682716",
-      "openalex_id": "W7125972707",
+      "abstract": "A code-modulated Visual Evoked Potential (c-VEP) dataset from 12 healthy participants investigating burst c-VEP as a reactive brain-computer interface paradigm. The study employed a factorial design manipulating stimulus pattern (burst vs. m-sequence) and amplitude depth (100% vs. 40% modulation) to optimize classification performance while improving user visual comfort. EEG data were recorded at 500 Hz from 32 channels using a BrainProducts LiveAmp system during a 4-class classification task with 4 visual targets.",
+      "doi": "10.82901/nemar.nm000342",
+      "pmid": null,
+      "openalex_id": "W7163403173",
       "source_doi": "10.1016/j.neuroimage.2023.120446",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.309844226539135,
-        "similarity_score": 0.26826339960098267,
-        "citation_text_length": 1245,
+        "confidence_score": 0.9078455740213395,
+        "similarity_score": 0.7860134840011597,
+        "citation_text_length": 657,
+        "dataset_text_length": 2311,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "CastillosBurstVEP40",
+      "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
+      "venue": "UC San Diego",
+      "year": 2026,
+      "url": "https://doi.org/10.82901/nemar.nm000345.v1.0.0",
+      "cited_by": 0,
+      "abstract": "This dataset comprises electroencephalographic recordings from 12 healthy participants performing a reactive brain-computer interface task using code-modulated visual evoked potentials (c-VEP). The study introduces an innovative 'Burst c-VEP' paradigm employing short bursts of aperiodic visual flashes at 2-4 Hz, designed to optimize classification performance while reducing calibration requirements and improving visual comfort. Data were collected using a 32-channel BrainProducts LiveAmp system at 500 Hz sampling rate across a factorial design manipulating stimulus pattern (burst vs. m-sequence) and amplitude (100% vs. 40% depth modulation).",
+      "doi": "10.82901/nemar.nm000345.v1.0.0",
+      "pmid": null,
+      "openalex_id": "W7163394879",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.9359880530834199,
+        "similarity_score": 0.8103792667388916,
+        "citation_text_length": 790,
         "dataset_text_length": 2311,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -430,17 +547,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-05-22T00:24:18.432213+00:00",
+    "scoring_date": "2026-06-13T22:25:32.747832+00:00",
     "dataset_text_length": 2311,
-    "num_citations_scored": 18,
+    "num_citations_scored": 23,
     "summary_stats": {
-      "mean_confidence": 0.5652432205279668,
-      "median_confidence": 0.6068738114833832,
-      "std_confidence": 0.15706979039179705,
+      "mean_confidence": 0.6291712205824644,
+      "median_confidence": 0.6329527795314789,
+      "std_confidence": 0.19047748126288333,
       "min_confidence": 0.309844226539135,
-      "max_confidence": 0.9774506905674936,
-      "high_confidence_count": 1,
-      "medium_confidence_count": 14,
+      "max_confidence": 0.9794131395220758,
+      "high_confidence_count": 5,
+      "medium_confidence_count": 15,
       "low_confidence_count": 3
     }
   }
