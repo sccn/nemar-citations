@@ -41,7 +41,7 @@ export interface Citation {
   authors: string;
   year: number | null;
   venue: string;
-  url: string;
+  url: string | null;
   doi: string | null;
   citedBy: number;
   confidence: number | null;
@@ -110,7 +110,7 @@ function toCitation(c: RawCitation): Citation {
     authors: c.author?.trim() || "",
     year: typeof c.year === "number" && c.year > 0 ? c.year : null,
     venue: c.venue?.trim() || "",
-    url: c.url?.trim() || "",
+    url: c.url?.trim() || null,
     doi: c.doi?.trim() || null,
     citedBy: typeof c.cited_by === "number" ? c.cited_by : 0,
     confidence: c.confidence_scoring?.confidence_score ?? null,
@@ -189,11 +189,10 @@ export function loadAll(): LoadedData {
     const num = raw.num_citations ?? details.length;
     totalCitations += num;
     for (const c of details) {
-      const key = citingKey(c);
-      if (key) {
-        unique.add(key);
-      }
+      unique.add(citingKey(c));
     }
+    // Count + render only datasets with renderable citation_details (a file can
+    // carry num_citations > 0 with empty details after a partial fetch).
     if (details.length > 0) {
       datasetsWithCitations += 1;
       const citations = details.map(toCitation).sort((a, b) => b.citedBy - a.citedBy);
