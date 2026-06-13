@@ -1,0 +1,108 @@
+/* Global styles — vendored from website/src/styles/global.css. */
+@import "./tokens.css";
+@import "./reset.css";
+
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: local("Rubik");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: local("Inter");
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color-scheme: light dark;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  font-weight: var(--fw-regular);
+}
+
+:root {
+  overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(var(--fs-4xl), 5vw, var(--fs-6xl));
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--fs-3xl);
+}
+
+h3 {
+  font-size: var(--fs-2xl);
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.container {
+  max-width: var(--max-width-page);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-inline: var(--space-4);
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

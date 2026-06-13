@@ -1,0 +1,145 @@
+/* Design tokens — VENDORED verbatim from the nemar.org website
+   (website/src/styles/tokens.css) so the citations dashboard matches the
+   site's design language. This is a separate repo / Cloudflare Pages project,
+   so tokens are copied, not imported. Keep in sync with the website; see
+   issue #127 (Astro redesign epic). Light + dark resolved via
+   prefers-color-scheme and [data-theme]. */
+:root {
+  /* Brand */
+  --brand-navy: #0b1a3a;
+  --brand-navy-deep: #06112a;
+  --brand-teal: #5bbad5;
+  --brand-purple: #603cba;
+  --brand-accent: var(--brand-teal);
+  --brand-electrode: var(--brand-purple);
+
+  /* Neutrals (light theme defaults) */
+  --color-bg: #ffffff;
+  --color-bg-elevated: #f7f8fb;
+  --color-bg-subtle: #eef1f6;
+  --color-bg-inverse: var(--brand-navy);
+  --color-fg: #0f172a;
+  --color-fg-muted: #475569;
+  --color-fg-subtle: #64748b;
+  --color-fg-inverse: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+  --color-focus: #2563eb;
+  --color-link: #1d4ed8;
+  --color-link-hover: #1e3a8a;
+
+  /* Semantic */
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-danger: #b91c1c;
+  --color-info: var(--brand-teal);
+
+  /* Modality — recording technique. Doubles as chart fills. */
+  --modality-eeg: #2563eb;
+  --modality-meg: #7c3aed;
+  --modality-ieeg: #db2777;
+  --modality-emg: #ea580c;
+  --modality-other: #64748b;
+
+  /* Typography */
+  --font-sans: "Inter", "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Rubik", var(--font-sans);
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.25rem;
+  --fs-2xl: 1.5rem;
+  --fs-3xl: 1.875rem;
+  --fs-4xl: 2.25rem;
+  --fs-5xl: 3rem;
+  --fs-6xl: 3.75rem;
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.3;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.7;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Spacing scale (rem) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Radii + shadows */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgb(15 23 42 / 6%);
+  --shadow-md: 0 4px 12px rgb(15 23 42 / 8%);
+  --shadow-lg: 0 12px 32px rgb(15 23 42 / 12%);
+  --shadow-focus: 0 0 0 3px color-mix(in srgb, var(--color-focus) 35%, transparent);
+
+  /* Layout */
+  --max-width-page: 1200px;
+  --max-width-prose: 72ch;
+  --header-height: 64px;
+}
+
+/* Dark theme: auto via prefers-color-scheme, overridden by explicit [data-theme]. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #0a1224;
+    --color-bg-elevated: #111d36;
+    --color-bg-subtle: #18254a;
+    --color-bg-inverse: #f7f8fb;
+    --color-fg: #f1f5f9;
+    --color-fg-muted: #cbd5e1;
+    --color-fg-subtle: #94a3b8;
+    --color-fg-inverse: var(--brand-navy);
+    --color-border: #1e293b;
+    --color-border-strong: #334155;
+    --color-focus: #60a5fa;
+    --color-link: #93c5fd;
+    --color-link-hover: #bfdbfe;
+    --modality-eeg: #60a5fa;
+    --modality-meg: #a78bfa;
+    --modality-ieeg: #f472b6;
+    --modality-emg: #fb923c;
+    --modality-other: #94a3b8;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #0a1224;
+  --color-bg-elevated: #111d36;
+  --color-bg-subtle: #18254a;
+  --color-bg-inverse: #f7f8fb;
+  --color-fg: #f1f5f9;
+  --color-fg-muted: #cbd5e1;
+  --color-fg-subtle: #94a3b8;
+  --color-fg-inverse: var(--brand-navy);
+  --color-border: #1e293b;
+  --color-border-strong: #334155;
+  --color-focus: #60a5fa;
+  --color-link: #93c5fd;
+  --color-link-hover: #bfdbfe;
+  --modality-eeg: #60a5fa;
+  --modality-meg: #a78bfa;
+  --modality-ieeg: #f472b6;
+  --modality-emg: #fb923c;
+  --modality-other: #94a3b8;
+}

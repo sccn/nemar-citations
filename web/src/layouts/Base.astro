@@ -1,0 +1,125 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Citation tracking for NEMAR and OpenNeuro neuroscience datasets." } =
+  Astro.props;
+const homeUrl = "https://nemar.org";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <!-- Apply persisted theme before paint to avoid a flash (mirrors nemar.org). -->
+    <script is:inline>
+      (() => {
+        try {
+          const stored = localStorage.getItem("nemar:theme");
+          if (stored === "light" || stored === "dark") {
+            document.documentElement.setAttribute("data-theme", stored);
+          }
+        } catch {
+          /* localStorage unavailable */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="site-header__brand" href={homeUrl}>NEMAR <span>Citations</span></a>
+        <button id="theme-toggle" type="button" aria-label="Toggle light/dark theme">◐</button>
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        NEMAR citation dashboard · data from OpenNeuro and NEMAR ·
+        <a href={homeUrl}>nemar.org</a>
+      </div>
+    </footer>
+
+    <script is:inline>
+      document.getElementById("theme-toggle")?.addEventListener("click", () => {
+        // Resolve the CURRENT effective theme from the stored preference, falling
+        // back to the OS setting. Reading the data-theme attribute would be wrong
+        // on first click (it is unset so prefers-color-scheme drives CSS), which
+        // would always flip to dark and feel broken for dark-mode users.
+        let stored = null;
+        try {
+          stored = localStorage.getItem("nemar:theme");
+        } catch {
+          /* localStorage unavailable */
+        }
+        const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const currentIsDark = stored === "dark" || (stored === null && systemDark);
+        const next = currentIsDark ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        try {
+          localStorage.setItem("nemar:theme", next);
+        } catch {
+          /* localStorage unavailable */
+        }
+      });
+    </script>
+
+    <style>
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
+      }
+      .site-header__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: var(--header-height);
+      }
+      .site-header__brand {
+        font-family: var(--font-display);
+        font-weight: var(--fw-bold);
+        font-size: var(--fs-lg);
+        color: var(--color-fg);
+      }
+      .site-header__brand:hover {
+        text-decoration: none;
+      }
+      .site-header__brand span {
+        color: var(--brand-teal);
+      }
+      #theme-toggle {
+        font-size: var(--fs-xl);
+        color: var(--color-fg-muted);
+        padding: var(--space-2);
+        border-radius: var(--radius-md);
+      }
+      #theme-toggle:hover {
+        background: var(--color-bg-subtle);
+      }
+      main {
+        min-block-size: calc(100dvh - var(--header-height));
+        padding-block: var(--space-8) var(--space-12);
+      }
+      .site-footer {
+        border-top: 1px solid var(--color-border);
+        color: var(--color-fg-subtle);
+        font-size: var(--fs-sm);
+        padding-block: var(--space-6);
+      }
+    </style>
+  </body>
+</html>
