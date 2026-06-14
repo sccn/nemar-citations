@@ -1,0 +1,85 @@
+---
+import Base from "../layouts/Base.astro";
+import { loadTemporal } from "../lib/temporal";
+
+const points = loadTemporal();
+const fmt = (n: number) => n.toLocaleString("en-US");
+
+const W = 820;
+const H = 380;
+const PAD = 48;
+const years = points.map((p) => p.year);
+const minYear = years.length ? Math.min(...years) : 0;
+const maxYear = years.length ? Math.max(...years) : 1;
+const maxCum = points.length ? Math.max(...points.map((p) => p.cumulativeHighConf)) : 1;
+const sx = (yr: number) =>
+  PAD + (maxYear === minYear ? 0.5 : (yr - minYear) / (maxYear - minYear)) * (W - 2 * PAD);
+const sy = (c: number) => H - PAD - (maxCum === 0 ? 0 : c / maxCum) * (H - 2 * PAD);
+const linePath = points
+  .map((p, i) => `${i ? "L" : "M"}${sx(p.year).toFixed(1)},${sy(p.cumulativeHighConf).toFixed(1)}`)
+  .join(" ");
+const latest = points.length ? points[points.length - 1].cumulativeHighConf : 0;
+---
+
+<Base title="Citation trends — NEMAR Citations">
+  <h1>Citation growth</h1>
+  <p class="sub">
+    Cumulative high-confidence citations by year — {fmt(latest)} to date across tracked datasets.
+  </p>
+
+  {
+    points.length === 0 ? (
+      <p class="empty">No temporal data available yet.</p>
+    ) : (
+      <div class="chart">
+        <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Cumulative high-confidence citations by year">
+          <path d={linePath} class="line" />
+          {points.map((p) => (
+            <circle cx={sx(p.year)} cy={sy(p.cumulativeHighConf)} r="3" class="pt">
+              <title>{`${p.year}: ${fmt(p.cumulativeHighConf)} cumulative`}</title>
+            </circle>
+          ))}
+          <text x={sx(minYear)} y={H - 16} class="ax">{minYear}</text>
+          <text x={sx(maxYear)} y={H - 16} class="ax" text-anchor="end">{maxYear}</text>
+          <text x={PAD} y={sy(maxCum) - 6} class="ax">{fmt(maxCum)}</text>
+        </svg>
+      </div>
+    )
+  }
+</Base>
+
+<style>
+  .sub {
+    margin-top: var(--space-2);
+    max-width: var(--max-width-prose);
+    color: var(--color-fg-muted);
+  }
+  .empty {
+    margin-top: var(--space-8);
+    color: var(--color-fg-subtle);
+  }
+  .chart {
+    margin-top: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    background: var(--color-bg-elevated);
+  }
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .line {
+    fill: none;
+    stroke: var(--brand-teal);
+    stroke-width: 2.5;
+  }
+  .pt {
+    fill: var(--brand-teal);
+  }
+  .ax {
+    fill: var(--color-fg-subtle);
+    font-size: 12px;
+  }
+</style>

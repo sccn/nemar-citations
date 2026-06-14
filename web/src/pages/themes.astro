@@ -1,0 +1,83 @@
+---
+import Base from "../layouts/Base.astro";
+import { loadThemes } from "../lib/themes";
+
+const themes = loadThemes();
+const fmt = (n: number) => n.toLocaleString("en-US");
+---
+
+<Base title="Research themes — NEMAR Citations">
+  <h1>Research themes</h1>
+  <p class="sub">
+    Citing papers clustered by semantic similarity; each theme's most distinctive
+    terms are shown largest.
+  </p>
+
+  {
+    themes.length === 0 ? (
+      <p class="empty">No theme data available yet.</p>
+    ) : (
+      <div class="themes">
+        {themes.map((t) => (
+          <article class="theme">
+            <h2 class="theme__name">{t.name}</h2>
+            <p class="theme__size">{fmt(t.size)} citations</p>
+            <ul class="cloud" role="list">
+              {t.topWords.map((w, i) => (
+                <li style={`font-size: ${Math.max(0.8, 1.35 - i * 0.06)}rem`}>{w}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    )
+  }
+</Base>
+
+<style>
+  .sub {
+    margin-top: var(--space-2);
+    max-width: var(--max-width-prose);
+    color: var(--color-fg-muted);
+  }
+  .empty {
+    margin-top: var(--space-8);
+    color: var(--color-fg-subtle);
+  }
+  .themes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-5);
+    margin-top: var(--space-6);
+  }
+  .theme {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    background: var(--color-bg-elevated);
+  }
+  .theme__name {
+    font-size: var(--fs-xl);
+  }
+  .theme__size {
+    margin-top: var(--space-1);
+    font-size: var(--fs-sm);
+    color: var(--brand-teal);
+    font-weight: var(--fw-semibold);
+  }
+  .cloud {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-3);
+    margin-top: var(--space-4);
+    line-height: var(--lh-snug);
+  }
+  .cloud li {
+    color: var(--color-fg-muted);
+  }
+  .cloud li:first-child {
+    color: var(--color-fg);
+    font-weight: var(--fw-semibold);
+  }
+</style>
