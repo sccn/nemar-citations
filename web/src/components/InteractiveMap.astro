@@ -103,7 +103,7 @@ const fmt = (n: number) => n.toLocaleString("en-US");
     };
   }
 
-  function initMap(root: HTMLElement) {
+  function initMap(root: HTMLElement): (() => void) | undefined {
     const type = root.dataset.type as "datasets" | "citations";
     const src = root.dataset.src ?? "";
     const base = root.dataset.base ?? "";
@@ -331,6 +331,8 @@ const fmt = (n: number) => n.toLocaleString("en-US");
     canvas.addEventListener("pointerup", endDrag);
     canvas.addEventListener("pointercancel", () => {
       dragging = false;
+      hover = -1;
+      schedule();
     });
 
     root.querySelector("[data-imap-zoom-in]")?.addEventListener("click", () => {
@@ -345,24 +347,27 @@ const fmt = (n: number) => n.toLocaleString("en-US");
     });
     root.querySelector("[data-imap-close]")?.addEventListener("click", closeDetails);
 
-    new ResizeObserver(() => {
+    const ro = new ResizeObserver(() => {
       const hadFit = cssW > 0;
       resize();
       if (!hadFit) {
         fit();
       }
       schedule();
-    }).observe(stage);
+    });
+    ro.observe(stage);
 
     const onTheme = () => {
       colors = readColors();
       schedule();
     };
-    new MutationObserver(onTheme).observe(document.documentElement, {
+    const mo = new MutationObserver(onTheme);
+    mo.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["data-theme"],
     });
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", onTheme);
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    mq.addEventListener("change", onTheme);
 
     fetch(src)
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
@@ -397,10 +402,32 @@ const fmt = (n: number) => n.toLocaleString("en-US");
       .catch((err) => {
         console.warn(`[maps] failed to load ${src}: ${err?.message ?? err}`);
       });
+
+    return () => {
+      ro.disconnect();
+      mo.disconnect();
+      mq.removeEventListener("change", onTheme);
+    };
   }
 
+  const cleanups: Array<() => void> = [];
   for (const el of document.querySelectorAll<HTMLElement>("[data-imap]")) {
-    initMap(el);
+    const cleanup = initMap(el);
+    if (cleanup) {
+      cleanups.push(cleanup);
+    }
+  }
+  // Tear down global observers/listeners if Astro view transitions swap the page.
+  if (cleanups.length > 0) {
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        for (const cleanup of cleanups) {
+          cleanup();
+        }
+      },
+      { once: true },
+    );
   }
 </script>
 

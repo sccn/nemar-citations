@@ -15,16 +15,29 @@ import { loadUmapPoints } from "../../lib/maps";
 
 export const GET: APIRoute = () => {
   const { datasets: coords, citations } = loadUmapPoints();
-  const { datasets } = loadAll();
-  const countById = new Map(datasets.map((d) => [d.id, d.numCitations]));
-  const nameById = new Map(datasets.map((d) => [d.id, d.name]));
+  // Maps are an enhancement: if the citations corpus is absent, fall back to the
+  // raw export counts rather than failing the build (mirrors loadUmapPoints).
+  let authoritative: ReturnType<typeof loadAll> | null = null;
+  try {
+    authoritative = loadAll();
+  } catch (err) {
+    console.warn(
+      `[maps] authoritative counts unavailable, using raw export: ${err instanceof Error ? err.message : err}`,
+    );
+  }
+  const hasAuth = authoritative !== null;
+  const countById = new Map((authoritative?.datasets ?? []).map((d) => [d.id, d.numCitations]));
+  const nameById = new Map((authoritative?.datasets ?? []).map((d) => [d.id, d.name]));
 
   const enrichedDatasets = coords.map((p) => ({
     id: p.id,
     x: p.x,
     y: p.y,
     name: nameById.get(p.id) ?? p.name,
-    count: countById.get(p.id) ?? 0,
+    // With the corpus present, a dataset absent from the authoritative set has 0
+    // high-confidence citations; only when the whole corpus is missing do we use
+    // the (unfiltered) raw export count so the map still renders.
+    count: hasAuth ? (countById.get(p.id) ?? 0) : p.count,
   }));
 
   return new Response(JSON.stringify({ datasets: enrichedDatasets, citations }), {
