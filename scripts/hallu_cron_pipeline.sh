@@ -194,7 +194,7 @@ echo "--- analyze-umap ---"
 uv run dataset-citations-analyze-umap \
   --embeddings-dir embeddings \
   --output-dir dashboard_data \
-  --embedding-type citations || {
+  --embedding-type both || {
   echo "ERROR: dataset-citations-analyze-umap failed; aborting before commit." >&2
   exit 2
 }
