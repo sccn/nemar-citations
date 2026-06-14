@@ -54,7 +54,10 @@ export function loadUmapPoints(): UmapPoints {
   try {
     const data = JSON.parse(readFileSync(path, "utf-8")) as Partial<UmapPoints>;
     return { datasets: data.datasets ?? [], citations: data.citations ?? [] };
-  } catch {
+  } catch (err) {
+    console.warn(
+      `[maps] failed to parse umap_points.json: ${err instanceof Error ? err.message : err}`,
+    );
     return empty;
   }
 }
