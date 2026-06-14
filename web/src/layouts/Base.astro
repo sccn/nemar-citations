@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { loadAll } from "../lib/data";
 
 interface Props {
   title: string;
@@ -16,8 +17,18 @@ const navItems: Array<[string, string]> = [
   ["Overview", `${base}`],
   ["Maps", `${base}/maps`],
   ["Themes", `${base}/themes`],
-  ["Trends", `${base}/trends`],
 ];
+
+// Footer: data freshness + copyright, derived from the corpus (deterministic).
+const lastUpdatedIso = loadAll().overview.lastUpdated;
+const lastUpdated = lastUpdatedIso
+  ? new Date(lastUpdatedIso).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    })
+  : null;
+const copyrightYear = lastUpdatedIso ? new Date(lastUpdatedIso).getFullYear() : null;
 ---
 
 <!doctype html>
@@ -64,8 +75,14 @@ const navItems: Array<[string, string]> = [
 
     <footer class="site-footer">
       <div class="container">
-        NEMAR is an open-access data, tools, and compute resource for FAIR neuroscience ·
-        <a href={homeUrl}>nemar.org</a>
+        <p class="site-footer__tagline">
+          NEMAR is an open-access data, tools, and compute resource for FAIR neuroscience
+        </p>
+        <p class="site-footer__meta">
+          <span>&copy; {copyrightYear ?? ""} NEMAR</span>
+          {lastUpdated && <span>· Data updated {lastUpdated}</span>}
+          <span>· <a href={homeUrl}>nemar.org</a></span>
+        </p>
       </div>
     </footer>
 
@@ -160,6 +177,15 @@ const navItems: Array<[string, string]> = [
         color: var(--color-fg-subtle);
         font-size: var(--fs-sm);
         padding-block: var(--space-6);
+      }
+      .site-footer__tagline {
+        color: var(--color-fg-muted);
+      }
+      .site-footer__meta {
+        margin-top: var(--space-2);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
       }
     </style>
   </body>
