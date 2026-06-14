@@ -4,8 +4,9 @@ import DonutChart from "../components/DonutChart.astro";
 import LineChart from "../components/LineChart.astro";
 import Base from "../layouts/Base.astro";
 import { loadAll } from "../lib/data";
+import { MODALITY_META, MODALITY_ORDER, loadModalities } from "../lib/modality";
 
-const { charts, overview } = loadAll();
+const { charts, overview, datasets } = loadAll();
 const fmt = (n: number) => n.toLocaleString("en-US");
 
 const linePoints = charts.temporal.map((p) => ({ x: p.year, y: p.cumulative }));
@@ -19,6 +20,24 @@ const confSlices = [
     color: "var(--color-fg-subtle)",
   },
 ];
+
+// Modality breakdown of datasets with citations, joined from the api.nemar.org
+// catalog. Gate on the map being non-empty: without it, every dataset would
+// fall back to "other" and render a misleading all-Other donut.
+const modalities = loadModalities();
+const modCounts = new Map<string, number>();
+for (const d of datasets) {
+  const m = modalities.get(d.id) ?? "other";
+  modCounts.set(m, (modCounts.get(m) ?? 0) + 1);
+}
+const modSlices =
+  modalities.size === 0
+    ? []
+    : MODALITY_ORDER.filter((m) => modCounts.get(m)).map((m) => ({
+        label: MODALITY_META[m].label,
+        value: modCounts.get(m) ?? 0,
+        color: MODALITY_META[m].color,
+      }));
 ---
 
 <Base title="Citation trends · NEMAR Citations">
@@ -74,6 +93,24 @@ const confSlices = [
         ariaLabel="Confidence split of citation-dataset attributions"
       />
     </section>
+
+    {
+      modSlices.length > 0 && (
+        <section class="chart-card">
+          <header class="chart-card__head">
+            <h2>Datasets by modality</h2>
+            <p class="chart-card__cap">
+              Recording modality of datasets with citations (from the NEMAR catalog).
+            </p>
+          </header>
+          <DonutChart
+            slices={modSlices}
+            centerLabel="datasets"
+            ariaLabel="Tracked datasets by recording modality"
+          />
+        </section>
+      )
+    }
   </div>
 </Base>
 

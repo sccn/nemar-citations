@@ -206,6 +206,13 @@ echo "--- export-umap-points ---"
 uv run dataset-citations-export-umap-points ||
   echo "WARN: export-umap-points failed; maps will be stale (non-fatal)."
 
+# 5d. Export per-dataset modality from the api.nemar.org catalog to
+#     dashboard_data/dataset_modalities.json for the Trends modality donut
+#     (#154). Non-fatal: the chart is omitted if this is missing.
+echo "--- export-modalities ---"
+uv run dataset-citations-export-modalities ||
+  echo "WARN: export-modalities failed; modality chart will be stale (non-fatal)."
+
 # 6. Theme / network / temporal analyses. Epic #96 phase 5 removed these
 #    invocations from `.github/workflows/deploy-dashboard.yml` on the
 #    expectation that the cron produces them; the initial epic ship only
