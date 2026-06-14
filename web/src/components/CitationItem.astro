@@ -11,7 +11,11 @@ const meta = [citation.authors, citation.year ? String(citation.year) : "", cita
   .filter((part) => part)
   .join(" · ");
 const prov = citation.provenance;
-const provTitle = prov.anchorTitle ? `Found via: ${prov.anchorTitle}` : prov.label;
+const provTitle = prov.anchorTitle
+  ? `Found via: ${prov.anchorTitle}`
+  : prov.kind === "dataset"
+    ? "This paper cited the dataset DOI directly"
+    : prov.label;
 ---
 
 <li class="cite">
