@@ -108,7 +108,8 @@ def main(argv: list[str] | None = None) -> int:
             indent=2,
             ensure_ascii=False,
             sort_keys=True,
-        ),
+        )
+        + "\n",
         encoding="utf-8",
     )
     logger.info("wrote %d id->modality entries to %s", len(mapping), out_path)

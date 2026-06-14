@@ -21,18 +21,23 @@ const confSlices = [
   },
 ];
 
-// Modality breakdown of the tracked datasets, joined from the api.nemar.org catalog.
+// Modality breakdown of datasets with citations, joined from the api.nemar.org
+// catalog. Gate on the map being non-empty: without it, every dataset would
+// fall back to "other" and render a misleading all-Other donut.
 const modalities = loadModalities();
 const modCounts = new Map<string, number>();
 for (const d of datasets) {
   const m = modalities.get(d.id) ?? "other";
   modCounts.set(m, (modCounts.get(m) ?? 0) + 1);
 }
-const modSlices = MODALITY_ORDER.filter((m) => modCounts.get(m)).map((m) => ({
-  label: MODALITY_META[m].label,
-  value: modCounts.get(m) ?? 0,
-  color: MODALITY_META[m].color,
-}));
+const modSlices =
+  modalities.size === 0
+    ? []
+    : MODALITY_ORDER.filter((m) => modCounts.get(m)).map((m) => ({
+        label: MODALITY_META[m].label,
+        value: modCounts.get(m) ?? 0,
+        color: MODALITY_META[m].color,
+      }));
 ---
 
 <Base title="Citation trends · NEMAR Citations">
@@ -95,7 +100,7 @@ const modSlices = MODALITY_ORDER.filter((m) => modCounts.get(m)).map((m) => ({
           <header class="chart-card__head">
             <h2>Datasets by modality</h2>
             <p class="chart-card__cap">
-              Recording modality of the tracked datasets (from the NEMAR catalog).
+              Recording modality of datasets with citations (from the NEMAR catalog).
             </p>
           </header>
           <DonutChart

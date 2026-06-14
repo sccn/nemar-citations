@@ -16,7 +16,11 @@ from dataset_citations.cli.export_modalities import (
     main,
     primary_modality,
 )
-from dataset_citations.sources.nemar_catalog import parse_catalog_row, serialize_row
+from dataset_citations.sources.nemar_catalog import (
+    CatalogRow,
+    parse_catalog_row,
+    serialize_row,
+)
 
 FIXTURE = (
     Path(__file__).parent
@@ -66,6 +70,22 @@ class BuildModalityMapTests(TestCase):
         mapping = build_modality_map(self.rows)
         for row in self.rows:
             self.assertEqual(mapping[row.dataset_id], primary_modality(row.modalities))
+
+    def test_row_without_source_id_keys_only_dataset_id(self) -> None:
+        # nm-* catalog rows carry no source_id; the None guard must skip it
+        # rather than write a {None: ...} entry.
+        row = CatalogRow(
+            dataset_id="nm000128",
+            doi=None,
+            concept_doi=None,
+            source="nemar",
+            source_id=None,
+            github_repo="",
+            modalities=("eeg",),
+            name="Example",
+            visibility="public",
+        )
+        self.assertEqual(build_modality_map([row]), {"nm000128": "eeg"})
 
 
 class MainWritesFileTests(TestCase):
