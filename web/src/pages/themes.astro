@@ -1,10 +1,12 @@
 ---
 import Base from "../layouts/Base.astro";
-import { loadThemes } from "../lib/themes";
+import { type Theme, loadThemes } from "../lib/themes";
 
 const themes = loadThemes();
 const fmt = (n: number) => n.toLocaleString("en-US");
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const altText = (t: Theme) =>
+  `Word cloud for the ${t.name} theme. Most frequent terms: ${t.topWords.slice(0, 8).join(", ")}.`;
 ---
 
 <Base title="Research themes — NEMAR Citations">
@@ -26,7 +28,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
               <p class="theme__size">{fmt(t.size)} citations</p>
             </header>
             {t.wordcloud ? (
-              <figure class="theme__cloud-fig">
+              <div class="theme__cloud-fig">
                 <img
                   class="theme__cloud-img"
                   src={`${base}/themes/${t.wordcloud}`}
@@ -34,9 +36,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
                   height="400"
                   loading="lazy"
                   decoding="async"
-                  alt={`Word cloud for the ${t.name} theme. Most frequent terms: ${t.topWords.slice(0, 8).join(", ")}.`}
+                  alt={altText(t)}
                 />
-              </figure>
+              </div>
             ) : (
               <ul class="cloud" role="list">
                 {t.topWords.map((w, i) => (
