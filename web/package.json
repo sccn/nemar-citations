@@ -7,11 +7,12 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "copy-assets": "bun scripts/copy-theme-assets.mjs",
+    "dev": "bun run copy-assets && astro dev",
+    "build": "bun run copy-assets && astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "lint": "biome check src",
+    "lint": "biome check src scripts",
     "format": "biome format --write src"
   },
   "dependencies": {

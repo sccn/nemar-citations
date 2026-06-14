@@ -1,9 +1,12 @@
 ---
 import Base from "../layouts/Base.astro";
-import { loadThemes } from "../lib/themes";
+import { type Theme, loadThemes } from "../lib/themes";
 
 const themes = loadThemes();
 const fmt = (n: number) => n.toLocaleString("en-US");
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const altText = (t: Theme) =>
+  `Word cloud for the ${t.name} theme. Most frequent terms: ${t.topWords.slice(0, 8).join(", ")}.`;
 ---
 
 <Base title="Research themes — NEMAR Citations">
@@ -20,13 +23,29 @@ const fmt = (n: number) => n.toLocaleString("en-US");
       <div class="themes">
         {themes.map((t) => (
           <article class="theme">
-            <h2 class="theme__name">{t.name}</h2>
-            <p class="theme__size">{fmt(t.size)} citations</p>
-            <ul class="cloud" role="list">
-              {t.topWords.map((w, i) => (
-                <li style={`font-size: ${Math.max(0.8, 1.35 - i * 0.06)}rem`}>{w}</li>
-              ))}
-            </ul>
+            <header class="theme__head">
+              <h2 class="theme__name">{t.name}</h2>
+              <p class="theme__size">{fmt(t.size)} citations</p>
+            </header>
+            {t.wordcloud ? (
+              <div class="theme__cloud-fig">
+                <img
+                  class="theme__cloud-img"
+                  src={`${base}/themes/${t.wordcloud}`}
+                  width="800"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  alt={altText(t)}
+                />
+              </div>
+            ) : (
+              <ul class="cloud" role="list">
+                {t.topWords.map((w, i) => (
+                  <li style={`font-size: ${Math.max(0.8, 1.35 - i * 0.06)}rem`}>{w}</li>
+                ))}
+              </ul>
+            )}
           </article>
         ))}
       </div>
@@ -56,14 +75,32 @@ const fmt = (n: number) => n.toLocaleString("en-US");
     padding: var(--space-5);
     background: var(--color-bg-elevated);
   }
+  .theme__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
   .theme__name {
     font-size: var(--fs-xl);
   }
   .theme__size {
-    margin-top: var(--space-1);
+    flex: none;
     font-size: var(--fs-sm);
     color: var(--brand-teal);
     font-weight: var(--fw-semibold);
+    white-space: nowrap;
+  }
+  .theme__cloud-fig {
+    margin: var(--space-4) 0 0;
+  }
+  .theme__cloud-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    background: #fff;
   }
   .cloud {
     list-style: none;
