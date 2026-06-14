@@ -199,6 +199,13 @@ uv run dataset-citations-analyze-umap \
   exit 2
 }
 
+# 5c. Export UMAP coords + real labels to dashboard_data/umap_points.json for the
+#     Astro maps (#140). Non-fatal: the maps degrade to empty if this is missing,
+#     so a failure here should not block publishing the citation data.
+echo "--- export-umap-points ---"
+uv run dataset-citations-export-umap-points ||
+  echo "WARN: export-umap-points failed; maps will be stale (non-fatal)."
+
 # 6. Theme / network / temporal analyses. Epic #96 phase 5 removed these
 #    invocations from `.github/workflows/deploy-dashboard.yml` on the
 #    expectation that the cron produces them; the initial epic ship only
