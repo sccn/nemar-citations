@@ -1,15 +1,41 @@
 ---
-import LineChart from "../components/LineChart.astro";
+import BarChart from "../components/BarChart.astro";
+import DonutChart from "../components/DonutChart.astro";
 import StatCard from "../components/StatCard.astro";
 import Base from "../layouts/Base.astro";
 import { loadAll } from "../lib/data";
+import { MODALITY_META, MODALITY_ORDER, loadModalities } from "../lib/modality";
 
 const { overview, datasets, charts } = loadAll();
 const fmt = (n: number) => n.toLocaleString("en-US");
 const top = datasets.slice(0, 30);
-const growth = charts.temporal.map((p) => ({ x: p.year, y: p.cumulative }));
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const datasetLink = (id: string) => `${base}/dataset/${id}`;
+
+// Trend (histogram) + confidence + modality, consolidated onto the overview.
+const bars = charts.temporal.map((p) => ({ label: p.year, value: p.newPapers }));
+const confSlices = [
+  { label: "High-confidence (≥ 0.4)", value: charts.confidence.high, color: "var(--brand-teal)" },
+  {
+    label: "Lower-confidence (< 0.4)",
+    value: charts.confidence.low,
+    color: "var(--color-fg-subtle)",
+  },
+];
+const modalities = loadModalities();
+const modCounts = new Map<string, number>();
+for (const d of datasets) {
+  const m = modalities.get(d.id) ?? "other";
+  modCounts.set(m, (modCounts.get(m) ?? 0) + 1);
+}
+const modSlices =
+  modalities.size === 0
+    ? []
+    : MODALITY_ORDER.filter((m) => modCounts.get(m)).map((m) => ({
+        label: MODALITY_META[m].label,
+        value: modCounts.get(m) ?? 0,
+        color: MODALITY_META[m].color,
+      }));
 ---
 
 <Base title="NEMAR Citations">
@@ -44,21 +70,52 @@ const datasetLink = (id: string) => `${base}/dataset/${id}`;
   </p>
 
   {
-    growth.length > 0 && (
-      <section class="chart-card">
-        <header class="chart-card__head">
-          <h2>Citation growth</h2>
-          <p class="chart-card__cap">
-            Cumulative high-confidence citing papers by year. <a href={`${base}/trends`}>See all trends →</a>
-          </p>
-        </header>
-        <LineChart
-          points={growth}
-          xLabel="Year"
-          yLabel="Cumulative papers"
-          unit="papers"
-          ariaLabel="Cumulative high-confidence citing papers by year"
-        />
+    bars.length > 0 && (
+      <section class="trends" aria-label="Citation trends">
+        <h2 class="trends__title">Citation trends</h2>
+        <div class="chart-card">
+          <header class="chart-card__head">
+            <h3>New citations per year</h3>
+            <p class="chart-card__cap">High-confidence citing papers first published each year.</p>
+          </header>
+          <BarChart
+            bars={bars}
+            xLabel="Year"
+            yLabel="Papers"
+            unit="papers"
+            ariaLabel="New high-confidence citing papers per year"
+          />
+        </div>
+        <div class="chart-row">
+          <div class="chart-card">
+            <header class="chart-card__head">
+              <h3>Citation confidence</h3>
+              <p class="chart-card__cap">
+                Confidence split of citation-dataset attributions (methods papers excluded).
+              </p>
+            </header>
+            <DonutChart
+              slices={confSlices}
+              centerLabel="attributions"
+              ariaLabel="Confidence split of citation-dataset attributions"
+            />
+          </div>
+          {modSlices.length > 0 && (
+            <div class="chart-card">
+              <header class="chart-card__head">
+                <h3>Datasets by modality</h3>
+                <p class="chart-card__cap">
+                  Recording modality of datasets with citations (from the NEMAR catalog).
+                </p>
+              </header>
+              <DonutChart
+                slices={modSlices}
+                centerLabel="datasets"
+                ariaLabel="Tracked datasets by recording modality"
+              />
+            </div>
+          )}
+        </div>
       </section>
     )
   }
@@ -105,8 +162,19 @@ const datasetLink = (id: string) => `${base}/dataset/${id}`;
     margin-top: var(--space-6);
     font-weight: var(--fw-medium);
   }
+  .trends {
+    margin-top: var(--space-10);
+  }
+  .trends__title {
+    margin-bottom: var(--space-4);
+  }
+  .chart-row {
+    margin-top: var(--space-5);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-5);
+  }
   .chart-card {
-    margin-top: var(--space-8);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: var(--space-5);
@@ -115,7 +183,7 @@ const datasetLink = (id: string) => `${base}/dataset/${id}`;
   .chart-card__head {
     margin-bottom: var(--space-4);
   }
-  .chart-card__head h2 {
+  .chart-card__head h3 {
     font-size: var(--fs-lg);
   }
   .chart-card__cap {
