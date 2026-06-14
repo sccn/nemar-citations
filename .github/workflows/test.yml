@@ -83,6 +83,10 @@ jobs:
         if: matrix.python-version == '3.13'
         uses: codecov/codecov-action@v5
         with:
+          # codecov v5 dropped tokenless uploads; without CODECOV_TOKEN the
+          # upload silently no-ops (fail_ci_if_error stays false so CI is not
+          # blocked). Add the CODECOV_TOKEN repo secret to restore delivery.
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage.xml
           flags: unittests
           name: codecov-umbrella
