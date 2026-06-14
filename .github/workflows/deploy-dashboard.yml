@@ -1,14 +1,14 @@
 name: Deploy Citation Dashboard
 
-# Two triggers:
-#   1. workflow_dispatch — manual rebuild + deploy (e.g. after a code-only
-#      change to the dashboard generator).
-#   2. push to main when citation data, analysis outputs, embeddings, or
-#      the workflow itself change. This closes the hallu cron loop: the
-#      hallu cron now produces `citations/json_opencite/`, `dashboard_data/`,
-#      and `embeddings/` itself (epic #96, phases 2 + 3). When its
-#      auto-update PR merges, the resulting push to main fires this
-#      workflow and Cloudflare Pages picks up the refreshed analysis.
+# Builds the Astro citations dashboard (web/) and deploys it to the
+# nemar-dashboard Cloudflare Pages project at dashboard.nemar.org/citations/.
+#
+# The Astro app builds STATICALLY from data committed to this repo
+# (citations/json_opencite/ + dashboard_data/), which the hallu cron produces
+# and commits via its auto-update PR. Merging that PR (or any change to web/ or
+# the data) fires this workflow and Cloudflare Pages picks up the rebuild.
+# This replaced the Python f-string dashboard generator at the epic #127
+# cutover (#144); the Astro app fixes the count + map correctness bugs (#116).
 on:
   workflow_dispatch:
   push:
@@ -19,6 +19,7 @@ on:
       - "datasets/**"
       - "dashboard_data/**"
       - "embeddings/**"
+      - "web/**"
       - ".github/workflows/deploy-dashboard.yml"
 
 jobs:
@@ -29,91 +30,36 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v3
+      - name: Set up bun
+        uses: oven-sh/setup-bun@v2
         with:
-          enable-cache: true
+          bun-version: "1.3.11"
 
-      # CPU-only torch keeps this job light. The dashboard generator itself
-      # does not import torch, but `sentence-transformers` is a transitive
-      # dep of the package (used by score-confidence on hallu), so a plain
-      # `uv sync` would pull CUDA wheels onto a GitHub-hosted runner. The
-      # CPU index avoids that and keeps cold-start under a minute.
-      - name: Sync project (CPU-only torch)
-        env:
-          UV_EXTRA_INDEX_URL: https://download.pytorch.org/whl/cpu
-          UV_INDEX_STRATEGY: unsafe-best-match
-        run: uv sync --python 3.13 --all-extras
+      - name: Install dependencies
+        working-directory: web
+        run: bun install --frozen-lockfile
 
-      # Fail-fast guard: the hallu cron is now the sole producer of
-      # `dashboard_data/themes/`, `dashboard_data/network/`,
-      # `dashboard_data/temporal/`, and `embeddings/`. If any of those
-      # are missing on main, something upstream broke (hallu cron
-      # skipped a step, PR landed without analysis outputs, etc.). We
-      # refuse to deploy a half-rendered dashboard over the live one;
-      # the previous deploy stays live on Cloudflare Pages until a fix
-      # lands. See epic #96, issue #101.
-      - name: Verify hallu-produced inputs are present
+      - name: Build Astro dashboard
+        working-directory: web
+        # The build fails loudly if citations/json_opencite/ is missing (the
+        # data.ts guard), so a broken data state cannot silently publish an
+        # empty dashboard. On any failure the previous Cloudflare Pages deploy
+        # stays live (this job simply does not reach the deploy step).
+        run: bun run build
+
+      - name: Verify build output
         run: |
-          set -e
-          missing=0
-          for dir in \
-            "dashboard_data/themes" \
-            "dashboard_data/network" \
-            "dashboard_data/temporal" \
-            "embeddings" \
-            "citations/json_opencite"; do
-            if [ ! -d "$dir" ] || [ -z "$(ls -A "$dir" 2>/dev/null)" ]; then
-              echo "::error::Required input directory missing or empty: $dir"
-              missing=1
-            else
-              count=$(find "$dir" -type f | wc -l | tr -d ' ')
-              echo "OK: $dir ($count files)"
-            fi
-          done
-          # UMAP similarity exports were intended to live FLAT in dashboard_data/
-          # as *similarities*.csv, but no current producer writes them
-          # (analyze-umap emits a .pkl projection, not a CSV). The Citation
-          # Similarities panel degrades to empty when absent, and the surface is
-          # being replaced by the Astro rebuild (#127), so a missing CSV is a
-          # WARNING, not a hard failure (#132). The themes/network/temporal/
-          # embeddings checks above remain hard requirements.
-          sim_count=$(find dashboard_data -maxdepth 1 -name "*similarities*.csv" -type f 2>/dev/null | wc -l | tr -d ' ')
-          if [ "$sim_count" -eq 0 ]; then
-            echo "::warning::No dashboard_data/*similarities*.csv (no producer yet, #132); Citation Similarities panel will be empty. Continuing."
-          else
-            echo "OK: dashboard_data/*similarities*.csv ($sim_count files)"
-          fi
-          if [ "$missing" -ne 0 ]; then
-            echo "::error::Refusing to deploy; hallu cron outputs are incomplete."
-            echo "::error::The previous Cloudflare Pages deploy stays live."
+          if [ ! -s web/dist/index.html ]; then
+            echo "::error::web/dist/index.html missing or empty; refusing to deploy."
             exit 1
           fi
-
-      - name: Generate dashboard
-        run: |
-          mkdir -p dashboard_data/visualizations
-
-          echo "Building dashboard from hallu-produced analysis outputs..."
-          uv run python -c "
-          from dataset_citations.dashboard.core import DashboardGenerator
-          from pathlib import Path
-          gen = DashboardGenerator(
-              results_dir=Path('dashboard_data'),
-              output_dir=Path('interactive_reports'),
-              citations_dir=Path('citations/json_opencite'),
-          )
-          output_path = gen.generate_dashboard(dashboard_type='nemar', lazy_load=True)
-          print(f'Dashboard generated: {output_path}')
-          "
+          echo "OK: web/dist built ($(find web/dist -type f | wc -l | tr -d ' ') files)"
 
       - name: Prepare deploy directory
+        # base is /citations, so the built site is served under /citations/.
         run: |
           mkdir -p deploy/citations
-          cp interactive_reports/dataset_citations_dashboard_nemar.html deploy/citations/index.html
-          cp interactive_reports/dashboard_styles.css deploy/citations/
-          cp interactive_reports/dashboard_templates.js deploy/citations/
-          cp -r interactive_reports/data deploy/citations/data
+          cp -r web/dist/. deploy/citations/
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
