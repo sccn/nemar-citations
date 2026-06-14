@@ -4,19 +4,47 @@
  * Reads the schema-v2 citation JSON committed to this repo
  * (citations/json_opencite/) plus dataset names from datasets/, and exposes a
  * typed contract the pages render. Runs in node during `astro build`; nothing
- * here ships to the client. Phases P2+P3 of epic #127.
+ * here ships to the client. Epic #127.
+ *
+ * Counting policy (issue #138): the HEADLINE counts only HIGH-CONFIDENCE
+ * citations (confidence_score >= HIGH_CONF) and EXCLUDES BIDS / methods /
+ * umbrella anchor papers (a citation pulled in via a method/standards paper is
+ * not a citation OF the dataset). Methods anchors are detected as a source DOI
+ * that is over-spread across many datasets, plus a curated denylist of canonical
+ * BIDS/methods papers. Low-confidence citations are not counted but are kept so
+ * the per-dataset view can surface them ("also N low-confidence").
  */
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 
-// Opt-in to build an empty dashboard when no data is present. Off by default so
-// a misconfigured build fails loudly instead of shipping zero-stat pages.
 const ALLOW_EMPTY = process.env.CITATIONS_ALLOW_EMPTY === "1";
 const EMPTY_HINT =
   "Run the hallu pipeline (or check out a tree with citations/json_opencite/), " +
   "or set CITATIONS_ALLOW_EMPTY=1 to intentionally build an empty dashboard.";
 
-/** Walk up from the build CWD to locate a repo-relative data dir. */
+const HIGH_CONF = 0.4;
+// A source anchor attributed across more datasets than this is treated as a
+// methods/umbrella paper (its citers are not citations of any one dataset).
+const METHODS_SPREAD = 5;
+
+// Curated canonical BIDS / methods / standards / umbrella anchor DOIs (normalized:
+// lowercase, no "doi:" prefix). Excluded even if not over-spread. The over-spread
+// heuristic catches the rest. The principled long-term fix is anchor judgment on
+// the un-judged ds-* datasets (#131); this is the build-local stand-in.
+const METHODS_DENYLIST = new Set<string>([
+  "10.21105/joss.01896", // MNE-BIDS
+  "10.1038/s41597-019-0104-8", // EEG-BIDS
+  "10.1038/s41597-019-0105-7", // iEEG-BIDS
+  "10.1038/sdata.2018.110", // MEG-BIDS
+  "10.1038/sdata.2016.44", // BIDS (original)
+  "10.1038/s41592-018-0235-4", // fMRIPrep
+  "10.3389/fnins.2013.00267", // MNE-Python
+  "10.1016/j.jneumeth.2003.10.009", // EEGLAB
+  "10.1155/2011/156869", // FieldTrip
+  "10.1038/sdata.2017.181", // HBN (umbrella)
+  "10.1038/sdata.2017.40", // HBN resource (umbrella)
+]);
+
 function findRepoDir(sub: string): string | null {
   let dir = process.cwd();
   for (let depth = 0; depth < 8; depth++) {
@@ -49,16 +77,25 @@ export interface Citation {
 
 export interface DatasetDetail {
   id: string;
-  name: string;
+  /** High-confidence, non-methods citations — the counted set. */
   numCitations: number;
+  name: string;
   citations: Citation[];
+  /** Low-confidence citations (kept for the detail view, not counted). */
+  lowConfCitations: Citation[];
+  /** Count of method/standards references excluded from the dataset's citations. */
+  methodsExcluded: number;
 }
 
 export interface Overview {
   datasetCount: number;
   datasetsWithCitations: number;
+  /** Summed high-confidence, non-methods citations across datasets. */
   totalCitations: number;
+  /** Unique high-confidence, non-methods citing papers (the headline). */
   uniqueCitations: number;
+  /** Summed low-confidence citations (surfaced as a secondary figure). */
+  lowConfidenceTotal: number;
 }
 
 export interface LoadedData {
@@ -75,25 +112,28 @@ interface RawCitation {
   doi?: string | null;
   pmid?: string | null;
   openalex_id?: string | null;
+  source_doi?: string | null;
   cited_by?: number | null;
   confidence_scoring?: { confidence_score?: number | null } | null;
 }
 
-interface RawFile {
-  dataset_id?: string;
-  num_citations?: number;
-  citation_details?: RawCitation[];
+interface RawEntry {
+  id: string;
+  details: RawCitation[];
+}
+
+function normalizeDoi(doi: string): string {
+  return doi
+    .trim()
+    .toLowerCase()
+    .replace(/^doi:/, "")
+    .replace(/[.,;:]+$/, "");
 }
 
 /** DOI-first identity for a citing paper (matches the attribution audit's dedup). */
 function citingKey(c: RawCitation): string {
-  const doi = c.doi;
-  if (doi) {
-    return `doi:${doi
-      .trim()
-      .toLowerCase()
-      .replace(/^doi:/, "")
-      .replace(/[.,;:]+$/, "")}`;
+  if (c.doi) {
+    return `doi:${normalizeDoi(c.doi)}`;
   }
   if (c.openalex_id) {
     return `openalex:${c.openalex_id.trim().toLowerCase()}`;
@@ -102,6 +142,11 @@ function citingKey(c: RawCitation): string {
     return `pmid:${String(c.pmid).trim()}`;
   }
   return `title:${(c.title ?? "").trim().toLowerCase().replace(/\s+/g, " ")}`;
+}
+
+function isHighConf(c: RawCitation): boolean {
+  const conf = c.confidence_scoring?.confidence_score;
+  return typeof conf === "number" && conf >= HIGH_CONF;
 }
 
 function toCitation(c: RawCitation): Citation {
@@ -135,9 +180,63 @@ function readDatasetName(id: string): string {
   }
 }
 
+function readEntries(): RawEntry[] | null {
+  if (!citationsDir) {
+    return null;
+  }
+  const files = readdirSync(citationsDir).filter((f) => f.endsWith("_citations.json"));
+  if (files.length === 0) {
+    return null;
+  }
+  const entries: RawEntry[] = [];
+  for (const fileName of files) {
+    try {
+      const raw = JSON.parse(readFileSync(join(citationsDir, fileName), "utf-8")) as {
+        dataset_id?: string;
+        citation_details?: RawCitation[];
+      };
+      entries.push({
+        id: raw.dataset_id || fileName.replace("_citations.json", ""),
+        details: raw.citation_details ?? [],
+      });
+    } catch (err) {
+      console.warn(`[data] skipping ${fileName}: ${err instanceof Error ? err.message : err}`);
+    }
+  }
+  return entries;
+}
+
+/** Source DOIs attributed across more than METHODS_SPREAD datasets, unioned with
+ * the curated denylist — the methods/umbrella anchors whose citers we exclude. */
+function methodsAnchors(entries: RawEntry[]): Set<string> {
+  const spread = new Map<string, Set<string>>();
+  for (const { id, details } of entries) {
+    for (const c of details) {
+      if (!c.source_doi) {
+        continue;
+      }
+      const key = normalizeDoi(c.source_doi);
+      const set = spread.get(key) ?? new Set<string>();
+      set.add(id);
+      spread.set(key, set);
+    }
+  }
+  const methods = new Set<string>(METHODS_DENYLIST);
+  for (const [anchor, datasets] of spread) {
+    if (datasets.size > METHODS_SPREAD) {
+      methods.add(anchor);
+    }
+  }
+  return methods;
+}
+
+function isMethodsCitation(c: RawCitation, methods: Set<string>): boolean {
+  return c.source_doi ? methods.has(normalizeDoi(c.source_doi)) : false;
+}
+
 let cache: LoadedData | null = null;
 
-/** Load the full dataset + overview once (memoized across page builds). */
+/** Load + classify the full corpus once (memoized across page builds). */
 export function loadAll(): LoadedData {
   if (cache) {
     return cache;
@@ -148,65 +247,71 @@ export function loadAll(): LoadedData {
       datasetsWithCitations: 0,
       totalCitations: 0,
       uniqueCitations: 0,
+      lowConfidenceTotal: 0,
     },
     datasets: [],
   };
 
-  if (!citationsDir) {
+  const entries = readEntries();
+  if (!entries) {
     if (ALLOW_EMPTY) {
-      console.warn(`[data] citations/json_opencite/ not found; building empty. ${EMPTY_HINT}`);
+      console.warn(`[data] no citation data found; building empty. ${EMPTY_HINT}`);
       cache = empty;
       return cache;
     }
-    throw new Error(`[data] Cannot locate citations/json_opencite/. ${EMPTY_HINT}`);
+    throw new Error(`[data] Cannot load citations/json_opencite/. ${EMPTY_HINT}`);
   }
 
-  const files = readdirSync(citationsDir).filter((f) => f.endsWith("_citations.json"));
-  if (files.length === 0) {
-    if (ALLOW_EMPTY) {
-      console.warn(`[data] ${citationsDir} has no *_citations.json; building empty.`);
-      cache = empty;
-      return cache;
-    }
-    throw new Error(`[data] ${citationsDir} has no *_citations.json files. ${EMPTY_HINT}`);
-  }
-
+  const methods = methodsAnchors(entries);
+  const uniqueHighConf = new Set<string>();
   let totalCitations = 0;
+  let lowConfidenceTotal = 0;
   let datasetsWithCitations = 0;
-  const unique = new Set<string>();
   const datasets: DatasetDetail[] = [];
 
-  for (const fileName of files) {
-    let raw: RawFile;
-    try {
-      raw = JSON.parse(readFileSync(join(citationsDir, fileName), "utf-8")) as RawFile;
-    } catch (err) {
-      console.warn(`[data] skipping ${fileName}: ${err instanceof Error ? err.message : err}`);
-      continue;
-    }
-    const id = raw.dataset_id || fileName.replace("_citations.json", "");
-    const details = raw.citation_details ?? [];
-    const num = raw.num_citations ?? details.length;
-    totalCitations += num;
+  for (const { id, details } of entries) {
+    const counted: Citation[] = [];
+    const lowConf: Citation[] = [];
+    let methodsExcluded = 0;
+
     for (const c of details) {
-      unique.add(citingKey(c));
+      if (isMethodsCitation(c, methods)) {
+        methodsExcluded += 1;
+        continue;
+      }
+      if (isHighConf(c)) {
+        counted.push(toCitation(c));
+        uniqueHighConf.add(citingKey(c));
+      } else {
+        lowConf.push(toCitation(c));
+      }
     }
-    // Count + render only datasets with renderable citation_details (a file can
-    // carry num_citations > 0 with empty details after a partial fetch).
-    if (details.length > 0) {
+
+    totalCitations += counted.length;
+    lowConfidenceTotal += lowConf.length;
+    if (counted.length > 0) {
       datasetsWithCitations += 1;
-      const citations = details.map(toCitation).sort((a, b) => b.citedBy - a.citedBy);
-      datasets.push({ id, name: readDatasetName(id), numCitations: num, citations });
+      counted.sort((a, b) => b.citedBy - a.citedBy);
+      lowConf.sort((a, b) => b.citedBy - a.citedBy);
+      datasets.push({
+        id,
+        name: readDatasetName(id),
+        numCitations: counted.length,
+        citations: counted,
+        lowConfCitations: lowConf,
+        methodsExcluded,
+      });
     }
   }
 
   datasets.sort((a, b) => b.numCitations - a.numCitations);
   cache = {
     overview: {
-      datasetCount: files.length,
+      datasetCount: entries.length,
       datasetsWithCitations,
       totalCitations,
-      uniqueCitations: unique.size,
+      uniqueCitations: uniqueHighConf.size,
+      lowConfidenceTotal,
     },
     datasets,
   };
