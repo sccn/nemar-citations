@@ -1,0 +1,61 @@
+---
+import ScatterMap from "../components/ScatterMap.astro";
+import Base from "../layouts/Base.astro";
+import { loadUmapPoints } from "../lib/maps";
+
+const { datasets, citations } = loadUmapPoints();
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const datasetPoints = datasets.map((d) => ({
+  x: d.x,
+  y: d.y,
+  label: d.count > 0 ? `${d.name} (${d.count})` : d.name,
+  size: 3 + Math.sqrt(d.count),
+}));
+const citationPoints = citations.map((c) => ({
+  x: c.x,
+  y: c.y,
+  label: c.title || "(untitled)",
+  size: 2.5,
+}));
+---
+
+<Base title="Network maps — NEMAR Citations">
+  <p class="back"><a href={`${base}/`}>← Overview</a></p>
+  <h1>Network maps</h1>
+  <p class="sub">
+    Datasets and citing papers positioned by semantic similarity (UMAP of their
+    embeddings). Hover a point for its label.
+  </p>
+
+  <div class="maps">
+    <ScatterMap
+      title="Dataset map"
+      subtitle="Datasets positioned by semantic coordinates"
+      points={datasetPoints}
+    />
+    <ScatterMap
+      title="Citation map"
+      subtitle="Citing papers positioned by semantic coordinates"
+      points={citationPoints}
+    />
+  </div>
+</Base>
+
+<style>
+  .back {
+    margin-bottom: var(--space-4);
+    font-size: var(--fs-sm);
+  }
+  .sub {
+    margin-top: var(--space-2);
+    max-width: var(--max-width-prose);
+    color: var(--color-fg-muted);
+  }
+  .maps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+  }
+</style>

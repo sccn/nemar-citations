@@ -160,6 +160,10 @@ umap_analysis() {
     echo "ERROR: dataset-citations-analyze-umap failed; aborting." >&2
     exit 2
   }
+  # Export coords + real labels to dashboard_data/umap_points.json for the Astro
+  # maps (#140). Non-fatal: maps degrade to empty if absent.
+  run uv run dataset-citations-export-umap-points ||
+    echo "WARN: export-umap-points failed; maps will be stale (non-fatal)."
 }
 
 # Step 6: theme / network / temporal analyses -> dashboard_data/{themes,network,

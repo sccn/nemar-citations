@@ -37,6 +37,10 @@ const datasetLink = (id: string) => `${base}/dataset/${id}`;
     citations are kept and shown per dataset.
   </p>
 
+  <p class="maps-link">
+    <a href={`${base}/maps`}>Explore the dataset &amp; citation maps →</a>
+  </p>
+
   <section class="browse">
     <h2>Most-cited datasets</h2>
     <ol class="ds-list" role="list">
@@ -74,6 +78,10 @@ const datasetLink = (id: string) => `${base}/dataset/${id}`;
     max-width: var(--max-width-prose);
     font-size: var(--fs-sm);
     color: var(--color-fg-subtle);
+  }
+  .maps-link {
+    margin-top: var(--space-6);
+    font-weight: var(--fw-medium);
   }
   .browse {
     margin-top: var(--space-12);
