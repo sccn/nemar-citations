@@ -93,25 +93,27 @@ const xKeep = labelStride(points.length, 8);
       </svg>
     )
   }
-  <table class="visually-hidden">
-    <caption>{ariaLabel}</caption>
-    <thead>
-      <tr>
-        <th>{xLabel}</th>
-        <th>{yLabel}</th>
-      </tr>
-    </thead>
-    <tbody>
-      {
-        points.map((p) => (
+  {
+    points.length > 0 && (
+      <table class="visually-hidden">
+        <caption>{ariaLabel}</caption>
+        <thead>
           <tr>
-            <td>{p.x}</td>
-            <td>{withCommas(p.y)}</td>
+            <th>{xLabel}</th>
+            <th>{yLabel}</th>
           </tr>
-        ))
-      }
-    </tbody>
-  </table>
+        </thead>
+        <tbody>
+          {points.map((p) => (
+            <tr>
+              <td>{p.x}</td>
+              <td>{withCommas(p.y)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )
+  }
 </figure>
 
 <style>

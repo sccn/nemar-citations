@@ -11,10 +11,13 @@ export function niceTicks(max: number, targetCount = 5): { ticks: number[]; max:
   const niceNorm = norm <= 1 ? 1 : norm <= 2 ? 2 : norm <= 5 ? 5 : 10;
   const step = niceNorm * mag;
   const niceMax = Math.ceil(max / step) * step;
-  const ticks: number[] = [];
+  const raw: number[] = [];
   for (let v = 0; v <= niceMax + step / 2; v += step) {
-    ticks.push(Math.round(v));
+    raw.push(Math.round(v));
   }
+  // Dedupe: small integer maxima (e.g. max=1) can round adjacent ticks to the
+  // same value, which would render overlapping axis labels.
+  const ticks = [...new Set(raw)];
   return { ticks, max: niceMax };
 }
 

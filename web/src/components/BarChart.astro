@@ -77,25 +77,27 @@ const xKeep = labelStride(bars.length, 8);
       </svg>
     )
   }
-  <table class="visually-hidden">
-    <caption>{ariaLabel}</caption>
-    <thead>
-      <tr>
-        <th>{xLabel}</th>
-        <th>{yLabel}</th>
-      </tr>
-    </thead>
-    <tbody>
-      {
-        bars.map((b) => (
+  {
+    bars.length > 0 && (
+      <table class="visually-hidden">
+        <caption>{ariaLabel}</caption>
+        <thead>
           <tr>
-            <td>{b.label}</td>
-            <td>{withCommas(b.value)}</td>
+            <th>{xLabel}</th>
+            <th>{yLabel}</th>
           </tr>
-        ))
-      }
-    </tbody>
-  </table>
+        </thead>
+        <tbody>
+          {bars.map((b) => (
+            <tr>
+              <td>{b.label}</td>
+              <td>{withCommas(b.value)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )
+  }
 </figure>
 
 <style>

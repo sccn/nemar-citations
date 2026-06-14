@@ -23,6 +23,13 @@ const polar = (r: number, a: number): [number, number] => [
   +(cy + r * Math.sin(a)).toFixed(2),
 ];
 
+// A full ring (two stacked circles, even-odd fill cuts the hole). Used when a
+// single slice is the entire total — a single 2*PI arc is degenerate (start ==
+// end) and renders nothing.
+const fullRing =
+  `M${cx - rO} ${cy} A${rO} ${rO} 0 1 0 ${cx + rO} ${cy} A${rO} ${rO} 0 1 0 ${cx - rO} ${cy} Z` +
+  `M${cx - rI} ${cy} A${rI} ${rI} 0 1 0 ${cx + rI} ${cy} A${rI} ${rI} 0 1 0 ${cx - rI} ${cy} Z`;
+
 let acc = -Math.PI / 2;
 const arcs = slices.map((s) => {
   const frac = total ? s.value / total : 0;
@@ -34,7 +41,10 @@ const arcs = slices.map((s) => {
   const [ox2, oy2] = polar(rO, end);
   const [ix2, iy2] = polar(rI, end);
   const [ix1, iy1] = polar(rI, start);
-  const d = `M${ox1} ${oy1} A${rO} ${rO} 0 ${large} 1 ${ox2} ${oy2} L${ix2} ${iy2} A${rI} ${rI} 0 ${large} 0 ${ix1} ${iy1} Z`;
+  const d =
+    frac >= 1
+      ? fullRing
+      : `M${ox1} ${oy1} A${rO} ${rO} 0 ${large} 1 ${ox2} ${oy2} L${ix2} ${iy2} A${rI} ${rI} 0 ${large} 0 ${ix1} ${iy1} Z`;
   return { ...s, d, pct: frac * 100 };
 });
 const pctLabel = (pct: number) => `${pct.toLocaleString("en-US", { maximumFractionDigits: 1 })}%`;
@@ -46,7 +56,7 @@ const pctLabel = (pct: number) => `${pct.toLocaleString("en-US", { maximumFracti
       {
         arcs.map((a) =>
           a.value > 0 ? (
-            <path d={a.d} fill={a.color} class="slice">
+            <path d={a.d} fill={a.color} fill-rule="evenodd" class="slice">
               <title>{`${a.label}: ${withCommas(a.value)} (${pctLabel(a.pct)})`}</title>
             </path>
           ) : null,

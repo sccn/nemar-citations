@@ -24,8 +24,9 @@ const confSlices = [
 <Base title="Citation trends · NEMAR Citations">
   <h1>Citation trends</h1>
   <p class="sub">
-    How citations of NEMAR and OpenNeuro datasets have accumulated over time. Counts
-    match the overview: {fmt(overview.uniqueCitations)} unique high-confidence citing papers.
+    How citations of NEMAR and OpenNeuro datasets have accumulated over time. The growth
+    charts count unique high-confidence citing papers ({fmt(overview.uniqueCitations)} to date,
+    matching the overview); the confidence chart counts per-dataset attributions.
   </p>
 
   <section class="chart-card">
@@ -63,7 +64,8 @@ const confSlices = [
       <header class="chart-card__head">
         <h2>Citation confidence</h2>
         <p class="chart-card__cap">
-          Confidence split of citation-dataset attributions (methods papers excluded).
+          Confidence split of citation-dataset attributions: the same paper citing several
+          datasets counts once per dataset. Methods papers excluded.
         </p>
       </header>
       <DonutChart
