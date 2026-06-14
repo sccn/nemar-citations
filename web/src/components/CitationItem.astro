@@ -10,6 +10,12 @@ const href = citation.url || (citation.doi ? `https://doi.org/${citation.doi}` :
 const meta = [citation.authors, citation.year ? String(citation.year) : "", citation.venue]
   .filter((part) => part)
   .join(" · ");
+const prov = citation.provenance;
+const provTitle = prov.anchorTitle
+  ? `Found via: ${prov.anchorTitle}`
+  : prov.kind === "dataset"
+    ? "This paper cited the dataset DOI directly"
+    : prov.label;
 ---
 
 <li class="cite">
@@ -23,11 +29,12 @@ const meta = [citation.authors, citation.year ? String(citation.year) : "", cita
     )
   }
   {meta && <p class="cite__meta">{meta}</p>}
-  {
-    citation.citedBy > 0 && (
+  <p class="cite__tags">
+    <span class={`cite__flag cite__flag--${prov.kind}`} title={provTitle}>{prov.label}</span>
+    {citation.citedBy > 0 && (
       <span class="cite__by">{citation.citedBy.toLocaleString("en-US")} citations</span>
-    )
-  }
+    )}
+  </p>
 </li>
 
 <style>
@@ -47,9 +54,35 @@ const meta = [citation.authors, citation.year ? String(citation.year) : "", cita
     font-size: var(--fs-sm);
     color: var(--color-fg-muted);
   }
-  .cite__by {
+  .cite__tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-3);
+    margin-top: var(--space-2);
+  }
+  .cite__flag {
     display: inline-block;
-    margin-top: var(--space-1);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-sm, 4px);
+    border: 1px solid transparent;
+    cursor: help;
+  }
+  /* Cites a publication (data paper): the common case today. */
+  .cite__flag--paper {
+    color: var(--color-fg-muted);
+    background: var(--color-bg-subtle);
+    border-color: var(--color-border);
+  }
+  /* Cites the dataset's own DOI: highlighted (rare today, grows over time). */
+  .cite__flag--dataset {
+    color: var(--brand-teal);
+    background: color-mix(in srgb, var(--brand-teal) 12%, transparent);
+    border-color: color-mix(in srgb, var(--brand-teal) 35%, transparent);
+  }
+  .cite__by {
     font-size: var(--fs-xs);
     color: var(--color-fg-subtle);
   }
