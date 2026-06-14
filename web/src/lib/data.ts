@@ -15,7 +15,9 @@
  * the per-dataset view can surface them ("also N low-confidence").
  */
 import { existsSync, readFileSync, readdirSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { join } from "node:path";
+
+import { findRepoPath } from "./repo";
 
 const ALLOW_EMPTY = process.env.CITATIONS_ALLOW_EMPTY === "1";
 const EMPTY_HINT =
@@ -45,24 +47,8 @@ const METHODS_DENYLIST = new Set<string>([
   "10.1038/sdata.2017.40", // HBN resource (umbrella)
 ]);
 
-function findRepoDir(sub: string): string | null {
-  let dir = process.cwd();
-  for (let depth = 0; depth < 8; depth++) {
-    const candidate = join(dir, sub);
-    if (existsSync(candidate)) {
-      return candidate;
-    }
-    const parent = dirname(dir);
-    if (parent === dir) {
-      break;
-    }
-    dir = parent;
-  }
-  return null;
-}
-
-const citationsDir = findRepoDir(join("citations", "json_opencite"));
-const datasetsDir = findRepoDir("datasets");
+const citationsDir = findRepoPath(join("citations", "json_opencite"));
+const datasetsDir = findRepoPath("datasets");
 
 export interface Citation {
   title: string;
