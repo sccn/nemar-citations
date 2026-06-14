@@ -106,6 +106,8 @@ export interface Overview {
   uniqueCitations: number;
   /** Summed low-confidence citations (surfaced as a secondary figure). */
   lowConfidenceTotal: number;
+  /** Most recent date_last_updated across the corpus (ISO), or null. */
+  lastUpdated: string | null;
 }
 
 /** One year of the citation-growth series (unique high-confidence papers). */
@@ -155,6 +157,8 @@ type AnchorMap = Map<string, { classification: string; title: string | null }>;
 interface RawEntry {
   id: string;
   details: RawCitation[];
+  /** Top-level date_last_updated (ISO) from the citation JSON, or null. */
+  lastUpdated: string | null;
 }
 
 function normalizeDoi(doi: string): string {
@@ -277,10 +281,12 @@ function readEntries(): RawEntry[] | null {
       const raw = JSON.parse(readFileSync(join(citationsDir, fileName), "utf-8")) as {
         dataset_id?: string;
         citation_details?: RawCitation[];
+        date_last_updated?: string | null;
       };
       entries.push({
         id: raw.dataset_id || fileName.replace("_citations.json", ""),
         details: raw.citation_details ?? [],
+        lastUpdated: raw.date_last_updated ?? null,
       });
     } catch (err) {
       console.warn(`[data] skipping ${fileName}: ${err instanceof Error ? err.message : err}`);
@@ -331,6 +337,7 @@ export function loadAll(): LoadedData {
       totalCitations: 0,
       uniqueCitations: 0,
       lowConfidenceTotal: 0,
+      lastUpdated: null,
     },
     datasets: [],
     charts: { temporal: [], confidence: { high: 0, low: 0 } },
@@ -419,6 +426,14 @@ export function loadAll(): LoadedData {
       return { year, newPapers, cumulative };
     });
 
+  // Most recent per-dataset date_last_updated (ISO strings sort lexicographically).
+  let lastUpdated: string | null = null;
+  for (const { lastUpdated: d } of entries) {
+    if (d && (lastUpdated === null || d > lastUpdated)) {
+      lastUpdated = d;
+    }
+  }
+
   cache = {
     overview: {
       datasetCount: entries.length,
@@ -426,6 +441,7 @@ export function loadAll(): LoadedData {
       totalCitations,
       uniqueCitations: uniqueHighConf.size,
       lowConfidenceTotal,
+      lastUpdated,
     },
     datasets,
     charts: {
