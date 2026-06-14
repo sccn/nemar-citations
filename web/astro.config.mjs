@@ -10,4 +10,11 @@ export default defineConfig({
   base: "/citations",
   output: "static",
   trailingSlash: "ignore",
+  // /trends was folded into the overview (#159); keep the previously-public URL
+  // working by redirecting old links to the overview instead of 404ing.
+  // Destination is an absolute path (base is not auto-prepended), so target
+  // /citations/ explicitly.
+  redirects: {
+    "/trends": "/citations/",
+  },
 });
