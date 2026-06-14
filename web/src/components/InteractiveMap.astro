@@ -1,0 +1,562 @@
+---
+/**
+ * Interactive canvas scatter map. Renders up to ~7k nodes (too many for SVG),
+ * with wheel zoom-to-cursor, drag pan, click-to-select + details panel, and
+ * fit/zoom controls. Points are fetched client-side from a static JSON asset
+ * (data-src) so only the maps page pays for the data. Theme-aware: re-reads
+ * NEMAR color tokens on light/dark toggle. Degrades to an empty state.
+ *
+ * The script below is hoisted + deduped by Astro and initializes EVERY
+ * [data-imap] instance on the page, so the component can repeat.
+ */
+interface Props {
+  title: string;
+  subtitle: string;
+  /** Which array of the umap JSON to render. */
+  type: "datasets" | "citations";
+  /** URL of the umap.json asset. */
+  src: string;
+  /** Site base URL for internal links. */
+  base: string;
+  /** Point count (for the header + aria-label); 0 shows the empty state. */
+  count: number;
+}
+
+const { title, subtitle, type, src, base, count } = Astro.props;
+const fmt = (n: number) => n.toLocaleString("en-US");
+---
+
+<section
+  class="imap"
+  data-imap
+  data-type={type}
+  data-src={src}
+  data-base={base}
+  data-count={count}
+>
+  <header class="imap__head">
+    <div>
+      <h3>{title}</h3>
+      <p>{subtitle}</p>
+    </div>
+    <span class="imap__count">{fmt(count)}</span>
+  </header>
+
+  <div class="imap__stage" data-imap-stage>
+    <canvas
+      class="imap__canvas"
+      data-imap-canvas
+      role="img"
+      aria-label={`${title}: interactive scatter of ${fmt(count)} points`}></canvas>
+
+    {count === 0 && <p class="imap__empty">No map data available yet.</p>}
+
+    <div class="imap__toolbar" role="group" aria-label="Map controls">
+      <button type="button" class="imap__btn" data-imap-zoom-in aria-label="Zoom in">+</button>
+      <button type="button" class="imap__btn" data-imap-zoom-out aria-label="Zoom out">−</button>
+      <button type="button" class="imap__btn imap__btn--text" data-imap-reset>Fit</button>
+    </div>
+
+    <p class="imap__hint">Scroll to zoom · drag to pan · click a point</p>
+
+    <div class="imap__details" data-imap-details hidden>
+      <button type="button" class="imap__close" data-imap-close aria-label="Close details">×</button>
+      <p class="imap__d-label" data-imap-label></p>
+      <p class="imap__d-sub" data-imap-sub></p>
+      <a class="imap__d-link" data-imap-link target="_blank" rel="noopener" hidden>View →</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  interface RawDataset {
+    id: string;
+    x: number;
+    y: number;
+    name: string;
+    count: number;
+  }
+  interface RawCitation {
+    id: string;
+    x: number;
+    y: number;
+    title: string;
+  }
+  interface MapNode {
+    x: number;
+    y: number;
+    r: number;
+    label: string;
+    sub: string;
+    href: string;
+    external: boolean;
+  }
+
+  function readColors() {
+    const cs = getComputedStyle(document.documentElement);
+    const v = (name: string, fallback: string) => cs.getPropertyValue(name).trim() || fallback;
+    return {
+      point: v("--brand-teal", "#5bbad5"),
+      select: v("--brand-purple", "#603cba"),
+      ring: v("--color-bg-elevated", "#ffffff"),
+      hint: v("--color-fg-subtle", "#64748b"),
+    };
+  }
+
+  function initMap(root: HTMLElement): (() => void) | undefined {
+    const type = root.dataset.type as "datasets" | "citations";
+    const src = root.dataset.src ?? "";
+    const base = root.dataset.base ?? "";
+    const count = Number(root.dataset.count ?? "0");
+    const canvas = root.querySelector<HTMLCanvasElement>("[data-imap-canvas]");
+    const stage = root.querySelector<HTMLElement>("[data-imap-stage]");
+    const details = root.querySelector<HTMLElement>("[data-imap-details]");
+    const labelEl = root.querySelector<HTMLElement>("[data-imap-label]");
+    const subEl = root.querySelector<HTMLElement>("[data-imap-sub]");
+    const linkEl = root.querySelector<HTMLAnchorElement>("[data-imap-link]");
+    const ctx = canvas?.getContext("2d");
+    if (!canvas || !stage || !ctx || count === 0) {
+      return;
+    }
+
+    let nodes: MapNode[] = [];
+    let scale = 1;
+    let tx = 0;
+    let ty = 0;
+    let selected = -1;
+    let hover = -1;
+    let colors = readColors();
+    let cssW = 0;
+    let cssH = 0;
+    let raf = 0;
+
+    const sx = (x: number) => x * scale + tx;
+    const sy = (y: number) => -y * scale + ty;
+
+    function bounds() {
+      let minX = Infinity;
+      let maxX = -Infinity;
+      let minY = Infinity;
+      let maxY = -Infinity;
+      for (const n of nodes) {
+        if (n.x < minX) minX = n.x;
+        if (n.x > maxX) maxX = n.x;
+        if (n.y < minY) minY = n.y;
+        if (n.y > maxY) maxY = n.y;
+      }
+      return { minX, maxX, minY, maxY };
+    }
+
+    function fit() {
+      if (nodes.length === 0 || cssW === 0) {
+        return;
+      }
+      const b = bounds();
+      const dw = b.maxX - b.minX || 1;
+      const dh = b.maxY - b.minY || 1;
+      const pad = 28;
+      scale = Math.min((cssW - 2 * pad) / dw, (cssH - 2 * pad) / dh);
+      const cx = (b.minX + b.maxX) / 2;
+      const cy = (b.minY + b.maxY) / 2;
+      tx = cssW / 2 - cx * scale;
+      ty = cssH / 2 + cy * scale;
+    }
+
+    function schedule() {
+      if (!raf) {
+        raf = requestAnimationFrame(() => {
+          raf = 0;
+          draw();
+        });
+      }
+    }
+
+    function draw() {
+      if (!ctx) {
+        return;
+      }
+      ctx.clearRect(0, 0, cssW, cssH);
+      ctx.fillStyle = colors.point;
+      ctx.globalAlpha = 0.72;
+      ctx.beginPath();
+      for (const n of nodes) {
+        const px = sx(n.x);
+        const py = sy(n.y);
+        if (px < -20 || px > cssW + 20 || py < -20 || py > cssH + 20) {
+          continue;
+        }
+        ctx.moveTo(px + n.r, py);
+        ctx.arc(px, py, n.r, 0, Math.PI * 2);
+      }
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      for (const idx of [hover, selected]) {
+        if (idx < 0) {
+          continue;
+        }
+        const n = nodes[idx];
+        const r = n.r + (idx === selected ? 3 : 1.5);
+        ctx.beginPath();
+        ctx.arc(sx(n.x), sy(n.y), r, 0, Math.PI * 2);
+        ctx.fillStyle = idx === selected ? colors.select : colors.point;
+        ctx.fill();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = colors.ring;
+        ctx.stroke();
+      }
+    }
+
+    function pick(mx: number, my: number): number {
+      let best = -1;
+      let bestD = Infinity;
+      for (let i = 0; i < nodes.length; i++) {
+        const dx = sx(nodes[i].x) - mx;
+        const dy = sy(nodes[i].y) - my;
+        const d = dx * dx + dy * dy;
+        const reach = nodes[i].r + 5;
+        if (d < bestD && d <= reach * reach) {
+          bestD = d;
+          best = i;
+        }
+      }
+      return best;
+    }
+
+    function showDetails(i: number) {
+      selected = i;
+      const n = nodes[i];
+      if (labelEl) labelEl.textContent = n.label;
+      if (subEl) subEl.textContent = n.sub;
+      if (linkEl) {
+        if (n.href) {
+          linkEl.href = n.href;
+          linkEl.hidden = false;
+          linkEl.target = n.external ? "_blank" : "_self";
+        } else {
+          linkEl.hidden = true;
+        }
+      }
+      if (details) details.hidden = false;
+      schedule();
+    }
+
+    function closeDetails() {
+      selected = -1;
+      if (details) details.hidden = true;
+      schedule();
+    }
+
+    function zoomAt(mx: number, my: number, factor: number) {
+      const wx = (mx - tx) / scale;
+      const wy = (ty - my) / scale;
+      scale = Math.max(0.02, Math.min(scale * factor, 5000));
+      tx = mx - wx * scale;
+      ty = my + wy * scale;
+      schedule();
+    }
+
+    function resize() {
+      const rect = stage!.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cssW = rect.width;
+      cssH = rect.height;
+      canvas!.width = Math.round(cssW * dpr);
+      canvas!.height = Math.round(cssH * dpr);
+      canvas!.style.width = `${cssW}px`;
+      canvas!.style.height = `${cssH}px`;
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    // --- events ---
+    canvas.addEventListener(
+      "wheel",
+      (e) => {
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        zoomAt(e.clientX - rect.left, e.clientY - rect.top, e.deltaY < 0 ? 1.15 : 1 / 1.15);
+      },
+      { passive: false },
+    );
+
+    let dragging = false;
+    let moved = 0;
+    let lastX = 0;
+    let lastY = 0;
+    canvas.addEventListener("pointerdown", (e) => {
+      dragging = true;
+      moved = 0;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      try {
+        canvas.setPointerCapture(e.pointerId);
+      } catch {
+        // Pointer capture is a best-effort niceness; ignore unsupported cases.
+      }
+    });
+    canvas.addEventListener("pointermove", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      if (dragging) {
+        const dx = e.clientX - lastX;
+        const dy = e.clientY - lastY;
+        moved += Math.abs(dx) + Math.abs(dy);
+        tx += dx;
+        ty += dy;
+        lastX = e.clientX;
+        lastY = e.clientY;
+        schedule();
+        return;
+      }
+      const h = pick(e.clientX - rect.left, e.clientY - rect.top);
+      if (h !== hover) {
+        hover = h;
+        canvas.style.cursor = h >= 0 ? "pointer" : "grab";
+        schedule();
+      }
+    });
+    const endDrag = (e: PointerEvent) => {
+      if (!dragging) {
+        return;
+      }
+      dragging = false;
+      const rect = canvas.getBoundingClientRect();
+      if (moved < 5) {
+        const i = pick(e.clientX - rect.left, e.clientY - rect.top);
+        if (i >= 0) {
+          showDetails(i);
+        } else {
+          closeDetails();
+        }
+      }
+    };
+    canvas.addEventListener("pointerup", endDrag);
+    canvas.addEventListener("pointercancel", () => {
+      dragging = false;
+      hover = -1;
+      schedule();
+    });
+
+    root.querySelector("[data-imap-zoom-in]")?.addEventListener("click", () => {
+      zoomAt(cssW / 2, cssH / 2, 1.4);
+    });
+    root.querySelector("[data-imap-zoom-out]")?.addEventListener("click", () => {
+      zoomAt(cssW / 2, cssH / 2, 1 / 1.4);
+    });
+    root.querySelector("[data-imap-reset]")?.addEventListener("click", () => {
+      fit();
+      closeDetails();
+    });
+    root.querySelector("[data-imap-close]")?.addEventListener("click", closeDetails);
+
+    const ro = new ResizeObserver(() => {
+      const hadFit = cssW > 0;
+      resize();
+      if (!hadFit) {
+        fit();
+      }
+      schedule();
+    });
+    ro.observe(stage);
+
+    const onTheme = () => {
+      colors = readColors();
+      schedule();
+    };
+    const mo = new MutationObserver(onTheme);
+    mo.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    mq.addEventListener("change", onTheme);
+
+    fetch(src)
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
+      .then((data) => {
+        if (type === "datasets") {
+          nodes = (data.datasets ?? []).map((d: RawDataset) => ({
+            x: d.x,
+            y: d.y,
+            r: 3 + Math.sqrt(Math.max(0, d.count)),
+            label: d.name || d.id,
+            sub: `${d.id} · ${d.count.toLocaleString("en-US")} high-confidence citations`,
+            href: `${base}/dataset/${d.id}`,
+            external: false,
+          }));
+        } else {
+          nodes = (data.citations ?? []).map((c: RawCitation) => ({
+            x: c.x,
+            y: c.y,
+            r: 2.5,
+            label: c.title || "(untitled)",
+            sub: "Citing paper",
+            href: c.title
+              ? `https://scholar.google.com/scholar?q=${encodeURIComponent(c.title)}`
+              : "",
+            external: true,
+          }));
+        }
+        resize();
+        fit();
+        schedule();
+      })
+      .catch((err) => {
+        console.warn(`[maps] failed to load ${src}: ${err?.message ?? err}`);
+      });
+
+    return () => {
+      ro.disconnect();
+      mo.disconnect();
+      mq.removeEventListener("change", onTheme);
+    };
+  }
+
+  const cleanups: Array<() => void> = [];
+  for (const el of document.querySelectorAll<HTMLElement>("[data-imap]")) {
+    const cleanup = initMap(el);
+    if (cleanup) {
+      cleanups.push(cleanup);
+    }
+  }
+  // Tear down global observers/listeners if Astro view transitions swap the page.
+  if (cleanups.length > 0) {
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        for (const cleanup of cleanups) {
+          cleanup();
+        }
+      },
+      { once: true },
+    );
+  }
+</script>
+
+<style>
+  .imap {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-bg-elevated);
+    display: flex;
+    flex-direction: column;
+  }
+  .imap__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    background: var(--color-bg-inverse);
+    color: var(--color-fg-inverse);
+  }
+  .imap__head h3 {
+    font-size: var(--fs-lg);
+    color: var(--color-fg-inverse);
+  }
+  .imap__head p {
+    margin-top: var(--space-1);
+    font-size: var(--fs-sm);
+    opacity: 0.85;
+  }
+  .imap__count {
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-lg);
+    color: var(--brand-teal);
+  }
+  .imap__stage {
+    position: relative;
+    width: 100%;
+    height: 460px;
+    touch-action: none;
+  }
+  .imap__canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+  }
+  .imap__canvas:active {
+    cursor: grabbing;
+  }
+  .imap__empty {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: var(--color-fg-subtle);
+  }
+  .imap__toolbar {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    display: flex;
+    gap: var(--space-1);
+  }
+  .imap__btn {
+    min-width: 32px;
+    height: 32px;
+    padding: 0 var(--space-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-semibold);
+    cursor: pointer;
+    line-height: 1;
+  }
+  .imap__btn:hover {
+    background: var(--color-bg-subtle);
+    border-color: var(--color-border-strong);
+  }
+  .imap__btn--text {
+    font-size: var(--fs-sm);
+  }
+  .imap__hint {
+    position: absolute;
+    left: var(--space-3);
+    bottom: var(--space-2);
+    font-size: var(--fs-xs);
+    color: var(--color-fg-subtle);
+    pointer-events: none;
+  }
+  .imap__details {
+    position: absolute;
+    left: var(--space-3);
+    bottom: var(--space-3);
+    max-width: min(360px, calc(100% - 2 * var(--space-3)));
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md, 0 4px 16px rgba(0, 0, 0, 0.18));
+  }
+  .imap__close {
+    position: absolute;
+    top: 2px;
+    right: 6px;
+    border: none;
+    background: none;
+    color: var(--color-fg-subtle);
+    font-size: var(--fs-lg);
+    line-height: 1;
+    cursor: pointer;
+  }
+  .imap__d-label {
+    font-weight: var(--fw-semibold);
+    padding-right: var(--space-4);
+    line-height: var(--lh-snug);
+  }
+  .imap__d-sub {
+    margin-top: var(--space-1);
+    font-size: var(--fs-sm);
+    color: var(--color-fg-subtle);
+  }
+  .imap__d-link {
+    display: inline-block;
+    margin-top: var(--space-2);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+  }
+</style>

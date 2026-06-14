@@ -1,43 +1,37 @@
 ---
-import ScatterMap from "../components/ScatterMap.astro";
+import InteractiveMap from "../components/InteractiveMap.astro";
 import Base from "../layouts/Base.astro";
 import { loadUmapPoints } from "../lib/maps";
 
 const { datasets, citations } = loadUmapPoints();
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-
-const datasetPoints = datasets.map((d) => ({
-  x: d.x,
-  y: d.y,
-  label: d.count > 0 ? `${d.name} (${d.count})` : d.name,
-  size: 3 + Math.sqrt(d.count),
-}));
-const citationPoints = citations.map((c) => ({
-  x: c.x,
-  y: c.y,
-  label: c.title || "(untitled)",
-  size: 2.5,
-}));
+const src = `${base}/maps/umap.json`;
 ---
 
-<Base title="Network maps — NEMAR Citations">
+<Base title="Network maps · NEMAR Citations">
   <p class="back"><a href={`${base}/`}>← Overview</a></p>
   <h1>Network maps</h1>
   <p class="sub">
     Datasets and citing papers positioned by semantic similarity (UMAP of their
-    embeddings). Hover a point for its label.
+    embeddings). Scroll to zoom, drag to pan, and click a point for details.
   </p>
 
   <div class="maps">
-    <ScatterMap
+    <InteractiveMap
       title="Dataset map"
       subtitle="Datasets positioned by semantic coordinates"
-      points={datasetPoints}
+      type="datasets"
+      src={src}
+      base={base}
+      count={datasets.length}
     />
-    <ScatterMap
+    <InteractiveMap
       title="Citation map"
       subtitle="Citing papers positioned by semantic coordinates"
-      points={citationPoints}
+      type="citations"
+      src={src}
+      base={base}
+      count={citations.length}
     />
   </div>
 </Base>
@@ -54,7 +48,7 @@ const citationPoints = citations.map((c) => ({
   }
   .maps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
     gap: var(--space-6);
     margin-top: var(--space-6);
   }
