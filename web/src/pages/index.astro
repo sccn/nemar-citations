@@ -26,7 +26,10 @@ const datasetLink = (id: string) => `${base}/dataset/${id}`;
       label="High-confidence citing papers"
       hint={`${fmt(overview.totalCitations)} attributions across datasets`}
     />
-    <StatCard value={fmt(overview.datasetsWithCitations)} label="Datasets with citations" />
+    <StatCard
+      value={fmt(overview.datasetsWithCitations)}
+      label="Datasets with high-confidence citations"
+    />
   </section>
   <p class="stats-note">
     Counts include only high-confidence citations and exclude BIDS / methods /

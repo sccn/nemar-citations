@@ -291,6 +291,10 @@ export function loadAll(): LoadedData {
     lowConfidenceTotal += lowConf.length;
     if (counted.length > 0) {
       datasetsWithCitations += 1;
+    }
+    // Generate a page for any dataset with citations (high- OR low-confidence),
+    // so every low-confidence citation is actually surfaced per dataset.
+    if (counted.length > 0 || lowConf.length > 0) {
       counted.sort((a, b) => b.citedBy - a.citedBy);
       lowConf.sort((a, b) => b.citedBy - a.citedBy);
       datasets.push({
