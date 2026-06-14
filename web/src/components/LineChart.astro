@@ -1,0 +1,168 @@
+---
+/** Responsive SVG line+area chart with gridlines, axis ticks, axis titles,
+ * point tooltips, and a visually-hidden data table for screen readers. */
+import { compact, labelStride, niceTicks, withCommas } from "../lib/chart";
+
+interface Props {
+  points: { x: number; y: number }[];
+  xLabel: string;
+  yLabel: string;
+  ariaLabel: string;
+  /** Singular noun for the point tooltip, e.g. "papers". */
+  unit?: string;
+}
+
+const { points, xLabel, yLabel, ariaLabel, unit = "" } = Astro.props;
+
+const W = 860;
+const H = 420;
+const PAD = { top: 20, right: 24, bottom: 52, left: 66 };
+const plotW = W - PAD.left - PAD.right;
+const plotH = H - PAD.top - PAD.bottom;
+
+const xs = points.map((p) => p.x);
+const minX = xs.length ? Math.min(...xs) : 0;
+const maxX = xs.length ? Math.max(...xs) : 1;
+const maxY = points.length ? Math.max(...points.map((p) => p.y)) : 1;
+const { ticks: yTicks, max: yMax } = niceTicks(maxY, 5);
+
+const sx = (x: number) => PAD.left + (maxX === minX ? 0.5 : (x - minX) / (maxX - minX)) * plotW;
+const sy = (y: number) => PAD.top + plotH - (yMax === 0 ? 0 : y / yMax) * plotH;
+
+const linePath = points.map(
+  (p, i) => `${i ? "L" : "M"}${sx(p.x).toFixed(1)},${sy(p.y).toFixed(1)}`,
+);
+const areaPath =
+  points.length > 0
+    ? `${linePath.join(" ")} L${sx(maxX).toFixed(1)},${sy(0).toFixed(1)} L${sx(minX).toFixed(1)},${sy(0).toFixed(1)} Z`
+    : "";
+const xKeep = labelStride(points.length, 8);
+---
+
+<figure class="chart-fig">
+  {
+    points.length === 0 ? (
+      <p class="chart-empty">No data available yet.</p>
+    ) : (
+      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={ariaLabel} class="chart-svg">
+        {/* horizontal gridlines + y ticks */}
+        {yTicks.map((t) => (
+          <g>
+            <line
+              class="grid"
+              x1={PAD.left}
+              x2={W - PAD.right}
+              y1={sy(t)}
+              y2={sy(t)}
+            />
+            <text class="tick" x={PAD.left - 10} y={sy(t)} text-anchor="end" dominant-baseline="middle">
+              {compact(t)}
+            </text>
+          </g>
+        ))}
+        {/* axis lines */}
+        <line class="axis" x1={PAD.left} x2={PAD.left} y1={PAD.top} y2={PAD.top + plotH} />
+        <line class="axis" x1={PAD.left} x2={W - PAD.right} y1={PAD.top + plotH} y2={PAD.top + plotH} />
+        {/* x ticks */}
+        {points.map((p, i) =>
+          xKeep.has(i) ? (
+            <text class="tick" x={sx(p.x)} y={PAD.top + plotH + 20} text-anchor="middle">
+              {p.x}
+            </text>
+          ) : null,
+        )}
+        {/* area + line */}
+        <path class="area" d={areaPath} />
+        <path class="line" d={linePath.join(" ")} />
+        {points.map((p) => (
+          <circle class="pt" cx={sx(p.x)} cy={sy(p.y)} r="3.5">
+            <title>{`${p.x}: ${withCommas(p.y)}${unit ? ` ${unit}` : ""}`}</title>
+          </circle>
+        ))}
+        {/* axis titles */}
+        <text class="axis-title" x={PAD.left + plotW / 2} y={H - 6} text-anchor="middle">
+          {xLabel}
+        </text>
+        <text
+          class="axis-title"
+          transform={`translate(16 ${PAD.top + plotH / 2}) rotate(-90)`}
+          text-anchor="middle"
+        >
+          {yLabel}
+        </text>
+      </svg>
+    )
+  }
+  <table class="visually-hidden">
+    <caption>{ariaLabel}</caption>
+    <thead>
+      <tr>
+        <th>{xLabel}</th>
+        <th>{yLabel}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        points.map((p) => (
+          <tr>
+            <td>{p.x}</td>
+            <td>{withCommas(p.y)}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</figure>
+
+<style>
+  .chart-fig {
+    margin: 0;
+  }
+  .chart-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .chart-empty {
+    color: var(--color-fg-subtle);
+    padding: var(--space-6);
+  }
+  .grid {
+    stroke: var(--color-border);
+    stroke-width: 1;
+    opacity: 0.55;
+  }
+  .axis {
+    stroke: var(--color-border-strong, var(--color-border));
+    stroke-width: 1.25;
+  }
+  .tick {
+    fill: var(--color-fg-subtle);
+    font-size: 12px;
+  }
+  .axis-title {
+    fill: var(--color-fg-muted);
+    font-size: 13px;
+    font-weight: var(--fw-medium);
+  }
+  .area {
+    fill: var(--brand-teal);
+    opacity: 0.12;
+  }
+  .line {
+    fill: none;
+    stroke: var(--brand-teal);
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .pt {
+    fill: var(--brand-teal);
+    stroke: var(--color-bg-elevated);
+    stroke-width: 1.5;
+    transition: r 0.12s ease;
+  }
+  .pt:hover {
+    r: 5.5;
+  }
+</style>
