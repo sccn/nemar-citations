@@ -156,7 +156,7 @@ umap_analysis() {
   run uv run dataset-citations-analyze-umap \
     --embeddings-dir embeddings \
     --output-dir dashboard_data \
-    --embedding-type citations || {
+    --embedding-type both || {
     echo "ERROR: dataset-citations-analyze-umap failed; aborting." >&2
     exit 2
   }
