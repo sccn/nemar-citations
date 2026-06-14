@@ -26,9 +26,10 @@ const lastUpdated = lastUpdatedIso
       day: "numeric",
       month: "long",
       year: "numeric",
+      timeZone: "UTC",
     })
   : null;
-const copyrightYear = lastUpdatedIso ? new Date(lastUpdatedIso).getFullYear() : null;
+const copyrightYear = lastUpdatedIso ? new Date(lastUpdatedIso).getUTCFullYear() : null;
 ---
 
 <!doctype html>
