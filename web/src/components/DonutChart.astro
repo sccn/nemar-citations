@@ -1,0 +1,160 @@
+---
+/** Responsive SVG donut chart with an HTML legend (label, value, percent), a
+ * center total, and a visually-hidden data table for screen readers. */
+import { withCommas } from "../lib/chart";
+
+interface Props {
+  slices: { label: string; value: number; color: string }[];
+  ariaLabel: string;
+  centerLabel?: string;
+}
+
+const { slices, ariaLabel, centerLabel = "total" } = Astro.props;
+
+const total = slices.reduce((sum, s) => sum + s.value, 0);
+const SIZE = 240;
+const cx = SIZE / 2;
+const cy = SIZE / 2;
+const rO = 108;
+const rI = 64;
+
+const polar = (r: number, a: number): [number, number] => [
+  +(cx + r * Math.cos(a)).toFixed(2),
+  +(cy + r * Math.sin(a)).toFixed(2),
+];
+
+// A full ring (two stacked circles, even-odd fill cuts the hole). Used when a
+// single slice is the entire total — a single 2*PI arc is degenerate (start ==
+// end) and renders nothing.
+const fullRing =
+  `M${cx - rO} ${cy} A${rO} ${rO} 0 1 0 ${cx + rO} ${cy} A${rO} ${rO} 0 1 0 ${cx - rO} ${cy} Z` +
+  `M${cx - rI} ${cy} A${rI} ${rI} 0 1 0 ${cx + rI} ${cy} A${rI} ${rI} 0 1 0 ${cx - rI} ${cy} Z`;
+
+let acc = -Math.PI / 2;
+const arcs = slices.map((s) => {
+  const frac = total ? s.value / total : 0;
+  const start = acc;
+  const end = acc + frac * 2 * Math.PI;
+  acc = end;
+  const large = end - start > Math.PI ? 1 : 0;
+  const [ox1, oy1] = polar(rO, start);
+  const [ox2, oy2] = polar(rO, end);
+  const [ix2, iy2] = polar(rI, end);
+  const [ix1, iy1] = polar(rI, start);
+  const d =
+    frac >= 1
+      ? fullRing
+      : `M${ox1} ${oy1} A${rO} ${rO} 0 ${large} 1 ${ox2} ${oy2} L${ix2} ${iy2} A${rI} ${rI} 0 ${large} 0 ${ix1} ${iy1} Z`;
+  return { ...s, d, pct: frac * 100 };
+});
+const pctLabel = (pct: number) => `${pct.toLocaleString("en-US", { maximumFractionDigits: 1 })}%`;
+---
+
+<figure class="donut-fig">
+  <div class="donut-wrap">
+    <svg viewBox={`0 0 ${SIZE} ${SIZE}`} role="img" aria-label={ariaLabel} class="donut-svg">
+      {
+        arcs.map((a) =>
+          a.value > 0 ? (
+            <path d={a.d} fill={a.color} fill-rule="evenodd" class="slice">
+              <title>{`${a.label}: ${withCommas(a.value)} (${pctLabel(a.pct)})`}</title>
+            </path>
+          ) : null,
+        )
+      }
+      <text class="donut-total" x={cx} y={cy - 4} text-anchor="middle">{withCommas(total)}</text>
+      <text class="donut-sub" x={cx} y={cy + 16} text-anchor="middle">{centerLabel}</text>
+    </svg>
+    <ul class="legend" role="list">
+      {
+        arcs.map((a) => (
+          <li class="legend__item">
+            <span class="legend__swatch" style={`background:${a.color}`} />
+            <span class="legend__label">{a.label}</span>
+            <span class="legend__value">
+              {withCommas(a.value)} <span class="legend__pct">({pctLabel(a.pct)})</span>
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <table class="visually-hidden">
+    <caption>{ariaLabel}</caption>
+    <tbody>
+      {
+        arcs.map((a) => (
+          <tr>
+            <td>{a.label}</td>
+            <td>{withCommas(a.value)}</td>
+            <td>{pctLabel(a.pct)}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</figure>
+
+<style>
+  .donut-fig {
+    margin: 0;
+  }
+  .donut-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .donut-svg {
+    width: 220px;
+    height: 220px;
+    flex: none;
+  }
+  .slice {
+    transition: opacity 0.12s ease;
+  }
+  .slice:hover {
+    opacity: 0.85;
+  }
+  .donut-total {
+    fill: var(--color-fg);
+    font-size: 30px;
+    font-weight: var(--fw-bold);
+  }
+  .donut-sub {
+    fill: var(--color-fg-subtle);
+    font-size: 13px;
+  }
+  .legend {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    min-width: 0;
+  }
+  .legend__item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-3);
+  }
+  .legend__swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    align-self: center;
+  }
+  .legend__label {
+    color: var(--color-fg);
+  }
+  .legend__value {
+    color: var(--color-fg);
+    font-weight: var(--fw-semibold);
+    font-variant-numeric: tabular-nums;
+  }
+  .legend__pct {
+    color: var(--color-fg-subtle);
+    font-weight: var(--fw-regular);
+  }
+</style>
