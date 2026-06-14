@@ -30,6 +30,10 @@ export function loadTemporal(): YearPoint[] {
     const ti = col("total_citations");
     const hi = col("high_confidence_citations");
     const di = col("unique_datasets");
+    if (yi < 0 || ti < 0) {
+      console.warn(`[temporal] CSV missing required columns; header=${header.join(",")}`);
+      return [];
+    }
 
     const rows = lines
       .slice(1)

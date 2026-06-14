@@ -6,8 +6,10 @@
  * Maps are an enhancement: a missing file degrades to an empty map, it does not
  * fail the build.
  */
-import { existsSync, readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+import { findRepoPath } from "./repo";
 
 export interface DatasetPoint {
   id: string;
@@ -29,25 +31,9 @@ export interface UmapPoints {
   citations: CitationPoint[];
 }
 
-function findFile(rel: string): string | null {
-  let dir = process.cwd();
-  for (let depth = 0; depth < 8; depth++) {
-    const candidate = join(dir, rel);
-    if (existsSync(candidate)) {
-      return candidate;
-    }
-    const parent = dirname(dir);
-    if (parent === dir) {
-      break;
-    }
-    dir = parent;
-  }
-  return null;
-}
-
 export function loadUmapPoints(): UmapPoints {
   const empty: UmapPoints = { datasets: [], citations: [] };
-  const path = findFile(join("dashboard_data", "umap_points.json"));
+  const path = findRepoPath(join("dashboard_data", "umap_points.json"));
   if (!path) {
     return empty;
   }
