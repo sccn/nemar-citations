@@ -84,9 +84,30 @@ export interface Overview {
   lowConfidenceTotal: number;
 }
 
+/** One year of the citation-growth series (unique high-confidence papers). */
+export interface YearPoint {
+  year: number;
+  /** Unique high-confidence papers first cited in this year. */
+  newPapers: number;
+  /** Running total of unique high-confidence papers through this year. */
+  cumulative: number;
+}
+
+/** Chart-ready aggregates derived from the same filtered/deduped pass as the
+ * overview, so the trends page reconciles exactly to the headline figures. */
+export interface ChartData {
+  /** Unique high-confidence citing papers by publication year (papers with a
+   * known year; the cumulative total approaches Overview.uniqueCitations). */
+  temporal: YearPoint[];
+  /** Confidence split of citation-dataset attributions (methods excluded):
+   * high = confidence >= HIGH_CONF, low = below it. */
+  confidence: { high: number; low: number };
+}
+
 export interface LoadedData {
   overview: Overview;
   datasets: DatasetDetail[];
+  charts: ChartData;
 }
 
 interface RawCitation {
@@ -236,6 +257,7 @@ export function loadAll(): LoadedData {
       lowConfidenceTotal: 0,
     },
     datasets: [],
+    charts: { temporal: [], confidence: { high: 0, low: 0 } },
   };
 
   const entries = readEntries();
@@ -250,6 +272,8 @@ export function loadAll(): LoadedData {
 
   const methods = methodsAnchors(entries);
   const uniqueHighConf = new Set<string>();
+  // First-seen publication year per unique high-confidence paper (null = unknown).
+  const firstYearByKey = new Map<string, number | null>();
   let totalCitations = 0;
   let lowConfidenceTotal = 0;
   let datasetsWithCitations = 0;
@@ -266,8 +290,13 @@ export function loadAll(): LoadedData {
         continue;
       }
       if (isHighConf(c)) {
-        counted.push(toCitation(c));
-        uniqueHighConf.add(citingKey(c));
+        const cit = toCitation(c);
+        counted.push(cit);
+        const key = citingKey(c);
+        if (!uniqueHighConf.has(key)) {
+          uniqueHighConf.add(key);
+          firstYearByKey.set(key, cit.year);
+        }
       } else {
         lowConf.push(toCitation(c));
       }
@@ -295,6 +324,24 @@ export function loadAll(): LoadedData {
   }
 
   datasets.sort((a, b) => b.numCitations - a.numCitations);
+
+  // Build the citation-growth series from the unique high-confidence papers with
+  // a known year, so the cumulative total reconciles to uniqueCitations.
+  const byYear = new Map<number, number>();
+  for (const year of firstYearByKey.values()) {
+    if (year !== null) {
+      byYear.set(year, (byYear.get(year) ?? 0) + 1);
+    }
+  }
+  let cumulative = 0;
+  const temporal: YearPoint[] = [...byYear.keys()]
+    .sort((a, b) => a - b)
+    .map((year) => {
+      const newPapers = byYear.get(year) ?? 0;
+      cumulative += newPapers;
+      return { year, newPapers, cumulative };
+    });
+
   cache = {
     overview: {
       datasetCount: entries.length,
@@ -304,6 +351,10 @@ export function loadAll(): LoadedData {
       lowConfidenceTotal,
     },
     datasets,
+    charts: {
+      temporal,
+      confidence: { high: totalCitations, low: lowConfidenceTotal },
+    },
   };
   return cache;
 }
