@@ -49,6 +49,26 @@ const METHODS_DENYLIST = new Set<string>([
 
 const citationsDir = findRepoPath(join("citations", "json_opencite"));
 const datasetsDir = findRepoPath("datasets");
+const anchorJudgmentsDir = findRepoPath(join("citations", "anchor_judgments"));
+
+// OpenNeuro / NEMAR dataset DOIs (the dataset's own record, not a publication).
+// Citations whose source anchor matches this are "cites dataset"; everything
+// else is a publication ("cites data paper"). ~0 today; grows as the managed
+// mirror gives datasets robust DOIs that accrue direct citations.
+const DATASET_DOI_RE = /^10\.18112\/openneuro/;
+
+/** Where a citation was found: did the citing paper cite the dataset's own DOI,
+ * or a publication (data paper) describing it? Derived by joining the citation's
+ * source anchor DOI against the anchor-judgment sidecars. */
+export interface CitationProvenance {
+  /** "dataset" = source anchor is the dataset's own OpenNeuro/NEMAR DOI;
+   * "paper" = source anchor is a publication. */
+  kind: "dataset" | "paper";
+  /** Badge text, e.g. "Cites dataset" / "Cites data paper" / "Cites paper". */
+  label: string;
+  /** Title of the cited anchor paper (provenance), when known from the sidecar. */
+  anchorTitle: string | null;
+}
 
 export interface Citation {
   title: string;
@@ -59,6 +79,7 @@ export interface Citation {
   doi: string | null;
   citedBy: number;
   confidence: number | null;
+  provenance: CitationProvenance;
 }
 
 export interface DatasetDetail {
@@ -120,9 +141,13 @@ interface RawCitation {
   pmid?: string | null;
   openalex_id?: string | null;
   source_doi?: string | null;
+  source_relation?: string | null;
   cited_by?: number | null;
   confidence_scoring?: { confidence_score?: number | null } | null;
 }
+
+/** anchor DOI (normalized) -> its judged classification + paper title. */
+type AnchorMap = Map<string, { classification: string; title: string | null }>;
 
 interface RawEntry {
   id: string;
@@ -156,7 +181,19 @@ function isHighConf(c: RawCitation): boolean {
   return typeof conf === "number" && conf >= HIGH_CONF;
 }
 
-function toCitation(c: RawCitation): Citation {
+/** Classify where a citation was found from its source anchor DOI + the
+ * dataset's anchor-judgment sidecar. */
+function provenanceOf(c: RawCitation, anchors: AnchorMap): CitationProvenance {
+  const sd = c.source_doi ? normalizeDoi(c.source_doi) : null;
+  if (sd && DATASET_DOI_RE.test(sd)) {
+    return { kind: "dataset", label: "Cites dataset", anchorTitle: null };
+  }
+  const info = sd ? anchors.get(sd) : undefined;
+  const label = info?.classification === "data_paper" ? "Cites data paper" : "Cites paper";
+  return { kind: "paper", label, anchorTitle: info?.title ?? null };
+}
+
+function toCitation(c: RawCitation, anchors: AnchorMap): Citation {
   return {
     title: c.title?.trim() || "Untitled",
     authors: c.author?.trim() || "",
@@ -166,7 +203,43 @@ function toCitation(c: RawCitation): Citation {
     doi: c.doi?.trim() || null,
     citedBy: typeof c.cited_by === "number" ? c.cited_by : 0,
     confidence: c.confidence_scoring?.confidence_score ?? null,
+    provenance: provenanceOf(c, anchors),
   };
+}
+
+/** Read a dataset's anchor-judgment sidecar into a DOI -> {classification,title}
+ * map. Returns an empty map when the sidecar is missing or unreadable. */
+function readAnchorMap(id: string): AnchorMap {
+  const map: AnchorMap = new Map();
+  if (!anchorJudgmentsDir) {
+    return map;
+  }
+  const path = join(anchorJudgmentsDir, `${id}.json`);
+  if (!existsSync(path)) {
+    return map;
+  }
+  try {
+    const data = JSON.parse(readFileSync(path, "utf-8")) as {
+      judgments?: Array<{
+        anchor_identifier?: string | null;
+        classification?: string | null;
+        paper_title?: string | null;
+      }>;
+    };
+    for (const j of data.judgments ?? []) {
+      if (j.anchor_identifier) {
+        map.set(normalizeDoi(j.anchor_identifier), {
+          classification: j.classification ?? "",
+          title: j.paper_title?.trim() || null,
+        });
+      }
+    }
+  } catch (err) {
+    console.warn(
+      `[data] skipping anchor sidecar ${id}: ${err instanceof Error ? err.message : err}`,
+    );
+  }
+  return map;
 }
 
 function readDatasetName(id: string): string {
@@ -283,6 +356,7 @@ export function loadAll(): LoadedData {
     const counted: Citation[] = [];
     const lowConf: Citation[] = [];
     let methodsExcluded = 0;
+    const anchors = readAnchorMap(id);
 
     for (const c of details) {
       if (isMethodsCitation(c, methods)) {
@@ -290,7 +364,7 @@ export function loadAll(): LoadedData {
         continue;
       }
       if (isHighConf(c)) {
-        const cit = toCitation(c);
+        const cit = toCitation(c, anchors);
         counted.push(cit);
         const key = citingKey(c);
         if (!uniqueHighConf.has(key)) {
@@ -298,7 +372,7 @@ export function loadAll(): LoadedData {
           firstYearByKey.set(key, cit.year);
         }
       } else {
-        lowConf.push(toCitation(c));
+        lowConf.push(toCitation(c, anchors));
       }
     }
 
