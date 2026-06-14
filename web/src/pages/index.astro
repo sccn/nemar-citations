@@ -23,11 +23,19 @@ const datasetLink = (id: string) => `${base}/dataset/${id}`;
     <StatCard value={fmt(overview.datasetCount)} label="Datasets tracked" />
     <StatCard
       value={fmt(overview.uniqueCitations)}
-      label="Unique citing papers"
-      hint={`${fmt(overview.totalCitations)} total attributions`}
+      label="High-confidence citing papers"
+      hint={`${fmt(overview.totalCitations)} attributions across datasets`}
     />
-    <StatCard value={fmt(overview.datasetsWithCitations)} label="Datasets with citations" />
+    <StatCard
+      value={fmt(overview.datasetsWithCitations)}
+      label="Datasets with high-confidence citations"
+    />
   </section>
+  <p class="stats-note">
+    Counts include only high-confidence citations and exclude BIDS / methods /
+    standards reference papers. {fmt(overview.lowConfidenceTotal)} lower-confidence
+    citations are kept and shown per dataset.
+  </p>
 
   <section class="browse">
     <h2>Most-cited datasets</h2>
@@ -60,6 +68,12 @@ const datasetLink = (id: string) => `${base}/dataset/${id}`;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: var(--space-5);
+  }
+  .stats-note {
+    margin-top: var(--space-3);
+    max-width: var(--max-width-prose);
+    font-size: var(--fs-sm);
+    color: var(--color-fg-subtle);
   }
   .browse {
     margin-top: var(--space-12);
