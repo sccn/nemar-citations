@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds003838",
-  "num_citations": 50,
-  "date_last_updated": "2026-05-20T07:25:02.064496+00:00",
+  "num_citations": 53,
+  "date_last_updated": "2026-06-14T12:08:21.578214+00:00",
   "metadata": {
-    "total_cumulative_citations": 266,
-    "fetch_date": "2026-05-20T07:25:02.064496+00:00",
+    "total_cumulative_citations": 280,
+    "fetch_date": "2026-06-14T12:08:21.578214+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -19,7 +21,7 @@
       "venue": "Information Fusion",
       "year": 2024,
       "url": "https://doi.org/10.1016/j.inffus.2024.102697",
-      "cited_by": 42,
+      "cited_by": 45,
       "abstract": null,
       "doi": "10.1016/j.inffus.2024.102697",
       "pmid": null,
@@ -42,7 +44,7 @@
       "venue": "Psychophysiology",
       "year": 2023,
       "url": "https://doi.org/10.1111/psyp.14275",
-      "cited_by": 36,
+      "cited_by": 38,
       "abstract": "Understanding the physiological correlates of cognitive overload has implications for gauging the limits of human cognition, developing novel methods to define cognitive overload, and mitigating the negative outcomes associated with overload. Most previous psychophysiological studies manipulated verbal working memory load in a narrow range (an average load of 5 items). It is unclear, however, how the nervous system responds to a working memory load exceeding typical capacity limits. The objective of the current study was to characterize the central and autonomic nervous system changes associated with memory overload, by means of combined recording of electroencephalogram (EEG) and pupillometry. Eighty-six participants were presented with a digit span task involving the serial auditory presentation of items. Each trial consisted of sequences of either 5, 9, or 13 digits, each separated by 2 s. Both theta activity and pupil size, after the initial rise, expressed a pattern of a short pla",
       "doi": "10.1111/psyp.14275",
       "pmid": "36808118",
@@ -65,7 +67,7 @@
       "venue": "Scientific Data",
       "year": 2022,
       "url": "https://doi.org/10.1038/s41597-022-01414-2",
-      "cited_by": 25,
+      "cited_by": 26,
       "abstract": "This dataset consists of raw 64-channel EEG, cardiovascular (electrocardiography and photoplethysmography), and pupillometry data from 86 human participants recorded during 4 minutes of eyes-closed resting and during performance of a classic working memory task - digit span task with serial recall. The participants either memorized or just listened to sequences of 5, 9, or 13 digits presented auditorily every 2 seconds. The dataset can be used for (1) developing algorithms for cognitive load discrimination and detection of cognitive overload; (2) studying neural (event-related potentials and brain oscillations) and peripheral (electrocardiography, photoplethysmography, and pupillometry) physiological signals during encoding and maintenance of each sequentially presented memory item; (3) correlating cognitive load and individual differences in working memory to neural and peripheral physiology, and studying the relationship between the physiological signals; (4) integration of the physi",
       "doi": "10.1038/s41597-022-01414-2",
       "pmid": "35715429",
@@ -129,6 +131,29 @@
       }
     },
     {
+      "title": "Age-related changes in ‘cortical’ 1/f dynamics are linked to cardiac activity",
+      "author": "Fabian Schmidt, Sarah K. Danböck, Eugen Trinka, Dominic P Klein, Gianpaolo Demarchi, Nathan Weisz",
+      "venue": "eLife",
+      "year": 2024,
+      "url": "https://doi.org/10.7554/elife.100605",
+      "cited_by": 12,
+      "abstract": ") is modulated by various factors such as age, cognitive states or psychiatric/neurological disorders. Interestingly, a mostly parallel line of research has also uncovered similar effects for the spectral slope in the electrocardiogram (ECG). This raises the question of whether these bodywide changes in spectral slopes are (in-)dependent. Focusing on well-established age-related changes in spectral slopes, we analyzed a total of 1282 recordings of magnetoencephalography (MEG) resting state measurements with concurrent ECG in an age-diverse sample (18-88 years). Using a diverse array of analytical approaches, we demonstrate that the aperiodic signal recorded via surface electrodes/sensors originates from multiple physiological sources. Furthermore, our results suggest that common 'artifact' rejection approaches (i.e. ICA) may not be sufficient to separate cardiac from neural activity. In particular, significant parts of age-related changes in aperiodic activity normally interpreted to b",
+      "doi": "10.7554/elife.100605",
+      "pmid": "41037316",
+      "openalex_id": "W4402393923",
+      "source_doi": "10.1038/s41597-022-01414-2",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5892678093910217,
+        "similarity_score": 0.5101885795593262,
+        "citation_text_length": 1218,
+        "dataset_text_length": 2310,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "An EEG Dataset of Neural Signatures in a Competitive Two-Player Game Encouraging Deceptive Behavior",
       "author": "Yiyu Chen, Siamac Fazli, Christian Wallraven",
       "venue": "Scientific Data",
@@ -152,35 +177,12 @@
       }
     },
     {
-      "title": "Age-related changes in ‘cortical’ 1/f dynamics are linked to cardiac activity",
-      "author": "Fabian Schmidt, Sarah K. Danböck, Eugen Trinka, Dominic P Klein, Gianpaolo Demarchi, Nathan Weisz",
-      "venue": "eLife",
-      "year": 2024,
-      "url": "https://doi.org/10.7554/elife.100605",
-      "cited_by": 10,
-      "abstract": ") is modulated by various factors such as age, cognitive states or psychiatric/neurological disorders. Interestingly, a mostly parallel line of research has also uncovered similar effects for the spectral slope in the electrocardiogram (ECG). This raises the question of whether these bodywide changes in spectral slopes are (in-)dependent. Focusing on well-established age-related changes in spectral slopes, we analyzed a total of 1282 recordings of magnetoencephalography (MEG) resting state measurements with concurrent ECG in an age-diverse sample (18-88 years). Using a diverse array of analytical approaches, we demonstrate that the aperiodic signal recorded via surface electrodes/sensors originates from multiple physiological sources. Furthermore, our results suggest that common 'artifact' rejection approaches (i.e. ICA) may not be sufficient to separate cardiac from neural activity. In particular, significant parts of age-related changes in aperiodic activity normally interpreted to b",
-      "doi": "10.7554/elife.100605",
-      "pmid": "41037316",
-      "openalex_id": "W4402393923",
-      "source_doi": "10.1038/s41597-022-01414-2",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5892678093910217,
-        "similarity_score": 0.5101885795593262,
-        "citation_text_length": 1218,
-        "dataset_text_length": 2310,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Direct Comparison of EEG Resting State and Task Functional Connectivity Patterns for Predicting Working Memory Performance Using Connectome-Based Predictive Modeling",
       "author": "Anton Pashkov, Ivan Dakhtin",
       "venue": "Brain Connectivity",
       "year": 2025,
       "url": "https://doi.org/10.1089/brain.2024.0059",
-      "cited_by": 7,
+      "cited_by": 8,
       "abstract": "Background: The integration of machine learning with advanced neuroimaging has emerged as a powerful approach for uncovering the relationship between neuronal activity patterns and behavioral traits. While resting-state neuroimaging has significantly contributed to understanding the neural basis of cognition, recent fMRI studies suggest that task-based paradigms may offer superior predictive power for cognitive outcomes. However, this hypothesis has never been tested using electroencephalography (EEG) data. Methods: We conducted the first experimental comparison of predictive models built on high-density EEG data recorded during both resting-state and an auditory working memory task. Multiple data processing pipelines were employed to ensure robustness and reliability. Model performance was evaluated by computing the Pearson correlation coefficient between predicted and observed behavioral scores, supplemented by mean absolute error and root mean square error metrics for each model con",
       "doi": "10.1089/brain.2024.0059",
       "pmid": "40317131",
@@ -359,6 +361,29 @@
       }
     },
     {
+      "title": "SingLEM: Single-Channel Large EEG Model",
+      "author": "Jamiyan Sukhbaatar, S. Imamura, Ibuki Inoue, Shoya Murakami, Kazi Mahmudul Hassan, Seungwoo Han, Ingon Chanpornpakdi, Toshihisa Tanaka",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2509.17920",
+      "cited_by": 2,
+      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
+      "doi": "10.48550/arXiv.2509.17920",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-022-01414-2",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5414279356598855,
+        "similarity_score": 0.46876877546310425,
+        "citation_text_length": 1217,
+        "dataset_text_length": 2310,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Simulating future climate changes under the shared socioeconomic pathway scenarios: a case of the black volta basin of Ghana",
       "author": "Amos T. Kabo-Bah, Sarah Elikplim Siabi, Ebenezer K. Siabi, Wisdom Bruce Ahiada, Nana Asirifi Cobbina",
       "venue": "Frontiers in Environmental Science",
@@ -428,35 +453,12 @@
       }
     },
     {
-      "title": "SingLEM: Single-Channel Large EEG Model",
-      "author": "Jamiyan Sukhbaatar, S. Imamura, Ibuki Inoue, Shoya Murakami, Kazi Mahmudul Hassan, Seungwoo Han, Ingon Chanpornpakdi, Toshihisa Tanaka",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2509.17920",
-      "cited_by": 1,
-      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
-      "doi": "10.48550/arXiv.2509.17920",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-022-01414-2",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5414279356598855,
-        "similarity_score": 0.46876877546310425,
-        "citation_text_length": 1217,
-        "dataset_text_length": 2310,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Cross-Modal Computational Model of Brain-Heart Interactions via HRV and EEG Feature",
       "author": "Malavika Pradeep, Akshay Sasi, Nusaibah Farrukh, Rahul Venugopal, Elizabeth Sherly",
       "venue": "ArXiv",
       "year": 2026,
       "url": "https://doi.org/10.48550/arXiv.2601.06792",
-      "cited_by": 0,
+      "cited_by": 1,
       "abstract": "The electroencephalogram (EEG) has been the gold standard for quantifying mental workload; however, due to its complexity and non-portability, it can be constraining. ECG signals, which are feasible on wearable equipment pieces such as headbands, present a promising method for cognitive state monitoring. This research explores whether electrocardiogram (ECG) signals are able to indicate mental workload consistently and act as surrogates for EEG-based cognitive indicators. This study investigates whether ECG-derived features can serve as surrogate indicators of cognitive load, a concept traditionally quantified using EEG. Using a publicly available multimodal dataset (OpenNeuro) of EEG and ECG recorded during working-memory and listening tasks, features of HRV and Catch22 descriptors are extracted from ECG, and spectral band-power with Catch22 features from EEG. A cross-modal regression framework based on XGBoost was trained to map ECG-derived HRV representations to EEG-derived cognitiv",
       "doi": "10.48550/arXiv.2601.06792",
       "pmid": null,
@@ -468,6 +470,29 @@
         "confidence_score": 0.7285209318995477,
         "similarity_score": 0.6307540535926819,
         "citation_text_length": 1209,
+        "dataset_text_length": 2310,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Aging-related reconfiguration of auditory working-memory control under converging phonological and executive demands: EEG signatures and speech-in-noise performance",
+      "author": "Lingxiao Jiang, Yefei Mo, Hangze Mao, Rong Han, Ziang Yu, Yan Song, Yuhe Liu",
+      "venue": "Hearing Research",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.heares.2026.109688",
+      "cited_by": 0,
+      "abstract": "Difficulties understanding speech in noise are common in healthy aging, even among older adults with audiometrically normal hearing, suggesting a contribution from higher-order control processes, including auditory working memory (WM). Guided by the Dual Mechanisms of Control (DMC) framework and Baddeley's multicomponent model, we recorded electroencephalography (EEG) while young and older adults performed an auditory n-back task that crossed stimulus type (digits vs. syllables) with executive load (1-back vs. 2-back). Behaviorally, older adults were slower, less accurate, and lower performance index (PI). Critically, accuracy showed a Group × Stimulus × Load interaction: older adults exhibited an excessive decrement when high phonological demand coincided with high executive load. Event-related potentials (ERPs) revealed age-related differences at multiple processing stages. In the early window, older adults showed enhanced N1 amplitudes, and N1 stimulus modulation (syllables > digits",
+      "doi": "10.1016/j.heares.2026.109688",
+      "pmid": "42224926",
+      "openalex_id": "W7162561275",
+      "source_doi": "10.1038/s41597-022-01414-2",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6250368252396584,
+        "similarity_score": 0.5411574244499207,
+        "citation_text_length": 1295,
         "dataset_text_length": 2310,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -502,7 +527,7 @@
       "venue": "Nature Machine Intelligence",
       "year": 2025,
       "url": "https://doi.org/10.1038/s42256-025-01147-y",
-      "cited_by": 4,
+      "cited_by": 5,
       "abstract": null,
       "doi": "10.1038/s42256-025-01147-y",
       "pmid": null,
@@ -704,6 +729,29 @@
       }
     },
     {
+      "title": "Dynamic resource allocation strategies in the human brain under cognitive overload: evidence from time-varying brain network analysis",
+      "author": "Zhongrui Li, Li Tong, Ying Zeng, Changfu Pei, Bin Yan",
+      "venue": "Cerebral Cortex",
+      "year": 2025,
+      "url": "https://doi.org/10.1093/cercor/bhaf048",
+      "cited_by": 4,
+      "abstract": "The impact of excessive cognitive workload on personal work and life is widely recognized, yet the brain information processing mechanisms under cognitive overload remain unclear. This study employed a spatial configuration task, combined with time-varying brain network analysis and source localization techniques based on electroencephalography signals, to delve into the dynamic adjustment processes of the brain among healthy participants during cognitive overload. The results revealed that under cognitive overload, the overall activation level of the brain significantly decreases, with characteristics of delayed responses. Further analysis indicated that under overload, the brain network connectivity in the right hemisphere brain networks closely associated with spatial object recognition and localization was weakened. In contrast, the brain network connections between the left hemisphere are enhanced. These changes suggest that during cognitive overload, the brain prioritizes resourc",
+      "doi": "10.1093/cercor/bhaf048",
+      "pmid": "40152001",
+      "openalex_id": "W4408957553",
+      "source_doi": "10.1111/psyp.14275",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5961745887994766,
+        "similarity_score": 0.516168475151062,
+        "citation_text_length": 1240,
+        "dataset_text_length": 2310,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A novel method of cognitive overload assessment based on a fusion feature selection using EEG signals",
       "author": "Zhongrui Li, Li Tong, Ying Zeng, Yuanlong Gao, Diankun Gong, Kai Yang, Yidong Hu, Bin Yan",
       "venue": "Journal of Neural Engineering",
@@ -819,29 +867,6 @@
       }
     },
     {
-      "title": "Dynamic resource allocation strategies in the human brain under cognitive overload: evidence from time-varying brain network analysis",
-      "author": "Zhongrui Li, Li Tong, Ying Zeng, Changfu Pei, Bin Yan",
-      "venue": "Cerebral Cortex",
-      "year": 2025,
-      "url": "https://doi.org/10.1093/cercor/bhaf048",
-      "cited_by": 2,
-      "abstract": "The impact of excessive cognitive workload on personal work and life is widely recognized, yet the brain information processing mechanisms under cognitive overload remain unclear. This study employed a spatial configuration task, combined with time-varying brain network analysis and source localization techniques based on electroencephalography signals, to delve into the dynamic adjustment processes of the brain among healthy participants during cognitive overload. The results revealed that under cognitive overload, the overall activation level of the brain significantly decreases, with characteristics of delayed responses. Further analysis indicated that under overload, the brain network connectivity in the right hemisphere brain networks closely associated with spatial object recognition and localization was weakened. In contrast, the brain network connections between the left hemisphere are enhanced. These changes suggest that during cognitive overload, the brain prioritizes resourc",
-      "doi": "10.1093/cercor/bhaf048",
-      "pmid": "40152001",
-      "openalex_id": "W4408957553",
-      "source_doi": "10.1111/psyp.14275",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5961745887994766,
-        "similarity_score": 0.516168475151062,
-        "citation_text_length": 1240,
-        "dataset_text_length": 2310,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Eye Tracking-Based Adaptive User Interfaces in Virtual Reality Eye Surgery Training",
       "author": "Marc-Philipp Funk, Nassir Navab, Laura Schütz",
       "venue": "n/a",
@@ -917,7 +942,7 @@
       "year": 2026,
       "url": "https://doi.org/10.1044/2026_jslhr-25-00164",
       "cited_by": 1,
-      "abstract": "Purpose: Pupillometry has been frequently used to examine the influence of auditory task demand on listening effort. However, the intelligibility effect on the pupil dilation response might be altered under high memory load. Method: We assessed the effects of signal-to-noise ratio (SNR; auditory demand), memory load, and stimulus rehearsal on the pupil dilation response. Twenty-four participants with normal hearing were included ( M age = 22 years, 16 women). Sequences of four or six digits were presented in stationary noise at two auditory demand levels. For either 20% or 80% of the trials, digits were rehearsed. Participants rated listening effort, task difficulty, performance, and tendency to give up. Results: Linear mixed-model analyses indicated that intelligibility was higher for four digits compared to six digits and for lower auditory demand compared to higher auditory demand. The mean pupil dilation was larger for lower auditory demand during listening. In the repetition inter",
+      "abstract": "PURPOSE: Pupillometry has been frequently used to examine the influence of auditory task demand on listening effort. However, the intelligibility effect on the pupil dilation response might be altered under high memory load. METHOD: = 22 years, 16 women). Sequences of four or six digits were presented in stationary noise at two auditory demand levels. For either 20% or 80% of the trials, digits were rehearsed. Participants rated listening effort, task difficulty, performance, and tendency to give up. RESULTS: Linear mixed-model analyses indicated that intelligibility was higher for four digits compared to six digits and for lower auditory demand compared to higher auditory demand. The mean pupil dilation was larger for lower auditory demand during listening. In the repetition interval, the peak and mean pupil dilations were larger for lower auditory demand compared to higher auditory demand, for six digits compared to four digits, and for 80% compared to 20% stimulus rehearsal. Subject",
       "doi": "10.1044/2026_jslhr-25-00164",
       "pmid": "41989325",
       "openalex_id": "W7154568982",
@@ -925,9 +950,32 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6088578084111215,
-        "similarity_score": 0.5271496176719666,
+        "confidence_score": 0.6130308178067208,
+        "similarity_score": 0.5307626128196716,
         "citation_text_length": 1324,
+        "dataset_text_length": 2310,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Cognitive workload evaluation using skin temperature variations in thermoneutral indoor environments",
+      "author": "Le Ma, Qin Liao, Duo Yang, Hui Zhu, Jing Xiong, Fei Wang, Songtao Hu",
+      "venue": "Building and Environment",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.buildenv.2026.114866",
+      "cited_by": 0,
+      "abstract": null,
+      "doi": "10.1016/j.buildenv.2026.114866",
+      "pmid": null,
+      "openalex_id": "W7164530612",
+      "source_doi": "10.1111/psyp.14275",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.48809839189052584,
+        "similarity_score": 0.4648556113243103,
+        "citation_text_length": 219,
         "dataset_text_length": 2310,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1009,16 +1057,16 @@
       "year": 2026,
       "url": "https://doi.org/10.3390/jemr19030048",
       "cited_by": 0,
-      "abstract": "The driving scenario and information load jointly influence the cognitive efficiency of augmented reality head-up display (AR-HUD) interfaces. However, the moderating role of drivers’ working memory capacity (WMC) remains unclear. To investigate this mechanism, a simulated driving experiment with a mixed design was conducted in a low-immersivity desktop virtual reality (VR) environment. First, 40 volunteers were screened using an automated operation span task, yielding 16 high- and low-WMC participants. They then drove under three scenarios (urban intersection, expressway, construction zone) and six levels of AR-HUD visual information load. Generalized linear models were applied to the reaction time, fixation duration, and pupil diameter. The results revealed a significant three-way interaction among WMC, scenario, and information load. High-WMC drivers maintained faster responses and lower subjective loads up to Levels 4–6, adopting a deep processing strategy; low-WMC drivers already ",
+      "abstract": "The driving scenario and information load jointly influence the cognitive efficiency of augmented reality head-up display (AR-HUD) interfaces. However, the moderating role of drivers' working memory capacity (WMC) remains unclear. To investigate this mechanism, a simulated driving experiment with a mixed design was conducted in a low-immersivity desktop virtual reality (VR) environment. First, 40 volunteers were screened using an automated operation span task, yielding 16 high- and low-WMC participants. They then drove under three scenarios (urban intersection, expressway, construction zone) and six levels of AR-HUD visual information load. Generalized linear models were applied to the reaction time, fixation duration, and pupil diameter. The results revealed a significant three-way interaction among WMC, scenario, and information load. High-WMC drivers maintained faster responses and lower subjective loads up to Levels 4-6, adopting a deep processing strategy; low-WMC drivers already ",
       "doi": "10.3390/jemr19030048",
-      "pmid": null,
+      "pmid": "42200932",
       "openalex_id": "W7160186996",
       "source_doi": "10.1111/psyp.14275",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.527626424431801,
-        "similarity_score": 0.45681941509246826,
+        "confidence_score": 0.5247575148940087,
+        "similarity_score": 0.4543355107307434,
         "citation_text_length": 1306,
         "dataset_text_length": 2310,
         "scoring_method": "sentence_transformers",
@@ -1162,21 +1210,44 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "The Role of Set Size and Attention in Face Ensemble Processing",
+      "author": "Dmitry Koch, Evgenia Fedorova, Daria Kleeva, Vladimir Kosonogov",
+      "venue": "European Journal of Neuroscience",
+      "year": 2026,
+      "url": "https://doi.org/10.1111/ejn.70547",
+      "cited_by": 0,
+      "abstract": "The visual system can extract statistical information from multiple human faces in the form of ensemble representation. Despite extensive research, the automaticity of face ensemble encoding is still under debate. Some studies suggest that face ensemble encoding occurs automatically, while others postulate a capacity-limited processing that requires attentional resources. This inconsistency might be attributed to methodological differences in set size: A group-based size comprises several faces, whereas a crowd-based size exceeds eight faces. Such variation in set size may modulate the role of attention, where the group-based size favors automatic encoding, and the crowd-based size necessitates attentional engagement due to extensive noise. We addressed these questions by recording event-related potentials (ERP) of electroencephalography (EEG) in 35 subjects. Participants underwent three conditions: the implicit condition (ignoring faces while performing a fixation task), the explicit ",
+      "doi": "10.1111/ejn.70547",
+      "pmid": "42186399",
+      "openalex_id": "W7162448029",
+      "source_doi": "10.1111/psyp.14275",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4824431817233563,
+        "similarity_score": 0.4176997244358063,
+        "citation_text_length": 1196,
+        "dataset_text_length": 2310,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T21:53:04.675565+00:00",
+    "scoring_date": "2026-06-15T01:17:54.602760+00:00",
     "dataset_text_length": 2310,
-    "num_citations_scored": 50,
+    "num_citations_scored": 53,
     "summary_stats": {
-      "mean_confidence": 0.5764596860766411,
-      "median_confidence": 0.5895429074764252,
-      "std_confidence": 0.14134987197882096,
+      "mean_confidence": 0.573959750991385,
+      "median_confidence": 0.5892678093910217,
+      "std_confidence": 0.13860769118041094,
       "min_confidence": 0.22933788366615773,
       "max_confidence": 1.0,
       "high_confidence_count": 7,
-      "medium_confidence_count": 38,
+      "medium_confidence_count": 41,
       "low_confidence_count": 5
     }
   }

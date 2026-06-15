@@ -1,18 +1,43 @@
 {
   "dataset_id": "ds005811",
   "num_citations": 4,
-  "date_last_updated": "2026-05-20T14:26:01.063508+00:00",
+  "date_last_updated": "2026-06-14T20:07:57.169457+00:00",
   "metadata": {
-    "total_cumulative_citations": 2,
-    "fetch_date": "2026-05-20T14:26:01.063508+00:00",
+    "total_cumulative_citations": 4,
+    "fetch_date": "2026-06-14T20:07:57.169457+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
+    {
+      "title": "SingLEM: Single-Channel Large EEG Model",
+      "author": "Jamiyan Sukhbaatar, S. Imamura, Ibuki Inoue, Shoya Murakami, Kazi Mahmudul Hassan, Seungwoo Han, Ingon Chanpornpakdi, Toshihisa Tanaka",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2509.17920",
+      "cited_by": 2,
+      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
+      "doi": "10.48550/arXiv.2509.17920",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-025-05174-7",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5912169027328492,
+        "similarity_score": 0.511876106262207,
+        "citation_text_length": 1217,
+        "dataset_text_length": 2223,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
     {
       "title": "Progressive transfer learning Unifies Multi-Corpus EEG for robust and scalable Imagined-Speech decoding",
       "author": "Hatem T.M. Duhair, Masrullizam bin Mat Ibrahim, Jamil Abedalrahim Jamil Alsayaydeh, Rex Bacarra, Ahmed Hussein Ahmed",
@@ -37,23 +62,23 @@
       }
     },
     {
-      "title": "SingLEM: Single-Channel Large EEG Model",
-      "author": "Jamiyan Sukhbaatar, S. Imamura, Ibuki Inoue, Shoya Murakami, Kazi Mahmudul Hassan, Seungwoo Han, Ingon Chanpornpakdi, Toshihisa Tanaka",
-      "venue": "ArXiv",
+      "title": "Artificial fragrances and semisynthetic perfumes: The hidden health risks",
+      "author": "Bella Babayan, Tigran Yesayan, M. Melkumyan, G. Mikaelyan, S. Bagdasaryan, Silviana Elbakyan, A. Avanesyan, Alexander Yesayan, Garegin G. Sevoyan",
+      "venue": "Functional Food Science - Online ISSN: 2767-3146",
       "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2509.17920",
+      "url": "https://doi.org/10.31989/ffs.v5i11.1829",
       "cited_by": 1,
-      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
-      "doi": "10.48550/arXiv.2509.17920",
+      "abstract": "Background: Both synthetic and natural fragrances have wide applications in personal care and household products. Their roles are to enhance the olfactory appeal and mask unpleasant odors.  Some fragrances are even used in aromatherapy. However, large components of these fragrances include pheromones and volatile organic compounds (VOC), among other compounds. These have a wide range of side effects and could be dangerous to health with long-term use. They even may impact indoor plants. Thus, long-term, repeated exposure to these fragrances in indoor environments, including workplaces, may result in respiratory symptoms, skin irritation, headaches, a weakened immune system, asthma attacks, cardiovascular diseases, hormonal problems, infertility, and neurological and behavioral disorders. \nObjective: This review aims to highlight the biological effects of odor-causing VOC, particularly semisynthetic and synthetic fragrances of personal care and household products, which may impair indoo",
+      "doi": "10.31989/ffs.v5i11.1829",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.1038/s41597-025-05174-7",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5912169027328492,
-        "similarity_score": 0.511876106262207,
-        "citation_text_length": 1217,
+        "confidence_score": 0.18073775544762616,
+        "similarity_score": 0.15648290514945984,
+        "citation_text_length": 1305,
         "dataset_text_length": 2223,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -81,38 +106,15 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Artificial fragrances and semisynthetic perfumes: The hidden health risks",
-      "author": "Bella Babayan, Tigran Yesayan, M. Melkumyan, G. Mikaelyan, S. Bagdasaryan, Silviana Elbakyan, A. Avanesyan, Alexander Yesayan, Garegin G. Sevoyan",
-      "venue": "Functional Food Science - Online ISSN: 2767-3146",
-      "year": 2025,
-      "url": "https://doi.org/10.31989/ffs.v5i11.1829",
-      "cited_by": 0,
-      "abstract": "Background: Both synthetic and natural fragrances have wide applications in personal care and household products. Their roles are to enhance the olfactory appeal and mask unpleasant odors.  Some fragrances are even used in aromatherapy. However, large components of these fragrances include pheromones and volatile organic compounds (VOC), among other compounds. These have a wide range of side effects and could be dangerous to health with long-term use. They even may impact indoor plants. Thus, long-term, repeated exposure to these fragrances in indoor environments, including workplaces, may result in respiratory symptoms, skin irritation, headaches, a weakened immune system, asthma attacks, cardiovascular diseases, hormonal problems, infertility, and neurological and behavioral disorders. \nObjective: This review aims to highlight the biological effects of odor-causing VOC, particularly semisynthetic and synthetic fragrances of personal care and household products, which may impair indoo",
-      "doi": "10.31989/ffs.v5i11.1829",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-025-05174-7",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.18073775544762616,
-        "similarity_score": 0.15648290514945984,
-        "citation_text_length": 1305,
-        "dataset_text_length": 2223,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:11:17.787657+00:00",
+    "scoring_date": "2026-06-15T01:38:12.658044+00:00",
     "dataset_text_length": 2223,
     "num_citations_scored": 4,
     "summary_stats": {
-      "mean_confidence": 0.4994739888980985,
+      "mean_confidence": 0.49947398889809846,
       "median_confidence": 0.5496626691520214,
       "std_confidence": 0.1985980235395163,
       "min_confidence": 0.18073775544762616,

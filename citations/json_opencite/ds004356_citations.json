@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds004356",
-  "num_citations": 19,
-  "date_last_updated": "2026-05-20T10:24:17.087237+00:00",
+  "num_citations": 20,
+  "date_last_updated": "2026-06-14T15:07:17.603388+00:00",
   "metadata": {
-    "total_cumulative_citations": 121,
-    "fetch_date": "2026-05-20T10:24:17.087237+00:00",
+    "total_cumulative_citations": 127,
+    "fetch_date": "2026-06-14T15:07:17.603388+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -19,7 +21,7 @@
       "venue": "PLoS ONE",
       "year": 2024,
       "url": "https://doi.org/10.1371/journal.pone.0297826",
-      "cited_by": 66,
+      "cited_by": 71,
       "abstract": "Perception of sounds and speech involves structures in the auditory brainstem that rapidly process ongoing auditory stimuli. The role of these structures in speech processing can be investigated by measuring their electrical activity using scalp-mounted electrodes. However, typical analysis methods involve averaging neural responses to many short repetitive stimuli that bear little relevance to daily listening environments. Recently, subcortical responses to more ecologically relevant continuous speech were detected using linear encoding models. These methods estimate the temporal response function (TRF), which is a regression model that minimises the error between the measured neural signal and a predictor derived from the stimulus. Using predictors that model the highly non-linear peripheral auditory system may improve linear TRF estimation accuracy and peak detection. Here, we compare predictors from both simple and complex peripheral auditory models for estimating brainstem TRFs on",
       "doi": "10.1371/journal.pone.0297826",
       "pmid": "38330068",
@@ -249,7 +251,7 @@
       "venue": "Journal of Neurophysiology",
       "year": 2025,
       "url": "https://doi.org/10.1152/jn.00039.2025",
-      "cited_by": 2,
+      "cited_by": 3,
       "abstract": "This study shows that auditory subcortical processing of natural continuous speech remains unaffected when attention is divided across auditory and visual modalities. These findings indicate that the influence of crossmodal attention on the processing of natural continuous speech may be restricted to cortical levels.",
       "doi": "10.1152/jn.00039.2025",
       "pmid": "40098452",
@@ -359,6 +361,29 @@
       }
     },
     {
+      "title": "Very Early Cortical Auditory Responses to Speech in Humans",
+      "author": "Karl D. Lerud, Charlie D Fisher, Vrishab Commuri, Samira Anderson, Jonathan Z. Simon",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2026,
+      "url": "https://doi.org/10.64898/2026.06.04.730183",
+      "cited_by": 0,
+      "abstract": "A foundational measure of the auditory system's ability to process sound correctly is the auditory brainstem response (ABR) and middle latency response (MLR) complex, but how they vary with stimulus complexity and behavioral relevance is not well understood. To address these issues, we recorded noninvasive electromagnetic temporal response functions (TRFs) in healthy, young adults listening to both clicks and naturalistic speech. Through a source analysis of the responses, we found that the TRF's ABR-MLR complex for speech listening contains a very early cortical peak (11 ms latency) which has not been previously well-characterized, and which is not present in the TRF's ABR-MLR complex for click stimuli. Several other significant diderences in latency and source between the speech and click MLR complexes were found, enriching our understanding of the human auditory system's behavior for diverse stimulus types. In this way, the use of naturalistic speech coupled with the TRF framework r",
+      "doi": "10.64898/2026.06.04.730183",
+      "pmid": "42282744",
+      "openalex_id": "W7163668102",
+      "source_doi": "10.1038/s41598-023-50438-0",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8452656474709511,
+        "similarity_score": 0.7318317294120789,
+        "citation_text_length": 1220,
+        "dataset_text_length": 2352,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Optimal parameters for measuring multiband auditory brainstem responses to continuous speech",
       "author": "Melissa J. Polonenko, Benjamin R. Eisenreich",
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
@@ -453,16 +478,16 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T21:58:11.843873+00:00",
+    "scoring_date": "2026-06-15T01:23:41.205030+00:00",
     "dataset_text_length": 2352,
-    "num_citations_scored": 19,
+    "num_citations_scored": 20,
     "summary_stats": {
-      "mean_confidence": 0.702826213091612,
-      "median_confidence": 0.7275724080204964,
-      "std_confidence": 0.16128188946870076,
+      "mean_confidence": 0.7099481848105789,
+      "median_confidence": 0.7339958381652832,
+      "std_confidence": 0.1602341493540439,
       "min_confidence": 0.19219752520322803,
       "max_confidence": 0.9079898008704186,
-      "high_confidence_count": 12,
+      "high_confidence_count": 13,
       "medium_confidence_count": 6,
       "low_confidence_count": 1
     }

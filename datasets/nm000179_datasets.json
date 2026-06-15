@@ -1,0 +1,125 @@
+{
+  "dataset_id": "nm000179",
+  "date_retrieved": "2026-06-14T10:00:37.743766+00:00",
+  "dataset_description": {
+    "Name": "LEMON: MPI Leipzig Mind-Brain-Body EEG (Resting State)",
+    "BIDSVersion": "1.9.0",
+    "DatasetType": "raw",
+    "License": "CC BY 4.0",
+    "Authors": [
+      "Anahit Babayan",
+      "Miray Erbey",
+      "Deniz Kumral",
+      "Janis D. Reinelt",
+      "Andrea M.F. Reiter",
+      "Josefin Röbbig",
+      "H. Lina Schaare",
+      "Marie Uhlig",
+      "Alfred Anwander",
+      "Pierre-Louis Bazin",
+      "Annette Horstmann",
+      "Leonie Lampe",
+      "Vadim V. Nikulin",
+      "Hadas Okon-Singer",
+      "Sven Preusser",
+      "Andre Pampel",
+      "Christiane S. Rohr",
+      "Julia Sacher",
+      "Angelika Thone-Otto",
+      "Sabrina Trapp",
+      "Till Nierhaus",
+      "Denise Altmann",
+      "Katrin Arelin",
+      "Maria Blochl",
+      "Edith Bongartz",
+      "Patric Breig",
+      "Elena Cesnaite",
+      "Sufang Chen",
+      "Roberto Cozatl",
+      "Saskia Czerwonatis",
+      "Gabriele Dambrauskaite",
+      "Maria Dreyer",
+      "Jessica Enders",
+      "Melina Engelhardt",
+      "Marie Michele Fischer",
+      "Norman Forschack",
+      "Johannes Golchert",
+      "Laura Golz",
+      "C. Alexandrina Guran",
+      "Susanna Hedrich",
+      "Nicole Hentschel",
+      "Daria I. Hoffmann",
+      "Julia M. Huntenburg",
+      "Rebecca Jost",
+      "Anna Kosatschek",
+      "Stella Kunzendorf",
+      "Hannah Lammers",
+      "Mark E. Lauckner",
+      "Keyvan Mahjoory",
+      "Natacha Mendes",
+      "Ramona Menger",
+      "Enzo Morino",
+      "Karina Nathe",
+      "Jennifer Neubauer",
+      "Handan Noyan",
+      "Sabine Oligschlager",
+      "Patricia Panczyszyn-Trzewik",
+      "Dorothee Poehlchen",
+      "Nadine Putzke",
+      "Sabrina Roski",
+      "Marie-Catherine Schaller",
+      "Anja Schieferbein",
+      "Benito Schlaak",
+      "Hanna Maria Schmidt",
+      "Robert Schmidt",
+      "Anne Schrimpf",
+      "Sylvia Stasch",
+      "Maria Voss",
+      "Anett Wiedemann",
+      "Daniel S. Margulies",
+      "Michael Gaebler",
+      "Arno Villringer"
+    ],
+    "HowToAcknowledge": "Please cite: Babayan, A. et al. (2019). A mind-brain-body dataset of MRI, EEG, cognition, emotion, and peripheral physiology in young and old adults. Scientific Data, 6, 180308.",
+    "Funding": [
+      "Max Planck Society",
+      "German Research Foundation (CRC 1052 Obesity Mechanisms)",
+      "European Union (ERC-2016-StG-Self-Control-677804)"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.1038/sdata.2018.308",
+      "https://ftp.gwdg.de/pub/misc/MPI-Leipzig_Mind-Brain-Body-LEMON/"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000179",
+    "GeneratedBy": [
+      {
+        "Name": "convert_lemon.py (EEGDash)",
+        "Description": "Restructured from GWDG FTP BrainVision files to BIDS-EEG layout.",
+        "CodeURL": "https://github.com/bruaristimunha/EEGDash"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "URL": "https://ftp.gwdg.de/pub/misc/MPI-Leipzig_Mind-Brain-Body-LEMON/EEG_MPILMBB_LEMON/EEG_Raw_BIDS_ID/"
+      },
+      {
+        "DOI": "doi:10.1038/sdata.2018.308"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000179-blue)](https://doi.org/10.82901/nemar.nm000179)\n\nLEMON: MPI Leipzig Mind-Brain-Body EEG Dataset (Resting State)\n===============================================================\n\nOverview\n--------\nResting-state EEG from 215 healthy participants (young and old adults) from\nthe Leipzig Study for Mind-Body-Emotion Interactions (LEMON). Subjects\nalternated between eyes-closed (EC) and eyes-open (EO) blocks of ~60 seconds\neach for approximately 16 minutes total.\n\nDemographics: Young adults (20-35 years, N=153) and older adults (59-77 years,\nN=74). All right-handed, normal or corrected-to-normal vision, no history of\nneurological or psychiatric disorders.\n\nRecording Setup\n---------------\n- Amplifier: BrainVision actiCHamp (Brain Products GmbH)\n- Channels: 62 EEG (standard 10-20 extended, ActiCAP)\n- Online reference: FCz\n- Ground: AFz (inferred from BrainVision convention)\n- Sampling rate: 2500 Hz\n- Impedance: < 5 kOhm (active electrodes)\n- Recording duration: ~16 min per subject\n\nTask\n----\nResting state with alternating eyes-open (EO) and eyes-closed (EC) blocks.\n- Eyes-open: fixate on LED (off state), eyes open\n- Eyes-closed: close eyes, fixate on LED (off state)\n- Block duration: ~60 seconds each\n- Event markers: S200 = eyes open onset, S210 = eyes closed onset\n\nKnown Issues\n------------\n- Subjects sub-010020, sub-010044, sub-010193, sub-010219 have incorrect .vhdr\n  file paths that were fixed during conversion\n- Subject sub-010203 has no marker file (.vmrk)\n- 5 subjects (sub-010235, sub-010237, sub-010259, sub-010281, sub-010293)\n  are absent from the dataset (not recorded)\n\nReference\n---------\nBabayan, A. et al. (2019). A mind-brain-body dataset of MRI, EEG, cognition,\nemotion, and peripheral physiology in young and old adults. Scientific Data, 6,\n180308. https://doi.org/10.1038/sdata.2018.308\n\n\nReferences\n----------\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896).https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103.https://doi.org/10.1038/s41597-019-0104-8\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000179",
+    "exists": true,
+    "description": "LEMON: MPI Leipzig Mind-Brain-Body EEG (Resting State)",
+    "created_at": "2026-04-08T15:40:58+00:00",
+    "updated_at": "2026-06-01T23:17:13+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

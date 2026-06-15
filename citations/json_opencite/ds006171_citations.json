@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds006171",
-  "num_citations": 7,
-  "date_last_updated": "2026-05-20T15:25:57.527302+00:00",
+  "num_citations": 8,
+  "date_last_updated": "2026-06-14T21:08:09.783886+00:00",
   "metadata": {
-    "total_cumulative_citations": 21,
-    "fetch_date": "2026-05-20T15:25:57.527302+00:00",
+    "total_cumulative_citations": 23,
+    "fetch_date": "2026-06-14T21:08:09.783886+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -19,7 +21,7 @@
       "venue": "Current Biology",
       "year": 2024,
       "url": "https://doi.org/10.1016/j.cub.2024.03.014",
-      "cited_by": 12,
+      "cited_by": 13,
       "abstract": null,
       "doi": "10.1016/j.cub.2024.03.014",
       "pmid": "38569544",
@@ -31,6 +33,29 @@
         "confidence_score": 0.525004130601883,
         "similarity_score": 0.5000039339065552,
         "citation_text_length": 234,
+        "dataset_text_length": 486,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Distinct alpha networks modulate different aspects of perceptual decision-making",
+      "author": "Ying Zhou, Mats W.J. van Es, Saskia Haegens",
+      "venue": "PLoS Biology",
+      "year": 2025,
+      "url": "https://doi.org/10.1371/journal.pbio.3003461",
+      "cited_by": 4,
+      "abstract": "Why do we sometimes perceive a faint stimulus but miss it at other times? One explanation is that fluctuations in the brain's internal state result in variability in perception. Ongoing neural oscillations in the alpha band (8-13 Hz), crucial in setting the internal state of the brain, have been shown as a key contributor to such perceptual variability. However, findings on how alpha oscillations modulate perceptual variability have been mixed. Some studies suggested alpha modulates perceptual criterion (c), shifting the threshold for interpreting sensory information; while others suggested alpha modulates sensitivity (d'), changing the precision of sensory encoding. Moreover, most studies have focused solely on overall alpha activity-whether within a region of interest or across the whole brain-and overlooked the coexistence of multiple distinct alpha networks, leaving it unclear whether different alpha networks contribute differently to perception. Here, to characterize how different",
+      "doi": "10.1371/journal.pbio.3003461",
+      "pmid": "41124628",
+      "openalex_id": "W4415443861",
+      "source_doi": "10.1111/psyp.14525",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.46423318237066274,
+        "similarity_score": 0.401933491230011,
+        "citation_text_length": 1174,
         "dataset_text_length": 486,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -54,29 +79,6 @@
         "confidence_score": 0.6524936243891716,
         "similarity_score": 0.5649295449256897,
         "citation_text_length": 1223,
-        "dataset_text_length": 486,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Distinct Alpha Networks Modulate Different Aspects of Perceptual Decision-Making",
-      "author": "Ying Zhou, Mats W.J. van Es, Saskia Haegens",
-      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
-      "year": 2025,
-      "url": "https://doi.org/10.1101/2025.03.14.643170",
-      "cited_by": 3,
-      "abstract": "SUMMARY Why do we sometimes perceive a faint stimulus but miss it at other times? One explanation is that conscious perception fluctuates with the brain’s internal state, influencing how external stimuli are processed. Ongoing brain oscillations in the alpha band (8–13 Hz), thought to reflect neuronal excitability levels 1–5 and play a role in functional inhibition 6,7 , have been shown as a key contributor to such perceptual variability 8,9 . Under high alpha conditions, faint stimuli are more likely to be missed 8 . Some studies suggested alpha oscillations modulate perceptual criterion ( c ) 10–14 , shifting the threshold for interpreting sensory information; while others (including our prior work 15 ) suggested alpha modulates sensitivity ( d’ ) 15–19 , changing the precision of sensory encoding. Few studies observed modulations in both metrics, making these results appear mutually exclusive. Most studies have focused solely on overall alpha activity— whether within a region of int",
-      "doi": "10.1101/2025.03.14.643170",
-      "pmid": "40161801",
-      "openalex_id": "W4408482272",
-      "source_doi": "10.1111/psyp.14525",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4818210098147393,
-        "similarity_score": 0.4171610474586487,
-        "citation_text_length": 1201,
         "dataset_text_length": 486,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -152,6 +154,29 @@
       }
     },
     {
+      "title": "Beyond Phase Estimation: A Multidimensional Gating Framework for Robust Real-Time Closed-Loop Neural Stimulation",
+      "author": "Wenjia Zheng, Lu Shen, Biao Han",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2026,
+      "url": "https://doi.org/10.64898/2026.05.26.727783",
+      "cited_by": 0,
+      "abstract": "Abstract Neural oscillatory phase is widely used as a control variable in real-time closed-loop stimulation, yet its validity under strict causal constraints and noisy conditions has rarely been systematically examined. We introduce a Multidimensional Gating Framework (MGF), a plug-in and estimator-agnostic module that determines whether phase information should be admitted into control by evaluating instantaneous amplitude, narrowband signal-to-noise ratio (SNR), and spectral peak ratio (PR) within a strictly causal window. Using causal streaming replay on a public resting-state EEG dataset, we benchmarked Hilbert based phase estimation and endpoint-corrected Hilbert estimation with and without MGF. Among feasible subjects, MGF significantly reduced phase dispersion for both estimators, while robustly suppressing catastrophic phase errors. In contrast, ungated approaches exhibited systematic failures under the same conditions.",
+      "doi": "10.64898/2026.05.26.727783",
+      "pmid": null,
+      "openalex_id": "W7162783661",
+      "source_doi": "10.1111/psyp.14525",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5388115091621877,
+        "similarity_score": 0.46650347113609314,
+        "citation_text_length": 1162,
+        "dataset_text_length": 486,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Causal role of the individual alpha phase in multisensory perception",
       "author": "Tim Rohe, Daniel Senkowski",
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
@@ -177,17 +202,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:13:13.147849+00:00",
+    "scoring_date": "2026-06-15T01:40:30.176290+00:00",
     "dataset_text_length": 486,
-    "num_citations_scored": 7,
+    "num_citations_scored": 8,
     "summary_stats": {
-      "mean_confidence": 0.5436612229049207,
-      "median_confidence": 0.5389477157592775,
-      "std_confidence": 0.05580682011885183,
-      "min_confidence": 0.4764380156993866,
+      "mean_confidence": 0.5408565302565694,
+      "median_confidence": 0.5388796124607326,
+      "std_confidence": 0.055052246987623725,
+      "min_confidence": 0.46423318237066274,
       "max_confidence": 0.6524936243891716,
       "high_confidence_count": 0,
-      "medium_confidence_count": 7,
+      "medium_confidence_count": 8,
       "low_confidence_count": 0
     }
   }

@@ -1,0 +1,63 @@
+{
+  "dataset_id": "nm000242",
+  "date_retrieved": "2026-06-14T10:03:27.880964+00:00",
+  "dataset_description": {
+    "Name": "Visual imagery EEG dataset from Gao et al 2026",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "Jing'ao Gao",
+      "Yao Liu",
+      "Zhengshuang Li",
+      "Kaixin Huang",
+      "Fan Wang",
+      "Jiaping Xu",
+      "Lei Zhao",
+      "Tianwen Li",
+      "Yunfa Fu"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.6084/m9.figshare.30227503.v1"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1038/s41597-025-06512-5",
+        "URL": "https://doi.org/10.6084/m9.figshare.30227503.v1"
+      }
+    ],
+    "Keywords": [
+      "Healthy",
+      "Visual",
+      "Research",
+      "imagery",
+      "human_machine_interaction"
+    ],
+    "PublicationYear": 2026,
+    "DatasetDOI": "10.82901/nemar.nm000242",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000242-blue)](https://doi.org/10.82901/nemar.nm000242)\n\n# Visual imagery EEG dataset from Gao et al 2026\n\nVisual imagery EEG dataset from Gao et al 2026.\n\n## Dataset Overview\n\n- **Code**: Gao2026\n- **Paradigm**: imagery\n- **DOI**: 10.1038/s41597-025-06512-5\n- **Subjects**: 22\n- **Sessions per subject**: 2\n- **Events**: dog=1, bird=2, fish=3, pentagram=11, square=12, circle=13, scissor=21, watch=22, cup=23, chair=24\n- **Trial interval**: [0, 4] s\n- **Runs per session**: 3\n- **File format**: BDF\n\n## Acquisition\n\n- **Sampling rate**: 1000.0 Hz\n- **Number of channels**: 32\n- **Channel types**: eeg=32\n- **Montage**: standard_1005\n- **Hardware**: Neuracle NeuSenW32\n- **Reference**: CPz\n- **Ground**: AFz\n- **Sensor type**: Ag/AgCl\n- **Line frequency**: 50.0 Hz\n- **Online filters**: {'sampling_rate': 1000}\n\n## Participants\n\n- **Number of subjects**: 22\n- **Health status**: healthy\n- **Age**: min=20.0, max=23.0\n- **Gender distribution**: male=17, female=5\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 10\n- **Class labels**: dog, bird, fish, pentagram, square, circle, scissor, watch, cup, chair\n- **Trial duration**: 4.0 s\n- **Study design**: Visual imagery of animals, figures, and objects with simultaneous 32-channel EEG recording\n- **Feedback type**: none\n- **Stimulus type**: image cues\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: offline\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  dog\n    ├─ Sensory-event\n    └─ Label/dog\n\n  bird\n    ├─ Sensory-event\n    └─ Label/bird\n\n  fish\n    ├─ Sensory-event\n    └─ Label/fish\n\n  pentagram\n    ├─ Sensory-event\n    └─ Label/pentagram\n\n  square\n    ├─ Sensory-event\n    └─ Label/square\n\n  circle\n    ├─ Sensory-event\n    └─ Label/circle\n\n  scissor\n    ├─ Sensory-event\n    └─ Label/scissor\n\n  watch\n    ├─ Sensory-event\n    └─ Label/watch\n\n  cup\n    ├─ Sensory-event\n    └─ Label/cup\n\n  chair\n    ├─ Sensory-event\n    └─ Label/chair\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: dog, bird, fish, pentagram, square, circle, scissor, watch, cup, chair\n\n## Data Structure\n\n- **Trials**: 16800\n- **Trials context**: 20 subjects x 2 sessions x 400 trials + 2 subjects x 1 session x 400 trials = 16800\n\n## Signal Processing\n\n- **Classifiers**: EEGNet, CSP+KNN\n- **Feature extraction**: CSP, deep_learning\n- **Frequency bands**: bandpass=[5.0, 30.0] Hz\n- **Spatial filters**: CSP, CAR\n\n## Cross-Validation\n\n- **Method**: train-test split\n- **Evaluation type**: within_subject\n\n## BCI Application\n\n- **Applications**: human_machine_interaction\n- **Environment**: laboratory\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Visual\n- **Type**: Research\n\n## Documentation\n\n- **DOI**: 10.1038/s41597-025-06512-5\n- **License**: CC-BY-NC-ND-4.0\n- **Investigators**: Jing'ao Gao, Yao Liu, Zhengshuang Li, Kaixin Huang, Fan Wang, Jiaping Xu, Lei Zhao, Tianwen Li, Yunfa Fu\n- **Institution**: Kunming University of Science and Technology\n- **Country**: CN\n- **Repository**: Figshare\n- **Data URL**: https://doi.org/10.6084/m9.figshare.30227503.v1\n- **Publication year**: 2026\n\n## References\n\nGao, J., Liu, Y., Li, Z., Huang, K., Wang, F., Xu, J., Zhao, L., Li, T., & Fu, Y. (2026). An EEG Dataset for Visual Imagery-Based Brain-Computer Interface. Scientific Data. https://doi.org/10.1038/s41597-025-06512-5\n\nGao, J. et al. (2026). EEG Dataset for Visual Imagery. Figshare. https://doi.org/10.6084/m9.figshare.30227503.v1\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000242",
+    "exists": true,
+    "description": "Visual imagery EEG dataset from Gao et al 2026",
+    "created_at": "2026-03-25T21:49:48+00:00",
+    "updated_at": "2026-06-03T05:19:36+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

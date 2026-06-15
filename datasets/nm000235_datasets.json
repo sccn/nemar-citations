@@ -1,0 +1,53 @@
+{
+  "dataset_id": "nm000235",
+  "date_retrieved": "2026-06-14T10:03:13.231355+00:00",
+  "dataset_description": {
+    "Name": "Eye-BCI multimodal MI/ME dataset from Guttmann-Flury et al 2025",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC0",
+    "Authors": [
+      "Eva Guttmann-Flury",
+      "Xinjun Sheng",
+      "Xiangyang Zhu"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1038/s41597-025-04861-9"
+      }
+    ],
+    "Keywords": [
+      "Healthy",
+      "Motor",
+      "Research",
+      "imagery",
+      "motor_control"
+    ],
+    "PublicationYear": 2025,
+    "DatasetDOI": "10.82901/nemar.nm000235",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000235-blue)](https://doi.org/10.82901/nemar.nm000235)\n\n# Eye-BCI multimodal MI/ME dataset from Guttmann-Flury et al 2025\n\nEye-BCI multimodal MI/ME dataset from Guttmann-Flury et al 2025.\n\n## Dataset Overview\n\n- **Code**: GuttmannFlury2025-MI\n- **Paradigm**: imagery\n- **DOI**: 10.1038/s41597-025-04861-9\n- **Subjects**: 31\n- **Sessions per subject**: 3\n- **Events**: left_hand=1, right_hand=2\n- **Trial interval**: [0, 4] s\n- **File format**: BDF\n\n## Acquisition\n\n- **Sampling rate**: 1000.0 Hz\n- **Number of channels**: 66\n- **Channel types**: eeg=64, eog=1, stim=1\n- **Channel names**: FP1, FPZ, FP2, AF3, AF4, F7, F5, F3, F1, FZ, F2, F4, F6, F8, FT7, FC5, FC3, FC1, FCZ, FC2, FC4, FC6, FT8, T7, C5, C3, C1, CZ, C2, C4, C6, T8, TP7, CP5, CP3, CP1, CPZ, CP2, CP4, CP6, TP8, P7, P5, P3, P1, PZ, P2, P4, P6, P8, PO7, PO5, PO3, POZ, PO4, PO6, PO8, O1, OZ, O2, CB1, CB2\n- **Montage**: standard_1005\n- **Hardware**: Neuroscan Quik-Cap 65-ch, SynAmps2\n- **Reference**: right mastoid (M1)\n- **Ground**: forehead\n- **Sensor type**: Ag/AgCl\n- **Line frequency**: 50.0 Hz\n- **Online filters**: {'highpass_time_constant_s': 10}\n\n## Participants\n\n- **Number of subjects**: 31\n- **Health status**: healthy\n- **Age**: mean=28.3, min=20.0, max=57.0\n- **Gender distribution**: female=11, male=20\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 2\n- **Class labels**: left_hand, right_hand\n- **Trial duration**: 7.5 s\n- **Study design**: Multi-paradigm BCI (MI/ME/SSVEP/P300). MI and ME: 2-class hand grasping, 40 trials/session, up to 3 sessions per subject.\n- **Feedback type**: none\n- **Stimulus type**: visual rectangle cue\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: offline\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  left_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Left, Hand\n\n  right_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: left_hand, right_hand\n- **Cue duration**: 2.0 s\n- **Imagery duration**: 4.0 s\n\n## Data Structure\n\n- **Trials**: 2520\n- **Trials context**: 63 sessions x 40 trials = 2520 (MI only, default)\n\n## BCI Application\n\n- **Applications**: motor_control\n- **Environment**: laboratory\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Motor\n- **Type**: Research\n\n## Documentation\n\n- **DOI**: 10.1038/s41597-025-04861-9\n- **License**: CC0\n- **Investigators**: Eva Guttmann-Flury, Xinjun Sheng, Xiangyang Zhu\n- **Institution**: Shanghai Jiao Tong University\n- **Country**: CN\n- **Publication year**: 2025\n\n## References\n\nGuttmann-Flury, E., Sheng, X., & Zhu, X. (2025). Dataset combining EEG, eye-tracking, and high-speed video for ocular activity analysis across BCI paradigms. Scientific Data, 12, 587. https://doi.org/10.1038/s41597-025-04861-9\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000235",
+    "exists": true,
+    "description": "Eye-BCI multimodal MI/ME dataset from Guttmann-Flury et al 2025",
+    "created_at": "2026-03-25T18:18:58+00:00",
+    "updated_at": "2026-06-03T04:14:29+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

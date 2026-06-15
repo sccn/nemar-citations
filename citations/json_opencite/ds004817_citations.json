@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds004817",
   "num_citations": 26,
-  "date_last_updated": "2026-05-20T11:25:33.267834+00:00",
+  "date_last_updated": "2026-06-14T17:07:34.959945+00:00",
   "metadata": {
-    "total_cumulative_citations": 264,
-    "fetch_date": "2026-05-20T11:25:33.267834+00:00",
+    "total_cumulative_citations": 267,
+    "fetch_date": "2026-06-14T17:07:34.959945+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -42,7 +44,7 @@
       "venue": "Current Biology",
       "year": 2024,
       "url": "https://doi.org/10.1016/j.cub.2024.09.062",
-      "cited_by": 41,
+      "cited_by": 43,
       "abstract": "The contemporary definition of mental imagery is characterized by two aspects: a sensory representation that resembles, but does not result from, perception, and an associated subjective experience. Neuroimaging demonstrated imagery-related sensory representations in primary visual cortex (V1) that show striking parallels to perception. However, it remains unclear whether these representations always reflect subjective experience or if they can be dissociated from it. We addressed this question by comparing sensory representations and subjective imagery among visualizers and aphantasics, the latter with an impaired ability to experience imagery. Importantly, to test for the presence of sensory representations independently of the ability to generate imagery on demand, we examined both spontaneous and voluntary imagery forms. Using multivariate fMRI, we tested for decodable sensory representations in V1 and subjective visual imagery reports that occurred either spontaneously (during pas",
       "doi": "10.1016/j.cub.2024.09.062",
       "pmid": "39419033",
@@ -222,7 +224,7 @@
     },
     {
       "title": "Temporal dynamics of the neural representation of hue and luminance polarity",
-      "author": "Katherine L. Hermann, Shridhar Singh, Isabelle A. Rosenthal, Dimitrios Pantazis, Bevil R. Conway",
+      "author": "Katherine L. Hermann, Shridhar R. Singh, Isabelle A. Rosenthal, Dimitrios Pantazis, Bevil R. Conway",
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
       "year": 2020,
       "url": "https://doi.org/10.1101/2020.06.17.155713",
@@ -235,9 +237,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.3716862210631371,
-        "similarity_score": 0.32180625200271606,
-        "citation_text_length": 1250,
+        "confidence_score": 0.37065267562866216,
+        "similarity_score": 0.3209114074707031,
+        "citation_text_length": 1253,
         "dataset_text_length": 636,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -359,13 +361,36 @@
       }
     },
     {
+      "title": "Visual periodicity reveals distinct attentional signatures for face and non-face categories",
+      "author": "Genevieve L. Quek, Adélaïde de Heering",
+      "venue": "Cerebral Cortex",
+      "year": 2024,
+      "url": "https://doi.org/10.1093/cercor/bhae228",
+      "cited_by": 2,
+      "abstract": "Observers can selectively deploy attention to regions of space, moments in time, specific visual features, individual objects, and even specific high-level categories-for example, when keeping an eye out for dogs while jogging. Here, we exploited visual periodicity to examine how category-based attention differentially modulates selective neural processing of face and non-face categories. We combined electroencephalography with a novel frequency-tagging paradigm capable of capturing selective neural responses for multiple visual categories contained within the same rapid image stream (faces/birds in Exp 1; houses/birds in Exp 2). We found that the pattern of attentional enhancement and suppression for face-selective processing is unique compared to other object categories: Where attending to non-face objects strongly enhances their selective neural signals during a later stage of processing (300-500 ms), attentional enhancement of face-selective processing is both earlier and comparati",
+      "doi": "10.1093/cercor/bhae228",
+      "pmid": "38879816",
+      "openalex_id": "W4399716254",
+      "source_doi": "10.51628/001c.21174",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5549937960505485,
+        "similarity_score": 0.4805141091346741,
+        "citation_text_length": 1183,
+        "dataset_text_length": 636,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Medial temporal lobe encodes cognitive maps of real-world social networks",
       "author": "Yi Yang Teoh, Jae-Young Son, Alice Xia, Apoorva Bhandari, Oriel FeldmanHall",
       "venue": "Proceedings of the National Academy of Sciences",
       "year": 2025,
       "url": "https://doi.org/10.1073/pnas.2523345123",
       "cited_by": 2,
-      "abstract": "Abstract People routinely navigate their complex social networks 1 : From gossiping strategically with others 2–4 to brokering connections between siloed groups 5,6 , our ability to make adaptive social choices hinges on whether we can construct useful mental representations of the social ties within our communities 7 . While decades of neuroscience research have shown that the medial temporal lobe encodes cognitive maps of physical 8–10 or conceptual space 11 , how the brain represents our social networks in the wild to solve social problems remains unknown. By combining computational models with functional neuroimaging and longitudinal measurement of an evolving and densely interconnected real-world human network (N=187), we show that the entorhinal cortex encodes a cognitive map of the long-range connectivity between pairs of network members. This social map reflects the particular demands of social navigation and is specifically formatted to encode the simultaneous connectivity bet",
+      "abstract": "Humans routinely solve social problems by navigating densely interconnected networks-gossiping strategically, brokering across cliques, and coordinating with allies. Yet, the neural representations supporting such complex navigation remain undocumented, leaving a crucial gap in our understanding of the mechanisms underlying flexible social cognition. We combine computational modeling with fMRI and a longitudinal measurement of a large, real-world social network (N = 187) to show that the medial temporal lobe encodes an abstract cognitive map of long-range connectivity in the broader network. These neural maps specifically encode the Katz communicability between network members, not merely direct ties, or Euclidean or graph distance. We additionally find that the availability of these maps in the right entorhinal cortex (rEC) and right anterior hippocampus (raHC) supports accurate inferences about information diffusion through the network. Finally, we link neural representation to conse",
       "doi": "10.1073/pnas.2523345123",
       "pmid": "41980092",
       "openalex_id": "W4408607951",
@@ -373,8 +398,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.384623541533947,
-        "similarity_score": 0.3330073952674866,
+        "confidence_score": 0.42261957138776785,
+        "similarity_score": 0.36590439081192017,
         "citation_text_length": 1234,
         "dataset_text_length": 636,
         "scoring_method": "sentence_transformers",
@@ -399,29 +424,6 @@
         "confidence_score": 0.5284863469004631,
         "similarity_score": 0.45756393671035767,
         "citation_text_length": 1199,
-        "dataset_text_length": 636,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Visual periodicity reveals distinct attentional signatures for face and non-face categories",
-      "author": "Genevieve L. Quek, Adélaïde de Heering",
-      "venue": "Cerebral Cortex",
-      "year": 2024,
-      "url": "https://doi.org/10.1093/cercor/bhae228",
-      "cited_by": 1,
-      "abstract": "Observers can selectively deploy attention to regions of space, moments in time, specific visual features, individual objects, and even specific high-level categories-for example, when keeping an eye out for dogs while jogging. Here, we exploited visual periodicity to examine how category-based attention differentially modulates selective neural processing of face and non-face categories. We combined electroencephalography with a novel frequency-tagging paradigm capable of capturing selective neural responses for multiple visual categories contained within the same rapid image stream (faces/birds in Exp 1; houses/birds in Exp 2). We found that the pattern of attentional enhancement and suppression for face-selective processing is unique compared to other object categories: Where attending to non-face objects strongly enhances their selective neural signals during a later stage of processing (300-500 ms), attentional enhancement of face-selective processing is both earlier and comparati",
-      "doi": "10.1093/cercor/bhae228",
-      "pmid": "38879816",
-      "openalex_id": "W4399716254",
-      "source_doi": "10.51628/001c.21174",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5549937960505485,
-        "similarity_score": 0.4805141091346741,
-        "citation_text_length": 1183,
         "dataset_text_length": 636,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -544,7 +546,7 @@
     },
     {
       "title": "Dynamic Modulation of Representational Trajectories Through Selective Attention",
-      "author": "Yu Zhou, Liang Zhang, Nikolai Axmacher, Daniel Pacheco, Xiaoying Wang, Yujian Dai, Xiaojing Peng, Gui Xue",
+      "author": "Yu Zhou, Liang Zhang, Nikolai Axmacher, Daniel Pacheco, Da‐Hui Wang, Yujian Dai, Xiaojing Peng, Gui Xue",
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
       "year": 2024,
       "url": "https://doi.org/10.1101/2024.01.21.576506",
@@ -557,9 +559,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5511507529020311,
-        "similarity_score": 0.47718679904937744,
-        "citation_text_length": 1262,
+        "confidence_score": 0.5478806930780412,
+        "similarity_score": 0.4743555784225464,
+        "citation_text_length": 1260,
         "dataset_text_length": 636,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -590,7 +592,7 @@
     },
     {
       "title": "Selective Attention Dynamically Modulates the Hierarchical Order of Perceptual and Conceptual Representations",
-      "author": "Yu Zhou, Liang Zhang, Nikolai Axmacher, Daniel Pacheco, Xiaoying Wang, Yujian Dai, Xiaojing Peng, Shixiang Liu, Gui Xue",
+      "author": "Yu Zhou, Liang Zhang, Nikolai Axmacher, Daniel Pacheco, Da‐Hui Wang, Yujian Dai, Xiaojing Peng, Shixiang Liu, Gui Xue",
       "venue": "Human Brain Mapping",
       "year": 2025,
       "url": "https://doi.org/10.1002/hbm.70359",
@@ -603,9 +605,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5347325053811074,
-        "similarity_score": 0.46297186613082886,
-        "citation_text_length": 1286,
+        "confidence_score": 0.5381698545813561,
+        "similarity_score": 0.4659479260444641,
+        "citation_text_length": 1284,
         "dataset_text_length": 636,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -614,18 +616,18 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:03:25.677484+00:00",
+    "scoring_date": "2026-06-15T01:29:28.757305+00:00",
     "dataset_text_length": 636,
     "num_citations_scored": 26,
     "summary_stats": {
-      "mean_confidence": 0.5556824653538375,
-      "median_confidence": 0.5484755858033896,
-      "std_confidence": 0.0903914322387737,
-      "min_confidence": 0.3716862210631371,
+      "mean_confidence": 0.5571105335767453,
+      "median_confidence": 0.5468405558913947,
+      "std_confidence": 0.08795037240868564,
+      "min_confidence": 0.37065267562866216,
       "max_confidence": 0.723833662569523,
       "high_confidence_count": 1,
-      "medium_confidence_count": 22,
-      "low_confidence_count": 3
+      "medium_confidence_count": 23,
+      "low_confidence_count": 2
     }
   }
 }

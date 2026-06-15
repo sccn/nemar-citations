@@ -1,0 +1,69 @@
+{
+  "dataset_id": "nm000250",
+  "date_retrieved": "2026-06-14T10:03:57.272970+00:00",
+  "dataset_description": {
+    "Name": "Dreyer et al. 2023 — A large EEG database with users' profile information for motor imagery brain-computer interface research",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Pauline Dreyer",
+      "Aline Roc",
+      "Léa Pillette",
+      "Sébastien Rimbert",
+      "Fabien Lotte"
+    ],
+    "Funding": [
+      "European Research Council (ERC Starting Grant project BrainConquest, grant ERC-2016-STG-714567)"
+    ],
+    "EthicsApprovals": [
+      "Inria's ethics committee, the COERLE (Approval number: 2018-13)"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.5281/zenodo.8089820",
+      "10.1038/s41597-023-02445-z"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1038/s41597-023-02445-z",
+        "URL": "https://doi.org/10.5281/zenodo.8089820"
+      }
+    ],
+    "Keywords": [
+      "motor imagery",
+      "brain-computer interface",
+      "EEG",
+      "BCI illiteracy",
+      "user training",
+      "personality profile",
+      "cognitive traits",
+      "user profile"
+    ],
+    "PublicationYear": 2023,
+    "Version": "1.0.1",
+    "DatasetDOI": "10.82901/nemar.nm000250"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000250-blue)](https://doi.org/10.82901/nemar.nm000250)\n\n# Class for Dreyer2023 dataset management. MI dataset\n\nClass for Dreyer2023 dataset management. MI dataset.\n\n## Dataset Overview\n\n- **Code**: Dreyer2023\n- **Paradigm**: imagery\n- **DOI**: 10.1038/s41597-023-02445-z\n- **Subjects**: 87\n- **Sessions per subject**: 1\n- **Events**: left_hand=1, right_hand=2\n- **Trial interval**: [0, 5] s\n- **Runs per session**: 6\n- **Session IDs**: calibration, online_training\n- **File format**: GDF\n- **Contributing labs**: Inria Bordeaux\n\n## Acquisition\n\n- **Sampling rate**: 512.0 Hz\n- **Number of channels**: 27\n- **Channel types**: eeg=27, emg=2, eog=3\n- **Channel names**: C1, C2, C3, C4, C5, C6, CP1, CP2, CP3, CP4, CP5, CP6, CPz, Cz, EMGd, EMGg, EOG1, EOG2, EOG3, F3, F4, FC1, FC2, FC3, FC4, FC5, FC6, FCz, Fz, P3, P4, Pz\n- **Montage**: 10-20\n- **Hardware**: g.USBAmp (g.tec, Austria)\n- **Software**: OpenViBE 2.1.0 (Dataset A) / OpenViBE 2.2.0 (Dataset B and C)\n- **Reference**: left earlobe\n- **Ground**: FPz\n- **Sensor type**: active electrodes\n- **Line frequency**: 50.0 Hz\n- **Online filters**: none (raw signals recorded without hardware filters)\n- **Cap manufacturer**: g.tec\n- **Auxiliary channels**: EOG (3 ch, horizontal, vertical), EMG (2 ch), gsr\n\n## Participants\n\n- **Number of subjects**: 87\n- **Health status**: healthy\n- **Age**: mean=29.0, min=19, max=59\n- **Gender distribution**: female=41, male=46\n- **Handedness**: right\n- **BCI experience**: naive\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 2\n- **Class labels**: left_hand, right_hand\n- **Trial duration**: 8.0 s\n- **Tasks**: right_hand_MI, left_hand_MI, resting_state\n- **Study design**: Graz protocol\n- **Feedback type**: continuous visual\n- **Stimulus type**: blue bar varying in length\n- **Stimulus modalities**: visual, auditory\n- **Primary modality**: visual\n- **Synchronicity**: cue-based\n- **Mode**: online\n- **Training/test split**: True\n- **Instructions**: Participants were encouraged to perform kinesthetic imagination and leave them free to choose their mental imagery strategy. Participants were instructed to try to find the best strategy so that the system would show the longest possible feedback bar. Only positive feedback was provided.\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  left_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Left, Hand\n\n  right_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: right_hand, left_hand\n- **Cue duration**: 1.25 s\n- **Imagery duration**: 3.75 s\n\n## Data Structure\n\n- **Trials**: 240\n- **Trials per class**: right_hand=120, left_hand=120\n- **Blocks per session**: 6\n- **Block duration**: 420.0 s\n- **Trials context**: per subject (120 per class)\n\n## Preprocessing\n\n- **Data state**: raw\n- **Preprocessing applied**: False\n- **Bandpass filter**: [5.0, 35.0]\n- **Filter type**: Butterworth\n- **Filter order**: 5\n- **Artifact methods**: visual inspection\n- **Re-reference**: Laplacian (C3, C4 for feature extraction)\n- **Notes**: The raw signals were recorded without any hardware filters. For online processing, a fifth-order Butterworth filter was applied in a participant-specific discriminant frequency band in the range of 5 Hz to 35 Hz with 0.5 Hz large bins. Impedance could not be measured with active electrodes; EEG signals were visually checked and regularly re-checked to ensure good signal quality.\n\n## Signal Processing\n\n- **Classifiers**: LDA\n- **Feature extraction**: CSP, Bandpower\n- **Frequency bands**: analyzed=[5.0, 35.0] Hz; alpha=[8.0, 13.0] Hz; mu=[8.0, 13.0] Hz; beta=[13.0, 30.0] Hz\n- **Spatial filters**: CSP, Laplacian\n\n## Cross-Validation\n\n- **Method**: calibration-feedback\n- **Evaluation type**: within_session\n\n## Performance (Original Study)\n\n- **Accuracy**: 63.35%\n- **Mean Accuracy Std**: 17.36\n- **Mean Accuracy R3**: 63.14\n- **Mean Accuracy R4**: 64.82\n- **Chance Level Individual**: 58.7\n- **Chance Level Database**: 51.0\n\n## BCI Application\n\n- **Applications**: rehabilitation, assistive_technology, neurofeedback, user_training\n- **Environment**: laboratory\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Motor\n- **Type**: Motor Imagery\n\n## Documentation\n\n- **Description**: A large EEG database with users' profile information for motor imagery brain-computer interface research. Contains electroencephalographic signals from 87 human participants, collected during a single day of brain-computer interface (BCI) experiments, organized into 3 datasets (A, B, and C) that were all recorded using the same protocol: right and left hand motor imagery (MI).\n- **DOI**: 10.1038/s41597-023-02445-z\n- **Associated paper DOI**: 10.1038/s41597-023-02445-z\n- **License**: CC-BY-4.0\n- **Investigators**: Pauline Dreyer, Aline Roc, Léa Pillette, Sébastien Rimbert, Fabien Lotte\n- **Senior author**: Fabien Lotte\n- **Contact**: fabien.lotte@inria.fr\n- **Institution**: Centre Inria de l'université de Bordeaux\n- **Department**: LaBRI (Univ. Bordeaux/CNRS/Bordeaux INP)\n- **Address**: Talence, 33405, France\n- **Country**: FR\n- **Repository**: Zenodo\n- **Data URL**: https://doi.org/10.5281/zenodo.8089820\n- **Publication year**: 2023\n- **Funding**: European Research Council (ERC Starting Grant project BrainConquest, grant ERC-2016-STG-714567)\n- **Ethics approval**: Inria's ethics committee, the COERLE (Approval number: 2018-13)\n- **Keywords**: motor imagery, brain-computer interface, EEG, BCI illiteracy, user training, personality profile, cognitive traits, user profile\n\n## Abstract\n\nWe present and share a large database containing electroencephalographic signals from 87 human participants, collected during a single day of brain-computer interface (BCI) experiments, organized into 3 datasets (A, B, and C) that were all recorded using the same protocol: right and left hand motor imagery (MI). Each session contains 240 trials (120 per class), which represents more than 20,800 trials, or approximately 70 hours of recording time. It includes the performance of the associated BCI users, detailed information about the demographics, personality profile as well as some cognitive traits and the experimental instructions and codes (executed in the open-source platform OpenViBE). Such database could prove useful for various studies, including but not limited to: (1) studying the relationships between BCI users' profiles and their BCI performances, (2) studying how EEG signals properties varies for different users' profiles and MI tasks, (3) using the large number of participants to design cross-user BCI machine learning algorithms or (4) incorporating users' profile information into the design of EEG signal classification algorithms.\n\n## Methodology\n\nParticipants performed a Graz protocol MI-BCI task with 6 runs (2 calibration runs with sham feedback, 4 online training runs with real feedback). Each run consisted of 40 trials (20 per MI-task) with 8s trial duration. Trial structure: green cross (t=0s), acoustic signal (t=2s), red arrow cue (t=3s, 1.25s duration), continuous visual feedback (t=4.25s, 3.75s duration), inter-trial interval (1.5-3.5s). Signal processing used participant-specific Most Discriminant Frequency Band (MDFB) selection (5-35 Hz range), fifth-order Butterworth filtering, Common Spatial Pattern (CSP) with 3 pairs of spatial filters, and Linear Discriminant Analysis (LDA) classifier trained on calibration data. Participants completed 6 questionnaires assessing demographics, personality (16PF5), cognitive traits, spatial abilities (Mental Rotation test), learning style (ILS), and pre/post-experiment states (NeXT questionnaire).\n\n## References\n\nPillette, L., Roc, A., N’kaoua, B., & Lotte, F. (2021). Experimenters' influence on mental-imagery based brain-computer interface user training. International Journal of Human-Computer Studies, 149, 102603.\n\nBenaroch, C., Yamamoto, M. S., Roc, A., Dreyer, P., Jeunet, C., & Lotte, F. (2022). When should MI-BCI feature optimization include prior knowledge, and which one?. Brain-Computer Interfaces, 9(2), 115-128.\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000250",
+    "exists": true,
+    "description": "Dreyer et al. 2023 — A large EEG database with users' profile information for motor imagery brain-computer interface research",
+    "created_at": "2026-03-26T09:25:10+00:00",
+    "updated_at": "2026-06-03T06:50:29+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

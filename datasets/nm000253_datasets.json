@@ -1,0 +1,67 @@
+{
+  "dataset_id": "nm000253",
+  "date_retrieved": "2026-06-14T10:04:00.888311+00:00",
+  "dataset_description": {
+    "Name": "Wang et al. 2024 — Brain Treebank: Large-scale intracranial recordings from naturalistic language stimuli",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.2.0",
+    "DatasetType": "raw",
+    "License": "CC BY 4.0",
+    "Authors": [
+      "Christopher Wang",
+      "Adam Yaari",
+      "Aaditya K Singh",
+      "Vighnesh Subramaniam",
+      "Dana Rosenfarb",
+      "Jan DeWitt",
+      "Pranav Misra",
+      "Joseph R Madsen",
+      "Scellig Stone",
+      "Gabriel Kreiman",
+      "Boris Katz",
+      "Ignacio Cases",
+      "Andrei Barbu"
+    ],
+    "HowToAcknowledge": "Please cite: Wang, C., Yaari, A. U., Singh, A. K., Subramaniam, V., Rosenfarb, D., DeWitt, J., Misra, P., Madsen, J. R., Stone, S., Kreiman, G., Katz, B., Cases, I., & Barbu, A. (2024). Brain Treebank: Large-scale intracranial recordings from naturalistic language stimuli. Advances in Neural Information Processing Systems 37 (NeurIPS 2024, Datasets and Benchmarks Track). arXiv:2411.08343. https://braintreebank.dev/",
+    "EthicsApprovals": [
+      "Boston Children's Hospital / Harvard IRB (all subjects gave informed consent)"
+    ],
+    "ReferencesAndLinks": [
+      "https://arxiv.org/abs/2411.08343",
+      "https://proceedings.neurips.cc/paper_files/paper/2024/hash/aefa2385b3f33abf1526ae4e2c208cd9-Abstract-Datasets_and_Benchmarks_Track.html",
+      "https://braintreebank.dev/",
+      "https://github.com/czlwang/brain_treebank_code_release"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000253",
+    "GeneratedBy": [
+      {
+        "Name": "convert_braintreebank.py (EEGDash)",
+        "Description": "Converted per-trial HDF5 files (raw 2048 Hz iEEG) to BIDS-iEEG BrainVision format. Each trial (one movie) becomes one BIDS run. Electrode labels from the Brain Treebank metadata (electrode_labels/sub_X/). Corrupted electrodes flagged from corrupted_elec.json.",
+        "CodeURL": "https://github.com/bruaristimunha/EEGDash"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "URL": "https://braintreebank.dev/"
+      },
+      {
+        "DOI": "doi:10.48550/arXiv.2411.08343"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000253-blue)](https://doi.org/10.82901/nemar.nm000253)\n\n# Brain Treebank: large-scale intracranial (iEEG) recordings from naturalistic language stimuli\n\n## Summary\n\nThe Brain Treebank is a large-scale dataset of intracranial electrophysiological (iEEG /\nstereo-EEG) recordings collected from **10 epilepsy patients** (at Boston Children's\nHospital) while they watched Hollywood movies. Recordings were acquired at **2048 Hz**\nfrom on average **168 electrodes per subject (1,688 electrodes total)**, totalling\nroughly **43 hours across 26 trials** (one trial = one movie). The audio of each movie\nwas transcribed and word onsets manually annotated, and each transcript was parsed into\nUniversal Dependencies (UD) syntax trees — making this one of the largest datasets of\nintracranial recordings grounded in naturalistic language.\n\nThis NEMAR record provides the dataset converted to **BIDS-iEEG** (BrainVision) format:\neach trial is one BIDS run (`task-movie`, `run-01` …), with signals in `sub-*/ieeg/`.\n\n## Modality and paradigm\n\n- **Modality:** Intracranial EEG / stereo-EEG (iEEG-BIDS), 2048 Hz, BrainVision\n  (IEEE_FLOAT_32, multiplexed)\n- **Task / paradigm:** Passive naturalistic viewing of Hollywood movies (`task-movie`),\n  with time-aligned word-level language annotations (transcripts and UD syntax trees in\n  `code/transcripts.zip` and `code/trees.zip`)\n- **Population:** 10 epilepsy patients undergoing intracranial monitoring\n\n## Participants and data structure\n\n- **10 subjects** (`sub-01` … `sub-10`), 26 movie-viewing runs in total.\n- Electrode labels and per-subject electrode information are in each `sub-*/ieeg/`\n  (`electrodes.tsv`, `coordsystem.json`); corrupted electrodes are flagged as `bad` in\n  `channels.tsv` (from the Brain Treebank `corrupted_elec.json`).\n- Electrode coordinates are provided as-is from the Brain Treebank `localization.zip`\n  (`code/localization.zip`); see each `coordsystem.json` for important caveats about\n  units and the absence of a published transform to a standard template.\n\n## Original dataset / data paper\n\nPlease cite the original publication when using this dataset:\n\n> Wang, C., Yaari, A. U., Singh, A. K., Subramaniam, V., Rosenfarb, D., DeWitt, J.,\n> Misra, P., Madsen, J. R., Stone, S., Kreiman, G., Katz, B., Cases, I., & Barbu, A.\n> (2024). *Brain Treebank: Large-scale intracranial recordings from naturalistic language\n> stimuli.* Advances in Neural Information Processing Systems 37 (NeurIPS 2024, Datasets\n> and Benchmarks Track). arXiv:2411.08343.\n\n- **Preprint / DOI:** [arXiv:2411.08343](https://doi.org/10.48550/arXiv.2411.08343)\n- **NeurIPS 2024 proceedings:** https://proceedings.neurips.cc/paper_files/paper/2024/hash/aefa2385b3f33abf1526ae4e2c208cd9-Abstract-Datasets_and_Benchmarks_Track.html\n- **Project site / source data:** https://braintreebank.dev/\n- **Original code release:** https://github.com/czlwang/brain_treebank_code_release\n- **Ethics:** Boston Children's Hospital / Harvard IRB; all subjects gave informed consent.\n\n## BIDS conversion\n\nPer-trial HDF5 recordings from braintreebank.dev were converted to BIDS-iEEG (BrainVision)\nwith the EEGDash conversion script in `code/convert_braintreebank.py`. Each trial (one\nmovie) becomes one BIDS run. EEG-BIDS / MNE-BIDS were used only for standardisation; the\ndata themselves are from the original Brain Treebank release. Please credit the original\ncreators (Wang et al.) and cite the paper above.\n\n## License\n\nCC BY 4.0 (see `dataset_description.json`).\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000253",
+    "exists": true,
+    "description": "Wang et al. 2024 — Brain Treebank: Large-scale intracranial recordings from naturalistic language stimuli",
+    "created_at": "2026-04-12T19:16:23+00:00",
+    "updated_at": "2026-06-08T03:32:53+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds004229",
   "num_citations": 22,
-  "date_last_updated": "2026-05-20T09:24:59.757466+00:00",
+  "date_last_updated": "2026-06-14T14:07:43.315213+00:00",
   "metadata": {
-    "total_cumulative_citations": 129,
-    "fetch_date": "2026-05-20T09:24:59.757466+00:00",
+    "total_cumulative_citations": 131,
+    "fetch_date": "2026-06-14T14:07:43.315213+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -65,7 +67,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2024,
       "url": "https://doi.org/10.3389/fnhum.2024.1403677",
-      "cited_by": 17,
+      "cited_by": 18,
       "abstract": "Slow cortical oscillations play a crucial role in processing the speech amplitude envelope, which is perceived atypically by children with developmental dyslexia. Here we use electroencephalography (EEG) recorded during natural speech listening to identify neural processing patterns involving slow oscillations that may characterize children with dyslexia. In a story listening paradigm, we find that atypical power dynamics and phase-amplitude coupling between delta and theta oscillations characterize dyslexic versus other child control groups (typically-developing controls, other language disorder controls). We further isolate EEG common spatial patterns (CSP) during speech listening across delta and theta oscillations that identify dyslexic children. A linear classifier using four delta-band CSP variables predicted dyslexia status (0.77 AUC). Crucially, these spatial patterns also identified children with dyslexia when applied to EEG measured during a rhythmic syllable processing task.",
       "doi": "10.3389/fnhum.2024.1403677",
       "pmid": "38911229",
@@ -175,6 +177,29 @@
       }
     },
     {
+      "title": "Brain responses during auditory word recognition vary with reading ability in Chinese school‐age children",
+      "author": "Lijuan Zou, Zhichao Xia, Wei Zhang, Xianglin Zhang, Hua Shu",
+      "venue": "Developmental Science",
+      "year": 2021,
+      "url": "https://doi.org/10.1111/desc.13216",
+      "cited_by": 4,
+      "abstract": "While the close relationship between the brain system for speech processing and reading development is well-documented in alphabetic languages, whether and how such a link exists in children in a language without systematic grapheme-phoneme correspondence has not been directly investigated. In the present study, we measured Chinese children's brain activation during an auditory lexical decision task with functional magnetic resonance imaging. The results showed that brain areas distributed across the temporal and frontal lobes activated during spoken word recognition. In addition, the left occipitotemporal cortex (OTC) was recruited, especially under the real word condition, thus confirming the involvement of this orthographic-related area in spoken language processing in Chinese children. Importantly, activation of the left temporoparietal cortex (TPC) in response to words and pseudowords was positively correlated with children's reading ability, thus supporting the salient role phono",
+      "doi": "10.1111/desc.13216",
+      "pmid": "34910843",
+      "openalex_id": "W4200023087",
+      "source_doi": "10.1016/j.nicl.2021.102578",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5152097663283349,
+        "similarity_score": 0.44606906175613403,
+        "citation_text_length": 1224,
+        "dataset_text_length": 1798,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Predictive Measures in Child Language Development: The Role of Familial History and Early Expressive Vocabulary",
       "author": "Elena Capelli, Chiara Dondena, Maria Luisa Lorusso, Sara Mascheretti, Raffaella Pozzoli, Antonio Salandi, Massimo Molteni, Valentina Riva, Chiara Cantiani",
       "venue": "Journal of Speech Language and Hearing Research",
@@ -192,29 +217,6 @@
         "confidence_score": 0.4439398795366288,
         "similarity_score": 0.3843635320663452,
         "citation_text_length": 1351,
-        "dataset_text_length": 1798,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Brain responses during auditory word recognition vary with reading ability in Chinese school‐age children",
-      "author": "Lijuan Zou, Zhichao Xia, Wei Zhang, Xianglin Zhang, Hua Shu",
-      "venue": "Developmental Science",
-      "year": 2021,
-      "url": "https://doi.org/10.1111/desc.13216",
-      "cited_by": 3,
-      "abstract": "While the close relationship between the brain system for speech processing and reading development is well-documented in alphabetic languages, whether and how such a link exists in children in a language without systematic grapheme-phoneme correspondence has not been directly investigated. In the present study, we measured Chinese children's brain activation during an auditory lexical decision task with functional magnetic resonance imaging. The results showed that brain areas distributed across the temporal and frontal lobes activated during spoken word recognition. In addition, the left occipitotemporal cortex (OTC) was recruited, especially under the real word condition, thus confirming the involvement of this orthographic-related area in spoken language processing in Chinese children. Importantly, activation of the left temporoparietal cortex (TPC) in response to words and pseudowords was positively correlated with children's reading ability, thus supporting the salient role phono",
-      "doi": "10.1111/desc.13216",
-      "pmid": "34910843",
-      "openalex_id": "W4200023087",
-      "source_doi": "10.1016/j.nicl.2021.102578",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5152097663283349,
-        "similarity_score": 0.44606906175613403,
-        "citation_text_length": 1224,
         "dataset_text_length": 1798,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -522,7 +524,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T21:56:51.186667+00:00",
+    "scoring_date": "2026-06-15T01:22:04.528942+00:00",
     "dataset_text_length": 1798,
     "num_citations_scored": 22,
     "summary_stats": {

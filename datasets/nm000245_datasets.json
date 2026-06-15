@@ -1,0 +1,67 @@
+{
+  "dataset_id": "nm000245",
+  "date_retrieved": "2026-06-14T10:03:38.954201+00:00",
+  "dataset_description": {
+    "Name": "Motor Imagery dataset from Cho et al 2017",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Hohyun Cho",
+      "Minkyu Ahn",
+      "Sangtae Ahn",
+      "Moonyoung Kwon",
+      "Sung Chan Jun"
+    ],
+    "Funding": [
+      "GIST Research Institute (GRI) grant funded by the GIST in 2017",
+      "Institute for Information & Communication Technology Promotion (IITP) grant funded by the Korea government (No. 2017-0-00451)"
+    ],
+    "EthicsApprovals": [
+      "Institutional Review Board of Gwangju Institute of Science and Technology"
+    ],
+    "ReferencesAndLinks": [
+      "http://dx.doi.org/10.5524/100295",
+      "10.1093/gigascience/gix034"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.5524/100295",
+        "URL": "http://dx.doi.org/10.5524/100295"
+      }
+    ],
+    "Keywords": [
+      "motor imagery",
+      "EEG",
+      "brain-computer interface",
+      "performance variation",
+      "subject-to-subject transfer"
+    ],
+    "PublicationYear": 2017,
+    "DatasetDOI": "10.82901/nemar.nm000245",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000245-blue)](https://doi.org/10.82901/nemar.nm000245)\n\n# Motor Imagery dataset from Cho et al 2017\n\nMotor Imagery dataset from Cho et al 2017.\n\n## Dataset Overview\n\n- **Code**: Cho2017\n- **Paradigm**: imagery\n- **DOI**: 10.5524/100295\n- **Subjects**: 52\n- **Sessions per subject**: 1\n- **Events**: left_hand=1, right_hand=2\n- **Trial interval**: [0, 3] s\n- **File format**: .mat (MATLAB)\n\n## Acquisition\n\n- **Sampling rate**: 512.0 Hz\n- **Number of channels**: 68\n- **Channel types**: eeg=64, emg=4\n- **Channel names**: AF3, AF4, AF7, AF8, AFz, C1, C2, C3, C4, C5, C6, CP1, CP2, CP3, CP4, CP5, CP6, CPz, Cz, EMG1, EMG2, EMG3, EMG4, F1, F2, F3, F4, F5, F6, F7, F8, FC1, FC2, FC3, FC4, FC5, FC6, FCz, FT7, FT8, Fp1, Fp2, Fpz, Fz, Iz, O1, O2, Oz, P1, P10, P2, P3, P4, P5, P6, P7, P8, P9, PO3, PO4, PO7, PO8, POz, Pz, T7, T8, TP7, TP8\n- **Montage**: standard_1005\n- **Hardware**: Biosemi ActiveTwo\n- **Software**: BCI2000 3.0.2\n- **Reference**: CMS/DRL\n- **Sensor type**: active electrodes\n- **Line frequency**: 60.0 Hz\n- **Electrode type**: active\n- **Auxiliary channels**: EMG (4 ch)\n\n## Participants\n\n- **Number of subjects**: 52\n- **Health status**: healthy\n- **Age**: mean=24.8, std=3.86\n- **Gender distribution**: female=19, male=33\n- **Handedness**: {'right': 50, 'both': 2}\n- **BCI experience**: collected via questionnaire (0 = no, number = how many times)\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 2\n- **Class labels**: left_hand, right_hand\n- **Trial duration**: 3.0 s\n- **Study design**: motor imagery\n- **Feedback type**: none\n- **Stimulus type**: visual instruction\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Mode**: offline\n- **Instructions**: Subjects were asked to imagine kinesthetic finger movements (touching index, middle, ring, and little finger to thumb within 3 seconds)\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  left_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Left, Hand\n\n  right_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: left_hand, right_hand\n- **Cue duration**: 3.0 s\n- **Imagery duration**: 3.0 s\n\n## Data Structure\n\n- **Trials**: 100 or 120 per class (200-240 total)\n- **Blocks per session**: 5 or 6\n- **Trials context**: per_class\n\n## Preprocessing\n\n- **Data state**: raw\n- **Preprocessing applied**: False\n- **Notes**: Bad trial indices provided separately in .mat files (bad_trial_indices); raw EEG data is unfiltered\n\n## Signal Processing\n\n- **Classifiers**: FLDA\n- **Feature extraction**: CSP, ERD, ERS\n- **Frequency bands**: alpha=[8.0, 14.0] Hz; mu=[8, 12] Hz; analyzed=[8.0, 30.0] Hz\n\n## Cross-Validation\n\n- **Method**: random subset selection\n- **Folds**: 10\n- **Evaluation type**: within_session\n\n## Performance (Original Study)\n\n- **Accuracy**: 67.46%\n- **Accuracy Std**: 13.17\n- **Discriminative Subjects**: 38\n- **Total Subjects**: 50\n\n## BCI Application\n\n- **Applications**: motor_control\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Motor\n- **Type**: Research\n\n## Documentation\n\n- **Description**: EEG datasets for motor imagery brain-computer interface from 52 subjects with psychological and physiological questionnaire, EMG datasets, 3D EEG electrode locations, and non-task-related states\n- **DOI**: 10.5524/100295\n- **Associated paper DOI**: 10.1093/gigascience/gix034\n- **License**: CC-BY-4.0\n- **Investigators**: Hohyun Cho, Minkyu Ahn, Sangtae Ahn, Moonyoung Kwon, Sung Chan Jun\n- **Senior author**: Sung Chan Jun\n- **Contact**: scjun@gist.ac.kr; TEL: +82-62-715-2216; FAX: +82-62-715-2204\n- **Institution**: Gwangju Institute of Science and Technology\n- **Department**: School of Electrical Engineering and Computer Science\n- **Address**: 123 Cheomdangwagi-ro, Buk-gu, Gwangju 61005, Korea\n- **Country**: KR\n- **Repository**: GigaDB\n- **Data URL**: http://dx.doi.org/10.5524/100295\n- **Publication year**: 2017\n- **Funding**: GIST Research Institute (GRI) grant funded by the GIST in 2017; Institute for Information & Communication Technology Promotion (IITP) grant funded by the Korea government (No. 2017-0-00451)\n- **Ethics approval**: Institutional Review Board of Gwangju Institute of Science and Technology\n- **Keywords**: motor imagery, EEG, brain-computer interface, performance variation, subject-to-subject transfer\n\n## Abstract\n\nMotor imagery (MI)-based brain-computer interface (BCI) dataset from 52 subjects with EEG, EMG, psychological and physiological questionnaire, 3D EEG electrode locations, and non-task-related states. The dataset includes 100 or 120 trials per class (left/right hand) with validation showing 73.08% (38 subjects) had discriminative information. Mean accuracy of 67.46% (±13.17%) over 50 subjects (excluding 2 bad subjects). Dataset stored in GigaDB and validated using bad trial percentage, ERD/ERS analysis, and classification analysis.\n\n## Methodology\n\nSubjects performed motor imagery of left and right hand finger movements (kinesthetic imagery). Each trial consisted of: 2 seconds fixation cross, 3 seconds instruction (left/right hand), followed by random 4.1-4.8 second break. Five or six runs performed with feedback after each run. Additional data collected: 6 types of non-task-related data (eye blinking, eyeball movements, head movement, jaw clenching, resting state) and 20 trials of real hand movement per class. 3D electrode coordinates measured with Polhemus Fastrak digitizer. Experiments conducted August-September 2011 in four time slots (9:30-12:00, 12:30-15:00, 15:30-18:00, 19:00-21:30) with background noise 37-39 dB.\n\n## References\n\nCho, H., Ahn, M., Ahn, S., Kwon, M. and Jun, S.C., 2017. EEG datasets for motor imagery brain computer interface. GigaScience. https://doi.org/10.1093/gigascience/gix034\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000245",
+    "exists": true,
+    "description": "Motor Imagery dataset from Cho et al 2017",
+    "created_at": "2026-03-25T22:38:20+00:00",
+    "updated_at": "2026-06-03T05:53:20+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

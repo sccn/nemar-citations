@@ -1,0 +1,56 @@
+{
+  "dataset_id": "nm000310",
+  "date_retrieved": "2026-06-14T10:04:56.246424+00:00",
+  "dataset_description": {
+    "Name": "Guttmann-Flury et al. 2025 (SSVEP) — Dataset combining EEG, eye-tracking, and high-speed video for ocular activity analysis across BCI paradigms",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC0",
+    "Authors": [
+      "Eva Guttmann-Flury",
+      "Xinjun Sheng",
+      "Xiangyang Zhu"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000310",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1038/s41597-025-04861-9"
+      },
+      {
+        "DOI": "doi:10.1038/s41597-025-04861-9"
+      }
+    ],
+    "Keywords": [
+      "Healthy",
+      "Visual",
+      "Research",
+      "ssvep",
+      "communication"
+    ],
+    "PublicationYear": 2025,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000310-blue)](https://doi.org/10.82901/nemar.nm000310)\n\nGuttmannFlury2025-SSVEP\n=======================\n\nEye-BCI multimodal SSVEP dataset from Guttmann-Flury et al 2025.\n\nDataset Overview\n----------------\n  Code: GuttmannFlury2025-SSVEP\n  Paradigm: ssvep\n  DOI: 10.1038/s41597-025-04861-9\n  Subjects: 31\n  Sessions per subject: 3\n  Events: 10.0=1, 11.0=2, 12.0=3, 13.0=4\n  Trial interval: [0, 5] s\n  File format: BDF\n\nAcquisition\n-----------\n  Sampling rate: 1000.0 Hz\n  Number of channels: 66\n  Channel types: eeg=64, eog=1, stim=1\n  Channel names: FP1, FPZ, FP2, AF3, AF4, F7, F5, F3, F1, FZ, F2, F4, F6, F8, FT7, FC5, FC3, FC1, FCZ, FC2, FC4, FC6, FT8, T7, C5, C3, C1, CZ, C2, C4, C6, T8, TP7, CP5, CP3, CP1, CPZ, CP2, CP4, CP6, TP8, P7, P5, P3, P1, PZ, P2, P4, P6, P8, PO7, PO5, PO3, POZ, PO4, PO6, PO8, O1, OZ, O2, CB1, CB2\n  Montage: standard_1005\n  Hardware: Neuroscan Quik-Cap 65-ch, SynAmps2\n  Reference: right mastoid (M1)\n  Ground: forehead\n  Sensor type: Ag/AgCl\n  Line frequency: 50.0 Hz\n  Online filters: {'highpass_time_constant_s': 10}\n\nParticipants\n------------\n  Number of subjects: 31\n  Health status: healthy\n  Age: mean=28.3, min=20.0, max=57.0\n  Gender distribution: female=11, male=20\n  Species: human\n\nExperimental Protocol\n---------------------\n  Paradigm: ssvep\n  Number of classes: 4\n  Class labels: 10.0, 11.0, 12.0, 13.0\n  Trial duration: 7.0 s\n  Study design: Multi-paradigm BCI (MI/ME/SSVEP/P300). SSVEP: 4-class frequency flickering, 48 trials/session, up to 3 sessions per subject.\n  Feedback type: none\n  Stimulus type: flickering LED\n  Stimulus modalities: visual\n  Primary modality: visual\n  Synchronicity: synchronous\n  Mode: offline\n\nHED Event Annotations\n---------------------\n  Schema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n  10.0\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/10_0\n\n  11.0\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/11_0\n\n  12.0\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/12_0\n\n  13.0\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/13_0\n\nParadigm-Specific Parameters\n----------------------------\n  Detected paradigm: ssvep\n  Stimulus frequencies: [8.0, 10.0, 12.0, 15.0] Hz\n\nData Structure\n--------------\n  Trials: 3024\n  Trials context: 63 sessions x 48 trials = 3024\n\nBCI Application\n---------------\n  Applications: communication\n  Environment: laboratory\n\nTags\n----\n  Pathology: Healthy\n  Modality: Visual\n  Type: Research\n\nDocumentation\n-------------\n  DOI: 10.1038/s41597-025-04861-9\n  License: CC0\n  Investigators: Eva Guttmann-Flury, Xinjun Sheng, Xiangyang Zhu\n  Institution: Shanghai Jiao Tong University\n  Country: CN\n  Publication year: 2025\n\nReferences\n----------\nGuttmann-Flury, E., Sheng, X., & Zhu, X. (2025). Dataset combining EEG, eye-tracking, and high-speed video for ocular activity analysis across BCI paradigms. Scientific Data, 12, 587. https://doi.org/10.1038/s41597-025-04861-9\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000310",
+    "exists": true,
+    "description": "Guttmann-Flury et al. 2025 (SSVEP) — Dataset combining EEG, eye-tracking, and high-speed video for ocular activity analysis across BCI paradigms",
+    "created_at": "2026-03-28T02:32:55+00:00",
+    "updated_at": "2026-06-03T10:03:20+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

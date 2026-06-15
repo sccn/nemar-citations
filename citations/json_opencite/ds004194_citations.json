@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds004194",
-  "num_citations": 57,
-  "date_last_updated": "2026-05-20T09:24:50.522438+00:00",
+  "num_citations": 54,
+  "date_last_updated": "2026-06-14T14:07:31.911161+00:00",
   "metadata": {
-    "total_cumulative_citations": 273,
-    "fetch_date": "2026-05-20T09:24:50.522438+00:00",
+    "total_cumulative_citations": 282,
+    "fetch_date": "2026-06-14T14:07:31.911161+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -37,35 +39,12 @@
       }
     },
     {
-      "title": "Mapping the dynamics of visual feature coding: Insights into perception and integration",
-      "author": "Tijl Grootswagers, Amanda K. Robinson, Sophia M. Shatek, Thomas A. Carlson",
-      "venue": "PLoS Computational Biology",
-      "year": 2024,
-      "url": "https://doi.org/10.1371/journal.pcbi.1011760",
-      "cited_by": 23,
-      "abstract": "The basic computations performed in the human early visual cortex are the foundation for visual perception. While we know a lot about these computations, a key missing piece is how the coding of visual features relates to our perception of the environment. To investigate visual feature coding, interactions, and their relationship to human perception, we investigated neural responses and perceptual similarity judgements to a large set of visual stimuli that varied parametrically along four feature dimensions. We measured neural responses using electroencephalography (N = 16) to 256 grating stimuli that varied in orientation, spatial frequency, contrast, and colour. We then mapped the response profiles of the neural coding of each visual feature and their interactions, and related these to independently obtained behavioural judgements of stimulus similarity. The results confirmed fundamental principles of feature coding in the visual system, such that all four features were processed sim",
-      "doi": "10.1371/journal.pcbi.1011760",
-      "pmid": "38190390",
-      "openalex_id": "W4390660265",
-      "source_doi": "10.1523/jneurosci.1812-21.2022",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6622333770990373,
-        "similarity_score": 0.5733622312545776,
-        "citation_text_length": 1226,
-        "dataset_text_length": 2394,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Estimating and approaching the maximum information rate of noninvasive visual brain-computer interface",
       "author": "Nanlin Shi, Yining Miao, Changxing Huang, Xiang Li, Yonghao Song, Xiaogang Chen, Yijun Wang, Xiaorong Gao",
       "venue": "NeuroImage",
       "year": 2024,
       "url": "https://doi.org/10.1016/j.neuroimage.2024.120548",
-      "cited_by": 22,
+      "cited_by": 25,
       "abstract": "An essential priority of visual brain-computer interfaces (BCIs) is to enhance the information transfer rate (ITR) to achieve high-speed communication. Despite notable progress, noninvasive visual BCIs have encountered a plateau in ITRs, leaving it uncertain whether higher ITRs are achievable. In this study, we used information theory to study the characteristics and capacity of the visual-evoked channel, which leads us to investigate whether and how we can decode higher information rates in a visual BCI system. Using information theory, we estimate the upper and lower bounds of the information rate with the white noise (WN) stimulus. Consequently, we found out that the information rate is determined by the signal-to-noise ratio (SNR) in the frequency domain, which reflects the spectrum resources of the channel. Based on this discovery, we propose a broadband WN BCI by implementing stimuli on a broader frequency band than the steady-state visual evoked potentials (SSVEPs)-based BCI. Th",
       "doi": "10.1016/j.neuroimage.2024.120548",
       "pmid": "38382863",
@@ -83,12 +62,35 @@
       }
     },
     {
+      "title": "Mapping the dynamics of visual feature coding: Insights into perception and integration",
+      "author": "Tijl Grootswagers, Amanda K. Robinson, Sophia M. Shatek, Thomas A. Carlson",
+      "venue": "PLoS Computational Biology",
+      "year": 2024,
+      "url": "https://doi.org/10.1371/journal.pcbi.1011760",
+      "cited_by": 24,
+      "abstract": "The basic computations performed in the human early visual cortex are the foundation for visual perception. While we know a lot about these computations, a key missing piece is how the coding of visual features relates to our perception of the environment. To investigate visual feature coding, interactions, and their relationship to human perception, we investigated neural responses and perceptual similarity judgements to a large set of visual stimuli that varied parametrically along four feature dimensions. We measured neural responses using electroencephalography (N = 16) to 256 grating stimuli that varied in orientation, spatial frequency, contrast, and colour. We then mapped the response profiles of the neural coding of each visual feature and their interactions, and related these to independently obtained behavioural judgements of stimulus similarity. The results confirmed fundamental principles of feature coding in the visual system, such that all four features were processed sim",
+      "doi": "10.1371/journal.pcbi.1011760",
+      "pmid": "38190390",
+      "openalex_id": "W4390660265",
+      "source_doi": "10.1523/jneurosci.1812-21.2022",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6622333770990373,
+        "similarity_score": 0.5733622312545776,
+        "citation_text_length": 1226,
+        "dataset_text_length": 2394,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Faster Detection of “Darks” than “Brights” by Monkey Superior Colliculus Neurons",
       "author": "Tatiana Malevich, Tong Zhang, Matthias P. Baumann, Amarender R. Bogadhi, Ziad M. Hafed",
       "venue": "Journal of Neuroscience",
       "year": 2022,
       "url": "https://doi.org/10.1523/jneurosci.1489-22.2022",
-      "cited_by": 19,
+      "cited_by": 20,
       "abstract": "Visual processing is segregated into ON and OFF channels as early as in the retina, and the superficial (output) layers of the primary visual cortex (V1) are dominated by neurons preferring dark stimuli. However, it is not clear how the timing of neural processing differs between “darks” and “brights” in general, especially in light of psychophysical evidence; it is also equally not clear how subcortical visual pathways that are critical for active orienting represent stimuli of positive (luminance increments) and negative (luminance decrements) contrast polarity. Here, we recorded from all visually-responsive neuron types in the superior colliculus (SC) of two male rhesus macaque monkeys. We presented a disk (0.51° radius) within the response fields (RFs) of neurons, and we varied, across trials, stimulus Weber contrast relative to a gray background. We also varied contrast polarity. There was a large diversity of preferences for darks and brights across the population. However, regar",
       "doi": "10.1523/jneurosci.1489-22.2022",
       "pmid": "36319117",
@@ -152,6 +154,29 @@
       }
     },
     {
+      "title": "MRS-assessed brain GABA modulation in response to task performance and learning",
+      "author": "Hong Li, Geraldine Rodríguez‐Nieto, Sima Chalavi, Caroline Seer, Mark E. Mikkelsen, Richard A.E. Edden, Stephan P. Swinnen",
+      "venue": "Behavioral and Brain Functions",
+      "year": 2024,
+      "url": "https://doi.org/10.1186/s12993-024-00248-9",
+      "cited_by": 13,
+      "abstract": "Gamma-aminobutyric acid (GABA), the most important inhibitory neurotransmitter in the human brain, has long been considered essential in human behavior in general and learning in particular. GABA concentration can be quantified using magnetic resonance spectroscopy (MRS). Using this technique, numerous studies have reported associations between baseline GABA levels and various human behaviors. However, regional GABA concentration is not fixed and may exhibit rapid modulation as a function of environmental factors. Hence, quantification of GABA levels at several time points during the performance of tasks can provide insights into the dynamics of GABA levels in distinct brain regions. This review reports on findings from studies using repeated measures (n = 41) examining the dynamic modulation of GABA levels in humans in response to various interventions in the perceptual, motor, and cognitive domains to explore associations between GABA modulation and human behavior. GABA levels in a s",
+      "doi": "10.1186/s12993-024-00248-9",
+      "pmid": "39217354",
+      "openalex_id": "W4402079017",
+      "source_doi": "10.1523/jneurosci.1812-21.2022",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.40643332600593574,
+        "similarity_score": 0.35189032554626465,
+        "citation_text_length": 1270,
+        "dataset_text_length": 2394,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "High-performance c-VEP-BCI under minimal calibration",
       "author": "Yining Miao, Nanlin Shi, Changxing Huang, Yonghao Song, Xiaogang Chen, Yijun Wang, Xiaorong Gao",
       "venue": "Expert Systems with Applications",
@@ -175,23 +200,23 @@
       }
     },
     {
-      "title": "MRS-assessed brain GABA modulation in response to task performance and learning",
-      "author": "Hong Li, Geraldine Rodríguez‐Nieto, Sima Chalavi, Caroline Seer, Mark E. Mikkelsen, Richard A.E. Edden, Stephan P. Swinnen",
-      "venue": "Behavioral and Brain Functions",
+      "title": "Pharmacological Elevation of Catecholamine Levels Improves Perceptual Decisions, But Not Metacognitive Insight",
+      "author": "Stijn A. Nuiten, Jan Willem de Gee, Jasper B. Zantvoord, Johannes J. Fahrenfort, Simon van Gaal",
+      "venue": "eNeuro",
       "year": 2024,
-      "url": "https://doi.org/10.1186/s12993-024-00248-9",
-      "cited_by": 11,
-      "abstract": "Gamma-aminobutyric acid (GABA), the most important inhibitory neurotransmitter in the human brain, has long been considered essential in human behavior in general and learning in particular. GABA concentration can be quantified using magnetic resonance spectroscopy (MRS). Using this technique, numerous studies have reported associations between baseline GABA levels and various human behaviors. However, regional GABA concentration is not fixed and may exhibit rapid modulation as a function of environmental factors. Hence, quantification of GABA levels at several time points during the performance of tasks can provide insights into the dynamics of GABA levels in distinct brain regions. This review reports on findings from studies using repeated measures (n = 41) examining the dynamic modulation of GABA levels in humans in response to various interventions in the perceptual, motor, and cognitive domains to explore associations between GABA modulation and human behavior. GABA levels in a s",
-      "doi": "10.1186/s12993-024-00248-9",
-      "pmid": "39217354",
-      "openalex_id": "W4402079017",
+      "url": "https://doi.org/10.1523/eneuro.0019-24.2024",
+      "cited_by": 8,
+      "abstract": "Perceptual decisions are often accompanied by a feeling of decision confidence. Where the parietal cortex is known for its crucial role in shaping such perceptual decisions, metacognitive evaluations are thought to additionally rely on the (pre)frontal cortex. Because of this supposed neural differentiation between these processes, perceptual and metacognitive decisions may be divergently affected by changes in internal (e.g., attention, arousal) and external (e.g., task and environmental demands) factors. Although intriguing, causal evidence for this hypothesis remains scarce. Here, we investigated the causal effect of two neuromodulatory systems on behavioral and neural measures of perceptual and metacognitive decision-making. Specifically, we pharmacologically elevated levels of catecholamines (with atomoxetine) and acetylcholine (with donepezil) in healthy adult human participants performing a visual discrimination task in which we gauged decision confidence, while electroencephalo",
+      "doi": "10.1523/eneuro.0019-24.2024",
+      "pmid": "39029953",
+      "openalex_id": "W4400810390",
       "source_doi": "10.1523/jneurosci.1812-21.2022",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.40643332600593574,
-        "similarity_score": 0.35189032554626465,
-        "citation_text_length": 1270,
+        "confidence_score": 0.44360571384429937,
+        "similarity_score": 0.38407421112060547,
+        "citation_text_length": 1250,
         "dataset_text_length": 2394,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -244,35 +269,12 @@
       }
     },
     {
-      "title": "Pharmacological Elevation of Catecholamine Levels Improves Perceptual Decisions, But Not Metacognitive Insight",
-      "author": "Stijn A. Nuiten, Jan Willem de Gee, Jasper B. Zantvoord, Johannes J. Fahrenfort, Simon van Gaal",
-      "venue": "eNeuro",
-      "year": 2024,
-      "url": "https://doi.org/10.1523/eneuro.0019-24.2024",
-      "cited_by": 6,
-      "abstract": "Perceptual decisions are often accompanied by a feeling of decision confidence. Where the parietal cortex is known for its crucial role in shaping such perceptual decisions, metacognitive evaluations are thought to additionally rely on the (pre)frontal cortex. Because of this supposed neural differentiation between these processes, perceptual and metacognitive decisions may be divergently affected by changes in internal (e.g., attention, arousal) and external (e.g., task and environmental demands) factors. Although intriguing, causal evidence for this hypothesis remains scarce. Here, we investigated the causal effect of two neuromodulatory systems on behavioral and neural measures of perceptual and metacognitive decision-making. Specifically, we pharmacologically elevated levels of catecholamines (with atomoxetine) and acetylcholine (with donepezil) in healthy adult human participants performing a visual discrimination task in which we gauged decision confidence, while electroencephalo",
-      "doi": "10.1523/eneuro.0019-24.2024",
-      "pmid": "39029953",
-      "openalex_id": "W4400810390",
-      "source_doi": "10.1523/jneurosci.1812-21.2022",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.44360571384429937,
-        "similarity_score": 0.38407421112060547,
-        "citation_text_length": 1250,
-        "dataset_text_length": 2394,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Temporal Sensitivity for Achromatic and Chromatic Flicker across the Visual Cortex",
       "author": "Carlyn Patterson Gentile, Manuel Spitschan, Huseyin O. Taskin, Andrew R. Bock, Geoffrey K. Aguirre",
       "venue": "Journal of Neuroscience",
       "year": 2024,
       "url": "https://doi.org/10.1523/jneurosci.1395-23.2024",
-      "cited_by": 5,
+      "cited_by": 6,
       "abstract": "The retinal ganglion cells (RGCs) receive different combinations of L, M, and S cone inputs and give rise to one achromatic and two chromatic postreceptoral channels. The goal of the current study was to determine temporal sensitivity across the three postreceptoral channels in subcortical and cortical regions involved in human vision. We measured functional magnetic resonance imaging (fMRI) responses at 7 T from three participants (two males, one female) viewing a high-contrast, flickering, spatially uniform wide field (∼140°). Stimulus flicker frequency varied logarithmically between 2 and 64 Hz and targeted the L + M + S, L - M, and S - (L + M) cone combinations. These measurements were used to create temporal sensitivity functions of the primary visual cortex (V1) across eccentricity and spatially averaged responses from the lateral geniculate nucleus (LGN), and the V2/V3, hV4, and V3A/B regions. fMRI responses reflected the known properties of the visual system, including higher p",
       "doi": "10.1523/jneurosci.1395-23.2024",
       "pmid": "38621997",
@@ -497,6 +499,29 @@
       }
     },
     {
+      "title": "Machine learning classification of active viewing of pain and non-pain images using EEG does not exceed chance in external validation samples",
+      "author": "Tyler Mari, H. H. Ali, Lucrezia Pacinotti, Sarah Powsey, Nicholas Fallon",
+      "venue": "Cognitive Affective & Behavioral Neuroscience",
+      "year": 2025,
+      "url": "https://doi.org/10.3758/s13415-025-01268-2",
+      "cited_by": 2,
+      "abstract": "Previous research has demonstrated that machine learning (ML) could not effectively decode passive observation of neutral versus pain photographs by using electroencephalogram (EEG) data. Consequently, the present study explored whether active viewing, i.e., requiring participant engagement in a task, of neutral and pain stimuli improves ML performance. Random forest (RF) models were trained on cortical event-related potentials (ERPs) during a two-alternative forced choice paradigm, whereby participants determined the presence or absence of pain in photographs of facial expressions and action scenes. Sixty-two participants were recruited for the model development sample. Moreover, a within-subject temporal validation sample was collected, consisting of 27 subjects. In line with our previous research, three RF models were developed to classify images into faces and scenes, neutral and pain scenes, and neutral and pain expressions. The results demonstrated that the RF successfully classi",
+      "doi": "10.3758/s13415-025-01268-2",
+      "pmid": "39966304",
+      "openalex_id": "W4407680675",
+      "source_doi": "10.1523/jneurosci.1812-21.2022",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5796689790487289,
+        "similarity_score": 0.5018779039382935,
+        "citation_text_length": 1297,
+        "dataset_text_length": 2394,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Feature-invariant processing of spatial segregation based on temporal asynchrony",
       "author": "Yen‐Ju Chen, Zitang Sun, Shin’ya Nishida",
       "venue": "Journal of Vision",
@@ -658,29 +683,6 @@
       }
     },
     {
-      "title": "Machine learning classification of active viewing of pain and non-pain images using EEG does not exceed chance in external validation samples",
-      "author": "Tyler Mari, H. H. Ali, Lucrezia Pacinotti, Sarah Powsey, Nicholas Fallon",
-      "venue": "Cognitive Affective & Behavioral Neuroscience",
-      "year": 2025,
-      "url": "https://doi.org/10.3758/s13415-025-01268-2",
-      "cited_by": 1,
-      "abstract": "Previous research has demonstrated that machine learning (ML) could not effectively decode passive observation of neutral versus pain photographs by using electroencephalogram (EEG) data. Consequently, the present study explored whether active viewing, i.e., requiring participant engagement in a task, of neutral and pain stimuli improves ML performance. Random forest (RF) models were trained on cortical event-related potentials (ERPs) during a two-alternative forced choice paradigm, whereby participants determined the presence or absence of pain in photographs of facial expressions and action scenes. Sixty-two participants were recruited for the model development sample. Moreover, a within-subject temporal validation sample was collected, consisting of 27 subjects. In line with our previous research, three RF models were developed to classify images into faces and scenes, neutral and pain scenes, and neutral and pain expressions. The results demonstrated that the RF successfully classi",
-      "doi": "10.3758/s13415-025-01268-2",
-      "pmid": "39966304",
-      "openalex_id": "W4407680675",
-      "source_doi": "10.1523/jneurosci.1812-21.2022",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5796689790487289,
-        "similarity_score": 0.5018779039382935,
-        "citation_text_length": 1297,
-        "dataset_text_length": 2394,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Robustly encoding certainty in a metastable neural circuit model",
       "author": "Heather L. Cihak, Zachary P. Kilpatrick",
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
@@ -727,29 +729,6 @@
       }
     },
     {
-      "title": "Temporal processing underlying transient twinkle perception in luminance and chromatic stimuli",
-      "author": "Chang-Yeong Han, Seonggyu Choe, Eun Cho, Hyosun Kim, Oh‐Sang Kwon",
-      "venue": "Optics Express",
-      "year": 2025,
-      "url": "https://doi.org/10.1364/oe.565148",
-      "cited_by": 1,
-      "abstract": "Humans can detect transitions of frequencies between two sequentially presented flickering stimuli, even when the two flickering stimuli appear steady, a phenomenon known as transient twinkle perception (TTP). A previous study of TTP has suggested that a temporal integration model with a monophasic Gaussian filter can account for this effect. However, the low-level temporal integration of the human visual system for luminance stimuli has been characterized by a biphasic filter. Here, we measured TTP magnitude under various conditions and evaluated Gaussian and bi-phasic filter models. In Experiment 1, we examined the effect of frequency differences between the first and second epochs on TTP magnitude. Experiments 2 and 3 introduced intermediate frequency frames to gradually transition between flickering frequencies. Experiment 4 assessed TTP magnitude using equiluminant chromatic stimuli. Results showed that, for luminance-based TTP, the bi-phasic filter model better accounted for TTP ",
-      "doi": "10.1364/oe.565148",
-      "pmid": "40733932",
-      "openalex_id": "W4412021676",
-      "source_doi": "10.1523/jneurosci.1812-21.2022",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5279826544225216,
-        "similarity_score": 0.4571278393268585,
-        "citation_text_length": 1212,
-        "dataset_text_length": 2394,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Brain responses vary in duration - modeling strategies and challenges",
       "author": "René Skukies, Judith Schepers, Benedikt Ehinger",
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
@@ -767,6 +746,29 @@
         "confidence_score": 0.5573198756575586,
         "similarity_score": 0.48252803087234497,
         "citation_text_length": 1194,
+        "dataset_text_length": 2394,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Temporal processing underlying transient twinkle perception in luminance and chromatic stimuli",
+      "author": "Chang-Yeong Han, Seonggyu Choe, Eun Cho, Hyosun Kim, Oh‐Sang Kwon",
+      "venue": "Optics Express",
+      "year": 2025,
+      "url": "https://doi.org/10.1364/oe.565148",
+      "cited_by": 1,
+      "abstract": "Humans can detect transitions of frequencies between two sequentially presented flickering stimuli, even when the two flickering stimuli appear steady, a phenomenon known as transient twinkle perception (TTP). A previous study of TTP has suggested that a temporal integration model with a monophasic Gaussian filter can account for this effect. However, the low-level temporal integration of the human visual system for luminance stimuli has been characterized by a biphasic filter. Here, we measured TTP magnitude under various conditions and evaluated Gaussian and bi-phasic filter models. In Experiment 1, we examined the effect of frequency differences between the first and second epochs on TTP magnitude. Experiments 2 and 3 introduced intermediate frequency frames to gradually transition between flickering frequencies. Experiment 4 assessed TTP magnitude using equiluminant chromatic stimuli. Results showed that, for luminance-based TTP, the bi-phasic filter model better accounted for TTP ",
+      "doi": "10.1364/oe.565148",
+      "pmid": "40733932",
+      "openalex_id": "W4412021676",
+      "source_doi": "10.1523/jneurosci.1812-21.2022",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5279826544225216,
+        "similarity_score": 0.4571278393268585,
+        "citation_text_length": 1212,
         "dataset_text_length": 2394,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1078,16 +1080,16 @@
       "year": 2026,
       "url": "https://doi.org/10.64898/2026.05.10.724117",
       "cited_by": 0,
-      "abstract": "Abstract Sensory processing is fundamentally shaped by stimulation history. For example, in visual cortex, neural responses are reduced for repeated or sustained stimuli (adaptation). These phenomena are well characterized and effectively modeled by divisive normalization. We asked whether these same computational principles govern somatosensory processing. We used fMRI (6 participants) and intracranial electroencephalography (iEEG, 2 participants) to measure responses to time-varying vibrotactile stimuli in human somatosensory cortex. Stimuli consisted of single- and paired-pulses with durations and interstimulus intervals ranging from 0.05 to 1.2 s. We extracted BOLD time courses to capture neural response amplitudes, and high-frequency iEEG broadband envelopes to capture fast neural dynamics. In both experiments, we observed pronounced sub-additive temporal summation. Responses to longer or repeated stimuli were consistently lower than predicted by linear integration. Computational ",
+      "abstract": "Sensory processing is fundamentally shaped by stimulation history. For example, in visual cortex, neural responses are reduced for repeated or sustained stimuli (adaptation). These phenomena are well characterized and effectively modeled by divisive normalization. We asked whether these same computational principles govern somatosensory processing. We used fMRI (6 participants) and intracranial electroencephalography (iEEG, 2 participants) to measure responses to time-varying vibrotactile stimuli in human somatosensory cortex. Stimuli consisted of single- and paired-pulses with durations and interstimulus intervals ranging from 0.05 to 1.2 s. We extracted BOLD time courses to capture neural response amplitudes, and high-frequency iEEG broadband envelopes to capture fast neural dynamics. In both experiments, we observed pronounced sub-additive temporal summation. Responses to longer or repeated stimuli were consistently lower than predicted by linear integration. Computational modeling ",
       "doi": "10.64898/2026.05.10.724117",
-      "pmid": null,
+      "pmid": "42182217",
       "openalex_id": "W7160980344",
       "source_doi": "10.1523/jneurosci.1812-21.2022",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6140425398945809,
-        "similarity_score": 0.5316385626792908,
+        "confidence_score": 0.6198785984516144,
+        "similarity_score": 0.536691427230835,
         "citation_text_length": 1388,
         "dataset_text_length": 2394,
         "scoring_method": "sentence_transformers",
@@ -1233,29 +1235,6 @@
       }
     },
     {
-      "title": "The Human Brain as a Dynamic Mixture of Expert Models in Video Understanding",
-      "author": "Christina Sartzetaki, Anne W. Zonneveld, P. Oyarzo, A. T. Gifford, R. Cichy, Pascal Mettes, I. Groen",
-      "venue": "bioRxiv",
-      "year": 2026,
-      "url": "https://doi.org/10.1101/2025.10.27.684803",
-      "cited_by": 2,
-      "abstract": null,
-      "doi": "10.1101/2025.10.27.684803",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1101/2023.09.13.557378",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5031626656651497,
-        "similarity_score": 0.479202538728714,
-        "citation_text_length": 210,
-        "dataset_text_length": 2394,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Temporal adaptation aids object recognition in deep convolutional neural networks in suboptimal viewing scenario’s",
       "author": "Amber Marijn Brands, Georg Lange, Iris I. A. Groen",
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
@@ -1277,68 +1256,22 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Physical, Cognitive, and Emotional Responses and Their Interrelated Effects on Human–Robot Team Performance in Construction",
-      "author": "Francis Baek, John J. Sohn, Juhyeon Bae, Daeho Kim, SangHyun Lee",
-      "venue": "Journal of Construction Engineering and Management",
-      "year": 2026,
-      "url": "https://doi.org/10.1061/jcemd4.coeng-16666",
-      "cited_by": 0,
-      "abstract": null,
-      "doi": "10.1061/jcemd4.coeng-16666",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1101/2023.09.13.557378",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.33461248576641084,
-        "similarity_score": 0.3186785578727722,
-        "citation_text_length": 264,
-        "dataset_text_length": 2394,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Cyclic extranasal neurostimulation for dry eye disease: a 4-week stimulation and 6-week intermission regimen based on neural adaptation dynamics",
-      "author": "Xirenayi Zhuoruo, Yike Li, Yiting Sun, Chongyang Mu, Hong-Cun Sun, Tao Jiang, Chunyang Wang, Ning Wang, Xiuming Jin",
-      "venue": "Eye and Vision",
-      "year": 2025,
-      "url": "https://doi.org/10.1186/s40662-025-00466-w",
-      "cited_by": 0,
-      "abstract": "Extranasal neurostimulation is a promising therapy for aqueous-deficient dry eye (ADDE), but neural adaptation and optimal treatment duration remain poorly characterized. This study investigated duration-dependent neural sensitivity dynamics to formulate an optimized cyclic treatment regimen. In this prospective, randomized, open-label trial, 50 ADDE patients (Schirmer test: 2–5 mm) were assigned to 2-week or 4-week bilateral extranasal neurostimulation (twice daily). Participants were followed for 6 weeks post-treatment. The primary outcomes were neural sensitivity changes (Δ Schirmer) and short-term recovery (6 weeks after stimulation cessation). Secondary endpoints included subjective symptoms and objective signs. Distinct neural adaptation patterns were observed. The 4-week group exhibited reversible neural adaptation, with an attenuated stimulation response at treatment completion (Δ Schirmer: 1.18 ± 4.17 mm, P = 0.051, Cohen's d = 0.28) that fully recovered after the 6-week inter",
-      "doi": "10.1186/s40662-025-00466-w",
-      "pmid": "41327331",
-      "openalex_id": null,
-      "source_doi": "10.1101/2023.09.13.557378",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4809012280404568,
-        "similarity_score": 0.4163646996021271,
-        "citation_text_length": 1312,
-        "dataset_text_length": 2394,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T21:56:33.317582+00:00",
+    "scoring_date": "2026-06-15T01:21:43.727873+00:00",
     "dataset_text_length": 2394,
-    "num_citations_scored": 57,
+    "num_citations_scored": 54,
     "summary_stats": {
-      "mean_confidence": 0.5395336323584381,
-      "median_confidence": 0.5394537489116193,
-      "std_confidence": 0.1092270692730795,
+      "mean_confidence": 0.5451958652502962,
+      "median_confidence": 0.5429232135415079,
+      "std_confidence": 0.10822307791481421,
       "min_confidence": 0.3071105253696442,
       "max_confidence": 0.7992053747177126,
       "high_confidence_count": 4,
-      "medium_confidence_count": 48,
-      "low_confidence_count": 5
+      "medium_confidence_count": 46,
+      "low_confidence_count": 4
     }
   }
 }

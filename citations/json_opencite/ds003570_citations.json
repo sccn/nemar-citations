@@ -1,16 +1,29 @@
 {
   "dataset_id": "ds003570",
-  "num_citations": 48,
-  "date_last_updated": "2026-05-20T07:24:04.967065+00:00",
+  "num_citations": 47,
+  "date_last_updated": "2026-06-14T12:07:09.394020+00:00",
   "metadata": {
-    "total_cumulative_citations": 281,
-    "fetch_date": "2026-05-20T07:24:04.967065+00:00",
+    "total_cumulative_citations": 285,
+    "fetch_date": "2026-06-14T12:07:09.394020+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
-    "anchor_count": 2,
-    "anchor_errors": {}
+    "anchor_count": 1,
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": [
+      {
+        "anchor_identifier": "10.1101/2021.02.25.432633",
+        "anchor_identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "related_work",
+        "paper_title": "Spatiospectral brain networks reflective of improvisational experience",
+        "paper_year": 2021,
+        "paper_venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+        "reason": "The paper uses a paradigm from Goldman et al. (2020) and studies improvisational experience, but does not describe the release of the dataset ds003570."
+      }
+    ]
   },
   "citation_details": [
     {
@@ -19,7 +32,7 @@
       "venue": "Current Opinion in Behavioral Sciences",
       "year": 2019,
       "url": "https://doi.org/10.1016/j.cobeha.2019.02.003",
-      "cited_by": 136,
+      "cited_by": 138,
       "abstract": "Electroencephalographic (EEG) methodology in creativity research has been remarkably fruitful, establishing the potential of EEG to illuminate complex and transient creativity-related neural processes. Here we synthesize recent advances in the field, highlighting empirical work on creativity as divergent thinking, remote associations, musical creativity, and visual imagery. There is a general consensus that alpha-band activity plays a key role in the creative process, though other frequency bands, such as theta and gamma also serve critical functions. We further discuss evidence for electrical stimulation (tDCS and tACS) as a tool for improvements in creative thinking. EEG’s high temporal resolution is supremely suitable for studying creative cognition, and studies continuing to yield new and exciting evidence regarding the local and global neural processes underlying creativity.",
       "doi": "10.1016/j.cobeha.2019.02.003",
       "pmid": null,
@@ -111,7 +124,7 @@
       "venue": "Music & Science",
       "year": 2020,
       "url": "https://doi.org/10.1177/2059204320916849",
-      "cited_by": 7,
+      "cited_by": 8,
       "abstract": "Although Western tonal syntax can generate a very large number of chord successions of various lengths and degrees of complexity, some types of music, from Renaissance dances to recent pop, tend to rely more heavily on the repetition of relatively simple, short harmonic patterns. Doll recently identified short chord progressions commonly found in North American and British popular music and proposed that these chord progressions can be stored in long-term memory in the form of harmonic schemata that allow listeners to hear them as stereotypical chord progressions. However, considering the challenges that many listeners face when trying to consciously grasp harmony, it seems likely that the feelings of remembering chord progressions varies from listener to listener. To investigate these potential differences, we asked 231 listeners with various levels of musical training to rate their confidence on whether or not they had previously heard six diatonic four-chord progressions. To control",
       "doi": "10.1177/2059204320916849",
       "pmid": null,
@@ -157,7 +170,7 @@
       "venue": "Journal of New Music Research",
       "year": 2020,
       "url": "https://doi.org/10.1080/09298215.2020.1716811",
-      "cited_by": 6,
+      "cited_by": 7,
       "abstract": "ABSTRACT Harmonic transcriptions by ear rely heavily on subjective perceptions, which can lead to disagreement between annotators. The current computational metrics employed to measure annotator disagreement are useful for determining similarity on a pitch-class level, but are agnostic to the functional properties of chords. In contrast, music theories like Hugo Riemann's theory of ‘harmonic function’ acknowledge the similarity between chords currently unrecognised by computational metrics. This paper, utilises Riemann's theory to explain the harmonic annotator disagreements in the Chordify Annotator Subjectivity Dataset. This theory allows us to explain 82% of the dataset, compared to the 66% explained using pitch-class based methods alone. This new interdisiplinary application of Riemann's theory increases our understanding of harmonic disagreement and introduces a method for improving harmonic evaluation metrics that takes into account the function of a chord in relation to a tonal ",
       "doi": "10.1080/09298215.2020.1716811",
       "pmid": null,
@@ -244,6 +257,29 @@
       }
     },
     {
+      "title": "Spatiospectral brain networks reflective of improvisational experience",
+      "author": "Josef Faller, Andrew Goldman, Yida Lin, James R. McIntosh, Paul Sajda",
+      "venue": "NeuroImage",
+      "year": 2021,
+      "url": "https://doi.org/10.1016/j.neuroimage.2021.118458",
+      "cited_by": 4,
+      "abstract": "Musical improvisers are trained to categorize certain musical structures into functional classes, which is thought to facilitate improvisation. Using a novel auditory oddball paradigm (Goldman et al., 2020) which enables us to disassociate a deviant (i.e. musical chord inversion) from a consistent functional class, we recorded scalp EEG from a group of musicians who spanned a range of improvisational and classically trained experience. Using a spatiospectral based inter and intra network connectivity analysis, we found that improvisers showed a variety of differences in connectivity within and between large-scale cortical networks compared to classically trained musicians, as a function of deviant type. Inter-network connectivity in the alpha band, for a time window leading up to the behavioural response, was strongly linked to improvisation experience, with the default mode network acting as a hub. Spatiospectral networks post response were substantially different between improvisers ",
+      "doi": "10.1016/j.neuroimage.2021.118458",
+      "pmid": "34363958",
+      "openalex_id": "W3188855082",
+      "source_doi": "10.1177/0305735618779444",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7110100024938584,
+        "similarity_score": 0.6155930757522583,
+        "citation_text_length": 1188,
+        "dataset_text_length": 2153,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Melodic Transformation in George Garzone’s Triadic Chromatic Approach; or, Jazz, Math, and Basket Weaving",
       "author": "Jonathan De Souza",
       "venue": "Music Theory Spectrum",
@@ -307,29 +343,6 @@
         "confidence_score": 0.5047928702831269,
         "similarity_score": 0.43705010414123535,
         "citation_text_length": 1128,
-        "dataset_text_length": 2153,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Spatiospectral brain networks reflective of improvisational experience",
-      "author": "Josef Faller, Andrew Goldman, Yida Lin, James R. McIntosh, Paul Sajda",
-      "venue": "NeuroImage",
-      "year": 2021,
-      "url": "https://doi.org/10.1016/j.neuroimage.2021.118458",
-      "cited_by": 3,
-      "abstract": "Musical improvisers are trained to categorize certain musical structures into functional classes, which is thought to facilitate improvisation. Using a novel auditory oddball paradigm (Goldman et al., 2020) which enables us to disassociate a deviant (i.e. musical chord inversion) from a consistent functional class, we recorded scalp EEG from a group of musicians who spanned a range of improvisational and classically trained experience. Using a spatiospectral based inter and intra network connectivity analysis, we found that improvisers showed a variety of differences in connectivity within and between large-scale cortical networks compared to classically trained musicians, as a function of deviant type. Inter-network connectivity in the alpha band, for a time window leading up to the behavioural response, was strongly linked to improvisation experience, with the default mode network acting as a hub. Spatiospectral networks post response were substantially different between improvisers ",
-      "doi": "10.1016/j.neuroimage.2021.118458",
-      "pmid": "34363958",
-      "openalex_id": "W3188855082",
-      "source_doi": "10.1177/0305735618779444",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7110100024938584,
-        "similarity_score": 0.6155930757522583,
-        "citation_text_length": 1188,
         "dataset_text_length": 2153,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -707,18 +720,18 @@
       "title": "A neuropsychophilosophical investigation of musical improvisation",
       "author": "Keith Phillips",
       "venue": "n/a",
-      "year": 2018,
-      "url": "n/a",
+      "year": 2026,
+      "url": "https://doi.org/10.83056/mmu.32479599",
       "cited_by": 0,
       "abstract": "Musical improvisation, spontaneous and creative play with musical materials, offers opportunities to understand aspects of creative cognition and of the human condition in navigating an unpredictable world. This research investigated the role of auditory imagery, the imagination of the sound of the music, in improvisation. Two complementary approaches were adopted. The first addressed improvisers’ experience with a focus on the role of auditory imagery and its relationship to their views on improvisation, mind and body, using qualitative interview and survey methods. Two studies were carried out with findings that suggest that anticipatory auditory imagery is regarded as an essential element which validates improvisation as a creative practice. The second approach investigated the embodied aspect of anticipatory imagery in an experimental setting. A new guitar-based altered auditory feedback paradigm was developed to find out about the effects of the familiarity of hand shape on judgem",
-      "doi": null,
+      "doi": "10.83056/mmu.32479599",
       "pmid": null,
       "openalex_id": "W2957837376",
       "source_doi": "10.1177/0305735618779444",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5507416069507599,
+        "confidence_score": 0.5782786872982979,
         "similarity_score": 0.5006741881370544,
         "citation_text_length": 1121,
         "dataset_text_length": 2153,
@@ -1093,45 +1106,22 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Contrast Sensitivity Predicts 30-month Functional Brain Network Integrity in Cognitively Unimpaired Older Adults: the Brain Networks and Mobility Study",
-      "author": "Alexis D. Tanase, Haiying Chen, Michael E. Miller, C. Hugenschmidt, Jeff D. Williamson, Stephen B Kritchevsky, R. Lyday, Paul J. Laurienti, Atalie C. Thompson",
-      "venue": "The Journals of Gerontology Series A: Biological Sciences and Medical Sciences",
-      "year": 2025,
-      "url": "https://doi.org/10.1093/gerona/glaf098",
-      "cited_by": 1,
-      "abstract": "Abstract Background Visual contrast sensitivity (CS) is critical to many functions in older adults and is associated with brain network community structure, but the direction of the relationship between CS and the brain remains unclear. Methods We evaluated whether baseline binocular CS predicts 30-month functional brain network organization in 172 community-dwelling older adults (mean age 76.4 ± 4.8 years, 56.4% female, 11.6% non-White/Hispanic) that underwent functional MRI at rest and during a motor imagery task. We constructed separate distance regression models for each of the 8 subnetworks covering the entire brain, while controlling for the baseline brain networks, sex, and the number of volumes removed during motion scrubbing from head motion in the scanner. Results Worse baseline CS predicted lower community structure integrity at 30 months in the visual network (β = 0.0115; p < .0001), dorsal attention network (β = 0.0075; p = .0089), and default mode network both at rest (β ",
-      "doi": "10.1093/gerona/glaf098",
-      "pmid": "40326425",
-      "openalex_id": null,
-      "source_doi": "10.1101/2021.02.25.432633",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.35531110391020776,
-        "similarity_score": 0.30762866139411926,
-        "citation_text_length": 1426,
-        "dataset_text_length": 2153,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T21:51:08.569347+00:00",
+    "scoring_date": "2026-06-15T01:15:39.158848+00:00",
     "dataset_text_length": 2153,
-    "num_citations_scored": 48,
+    "num_citations_scored": 47,
     "summary_stats": {
-      "mean_confidence": 0.44157006180069097,
-      "median_confidence": 0.4621918646991253,
-      "std_confidence": 0.13791970285281321,
+      "mean_confidence": 0.44399125410362766,
+      "median_confidence": 0.4634761807322503,
+      "std_confidence": 0.13930704072469305,
       "min_confidence": 0.07365151830017568,
       "max_confidence": 0.7110100024938584,
       "high_confidence_count": 1,
       "medium_confidence_count": 35,
-      "low_confidence_count": 12
+      "low_confidence_count": 11
     }
   }
 }

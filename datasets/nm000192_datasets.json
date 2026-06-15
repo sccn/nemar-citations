@@ -1,0 +1,69 @@
+{
+  "dataset_id": "nm000192",
+  "date_retrieved": "2026-06-14T10:00:52.475985+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2015-006 Music BCI dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "M S Treder",
+      "H Purwins",
+      "D Miklody",
+      "I Sturm",
+      "B Blankertz"
+    ],
+    "Acknowledgements": "We acknowledge financial support by the German Bundesministerium für Bildung und Forschung (Grant Nos. 16SV5839 and 01GQ0850).",
+    "Funding": [
+      "German Bundesministerium für Bildung und Forschung (Grant Nos. 16SV5839 and 01GQ0850)"
+    ],
+    "EthicsApprovals": [
+      "Declaration of Helsinki"
+    ],
+    "ReferencesAndLinks": [
+      "https://github.com/bbci/bbci_public/blob/master/doc/index.markdown",
+      "10.1088/1741-2560/11/2/026009"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1088/1741-2560/11/2/026009",
+        "URL": "https://github.com/bbci/bbci_public/blob/master/doc/index.markdown"
+      }
+    ],
+    "Keywords": [
+      "brain–computer interface",
+      "EEG",
+      "auditory",
+      "music",
+      "attention",
+      "oddball paradigm",
+      "P300"
+    ],
+    "PublicationYear": 2014,
+    "DatasetDOI": "10.82901/nemar.nm000192",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000192-blue)](https://doi.org/10.82901/nemar.nm000192)\n\n# BNCI 2015-006 Music BCI dataset\n\nBNCI 2015-006 Music BCI dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2015-006\n- **Paradigm**: p300\n- **DOI**: 10.1088/1741-2560/11/2/026009\n- **Subjects**: 11\n- **Sessions per subject**: 1\n- **Events**: Target=1, NonTarget=2\n- **Trial interval**: [0, 1.0] s\n- **File format**: gdf\n- **Data preprocessed**: True\n- **Contributing labs**: Neurotechnology Group TU Berlin, Bernstein Focus Neurotechnology, Aalborg University Copenhagen, Berlin School of Mind and Brain\n\n## Acquisition\n\n- **Sampling rate**: 200.0 Hz\n- **Number of channels**: 64\n- **Channel types**: eeg=64\n- **Channel names**: AF3, AF4, AF7, AF8, C1, C2, C3, C4, C5, C6, CP1, CP2, CP3, CP4, CP5, CP6, CPz, Cz, EOGvu, F1, F10, F2, F3, F4, F5, F6, F7, F8, F9, FC1, FC2, FC3, FC4, FC5, FC6, FCz, FT7, FT8, Fp1, Fp2, Fz, O1, O2, Oz, P1, P10, P2, P3, P4, P5, P6, P7, P8, P9, PO3, PO4, PO7, PO8, POz, Pz, T7, T8, TP7, TP8\n- **Montage**: 10-10\n- **Hardware**: Brain Products\n- **Reference**: left mastoid\n- **Ground**: forehead\n- **Sensor type**: active electrode\n- **Line frequency**: 50.0 Hz\n- **Online filters**: {'bandpass': [0.016, 250]}\n- **Impedance threshold**: 20.0 kOhm\n- **Cap manufacturer**: Brain Products\n- **Cap model**: actiCAP\n- **Electrode type**: active\n\n## Participants\n\n- **Number of subjects**: 11\n- **Health status**: patients\n- **Clinical population**: Healthy\n- **Age**: mean=28.0, min=21, max=50\n- **Gender distribution**: male=7, female=4\n- **Handedness**: all but one right-handed\n- **BCI experience**: naive\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Task type**: auditory oddball\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Trial duration**: 40.0 s\n- **Tasks**: selective auditory attention, deviant counting\n- **Study design**: Multi-streamed musical oddball paradigm with three concurrent instruments. Participants attended to one instrument and counted deviants while ignoring the other two instruments. Two music conditions tested: Synth-Pop (bass, drums, keyboard) and Jazz (double-bass, piano, flute).\n- **Study domain**: auditory BCI\n- **Feedback type**: none\n- **Stimulus type**: musical oddball\n- **Stimulus modalities**: visual, auditory\n- **Primary modality**: auditory\n- **Synchronicity**: asynchronous\n- **Mode**: offline\n- **Training/test split**: False\n- **Instructions**: Attend to cued instrument, count the number of deviants in that instrument, ignore other two instruments, maintain fixation on cross, minimize eye movements\n- **Stimulus presentation**: visual_cue=instrument indication, fixation_cross=continuous during music playback, music_clips=40-second polyphonic music\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n- **Number of targets**: 3\n\n## Data Structure\n\n- **Trials**: 3-7 deviants per instrument per clip\n- **Blocks per session**: 10\n- **Trials context**: per_instrument_per_clip\n\n## Preprocessing\n\n- **Data state**: epoched\n- **Preprocessing applied**: True\n- **Steps**: downsampling, lowpass filtering, epoching, baseline correction, artifact rejection\n- **Lowpass filter**: 42.0 Hz\n- **Filter type**: Chebyshev\n- **Artifact methods**: min-max criterion (100 μV threshold on Fp1 or Fp2)\n- **Downsampled to**: 250.0 Hz\n- **Epoch window**: [-0.2, 1.2]\n- **Notes**: Artifact rejection applied only to training set, preserved in test set. Passbands: 42 Hz, stopbands: 49 Hz for Chebyshev filter.\n\n## Signal Processing\n\n- **Classifiers**: LDA with shrinkage covariance\n- **Feature extraction**: spatio-temporal features, voltage averaging in time windows\n- **Frequency bands**: alpha=[8, 13] Hz\n\n## Cross-Validation\n\n- **Method**: leave-one-clip-out\n- **Evaluation type**: cross_trial\n\n## Performance (Original Study)\n\n- **Accuracy**: 91.0%\n- **Binary Classifier Accuracy Synth Pop**: 69.25\n- **Binary Classifier Accuracy Jazz**: 71.47\n- **Posterior Probability Accuracy Synth Pop**: 91.0\n- **Posterior Probability Accuracy Jazz**: 91.5\n\n## BCI Application\n\n- **Applications**: communication, speller, message selection\n- **Environment**: laboratory\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Auditory\n- **Type**: Perception, Attention\n\n## Documentation\n\n- **Description**: Multi-streamed musical oddball paradigm for auditory BCI. Each of three concurrent instruments has its own standard and deviant patterns. Participants selectively attend to one instrument to detect deviants.\n- **DOI**: 10.1088/1741-2560/11/2/026009\n- **Associated paper DOI**: 10.1088/1741-2560/11/2/026009\n- **License**: CC-BY-NC-ND-4.0\n- **Investigators**: M S Treder, H Purwins, D Miklody, I Sturm, B Blankertz\n- **Senior author**: B Blankertz\n- **Contact**: matthias.treder@tu-berlin.de\n- **Institution**: Technische Universität Berlin\n- **Department**: Neurotechnology Group; Bernstein Focus: Neurotechnology\n- **Address**: Berlin, Germany\n- **Country**: Germany\n- **Repository**: GitHub\n- **Data URL**: https://github.com/bbci/bbci_public/blob/master/doc/index.markdown\n- **Publication year**: 2014\n- **Funding**: German Bundesministerium für Bildung und Forschung (Grant Nos. 16SV5839 and 01GQ0850)\n- **Ethics approval**: Declaration of Helsinki\n- **Acknowledgements**: We acknowledge financial support by the German Bundesministerium für Bildung und Forschung (Grant Nos. 16SV5839 and 01GQ0850).\n- **Keywords**: brain–computer interface, EEG, auditory, music, attention, oddball paradigm, P300\n\n## Abstract\n\nPolyphonic music (music consisting of several instruments playing in parallel) is an intuitive way of embedding multiple information streams. The different instruments in a musical piece form concurrent information streams that seamlessly integrate into a coherent and hedonistically appealing entity. Here, we explore polyphonic music as a novel stimulation approach for use in a brain–computer interface. In a multi-streamed oddball experiment, we had participants shift selective attention to one out of three different instruments in music audio clips. Each instrument formed an oddball stream with its own specific standard stimuli (a repetitive musical pattern) and oddballs (deviating musical pattern). Contrasting attended versus unattended instruments, ERP analysis shows subject- and instrument-specific responses including P300 and early auditory components. The attended instrument can be classified offline with a mean accuracy of 91% across 11 participants. This is a proof of concept that attention paid to a particular instrument in polyphonic music can be inferred from ongoing EEG, a finding that is potentially relevant for both brain–computer interface and music research.\n\n## Methodology\n\nParticipants listened to 40-second polyphonic music clips with three concurrent instruments (Synth-Pop: bass, drums, keyboard; Jazz: double-bass, piano, flute). Each instrument had standard patterns and infrequent deviants (3-7 per clip). Participants were cued to attend to one instrument and count deviants. EEG recorded at 1000 Hz with 64 electrodes, downsampled to 250 Hz, lowpass filtered (Chebyshev, 42 Hz passband), epoched (-200 to 1200 ms), baseline corrected, and artifact rejected. Two classification approaches: (1) general binary classifier and (2) instrument-specific classifiers with posterior probabilities. Features: spatio-temporal (3 time intervals × 63 electrodes = 189 dimensions). LDA with shrinkage covariance. Leave-one-clip-out cross-validation. Main experiment: 10 blocks of 21 clips (7 clips per instrument as target). Total: 3 Synth-Pop mixed blocks, 3 Jazz mixed blocks, 2 Synth-Pop solo blocks, 2 Jazz solo blocks.\n\n## References\n\nTreder, M. S., Purwins, H., Miklody, D., Sturm, I., & Blankertz, B. (2014). Decoding auditory attention to instruments in polyphonic music using single-trial EEG classification. Journal of Neural Engineering, 11(2), 026009. https://doi.org/10.1088/1741-2560/11/2/026009\n\nNotes\n\n.. versionadded:: 1.2.0\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000192",
+    "exists": true,
+    "description": "BNCI 2015-006 Music BCI dataset",
+    "created_at": "2026-03-24T00:25:10+00:00",
+    "updated_at": "2026-06-02T01:15:58+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds006012",
-  "num_citations": 9,
-  "date_last_updated": "2026-05-20T15:25:40.188862+00:00",
+  "num_citations": 11,
+  "date_last_updated": "2026-06-14T21:07:49.688513+00:00",
   "metadata": {
-    "total_cumulative_citations": 26,
-    "fetch_date": "2026-05-20T15:25:40.188862+00:00",
+    "total_cumulative_citations": 31,
+    "fetch_date": "2026-06-14T21:07:49.688513+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -19,7 +21,7 @@
       "venue": "Trends in cognitive sciences",
       "year": 2025,
       "url": "https://doi.org/10.1016/j.tics.2025.03.001",
-      "cited_by": 13,
+      "cited_by": 15,
       "abstract": "Concepts of exact number are often thought to originate from counting and the successor function, or from a refinement of the approximate number system (ANS). We argue here for a third origin: a shared language-of-thought (LoT) for geometry and arithmetic that involves primitives of repetition, concatenation, and recursive embedding. Applied to sets, those primitives engender concepts of exact integers through recursive applications of additions and multiplications. Links between geometry and arithmetic also explain the emergence of higher-level notions (squares, primes, etc.). Under our hypothesis, understanding a number means having one or several mental expressions for it, and their minimal description length (MDL) determines how easily they can be mentally manipulated. Several historical, developmental, linguistic, and brain imaging phenomena provide preliminary support for our proposal.",
       "doi": "10.1016/j.tics.2025.03.001",
       "pmid": "40234140",
@@ -42,7 +44,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2506.14432",
-      "cited_by": 6,
+      "cited_by": 8,
       "abstract": "We present FOMO260K, a large-scale, heterogeneous dataset of 260,927 brain Magnetic Resonance Imaging (MRI) scans from 77,589 MRI sessions and 55,378 subjects, aggregated from 910 publicly available sources. The dataset includes both clinical- and research-grade images, multiple MRI sequences, and a wide range of anatomical and pathological variability, including scans with large brain anomalies. Minimal preprocessing was applied to preserve the original image characteristics while reducing entry barriers for new users. Companion code for self-supervised pretraining and finetuning is provided, along with pretrained models. FOMO260K is intended to support the development and benchmarking of self-supervised learning methods in medical imaging at scale.",
       "doi": "10.48550/arXiv.2506.14432",
       "pmid": null,
@@ -129,6 +131,29 @@
       }
     },
     {
+      "title": "Geometric properties of musical scales constitute a representational primitive in melodic processing",
+      "author": "Omri Raccah, Michael Seltenreich, Claire Pelofi, Fred Lerdahl, David Poeppel",
+      "venue": "iScience",
+      "year": 2025,
+      "url": "https://doi.org/10.1016/j.isci.2025.113701",
+      "cited_by": 1,
+      "abstract": "Summary Uncovering the mental representations underlying symbolic domains is a long-standing goal of cognitive science. Music, a relatively unexplored aspect of cognition, presents a unique testbed for understanding the format of symbolic representations. Theoretical accounts have emphasized the geometric structure underlying musical scales, yet empirical work directly engaging with these structures remains limited. Based on data collected from 961 participants across four experiments, we demonstrate that certain geometric structures strongly modulate perceptual sensitivity to out-of-scale notes in melodies. Furthermore, we show that geometric regularity predicts sensitivity to note deviations across diverse musical structures. Crucially, these effects persist even in an entirely unfamiliar tuning system, suggesting the role of specific geometric properties independent of learned cultural associations. Our findings situate scale geometry as a critical, time-invariant representation in ",
+      "doi": "10.1016/j.isci.2025.113701",
+      "pmid": "41362769",
+      "openalex_id": null,
+      "source_doi": "10.1101/2024.03.13.584141",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6593584781885148,
+        "similarity_score": 0.5708731412887573,
+        "citation_text_length": 1223,
+        "dataset_text_length": 2407,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Brain mechanisms of mathematical development: A longitudinal fMRI study from preschool to second grade",
       "author": "Théo Morfoisse, Severine Becuwe, Marie Palu, Cassandra Potier-Watkins, Ghislaine Dehaene-Lambertz, Stanislas Dehaene",
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
@@ -175,22 +200,45 @@
       }
     },
     {
+      "title": "Impact of Education and Music Training on the Development of Abstract Thinking in the First Years of Schooling",
+      "author": "Théo Morfoisse, Séverine Becuwe, Marie Palu, Cassandra Potier Watkins, Ghislaine Dehaene-Lambertz, S. Dehaene",
+      "venue": "Open Mind : Discoveries in Cognitive Science",
+      "year": 2026,
+      "url": "https://doi.org/10.1162/OPMI.a.354",
+      "cited_by": 0,
+      "abstract": "Abstract Plato’s Republic, Einstein’s Theory of relativity, Vivaldi’s Four Seasons are all remarkable examples of humans’ unique ability to create and manipulate complex abstract structures, whether in language, mathematics, or music. Yet the mechanisms by which children develop such abstract thinking, and the role of education and structured experiences such as musical practice in shaping these abilities remains unclear. To explore these questions, we conducted cross-sectional behavioral experiments with 528 children aged 4 to 8, spanning four educational grades, half of whom participated in a violin training program, from age four. Two experiments examined how children encode, process, and compress auditory sequences and visual patterns, while a third examined their sensitivity to geometric regularities. Our results reveal the emergence of symbolic reasoning as early as the start of formal schooling, with deeper abstraction as a function of grade. By first grade, children encoded com",
+      "doi": "10.1162/OPMI.a.354",
+      "pmid": "42245994",
+      "openalex_id": null,
+      "source_doi": "10.1101/2024.03.13.584141",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.518628596663475,
+        "similarity_score": 0.4490290880203247,
+        "citation_text_length": 1302,
+        "dataset_text_length": 2407,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Large-scale functional overlap between dorsal and ventral object-responsive networks",
       "author": "Claire Simmons, Marlene Behrmann, Vladislav Ayzenberg",
       "venue": "Research Square",
       "year": 2026,
       "url": "https://doi.org/10.21203/rs.3.rs-9180836/v1",
       "cited_by": 0,
-      "abstract": "Abstract The processes of recognizing objects and acting upon or with them have traditionally been attributed to computations associated with ventral and dorsal visual pathways, respectively. Accumulating evidence indicates that specific regions of the two pathways interact but the extent and strength of the whole-brain network connectivity remain to be evaluated. Here, in two experiments, we characterized the whole-brain network connections of object-selective seeds in each pathway using multiple analytic approaches with functional MRI data acquired while participants viewed objects. The results revealed substantial spatial overlap in connectivity in the networks generated from a dorsal and a ventral seed — with greater similarity of these object networks within an individual than the similarity of each network separately across individuals. This overlap persisted for both tools and non-tools even after controlling for the shared variance between pathways. Notably, the dorsal pathway ",
+      "abstract": "The processes of recognizing objects and acting upon or with them have traditionally been attributed to computations associated with ventral and dorsal visual pathways, respectively. Accumulating evidence indicates that specific regions of the two pathways interact but the extent and strength of the whole-brain network connectivity remain to be evaluated. Here, in two experiments, we characterized the whole-brain network connections of object-selective seeds in each pathway using multiple analytic approaches with functional MRI data acquired while participants viewed objects. The results revealed substantial spatial overlap in connectivity in the networks generated from a dorsal and a ventral seed — with the greater similarity of these object networks within an individual than the similarity of each network separately across individuals. This overlap persisted for both tools and non-tools even after controlling for the shared variance between pathways. Notably, the dorsal pathway showe",
       "doi": "10.21203/rs.3.rs-9180836/v1",
-      "pmid": null,
+      "pmid": "42040961",
       "openalex_id": null,
       "source_doi": "10.1101/2024.03.13.584141",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5047458502650262,
-        "similarity_score": 0.43700939416885376,
+        "confidence_score": 0.5069043651223184,
+        "similarity_score": 0.43887823820114136,
         "citation_text_length": 1191,
         "dataset_text_length": 2407,
         "scoring_method": "sentence_transformers",
@@ -223,17 +271,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:12:21.473360+00:00",
+    "scoring_date": "2026-06-15T01:39:34.074994+00:00",
     "dataset_text_length": 2407,
-    "num_citations_scored": 9,
+    "num_citations_scored": 11,
     "summary_stats": {
-      "mean_confidence": 0.5608565581838291,
+      "mean_confidence": 0.5661686012148858,
       "median_confidence": 0.536071371138096,
-      "std_confidence": 0.12961332080084642,
+      "std_confidence": 0.1214062964969571,
       "min_confidence": 0.38525676280260096,
       "max_confidence": 0.8324199575185777,
       "high_confidence_count": 1,
-      "medium_confidence_count": 7,
+      "medium_confidence_count": 9,
       "low_confidence_count": 1
     }
   }

@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds004505",
   "num_citations": 26,
-  "date_last_updated": "2026-05-20T10:24:48.513012+00:00",
+  "date_last_updated": "2026-06-14T15:07:56.021548+00:00",
   "metadata": {
-    "total_cumulative_citations": 330,
-    "fetch_date": "2026-05-20T10:24:48.513012+00:00",
+    "total_cumulative_citations": 337,
+    "fetch_date": "2026-06-14T15:07:56.021548+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -19,7 +21,7 @@
       "venue": "Science Robotics",
       "year": 2023,
       "url": "https://doi.org/10.1126/scirobotics.adf1080",
-      "cited_by": 77,
+      "cited_by": 78,
       "abstract": "Maintaining balance throughout daily activities is challenging because of the unstable nature of the human body. For instance, a person's delayed reaction times limit their ability to restore balance after disturbances. Wearable exoskeletons have the potential to enhance user balance after a disturbance by reacting faster than physiologically possible. However, \"artificially fast\" balance-correcting exoskeleton torque may interfere with the user's ensuing physiological responses, consequently hindering the overall reactive balance response. Here, we show that exoskeletons need to react faster than physiological responses to improve standing balance after postural perturbations. Delivering ankle exoskeleton torque before the onset of physiological reactive joint moments improved standing balance by 9%, whereas delaying torque onset to coincide with that of physiological reactive ankle moments did not. In addition, artificially fast exoskeleton torque disrupted the ankle mechanics that g",
       "doi": "10.1126/scirobotics.adf1080",
       "pmid": "36791215",
@@ -42,7 +44,7 @@
       "venue": "Brain Sciences",
       "year": 2023,
       "url": "https://doi.org/10.3390/brainsci13040660",
-      "cited_by": 51,
+      "cited_by": 52,
       "abstract": "Biofeedback training is a method commonly used in various fields of life, for example, in medicine, sports training or business. In recent studies, it has been shown that biofeedback, and neurofeedback, can affect the performance of professional athletes. Training based on the neurofeedback method includes exercising the brain waves. The aim of the article is to evaluate the influence of neurofeedback training on the physical fitness of professional athletes representing various sports disciplines, such as judo, volleyball and soccer. Based on 10 scientific papers from various sources, including PubMed, the latest research on neurofeedback and its impact on athletes has been reviewed. On the basis of the literature review from 2012 to 2022 on the neurofeedback method in sports training, it can be stated that this type of practice has a significant impact on physical fitness and sports performance. This review comprised 10 research studies with 491 participants in the neurofeedback grou",
       "doi": "10.3390/brainsci13040660",
       "pmid": "37190625",
@@ -134,7 +136,7 @@
       "venue": "Sensors",
       "year": 2023,
       "url": "https://doi.org/10.3390/s23198214",
-      "cited_by": 16,
+      "cited_by": 17,
       "abstract": "The goal of this study was to test a novel approach (iCanClean) to remove non-brain sources from scalp EEG data recorded in mobile conditions. We created an electrically conductive phantom head with 10 brain sources, 10 contaminating sources, scalp, and hair. We tested the ability of iCanClean to remove artifacts while preserving brain activity under six conditions: Brain, Brain + Eyes, Brain + Neck Muscles, Brain + Facial Muscles, Brain + Walking Motion, and Brain + All Artifacts. We compared iCanClean to three other methods: Artifact Subspace Reconstruction (ASR), Auto-CCA, and Adaptive Filtering. Before and after cleaning, we calculated a Data Quality Score (0–100%), based on the average correlation between brain sources and EEG channels. iCanClean consistently outperformed the other three methods, regardless of the type or number of artifacts present. The most striking result was for the condition with all artifacts simultaneously present. Starting from a Data Quality Score of 15.7",
       "doi": "10.3390/s23198214",
       "pmid": "37837044",
@@ -203,7 +205,7 @@
       "venue": "Review of General Psychology",
       "year": 2024,
       "url": "https://doi.org/10.1177/10892680231224399",
-      "cited_by": 10,
+      "cited_by": 11,
       "abstract": "The integration of neuroscience and psychotherapy research has long been a topic of interest in the field of mental health. A significant challenge in psychotherapy research is understanding the dyadic interaction between patient and therapist. This interaction is complex, emerging from a myriad of multi-level factors such as gestures, verbal communication, mentalization, and environmental influences. This article aims to present a roadmap for the future integration of neuroscience and psychotherapy research, addressing the complexities of human interaction. We introduce the 4E/MoBI approach, a framework that combines theoretical and methodological tools to study the dynamics of the brain, body, and environment in real-world settings. This approach emphasizes the use of physiological systems (e.g., heart and brain), behavioral interactions (e.g., conversations and eye-tracking), and environmental video recordings. Additionally, the scalable experimental design (SED) heuristic is discus",
       "doi": "10.1177/10892680231224399",
       "pmid": null,
@@ -238,6 +240,29 @@
         "confidence_score": 0.41486263275146484,
         "similarity_score": 0.3951072692871094,
         "citation_text_length": 172,
+        "dataset_text_length": 1060,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Preprocessing choices for <scp>P3</scp> analyses with mobile <scp>EEG</scp> : A systematic literature review and interactive exploration",
+      "author": "Nadine Jacobsen, Daniel Kristanto, Suong Welp, Yusuf Coşku Inceler, Stefan Debener",
+      "venue": "Psychophysiology",
+      "year": 2024,
+      "url": "https://doi.org/10.1111/psyp.14743",
+      "cited_by": 10,
+      "abstract": "Preprocessing is necessary to extract meaningful results from electroencephalography (EEG) data. With many possible preprocessing choices, their impact on outcomes is fundamental. While previous studies have explored the effects of preprocessing on stationary EEG data, this research delves into mobile EEG, where complex processing is necessary to address motion artifacts. Specifically, we describe the preprocessing choices studies reported for analyzing the P3 event-related potential (ERP) during walking and standing. A systematic review of 258 studies of the P3 during walking, identified 27 studies meeting the inclusion criteria. Two independent coders extracted preprocessing choices reported in each study. Analysis of preprocessing choices revealed commonalities and differences, such as the widespread use of offline filters but limited application of line noise correction (3 of 27 studies). Notably, 59% of studies involved manual processing steps, and 56% omitted reporting critical p",
+      "doi": "10.1111/psyp.14743",
+      "pmid": "39697161",
+      "openalex_id": "W4405590176",
+      "source_doi": "10.3390/s22155867",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4630154809355736,
+        "similarity_score": 0.4008792042732239,
+        "citation_text_length": 1273,
         "dataset_text_length": 1060,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -284,29 +309,6 @@
         "confidence_score": 0.5951658958196641,
         "similarity_score": 0.515295147895813,
         "citation_text_length": 1299,
-        "dataset_text_length": 1060,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Preprocessing choices for <scp>P3</scp> analyses with mobile <scp>EEG</scp> : A systematic literature review and interactive exploration",
-      "author": "Nadine Jacobsen, Daniel Kristanto, Suong Welp, Yusuf Coşku Inceler, Stefan Debener",
-      "venue": "Psychophysiology",
-      "year": 2024,
-      "url": "https://doi.org/10.1111/psyp.14743",
-      "cited_by": 9,
-      "abstract": "Preprocessing is necessary to extract meaningful results from electroencephalography (EEG) data. With many possible preprocessing choices, their impact on outcomes is fundamental. While previous studies have explored the effects of preprocessing on stationary EEG data, this research delves into mobile EEG, where complex processing is necessary to address motion artifacts. Specifically, we describe the preprocessing choices studies reported for analyzing the P3 event-related potential (ERP) during walking and standing. A systematic review of 258 studies of the P3 during walking, identified 27 studies meeting the inclusion criteria. Two independent coders extracted preprocessing choices reported in each study. Analysis of preprocessing choices revealed commonalities and differences, such as the widespread use of offline filters but limited application of line noise correction (3 of 27 studies). Notably, 59% of studies involved manual processing steps, and 56% omitted reporting critical p",
-      "doi": "10.1111/psyp.14743",
-      "pmid": "39697161",
-      "openalex_id": "W4405590176",
-      "source_doi": "10.3390/s22155867",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4630154809355736,
-        "similarity_score": 0.4008792042732239,
-        "citation_text_length": 1273,
         "dataset_text_length": 1060,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -410,7 +412,7 @@
       "venue": "Imaging Neuroscience",
       "year": 2025,
       "url": "https://doi.org/10.1162/imag.a.1039",
-      "cited_by": 2,
+      "cited_by": 3,
       "abstract": "Walking on uneven terrain becomes more difficult as we age, and gait becomes less automatic. Using mobile brain imaging via high-density electroencephalography (EEG) can provide insight into the neural mechanisms contributing to reduced mobility capability with aging. The objective of this study was to quantify age differences in electrocortical dynamics during uneven terrain walking, both averaged across many strides and variations within a stride. We included 31 young adults and 71 older adults for analysis. All participants walked on an uneven terrain treadmill with four levels of terrain difficulty at their self-selected speed. Compared with younger adults, older adults exhibited a greater increase in step duration variability and mediolateral sacral excursion variability as the terrain became more uneven. We identified multiple brain regions involved during walking on uneven terrain. Regardless of age group, walking on uneven terrain compared with flat terrain led to a widespread ",
       "doi": "10.1162/imag.a.1039",
       "pmid": "41322366",
@@ -491,6 +493,29 @@
         "confidence_score": 0.571027863174677,
         "similarity_score": 0.4943964183330536,
         "citation_text_length": 1230,
+        "dataset_text_length": 1060,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Interstride Variation in EEG Power Spectra of Younger and Older Adults Walking at a Range of Gait Speeds",
+      "author": "Jacob S. Salminen, Chang Liu, Erika M. Pliner, Arkaprava Roy, Natalie Richer, Jungyun Hwang, C. J. Hass, David J. Clark, Y. Cruz-Almeida, Todd M. Manini, Rachael D. Seidler, Daniel P. Ferris",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2026,
+      "url": "https://doi.org/10.1109/TNSRE.2026.3656061",
+      "cited_by": 1,
+      "abstract": "Aging alters both biomechanical and neural factors related to walking, leading to reductions in preferred gait speed with age. Biomechanical variability in human walking has been an area of great interest for aging research. Neural variability has not been well studied in this context. Electroencephalography (EEG) can measure brain activity during walking, allowing us to quantify interstride variability of electrocortical activity. We recruited younger and older adults to walk (0.25-1.0 m/s) while we measured EEG interstride variability in theta, alpha, and beta power. We hypothesized that theta, alpha, and beta variability would decrease at faster walking speeds like most gait kinematic variables. We also hypothesized that older adults would have more interstride variability compared to younger due to reduced gait automaticity. We observed sensorimotor and posterior parietal cortices for their roles in motor action and sensory processing. Interstride variability in theta power lessene",
+      "doi": "10.1109/TNSRE.2026.3656061",
+      "pmid": "41553891",
+      "openalex_id": null,
+      "source_doi": "10.3390/s22155867",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4387070265412331,
+        "similarity_score": 0.379832923412323,
+        "citation_text_length": 1399,
         "dataset_text_length": 1060,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -587,40 +612,17 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Interstride Variation in EEG Power Spectra of Younger and Older Adults Walking at a Range of Gait Speeds",
-      "author": "Jacob S. Salminen, Chang Liu, Erika M. Pliner, Arkaprava Roy, Natalie Richer, Jungyun Hwang, C. J. Hass, David J. Clark, Y. Cruz-Almeida, Todd M. Manini, Rachael D. Seidler, Daniel P. Ferris",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2026,
-      "url": "https://doi.org/10.1109/TNSRE.2026.3656061",
-      "cited_by": 0,
-      "abstract": "Aging alters both biomechanical and neural factors related to walking, leading to reductions in preferred gait speed with age. Biomechanical variability in human walking has been an area of great interest for aging research. Neural variability has not been well studied in this context. Electroencephalography (EEG) can measure brain activity during walking, allowing us to quantify interstride variability of electrocortical activity. We recruited younger and older adults to walk (0.25-1.0 m/s) while we measured EEG interstride variability in theta, alpha, and beta power. We hypothesized that theta, alpha, and beta variability would decrease at faster walking speeds like most gait kinematic variables. We also hypothesized that older adults would have more interstride variability compared to younger due to reduced gait automaticity. We observed sensorimotor and posterior parietal cortices for their roles in motor action and sensory processing. Interstride variability in theta power lessene",
-      "doi": "10.1109/TNSRE.2026.3656061",
-      "pmid": "41553891",
-      "openalex_id": null,
-      "source_doi": "10.3390/s22155867",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4387070265412331,
-        "similarity_score": 0.379832923412323,
-        "citation_text_length": 1399,
-        "dataset_text_length": 1060,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T21:59:48.522784+00:00",
+    "scoring_date": "2026-06-15T01:25:21.987174+00:00",
     "dataset_text_length": 1060,
     "num_citations_scored": 26,
     "summary_stats": {
-      "mean_confidence": 0.5284189262584997,
+      "mean_confidence": 0.5284189262584998,
       "median_confidence": 0.4884195430576802,
-      "std_confidence": 0.13784380137188984,
+      "std_confidence": 0.1378438013718898,
       "min_confidence": 0.3614117275178433,
       "max_confidence": 0.9384501671791078,
       "high_confidence_count": 3,

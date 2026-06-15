@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds002034",
   "num_citations": 15,
-  "date_last_updated": "2026-05-20T05:24:19.938836+00:00",
+  "date_last_updated": "2026-06-14T10:07:17.655611+00:00",
   "metadata": {
-    "total_cumulative_citations": 146,
-    "fetch_date": "2026-05-20T05:24:19.938836+00:00",
+    "total_cumulative_citations": 150,
+    "fetch_date": "2026-06-14T10:07:17.655611+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -19,7 +21,7 @@
       "venue": "NeuroImage",
       "year": 2022,
       "url": "https://doi.org/10.1016/j.neuroimage.2022.119400",
-      "cited_by": 41,
+      "cited_by": 42,
       "abstract": "Neurofeedback is a procedure that measures brain activity in real-time and presents it as feedback to an individual, thus allowing them to self-regulate brain activity with effects on cognitive processes inferred from behavior. One common argument is that neurofeedback studies can reveal how the measured brain activity causes a particular cognitive process. The causal claim is often made regarding the measured brain activity being manipulated as an independent variable, similar to brain stimulation studies. However, this causal inference is vulnerable to the argument that other upstream brain activities change concurrently and cause changes in the brain activity from which feedback is derived. In this paper, we outline the inference that neurofeedback may causally affect cognition by indirect means. We further argue that researchers should remain open to the idea that the trained brain activity could be part of a \"causal network\" that collectively affects cognition rather than being ne",
       "doi": "10.1016/j.neuroimage.2022.119400",
       "pmid": "35728786",
@@ -42,7 +44,7 @@
       "venue": "Sensors",
       "year": 2022,
       "url": "https://doi.org/10.3390/s22197314",
-      "cited_by": 30,
+      "cited_by": 31,
       "abstract": "Electroencephalogram (EEG) data are typically affected by artifacts. The detection and removal of bad channels (i.e., with poor signal-to-noise ratio) is a crucial initial step. EEG data acquired from different populations require different cleaning strategies due to the inherent differences in the data quality, the artifacts' nature, and the employed experimental paradigm. To deal with such differences, we propose a robust EEG bad channel detection method based on the Local Outlier Factor (LOF) algorithm. Unlike most existing bad channel detection algorithms that look for the global distribution of channels, LOF identifies bad channels relative to the local cluster of channels, which makes it adaptable to any kind of EEG. To test the performance and versatility of the proposed algorithm, we validated it on EEG acquired from three populations (newborns, infants, and adults) and using two experimental paradigms (event-related and frequency-tagging). We found that LOF can be applied to a",
       "doi": "10.3390/s22197314",
       "pmid": "36236413",
@@ -65,7 +67,7 @@
       "venue": "International Journal of Psychophysiology",
       "year": 2023,
       "url": "https://doi.org/10.1016/j.ijpsycho.2023.04.005",
-      "cited_by": 16,
+      "cited_by": 17,
       "abstract": "Abstract Neurofeedback procedures are attracting increasing attention in the neuroscience community. Based on the principle that participants, through suitable feedback, may learn to affect specific aspects of their brain activity, neurofeedback has been applied to basic research, translational, and clinical science alike. A large segment of the extant empirical research as well as review articles have focused on the extent to which neurofeedback interventions affect mental health outcomes, cognitive capacity, aging, and other complex behaviors. Another segment has aimed to characterize the extent to which neurofeedback affects the targeted neural processes. At this time, there is no current systematic review of the effects of neurofeedback on healthy participants’ performance in experimental tasks. Such a review is relevant in this rapidly evolving field because changes in experimental task performance are traditionally considered a hallmark of changing neurocognitive processes, often",
       "doi": "10.1016/j.ijpsycho.2023.04.005",
       "pmid": "37148977",
@@ -175,6 +177,29 @@
       }
     },
     {
+      "title": "Decoding covert visual attention of electroencephalography signals using continuous wavelet transform and deep learning approach",
+      "author": "Hoda Hazrati, Mohammad Reza Daliri",
+      "venue": "Scientific Reports",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41598-025-21635-w",
+      "cited_by": 5,
+      "abstract": "Covert visual attention decoding from EEG signals is a key challenge in cognitive neuroscience and brain-computer interface applications. Traditional approaches often rely on manual feature extraction and handcrafted pipelines, which limit scalability and generalization. In this study, we propose a deep learning-based framework that leverages time-frequency representations, specifically Continuous Wavelet Transform (CWT), to enable end-to-end classification of covert attention states without manual feature engineering. EEG data were recorded from ten healthy participants performing spatial and feature-based attention tasks. Among the tested models, ShallowConvNet achieved 100% accuracy in binary classification and over 90% in four-class conditions. EEGNet also performed competitively, exceeding 97% and 88% accuracy in two- and four-class scenarios, respectively. These findings demonstrate that integrating CWT with deep neural architectures significantly enhances decoding performance co",
+      "doi": "10.1038/s41598-025-21635-w",
+      "pmid": "41145802",
+      "openalex_id": "W4415589636",
+      "source_doi": "10.1007/s10548-019-00725-9",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6896091476082802,
+        "similarity_score": 0.597064197063446,
+        "citation_text_length": 1219,
+        "dataset_text_length": 2250,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Towards a Domain-Specific Neural Network Approach for EEG Bad Channel Detection",
       "author": "Velu Prabhakar Kumaravel, Francesco Paissan, Elisabetta Farella",
       "venue": "n/a",
@@ -238,29 +263,6 @@
         "confidence_score": 0.5739470627903939,
         "similarity_score": 0.49692386388778687,
         "citation_text_length": 1232,
-        "dataset_text_length": 2250,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Decoding covert visual attention of electroencephalography signals using continuous wavelet transform and deep learning approach",
-      "author": "Hoda Hazrati, Mohammad Reza Daliri",
-      "venue": "Scientific Reports",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s41598-025-21635-w",
-      "cited_by": 4,
-      "abstract": "Covert visual attention decoding from EEG signals is a key challenge in cognitive neuroscience and brain-computer interface applications. Traditional approaches often rely on manual feature extraction and handcrafted pipelines, which limit scalability and generalization. In this study, we propose a deep learning-based framework that leverages time-frequency representations, specifically Continuous Wavelet Transform (CWT), to enable end-to-end classification of covert attention states without manual feature engineering. EEG data were recorded from ten healthy participants performing spatial and feature-based attention tasks. Among the tested models, ShallowConvNet achieved 100% accuracy in binary classification and over 90% in four-class conditions. EEGNet also performed competitively, exceeding 97% and 88% accuracy in two- and four-class scenarios, respectively. These findings demonstrate that integrating CWT with deep neural architectures significantly enhances decoding performance co",
-      "doi": "10.1038/s41598-025-21635-w",
-      "pmid": "41145802",
-      "openalex_id": "W4415589636",
-      "source_doi": "10.1007/s10548-019-00725-9",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6896091476082802,
-        "similarity_score": 0.597064197063446,
-        "citation_text_length": 1219,
         "dataset_text_length": 2250,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -361,7 +363,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T21:46:42.645054+00:00",
+    "scoring_date": "2026-06-15T01:10:44.302122+00:00",
     "dataset_text_length": 2250,
     "num_citations_scored": 15,
     "summary_stats": {

@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds004998",
   "num_citations": 13,
-  "date_last_updated": "2026-05-20T12:25:23.616622+00:00",
+  "date_last_updated": "2026-06-14T18:07:25.286719+00:00",
   "metadata": {
-    "total_cumulative_citations": 35,
-    "fetch_date": "2026-05-20T12:25:23.616622+00:00",
+    "total_cumulative_citations": 38,
+    "fetch_date": "2026-06-14T18:07:25.286719+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -42,8 +44,8 @@
       "venue": "EBioMedicine",
       "year": 2025,
       "url": "https://doi.org/10.1016/j.ebiom.2025.105988",
-      "cited_by": 9,
-      "abstract": "<h2>Summary</h2><h3>Background</h3> Parkinson's disease is linked to increased beta rhythms (13–30 Hz) in the subthalamic nucleus, which correlate with motor symptoms. However, findings across studies are inconsistent. Furthermore, the contribution of other frequencies to symptom severity remains underexplored. <h3>Methods</h3> We analysed subthalamic local field potentials from 119 patients with Parkinson's disease (31 female; mean age 60 ± 9 years) across five independent datasets. Power spectra were parametrised and studied in relation to Levodopa administration and the severity of motor symptoms. <h3>Findings</h3> Our findings suggest that small sample sizes contributed to the variable correlations between beta power and motor symptoms reported in previous studies. Here, we demonstrate that more than 100 patients are required for stable replication. Aperiodic offset and low gamma (30–45 Hz) oscillations were negatively correlated with motor deficits (<mml:math><mml:mrow><mml:mi>r</",
+      "cited_by": 10,
+      "abstract": "Background Parkinson's disease is linked to increased beta rhythms (13–30 Hz) in the subthalamic nucleus, which correlate with motor symptoms. However, findings across studies are inconsistent. Furthermore, the contribution of other frequencies to symptom severity remains underexplored. Methods We analysed subthalamic local field potentials from 119 patients with Parkinson's disease (31 female; mean age 60 ± 9 years) across five independent datasets. Power spectra were parametrised and studied in relation to Levodopa administration and the severity of motor symptoms. Findings Our findings suggest that small sample sizes contributed to the variable correlations between beta power and motor symptoms reported in previous studies. Here, we demonstrate that more than 100 patients are required for stable replication. Aperiodic offset and low gamma (30–45 Hz) oscillations were negatively correlated with motor deficits ( r Offset = − 0.32 , p = 4 e − 4 ; r L γ = − 0.21 , p = 0.021 ), whereas l",
       "doi": "10.1016/j.ebiom.2025.105988",
       "pmid": "41168073",
       "openalex_id": "W4415667389",
@@ -51,8 +53,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6994797027111055,
-        "similarity_score": 0.6056101322174072,
+        "confidence_score": 0.6999298694729806,
+        "similarity_score": 0.6059998869895935,
         "citation_text_length": 1751,
         "dataset_text_length": 2244,
         "scoring_method": "sentence_transformers",
@@ -129,6 +131,52 @@
       }
     },
     {
+      "title": "Electrophysiological signatures predict the therapeutic window of deep brain stimulation electrode contacts",
+      "author": "Fayed Rassoulou, Abhinav Sharma, Alexandra Steina, Markus Butz, Christian J. Hartmann, Bahne H. Bahners, Jan Vesper, Alfons Schnitzler, Jan V. Hirschmann",
+      "venue": "npj Digital Medicine",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41746-025-02089-w",
+      "cited_by": 2,
+      "abstract": "Deep brain stimulation (DBS) is an effective treatment for Parkinson's disease. Identifying the optimal parameters is a complex task. Here, we investigated whether electrophysiology, combined with machine learning, can support contact selection. We applied tree learning to resting-state magnetoencephalographic and local field potential recordings from the subthalamic nucleus (STN). STN power and STN-cortex coherence in various frequency bands served to predict the therapeutic window. The model successfully predicted therapeutic windows in the original (r = 0.45, p < 0.001, N = 45) and in an independent cohort (r = 0.30, p < 0.001, N = 8). It relied mostly on fast (>35 Hz) subthalamic activity and on STN-cortex coherence in several bands. Furthermore, it was able to order contacts such that the optimal contact can be found faster. Our study demonstrates the feasibility of predicting therapeutic windows from electrophysiological features and could contribute to automated contact selectio",
+      "doi": "10.1038/s41746-025-02089-w",
+      "pmid": "41162751",
+      "openalex_id": "W4415660367",
+      "source_doi": "10.1038/s41597-024-03768-1",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7878823623061182,
+        "similarity_score": 0.6821492314338684,
+        "citation_text_length": 1319,
+        "dataset_text_length": 2244,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Qualitative and Quantitative Comparative Analysis of Common Normal Variants and Physiological Artifacts in MEG and EEG",
+      "author": "Daria Kleeva, М. В. Синкин, Anna Shtekleyn, Анна Русинова, Anastasia A. Skalnaya, Alexei Ossadtchi",
+      "venue": "Brain Topography",
+      "year": 2025,
+      "url": "https://doi.org/10.1007/s10548-025-01143-w",
+      "cited_by": 1,
+      "abstract": "Abstract Magnetoencephalography (MEG) and electroencephalography (EEG) provide complementary insights into brain activity, yet their distinct biophysical principles influence how normal neurophysiological patterns and artifacts are represented. This study presents a comprehensive qualitative and quantitative analysis of common physiological variants and artifacts in simultaneously recorded MEG and EEG data. We systematically examined patterns such as alpha spindles, sensorimotor rhythms, sleep-related waveforms (vertex waves, K-complexes, sleep spindles, and posterior slow waves of youth), as well as common artifacts including eye blinks, chewing, and movement-related interferences. By applying time-domain, time-frequency, and source- space analyses, we identified modality-specific differences in signal representation, source localization, and artifact susceptibility. Our results demonstrate that MEG provides a more spatially focal representation of physiological patterns, whereas EEG ",
+      "doi": "10.1007/s10548-025-01143-w",
+      "pmid": "41042404",
+      "openalex_id": "W4414783219",
+      "source_doi": "10.1038/s41597-024-03768-1",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5487371045351029,
+        "similarity_score": 0.47509706020355225,
+        "citation_text_length": 1271,
+        "dataset_text_length": 2244,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Pangenome-based identification of cryptic pathogenic variants in undiagnosed rare disease patients",
       "author": "S. Jang, Seoyeon Kim, Seungbok Lee, Soo Yeon Kim, Jangsup Moon, Jun Kim, Jong‐Hee Chae",
       "venue": "medRxiv",
@@ -175,29 +223,6 @@
       }
     },
     {
-      "title": "Electrophysiological signatures predict the therapeutic window of deep brain stimulation electrode contacts",
-      "author": "Fayed Rassoulou, Abhinav Sharma, Alexandra Steina, Markus Butz, Christian J. Hartmann, Bahne H. Bahners, Jan Vesper, Alfons Schnitzler, Jan V. Hirschmann",
-      "venue": "npj Digital Medicine",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s41746-025-02089-w",
-      "cited_by": 1,
-      "abstract": "Abstract Deep brain stimulation (DBS) is an effective treatment for Parkinson’s disease. Identifying the optimal parameters is a complex task. Here, we investigated whether electrophysiology, combined with machine learning, can support contact selection. We applied tree learning to resting-state magnetoencephalographic and local field potential recordings from the subthalamic nucleus (STN). STN power and STN-cortex coherence in various frequency bands served to predict the therapeutic window. The model successfully predicted therapeutic windows in the original ( r = 0.45, p &lt; 0.001, N = 45) and in an independent cohort ( r = 0.30, p &lt; 0.001, N = 8). It relied mostly on fast (&gt;35 Hz) subthalamic activity and on STN-cortex coherence in several bands. Furthermore, it was able to order contacts such that the optimal contact can be found faster. Our study demonstrates the feasibility of predicting therapeutic windows from electrophysiological features and could contribute to automa",
-      "doi": "10.1038/s41746-025-02089-w",
-      "pmid": "41162751",
-      "openalex_id": "W4415660367",
-      "source_doi": "10.1038/s41597-024-03768-1",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7922362232208253,
-        "similarity_score": 0.6859188079833984,
-        "citation_text_length": 1319,
-        "dataset_text_length": 2244,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Increased beta-HFO phase-amplitude coupling in the subthalamic nucleus during movement in Parkinson's disease",
       "author": "András Puszta, Dénes Zádori, Péter Klivènyi",
       "venue": "Neuroimage Reports",
@@ -206,7 +231,7 @@
       "cited_by": 0,
       "abstract": "In Parkinson's disease (PD), increased amplitude of high-frequency oscillations (HFO) has been confirmed to be coupled with the beta oscillations phase, resulting in increased phase-amplitude coupling (PAC) in the subthalamic nucleus (STN). This pathological coupling correlates with the severity of motor symptoms and is known to be modulated by therapeutic interventions. For example, dopaminergic medications and deep brain stimulation (DBS) were previously shown to reduce PAC, which changes in magnitude between states of rest and movement. However, PAC alterations during kinetic and static movements in the presence and absence of medications remain to be determined. Furthermore, there is little evidence on the relationship between PAC and clinical symptoms of PD. In this study, we investigated these two issues. We analyzed a publicly available dataset, which contained STN local field potential registrations (n = 20) and concurrent limb electromyography during resting, static, and kinet",
       "doi": "10.1016/j.ynirp.2026.100353",
-      "pmid": null,
+      "pmid": "42182080",
       "openalex_id": "W7161181196",
       "source_doi": "10.1038/s41597-024-03768-1",
       "source_relation": "References",
@@ -215,29 +240,6 @@
         "confidence_score": 0.7595756229758264,
         "similarity_score": 0.6576412320137024,
         "citation_text_length": 1209,
-        "dataset_text_length": 2244,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Qualitative and Quantitative Comparative Analysis of Common Normal Variants and Physiological Artifacts in MEG and EEG",
-      "author": "Daria Kleeva, М. В. Синкин, Anna Shtekleyn, Анна Русинова, Anastasia A. Skalnaya, Alexei Ossadtchi",
-      "venue": "Brain Topography",
-      "year": 2025,
-      "url": "https://doi.org/10.1007/s10548-025-01143-w",
-      "cited_by": 0,
-      "abstract": "Abstract Magnetoencephalography (MEG) and electroencephalography (EEG) provide complementary insights into brain activity, yet their distinct biophysical principles influence how normal neurophysiological patterns and artifacts are represented. This study presents a comprehensive qualitative and quantitative analysis of common physiological variants and artifacts in simultaneously recorded MEG and EEG data. We systematically examined patterns such as alpha spindles, sensorimotor rhythms, sleep-related waveforms (vertex waves, K-complexes, sleep spindles, and posterior slow waves of youth), as well as common artifacts including eye blinks, chewing, and movement-related interferences. By applying time-domain, time-frequency, and source- space analyses, we identified modality-specific differences in signal representation, source localization, and artifact susceptibility. Our results demonstrate that MEG provides a more spatially focal representation of physiological patterns, whereas EEG ",
-      "doi": "10.1007/s10548-025-01143-w",
-      "pmid": "41042404",
-      "openalex_id": "W4414783219",
-      "source_doi": "10.1038/s41597-024-03768-1",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5487371045351029,
-        "similarity_score": 0.47509706020355225,
-        "citation_text_length": 1271,
         "dataset_text_length": 2244,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -275,7 +277,7 @@
       "cited_by": 0,
       "abstract": "The rising prevalence of Parkinson’s disease has created an urgent need for brain activity markers guiding diagnosis and treatment strategies. While abnormal basal ganglia activity is known to synchronise with specific cortical regions, the temporal dynamics and cortical network architecture of this coupling remain unclear. To address this, we analysed simultaneous magnetoencephalography and subthalamic nucleus (STN) local field potential recordings from 27 individuals with Parkinson’s disease, both on and off dopaminergic medication. Using a time-delay embedded Hidden Markov Model, we identified dynamic large-scale cortical networks whose occurrences fluctuate over time and exhibit distinct STN-cortical coupling. STN-supplementary motor area (SMA) synchrony increased during activations of the sensorimotor network and the posterior default mode network. The former was associated with 9.5–23 Hz power and beta bursts in the STN, and the latter with 5–16.5 Hz power. Dopaminergic medicatio",
       "doi": "10.1038/s41531-026-01372-1",
-      "pmid": null,
+      "pmid": "42069716",
       "openalex_id": null,
       "source_doi": "10.1038/s41597-024-03768-1",
       "source_relation": "References",
@@ -315,13 +317,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:05:06.714097+00:00",
+    "scoring_date": "2026-06-15T01:31:25.861542+00:00",
     "dataset_text_length": 2244,
     "num_citations_scored": 13,
     "summary_stats": {
-      "mean_confidence": 0.5880786170523902,
+      "mean_confidence": 0.5877783328867877,
       "median_confidence": 0.6824839282035828,
-      "std_confidence": 0.23120316833016305,
+      "std_confidence": 0.23092694526163926,
       "min_confidence": 0.17128717929124834,
       "max_confidence": 0.9571822401881218,
       "high_confidence_count": 5,

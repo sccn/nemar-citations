@@ -1,0 +1,64 @@
+{
+  "dataset_id": "nm000260",
+  "date_retrieved": "2026-06-14T10:04:19.357947+00:00",
+  "dataset_description": {
+    "Name": "Van Veen, Barachant & Andreev 2012 — Building Brain Invaders: EEG data of an experimental validation (BI2012)",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "G.F.P. Van Veen",
+      "A. Barachant",
+      "A. Andreev",
+      "G. Cattan",
+      "P. Rodrigues",
+      "M. Congedo"
+    ],
+    "Acknowledgements": "All subjects were volunteers recruited by means of flyers and of the mailing list of the University of Grenoble-Alpes. All participants provided written informed consent confirming the notification of the experimental process, the data management procedures and the right to withdraw from the experiment at any moment.",
+    "ReferencesAndLinks": [
+      "https://doi.org/10.5281/zenodo.2649006",
+      "10.5281/zenodo.2649006"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000260",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "https://doi.org/10.5281/zenodo.2649006",
+        "URL": "https://doi.org/10.5281/zenodo.2649006"
+      },
+      {
+        "DOI": "doi:10.5281/zenodo.2649006"
+      }
+    ],
+    "Keywords": [
+      "Electroencephalography (EEG)",
+      "P300",
+      "Brain-Computer Interface",
+      "Experiment"
+    ],
+    "PublicationYear": 2019,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000260-blue)](https://doi.org/10.82901/nemar.nm000260)\n\nBrainInvaders2012\n=================\n\nP300 dataset BI2012 from a \"Brain Invaders\" experiment.\n\nDataset Overview\n----------------\n  Code: BrainInvaders2012\n  Paradigm: p300\n  DOI: https://doi.org/10.5281/zenodo.2649006\n  Subjects: 25\n  Sessions per subject: 1\n  Events: Target=2, NonTarget=1\n  Trial interval: [0, 1] s\n  Runs per session: 2\n  Session IDs: 0\n  File format: mat, csv\n  Contributing labs: GIPSA-lab\n\nAcquisition\n-----------\n  Sampling rate: 128.0 Hz\n  Number of channels: 16\n  Channel types: eeg=16\n  Channel names: F7, F3, F4, F8, T7, C3, Cz, C4, T8, P7, P3, Pz, P4, P8, O1, O2\n  Montage: standard_1020\n  Hardware: NeXus-32 (MindMedia/TMSi)\n  Software: OpenVibe\n  Reference: hardware common average reference\n  Ground: FZ\n  Sensor type: EEG\n  Line frequency: 50.0 Hz\n  Electrode type: wet\n  Electrode material: Silver/Silver Chloride\n\nParticipants\n------------\n  Number of subjects: 25\n  Health status: healthy\n  Age: mean=24.4, std=2.76, min=21, max=31\n  BCI experience: half played games occasionally (around 4.5 hours a week)\n  Species: human\n\nExperimental Protocol\n---------------------\n  Paradigm: p300\n  Task type: brain_invaders\n  Number of classes: 2\n  Class labels: Target, NonTarget\n  Study design: longitudinal and transversal design with training-test mode of operation\n  Feedback type: visual (game interface)\n  Stimulus type: visual flashes of alien groups\n  Stimulus modalities: visual\n  Primary modality: visual\n  Synchronicity: synchronous\n  Mode: both\n  Training/test split: True\n  Instructions: limit eye blinks, head movements and face muscular contractions; silently count the number of Target flashes\n  Stimulus presentation: repetition_structure=12 flashes per repetition (2 Target, 10 non-Target), flash_groups=12 groups of 6 aliens (36 total aliens), target_ratio=1:5 (Target to non-Target), screen_distance=75 to 115 cm\n\nHED Event Annotations\n---------------------\n  Schema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\nParadigm-Specific Parameters\n----------------------------\n  Detected paradigm: p300\n  Number of repetitions: 8\n\nData Structure\n--------------\n  Trials: {'Target': 128, 'non-Target': 640}\n  Trials per class: Target=128, non-Target=640\n  Trials context: per session (Training session); variable in Online session depending on user performance\n\nPreprocessing\n-------------\n  Data state: raw EEG with software tagging (note: tagging introduces jitter and latency)\n  Preprocessing applied: False\n  Notes: Software tagging introduces a jitter and a latency which artificially modify the ERPs onset. Strong drift over time resulting in higher jitter. Only possible to compare ERP acquired within the same experimental conditions when latency is not corrected.\n\nSignal Processing\n-----------------\n  Classifiers: xDAWN, Riemannian\n  Feature extraction: Covariance/Riemannian, xDAWN\n  Spatial filters: xDAWN\n\nPerformance (Original Study)\n----------------------------\n\nBCI Application\n---------------\n  Applications: gaming\n  Environment: laboratory\n  Online feedback: True\n\nTags\n----\n  Pathology: Healthy\n  Modality: Visual\n  Type: Perception\n\nDocumentation\n-------------\n  Description: EEG recordings of 25 subjects testing the Brain Invaders, a visual P300 Brain-Computer Interface inspired by the famous vintage video game Space Invaders\n  DOI: 10.5281/zenodo.2649006\n  Associated paper DOI: 10.5281/zenodo.2649006\n  License: CC-BY-4.0\n  Investigators: G.F.P. Van Veen, A. Barachant, A. Andreev, G. Cattan, P. Rodrigues, M. Congedo\n  Senior author: M. Congedo\n  Institution: GIPSA-lab, CNRS, University Grenoble-Alpes, Grenoble INP\n  Address: GIPSA-lab, 11 rue des Mathématiques, Grenoble Campus BP46, F-38402, France\n  Country: FR\n  Repository: Zenodo\n  Data URL: https://doi.org/10.5281/zenodo.2649006\n  Publication year: 2019\n  Acknowledgements: All subjects were volunteers recruited by means of flyers and of the mailing list of the University of Grenoble-Alpes. All participants provided written informed consent confirming the notification of the experimental process, the data management procedures and the right to withdraw from the experiment at any moment.\n  Keywords: Electroencephalography (EEG), P300, Brain-Computer Interface, Experiment\n\nAbstract\n--------\nWe describe the experimental procedures for a dataset that we have made publicly available at https://doi.org/10.5281/zenodo.2649006 in mat and csv formats. This dataset contains electroencephalographic (EEG) recordings of 25 subjects testing the Brain Invaders (1), a visual P300 Brain-Computer Interface inspired by the famous vintage video game Space Invaders (Taito, Tokyo, Japan). The visual P300 is an event-related potential elicited by a visual stimulation, peaking 240-600 ms after stimulus onset. EEG data were recorded by 16 electrodes in an experiment that took place in the GIPSA-lab, Grenoble, France, in 2012 (2,3). Python code for manipulating the data is available at https://github.com/plcrodrigues/py.BI.EEG.2012-GIPSA. The ID of this dataset is BI.EEG.2012-GIPSA.\n\nMethodology\n-----------\nThe visual P300 is an event-related potential (ERP) elicited by a visual stimulation, peaking 240-600 ms after stimulus onset. The experiment features a training-test mode of operation and both a longitudinal and transversal design. Training session: Target alien chosen randomly at each repetition, 8 Targets total, 8 repetitions each, resulting in 128 Target trials and 640 non-Target flashes. Online session: consisted of three levels with different distractor configurations, minimum 3.5 minutes per level, counter-balanced order across subjects. Interface: 36 aliens flashing in 12 groups of 6, each repetition has 12 flashes (2 Target, 10 non-Target). P300 peak latency: 240-600 ms post-stimulus.\n\nReferences\n----------\nVan Veen, G., Barachant, A., Andreev, A., Cattan, G., Rodrigues, P. C., & Congedo, M. (2019). Building Brain Invaders: EEG data of an experimental validation. arXiv preprint arXiv:1905.05182.\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000260",
+    "exists": true,
+    "description": "Van Veen, Barachant & Andreev 2012 — Building Brain Invaders: EEG data of an experimental validation (BI2012)",
+    "created_at": "2026-03-26T16:41:01+00:00",
+    "updated_at": "2026-06-03T08:13:51+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

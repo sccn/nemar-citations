@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds004796",
-  "num_citations": 22,
-  "date_last_updated": "2026-05-20T11:25:24.198186+00:00",
+  "num_citations": 24,
+  "date_last_updated": "2026-06-14T17:07:26.708639+00:00",
   "metadata": {
     "total_cumulative_citations": 59,
-    "fetch_date": "2026-05-20T11:25:24.198186+00:00",
+    "fetch_date": "2026-06-14T17:07:26.708639+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -42,7 +44,7 @@
       "venue": "n/a",
       "year": 2025,
       "url": "n/a",
-      "cited_by": 13,
+      "cited_by": 14,
       "abstract": "Electroencephalography (EEG) provides a non-invasive, highly accessible, and cost-effective approach for detecting Alzheimer's disease (AD). However, existing methods, whether based on handcrafted feature engineering or standard deep learning, face three major challenges: 1) the lack of large-scale EEG-based AD datasets for robust representation learning; 2) limited generalizability across subjects; and 3) difficulty in adapting to highly heterogeneous data. To address these challenges, we curate the world's largest EEG-AD corpus to date, comprising 2,238 subjects. Leveraging this unique resource, we propose LEAD, the first large-scale foundation model for EEG-based AD detection. Specifically, we design a gated temporal-spatial Transformer that can adapt to EEG recordings with arbitrary lengths, channel configurations, and sampling rates. In addition, we introduce a subject-regularized training strategy to enhance subject-level feature learning. We further employ medical contrastive le",
       "doi": null,
       "pmid": null,
@@ -54,6 +56,29 @@
         "confidence_score": 0.611759556233883,
         "similarity_score": 0.5296619534492493,
         "citation_text_length": 1164,
+        "dataset_text_length": 2356,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Dual-Transformer Cross-Attention Framework for Alzheimer’s disease detection via dPTE-Guided EEG channel selection and multi-modal integration",
+      "author": "Shyamal Y. Dharia, Qian Liu, Stephen D. Smith, Camilo E. Valderrama",
+      "venue": "Biomedical Signal Processing and Control",
+      "year": 2025,
+      "url": "https://doi.org/10.1016/j.bspc.2025.108390",
+      "cited_by": 7,
+      "abstract": "Accurate and efficient detection of Alzheimer’s Disease (AD) and Frontotemporal Dementia (FTD) poses significant challenges in neuroscience and healthcare. Our proposed AI framework, Dual-Transformer Cross-Attention Network (DTCA-Net), combines deep learning and directed Phase Transfer Entropy (dPTE) to optimize channel selection crucial for the detection of AD and FTD. Our method identified six critical EEG channels (F7, F8, T3, T4, O1, and O2) through dPTE analysis. We propose the DTCA-Net architecture, which fuses dPTE and differential entropy (DE) features via a multi-head cross-attention layer, projecting dPTE into queries and DE into keys/values over the temporal dimension, so that connectivity (dPTE) shifts are explicitly aligned with spectral complexity (DE), yielding richer spatiotemporal representations. By leveraging a reduced set of EEG channels identified via dPTE, DTCA-Net performance is comparable to previous state-of-the-art models. Additionally, we introduce an adaptiv",
+      "doi": "10.1016/j.bspc.2025.108390",
+      "pmid": null,
+      "openalex_id": "W4413366722",
+      "source_doi": "10.1038/s41597-024-03106-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5469773304462433,
+        "similarity_score": 0.4735734462738037,
+        "citation_text_length": 1288,
         "dataset_text_length": 2356,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -106,52 +131,6 @@
       }
     },
     {
-      "title": "Dual-Transformer Cross-Attention Framework for Alzheimer’s disease detection via dPTE-Guided EEG channel selection and multi-modal integration",
-      "author": "Shyamal Y. Dharia, Qian Liu, Stephen D. Smith, Camilo E. Valderrama",
-      "venue": "Biomedical Signal Processing and Control",
-      "year": 2025,
-      "url": "https://doi.org/10.1016/j.bspc.2025.108390",
-      "cited_by": 6,
-      "abstract": "Accurate and efficient detection of Alzheimer’s Disease (AD) and Frontotemporal Dementia (FTD) poses significant challenges in neuroscience and healthcare. Our proposed AI framework, Dual-Transformer Cross-Attention Network (DTCA-Net), combines deep learning and directed Phase Transfer Entropy (dPTE) to optimize channel selection crucial for the detection of AD and FTD. Our method identified six critical EEG channels (F7, F8, T3, T4, O1, and O2) through dPTE analysis. We propose the DTCA-Net architecture, which fuses dPTE and differential entropy (DE) features via a multi-head cross-attention layer, projecting dPTE into queries and DE into keys/values over the temporal dimension, so that connectivity (dPTE) shifts are explicitly aligned with spectral complexity (DE), yielding richer spatiotemporal representations. By leveraging a reduced set of EEG channels identified via dPTE, DTCA-Net performance is comparable to previous state-of-the-art models. Additionally, we introduce an adaptiv",
-      "doi": "10.1016/j.bspc.2025.108390",
-      "pmid": null,
-      "openalex_id": "W4413366722",
-      "source_doi": "10.1038/s41597-024-03106-5",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5469773304462433,
-        "similarity_score": 0.4735734462738037,
-        "citation_text_length": 1288,
-        "dataset_text_length": 2356,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Foundation and Large-Scale AI Models in Neuroscience: A Comprehensive Review",
-      "author": "Shihao Yang, Xiying Huang, Danilo Bernardo, Jun-En Ding, A. Michael, Jingmei Yang, Patrick Kwan, Ashish Raj, Feng Liu",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2510.16658",
-      "cited_by": 4,
-      "abstract": "The development of large-scale artificial intelligence (AI) models is influencing neuroscience research by enabling end-to-end learning from raw brain signals and neural data. In this paper, we review applications of large-scale AI models across five major neuroscience domains: neuroimaging and data processing, brain-computer interfaces and neural decoding, clinical decision support and translational frameworks, and disease-specific applications across neurological and psychiatric disorders. These models show potential to address major computational neuroscience challenges, including multimodal neural data integration, spatiotemporal pattern interpretation, and the development of translational frameworks for clinical research. Moreover, the interaction between neuroscience and AI has become increasingly reciprocal, as biologically informed architectural constraints are now incorporated to develop more interpretable and computationally efficient models. This review highlights both the p",
-      "doi": "10.48550/arXiv.2510.16658",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-024-03106-5",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.447827429920435,
-        "similarity_score": 0.38772937655448914,
-        "citation_text_length": 1237,
-        "dataset_text_length": 2356,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Exploring Deep Learning Models for EEG Neural Decoding",
       "author": "Laurits Dixen, Stefan Heinrich, Paolo Burelli",
       "venue": "Lecture notes in computer science",
@@ -175,6 +154,52 @@
       }
     },
     {
+      "title": "Understanding Neurocognition With Deep Learning and MRI: A Systematic Review",
+      "author": "Md. Tanvir Rahman, Nabil Anan Orka, Asaduzzaman Khan, Pietro Lio', Mohammad Ali Moni",
+      "venue": "IEEE Transactions on Cognitive and Developmental Systems",
+      "year": 2026,
+      "url": "https://doi.org/10.1109/TCDS.2025.3635161",
+      "cited_by": 2,
+      "abstract": "Neurocognition encompasses a range of cognitive functions supported by distributed neural networks. While magnetic resonance imaging (MRI) enables noninvasive brain mapping and deep learning (DL) can capture complex neuroimaging patterns, their integration for understanding cognition remains underexplored. To clarify the current state of progress and highlight persisting challenges, we systematically reviewed 45 studies (2019–2025) following Preferred Reporting Items for Systematic Reviews and Meta-Analysis (PRISMA) guidelines, spanning cognitive profiling (n = 28) and cognitive decoding (n = 18), with one study addressing both. Across profiling studies, graph neural networks were most frequently applied and achieved the strongest predictions for fluid intelligence (r = 0.66), while long short-term memories (LSTMs) performed best for crystallized intelligence (r = 0.62). Overall, crystallized intelligence (mean r = 0.39) proved more predictable than fluid intelligence (mean r = 0.30), ",
+      "doi": "10.1109/TCDS.2025.3635161",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-024-03106-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.45220015391707424,
+        "similarity_score": 0.3915152847766876,
+        "citation_text_length": 1255,
+        "dataset_text_length": 2356,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "SingLEM: Single-Channel Large EEG Model",
+      "author": "Jamiyan Sukhbaatar, S. Imamura, Ibuki Inoue, Shoya Murakami, Kazi Mahmudul Hassan, Seungwoo Han, Ingon Chanpornpakdi, Toshihisa Tanaka",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2509.17920",
+      "cited_by": 2,
+      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
+      "doi": "10.48550/arXiv.2509.17920",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-024-03106-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5121924304962159,
+        "similarity_score": 0.44345664978027344,
+        "citation_text_length": 1217,
+        "dataset_text_length": 2356,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Integration of AI With ML for Neuropsychological Applications",
       "author": "Prabhjeet Kaur, Channi Sachdeva, Ravi Kumar Gupta, Lokesh Jasrai",
       "venue": "Advances in psychology, mental health, and behavioral studies (APMHBS) book series",
@@ -192,52 +217,6 @@
         "confidence_score": 0.42759446829557424,
         "similarity_score": 0.370211660861969,
         "citation_text_length": 1246,
-        "dataset_text_length": 2356,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Cortical thinning in temporal pole, a core region in Alzheimer’s disease, in non-demented, middle-aged <i>APOE</i> -ε4 and <i>PICALM</i> -AA/AG carriers",
-      "author": "Patrycja Dzianok, Jakub Wojciechowski, Tomasz Wolak, Ewa Kublik",
-      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
-      "year": 2025,
-      "url": "https://doi.org/10.1101/2025.02.21.639542",
-      "cited_by": 1,
-      "abstract": "Abstract The symptoms of Alzheimer’s disease (AD) are caused by neurodegeneration and atrophy in particular brain regions, especially in the temporal cortex. However, the influence of genetic risk on cortical thickness in non-demented individuals prior to disease onset remains unclear. This study aimed to explore the relationship between two AD risk genes ( APOE/PICALM ) and cortical thickness in selected regions of interest (ROIs) in non-demented, middle-aged individuals. Sixty-nine (N = 69) participants (34 females, 35 males; age: 55.45±3.19) underwent magnetic resonance imaging (MRI). They were divided into three groups based on their AD risk. Cortical thickness was analyzed using CAT12 software (surface-based morphometry with the Destrieux atlas) based on T1-weighted MR images in five ROIs referred as “the cortical signature of AD” in previous studies. APOE -ε4 with PICALM -AA/AG carriers (A+P-) are characterized by a thinner cortex in the right temporal pole compared to non-carrie",
-      "doi": "10.1101/2025.02.21.639542",
-      "pmid": null,
-      "openalex_id": "W4407930911",
-      "source_doi": "10.1038/s41597-024-03106-5",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6603850704431534,
-        "similarity_score": 0.571761965751648,
-        "citation_text_length": 1293,
-        "dataset_text_length": 2356,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "SingLEM: Single-Channel Large EEG Model",
-      "author": "Jamiyan Sukhbaatar, S. Imamura, Ibuki Inoue, Shoya Murakami, Kazi Mahmudul Hassan, Seungwoo Han, Ingon Chanpornpakdi, Toshihisa Tanaka",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2509.17920",
-      "cited_by": 1,
-      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
-      "doi": "10.48550/arXiv.2509.17920",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-024-03106-5",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5121924304962159,
-        "similarity_score": 0.44345664978027344,
-        "citation_text_length": 1217,
         "dataset_text_length": 2356,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -307,6 +286,29 @@
         "confidence_score": 0.6652214545011521,
         "similarity_score": 0.5759493112564087,
         "citation_text_length": 1209,
+        "dataset_text_length": 2356,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Cortical thinning in temporal pole, a core region in Alzheimer’s disease, in non-demented, middle-aged <i>APOE</i> -ε4 and <i>PICALM</i> -AA/AG carriers",
+      "author": "Patrycja Dzianok, Jakub Wojciechowski, Tomasz Wolak, Ewa Kublik",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2025,
+      "url": "https://doi.org/10.1101/2025.02.21.639542",
+      "cited_by": 0,
+      "abstract": "Abstract The symptoms of Alzheimer’s disease (AD) are caused by neurodegeneration and atrophy in particular brain regions, especially in the temporal cortex. However, the influence of genetic risk on cortical thickness in non-demented individuals prior to disease onset remains unclear. This study aimed to explore the relationship between two AD risk genes ( APOE/PICALM ) and cortical thickness in selected regions of interest (ROIs) in non-demented, middle-aged individuals. Sixty-nine (N = 69) participants (34 females, 35 males; age: 55.45±3.19) underwent magnetic resonance imaging (MRI). They were divided into three groups based on their AD risk. Cortical thickness was analyzed using CAT12 software (surface-based morphometry with the Destrieux atlas) based on T1-weighted MR images in five ROIs referred as “the cortical signature of AD” in previous studies. APOE -ε4 with PICALM -AA/AG carriers (A+P-) are characterized by a thinner cortex in the right temporal pole compared to non-carrie",
+      "doi": "10.1101/2025.02.21.639542",
+      "pmid": null,
+      "openalex_id": "W4407930911",
+      "source_doi": "10.1038/s41597-024-03106-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6603850704431534,
+        "similarity_score": 0.571761965751648,
+        "citation_text_length": 1293,
         "dataset_text_length": 2356,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -474,8 +476,54 @@
       }
     },
     {
+      "title": "Large-Scale AI and Foundation Models for Neuroscience: A Comprehensive Review",
+      "author": "Shihao Yang, Xiying Huang, Danilo Bernardo, Jun-En Ding, Andrew Michael, Guoan Wang, Jingmei Yang, Alison Anderson, D. Giritharan, P. Kwan, A. Raj, Yu Zhang, Feng Liu",
+      "venue": "Meta-Radiology",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.metrad.2026.100224",
+      "cited_by": 0,
+      "abstract": null,
+      "doi": "10.1016/j.metrad.2026.100224",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-024-03106-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4424405962228775,
+        "similarity_score": 0.4213719964027405,
+        "citation_text_length": 284,
+        "dataset_text_length": 2356,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "OmniEEG-Bench: A Standardized Evaluation Benchmark for EEG Foundation Models",
+      "author": "Zilin Lu, Zongsheng Li, Xinke Shen, Kexin Lou, Ying Xin, Xiaoqing Chen, Shinan Wang, Xiangyu Chen, Jiahao Fan, Chenyu Huang, Xin Xu, Zhoujie Hou, Chen Wei, Quanying Liu",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "Electroencephalography (EEG) supports a variety of brain-computer interface (BCI) tasks ranging from brain-state monitoring to human-LLM interactions. EEG foundation models are emerging, but evaluation remains fragmented due to heterogeneous datasets and nconsistent task protocols. Here, we introduce OmniEEG-Bench, a unified benchmark and downstream task roadmap for EEG foundation models (FMs). It organizes evaluation of EEG FMs into six task families spanning (i) signal reliability, (ii) biometrics and disease, (iii) consciousness and state, (iv) cognition and emotion, (v) naturalistic stimulus decoding, and (vi) motor and interaction, introducing a new generation of tasks not systematically benchmarked in prior EEG FM work. OmniEEG-Bench standardizes model deployment, task definitions, and metrics through a task-card specification, and unifies 54 EEG datasets with consistent evaluation protocols. We benchmark 10 representative EEG foundation models and report a leaderboard that cover",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-024-03106-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5871062654256822,
+        "similarity_score": 0.5083171129226685,
+        "citation_text_length": 1286,
+        "dataset_text_length": 2356,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Multimodal data fusion for early risk prediction of disease",
-      "author": "Wei Liu, Tong Zhou, Kebin Jia",
+      "author": "Wei Liu, Tong Zhou, K. Jia",
       "venue": "n/a",
       "year": 2026,
       "url": "https://doi.org/10.1117/12.3094531",
@@ -488,9 +536,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6763402086496354,
-        "similarity_score": 0.5855759382247925,
-        "citation_text_length": 1130,
+        "confidence_score": 0.6754453825950624,
+        "similarity_score": 0.584801197052002,
+        "citation_text_length": 1127,
         "dataset_text_length": 2356,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -498,7 +546,7 @@
     },
     {
       "title": "A Synoptic Review of High-Frequency Oscillations as a Biomarker in Neurodegenerative Disease",
-      "author": "Samin Yaser, Mahad Ali, Yang Jiang, P. Nguyen, J. Xiang, Laura J. Brattain",
+      "author": "Samin Yaser, Mahad Ali, Yang Jiang, P. Nguyen, J. Xiang, L. Brattain",
       "venue": "n/a",
       "year": 2025,
       "url": "n/a",
@@ -511,9 +559,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5880239474773408,
-        "similarity_score": 0.5091116428375244,
-        "citation_text_length": 1208,
+        "confidence_score": 0.5893074631690979,
+        "similarity_score": 0.5102229118347168,
+        "citation_text_length": 1202,
         "dataset_text_length": 2356,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -522,17 +570,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:03:07.636287+00:00",
+    "scoring_date": "2026-06-15T01:29:10.296927+00:00",
     "dataset_text_length": 2356,
-    "num_citations_scored": 22,
+    "num_citations_scored": 24,
     "summary_stats": {
-      "mean_confidence": 0.5903052769059484,
-      "median_confidence": 0.5876180031895638,
-      "std_confidence": 0.10072977989206397,
+      "mean_confidence": 0.5842093486338854,
+      "median_confidence": 0.5871591621637345,
+      "std_confidence": 0.10058595100032017,
       "min_confidence": 0.42759446829557424,
       "max_confidence": 0.8151599621772767,
       "high_confidence_count": 3,
-      "medium_confidence_count": 19,
+      "medium_confidence_count": 21,
       "low_confidence_count": 0
     }
   }
