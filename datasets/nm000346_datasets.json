@@ -1,0 +1,71 @@
+{
+  "dataset_id": "nm000346",
+  "date_retrieved": "2026-06-14T10:05:47.848548+00:00",
+  "dataset_description": {
+    "Name": "CastillosCVEP100",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Kalou Cabrera Castillos",
+      "Simon Ladouce",
+      "Ludovic Darmet",
+      "Frédéric Dehais"
+    ],
+    "Funding": [
+      "AID (Powerbrain project), France",
+      "AXA Research Fund Chair for Neuroergonomics, France",
+      "Chair for Neuroadaptive Technology, Artificial and Natural Intelligence Toulouse Institute (ANITI), France"
+    ],
+    "EthicsApprovals": [
+      "Ethics committee of the University of Toulouse (CER approval number 2020-334)",
+      "Declaration of Helsinki"
+    ],
+    "ReferencesAndLinks": [
+      "https://zenodo.org/record/8255618",
+      "10.1016/j.neuroimage.2023.120446"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000346",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "https://doi.org/10.1016/j.neuroimage.2023.120446",
+        "URL": "https://zenodo.org/record/8255618"
+      },
+      {
+        "DOI": "doi:10.1016/j.neuroimage.2023.120446"
+      }
+    ],
+    "Keywords": [
+      "Code-VEP",
+      "Reactive BCI",
+      "CNN",
+      "Amplitude depth reduction",
+      "Visual comfort"
+    ],
+    "PublicationYear": 2023,
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000346-blue)](https://doi.org/10.82901/nemar.nm000346)\n\nCastillosCVEP100\n================\n\nc-VEP and Burst-VEP dataset from Castillos et al. (2023)\n\nDataset Overview\n----------------\n  Code: CastillosCVEP100\n  Paradigm: cvep\n  DOI: https://doi.org/10.1016/j.neuroimage.2023.120446\n  Subjects: 12\n  Sessions per subject: 1\n  Events: 0=100, 1=101\n  Trial interval: (0, 0.25) s\n  File format: EEGLAB .set\n\nAcquisition\n-----------\n  Sampling rate: 500.0 Hz\n  Number of channels: 32\n  Channel types: eeg=32\n  Channel names: C3, C4, CP1, CP2, CP5, CP6, Cz, F10, F3, F4, F7, F8, F9, FC1, FC2, FC5, FC6, Fp1, Fp2, Fz, O1, O2, Oz, P10, P3, P4, P7, P8, P9, Pz, T7, T8\n  Montage: standard_1020\n  Hardware: BrainProducts LiveAmp\n  Reference: FCz\n  Ground: FPz\n  Sensor type: EEG\n  Line frequency: 50.0 Hz\n  Impedance threshold: 25.0 kOhm\n  Cap manufacturer: BrainProducts\n  Cap model: Acticap\n  Electrode type: active\n\nParticipants\n------------\n  Number of subjects: 12\n  Health status: healthy\n  Age: mean=30.6, std=7.1\n  Gender distribution: female=4, male=8\n  Species: human\n\nExperimental Protocol\n---------------------\n  Paradigm: cvep\n  Task type: visual attention\n  Number of classes: 2\n  Class labels: 0, 1\n  Trial duration: 2.2 s\n  Study design: factorial design (code type × amplitude depth)\n  Study domain: BCI performance and user experience\n  Feedback type: none\n  Stimulus type: visual flashing\n  Stimulus modalities: visual\n  Primary modality: visual\n  Synchronicity: synchronous\n  Mode: offline\n  Training/test split: False\n  Instructions: focus on four targets that were cued sequentially in a random order for 0.5 s, followed by a 2.2 s stimulation phase, before a 0.7 s inter-trial period\n  Stimulus presentation: display=Dell P2419HC LCD monitor, resolution=1920×1080 pixels, refresh_rate=60 Hz, brightness=265 cd/m², stimulus_size=150 pixels, background_luminance=124 lux (50% screen luminance), on_state_100=168 lux (100% amplitude depth), on_state_40=142 lux (40% amplitude depth), cue_duration=0.5 s, stimulation_duration=2.2 s, inter_trial_interval=0.7 s\n\nHED Event Annotations\n---------------------\n  Schema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n  0\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/intensity_0\n\n  1\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Label/intensity_1\n\nParadigm-Specific Parameters\n----------------------------\n  Detected paradigm: cvep\n  Code type: m-sequence (maximum-length sequence)\n  Code length: 132\n  Number of targets: 4\n\nData Structure\n--------------\n  Trials: 60\n  Blocks per session: 15\n  Trials context: 15 blocks × 4 trials (one per target) × 4 conditions (burst/mseq × 100%/40%)\n\nPreprocessing\n-------------\n  Data state: raw\n\nSignal Processing\n-----------------\n  Classifiers: Convolutional Neural Network (CNN)\n  Feature extraction: Sliding windows (250ms, 2ms stride), Standard deviation normalization\n  Spatial filters: 16 spatial filters via 1D spatial convolution (8×1 kernel)\n\nCross-Validation\n----------------\n  Method: sequential train/test split\n  Evaluation type: offline classification\n\nPerformance (Original Study)\n----------------------------\n  Accuracy: 85.0%\n  Itr: 48.7 bits/min\n  Selection Time S: 1.5\n  Cnn Training Time 6Blocks S: 40.0\n  Calibration Data 6Blocks S: 52.8\n\nBCI Application\n---------------\n  Applications: reactive BCI\n  Environment: laboratory\n  Online feedback: False\n\nTags\n----\n  Pathology: Healthy\n  Modality: EEG\n  Type: reactive BCI, visual evoked potentials\n\nDocumentation\n-------------\n  Description: 4-class code-VEP BCI dataset comparing burst c-VEP and m-sequence stimulation at two amplitude depths (100% and 40%) to optimize performance and user experience\n  DOI: 10.1016/j.neuroimage.2023.120446\n  Associated paper DOI: 10.1016/j.neuroimage.2023.120446\n  License: CC-BY-4.0\n  Investigators: Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais\n  Senior author: Frédéric Dehais\n  Contact: kalou.cabrera-castillos@isae-supaero.fr\n  Institution: Institut Supérieur de l'Aéronautique et de l'Espace (ISAE-SUPAERO)\n  Department: Human Factors and Neuroergonomics\n  Address: 10 Av. Edouard Belin, Toulouse, 31400, France\n  Country: FR\n  Repository: Zenodo\n  Data URL: https://zenodo.org/record/8255618\n  Publication year: 2023\n  Funding: AID (Powerbrain project), France; AXA Research Fund Chair for Neuroergonomics, France; Chair for Neuroadaptive Technology, Artificial and Natural Intelligence Toulouse Institute (ANITI), France\n  Ethics approval: Ethics committee of the University of Toulouse (CER approval number 2020-334); Declaration of Helsinki\n  Keywords: Code-VEP, Reactive BCI, CNN, Amplitude depth reduction, Visual comfort\n\nExternal Links\n--------------\n  Source: https://zenodo.org/record/8255618\n  Github Code: https://github.com/neuroergoISAE/burst_codes\n  Paper: https://doi.org/10.1016/j.neuroimage.2023.120446\n\nAbstract\n--------\nThe utilization of aperiodic flickering visual stimuli under the form of code-modulated Visual Evoked Potentials (c-VEP) represents a pivotal advancement in the field of reactive Brain–Computer Interface (rBCI). This study introduces an innovative variant of code-VEP, referred to as 'Burst c-VEP', involving the presentation of short bursts of aperiodic visual flashes at a deliberately slow rate, typically ranging from two to four flashes per second. The proposed solutions were tested through an offline 4-classes c-VEP protocol involving 12 participants. The full amplitude burst c-VEP sequences exhibited higher accuracy, ranging from 90.5% (with 17.6 s of calibration data) to 95.6% (with 52.8 s of calibration data), compared to its m-sequence counterpart (71.4% to 85.0%). The mean selection time for both types of codes (1.5 s) compared favorably to reports from previous studies. Lowering the intensity of the stimuli only slightly decreased the accuracy of the burst code sequences to 94.2% while leading to substantial improvements in terms of user experience.\n\nMethodology\n-----------\nFactorial experimental design with 12 healthy participants. EEG recorded with BrainProducts LiveAmp 32-channel system at 500 Hz. Four conditions tested: burst c-VEP and m-sequence c-VEP, each at 100% and 40% amplitude depth. Participants focused on cued targets (4 classes) in 15 blocks of 4 trials per condition. CNN-based decoding with 250ms sliding windows. Subjective ratings collected for visual comfort, mental tiredness, and intrusiveness. VEP analysis included amplitude, latency, and inter-trial coherence metrics.\n\nReferences\n----------\nKalou Cabrera Castillos. (2023). 4-class code-VEP EEG data [Data set]. Zenodo.(dataset). DOI: https://doi.org/10.5281/zenodo.8255618\n\nKalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais. Burst c-VEP Based BCI: Optimizing stimulus design for enhanced classification with minimal calibration data and improved user experience,NeuroImage,Volume 284, 2023,120446,ISSN 1053-8119 DOI: https://doi.org/10.1016/j.neuroimage.2023.120446\n\nNotes\n\n.. versionadded:: 1.1.0\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000346",
+    "exists": true,
+    "description": "CastillosCVEP100",
+    "created_at": "2026-03-28T17:40:50+00:00",
+    "updated_at": "2026-06-03T13:11:44+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "dataset_id": "nm000244",
+  "date_retrieved": "2026-06-14T10:03:35.227544+00:00",
+  "dataset_description": {
+    "Name": "P300 dataset BI2014a from a \"Brain Invaders\" experiment",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Louis Korczowski",
+      "Ekaterina Ostaschenko",
+      "Anton Andreev",
+      "Grégoire Cattan",
+      "Pedro Luiz Coelho Rodrigues",
+      "Violette Gautheret",
+      "Marco Congedo"
+    ],
+    "Acknowledgements": "At the end of the experiment one ticket of cinema was offered to each subject, for a value of 7.5 euros per subject.",
+    "EthicsApprovals": [
+      "Approved by the Ethical Committee of the University of Grenoble Alpes (Comité d'Ethique pour la Recherche Non-Interventionnelle)"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.5281/zenodo.3266223",
+      "hal-02171575"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "https://doi.org/10.5281/zenodo.3266222",
+        "URL": "https://doi.org/10.5281/zenodo.3266223"
+      }
+    ],
+    "Keywords": [
+      "Electroencephalography (EEG)",
+      "P300",
+      "Brain-Computer Interface",
+      "Experiment",
+      "Collaboration",
+      "Multi-User",
+      "Hyperscanning"
+    ],
+    "PublicationYear": 2019,
+    "DatasetDOI": "10.82901/nemar.nm000244",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000244-blue)](https://doi.org/10.82901/nemar.nm000244)\n\n# P300 dataset BI2014a from a \"Brain Invaders\" experiment\n\nP300 dataset BI2014a from a \"Brain Invaders\" experiment.\n\n## Dataset Overview\n\n- **Code**: BrainInvaders2014a\n- **Paradigm**: p300\n- **DOI**: https://doi.org/10.5281/zenodo.3266222\n- **Subjects**: 64\n- **Sessions per subject**: 1\n- **Events**: Target=2, NonTarget=1\n- **Trial interval**: [0, 1] s\n- **File format**: mat and csv\n\n## Acquisition\n\n- **Sampling rate**: 512.0 Hz\n- **Number of channels**: 16\n- **Channel types**: eeg=16\n- **Channel names**: Fp1, Fp2, F5, AFz, F6, T7, Cz, T8, P7, P3, Pz, P4, P8, O1, Oz, O2\n- **Montage**: standard_1010\n- **Hardware**: g.USBamp (g.tec, Schiedlberg, Austria)\n- **Software**: OpenVibe\n- **Reference**: right earlobe\n- **Ground**: FZ\n- **Sensor type**: dry electrodes\n- **Line frequency**: 50.0 Hz\n- **Online filters**: no digital filter applied\n- **Cap manufacturer**: g.tec\n- **Cap model**: g.Sahara\n- **Electrode type**: dry 8-pins gold-alloy electrodes\n- **Electrode material**: gold-alloy\n\n## Participants\n\n- **Number of subjects**: 64\n- **Health status**: healthy\n- **Age**: mean=23.55, std=3.13\n- **Gender distribution**: male=49, female=22\n- **Handedness**: not specified\n- **BCI experience**: 57 were naïve BCI participants\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Task type**: oddball\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Study design**: calibration-less P300-based BCI system with dry electrodes; screening session for potential candidates for a broader multi-user BCI study\n- **Feedback type**: visual\n- **Stimulus type**: visual flashes\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Mode**: online\n- **Instructions**: Destroy the target symbol by focusing attention on it. Players had up to eight attempts to destroy the target symbol per level.\n- **Stimulus presentation**: n_symbols=36, n_groups=12, symbols_per_group=6, target_flashes_per_repetition=2, non_target_flashes_per_repetition=10, animation=symbols slowly and regularly moving according to predefined path\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n- **Number of targets**: 1\n- **Number of repetitions**: 12\n\n## Data Structure\n\n- **Trials**: variable; up to 8 attempts per level, 9 levels per session\n- **Blocks per session**: 9\n- **Trials context**: 9 levels per session, up to 8 attempts per level to destroy target\n\n## Preprocessing\n\n- **Data state**: raw EEG with hardware tagging (USB digital-to-analog converter for synchronization)\n- **Preprocessing applied**: False\n- **Notes**: No digital filter applied during recording. USB digital-to-analog converter used to reduce jitter and synchronize experimental tags with EEG signals.\n\n## Signal Processing\n\n- **Classifiers**: Riemannian Minimum Distance to Mean (RMDM), xDAWN, Riemannian\n- **Feature extraction**: Covariance/Riemannian, xDAWN\n\n## Cross-Validation\n\n- **Evaluation type**: cross_session\n\n## Performance (Original Study)\n\n- **Note**: Real-time adaptive RMDM classifier used for assessing participants' command with calibration-free procedure\n\n## BCI Application\n\n- **Applications**: gaming\n- **Environment**: laboratory\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Visual\n- **Type**: Perception\n\n## Documentation\n\n- **Description**: Dataset contains electroencephalographic (EEG) recordings of 71 subjects playing to a visual P300 Brain-Computer Interface (BCI) videogame named Brain Invaders. The interface uses the oddball paradigm on a grid of 36 symbols (1 Target, 35 Non-Target) that are flashed pseudo-randomly to elicit the P300 response.\n- **DOI**: 10.5281/zenodo.3266223\n- **Associated paper DOI**: hal-02171575\n- **License**: CC-BY-4.0\n- **Investigators**: Louis Korczowski, Ekaterina Ostaschenko, Anton Andreev, Grégoire Cattan, Pedro Luiz Coelho Rodrigues, Violette Gautheret, Marco Congedo\n- **Senior author**: Marco Congedo\n- **Institution**: GIPSA-lab, CNRS, University Grenoble-Alpes, Grenoble INP\n- **Address**: GIPSA-lab, 11 rue des Mathématiques, Grenoble Campus BP46, F-38402, France\n- **Country**: FR\n- **Repository**: Zenodo\n- **Data URL**: https://doi.org/10.5281/zenodo.3266223\n- **Publication year**: 2019\n- **Ethics approval**: Approved by the Ethical Committee of the University of Grenoble Alpes (Comité d'Ethique pour la Recherche Non-Interventionnelle)\n- **Acknowledgements**: At the end of the experiment one ticket of cinema was offered to each subject, for a value of 7.5 euros per subject.\n- **Keywords**: Electroencephalography (EEG), P300, Brain-Computer Interface, Experiment, Collaboration, Multi-User, Hyperscanning\n\n## Abstract\n\nWe describe the experimental procedures for the bi2014a dataset that contains electroencephalographic (EEG) recordings of 71 subjects playing to a visual P300 Brain-Computer Interface (BCI) videogame named Brain Invaders. The interface uses the oddball paradigm on a grid of 36 symbols (1 Target, 35 Non-Target) that are flashed pseudo-randomly to elicit the P300 response. EEG data were recorded using 16 active dry electrodes with up to three game sessions. The experiment took place at GIPSA-lab, Grenoble, France, in 2014.\n\n## Methodology\n\nThe experiment was designed to study the viability of a calibration-less P300-based BCI system with dry electrodes. Visual P300 is an event-related potential (ERP) elicited by an expected but unpredictable target visual stimulation (oddball paradigm), with peaking amplitude 240-600 ms after stimulus onset. Two event-related stimuli: Target (P300 expected) and Non-Target (no P300). The experiment used Brain Invaders, a P300-based BCI open-source software. A repetition is composed of 12 flashes (one for each group), of which two include the Target symbol (Target flashes) and 10 do not (non-Target flashes). The ratio of Target versus non-Target epochs in the whole datasets is one-to-five. During the experiment, the output of a real-time adaptive Riemannian Minimum Distance to Mean (RMDM) classifier was used for assessing the participants' command. Game session was compounded by nine levels, consisting in a unique and predefined configuration of the 36 symbols of the interface. Players had up to eight attempts to destroy the target symbol. If the player missed all eight attempts, the level was started once again from the beginning. Average duration of five minutes for the nine levels. Experimenter could end the experiment if no control over the BCI system was gained after 10 minutes.\n\n## References\n\nKorczowski, L., Ostaschenko, E., Andreev, A., Cattan, G., Rodrigues, P. L. C., Gautheret, V., & Congedo, M. (2019). Brain Invaders calibration-less P300-based BCI using dry EEG electrodes Dataset (BI2014a). https://hal.archives-ouvertes.fr/hal-02171575\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000244",
+    "exists": true,
+    "description": "P300 dataset BI2014a from a \"Brain Invaders\" experiment",
+    "created_at": "2026-03-25T21:50:49+00:00",
+    "updated_at": "2026-06-03T05:42:54+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

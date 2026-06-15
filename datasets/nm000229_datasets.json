@@ -1,0 +1,61 @@
+{
+  "dataset_id": "nm000229",
+  "date_retrieved": "2026-06-14T10:02:58.090515+00:00",
+  "dataset_description": {
+    "Name": "Gwilliams et al. 2023 — Introducing MEG-MASC: a high-quality magneto-encephalography dataset for evaluating natural speech processing",
+    "BIDSVersion": "1.9.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Laura Gwilliams",
+      "Graham Flick",
+      "Alec Marantz",
+      "Liina Pylkkänen",
+      "David Poeppel",
+      "Jean-Rémi King"
+    ],
+    "HowToAcknowledge": "Please cite: Gwilliams, L., Flick, G., Marantz, A., Pylkkänen, L., Poeppel, D., & King, J.-R. (2023). Introducing MEG-MASC: a high-quality MEG dataset of story comprehension. Scientific Data, 10, 862. https://doi.org/10.1038/s41597-023-02752-5",
+    "Funding": [
+      "FrontCog grant ANR-17-EURE-0017 (J.-R. King)",
+      "Abu Dhabi Research Institute (G1001) (A. Marantz, L. Pylkkänen)",
+      "Dingwall Foundation (L. Gwilliams)"
+    ],
+    "ReferencesAndLinks": [
+      "https://osf.io/ag3kj/",
+      "https://doi.org/10.1038/s41597-023-02752-5",
+      "https://www.nature.com/articles/s41597-023-02752-5"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000229",
+    "SourceDatasets": [
+      {
+        "URL": "https://osf.io/ag3kj/"
+      },
+      {
+        "DOI": "doi:10.1038/s41597-023-02752-5"
+      }
+    ],
+    "GeneratedBy": [
+      {
+        "Name": "Original BIDS dataset",
+        "Description": "Dataset published as a BIDS-MEG release by the authors. Minor fixes applied during ingestion to satisfy BIDS validator: (1) repaired broken participants.json (syntax errors), (2) replaced 'male'/'female'/'right'/'left' in participants.tsv with M/F/R/L to match Levels, (3) removed orphan anat references from 6 scans.tsv files (MRI files not included in the OSF download), (4) added missing recommended sidecar fields verified against the paper.",
+        "CodeURL": "https://osf.io/ag3kj/"
+      }
+    ],
+    "HEDVersion": "8.2.0",
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000229-blue)](https://doi.org/10.82901/nemar.nm000229)\n\n# MEG-MASC: a high-quality magneto-encephalography dataset for evaluating natural speech processing.\n\nLaura Gwilliams, Graham Flick, Alec Marantz, Liina Pylkkänen, David Poeppel, Jean-Rémi King\n\n- [Paper](https://arxiv.org)\n- [Data](https://osf.io/rguwj/)\n- [Code](https://github.com/kingjr/meg-masc)\n\n## Abstract\nThe \"MEG-MASC\" dataset provides a curated set of raw magnetoencephalography (MEG) recordings of 27 English speakers who listened to two hours of naturalistic stories. Each participant performed two identical sessions, involving listening to four fictional stories from the Manually Annotated Sub-Corpus (MASC) intermixed with random word lists and comprehension questions. We time-stamp the onset and offset of each word and phoneme in the metadata of the recording, and organize the dataset according to the 'Brain Imaging Data Structure' (BIDS). This data collection provides a suitable benchmark to large-scale encoding and decoding analyses of temporally-resolved brain responses to speech. We provide the Python code to replicate several validations analyses of the MEG evoked related fields such as the temporal decoding of phonetic features and word frequency. All code and MEG, audio and text data are publicly available to keep with best practices in transparent and reproducible research.\n\n## Please cite\n@article{gwilliams2022neural,\n  title={Neural dynamics of phoneme sequences reveal position-invariant code for content and order},\n  author={Gwilliams, Laura and King, Jean-Remi and Marantz, Alec and Poeppel, David},\n  journal={Nature Communications},\n  volume={13},\n  number={1},\n  pages={1--14},\n  year={2022},\n  publisher={Nature Publishing Group}\n}\n\n## Task organisation\nEach subject listened to four unique stories:\n  - task-0 : 'lw1',\n  - task-1 : 'cable_spool_fort',\n  - task-2 : 'easy_money',\n  - task-3 : 'The_Black_Widow'\n\nStories were presented in a different order to each participant:\n\n  participant_id\t:\ttask_order\n  sub-01\t:\t[0, 1, 2, 3]\n  sub-02\t:\t[0, 1, 3, 2]\n  sub-03\t:\t[0, 2, 3, 1]\n  sub-04\t:\t[3, 0, 1, 2]\n  sub-05\t:\t[2, 3, 1, 0]\n  sub-06\t:\t[0, 2, 1, 3]\n  sub-07\t:\t[0, 3, 1, 2]\n  sub-08\t:\t[3, 1, 0, 2]\n  sub-09\t:\t[2, 1, 3, 0]\n  sub-10\t:\t[1, 2, 3, 0]\n  sub-11\t:\t[1, 3, 2, 0]\n  sub-12\t:\t[2, 0, 3, 1]\n  sub-13\t:\t[1, 3, 0, 2]\n  sub-14\t:\t[1, 0, 3, 2]\n  sub-15\t:\t[2, 1, 0, 3]\n  sub-16\t:\t[3, 0, 2, 1]\n  sub-17\t:\t[1, 2, 3, 0]\n  sub-18\t:\t[2, 0, 1, 3]\n  sub-19\t:\t[0, 3, 2, 1]\n  sub-20\t:\t[2, 3, 0, 1]\n  sub-21\t:\t[1, 2, 3, 0]\n  sub-22\t:\t[1, 0, 2, 3]\n  sub-23\t:\t[0, 2, 3, 1]\n  sub-24\t:\t[3, 1, 2, 0]\n  sub-25\t:\t[0, 1, 3, 2]\n  sub-26\t:\t[3, 1, 0, 2]\n  sub-27\t:\t[1, 2, 3, 0]\n\n\n## Stimulus timestamps\n\nThe timing of each phoneme and each word is provided in each sub-*_ses-*_task-*_events.tsv file, for each subject, session and task. The timing links the MEG recording to the relevant speech moments of that story.\n\nEach events file contains five columns:\n  - onset (float) : onset time of event in seconds\n  - duration (float) : duration of event in seconds\n  - trial_type (dict) : dictionary of key:value pairs providing information about the event\n  - sample (int) : onset time of event in MEG samples\n\n## Stories.\n\nEach participant listened to four fictional stories, over the course of two ~1h-long MEG sessions, with the exception of 5 subjects who only underwent 1 session. The stories were played in different orders across participants. These stories were originally selected because they had been annotated for their syntactic structures (MASC).  The corresponding text files can be found in stimuli/text/*.txt\n\n## Word lists and pseudo-words.\n\nTo potentially investigate MEG responses to words independently of their narrative context, the text of these stories have been supplemented with word lists. Specifically, a random word list consisting of the unique content words (nouns, proper nouns, verbs, adverbs and adjectives) selected from the preceding text segment was added in a random order. In addition, a small fraction (<1%) of non-words were inserted into the natural sentences of the stories. The corresponding text files can be found in stimuli/text_with_wordlist/*.txt. For simplicity, the brain responses to these word lists and to these pseudo words are fully discarded from the present study.\n\n## Audio synthesis.\n\nEach of these stories was synthesized with Mac OS Mojave © version 10.14 text-to-speech. Voices (n=3 female) and speech rates (145 - 205 words per minute) varied every 5-20 sentences. The inter-sentence interval randomly varied between 0 and 1,000 ms. Both speech rate and inter-sentence intervals were sampled from a uniform distribution. Each `text_with_wordlist` files was divided into ~3 min sound files, which can be found in stimuli/audio/*.wav.\n\n## Forced Alignment.\n\nThe timing of words and phonemes were inferred from the forced-alignment between the wav and text files, using the ‘gentle aligner’ from the Python module lowerquality (https://github.com/lowerquality/gentle). We discarded the words that did not get a forced alignment through this procedure. Analysis of the Mel spectrogram and of the phonetic decoding led to better results when using gentle than when using the Penn Forced Aligner originally used in Gwilliams et al MASC. The timing of each word and phoneme can be found in the events.tsv of each individual recording session.\n\n## Verification. To verify that the forced alignment did not have a systematic bias, we systematically check the MEG decoding of phonetic features for each sound file separately.\n\n\n﻿References\n----------\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nNiso, G., Gorgolewski, K. J., Bock, E., Brooks, T. L., Flandin, G., Gramfort, A., Henson, R. N., Jas, M., Litvak, V., Moreau, J., Oostenveld, R., Schoffelen, J., Tadel, F., Wexler, J., Baillet, S. (2018). MEG-BIDS, the brain imaging data structure extended to magnetoencephalography. Scientific Data, 5, 180110. https://doi.org/10.1038/sdata.2018.110\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000229",
+    "exists": true,
+    "description": "Gwilliams et al. 2023 — Introducing MEG-MASC: a high-quality magneto-encephalography dataset for evaluating natural speech processing",
+    "created_at": "2026-04-11T11:22:49+00:00",
+    "updated_at": "2026-06-03T03:27:04+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

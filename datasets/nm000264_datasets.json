@@ -1,0 +1,68 @@
+{
+  "dataset_id": "nm000264",
+  "date_retrieved": "2026-06-14T10:04:23.105174+00:00",
+  "dataset_description": {
+    "Name": "Vaineau, Barachant & Andreev 2013 — Brain Invaders Adaptive versus Non-Adaptive P300 Brain-Computer Interface dataset (BI2013a)",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-1.0",
+    "Authors": [
+      "E. Vaineau",
+      "A. Barachant",
+      "A. Andreev",
+      "P. Rodrigues",
+      "G. Cattan",
+      "M. Congedo"
+    ],
+    "EthicsApprovals": [
+      "Approved by the Ethical Committee of the University of Grenoble Alpes (Comité d'Ethique pour la Recherche Non-Interventionnelle)"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.5281/zenodo.1494163",
+      "10.5281/zenodo.2649006"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000264",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "https://doi.org/10.5281/zenodo.2669187",
+        "URL": "https://doi.org/10.5281/zenodo.1494163"
+      },
+      {
+        "DOI": "doi:10.5281/zenodo.1494163"
+      }
+    ],
+    "Keywords": [
+      "Electroencephalography (EEG)",
+      "P300",
+      "Brain-Computer Interface",
+      "Experiment",
+      "Adaptive",
+      "Calibration"
+    ],
+    "PublicationYear": 2019,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000264-blue)](https://doi.org/10.82901/nemar.nm000264)\n\nBrainInvaders2013a\n==================\n\nP300 dataset BI2013a from a \"Brain Invaders\" experiment.\n\nDataset Overview\n----------------\n  Code: BrainInvaders2013a\n  Paradigm: p300\n  DOI: https://doi.org/10.5281/zenodo.2669187\n  Subjects: 24\n  Sessions per subject: 8\n  Events: Target=33285, NonTarget=33286\n  Trial interval: [0, 1] s\n  Runs per session: 2\n  File format: mat, csv, gdf\n  Contributing labs: GIPSA-lab\n\nAcquisition\n-----------\n  Sampling rate: 512.0 Hz\n  Number of channels: 16\n  Channel types: eeg=16\n  Channel names: Fp1, Fp2, F5, AFz, F6, T7, Cz, T8, P7, P3, Pz, P4, P8, O1, Oz, O2\n  Montage: standard_1020\n  Hardware: g.USBamp (g.tec, Schiedlberg, Austria)\n  Software: OpenVibe\n  Reference: left earlobe\n  Ground: FZ\n  Sensor type: wet Silver/Silver Chloride electrodes\n  Line frequency: 50.0 Hz\n  Online filters: no digital filter applied\n  Cap manufacturer: g.tec\n  Cap model: g.GAMMAcap\n  Electrode type: wet\n  Electrode material: Silver/Silver Chloride\n\nParticipants\n------------\n  Number of subjects: 24\n  Health status: healthy\n  Age: mean=25.96, std=4.46, min=20.0, max=30.0\n  Gender distribution: male=12, female=12\n  BCI experience: volunteers recruited via flyers and university mailing list\n  Species: human\n\nExperimental Protocol\n---------------------\n  Paradigm: p300\n  Task type: visual P300 BCI\n  Number of classes: 2\n  Class labels: Target, NonTarget\n  Study design: compare P300-based BCI with and without adaptive calibration using Riemannian geometry; randomised order of runs (adaptive vs non-adaptive)\n  Feedback type: visual (Brain Invaders video game interface)\n  Stimulus type: visual flashes\n  Stimulus modalities: visual\n  Primary modality: visual\n  Mode: both\n  Training/test split: True\n  Instructions: destroy targets in Brain Invaders BCI video game\n  Stimulus presentation: distance_from_screen=75 to 115 cm, screen=ViewSonic 22 inch, flash_groups=36 symbols distributed in 12 groups\n\nHED Event Annotations\n---------------------\n  Schema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\nParadigm-Specific Parameters\n----------------------------\n  Detected paradigm: p300\n\nData Structure\n--------------\n  Trials: {'Training_Target': 80, 'Training_non-Target': 400, 'Online': 'variable (depends on user performance)'}\n  Trials context: per_phase\n\nPreprocessing\n-------------\n  Data state: raw EEG with software tagging via USB (note: tagging introduces jitter and latency)\n  Preprocessing applied: False\n  Notes: Tags sent by application to amplifier through USB port and recorded as supplementary channel; tagging process identical in all experimental conditions\n\nSignal Processing\n-----------------\n  Classifiers: xDAWN, Riemannian, RMDM (Riemannian Minimum Distance to Mean)\n  Feature extraction: Covariance/Riemannian, xDAWN, common spatiotemporal pattern\n\nCross-Validation\n----------------\n  Evaluation type: cross_session\n\nPerformance (Original Study)\n----------------------------\n  Balanced Accuracy: used due to unbalanced classes (1:5 ratio Target to non-Target)\n\nBCI Application\n---------------\n  Applications: gaming\n  Environment: small room (4 square meters) with one-way glass window for experimenter observation\n  Online feedback: True\n\nTags\n----\n  Pathology: Healthy\n  Modality: Visual\n  Type: Perception\n\nDocumentation\n-------------\n  Description: EEG recordings of 24 subjects doing a visual P300 Brain-Computer Interface experiment comparing adaptive vs non-adaptive calibration using Riemannian geometry\n  DOI: 10.5281/zenodo.1494163\n  Associated paper DOI: 10.5281/zenodo.2649006\n  License: CC-BY-1.0\n  Investigators: E. Vaineau, A. Barachant, A. Andreev, P. Rodrigues, G. Cattan, M. Congedo\n  Senior author: M. Congedo\n  Institution: GIPSA-lab, CNRS, University Grenoble-Alpes, Grenoble INP\n  Address: GIPSA-lab, 11 rue des Mathématiques, Grenoble Campus BP46, F-38402, France\n  Country: FR\n  Repository: Zenodo\n  Data URL: https://doi.org/10.5281/zenodo.1494163\n  Publication year: 2019\n  Ethics approval: Approved by the Ethical Committee of the University of Grenoble Alpes (Comité d'Ethique pour la Recherche Non-Interventionnelle)\n  Keywords: Electroencephalography (EEG), P300, Brain-Computer Interface, Experiment, Adaptive, Calibration\n\nAbstract\n--------\nThis dataset contains electroencephalographic (EEG) recordings of 24 subjects doing a visual P300 Brain-Computer Interface experiment on PC. The visual P300 is an event-related potential elicited by visual stimulation, peaking 240-600 ms after stimulus onset. The experiment was designed to compare the use of a P300-based brain-computer interface with and without adaptive calibration using Riemannian geometry. EEG data were recorded using 16 electrodes during an experiment at GIPSA-lab, Grenoble, France, in 2013.\n\nMethodology\n-----------\nSubjects participated in sessions with two runs (Non-Adaptive and Adaptive, randomised order). Each run had Training (calibration) and Online phases. In Non-Adaptive mode, Training data calibrated the MDM classifier for Online phase. In Adaptive mode, classifier initialized with generic class geometric means from previous experiment and continuously adapted using Riemannian method. Brain Invaders interface: 36 symbols in 12 groups, one repetition = 12 flashes (2 Target, 10 non-Target). Training phase: 80 Target and 400 non-Target flashes (fixed). Online phase: variable repetitions based on performance to destroy targets. Subjects blind to mode of operation.\n\nReferences\n----------\nVaineau, E., Barachant, A., Andreev, A., Rodrigues, P. C., Cattan, G. & Congedo, M. (2019). Brain invaders adaptive versus non-adaptive P300 brain-computer interface dataset. arXiv preprint arXiv:1904.09111.\n\nBarachant A, Congedo M (2014) A Plug & Play P300 BCI using Information Geometry. arXiv:1409.0107.\n\nCongedo M, Goyat M, Tarrin N, Ionescu G, Rivet B,Varnet L, Rivet B, Phlypo R, Jrad N, Acquadro M, Jutten C (2011) “Brain Invaders”: a prototype of an open-source P300-based video game working with the OpenViBE platform. Proc. IBCI Conf., Graz, Austria, 280-283.\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000264",
+    "exists": true,
+    "description": "Vaineau, Barachant & Andreev 2013 — Brain Invaders Adaptive versus Non-Adaptive P300 Brain-Computer Interface dataset (BI2013a)",
+    "created_at": "2026-03-26T17:52:56+00:00",
+    "updated_at": "2026-06-09T01:11:59+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

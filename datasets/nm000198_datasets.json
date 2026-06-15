@@ -1,0 +1,59 @@
+{
+  "dataset_id": "nm000198",
+  "date_retrieved": "2026-06-14T10:01:14.516408+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2015-008 Center Speller P300 dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "M S Treder",
+      "N M Schmidt",
+      "B Blankertz"
+    ],
+    "ReferencesAndLinks": [
+      "https://github.com/bbci/bbci_public/blob/master/doc/index.markdown"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1088/1741-2560/8/6/066003",
+        "URL": "https://github.com/bbci/bbci_public/blob/master/doc/index.markdown"
+      }
+    ],
+    "Keywords": [
+      "P300",
+      "ERP",
+      "BCI",
+      "speller",
+      "covert attention",
+      "feature attention",
+      "gaze-independent"
+    ],
+    "PublicationYear": 2011,
+    "DatasetDOI": "10.82901/nemar.nm000198",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000198-blue)](https://doi.org/10.82901/nemar.nm000198)\n\n# BNCI 2015-008 Center Speller P300 dataset\n\nBNCI 2015-008 Center Speller P300 dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2015-008\n- **Paradigm**: p300\n- **DOI**: 10.1088/1741-2560/8/6/066003\n- **Subjects**: 13\n- **Sessions per subject**: 1\n- **Events**: Target=1, NonTarget=2\n- **Trial interval**: [0, 1.0] s\n- **Runs per session**: 2\n- **File format**: gdf\n- **Data preprocessed**: True\n\n## Acquisition\n\n- **Sampling rate**: 250.0 Hz\n- **Number of channels**: 63\n- **Channel types**: eeg=63\n- **Channel names**: Fp2, AF3, AF4, Fz, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, FCz, FC1, FC2, FC3, FC4, FC5, FC6, T7, T8, Cz, C1, C2, C3, C4, C5, C6, TP7, TP8, CPz, CP1, CP2, CP3, CP4, CP5, CP6, Pz, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, POz, PO3, PO4, PO7, PO8, PO9, PO10, Oz, O1, O2, Iz, I1, I2\n- **Montage**: 10-10\n- **Hardware**: Brain Products actiCAP\n- **Reference**: left mastoid\n- **Ground**: forehead\n- **Sensor type**: active electrode\n- **Line frequency**: 50.0 Hz\n- **Online filters**: 0.016-250 Hz bandpass\n- **Impedance threshold**: 20.0 kOhm\n- **Cap manufacturer**: Brain Products\n\n## Participants\n\n- **Number of subjects**: 13\n- **Health status**: patients\n- **Clinical population**: Healthy\n- **Age**: mean=27.0, min=16.0, max=45.0\n- **Gender distribution**: male=8, female=5\n- **Handedness**: {'right': 12, 'left': 1}\n- **BCI experience**: naive\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Trial duration**: 30.0 s\n- **Study design**: Two-stage visual speller using covert spatial attention and non-spatial feature attention (color and form). Three speller variants tested: Hex-o-Spell (6 discs with size enhancement and unique colors), Cake Speller (6 triangular faces with unique colors), Center Speller (sequential presentation of 6 geometric shapes with unique colors and forms).\n- **Feedback type**: none\n- **Stimulus type**: visual_flash\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: online\n- **Training/test split**: True\n- **Instructions**: Participants had to strictly fixate the center of the screen and covertly attend to the target symbol. They were instructed to silently count the number of intensifications of the target symbol.\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n- **Number of targets**: 30\n- **Number of repetitions**: 10\n- **Stimulus onset asynchrony**: 200.0 ms\n\n## Data Structure\n\n- **Trials**: 60 intensifications per stage (10 sequences × 6 elements)\n- **Trials context**: per_stage\n\n## Preprocessing\n\n- **Data state**: filtered\n- **Preprocessing applied**: True\n- **Steps**: downsampling, lowpass filter, baseline correction\n- **Highpass filter**: 0.016 Hz\n- **Lowpass filter**: 49.0 Hz\n- **Bandpass filter**: {'low_cutoff_hz': 0.016, 'high_cutoff_hz': 250.0}\n- **Filter type**: Chebyshev\n- **Re-reference**: linked mastoids\n- **Downsampled to**: 250.0 Hz\n- **Epoch window**: [-200.0, 800.0]\n- **Notes**: For offline ERP analysis: downsampled to 250 Hz, lowpass filtered below 49 Hz using Chebyshev filter (passbands/stopbands: 42/49 Hz). For online classification: downsampled to 100 Hz, no software filter applied. Baseline correction using -200 ms prestimulus interval.\n\n## Signal Processing\n\n- **Classifiers**: LDA, SLDA\n- **Feature extraction**: ERP components, P300, P3\n- **Spatial filters**: shrinkage covariance\n\n## Cross-Validation\n\n- **Method**: calibration-test split\n- **Evaluation type**: within_session\n\n## Performance (Original Study)\n\n- **Accuracy**: 92.0%\n- **Hex O Spell Accuracy**: 88.0\n- **Cake Speller Accuracy**: 90.0\n- **Center Speller Accuracy**: 97.0\n- **Communication Rate Symbols Per Min**: 2.3\n\n## BCI Application\n\n- **Applications**: speller, communication\n- **Environment**: laboratory\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Visual\n- **Type**: ERP, P300\n\n## Documentation\n\n- **DOI**: 10.1088/1741-2560/8/6/066003\n- **License**: CC-BY-NC-ND-4.0\n- **Investigators**: M S Treder, N M Schmidt, B Blankertz\n- **Institution**: Berlin Institute of Technology\n- **Department**: Machine Learning Laboratory\n- **Country**: Germany\n- **Repository**: GitHub\n- **Data URL**: https://github.com/bbci/bbci_public/blob/master/doc/index.markdown\n- **Publication year**: 2011\n- **Keywords**: P300, ERP, BCI, speller, covert attention, feature attention, gaze-independent\n\n## References\n\nTreder, M. S., Schmidt, N. M., & Blankertz, B. (2011). Gaze-independent brain-computer interfaces based on covert attention and feature attention. Journal of Neural Engineering, 8(6), 066003. https://doi.org/10.1088/1741-2560/8/6/066003\n\nNotes\n\n.. versionadded:: 1.2.0\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000198",
+    "exists": true,
+    "description": "BNCI 2015-008 Center Speller P300 dataset",
+    "created_at": "2026-03-24T00:58:52+00:00",
+    "updated_at": "2026-06-02T01:40:34+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "dataset_id": "nm000216",
+  "date_retrieved": "2026-06-14T10:02:20.952745+00:00",
+  "dataset_description": {
+    "Name": "P300 dataset BI2015a from a \"Brain Invaders\" experiment",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Louis Korczowski",
+      "Martine Cederhout",
+      "Anton Andreev",
+      "Grégoire Cattan",
+      "Pedro Luiz Coelho Rodrigues",
+      "Violette Gautheret",
+      "Marco Congedo"
+    ],
+    "HowToAcknowledge": "Korczowski, L., Cederhout, M., Andreev, A., Cattan, G., Rodrigues, P.L.C., Gautheret, V., Congedo, M. (2019). Brain Invaders calibration-less P300-based BCI with modulation of flash duration Dataset (bi2015a). Technical Report, GIPSA-lab.",
+    "EthicsApprovals": [
+      "Ethical Committee of the University of Grenoble Alpes (Comité d'Ethique pour la Recherche Non-Interventionnelle)"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.5281/zenodo.3266930",
+      "hal-02172347"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "https://doi.org/10.5281/zenodo.3266929",
+        "URL": "https://doi.org/10.5281/zenodo.3266930"
+      }
+    ],
+    "Keywords": [
+      "Electroencephalography (EEG)",
+      "P300",
+      "Brain-Computer Interface",
+      "Experiment"
+    ],
+    "PublicationYear": 2019,
+    "DatasetDOI": "10.82901/nemar.nm000216",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000216-blue)](https://doi.org/10.82901/nemar.nm000216)\n\n# P300 dataset BI2015a from a \"Brain Invaders\" experiment\n\nP300 dataset BI2015a from a \"Brain Invaders\" experiment.\n\n## Dataset Overview\n\n- **Code**: BrainInvaders2015a\n- **Paradigm**: p300\n- **DOI**: https://doi.org/10.5281/zenodo.3266929\n- **Subjects**: 43\n- **Sessions per subject**: 3\n- **Events**: Target=2, NonTarget=1\n- **Trial interval**: [0, 1] s\n- **File format**: mat and csv\n\n## Acquisition\n\n- **Sampling rate**: 512.0 Hz\n- **Number of channels**: 32\n- **Channel types**: eeg=32\n- **Channel names**: Fp1, Fp2, AFz, F7, F3, F4, F8, FC5, FC1, FC2, FC6, T7, C3, Cz, C4, T8, CP5, CP1, CP2, CP6, P7, P3, Pz, P4, P8, PO7, O1, Oz, O2, PO8, PO9, PO10\n- **Montage**: 10-10\n- **Hardware**: g.USBamp (g.tec, Schiedlberg, Austria)\n- **Software**: OpenVibe\n- **Reference**: right earlobe\n- **Ground**: Fz\n- **Sensor type**: wet electrodes\n- **Line frequency**: 50.0 Hz\n- **Online filters**: no digital filter applied\n- **Cap manufacturer**: g.tec\n- **Cap model**: g.GAMMAcap\n- **Electrode type**: wet\n- **Electrode material**: Silver/Silver Chloride\n\n## Participants\n\n- **Number of subjects**: 43\n- **Health status**: healthy\n- **Age**: mean=23.7, std=3.19\n- **Gender distribution**: male=31, female=12\n- **BCI experience**: mostly students and young researchers\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Task type**: target detection\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Study design**: calibration-less P300-based BCI with modulation of flash duration; three game sessions (9 levels each) with different flash durations (110ms, 80ms, 50ms); resting state and eyes closed recorded before and after sessions; subjects instructed to limit eye blinks, head movements and face muscular contractions\n- **Feedback type**: visual (game interface with real-time adaptive Riemannian RMDM classifier)\n- **Stimulus type**: oddball paradigm on grid of 36 symbols (1 Target, 35 Non-Target) flashed pseudo-randomly\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: online\n- **Training/test split**: False\n- **Instructions**: destroy target symbol within 8 attempts; aliens move slowly and regularly according to predefined path to maintain attention\n- **Stimulus presentation**: SoftwareName=OpenViBE\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n- **Number of targets**: 1\n- **Number of repetitions**: 12\n\n## Data Structure\n\n- **Trials**: variable per subject (up to 8 attempts per level, 9 levels per session, 3 sessions)\n- **Blocks per session**: 3\n- **Trials context**: 9 levels per session with variable duration (average ~5 minutes per session, max 10 minutes)\n\n## Preprocessing\n\n- **Data state**: raw EEG with synchronized USB tagging (reduced jitter using USB digital-to-analog converter)\n- **Preprocessing applied**: False\n- **Notes**: no digital filter applied during acquisition; tags synchronized with EEG signals to reduce jitter; consistent tagging latency across Brain Invaders databases\n\n## Signal Processing\n\n- **Classifiers**: Riemannian Minimum Distance to Mean (RMDM), adaptive\n- **Feature extraction**: Covariance/Riemannian\n\n## Cross-Validation\n\n- **Evaluation type**: cross_session\n\n## BCI Application\n\n- **Applications**: gaming\n- **Environment**: small room (4 square meters) with 24 inch screen\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Visual\n- **Type**: Perception\n\n## Documentation\n\n- **DOI**: 10.5281/zenodo.3266930\n- **Associated paper DOI**: hal-02172347\n- **License**: CC-BY-4.0\n- **Investigators**: Louis Korczowski, Martine Cederhout, Anton Andreev, Grégoire Cattan, Pedro Luiz Coelho Rodrigues, Violette Gautheret, Marco Congedo\n- **Senior author**: Marco Congedo\n- **Institution**: GIPSA-lab, CNRS, University Grenoble-Alpes, Grenoble INP\n- **Address**: GIPSA-lab, 11 rue des Mathématiques, Grenoble Campus BP46, F-38402, France\n- **Country**: FR\n- **Repository**: Zenodo\n- **Data URL**: https://doi.org/10.5281/zenodo.3266930\n- **Publication year**: 2019\n- **Ethics approval**: Ethical Committee of the University of Grenoble Alpes (Comité d'Ethique pour la Recherche Non-Interventionnelle)\n- **How to acknowledge**: Korczowski, L., Cederhout, M., Andreev, A., Cattan, G., Rodrigues, P.L.C., Gautheret, V., Congedo, M. (2019). Brain Invaders calibration-less P300-based BCI with modulation of flash duration Dataset (bi2015a). Technical Report, GIPSA-lab.\n- **Keywords**: Electroencephalography (EEG), P300, Brain-Computer Interface, Experiment\n\n## Abstract\n\nThis dataset contains electroencephalographic (EEG) recordings of 50 subjects playing to a visual P300 Brain-Computer Interface (BCI) videogame named Brain Invaders. The interface uses the oddball paradigm on a grid of 36 symbols (1 Target, 35 Non-Target) that are flashed pseudo-randomly to elicit the P300 response. EEG data were recorded using 32 active wet electrodes with three conditions: flash duration 50ms, 80ms or 110ms. The experiment took place at GIPSA-lab, Grenoble, France, in 2015.\n\n## Methodology\n\nThe experiment was designed to study the influence of the flash duration on a calibration-less P300-based BCI system with wet electrodes and as a screening session for potential candidates for a broader multi-user BCI study. The visual P300 is an event-related potential (ERP) elicited by an expected but unpredictable target visual stimulation (oddball paradigm), with peaking amplitude 240-600 ms after stimulus onset. During the experiment, the output of a real-time adaptive Riemannian Minimum Distance to Mean (RMDM) classifier was used for assessing the participants' command. This scheme allows a calibration-free classifier. Before and after the three game sessions, around one minute of resting state and eyes closed conditions were recorded. The interface of Brain Invaders is composed of 36 aliens. In the Brain Invaders P300 paradigm, a repetition is composed of 12 flashes of pseudo-random groups of six symbols chosen in such a way that after each repetition each symbol has flashed exactly two times. A game session was compounded by nine levels, consisting in a unique and predefined configuration of the 36 symbols of the interface. Aliens slowly and regularly moved according to a predefined path keeping constant the inter-distance between adjacent aliens to maintain high player's attention during the whole experiment.\n\n## References\n\nKorczowski, L., Cederhout, M., Andreev, A., Cattan, G., Rodrigues, P. L. C., Gautheret, V., & Congedo, M. (2019). Brain Invaders calibration-less P300-based BCI with modulation of flash duration Dataset (BI2015a) https://hal.archives-ouvertes.fr/hal-02172347\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000216",
+    "exists": true,
+    "description": "P300 dataset BI2015a from a \"Brain Invaders\" experiment",
+    "created_at": "2026-03-24T05:47:13+00:00",
+    "updated_at": "2026-06-03T01:28:01+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

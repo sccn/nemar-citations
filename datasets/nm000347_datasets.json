@@ -1,0 +1,73 @@
+{
+  "dataset_id": "nm000347",
+  "date_retrieved": "2026-06-14T10:05:51.486430+00:00",
+  "dataset_description": {
+    "Name": "Shi et al. 2025 — HEFMI-ICH: a hybrid EEG-fNIRS motor imagery dataset for brain-computer interface in intracerebral hemorrhage",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "Jian Shi",
+      "Danyang Chen",
+      "Xingwei Zhao",
+      "Zhixian Zhao",
+      "Shengjie Li",
+      "Yeguang Xu",
+      "Tao Ding",
+      "Zheng Zhu",
+      "Peng Zhang",
+      "Qing Ye",
+      "Yingxin Tang",
+      "Ping Zhang",
+      "Bo Tao",
+      "Zhouping Tang"
+    ],
+    "ReferencesAndLinks": [
+      "https://figshare.com/articles/dataset/28955456"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000347",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1038/s41597-025-06100-7",
+        "URL": "https://figshare.com/articles/dataset/28955456"
+      },
+      {
+        "DOI": "doi:10.1038/s41597-025-06100-7"
+      }
+    ],
+    "Keywords": [
+      "Healthy",
+      "Stroke",
+      "Motor",
+      "Clinical",
+      "Research",
+      "imagery",
+      "rehabilitation"
+    ],
+    "PublicationYear": 2025,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000347-blue)](https://doi.org/10.82901/nemar.nm000347)\n\nHefmiIch2025\n============\n\nHybrid EEG-fNIRS MI dataset for ICH from Shi et al 2025.\n\nDataset Overview\n----------------\n  Code: HefmiIch2025\n  Paradigm: imagery\n  DOI: 10.1038/s41597-025-06100-7\n  Subjects: 37\n  Sessions per subject: 3\n  Events: left_hand=1, right_hand=2\n  Trial interval: [0, 10] s\n  File format: MAT (pre-epoched)\n  Data preprocessed: True\n\nAcquisition\n-----------\n  Sampling rate: 256.0 Hz\n  Number of channels: 32\n  Channel types: eeg=32\n  Channel names: FC1, AF3, AF4, CP1, CP2, CP6, Cz, C3, C4, T7, T8, FC2, FC5, FC6, Pz, CP5, PO3, PO4, Oz, Fp2, Fp1, Fz, F3, F4, F7, F8, P3, P4, P7, P8, O1, O2\n  Montage: biosemi32\n  Hardware: g.HIamp (g.tec medical engineering GmbH)\n  Line frequency: 50.0 Hz\n  Online filters: {}\n\nParticipants\n------------\n  Number of subjects: 37\n  Health status: mixed (17 healthy, 20 ICH patients)\n  Clinical population: intracerebral hemorrhage (ICH)\n  Age: min=20.0, max=65.0\n  Gender distribution: female=8, male=29\n  Handedness: right-handed\n  Species: human\n\nExperimental Protocol\n---------------------\n  Paradigm: imagery\n  Number of classes: 2\n  Class labels: left_hand, right_hand\n  Trial duration: 27.0 s\n  Study design: 2-class hand MI (left/right grasping) for ICH rehabilitation. 17 healthy + 20 ICH patients, 1-6 sessions per subject.\n  Feedback type: none\n  Stimulus type: directional arrow + auditory beep\n  Stimulus modalities: visual, auditory\n  Primary modality: visual\n  Synchronicity: synchronous\n  Mode: offline\n\nHED Event Annotations\n---------------------\n  Schema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n  left_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Left, Hand\n\n  right_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\nParadigm-Specific Parameters\n----------------------------\n  Detected paradigm: motor_imagery\n  Imagery tasks: left_hand, right_hand\n  Cue duration: 2.0 s\n  Imagery duration: 10.0 s\n\nData Structure\n--------------\n  Trials: 3330\n  Trials context: 37 subjects x ~3 sessions x 30 trials = ~3330\n\nSignal Processing\n-----------------\n  Classifiers: CSP+SVM, FBCSP+SVM, EEGBaseNet, TF+SVM\n  Feature extraction: CSP, FBCSP, time-frequency features\n  Frequency bands: preprocessing=[0.5, 30.0] Hz\n  Spatial filters: CSP, FBCSP\n\nCross-Validation\n----------------\n  Method: 5-fold\n  Folds: 5\n  Evaluation type: within_subject\n\nBCI Application\n---------------\n  Applications: rehabilitation\n  Environment: clinical\n  Online feedback: False\n\nTags\n----\n  Pathology: Healthy, Stroke\n  Modality: Motor\n  Type: Clinical, Research\n\nDocumentation\n-------------\n  DOI: 10.1038/s41597-025-06100-7\n  License: CC-BY-NC-ND-4.0\n  Investigators: Jian Shi, Danyang Chen, Xingwei Zhao, Zhixian Zhao, Shengjie Li, Yeguang Xu, Tao Ding, Zheng Zhu, Peng Zhang, Qing Ye, Yingxin Tang, Ping Zhang, Bo Tao, Zhouping Tang\n  Institution: Huazhong University of Science and Technology\n  Country: CN\n  Data URL: https://figshare.com/articles/dataset/28955456\n  Publication year: 2025\n\nReferences\n----------\nShi, J., Chen, D., et al. (2025). HEFMI-ICH: a hybrid EEG-fNIRS motor imagery dataset for brain-computer interface in intracerebral hemorrhage. Scientific Data. https://doi.org/10.1038/s41597-025-06100-7\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000347",
+    "exists": true,
+    "description": "Shi et al. 2025 — HEFMI-ICH: a hybrid EEG-fNIRS motor imagery dataset for brain-computer interface in intracerebral hemorrhage",
+    "created_at": "2026-03-28T17:57:21+00:00",
+    "updated_at": "2026-06-03T13:25:23+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

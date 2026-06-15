@@ -1,0 +1,68 @@
+{
+  "dataset_id": "nm000215",
+  "date_retrieved": "2026-06-14T10:02:17.283959+00:00",
+  "dataset_description": {
+    "Name": "P300 dataset BI2014b from a \"Brain Invaders\" experiment",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Louis Korczowski",
+      "Ekaterina Ostaschenko",
+      "Anton Andreev",
+      "Grégoire Cattan",
+      "Pedro Luiz Coelho Rodrigues",
+      "Violette Gautheret",
+      "Marco Congedo"
+    ],
+    "Acknowledgements": "At the end of the experiment two tickets of cinema were offered to each subject, for a total value of 15 euros per subject.",
+    "EthicsApprovals": [
+      "Ethical Committee of the University of Grenoble Alpes (Comité d'Ethique pour la Recherche Non-Interventionnelle)"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.5281/zenodo.3267301",
+      "hal-02173958"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "https://doi.org/10.5281/zenodo.3267301",
+        "URL": "https://doi.org/10.5281/zenodo.3267301"
+      }
+    ],
+    "Keywords": [
+      "Electroencephalography (EEG)",
+      "P300",
+      "Brain-Computer Interface (BCI)",
+      "Experiment",
+      "Collaboration",
+      "Multi-User",
+      "Hyperscanning"
+    ],
+    "PublicationYear": 2019,
+    "DatasetDOI": "10.82901/nemar.nm000215",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000215-blue)](https://doi.org/10.82901/nemar.nm000215)\n\n# P300 dataset BI2014b from a \"Brain Invaders\" experiment\n\nP300 dataset BI2014b from a \"Brain Invaders\" experiment.\n\n## Dataset Overview\n\n- **Code**: BrainInvaders2014b\n- **Paradigm**: p300\n- **DOI**: https://doi.org/10.5281/zenodo.3267301\n- **Subjects**: 38\n- **Sessions per subject**: 1\n- **Events**: Target=2, NonTarget=1\n- **Trial interval**: [0, 1] s\n- **File format**: mat and csv\n\n## Acquisition\n\n- **Sampling rate**: 512.0 Hz\n- **Number of channels**: 32\n- **Channel types**: eeg=32\n- **Channel names**: Fp1, Fp2, AFz, F7, F3, F4, F8, FC5, FC1, FC2, FC6, T7, C3, Cz, C4, T8, CP5, CP1, CP2, CP6, P7, P3, Pz, P4, P8, PO7, O1, Oz, O2, PO8, PO9, PO10\n- **Montage**: standard_1010\n- **Hardware**: g.USBamp (g.tec, Schiedlberg, Austria)\n- **Software**: OpenVibe\n- **Reference**: right earlobe\n- **Ground**: Fz\n- **Sensor type**: wet electrodes\n- **Line frequency**: 50.0 Hz\n- **Cap manufacturer**: g.tec\n- **Cap model**: g.GAMMAcap\n- **Electrode type**: wet\n- **Electrode material**: Ag/AgCl\n\n## Participants\n\n- **Number of subjects**: 38\n- **Health status**: healthy\n- **Age**: mean=24.1, std=3.09\n- **Gender distribution**: male=24, female=14\n- **BCI experience**: not naïve users - selected on the basis of their individual score during a preliminary session of Brain Invaders\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Task type**: oddball\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Study design**: multi-user/hyperscanning experiment with three randomized conditions (Solo1, Solo2, Collaboration). Subjects played in pairs. Solo conditions used a control design where non-playing participant focused on unanimated cross to prevent stimulus observation while EEG was recorded (to correct for fake inter-brain synchrony).\n- **Study domain**: inter-brain synchrony in collaborative BCI\n- **Feedback type**: visual\n- **Stimulus type**: visual flashes\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: online\n- **Training/test split**: False\n- **Instructions**: destroy the target alien symbol as fast as possible. Up to eight attempts per level. If all attempts missed, level restarted.\n- **Stimulus presentation**: repetition_structure=12 flashes per repetition of pseudo-random groups of 6 symbols, such that each symbol flashes exactly twice per repetition, target_ratio=1:5 (Target vs Non-Target), flash_groups=6 rows and 6 columns (pseudo-random groups, not physical arrangement), animation=aliens slowly and regularly moved according to predefined path with constant inter-distance\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n- **Number of targets**: 1\n\n## Data Structure\n\n- **Trials**: variable per session (9 levels, up to 8 attempts per level)\n- **Blocks per session**: 9\n- **Block duration**: variable, average ~33 seconds per level (5 minutes total for 9 levels) s\n- **Trials context**: 9 levels per game session, each with unique predefined spatial configuration of 36 aliens. Up to 8 attempts to destroy target per level.\n\n## Preprocessing\n\n- **Data state**: raw EEG with no digital filter applied, synchronized experimental tags using USB analog-to-digital converter to reduce jitter\n- **Preprocessing applied**: False\n- **Notes**: Experimental tags produced by Brain Invaders 2 were synchronized with EEG signals using USB analog-to-digital converter connected to g.USBamp trigger channel. This tagging procedure allows consistent tagging latency and jitter.\n\n## Signal Processing\n\n- **Classifiers**: RMDM (Riemannian Minimum Distance to Mean), Riemannian\n- **Feature extraction**: Covariance/Riemannian\n\n## Cross-Validation\n\n- **Evaluation type**: cross_session\n\n## Performance (Original Study)\n\n- **Classifier**: real-time adaptive RMDM classifier (calibration-free procedure)\n\n## BCI Application\n\n- **Applications**: gaming\n- **Environment**: small room with 24' screen, subjects sitting side by side at ~125cm distance, experimenter in adjacent room with one-way glass window\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Visual\n- **Type**: Perception\n\n## Documentation\n\n- **Description**: EEG recordings of 38 subjects playing in pairs to the multi-user version of Brain Invaders P300-based BCI. Contains three conditions: Solo1, Solo2, and Collaboration.\n- **DOI**: 10.5281/zenodo.3267301\n- **Associated paper DOI**: hal-02173958\n- **License**: CC-BY-4.0\n- **Investigators**: Louis Korczowski, Ekaterina Ostaschenko, Anton Andreev, Grégoire Cattan, Pedro Luiz Coelho Rodrigues, Violette Gautheret, Marco Congedo\n- **Senior author**: Marco Congedo\n- **Institution**: GIPSA-lab, CNRS, University Grenoble-Alpes, Grenoble INP\n- **Address**: GIPSA-lab, 11 rue des Mathématiques, Grenoble Campus BP46, F-38402, France\n- **Country**: FR\n- **Repository**: Zenodo\n- **Data URL**: https://doi.org/10.5281/zenodo.3267301\n- **Publication year**: 2019\n- **Ethics approval**: Ethical Committee of the University of Grenoble Alpes (Comité d'Ethique pour la Recherche Non-Interventionnelle)\n- **Acknowledgements**: At the end of the experiment two tickets of cinema were offered to each subject, for a total value of 15 euros per subject.\n- **Keywords**: Electroencephalography (EEG), P300, Brain-Computer Interface (BCI), Experiment, Collaboration, Multi-User, Hyperscanning\n\n## Abstract\n\nWe describe the experimental procedures for a dataset containing electroencephalographic (EEG) recordings of 38 subjects playing in pairs to the multi-user version of a visual P300-based Brain-Computer Interface (BCI) named Brain Invaders. The interface uses the oddball paradigm on a grid of 36 symbols (1 Target, 35 Non-Target) that are flashed pseudo-randomly to elicit a P300 response. EEG data were recorded using 32 active wet electrodes per subject (total: 64 electrodes) during three randomised conditions (Solo1, Solo2, Collaboration). The experiment took place at GIPSA-lab, Grenoble, France, in 2014.\n\n## Methodology\n\nMulti-user hyperscanning P300 BCI experiment designed to study inter-brain synchrony. Participants played Brain Invaders 2 in three conditions: Solo1 (player1 plays, player2 watches cross), Solo2 (roles reversed), and Collaboration (4 game sessions with both players). Each game session consisted of 9 levels with predefined alien configurations. A repetition used 12 flashes of pseudo-random groups of 6 symbols, ensuring each symbol flashed twice per repetition (1:5 Target:Non-Target ratio). Real-time adaptive RMDM classifier provided online feedback. Control condition (non-playing participant) allowed correction for fake inter-brain synchrony.\n\n## References\n\nKorczowski, L., Ostaschenko, E., Andreev, A., Cattan, G., Rodrigues, P. L. C., Gautheret, V., & Congedo, M. (2019). Brain Invaders Solo versus Collaboration: Multi-User P300-Based Brain-Computer Interface Dataset (BI2014b). https://hal.archives-ouvertes.fr/hal-02173958\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000215",
+    "exists": true,
+    "description": "P300 dataset BI2014b from a \"Brain Invaders\" experiment",
+    "created_at": "2026-03-24T05:38:43+00:00",
+    "updated_at": "2026-06-03T01:15:12+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

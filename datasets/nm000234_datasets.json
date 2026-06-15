@@ -1,0 +1,67 @@
+{
+  "dataset_id": "nm000234",
+  "date_retrieved": "2026-06-14T10:03:09.518564+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2015-009 AMUSE (Auditory Multi-class Spatial ERP) dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "Martijn Schreuder",
+      "Benjamin Blankertz",
+      "Michael Tangermann"
+    ],
+    "Funding": [
+      "European ICT Programme Project FP7-224631",
+      "European ICT Programme Project FP7-216886",
+      "Deutsche Forschungsgemeinschaft (DFG) MU 987/3-1",
+      "Bundesministerium für Bildung und Forschung (BMBF) FKZ 01IB001A",
+      "Bundesministerium für Bildung und Forschung (BMBF) FKZ 01GQ0850",
+      "FP7-ICT PASCAL2 Network of Excellence ICT-216886"
+    ],
+    "EthicsApprovals": [
+      "Ethics Committee of the Charité University Hospital (number EA4/073/09)"
+    ],
+    "ReferencesAndLinks": [
+      "10.3389/fnins.2011.00112"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.3389/fnins.2011.00112"
+      }
+    ],
+    "Keywords": [
+      "auditory BCI",
+      "P300",
+      "spatial hearing",
+      "multi-class",
+      "oddball paradigm"
+    ],
+    "PublicationYear": 2010,
+    "DatasetDOI": "10.82901/nemar.nm000234",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000234-blue)](https://doi.org/10.82901/nemar.nm000234)\n\n# BNCI 2015-009 AMUSE (Auditory Multi-class Spatial ERP) dataset\n\nBNCI 2015-009 AMUSE (Auditory Multi-class Spatial ERP) dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2015-009\n- **Paradigm**: p300\n- **DOI**: 10.3389/fnins.2011.00112\n- **Subjects**: 21\n- **Sessions per subject**: 1\n- **Events**: Target=1, NonTarget=2\n- **Trial interval**: [0, 0.8] s\n- **Runs per session**: 2\n- **File format**: gdf\n- **Data preprocessed**: True\n\n## Acquisition\n\n- **Sampling rate**: 250.0 Hz\n- **Number of channels**: 60\n- **Channel types**: eeg=60, eog=2\n- **Montage**: 10-20\n- **Hardware**: Brain Products 128-channel amplifier\n- **Software**: Matlab\n- **Reference**: nose\n- **Sensor type**: Ag/AgCl electrodes\n- **Line frequency**: 50.0 Hz\n- **Online filters**: 0.1-250 Hz analog bandpass\n- **Auxiliary channels**: EOG (2 ch, bipolar)\n\n## Participants\n\n- **Number of subjects**: 21\n- **Health status**: patients\n- **Clinical population**: Healthy\n- **Age**: mean=30.3, min=22, max=55\n- **Gender distribution**: male=6, female=4\n- **Handedness**: unknown\n- **BCI experience**: mixed\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Task type**: oddball\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Trial duration**: 0.8 s\n- **Tasks**: spatial_auditory_oddball\n- **Study design**: Offline auditory oddball task using spatial location of auditory stimuli as discriminating cue. Frontal five speakers used (speakers 1,2,3,7,8) with 45 degree spacing. Three conditions tested: C300 (300ms ISI), C175 (175ms ISI), C300s (300ms ISI, single speaker). Each stimulus was unique 40ms complex sound from bandpass filtered white noise with tone overlay.\n- **Study domain**: BCI\n- **Feedback type**: none\n- **Stimulus type**: auditory_spatial\n- **Stimulus modalities**: auditory\n- **Primary modality**: auditory\n- **Synchronicity**: synchronous\n- **Mode**: offline\n- **Training/test split**: False\n- **Instructions**: Subjects asked to mentally count target stimulations or respond by keypress (condition Cr). Minimize eye movements and muscle contractions. Target direction indicated prior to each block visually and by presenting stimulus from that location.\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n- **Number of targets**: 5\n- **Number of repetitions**: 15\n- **Inter-stimulus interval**: 300.0 ms\n\n## Data Structure\n\n- **Trials**: varied by condition\n- **Blocks per session**: 50\n- **Trials context**: BCI experiments: C300 (50 trials × 75 subtrials = 3750 subtrials), C175 (40 trials × 75 subtrials = 3000 subtrials), C300s (20 trials × 75 subtrials = 1500 subtrials). Physiological experiments: C1000 (32 trials × 80 subtrials = 2560 subtrials), Cr (576-768 subtrials)\n\n## Preprocessing\n\n- **Data state**: filtered\n- **Preprocessing applied**: True\n- **Steps**: bandpass filter, notch filter, downsampling, artifact rejection\n- **Highpass filter**: 0.1 Hz\n- **Lowpass filter**: 250.0 Hz\n- **Bandpass filter**: {'low_cutoff_hz': 0.1, 'high_cutoff_hz': 250.0}\n- **Notch filter**: [50] Hz\n- **Filter type**: Chebyshev II order 8 (for visual inspection: 30 Hz pass, 42 Hz stop, 50 dB damping)\n- **Artifact methods**: threshold-based artifact rejection\n- **Re-reference**: nose\n- **Downsampled to**: 100.0 Hz\n- **Epoch window**: [-0.15, 0.8]\n- **Notes**: Raw data acquired at 1000 Hz. For visual inspection: low-pass filtered with order 8 Chebyshev II filter (30 Hz pass, 42 Hz stop, 50 dB damping) applied forward and backward to minimize phase shifts, then downsampled to 100 Hz. For classification: same filter applied causally (forward only) for online portability. Artifact rejection used simple threshold method: subtrials with deflection >70 µV over ocular channels compared to baseline were rejected.\n\n## Signal Processing\n\n- **Classifiers**: LDA\n- **Feature extraction**: ROC-separability-index\n- **Frequency bands**: analyzed=[0.1, 250.0] Hz\n\n## Cross-Validation\n\n- **Method**: cross-validation\n- **Evaluation type**: offline\n\n## Performance (Original Study)\n\n- **Accuracy**: 90.0%\n- **Itr**: 17.39 bits/min\n- **Best Subject Itr**: 25.2\n- **Best Subject Accuracy**: 100.0\n- **C300S Accuracy**: 70.0\n\n## BCI Application\n\n- **Applications**: speller, communication\n- **Environment**: laboratory\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Auditory\n- **Type**: P300\n\n## Documentation\n\n- **Description**: A new auditory multi-class brain-computer interface paradigm using spatial hearing as an informative cue\n- **DOI**: 10.1371/journal.pone.0009813\n- **Associated paper DOI**: 10.3389/fnins.2011.00112\n- **License**: CC-BY-NC-ND-4.0\n- **Investigators**: Martijn Schreuder, Benjamin Blankertz, Michael Tangermann\n- **Senior author**: Michael Tangermann\n- **Contact**: martijn@cs.tu-berlin.de\n- **Institution**: Berlin Institute of Technology\n- **Department**: Machine Learning Department\n- **Address**: Berlin, Germany\n- **Country**: Germany\n- **Repository**: BNCI Horizon\n- **Publication year**: 2010\n- **Funding**: European ICT Programme Project FP7-224631; European ICT Programme Project FP7-216886; Deutsche Forschungsgemeinschaft (DFG) MU 987/3-1; Bundesministerium für Bildung und Forschung (BMBF) FKZ 01IB001A; Bundesministerium für Bildung und Forschung (BMBF) FKZ 01GQ0850; FP7-ICT PASCAL2 Network of Excellence ICT-216886\n- **Ethics approval**: Ethics Committee of the Charité University Hospital (number EA4/073/09)\n- **Keywords**: auditory BCI, P300, spatial hearing, multi-class, oddball paradigm\n\n## References\n\nSchreuder, M., Rost, T., & Tangermann, M. (2011). Listen, you are writing! Speeding up online spelling with a dynamic auditory BCI. Frontiers in neuroscience, 5, 112. https://doi.org/10.3389/fnins.2011.00112\n\nNotes\n\n.. versionadded:: 1.2.0\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000234",
+    "exists": true,
+    "description": "BNCI 2015-009 AMUSE (Auditory Multi-class Spatial ERP) dataset",
+    "created_at": "2026-03-25T18:12:27+00:00",
+    "updated_at": "2026-06-03T04:03:32+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

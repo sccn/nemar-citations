@@ -1,0 +1,75 @@
+{
+  "dataset_id": "nm000195",
+  "date_retrieved": "2026-06-14T10:01:03.493863+00:00",
+  "dataset_description": {
+    "Name": "Mixture of LLP and EM for a visual matrix speller (ERP) dataset from",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "David Hübner",
+      "Thibault Verhoeven",
+      "Klaus-Robert Müller",
+      "Pieter-Jan Kindermans",
+      "Michael Tangermann"
+    ],
+    "Funding": [
+      "BrainLinks-BrainTools Cluster of Excellence funded by the German Research Foundation (DFG), grant number EXC 1086",
+      "bwHPC initiative, grant INST 39/963-1 FUGG",
+      "European Union's Horizon 2020 research and innovation program under the Marie Sklodowska-Curie grant agreement NO 657679",
+      "Special Research Fund of Ghent University",
+      "DFG (DFG SPP 1527, MU 987/14-1)",
+      "Federal Ministry for Education and Research (BMBF No. 2017-0-00451)",
+      "Brain Korea 21 Plus Program by the Institute for Information & Communications Technology Promotion (IITP) grant (1IS14013A) funded by the Korean government"
+    ],
+    "EthicsApprovals": [
+      "University Medical Center Freiburg ethics committee"
+    ],
+    "ReferencesAndLinks": [
+      "https://zenodo.org/record/5831879",
+      "10.1109/MCI.2018.2807039"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1109/MCI.2018.2807039",
+        "URL": "https://zenodo.org/record/5831879"
+      }
+    ],
+    "Keywords": [
+      "unsupervised learning",
+      "brain-computer interface",
+      "event-related potentials",
+      "P300 speller",
+      "expectation-maximization",
+      "learning from label proportions",
+      "MIX method",
+      "EEG"
+    ],
+    "PublicationYear": 2018,
+    "DatasetDOI": "10.82901/nemar.nm000195",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000195-blue)](https://doi.org/10.82901/nemar.nm000195)\n\n# Mixture of LLP and EM for a visual matrix speller (ERP) dataset from\n\nMixture of LLP and EM for a visual matrix speller (ERP) dataset from Hübner et al 2018 [1]_.\n\n## Dataset Overview\n\n- **Code**: Huebner2018\n- **Paradigm**: p300\n- **DOI**: 10.1109/MCI.2018.2807039\n- **Subjects**: 12\n- **Sessions per subject**: 3\n- **Events**: Target=10002, NonTarget=10001\n- **Trial interval**: [-0.2, 0.7] s\n- **Session IDs**: 0, 1, 2\n- **File format**: BrainVision\n\n## Acquisition\n\n- **Sampling rate**: 1000.0 Hz\n- **Number of channels**: 31\n- **Channel types**: eeg=31, misc=6\n- **Channel names**: C3, C4, CP1, CP2, CP5, CP6, Cz, EOGvu, F10, F3, F4, F7, F8, F9, FC1, FC2, FC5, FC6, Fp1, Fp2, Fz, O1, O2, P10, P3, P4, P7, P8, P9, Pz, T7, T8, x_EMGl, x_GSR, x_Optic, x_Pulse, x_Respi\n- **Montage**: extended 10-20\n- **Hardware**: BrainAmp DC\n- **Software**: BBCI toolbox\n- **Reference**: nose\n- **Sensor type**: Ag/AgCl\n- **Line frequency**: 50.0 Hz\n- **Impedance threshold**: 20.0 kOhm\n- **Cap manufacturer**: EasyCap\n\n## Participants\n\n- **Number of subjects**: 12\n- **Health status**: healthy\n- **Age**: mean=26, min=19, max=31\n- **Gender distribution**: female=8, male=4\n- **BCI experience**: mixed\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Trial duration**: 17.0 s\n- **Tasks**: copy-spelling\n- **Study design**: Visual ERP copy-spelling task using a modified 6x6 grid extended with 10 # symbols as visual blanks, using flexible highlighting scheme with two interleaved sequences to enable unsupervised learning methods (EM, LLP, MIX)\n- **Feedback type**: visual\n- **Stimulus type**: modified matrix speller with flexible highlighting\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Mode**: online\n- **Instructions**: copy-spelling task - spell German sentence 'Franzy jagt im Taxi quer durch das'\n- **Stimulus presentation**: soa_ms=250, stimulus_duration_ms=100, isi_ms=150, highlighting_type=combination of brightness enhancement, rotation, enlargement and trichromatic grid overlay, distance_to_screen_cm=80, screen_size_inches=24\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n- **Number of targets**: 46\n- **Inter-stimulus interval**: 150.0 ms\n- **Stimulus onset asynchrony**: 250.0 ms\n\n## Data Structure\n\n- **Trials**: 35\n- **Blocks per session**: 3\n- **Trials context**: 35 characters per block (one trial = spelling one character), 3 blocks per session (one block per unsupervised algorithm: EM, LLP, MIX in pseudo-randomized order)\n\n## Preprocessing\n\n- **Data state**: raw\n- **Preprocessing applied**: False\n\n## Signal Processing\n\n- **Classifiers**: EM (Expectation-Maximization), LLP (Learning from Label Proportions), MIX (mixture of EM and LLP), shrinkage-regularized LDA (Ledoit-Wolf), Bayesian least square regression\n- **Feature extraction**: mean amplitudes in six temporal intervals per channel\n\n## Cross-Validation\n\n- **Method**: leave-one-character-out for offline analysis; online sequential testing\n- **Evaluation type**: online, within_session, unsupervised_learning\n\n## Performance (Original Study)\n\n- **Accuracy**: 80.0%\n- **Mix Auc After 7 Chars**: 80.0\n- **Time To 80 Accuracy Seconds**: 168.0\n- **Epochs To 80 Accuracy**: 476.0\n- **Characters To 80 Accuracy**: 7.0\n\n## BCI Application\n\n- **Applications**: speller, communication\n- **Environment**: controlled laboratory\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Visual\n- **Type**: Research\n\n## Documentation\n\n- **DOI**: 10.5281/zenodo.192684\n- **Associated paper DOI**: 10.1109/MCI.2018.2807039\n- **License**: CC-BY-4.0\n- **Investigators**: David Hübner, Thibault Verhoeven, Klaus-Robert Müller, Pieter-Jan Kindermans, Michael Tangermann\n- **Contact**: p.kindermans@tu-berlin.de; michael.tangermann@blbt.uni-freiburg.de\n- **Institution**: University of Freiburg\n- **Department**: Brain State Decoding Lab\n- **Address**: Brain State Decoding Lab, University of Freiburg, Freiburg, GERMANY\n- **Country**: DE\n- **Repository**: Zenodo\n- **Data URL**: https://zenodo.org/record/5831879\n- **Publication year**: 2018\n- **Funding**: BrainLinks-BrainTools Cluster of Excellence funded by the German Research Foundation (DFG), grant number EXC 1086; bwHPC initiative, grant INST 39/963-1 FUGG; European Union's Horizon 2020 research and innovation program under the Marie Sklodowska-Curie grant agreement NO 657679; Special Research Fund of Ghent University; DFG (DFG SPP 1527, MU 987/14-1); Federal Ministry for Education and Research (BMBF No. 2017-0-00451); Brain Korea 21 Plus Program by the Institute for Information & Communications Technology Promotion (IITP) grant (1IS14013A) funded by the Korean government\n- **Ethics approval**: University Medical Center Freiburg ethics committee\n- **Keywords**: unsupervised learning, brain-computer interface, event-related potentials, P300 speller, expectation-maximization, learning from label proportions, MIX method, EEG\n\n## Abstract\n\nOne of the fundamental challenges in brain-computer interfaces (BCIs) is to tune a brain signal decoder to reliably detect a user's intention. While information about the decoder can partially be transferred between subjects or sessions, optimal decoding performance can only be reached with novel data from the current session. Thus, it is preferable to learn from unlabeled data gained from the actual usage of the BCI application instead of conducting a calibration recording prior to BCI usage. We review such unsupervised machine learning methods for BCIs based on event-related potentials of the electroencephalogram. We present results of an online study with twelve healthy participants controlling a visual speller. Online performance is reported for three completely unsupervised learning methods: (1) learning from label proportions, (2) an expectation-maximization approach and (3) MIX, which combines the strengths of the two other methods. After a short ramp-up, we observed that the MIX method not only defeats its two unsupervised competitors but even performs on par with a state-of-the-art regularized linear discriminant analysis trained on the same number of data points and with full label access. With this online study, we deliver the best possible proof in BCI that an unsupervised decoding method can in practice render a supervised method unnecessary. This is possible despite skipping the calibration, without losing much performance and with the prospect of continuous improvement over a session. Thus, our findings pave the way for a transition from supervised to unsupervised learning methods in BCIs based on event-related potentials.\n\n## Methodology\n\nOnline study comparing three unsupervised learning methods (EM, LLP, MIX) for P300 speller. Twelve healthy volunteers (8 female, 4 male, mean age 26, range 19-31 years) participated in a single session each. Subjects spelled the German sentence 'Franzy jagt im Taxi quer durch das' (35 characters) in three blocks, each using a different unsupervised algorithm in pseudo-randomized order. Each trial (spelling one character) consisted of 68 highlighting events with 250 ms SOA and 100 ms stimulus duration (ISI=150 ms). The speller used a modified 6x6 grid with 36 normal characters extended with 10 # symbols as visual blanks (total 46 symbols). Two interleaved highlighting sequences were used: S1 highlighted only normal characters, S2 highlighted both normal characters and # symbols, creating different known target-to-non-target ratios to enable learning from label proportions. Highlighting consisted of brightness enhancement, rotation, enlargement and trichromatic grid overlay. Classifiers were randomly initialized at block start and updated after each trial. No labeled data was provided during online session. Participants sat 80 cm from a 24-inch screen. EEG was recorded from 31 passive Ag/AgCl electrodes (EasyCap) placed according to extended 10-20 system, with impedances kept below 20 kOhm. Signals were recorded and amplified by BrainAmp DC at 1 kHz sampling rate using BBCI toolbox in Matlab. Data was bandpass filtered (0.5-8 Hz, 3rd order Chebyshev Type II), downsampled to 100 Hz, epoched to [-200, 700] ms relative to stimulus onset, and baseline corrected using [-200, 0] ms interval. Features were mean amplitudes of six time intervals ([50-120], [121-200], [201-280], [281-380], [381-530], [531-700] ms post-stimulus) per channel. No artifact rejection was applied; participants were instructed to avoid artifacts. Performance metrics: spelling accuracy and AUC for target vs. non-target discrimination. Results showed MIX method achieved ~80% accuracy after ~7 characters (168 seconds, 476 epochs) and performed comparably to supervised regularized LDA trained on same amount of labeled data after 10+ characters. Ethics approval was obtained from University Medical Center Freiburg. Participants were compensated 8 Euros per hour for the ~3 hour session (including EEG setup).\n\n## References\n\nHuebner, D., Verhoeven, T., Mueller, K. R., Kindermans, P. J., & Tangermann, M. (2018). Unsupervised learning for brain-computer interfaces based on event-related potentials: Review and online comparison [research frontier]. IEEE Computational Intelligence Magazine, 13(2), 66-77. https://doi.org/10.1109/MCI.2018.2807039\n\n.. versionadded:: 0.4.5\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000195",
+    "exists": true,
+    "description": "Mixture of LLP and EM for a visual matrix speller (ERP) dataset from",
+    "created_at": "2026-03-24T00:43:22+00:00",
+    "updated_at": "2026-06-09T01:11:46+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

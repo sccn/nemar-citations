@@ -1,0 +1,73 @@
+{
+  "dataset_id": "nm000243",
+  "date_retrieved": "2026-06-14T10:03:31.586783+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2016-002 Emergency Braking during Simulated Driving dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "Stefan Haufe",
+      "Matthias S Treder",
+      "Manfred F Gugler",
+      "Max Sagebaum",
+      "Gabriel Curio",
+      "Benjamin Blankertz"
+    ],
+    "Funding": [
+      "DFG grant",
+      "BMBF grant",
+      "Bernstein Focus Neurotechnology, Berlin"
+    ],
+    "EthicsApprovals": [
+      "IRB of Charité University Medicine, Berlin",
+      "Declaration of Helsinki",
+      "Written informed consent from all participants"
+    ],
+    "ReferencesAndLinks": [
+      "10.1088/1741-2560/8/5/056001"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1088/1741-2560/8/5/056001"
+      }
+    ],
+    "Keywords": [
+      "emergency braking",
+      "driving simulation",
+      "EEG",
+      "EMG",
+      "brain-computer interface",
+      "neuroergonomics",
+      "event-related potentials",
+      "machine learning",
+      "driver assistance"
+    ],
+    "PublicationYear": 2011,
+    "DatasetDOI": "10.82901/nemar.nm000243",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000243-blue)](https://doi.org/10.82901/nemar.nm000243)\n\n# BNCI 2016-002 Emergency Braking during Simulated Driving dataset\n\nBNCI 2016-002 Emergency Braking during Simulated Driving dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2016-002\n- **Paradigm**: p300\n- **DOI**: 10.1088/1741-2560/8/5/056001\n- **Subjects**: 15\n- **Sessions per subject**: 1\n- **Events**: Target=1, NonTarget=2\n- **Trial interval**: [-0.5, 1.0] s\n- **File format**: .mat\n- **Data preprocessed**: True\n- **Contributing labs**: Machine Learning Group, Berlin Institute of Technology, Bernstein Focus Neurotechnology, Berlin, Neurophysics Group, Charité University Medicine Berlin, Intelligent Data Analysis Group, Fraunhofer Institute FIRST\n\n## Acquisition\n\n- **Sampling rate**: 200.0 Hz\n- **Number of channels**: 59\n- **Channel types**: eeg=59, emg=1, eog=2, misc=7\n- **Channel names**: AF3, AF4, C1, C2, C3, C4, C5, C6, CP1, CP2, CP3, CP4, CP5, CP6, CPz, Cz, EMGf, EOGh, EOGv, F1, F2, F3, F4, F5, F6, F7, F8, FC1, FC2, FC3, FC4, FC5, FC6, FCz, FT7, FT8, Fp1, Fp2, Fz, O1, O2, Oz, P1, P10, P2, P3, P4, P5, P6, P7, P8, P9, PO3, PO4, PO7, PO8, POz, Pz, T7, T8, TP7, TP8, brake, dist_to_lead, gas, lead_brake, lead_gas, wheel_X, wheel_Y\n- **Montage**: extended 10-20\n- **Hardware**: BrainAmp\n- **Software**: TORCS\n- **Reference**: nose\n- **Sensor type**: Ag/AgCl\n- **Line frequency**: 50.0 Hz\n- **Online filters**: {'highpass_hz': 0.1, 'lowpass_hz': 250}\n- **Impedance threshold**: {'eeg': 20, 'emg': 50} kOhm\n- **Cap manufacturer**: Easycap\n- **Cap model**: Easycap\n- **Auxiliary channels**: EOG (2 ch, vertical, horizontal), EMG (1 ch), technical_markers\n\n## Participants\n\n- **Number of subjects**: 15\n- **Health status**: healthy\n- **Age**: mean=30.6, std=5.4\n- **Gender distribution**: male=14, female=4\n- **Handedness**: right-handed\n- **BCI experience**: naive\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Task type**: driving_simulation\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Trial duration**: 3.0 s\n- **Study design**: Participants drove a virtual racing car using steering wheel and gas/brake pedals, tightly following a computer-controlled lead vehicle at 100 km/h. The lead vehicle occasionally decelerated abruptly (20-40s inter-stimulus-interval) to 60-80 km/h, requiring immediate emergency braking. Three blocks of 45 min each with 10-15 min rest between blocks.\n- **Feedback type**: visual (colored circle indicating distance: green <20m, yellow otherwise; brakelight flashing)\n- **Stimulus type**: emergency_braking_scenario\n- **Stimulus modalities**: visual, multisensory\n- **Primary modality**: visual\n- **Synchronicity**: asynchronous\n- **Mode**: online\n- **Training/test split**: True\n- **Instructions**: Drive a virtual racing car using steering wheel and gas/brake pedals, tightly follow the lead vehicle within 20m at 100 km/h. Perform immediate emergency braking when the lead vehicle decelerates abruptly to avoid a crash.\n- **Stimulus presentation**: isi_range=20-40 seconds, deceleration_range=60-80 km/h, brakelight=flashing, oncoming_traffic=present, sharp_curves=present\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n\n## Data Structure\n\n- **Trials**: ~99 emergency braking events per subject (test set)\n- **Blocks per session**: 3\n- **Block duration**: 2700.0 s\n- **Trials context**: Emergency braking events with 20-40s inter-stimulus-interval, total ~225 events across 3 blocks per subject\n\n## Preprocessing\n\n- **Data state**: preprocessed\n- **Preprocessing applied**: True\n- **Steps**: lowpass filtering, bandpass filtering, notch filtering, rectification, downsampling/upsampling, baseline correction, synchronization\n- **Highpass filter**: 0.1 Hz\n- **Lowpass filter**: 45.0 Hz\n- **Bandpass filter**: [15.0, 90.0]\n- **Notch filter**: 50.0 Hz\n- **Filter type**: Chebychev type II (EEG lowpass), Elliptic (EMG bandpass), digital (notch)\n- **Filter order**: tenth-order (EEG), sixth-order (EMG), second-order (notch)\n- **Re-reference**: nose\n- **Downsampled to**: 200.0 Hz\n- **Epoch window**: [-0.3, 1.2]\n- **Notes**: EEG lowpass filtered at 45 Hz (causal). EMG bandpass filtered 15-90 Hz with 50 Hz notch and rectified. All signals synchronized and resampled to 200 Hz. Baseline correction using first 100 ms.\n\n## Signal Processing\n\n- **Classifiers**: RLDA, Regularized Linear Discriminant Analysis, Shrinkage LDA\n- **Feature extraction**: Event-Related Potentials, Spatio-temporal features, Bi-serial correlation, Area Under Curve\n- **Spatial filters**: Artifact rejection based on spectral power\n\n## Cross-Validation\n\n- **Method**: sequential temporal split\n- **Evaluation type**: temporal_validation\n\n## Performance (Original Study)\n\n- **Auc**: 0.5\n- **Braking Time Reduction Ms**: 130\n- **Braking Distance Reduction M**: 3.66\n\n## BCI Application\n\n- **Applications**: driving_assistance, emergency_braking_detection, neuroergonomics\n- **Environment**: laboratory\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Visual, Multisensory\n- **Type**: Driving, Neuroergonomics\n\n## Documentation\n\n- **Description**: Emergency braking detection during simulated driving using EEG and EMG to predict driver's braking intention before behavioral response.\n- **DOI**: 10.1088/1741-2560/8/5/056001\n- **Associated paper DOI**: 10.1088/1741-2560/8/5/056001\n- **License**: CC-BY-NC-ND-4.0\n- **Investigators**: Stefan Haufe, Matthias S Treder, Manfred F Gugler, Max Sagebaum, Gabriel Curio, Benjamin Blankertz\n- **Senior author**: Benjamin Blankertz\n- **Contact**: stefan.haufe@tu-berlin.de\n- **Institution**: Berlin Institute of Technology\n- **Department**: Machine Learning Group, Department of Computer Science\n- **Address**: Franklinstraße 28/29, D-10587 Berlin, Germany\n- **Country**: Germany\n- **Repository**: BNCI Horizon\n- **Publication year**: 2011\n- **Funding**: DFG grant; BMBF grant; Bernstein Focus Neurotechnology, Berlin\n- **Ethics approval**: IRB of Charité University Medicine, Berlin; Declaration of Helsinki; Written informed consent from all participants\n- **Keywords**: emergency braking, driving simulation, EEG, EMG, brain-computer interface, neuroergonomics, event-related potentials, machine learning, driver assistance\n\n## References\n\nHaufe, S., Treder, M. S., Gugler, M. F., Sagebaum, M., Curio, G., & Blankertz, B. (2011). EEG potentials predict upcoming emergency brakings during simulated driving. Journal of Neural Engineering, 8(5), 056001. https://doi.org/10.1088/1741-2560/8/5/056001\n\nNotes\n\n.. versionadded:: 1.3.0\n\nThis dataset is valuable for research on:\n\n- Predictive braking assistance systems - Neuroergonomics and driving safety - Real-time detection of emergency intentions - Multimodal biosignal integration (EEG + EMG + vehicle dynamics)\n\nThe paradigm represents a unique blend of ERP (event-related potential) analysis with ecological validity in a naturalistic driving context.\n\n**Data Availability**: Currently 15 of 18 subjects are available. Files are hosted at the BBCI (Berlin Brain-Computer Interface) archive.\n\nLicense: Creative Commons Attribution Non-Commercial No Derivatives (CC BY-NC-ND 4.0)\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000243",
+    "exists": true,
+    "description": "BNCI 2016-002 Emergency Braking during Simulated Driving dataset",
+    "created_at": "2026-03-25T21:50:11+00:00",
+    "updated_at": "2026-06-09T01:11:55+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "dataset_id": "nm000225",
+  "date_retrieved": "2026-06-14T10:02:46.741237+00:00",
+  "dataset_description": {
+    "Name": "PhysioNet 2018 Challenge: Sleep Arousal Detection PSG (Training)",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.2.0",
+    "DatasetType": "raw",
+    "License": "Open Data Commons Attribution License v1.0",
+    "Authors": [
+      "Mohammad M. Ghassemi",
+      "Benjamin E. Moody",
+      "Li-wei H. Lehman",
+      "Christopher Song",
+      "Qiao Li",
+      "Haoqi Sun",
+      "Roger G. Mark",
+      "M. Brandon Westover",
+      "Gari D. Clifford"
+    ],
+    "HowToAcknowledge": "Please cite: Ghassemi, M.M., Moody, B.E., Lehman, L.H., Song, C., Li, Q., Sun, H., Mark, R.G., Westover, M.B. & Clifford, G.D. (2018). You Snooze, You Win: the PhysioNet/Computing in Cardiology Challenge 2018. Computing in Cardiology, 45, 1-4. And: Goldberger, A. et al. (2000). PhysioBank, PhysioToolkit, PhysioNet. Circulation, 101(23), e215-e220.",
+    "Funding": [
+      "National Institute of Biomedical Imaging and Bioengineering (NIBIB) U24EB037545",
+      "National Institute of Biomedical Imaging and Bioengineering (NIBIB) R01EB030362",
+      "The MathWorks (equipment sponsorship)"
+    ],
+    "ReferencesAndLinks": [
+      "https://physionet.org/content/challenge-2018/1.0.0/",
+      "https://doi.org/10.22489/CinC.2018.049",
+      "https://doi.org/10.13026/6phb-r450"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000225",
+    "GeneratedBy": [
+      {
+        "Name": "convert_sleep_challenge_2018.py (EEGDash)",
+        "Description": "Converted from WFDB (.mat/.hea) + arousal annotations to BIDS-EEG.",
+        "CodeURL": "https://github.com/bruaristimunha/EEGDash"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "URL": "https://physionet.org/content/challenge-2018/1.0.0/"
+      },
+      {
+        "DOI": "doi:10.13026/6phb-r450"
+      }
+    ],
+    "Version": "1.1.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000225-blue)](https://doi.org/10.82901/nemar.nm000225)\n\nYou Snooze You Win: PhysioNet/CinC Challenge 2018 PSG\n=======================================================\n\nOverview\n--------\n1,983 overnight polysomnographic (PSG) recordings from subjects monitored at\nthe Massachusetts General Hospital (MGH) sleep laboratory for sleep disorder\ndiagnosis. The dataset was created for the PhysioNet/Computing in Cardiology\nChallenge 2018 on automatic arousal detection.\n\n- Training set: 994 subjects (with expert annotations)\n- Test set: 989 subjects (PSG signals only, no annotations)\n- Demographics: mean age 55 +/- 14 years (range 18-93), 65% male, 35% female\n- Clinical population: subjects with suspected obstructive sleep apnea\n\nChannels (13 total, all at 200 Hz)\n-----------------------------------\n- EEG (6): F3-M2, F4-M1, C3-M2, C4-M1, O1-M2, O2-M1\n  Referential montage against contralateral mastoids (M1/M2)\n- EOG (1): E1-M2 (left electrooculogram)\n- EMG (1): Chin1-Chin2 (submental chin electromyogram)\n- Respiratory (3): ABD (abdominal effort), CHEST (thoracic effort),\n  AIRFLOW (nasal/oral airflow)\n- SpO2 (1): SaO2 (pulse oximetry, resampled to 200 Hz)\n- ECG (1): ECG (single-lead electrocardiogram)\n\nAnnotations (training set only, in events.tsv)\n------------------------------------------------\nSleep staging (AASM standard, 30-second contiguous epochs):\n  Wake, N1, N2, N3, REM\n\nRespiratory events (with onset and duration):\n  resp_obstructiveapnea  — complete upper airway obstruction\n  resp_centralapnea      — absent respiratory effort\n  resp_mixedapnea        — combined obstructive + central\n  resp_hypopnea          — partial airway obstruction (>=30% flow reduction)\n\nArousal events:\n  arousal_rera           — respiratory effort-related arousal\n  arousal_spontaneous    — spontaneous cortical arousal\n  arousal_snore          — snoring-related arousal\n  arousal_plm            — periodic leg movement arousal\n\nParticipants metadata (in participants.tsv)\n--------------------------------------------\nPer-subject: age, sex, split (training/test), recording duration, sleep\narchitecture (epoch counts per stage), and respiratory/arousal event counts.\n\nSessions\n--------\n- ses-training: 994 subjects with PSG + annotations\n- ses-test: 989 subjects with PSG only (no annotations)\n\nNotes\n-----\n- Original format: WFDB (.mat + .hea + .arousal)\n- All signals originally at 200 Hz; SaO2 was resampled to match\n- Annotators: certified sleep technologists at MGH, following AASM manual\n- Updated arousal annotations (new-arousals.zip) supersede originals\n\nReference\n---------\nGhassemi, M.M., Moody, B.E., Lehman, L.H., Song, C., Li, Q., Sun, H.,\nMark, R.G., Westover, M.B. & Clifford, G.D. (2018). You Snooze, You Win:\nthe PhysioNet/Computing in Cardiology Challenge 2018. Computing in\nCardiology, 45, 1-4. doi:10.22489/CinC.2018.049\n\nGoldberger, A. et al. (2000). PhysioBank, PhysioToolkit, and PhysioNet:\nComponents of a new research resource for complex physiologic signals.\nCirculation, 101(23), e215-e220.\nhttps://physionet.org/content/challenge-2018/1.0.0/\n\n\nReferences\n----------\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896).https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103.https://doi.org/10.1038/s41597-019-0104-8\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000225",
+    "exists": true,
+    "description": "PhysioNet 2018 Challenge: Sleep Arousal Detection PSG (Training)",
+    "created_at": "2026-04-09T21:08:21+00:00",
+    "updated_at": "2026-06-03T02:49:41+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

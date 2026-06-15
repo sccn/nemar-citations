@@ -1,0 +1,63 @@
+{
+  "dataset_id": "nm000205",
+  "date_retrieved": "2026-06-14T10:01:41.085100+00:00",
+  "dataset_description": {
+    "Name": "RSVP collaborative BCI dataset from Zheng et al 2020",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Li Zheng",
+      "Sen Sun",
+      "Hongze Zhao",
+      "Weihua Pei",
+      "Hongda Chen",
+      "Xiaorong Gao",
+      "Lijian Zhang",
+      "Yijun Wang"
+    ],
+    "ReferencesAndLinks": [
+      "https://figshare.com/articles/dataset/12824771"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.3389/fnins.2020.579469",
+        "URL": "https://figshare.com/articles/dataset/12824771"
+      }
+    ],
+    "Keywords": [
+      "Healthy",
+      "ERP",
+      "RSVP",
+      "p300",
+      "target_image_detection",
+      "collaborative_BCI"
+    ],
+    "PublicationYear": 2020,
+    "DatasetDOI": "10.82901/nemar.nm000205",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000205-blue)](https://doi.org/10.82901/nemar.nm000205)\n\n# RSVP collaborative BCI dataset from Zheng et al 2020\n\nRSVP collaborative BCI dataset from Zheng et al 2020.\n\n## Dataset Overview\n\n- **Code**: Zheng2020\n- **Paradigm**: p300\n- **DOI**: 10.3389/fnins.2020.579469\n- **Subjects**: 14\n- **Sessions per subject**: 2\n- **Events**: Target=2, NonTarget=1\n- **Trial interval**: [0, 1] s\n- **Runs per session**: 3\n- **File format**: MATLAB\n\n## Acquisition\n\n- **Sampling rate**: 1000.0 Hz\n- **Number of channels**: 62\n- **Channel types**: eeg=62\n- **Channel names**: FP1, FPz, FP2, AF3, AF4, F7, F5, F3, F1, Fz, F2, F4, F6, F8, FT7, FC5, FC3, FC1, FCz, FC2, FC4, FC6, FT8, T7, C5, C3, C1, Cz, C2, C4, C6, T8, TP7, CP5, CP3, CP1, CPz, CP2, CP4, CP6, TP8, P7, P5, P3, P1, Pz, P2, P4, P6, P8, PO7, PO5, PO3, POz, PO4, PO6, PO8, O1, CB1, Oz, O2, CB2\n- **Montage**: standard_1020\n- **Hardware**: Neuroscan Synamps2\n- **Reference**: vertex (Cz)\n- **Line frequency**: 50.0 Hz\n\n## Participants\n\n- **Number of subjects**: 14\n- **Health status**: healthy\n- **Age**: mean=24.9, min=23, max=29\n- **Gender distribution**: female=10, male=4\n- **Handedness**: all right-handed\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Trial duration**: 1.0 s\n- **Study design**: RSVP target detection (human vs non-human images); 14 subjects in 7 pairs, synchronized EEG recording\n- **Feedback type**: visual\n- **Stimulus type**: RSVP images\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Mode**: offline\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n- **Stimulus onset asynchrony**: 100.0 ms\n\n## Data Structure\n\n- **Trials**: {'target': 168, 'nontarget': 4032}\n- **Trials context**: per subject across both sessions\n\n## Signal Processing\n\n- **Classifiers**: HDCA\n- **Feature extraction**: SIM, CSP, TRCA, PCA\n- **Frequency bands**: bandpass=[2.0, 30.0] Hz\n- **Spatial filters**: SIM, CSP, PCA, CAR, TRCA\n\n## Cross-Validation\n\n- **Method**: holdout\n- **Evaluation type**: within_subject, cross_session\n\n## BCI Application\n\n- **Applications**: target_image_detection, collaborative_BCI\n- **Environment**: laboratory\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: ERP\n- **Type**: RSVP\n\n## Documentation\n\n- **DOI**: 10.3389/fnins.2020.579469\n- **License**: CC-BY-4.0\n- **Investigators**: Li Zheng, Sen Sun, Hongze Zhao, Weihua Pei, Hongda Chen, Xiaorong Gao, Lijian Zhang, Yijun Wang\n- **Institution**: Chinese Academy of Sciences\n- **Country**: CN\n- **Data URL**: https://figshare.com/articles/dataset/12824771\n- **Publication year**: 2020\n\n## References\n\nZheng, L., Sun, S., Zhao, H., et al. (2020). A Cross-Session Dataset for Collaborative Brain-Computer Interfaces Based on Rapid Serial Visual Presentation. Frontiers in Neuroscience, 14, 579469. https://doi.org/10.3389/fnins.2020.579469\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000205",
+    "exists": true,
+    "description": "RSVP collaborative BCI dataset from Zheng et al 2020",
+    "created_at": "2026-03-24T01:48:15+00:00",
+    "updated_at": "2026-06-02T23:27:33+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

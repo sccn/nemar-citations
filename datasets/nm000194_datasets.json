@@ -1,0 +1,63 @@
+{
+  "dataset_id": "nm000194",
+  "date_retrieved": "2026-06-14T10:00:59.787987+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2015-010 RSVP P300 dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "Laura Acqualagna",
+      "Benjamin Blankertz"
+    ],
+    "Funding": [
+      "BMBF Grant",
+      "Grant Nos s",
+      "Grant No. MU MU",
+      "DFG Grant"
+    ],
+    "EthicsApprovals": [
+      "Study performed in accordance with the declaration of Helsinki"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1016/j.clinph.2012.12.050"
+      }
+    ],
+    "Keywords": [
+      "Brain Computer Interfaces",
+      "RSVP",
+      "ERPs",
+      "Speller",
+      "P300",
+      "N2",
+      "gaze-independent"
+    ],
+    "PublicationYear": 2013,
+    "DatasetDOI": "10.82901/nemar.nm000194",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000194-blue)](https://doi.org/10.82901/nemar.nm000194)\n\n# BNCI 2015-010 RSVP P300 dataset\n\nBNCI 2015-010 RSVP P300 dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2015-010\n- **Paradigm**: p300\n- **DOI**: 10.1016/j.clinph.2012.12.050\n- **Subjects**: 12\n- **Sessions per subject**: 1\n- **Events**: Target=1, NonTarget=2\n- **Trial interval**: [0, 0.8] s\n- **Runs per session**: 2\n- **Session IDs**: calibration, copy-spelling, free-spelling\n- **File format**: EEG\n- **Data preprocessed**: True\n\n## Acquisition\n\n- **Sampling rate**: 200.0 Hz\n- **Number of channels**: 63\n- **Channel types**: eeg=63\n- **Channel names**: Fp1, Fp2, AF3, AF4, Fz, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, FCz, FC1, FC2, FC3, FC4, FC5, FC6, FT7, FT8, Cz, C1, C2, C3, C4, C5, C6, T7, T8, CPz, CP1, CP2, CP3, CP4, CP5, CP6, TP7, TP8, Pz, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, POz, PO3, PO4, PO7, PO8, PO9, PO10, Oz, O1, O2\n- **Montage**: 10-20\n- **Hardware**: BrainAmp amplifiers\n- **Software**: Python with Pyff framework\n- **Reference**: left mastoid\n- **Sensor type**: active electrode\n- **Line frequency**: 50.0 Hz\n- **Online filters**: lowpass Chebyshev filter up to 40 Hz\n- **Impedance threshold**: 10.0 kOhm\n- **Cap manufacturer**: Brain Products\n- **Cap model**: actiCap\n- **Electrode type**: active electrode\n\n## Participants\n\n- **Number of subjects**: 12\n- **Health status**: patients\n- **Clinical population**: Healthy\n- **Age**: mean=29.17, std=8.4, min=24, max=55\n- **Gender distribution**: male=6, female=6\n- **Handedness**: all right-handed\n- **BCI experience**: mixed\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Task type**: spelling\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Trial duration**: 46.5 s\n- **Study design**: RSVP (Rapid Serial Visual Presentation) BCI speller where 30 symbols are presented one-by-one in random order at the center of the screen. Three conditions tested: NoColor 116ms SOA, Color 116ms SOA, and Color 83ms SOA. Colors used to facilitate discrimination.\n- **Feedback type**: visual\n- **Stimulus type**: RSVP letters\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: online\n- **Training/test split**: True\n- **Instructions**: Participants fixate center of screen, concentrate on target letter, silently count its occurrences. Avoid blinking during visual presentation.\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n- **Number of targets**: 30\n- **Number of repetitions**: 10\n- **Stimulus onset asynchrony**: 116.0 ms\n\n## Data Structure\n\n- **Trials**: 10 sequences of 30 symbols\n- **Blocks per session**: 3\n- **Trials context**: per sequence\n\n## Preprocessing\n\n- **Data state**: filtered\n- **Preprocessing applied**: True\n- **Steps**: lowpass filter, downsampling, baseline correction, artifact rejection\n- **Lowpass filter**: 40.0 Hz\n- **Filter type**: Chebyshev\n- **Filter order**: passband up to 40 Hz, stopband starting at 49 Hz\n- **Artifact methods**: min-max criterion for eye movement rejection (75 µV on F9, Fz, F10, AF3, AF4), broadband power rejection (5-40 Hz)\n- **Re-reference**: linked mastoids (offline)\n- **Downsampled to**: 200.0 Hz\n- **Epoch window**: [-0.1, 1.2]\n- **Notes**: Baseline correction on pre-stimulus interval (116ms for 116ms SOA, 83/2ms for 83ms SOA). Non-target epochs excluded if 3 preceding or following symbols were targets.\n\n## Signal Processing\n\n- **Classifiers**: LDA with shrinkage\n- **Feature extraction**: spatio-temporal features, averaged voltages within time windows\n- **Frequency bands**: alpha=[7, 13] Hz\n- **Spatial filters**: 55 channels used for classification (all except Fp1,2, AF3,4, F9,10, FT7,8)\n\n## Cross-Validation\n\n- **Method**: calibration/test split\n- **Evaluation type**: within_session\n\n## Performance (Original Study)\n\n- **Accuracy**: 94.8%\n- **Mean Spelling Rate Symb Per Min**: 1.43\n- **Trial Duration 116Ms Soa S**: 46.5\n- **Trial Duration 83Ms Soa S**: 36.6\n\n## BCI Application\n\n- **Applications**: speller, communication\n- **Environment**: laboratory\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Visual\n- **Type**: ERP\n\n## Documentation\n\n- **DOI**: 10.1016/j.clinph.2012.12.050\n- **License**: CC-BY-NC-ND-4.0\n- **Investigators**: Laura Acqualagna, Benjamin Blankertz\n- **Senior author**: Benjamin Blankertz\n- **Contact**: laura.acqualagna@tu-berlin.de; benjamin.blankertz@tu-berlin.de\n- **Institution**: Berlin Institute of Technology\n- **Department**: Machine Learning Laboratory; Neurotechnology Group\n- **Country**: Germany\n- **Repository**: BNCI Horizon\n- **Publication year**: 2013\n- **Funding**: BMBF Grant; Grant Nos s; Grant No. MU MU; DFG Grant\n- **Ethics approval**: Study performed in accordance with the declaration of Helsinki\n- **Keywords**: Brain Computer Interfaces, RSVP, ERPs, Speller, P300, N2, gaze-independent\n\n## Abstract\n\nA Brain Computer Interface (BCI) speller using rapid serial visual presentation (RSVP) paradigm for gaze-independent mental typewriting. Twelve healthy participants successfully operated the RSVP speller with mean online spelling rate of 1.43 symb/min and mean symbol selection accuracy of 94.8%. The RSVP speller does not require gaze shifts and can be operated by non-spatial visual attention, making it suitable for patients with impaired oculo-motor control.\n\n## Methodology\n\nThree experimental conditions tested (NoColor 116ms, Color 116ms, Color 83ms SOA). Each condition included calibration, copy-spelling, and free-spelling phases. Vocabulary of 30 symbols presented one-by-one at screen center in pseudo-random order. EEG recorded at 1000 Hz with 63 channels, downsampled to 200 Hz for ERP analysis. Classification using LDA with shrinkage on spatio-temporal features from 5 individually selected time windows. Symbol selection based on averaged classifier output across 10 sequences.\n\n## References\n\nAcqualagna, L., & Blankertz, B. (2013). Gaze-independent BCI-spelling using rapid serial visual presentation (RSVP). Clinical Neurophysiology, 124(5), 901-908. https://doi.org/10.1016/j.clinph.2012.12.050\n\nNotes\n\n.. versionadded:: 1.2.0\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000194",
+    "exists": true,
+    "description": "BNCI 2015-010 RSVP P300 dataset",
+    "created_at": "2026-03-24T00:36:29+00:00",
+    "updated_at": "2026-06-02T01:23:54+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

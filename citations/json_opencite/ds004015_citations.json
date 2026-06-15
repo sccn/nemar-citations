@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds004015",
   "num_citations": 33,
-  "date_last_updated": "2026-05-20T08:24:25.932626+00:00",
+  "date_last_updated": "2026-06-14T13:07:53.291862+00:00",
   "metadata": {
-    "total_cumulative_citations": 200,
-    "fetch_date": "2026-05-20T08:24:25.932626+00:00",
+    "total_cumulative_citations": 205,
+    "fetch_date": "2026-06-14T13:07:53.291862+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -19,7 +21,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2023,
       "url": "https://doi.org/10.1088/1741-2552/acfcda",
-      "cited_by": 60,
+      "cited_by": 62,
       "abstract": "Abstract Objective. This review paper provides a comprehensive overview of ear-electroencephalogram (EEG) technology, which involves recording EEG signals from electrodes placed in or around the ear, and its applications in the field of neural engineering. Approach. We conducted a thorough literature search using multiple databases to identify relevant studies related to ear-EEG technology and its various applications. We selected 123 publications and synthesized the information to highlight the main findings and trends in this field. Main results. Our review highlights the potential of ear-EEG technology as the future of wearable EEG technology. We discuss the advantages and limitations of ear-EEG compared to traditional scalp-based EEG and methods to overcome those limitations. Through our review, we found that ear-EEG is a promising method that produces comparable results to conventional scalp-based methods. We review the development of ear-EEG sensing devices, including the design,",
       "doi": "10.1088/1741-2552/acfcda",
       "pmid": "37748474",
@@ -83,6 +85,29 @@
       }
     },
     {
+      "title": "EEGUnity: Open-Source Tool in Facilitating Unified EEG Datasets Toward Large-Scale EEG Model",
+      "author": "Chengxuan Qin, Rui Yang, Wenlong You, Zhige Chen, Longsheng Zhu, Mengjie Huang, Zidong Wang",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/tnsre.2025.3565158",
+      "cited_by": 13,
+      "abstract": "The increasing number of dispersed EEG dataset publications and the advancement of large-scale Electroencephalogram (EEG) models have increased the demand for practical tools to manage diverse EEG datasets. However, the inherent complexity of EEG data, characterized by variability in content data, metadata, and data formats, poses challenges for integrating multiple datasets and conducting large-scale EEG model research. To tackle the challenges, this paper introduces EEGUnity, an open-source tool that incorporates modules of \"EEG Parser\", \"Correction\", \"Batch Processing\", and \"Large Language Model Boost\". Leveraging the functionality of such modules, EEGUnity facilitates the efficient management of multiple EEG datasets, such as intelligent data structure inference, data cleaning, and data unification. In addition, the capabilities of EEGUnity ensure high data quality and consistency, providing a reliable foundation for large-scale EEG data research. EEGUnity is evaluated across 25 EE",
+      "doi": "10.1109/tnsre.2025.3565158",
+      "pmid": "40293886",
+      "openalex_id": "W4409882874",
+      "source_doi": "10.3389/fnins.2022.869426",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.54554525077343,
+        "similarity_score": 0.47233355045318604,
+        "citation_text_length": 1288,
+        "dataset_text_length": 1484,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Neural speech tracking and auditory attention decoding in everyday life",
       "author": "Lisa Straetmans, Kamil Adiloğlu, Stefan Debener",
       "venue": "Frontiers in Human Neuroscience",
@@ -100,29 +125,6 @@
         "confidence_score": 0.6232789099216461,
         "similarity_score": 0.539635419845581,
         "citation_text_length": 1188,
-        "dataset_text_length": 1484,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "EEGUnity: Open-Source Tool in Facilitating Unified EEG Datasets Toward Large-Scale EEG Model",
-      "author": "Chengxuan Qin, Rui Yang, Wenlong You, Zhige Chen, Longsheng Zhu, Mengjie Huang, Zidong Wang",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/tnsre.2025.3565158",
-      "cited_by": 12,
-      "abstract": "The increasing number of dispersed EEG dataset publications and the advancement of large-scale Electroencephalogram (EEG) models have increased the demand for practical tools to manage diverse EEG datasets. However, the inherent complexity of EEG data, characterized by variability in content data, metadata, and data formats, poses challenges for integrating multiple datasets and conducting large-scale EEG model research. To tackle the challenges, this paper introduces EEGUnity, an open-source tool that incorporates modules of \"EEG Parser\", \"Correction\", \"Batch Processing\", and \"Large Language Model Boost\". Leveraging the functionality of such modules, EEGUnity facilitates the efficient management of multiple EEG datasets, such as intelligent data structure inference, data cleaning, and data unification. In addition, the capabilities of EEGUnity ensure high data quality and consistency, providing a reliable foundation for large-scale EEG data research. EEGUnity is evaluated across 25 EE",
-      "doi": "10.1109/tnsre.2025.3565158",
-      "pmid": "40293886",
-      "openalex_id": "W4409882874",
-      "source_doi": "10.3389/fnins.2022.869426",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.54554525077343,
-        "similarity_score": 0.47233355045318604,
-        "citation_text_length": 1288,
         "dataset_text_length": 1484,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -405,6 +407,29 @@
       }
     },
     {
+      "title": "The EasyCog Dataset: Towards Easier Cognitive Assessment with Passive Video Watching",
+      "author": "Qingyong Hu, Yuxuan Zhou, J. Wang, Yanbin Gong, Yizhen Zhang, Jingnan Sun, Jian Yao, Qijia Shao, Lili Qiu, Qian Zhang, Guihua Li",
+      "venue": "Proceedings of the ACM on Interactive Mobile Wearable and Ubiquitous Technologies",
+      "year": 2026,
+      "url": "https://doi.org/10.1145/3789682",
+      "cited_by": 2,
+      "abstract": "As the global population ages, the prevalence of cognitive impairment continues to rise, highlighting the urgent need for accessible and low-burden cognitive assessment. Current assessments based on clinical scales are often hindered by subjectivity, significant user burden, and practice effects, limiting their applicability. We observe that passive visual stimuli can engage multiple cognitive domains while minimizing the need for active participation. Considering the lack of related datasets, we establish EasyCog, the first large-scale multimodal dataset for low-burden cognitive assessments. EasyCog collects synchronized forehead/ear EEG and contactless eye tracking data while participants passively view a short, cognitively structured video followed by an eyes-closed rest. The dataset includes 101 participants spanning healthy controls and patients with PD, AD, and VaD, with clinician-administered MoCA/MMSE scores collected in daily settings. We provide detailed collection procedures",
+      "doi": "10.1145/3789682",
+      "pmid": null,
+      "openalex_id": "W7137190690",
+      "source_doi": "10.3389/fnins.2022.869426",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5335513597726823,
+        "similarity_score": 0.4619492292404175,
+        "citation_text_length": 1332,
+        "dataset_text_length": 1484,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Rest Assured: Detecting Mental Fatigue and Recovery with EEG Headphones",
       "author": "Lukas Schick, Emilia Frey, Felix Putze, Michael Thomas Knierim",
       "venue": "Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems",
@@ -428,6 +453,29 @@
       }
     },
     {
+      "title": "Attention Modulation to Linguistic Speech Units",
+      "author": "Manuela Jaeger, Elana Zion Golumbic, Martin G. Bleichner",
+      "venue": "Neurobiology of Language",
+      "year": 2025,
+      "url": "https://doi.org/10.1162/nol.a.14",
+      "cited_by": 1,
+      "abstract": "This study investigates how selective auditory attention influences the lexical speech segmentation process to phonemes and words in a two competing speaker scenario. Using electroencephalography recordings from 20 participants, we applied temporal response function analysis to distinguish attention-driven neural activity to phoneme and word onsets for the attended and ignored speech stream separately. Our results reveal distinct attention effects for phoneme and word onsets. Phoneme onsets elicited significant selective attention effects at an early (18-94 ms, P1), middle (186-252 ms, P2), and late (302-382 ms, N2) time window. In contrast, word onsets showed attention effects only at a middle (192-280 ms, P2) and late (348-386 ms, N2) time window, occurring slightly later than phoneme-related effects. Prediction accuracy analyses demonstrated stronger model performance for the attended speech stream across all models, with notable improvements in prediction accuracy from a word model",
+      "doi": "10.1162/nol.a.14",
+      "pmid": "40959414",
+      "openalex_id": "W4410983460",
+      "source_doi": "10.3389/fnins.2022.869426",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5739863723516464,
+        "similarity_score": 0.4969578981399536,
+        "citation_text_length": 1166,
+        "dataset_text_length": 1484,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Physiological synchrony in brain and body as a measure of attentional engagement",
       "author": "Ivo V. Stuldreher",
       "venue": "n/a",
@@ -445,29 +493,6 @@
         "confidence_score": 0.44866656169295316,
         "similarity_score": 0.38845589756965637,
         "citation_text_length": 1139,
-        "dataset_text_length": 1484,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "The EasyCog Dataset: Towards Easier Cognitive Assessment with Passive Video Watching",
-      "author": "Qingyong Hu, Yuxuan Zhou, J. Wang, Yanbin Gong, Yizhen Zhang, Jingnan Sun, Jian Yao, Qijia Shao, Lili Qiu, Qian Zhang, Guihua Li",
-      "venue": "Proceedings of the ACM on Interactive Mobile Wearable and Ubiquitous Technologies",
-      "year": 2026,
-      "url": "https://doi.org/10.1145/3789682",
-      "cited_by": 1,
-      "abstract": "As the global population ages, the prevalence of cognitive impairment continues to rise, highlighting the urgent need for accessible and low-burden cognitive assessment. Current assessments based on clinical scales are often hindered by subjectivity, significant user burden, and practice effects, limiting their applicability. We observe that passive visual stimuli can engage multiple cognitive domains while minimizing the need for active participation. Considering the lack of related datasets, we establish EasyCog, the first large-scale multimodal dataset for low-burden cognitive assessments. EasyCog collects synchronized forehead/ear EEG and contactless eye tracking data while participants passively view a short, cognitively structured video followed by an eyes-closed rest. The dataset includes 101 participants spanning healthy controls and patients with PD, AD, and VaD, with clinician-administered MoCA/MMSE scores collected in daily settings. We provide detailed collection procedures",
-      "doi": "10.1145/3789682",
-      "pmid": null,
-      "openalex_id": "W7137190690",
-      "source_doi": "10.3389/fnins.2022.869426",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5335513597726823,
-        "similarity_score": 0.4619492292404175,
-        "citation_text_length": 1332,
         "dataset_text_length": 1484,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -526,7 +551,7 @@
       "year": 2026,
       "url": "https://doi.org/10.64898/2026.02.17.706305",
       "cited_by": 0,
-      "abstract": "Abstract Objective Selective auditory attention decoding (sAAD) enables neuro-steered hearing devices through identification of the attended speaker in a multi-speaker environment, using neural activity recorded with electroencephalography (EEG). Despite substantial progress in decoding algorithms, practical deployment remains constrained by a lack of wearable, unobtrusive, and fully wireless EEG acquisition solutions. Therefore, this work aims to evaluate whether reliable sAAD can be achieved under realistic hardware constraints imposed by miniaturized, galvanically isolated EEG sensor nodes. Approach We investigate sAAD using a wireless EEG sensor network (WESN) setup consisting of two synchronized, compact around-ear EEG sensor nodes worn bilaterally. The nodes are fully galvanically isolated (i.e., there is no wire between them), each providing four local EEG channels derived from five pre-gelled electrodes, including a local reference. Sample-wise wireless synchronization of data ",
+      "abstract": "Selective auditory attention decoding (sAAD) enables neuro-steered hearing devices by identifying the attended speaker in a multi-speaker environment from neural activity recorded with electroencephalography (EEG). Despite algorithmic progress, practical deployment remains constrained by a lack of wearable, unobtrusive, and fully wireless EEG acquisition solutions. Therefore, this work aims to evaluate whether reliable sAAD can be achieved under realistic hardware constraints imposed by using a wireless EEG sensor network (WESN) consisting of miniaturized, galvanically isolated EEG sensor nodes. Here, we use such a WESN consisting of two synchronized, compact around-ear EEG sensor nodes worn bilaterally. Each node provides four local EEG channels derived from five pre-gelled electrodes, including a local reference. Sample-wise wireless synchronization of data from both nodes enables joint processing as an eight-channel EEG. On a newly recorded dataset acquired with this setup, correlat",
       "doi": "10.64898/2026.02.17.706305",
       "pmid": null,
       "openalex_id": "W7130390632",
@@ -534,8 +559,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.630075815320015,
-        "similarity_score": 0.5455201864242554,
+        "confidence_score": 0.6451379173994065,
+        "similarity_score": 0.5585609674453735,
         "citation_text_length": 1208,
         "dataset_text_length": 1484,
         "scoring_method": "sentence_transformers",
@@ -658,29 +683,6 @@
       }
     },
     {
-      "title": "Attention Modulation to Linguistic Speech Units",
-      "author": "Manuela Jaeger, Elana Zion Golumbic, Martin G. Bleichner",
-      "venue": "Neurobiology of Language",
-      "year": 2025,
-      "url": "https://doi.org/10.1162/nol.a.14",
-      "cited_by": 0,
-      "abstract": "This study investigates how selective auditory attention influences the lexical speech segmentation process to phonemes and words in a two competing speaker scenario. Using electroencephalography recordings from 20 participants, we applied temporal response function analysis to distinguish attention-driven neural activity to phoneme and word onsets for the attended and ignored speech stream separately. Our results reveal distinct attention effects for phoneme and word onsets. Phoneme onsets elicited significant selective attention effects at an early (18-94 ms, P1), middle (186-252 ms, P2), and late (302-382 ms, N2) time window. In contrast, word onsets showed attention effects only at a middle (192-280 ms, P2) and late (348-386 ms, N2) time window, occurring slightly later than phoneme-related effects. Prediction accuracy analyses demonstrated stronger model performance for the attended speech stream across all models, with notable improvements in prediction accuracy from a word model",
-      "doi": "10.1162/nol.a.14",
-      "pmid": "40959414",
-      "openalex_id": "W4410983460",
-      "source_doi": "10.3389/fnins.2022.869426",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5739863723516464,
-        "similarity_score": 0.4969578981399536,
-        "citation_text_length": 1166,
-        "dataset_text_length": 1484,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Neural Tracking of Sustained Attention, Attention Switching, and Natural Conversation in Audiovisual Environments Using Wearable EEG",
       "author": "Johanna Wilroth, Oskar Keding, Martin A. Skoglund, Maria Sandsten, Martin Enqvist, Emina Aličković",
       "venue": "European Journal of Neuroscience",
@@ -775,13 +777,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T21:54:13.256747+00:00",
+    "scoring_date": "2026-06-15T01:19:10.554692+00:00",
     "dataset_text_length": 1484,
     "num_citations_scored": 33,
     "summary_stats": {
-      "mean_confidence": 0.5759487208859487,
+      "mean_confidence": 0.5764051482216879,
       "median_confidence": 0.5702730645239353,
-      "std_confidence": 0.09177097924414383,
+      "std_confidence": 0.09207599704399992,
       "min_confidence": 0.42674136132001883,
       "max_confidence": 0.7884209927916528,
       "high_confidence_count": 3,

@@ -1,0 +1,61 @@
+{
+  "dataset_id": "nm000211",
+  "date_retrieved": "2026-06-14T10:02:02.375239+00:00",
+  "dataset_description": {
+    "Name": "RSVP ERP dataset for authentication from Zhang et al 2025",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "Yufeng Zhang",
+      "Hongxin Zhang",
+      "Yixuan Li",
+      "Yijun Wang",
+      "Xiaorong Gao",
+      "Chen Yang"
+    ],
+    "ReferencesAndLinks": [
+      "https://figshare.com/articles/dataset/27201003"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1038/s41597-025-05378-x",
+        "URL": "https://figshare.com/articles/dataset/27201003"
+      }
+    ],
+    "Keywords": [
+      "Healthy",
+      "ERP",
+      "RSVP",
+      "p300",
+      "identity_authentication",
+      "target_detection"
+    ],
+    "PublicationYear": 2025,
+    "DatasetDOI": "10.82901/nemar.nm000211",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000211-blue)](https://doi.org/10.82901/nemar.nm000211)\n\n# RSVP ERP dataset for authentication from Zhang et al 2025\n\nRSVP ERP dataset for authentication from Zhang et al 2025.\n\n## Dataset Overview\n\n- **Code**: Zhang2025\n- **Paradigm**: p300\n- **DOI**: 10.1038/s41597-025-05378-x\n- **Subjects**: 15\n- **Sessions per subject**: 4\n- **Events**: Target=2, NonTarget=1\n- **Trial interval**: [0, 0.6] s\n- **Runs per session**: 4\n- **File format**: MATLAB (HDF5)\n\n## Acquisition\n\n- **Sampling rate**: 1000.0 Hz\n- **Number of channels**: 57\n- **Channel types**: eeg=57\n- **Channel names**: Fpz, Fp1, Fp2, AF3, AF4, AF7, AF8, Fz, F1, F2, F3, F4, F5, F6, F7, F8, FCz, FC1, FC2, FC3, FC4, FC5, FC6, FT7, FT8, Cz, C1, C2, C3, C4, C5, C6, T7, T8, CP1, CP2, CP3, CP4, CP5, CP6, TP7, TP8, Pz, P3, P4, P5, P6, P7, P8, POz, PO3, PO4, PO7, PO8, Oz, O1, O2\n- **Montage**: standard_1020\n- **Hardware**: Neuracle Neusen\n- **Reference**: CPz\n- **Ground**: AFz\n- **Line frequency**: 50.0 Hz\n\n## Participants\n\n- **Number of subjects**: 15\n- **Health status**: healthy\n- **Age**: min=22, max=26\n- **Gender distribution**: female=6, male=9\n- **Handedness**: all right-handed\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Trial duration**: 1.0 s\n- **Study design**: RSVP face authentication; self-face vs AI-generated faces; 4 sessions over 200 days (longitudinal)\n- **Feedback type**: none\n- **Stimulus type**: RSVP face images\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Mode**: offline\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n- **Stimulus onset asynchrony**: 100.0 ms\n\n## Data Structure\n\n- **Trials**: ~160 target + ~6240 nontarget per session\n- **Trials context**: per session (4 blocks x 8 sequences x 200 images)\n\n## Signal Processing\n\n- **Classifiers**: HDCA\n- **Feature extraction**: HDCA\n- **Frequency bands**: ERP_dominant=[0.0, 10.0] Hz\n\n## Cross-Validation\n\n- **Evaluation type**: within_subject\n\n## BCI Application\n\n- **Applications**: identity_authentication, target_detection\n- **Environment**: laboratory\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: ERP\n- **Type**: RSVP\n\n## Documentation\n\n- **DOI**: 10.1038/s41597-025-05378-x\n- **License**: CC-BY-NC-ND-4.0\n- **Investigators**: Yufeng Zhang, Hongxin Zhang, Yixuan Li, Yijun Wang, Xiaorong Gao, Chen Yang\n- **Institution**: Beijing University of Posts and Telecommunications\n- **Country**: CN\n- **Data URL**: https://figshare.com/articles/dataset/27201003\n- **Publication year**: 2025\n\n## References\n\nZhang, Y., Zhang, H., Li, Y., Wang, Y., Gao, X., & Yang, C. (2025). A longitudinal EEG dataset of event-related potential for EEG-based identity authentication. Scientific Data, 12, 1069. https://doi.org/10.1038/s41597-025-05378-x\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000211",
+    "exists": true,
+    "description": "RSVP ERP dataset for authentication from Zhang et al 2025",
+    "created_at": "2026-03-24T04:07:55+00:00",
+    "updated_at": "2026-06-01T01:34:55+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

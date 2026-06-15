@@ -1,0 +1,60 @@
+{
+  "dataset_id": "nm000209",
+  "date_retrieved": "2026-06-14T10:01:54.987048+00:00",
+  "dataset_description": {
+    "Name": "Motor imagery + spatial attention dataset from Forenzo & He 2023",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Dylan Forenzo",
+      "Yixuan Liu",
+      "Jeehyun Kim",
+      "Yidan Ding",
+      "Taehyung Yoon",
+      "Bin He"
+    ],
+    "ReferencesAndLinks": [
+      "https://kilthub.cmu.edu/articles/dataset/23677098"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1109/TBME.2023.3298957",
+        "URL": "https://kilthub.cmu.edu/articles/dataset/23677098"
+      }
+    ],
+    "Keywords": [
+      "Healthy",
+      "Motor",
+      "Research",
+      "imagery",
+      "cursor_control"
+    ],
+    "PublicationYear": 2023,
+    "DatasetDOI": "10.82901/nemar.nm000209",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000209-blue)](https://doi.org/10.82901/nemar.nm000209)\n\n# Motor imagery + spatial attention dataset from Forenzo & He 2023\n\nMotor imagery + spatial attention dataset from Forenzo & He 2023.\n\n## Dataset Overview\n\n- **Code**: Forenzo2023\n- **Paradigm**: imagery\n- **DOI**: 10.1109/TBME.2023.3298957\n- **Subjects**: 25\n- **Sessions per subject**: 5\n- **Events**: left_hand=1, right_hand=2\n- **Trial interval**: [0, 4] s\n- **Runs per session**: 3\n- **File format**: MAT\n\n## Acquisition\n\n- **Sampling rate**: 1000.0 Hz\n- **Number of channels**: 64\n- **Channel types**: eeg=64\n- **Montage**: standard_1005\n- **Hardware**: Neuroscan Quik-Cap 64-ch, SynAmps 2/RT\n- **Reference**: between Cz and CPz\n- **Sensor type**: Ag/AgCl\n- **Line frequency**: 60.0 Hz\n- **Online filters**: {'lowpass': 200, 'notch_hz': 60}\n\n## Participants\n\n- **Number of subjects**: 25\n- **Health status**: healthy\n- **Age**: mean=25.5\n- **Gender distribution**: female=10, male=15\n- **Handedness**: right-handed (24 of 25)\n- **BCI experience**: mixed (19 naive, 6 experienced)\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 2\n- **Class labels**: left_hand, right_hand\n- **Trial duration**: 6.0 s\n- **Study design**: 5-session BCI study with motor imagery (MI), overt spatial attention (OSA), and combined (MIOSA) tasks\n- **Feedback type**: cursor\n- **Stimulus type**: continuous pursuit\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: online\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  left_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Left, Hand\n\n  right_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: left_hand, right_hand\n- **Imagery duration**: 6.0 s\n\n## Data Structure\n\n- **Trials**: 1875\n- **Trials context**: 25 subjects x 5 sessions x 3 MI runs x 5 trials\n\n## Signal Processing\n\n- **Classifiers**: linear_classifier\n- **Feature extraction**: AR_spectral_estimation, alpha_bandpower\n- **Frequency bands**: alpha=[8.0, 13.0] Hz\n- **Spatial filters**: Laplacian\n\n## Cross-Validation\n\n- **Evaluation type**: within_subject\n\n## BCI Application\n\n- **Applications**: cursor_control\n- **Environment**: laboratory\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Motor\n- **Type**: Research\n\n## Documentation\n\n- **DOI**: 10.1109/TBME.2023.3298957\n- **License**: CC-BY-4.0\n- **Investigators**: Dylan Forenzo, Yixuan Liu, Jeehyun Kim, Yidan Ding, Taehyung Yoon, Bin He\n- **Institution**: Carnegie Mellon University\n- **Department**: Department of Biomedical Engineering\n- **Country**: US\n- **Data URL**: https://kilthub.cmu.edu/articles/dataset/23677098\n- **Publication year**: 2023\n\n## References\n\nForenzo, D., & He, B. (2024). Integrating simultaneous motor imagery and spatial attention for EEG-BCI control. IEEE Trans. Biomed. Eng., 71(1), 282-294. https://doi.org/10.1109/TBME.2023.3298957\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000209",
+    "exists": true,
+    "description": "Motor imagery + spatial attention dataset from Forenzo & He 2023",
+    "created_at": "2026-03-24T03:19:04+00:00",
+    "updated_at": "2026-06-03T00:14:35+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

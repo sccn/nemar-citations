@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds004457",
-  "num_citations": 13,
-  "date_last_updated": "2026-05-20T10:24:34.374255+00:00",
+  "num_citations": 14,
+  "date_last_updated": "2026-06-14T15:07:39.150458+00:00",
   "metadata": {
-    "total_cumulative_citations": 80,
-    "fetch_date": "2026-05-20T10:24:34.374255+00:00",
+    "total_cumulative_citations": 82,
+    "fetch_date": "2026-06-14T15:07:39.150458+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -31,29 +33,6 @@
         "confidence_score": 0.8638674688339234,
         "similarity_score": 0.7479372024536133,
         "citation_text_length": 1323,
-        "dataset_text_length": 2325,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "CARLA: Adjusted common average referencing for cortico-cortical evoked potential data.",
-      "author": "Harvey Huang, G. Valencia, N. Gregg, G. Osman, Morgan Montoya, G. Worrell, Kai J. Miller, Dora Hermes",
-      "venue": "Journal of neuroscience methods",
-      "year": 2023,
-      "url": "https://doi.org/10.1016/j.jneumeth.2024.110153",
-      "cited_by": 14,
-      "abstract": "Human brain connectivity can be mapped by single pulse electrical stimulation during intracranial EEG measurements. The raw cortico-cortical evoked potentials (CCEP) are often contaminated by noise. Common average referencing (CAR) removes common noise and preserves response shapes but can introduce bias from responsive channels. We address this issue with an adjusted, adaptive CAR algorithm termed \"CAR by Least Anticorrelation (CARLA)\". CARLA was tested on simulated CCEP data and real CCEP data collected from four human participants. In CARLA, the channels are ordered by increasing mean cross-trial covariance, and iteratively added to the common average until anticorrelation between any single channel and all re-referenced channels reaches a minimum, as a measure of shared noise. We simulated CCEP data with true responses in 0 to 45 of 50 total channels. We quantified CARLA's error and found that it erroneously included 0 (median) truly responsive channels in the common average with ≤",
-      "doi": "10.1016/j.jneumeth.2024.110153",
-      "pmid": "38710234",
-      "openalex_id": null,
-      "source_doi": "10.1101/2022.07.06.498994",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6226941543817521,
-        "similarity_score": 0.5391291379928589,
-        "citation_text_length": 1257,
         "dataset_text_length": 2325,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -83,6 +62,29 @@
       }
     },
     {
+      "title": "CARLA: Adjusted common average referencing for cortico-cortical evoked potential data",
+      "author": "Harvey Huang, G. Valencia, N. Gregg, G. Osman, Morgan N. Montoya, G. Worrell, K. Miller, D. Hermes",
+      "venue": "Journal of neuroscience methods",
+      "year": 2023,
+      "url": "https://doi.org/10.1016/j.jneumeth.2024.110153",
+      "cited_by": 13,
+      "abstract": "Human brain connectivity can be mapped by single pulse electrical stimulation during intracranial EEG measurements. The raw cortico-cortical evoked potentials (CCEP) are often contaminated by noise. Common average referencing (CAR) removes common noise and preserves response shapes but can introduce bias from responsive channels. We address this issue with an adjusted, adaptive CAR algorithm termed “CAR by Least Anticorrelation (CARLA)”. CARLA was tested on simulated CCEP data and real CCEP data collected from four human participants. In CARLA, the channels are ordered by increasing mean cross-trial covariance, and iteratively added to the common average until anticorrelation between any single channel and all re-referenced channels reaches a minimum, as a measure of shared noise. We simulated CCEP data with true responses in 0 to 45 of 50 total channels. We quantified CARLA’s error and found that it erroneously included 0 (median) truly responsive channels in the common average with ≤",
+      "doi": "10.1016/j.jneumeth.2024.110153",
+      "pmid": "38710234",
+      "openalex_id": null,
+      "source_doi": "10.1101/2022.07.06.498994",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6237927567958832,
+        "similarity_score": 0.5400803089141846,
+        "citation_text_length": 1253,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "The Neurostimulationist will see you now: prescribing direct electrical stimulation therapies for the human brain in epilepsy and beyond",
       "author": "P. Hadar, Rina Zelmann, P. Salami, Sydney S. Cash, A. Paulk",
       "venue": "Frontiers in Human Neuroscience",
@@ -100,6 +102,29 @@
         "confidence_score": 0.6441838172078133,
         "similarity_score": 0.5577349066734314,
         "citation_text_length": 1265,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Cortico‐cortical evoked potentials: Analytical techniques and emerging paradigms for epileptogenic zone localization",
+      "author": "Zekai Qiang, J. C. Norris, Gerald Cooray, Richard Rosch, Kai J. Miller, Dora Hermes, Ajai Chari, Martin Tisdall",
+      "venue": "Epilepsia",
+      "year": 2025,
+      "url": "https://doi.org/10.1111/epi.18467",
+      "cited_by": 4,
+      "abstract": "Cortico-cortical evoked potentials (CCEPs) are an active electrophysiological technique used during intracranial electroencephalography to evaluate the effective connectivity and influence of therapeutic stimulation between distinct cortical regions and pinpoint epileptogenic zones (EZs) in patients with epilepsy. Various methodologies have been implemented to analyze CCEPs and characterize the epileptogenic networks for EZ localization. Despite its promise, their interpretation remains challenging due to the large volumes of spatially and temporally complex data generated. Early studies focused largely on qualitative descriptors and predefined, semi-quantitative features such as waveform morphology and peak latencies. However, these methods are limited by the significant heterogeneity in CCEP waveform conformations across patients and cortical regions. The specific technique used for extraction of features, such as the spectral band power and root mean squared values, remains open to ",
+      "doi": "10.1111/epi.18467",
+      "pmid": "40407405",
+      "openalex_id": "W4410627556",
+      "source_doi": "10.1101/2022.07.06.498994",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5865414056181909,
+        "similarity_score": 0.5078280568122864,
+        "citation_text_length": 1275,
         "dataset_text_length": 2325,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -129,23 +154,23 @@
       }
     },
     {
-      "title": "Cortico‐cortical evoked potentials: Analytical techniques and emerging paradigms for epileptogenic zone localization",
-      "author": "Zekai Qiang, J. C. Norris, Gerald Cooray, Richard Rosch, Kai J. Miller, Dora Hermes, Ajai Chari, Martin Tisdall",
-      "venue": "Epilepsia",
-      "year": 2025,
-      "url": "https://doi.org/10.1111/epi.18467",
+      "title": "ER-detect: a pipeline for robust detection of early evoked responses in BIDS-iEEG electrical stimulation data",
+      "author": "Max van den Boom, Nicholas M. Gregg, Gabriela Ojeda Valencia, Brian N. Lundstrom, Kai J. Miller, Dorien van Blooijs, Geertjan Huiskamp, Frans S. S. Leijten, Gregory A. Worrell, Dora Hermes",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2024,
+      "url": "https://doi.org/10.1101/2024.01.09.574915",
       "cited_by": 3,
-      "abstract": "Cortico-cortical evoked potentials (CCEPs) are an active electrophysiological technique used during intracranial electroencephalography to evaluate the effective connectivity and influence of therapeutic stimulation between distinct cortical regions and pinpoint epileptogenic zones (EZs) in patients with epilepsy. Various methodologies have been implemented to analyze CCEPs and characterize the epileptogenic networks for EZ localization. Despite its promise, their interpretation remains challenging due to the large volumes of spatially and temporally complex data generated. Early studies focused largely on qualitative descriptors and predefined, semi-quantitative features such as waveform morphology and peak latencies. However, these methods are limited by the significant heterogeneity in CCEP waveform conformations across patients and cortical regions. The specific technique used for extraction of features, such as the spectral band power and root mean squared values, remains open to ",
-      "doi": "10.1111/epi.18467",
-      "pmid": "40407405",
-      "openalex_id": "W4410627556",
+      "abstract": "Abstract Human brain connectivity can be measured in different ways. Intracranial EEG (iEEG) measurements during single pulse electrical stimulation provide a unique way to assess the spread of electrical information with millisecond precision. To provide a robust workflow to process these cortico-cortical evoked potential (CCEP) data and detect early evoked responses in a fully automated and reproducible fashion, we developed Early Response (ER)-detect. ER-detect is an open-source Python package and Docker application to preprocess BIDS structured iEEG data and detect early evoked CCEP responses. ER-detect can use three response detection methods, which were validated against 14 manually annotated CCEP datasets from two different sites by four independent raters. Results showed that ER-detect’s automated detection performed on par with the inter-rater reliability (Cohen’s Kappa of ∼0.6). Moreover, ER-detect was optimized for processing large CCEP datasets, to be used in conjunction wi",
+      "doi": "10.1101/2024.01.09.574915",
+      "pmid": "38260687",
+      "openalex_id": "W4390734757",
       "source_doi": "10.1101/2022.07.06.498994",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5865414056181909,
-        "similarity_score": 0.5078280568122864,
-        "citation_text_length": 1275,
+        "confidence_score": 0.7488186407089235,
+        "similarity_score": 0.6483278274536133,
+        "citation_text_length": 1375,
         "dataset_text_length": 2325,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -175,29 +200,6 @@
       }
     },
     {
-      "title": "ER-detect: a pipeline for robust detection of early evoked responses in BIDS-iEEG electrical stimulation data",
-      "author": "Max van den Boom, Nicholas M. Gregg, Gabriela Ojeda Valencia, Brian N. Lundstrom, Kai J. Miller, Dorien van Blooijs, Geertjan Huiskamp, Frans S. S. Leijten, Gregory A. Worrell, Dora Hermes",
-      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
-      "year": 2024,
-      "url": "https://doi.org/10.1101/2024.01.09.574915",
-      "cited_by": 2,
-      "abstract": "Abstract Human brain connectivity can be measured in different ways. Intracranial EEG (iEEG) measurements during single pulse electrical stimulation provide a unique way to assess the spread of electrical information with millisecond precision. To provide a robust workflow to process these cortico-cortical evoked potential (CCEP) data and detect early evoked responses in a fully automated and reproducible fashion, we developed Early Response (ER)-detect. ER-detect is an open-source Python package and Docker application to preprocess BIDS structured iEEG data and detect early evoked CCEP responses. ER-detect can use three response detection methods, which were validated against 14 manually annotated CCEP datasets from two different sites by four independent raters. Results showed that ER-detect’s automated detection performed on par with the inter-rater reliability (Cohen’s Kappa of ∼0.6). Moreover, ER-detect was optimized for processing large CCEP datasets, to be used in conjunction wi",
-      "doi": "10.1101/2024.01.09.574915",
-      "pmid": "38260687",
-      "openalex_id": "W4390734757",
-      "source_doi": "10.1101/2022.07.06.498994",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7488186407089235,
-        "similarity_score": 0.6483278274536133,
-        "citation_text_length": 1375,
-        "dataset_text_length": 2325,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Methodologies to detect cortico-cortical evoked potentials: a systematic review",
       "author": "T. Al-Sadek, Aryan Wadhwa, Millen Wadhwa, Aaron E. L. Warren, John D. Rolston",
       "venue": "Frontiers in Human Neuroscience",
@@ -221,8 +223,31 @@
       }
     },
     {
+      "title": "Effective connectivity between homologous cortices mediated by the corpus callosum: An axono-cortical evoked potentials study.",
+      "author": "Takumi Mitsuhashi, Y. Iimura, Hiroharu Suzuki, T. Ueda, K. Nishioka, Kazuki Nomura, Madoka Nakajima, H. Sugano, Akihide Kondo",
+      "venue": "Clinical neurophysiology practice",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.cnp.2026.02.002",
+      "cited_by": 1,
+      "abstract": "Objective\nTo demonstrate the role of the corpus callosum in interhemispheric effective connectivity and investigate the distribution of the connectivity originating from it using axono-cortical evoked potentials.\n\n\nMethods\nA 14-year-old girl with drug-resistant focal epilepsy underwent total callosotomy. Intraoperatively, we placed four subdural strip electrode contacts on the corpus callosum and eight on each hemisphere. We applied single-pulse electrical stimulation to eight pairs of contacts placed on the corpus callosum and cerebral cortex, recording axono-cortical, cortico-axonal, and cortico-cortical evoked potentials. Propagation latencies and anatomical distributions were determined based on the first negative deflection within 10-50 ms.\n\n\nResults\nStimulation of the rostral to the anterior midbody elicited responses in bilateral anterior premotor cortices. The anterior to posterior midbody stimulation elicited responses in more posterior premotor cortices. The sum of latencies ",
+      "doi": "10.1016/j.cnp.2026.02.002",
+      "pmid": "41732345",
+      "openalex_id": null,
+      "source_doi": "10.1101/2022.07.06.498994",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6142064559459688,
+        "similarity_score": 0.531780481338501,
+        "citation_text_length": 1323,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Single pulse electrical stimulation in white matter modulates iEEG visual responses in human early visual cortex",
-      "author": "Harvey Huang, K. Kay, Nicholas M. Gregg, G. Valencia, Myung-Ho In, C. Kapeller, Y. Shu, G. Worrell, Kai J. Miller, Dora Hermes",
+      "author": "Harvey Huang, K. Kay, Nicholas M. Gregg, G. Valencia, Myung-Ho In, C. Kapeller, Y. Shu, G. Worrell, K. Miller, Dora Hermes",
       "venue": "bioRxiv",
       "year": 2025,
       "url": "https://doi.org/10.1101/2025.05.05.652264",
@@ -235,9 +260,9 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.7898302853107454,
-        "similarity_score": 0.6838357448577881,
-        "citation_text_length": 1284,
+        "confidence_score": 0.7876256453990937,
+        "similarity_score": 0.681926965713501,
+        "citation_text_length": 1280,
         "dataset_text_length": 2325,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -267,23 +292,23 @@
       }
     },
     {
-      "title": "Effective connectivity between homologous cortices mediated by the corpus callosum: An axono-cortical evoked potentials study.",
-      "author": "Takumi Mitsuhashi, Y. Iimura, Hiroharu Suzuki, T. Ueda, K. Nishioka, Kazuki Nomura, Madoka Nakajima, H. Sugano, Akihide Kondo",
-      "venue": "Clinical neurophysiology practice",
+      "title": "Computational neuroelectrophysiology and artificial intelligence for drug-resistant epilepsy: recent advances, current challenges, and future directions",
+      "author": "Yalin Wang, Zibo Yan, Yuanchu Gong, Wentao Lin, Tiancheng Wang, Yaqing Liu, Yanming Han, Minqiang Yang, Minghui Liu, Wei Chen, Bin Hu",
+      "venue": "Journal of Neural Engineering",
       "year": 2026,
-      "url": "https://doi.org/10.1016/j.cnp.2026.02.002",
+      "url": "https://doi.org/10.1088/1741-2552/ae6bf4",
       "cited_by": 0,
-      "abstract": "Objective\nTo demonstrate the role of the corpus callosum in interhemispheric effective connectivity and investigate the distribution of the connectivity originating from it using axono-cortical evoked potentials.\n\n\nMethods\nA 14-year-old girl with drug-resistant focal epilepsy underwent total callosotomy. Intraoperatively, we placed four subdural strip electrode contacts on the corpus callosum and eight on each hemisphere. We applied single-pulse electrical stimulation to eight pairs of contacts placed on the corpus callosum and cerebral cortex, recording axono-cortical, cortico-axonal, and cortico-cortical evoked potentials. Propagation latencies and anatomical distributions were determined based on the first negative deflection within 10-50 ms.\n\n\nResults\nStimulation of the rostral to the anterior midbody elicited responses in bilateral anterior premotor cortices. The anterior to posterior midbody stimulation elicited responses in more posterior premotor cortices. The sum of latencies ",
-      "doi": "10.1016/j.cnp.2026.02.002",
-      "pmid": "41732345",
+      "abstract": "Drug-resistant epilepsy (DRE) affects approximately 30% of epilepsy patients, with surgical cure rates below 70%. This challenge drives a fundamental paradigm shift from localizing a discrete epileptogenic zone toward characterizing and modulating the dysfunctional brain networks that initiate and propagate seizures. This review critically synthesizes how computational neuroelectrophysiology and artificial intelligence (AI) converge to propel this shift. We chart the trajectory from quantifying local biomarkers, including high-frequency oscillations and excitation–inhibition balance metrics, to mapping the topological properties of epileptic networks through functional and effective connectivity. The integration of these network features with AI techniques, particularly spatiotemporal deep learning architectures, has demonstrated significant potential for enhancing both the localization of the epileptogenic network and the prediction of postoperative outcomes. However, the translation ",
+      "doi": "10.1088/1741-2552/ae6bf4",
+      "pmid": "42114563",
       "openalex_id": null,
       "source_doi": "10.1101/2022.07.06.498994",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6142064559459688,
-        "similarity_score": 0.531780481338501,
-        "citation_text_length": 1323,
+        "confidence_score": 0.48047188639640814,
+        "similarity_score": 0.41599297523498535,
+        "citation_text_length": 1353,
         "dataset_text_length": 2325,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -315,17 +340,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T21:59:11.336699+00:00",
+    "scoring_date": "2026-06-15T01:24:41.685339+00:00",
     "dataset_text_length": 2325,
-    "num_citations_scored": 13,
+    "num_citations_scored": 14,
     "summary_stats": {
-      "mean_confidence": 0.6576934455679014,
-      "median_confidence": 0.6432783204317094,
-      "std_confidence": 0.09525798857213325,
+      "mean_confidence": 0.6449557600915432,
+      "median_confidence": 0.6356942600011827,
+      "std_confidence": 0.10227610937240784,
       "min_confidence": 0.47915707826614384,
       "max_confidence": 0.8638674688339234,
       "high_confidence_count": 3,
-      "medium_confidence_count": 10,
+      "medium_confidence_count": 11,
       "low_confidence_count": 0
     }
   }

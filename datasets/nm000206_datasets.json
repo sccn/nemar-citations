@@ -1,0 +1,70 @@
+{
+  "dataset_id": "nm000206",
+  "date_retrieved": "2026-06-14T10:01:43.924140+00:00",
+  "dataset_description": {
+    "Name": "Neuroergonomic 2021 dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-SA-4.0",
+    "Authors": [
+      "Marcel F. Hinss",
+      "Emilie S. Jahanpour",
+      "Bertille Somon",
+      "Lou Pluchon",
+      "Frédéric Dehais",
+      "Raphaëlle N. Roy"
+    ],
+    "Acknowledgements": "This research was supported in part by the ERASMUS program (which funded Mr Hinss' internship), and by ANITI (Artificial and Natural Intelligence Toulouse Institute), Toulouse, France.",
+    "HowToAcknowledge": "Please cite: Hinss et al. (2023). Open multi-session and multi-task EEG cognitive dataset for passive brain-computer interface applications. Scientific Data, 10, 85. https://doi.org/10.1038/s41597-022-01898-y",
+    "Funding": [
+      "ERASMUS program",
+      "ANITI (Artificial and Natural Intelligence Toulouse Institute)"
+    ],
+    "EthicsApprovals": [
+      "Comité d'Éthique de la Recherche (CER), Université de Toulouse (CER number 2021-342)"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.5281/zenodo.6874128"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1038/s41597-022-01898-y",
+        "URL": "https://doi.org/10.5281/zenodo.6874128"
+      }
+    ],
+    "Keywords": [
+      "Healthy",
+      "Cognitive",
+      "Research",
+      "rstate",
+      "neuroergonomics",
+      "mental_workload_estimation"
+    ],
+    "PublicationYear": 2023,
+    "DatasetDOI": "10.82901/nemar.nm000206",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000206-blue)](https://doi.org/10.82901/nemar.nm000206)\n\n# Neuroergonomic 2021 dataset\n\nNeuroergonomic 2021 dataset.\n\n## Dataset Overview\n\n- **Code**: Hinss2021\n- **Paradigm**: rstate\n- **DOI**: 10.1038/s41597-022-01898-y\n- **Subjects**: 15\n- **Sessions per subject**: 2\n- **Events**: rs=1, easy=2, medium=3, diff=4\n- **Trial interval**: [0, 2] s\n- **File format**: set\n\n## Acquisition\n\n- **Sampling rate**: 500.0 Hz\n- **Number of channels**: 62\n- **Channel types**: eeg=62\n- **Channel names**: AF3, AF4, AF7, AF8, AFz, C1, C2, C3, C4, C5, C6, CP1, CP2, CP3, CP4, CP5, CP6, CPz, F1, F2, F3, F4, F5, F6, F7, F8, FC1, FC2, FC3, FC4, FC5, FC6, FCz, FT10, FT7, FT8, FT9, Fp1, Fp2, Fz, O1, O2, Oz, P1, P2, P3, P4, P5, P6, P7, P8, PO3, PO4, PO7, PO8, POz, Pz, T7, T8, TP7, TP8\n- **Montage**: standard_1020\n- **Hardware**: ActiCHamp (Brain Products Gmbh)\n- **Reference**: Fpz\n- **Sensor type**: active Ag/AgCl\n- **Line frequency**: 50.0 Hz\n- **Impedance threshold**: 25 kOhm\n- **Auxiliary channels**: ecg\n\n## Participants\n\n- **Number of subjects**: 15\n- **Health status**: healthy\n- **Age**: mean=23.9\n- **Gender distribution**: female=11, male=18\n\n## Experimental Protocol\n\n- **Paradigm**: rstate\n- **Number of classes**: 4\n- **Class labels**: rs, easy, medium, diff\n- **Study design**: Passive BCI neuroergonomics dataset with resting state and 3 difficulty levels of MATB-II task (easy, medium, difficult). The MOABB loader provides resting state and MATB conditions only.\n- **Feedback type**: none\n- **Stimulus type**: visual display\n- **Training/test split**: False\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  rs\n    ├─ Experiment-structure\n    └─ Rest\n\n  easy\n    ├─ Experiment-structure\n    └─ Label/easy\n\n  medium\n    ├─ Experiment-structure\n    └─ Label/medium\n\n  diff\n    ├─ Experiment-structure\n    └─ Label/difficult\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: resting_state\n\n## Data Structure\n\n- **Trials**: 90\n- **Trials context**: total\n\n## Preprocessing\n\n- **Data state**: raw\n- **Preprocessing applied**: False\n\n## Signal Processing\n\n- **Classifiers**: MDM, Riemannian\n- **Feature extraction**: Bandpower, Covariance/Riemannian, ICA\n- **Frequency bands**: alpha=[8.0, 13.0] Hz; theta=[4.0, 8.0] Hz\n\n## Cross-Validation\n\n- **Method**: 5-fold\n- **Folds**: 5\n- **Evaluation type**: cross_subject, cross_session, transfer_learning\n\n## Performance (Original Study)\n\n- **Accuracy**: 70.67%\n\n## BCI Application\n\n- **Applications**: neuroergonomics, mental_workload_estimation\n- **Environment**: laboratory\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Cognitive\n- **Type**: Research\n\n## Documentation\n\n- **DOI**: 10.1038/s41597-022-01898-y\n- **License**: CC-BY-SA-4.0\n- **Investigators**: Marcel F. Hinss, Emilie S. Jahanpour, Bertille Somon, Lou Pluchon, Frédéric Dehais, Raphaëlle N. Roy\n- **Senior author**: Raphaëlle N. Roy\n- **Contact**: marcel.hinss@isae-supaero.fr\n- **Institution**: ISAE-SUPAERO, Université de Toulouse\n- **Department**: Department of Information Processing and Systems\n- **Address**: Toulouse, France\n- **Country**: FR\n- **Repository**: Zenodo\n- **Data URL**: https://doi.org/10.5281/zenodo.6874128\n- **Publication year**: 2023\n- **Funding**: ERASMUS program; ANITI (Artificial and Natural Intelligence Toulouse Institute)\n- **Ethics approval**: Comité d'Éthique de la Recherche (CER), Université de Toulouse (CER number 2021-342)\n- **Acknowledgements**: This research was supported in part by the ERASMUS program (which funded Mr Hinss' internship), and by ANITI (Artificial and Natural Intelligence Toulouse Institute), Toulouse, France.\n- **How to acknowledge**: Please cite: Hinss et al. (2023). Open multi-session and multi-task EEG cognitive dataset for passive brain-computer interface applications. Scientific Data, 10, 85. https://doi.org/10.1038/s41597-022-01898-y\n\n## References\n\n.. [Hinss2021] M. Hinss, B. Somon, F. Dehais & R. N. Roy (2021) Open EEG Datasets for Passive Brain-Computer Interface Applications: Lacks and Perspectives. IEEE Neural Engineering Conference.\n\n.. [Hinss2023] M. F. Hinss, et al. (2023) An EEG dataset for cross-session mental workload estimation: Passive BCI competition of the Neuroergonomics Conference 2021. Scientific Data, 10, 85. https://doi.org/10.1038/s41597-022-01898-y\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000206",
+    "exists": true,
+    "description": "Neuroergonomic 2021 dataset",
+    "created_at": "2026-03-24T01:52:48+00:00",
+    "updated_at": "2026-06-02T23:39:40+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

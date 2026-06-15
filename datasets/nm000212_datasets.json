@@ -1,0 +1,69 @@
+{
+  "dataset_id": "nm000212",
+  "date_retrieved": "2026-06-14T10:02:06.120806+00:00",
+  "dataset_description": {
+    "Name": "BNCI 2015-007 Motion VEP (mVEP) Speller dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "Sulamith Schaeff",
+      "Matthias Sebastian Treder",
+      "Bastian Venthur",
+      "Benjamin Blankertz"
+    ],
+    "Funding": [
+      "DFG grant",
+      "grant nos s",
+      "BMBF grant",
+      "grant no MU MU"
+    ],
+    "EthicsApprovals": [
+      "Declaration of Helsinki"
+    ],
+    "ReferencesAndLinks": [
+      "10.1088/1741-2560/11/2/026009"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1088/1741-2560/9/4/045006"
+      }
+    ],
+    "Keywords": [
+      "motion visually evoked potentials",
+      "mVEP",
+      "BCI",
+      "speller",
+      "gaze-independent",
+      "covert attention",
+      "P300",
+      "N200"
+    ],
+    "PublicationYear": 2012,
+    "DatasetDOI": "10.82901/nemar.nm000212",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000212-blue)](https://doi.org/10.82901/nemar.nm000212)\n\n# BNCI 2015-007 Motion VEP (mVEP) Speller dataset\n\nBNCI 2015-007 Motion VEP (mVEP) Speller dataset.\n\n## Dataset Overview\n\n- **Code**: BNCI2015-007\n- **Paradigm**: p300\n- **DOI**: 10.1088/1741-2560/9/4/045006\n- **Subjects**: 16\n- **Sessions per subject**: 1\n- **Events**: Target=1, NonTarget=2\n- **Trial interval**: [0, 0.7] s\n- **Runs per session**: 2\n- **Session IDs**: practice, calibration, copy_spelling, free_spelling\n- **File format**: gdf\n- **Data preprocessed**: True\n\n## Acquisition\n\n- **Sampling rate**: 100.0 Hz\n- **Number of channels**: 63\n- **Channel types**: eeg=63\n- **Channel names**: Fp1, Fp2, AF3, AF4, AF7, AF8, Fz, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, FCz, FC1, FC2, FC3, FC4, FC5, FC6, FT7, FT8, T7, T8, Cz, C1, C2, C3, C4, C5, C6, TP7, TP8, CPz, CP1, CP2, CP3, CP4, CP5, CP6, Pz, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, POz, PO3, PO4, PO7, PO8, Oz, O1, O2\n- **Montage**: 10-10\n- **Hardware**: BrainAmp EEG amplifier\n- **Software**: Pyff, VisionEgg, MATLAB\n- **Reference**: linked mastoids\n- **Ground**: forehead\n- **Sensor type**: active electrode\n- **Line frequency**: 50.0 Hz\n- **Online filters**: hardware bandpass filter 0.016–250 Hz\n- **Impedance threshold**: 10.0 kOhm\n- **Cap manufacturer**: Brain Products\n- **Electrode type**: actiCap active electrode system\n\n## Participants\n\n- **Number of subjects**: 16\n- **Health status**: patients\n- **Clinical population**: Healthy\n- **Age**: mean=23.8, min=21, max=30\n- **Gender distribution**: male=10, female=6\n- **Handedness**: normal or corrected-to-normal vision\n- **BCI experience**: naive\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Task type**: visual_speller\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Trial duration**: 30.0 s\n- **Study design**: Three different Cake Speller modifications: Overt Cake Speller (gaze toward target), Covert Cake Speller (central fixation, covert attention), Motion Center Speller (foveal stimulation). Two-level selection (group-level and symbol-level) from 30 symbols.\n- **Study domain**: gaze-independent communication\n- **Feedback type**: visual\n- **Stimulus type**: motion VEP (mVEP)\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: online\n- **Training/test split**: True\n- **Instructions**: Copy-spelling and free-spelling with attention to target symbols. Participants counted moving bar/pattern presentations in target location.\n- **Stimulus presentation**: soa_ms=200 ms (Cake Spellers) or 266 ms (Motion Center Speller), stimulus_duration_ms=100 ms, isi_ms=100 ms, repetitions=10 repetitions per level, total_presentations=120 per selection (2 levels × 10 repetitions × 6 groups/symbols)\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n- **Number of targets**: 6\n- **Number of repetitions**: 10\n- **Inter-stimulus interval**: 100.0 ms\n- **Stimulus onset asynchrony**: 200.0 ms\n\n## Data Structure\n\n- **Trials**: 120\n- **Blocks per session**: 4\n- **Trials context**: per_selection (2 levels × 10 repetitions × 6 groups/symbols)\n\n## Preprocessing\n\n- **Data state**: filtered\n- **Preprocessing applied**: True\n- **Steps**: downsampling, low-pass filter, baseline correction, artifact rejection\n- **Highpass filter**: 0.016 Hz\n- **Lowpass filter**: 250.0 Hz\n- **Bandpass filter**: {'low_cutoff_hz': 0.016, 'high_cutoff_hz': 250.0}\n- **Filter type**: hardware bandpass, Chebyshev low-pass for offline\n- **Artifact methods**: min-max criterion (70 μV), variance criterion\n- **Re-reference**: linked mastoids\n- **Downsampled to**: 100.0 Hz\n- **Epoch window**: [-0.2, 1.0]\n- **Notes**: For offline analysis: downsampled to 200 Hz, low-pass filtered (42 Hz passband, 49 Hz stopband). For online: downsampled to 100 Hz. Artifact rejection: min-max ≥70 μV. Nontarget epochs filtered to avoid overlap with targets (3 preceding and 4 following stimuli must be nontargets).\n\n## Signal Processing\n\n- **Classifiers**: LDA with shrinkage of covariance matrix\n- **Feature extraction**: signed square values of point-biserial correlation coefficients\n- **Frequency bands**: analyzed=[100.0, 800.0] Hz\n- **Spatial filters**: LDA spatial filter\n\n## Cross-Validation\n\n- **Method**: train on calibration, test on copy-spelling and free-spelling\n- **Evaluation type**: within_session\n\n## Performance (Original Study)\n\n- **N200 Latency Overt Ms**: 164.0\n- **N200 Latency Covert Ms**: 180.0\n- **N200 Latency Motion Center Ms**: 198.0\n- **P300 Latency Range Ms**: 300-500\n- **N200 Latency Range Ms**: 100-250\n\n## BCI Application\n\n- **Applications**: speller, communication\n- **Environment**: laboratory\n- **Online feedback**: True\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Visual\n- **Type**: P300, VEP\n\n## Documentation\n\n- **Description**: Exploring motion VEPs for gaze-independent communication\n- **DOI**: 10.1088/1741-2560/9/4/045006\n- **Associated paper DOI**: 10.1088/1741-2560/11/2/026009\n- **License**: CC-BY-NC-ND-4.0\n- **Investigators**: Sulamith Schaeff, Matthias Sebastian Treder, Bastian Venthur, Benjamin Blankertz\n- **Senior author**: Benjamin Blankertz\n- **Contact**: benjamin.blankertz@tu-berlin.de\n- **Institution**: Berlin Institute of Technology\n- **Department**: Neurotechnology Group\n- **Country**: Germany\n- **Repository**: BNCI Horizon\n- **Publication year**: 2012\n- **Funding**: DFG grant; grant nos s; BMBF grant; grant no MU MU\n- **Ethics approval**: Declaration of Helsinki\n- **Keywords**: motion visually evoked potentials, mVEP, BCI, speller, gaze-independent, covert attention, P300, N200\n\n## References\n\nTreder, M. S., Purwins, H., Miklody, D., Sturm, I., & Blankertz, B. (2012). Decoding auditory attention to instruments in polyphonic music using single-trial EEG classification. Journal of Neural Engineering, 11(2), 026009. https://doi.org/10.1088/1741-2560/11/2/026009\n\nNotes\n\n.. versionadded:: 1.2.0\n\nSee Also\n\nBNCI2015_008 : Center Speller P300 dataset (gaze-independent) BNCI2015_009 : AMUSE auditory spatial P300 dataset BNCI2015_010 : RSVP visual speller (gaze-independent visual paradigm)\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000212",
+    "exists": true,
+    "description": "BNCI 2015-007 Motion VEP (mVEP) Speller dataset",
+    "created_at": "2026-03-24T04:16:30+00:00",
+    "updated_at": "2026-06-03T00:38:25+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

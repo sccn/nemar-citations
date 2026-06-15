@@ -1,0 +1,68 @@
+{
+  "dataset_id": "nm000329",
+  "date_retrieved": "2026-06-14T10:05:14.618730+00:00",
+  "dataset_description": {
+    "Name": "Brandl et al. 2020 — Motor Imagery Under Distraction: An Open Access BCI Dataset",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "Stephanie Brandl",
+      "Benjamin Blankertz",
+      "Tobias Dahne"
+    ],
+    "HowToAcknowledge": "Please cite: Brandl, S. and Blankertz, B. (2020). Motor Imagery Under Distraction -- An Open Access BCI Dataset. Frontiers in Neuroscience, 14, 566147. https://doi.org/10.3389/fnins.2020.566147",
+    "Funding": [
+      "BMBF/BIFOLD (01IS18025A, 01IS18037A)"
+    ],
+    "EthicsApprovals": [
+      "Approved by the ethics committee of the Charite University Medicine Berlin"
+    ],
+    "ReferencesAndLinks": [
+      "https://depositonce.tu-berlin.de/handle/11303/10934.2"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000329",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.3389/fnins.2020.566147",
+        "URL": "https://depositonce.tu-berlin.de/handle/11303/10934.2"
+      },
+      {
+        "DOI": "doi:10.3389/fnins.2020.566147"
+      }
+    ],
+    "Keywords": [
+      "brain-computer interface",
+      "motor imagery",
+      "EEG",
+      "distraction",
+      "open access",
+      "BCI"
+    ],
+    "PublicationYear": 2020,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000329-blue)](https://doi.org/10.82901/nemar.nm000329)\n\nBrandl2020\n==========\n\nMotor Imagery under distraction dataset from Brandl and Blankertz 2020.\n\nDataset Overview\n----------------\n  Code: Brandl2020\n  Paradigm: imagery\n  DOI: 10.3389/fnins.2020.566147\n  Subjects: 16\n  Sessions per subject: 1\n  Events: left_hand=1, right_hand=2\n  Trial interval: [0, 4.5] s\n  Runs per session: 7\n  File format: MAT (HDF5 v7.3)\n\nAcquisition\n-----------\n  Sampling rate: 1000.0 Hz\n  Number of channels: 63\n  Channel types: eeg=63\n  Channel names: AF3, AF4, AF7, AF8, AFz, C1, C2, C3, C4, C5, C6, CP1, CP2, CP3, CP4, CP5, CP6, CPz, Cz, F1, F2, F3, F4, F5, F6, F7, F8, FC1, FC2, FC3, FC4, FC5, FC6, FCz, FT7, FT8, Fp1, Fp2, Fpz, Fz, O1, O2, Oz, P1, P2, P3, P4, P5, P6, P7, P8, PO3, PO4, PO7, PO8, POz, Pz, T7, T8, TP10, TP7, TP8, TP9\n  Montage: standard_1005\n  Hardware: 2x BrainAmp (Brain Products)\n  Software: BBCI Toolbox (MATLAB)\n  Reference: nose\n  Sensor type: Ag/AgCl wet\n  Line frequency: 50.0 Hz\n  Cap manufacturer: EasyCap\n  Cap model: Fast'n Easy Cap\n\nParticipants\n------------\n  Number of subjects: 16\n  Health status: healthy\n  Age: mean=26.3\n  Gender distribution: female=6, male=10\n  BCI experience: mostly naive (3/16 had prior BCI experience)\n\nExperimental Protocol\n---------------------\n  Paradigm: imagery\n  Number of classes: 2\n  Class labels: left_hand, right_hand\n  Trial duration: 4.5 s\n  Tasks: calibration, clean, eyesclosed, news, numbers, flicker, stimulation\n  Study design: Motor imagery under distraction: 1 calibration run (no feedback, no distraction) + 6 feedback runs with different distraction conditions (clean, eyes closed, news, number search, flicker, vibro-tactile stimulation)\n  Feedback type: auditory\n  Stimulus type: auditory\n  Stimulus modalities: auditory\n  Primary modality: auditory\n  Synchronicity: cue-based\n  Mode: online\n  Training/test split: False\n  Instructions: Subjects received auditory cues ('links' for left, 'rechts' for right) and performed motor imagery of left or right hand movement\n\nHED Event Annotations\n---------------------\n  Schema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n  left_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Left, Hand\n\n  right_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\nParadigm-Specific Parameters\n----------------------------\n  Detected paradigm: motor_imagery\n  Imagery tasks: left_hand, right_hand\n  Imagery duration: 4.5 s\n\nData Structure\n--------------\n  Trials: 504\n  Trials per class: left_hand=252, right_hand=252\n  Blocks per session: 7\n  Trials context: 7 runs per subject: 1 calibration (72 trials) + 6 feedback runs (72 trials each, 6 distraction conditions)\n\nPreprocessing\n-------------\n  Data state: raw\n  Preprocessing applied: False\n\nSignal Processing\n-----------------\n  Classifiers: CSP+LDA\n  Feature extraction: CSP, bandpower\n  Frequency bands: mu=[8.0, 13.0] Hz; beta=[13.0, 30.0] Hz\n  Spatial filters: CSP\n\nCross-Validation\n----------------\n  Method: holdout\n  Evaluation type: within_subject\n\nBCI Application\n---------------\n  Applications: motor_control\n  Environment: laboratory\n  Online feedback: True\n\nTags\n----\n  Pathology: Healthy\n  Modality: Motor\n  Type: Motor Imagery\n\nDocumentation\n-------------\n  DOI: 10.3389/fnins.2020.566147\n  License: CC-BY-NC-ND-4.0\n  Investigators: Stephanie Brandl, Benjamin Blankertz, Tobias Dahne\n  Senior author: Benjamin Blankertz\n  Institution: Technische Universitaet Berlin\n  Department: Department of Neurotechnology\n  Country: DE\n  Repository: DepositOnce TU Berlin\n  Data URL: https://depositonce.tu-berlin.de/handle/11303/10934.2\n  Publication year: 2020\n  Funding: BMBF/BIFOLD (01IS18025A, 01IS18037A)\n  Ethics approval: Approved by the ethics committee of the Charite University Medicine Berlin\n  How to acknowledge: Please cite: Brandl, S. and Blankertz, B. (2020). Motor Imagery Under Distraction -- An Open Access BCI Dataset. Frontiers in Neuroscience, 14, 566147. https://doi.org/10.3389/fnins.2020.566147\n  Keywords: brain-computer interface, motor imagery, EEG, distraction, open access, BCI\n\nAbstract\n--------\nWe present an open-access dataset of a motor imagery brain-computer interface (BCI) experiment conducted under six different distraction conditions. Sixteen healthy participants performed left vs. right hand motor imagery while being distracted by flickering video, number search tasks, news listening, eyes closed, vibro-tactile stimulation, or no distraction. Each participant completed one calibration run without feedback and six feedback runs under the different distraction conditions, resulting in 504 trials per subject.\n\nMethodology\n-----------\nParticipants completed one session with 7 runs of 72 trials each. Run 1 was calibration (no feedback, no distraction). Runs 2-7 included auditory feedback and one of six distraction conditions. Auditory cues indicated left or right hand imagery. Trial duration was 4.5 s with 2.5 s ITI. Online classification used CSP with LDA. EEG recorded at 1000 Hz with 63 channels, nose reference, using two BrainAmp amplifiers.\n\nReferences\n----------\nBrandl, S. and Blankertz, B. (2020). Motor Imagery Under Distraction -- An Open Access BCI Dataset. Frontiers in Neuroscience, 14, 566147. https://doi.org/10.3389/fnins.2020.566147\n\nNotes\n\n.. versionadded:: 1.2.0\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000329",
+    "exists": true,
+    "description": "Brandl et al. 2020 — Motor Imagery Under Distraction: An Open Access BCI Dataset",
+    "created_at": "2026-03-28T11:01:01+00:00",
+    "updated_at": "2026-06-09T01:12:03+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

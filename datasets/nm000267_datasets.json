@@ -1,0 +1,77 @@
+{
+  "dataset_id": "nm000267",
+  "date_retrieved": "2026-06-14T10:04:34.107393+00:00",
+  "dataset_description": {
+    "Name": "Shin et al. 2017 (Experiment A) — Open Access Dataset for EEG+NIRS Single-Trial Classification",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "GPL-3.0",
+    "Authors": [
+      "Jaeyoung Shin",
+      "Alexander von Lühmann",
+      "Benjamin Blankertz",
+      "Do-Won Kim",
+      "Jichai Jeong",
+      "Han-Jeong Hwang",
+      "Klaus-Robert Müller"
+    ],
+    "Funding": [
+      "Basic Science Research Program through the National Research Foundation of Korea (NRF) funded by the Ministry of Education (NRF2014R1A6A3A03057524)",
+      "Ministry of Science, ICT & Future Planning (NRF-2015R1C1A1A02037032)",
+      "Brain Korea 21 PLUS Program through the NRF funded by the Ministry of Education",
+      "Korea University Grant",
+      "BMBF (#01GQ0850, Bernstein Focus: Neurotechnology)"
+    ],
+    "EthicsApprovals": [
+      "Ethics Committee of the Institute of Psychology and Ergonomics, Technical University of Berlin (approval number: SH_01_20150330)",
+      "Declaration of Helsinki"
+    ],
+    "ReferencesAndLinks": [
+      "http://doc.ml.tu-berlin.de/hBCI"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000267",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1109/TNSRE.2016.2628057",
+        "URL": "http://doc.ml.tu-berlin.de/hBCI"
+      },
+      {
+        "DOI": "doi:10.1109/TNSRE.2016.2628057"
+      }
+    ],
+    "Keywords": [
+      "Brain-computer interface (BCI)",
+      "electroencephalography (EEG)",
+      "hybrid BCI",
+      "mental arithmetic",
+      "motor imagery",
+      "near-infrared spectroscopy (NIRS)",
+      "open access dataset"
+    ],
+    "PublicationYear": 2017,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000267-blue)](https://doi.org/10.82901/nemar.nm000267)\n\nShin2017A\n=========\n\nMotor Imagey Dataset from Shin et al 2017.\n\nDataset Overview\n----------------\n  Code: Shin2017A\n  Paradigm: imagery\n  DOI: 10.1109/TNSRE.2016.2628057\n  Subjects: 29\n  Sessions per subject: 6\n  Events: left_hand=1, right_hand=2, subtraction=3, rest=4\n  Trial interval: [0, 10] s\n  File format: MATLAB\n  Data preprocessed: True\n\nAcquisition\n-----------\n  Sampling rate: 200.0 Hz\n  Number of channels: 30\n  Channel types: eeg=30, eog=2\n  Channel names: AFF1h, AFF2h, AFF5h, AFF6h, AFp1, AFp2, CCP3h, CCP4h, CCP5h, CCP6h, Cz, F3, F4, F7, F8, FCC3h, FCC4h, FCC5h, FCC6h, HEOG, P3, P4, P7, P8, POO1, POO2, PPO1h, PPO2h, Pz, T7, T8, VEOG\n  Montage: 10-5\n  Hardware: BrainAmp\n  Reference: linked mastoids\n  Ground: Fz\n  Sensor type: active electrodes\n  Line frequency: 50.0 Hz\n  Cap manufacturer: EASYCAP GmbH\n  Cap model: custom-made stretchy fabric cap\n  Auxiliary channels: EOG (4 ch, horizontal, vertical), ecg, respiration\n\nParticipants\n------------\n  Number of subjects: 29\n  Health status: healthy\n  Age: mean=28.5, std=3.7\n  Gender distribution: male=14, female=15\n  Handedness: {'right': 29, 'left': 1}\n  BCI experience: naive to MI experiment\n  Species: human\n\nExperimental Protocol\n---------------------\n  Paradigm: imagery\n  Number of classes: 2\n  Class labels: left_hand, right_hand\n  Trial duration: 10.0 s\n  Study design: Dataset A: left vs right hand motor imagery (kinesthetic imagery of opening and closing hands)\n  Feedback type: none\n  Stimulus type: visual arrow and fixation cross\n  Stimulus modalities: visual, auditory\n  Primary modality: visual\n  Synchronicity: cued\n  Mode: offline\n  Instructions: Subjects were instructed to perform kinesthetic MI (i.e., to imagine the opening and closing their hands as they were grabbing a ball) to ensure that actual MI, not visual MI, was performed. Subjects were asked to imagine hand gripping (opening and closing their hands) with a 1 Hz pace.\n\nHED Event Annotations\n---------------------\n  Schema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n  left_hand\n    ├─ Sensory-event\n    │  ├─ Experimental-stimulus\n    │  ├─ Visual-presentation\n    │  └─ Leftward, Arrow\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Left, Hand\n\n  right_hand\n    ├─ Sensory-event\n    │  ├─ Experimental-stimulus\n    │  ├─ Visual-presentation\n    │  └─ Rightward, Arrow\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n  subtraction\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Think\n          └─ Label/subtraction\n\n  rest\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Rest\n\nParadigm-Specific Parameters\n----------------------------\n  Detected paradigm: motor_imagery\n  Number of repetitions: 20\n  Imagery tasks: left_hand, right_hand\n  Cue duration: 2.0 s\n  Imagery duration: 10.0 s\n\nData Structure\n--------------\n  Trials: {'per_session': 20, 'per_class_per_session': 10, 'total_per_class': 30}\n  Blocks per session: 10\n  Trials context: 10 blocks per session, each block containing 2 trials (one left, one right hand MI) randomized\n\nPreprocessing\n-------------\n  Data state: preprocessed\n  Preprocessing applied: True\n  Steps: common average reference, bandpass filtering (0.5-50 Hz), ICA-based EOG rejection, downsampling to 200 Hz\n  Highpass filter: 0.5 Hz\n  Lowpass filter: 50.0 Hz\n  Bandpass filter: [0.5, 50.0]\n  Filter type: Chebyshev type II\n  Filter order: 4\n  Artifact methods: ICA, EOG rejection\n  Re-reference: car\n  Downsampled to: 200.0 Hz\n\nSignal Processing\n-----------------\n  Classifiers: Shrinkage LDA\n  Feature extraction: CSP, log-variance\n  Frequency bands: mu=[8.0, 12.0] Hz; beta=[12.0, 25.0] Hz; analyzed=[8.0, 25.0] Hz\n  Spatial filters: CSP\n\nCross-Validation\n----------------\n  Method: 10x5-fold\n  Folds: 5\n  Evaluation type: within_subject\n\nPerformance (Original Study)\n----------------------------\n  Accuracy: 65.6%\n  Eeg Accuracy: 65.6\n  Hbr Accuracy: 66.5\n  Hbo Accuracy: 63.5\n  Eeg+Hbr+Hbo Accuracy: 74.2\n\nBCI Application\n---------------\n  Applications: motor_control\n  Environment: laboratory\n  Online feedback: False\n\nTags\n----\n  Pathology: Healthy\n  Modality: Motor\n  Type: Imagery\n\nDocumentation\n-------------\n  Description: Open access dataset for hybrid brain-computer interfaces (BCIs) using electroencephalography (EEG) and near-infrared spectroscopy (NIRS). Dataset includes two BCI experiments: left versus right hand motor imagery, and mental arithmetic versus resting state.\n  DOI: 10.1109/TNSRE.2016.2628057\n  License: GPL-3.0\n  Investigators: Jaeyoung Shin, Alexander von Lühmann, Benjamin Blankertz, Do-Won Kim, Jichai Jeong, Han-Jeong Hwang, Klaus-Robert Müller\n  Senior author: Klaus-Robert Müller\n  Contact: h2j@kumoh.ac.kr; klaus-robert.mueller@tuberlin.de\n  Institution: Berlin Institute of Technology\n  Department: Machine Learning Group, Department of Computer Science\n  Address: 10587 Berlin, Germany\n  Country: DE\n  Repository: GitHub\n  Data URL: http://doc.ml.tu-berlin.de/hBCI\n  Publication year: 2017\n  Funding: Basic Science Research Program through the National Research Foundation of Korea (NRF) funded by the Ministry of Education (NRF2014R1A6A3A03057524); Ministry of Science, ICT & Future Planning (NRF-2015R1C1A1A02037032); Brain Korea 21 PLUS Program through the NRF funded by the Ministry of Education; Korea University Grant; BMBF (#01GQ0850, Bernstein Focus: Neurotechnology)\n  Ethics approval: Ethics Committee of the Institute of Psychology and Ergonomics, Technical University of Berlin (approval number: SH_01_20150330); Declaration of Helsinki\n  Keywords: Brain-computer interface (BCI), electroencephalography (EEG), hybrid BCI, mental arithmetic, motor imagery, near-infrared spectroscopy (NIRS), open access dataset\n\nAbstract\n--------\nWe provide an open access dataset for hybrid brain-computer interfaces (BCIs) using electroencephalography (EEG) and near-infrared spectroscopy (NIRS). For this, we conducted two BCI experiments (left versus right hand motor imagery; mental arithmetic versus resting state). The dataset was validated using baseline signal analysis methods, with which classification performance was evaluated for each modality and a combination of both modalities. As already shown in previous literature, the capability of discriminating different mental states can be enhanced by using a hybrid approach, when comparing to single modality analyses. This makes the provided data highly suitable for hybrid BCI investigations. Since our open access dataset also comprises motion artifacts and physiological data, we expect that it can be used in a wide range of future validation approaches in multimodal BCI research.\n\nMethodology\n-----------\nTwenty-nine right-handed and one left-handed healthy subjects participated in motor imagery and mental arithmetic tasks. EEG data was recorded at 1000 Hz using 30 active electrodes with a BrainAmp amplifier, referenced to linked mastoids. NIRS data was collected at 12.5 Hz using NIRScout with 14 sources and 16 detectors resulting in 36 channels. Three sessions were conducted for each paradigm (MI and MA). Each session included 20 trials with 10s task periods and 15-17s rest periods. For MI, subjects performed kinesthetic hand gripping imagery at 1 Hz pace. Visual instructions included arrows for MI and arithmetic problems for MA. Motion artifacts from eye/head movements were also recorded. Signal processing included CSP for spatial filtering, log-variance features, and shrinkage LDA classifier with 10x5-fold cross-validation.\n\nReferences\n----------\nShin, J., von Lühmann, A., Blankertz, B., Kim, D.W., Jeong, J., Hwang, H.J. and Müller, K.R., 2017. Open access dataset for EEG+NIRS single-trial classification. IEEE Transactions on Neural Systems and Rehabilitation Engineering, 25(10), pp.1735-1745.\n\nGNU General Public License, Version 3 `<https://www.gnu.org/licenses/gpl-3.0.txt>`_\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000267",
+    "exists": true,
+    "description": "Shin2017A",
+    "created_at": "2026-03-26T20:03:01+00:00",
+    "updated_at": "2026-06-12T13:36:53+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

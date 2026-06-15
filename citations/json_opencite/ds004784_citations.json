@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds004784",
   "num_citations": 21,
-  "date_last_updated": "2026-05-20T11:25:18.850346+00:00",
+  "date_last_updated": "2026-06-14T17:07:20.372233+00:00",
   "metadata": {
-    "total_cumulative_citations": 116,
-    "fetch_date": "2026-05-20T11:25:18.850346+00:00",
+    "total_cumulative_citations": 122,
+    "fetch_date": "2026-06-14T17:07:20.372233+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -19,7 +21,7 @@
       "venue": "IEEE transactions on neural systems and rehabilitation engineering : a publication of the IEEE Engineering in Medicine and Biology Society",
       "year": 2023,
       "url": "https://doi.org/10.1109/TNSRE.2023.3281356",
-      "cited_by": 22,
+      "cited_by": 23,
       "abstract": "Accuracy of electroencephalography (EEG) source localization relies on the volume conduction head model. A previous analysis of young adults has shown that simplified head models have larger source localization errors when compared with head models based on magnetic resonance images (MRIs). As obtaining individual MRIs may not always be feasible, researchers often use generic head models based on template MRIs. It is unclear how much error would be introduced using template MRI head models in older adults that likely have differences in brain structure compared to young adults. The primary goal of this study was to determine the error caused by using simplified head models without individual-specific MRIs in both younger and older adults. We collected high-density EEG during uneven terrain walking and motor imagery for 15 younger (22±3 years) and 21 older adults (74±5 years) and obtained $\\text{T}_{{1}}$ -weighted MRI for each individual. We performed equivalent dipole fitting after in",
       "doi": "10.1109/TNSRE.2023.3281356",
       "pmid": "37252873",
@@ -42,7 +44,7 @@
       "venue": "Sensors (Basel, Switzerland)",
       "year": 2022,
       "url": "https://doi.org/10.3390/s22155867",
-      "cited_by": 22,
+      "cited_by": 23,
       "abstract": "Researchers can improve the ecological validity of brain research by studying humans moving in real-world settings. Recent work shows that dual-layer EEG can improve the fidelity of electrocortical recordings during gait, but it is unclear whether these positive results extrapolate to non-locomotor paradigms. For our study, we recorded brain activity with dual-layer EEG while participants played table tennis, a whole-body, responsive sport that could help investigate visuomotor feedback, object interception, and performance monitoring. We characterized artifacts with time-frequency analyses and correlated scalp and reference noise data to determine how well different sensors captured artifacts. As expected, individual scalp channels correlated more with noise-matched channel time series than with head and body acceleration. We then compared artifact removal methods with and without the use of the dual-layer noise electrodes. Independent Component Analysis separated channels into compon",
       "doi": "10.3390/s22155867",
       "pmid": "35957423",
@@ -129,6 +131,29 @@
       }
     },
     {
+      "title": "A wireless forehead e-tattoo for mental workload estimation",
+      "author": "Heeyong Huh, Hyonyoung Shin, Hongbian Li, Kazuma Hirota, Carolyn Hoang, Shrikar Thangavel, Matthew D’Alessandro, Kathryn A. Feltman, Luis Sentis, Nanshu Lu",
+      "venue": "Device",
+      "year": 2025,
+      "url": "https://doi.org/10.1016/j.device.2025.100781",
+      "cited_by": 9,
+      "abstract": null,
+      "doi": "10.1016/j.device.2025.100781",
+      "pmid": null,
+      "openalex_id": "W4410857975",
+      "source_doi": "10.3390/s23198214",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.46779967546463014,
+        "similarity_score": 0.4455235004425049,
+        "citation_text_length": 247,
+        "dataset_text_length": 1048,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Exploring Electrocortical Signatures of Gait Adaptation: Differential Neural Dynamics in Slow and Fast Gait Adapters",
       "author": "Noelle A. Jacobsen, Daniel P. Ferris",
       "venue": "eNeuro",
@@ -175,29 +200,6 @@
       }
     },
     {
-      "title": "A wireless forehead e-tattoo for mental workload estimation",
-      "author": "Heeyong Huh, Hyonyoung Shin, Hongbian Li, Kazuma Hirota, Carolyn Hoang, Shrikar Thangavel, Matthew D’Alessandro, Kathryn A. Feltman, Luis Sentis, Nanshu Lu",
-      "venue": "Device",
-      "year": 2025,
-      "url": "https://doi.org/10.1016/j.device.2025.100781",
-      "cited_by": 7,
-      "abstract": null,
-      "doi": "10.1016/j.device.2025.100781",
-      "pmid": null,
-      "openalex_id": "W4410857975",
-      "source_doi": "10.3390/s23198214",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.46779967546463014,
-        "similarity_score": 0.4455235004425049,
-        "citation_text_length": 247,
-        "dataset_text_length": 1048,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "A Comparison of Approaches for Motion Artifact Removal from Wireless Mobile EEG During Overground Running",
       "author": "Patrick S. Ledwidge, C. A. McPherson, Lily Faulkenberg, Alexander A. Morgan, Gordon C. Baylis",
       "venue": "Sensors",
@@ -226,7 +228,7 @@
       "venue": "Imaging Neuroscience",
       "year": 2025,
       "url": "https://doi.org/10.1162/imag.a.1039",
-      "cited_by": 2,
+      "cited_by": 3,
       "abstract": "Walking on uneven terrain becomes more difficult as we age, and gait becomes less automatic. Using mobile brain imaging via high-density electroencephalography (EEG) can provide insight into the neural mechanisms contributing to reduced mobility capability with aging. The objective of this study was to quantify age differences in electrocortical dynamics during uneven terrain walking, both averaged across many strides and variations within a stride. We included 31 young adults and 71 older adults for analysis. All participants walked on an uneven terrain treadmill with four levels of terrain difficulty at their self-selected speed. Compared with younger adults, older adults exhibited a greater increase in step duration variability and mediolateral sacral excursion variability as the terrain became more uneven. We identified multiple brain regions involved during walking on uneven terrain. Regardless of age group, walking on uneven terrain compared with flat terrain led to a widespread ",
       "doi": "10.1162/imag.a.1039",
       "pmid": "41322366",
@@ -284,6 +286,29 @@
         "confidence_score": 0.7914871385693552,
         "similarity_score": 0.6852702498435974,
         "citation_text_length": 1210,
+        "dataset_text_length": 1048,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Interstride Variation in EEG Power Spectra of Younger and Older Adults Walking at a Range of Gait Speeds",
+      "author": "Jacob S. Salminen, Chang Liu, Erika M. Pliner, Arkaprava Roy, Natalie Richer, Jungyun Hwang, C. J. Hass, David J. Clark, Y. Cruz-Almeida, Todd M. Manini, Rachael D. Seidler, Daniel P. Ferris",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2026,
+      "url": "https://doi.org/10.1109/TNSRE.2026.3656061",
+      "cited_by": 1,
+      "abstract": "Aging alters both biomechanical and neural factors related to walking, leading to reductions in preferred gait speed with age. Biomechanical variability in human walking has been an area of great interest for aging research. Neural variability has not been well studied in this context. Electroencephalography (EEG) can measure brain activity during walking, allowing us to quantify interstride variability of electrocortical activity. We recruited younger and older adults to walk (0.25-1.0 m/s) while we measured EEG interstride variability in theta, alpha, and beta power. We hypothesized that theta, alpha, and beta variability would decrease at faster walking speeds like most gait kinematic variables. We also hypothesized that older adults would have more interstride variability compared to younger due to reduced gait automaticity. We observed sensorimotor and posterior parietal cortices for their roles in motor action and sensory processing. Interstride variability in theta power lessene",
+      "doi": "10.1109/TNSRE.2026.3656061",
+      "pmid": "41553891",
+      "openalex_id": null,
+      "source_doi": "10.3390/s23198214",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.49199915707111364,
+        "similarity_score": 0.4259732961654663,
+        "citation_text_length": 1399,
         "dataset_text_length": 1048,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -472,34 +497,11 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Interstride Variation in EEG Power Spectra of Younger and Older Adults Walking at a Range of Gait Speeds",
-      "author": "Jacob S. Salminen, Chang Liu, Erika M. Pliner, Arkaprava Roy, Natalie Richer, Jungyun Hwang, C. J. Hass, David J. Clark, Y. Cruz-Almeida, Todd M. Manini, Rachael D. Seidler, Daniel P. Ferris",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2026,
-      "url": "https://doi.org/10.1109/TNSRE.2026.3656061",
-      "cited_by": 0,
-      "abstract": "Aging alters both biomechanical and neural factors related to walking, leading to reductions in preferred gait speed with age. Biomechanical variability in human walking has been an area of great interest for aging research. Neural variability has not been well studied in this context. Electroencephalography (EEG) can measure brain activity during walking, allowing us to quantify interstride variability of electrocortical activity. We recruited younger and older adults to walk (0.25-1.0 m/s) while we measured EEG interstride variability in theta, alpha, and beta power. We hypothesized that theta, alpha, and beta variability would decrease at faster walking speeds like most gait kinematic variables. We also hypothesized that older adults would have more interstride variability compared to younger due to reduced gait automaticity. We observed sensorimotor and posterior parietal cortices for their roles in motor action and sensory processing. Interstride variability in theta power lessene",
-      "doi": "10.1109/TNSRE.2026.3656061",
-      "pmid": "41553891",
-      "openalex_id": null,
-      "source_doi": "10.3390/s23198214",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.49199915707111364,
-        "similarity_score": 0.4259732961654663,
-        "citation_text_length": 1399,
-        "dataset_text_length": 1048,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:02:54.769680+00:00",
+    "scoring_date": "2026-06-15T01:28:55.134782+00:00",
     "dataset_text_length": 1048,
     "num_citations_scored": 21,
     "summary_stats": {

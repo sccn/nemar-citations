@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds002158",
-  "num_citations": 64,
-  "date_last_updated": "2026-05-20T05:24:22.727608+00:00",
+  "num_citations": 66,
+  "date_last_updated": "2026-06-14T10:07:21.863910+00:00",
   "metadata": {
-    "total_cumulative_citations": 1564,
-    "fetch_date": "2026-05-20T05:24:22.727608+00:00",
+    "total_cumulative_citations": 1598,
+    "fetch_date": "2026-06-14T10:07:21.863910+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -19,7 +21,7 @@
       "venue": "Annual Review of Psychology",
       "year": 2023,
       "url": "https://doi.org/10.1146/annurev-psych-022423-032425",
-      "cited_by": 213,
+      "cited_by": 222,
       "abstract": "Determining the psychological, computational, and neural bases of confidence and uncertainty holds promise for understanding foundational aspects of human metacognition. While a neuroscience of confidence has focused on the mechanisms underpinning subpersonal phenomena such as representations of uncertainty in the visual or motor system, metacognition research has been concerned with personal-level beliefs and knowledge about self-performance. I provide a road map for bridging this divide by focusing on a particular class of confidence computation: propositional confidence in one's own (hypothetical) decisions or actions. Propositional confidence is informed by the observer's models of the world and their cognitive system, which may be more or less accurate-thus explaining why metacognitive judgments are inferential and sometimes diverge from task performance. Disparate findings on the neural basis of uncertainty and performance monitoring are integrated into a common framework, and a ",
       "doi": "10.1146/annurev-psych-022423-032425",
       "pmid": "37722748",
@@ -42,7 +44,7 @@
       "venue": "Current Biology",
       "year": 2022,
       "url": "https://doi.org/10.1016/j.cub.2022.01.003",
-      "cited_by": 135,
+      "cited_by": 139,
       "abstract": "It is commonly held that what we see and what we believe we see are overlapping phenomena. However, dissociations between sensory events and their subjective interpretation occur in the general population and in clinical disorders, raising the question as to whether perceptual accuracy and its subjective interpretation represent mechanistically dissociable events. Here, we uncover the role that alpha oscillations play in shaping these two indices of human conscious experience. We used electroencephalography (EEG) to measure occipital alpha oscillations during a visual detection task, which were then entrained using rhythmic-TMS. We found that controlling prestimulus alpha frequency by rhythmic-TMS modulated perceptual accuracy, but not subjective confidence in it, whereas controlling poststimulus (but not prestimulus) alpha amplitude modulated how well subjective confidence judgments can distinguish between correct and incorrect decision, but not accuracy. These findings provide the fi",
       "doi": "10.1016/j.cub.2022.01.003",
       "pmid": "35090592",
@@ -54,6 +56,29 @@
         "confidence_score": 0.6898392909765244,
         "similarity_score": 0.5972634553909302,
         "citation_text_length": 1246,
+        "dataset_text_length": 2337,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Understanding neural signals of post-decisional performance monitoring: An integrative review",
+      "author": "Kobe Desender, K. Richard Ridderinkhof, Peter R. Murphy",
+      "venue": "eLife",
+      "year": 2021,
+      "url": "https://doi.org/10.7554/elife.67556",
+      "cited_by": 85,
+      "abstract": "Performance monitoring is a key cognitive function, allowing to detect mistakes and adapt future behavior. Post-decisional neural signals have been identified that are sensitive to decision accuracy, decision confidence and subsequent adaptation. Here, we review recent work that supports an understanding of late error/confidence signals in terms of the computational process of post-decisional evidence accumulation. We argue that the error positivity, a positive-going centro-parietal potential measured through scalp electrophysiology, reflects the post-decisional evidence accumulation process itself, which follows a boundary crossing event corresponding to initial decision commitment. This proposal provides a powerful explanation for both the morphological characteristics of the signal and its relation to various expressions of performance monitoring. Moreover, it suggests that the error positivity -a signal with thus far unique properties in cognitive neuroscience - can be leveraged to",
+      "doi": "10.7554/elife.67556",
+      "pmid": "34414883",
+      "openalex_id": "W3195866307",
+      "source_doi": "10.1073/pnas.1918335117",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7297858598828317,
+        "similarity_score": 0.6318492293357849,
+        "citation_text_length": 1192,
         "dataset_text_length": 2337,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -77,29 +102,6 @@
         "confidence_score": 0.6929117703437806,
         "similarity_score": 0.5999236106872559,
         "citation_text_length": 1312,
-        "dataset_text_length": 2337,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Understanding neural signals of post-decisional performance monitoring: An integrative review",
-      "author": "Kobe Desender, K. Richard Ridderinkhof, Peter R. Murphy",
-      "venue": "eLife",
-      "year": 2021,
-      "url": "https://doi.org/10.7554/elife.67556",
-      "cited_by": 83,
-      "abstract": "Performance monitoring is a key cognitive function, allowing to detect mistakes and adapt future behavior. Post-decisional neural signals have been identified that are sensitive to decision accuracy, decision confidence and subsequent adaptation. Here, we review recent work that supports an understanding of late error/confidence signals in terms of the computational process of post-decisional evidence accumulation. We argue that the error positivity, a positive-going centro-parietal potential measured through scalp electrophysiology, reflects the post-decisional evidence accumulation process itself, which follows a boundary crossing event corresponding to initial decision commitment. This proposal provides a powerful explanation for both the morphological characteristics of the signal and its relation to various expressions of performance monitoring. Moreover, it suggests that the error positivity -a signal with thus far unique properties in cognitive neuroscience - can be leveraged to",
-      "doi": "10.7554/elife.67556",
-      "pmid": "34414883",
-      "openalex_id": "W3195866307",
-      "source_doi": "10.1073/pnas.1918335117",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7297858598828317,
-        "similarity_score": 0.6318492293357849,
-        "citation_text_length": 1192,
         "dataset_text_length": 2337,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -180,7 +182,7 @@
       "venue": "American Psychologist",
       "year": 2021,
       "url": "https://doi.org/10.1037/amp0000937",
-      "cited_by": 58,
+      "cited_by": 61,
       "abstract": "Visual metacognition is the ability to evaluate one's performance on visual perceptual tasks. The field of visual metacognition unites the long tradition of visual psychophysics with the younger field of metacognition research. This article traces the historical roots of the field and reviews progress in the areas of (a) constructing appropriate measures of metacognitive ability, (b) developing computational models, and (c) revealing the neural correlates of visual metacognition. First, I review the most popular measures of metacognitive ability with an emphasis on their psychophysical properties. Second, I examine the empirical targets for modeling, the dominant modeling frameworks and the assumed computations underlying visual metacognition. Third, I explore the progress on understanding the neural correlates of visual metacognition by focusing on anatomical and functional studies, as well as causal manipulations. What emerges is a picture of substantial progress on constructing meas",
       "doi": "10.1037/amp0000937",
       "pmid": "35266744",
@@ -203,7 +205,7 @@
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
       "year": 2021,
       "url": "https://doi.org/10.1101/2021.03.01.433342",
-      "cited_by": 47,
+      "cited_by": 48,
       "abstract": "The metacognitive sense of confidence can play a critical role in regulating decisionmaking. In particular, a lack of confidence can justify the explicit, potentially costly, instrumental acquisition of extra information that might resolve the underlying uncertainty. Recent work has suggested a statistically sophisticated tapestry behind the information governing both the making and monitoring of choices. Here, we extend this tapestry to reveal extra richness in the use of confidence for controlling information seeking. We thereby highlight how different models of metacognition can generate diverse relationships between action, confidence, and information search. More broadly, our work shows how crucial it can be to treat metacognitive monitoring and control together.",
       "doi": "10.1101/2021.03.01.433342",
       "pmid": "36757948",
@@ -244,6 +246,29 @@
       }
     },
     {
+      "title": "Inferring Macroscale Brain Dynamics via Fusion of Simultaneous EEG-fMRI",
+      "author": "Marios G. Philiastides, Tao Tu, Paul Sajda",
+      "venue": "Annual Review of Neuroscience",
+      "year": 2021,
+      "url": "https://doi.org/10.1146/annurev-neuro-100220-093239",
+      "cited_by": 37,
+      "abstract": "Advances in the instrumentation and signal processing for simultaneously acquired electroencephalography and functional magnetic resonance imaging (EEG-fMRI) have enabled new ways to observe the spatiotemporal neural dynamics of the human brain. Central to the utility of EEG-fMRI neuroimaging systems are the methods for fusing the two data streams, with machine learning playing a key role. These methods can be dichotomized into those that are symmetric and asymmetric in terms of how the two modalities inform the fusion. Studies using these methods have shown that fusion yields new insights into brain function that are not possible when each modality is acquired separately. As technology improves and methods for fusion become more sophisticated, the future of EEG-fMRI for noninvasive measurement of brain dynamics includes mesoscale mapping at ultrahigh magnetic resonance fields, targeted perturbation-based neuroimaging, and using deep learning to uncover nonlinear representations that l",
+      "doi": "10.1146/annurev-neuro-100220-093239",
+      "pmid": "33761268",
+      "openalex_id": "W3138839332",
+      "source_doi": "10.1073/pnas.1918335117",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5858307355642319,
+        "similarity_score": 0.50721275806427,
+        "citation_text_length": 1181,
+        "dataset_text_length": 2337,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Neurocomputational mechanisms of confidence in self and others",
       "author": "Dan Bang, Rani Moran, Nathaniel D. Daw, Stephen M. Fleming",
       "venue": "Nature Communications",
@@ -261,29 +286,6 @@
         "confidence_score": 0.7264699503779413,
         "similarity_score": 0.6289783120155334,
         "citation_text_length": 1180,
-        "dataset_text_length": 2337,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Inferring Macroscale Brain Dynamics via Fusion of Simultaneous EEG-fMRI",
-      "author": "Marios G. Philiastides, Tao Tu, Paul Sajda",
-      "venue": "Annual Review of Neuroscience",
-      "year": 2021,
-      "url": "https://doi.org/10.1146/annurev-neuro-100220-093239",
-      "cited_by": 35,
-      "abstract": "Advances in the instrumentation and signal processing for simultaneously acquired electroencephalography and functional magnetic resonance imaging (EEG-fMRI) have enabled new ways to observe the spatiotemporal neural dynamics of the human brain. Central to the utility of EEG-fMRI neuroimaging systems are the methods for fusing the two data streams, with machine learning playing a key role. These methods can be dichotomized into those that are symmetric and asymmetric in terms of how the two modalities inform the fusion. Studies using these methods have shown that fusion yields new insights into brain function that are not possible when each modality is acquired separately. As technology improves and methods for fusion become more sophisticated, the future of EEG-fMRI for noninvasive measurement of brain dynamics includes mesoscale mapping at ultrahigh magnetic resonance fields, targeted perturbation-based neuroimaging, and using deep learning to uncover nonlinear representations that l",
-      "doi": "10.1146/annurev-neuro-100220-093239",
-      "pmid": "33761268",
-      "openalex_id": "W3138839332",
-      "source_doi": "10.1073/pnas.1918335117",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5858307355642319,
-        "similarity_score": 0.50721275806427,
-        "citation_text_length": 1181,
         "dataset_text_length": 2337,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -341,7 +343,7 @@
       "venue": "Scientific Reports",
       "year": 2020,
       "url": "https://doi.org/10.1038/s41598-020-77820-6",
-      "cited_by": 29,
+      "cited_by": 30,
       "abstract": "The period of making a perceptual decision is often followed by a period of rating confidence where one evaluates the likely accuracy of the initial decision. However, it remains unclear whether the same or different neural circuits are engaged during periods of perceptual decision making and confidence report. To address this question, we conducted two functional MRI experiments in which we dissociated the periods related to perceptual decision making and confidence report by either separating their respective regressors or asking for confidence ratings only in the second half of the experiment. We found that perceptual decision making and confidence reports gave rise to activations in large and mostly overlapping brain circuits including frontal, parietal, posterior, and cingulate regions with the results being remarkably consistent across the two experiments. Further, the confidence report period activated a number of unique regions, whereas only early sensory areas were activated f",
       "doi": "10.1038/s41598-020-77820-6",
       "pmid": "33247212",
@@ -353,6 +355,29 @@
         "confidence_score": 0.8280757346749307,
         "similarity_score": 0.7169486880302429,
         "citation_text_length": 1200,
+        "dataset_text_length": 2337,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Metacognition and mentalizing are associated with distinct neural representations of decision uncertainty",
+      "author": "Shaohan Jiang, Sidong Wang, Xiaohong Wan",
+      "venue": "PLoS Biology",
+      "year": 2022,
+      "url": "https://doi.org/10.1371/journal.pbio.3001301",
+      "cited_by": 29,
+      "abstract": "Metacognition and mentalizing are both associated with meta-level mental state representations. Conventionally, metacognition refers to monitoring one's own cognitive processes, while mentalizing refers to monitoring others' cognitive processes. However, this self-other dichotomy is insufficient to delineate the 2 high-level mental processes. We here used functional magnetic resonance imaging (fMRI) to systematically investigate the neural representations of different levels of decision uncertainty in monitoring different targets (the current self, the past self [PS], and others) performing a perceptual decision-making task. Our results reveal diverse formats of internal mental state representations of decision uncertainty in mentalizing, separate from the associations with external cue information. External cue information was commonly represented in the right inferior parietal lobe (IPL) across the mentalizing tasks. However, the internal mental states of decision uncertainty attribu",
+      "doi": "10.1371/journal.pbio.3001301",
+      "pmid": "35559898",
+      "openalex_id": "W4280575679",
+      "source_doi": "10.1073/pnas.1918335117",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7343419826030733,
+        "similarity_score": 0.635793924331665,
+        "citation_text_length": 1196,
         "dataset_text_length": 2337,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -399,29 +424,6 @@
         "confidence_score": 0.7831771937012673,
         "similarity_score": 0.6780754923820496,
         "citation_text_length": 1227,
-        "dataset_text_length": 2337,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Metacognition and mentalizing are associated with distinct neural representations of decision uncertainty",
-      "author": "Shaohan Jiang, Sidong Wang, Xiaohong Wan",
-      "venue": "PLoS Biology",
-      "year": 2022,
-      "url": "https://doi.org/10.1371/journal.pbio.3001301",
-      "cited_by": 28,
-      "abstract": "Metacognition and mentalizing are both associated with meta-level mental state representations. Conventionally, metacognition refers to monitoring one's own cognitive processes, while mentalizing refers to monitoring others' cognitive processes. However, this self-other dichotomy is insufficient to delineate the 2 high-level mental processes. We here used functional magnetic resonance imaging (fMRI) to systematically investigate the neural representations of different levels of decision uncertainty in monitoring different targets (the current self, the past self [PS], and others) performing a perceptual decision-making task. Our results reveal diverse formats of internal mental state representations of decision uncertainty in mentalizing, separate from the associations with external cue information. External cue information was commonly represented in the right inferior parietal lobe (IPL) across the mentalizing tasks. However, the internal mental states of decision uncertainty attribu",
-      "doi": "10.1371/journal.pbio.3001301",
-      "pmid": "35559898",
-      "openalex_id": "W4280575679",
-      "source_doi": "10.1073/pnas.1918335117",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7343419826030733,
-        "similarity_score": 0.635793924331665,
-        "citation_text_length": 1196,
         "dataset_text_length": 2337,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -548,7 +550,7 @@
       "venue": "iScience",
       "year": 2023,
       "url": "https://doi.org/10.1016/j.isci.2023.107524",
-      "cited_by": 22,
+      "cited_by": 23,
       "abstract": "Error-related potentials (ErrPs) are a prominent electroencephalogram (EEG) correlate of performance monitoring, and so crucial for learning and adapting our behavior. It is poorly understood whether ErrPs encode further information beyond error awareness. We report an experiment with sixteen participants over three sessions in which occasional visual rotations of varying magnitude occurred during a cursor reaching task. We designed a brain-computer interface (BCI) to detect ErrPs that provided real-time feedback. The individual ErrP-BCI decoders exhibited good transfer across sessions and scalability over the magnitude of errors. A non-linear relationship between the ErrP-BCI output and the magnitude of errors predicts individual perceptual thresholds to detect errors. We also reveal theta-gamma oscillatory coupling that co-varied with the magnitude of the required adjustment. Our findings open new avenues to probe and extend current theories of performance monitoring by incorporating",
       "doi": "10.1016/j.isci.2023.107524",
       "pmid": "37636067",
@@ -594,7 +596,7 @@
       "venue": "2025 IEEE/CVF International Conference on Computer Vision (ICCV)",
       "year": 2024,
       "url": "https://doi.org/10.1109/ICCV51701.2025.02213",
-      "cited_by": 19,
+      "cited_by": 20,
       "abstract": "The field of self-supervised learning (SSL) for 3D medical images lacks consistency and standardization. While many methods have been developed, it is impossible to identify the current state-of-the-art, due to i) varying and small pretraining datasets, ii) varying architectures, and iii) being evaluated on differing downstream datasets. In this paper, we bring clarity to this field and lay the foundation for further method advancements through three key contributions: We a) publish the largest publicly available pre-training dataset comprising 114k 3D brain MRI volumes, enabling all practitioners to pre-train on a large-scale dataset. We b) benchmark existing 3D self-supervised learning methods on this dataset for a state-of-the-art CNN and Transformer architecture, clarifying the state of 3D SSL pre-training. Among many findings, we show that pre-trained methods can exceed a strong from-scratch nnU-Net ResEnc-L baseline. Lastly, we c) publish the code of our pre-training and fine-tun",
       "doi": "10.1109/ICCV51701.2025.02213",
       "pmid": null,
@@ -640,7 +642,7 @@
       "venue": "Communications Biology",
       "year": 2022,
       "url": "https://doi.org/10.1038/s42003-022-03762-6",
-      "cited_by": 16,
+      "cited_by": 17,
       "abstract": "Metacognition refers to the ability to be aware of one's own cognition. Ample evidence indicates that metacognition in the human primate is highly dissociable from cognition, specialized across domains, and subserved by distinct neural substrates. However, these aspects remain relatively understudied in macaque monkeys. In the present study, we investigated the functionality of macaque metacognition by combining a confidence proxy, hierarchical Bayesian meta-d' computational modelling, and a single-pulse transcranial magnetic stimulation technique. We found that Brodmann area 46d (BA46d) played a critical role in supporting metacognition independent of task performance; we also found that the critical role of this region in meta-calculation was time-sensitive. Additionally, we report that macaque metacognition is highly domain-specific with respect to memory and perception decisions. These findings carry implications for our understanding of metacognitive introspection within the prima",
       "doi": "10.1038/s42003-022-03762-6",
       "pmid": "35945257",
@@ -663,7 +665,7 @@
       "venue": "Nature Communications",
       "year": 2024,
       "url": "https://doi.org/10.1038/s41467-024-51822-8",
-      "cited_by": 14,
+      "cited_by": 16,
       "abstract": "Neural activity within the ventromedial prefrontal cortex (vmPFC) and anterior insula (aIns) is often associated with economic choices and confidence. However, it remains unclear whether these brain regions are causally related to these processes. To address this issue, we leveraged intracranial electrical stimulation (iES) data obtained from patients with epilepsy performing an economic choice task. Our results reveal opposite effects of stimulation on decision-making depending on its location along a dorso-ventral axis within each region. Specifically, stimulation of the ventral subregion within aIns reduces risk-taking by increasing participants’ sensitivity to potential losses, whereas stimulation of the dorsal subregion of aIns and the ventral portion of the vmPFC increases risk-taking by reducing participants’ sensitivity to losses. Moreover, stimulation of the aIns consistently decreases participants’ confidence, regardless of its location within the aIns. These findings suggest",
       "doi": "10.1038/s41467-024-51822-8",
       "pmid": "39209840",
@@ -732,7 +734,7 @@
       "venue": "Nature Communications",
       "year": 2024,
       "url": "https://doi.org/10.1038/s41467-024-49538-w",
-      "cited_by": 12,
+      "cited_by": 13,
       "abstract": "Abstract Metacognitive evaluations of confidence provide an estimate of decision accuracy that could guide learning in the absence of explicit feedback. We examine how humans might learn from this implicit feedback in direct comparison with that of explicit feedback, using simultaneous EEG-fMRI. Participants performed a motion direction discrimination task where stimulus difficulty was increased to maintain performance, with intermixed explicit- and no-feedback trials. We isolate single-trial estimates of post-decision confidence using EEG decoding, and find these neural signatures re-emerge at the time of feedback together with separable signatures of explicit feedback. We identified these signatures of implicit versus explicit feedback along a dorsal-ventral gradient in the striatum, a finding uniquely enabled by an EEG-fMRI fusion. These two signals appear to integrate into an aggregate representation in the external globus pallidus, which could broadcast updates to improve cortical",
       "doi": "10.1038/s41467-024-49538-w",
       "pmid": "38909014",
@@ -888,6 +890,29 @@
       }
     },
     {
+      "title": "A large-scale heterogeneous 3D magnetic resonance brain imaging dataset for self-supervised learning",
+      "author": "Asbjørn Munk, Stefano Cerri, Jakob Ambsdorf, Julia Machnio, S. Llambias, V. Nersesjan, C. H. Krag, Peirong Liu, Pablo Rocamora-García, Mostafa Mehdipour-Ghazi, Mikael Boesen, M. Benros, J. E. Iglesias, Mads Nielsen",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2506.14432",
+      "cited_by": 8,
+      "abstract": "We present FOMO260K, a large-scale, heterogeneous dataset of 260,927 brain Magnetic Resonance Imaging (MRI) scans from 77,589 MRI sessions and 55,378 subjects, aggregated from 910 publicly available sources. The dataset includes both clinical- and research-grade images, multiple MRI sequences, and a wide range of anatomical and pathological variability, including scans with large brain anomalies. Minimal preprocessing was applied to preserve the original image characteristics while reducing entry barriers for new users. Companion code for self-supervised pretraining and finetuning is provided, along with pretrained models. FOMO260K is intended to support the development and benchmarking of self-supervised learning methods in medical imaging at scale.",
+      "doi": "10.48550/arXiv.2506.14432",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1073/pnas.1918335117",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.44163562327623374,
+        "similarity_score": 0.3823685050010681,
+        "citation_text_length": 1118,
+        "dataset_text_length": 2337,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Confidence response times: Challenging postdecisional models of confidence",
       "author": "Sixing Chen, Dobromir Rahnev",
       "venue": "Journal of Vision",
@@ -905,6 +930,29 @@
         "confidence_score": 0.7355182403326035,
         "similarity_score": 0.6368123292922974,
         "citation_text_length": 1158,
+        "dataset_text_length": 2337,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "The relationship between response dynamics and the formation of confidence varies across the lifespan",
+      "author": "Helen Overhoff, Yiu Hong Ko, Gereon R. Fink, Jutta Stähl, Peter H. Weiss, Stefan Bode, Eva Nießen",
+      "venue": "Frontiers in Aging Neuroscience",
+      "year": 2022,
+      "url": "https://doi.org/10.3389/fnagi.2022.969074",
+      "cited_by": 7,
+      "abstract": "Accurate metacognitive judgments, such as forming a confidence judgment, are crucial for goal-directed behavior but decline with older age. Besides changes in the sensory processing of stimulus features, there might also be changes in the motoric aspects of giving responses that account for age-related changes in confidence. In order to assess the association between confidence and response parameters across the adult lifespan, we measured response times and peak forces in a four-choice flanker task with subsequent confidence judgments. In 65 healthy adults from 20 to 76 years of age, we showed divergent associations of each measure with confidence, depending on decision accuracy. Participants indicated higher confidence after faster responses in correct but not incorrect trials. They also indicated higher confidence after less forceful responses in errors but not in correct trials. Notably, these associations were age-dependent as the relationship between confidence and response time ",
+      "doi": "10.3389/fnagi.2022.969074",
+      "pmid": "36589534",
+      "openalex_id": "W4311504799",
+      "source_doi": "10.1073/pnas.1918335117",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7205830854177475,
+        "similarity_score": 0.623881459236145,
+        "citation_text_length": 1268,
         "dataset_text_length": 2337,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1003,29 +1051,6 @@
       }
     },
     {
-      "title": "A large-scale heterogeneous 3D magnetic resonance brain imaging dataset for self-supervised learning",
-      "author": "Asbjørn Munk, Stefano Cerri, Jakob Ambsdorf, Julia Machnio, S. Llambias, V. Nersesjan, C. H. Krag, Peirong Liu, Pablo Rocamora-García, Mostafa Mehdipour-Ghazi, Mikael Boesen, M. Benros, J. E. Iglesias, Mads Nielsen",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2506.14432",
-      "cited_by": 6,
-      "abstract": "We present FOMO260K, a large-scale, heterogeneous dataset of 260,927 brain Magnetic Resonance Imaging (MRI) scans from 77,589 MRI sessions and 55,378 subjects, aggregated from 910 publicly available sources. The dataset includes both clinical- and research-grade images, multiple MRI sequences, and a wide range of anatomical and pathological variability, including scans with large brain anomalies. Minimal preprocessing was applied to preserve the original image characteristics while reducing entry barriers for new users. Companion code for self-supervised pretraining and finetuning is provided, along with pretrained models. FOMO260K is intended to support the development and benchmarking of self-supervised learning methods in medical imaging at scale.",
-      "doi": "10.48550/arXiv.2506.14432",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1073/pnas.1918335117",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.44163562327623374,
-        "similarity_score": 0.3823685050010681,
-        "citation_text_length": 1118,
-        "dataset_text_length": 2337,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Task-related motor response inflates confidence",
       "author": "Marta Siedlecka, B. Paulewicz, M. Koculak",
       "venue": "bioRxiv",
@@ -1072,52 +1097,6 @@
       }
     },
     {
-      "title": "Confidence and metacognition",
-      "author": "Kiyofumi Miyoshi, Taylor W. Webb, Dobromir Rahnev, Hakwan Lau",
-      "venue": "Elsevier eBooks",
-      "year": 2023,
-      "url": "https://doi.org/10.1016/b978-0-12-820480-1.00049-8",
-      "cited_by": 5,
-      "abstract": "Humans are not passive recipients of information from the external world. They are “metacognitive” agents, actively engaged in self-referential monitoring of internally expressed information. This introspective insight in turn enables proactive behavioral adjustments, facilitating efficient learning, preventing erroneous actions, and promoting information exchange with others. The study of metacognition has witnessed a recent expansion, incorporating a fusion of computational modeling, neuroimaging, machine learning techniques, and other interdisciplinary approaches. This chapter serves as an invitation for readers to explore the introspective realm of metacognition, providing an overview of the latest research findings.",
-      "doi": "10.1016/b978-0-12-820480-1.00049-8",
-      "pmid": null,
-      "openalex_id": "W4389939769",
-      "source_doi": "10.1073/pnas.1918335117",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6055386632680894,
-        "similarity_score": 0.5242758989334106,
-        "citation_text_length": 873,
-        "dataset_text_length": 2337,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "The relationship between response dynamics and the formation of confidence varies across the lifespan",
-      "author": "Helen Overhoff, Yiu Hong Ko, Gereon R. Fink, Jutta Stähl, Peter H. Weiss, Stefan Bode, Eva Nießen",
-      "venue": "Frontiers in Aging Neuroscience",
-      "year": 2022,
-      "url": "https://doi.org/10.3389/fnagi.2022.969074",
-      "cited_by": 5,
-      "abstract": "Accurate metacognitive judgments, such as forming a confidence judgment, are crucial for goal-directed behavior but decline with older age. Besides changes in the sensory processing of stimulus features, there might also be changes in the motoric aspects of giving responses that account for age-related changes in confidence. In order to assess the association between confidence and response parameters across the adult lifespan, we measured response times and peak forces in a four-choice flanker task with subsequent confidence judgments. In 65 healthy adults from 20 to 76 years of age, we showed divergent associations of each measure with confidence, depending on decision accuracy. Participants indicated higher confidence after faster responses in correct but not incorrect trials. They also indicated higher confidence after less forceful responses in errors but not in correct trials. Notably, these associations were age-dependent as the relationship between confidence and response time ",
-      "doi": "10.3389/fnagi.2022.969074",
-      "pmid": "36589534",
-      "openalex_id": "W4311504799",
-      "source_doi": "10.1073/pnas.1918335117",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7205830854177475,
-        "similarity_score": 0.623881459236145,
-        "citation_text_length": 1268,
-        "dataset_text_length": 2337,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Evidence accumulation in the pre-supplementary motor area and insula drives confidence and changes of mind",
       "author": "Dorian Goueytes, François Stockart, Alexis Robin, Lucien Gyger, Martin Rouy, D. Hoffmann, Lorella Minotti, Philippe Kahane, Michael Pereira, Nathan Faivre",
       "venue": "Nature Communications",
@@ -1135,6 +1114,29 @@
         "confidence_score": 0.8246966958045961,
         "similarity_score": 0.7140231132507324,
         "citation_text_length": 1320,
+        "dataset_text_length": 2337,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Confidence and metacognition",
+      "author": "Kiyofumi Miyoshi, Taylor W. Webb, Dobromir Rahnev, Hakwan Lau",
+      "venue": "Elsevier eBooks",
+      "year": 2023,
+      "url": "https://doi.org/10.1016/b978-0-12-820480-1.00049-8",
+      "cited_by": 5,
+      "abstract": "Humans are not passive recipients of information from the external world. They are “metacognitive” agents, actively engaged in self-referential monitoring of internally expressed information. This introspective insight in turn enables proactive behavioral adjustments, facilitating efficient learning, preventing erroneous actions, and promoting information exchange with others. The study of metacognition has witnessed a recent expansion, incorporating a fusion of computational modeling, neuroimaging, machine learning techniques, and other interdisciplinary approaches. This chapter serves as an invitation for readers to explore the introspective realm of metacognition, providing an overview of the latest research findings.",
+      "doi": "10.1016/b978-0-12-820480-1.00049-8",
+      "pmid": null,
+      "openalex_id": "W4389939769",
+      "source_doi": "10.1073/pnas.1918335117",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6055386632680894,
+        "similarity_score": 0.5242758989334106,
+        "citation_text_length": 873,
         "dataset_text_length": 2337,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1279,6 +1281,29 @@
       }
     },
     {
+      "title": "Belief inference for hierarchical hidden states in spatial navigation",
+      "author": "Risa Katayama, Ryo Shiraki, Shin Ishii, Wako Yoshida",
+      "venue": "Communications Biology",
+      "year": 2024,
+      "url": "https://doi.org/10.1038/s42003-024-06316-0",
+      "cited_by": 2,
+      "abstract": "Uncertainty abounds in the real world, and in environments with multiple layers of unobservable hidden states, decision-making requires resolving uncertainties based on mutual inference. Focusing on a spatial navigation problem, we develop a Tiger maze task that involved simultaneously inferring the local hidden state and the global hidden state from probabilistically uncertain observation. We adopt a Bayesian computational approach by proposing a hierarchical inference model. Applying this to human task behaviour, alongside functional magnetic resonance brain imaging, allows us to separate the neural correlates associated with reinforcement and reassessment of belief in hidden states. The imaging results also suggest that different layers of uncertainty differentially involve the basal ganglia and dorsomedial prefrontal cortex, and that the regions responsible are organised along the rostral axis of these areas according to the type of inference and the level of abstraction of the hid",
+      "doi": "10.1038/s42003-024-06316-0",
+      "pmid": "38773301",
+      "openalex_id": "W4398160491",
+      "source_doi": "10.1073/pnas.1918335117",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5574338802695276,
+        "similarity_score": 0.482626736164093,
+        "citation_text_length": 1182,
+        "dataset_text_length": 2337,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Metacognitive Introspection Alters the Dynamics of Pre-Decisional Neural Evidence Accumulation",
       "author": "Wei Dou, Shirin Afrakhteh, Jason Samaha",
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
@@ -1296,29 +1321,6 @@
         "confidence_score": 0.8299520605802537,
         "similarity_score": 0.7185732126235962,
         "citation_text_length": 1211,
-        "dataset_text_length": 2337,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Belief inference for hierarchical hidden states in spatial navigation",
-      "author": "Risa Katayama, Ryo Shiraki, Shin Ishii, Wako Yoshida",
-      "venue": "Communications Biology",
-      "year": 2024,
-      "url": "https://doi.org/10.1038/s42003-024-06316-0",
-      "cited_by": 1,
-      "abstract": "Uncertainty abounds in the real world, and in environments with multiple layers of unobservable hidden states, decision-making requires resolving uncertainties based on mutual inference. Focusing on a spatial navigation problem, we develop a Tiger maze task that involved simultaneously inferring the local hidden state and the global hidden state from probabilistically uncertain observation. We adopt a Bayesian computational approach by proposing a hierarchical inference model. Applying this to human task behaviour, alongside functional magnetic resonance brain imaging, allows us to separate the neural correlates associated with reinforcement and reassessment of belief in hidden states. The imaging results also suggest that different layers of uncertainty differentially involve the basal ganglia and dorsomedial prefrontal cortex, and that the regions responsible are organised along the rostral axis of these areas according to the type of inference and the level of abstraction of the hid",
-      "doi": "10.1038/s42003-024-06316-0",
-      "pmid": "38773301",
-      "openalex_id": "W4398160491",
-      "source_doi": "10.1073/pnas.1918335117",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5574338802695276,
-        "similarity_score": 0.482626736164093,
-        "citation_text_length": 1182,
         "dataset_text_length": 2337,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1463,6 +1465,29 @@
       }
     },
     {
+      "title": "Subconscious information elicits distinct metacognition following Active Decision-Making",
+      "author": "Liang Shan, Yuyin Wang, Rui Wu, Yan Huang, Ji Dai",
+      "venue": "Biomedical Signal Processing and Control",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.bspc.2026.110660",
+      "cited_by": 0,
+      "abstract": null,
+      "doi": "10.1016/j.bspc.2026.110660",
+      "pmid": null,
+      "openalex_id": "W7161716250",
+      "source_doi": "10.1073/pnas.1918335117",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6128020763397217,
+        "similarity_score": 0.5836210250854492,
+        "citation_text_length": 204,
+        "dataset_text_length": 2337,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Decision confidence estimation and electroencephalogram features analysis based on animal recognition task",
       "author": "Li Li, Yibi Jiang, Peng Zan, Jingwei Yue, Chunyong Li",
       "venue": "Review of Scientific Instruments",
@@ -1484,21 +1509,44 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Joint Modeling of fMRI and EEG Imaging Using Ordinary Differential Equation-Based Hypergraph Neural Networks",
+      "author": "Yan Zhang, Yang Gao, Min Li",
+      "venue": "n/a",
+      "year": 0,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": null,
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1073/pnas.1918335117",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.517869234085083,
+        "similarity_score": 0.517869234085083,
+        "citation_text_length": 165,
+        "dataset_text_length": 2337,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T21:46:52.017261+00:00",
+    "scoring_date": "2026-06-15T01:10:54.155046+00:00",
     "dataset_text_length": 2337,
-    "num_citations_scored": 64,
+    "num_citations_scored": 66,
     "summary_stats": {
-      "mean_confidence": 0.6547591579263099,
-      "median_confidence": 0.6750017559528352,
-      "std_confidence": 0.12637411344501023,
+      "mean_confidence": 0.6520493548137674,
+      "median_confidence": 0.673288864195347,
+      "std_confidence": 0.1256571373432202,
       "min_confidence": 0.2944438970088959,
       "max_confidence": 0.8580889633297921,
       "high_confidence_count": 27,
-      "medium_confidence_count": 32,
+      "medium_confidence_count": 34,
       "low_confidence_count": 5
     }
   }

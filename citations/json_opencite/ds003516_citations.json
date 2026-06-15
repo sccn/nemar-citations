@@ -1,16 +1,18 @@
 {
   "dataset_id": "ds003516",
-  "num_citations": 48,
-  "date_last_updated": "2026-05-20T06:25:16.378206+00:00",
+  "num_citations": 49,
+  "date_last_updated": "2026-06-14T11:09:09.466134+00:00",
   "metadata": {
-    "total_cumulative_citations": 276,
-    "fetch_date": "2026-05-20T06:25:16.378206+00:00",
+    "total_cumulative_citations": 282,
+    "fetch_date": "2026-06-14T11:09:09.466134+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {}
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": []
   },
   "citation_details": [
     {
@@ -42,7 +44,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2021,
       "url": "https://doi.org/10.1088/1741-2552/ac42b5",
-      "cited_by": 30,
+      "cited_by": 31,
       "abstract": "Abstract Objective. Neuro-steered assistive technologies have been suggested to offer a major advancement in future devices like neuro-steered hearing aids. Auditory attention decoding (AAD) methods would in that case allow for identification of an attended speaker within complex auditory environments, exclusively from neural data. Decoding the attended speaker using neural information has so far only been done in controlled laboratory settings. Yet, it is known that ever-present factors like distraction and movement are reflected in the neural signal parameters related to attention. Approach. Thus, in the current study we applied a two-competing speaker paradigm to investigate performance of a commonly applied electroencephalography-based AAD model outside of the laboratory during leisure walking and distraction. Unique environmental sounds were added to the auditory scene and served as distractor events. Main results . The current study shows, for the first time, that the attended sp",
       "doi": "10.1088/1741-2552/ac42b5",
       "pmid": "34902846",
@@ -65,7 +67,7 @@
       "venue": "Frontiers in Neuroergonomics",
       "year": 2022,
       "url": "https://doi.org/10.3389/fnrgo.2022.793061",
-      "cited_by": 25,
+      "cited_by": 26,
       "abstract": "With smartphone-based mobile electroencephalography (EEG), we can investigate sound perception beyond the lab. To understand sound perception in the real world, we need to relate naturally occurring sounds to EEG data. For this, EEG and audio information need to be synchronized precisely, only then it is possible to capture fast and transient evoked neural responses and relate them to individual sounds. We have developed Android applications (AFEx and Record-a) that allow for the concurrent acquisition of EEG data and audio features, i.e., sound onsets, average signal power (RMS), and power spectral density (PSD) on smartphone. In this paper, we evaluate these apps by computing event-related potentials (ERPs) evoked by everyday sounds. One participant listened to piano notes (played live by a pianist) and to a home-office soundscape. Timing tests showed a stable lag and a small jitter (< 3 ms) indicating a high temporal precision of the system. We calculated ERPs to sound onsets and ob",
       "doi": "10.3389/fnrgo.2022.793061",
       "pmid": "38235458",
@@ -157,7 +159,7 @@
       "venue": "Journal of Neuroscience",
       "year": 2023,
       "url": "https://doi.org/10.1523/jneurosci.1731-22.2023",
-      "cited_by": 12,
+      "cited_by": 13,
       "abstract": "The well-known “cocktail party effect” refers to incidental detection of salient words, such as one's own-name, in supposedly unattended speech. However, empirical investigation of the prevalence of this phenomenon and the underlying mechanisms has been limited to extremely artificial contexts and has yielded conflicting results. We introduce a novel empirical approach for revisiting this effect under highly ecological conditions, by immersing participants in a multisensory Virtual Café and using realistic stimuli and tasks. Participants (32 female, 18 male) listened to conversational speech from a character at their table, while a barista in the back of the café called out food orders. Unbeknownst to them, the barista sometimes called orders containing either their own-name or words that created semantic violations. We assessed the neurophysiological response-profile to these two probes in the task-irrelevant barista stream by measuring participants' brain activity (EEG), galvanic ski",
       "doi": "10.1523/jneurosci.1731-22.2023",
       "pmid": "37336758",
@@ -169,6 +171,29 @@
         "confidence_score": 0.6789324367046357,
         "similarity_score": 0.587820291519165,
         "citation_text_length": 1253,
+        "dataset_text_length": 1208,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "EEGUnity: Open-Source Tool in Facilitating Unified EEG Datasets Toward Large-Scale EEG Model",
+      "author": "Chengxuan Qin, Rui Yang, Wenlong You, Zhige Chen, Longsheng Zhu, Mengjie Huang, Zidong Wang",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/tnsre.2025.3565158",
+      "cited_by": 13,
+      "abstract": "The increasing number of dispersed EEG dataset publications and the advancement of large-scale Electroencephalogram (EEG) models have increased the demand for practical tools to manage diverse EEG datasets. However, the inherent complexity of EEG data, characterized by variability in content data, metadata, and data formats, poses challenges for integrating multiple datasets and conducting large-scale EEG model research. To tackle the challenges, this paper introduces EEGUnity, an open-source tool that incorporates modules of \"EEG Parser\", \"Correction\", \"Batch Processing\", and \"Large Language Model Boost\". Leveraging the functionality of such modules, EEGUnity facilitates the efficient management of multiple EEG datasets, such as intelligent data structure inference, data cleaning, and data unification. In addition, the capabilities of EEGUnity ensure high data quality and consistency, providing a reliable foundation for large-scale EEG data research. EEGUnity is evaluated across 25 EE",
+      "doi": "10.1109/tnsre.2025.3565158",
+      "pmid": "40293886",
+      "openalex_id": "W4409882874",
+      "source_doi": "10.3389/fnins.2021.643705",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5172893178462983,
+        "similarity_score": 0.44786953926086426,
+        "citation_text_length": 1288,
         "dataset_text_length": 1208,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -198,35 +223,12 @@
       }
     },
     {
-      "title": "EEGUnity: Open-Source Tool in Facilitating Unified EEG Datasets Toward Large-Scale EEG Model",
-      "author": "Chengxuan Qin, Rui Yang, Wenlong You, Zhige Chen, Longsheng Zhu, Mengjie Huang, Zidong Wang",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/tnsre.2025.3565158",
-      "cited_by": 12,
-      "abstract": "The increasing number of dispersed EEG dataset publications and the advancement of large-scale Electroencephalogram (EEG) models have increased the demand for practical tools to manage diverse EEG datasets. However, the inherent complexity of EEG data, characterized by variability in content data, metadata, and data formats, poses challenges for integrating multiple datasets and conducting large-scale EEG model research. To tackle the challenges, this paper introduces EEGUnity, an open-source tool that incorporates modules of \"EEG Parser\", \"Correction\", \"Batch Processing\", and \"Large Language Model Boost\". Leveraging the functionality of such modules, EEGUnity facilitates the efficient management of multiple EEG datasets, such as intelligent data structure inference, data cleaning, and data unification. In addition, the capabilities of EEGUnity ensure high data quality and consistency, providing a reliable foundation for large-scale EEG data research. EEGUnity is evaluated across 25 EE",
-      "doi": "10.1109/tnsre.2025.3565158",
-      "pmid": "40293886",
-      "openalex_id": "W4409882874",
-      "source_doi": "10.3389/fnins.2021.643705",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5172893178462983,
-        "similarity_score": 0.44786953926086426,
-        "citation_text_length": 1288,
-        "dataset_text_length": 1208,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "“Um…, it’s really difficult to… um… speak fluently”: Neural tracking of spontaneous speech",
       "author": "Galit Agmon, M. Jaeger, Reut Tsarfaty, M. Bleichner, E. Z. Golumbic",
       "venue": "bioRxiv",
       "year": 2023,
       "url": "https://doi.org/10.1162/nol_a_00109",
-      "cited_by": 10,
+      "cited_by": 11,
       "abstract": "Spontaneous real-life speech is imperfect in many ways. It contains disfluencies and ill-formed utterances and has a highly variable rate. When listening to spontaneous speech, the brain needs to contend with these features in order to extract the speaker’s meaning. Here, we studied how the neural response is affected by four specific factors that are prevalent in spontaneous colloquial speech: (1) the presence of non-lexical fillers, (2) the need to detect syntactic boundaries in disfluent speech, and (3) variability in speech rate. Neural activity (EEG) was recorded from individuals as they listened to an unscripted, spontaneous narrative, which was analyzed in a time-resolved fashion to identify fillers and detect syntactic boundaries. When considering these factors in a speech-tracking analysis, which estimates a temporal response function (TRF) to describe the relationship between the stimulus and the neural response it generates, we found that the TRF was affected by both of them",
       "doi": "10.1162/nol_a_00109",
       "pmid": null,
@@ -411,7 +413,7 @@
       "year": 2025,
       "url": "https://doi.org/10.3389/fnrgo.2025.1571356",
       "cited_by": 5,
-      "abstract": "Introduction This study investigates the neural basis of sound perception in everyday life using EEG data recorded in an office-like environment over 3.5 h. We aimed to understand how contextual factors such as personal relevance, task complexity, and stimulus properties influence auditory processing in ecologically valid settings. Methods By systematically increasing the complexity of acoustic scenes and tasks, we analyzed changes in neural responses, focusing on the N100 and P300 components. Results Our results show that while the P300 is a stable marker of attention in both isolated sounds and complex soundscapes, the N100 is more sensitive to task complexity and environmental factors. Discussion These findings highlight the importance of context in shaping auditory perception and suggest that laboratory-based findings can be partially generalized to real-world settings. At the same time, task demands significantly influence neural markers. This opens new opportunities to study soun",
+      "abstract": "Introduction: This study investigates the neural basis of sound perception in everyday life using EEG data recorded in an office-like environment over 3.5 h. We aimed to understand how contextual factors such as personal relevance, task complexity, and stimulus properties influence auditory processing in ecologically valid settings. Methods: By systematically increasing the complexity of acoustic scenes and tasks, we analyzed changes in neural responses, focusing on the N100 and P300 components. Results: Our results show that while the P300 is a stable marker of attention in both isolated sounds and complex soundscapes, the N100 is more sensitive to task complexity and environmental factors. Discussion: These findings highlight the importance of context in shaping auditory perception and suggest that laboratory-based findings can be partially generalized to real-world settings. At the same time, task demands significantly influence neural markers. This opens new opportunities to study ",
       "doi": "10.3389/fnrgo.2025.1571356",
       "pmid": "40357525",
       "openalex_id": "W4409866496",
@@ -419,8 +421,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6360547927021981,
-        "similarity_score": 0.5506967902183533,
+        "confidence_score": 0.6312999880313874,
+        "similarity_score": 0.5465800762176514,
         "citation_text_length": 1218,
         "dataset_text_length": 1208,
         "scoring_method": "sentence_transformers",
@@ -658,6 +660,29 @@
       }
     },
     {
+      "title": "Attention Modulation to Linguistic Speech Units",
+      "author": "Manuela Jaeger, Elana Zion Golumbic, Martin G. Bleichner",
+      "venue": "Neurobiology of Language",
+      "year": 2025,
+      "url": "https://doi.org/10.1162/nol.a.14",
+      "cited_by": 1,
+      "abstract": "This study investigates how selective auditory attention influences the lexical speech segmentation process to phonemes and words in a two competing speaker scenario. Using electroencephalography recordings from 20 participants, we applied temporal response function analysis to distinguish attention-driven neural activity to phoneme and word onsets for the attended and ignored speech stream separately. Our results reveal distinct attention effects for phoneme and word onsets. Phoneme onsets elicited significant selective attention effects at an early (18-94 ms, P1), middle (186-252 ms, P2), and late (302-382 ms, N2) time window. In contrast, word onsets showed attention effects only at a middle (192-280 ms, P2) and late (348-386 ms, N2) time window, occurring slightly later than phoneme-related effects. Prediction accuracy analyses demonstrated stronger model performance for the attended speech stream across all models, with notable improvements in prediction accuracy from a word model",
+      "doi": "10.1162/nol.a.14",
+      "pmid": "40959414",
+      "openalex_id": "W4410983460",
+      "source_doi": "10.3389/fnins.2021.643705",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6160687378048898,
+        "similarity_score": 0.5333928465843201,
+        "citation_text_length": 1166,
+        "dataset_text_length": 1208,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "The Self in Disorders of Consciousness",
       "author": "Charlène Aubinet, Audrey Vanhaudenhuyse, Steven Laureys, Athéna Demertzi",
       "venue": "n/a",
@@ -750,36 +775,13 @@
       }
     },
     {
-      "title": "Features of Perception of a Person’s Own Name Compared to the Perception of Names with Similar and Different Sounds: Analysis of Event-Related Potentials",
-      "author": "L. B. Oknina, В. В. Подлепич, Ya. O. Vologdina, I. A. Sieber, E. L. Masherov, A. A. Slezkin, E. V. Strelnikova, A. O. Kantserova",
-      "venue": "Human Physiology",
-      "year": 2025,
-      "url": "https://doi.org/10.1134/s0362119725700215",
-      "cited_by": 0,
-      "abstract": "In recent years, there has been an increased interest in how a person distinguishes his own name from other stimuli. In large part this interest is determined by the intensive development of a personalized approach in medicine, psychology, and rehabilitation. The purpose of this study was to identify the characteristics of a person’s perception of his own name in comparison with stimuli of similar and different sounds based on an analysis of the bioelectrical activity of the brain. The study involved 29 healthy volunteers aged 18 to 48 years who had common Russian names and identified themselves with short forms of these names, which had a similar syllabic structure. Event-related potentials (ERPs) were recorded in response to a proper name, a similar-sounding name, a similar-sounding word, a different-sounding name, and a Chukchi word. When analyzing the data, an estimate of the amplitude of the induced response was used and a factor analysis was performed. Two time intervals were ide",
-      "doi": "10.1134/s0362119725700215",
-      "pmid": null,
-      "openalex_id": "W4412623274",
-      "source_doi": "10.3389/fnins.2021.643705",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6215539705753327,
-        "similarity_score": 0.5381419658660889,
-        "citation_text_length": 1336,
-        "dataset_text_length": 1208,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Neuroscience Prior knowledge guided EEG representation disentanglement for auditory attention decoding",
       "author": "Yibo Chen, Ning Chen, Yixiang Niu, Dingxin Chen, Wenze Qiu, Hongqing Zhu, Zhiying Zhu",
       "venue": "Hearing Research",
       "year": 2026,
       "url": "https://doi.org/10.1016/j.heares.2026.109625",
       "cited_by": 0,
-      "abstract": null,
+      "abstract": "Disentangling attended speech-related components from Electroencephalogram (EEG) signals is essential for achieving high-accuracy Auditory Attention Decoding (AAD). However, most existing AAD models overlook critical neuroscience priors-such as the brain's hierarchical processing of auditory stimuli, the temporal asynchrony between auditory inputs and neural responses, and the interference from unattended speech embedded in EEG. Neglecting these priors often leads to insufficient disentanglement and limited interpretability. To address these limitations, we propose a neuroscience-inspired framework that explicitly incorporates such priors into AAD. Specifically, we adopt EEGViT, which segments EEG into fixed-length patches and hierarchically integrates them to capture semantic representations, inspired by the brain's progressive integration of auditory information (shorter in primary areas and longer in higher-order areas). On top of this, we introduce a Hierarchical Contrastive Learni",
       "doi": "10.1016/j.heares.2026.109625",
       "pmid": "41905334",
       "openalex_id": "W7141065876",
@@ -787,9 +789,32 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6525937914848328,
-        "similarity_score": 0.6215178966522217,
-        "citation_text_length": 230,
+        "confidence_score": 0.7206747847795487,
+        "similarity_score": 0.6239608526229858,
+        "citation_text_length": 1242,
+        "dataset_text_length": 1208,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Features of Perception of a Person’s Own Name Compared to the Perception of Names with Similar and Different Sounds: Analysis of Event-Related Potentials",
+      "author": "L. B. Oknina, В. В. Подлепич, Ya. O. Vologdina, I. A. Sieber, E. L. Masherov, A. A. Slezkin, E. V. Strelnikova, A. O. Kantserova",
+      "venue": "Human Physiology",
+      "year": 2025,
+      "url": "https://doi.org/10.1134/s0362119725700215",
+      "cited_by": 0,
+      "abstract": "Abstract In recent years, there has been an increased interest in how a person distinguishes his own name from other stimuli. In large part this interest is determined by the intensive development of a personalized approach in medicine, psychology, and rehabilitation. The purpose of this study was to identify the characteristics of a person’s perception of his own name in comparison with stimuli of similar and different sounds based on an analysis of the bioelectrical activity of the brain. The study involved 29 healthy volunteers aged 18 to 48 years who had common Russian names and identified themselves with short forms of these names, which had a similar syllabic structure. Event-related potentials (ERPs) were recorded in response to a proper name, a similar-sounding name, a similar-sounding word, a different-sounding name, and a Chukchi word. When analyzing the data, an estimate of the amplitude of the induced response was used and a factor analysis was performed. Two time intervals",
+      "doi": "10.1134/s0362119725700215",
+      "pmid": null,
+      "openalex_id": "W4412623274",
+      "source_doi": "10.3389/fnins.2021.643705",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6198392200469972,
+        "similarity_score": 0.5366573333740234,
+        "citation_text_length": 1336,
         "dataset_text_length": 1208,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -836,29 +861,6 @@
         "confidence_score": 0.21628464818000795,
         "similarity_score": 0.18725943565368652,
         "citation_text_length": 1076,
-        "dataset_text_length": 1208,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Attention Modulation to Linguistic Speech Units",
-      "author": "Manuela Jaeger, Elana Zion Golumbic, Martin G. Bleichner",
-      "venue": "Neurobiology of Language",
-      "year": 2025,
-      "url": "https://doi.org/10.1162/nol.a.14",
-      "cited_by": 0,
-      "abstract": "This study investigates how selective auditory attention influences the lexical speech segmentation process to phonemes and words in a two competing speaker scenario. Using electroencephalography recordings from 20 participants, we applied temporal response function analysis to distinguish attention-driven neural activity to phoneme and word onsets for the attended and ignored speech stream separately. Our results reveal distinct attention effects for phoneme and word onsets. Phoneme onsets elicited significant selective attention effects at an early (18-94 ms, P1), middle (186-252 ms, P2), and late (302-382 ms, N2) time window. In contrast, word onsets showed attention effects only at a middle (192-280 ms, P2) and late (348-386 ms, N2) time window, occurring slightly later than phoneme-related effects. Prediction accuracy analyses demonstrated stronger model performance for the attended speech stream across all models, with notable improvements in prediction accuracy from a word model",
-      "doi": "10.1162/nol.a.14",
-      "pmid": "40959414",
-      "openalex_id": "W4410983460",
-      "source_doi": "10.3389/fnins.2021.643705",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6160687378048898,
-        "similarity_score": 0.5333928465843201,
-        "citation_text_length": 1166,
         "dataset_text_length": 1208,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1003,6 +1005,29 @@
       }
     },
     {
+      "title": "Neurofeedback enhances a neural signature of selective attention to speech in cocktail-party settings",
+      "author": "Ram K. Pari, Marina Inyutina, Hoang Lam Thanh Hoang, Camille Dedies, Manuela Jaeger, Stefanie Enriquez-Geppert, Mathieu Marx, Stefan Debener, Christoph S. Herrmann, Benedikt Zoefel",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2026,
+      "url": "https://doi.org/10.64898/2026.05.29.728767",
+      "cited_by": 0,
+      "abstract": "Abstract Understanding speech in noisy situations is challenging and often fails due to attentional rather than sensory deficits. We report here that neurofeedback can enhance a neural signature of selective attention to speech in a cocktail-party setting. Neural responses to speech were quantified in participants’ electroencephalogram (EEG) while they attended to one of two audiobooks, presented simultaneously. After each 22s-segment of speech, the participants’ N1 component was extracted from the temporal response function (TRF). The N1 component is known to be sensitive to attention. During a ∼49-min training session, N1 amplitude values were displayed visually to participants so that they could learn to strengthen their neural responses to target speech and minimise their responses to distracting speech. During neurofeedback training, we found an enhanced N1 component in the response to target audiobooks that was specific to EEG channels used to provide feedback, and not present in",
+      "doi": "10.64898/2026.05.29.728767",
+      "pmid": null,
+      "openalex_id": "W7163044951",
+      "source_doi": "10.3389/fnins.2021.643705",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.681957689523697,
+        "similarity_score": 0.5904395580291748,
+        "citation_text_length": 1359,
+        "dataset_text_length": 1208,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Behaviour-reading Accounts",
       "author": "Emma Borg",
       "venue": "n/a",
@@ -1120,16 +1145,16 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T21:50:30.995829+00:00",
+    "scoring_date": "2026-06-15T01:14:55.404822+00:00",
     "dataset_text_length": 1208,
-    "num_citations_scored": 48,
+    "num_citations_scored": 49,
     "summary_stats": {
-      "mean_confidence": 0.5347451765695587,
-      "median_confidence": 0.5903069311380387,
-      "std_confidence": 0.1711396433650877,
+      "mean_confidence": 0.5390068898562874,
+      "median_confidence": 0.593116291165352,
+      "std_confidence": 0.1717906202829877,
       "min_confidence": 0.21628464818000795,
       "max_confidence": 0.8004248660802842,
-      "high_confidence_count": 7,
+      "high_confidence_count": 8,
       "medium_confidence_count": 27,
       "low_confidence_count": 14
     }

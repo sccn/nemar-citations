@@ -1,0 +1,65 @@
+{
+  "dataset_id": "nm000230",
+  "date_retrieved": "2026-06-14T10:03:02.017292+00:00",
+  "dataset_description": {
+    "Name": "Lower-limb MI dataset for knee pain patients from Zuo et al. 2025",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Chongwen Zuo",
+      "Yi Yin",
+      "Haochong Wang",
+      "Zhiyang Zheng",
+      "Xiaoyan Ma",
+      "Yuan Yang",
+      "Jue Wang",
+      "Shan Wang",
+      "Zi-gang Huang",
+      "Chaoqun Ye"
+    ],
+    "ReferencesAndLinks": [
+      "https://figshare.com/articles/dataset/28740260"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1038/s41597-025-05767-2",
+        "URL": "https://figshare.com/articles/dataset/28740260"
+      }
+    ],
+    "Keywords": [
+      "Knee Pain",
+      "Motor",
+      "Clinical",
+      "Motor Imagery",
+      "imagery",
+      "rehabilitation"
+    ],
+    "PublicationYear": 2025,
+    "DatasetDOI": "10.82901/nemar.nm000230",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000230-blue)](https://doi.org/10.82901/nemar.nm000230)\n\n# Lower-limb MI dataset for knee pain patients from Zuo et al. 2025\n\nLower-limb MI dataset for knee pain patients from Zuo et al. 2025.\n\n## Dataset Overview\n\n- **Code**: Zuo2025\n- **Paradigm**: imagery\n- **DOI**: 10.1038/s41597-025-05767-2\n- **Subjects**: 30\n- **Sessions per subject**: 5\n- **Events**: left_leg=1, right_leg=2\n- **Trial interval**: [0, 4] s\n- **File format**: MAT\n\n## Acquisition\n\n- **Sampling rate**: 500.0 Hz\n- **Number of channels**: 30\n- **Channel types**: eeg=30\n- **Channel names**: Fp1, Fp2, Fz, F3, F4, F7, F8, FCz, FC3, FC4, FT7, FT8, Cz, C3, C4, T3, T4, CPz, CP3, CP4, TP7, TP8, Pz, P3, P4, T5, T6, Oz, O1, O2\n- **Montage**: standard_1005\n- **Hardware**: ZhenTec EEG system\n- **Reference**: CPz\n- **Ground**: FPz\n- **Line frequency**: 50.0 Hz\n\n## Participants\n\n- **Number of subjects**: 30\n- **Health status**: knee pain patients\n- **Clinical population**: knee_pain\n- **Age**: mean=33.5, min=24, max=45\n- **Gender distribution**: female=12, male=18\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 2\n- **Class labels**: left_leg, right_leg\n- **Trial duration**: 4.0 s\n- **Study design**: 2-class lower-limb MI (left/right leg flexion/extension). 5 sessions, 100 trials per session.\n- **Feedback type**: none\n- **Stimulus type**: visual\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: cue-based\n- **Mode**: offline\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  left_leg\n    ├─ Sensory-event\n    └─ Label/left_leg\n\n  right_leg\n    ├─ Sensory-event\n    └─ Label/right_leg\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: left_leg, right_leg\n- **Imagery duration**: 4.0 s\n\n## Data Structure\n\n- **Trials**: 500\n- **Trials per class**: left_leg=250, right_leg=250\n- **Trials context**: 5 sessions x 100 trials (50 left + 50 right)\n\n## Signal Processing\n\n- **Classifiers**: CSP+LDA, FBCSP+SVM, EEGNet, OTFWRGD\n- **Feature extraction**: CSP, FBCSP, deep_learning, Riemannian_geometry\n- **Frequency bands**: alpha_mu=[8.0, 15.0] Hz; beta=[15.0, 30.0] Hz\n- **Spatial filters**: CSP, FBCSP\n\n## Cross-Validation\n\n- **Method**: 10-fold\n- **Folds**: 10\n- **Evaluation type**: within_subject\n\n## BCI Application\n\n- **Applications**: rehabilitation\n- **Environment**: clinical\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Knee Pain\n- **Modality**: Motor\n- **Type**: Clinical, Motor Imagery\n\n## Documentation\n\n- **DOI**: 10.1038/s41597-025-05767-2\n- **License**: CC-BY-4.0\n- **Investigators**: Chongwen Zuo, Yi Yin, Haochong Wang, Zhiyang Zheng, Xiaoyan Ma, Yuan Yang, Jue Wang, Shan Wang, Zi-gang Huang, Chaoqun Ye\n- **Institution**: Air Force Medical Center, Beijing\n- **Country**: CN\n- **Data URL**: https://figshare.com/articles/dataset/28740260\n- **Publication year**: 2025\n\n## References\n\nZuo, C., Yin, Y., Wang, H., et al. (2025). Enhancing classification of a large lower-limb motor imagery EEG dataset for BCI in knee pain patients. Scientific Data, 12, 1451. https://doi.org/10.1038/s41597-025-05767-2\n\nNotes\n\n.. versionadded:: 1.2.0\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000230",
+    "exists": true,
+    "description": "Lower-limb MI dataset for knee pain patients from Zuo et al. 2025",
+    "created_at": "2026-03-25T16:34:17+00:00",
+    "updated_at": "2026-06-03T03:38:54+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

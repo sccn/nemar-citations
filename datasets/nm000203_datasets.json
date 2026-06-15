@@ -1,0 +1,68 @@
+{
+  "dataset_id": "nm000203",
+  "date_retrieved": "2026-06-14T10:01:32.896817+00:00",
+  "dataset_description": {
+    "Name": "P300 dataset from initial spot study",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-SA-4.0",
+    "Authors": [
+      "Jan Sosulski",
+      "David Hübner",
+      "Aaron Klein",
+      "Michael Tangermann"
+    ],
+    "Acknowledgements": "Experiments were performed according to the Declaration of Helsinki.",
+    "Funding": [
+      "Cluster of Excellence BrainLinks-BrainTools funded by the German Research Foundation (DFG) [grant number EXC 1086]",
+      "DFG project SuitAble [grant number TA 1258/1-1]",
+      "state of Baden-Württemberg, Germany, through bwHPC and the German Research Foundation (DFG) [grant number INST 39/963-1 FUGG]"
+    ],
+    "EthicsApprovals": [
+      "Approved by the ethics committee of the university medical center of Freiburg"
+    ],
+    "ReferencesAndLinks": [
+      "https://freidok.uni-freiburg.de/data/154576"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.6094/UNIFR/154576",
+        "URL": "https://freidok.uni-freiburg.de/data/154576"
+      }
+    ],
+    "Keywords": [
+      "Bayesian optimization",
+      "individual experimental parameters",
+      "brain-computer interfaces",
+      "learning from small data",
+      "auditory event-related potentials",
+      "closed-loop parameter optimization"
+    ],
+    "PublicationYear": 2021,
+    "DatasetDOI": "10.82901/nemar.nm000203",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000203-blue)](https://doi.org/10.82901/nemar.nm000203)\n\n# P300 dataset from initial spot study\n\nP300 dataset from initial spot study.\n\n## Dataset Overview\n\n- **Code**: Sosulski2019\n- **Paradigm**: p300\n- **DOI**: 10.6094/UNIFR/154576\n- **Subjects**: 13\n- **Sessions per subject**: 80\n- **Events**: Target=21, NonTarget=1\n- **Trial interval**: [-0.2, 1] s\n- **File format**: brainvision\n\n## Acquisition\n\n- **Sampling rate**: 1000.0 Hz\n- **Number of channels**: 31\n- **Channel types**: eeg=31, eog=1, misc=5\n- **Channel names**: C3, C4, CP1, CP2, CP5, CP6, Cz, EOGvu, F10, F3, F4, F7, F8, F9, FC1, FC2, FC5, FC6, Fp1, Fp2, Fz, O1, O2, P10, P3, P4, P7, P8, P9, Pz, T7, T8, x_EMGl, x_GSR, x_Optic, x_Pulse, x_Respi\n- **Montage**: standard_1020\n- **Hardware**: BrainProducts BrainAmp DC\n- **Reference**: nose\n- **Sensor type**: passive Ag/AgCl\n- **Line frequency**: 50.0 Hz\n- **Auxiliary channels**: EOG (1 ch, vertical)\n\n## Participants\n\n- **Number of subjects**: 13\n- **Health status**: healthy\n- **Age**: mean=22.7, std=1.64, min=20, max=26\n- **Gender distribution**: male=5, female=8\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: p300\n- **Number of classes**: 2\n- **Class labels**: Target, NonTarget\n- **Study design**: Subjects focused attention on target tones (1000 Hz) and ignored non-target tones (500 Hz) presented via speaker at 65 cm distance. One trial consisted of 15 target and 75 non-target stimuli in pseudo-random order with at least two non-target tones between target tones. The experiment was split into optimization and validation parts.\n- **Stimulus type**: oddball\n- **Stimulus modalities**: auditory\n- **Primary modality**: auditory\n- **Synchronicity**: synchronous\n- **Mode**: online\n- **Instructions**: Focus on the target tones (1000 Hz) and ignore the non-target tones (500 Hz). Refrain from blinking and movement as much as possible.\n- **Stimulus presentation**: target_tone_hz=1000, non_target_tone_hz=500, tone_duration_ms=40, distance_cm=65\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  Target\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Target\n\n  NonTarget\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Non-target\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: p300\n- **Number of targets**: 1\n\n## Data Structure\n\n- **Trials**: Variable: optimization part used time-limited trials (20 minutes per strategy), validation part used 20 trials per SOA\n- **Trials per class**: target=13 per trial (after preprocessing, originally 15), non_target=65 per trial (after preprocessing, originally 75)\n- **Trials context**: Each trial consisted of 90 stimuli (15 target, 75 non-target). After preprocessing (removing first and last 6 epochs), 78 data points available per trial: 13 target and 65 non-target epochs.\n\n## Signal Processing\n\n- **Classifiers**: rLDA, Shrinkage LDA\n- **Feature extraction**: Mean amplitude in time intervals\n- **Frequency bands**: analyzed=[1.5, 40.0] Hz\n\n## Cross-Validation\n\n- **Method**: 13-fold\n- **Folds**: 13\n- **Evaluation type**: within_session\n\n## Performance (Original Study)\n\n- **Auc**: 0.701\n- **Mean Auc Ucb**: 0.701\n- **Mean Auc Rand**: 0.704\n- **Mean Auc P300 Ucb**: 0.67\n- **Mean Auc P300 Rand**: 0.681\n- **Mean Auc Fixed60**: 0.517\n\n## BCI Application\n\n- **Applications**: communication\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Auditory\n- **Type**: Research\n\n## Documentation\n\n- **Description**: Auditory oddball ERP dataset from 13 healthy subjects. Two sinusoidal tones (target 1000 Hz, non-target 500 Hz) presented at various stimulus onset asynchronies (SOAs, 60-600 ms). 31-channel EEG recorded at 1000 Hz with BrainProducts BrainAmp DC. Raw BrainVision format data.\n- **DOI**: 10.48550/arXiv.2109.06011\n- **License**: CC-BY-SA-4.0\n- **Investigators**: Jan Sosulski, David Hübner, Aaron Klein, Michael Tangermann\n- **Senior author**: Michael Tangermann\n- **Contact**: jan.sosulski@blbt.uni-freiburg.de; davhuebn@gmail.com; kleinaa@cs.uni-freiburg.de; michael.tangermann@donders.ru.nl\n- **Institution**: University of Freiburg\n- **Country**: DE\n- **Repository**: FreiDok\n- **Data URL**: https://freidok.uni-freiburg.de/data/154576\n- **Publication year**: 2021\n- **Funding**: Cluster of Excellence BrainLinks-BrainTools funded by the German Research Foundation (DFG) [grant number EXC 1086]; DFG project SuitAble [grant number TA 1258/1-1]; state of Baden-Württemberg, Germany, through bwHPC and the German Research Foundation (DFG) [grant number INST 39/963-1 FUGG]\n- **Ethics approval**: Approved by the ethics committee of the university medical center of Freiburg\n- **Acknowledgements**: Experiments were performed according to the Declaration of Helsinki.\n- **Keywords**: Bayesian optimization, individual experimental parameters, brain-computer interfaces, learning from small data, auditory event-related potentials, closed-loop parameter optimization\n\n## Abstract\n\nThe decoding of brain signals recorded via, e.g., an electroencephalogram, using machine learning is key to brain-computer interfaces (BCIs). Stimulation parameters or other experimental settings of the BCI protocol typically are chosen according to the literature. The decoding performance directly depends on the choice of parameters, as they influence the elicited brain signals and optimal parameters are subject-dependent. Thus a fast and automated selection procedure for experimental parameters could greatly improve the usability of BCIs. We evaluate a standalone random search and a combined Bayesian optimization with random search into a closed-loop auditory event-related potential protocol. We aimed at finding the individually best stimulation speed—also known as stimulus onset asynchrony (SOA)—that maximizes the classification performance of a regularized linear discriminant analysis.\n\n## Methodology\n\nThe experiment was divided into two parts: (1) Optimization part: four strategies (AUC-ucb, AUC-rand, P300-ucb, P300-rand) each allocated 20 minutes to find optimal SOA. Strategies alternated to minimize non-stationarity effects. (2) Validation part: evaluated SOAs from each optimization strategy plus fixed 60ms SOA using 20 trials each (in blocks of 5 trials). Features were mean amplitudes in 5 time intervals ([100, 170], [171, 230], [231, 300], [301, 410], [411, 500] ms) across 31 channels (155 dimensions total). Classification used rLDA with automatic shrinkage regularization and 13-fold cross-validation on single trials.\n\n## References\n\nSosulski, J., Tangermann, M.: Electroencephalogram signals recorded from 13 healthy subjects during an auditory oddball paradigm under different stimulus onset asynchrony conditions. Dataset. DOI: 10.6094/UNIFR/154576\n\nSosulski, J., Tangermann, M.: Spatial filters for auditory evoked potentials transfer between different experimental conditions. Graz BCI Conference. 2019.\n\nSosulski, J., Hübner, D., Klein, A., Tangermann, M.:  Online Optimization of Stimulation Speed in an Auditory Brain-Computer Interface under Time Constraints. arXiv preprint. 2021.\n\nNotes\n\n.. versionadded:: 0.4.5\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000203",
+    "exists": true,
+    "description": "P300 dataset from initial spot study",
+    "created_at": "2026-03-24T01:39:48+00:00",
+    "updated_at": "2026-06-02T19:28:30+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

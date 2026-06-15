@@ -1,41 +1,31 @@
 {
   "dataset_id": "ds004995",
-  "num_citations": 12,
-  "date_last_updated": "2026-05-20T12:25:17.439666+00:00",
+  "num_citations": 13,
+  "date_last_updated": "2026-06-14T18:07:20.464163+00:00",
   "metadata": {
-    "total_cumulative_citations": 56,
-    "fetch_date": "2026-05-20T12:25:17.439666+00:00",
+    "total_cumulative_citations": 21,
+    "fetch_date": "2026-06-14T18:07:20.464163+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
     "fetch_status": "success",
-    "anchor_count": 3,
-    "anchor_errors": {}
+    "anchor_count": 2,
+    "anchor_errors": {},
+    "anchor_judgment_model": "gemma4:31b",
+    "context_anchors": [
+      {
+        "anchor_identifier": "10.1101/2021.05.24.445376",
+        "anchor_identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "related_work",
+        "paper_title": "Undivided attention: The temporal effects of attention dissociated from decision, memory, and expectation",
+        "paper_year": 2021,
+        "paper_venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+        "reason": "The paper focuses on attention and visual processing using EEG, but does not describe the dataset 'The Time-Course of Food Representation in the Human Brain'."
+      }
+    ]
   },
   "citation_details": [
-    {
-      "title": "An empirically-driven guide on using Bayes Factors for M/EEG decoding",
-      "author": "Lina Teichmann, Denise Moerel, Chris I. Baker, Tijl Grootswagers",
-      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
-      "year": 2021,
-      "url": "https://doi.org/10.1101/2021.06.23.449663",
-      "cited_by": 36,
-      "abstract": "Bayes factors can be used to provide quantifiable evidence for contrasting hypotheses and have thus become increasingly popular in cognitive science. However, Bayes factors are rarely used to statistically assess the results of neuroimaging experiments. Here, we provide an empirically driven guide on implementing Bayes factors for time-series neural decoding results. Using real and simulated magnetoencephalography (MEG) data, we examine how parameters such as the shape of the prior and data size affect Bayes factors. Additionally, we discuss the benefits Bayes factors bring to analysing multivariate pattern analysis data and show how using Bayes factors can be used instead or in addition to traditional frequentist approaches. Bayes factors to test the probability of above-chance classification versus at-chance classification given the decoding results across participants at each timepoint. The direct comparison of the predictions of two hypotheses is one of the strengths of the Bayesia",
-      "doi": "10.1101/2021.06.23.449663",
-      "pmid": null,
-      "openalex_id": "W3176880948",
-      "source_doi": "10.1101/2021.05.24.445376",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5408120973408224,
-        "similarity_score": 0.468235582113266,
-        "citation_text_length": 1211,
-        "dataset_text_length": 1237,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
     {
       "title": "Naturalistic food categories are driven by subjective estimates rather than objective measures of food qualities",
       "author": "Madeline Carrington, Alexander Liu, Caroline Candy, Alex Martin, Jason A. Avery",
@@ -91,7 +81,7 @@
       "cited_by": 2,
       "abstract": "Despite the very different retinal images that result from different viewing conditions, humans have little difficulty recognising visual objects in varying circumstances. One source of variability is 2-D rotation, which results in an object having different orientations. Here, we studied how the brain transforms rotated object images into object representations that are tolerant to rotation. We measured time-varying electroencephalography responses to object images shown in eight different orientations, presented at either 5 Hz or 20 Hz. We used multivariate classification to assess when rotation-tolerant object information emerged, and whether the rotation-tolerant processing would be limited at the faster presentation rate. We compared this to fixed-rotation measures of object decoding, where the classifier is trained and tested on the same orientation. Our results showed that both fixed-rotation and rotation-tolerant object decoding emerged at an early stage of processing, less tha",
       "doi": "10.1371/journal.pone.0347992",
-      "pmid": null,
+      "pmid": "42054380",
       "openalex_id": null,
       "source_doi": "10.1101/2023.06.06.543985",
       "source_relation": "References",
@@ -114,7 +104,7 @@
       "cited_by": 1,
       "abstract": "Visual information plays a key role in guiding food-related decisions. While previous studies have shown that features such as calories and naturalness are encoded by the brain, upon simply seeing the stimuli, it remains unclear how this encoding is shaped by the observer’s current state. In this study, we explore the effect of 1) hunger state, 2) task relevance, and 3) current individual preference on the processing of visual food information. Participants (N = 23) underwent two EEG sessions: one after fasting overnight and another after eating normally. During each session, participants did two separate tasks, one where the stimuli were task-relevant and one where attention was distracted away. We used multivariate analysis methods to assess the impact of hunger on the representation of food-related features, and to determine the time-course of information related to food flavour, personal appeal, and arousal, across both tasks. Results showed that information about edibility (food v",
       "doi": "10.1101/2025.09.09.674354",
-      "pmid": null,
+      "pmid": "41980304",
       "openalex_id": null,
       "source_doi": "10.1101/2023.06.06.543985",
       "source_relation": "References",
@@ -123,6 +113,29 @@
         "confidence_score": 0.6228661251068116,
         "similarity_score": 0.5392780303955078,
         "citation_text_length": 1186,
+        "dataset_text_length": 1237,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Characterising the neural time-courses of food attribute representations",
+      "author": "Violet J. Chae, Tijl Grootswagers, Stefan Bode, Daniel Feuerriegel",
+      "venue": "bioRxiv",
+      "year": 2025,
+      "url": "https://doi.org/10.1101/2025.05.13.653572",
+      "cited_by": 1,
+      "abstract": "Dietary decisions involve the consideration of multiple, often conflicting, food attributes that precede the computation of an overall value for a food. The differences in the speed at which attributes are processed play an important role; however, it is unknown whether different attributes are processed over distinct time windows. We mapped the neural time-courses of 12 choice-relevant food attributes. Participants (N = 110) viewed food images while we recorded brain activity using electroencephalography (EEG). A separate group of participants (N = 421) rated the same images on nutritive properties (healthiness, calorie content, edibility, and level of transformation), hedonic properties (tastiness, willingness to eat, negative and positive valence, and arousal), and familiarity (previous exposure, recognisability, and typicality). Using representational similarity analysis, we quantified differences in patterns of multivariate EEG signals across foods and assessed whether the structu",
+      "doi": "10.1101/2025.05.13.653572",
+      "pmid": "41061804",
+      "openalex_id": null,
+      "source_doi": "10.1101/2023.06.06.543985",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7460856968164444,
+        "similarity_score": 0.6459616422653198,
+        "citation_text_length": 1184,
         "dataset_text_length": 1237,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -146,6 +159,52 @@
         "confidence_score": 0.38504596441984185,
         "similarity_score": 0.33337312936782837,
         "citation_text_length": 1222,
+        "dataset_text_length": 1237,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Individual differences in PROP bitterness responsiveness modulate visual awareness of food stimuli.",
+      "author": "Riccardo Migliavada, T. Ciorli, Marina Perino, M. Dimakopoulou, Andrea Devecchi, M. Piochi, L. Pia, Luisa Torri",
+      "venue": "Cognition",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.cognition.2026.106605",
+      "cited_by": 0,
+      "abstract": "Individuals with heightened taste sensitivity often exhibit broader sensory responsiveness to food stimuli, yet little is known about whether individual differences in gustatory sensitivity influence visual food processing. In this exploratory study, we examined whether sensitivity to 6-n-propylthiouracil (PROP) bitterness also influences the visual processing of food stimuli, specifically processed and highly processed sweet and salty items with comparable caloric content. Using the breaking Continuous Flash Suppression (bCFS) and Binocular Rivalry (BR) paradigms, we measured the speed of unconscious processing and perceptual dominance, respectively, in relation to visual awareness. Participants were assessed for their familiarity and liking of food, and the Multidimensional Assessment of Interoceptive Awareness-2 and the Eating Disorder Inventory-2 questionnaires were administered. Our findings indicate that sweet stimuli reached awareness (bCFS) significantly faster than salty stimu",
+      "doi": "10.1016/j.cognition.2026.106605",
+      "pmid": "42242008",
+      "openalex_id": null,
+      "source_doi": "10.1101/2023.06.06.543985",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4000942289829255,
+        "similarity_score": 0.3464019298553467,
+        "citation_text_length": 1258,
+        "dataset_text_length": 1237,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "An Open Dataset of Human Electroencephalographic and Behavioural Responses to Food Images",
+      "author": "Violet J. Chae, Tijl Grootswagers, Stefan Bode, Daniel Feuerriegel",
+      "venue": "bioRxiv",
+      "year": 2026,
+      "url": "https://doi.org/10.1101/2025.11.07.687287",
+      "cited_by": 0,
+      "abstract": null,
+      "doi": "10.1101/2025.11.07.687287",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1101/2023.06.06.543985",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7374353528022767,
+        "similarity_score": 0.7023193836212158,
+        "citation_text_length": 189,
         "dataset_text_length": 1237,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -244,29 +303,6 @@
       }
     },
     {
-      "title": "Characterising the neural time-courses of food attribute representations",
-      "author": "Violet J. Chae, Tijl Grootswagers, Stefan Bode, Daniel Feuerriegel",
-      "venue": "bioRxiv",
-      "year": 2025,
-      "url": "https://doi.org/10.1101/2025.05.13.653572",
-      "cited_by": 0,
-      "abstract": "Dietary decisions involve the consideration of multiple, often conflicting, food attributes that precede the computation of an overall value for a food. The differences in the speed at which attributes are processed play an important role; however, it is unknown whether different attributes are processed over distinct time windows. We mapped the neural time-courses of 12 choice-relevant food attributes. Participants (N = 110) viewed food images while we recorded brain activity using electroencephalography (EEG). A separate group of participants (N = 421) rated the same images on nutritive properties (healthiness, calorie content, edibility, and level of transformation), hedonic properties (tastiness, willingness to eat, negative and positive valence, and arousal), and familiarity (previous exposure, recognisability, and typicality). Using representational similarity analysis, we quantified differences in patterns of multivariate EEG signals across foods and assessed whether the structu",
-      "doi": "10.1101/2025.05.13.653572",
-      "pmid": "41061804",
-      "openalex_id": null,
-      "source_doi": "10.1101/2023.06.06.543985",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7460856968164444,
-        "similarity_score": 0.6459616422653198,
-        "citation_text_length": 1184,
-        "dataset_text_length": 1237,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Reconstruction of Partial Dissimilarity Matrices for Cognitive Neuroscience",
       "author": "D. Moerel, Tijl Grootswagers",
       "venue": "n/a",
@@ -292,16 +328,16 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:05:02.477942+00:00",
+    "scoring_date": "2026-06-15T01:31:20.831965+00:00",
     "dataset_text_length": 1237,
-    "num_citations_scored": 12,
+    "num_citations_scored": 13,
     "summary_stats": {
-      "mean_confidence": 0.5159069055318833,
-      "median_confidence": 0.5365241711586715,
-      "std_confidence": 0.11102223708714698,
+      "mean_confidence": 0.5221231039097677,
+      "median_confidence": 0.5322362449765206,
+      "std_confidence": 0.12687852196396643,
       "min_confidence": 0.29537423998117446,
       "max_confidence": 0.7460856968164444,
-      "high_confidence_count": 1,
+      "high_confidence_count": 2,
       "medium_confidence_count": 9,
       "low_confidence_count": 2
     }
