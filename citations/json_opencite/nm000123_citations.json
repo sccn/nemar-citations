@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000123",
   "num_citations": 100,
-  "date_last_updated": "2026-06-13T21:36:44.626998+00:00",
+  "date_last_updated": "2026-06-18T23:18:16.270833+00:00",
   "metadata": {
-    "total_cumulative_citations": 5149,
-    "fetch_date": "2026-06-13T21:36:44.626998+00:00",
+    "total_cumulative_citations": 5155,
+    "fetch_date": "2026-06-18T23:18:16.270833+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
@@ -42,7 +42,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1088/1741-2552/aab2f2",
-      "cited_by": 2113,
+      "cited_by": 2115,
       "abstract": "OBJECTIVE: Most current electroencephalography (EEG)-based brain-computer interfaces (BCIs) are based on machine learning algorithms. There is a large diversity of classifier types that are used in this field, as described in our 2007 review paper. Now, approximately ten years after this review publication, many new algorithms have been developed and tested to classify EEG signals in BCIs. The time is therefore ripe for an updated review of EEG classification algorithms for BCIs. APPROACH: We surveyed the BCI and machine learning literature from 2007 to 2017 to identify the new classification approaches that have been investigated to design BCIs. We synthesize these studies in order to present such algorithms, to report how they were used for BCIs, what were the outcomes, and to identify their pros and cons. MAIN RESULTS: We found that the recently designed classification algorithms for EEG-based BCIs can be divided into four main categories: adaptive classifiers, matrix and tensor cla",
       "doi": "10.1088/1741-2552/aab2f2",
       "pmid": "29488902",
@@ -111,7 +111,7 @@
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1109/tbme.2018.2889705",
-      "cited_by": 209,
+      "cited_by": 210,
       "abstract": "OBJECTIVE: This paper presents a Transfer Learning approach for dealing with the statistical variability of electroencephalographic (EEG) signals recorded on different sessions and/or from different subjects. This is a common problem faced by brain-computer interfaces (BCI) and poses a challenge for systems that try to reuse data from previous recordings to avoid a calibration phase for new users or new sessions for the same user. METHOD: We propose a method based on Procrustes analysis for matching the statistical distributions of two datasets using simple geometrical transformations (translation, scaling, and rotation) over the data points. We use symmetric positive definite matrices (SPD) as statistical features for describing the EEG signals, so the geometrical operations on the data points respect the intrinsic geometry of the SPD manifold. Because of its geometry-aware nature, we call our method the Riemannian Procrustes analysis (RPA). We assess the improvement in transfer learn",
       "doi": "10.1109/tbme.2018.2889705",
       "pmid": "30596565",
@@ -198,6 +198,29 @@
       }
     },
     {
+      "title": "EEG Channel-Selection Method for Epileptic-Seizure Classification Based on Multi-Objective Optimization",
+      "author": "Luis Alfredo Moctezuma, Marta Molinas",
+      "venue": "Frontiers in Neuroscience",
+      "year": 2020,
+      "url": "https://doi.org/10.3389/fnins.2020.00593",
+      "cited_by": 88,
+      "abstract": "We present a multi-objective optimization method for electroencephalographic (EEG) channel selection based on the non-dominated sorting genetic algorithm (NSGA) for epileptic-seizure classification. We tested the method on EEG data of 24 patients from the CHB-MIT public dataset. The procedure starts by decomposing the EEG data from each channel into different frequency bands using the empirical mode decomposition (EMD) or the discrete wavelet transform (DWT), and then for each sub-band four features are extracted; two energy values and two fractal dimension values. The obtained feature vectors are then iteratively tested for solving two unconstrained objectives by NSGA-II or NSGA-III; to maximize classification accuracy and to reduce the number of EEG channels required for epileptic seizure classification. Our results have shown accuracies of up to 1.00 with only one EEG channel. Interestingly, when using all the EEG channels available, lower accuracies were achieved compared to the ca",
+      "doi": "10.3389/fnins.2020.00593",
+      "pmid": "32625054",
+      "openalex_id": "W3033591343",
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5732830341160299,
+        "similarity_score": 0.49634894728660583,
+        "citation_text_length": 1204,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Age-related differences in SSVEP-based BCI performance",
       "author": "Ivan Volosyak, Felix Gembler, Piotr Stawicki",
       "venue": "Neurocomputing",
@@ -215,29 +238,6 @@
         "confidence_score": 0.5373026609420777,
         "similarity_score": 0.48845696449279785,
         "citation_text_length": 1151,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "EEG Channel-Selection Method for Epileptic-Seizure Classification Based on Multi-Objective Optimization",
-      "author": "Luis Alfredo Moctezuma, Marta Molinas",
-      "venue": "Frontiers in Neuroscience",
-      "year": 2020,
-      "url": "https://doi.org/10.3389/fnins.2020.00593",
-      "cited_by": 87,
-      "abstract": "We present a multi-objective optimization method for electroencephalographic (EEG) channel selection based on the non-dominated sorting genetic algorithm (NSGA) for epileptic-seizure classification. We tested the method on EEG data of 24 patients from the CHB-MIT public dataset. The procedure starts by decomposing the EEG data from each channel into different frequency bands using the empirical mode decomposition (EMD) or the discrete wavelet transform (DWT), and then for each sub-band four features are extracted; two energy values and two fractal dimension values. The obtained feature vectors are then iteratively tested for solving two unconstrained objectives by NSGA-II or NSGA-III; to maximize classification accuracy and to reduce the number of EEG channels required for epileptic seizure classification. Our results have shown accuracies of up to 1.00 with only one EEG channel. Interestingly, when using all the EEG channels available, lower accuracies were achieved compared to the ca",
-      "doi": "10.3389/fnins.2020.00593",
-      "pmid": "32625054",
-      "openalex_id": "W3033591343",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5732830341160299,
-        "similarity_score": 0.49634894728660583,
-        "citation_text_length": 1204,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -452,7 +452,7 @@
     },
     {
       "title": "The largest EEG-based BCI reproducibility study for open science: the MOABB benchmark",
-      "author": "Sylvain Chevallier, Igor Carrara, Bruno Aristimunha, Pierre Guetschel, Sara Sedlar, Bruna Lopes, Sébastien Velut, Salim Khazem, Thomas Moreau",
+      "author": "Sylvain Chevallier, Igor Carrara, Bruno Aristimunha, Pierre Guetschel, Sara Sedlar, Bruna J. Lopes, Sébastien Velut, Salim Khazem, Thomas Moreau",
       "venue": "ArXiv",
       "year": 2024,
       "url": "https://doi.org/10.48550/arXiv.2404.15319",
@@ -465,9 +465,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.517527206093073,
-        "similarity_score": 0.4480755031108856,
-        "citation_text_length": 1270,
+        "confidence_score": 0.5184148035943509,
+        "similarity_score": 0.44884398579597473,
+        "citation_text_length": 1273,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -640,7 +640,7 @@
       "venue": "Scientific Data",
       "year": 2022,
       "url": "https://doi.org/10.1038/s41597-022-01372-9",
-      "cited_by": 27,
+      "cited_by": 28,
       "abstract": "Global population aging poses an unprecedented challenge and calls for a rising effort in eldercare and healthcare. Steady-state visual evoked potential based brain-computer interface (SSVEP-BCI) boasts its high transfer rate and shows great promise in real-world applications to support aging. Public database is critically important for designing the SSVEP-BCI systems. However, the SSVEP-BCI database tailored for the elder is scarce in existing studies. Therefore, in this study, we present a large eldercare-oriented BEnchmark database of SSVEP-BCI for The Aging population (eldBETA). The eldBETA database consisted of the 64-channel electroencephalogram (EEG) from 100 elder participants, each of whom performed seven blocks of 9-target SSVEP-BCI task. The quality and characteristics of the eldBETA database were validated by a series of analyses followed by a classification analysis of thirteen frequency recognition methods. We expect that the eldBETA database would provide a substrate for",
       "doi": "10.1038/s41597-022-01372-9",
       "pmid": "35641547",
@@ -1072,6 +1072,29 @@
       }
     },
     {
+      "title": "Minimizing Subject-dependent Calibration for BCI with Riemannian Transfer Learning",
+      "author": "Salim Khazem, Sylvain Chevallier, Quentin Barthélemy, Karim Haroun, Camille Noûs",
+      "venue": "2021 10th International IEEE/EMBS Conference on Neural Engineering (NER)",
+      "year": 2021,
+      "url": "https://doi.org/10.1109/ner49283.2021.9441279",
+      "cited_by": 13,
+      "abstract": "Calibration is still an important issue for user experience in Brain-Computer Interfaces (BCI). Common experimental designs often involve a lengthy training period that raises the cognitive fatigue, before even starting to use the BCI. Reducing or suppressing this subject-dependent calibration is possible by relying on advanced machine learning techniques, such as transfer learning. Building on Riemannian BCI, we present a simple and effective scheme to train a classifier on data recorded from different subjects, to reduce the calibration while preserving good performances. The main novelty of this paper is to propose a unique approach that could be applied on very different paradigms. To demonstrate the robustness of this approach, we conducted a meta-analysis on multiple datasets for three BCI paradigms: motor imagery, event-related potentials (P300) and SSVEP. Relying on the MOABB open source framework to ensure the reproducibility of the experiments and the statistical analysis, th",
+      "doi": "10.1109/ner49283.2021.9441279",
+      "pmid": null,
+      "openalex_id": "W3169336272",
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4674867886304856,
+        "similarity_score": 0.4047504663467407,
+        "citation_text_length": 1273,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Remote-Oriented Brain-Controlled Unmanned Aerial Vehicle for IoT",
       "author": "Siyu Liu, Zhiyuan Ming, Mengzhen Liu, D. H. Zhang, Zhenyu Liu, Qiming Chen, Lingfei Ma, Jiawei Luo, Dingjie Suo, Jian Zhang, Tianyi Yan",
       "venue": "IEEE Internet of Things Journal",
@@ -1158,29 +1181,6 @@
         "confidence_score": 0.5087228298187256,
         "similarity_score": 0.4624752998352051,
         "citation_text_length": 984,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Minimizing Subject-dependent Calibration for BCI with Riemannian Transfer Learning",
-      "author": "Salim Khazem, Sylvain Chevallier, Quentin Barthélemy, Karim Haroun, Camille Noûs",
-      "venue": "2021 10th International IEEE/EMBS Conference on Neural Engineering (NER)",
-      "year": 2021,
-      "url": "https://doi.org/10.1109/ner49283.2021.9441279",
-      "cited_by": 12,
-      "abstract": "Calibration is still an important issue for user experience in Brain-Computer Interfaces (BCI). Common experimental designs often involve a lengthy training period that raises the cognitive fatigue, before even starting to use the BCI. Reducing or suppressing this subject-dependent calibration is possible by relying on advanced machine learning techniques, such as transfer learning. Building on Riemannian BCI, we present a simple and effective scheme to train a classifier on data recorded from different subjects, to reduce the calibration while preserving good performances. The main novelty of this paper is to propose a unique approach that could be applied on very different paradigms. To demonstrate the robustness of this approach, we conducted a meta-analysis on multiple datasets for three BCI paradigms: motor imagery, event-related potentials (P300) and SSVEP. Relying on the MOABB open source framework to ensure the reproducibility of the experiments and the statistical analysis, th",
-      "doi": "10.1109/ner49283.2021.9441279",
-      "pmid": null,
-      "openalex_id": "W3169336272",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4674867886304856,
-        "similarity_score": 0.4047504663467407,
-        "citation_text_length": 1273,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2339,13 +2339,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:22:34.904478+00:00",
+    "scoring_date": "2026-06-18T23:41:15.046382+00:00",
     "dataset_text_length": 2296,
     "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.4794341549947857,
+      "mean_confidence": 0.47944303096979857,
       "median_confidence": 0.470926396548748,
-      "std_confidence": 0.12099485581050354,
+      "std_confidence": 0.12099768244910426,
       "min_confidence": 0.16762980669736863,
       "max_confidence": 0.7390335202217103,
       "high_confidence_count": 6,
