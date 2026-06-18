@@ -263,6 +263,25 @@ class FreshnessGateTests(TestCase):
             self._write_json(path, {"metadata": {"fetch_status": "no_doi_references"}})
             self.assertTrue(_has_stable_status(str(path)))
 
+    def test_has_stable_status_true_for_partial(self) -> None:
+        # `partial` (some anchors errored, rest succeeded) is a stable outcome.
+        from dataset_citations.cli.update import _has_stable_status
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "nm000104_citations.json"
+            self._write_json(path, {"metadata": {"fetch_status": "partial"}})
+            self.assertTrue(_has_stable_status(str(path)))
+
+    def test_has_stable_status_true_for_no_data_paper_anchor(self) -> None:
+        from dataset_citations.cli.update import _has_stable_status
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "nm000104_citations.json"
+            self._write_json(
+                path, {"metadata": {"fetch_status": "no_data_paper_anchor"}}
+            )
+            self.assertTrue(_has_stable_status(str(path)))
+
     def test_has_stable_status_false_for_transient_failure(self) -> None:
         from dataset_citations.cli.update import _has_stable_status
 
@@ -322,6 +341,14 @@ class FreshnessGateTests(TestCase):
             self.assertEqual(
                 _load_fetch_state(path), {"ds1": "2026-06-18T00:00:00+00:00"}
             )
+
+    def test_load_fetch_state_returns_empty_on_corrupt_file(self) -> None:
+        from dataset_citations.cli.update import _load_fetch_state
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / ".fetch_state.json"
+            path.write_text("not json at all")
+            self.assertEqual(_load_fetch_state(str(path)), {})
 
 
 class IdempotentWriteTests(TestCase):
@@ -519,6 +546,112 @@ class IdempotentWriteTests(TestCase):
 
             # Stable status + checked within window -> no fetch at all.
             self.assertEqual(calls, [])
+
+    def test_fetch_state_written_to_disk_after_run(self) -> None:
+        with tempfile.TemporaryDirectory() as out_dir:
+            fetched = {
+                "dataset_id": "ds000006",
+                "num_citations": 0,
+                "date_last_updated": "2026-06-18T10:00:00+00:00",
+                "metadata": {
+                    "fetch_date": "2026-06-18T10:00:00+00:00",
+                    "fetch_status": "no_doi_references",
+                },
+                "citation_details": [],
+            }
+            self._run_with_stub(out_dir, "ds000006", fetched)
+            state_path = Path(out_dir) / ".fetch_state.json"
+            self.assertTrue(state_path.exists())
+            self.assertIn("ds000006", json.loads(state_path.read_text()))
+
+    def test_write_failure_does_not_update_fetch_state(self) -> None:
+        import os
+        import stat
+
+        from dataset_citations.cli import update as cli_module
+
+        with tempfile.TemporaryDirectory() as out_dir:
+            list_file = Path(out_dir) / "list.txt"
+            list_file.write_text("ds000007\n")
+            # Pre-create json_opencite read-only so the write fails (OSError).
+            json_dir = Path(out_dir) / "json_opencite"
+            json_dir.mkdir()
+            os.chmod(json_dir, stat.S_IRUSR | stat.S_IXUSR)
+
+            fetched = {
+                "dataset_id": "ds000007",
+                "num_citations": 1,
+                "date_last_updated": "2026-06-18T10:00:00+00:00",
+                "metadata": {
+                    "fetch_date": "2026-06-18T10:00:00+00:00",
+                    "fetch_status": "success",
+                },
+                "citation_details": [{"title": "A", "doi": "10.1/a"}],
+            }
+
+            def stub_pipeline(_did, **_):
+                return fetched
+
+            original = cli_module.fetch_dataset_citations_via_opencite
+            cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
+            try:
+                # Single dataset, write fails -> exit 2; state saved before exit.
+                with self.assertRaises(SystemExit):
+                    cli_module.run_opencite_backend(_make_args(list_file, out_dir))
+            finally:
+                cli_module.fetch_dataset_citations_via_opencite = original  # type: ignore[assignment]
+                os.chmod(json_dir, stat.S_IRWXU)
+            state_path = Path(out_dir) / ".fetch_state.json"
+            on_disk = json.loads(state_path.read_text()) if state_path.exists() else {}
+            self.assertNotIn("ds000007", on_disk)
+
+    def test_transient_failure_forces_refetch_despite_fresh_state(self) -> None:
+        from datetime import datetime, timezone
+
+        from dataset_citations.cli import update as cli_module
+
+        with tempfile.TemporaryDirectory() as out_dir:
+            existing = {
+                "dataset_id": "ds000008",
+                "num_citations": 0,
+                "date_last_updated": "2026-06-18T10:00:00+00:00",
+                "metadata": {
+                    "fetch_date": "2026-06-18T10:00:00+00:00",
+                    # Transient failure: must NOT be skipped even if checked recently.
+                    "fetch_status": "rate_limit",
+                },
+                "citation_details": [],
+            }
+            self._seed(out_dir, "ds000008", existing)
+            (Path(out_dir) / ".fetch_state.json").write_text(
+                json.dumps({"ds000008": datetime.now(timezone.utc).isoformat()})
+            )
+            list_file = Path(out_dir) / "list.txt"
+            list_file.write_text("ds000008\n")
+
+            calls: list[str] = []
+
+            def stub_pipeline(did, **_):
+                calls.append(did)
+                return existing
+
+            original = cli_module.fetch_dataset_citations_via_opencite
+            cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
+            try:
+                # Single all-rate-limit dataset is a degraded run -> exit 3.
+                # The fetch still happened (loop runs before the exit check),
+                # and exit-3 firing despite unchanged=1 confirms the unchanged
+                # path still flows through the api_failure accounting.
+                with self.assertRaises(SystemExit) as ctx:
+                    cli_module.run_opencite_backend(
+                        _make_args(list_file, out_dir, max_age_days=7)
+                    )
+                self.assertEqual(ctx.exception.code, 3)
+            finally:
+                cli_module.fetch_dataset_citations_via_opencite = original  # type: ignore[assignment]
+
+            # rate_limit is transient -> refetched despite a fresh cache entry.
+            self.assertEqual(calls, ["ds000008"])
 
 
 class CatalogDoiWiringTests(TestCase):

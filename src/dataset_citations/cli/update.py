@@ -52,13 +52,21 @@ _FETCH_STATE_FILENAME = ".fetch_state.json"
 
 
 def _read_json_or_none(filepath: str) -> dict | None:
-    """Load JSON from `filepath`, returning None on any read/parse failure."""
+    """Load JSON from `filepath`, returning None on any read/parse failure.
+
+    A missing file returns None silently (an expected case for both new
+    datasets and an absent fetch-state cache). A file that EXISTS but cannot
+    be read/parsed is logged at WARNING: a corrupt citation JSON would
+    otherwise be silently treated as absent and re-fetched every run with no
+    trace in the cron log.
+    """
     if not os.path.isfile(filepath):
         return None
     try:
         with open(filepath, encoding="utf-8") as f:
             data = json.load(f)
-    except (OSError, json.JSONDecodeError):
+    except (OSError, json.JSONDecodeError) as e:
+        logger.warning("Could not read %s (%s); treating as absent", filepath, e)
         return None
     return data if isinstance(data, dict) else None
 
@@ -104,16 +112,28 @@ def _load_fetch_state(path: str) -> dict[str, str]:
     data = _read_json_or_none(path)
     if data is None:
         return {}
-    return {k: v for k, v in data.items() if isinstance(v, str)}
+    valid = {k: v for k, v in data.items() if isinstance(v, str)}
+    dropped = len(data) - len(valid)
+    if dropped:
+        logger.warning(
+            "fetch-state %s: dropped %d entries with non-string values", path, dropped
+        )
+    return valid
 
 
 def _save_fetch_state(path: str, state: dict[str, str]) -> None:
-    """Persist the fetch-state cache. Best-effort: log and continue on failure."""
+    """Persist the fetch-state cache. Best-effort: log and continue on failure.
+
+    Logged at ERROR (not WARNING): a failed save means the next run starts
+    from a cold cache and re-fetches every dataset, and the same disk/perms
+    condition likely failed the citation writes too, so this should be
+    visible in the cron log.
+    """
     try:
         with open(path, "w", encoding="utf-8") as f:
             json.dump(state, f, indent=2, sort_keys=True)
     except OSError as e:
-        logger.warning("Could not write fetch-state cache %s: %s", path, e)
+        logger.error("Could not write fetch-state cache %s: %s", path, e)
 
 
 def _load_catalog_doi_map(
@@ -331,10 +351,11 @@ def main():
         type=int,
         default=7,
         help=(
-            "Skip datasets whose existing JSON has fetch_status=success and "
-            "date_last_updated within this many days (default: 7, matching "
-            "the weekly cron cadence). Set to 0 to force re-fetch every "
-            "dataset on every invocation."
+            "Skip a re-fetch when the existing JSON has a stable (non-transient) "
+            "fetch_status AND the dataset was last fetched within this many days, "
+            "per the gitignored .fetch_state.json cache (default: 7, matching the "
+            "weekly cron cadence). Set to 0 to force re-fetch every dataset on "
+            "every invocation."
         ),
     )
 
