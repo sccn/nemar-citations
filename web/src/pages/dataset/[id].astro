@@ -28,12 +28,33 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   </p>
 
   {
+    dataset.citations.length > 0 && (
+      <div class="filter" role="group" aria-label="Filter citations by what they reference">
+        <button type="button" class="filter__btn is-active" data-filter="all" aria-pressed="true">
+          All <span class="filter__n">{fmt(dataset.numCitations)}</span>
+        </button>
+        <button type="button" class="filter__btn" data-filter="dataset" aria-pressed="false">
+          Cites dataset <span class="filter__n">{fmt(dataset.numDatasetCitations)}</span>
+        </button>
+        <button type="button" class="filter__btn" data-filter="paper" aria-pressed="false">
+          Cites a paper <span class="filter__n">{fmt(dataset.numDataPaperCitations)}</span>
+        </button>
+      </div>
+    )
+  }
+
+  {
     dataset.citations.length > 0 ? (
-      <ol class="cites" role="list">
-        {dataset.citations.map((citation) => (
-          <CitationItem citation={citation} />
-        ))}
-      </ol>
+      <Fragment>
+        <ol class="cites" id="cites-main" role="list">
+          {dataset.citations.map((citation) => (
+            <CitationItem citation={citation} />
+          ))}
+        </ol>
+        <p class="filter__empty" hidden>
+          No citations of that kind for this dataset.
+        </p>
+      </Fragment>
     ) : (
       <p class="empty">No high-confidence citations yet for this dataset.</p>
     )
@@ -53,6 +74,35 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       </details>
     )
   }
+
+  <script>
+    // Client-side filter for the counted citation list: show all, only the
+    // citations that cite the dataset, or only those that cite a data paper.
+    const buttons = document.querySelectorAll<HTMLButtonElement>(".filter__btn");
+    const list = document.getElementById("cites-main");
+    const emptyMsg = document.querySelector<HTMLElement>(".filter__empty");
+    if (list) {
+      const items = Array.from(list.querySelectorAll<HTMLLIElement>(".cite"));
+      for (const btn of buttons) {
+        btn.addEventListener("click", () => {
+          const filter = btn.dataset.filter;
+          for (const b of buttons) {
+            b.classList.toggle("is-active", b === btn);
+            b.setAttribute("aria-pressed", String(b === btn));
+          }
+          let visible = 0;
+          for (const li of items) {
+            const show = filter === "all" || li.dataset.kind === filter;
+            li.hidden = !show;
+            if (show) visible += 1;
+          }
+          if (emptyMsg) {
+            emptyMsg.hidden = visible !== 0;
+          }
+        });
+      }
+    }
+  </script>
 </Base>
 
 <style>
@@ -73,9 +123,40 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   .ds-sub__excl {
     color: var(--color-fg-subtle);
   }
+  .filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-6);
+  }
+  .filter__btn {
+    font-size: var(--fs-sm);
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm, 4px);
+    background: var(--color-bg-subtle);
+    color: var(--color-fg-muted);
+    cursor: pointer;
+  }
+  .filter__btn:hover {
+    color: var(--color-fg);
+  }
+  .filter__btn.is-active {
+    color: var(--color-fg);
+    border-color: var(--brand-teal);
+    background: color-mix(in srgb, var(--brand-teal) 12%, transparent);
+  }
+  .filter__n {
+    color: var(--color-fg-subtle);
+    font-variant-numeric: tabular-nums;
+  }
+  .filter__empty {
+    margin-top: var(--space-6);
+    color: var(--color-fg-muted);
+  }
   .cites {
     list-style: none;
-    margin-top: var(--space-6);
+    margin-top: var(--space-4);
     border-top: 1px solid var(--color-border);
   }
   .empty {

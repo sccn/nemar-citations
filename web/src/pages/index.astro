@@ -8,7 +8,18 @@ import { MODALITY_META, MODALITY_ORDER, loadModalities } from "../lib/modality";
 
 const { overview, datasets, charts } = loadAll();
 const fmt = (n: number) => n.toLocaleString("en-US");
+// Three leaderboards, pre-sorted server-side; the toggle swaps which is shown
+// (the top-30 by total citations differs from the top-30 by dataset citations,
+// so a client-side re-sort of one rendered list would be wrong). Issue #169.
 const top = datasets.slice(0, 30);
+const topDataset = [...datasets]
+  .filter((d) => d.numDatasetCitations > 0)
+  .sort((a, b) => b.numDatasetCitations - a.numDatasetCitations)
+  .slice(0, 30);
+const topPaper = [...datasets]
+  .filter((d) => d.numDataPaperCitations > 0)
+  .sort((a, b) => b.numDataPaperCitations - a.numDataPaperCitations)
+  .slice(0, 30);
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const datasetLink = (id: string) => `${base}/dataset/${id}`;
 
@@ -121,8 +132,22 @@ const modSlices =
   }
 
   <section class="browse">
-    <h2>Most-cited datasets</h2>
-    <ol class="ds-list" role="list">
+    <div class="browse__head">
+      <h2>Top datasets</h2>
+      <div class="rank" role="group" aria-label="Rank datasets by">
+        <button type="button" class="rank__btn is-active" data-rank="total" aria-pressed="true">
+          All citations
+        </button>
+        <button type="button" class="rank__btn" data-rank="dataset" aria-pressed="false">
+          Cites dataset
+        </button>
+        <button type="button" class="rank__btn" data-rank="paper" aria-pressed="false">
+          Cites a paper
+        </button>
+      </div>
+    </div>
+
+    <ol class="ds-list" data-rank-list="total" role="list">
       {
         top.map((d) => (
           <li class="ds">
@@ -135,7 +160,64 @@ const modSlices =
         ))
       }
     </ol>
+
+    <ol class="ds-list" data-rank-list="dataset" role="list" hidden>
+      {
+        topDataset.length > 0 ? (
+          topDataset.map((d) => (
+            <li class="ds">
+              <a class="ds__name" href={datasetLink(d.id)}>
+                {d.name}
+              </a>
+              <span class="ds__id">{d.id}</span>
+              <span class="ds__count">{fmt(d.numDatasetCitations)}</span>
+            </li>
+          ))
+        ) : (
+          <li class="ds ds--empty">
+            No dataset-accession citations yet — this populates as the pipeline
+            finds papers that mention dataset accession numbers.
+          </li>
+        )
+      }
+    </ol>
+
+    <ol class="ds-list" data-rank-list="paper" role="list" hidden>
+      {
+        topPaper.length > 0 ? (
+          topPaper.map((d) => (
+            <li class="ds">
+              <a class="ds__name" href={datasetLink(d.id)}>
+                {d.name}
+              </a>
+              <span class="ds__id">{d.id}</span>
+              <span class="ds__count">{fmt(d.numDataPaperCitations)}</span>
+            </li>
+          ))
+        ) : (
+          <li class="ds ds--empty">No data-paper citations yet.</li>
+        )
+      }
+    </ol>
   </section>
+
+  <script>
+    // Swap which pre-sorted leaderboard is visible.
+    const rankButtons = document.querySelectorAll<HTMLButtonElement>(".rank__btn");
+    const rankLists = document.querySelectorAll<HTMLOListElement>("[data-rank-list]");
+    for (const btn of rankButtons) {
+      btn.addEventListener("click", () => {
+        const rank = btn.dataset.rank;
+        for (const b of rankButtons) {
+          b.classList.toggle("is-active", b === btn);
+          b.setAttribute("aria-pressed", String(b === btn));
+        }
+        for (const ol of rankLists) {
+          ol.hidden = ol.dataset.rankList !== rank;
+        }
+      });
+    }
+  </script>
 </Base>
 
 <style>
@@ -194,8 +276,40 @@ const modSlices =
   .browse {
     margin-top: var(--space-12);
   }
-  .browse h2 {
+  .browse__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
     margin-bottom: var(--space-4);
+  }
+  .rank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .rank__btn {
+    font-size: var(--fs-sm);
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm, 4px);
+    background: var(--color-bg-subtle);
+    color: var(--color-fg-muted);
+    cursor: pointer;
+  }
+  .rank__btn:hover {
+    color: var(--color-fg);
+  }
+  .rank__btn.is-active {
+    color: var(--color-fg);
+    border-color: var(--brand-teal);
+    background: color-mix(in srgb, var(--brand-teal) 12%, transparent);
+  }
+  .ds--empty {
+    display: block;
+    color: var(--color-fg-muted);
+    font-size: var(--fs-sm);
   }
   .ds-list {
     list-style: none;
