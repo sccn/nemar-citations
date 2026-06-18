@@ -89,6 +89,11 @@ export interface DatasetDetail {
   id: string;
   /** High-confidence, non-methods citations — the counted set. */
   numCitations: number;
+  /** Of numCitations, those that cite the dataset itself (accession mention /
+   * version / own DOI). The leaderboard ranks on this (issue #169). */
+  numDatasetCitations: number;
+  /** Of numCitations, those that cite a data paper / publication. */
+  numDataPaperCitations: number;
   name: string;
   citations: Citation[];
   /** Low-confidence citations (kept for the detail view, not counted). */
@@ -147,9 +152,18 @@ interface RawCitation {
   openalex_id?: string | null;
   source_doi?: string | null;
   source_relation?: string | null;
+  /** "accession_mention" = found by full-text search for the dataset accession
+   * (issue #169); absent/"anchor" = the DOI-anchored opencite path. */
+  discovery_method?: string | null;
+  /** True when an anchor citation also names the dataset accession in text. */
+  mentions_accession?: boolean | null;
   cited_by?: number | null;
   confidence_scoring?: { confidence_score?: number | null } | null;
 }
+
+/** source_relation values whose anchor IS the dataset (vs a data paper). Mirrors
+ * core.accession_mentions._DATASET_RELATIONS. */
+const DATASET_RELATIONS = new Set(["IsVersionOf", "IsIdenticalTo"]);
 
 /** anchor DOI (normalized) -> its judged classification + paper title. */
 type AnchorMap = Map<string, { classification: string; title: string | null }>;
@@ -191,6 +205,16 @@ function isHighConf(c: RawCitation): boolean {
 /** Classify where a citation was found from its source anchor DOI + the
  * dataset's anchor-judgment sidecar. */
 function provenanceOf(c: RawCitation, anchors: AnchorMap): CitationProvenance {
+  // Accession mentions (the paper names the dataset accession in text) and
+  // version/identical anchors ARE dataset citations even though they carry no
+  // OpenNeuro source DOI. Keep in sync with core.accession_mentions.cites_dataset.
+  if (
+    c.discovery_method === "accession_mention" ||
+    c.mentions_accession === true ||
+    (c.source_relation != null && DATASET_RELATIONS.has(c.source_relation))
+  ) {
+    return { kind: "dataset", label: "Cites dataset", anchorTitle: null };
+  }
   const sd = c.source_doi ? normalizeDoi(c.source_doi) : null;
   if (sd && DATASET_DOI_RE.test(sd)) {
     return { kind: "dataset", label: "Cites dataset", anchorTitle: null };
@@ -396,10 +420,13 @@ export function loadAll(): LoadedData {
     if (counted.length > 0 || lowConf.length > 0) {
       counted.sort((a, b) => b.citedBy - a.citedBy);
       lowConf.sort((a, b) => b.citedBy - a.citedBy);
+      const numDatasetCitations = counted.filter((c) => c.provenance.kind === "dataset").length;
       datasets.push({
         id,
         name: readDatasetName(id),
         numCitations: counted.length,
+        numDatasetCitations,
+        numDataPaperCitations: counted.length - numDatasetCitations,
         citations: counted,
         lowConfCitations: lowConf,
         methodsExcluded,
