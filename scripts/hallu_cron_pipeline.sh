@@ -138,6 +138,22 @@ OPENCITE_CONCURRENCY=4 \
   exit 2
 }
 
+# 3c. Accession-mention discovery (#169). People cite datasets by accession
+#     number in text (ds*/on*/nm*, plus the OpenNeuro ds- alias for on-*),
+#     not by DOI. Full-text search OpenAlex for those and fold the hits into
+#     citation_details tagged discovery_method=accession_mention ("cites
+#     dataset" bucket). Runs AFTER update (needs the anchor citation JSONs to
+#     merge into) and BEFORE score-confidence (which then ranks the merged
+#     citations; merge drops the stale confidence block when it adds new ones
+#     so --skip-existing re-scores). OpenAlex-only + idempotent writes, so it
+#     is cheap and non-churning. Guard with `|| exit 2` like the other steps.
+echo "--- find-mentions (openalex accession search) ---"
+uv run dataset-citations-find-mentions \
+  --citations-dir citations/json_opencite || {
+  echo "ERROR: dataset-citations-find-mentions failed; aborting before score." >&2
+  exit 2
+}
+
 # 4. Semantic confidence scoring on RTX 4090. --skip-existing is a small speedup
 #    for unchanged citation files. Same `|| exit 2` guard as the other GPU
 #    steps so a CUDA OOM aborts cleanly instead of feeding empty scores
