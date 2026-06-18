@@ -11,7 +11,11 @@ import json
 from pathlib import Path
 from unittest import TestCase
 
-from dataset_citations.sources.bids_metadata import parse_bids_description
+from dataset_citations.sources.bids_metadata import (
+    BidsMetadataSource,
+    parse_bids_description,
+)
+from dataset_citations.sources.models import FetchError, FetchSuccess
 
 FIXTURE_DIR = Path(__file__).parent / "test_data" / "sources" / "bids"
 
@@ -140,3 +144,76 @@ class ParseSyntheticEdgeCases(TestCase):
         self.assertEqual(len(refs), 1)
         self.assertEqual(refs[0].identifier, "10.1038/sdata.2015.1")
         self.assertEqual(refs[0].relation_type, "IsDerivedFrom")
+
+
+# --- Real substitute objects (NOT Mocks) for the GitHub fetch path. They mirror
+# the shapes BidsMetadataSource.get_doi_references touches so the decode guard
+# can be exercised without network. See issue #168.
+
+
+class _RaisingContent:
+    """Stand-in for a PyGithub ContentFile whose blob exceeds 1MB. The real
+    ContentFile.decoded_content property asserts encoding == "base64" and raises
+    AssertionError when GitHub returns encoding=None for a large blob."""
+
+    @property
+    def decoded_content(self) -> bytes:
+        raise AssertionError("unsupported encoding: None")
+
+
+class _BytesContent:
+    """ContentFile stand-in whose decoded_content is real JSON bytes."""
+
+    def __init__(self, data: bytes) -> None:
+        self._data = data
+
+    @property
+    def decoded_content(self) -> bytes:
+        return self._data
+
+
+class _FakeRepo:
+    def __init__(self, content: object) -> None:
+        self._content = content
+
+    def get_contents(self, path: str) -> object:
+        return self._content
+
+
+class _FakeGithub:
+    def __init__(self, content: object) -> None:
+        self._content = content
+
+    def get_repo(self, full_name: str) -> _FakeRepo:
+        return _FakeRepo(self._content)
+
+
+class GetDoiReferencesDecodeGuard(TestCase):
+    """get_doi_references must turn an undecodable dataset_description.json blob
+    into a per-dataset FetchError, never let AssertionError abort the pipeline
+    (the 06-16/06-17 cron failure). Issue #168."""
+
+    def _source_returning(self, content: object) -> BidsMetadataSource:
+        # Bypass __init__ (which builds a real Github client) and inject a real
+        # fake; the only attribute get_doi_references uses is `self.github`.
+        src = BidsMetadataSource.__new__(BidsMetadataSource)
+        src.github = _FakeGithub(content)  # type: ignore[attr-defined]
+        return src
+
+    def test_undecodable_blob_returns_parse_error_not_raises(self) -> None:
+        result = self._source_returning(_RaisingContent()).get_doi_references(
+            "ds999999"
+        )
+        assert isinstance(result, FetchError)
+        self.assertEqual(result.reason, "parse")
+
+    def test_valid_blob_returns_success(self) -> None:
+        payload = json.dumps(
+            {"ReferencesAndLinks": ["https://doi.org/10.1038/sdata.2015.1"]}
+        ).encode("utf-8")
+        result = self._source_returning(_BytesContent(payload)).get_doi_references(
+            "ds999999"
+        )
+        assert isinstance(result, FetchSuccess)
+        self.assertEqual(len(result.value), 1)
+        self.assertEqual(result.value[0].identifier, "10.1038/sdata.2015.1")
