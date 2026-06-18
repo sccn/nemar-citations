@@ -13,6 +13,7 @@ GitHub: https://github.com/neuromechanist
 Email: shirazi@ieee.org
 """
 
+import copy
 import json
 import logging
 import os
@@ -25,6 +26,37 @@ logger = logging.getLogger(__name__)
 
 DiscoveryBackend = Literal["scholarly", "opencite"]
 SCHEMA_VERSION_V2 = "2.0"
+
+# Timestamp fields that advance on every pipeline run regardless of whether the
+# citation content changed. They are excluded from content-equality checks so a
+# re-fetch / re-score that produced identical data does not rewrite the file and
+# churn the nightly git diff (issue #165).
+_VOLATILE_TIMESTAMP_PATHS: tuple[tuple[str, ...], ...] = (
+    ("date_last_updated",),
+    ("metadata", "fetch_date"),
+    ("confidence_scoring", "scoring_date"),
+)
+
+
+def strip_volatile_timestamps(payload: Dict[str, Any]) -> Dict[str, Any]:
+    """Return a deep copy of ``payload`` with per-run timestamp fields removed.
+
+    The result is only ever used to compare two citation payloads for
+    substantive equality; it is never written to disk. Removing
+    ``date_last_updated``, ``metadata.fetch_date`` and
+    ``confidence_scoring.scoring_date`` lets the update step detect when a
+    re-fetch produced identical content and leave the file (and its timestamps)
+    untouched, so ``date_last_updated`` advances only on a real change
+    (issue #165).
+    """
+    clone = copy.deepcopy(payload)
+    for *parents, leaf in _VOLATILE_TIMESTAMP_PATHS:
+        node: Any = clone
+        for key in parents:
+            node = node.get(key) if isinstance(node, dict) else None
+        if isinstance(node, dict):
+            node.pop(leaf, None)
+    return clone
 
 
 def create_citation_json_structure(

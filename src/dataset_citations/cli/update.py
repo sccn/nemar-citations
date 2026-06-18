@@ -21,6 +21,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from dataset_citations.backends import OpenCiteBackend
+from dataset_citations.core.citation_utils import strip_volatile_timestamps
 from dataset_citations.core.opencite_pipeline import (
     fetch_dataset_citations_via_opencite,
 )
@@ -34,41 +35,85 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def _is_fresh_success(filepath: str, max_age_seconds: int) -> bool:
-    """Return True if `filepath` is a successful, recent citation JSON.
+# Statuses that indicate a genuine API failure rather than a stable outcome.
+# A file carrying one of these should be re-fetched on the next run (retry);
+# any other status (success, partial, no_doi_references, no_data_paper_anchor,
+# unsupported_prefix:*) is stable and safe to skip within the freshness window.
+_API_FAILURE_STATUSES = frozenset(
+    {"rate_limit", "auth", "network", "not_found", "parse", "other"}
+)
 
-    Used by run_opencite_backend to skip datasets that were already
-    successfully fetched within the freshness window (typically the
-    weekly cron cadence). A JSON that doesn't parse, doesn't have a
-    success fetch_status, or has a stale date_last_updated triggers
-    a re-fetch.
+# Per-output-dir cache of the last time each dataset was fetched. Kept OUT of
+# the committed citation JSON (and gitignored) so the freshness gate has a
+# timestamp that advances every run without churning the diff. `date_last_updated`
+# inside the citation JSON now means "last content change" (issue #165), so it
+# can no longer double as the freshness signal.
+_FETCH_STATE_FILENAME = ".fetch_state.json"
 
-    Robust against missing fields and unparseable timestamps: any
-    failure to determine freshness returns False (refetch).
-    """
+
+def _read_json_or_none(filepath: str) -> dict | None:
+    """Load JSON from `filepath`, returning None on any read/parse failure."""
     if not os.path.isfile(filepath):
-        return False
+        return None
     try:
         with open(filepath, encoding="utf-8") as f:
-            payload = json.load(f)
+            data = json.load(f)
     except (OSError, json.JSONDecodeError):
+        return None
+    return data if isinstance(data, dict) else None
+
+
+def _has_stable_status(filepath: str) -> bool:
+    """Return True if the on-disk citation JSON has a non-transient status.
+
+    A missing/unparseable file, or one whose `metadata.fetch_status` is a
+    transient API failure, returns False so the dataset is re-fetched.
+    """
+    payload = _read_json_or_none(filepath)
+    if payload is None:
         return False
     metadata = payload.get("metadata")
     if not isinstance(metadata, dict):
         return False
-    if metadata.get("fetch_status") != "success":
-        return False
-    raw_date = payload.get("date_last_updated")
-    if not isinstance(raw_date, str):
+    status = metadata.get("fetch_status")
+    return isinstance(status, str) and status not in _API_FAILURE_STATUSES
+
+
+def _checked_within(
+    dataset_id: str, fetch_state: dict[str, str], max_age_seconds: int
+) -> bool:
+    """Return True if `dataset_id` was fetched within `max_age_seconds`.
+
+    Reads the last-checked timestamp from the fetch-state cache. Any missing
+    entry or unparseable timestamp returns False (re-fetch).
+    """
+    raw = fetch_state.get(dataset_id)
+    if not isinstance(raw, str):
         return False
     try:
-        fetched_at = datetime.fromisoformat(raw_date)
+        checked_at = datetime.fromisoformat(raw)
     except ValueError:
         return False
-    if fetched_at.tzinfo is None:
-        fetched_at = fetched_at.replace(tzinfo=timezone.utc)
-    age = datetime.now(timezone.utc) - fetched_at
-    return age <= timedelta(seconds=max_age_seconds)
+    if checked_at.tzinfo is None:
+        checked_at = checked_at.replace(tzinfo=timezone.utc)
+    return datetime.now(timezone.utc) - checked_at <= timedelta(seconds=max_age_seconds)
+
+
+def _load_fetch_state(path: str) -> dict[str, str]:
+    """Load the {dataset_id: last_checked_iso} cache; empty dict if absent."""
+    data = _read_json_or_none(path)
+    if data is None:
+        return {}
+    return {k: v for k, v in data.items() if isinstance(v, str)}
+
+
+def _save_fetch_state(path: str, state: dict[str, str]) -> None:
+    """Persist the fetch-state cache. Best-effort: log and continue on failure."""
+    try:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(state, f, indent=2, sort_keys=True)
+    except OSError as e:
+        logger.warning("Could not write fetch-state cache %s: %s", path, e)
 
 
 def _load_catalog_doi_map(
@@ -145,29 +190,31 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
         len(catalog_dois),
     )
 
-    # Statuses that indicate a genuine API failure rather than legitimately
-    # absent DOIs. If every dataset stubs out with one of these, we should
-    # exit non-zero so automation (cron / CI) can detect a fully-degraded
-    # run instead of silently producing a PR full of empty JSONs.
-    api_failure_statuses = {
-        "rate_limit",
-        "auth",
-        "network",
-        "not_found",
-        "parse",
-        "other",
-    }
+    # A run where every processed dataset stubs out with an _API_FAILURE_STATUSES
+    # value (and nothing was written) exits non-zero below, so automation can
+    # detect a fully-degraded run instead of silently shipping empty JSONs.
     max_age_seconds = args.max_age_days * 86400 if args.max_age_days > 0 else None
+    fetch_state_path = os.path.join(args.output_dir, _FETCH_STATE_FILENAME)
+    fetch_state = _load_fetch_state(fetch_state_path)
     successes = 0
     stub_only = 0
     write_failures = 0
     api_failures = 0
     skipped_fresh = 0
+    unchanged = 0
     for dataset_id in dataset_ids:
         filepath = os.path.join(json_dir, f"{dataset_id}_citations.json")
-        if max_age_seconds is not None and _is_fresh_success(filepath, max_age_seconds):
+        # Freshness gate: skip a re-fetch when the on-disk result is stable
+        # (not a transient API failure) AND we checked it within the window.
+        # The last-checked signal comes from the gitignored fetch-state cache,
+        # NOT date_last_updated, which now only advances on real content change.
+        if (
+            max_age_seconds is not None
+            and _has_stable_status(filepath)
+            and _checked_within(dataset_id, fetch_state, max_age_seconds)
+        ):
             logger.info(
-                "%s: skipping (existing JSON is fresh-success within %d days)",
+                "%s: skipping (checked within %d days, stable status)",
                 dataset_id,
                 args.max_age_days,
             )
@@ -179,29 +226,51 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
             catalog_doi=catalog_dois.get(dataset_id),
             use_checkpoint=True,
         )
-        try:
-            with open(filepath, "w", encoding="utf-8") as f:
-                json.dump(payload, f, indent=2, ensure_ascii=False)
-        except OSError as e:
-            logger.error("Failed to write %s: %s", filepath, e)
-            write_failures += 1
-            continue
+        # Content-idempotent write. The opencite payload never carries the
+        # confidence_scoring block (the separate score step adds it), so we
+        # carry the existing block onto a comparison copy to avoid a spurious
+        # "changed" verdict every run. When nothing changed, leave the file
+        # (and its scores + timestamps) byte-for-byte untouched. When citations
+        # DID change, write the fresh payload WITHOUT the now-stale scores so
+        # the score step re-scores it (its --skip-existing skips files that
+        # already have confidence_scoring). See issue #165.
+        existing = _read_json_or_none(filepath)
+        compare = payload
+        if existing is not None and "confidence_scoring" in existing:
+            compare = {**payload, "confidence_scoring": existing["confidence_scoring"]}
+        if existing is not None and strip_volatile_timestamps(
+            existing
+        ) == strip_volatile_timestamps(compare):
+            unchanged += 1
+        else:
+            try:
+                with open(filepath, "w", encoding="utf-8") as f:
+                    json.dump(payload, f, indent=2, ensure_ascii=False)
+            except OSError as e:
+                logger.error("Failed to write %s: %s", filepath, e)
+                write_failures += 1
+                continue
+        # Record the fetch attempt so the freshness gate can skip it next run.
+        fetch_state[dataset_id] = datetime.now(timezone.utc).isoformat()
         if payload["num_citations"] > 0:
             successes += 1
         else:
             stub_only += 1
             status = payload.get("metadata", {}).get("fetch_status", "empty")
-            if status in api_failure_statuses:
+            if status in _API_FAILURE_STATUSES:
                 api_failures += 1
             logger.info("%s: 0 citations (status=%s)", dataset_id, status)
 
+    _save_fetch_state(fetch_state_path, fetch_state)
     logger.info(
         "opencite run complete: %d with citations, %d empty/stub "
-        "(%d API-failure), %d write failures, %d skipped (fresh), %d total.",
+        "(%d API-failure), %d write failures, %d unchanged, %d skipped (fresh), "
+        "%d total.",
         successes,
         stub_only,
         api_failures,
         write_failures,
+        unchanged,
         skipped_fresh,
         len(dataset_ids),
     )

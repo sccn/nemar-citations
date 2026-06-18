@@ -23,6 +23,7 @@ def _make_args(
     out_dir: str,
     *,
     catalog_doi_map: dict[str, str] | None = None,
+    max_age_days: int = 0,
 ) -> argparse.Namespace:
     """Build the argparse.Namespace `run_opencite_backend` expects.
 
@@ -55,7 +56,7 @@ def _make_args(
         output_dir=out_dir,
         catalog_cache=cache_path,
         catalog_cache_max_age=3600,
-        max_age_days=0,
+        max_age_days=max_age_days,
     )
 
 
@@ -226,123 +227,298 @@ class RunOpenciteBackendTests(TestCase):
                 os.chmod(json_dir, stat.S_IRWXU)
 
 
-class IsFreshSuccessTests(TestCase):
-    """Direct tests for the `_is_fresh_success` helper. Pure file reader,
-    no network, real JSON fixtures on disk — no stubs of any kind.
+class FreshnessGateTests(TestCase):
+    """Direct tests for the decoupled freshness helpers (issue #165).
+
+    `_has_stable_status` reads the on-disk JSON; `_checked_within` reads the
+    fetch-state cache. Together they gate a re-fetch. Pure functions, real
+    fixtures on disk, no stubs.
     """
 
     def _write_json(self, path: Path, payload: dict) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(payload))
 
-    def test_returns_false_when_missing(self) -> None:
-        from dataset_citations.cli.update import _is_fresh_success
+    def test_has_stable_status_false_when_missing(self) -> None:
+        from dataset_citations.cli.update import _has_stable_status
 
         with tempfile.TemporaryDirectory() as tmp:
-            self.assertFalse(
-                _is_fresh_success(str(Path(tmp) / "absent.json"), 7 * 86400)
-            )
+            self.assertFalse(_has_stable_status(str(Path(tmp) / "absent.json")))
 
-    def test_returns_true_for_fresh_success(self) -> None:
-        from datetime import datetime, timezone
-
-        from dataset_citations.cli.update import _is_fresh_success
+    def test_has_stable_status_true_for_success(self) -> None:
+        from dataset_citations.cli.update import _has_stable_status
 
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "nm000104_citations.json"
-            self._write_json(
-                path,
-                {
-                    "dataset_id": "nm000104",
-                    "num_citations": 5,
-                    "date_last_updated": datetime.now(timezone.utc).isoformat(),
-                    "metadata": {"fetch_status": "success"},
-                },
-            )
-            self.assertTrue(_is_fresh_success(str(path), 7 * 86400))
+            self._write_json(path, {"metadata": {"fetch_status": "success"}})
+            self.assertTrue(_has_stable_status(str(path)))
 
-    def test_returns_false_for_stale_success(self) -> None:
+    def test_has_stable_status_true_for_no_doi_references(self) -> None:
+        # The key fix: an empty dataset (no DOI refs) is a STABLE outcome, so it
+        # should be skippable within the window instead of refetched nightly.
+        from dataset_citations.cli.update import _has_stable_status
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "nm000104_citations.json"
+            self._write_json(path, {"metadata": {"fetch_status": "no_doi_references"}})
+            self.assertTrue(_has_stable_status(str(path)))
+
+    def test_has_stable_status_false_for_transient_failure(self) -> None:
+        from dataset_citations.cli.update import _has_stable_status
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "nm000104_citations.json"
+            self._write_json(path, {"metadata": {"fetch_status": "rate_limit"}})
+            self.assertFalse(_has_stable_status(str(path)))
+
+    def test_has_stable_status_false_for_malformed_or_headerless(self) -> None:
+        from dataset_citations.cli.update import _has_stable_status
+
+        with tempfile.TemporaryDirectory() as tmp:
+            broken = Path(tmp) / "broken.json"
+            broken.write_text("not json at all")
+            self.assertFalse(_has_stable_status(str(broken)))
+            headerless = Path(tmp) / "headerless.json"
+            self._write_json(headerless, {"dataset_id": "x", "num_citations": 0})
+            self.assertFalse(_has_stable_status(str(headerless)))
+
+    def test_checked_within_true_for_recent(self) -> None:
+        from datetime import datetime, timezone
+
+        from dataset_citations.cli.update import _checked_within
+
+        state = {"ds1": datetime.now(timezone.utc).isoformat()}
+        self.assertTrue(_checked_within("ds1", state, 7 * 86400))
+
+    def test_checked_within_false_for_stale(self) -> None:
         from datetime import datetime, timedelta, timezone
 
-        from dataset_citations.cli.update import _is_fresh_success
+        from dataset_citations.cli.update import _checked_within
 
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "nm000104_citations.json"
-            stale = datetime.now(timezone.utc) - timedelta(days=30)
-            self._write_json(
-                path,
-                {
-                    "dataset_id": "nm000104",
-                    "date_last_updated": stale.isoformat(),
-                    "metadata": {"fetch_status": "success"},
-                },
-            )
-            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
+        stale = (datetime.now(timezone.utc) - timedelta(days=30)).isoformat()
+        self.assertFalse(_checked_within("ds1", {"ds1": stale}, 7 * 86400))
 
-    def test_returns_false_for_non_success_status(self) -> None:
+    def test_checked_within_false_for_missing_or_unparseable(self) -> None:
+        from dataset_citations.cli.update import _checked_within
+
+        self.assertFalse(_checked_within("ds1", {}, 7 * 86400))
+        self.assertFalse(_checked_within("ds1", {"ds1": "not-a-date"}, 7 * 86400))
+
+    def test_checked_within_treats_naive_timestamp_as_utc(self) -> None:
         from datetime import datetime, timezone
 
-        from dataset_citations.cli.update import _is_fresh_success
+        from dataset_citations.cli.update import _checked_within
+
+        naive_now = datetime.now(timezone.utc).replace(tzinfo=None).isoformat()
+        self.assertTrue(_checked_within("ds1", {"ds1": naive_now}, 7 * 86400))
+
+    def test_fetch_state_roundtrip(self) -> None:
+        from dataset_citations.cli.update import _load_fetch_state, _save_fetch_state
 
         with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "nm000104_citations.json"
-            self._write_json(
-                path,
-                {
-                    "dataset_id": "nm000104",
-                    "date_last_updated": datetime.now(timezone.utc).isoformat(),
-                    # Fresh but not a success: prior run hit rate_limit.
-                    "metadata": {"fetch_status": "rate_limit"},
-                },
+            path = str(Path(tmp) / ".fetch_state.json")
+            self.assertEqual(_load_fetch_state(path), {})  # absent -> empty
+            _save_fetch_state(path, {"ds1": "2026-06-18T00:00:00+00:00"})
+            self.assertEqual(
+                _load_fetch_state(path), {"ds1": "2026-06-18T00:00:00+00:00"}
             )
-            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
 
-    def test_returns_false_for_malformed_json(self) -> None:
-        from dataset_citations.cli.update import _is_fresh_success
 
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "broken.json"
-            path.write_text("not json at all")
-            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
+class IdempotentWriteTests(TestCase):
+    """run_opencite_backend must not rewrite a citation file when only the
+    volatile timestamps differ, and must drop stale scores when content
+    genuinely changes so the score step re-scores (issue #165).
+    """
 
-    def test_returns_false_for_missing_metadata(self) -> None:
-        from dataset_citations.cli.update import _is_fresh_success
+    def _seed(self, out_dir: str, dataset_id: str, payload: dict) -> Path:
+        json_dir = Path(out_dir) / "json_opencite"
+        json_dir.mkdir(parents=True, exist_ok=True)
+        path = json_dir / f"{dataset_id}_citations.json"
+        path.write_text(json.dumps(payload, indent=2))
+        return path
 
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "headerless.json"
-            self._write_json(path, {"dataset_id": "x", "num_citations": 0})
-            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
+    def _run_with_stub(self, out_dir: str, dataset_id: str, payload: dict) -> None:
+        from dataset_citations.cli import update as cli_module
 
-    def test_returns_false_for_unparseable_timestamp(self) -> None:
-        from dataset_citations.cli.update import _is_fresh_success
+        list_file = Path(out_dir) / "list.txt"
+        list_file.write_text(f"{dataset_id}\n")
 
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "bad_date.json"
-            self._write_json(
-                path,
-                {
-                    "date_last_updated": "not-a-real-iso-string",
-                    "metadata": {"fetch_status": "success"},
+        def stub_pipeline(_did, **_):
+            return payload
+
+        original = cli_module.fetch_dataset_citations_via_opencite
+        cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
+        try:
+            cli_module.run_opencite_backend(_make_args(list_file, out_dir))
+        finally:
+            cli_module.fetch_dataset_citations_via_opencite = original  # type: ignore[assignment]
+
+    def test_unchanged_content_does_not_rewrite_timestamps(self) -> None:
+        with tempfile.TemporaryDirectory() as out_dir:
+            existing = {
+                "dataset_id": "ds000001",
+                "num_citations": 0,
+                "date_last_updated": "2026-06-14T10:00:00+00:00",
+                "metadata": {
+                    "fetch_date": "2026-06-14T10:00:00+00:00",
+                    "fetch_status": "no_doi_references",
                 },
-            )
-            self.assertFalse(_is_fresh_success(str(path), 7 * 86400))
+                "citation_details": [],
+            }
+            path = self._seed(out_dir, "ds000001", existing)
+            # Same content, only the timestamps advance.
+            fetched = json.loads(json.dumps(existing))
+            fetched["date_last_updated"] = "2026-06-18T10:00:00+00:00"
+            fetched["metadata"]["fetch_date"] = "2026-06-18T10:00:00+00:00"
+            self._run_with_stub(out_dir, "ds000001", fetched)
+            on_disk = json.loads(path.read_text())
+            # File left untouched: old timestamp preserved.
+            self.assertEqual(on_disk["date_last_updated"], "2026-06-14T10:00:00+00:00")
 
-    def test_treats_naive_timestamp_as_utc(self) -> None:
+    def test_changed_content_rewrites_and_advances_timestamp(self) -> None:
+        with tempfile.TemporaryDirectory() as out_dir:
+            existing = {
+                "dataset_id": "ds000002",
+                "num_citations": 1,
+                "date_last_updated": "2026-06-14T10:00:00+00:00",
+                "metadata": {
+                    "fetch_date": "2026-06-14T10:00:00+00:00",
+                    "fetch_status": "success",
+                },
+                "citation_details": [{"title": "A", "doi": "10.1/a"}],
+            }
+            path = self._seed(out_dir, "ds000002", existing)
+            fetched = {
+                "dataset_id": "ds000002",
+                "num_citations": 2,
+                "date_last_updated": "2026-06-18T10:00:00+00:00",
+                "metadata": {
+                    "fetch_date": "2026-06-18T10:00:00+00:00",
+                    "fetch_status": "success",
+                },
+                "citation_details": [
+                    {"title": "A", "doi": "10.1/a"},
+                    {"title": "B", "doi": "10.1/b"},
+                ],
+            }
+            self._run_with_stub(out_dir, "ds000002", fetched)
+            on_disk = json.loads(path.read_text())
+            self.assertEqual(on_disk["num_citations"], 2)
+            self.assertEqual(on_disk["date_last_updated"], "2026-06-18T10:00:00+00:00")
+
+    def test_unchanged_preserves_existing_confidence_scoring(self) -> None:
+        with tempfile.TemporaryDirectory() as out_dir:
+            existing = {
+                "dataset_id": "ds000003",
+                "num_citations": 1,
+                "date_last_updated": "2026-06-14T10:00:00+00:00",
+                "metadata": {
+                    "fetch_date": "2026-06-14T10:00:00+00:00",
+                    "fetch_status": "success",
+                },
+                "citation_details": [{"title": "A", "doi": "10.1/a"}],
+                "confidence_scoring": {
+                    "model_used": "Qwen/Qwen3-Embedding-0.6B",
+                    "scoring_date": "2026-06-15T01:00:00+00:00",
+                },
+            }
+            path = self._seed(out_dir, "ds000003", existing)
+            # opencite payload never carries confidence_scoring.
+            fetched = {
+                "dataset_id": "ds000003",
+                "num_citations": 1,
+                "date_last_updated": "2026-06-18T10:00:00+00:00",
+                "metadata": {
+                    "fetch_date": "2026-06-18T10:00:00+00:00",
+                    "fetch_status": "success",
+                },
+                "citation_details": [{"title": "A", "doi": "10.1/a"}],
+            }
+            self._run_with_stub(out_dir, "ds000003", fetched)
+            on_disk = json.loads(path.read_text())
+            # Not rewritten -> score block (and its date) preserved.
+            self.assertIn("confidence_scoring", on_disk)
+            self.assertEqual(
+                on_disk["confidence_scoring"]["scoring_date"],
+                "2026-06-15T01:00:00+00:00",
+            )
+
+    def test_changed_content_drops_stale_confidence_scoring(self) -> None:
+        with tempfile.TemporaryDirectory() as out_dir:
+            existing = {
+                "dataset_id": "ds000004",
+                "num_citations": 1,
+                "date_last_updated": "2026-06-14T10:00:00+00:00",
+                "metadata": {
+                    "fetch_date": "2026-06-14T10:00:00+00:00",
+                    "fetch_status": "success",
+                },
+                "citation_details": [{"title": "A", "doi": "10.1/a"}],
+                "confidence_scoring": {
+                    "model_used": "Qwen/Qwen3-Embedding-0.6B",
+                    "scoring_date": "2026-06-15T01:00:00+00:00",
+                },
+            }
+            path = self._seed(out_dir, "ds000004", existing)
+            fetched = {
+                "dataset_id": "ds000004",
+                "num_citations": 2,
+                "date_last_updated": "2026-06-18T10:00:00+00:00",
+                "metadata": {
+                    "fetch_date": "2026-06-18T10:00:00+00:00",
+                    "fetch_status": "success",
+                },
+                "citation_details": [
+                    {"title": "A", "doi": "10.1/a"},
+                    {"title": "B", "doi": "10.1/b"},
+                ],
+            }
+            self._run_with_stub(out_dir, "ds000004", fetched)
+            on_disk = json.loads(path.read_text())
+            # Citations changed -> stale scores dropped so the score step re-scores.
+            self.assertNotIn("confidence_scoring", on_disk)
+
+    def test_fresh_stable_dataset_is_skipped(self) -> None:
         from datetime import datetime, timezone
 
-        from dataset_citations.cli.update import _is_fresh_success
+        from dataset_citations.cli import update as cli_module
 
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "naive.json"
-            naive_now = datetime.now(timezone.utc).replace(tzinfo=None).isoformat()
-            self._write_json(
-                path,
-                {
-                    "date_last_updated": naive_now,
-                    "metadata": {"fetch_status": "success"},
+        with tempfile.TemporaryDirectory() as out_dir:
+            existing = {
+                "dataset_id": "ds000005",
+                "num_citations": 0,
+                "date_last_updated": "2026-01-01T00:00:00+00:00",
+                "metadata": {
+                    "fetch_date": "2026-01-01T00:00:00+00:00",
+                    "fetch_status": "no_doi_references",
                 },
+                "citation_details": [],
+            }
+            self._seed(out_dir, "ds000005", existing)
+            # Mark it as checked just now in the fetch-state cache.
+            (Path(out_dir) / ".fetch_state.json").write_text(
+                json.dumps({"ds000005": datetime.now(timezone.utc).isoformat()})
             )
-            self.assertTrue(_is_fresh_success(str(path), 7 * 86400))
+            list_file = Path(out_dir) / "list.txt"
+            list_file.write_text("ds000005\n")
+
+            calls: list[str] = []
+
+            def stub_pipeline(did, **_):
+                calls.append(did)
+                return existing
+
+            original = cli_module.fetch_dataset_citations_via_opencite
+            cli_module.fetch_dataset_citations_via_opencite = stub_pipeline  # type: ignore[assignment]
+            try:
+                cli_module.run_opencite_backend(
+                    _make_args(list_file, out_dir, max_age_days=7)
+                )
+            finally:
+                cli_module.fetch_dataset_citations_via_opencite = original  # type: ignore[assignment]
+
+            # Stable status + checked within window -> no fetch at all.
+            self.assertEqual(calls, [])
 
 
 class CatalogDoiWiringTests(TestCase):
