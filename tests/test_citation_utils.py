@@ -321,5 +321,52 @@ class TestCitationUtils(unittest.TestCase):
         pass
 
 
+class TestStripVolatileTimestamps(unittest.TestCase):
+    """strip_volatile_timestamps underpins content-idempotent writes (issue #165)."""
+
+    def _payload(self, *, date: str, scoring: str) -> dict:
+        return {
+            "dataset_id": "ds000001",
+            "num_citations": 1,
+            "date_last_updated": date,
+            "metadata": {"fetch_date": date, "fetch_status": "success"},
+            "citation_details": [{"title": "A", "doi": "10.1/a"}],
+            "confidence_scoring": {"model_used": "m", "scoring_date": scoring},
+        }
+
+    def test_payloads_differing_only_in_timestamps_compare_equal(self):
+        a = self._payload(
+            date="2026-06-14T10:00:00+00:00", scoring="2026-06-15T01:00:00+00:00"
+        )
+        b = self._payload(
+            date="2026-06-18T10:00:00+00:00", scoring="2026-06-18T19:00:00+00:00"
+        )
+        self.assertEqual(
+            citation_utils.strip_volatile_timestamps(a),
+            citation_utils.strip_volatile_timestamps(b),
+        )
+
+    def test_substantive_change_compares_unequal(self):
+        a = self._payload(
+            date="2026-06-14T10:00:00+00:00", scoring="2026-06-15T01:00:00+00:00"
+        )
+        b = self._payload(
+            date="2026-06-14T10:00:00+00:00", scoring="2026-06-15T01:00:00+00:00"
+        )
+        b["num_citations"] = 2
+        self.assertNotEqual(
+            citation_utils.strip_volatile_timestamps(a),
+            citation_utils.strip_volatile_timestamps(b),
+        )
+
+    def test_does_not_mutate_input_and_tolerates_missing_keys(self):
+        original = {"dataset_id": "x", "date_last_updated": "2026-01-01T00:00:00+00:00"}
+        stripped = citation_utils.strip_volatile_timestamps(original)
+        # Input untouched (deep copy), volatile key removed in the result.
+        self.assertIn("date_last_updated", original)
+        self.assertNotIn("date_last_updated", stripped)
+        self.assertEqual(stripped, {"dataset_id": "x"})
+
+
 if __name__ == "__main__":
     unittest.main()

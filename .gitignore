@@ -28,6 +28,11 @@ logs/
 # Per-anchor opencite checkpoints (transient resume state for citation fetches)
 citations/.checkpoints/
 
+# Per-dataset last-fetched cache for the update freshness gate (issue #165).
+# Kept out of git so the gate has a timestamp that advances every run without
+# churning the committed citation JSON diffs.
+citations/.fetch_state.json
+
 # Analysis results are now included for sharing and reproducibility
 # (Note: Results can be regenerated using CLI commands documented in README files)
 
