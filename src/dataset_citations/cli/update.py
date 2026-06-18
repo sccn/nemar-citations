@@ -195,6 +195,17 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
         concurrency = 4
     backend = OpenCiteBackend(concurrency=concurrency)
 
+    # A missing datasets-dir means every ds-* dataset silently falls back to a
+    # live GitHub fetch for DOI extraction -- the cold-start rate-limit storm
+    # #174 fixes. Surface it loudly rather than let a misconfigured path stall
+    # the run invisibly.
+    if not os.path.isdir(args.datasets_dir):
+        logger.warning(
+            "datasets-dir %s not found; ds-* DOI extraction will fall back to "
+            "GitHub (rate-limit risk)",
+            args.datasets_dir,
+        )
+
     # Load the catalog once so each dataset can be seeded with its own
     # NEMAR-minted DOI as an additional opencite anchor. The catalog cache
     # is shared with the discover step in the same workflow run, so this

@@ -123,7 +123,12 @@ class BidsMetadataSource:
         try:
             with open(path, encoding="utf-8") as f:
                 data = json.load(f)
-        except (OSError, json.JSONDecodeError):
+        except (OSError, json.JSONDecodeError) as e:
+            logger.warning(
+                "could not read cached metadata %s (%s); falling back to GitHub",
+                path,
+                e,
+            )
             return None
         desc = data.get("dataset_description") if isinstance(data, dict) else None
         return desc if isinstance(desc, dict) and desc else None
