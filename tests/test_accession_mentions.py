@@ -22,7 +22,7 @@ def _anchor(doi: str, relation: str = "References") -> dict:
     }
 
 
-def _mention(doi: str, accession: str = "ds002718") -> dict:
+def _mention(doi: str | None, accession: str = "ds002718") -> dict:
     return {
         "title": f"Mention {doi}",
         "doi": doi,
@@ -92,6 +92,31 @@ class MergeAccessionMentionsTests(TestCase):
         cj = _base([_anchor("10.1/Anchor")])
         merged = merge_accession_mentions(cj, [_mention("10.1/anchor")], ["ds002718"])
         self.assertEqual(merged["num_citations"], 1)  # same paper, different case
+
+    def test_dedupes_on_openalex_id_when_doi_set_differs(self) -> None:
+        # Anchor carries only a DOI; the mention copy of the SAME paper carries
+        # only an OpenAlex id plus a (different) DOI. They must still dedup via
+        # the shared OpenAlex id rather than double-count.
+        anchor = _anchor("10.1/paper", "References")
+        anchor["openalex_id"] = "W123"
+        anchor["doi"] = None  # anchor has no DOI here, only the OpenAlex id
+        mention = _mention("10.1/paper")
+        mention["openalex_id"] = "W123"
+        mention["doi"] = None
+        merged = merge_accession_mentions(_base([anchor]), [mention], ["ds002718"])
+        self.assertEqual(merged["num_citations"], 1)
+        self.assertTrue(merged["citation_details"][0]["mentions_accession"])
+
+    def test_dedupes_cross_identifier_doi_vs_openalex(self) -> None:
+        # Anchor matched by DOI only; mention matched by OpenAlex id only; same
+        # paper -> one entry.
+        anchor = _anchor("10.1/paper", "References")
+        anchor["openalex_id"] = "W999"
+        mention = _mention(None)  # no DOI on the mention
+        mention["openalex_id"] = "W999"
+        merged = merge_accession_mentions(_base([anchor]), [mention], ["ds002718"])
+        self.assertEqual(merged["num_citations"], 1)
+        self.assertTrue(merged["citation_details"][0]["mentions_accession"])
 
     def test_drops_confidence_scoring_when_new_mention_appended(self) -> None:
         cj = _base([_anchor("10.1/anchor")])

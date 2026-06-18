@@ -21,13 +21,20 @@ from typing import Any
 _DATASET_RELATIONS = frozenset({"IsVersionOf", "IsIdenticalTo"})
 
 
-def _key(citation: dict[str, Any]) -> str:
-    """Dedup key: DOI, else OpenAlex id, else title (all lowercased)."""
-    for field in ("doi", "openalex_id", "title"):
+def _ids(citation: dict[str, Any]) -> list[str]:
+    """Strong identifiers (DOI + OpenAlex id, lowercased) for dedup matching."""
+    out: list[str] = []
+    for field in ("doi", "openalex_id"):
         value = citation.get(field)
         if value:
-            return str(value).strip().lower()
-    return ""
+            out.append(str(value).strip().lower())
+    return out
+
+
+def _title_key(citation: dict[str, Any]) -> str:
+    """Lowercased title, used as a dedup fallback only when no strong ids exist."""
+    title = citation.get("title")
+    return str(title).strip().lower() if title else ""
 
 
 def cites_dataset(citation: dict[str, Any]) -> bool:
@@ -61,21 +68,39 @@ def merge_accession_mentions(
     same mentions produces byte-identical output.
     """
     details: list[dict[str, Any]] = citation_json.setdefault("citation_details", [])
-    by_key: dict[str, dict[str, Any]] = {}
+    # Index existing citations by EVERY strong identifier (DOI and OpenAlex id),
+    # plus title as a fallback, so a mention is recognised as a duplicate when it
+    # shares ANY identifier with an existing citation -- not just the first one.
+    # This is what prevents double-counting a paper found by both the anchor and
+    # accession-mention paths when the two copies don't carry the same id set.
+    by_id: dict[str, dict[str, Any]] = {}
+    by_title: dict[str, dict[str, Any]] = {}
     for citation in details:
-        key = _key(citation)
-        if key:
-            by_key.setdefault(key, citation)
+        for ident in _ids(citation):
+            by_id.setdefault(ident, citation)
+        title = _title_key(citation)
+        if title:
+            by_title.setdefault(title, citation)
+
+    def _register(citation: dict[str, Any]) -> None:
+        for ident in _ids(citation):
+            by_id.setdefault(ident, citation)
+        title = _title_key(citation)
+        if title:
+            by_title.setdefault(title, citation)
 
     appended = 0
     for mention in mentions:
-        key = _key(mention)
-        if not key:
-            continue
-        existing = by_key.get(key)
+        mention_ids = _ids(mention)
+        existing = next((by_id[i] for i in mention_ids if i in by_id), None)
+        if existing is None and not mention_ids:
+            # No DOI / OpenAlex id to match on; fall back to exact title.
+            existing = by_title.get(_title_key(mention))
         if existing is None:
+            if not mention_ids and not _title_key(mention):
+                continue  # nothing to dedup or display by; drop it
             details.append(mention)
-            by_key[key] = mention
+            _register(mention)
             appended += 1
         elif existing.get("discovery_method") != "accession_mention":
             # Anchor citation that also names the accession -> flag for both
