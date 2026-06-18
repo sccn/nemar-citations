@@ -18,8 +18,14 @@ from typing import Any
 import httpx
 from opencite.clients.openalex import OpenAlexClient
 from opencite.config import Config
+from opencite.exceptions import OpenCiteError
 
 logger = logging.getLogger(__name__)
+
+# Safety bound on cursor pagination per term (50 * 100 = 5000 works). Accession
+# searches return far fewer, but this caps a pathological term and pairs with
+# the empty-page break below to make the loop always terminate.
+_MAX_PAGES = 50
 
 
 def reconstruct_abstract(inverted: dict[str, list[int]] | None) -> str | None:
@@ -87,28 +93,64 @@ def work_to_citation(work: dict[str, Any], matched_accession: str) -> dict[str, 
     }
 
 
-async def _search_term(
-    client: OpenAlexClient, term: str, max_results: int
-) -> list[dict[str, Any]]:
+async def _search_term(client: OpenAlexClient, term: str) -> list[dict[str, Any]]:
+    """Fully paginate OpenAlex `fulltext.search:term`, returning mapped hits.
+
+    Pagination is decoupled from any result cap so the full hit set is collected
+    deterministically; truncation happens after a stable sort in `search`. The
+    loop terminates on a falsy cursor, on an empty results page (OpenAlex index
+    lag can return `results: []` with `next_cursor` still set), or at the
+    `_MAX_PAGES` safety bound.
+    """
     out: list[dict[str, Any]] = []
     cursor: str | None = "*"
-    per_page = min(max(max_results, 1), 100)
-    while cursor and len(out) < max_results:
+    pages = 0
+    while cursor and pages < _MAX_PAGES:
         resp = await client.get(
             "works",
             params={
                 "filter": f"fulltext.search:{term}",
-                "per-page": per_page,
+                "per-page": 100,
                 "cursor": cursor,
             },
         )
         data = resp.json()
-        for work in data.get("results", []):
-            out.append(work_to_citation(work, term))
-            if len(out) >= max_results:
-                break
+        results = data.get("results", [])
+        if not results:
+            break
+        out.extend(work_to_citation(work, term) for work in results)
+        pages += 1
         cursor = (data.get("meta") or {}).get("next_cursor")
+    if pages >= _MAX_PAGES and cursor:
+        logger.warning(
+            "accession term %s hit the %d-page cap; results truncated", term, _MAX_PAGES
+        )
     return out
+
+
+def _stable_key(citation: dict[str, Any]) -> str:
+    """Dedup / sort key: DOI, else OpenAlex id, else title (stripped+lowercased)."""
+    for field in ("doi", "openalex_id", "title"):
+        value = citation.get(field)
+        if value:
+            return str(value).strip().lower()
+    return ""
+
+
+def dedup_citations(hit_lists: list[list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    """Merge per-term hit lists into one deduped, stably-sorted list.
+
+    A paper that matches more than one accession term (e.g. an `on-` dataset's
+    `on*` and `ds*` ids) appears once. Pure function -> unit-testable without
+    network. The stable sort is what makes a later truncation deterministic.
+    """
+    deduped: dict[str, dict[str, Any]] = {}
+    for hits in hit_lists:
+        for citation in hits:
+            key = _stable_key(citation)
+            if key and key not in deduped:
+                deduped[key] = citation
+    return sorted(deduped.values(), key=_stable_key)
 
 
 class AccessionSearchBackend:
@@ -121,18 +163,20 @@ class AccessionSearchBackend:
     def search(self, terms: list[str]) -> list[dict[str, Any]]:
         """Return deduped citation dicts mentioning any of `terms`.
 
-        Dedup is by DOI, then OpenAlex id, then title (lowercased) so a paper
-        that mentions both the `on-` and `ds-` accession appears once. Results
-        are sorted by a stable key so repeated runs produce identical output
-        (content-idempotent writes depend on this). Per-term failures are
-        logged and skipped, never fatal.
+        Output is sorted by a stable key and truncated to `max_results` AFTER
+        the sort, so the kept subset is identical across runs even when a term
+        has more hits than the cap (content-idempotent writes depend on this).
+        Per-term failures are logged and skipped, never fatal.
         """
         if not terms:
             return []
-        return asyncio.run(self._search_all(terms))
+        deduped = asyncio.run(self._search_all(terms))
+        if self._max_results and len(deduped) > self._max_results:
+            return deduped[: self._max_results]
+        return deduped
 
     async def _search_all(self, terms: list[str]) -> list[dict[str, Any]]:
-        deduped: dict[str, dict[str, Any]] = {}
+        hit_lists: list[list[dict[str, Any]]] = []
         async with OpenAlexClient(self._config) as client:
             assert isinstance(client, OpenAlexClient), (
                 "opencite changed OpenAlexClient.__aenter__ return type; "
@@ -140,25 +184,12 @@ class AccessionSearchBackend:
             )
             for term in terms:
                 try:
-                    hits = await _search_term(client, term, self._max_results)
-                except (httpx.HTTPError, asyncio.TimeoutError, OSError) as e:
+                    hit_lists.append(await _search_term(client, term))
+                except (
+                    OpenCiteError,
+                    httpx.HTTPError,
+                    asyncio.TimeoutError,
+                    OSError,
+                ) as e:
                     logger.warning("accession search failed for %s: %s", term, e)
-                    continue
-                for citation in hits:
-                    key = (
-                        citation.get("doi")
-                        or citation.get("openalex_id")
-                        or (citation.get("title") or "")
-                    ).lower()
-                    if key and key not in deduped:
-                        deduped[key] = citation
-        return sorted(deduped.values(), key=_stable_key)
-
-
-def _stable_key(citation: dict[str, Any]) -> str:
-    return (
-        citation.get("doi")
-        or citation.get("openalex_id")
-        or citation.get("title")
-        or ""
-    ).lower()
+        return dedup_citations(hit_lists)

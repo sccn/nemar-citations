@@ -283,7 +283,7 @@ git commit -m "data: hallu nightly pipeline ($TS)
 
 GPU semantic scoring + embeddings on RTX 4090. Pipeline:
   catalog discover -> metadata -> judge-anchors -> opencite fetch
-  -> score-confidence -> generate-embeddings
+  -> find-mentions -> score-confidence -> generate-embeddings
 
 $(echo "$DIFFSTAT")"
 

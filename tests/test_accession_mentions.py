@@ -74,9 +74,12 @@ class MergeAccessionMentionsTests(TestCase):
         self.assertEqual(merged["num_citations"], 2)
         dois = {c["doi"] for c in merged["citation_details"]}
         self.assertIn("10.2/new", dois)
-        self.assertEqual(merged["metadata"]["num_accession_mentions"], 1)
-        self.assertEqual(merged["metadata"]["num_anchor_citations"], 1)
-        self.assertEqual(merged["metadata"]["searched_accessions"], ["ds002718"])
+        meta = merged["metadata"]
+        self.assertEqual(meta["num_accession_mentions"], 1)
+        # 1 References anchor (data paper) + 1 accession mention (dataset).
+        self.assertEqual(meta["num_dataset_citations"], 1)
+        self.assertEqual(meta["num_datapaper_citations"], 1)
+        self.assertEqual(meta["searched_accessions"], ["ds002718"])
 
     def test_flags_existing_anchor_that_also_mentions(self) -> None:
         cj = _base([_anchor("10.1/both", "References")])
@@ -139,3 +142,17 @@ class MergeAccessionMentionsTests(TestCase):
         # Feed the same mentions back into the already-merged json.
         second = merge_accession_mentions(first, mentions, ["ds002718"])
         self.assertEqual(second, snapshot)
+
+    def test_existing_entry_with_no_identifier_is_left_alone(self) -> None:
+        # A legacy entry with no doi/openalex_id/title can't be deduped against;
+        # a real mention is still appended (no phantom, no corruption).
+        empty = {"venue": "n/a", "source_relation": "References"}
+        cj = _base([empty])
+        merged = merge_accession_mentions(cj, [_mention("10.2/new")], ["ds002718"])
+        self.assertEqual(merged["num_citations"], 2)
+
+    def test_mention_with_no_identifier_is_dropped(self) -> None:
+        cj = _base([_anchor("10.1/anchor")])
+        empty_mention = {"discovery_method": "accession_mention", "venue": "n/a"}
+        merged = merge_accession_mentions(cj, [empty_mention], ["ds002718"])
+        self.assertEqual(merged["num_citations"], 1)  # nothing to dedup/display by

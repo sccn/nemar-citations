@@ -114,10 +114,15 @@ def merge_accession_mentions(
     citation_json["num_citations"] = len(details)
     meta = citation_json.setdefault("metadata", {})
     meta["searched_accessions"] = list(searched_accessions)
+    # Provenance: papers found purely via the accession search.
     meta["num_accession_mentions"] = sum(
         1 for c in details if c.get("discovery_method") == "accession_mention"
     )
-    meta["num_anchor_citations"] = sum(
-        1 for c in details if c.get("discovery_method") != "accession_mention"
-    )
+    # The two toggle buckets, recorded explicitly so the dashboard / leaderboard
+    # keys on them rather than re-deriving (and never compares a raw
+    # num_citations from a find-mentions-processed dataset against a not-yet-
+    # processed one). num_citations stays the deduped total of both buckets.
+    dataset_bucket = sum(1 for c in details if cites_dataset(c))
+    meta["num_dataset_citations"] = dataset_bucket
+    meta["num_datapaper_citations"] = len(details) - dataset_bucket
     return citation_json

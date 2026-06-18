@@ -12,6 +12,7 @@ import unittest
 from unittest import TestCase
 
 from dataset_citations.backends.accession_search import (
+    dedup_citations,
     reconstruct_abstract,
     work_to_citation,
 )
@@ -82,6 +83,34 @@ class WorkToCitationTests(TestCase):
         self.assertEqual(c["year"], 0)
         self.assertIsNone(c["doi"])
         self.assertIsNone(c["abstract"])
+
+
+class DedupCitationsTests(TestCase):
+    """Cross-term dedup: a paper matching both the on- and ds- accession of the
+    same dataset must appear once (the key correctness contract for on-*)."""
+
+    def _hit(self, doi: str, oaid: str, title: str = "t") -> dict:
+        return {"doi": doi, "openalex_id": oaid, "title": title}
+
+    def test_paper_in_two_terms_appears_once(self) -> None:
+        on_hits = [self._hit("10.1/p1", "W1"), self._hit("10.1/p2", "W2")]
+        ds_hits = [self._hit("10.1/p2", "W2"), self._hit("10.1/p3", "W3")]
+        result = dedup_citations([on_hits, ds_hits])
+        self.assertEqual([c["doi"] for c in result], ["10.1/p1", "10.1/p2", "10.1/p3"])
+
+    def test_stable_sort_independent_of_input_order(self) -> None:
+        a = [self._hit("10.1/c", "W3"), self._hit("10.1/a", "W1")]
+        b = [self._hit("10.1/b", "W2")]
+        self.assertEqual(
+            [c["doi"] for c in dedup_citations([a, b])],
+            [c["doi"] for c in dedup_citations([b, a])],
+        )
+
+    def test_dedupes_case_insensitive_doi(self) -> None:
+        result = dedup_citations(
+            [[self._hit("10.1/X", "W1")], [self._hit("10.1/x", "W9")]]
+        )
+        self.assertEqual(len(result), 1)
 
 
 @unittest.skipUnless(
