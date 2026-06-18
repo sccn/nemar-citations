@@ -130,10 +130,14 @@ uv run dataset-citations-judge-anchors \
 # new judgments immediately, manually re-run `dataset-citations-update`
 # with `--max-age-days 0` once, then resume the normal weekly cron.
 echo "--- update (skip-existing default 7d) ---"
+# --datasets-dir lets ds-* DOI extraction reuse the dataset_description cached
+# by retrieve-metadata above instead of refetching it from GitHub, which on a
+# cold .fetch_state.json would otherwise exhaust the GitHub rate limit (#174).
 OPENCITE_CONCURRENCY=4 \
   uv run dataset-citations-update \
     --dataset-list-file "$DATASETS_LIST" \
-    --output-dir citations/ || {
+    --output-dir citations/ \
+    --datasets-dir datasets || {
   echo "ERROR: dataset-citations-update failed; aborting before score." >&2
   exit 2
 }

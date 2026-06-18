@@ -195,6 +195,17 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
         concurrency = 4
     backend = OpenCiteBackend(concurrency=concurrency)
 
+    # A missing datasets-dir means every ds-* dataset silently falls back to a
+    # live GitHub fetch for DOI extraction -- the cold-start rate-limit storm
+    # #174 fixes. Surface it loudly rather than let a misconfigured path stall
+    # the run invisibly.
+    if not os.path.isdir(args.datasets_dir):
+        logger.warning(
+            "datasets-dir %s not found; ds-* DOI extraction will fall back to "
+            "GitHub (rate-limit risk)",
+            args.datasets_dir,
+        )
+
     # Load the catalog once so each dataset can be seeded with its own
     # NEMAR-minted DOI as an additional opencite anchor. The catalog cache
     # is shared with the discover step in the same workflow run, so this
@@ -245,6 +256,7 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
             backend=backend,
             catalog_doi=catalog_dois.get(dataset_id),
             use_checkpoint=True,
+            local_metadata_dir=args.datasets_dir,
         )
         # Content-idempotent write. The opencite payload never carries the
         # confidence_scoring block (the separate score step adds it), so we
@@ -329,6 +341,16 @@ def main():
         "--output-dir",
         default="citations",
         help="Directory to save output files (default: citations/).",
+    )
+    parser.add_argument(
+        "--datasets-dir",
+        default="datasets",
+        help=(
+            "Directory of retrieve-metadata output (<id>_datasets.json). When a "
+            "ds-* dataset's cached dataset_description is present here, DOI "
+            "extraction parses it instead of refetching from GitHub, avoiding "
+            "the cold-start GitHub rate limit (issue #174). Default: datasets/."
+        ),
     )
     parser.add_argument(
         "--catalog-cache",

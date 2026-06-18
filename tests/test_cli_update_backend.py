@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import io
 import json
+import os
 import sys
 import tempfile
 from contextlib import redirect_stdout
@@ -54,6 +55,10 @@ def _make_args(
     return argparse.Namespace(
         dataset_list_file=str(list_file),
         output_dir=out_dir,
+        # Distinct from output_dir and intentionally empty: these tests stub the
+        # pipeline or use unsupported prefixes, so DOI extraction never reads the
+        # cache. The cache-hit path is covered in test_sources_bids_metadata.py.
+        datasets_dir=os.path.join(out_dir, "datasets"),
         catalog_cache=cache_path,
         catalog_cache_max_age=3600,
         max_age_days=max_age_days,

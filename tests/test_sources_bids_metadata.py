@@ -8,6 +8,7 @@ parse_bids_description function. No mocks, no network.
 from __future__ import annotations
 
 import json
+import tempfile
 from pathlib import Path
 from unittest import TestCase
 
@@ -203,9 +204,11 @@ class GetDoiReferencesDecodeGuard(TestCase):
 
     def _source_returning(self, content: object) -> BidsMetadataSource:
         # Bypass __init__ (which builds a real Github client) and inject a real
-        # fake; the only attribute get_doi_references uses is `self.github`.
+        # fake; with no local cache configured these tests exercise the GitHub
+        # decode path.
         src = BidsMetadataSource.__new__(BidsMetadataSource)
         src.github = _FakeGithub(content)  # type: ignore[attr-defined]
+        src._local_metadata_dir = None  # type: ignore[attr-defined]
         return src
 
     def test_undecodable_blob_returns_parse_error_not_raises(self) -> None:
@@ -230,3 +233,54 @@ class GetDoiReferencesDecodeGuard(TestCase):
         assert isinstance(result, FetchSuccess)
         self.assertEqual(len(result.value), 1)
         self.assertEqual(result.value[0].identifier, "10.1038/sdata.2015.1")
+
+
+class _ExplodingGithub:
+    """GitHub client that fails if touched -- proves the cache path skips it."""
+
+    def get_repo(self, full_name: str) -> object:
+        raise AssertionError("GitHub must not be called when the cache is present")
+
+
+class GetDoiReferencesCacheTests(TestCase):
+    """get_doi_references parses the cached dataset_description from
+    local_metadata_dir instead of hitting GitHub, avoiding the cold-start
+    rate-limit storm; it falls back to GitHub when the cache is absent. #174."""
+
+    _DESC = {"ReferencesAndLinks": ["https://doi.org/10.1038/sdata.2015.1"]}
+
+    def _source(self, github: object, local_dir: str | None) -> BidsMetadataSource:
+        src = BidsMetadataSource.__new__(BidsMetadataSource)
+        src.github = github  # type: ignore[attr-defined]
+        src._local_metadata_dir = local_dir  # type: ignore[attr-defined]
+        return src
+
+    def _write_cache(self, tmp: str, dataset_id: str, body: dict) -> None:
+        (Path(tmp) / f"{dataset_id}_datasets.json").write_text(json.dumps(body))
+
+    def test_uses_cache_without_calling_github(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            self._write_cache(tmp, "ds002718", {"dataset_description": self._DESC})
+            result = self._source(_ExplodingGithub(), tmp).get_doi_references(
+                "ds002718"
+            )
+            assert isinstance(result, FetchSuccess)
+            self.assertEqual(result.value[0].identifier, "10.1038/sdata.2015.1")
+
+    def test_falls_back_to_github_when_cache_file_missing(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            payload = json.dumps(self._DESC).encode("utf-8")
+            result = self._source(_FakeGithub(_BytesContent(payload)), tmp)
+            self.assertEqual(len(result.get_doi_references("ds999999").value), 1)  # type: ignore[union-attr]
+
+    def test_falls_back_when_cache_has_no_description(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            self._write_cache(tmp, "ds002718", {"dataset_id": "ds002718"})
+            payload = json.dumps(self._DESC).encode("utf-8")
+            result = self._source(_FakeGithub(_BytesContent(payload)), tmp)
+            self.assertEqual(len(result.get_doi_references("ds002718").value), 1)  # type: ignore[union-attr]
+
+    def test_no_local_dir_configured_uses_github(self) -> None:
+        payload = json.dumps(self._DESC).encode("utf-8")
+        result = self._source(_FakeGithub(_BytesContent(payload)), None)
+        self.assertEqual(len(result.get_doi_references("ds002718").value), 1)  # type: ignore[union-attr]
