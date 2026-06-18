@@ -54,6 +54,7 @@ def _make_args(
     return argparse.Namespace(
         dataset_list_file=str(list_file),
         output_dir=out_dir,
+        datasets_dir=out_dir,
         catalog_cache=cache_path,
         catalog_cache_max_age=3600,
         max_age_days=max_age_days,

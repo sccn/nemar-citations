@@ -72,6 +72,7 @@ def fetch_dataset_citations_via_opencite(
     checkpoint_store: CheckpointStore | None = None,
     use_checkpoint: bool = False,
     judgments_dir: Path | str | None = None,
+    local_metadata_dir: str | None = None,
 ) -> dict[str, Any]:
     """Return a schema-v2 citation JSON dict for one dataset.
 
@@ -122,7 +123,9 @@ def fetch_dataset_citations_via_opencite(
         # .nemar/metadata.json so the same source handles them.
         source: Any = nemar_source or NemarMetadataSource(github_token=github_token)
     elif dataset_id.startswith("ds"):
-        source = bids_source or BidsMetadataSource(github_token=github_token)
+        source = bids_source or BidsMetadataSource(
+            github_token=github_token, local_metadata_dir=local_metadata_dir
+        )
     else:
         return _stub_payload(
             dataset_id, when, fetch_status=f"unsupported_prefix:{dataset_id[:2]}"

@@ -245,6 +245,7 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
             backend=backend,
             catalog_doi=catalog_dois.get(dataset_id),
             use_checkpoint=True,
+            local_metadata_dir=args.datasets_dir,
         )
         # Content-idempotent write. The opencite payload never carries the
         # confidence_scoring block (the separate score step adds it), so we
@@ -329,6 +330,16 @@ def main():
         "--output-dir",
         default="citations",
         help="Directory to save output files (default: citations/).",
+    )
+    parser.add_argument(
+        "--datasets-dir",
+        default="datasets",
+        help=(
+            "Directory of retrieve-metadata output (<id>_datasets.json). When a "
+            "ds-* dataset's cached dataset_description is present here, DOI "
+            "extraction parses it instead of refetching from GitHub, avoiding "
+            "the cold-start GitHub rate limit (issue #174). Default: datasets/."
+        ),
     )
     parser.add_argument(
         "--catalog-cache",
