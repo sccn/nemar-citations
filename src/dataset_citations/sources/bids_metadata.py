@@ -65,13 +65,25 @@ class BidsMetadataSource:
 
         if isinstance(content, list):
             return FetchError("parse", "expected file, got directory listing")
-        if not hasattr(content, "decoded_content"):
+        # `decoded_content` is a PyGithub property that asserts the blob is
+        # base64-encoded. GitHub returns encoding=None for blobs larger than 1MB,
+        # so the property raises AssertionError -- and hasattr() PROPAGATES that
+        # rather than returning False. Catch it (plus the analogous ValueError /
+        # AttributeError) so one undecodable dataset_description.json is a
+        # per-dataset parse failure instead of aborting the whole pipeline. This
+        # is the judge-anchors analogue of the retrieve-metadata fix in PR #119.
+        try:
+            raw = content.decoded_content
+        except (AssertionError, ValueError, AttributeError) as e:
             return FetchError(
-                "parse",
-                f"unexpected get_contents return shape: {type(content).__name__}",
+                "parse", f"could not decode dataset_description.json: {e}"
+            )
+        if raw is None:
+            return FetchError(
+                "parse", "dataset_description.json has no decodable content"
             )
         try:
-            payload: Any = json.loads(content.decoded_content.decode("utf-8"))
+            payload: Any = json.loads(raw.decode("utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError) as e:
             return FetchError("parse", f"invalid JSON: {e}")
         if not isinstance(payload, dict):

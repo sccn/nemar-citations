@@ -11,7 +11,11 @@ import json
 from pathlib import Path
 from unittest import TestCase
 
-from dataset_citations.sources.nemar_metadata import parse_nemar_metadata
+from dataset_citations.sources.models import FetchError, FetchSuccess
+from dataset_citations.sources.nemar_metadata import (
+    NemarMetadataSource,
+    parse_nemar_metadata,
+)
 
 FIXTURE_DIR = Path(__file__).parent / "test_data" / "sources" / "nemar"
 
@@ -163,3 +167,93 @@ class ParseSyntheticEdgeCases(TestCase):
         )
         self.assertEqual(len(refs), 1)
         self.assertEqual(refs[0].relation_type, "IsVersionOf")
+
+
+# --- Real substitute objects (NOT Mocks) for the GitHub fallback path
+# (_fetch_from_github), mirroring the shapes it touches. See issue #168.
+
+
+class _RaisingContent:
+    """PyGithub ContentFile stand-in for a >1MB blob: decoded_content asserts
+    encoding == "base64" and raises AssertionError when encoding is None."""
+
+    @property
+    def decoded_content(self) -> bytes:
+        raise AssertionError("unsupported encoding: None")
+
+
+class _NoneContent:
+    @property
+    def decoded_content(self) -> bytes | None:
+        return None
+
+
+class _BytesContent:
+    def __init__(self, data: bytes) -> None:
+        self._data = data
+
+    @property
+    def decoded_content(self) -> bytes:
+        return self._data
+
+
+class _FakeRepo:
+    def __init__(self, content: object) -> None:
+        self._content = content
+
+    def get_contents(self, path: str) -> object:
+        return self._content
+
+
+class _FakeGithub:
+    def __init__(self, content: object) -> None:
+        self._content = content
+
+    def get_repo(self, full_name: str) -> _FakeRepo:
+        return _FakeRepo(self._content)
+
+
+class FetchFromGithubDecodeGuard(TestCase):
+    """_fetch_from_github must turn an undecodable .nemar/metadata.json into a
+    per-dataset FetchError, never let AssertionError abort judge-anchors for
+    nm-* / on-* datasets. Issue #168."""
+
+    def _source_returning(self, content: object) -> NemarMetadataSource:
+        # Bypass __init__ (which builds a real Github client); _fetch_from_github
+        # only reads self.github.
+        src = NemarMetadataSource.__new__(NemarMetadataSource)
+        src.github = _FakeGithub(content)  # type: ignore[attr-defined]
+        return src
+
+    def test_undecodable_blob_returns_parse_error_not_raises(self) -> None:
+        result = self._source_returning(_RaisingContent())._fetch_from_github(
+            "nm000999", "nemarDatasets"
+        )
+        assert isinstance(result, FetchError)
+        self.assertEqual(result.reason, "parse")
+
+    def test_none_blob_returns_parse_error(self) -> None:
+        result = self._source_returning(_NoneContent())._fetch_from_github(
+            "nm000999", "nemarDatasets"
+        )
+        assert isinstance(result, FetchError)
+        self.assertEqual(result.reason, "parse")
+
+    def test_valid_blob_returns_success(self) -> None:
+        payload = json.dumps(
+            {
+                "related_identifiers": [
+                    {
+                        "identifier": "10.1038/sdata.2015.1",
+                        "identifier_type": "DOI",
+                        "relation_type": "References",
+                    }
+                ]
+            }
+        ).encode("utf-8")
+        result = self._source_returning(_BytesContent(payload))._fetch_from_github(
+            "nm000999", "nemarDatasets"
+        )
+        assert isinstance(result, FetchSuccess)
+        self.assertEqual(len(result.value), 1)
+        self.assertEqual(result.value[0].identifier, "10.1038/sdata.2015.1")
