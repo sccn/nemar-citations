@@ -368,5 +368,62 @@ class TestStripVolatileTimestamps(unittest.TestCase):
         self.assertEqual(stripped, {"dataset_id": "x"})
 
 
+class TestWriteCitationJsonIfChanged(unittest.TestCase):
+    """write_citation_json_if_changed underpins the #165 idempotency guarantee."""
+
+    def _payload(self, *, date: str, num: int = 1) -> dict:
+        return {
+            "dataset_id": "ds000001",
+            "num_citations": num,
+            "date_last_updated": date,
+            "metadata": {"fetch_date": date, "fetch_status": "success"},
+            "citation_details": [],
+        }
+
+    def test_creates_new_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "ds000001_citations.json")
+            wrote = citation_utils.write_citation_json_if_changed(
+                path, self._payload(date="2026-06-18T00:00:00+00:00")
+            )
+            self.assertTrue(wrote)
+            self.assertTrue(os.path.isfile(path))
+
+    def test_no_op_when_only_timestamps_differ(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "ds000001_citations.json")
+            citation_utils.write_citation_json_if_changed(
+                path, self._payload(date="2026-06-14T00:00:00+00:00")
+            )
+            before = Path(path).read_text()
+            wrote = citation_utils.write_citation_json_if_changed(
+                path, self._payload(date="2026-06-18T00:00:00+00:00")
+            )
+            self.assertFalse(wrote)
+            self.assertEqual(Path(path).read_text(), before)  # old timestamp kept
+
+    def test_rewrites_on_substantive_change(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "ds000001_citations.json")
+            citation_utils.write_citation_json_if_changed(
+                path, self._payload(date="2026-06-14T00:00:00+00:00", num=1)
+            )
+            wrote = citation_utils.write_citation_json_if_changed(
+                path, self._payload(date="2026-06-14T00:00:00+00:00", num=2)
+            )
+            self.assertTrue(wrote)
+            self.assertEqual(json.loads(Path(path).read_text())["num_citations"], 2)
+
+    def test_rewrites_when_existing_file_is_corrupt(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "ds000001_citations.json")
+            Path(path).write_text("not json at all")
+            wrote = citation_utils.write_citation_json_if_changed(
+                path, self._payload(date="2026-06-18T00:00:00+00:00")
+            )
+            self.assertTrue(wrote)
+            self.assertEqual(json.loads(Path(path).read_text())["num_citations"], 1)
+
+
 if __name__ == "__main__":
     unittest.main()

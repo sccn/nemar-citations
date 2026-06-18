@@ -59,6 +59,35 @@ def strip_volatile_timestamps(payload: Dict[str, Any]) -> Dict[str, Any]:
     return clone
 
 
+def write_citation_json_if_changed(filepath: str, payload: Dict[str, Any]) -> bool:
+    """Write `payload` as pretty JSON unless only volatile timestamps differ.
+
+    Compares against the file already on disk after stripping volatile
+    timestamps; when the substantive content matches, the existing file is left
+    byte-for-byte untouched so the nightly pipeline emits no spurious diff
+    (issue #165).
+
+    Returns:
+        True if the file was written, False if left unchanged.
+
+    Raises:
+        OSError: If the file exists but cannot be written.
+    """
+    if os.path.isfile(filepath):
+        try:
+            with open(filepath, encoding="utf-8") as f:
+                existing = json.load(f)
+        except (OSError, json.JSONDecodeError):
+            existing = None
+        if isinstance(existing, dict) and strip_volatile_timestamps(
+            existing
+        ) == strip_volatile_timestamps(payload):
+            return False
+    with open(filepath, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, ensure_ascii=False)
+    return True
+
+
 def create_citation_json_structure(
     dataset_id: str, citations_df: pd.DataFrame, fetch_date: Optional[datetime] = None
 ) -> Dict[str, Any]:

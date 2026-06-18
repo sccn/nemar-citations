@@ -1,0 +1,128 @@
+"""Merge accession-mention citations into a dataset's citation JSON.
+
+Accession-mention citations (papers that name the dataset accession in text)
+are discovered by `backends/accession_search.py` and folded into the same
+`citation_details[]` list as anchor-based citations, each tagged
+`discovery_method="accession_mention"`. The toggle (#169) buckets:
+  - "cites dataset"   = accession mentions + anchor citations whose
+                        source_relation is IsVersionOf / IsIdenticalTo
+  - "cites data paper"= the remaining anchor citations (References /
+                        IsDerivedFrom)
+
+This module is pure (no network / I/O) and deterministic so repeated runs are
+content-idempotent (issue #165). Issue #169.
+"""
+
+from __future__ import annotations
+
+from typing import Any
+
+# source_relation values whose anchor IS the dataset (vs the data paper).
+_DATASET_RELATIONS = frozenset({"IsVersionOf", "IsIdenticalTo"})
+
+
+def _ids(citation: dict[str, Any]) -> list[str]:
+    """Strong identifiers (DOI + OpenAlex id, lowercased) for dedup matching."""
+    out: list[str] = []
+    for field in ("doi", "openalex_id"):
+        value = citation.get(field)
+        if value:
+            out.append(str(value).strip().lower())
+    return out
+
+
+def _title_key(citation: dict[str, Any]) -> str:
+    """Lowercased title, used as a dedup fallback only when no strong ids exist."""
+    title = citation.get("title")
+    return str(title).strip().lower() if title else ""
+
+
+def cites_dataset(citation: dict[str, Any]) -> bool:
+    """True if `citation` belongs in the 'cites dataset' bucket."""
+    if citation.get("discovery_method") == "accession_mention":
+        return True
+    if citation.get("mentions_accession"):
+        return True
+    return citation.get("source_relation") in _DATASET_RELATIONS
+
+
+def merge_accession_mentions(
+    citation_json: dict[str, Any],
+    mentions: list[dict[str, Any]],
+    searched_accessions: list[str],
+) -> dict[str, Any]:
+    """Fold accession `mentions` into `citation_json` (mutated and returned).
+
+    - A mention whose paper is already a citation flags that existing entry
+      (`mentions_accession=True` + `matched_accession`) so a paper that both
+      cites the data paper and names the accession lands in BOTH buckets. An
+      existing accession-mention entry is left untouched (idempotent).
+    - A mention not already present is appended.
+    - When new mentions are appended, the stale top-level `confidence_scoring`
+      block is dropped so the downstream score step (its `--skip-existing`
+      skips files that already carry the block) re-scores the dataset.
+    - `num_citations` is recomputed; `metadata` records the searched accessions
+      and the per-bucket breakdown.
+
+    All counts derive from the final state (not deltas), so a re-run with the
+    same mentions produces byte-identical output.
+    """
+    details: list[dict[str, Any]] = citation_json.setdefault("citation_details", [])
+    # Index existing citations by EVERY strong identifier (DOI and OpenAlex id),
+    # plus title as a fallback, so a mention is recognised as a duplicate when it
+    # shares ANY identifier with an existing citation -- not just the first one.
+    # This is what prevents double-counting a paper found by both the anchor and
+    # accession-mention paths when the two copies don't carry the same id set.
+    by_id: dict[str, dict[str, Any]] = {}
+    by_title: dict[str, dict[str, Any]] = {}
+    for citation in details:
+        for ident in _ids(citation):
+            by_id.setdefault(ident, citation)
+        title = _title_key(citation)
+        if title:
+            by_title.setdefault(title, citation)
+
+    def _register(citation: dict[str, Any]) -> None:
+        for ident in _ids(citation):
+            by_id.setdefault(ident, citation)
+        title = _title_key(citation)
+        if title:
+            by_title.setdefault(title, citation)
+
+    appended = 0
+    for mention in mentions:
+        mention_ids = _ids(mention)
+        existing = next((by_id[i] for i in mention_ids if i in by_id), None)
+        if existing is None and not mention_ids:
+            # No DOI / OpenAlex id to match on; fall back to exact title.
+            existing = by_title.get(_title_key(mention))
+        if existing is None:
+            if not mention_ids and not _title_key(mention):
+                continue  # nothing to dedup or display by; drop it
+            details.append(mention)
+            _register(mention)
+            appended += 1
+        elif existing.get("discovery_method") != "accession_mention":
+            # Anchor citation that also names the accession -> flag for both
+            # buckets (no-op if already flagged, keeping re-runs idempotent).
+            existing["mentions_accession"] = True
+            existing.setdefault("matched_accession", mention.get("matched_accession"))
+
+    if appended:
+        citation_json.pop("confidence_scoring", None)
+
+    citation_json["num_citations"] = len(details)
+    meta = citation_json.setdefault("metadata", {})
+    meta["searched_accessions"] = list(searched_accessions)
+    # Provenance: papers found purely via the accession search.
+    meta["num_accession_mentions"] = sum(
+        1 for c in details if c.get("discovery_method") == "accession_mention"
+    )
+    # The two toggle buckets, recorded explicitly so the dashboard / leaderboard
+    # keys on them rather than re-deriving (and never compares a raw
+    # num_citations from a find-mentions-processed dataset against a not-yet-
+    # processed one). num_citations stays the deduped total of both buckets.
+    dataset_bucket = sum(1 for c in details if cites_dataset(c))
+    meta["num_dataset_citations"] = dataset_bucket
+    meta["num_datapaper_citations"] = len(details) - dataset_bucket
+    return citation_json
