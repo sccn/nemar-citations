@@ -1,10 +1,10 @@
 {
   "dataset_id": "ds004952",
-  "num_citations": 23,
-  "date_last_updated": "2026-06-14T17:08:10.895586+00:00",
+  "num_citations": 24,
+  "date_last_updated": "2026-06-18T23:13:21.990223+00:00",
   "metadata": {
-    "total_cumulative_citations": 118,
-    "fetch_date": "2026-06-14T17:08:10.895586+00:00",
+    "total_cumulative_citations": 122,
+    "fetch_date": "2026-06-18T23:13:21.990223+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
@@ -21,7 +21,7 @@
       "venue": "Scientific Data",
       "year": 2024,
       "url": "https://doi.org/10.1038/s41597-024-04114-1",
-      "cited_by": 33,
+      "cited_by": 34,
       "abstract": "The rapid advancement of deep learning has enabled Brain-Computer Interfaces (BCIs) technology, particularly neural decoding techniques, to achieve higher accuracy and deeper levels of interpretation. Interest in decoding imagined speech has significantly increased because its concept akin to \"mind reading\". However, previous studies on decoding neural language have predominantly focused on brain activity patterns during human reading. The absence of imagined speech electroencephalography (EEG) datasets has constrained further research in this field. We present the Chinese Imagined Speech Corpus (Chisco), including over 20,000 sentences of high-density EEG recordings of imagined speech from healthy adults. Each subject's EEG data exceeds 900 minutes, representing the largest dataset per individual currently available for decoding neural language to date. Furthermore, the experimental stimuli include over 6,000 everyday phrases across 39 semantic categories, covering nearly all aspects ",
       "doi": "10.1038/s41597-024-04114-1",
       "pmid": "39572577",
@@ -90,7 +90,7 @@
       "venue": "Intelligent Oncology",
       "year": 2025,
       "url": "https://doi.org/10.1016/j.intonc.2025.09.005",
-      "cited_by": 11,
+      "cited_by": 12,
       "abstract": "The rapid advancement of artificial intelligence (AI) has ushered in a new era of medical multimodal large language models (MLLMs), which integrate diverse data modalities such as text, imaging, physiological signals, and genomics to enhance clinical decision-making. This systematic review explores the core methodologies and applied research frontiers of medical MLLMs, focusing on their architecture, training methods, evaluation techniques, and applications. We highlight the transformative potential of MLLMs in achieving cross-modal semantic alignment, medical knowledge integration, and robust clinical reasoning. Despite their promise, challenges such as data heterogeneity, hallucination, and computational efficiency persist. By reviewing state-of-the-art solutions and future directions, this paper provides a comprehensive technical guide for developing reliable and interpretable medical MLLMs, ultimately aiming to bridge the gap between AI and clinical practice.",
       "doi": "10.1016/j.intonc.2025.09.005",
       "pmid": null,
@@ -223,6 +223,29 @@
       }
     },
     {
+      "title": "SingLEM: Single-Channel Large EEG Model",
+      "author": "Jamiyan Sukhbaatar, S. Imamura, Ibuki Inoue, Shoya Murakami, Kazi Mahmudul Hassan, Seungwoo Han, Ingon Chanpornpakdi, Toshihisa Tanaka",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2509.17920",
+      "cited_by": 3,
+      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
+      "doi": "10.48550/arXiv.2509.17920",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-024-03398-7",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6538539692759514,
+        "similarity_score": 0.5661073327064514,
+        "citation_text_length": 1217,
+        "dataset_text_length": 2515,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "EEG2TEXT-CN: An Exploratory Study of Open-Vocabulary Chinese Text-EEG Alignment via Large Language Model and Contrastive Learning on ChineseEEG",
       "author": "Jack Lu, C. Jung, Chi-Sheng Chen, Anna Nai-Yun Tung, Hsiang-Wei Hu, Yuan Cheng",
       "venue": "ArXiv",
@@ -338,29 +361,6 @@
       }
     },
     {
-      "title": "SingLEM: Single-Channel Large EEG Model",
-      "author": "Jamiyan Sukhbaatar, S. Imamura, Ibuki Inoue, Shoya Murakami, Kazi Mahmudul Hassan, Seungwoo Han, Ingon Chanpornpakdi, Toshihisa Tanaka",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2509.17920",
-      "cited_by": 2,
-      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
-      "doi": "10.48550/arXiv.2509.17920",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-024-03398-7",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6538539692759514,
-        "similarity_score": 0.5661073327064514,
-        "citation_text_length": 1217,
-        "dataset_text_length": 2515,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Exploring Similarity between Neural and LLM Trajectories in Language Processing",
       "author": "Xin Xiao, Kaiwen Wei, Jiang Zhong, Dongshuo Yin, Yu Tian, Xuekai Wei, Mingliang Zhou",
       "venue": "ArXiv",
@@ -378,6 +378,29 @@
         "confidence_score": 0.6566096314787866,
         "similarity_score": 0.5684931874275208,
         "citation_text_length": 1207,
+        "dataset_text_length": 2515,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "ELASTIQ: EEG-Language Alignment with Semantic Task Instruction and Querying",
+      "author": "Muyun Jiang, Shuailei Zhang, Zhenjie Yang, Mengjun Wu, Weibang Jiang, Zhiwei Guo, Wei Zhang, Rui Liu, Shangen Zhang, Yong Li, Yi Ding, Cuntai Guan",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2509.24302",
+      "cited_by": 1,
+      "abstract": null,
+      "doi": "10.48550/arXiv.2509.24302",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-024-03398-7",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6623409479856491,
+        "similarity_score": 0.6308009028434753,
+        "citation_text_length": 253,
         "dataset_text_length": 2515,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -547,17 +570,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-15T01:31:00.169821+00:00",
+    "scoring_date": "2026-06-18T23:36:27.912667+00:00",
     "dataset_text_length": 2515,
-    "num_citations_scored": 23,
+    "num_citations_scored": 24,
     "summary_stats": {
-      "mean_confidence": 0.693224523715351,
-      "median_confidence": 0.6724650844931602,
-      "std_confidence": 0.15009428253573573,
+      "mean_confidence": 0.6919377080599468,
+      "median_confidence": 0.6674030162394047,
+      "std_confidence": 0.14706359278234105,
       "min_confidence": 0.34436855435371405,
       "max_confidence": 1.0,
       "high_confidence_count": 9,
-      "medium_confidence_count": 13,
+      "medium_confidence_count": 14,
       "low_confidence_count": 1
     }
   }

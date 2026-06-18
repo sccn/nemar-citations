@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000110",
   "num_citations": 45,
-  "date_last_updated": "2026-06-13T21:36:22.588307+00:00",
+  "date_last_updated": "2026-06-18T23:16:36.133280+00:00",
   "metadata": {
-    "total_cumulative_citations": 192,
-    "fetch_date": "2026-06-13T21:36:22.588307+00:00",
+    "total_cumulative_citations": 197,
+    "fetch_date": "2026-06-18T23:16:36.133280+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
@@ -78,7 +78,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2024,
       "url": "https://doi.org/10.1088/1741-2552/ada0e5",
-      "cited_by": 17,
+      "cited_by": 18,
       "abstract": "OBJECTIVE: Automatic detection and prediction of epilepsy are crucial for improving patient care and quality of life. However, existing methods typically focus on single-dimensional information and often confuse the periodic and aperiodic components in electrophysiological signals. APPROACH: We propose a novel deep learning framework that integrates temporal, spatial, and frequency information of EEG signals, in which periodic and aperiodic components are separated in the frequency domain. Specifically, we calculated the periodic and aperiodic components in single channel and the synchronization index of each component between channels. A self-attention mechanism is employed to filter single-channel features by selectively focusing on the most distinguishing features. Then, a hybrid bilinear deep learning network is utilized to capture the spatiotemporal features by combining a convolutional neural network (CNN) and a long short-term memory (LSTM) network. Finally, a bilinear pooling l",
       "doi": "10.1088/1741-2552/ada0e5",
       "pmid": "39693763",
@@ -90,6 +90,29 @@
         "confidence_score": 0.5511020462214948,
         "similarity_score": 0.47714462876319885,
         "citation_text_length": 1226,
+        "dataset_text_length": 2229,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Evaluation of the Relation between Ictal EEG Features and XAI Explanations",
+      "author": "Sergio E. Sánchez-Hernández, Sulema Torres-Ramos, Israel Román-Godínez, Ricardo A. Salido-Ruiz",
+      "venue": "Brain Sciences",
+      "year": 2024,
+      "url": "https://doi.org/10.3390/brainsci14040306",
+      "cited_by": 16,
+      "abstract": "Epilepsy is a neurological disease with one of the highest rates of incidence worldwide. Although EEG is a crucial tool for its diagnosis, the manual detection of epileptic seizures is time consuming. Automated methods are needed to streamline this process; although there are already several works that have achieved this, the process by which it is executed remains a black box that prevents understanding of the ways in which machine learning algorithms make their decisions. A state-of-the-art deep learning model for seizure detection and three EEG databases were chosen for this study. The developed models were trained and evaluated under different conditions (i.e., three distinct levels of overlap among the chosen EEG data windows). The classifiers with the best performance were selected, then Shapley Additive Explanations (SHAPs) and Local Interpretable Model-Agnostic Explanations (LIMEs) were employed to estimate the importance value of each EEG channel and the Spearman's rank correl",
+      "doi": "10.3390/brainsci14040306",
+      "pmid": "38671958",
+      "openalex_id": "W4393142077",
+      "source_doi": "10.13026/c2k01r",
+      "source_relation": "IsVersionOf",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.550688951611519,
+        "similarity_score": 0.4767869710922241,
+        "citation_text_length": 1221,
         "dataset_text_length": 2229,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -113,29 +136,6 @@
         "confidence_score": 0.5690942595899107,
         "similarity_score": 0.4927223026752472,
         "citation_text_length": 1246,
-        "dataset_text_length": 2229,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Evaluation of the Relation between Ictal EEG Features and XAI Explanations",
-      "author": "Sergio E. Sánchez-Hernández, Sulema Torres-Ramos, Israel Román-Godínez, Ricardo A. Salido-Ruiz",
-      "venue": "Brain Sciences",
-      "year": 2024,
-      "url": "https://doi.org/10.3390/brainsci14040306",
-      "cited_by": 14,
-      "abstract": "Epilepsy is a neurological disease with one of the highest rates of incidence worldwide. Although EEG is a crucial tool for its diagnosis, the manual detection of epileptic seizures is time consuming. Automated methods are needed to streamline this process; although there are already several works that have achieved this, the process by which it is executed remains a black box that prevents understanding of the ways in which machine learning algorithms make their decisions. A state-of-the-art deep learning model for seizure detection and three EEG databases were chosen for this study. The developed models were trained and evaluated under different conditions (i.e., three distinct levels of overlap among the chosen EEG data windows). The classifiers with the best performance were selected, then Shapley Additive Explanations (SHAPs) and Local Interpretable Model-Agnostic Explanations (LIMEs) were employed to estimate the importance value of each EEG channel and the Spearman's rank correl",
-      "doi": "10.3390/brainsci14040306",
-      "pmid": "38671958",
-      "openalex_id": "W4393142077",
-      "source_doi": "10.13026/c2k01r",
-      "source_relation": "IsVersionOf",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.550688951611519,
-        "similarity_score": 0.4767869710922241,
-        "citation_text_length": 1221,
         "dataset_text_length": 2229,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -257,6 +257,29 @@
       }
     },
     {
+      "title": "Addressing Inter-Patient Variability in EEG: Diversity-Enhanced Data Augmentation and Few-Shot Learning-based Epilepsy Detection",
+      "author": "Raghdah Saem Aldahr, Munid Alanazi, Mohammad Ilyas",
+      "venue": "n/a",
+      "year": 2022,
+      "url": "https://doi.org/10.1109/iche55634.2022.10179887",
+      "cited_by": 7,
+      "abstract": "Electroencephalogram (EEG) signals are a key source in epileptic seizure recognition. The patient-specific data scantiness in EEG signals, referring to the inter-patient variability of EEG, hinders the accurate recognition of epileptic seizure patterns. This work presents a multi-class epileptic seizure detection scheme with a two-step solution for addressing the data scantiness and inter-patient variability constraint. The proposed Diversity-enhanced data Augmentation and graph theory-assisted FEw-shot Learning for Multi-class seizure detection (DAFEM) approach incorporates diversified data augmentation, graph theory-based feature extraction, and few-shot learning-based multi-class classification. Initially, the data augmentation utilized a Generative Adversarial Network (GAN) with diversified EEG sample generation to conquer EEG data scarcity. Subsequently, it extracts the potential set of features from the augmented data using the graph theory method based on the analysis of inheren",
+      "doi": "10.1109/iche55634.2022.10179887",
+      "pmid": null,
+      "openalex_id": "W4384520082",
+      "source_doi": "10.13026/c2k01r",
+      "source_relation": "IsVersionOf",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6287945026159287,
+        "similarity_score": 0.5444108247756958,
+        "citation_text_length": 1220,
+        "dataset_text_length": 2229,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Double Attention-Based Deep Convolutional Neural Network for Seizure Detection Using EEG Signals",
       "author": "Lin Shi, Zexin Wang, Yuanwei Ma, Jianjun Chen, Jingzhou Xu, Jun Qi",
       "venue": "Lecture notes in computer science",
@@ -274,29 +297,6 @@
         "confidence_score": 0.602925306558609,
         "similarity_score": 0.5742145776748657,
         "citation_text_length": 222,
-        "dataset_text_length": 2229,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Addressing Inter-Patient Variability in EEG: Diversity-Enhanced Data Augmentation and Few-Shot Learning-based Epilepsy Detection",
-      "author": "Raghdah Saem Aldahr, Munid Alanazi, Mohammad Ilyas",
-      "venue": "n/a",
-      "year": 2022,
-      "url": "https://doi.org/10.1109/iche55634.2022.10179887",
-      "cited_by": 6,
-      "abstract": "Electroencephalogram (EEG) signals are a key source in epileptic seizure recognition. The patient-specific data scantiness in EEG signals, referring to the inter-patient variability of EEG, hinders the accurate recognition of epileptic seizure patterns. This work presents a multi-class epileptic seizure detection scheme with a two-step solution for addressing the data scantiness and inter-patient variability constraint. The proposed Diversity-enhanced data Augmentation and graph theory-assisted FEw-shot Learning for Multi-class seizure detection (DAFEM) approach incorporates diversified data augmentation, graph theory-based feature extraction, and few-shot learning-based multi-class classification. Initially, the data augmentation utilized a Generative Adversarial Network (GAN) with diversified EEG sample generation to conquer EEG data scarcity. Subsequently, it extracts the potential set of features from the augmented data using the graph theory method based on the analysis of inheren",
-      "doi": "10.1109/iche55634.2022.10179887",
-      "pmid": null,
-      "openalex_id": "W4384520082",
-      "source_doi": "10.13026/c2k01r",
-      "source_relation": "IsVersionOf",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6287945026159287,
-        "similarity_score": 0.5444108247756958,
-        "citation_text_length": 1220,
         "dataset_text_length": 2229,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -343,6 +343,29 @@
         "confidence_score": 0.46839194118976596,
         "similarity_score": 0.40553414821624756,
         "citation_text_length": 1236,
+        "dataset_text_length": 2229,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Digital Twin for EEG seizure prediction using time reassigned Multisynchrosqueezing transform-based CNN-BiLSTM-Attention mechanism model",
+      "author": "Antara Ghosh, Debangshu Dey",
+      "venue": "Biomedical Physics & Engineering Express",
+      "year": 2024,
+      "url": "https://doi.org/10.1088/2057-1976/ad992c",
+      "cited_by": 4,
+      "abstract": "The prediction of epileptic seizures is a classical research problem, representing one of the most challenging tasks in the analysis of brain disorders. There is active research into digital twins (DT) for various healthcare applications, as they can transform research into customized and personalized healthcare. The widespread adoption of DT technology relies on ample patient data to ensure precise monitoring and decision-making, leveraging Machine Learning (ML) and Deep Learning (DL) algorithms. Given the non-stationarity of EEG recordings, characterized by substantial frequency variations over time, there is a notable preference for advanced time-frequency methods in seizure prediction. This research proposes a DT-based seizure prediction system by applying an advanced time-frequency analysis approach known as Time-Reassigned MultiSynchroSqueezing Transform (TMSST) to EEG data to extract patient-specific impulse features and subsequently, a Deep Learning strategy, CNN-BiLSTM-Attenti",
+      "doi": "10.1088/2057-1976/ad992c",
+      "pmid": "39622083",
+      "openalex_id": "W4404910754",
+      "source_doi": "10.13026/c2k01r",
+      "source_relation": "IsVersionOf",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6098463991284371,
+        "similarity_score": 0.5280055403709412,
+        "citation_text_length": 1242,
         "dataset_text_length": 2229,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -412,29 +435,6 @@
         "confidence_score": 0.5354643166065216,
         "similarity_score": 0.5099660158157349,
         "citation_text_length": 177,
-        "dataset_text_length": 2229,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Digital Twin for EEG seizure prediction using time reassigned Multisynchrosqueezing transform-based CNN-BiLSTM-Attention mechanism model",
-      "author": "Antara Ghosh, Debangshu Dey",
-      "venue": "Biomedical Physics & Engineering Express",
-      "year": 2024,
-      "url": "https://doi.org/10.1088/2057-1976/ad992c",
-      "cited_by": 3,
-      "abstract": "The prediction of epileptic seizures is a classical research problem, representing one of the most challenging tasks in the analysis of brain disorders. There is active research into digital twins (DT) for various healthcare applications, as they can transform research into customized and personalized healthcare. The widespread adoption of DT technology relies on ample patient data to ensure precise monitoring and decision-making, leveraging Machine Learning (ML) and Deep Learning (DL) algorithms. Given the non-stationarity of EEG recordings, characterized by substantial frequency variations over time, there is a notable preference for advanced time-frequency methods in seizure prediction. This research proposes a DT-based seizure prediction system by applying an advanced time-frequency analysis approach known as Time-Reassigned MultiSynchroSqueezing Transform (TMSST) to EEG data to extract patient-specific impulse features and subsequently, a Deep Learning strategy, CNN-BiLSTM-Attenti",
-      "doi": "10.1088/2057-1976/ad992c",
-      "pmid": "39622083",
-      "openalex_id": "W4404910754",
-      "source_doi": "10.13026/c2k01r",
-      "source_relation": "IsVersionOf",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6098463991284371,
-        "similarity_score": 0.5280055403709412,
-        "citation_text_length": 1242,
         "dataset_text_length": 2229,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1064,7 +1064,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:21:34.272919+00:00",
+    "scoring_date": "2026-06-18T23:40:10.858148+00:00",
     "dataset_text_length": 2229,
     "num_citations_scored": 45,
     "summary_stats": {

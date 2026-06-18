@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000115",
-  "num_citations": 81,
-  "date_last_updated": "2026-06-13T21:36:30.834119+00:00",
+  "num_citations": 82,
+  "date_last_updated": "2026-06-18T23:17:43.792957+00:00",
   "metadata": {
-    "total_cumulative_citations": 1092,
-    "fetch_date": "2026-06-13T21:36:30.834119+00:00",
+    "total_cumulative_citations": 1099,
+    "fetch_date": "2026-06-18T23:17:43.792957+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
@@ -42,7 +42,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1088/1741-2552/aadea0",
-      "cited_by": 231,
+      "cited_by": 232,
       "abstract": "OBJECTIVE: Brain-computer interface (BCI) algorithm development has long been hampered by two major issues: small sample sets and a lack of reproducibility. We offer a solution to both of these problems via a software suite that streamlines both the issues of finding and preprocessing data in a reliable manner, as well as that of using a consistent interface for machine learning methods. APPROACH: By building on recent advances in software for signal analysis implemented in the MNE toolkit, and the unified framework for machine learning offered by the scikit-learn project, we offer a system that can improve BCI algorithm development. This system is fully open-source under the BSD licence and available at https://github.com/NeuroTechX/moabb. MAIN RESULTS: We analyze a set of state-of-the-art decoding algorithms across 12 open access datasets, including over 250 subjects. Our results show that even for the best methods, there are datasets which do not show significant improvements, and f",
       "doi": "10.1088/1741-2552/aadea0",
       "pmid": "30177583",
@@ -83,6 +83,29 @@
       }
     },
     {
+      "title": "REVE: A Foundation Model for EEG - Adapting to Any Setup with Large-Scale Pretraining on 25,000 Subjects",
+      "author": "Yassine El Ouahidi, Jonathan Lys, Philipp Thölke, Nicolas Farrugia, B. Pasdeloup, Vincent Gripon, Karim Jerbi, Giulia Lioi",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2510.21585",
+      "cited_by": 46,
+      "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
+      "doi": "10.48550/arXiv.2510.21585",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6495670241117478,
+        "similarity_score": 0.5623956918716431,
+        "citation_text_length": 1270,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Rethinking CNN Architecture for Enhancing Decoding Performance of Motor Imagery-Based EEG Signals",
       "author": "Sungjin Kim, Dae-Hyeok Lee, Seong–Whan Lee",
       "venue": "IEEE Access",
@@ -100,29 +123,6 @@
         "confidence_score": 0.6232151609659196,
         "similarity_score": 0.539580225944519,
         "citation_text_length": 1189,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "REVE: A Foundation Model for EEG - Adapting to Any Setup with Large-Scale Pretraining on 25,000 Subjects",
-      "author": "Yassine El Ouahidi, Jonathan Lys, Philipp Thölke, Nicolas Farrugia, B. Pasdeloup, Vincent Gripon, Karim Jerbi, Giulia Lioi",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2510.21585",
-      "cited_by": 44,
-      "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
-      "doi": "10.48550/arXiv.2510.21585",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6495670241117478,
-        "similarity_score": 0.5623956918716431,
-        "citation_text_length": 1270,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -525,7 +525,7 @@
       "venue": "2021 10th International IEEE/EMBS Conference on Neural Engineering (NER)",
       "year": 2021,
       "url": "https://doi.org/10.1109/ner49283.2021.9441279",
-      "cited_by": 12,
+      "cited_by": 13,
       "abstract": "Calibration is still an important issue for user experience in Brain-Computer Interfaces (BCI). Common experimental designs often involve a lengthy training period that raises the cognitive fatigue, before even starting to use the BCI. Reducing or suppressing this subject-dependent calibration is possible by relying on advanced machine learning techniques, such as transfer learning. Building on Riemannian BCI, we present a simple and effective scheme to train a classifier on data recorded from different subjects, to reduce the calibration while preserving good performances. The main novelty of this paper is to propose a unique approach that could be applied on very different paradigms. To demonstrate the robustness of this approach, we conducted a meta-analysis on multiple datasets for three BCI paradigms: motor imagery, event-related potentials (P300) and SSVEP. Relying on the MOABB open source framework to ensure the reproducibility of the experiments and the statistical analysis, th",
       "doi": "10.1109/ner49283.2021.9441279",
       "pmid": null,
@@ -548,7 +548,7 @@
       "venue": "IEEE Journal of Biomedical and Health Informatics",
       "year": 2025,
       "url": "https://doi.org/10.1109/JBHI.2025.3622725",
-      "cited_by": 12,
+      "cited_by": 13,
       "abstract": "Electroencephalography (EEG)-based brain-computer interfaces (BCIs) transform spontaneous/evoked neural activity into control commands for external communication. While convolutional neural networks (CNNs) remain the mainstream backbone for EEG decoding, their inherently short receptive field makes it difficult to capture long-range temporal dependencies and global inter-channel relationships. Recent CNN-Transformer (Conformer) hybrids partially address this issue, but most adopt a serial design, resulting in suboptimal integration of local and global features, and often overlook explicit channel-wise modeling. To address these limitations, we propose DBConformer, a dual-branch convolutional Transformer network tailored for EEG decoding. It integrates a temporal Conformer to model long-range temporal dependencies and a spatial Conformer to extract inter-channel interactions, capturing both temporal dynamics and spatial patterns in EEG signals. A lightweight channel attention module fur",
       "doi": "10.1109/JBHI.2025.3622725",
       "pmid": "41129442",
@@ -888,6 +888,29 @@
       }
     },
     {
+      "title": "Transfer Learning between Motor Imagery Datasets using Deep Learning - Validation of Framework and Comparison of Datasets",
+      "author": "Pierre Guetschel, Michael Tangermann",
+      "venue": "ArXiv",
+      "year": 2023,
+      "url": "https://doi.org/10.48550/arXiv.2311.16109",
+      "cited_by": 6,
+      "abstract": "We present a simple deep learning-based framework commonly used in computer vision and demonstrate its effectiveness for cross-dataset transfer learning in mental imagery decoding tasks that are common in the field of Brain-Computer Interfaces (BCI). We investigate, on a large selection of 12 motor-imagery datasets, which ones are well suited for transfer, both as donors and as receivers. Challenges. Deep learning models typically require long training times and are data-hungry, which impedes their use for BCI systems that have to minimize the recording time for (training) examples and are subject to constraints induced by experiments involving human subjects. A solution to both issues is transfer learning, but it comes with its own challenge, i.e., substantial data distribution shifts between datasets, subjects and even between subsequent sessions of the same subject. Approach. For every pair of pre-training (donor) and test (receiver) dataset, we first train a model on the donor befo",
+      "doi": "10.48550/arXiv.2311.16109",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7168896389007569,
+        "similarity_score": 0.6206836700439453,
+        "citation_text_length": 1201,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Session-independent subject-adaptive mental imagery BCI using selective filter-bank adaptive Riemannian features",
       "author": "Jayasandhya Meenakshinathan, Vinay Gupta, Tharun Kumar Reddy, Laxmidhar Behera, Tushar Sandhan",
       "venue": "Medical & Biological Engineering & Computing",
@@ -974,29 +997,6 @@
         "confidence_score": 0.2541618543863297,
         "similarity_score": 0.2200535535812378,
         "citation_text_length": 1177,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Transfer Learning between Motor Imagery Datasets using Deep Learning - Validation of Framework and Comparison of Datasets",
-      "author": "Pierre Guetschel, Michael Tangermann",
-      "venue": "ArXiv",
-      "year": 2023,
-      "url": "https://doi.org/10.48550/arXiv.2311.16109",
-      "cited_by": 5,
-      "abstract": "We present a simple deep learning-based framework commonly used in computer vision and demonstrate its effectiveness for cross-dataset transfer learning in mental imagery decoding tasks that are common in the field of Brain-Computer Interfaces (BCI). We investigate, on a large selection of 12 motor-imagery datasets, which ones are well suited for transfer, both as donors and as receivers. Challenges. Deep learning models typically require long training times and are data-hungry, which impedes their use for BCI systems that have to minimize the recording time for (training) examples and are subject to constraints induced by experiments involving human subjects. A solution to both issues is transfer learning, but it comes with its own challenge, i.e., substantial data distribution shifts between datasets, subjects and even between subsequent sessions of the same subject. Approach. For every pair of pre-training (donor) and test (receiver) dataset, we first train a model on the donor befo",
-      "doi": "10.48550/arXiv.2311.16109",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7168896389007569,
-        "similarity_score": 0.6206836700439453,
-        "citation_text_length": 1201,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1394,6 +1394,29 @@
       }
     },
     {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod L'evy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 1,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.660780919790268,
+        "similarity_score": 0.5721046924591064,
+        "citation_text_length": 1325,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Rethinking Generalized BCIs: Benchmarking 340,000+ Unique Algorithmic Configurations for EEG Mental Command Decoding",
       "author": "Paul Barbaste, Olivier Oullier, Xavier Vasques",
       "venue": "ArXiv",
@@ -1601,6 +1624,29 @@
       }
     },
     {
+      "title": "Unlocking In-Context Learning for Natural Datasets Across Modalities",
+      "author": "Jelena Bratulić, Sudhanshu Mittal, David T. Hoffmann, Samuel Böhm, Robin Tibor Schirrmeister, Tonio Ball, Christian Rupprecht, Thomas Brox",
+      "venue": "International Journal of Computer Vision",
+      "year": 2026,
+      "url": "https://doi.org/10.1007/s11263-026-02913-0",
+      "cited_by": 0,
+      "abstract": "Abstract Large Language Models (LLMs) exhibit In-Context Learning (ICL), which enables the model to perform new tasks conditioning only on the examples provided in the context without updating the model’s weights. While ICL offers fast adaptation across natural language tasks and domains, its emergence is less straightforward for modalities beyond text. In this work, we systematically uncover properties present in LLMs that support the emergence of ICL for autoregressive models and various modalities by promoting the learning of the mechanisms needed for ICL. We identify exact token repetitions in the training data sequences as an important factor for ICL. Such repetitions further improve stability and reduce transiency in ICL performance. We analyse in detail the training dynamics of such data sequences and explain how token repetitions enhance the ICL learning mechanisms. Moreover, we emphasise the importance of the training task difficulty for the emergence of ICL. Finally, by apply",
+      "doi": "10.1007/s11263-026-02913-0",
+      "pmid": null,
+      "openalex_id": "W7164832094",
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.27380579218268397,
+        "similarity_score": 0.2370612919330597,
+        "citation_text_length": 1285,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Riemannian Adversarial Attacks on Symmetric Positive Definite Matrices",
       "author": "Dimitri Timoz, Thibault de Surrel, Florian Yger",
       "venue": "ICASSP 2026 - 2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)",
@@ -1618,29 +1664,6 @@
         "confidence_score": 0.32365017816424374,
         "similarity_score": 0.28021660447120667,
         "citation_text_length": 965,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod L'evy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "n/a",
-      "year": 2026,
-      "url": "n/a",
-      "cited_by": 0,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.660780919790268,
-        "similarity_score": 0.5721046924591064,
-        "citation_text_length": 1325,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1672,21 +1695,21 @@
     {
       "title": "DSAINet: An Efficient Dual-Scale Attentive Interaction Network for General EEG Decoding",
       "author": "Zhiyuan Ma, Zeyuan Li, Zi-Hao Qiu, Jinhao Li, Lin Meng, Xinche Zhang, Yixuan Liu, Xinke Shen, Sen Song",
-      "venue": "n/a",
+      "venue": "ArXiv",
       "year": 2026,
-      "url": "n/a",
+      "url": "https://doi.org/10.48550/arXiv.2604.18095",
       "cited_by": 0,
       "abstract": "In real-world applications of noninvasive electroencephalography (EEG), specialized decoders often show limited generalizability across diverse tasks under subject-independent settings. One central challenge is that task-relevant EEG signals often follow different temporal organization patterns across tasks, while many existing methods rely on task-tailored architectural designs that introduce task-specific temporal inductive biases. This mismatch makes it difficult to adapt temporal modeling across tasks without changing the model configuration. To address these challenges, we propose DSAINet, an efficient dual-scale attentive interaction network for general EEG decoding. Specifically, DSAINet constructs shared spatiotemporal token representations from raw EEG signals and models diverse temporal dynamics through parallel convolutional branches at fine and coarse scales. The resulting representations are then adaptively refined by intra-branch attention to emphasize salient scale-speci",
-      "doi": null,
+      "doi": "10.48550/arXiv.2604.18095",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.1371/journal.pone.0162657",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5669920241832734,
-        "similarity_score": 0.4909021854400635,
-        "citation_text_length": 1231,
+        "confidence_score": 0.5672035798430443,
+        "similarity_score": 0.49108535051345825,
+        "citation_text_length": 1233,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1695,21 +1718,21 @@
     {
       "title": "LI-DSN: A Layer-wise Interactive Dual-Stream Network for EEG Decoding",
       "author": "Cheng Yue, Zhiyuan Ma, Zhongye Xia, Xinche Zhang, Yisi Zhang, Xinke Shen, Sen Song",
-      "venue": "n/a",
+      "venue": "ArXiv",
       "year": 2026,
-      "url": "n/a",
+      "url": "https://doi.org/10.48550/arXiv.2604.01889",
       "cited_by": 0,
       "abstract": "Electroencephalography (EEG) provides a non-invasive window into brain activity, offering high temporal resolution crucial for understanding and interacting with neural processes through brain-computer interfaces (BCIs). Current dual-stream neural networks for EEG often process temporal and spatial features independently through parallel branches, delaying their integration until a final, late-stage fusion. This design inherently leads to an\"information silo\"problem, precluding intermediate cross-stream refinement and hindering spatial-temporal decompositions essential for full feature utilization. We propose LI-DSN, a layer-wise interactive dual-stream network that facilitates progressive, cross-stream communication at each layer, thereby overcoming the limitations of late-fusion paradigms. LI-DSN introduces a novel Temporal-Spatial Integration Attention (TSIA) mechanism, which constructs a Spatial Affinity Correlation Matrix (SACM) to capture inter-electrode spatial structural relati",
-      "doi": null,
+      "doi": "10.48550/arXiv.2604.01889",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.1371/journal.pone.0162657",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5528073996305466,
-        "similarity_score": 0.47862112522125244,
-        "citation_text_length": 1193,
+        "confidence_score": 0.5550908651947976,
+        "similarity_score": 0.4805981516838074,
+        "citation_text_length": 1195,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1718,21 +1741,21 @@
     {
       "title": "Synthetic Data Generation for Brain-Computer Interfaces: Overview, Benchmarking, and Future Directions",
       "author": "Ziwei Wang, Zhen He, Xingyi He, Hongbin Wang, Tianwang Jia, Jingwei Luo, Siyang Li, Xiaoqing Chen, Dongrui Wu",
-      "venue": "n/a",
+      "venue": "ArXiv",
       "year": 2026,
-      "url": "n/a",
+      "url": "https://doi.org/10.48550/arXiv.2603.12296",
       "cited_by": 0,
       "abstract": "Deep learning has achieved transformative performance across diverse domains, largely driven by large-scale and high-quality training data. In contrast, the development of brain-computer interfaces (BCIs) is fundamentally constrained by limited, heterogeneous, and privacy-sensitive neural recordings. Generating synthetic yet physiologically plausible brain signals has therefore emerged as a promising strategy to mitigate data scarcity, improve model generalization, and support data-efficient BCIs. This survey provides a comprehensive review of synthetic brain data generation for BCIs, covering methodological taxonomies, benchmark experiments, evaluation metrics, key applications, and future directions. We systematically categorize existing generation approaches into four types: signal-transformation-based, feature-based, model-based, and translation-based generation, and discuss their characteristics, advantages, and limitations. Furthermore, we benchmark representative brain signal ge",
-      "doi": null,
+      "doi": "10.48550/arXiv.2603.12296",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.1371/journal.pone.0162657",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5758693416416646,
-        "similarity_score": 0.4985881745815277,
-        "citation_text_length": 1253,
+        "confidence_score": 0.5781003141403199,
+        "similarity_score": 0.5005197525024414,
+        "citation_text_length": 1255,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1902,18 +1925,18 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:21:56.619738+00:00",
+    "scoring_date": "2026-06-18T23:40:35.355212+00:00",
     "dataset_text_length": 2228,
-    "num_citations_scored": 81,
+    "num_citations_scored": 82,
     "summary_stats": {
-      "mean_confidence": 0.6292353154148586,
-      "median_confidence": 0.6237032979726792,
-      "std_confidence": 0.1090576475221468,
+      "mean_confidence": 0.6249584431037671,
+      "median_confidence": 0.6234592294692993,
+      "std_confidence": 0.11516722646312624,
       "min_confidence": 0.2541618543863297,
       "max_confidence": 1.0,
       "high_confidence_count": 17,
       "medium_confidence_count": 61,
-      "low_confidence_count": 3
+      "low_confidence_count": 4
     }
   }
 }

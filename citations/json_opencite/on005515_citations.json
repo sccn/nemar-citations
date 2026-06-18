@@ -1,10 +1,10 @@
 {
   "dataset_id": "on005515",
   "num_citations": 12,
-  "date_last_updated": "2026-06-13T21:44:09.885877+00:00",
+  "date_last_updated": "2026-06-18T23:26:52.331866+00:00",
   "metadata": {
-    "total_cumulative_citations": 59,
-    "fetch_date": "2026-06-13T21:44:09.885877+00:00",
+    "total_cumulative_citations": 62,
+    "fetch_date": "2026-06-18T23:26:52.331866+00:00",
     "processing_version": "1.0",
     "schema_version": "2.0",
     "discovery_backend": "opencite",
@@ -42,7 +42,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2510.21585",
-      "cited_by": 44,
+      "cited_by": 46,
       "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
       "doi": "10.48550/arXiv.2510.21585",
       "pmid": null,
@@ -100,6 +100,29 @@
         "confidence_score": 0.567798489779234,
         "similarity_score": 0.4916004240512848,
         "citation_text_length": 1213,
+        "dataset_text_length": 2353,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod L'evy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 1,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1101/2024.10.03.615261",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7122971668839455,
+        "similarity_score": 0.6167075037956238,
+        "citation_text_length": 1325,
         "dataset_text_length": 2353,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -198,29 +221,6 @@
       }
     },
     {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod L'evy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "n/a",
-      "year": 2026,
-      "url": "n/a",
-      "cited_by": 0,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1101/2024.10.03.615261",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7122971668839455,
-        "similarity_score": 0.6167075037956238,
-        "citation_text_length": 1325,
-        "dataset_text_length": 2353,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Q-DIVER: Integrated Quantum Transfer Learning and Differentiable Quantum Architecture Search with EEG Data",
       "author": "J. Park, Yeong-Duk Park, Jiook Cha",
       "venue": "2026 International Conference on Quantum Communications, Networking, and Computing (QCNC)",
@@ -291,7 +291,7 @@
     },
     {
       "title": "Toward OpenEEG-Bench: A Live Community-Driven Benchmark for EEG Foundation Models",
-      "author": "Pierre Guetschel, Bruno Aristimunha, Dung Truong, Kuntal Kokate, Michael Tangermann, A. Delorme",
+      "author": "Pierre Guetschel, Bruno Aristimunha, Dung Truong, Kuntal Kokate, Michael Tangermann, Arnaud Delorme",
       "venue": "n/a",
       "year": 0,
       "url": "n/a",
@@ -304,9 +304,9 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5691229104995728,
-        "similarity_score": 0.5691229104995728,
-        "citation_text_length": 206,
+        "confidence_score": 0.5719915628433228,
+        "similarity_score": 0.5719915628433228,
+        "citation_text_length": 210,
         "dataset_text_length": 2353,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -315,13 +315,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:30:46.842839+00:00",
+    "scoring_date": "2026-06-18T23:53:44.512957+00:00",
     "dataset_text_length": 2353,
     "num_citations_scored": 12,
     "summary_stats": {
-      "mean_confidence": 0.618966007642448,
+      "mean_confidence": 0.6192050620044272,
       "median_confidence": 0.6160539709031583,
-      "std_confidence": 0.0916700576850282,
+      "std_confidence": 0.0915434196066057,
       "min_confidence": 0.4033568193018437,
       "max_confidence": 0.7180419266223907,
       "high_confidence_count": 4,
