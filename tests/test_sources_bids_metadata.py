@@ -161,6 +161,14 @@ class _RaisingContent:
         raise AssertionError("unsupported encoding: None")
 
 
+class _NoneContent:
+    """ContentFile stand-in whose decoded_content is None (defensive branch)."""
+
+    @property
+    def decoded_content(self) -> bytes | None:
+        return None
+
+
 class _BytesContent:
     """ContentFile stand-in whose decoded_content is real JSON bytes."""
 
@@ -204,6 +212,11 @@ class GetDoiReferencesDecodeGuard(TestCase):
         result = self._source_returning(_RaisingContent()).get_doi_references(
             "ds999999"
         )
+        assert isinstance(result, FetchError)
+        self.assertEqual(result.reason, "parse")
+
+    def test_none_blob_returns_parse_error(self) -> None:
+        result = self._source_returning(_NoneContent()).get_doi_references("ds999999")
         assert isinstance(result, FetchError)
         self.assertEqual(result.reason, "parse")
 

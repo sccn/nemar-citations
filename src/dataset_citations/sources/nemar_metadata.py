@@ -144,13 +144,19 @@ class NemarMetadataSource:
 
         if isinstance(content, list):
             return FetchError("parse", "expected file, got directory listing")
-        if not hasattr(content, "decoded_content"):
-            return FetchError(
-                "parse",
-                f"unexpected get_contents return shape: {type(content).__name__}",
-            )
+        # `decoded_content` asserts the blob is base64-encoded; a >1MB
+        # .nemar/metadata.json comes back with encoding=None and the property
+        # raises AssertionError, which hasattr() propagates. Guard it so one
+        # oversized blob is a per-dataset parse failure, not a pipeline abort
+        # (same fix as bids_metadata.get_doi_references; see issue #168).
         try:
-            payload: Any = json.loads(content.decoded_content.decode("utf-8"))
+            raw = content.decoded_content
+        except (AssertionError, ValueError, AttributeError) as e:
+            return FetchError("parse", f"could not decode .nemar/metadata.json: {e}")
+        if raw is None:
+            return FetchError("parse", ".nemar/metadata.json has no decodable content")
+        try:
+            payload: Any = json.loads(raw.decode("utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError) as e:
             return FetchError("parse", f"invalid JSON: {e}")
 
