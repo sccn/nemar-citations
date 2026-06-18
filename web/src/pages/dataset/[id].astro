@@ -30,14 +30,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   {
     dataset.citations.length > 0 && (
       <div class="filter" role="group" aria-label="Filter citations by what they reference">
-        <button type="button" class="filter__btn is-active" data-filter="all">
+        <button type="button" class="filter__btn is-active" data-filter="all" aria-pressed="true">
           All <span class="filter__n">{fmt(dataset.numCitations)}</span>
         </button>
-        <button type="button" class="filter__btn" data-filter="dataset">
+        <button type="button" class="filter__btn" data-filter="dataset" aria-pressed="false">
           Cites dataset <span class="filter__n">{fmt(dataset.numDatasetCitations)}</span>
         </button>
-        <button type="button" class="filter__btn" data-filter="paper">
-          Cites data paper <span class="filter__n">{fmt(dataset.numDataPaperCitations)}</span>
+        <button type="button" class="filter__btn" data-filter="paper" aria-pressed="false">
+          Cites a paper <span class="filter__n">{fmt(dataset.numDataPaperCitations)}</span>
         </button>
       </div>
     )
@@ -88,6 +88,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           const filter = btn.dataset.filter;
           for (const b of buttons) {
             b.classList.toggle("is-active", b === btn);
+            b.setAttribute("aria-pressed", String(b === btn));
           }
           let visible = 0;
           for (const li of items) {
