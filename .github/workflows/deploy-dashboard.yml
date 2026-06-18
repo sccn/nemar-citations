@@ -59,6 +59,11 @@ jobs:
         run: |
           mkdir -p deploy/citations
           cp -r web/dist/. deploy/citations/
+          # Cloudflare Pages reads _headers from the DEPLOY ROOT, not
+          # deploy/citations/, so the CORS rule for the citation API the
+          # nemar.org modal fetches (#170) must live there. Source of truth is
+          # web/public/_headers (also copied under citations/, harmlessly).
+          cp web/public/_headers deploy/_headers
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v4
