@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds004752",
-  "num_citations": 45,
+  "num_citations": 47,
   "date_last_updated": "2026-06-18T23:13:09.664780+00:00",
   "metadata": {
     "total_cumulative_citations": 332,
@@ -12,7 +12,13 @@
     "anchor_count": 1,
     "anchor_errors": {},
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds004752"
+    ],
+    "num_accession_mentions": 2,
+    "num_dataset_citations": 2,
+    "num_datapaper_citations": 45
   },
   "citation_details": [
     {
@@ -1049,20 +1055,70 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Bridging scalp and intracranial EEG in BCI via pretrained neural representations and geometric constraint embedding",
+      "author": "Yihang Dong, Changhong Jing, Shuqiang Wang",
+      "venue": "ArXiv.org",
+      "year": 2026,
+      "url": "https://openalex.org/W7154865075",
+      "cited_by": 0,
+      "abstract": "Electroencephalography (EEG) has become one of the key modalities underpinning brain-computer interfaces (BCIs) due to its high temporal resolution, rapid responsiveness, non-invasiveness, low cost, and portability. However, EEG signals are substantially inferior to intracranial EEG (iEEG) in signal-to-noise ratio and local spatial resolution, whereas iEEG suffers from extremely limited clinical accessibility owing to its invasive nature, hindering widespread application. To address this challenge, this study proposes a unified data-and prior knowledge-driven framework for EEG-iEEG representational enhancement. Guided by the principle that \"geometric structure dictates function\", the framework maps static cortical anatomy onto dynamic constraints governing neural signal propagation and integrates general-purpose neural representations extracted by a pre-trained large EEG model to explicitly model signal transmission through the brain. Enhanced EEG signals are then synthesized via a multidimensional representation diffusion process. Numerous experimental results demonstrate that the generated enhanced EEG signals effectively recover the neural activity patterns lost during propagation through the brain. This finding indicates that the performance ceiling of BCIs is constrained not only by acquisition hardware but also by the depth to which the generative model resolves the mechanisms of neural signal propagation. Collectively, the proposed framework provides a viable pathway toward acquiring high-fidelity neural signals at low cost.",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": "W7154865075",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004752",
+      "confidence_scoring": {
+        "confidence_score": 0.7006691095232964,
+        "similarity_score": 0.6066399216651917,
+        "citation_text_length": 1705,
+        "dataset_text_length": 2460,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Cross-Subject Intracranial EEG Reconstruction from Scalp Recordings Using Multi-Scale Cross-Attention Transformers",
+      "author": "Tien-Dat Pham, Xuan-The Tran",
+      "venue": "ArXiv.org",
+      "year": 2026,
+      "url": "https://openalex.org/W7162044867",
+      "cited_by": 0,
+      "abstract": "Intracranial EEG (iEEG) provides high-fidelity neural recordings essential for clinical and brain-computer interface applications, but acquiring these signals requires invasive surgery. While recent studies have attempted to estimate iEEG from non-invasive scalp EEG, most rely on patient-specific models, creating a circular dependency: if surgery is required to collect training data, the non-invasive model offers limited practical benefit. In this study, we address the challenge of cross-subject iEEG reconstruction by predicting intracranial signals for unseen patients using models trained on other individuals. We propose CAST (Cross-Attention Spatial-Temporal Transformer), a machine learning framework that translates scalp EEG into multi-channel iEEG waveforms through a two-stage transfer learning strategy. First, a temporal encoder extracts multi-scale neural representations at three different resolutions. Then, because electrode placements vary substantially across patients, a channel-aware decoder is calibrated using only a few minutes of data from the target subject. We evaluated the proposed method using leave-one-subject-out cross-validation on two public datasets comprising 1,282 iEEG channels. Experimental results demonstrate that CAST reconstructs cortical signals located near the scalp surface substantially better than deep subcortical activity. In highly observable sensorimotor regions, the model achieved peak correlations of up to r=0.864 in the precentral gyrus. Furthermore, with a channel selection strategy, CAST obtained a mean correlation of r=0.545 on viable subjects, outperforming previous within-subject baselines. These findings indicate that cortical iEEG signals can be reconstructed for unseen subjects from scalp EEG without extensive patient-specific training, and that only a brief calibration phase is sufficient to adapt the model to new hardware configurations.",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": "W7162044867",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004752",
+      "confidence_scoring": {
+        "confidence_score": 0.7144043934345246,
+        "similarity_score": 0.6185319423675537,
+        "citation_text_length": 1690,
+        "dataset_text_length": 2460,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:35:36.335149+00:00",
+    "scoring_date": "2026-06-19T10:18:55.667564+00:00",
     "dataset_text_length": 2460,
-    "num_citations_scored": 45,
+    "num_citations_scored": 47,
     "summary_stats": {
-      "mean_confidence": 0.556210392653942,
-      "median_confidence": 0.5446766884624958,
-      "std_confidence": 0.10447574463321613,
+      "mean_confidence": 0.5626498121784087,
+      "median_confidence": 0.5517982247471811,
+      "std_confidence": 0.10670379658774871,
       "min_confidence": 0.31996385693550117,
       "max_confidence": 0.8412774825096131,
-      "high_confidence_count": 2,
+      "high_confidence_count": 4,
       "medium_confidence_count": 41,
       "low_confidence_count": 2
     }

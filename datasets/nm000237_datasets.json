@@ -1,0 +1,60 @@
+{
+  "dataset_id": "nm000237",
+  "date_retrieved": "2026-06-19T10:01:12.564373+00:00",
+  "dataset_description": {
+    "Name": "7-day motor imagery BCI EEG dataset from Zhou et al 2021",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Qing Zhou",
+      "Jiafan Lin",
+      "Lin Yao",
+      "Yueming Wang",
+      "Yan Han",
+      "Kedi Xu"
+    ],
+    "ReferencesAndLinks": [
+      "https://zenodo.org/records/18988317"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.3389/fnhum.2021.701091",
+        "URL": "https://zenodo.org/records/18988317"
+      }
+    ],
+    "Keywords": [
+      "Healthy",
+      "Motor",
+      "Research",
+      "imagery",
+      "research"
+    ],
+    "PublicationYear": 2021,
+    "DatasetDOI": "10.82901/nemar.nm000237",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000237-blue)](https://doi.org/10.82901/nemar.nm000237)\n\n# 7-day motor imagery BCI EEG dataset from Zhou et al 2021\n\n7-day motor imagery BCI EEG dataset from Zhou et al 2021.\n\n## Dataset Overview\n\n- **Code**: Zhou2020\n- **Paradigm**: imagery\n- **DOI**: 10.3389/fnhum.2021.701091\n- **Subjects**: 20\n- **Sessions per subject**: 7\n- **Events**: left_hand=1, right_hand=2, feet=3, rest=4\n- **Trial interval**: [0, 5] s\n- **Runs per session**: 6\n- **File format**: NPZ\n- **Data preprocessed**: True\n\n## Acquisition\n\n- **Sampling rate**: 500.0 Hz\n- **Number of channels**: 41\n- **Channel types**: eeg=41\n- **Channel names**: F3, F1, Fz, F2, F4, FC5, FC3, FC1, FCz, FC2, FC4, FC6, C5, C3, C1, Cz, C2, C4, C6, CP5, CP3, CP1, CPz, CP2, CP4, CP6\n- **Montage**: standard_1005\n- **Hardware**: Neuroscan SynAmps2\n- **Reference**: vertex (Cz)\n- **Ground**: AFz\n- **Sensor type**: Ag/AgCl\n- **Line frequency**: 50.0 Hz\n- **Online filters**: {'bandpass': [0.5, 100], 'notch_hz': 50}\n\n## Participants\n\n- **Number of subjects**: 20\n- **Health status**: healthy\n- **Age**: mean=23.2, std=1.47, min=21, max=27\n- **Gender distribution**: female=9, male=11\n- **Handedness**: right-handed\n- **BCI experience**: mixed\n- **Species**: human\n\n## Experimental Protocol\n\n- **Paradigm**: imagery\n- **Number of classes**: 4\n- **Class labels**: left_hand, right_hand, feet, rest\n- **Trial duration**: 5.0 s\n- **Study design**: 7-day longitudinal MI-BCI study without feedback training. 4 classes: left hand, right hand, both feet, idle\n- **Feedback type**: none\n- **Stimulus type**: arrow cues\n- **Stimulus modalities**: visual\n- **Primary modality**: visual\n- **Synchronicity**: synchronous\n- **Mode**: offline\n\n## HED Event Annotations\n\nSchema: HED 8.4.0 | Browse: https://www.hedtags.org/hed-schema-browser\n\n```\n  left_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Left, Hand\n\n  right_hand\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine\n          ├─ Move\n          └─ Right, Hand\n\n  feet\n    ├─ Sensory-event, Experimental-stimulus, Visual-presentation\n    └─ Agent-action\n       └─ Imagine, Move, Foot\n\n  rest\n    ├─ Sensory-event\n    ├─ Experimental-stimulus\n    ├─ Visual-presentation\n    └─ Rest\n\n```\n## Paradigm-Specific Parameters\n\n- **Detected paradigm**: motor_imagery\n- **Imagery tasks**: left_hand, right_hand, feet, rest\n- **Imagery duration**: 5.0 s\n\n## Data Structure\n\n- **Trials**: 33600\n- **Trials context**: 20 subjects x 7 sessions x 6 runs x 40 trials = 33600\n\n## Signal Processing\n\n- **Classifiers**: SVM\n- **Feature extraction**: CSP\n- **Frequency bands**: classification=[8.0, 30.0] Hz\n- **Spatial filters**: CSP\n\n## Cross-Validation\n\n- **Method**: 10-fold\n- **Folds**: 10\n- **Evaluation type**: within_session\n\n## BCI Application\n\n- **Applications**: research\n- **Environment**: laboratory\n- **Online feedback**: False\n\n## Tags\n\n- **Pathology**: Healthy\n- **Modality**: Motor\n- **Type**: Research\n\n## Documentation\n\n- **DOI**: 10.3389/fnhum.2021.701091\n- **License**: CC-BY-4.0\n- **Investigators**: Qing Zhou, Jiafan Lin, Lin Yao, Yueming Wang, Yan Han, Kedi Xu\n- **Institution**: Zhejiang University\n- **Country**: CN\n- **Repository**: Zenodo\n- **Data URL**: https://zenodo.org/records/18988317\n- **Publication year**: 2021\n\n## References\n\nZhou, Q., Lin, J., Yao, L., Wang, Y., Han, Y., Xu, K. (2021). Relative Power Correlates With the Decoding Performance of Motor Imagery Both Across Time and Subjects. Frontiers in Human Neuroscience, 15, 701091. https://doi.org/10.3389/fnhum.2021.701091\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Hochenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nPernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., Oostenveld, R. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. Scientific Data, 6, 103. https://doi.org/10.1038/s41597-019-0104-8\n\n---\nGenerated by MOABB 1.5.0 (Mother of All BCI Benchmarks)\nhttps://github.com/NeuroTechX/moabb\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000237",
+    "exists": true,
+    "description": "7-day motor imagery BCI EEG dataset from Zhou et al 2021",
+    "created_at": "2026-03-25T19:39:20+00:00",
+    "updated_at": "2026-06-18T06:27:29+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

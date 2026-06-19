@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds001849",
-  "num_citations": 43,
+  "num_citations": 44,
   "date_last_updated": "2026-06-18T22:26:00.396291+00:00",
   "metadata": {
     "total_cumulative_citations": 923,
@@ -12,7 +12,13 @@
     "anchor_count": 1,
     "anchor_errors": {},
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds001849"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 2,
+    "num_datapaper_citations": 42
   },
   "citation_details": [
     {
@@ -956,7 +962,9 @@
         "dataset_text_length": 164,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
+      },
+      "mentions_accession": true,
+      "matched_accession": "ds001849"
     },
     {
       "title": "Insight into the impact of focal stimulation on large-scale network dynamics",
@@ -1003,21 +1011,46 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Identifying site- and stimulation-specific TMS-evoked EEG potentials using a quantitative cosine similarity metric",
+      "author": "Michael Freedberg, Jack A. Reeves, Sara J. Hussain, Kareem A. Zaghloul, Eric M. Wassermann",
+      "venue": "PLoS ONE",
+      "year": 2020,
+      "url": "https://doi.org/10.1371/journal.pone.0216185",
+      "cited_by": 47,
+      "abstract": "The ability to interpret transcranial magnetic stimulation (TMS)-evoked electroencephalography (EEG) potentials (TEPs) is limited by artifacts, such as auditory evoked responses produced by discharge of the TMS coil. TEPs generated from direct cortical stimulation should vary in their topographical activity pattern according to stimulation site and differ from responses to sham stimulation. Responses that do not show these effects are likely to be artifactual. In 20 healthy volunteers, we delivered active and sham TMS to the right prefrontal, left primary motor, and left posterior parietal cortex and compared the waveform similarity of TEPs between stimulation sites and active and sham TMS using a cosine similarity-based analysis method. We identified epochs after the stimulus when the spatial pattern of TMS-evoked activation showed greater than random similarity between stimulation sites and sham vs. active TMS, indicating the presence of a dominant artifact. To do this, we binarized the derivatives of the TEPs recorded from 30 EEG channels and calculated cosine similarity between conditions at each time point with millisecond resolution. Only TEP components occurring before approximately 80 ms differed across stimulation sites and between active and sham, indicating site and condition-specific responses. We therefore conclude that, in the absence of noise masking or other measures to decrease neural artifact, TEP components before about 80 ms can be safely interpreted as stimulation location-specific responses to TMS, but components beyond this latency should be interpreted with caution due to high similarity in their topographical activity pattern.",
+      "doi": "10.1371/journal.pone.0216185",
+      "pmid": "31929531",
+      "openalex_id": "W2998903841",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds001849",
+      "confidence_scoring": {
+        "confidence_score": 0.56301604449749,
+        "similarity_score": 0.48745977878570557,
+        "citation_text_length": 1751,
+        "dataset_text_length": 164,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:28:32.604151+00:00",
+    "scoring_date": "2026-06-19T10:10:33.070434+00:00",
     "dataset_text_length": 164,
-    "num_citations_scored": 43,
+    "num_citations_scored": 44,
     "summary_stats": {
-      "mean_confidence": 0.47499216349665513,
-      "median_confidence": 0.47883706301450735,
-      "std_confidence": 0.05126651051009267,
+      "mean_confidence": 0.47699270624667417,
+      "median_confidence": 0.4793141131103039,
+      "std_confidence": 0.052350887242717206,
       "min_confidence": 0.3108077645301819,
       "max_confidence": 0.577825140953064,
       "high_confidence_count": 0,
-      "medium_confidence_count": 41,
+      "medium_confidence_count": 42,
       "low_confidence_count": 2
     }
   }

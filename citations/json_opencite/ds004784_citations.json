@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds004784",
-  "num_citations": 21,
+  "num_citations": 22,
   "date_last_updated": "2026-06-18T23:13:11.094946+00:00",
   "metadata": {
     "total_cumulative_citations": 124,
@@ -12,7 +12,13 @@
     "anchor_count": 1,
     "anchor_errors": {},
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds004784"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 21
   },
   "citation_details": [
     {
@@ -497,20 +503,45 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "iCanClean Removes Motion, Muscle, Eye, and Line-Noise Artifacts from Phantom EEG",
+      "author": "Ryan J. Downey, Daniel P. Ferris",
+      "venue": "Sensors",
+      "year": 2023,
+      "url": "https://doi.org/10.3390/s23198214",
+      "cited_by": 16,
+      "abstract": "The goal of this study was to test a novel approach (iCanClean) to remove non-brain sources from scalp EEG data recorded in mobile conditions. We created an electrically conductive phantom head with 10 brain sources, 10 contaminating sources, scalp, and hair. We tested the ability of iCanClean to remove artifacts while preserving brain activity under six conditions: Brain, Brain + Eyes, Brain + Neck Muscles, Brain + Facial Muscles, Brain + Walking Motion, and Brain + All Artifacts. We compared iCanClean to three other methods: Artifact Subspace Reconstruction (ASR), Auto-CCA, and Adaptive Filtering. Before and after cleaning, we calculated a Data Quality Score (0–100%), based on the average correlation between brain sources and EEG channels. iCanClean consistently outperformed the other three methods, regardless of the type or number of artifacts present. The most striking result was for the condition with all artifacts simultaneously present. Starting from a Data Quality Score of 15.7% (before cleaning), the Brain + All Artifacts condition improved to 55.9% after iCanClean. Meanwhile, it only improved to 27.6%, 27.2%, and 32.9% after ASR, Auto-CCA, and Adaptive Filtering. For context, the Brain condition scored 57.2% without cleaning (reasonable target). We conclude that iCanClean offers the ability to clear multiple artifact sources in real time and could facilitate human mobile brain-imaging studies with EEG.",
+      "doi": "10.3390/s23198214",
+      "pmid": "37837044",
+      "openalex_id": "W4387262518",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004784",
+      "confidence_scoring": {
+        "confidence_score": 0.8322520485520364,
+        "similarity_score": 0.7205645442008972,
+        "citation_text_length": 1593,
+        "dataset_text_length": 1048,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:35:42.797699+00:00",
+    "scoring_date": "2026-06-19T10:19:09.926059+00:00",
     "dataset_text_length": 1048,
-    "num_citations_scored": 21,
+    "num_citations_scored": 22,
     "summary_stats": {
-      "mean_confidence": 0.5639258436858655,
-      "median_confidence": 0.5106845542788506,
-      "std_confidence": 0.10599455293897057,
+      "mean_confidence": 0.5761224893616005,
+      "median_confidence": 0.5137201852351427,
+      "std_confidence": 0.1176779161484647,
       "min_confidence": 0.45487816080451016,
-      "max_confidence": 0.7914871385693552,
-      "high_confidence_count": 3,
+      "max_confidence": 0.8322520485520364,
+      "high_confidence_count": 4,
       "medium_confidence_count": 18,
       "low_confidence_count": 0
     }

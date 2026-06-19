@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds003655",
-  "num_citations": 23,
+  "num_citations": 24,
   "date_last_updated": "2026-06-18T22:29:23.075636+00:00",
   "metadata": {
     "total_cumulative_citations": 220,
@@ -12,7 +12,13 @@
     "anchor_count": 1,
     "anchor_errors": {},
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds003655"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 2,
+    "num_datapaper_citations": 22
   },
   "citation_details": [
     {
@@ -243,7 +249,9 @@
         "dataset_text_length": 374,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
+      },
+      "mentions_accession": true,
+      "matched_accession": "ds003655"
     },
     {
       "title": "On the feasibility of an online brain-computer interface-based neurofeedback game for enhancing attention and working memory in stroke and mild cognitive impairment patients",
@@ -543,21 +551,46 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Bayesian Functional Connectivity and Graph Convolutional Network for Working Memory Load Classification",
+      "author": "Harshini Gangapuram, Vidya Manian",
+      "venue": "arXiv (Cornell University)",
+      "year": 2024,
+      "url": "https://doi.org/10.48550/arxiv.2404.19467",
+      "cited_by": 0,
+      "abstract": "Brain responses related to working memory originate from distinct brain areas and oscillate at different frequencies. EEG signals with high temporal correlation can effectively capture these responses. Therefore, estimating the functional connectivity of EEG for working memory protocols in different frequency bands plays a significant role in analyzing the brain dynamics with increasing memory and cognitive loads, which remains largely unexplored. The present study introduces a Bayesian structure learning algorithm to learn the functional connectivity of EEG in sensor space. Next, the functional connectivity graphs are taken as input to the graph convolutional network to classify the working memory loads. The intrasubject (subject-specific) classification performed on 154 subjects for six different verbal working memory loads produced the highest classification accuracy of 96% and average classification accuracy of 89%, outperforming state-of-the-art classification models proposed in the literature. Furthermore, the proposed Bayesian structure learning algorithm is compared with state-of-the-art functional connectivity estimation methods through intersubject and intrasubject statistical analysis of variance. The results also show that the alpha and theta bands have better classification accuracy than the beta band.",
+      "doi": "10.48550/arxiv.2404.19467",
+      "pmid": null,
+      "openalex_id": "W4396600707",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003655",
+      "confidence_scoring": {
+        "confidence_score": 0.6616172289848329,
+        "similarity_score": 0.5728287696838379,
+        "citation_text_length": 1537,
+        "dataset_text_length": 374,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:30:50.731889+00:00",
+    "scoring_date": "2026-06-19T10:13:27.396106+00:00",
     "dataset_text_length": 374,
-    "num_citations_scored": 23,
+    "num_citations_scored": 24,
     "summary_stats": {
-      "mean_confidence": 0.5803064264292302,
-      "median_confidence": 0.5963472479581834,
-      "std_confidence": 0.11390506997451814,
+      "mean_confidence": 0.5836943765357138,
+      "median_confidence": 0.6014696761965752,
+      "std_confidence": 0.11268436076894846,
       "min_confidence": 0.22821761280298236,
       "max_confidence": 0.7715748837590218,
       "high_confidence_count": 3,
-      "medium_confidence_count": 19,
+      "medium_confidence_count": 20,
       "low_confidence_count": 1
     }
   }

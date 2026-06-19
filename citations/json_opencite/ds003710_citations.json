@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds003710",
-  "num_citations": 1,
+  "num_citations": 2,
   "date_last_updated": "2026-06-18T22:29:47.363448+00:00",
   "metadata": {
     "total_cumulative_citations": 64,
@@ -23,7 +23,13 @@
         "paper_venue": "BMC Medicine",
         "reason": "The paper discusses brain signal entropy in infants, but the dataset is an example dataset for the APPLESEED pipeline, which is described in a different paper (Puglia et al., 2022)."
       }
-    ]
+    ],
+    "searched_accessions": [
+      "ds003710"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 1
   },
   "citation_details": [
     {
@@ -48,20 +54,45 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "The Automated Preprocessing Pipe-Line for the Estimation of Scale-wise Entropy from EEG Data (APPLESEED): Development and validation for use in pediatric populations",
+      "author": "Meghan H. Puglia, Jacqueline S. Slobin, Cabell L. Williams",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2021,
+      "url": "https://doi.org/10.1101/2021.07.10.450198",
+      "cited_by": 1,
+      "abstract": "Abstract It is increasingly understood that moment-to-moment brain signal variability – traditionally modeled out of analyses as mere “noise” – serves a valuable function role and captures properties of brain function related to development, cognitive processing, and psychopathology. Multiscale entropy (MSE) – a measure of signal irregularity across temporal scales – is an increasingly popular analytic technique in human neuroscience. MSE provides insight into the time-structure and (non)linearity of fluctuations in neural activity and network dynamics, capturing the brain’s moment-to-moment complexity as it operates on multiple time scales. MSE is emerging as a powerful predictor of developmental processes and outcomes. However, differences in data preprocessing and MSE computation make it challenging to compare results across studies. Here, we (1) provide an introduction to MSE for developmental researchers, (2) demonstrate the effect of preprocessing procedures on scale-wise entropy estimates, and (3) establish a standardized EEG preprocessing and entropy estimation pipeline that generates scale-wise entropy estimates that are reliable and capable of differentiating developmental stages and cognitive states. This novel pipeline – the Automated Preprocessing Pipe-Line for the Estimation of Scale-wise Entropy from EEG Data (APPLESEED) is fully automated, customizable, and freely available for download from https://github.com/mhpuglia/APPLESEED . The dataset used herein to develop and validate the pipeline is available for download from https://openneuro.org/datasets/ds003710 .",
+      "doi": "10.1101/2021.07.10.450198",
+      "pmid": null,
+      "openalex_id": "W3182593478",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003710",
+      "confidence_scoring": {
+        "confidence_score": 0.8516653954982759,
+        "similarity_score": 0.737372636795044,
+        "citation_text_length": 1801,
+        "dataset_text_length": 1810,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:31:20.473719+00:00",
+    "scoring_date": "2026-06-19T10:13:59.531019+00:00",
     "dataset_text_length": 1810,
-    "num_citations_scored": 1,
+    "num_citations_scored": 2,
     "summary_stats": {
-      "mean_confidence": 0.731033026278019,
-      "median_confidence": 0.731033026278019,
-      "std_confidence": 0.0,
+      "mean_confidence": 0.7913492108881475,
+      "median_confidence": 0.7913492108881475,
+      "std_confidence": 0.06031618461012844,
       "min_confidence": 0.731033026278019,
-      "max_confidence": 0.731033026278019,
-      "high_confidence_count": 1,
+      "max_confidence": 0.8516653954982759,
+      "high_confidence_count": 2,
       "medium_confidence_count": 0,
       "low_confidence_count": 0
     }

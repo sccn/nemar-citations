@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds004186",
-  "num_citations": 0,
+  "num_citations": 4,
   "date_last_updated": "2026-06-15T12:01:10.189785+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
@@ -12,13 +12,130 @@
     "anchor_count": 0,
     "anchor_errors": {},
     "anchor_judgment_model": null,
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds004186"
+    ],
+    "num_accession_mentions": 4,
+    "num_dataset_citations": 4,
+    "num_datapaper_citations": 0
   },
-  "citation_details": [],
+  "citation_details": [
+    {
+      "title": "BIDSAlign: a library for automatic merging and preprocessing of multiple EEG repositories",
+      "author": "Andrea Zanola, Federico Del Pup, Camillo Porcaro, Manfredo Atzori",
+      "venue": "Journal of Neural Engineering",
+      "year": 2024,
+      "url": "https://doi.org/10.1088/1741-2552/ad6a8c",
+      "cited_by": 6,
+      "abstract": "Abstract Objective. This study aims to address the challenges associated with data-driven electroencephalography (EEG) data analysis by introducing a standardised library called BIDSAlign . This library efficiently processes and merges heterogeneous EEG datasets from different sources into a common standard template. The goal of this work is to create an environment that allows to preprocess public datasets in order to provide data for the effective training of deep learning (DL) architectures. Approach. The library can handle both Brain Imaging Data Structure (BIDS) and non-BIDS datasets, allowing the user to easily preprocess multiple public datasets. It unifies the EEG recordings acquired with different settings by defining a common pipeline and a specified channel template. An array of visualisation functions is provided inside the library, together with a user-friendly graphical user interface to assist non-expert users throughout the workflow. Main results. BIDSAlign enables the effective use of public EEG datasets, providing valuable medical insights, even for non-experts in the field. Results from applying the library to datasets from OpenNeuro demonstrate its ability to extract significant medical knowledge through an end-to-end workflow, facilitating group analysis, visual comparison and statistical testing. Significance. BIDSAlign solves the lack of large EEG datasets by aligning multiple datasets to a standard template. This unlocks the potential of public EEG data for training DL models. It paves the way to promising contributions based on DL to clinical and non-clinical EEG research, offering insights that can inform neurological disease diagnosis and treatment strategies.",
+      "doi": "10.1088/1741-2552/ad6a8c",
+      "pmid": "39094617",
+      "openalex_id": "W4401241917",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004186",
+      "confidence_scoring": {
+        "confidence_score": 0.560089822858572,
+        "similarity_score": 0.4849262535572052,
+        "citation_text_length": 1722,
+        "dataset_text_length": 94,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Lifespan Trajectories of Alpha Rhythm: Dynamic Shifts in Neural Excitation-Inhibition Balance",
+      "author": "Chuanliang Han, Vincent C. K. Cheung, Rosa H. M. Chan",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2025,
+      "url": "https://doi.org/10.1101/2025.05.14.653960",
+      "cited_by": 1,
+      "abstract": "Abstract Alpha rhythm (8-13 Hz), a key neural oscillation in the brain, plays a significant role in cognitive functions and reflects the brain’s excitatory-inhibitory (E-I) balance. This study investigates the dynamics of alpha rhythm across the lifespan, focusing on how E-I balance modulates alpha power and peak frequency, and exploring the distinct age-related and sex-specific patterns of alpha activity. Using a computational E-I model, we simulated the impact of different neuronal connections and E-I ratios on alpha rhythm characteristics. The results suggest that self-regulation primarily affects alpha power, while interaction between excitatory and inhibitory neurons influences both alpha frequency and power. We applied this model to real EEG data from 3265 participants across a wide age range, revealing that alpha power and peak frequency exhibit an inverted U-shape across the lifespan, peaking in early adulthood and declining in old age. Significant sex differences in alpha activity were observed primarily during puberty and later in life. Decomposition of the alpha band into periodic and aperiodic components showed that periodic activity follows the inverted U-shape, while aperiodic activity declines exponentially with age. Our findings indicate that alpha rhythm is governed by complex E-I dynamics, with distinct contributions from periodic and non-periodic components, and highlight the role of alpha rhythm in age-related cognitive changes and sex differences in brain function.",
+      "doi": "10.1101/2025.05.14.653960",
+      "pmid": null,
+      "openalex_id": "W4410362688",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004186",
+      "confidence_scoring": {
+        "confidence_score": 0.24388932287693027,
+        "similarity_score": 0.2111595869064331,
+        "citation_text_length": 1724,
+        "dataset_text_length": 94,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "EEG-SSL: A Framework for Self-Supervised Learning on EEG",
+      "author": "Dung Truong, Muhammad Abdullah Khalid, Arnaud Delorme",
+      "venue": "n/a",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/bibm62325.2024.10822136",
+      "cited_by": 1,
+      "abstract": "The rise of open-source neuroimaging data sharing has created new opportunities for advancing machine learning in neuroscience. However, this trend also highlights the need for a framework capable of leveraging these large-scale, publicly available datasets for advanced machine learning algorithms, particularly deep learning techniques. In this paper, we introduce EEG-SSL, a framework designed to work with large heterogenous EEG neuroimaging datasets shared in the standardized Brain Imaging Data Structure (BIDS) format using Self-Supervised Learning (SSL). SSL is a powerful deep-learning approach that benefits from large-scale datasets, even when unlabeled or minimally labeled. We show how information can be extracted from standardized EEG BIDS-formated data and discuss different considerations while processing at scale in our framework. We specify the software components that are needed to apply SSL to EEG and provide several standard implementations for each of the components. We also describe how each component can be extended with custom implementation while leveraging the supporting functions of the framework. We applied the framework to a large-scale BIDS-compliant dataset (ds004186) comprising resting-state EEG data from over 2,000 subjects, showcasing how SSL can be structured and deployed for potential big data in EEG.",
+      "doi": "10.1109/bibm62325.2024.10822136",
+      "pmid": null,
+      "openalex_id": "W4406259708",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004186",
+      "confidence_scoring": {
+        "confidence_score": 0.5521718376874925,
+        "similarity_score": 0.47807085514068604,
+        "citation_text_length": 1500,
+        "dataset_text_length": 94,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Comparative analysis of transfer learning performance on generalised EEG data for use in a depression diagnosis task",
+      "author": "Natalia Shusharina",
+      "venue": "Izvestiya VUZ Applied Nonlinear Dynamics",
+      "year": 2024,
+      "url": "https://doi.org/10.18500/0869-6632-003126",
+      "cited_by": 0,
+      "abstract": "The purpose of this work was to analyse the performance of different deep learning methods in the task of depression diagnosis based on bioelectrical brain activity data. In particular, to study the potential of transfer learning using an artificial neural network trained on a significant amount of “generalised” electroencephalography data in the task of diagnosing depression from non-invasive electroencephalogram signals. Methods. Deep learning approaches such as transfer learning and contrastive learning were used in the present study. Artificial neural networks were trained on the public HBN EO/EC task dataset containing recordings of electroencephalogram signals. The 1D CNN and EEGNet architectures were used as auxiliary artificial networks for transfer learning. In order to test the quality of contrastive learning, the dataset was augmented and the following algorithms were selected as the donor network: SimCLR, MoCo, NNCLR, BarlowTwins, DINO. Results. It was found that the EEGNet architecture used as a auxiliary network, due to its small size, does not give the full potential of contrastive learning algorithms. Therefore, EEGNet was replaced by a 1D CNN architecture with a larger number of parameters, which led to an increase in the quality performance of the models. Conclusion. Although the considered method of transient learning looks promising, the specificity of electroencephalogram signals and problems solved on their basis requires large-scale adaptation of algorithms and contrastive optimisation techniques for effective training of the target task. It is also worth noting the crucial role of the representativeness of the data set for training the donor network, since it is the completeness of real observations that increases the effectiveness of augmentation, which leads to an increase in the number of “useful” features in the latent space of the network and the best conditions for transfer learning in the target task. If we talk about the diagnosis of depression, the data should maximally represent examples of electroencephalograms of depressed patients.",
+      "doi": "10.18500/0869-6632-003126",
+      "pmid": null,
+      "openalex_id": "W4403252621",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004186",
+      "confidence_scoring": {
+        "confidence_score": 0.5152398508787156,
+        "similarity_score": 0.4460951089859009,
+        "citation_text_length": 1713,
+        "dataset_text_length": 94,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    }
+  ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-15T19:08:10.581101+00:00",
+    "scoring_date": "2026-06-19T10:16:15.887096+00:00",
     "dataset_text_length": 94,
-    "num_citations_scored": 0
+    "num_citations_scored": 4,
+    "summary_stats": {
+      "mean_confidence": 0.46784770857542757,
+      "median_confidence": 0.533705844283104,
+      "std_confidence": 0.13040565562381184,
+      "min_confidence": 0.24388932287693027,
+      "max_confidence": 0.560089822858572,
+      "high_confidence_count": 0,
+      "medium_confidence_count": 3,
+      "low_confidence_count": 1
+    }
   }
 }

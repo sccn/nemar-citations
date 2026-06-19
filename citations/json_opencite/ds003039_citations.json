@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds003039",
-  "num_citations": 59,
+  "num_citations": 60,
   "date_last_updated": "2026-06-18T22:26:47.407899+00:00",
   "metadata": {
     "total_cumulative_citations": 1446,
@@ -12,7 +12,13 @@
     "anchor_count": 1,
     "anchor_errors": {},
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds003039"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 2,
+    "num_datapaper_citations": 58
   },
   "citation_details": [
     {
@@ -519,7 +525,9 @@
         "dataset_text_length": 537,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
+      },
+      "mentions_accession": true,
+      "matched_accession": "ds003039"
     },
     {
       "title": "The moving wave: Applications of the mobile <scp>EEG</scp> approach to study human attention",
@@ -1371,21 +1379,46 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "A walk in the park? Characterizing gait‐related artifacts in mobile EEG recordings",
+      "author": "Nadine Jacobsen, Sarah Blum, Karsten Witt, Stefan Debener",
+      "venue": "European Journal of Neuroscience",
+      "year": 2020,
+      "url": "https://doi.org/10.1111/ejn.14965",
+      "cited_by": 64,
+      "abstract": "Brain activity during natural walking outdoors can be captured using mobile electroencephalography (EEG). However, EEG recorded during gait is confounded with artifacts from various sources, possibly obstructing the interpretation of brain activity patterns. Currently, there is no consensus on how the amount of artifact present in these recordings should be quantified, or is there a systematic description of gait artifact properties. In the current study, we expand several features into a seven-dimensional footprint of gait-related artifacts, combining features of time, time-frequency, spatial, and source domains. EEG of N = 26 participants was recorded while standing and walking outdoors. Footprints of gait-related artifacts before and after two different artifact attenuation strategies (after artifact subspace reconstruction (ASR) and after subsequent independent component analysis [ICA]) were systematically different. We also evaluated topographies, morphologies, and signal-to-noise ratios (SNR) of button-press event-related potentials (ERP) before and after artifact handling, to confirm gait-artifact reduction specificity. Morphologies and SNR remained unchanged after artifact attenuation, whereas topographies improved in quality. Our results show that the footprint can provide a detailed assessment of gait-related artifacts and can be used to estimate the sensitivity of different artifact reduction strategies. Moreover, the analysis of button-press ERPs demonstrated its specificity, as processing did not only reduce gait-related artifacts but ERPs of interest remained largely unchanged. We conclude that the proposed footprint is well suited to characterize individual differences in gait-related artifact extent. In the future, it could be used to compare and optimize recording setups and processing pipelines comprehensively.",
+      "doi": "10.1111/ejn.14965",
+      "pmid": "32909315",
+      "openalex_id": "W3085376104",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003039",
+      "confidence_scoring": {
+        "confidence_score": 0.5397862967848778,
+        "similarity_score": 0.4673474431037903,
+        "citation_text_length": 1710,
+        "dataset_text_length": 537,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:29:37.307829+00:00",
+    "scoring_date": "2026-06-19T10:11:31.668309+00:00",
     "dataset_text_length": 537,
-    "num_citations_scored": 59,
+    "num_citations_scored": 60,
     "summary_stats": {
-      "mean_confidence": 0.41958510986702935,
-      "median_confidence": 0.40222176432609563,
-      "std_confidence": 0.07831232390431749,
+      "mean_confidence": 0.42158846298232683,
+      "median_confidence": 0.4031863287091256,
+      "std_confidence": 0.07916690221262236,
       "min_confidence": 0.2665194965153933,
       "max_confidence": 0.7026380985975266,
       "high_confidence_count": 1,
-      "medium_confidence_count": 29,
+      "medium_confidence_count": 30,
       "low_confidence_count": 29
     }
   }

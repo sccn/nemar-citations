@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds005811",
-  "num_citations": 5,
+  "num_citations": 6,
   "date_last_updated": "2026-06-18T23:13:58.351737+00:00",
   "metadata": {
     "total_cumulative_citations": 5,
@@ -12,7 +12,13 @@
     "anchor_count": 1,
     "anchor_errors": {},
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds005811"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 5
   },
   "citation_details": [
     {
@@ -129,20 +135,45 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "A large-scale MEG and EEG dataset for object recognition in naturalistic scenes",
+      "author": "Guohao Zhang, Ming Zhou, Shuyi Zhen, Shaohua Tang, Zheng Li, Zonglei Zhen",
+      "venue": "Scientific Data",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41597-025-05174-7",
+      "cited_by": 1,
+      "abstract": "Neuroimaging with large-scale naturalistic stimuli is increasingly employed to elucidate neural mechanisms of object recognition in natural scenes. However, most existing large-scale neuroimaging datasets with naturalistic stimuli primarily rely on functional magnetic resonance imaging (fMRI), which provides high spatial resolution but is limited in capturing the temporal dynamics. To address this limitation, we extended our Natural Object Dataset-fMRI (NOD-fMRI) by collecting both magnetoencephalography (MEG) and electroencephalography (EEG) data from the same participants while viewing the same naturalistic stimuli. As a result, NOD contains fMRI, MEG, and EEG responses to 57,000 naturalistic images from 30 participants. This enables the examination of brain activity elicited by naturalistic stimuli with both high spatial resolution (via fMRI) and high temporal resolution (via MEG and EEG). Furthermore, the multimodal nature of NOD allows researchers to combine datasets from different modalities to achieve a more comprehensive view of object processing. We believe that the NOD dataset will serve as a valuable resource for advancing our understanding of the cognitive and neural mechanisms underlying object recognition.",
+      "doi": "10.1038/s41597-025-05174-7",
+      "pmid": "40410207",
+      "openalex_id": "W4410631980",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005811",
+      "confidence_scoring": {
+        "confidence_score": 1.0,
+        "similarity_score": 0.9230399131774902,
+        "citation_text_length": 1445,
+        "dataset_text_length": 2223,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:38:11.457684+00:00",
+    "scoring_date": "2026-06-19T10:23:02.775049+00:00",
     "dataset_text_length": 2223,
-    "num_citations_scored": 5,
+    "num_citations_scored": 6,
     "summary_stats": {
-      "mean_confidence": 0.5052356689274311,
-      "median_confidence": 0.5282823890447617,
-      "std_confidence": 0.17800485327676732,
+      "mean_confidence": 0.5876963907728593,
+      "median_confidence": 0.5597496458888054,
+      "std_confidence": 0.2457714922336361,
       "min_confidence": 0.18073775544762616,
-      "max_confidence": 0.7178328618407249,
-      "high_confidence_count": 1,
+      "max_confidence": 1.0,
+      "high_confidence_count": 2,
       "medium_confidence_count": 3,
       "low_confidence_count": 1
     }

@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds003947",
-  "num_citations": 0,
+  "num_citations": 8,
   "date_last_updated": "2026-06-18T22:30:08.578987+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
@@ -12,13 +12,230 @@
     "anchor_count": 1,
     "anchor_errors": {},
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds003947"
+    ],
+    "num_accession_mentions": 8,
+    "num_dataset_citations": 8,
+    "num_datapaper_citations": 0
   },
-  "citation_details": [],
+  "citation_details": [
+    {
+      "title": "Classification of First-Episode Psychosis with EEG Signals: ciSSA and Machine Learning Approach",
+      "author": "Şerife Gengeç Benli",
+      "venue": "Biomedicines",
+      "year": 2023,
+      "url": "https://doi.org/10.3390/biomedicines11123223",
+      "cited_by": 3,
+      "abstract": "First-episode psychosis (FEP) typically marks the onset of severe psychiatric disorders and represents a critical period in the field of mental health. The early diagnosis of this condition is essential for timely intervention and improved clinical outcomes. In this study, the classification of FEP was investigated using the analysis of electroencephalography (EEG) signals and circulant spectrum analysis (ciSSA) sub-band signals. FEP poses a significant diagnostic challenge in the realm of mental health, and it is aimed at introducing a novel and effective approach for early diagnosis. To achieve this, the LASSO method was utilized to select the most significant features derived from entropy, frequency, and statistical-based characteristics obtained from ciSSA sub-band signals, as well as their hybrid combinations. Subsequently, a high-performance classification model has been developed using machine learning techniques, including ensemble, support vector machine (SVM), and artificial neural network (ANN) methods. The results of this study demonstrated that the hybrid features extracted from EEG signals' ciSSA sub-bands, in combination with the SVM method, achieved a high level of performance, with an area under curve (AUC) of 0.9893, an accuracy of 96.23%, a sensitivity of 0.966, a specificity of 0.956, a precision of 0.9667, and an F1 score of 0.9666. This has revealed the effectiveness of the ciSSA-based method for classifying FEP from EEG signals.",
+      "doi": "10.3390/biomedicines11123223",
+      "pmid": "38137444",
+      "openalex_id": "W4389333858",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003947",
+      "confidence_scoring": {
+        "confidence_score": 0.6897788465023041,
+        "similarity_score": 0.5972111225128174,
+        "citation_text_length": 1640,
+        "dataset_text_length": 1764,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "The more, the better? Evaluating the role of EEG preprocessing for deep learning applications",
+      "author": "Federico Del Pup, Andrea Zanola, Louis Fabrice Tshimanga, Alessandra Bertoldo, Manfredo Atzori",
+      "venue": "arXiv (Cornell University)",
+      "year": 2024,
+      "url": "https://doi.org/10.48550/arxiv.2411.18392",
+      "cited_by": 0,
+      "abstract": "The last decade has witnessed a notable surge in deep learning applications for the analysis of electroencephalography (EEG) data, thanks to its demonstrated superiority over conventional statistical techniques. However, even deep learning models can underperform if trained with bad processed data. While preprocessing is essential to the analysis of EEG data, there is a need of research examining its precise impact on model performance. This causes uncertainty about whether and to what extent EEG data should be preprocessed in a deep learning scenario. This study aims at investigating the role of EEG preprocessing in deep learning applications, drafting guidelines for future research. It evaluates the impact of different levels of preprocessing, from raw and minimally filtered data to complex pipelines with automated artifact removal algorithms. Six classification tasks (eye blinking, motor imagery, Parkinson's and Alzheimer's disease, sleep deprivation, and first episode psychosis) and four different architectures commonly used in the EEG domain were considered for the evaluation. The analysis of 4800 different trainings revealed statistical differences between the preprocessing pipelines at the intra-task level, for each of the investigated models, and at the inter-task level, for the largest one. Raw data generally leads to underperforming models, always ranking last in averaged score. In addition, models seem to benefit more from minimal pipelines without artifact handling methods, suggesting that EEG artifacts may contribute to the performance of deep neural networks.",
+      "doi": "10.48550/arxiv.2411.18392",
+      "pmid": null,
+      "openalex_id": "W4404990926",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003947",
+      "confidence_scoring": {
+        "confidence_score": 0.4841561423242093,
+        "similarity_score": 0.41918280720710754,
+        "citation_text_length": 1752,
+        "dataset_text_length": 1764,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "LEAD: An EEG Foundation Model for Alzheimer's Disease Detection",
+      "author": "Yihe Wang, Nan Huang, Nadia Mammone, Marco Cecchi, Xiang Zhang",
+      "venue": "arXiv (Cornell University)",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arxiv.2502.01678",
+      "cited_by": 1,
+      "abstract": "Electroencephalography (EEG) provides a non-invasive, highly accessible, and cost-effective approach for detecting Alzheimer's disease (AD). However, existing methods, whether based on handcrafted feature engineering or standard deep learning, face three major challenges: 1) the lack of large-scale EEG-based AD datasets for robust representation learning; 2) limited generalizability across subjects; and 3) difficulty in adapting to highly heterogeneous data. To address these challenges, we curate the world's largest EEG-AD corpus to date, comprising 2,238 subjects. Leveraging this unique resource, we propose LEAD, the first large-scale foundation model for EEG-based AD detection. Specifically, we design a gated temporal-spatial Transformer that can adapt to EEG recordings with arbitrary lengths, channel configurations, and sampling rates. In addition, we introduce a subject-regularized training strategy to enhance subject-level feature learning. We further employ medical contrastive learning for pre-training on 13 datasets, including 4 AD datasets and 9 non-AD neurological disorder datasets, and fine-tune/test the model on the other 5 AD datasets. LEAD achieves the best average ranking across all 20 evaluations on 5 downstream datasets, substantially outperforming existing approaches, including state-of-the-art (SOTA) EEG foundation models. These results strongly demonstrate the effectiveness and practical potential of the proposed method for real-world EEG-based AD detection. Source code: https://github.com/DL4mHealth/LEAD",
+      "doi": "10.48550/arxiv.2502.01678",
+      "pmid": null,
+      "openalex_id": "W4407184772",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003947",
+      "confidence_scoring": {
+        "confidence_score": 0.5020857426524162,
+        "similarity_score": 0.43470627069473267,
+        "citation_text_length": 1690,
+        "dataset_text_length": 1764,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "First-Episode Psychosis Geometry Across Two Resting-State EEG Cohorts",
+      "author": "Robin Langell",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20410571",
+      "cited_by": 0,
+      "abstract": "This methods-anchored empirical report analyzes two resting-state EEG cohorts of first-episode psychosis (ds003944 and ds003947) with NeuralManifoldDynamics 2.1 in a shared cross-subject reference frame. The main result is that psychosis-related geometry is visible but cohort- and medication-sensitive: one cohort shows stronger m-family displacement, while the other shows a stronger trajectory-level dynamic effect, supporting a bounded interpretation of the framework as a reproducible analysis surface rather than a universal first-episode psychosis biomarker.",
+      "doi": "10.5281/zenodo.20410571",
+      "pmid": null,
+      "openalex_id": "W7162564724",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003947",
+      "confidence_scoring": {
+        "confidence_score": 0.7655953556299211,
+        "similarity_score": 0.6628531217575073,
+        "citation_text_length": 742,
+        "dataset_text_length": 1764,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "First-Episode Psychosis Geometry Across Two Resting-State EEG Cohorts",
+      "author": "Robin Langell",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20410572",
+      "cited_by": 0,
+      "abstract": "This methods-anchored empirical report analyzes two resting-state EEG cohorts of first-episode psychosis (ds003944 and ds003947) with NeuralManifoldDynamics 2.1 in a shared cross-subject reference frame. The main result is that psychosis-related geometry is visible but cohort- and medication-sensitive: one cohort shows stronger m-family displacement, while the other shows a stronger trajectory-level dynamic effect, supporting a bounded interpretation of the framework as a reproducible analysis surface rather than a universal first-episode psychosis biomarker.",
+      "doi": "10.5281/zenodo.20410572",
+      "pmid": null,
+      "openalex_id": "W7162506738",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003947",
+      "confidence_scoring": {
+        "confidence_score": 0.7655953556299211,
+        "similarity_score": 0.6628531217575073,
+        "citation_text_length": 742,
+        "dataset_text_length": 1764,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "First-Episode Psychosis Geometry Across Two Resting-State EEG Cohorts",
+      "author": "Robin Langell",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20596571",
+      "cited_by": 0,
+      "abstract": "This methods-anchored empirical report analyzes two resting-state EEG cohorts of first-episode psychosis (ds003944 and ds003947) with NeuralManifoldDynamics 2.1 in a shared cross-subject reference frame. The main result is that psychosis-related geometry is visible but cohort- and medication-sensitive: one cohort shows stronger m-family displacement, while the other shows a stronger trajectory-level dynamic effect, supporting a bounded interpretation of the framework as a reproducible analysis surface rather than a universal first-episode psychosis biomarker.",
+      "doi": "10.5281/zenodo.20596571",
+      "pmid": null,
+      "openalex_id": "W7163882434",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003947",
+      "confidence_scoring": {
+        "confidence_score": 0.7655953556299211,
+        "similarity_score": 0.6628531217575073,
+        "citation_text_length": 742,
+        "dataset_text_length": 1764,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Preprocessed EEG features across first-episode psychosis and control groups",
+      "author": "Pedro Fortes",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20738712",
+      "cited_by": 0,
+      "abstract": "Entropy, statistic and frequency features extracted out of preprocessed EEG data, consisting of 20 control subjects and 20 first-episode psychosis subjects. This dataset is part of a project to replicate previous work by Gengeç Benli (2023) on EEG feature extraction and first-episode psychosis classification through machine learning models. The full raw datasets can be found at: https://openneuro.org/datasets/ds003944/versions/1.0.1 [Accessed on 17/06/2026] https://openneuro.org/datasets/ds003947/versions/1.0.1 [Accessed on 17/06/2026]",
+      "doi": "10.5281/zenodo.20738712",
+      "pmid": null,
+      "openalex_id": "W7165015921",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003947",
+      "confidence_scoring": {
+        "confidence_score": 0.8023875215649605,
+        "similarity_score": 0.6947078108787537,
+        "citation_text_length": 723,
+        "dataset_text_length": 1764,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Preprocessed EEG features across first-episode psychosis and control groups",
+      "author": "Pedro Fortes",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20738713",
+      "cited_by": 0,
+      "abstract": "Entropy, statistic and frequency features extracted out of preprocessed EEG data, consisting of 20 control subjects and 20 first-episode psychosis subjects. This dataset is part of a project to replicate previous work by Gengeç Benli (2023) on EEG feature extraction and first-episode psychosis classification through machine learning models. The full raw datasets can be found at: https://openneuro.org/datasets/ds003944/versions/1.0.1 [Accessed on 17/06/2026] https://openneuro.org/datasets/ds003947/versions/1.0.1 [Accessed on 17/06/2026]",
+      "doi": "10.5281/zenodo.20738713",
+      "pmid": null,
+      "openalex_id": "W7165058196",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003947",
+      "confidence_scoring": {
+        "confidence_score": 0.8023875215649605,
+        "similarity_score": 0.6947078108787537,
+        "citation_text_length": 723,
+        "dataset_text_length": 1764,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    }
+  ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:32:04.556000+00:00",
+    "scoring_date": "2026-06-19T10:15:22.600690+00:00",
     "dataset_text_length": 1764,
-    "num_citations_scored": 0
+    "num_citations_scored": 8,
+    "summary_stats": {
+      "mean_confidence": 0.6971977301873267,
+      "median_confidence": 0.7655953556299211,
+      "std_confidence": 0.12230849091175655,
+      "min_confidence": 0.4841561423242093,
+      "max_confidence": 0.8023875215649605,
+      "high_confidence_count": 5,
+      "medium_confidence_count": 3,
+      "low_confidence_count": 0
+    }
   }
 }
