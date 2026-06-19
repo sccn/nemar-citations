@@ -359,3 +359,85 @@ class ParseDatasetMetadata(TestCase):
         self.assertIsNone(meta.methods_description)
         # Only the well-formed funder survives; null award_title omitted.
         self.assertEqual(meta.funding, ({"funder_name": "NIH", "award_number": "R01"},))
+
+    def test_wrong_type_keywords_and_funding_warn(self) -> None:
+        # A present-but-non-list shape is a schema mismatch -> WARN, not silent.
+        # `funding` (not `funding_references`) is used so the wrong-type value is
+        # the one that actually reaches _parse_funding.
+        with self.assertLogs(
+            "dataset_citations.sources.nemar_metadata", level="WARNING"
+        ) as logs:
+            meta = parse_nemar_dataset_metadata({"keywords": "EEG, MEG", "funding": 7})
+        self.assertEqual(meta.keywords, ())
+        self.assertEqual(meta.funding, ())
+        msgs = " ".join(r.getMessage() for r in logs.records)
+        self.assertIn("keywords is not a list", msgs)
+        self.assertIn("funding is not a list", msgs)
+
+
+class GetDatasetMetadataFallback(TestCase):
+    """NemarMetadataSource.get_dataset_metadata fetch-fallback chain.
+
+    Uses a real NemarMetadataSource subclass with canned fetch results (no
+    unittest.mock, per .rules/testing.md) to exercise the GitHub-preferred
+    ladder offline.
+    """
+
+    class _CannedSource(NemarMetadataSource):
+        def __init__(self, github_result, data_api_result, *, prefer_data_api=True):
+            self._github_result = github_result
+            self._data_api_result = data_api_result
+            self.prefer_data_api = prefer_data_api
+
+        def _github_payload(self, dataset_id, org):  # type: ignore[override]
+            return self._github_result
+
+        def _fetch_from_data_api(self, dataset_id):  # type: ignore[override]
+            return self._data_api_result
+
+    def test_github_success_is_preferred(self) -> None:
+        src = self._CannedSource(
+            FetchSuccess(load_fixture("nm000103.metadata.json")),
+            FetchError("not_found", "should not be consulted"),
+        )
+        meta = src.get_dataset_metadata("nm000103")
+        # GitHub shape carries methods_description.
+        self.assertIsNotNone(meta.methods_description)
+        self.assertIn("EEG", meta.keywords)
+
+    def test_github_fail_falls_back_to_data_api(self) -> None:
+        src = self._CannedSource(
+            FetchError("not_found", ".nemar/metadata.json missing"),
+            FetchSuccess(load_fixture("nm000104.data_api.json")),
+        )
+        meta = src.get_dataset_metadata("nm000104")
+        # data.nemar.org shape: keywords + funding present, methods absent.
+        self.assertTrue(meta.keywords)
+        self.assertTrue(meta.funding)
+        self.assertIsNone(meta.methods_description)
+
+    def test_both_fail_returns_empty_with_warning(self) -> None:
+        src = self._CannedSource(
+            FetchError("not_found", "github gone"),
+            FetchError("rate_limit", "data api 429"),
+        )
+        with self.assertLogs(
+            "dataset_citations.sources.nemar_metadata", level="WARNING"
+        ) as logs:
+            meta = src.get_dataset_metadata("nm000999")
+        self.assertEqual(meta, EMPTY_NEMAR_DATASET_METADATA)
+        self.assertTrue(
+            any("rich metadata unavailable" in r.getMessage() for r in logs.records)
+        )
+
+    def test_prefer_data_api_false_skips_data_api(self) -> None:
+        # data_api_result WOULD parse to non-empty, but prefer_data_api=False
+        # must skip it entirely -> EMPTY (proves the guard).
+        src = self._CannedSource(
+            FetchError("not_found", "github gone"),
+            FetchSuccess(load_fixture("nm000104.data_api.json")),
+            prefer_data_api=False,
+        )
+        self.assertEqual(
+            src.get_dataset_metadata("nm000104"), EMPTY_NEMAR_DATASET_METADATA
+        )

@@ -298,6 +298,9 @@ class PipelineBucketingTests(TestCase):
         self.assertEqual(
             kept[data_paper_ref.identifier]["classification"], "data_paper"
         )
+        # context_details is populated for data_paper too, so the kept anchor
+        # carries its own paper title (default "stub title" from _judgment()).
+        self.assertEqual(kept[data_paper_ref.identifier]["paper_title"], "stub title")
         # searched_dois is the flat list of the fetched DOI anchor(s).
         self.assertEqual(out["metadata"]["searched_dois"], [data_paper_ref.identifier])
         # The context subset (kept=False) is the umbrella anchor.
@@ -697,6 +700,87 @@ class PipelineBucketingTests(TestCase):
         self.assertEqual(out["metadata"]["keywords"], ["MEG"])
         self.assertEqual(out["metadata"]["anchors"], [])
         self.assertEqual(out["metadata"]["searched_dois"], [])
+
+    def test_no_data_paper_stub_carries_rich_metadata(self) -> None:
+        """The no_data_paper_anchor stub still emits the dataset's rich metadata."""
+        umbrella_ref = DoiReference(
+            identifier="10.1/umbrella",
+            identifier_type="doi",
+            relation_type="IsDerivedFrom",
+            source="nemar_metadata",
+        )
+        metadata = NemarDatasetMetadata(
+            keywords=("EEG",),
+            methods_description="collected during tasks",
+            funding=({"funder_name": "NIH"},),
+        )
+        nemar = _RichStubSource(FetchSuccess([umbrella_ref]), metadata)
+        _write_sidecar(
+            self.judgments_dir,
+            "nm000018",
+            [_judgment(umbrella_ref.identifier, "umbrella")],
+        )
+        out = fetch_dataset_citations_via_opencite(
+            "nm000018",
+            backend=_ExplodingBackend(),
+            nemar_source=nemar,
+            fetch_date=WHEN,
+            judgments_dir=self.judgments_dir,
+        )
+        self.assertEqual(out["metadata"]["fetch_status"], "no_data_paper_anchor")
+        self.assertEqual(out["metadata"]["keywords"], ["EEG"])
+        self.assertEqual(
+            out["metadata"]["methods_description"], "collected during tasks"
+        )
+        self.assertEqual(out["metadata"]["funding"], [{"funder_name": "NIH"}])
+        self.assertEqual(out["metadata"]["searched_dois"], [])
+        self.assertEqual(len(_context_anchors(out)), 1)
+
+    def test_pmid_kept_anchor_excluded_from_searched_dois(self) -> None:
+        """A kept PMID anchor appears in anchors[] but not in searched_dois
+        (which is DOI-only)."""
+        pmid_ref = DoiReference(
+            identifier="pmid:12345",
+            identifier_type="pmid",
+            relation_type="References",
+            source="nemar_metadata",
+        )
+        doi_ref = DoiReference(
+            identifier="10.1/d",
+            identifier_type="doi",
+            relation_type="IsDerivedFrom",
+            source="nemar_metadata",
+        )
+        nemar = _StubSource(FetchSuccess([pmid_ref, doi_ref]))
+        backend = _StubBackend(
+            {
+                pmid_ref.identifier: FetchSuccess(
+                    [_make_work("p", doi="10.5/p", source_doi=pmid_ref.identifier)]
+                ),
+                doi_ref.identifier: FetchSuccess(
+                    [_make_work("d", doi="10.5/d", source_doi=doi_ref.identifier)]
+                ),
+            }
+        )
+        _write_sidecar(
+            self.judgments_dir,
+            "nm000019",
+            [
+                _judgment(pmid_ref.identifier, "data_paper", identifier_type="pmid"),
+                _judgment(doi_ref.identifier, "data_paper"),
+            ],
+        )
+        out = fetch_dataset_citations_via_opencite(
+            "nm000019",
+            backend=backend,
+            nemar_source=nemar,
+            fetch_date=WHEN,
+            judgments_dir=self.judgments_dir,
+        )
+        kept = {a["identifier"] for a in out["metadata"]["anchors"] if a["kept"]}
+        self.assertEqual(kept, {pmid_ref.identifier, doi_ref.identifier})
+        # searched_dois is DOI-only: the kept PMID anchor is excluded.
+        self.assertEqual(out["metadata"]["searched_dois"], [doi_ref.identifier])
 
 
 class SidecarShapeRegressionTests(TestCase):

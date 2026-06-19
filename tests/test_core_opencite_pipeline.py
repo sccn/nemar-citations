@@ -530,7 +530,7 @@ class FetchViaOpenCiteIntegration(TestCase):
         # Either we get real citations or a transient FetchError; both are
         # acceptable for the integration test as long as the schema is right.
         self.assertEqual(out["dataset_id"], "ds000117")
-        self.assertEqual(out["metadata"]["schema_version"], "2.0")
+        self.assertEqual(out["metadata"]["schema_version"], "2.1")
         self.assertEqual(out["metadata"]["discovery_backend"], "opencite")
         if out["num_citations"] > 0:
             entry = out["citation_details"][0]

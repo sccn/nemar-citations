@@ -30,7 +30,6 @@ from dataset_citations.core.checkpoint import (
     CheckpointStore,
 )
 from dataset_citations.core.citation_utils import (
-    SCHEMA_VERSION_V2_1,
     add_discovery_provenance,
     stamp_dataset_metadata,
 )
@@ -225,8 +224,9 @@ def fetch_dataset_citations_via_opencite(
             "total_cumulative_citations": int(total_cumulative_citations),
             "fetch_date": when.isoformat(),
             "processing_version": "1.0",
-            "schema_version": SCHEMA_VERSION_V2_1,
-            "discovery_backend": "opencite",
+            # schema_version + discovery_backend are stamped by
+            # _finalize_payload (the single authoritative exit), so they are
+            # intentionally not duplicated here.
             "fetch_status": "success" if not per_anchor_errors else "partial",
             "anchor_count": len(fetch_refs),
             "anchor_errors": per_anchor_errors,
@@ -408,8 +408,7 @@ def _stub_payload(
             "total_cumulative_citations": 0,
             "fetch_date": when.isoformat(),
             "processing_version": "1.0",
-            "schema_version": SCHEMA_VERSION_V2_1,
-            "discovery_backend": "opencite",
+            # schema_version + discovery_backend are stamped by _finalize_payload.
             "fetch_status": fetch_status,
             "anchor_count": anchor_count,
             "anchor_errors": anchor_errors or {},
@@ -465,7 +464,17 @@ def _fetch_dataset_metadata(source: Any, dataset_id: str) -> NemarDatasetMetadat
     getter = getattr(source, "get_dataset_metadata", None)
     if getter is None:
         return EMPTY_NEMAR_DATASET_METADATA
-    return getter(dataset_id)
+    try:
+        return getter(dataset_id)
+    except Exception:
+        # Rich metadata is provenance, never a hard dependency: an unexpected
+        # source error must degrade to empty, not abort the citation fetch.
+        # Logged (not swallowed) so the gap is visible in the cron log.
+        logger.exception(
+            "unexpected error fetching rich metadata for %s; using empty",
+            dataset_id,
+        )
+        return EMPTY_NEMAR_DATASET_METADATA
 
 
 def _partition_by_judgment(

@@ -62,7 +62,7 @@ class NemarDatasetMetadata:
 
     keywords: tuple[str, ...] = ()
     methods_description: str | None = None
-    funding: tuple[dict[str, Any], ...] = ()
+    funding: tuple[dict[str, str], ...] = ()
 
 
 EMPTY_NEMAR_DATASET_METADATA = NemarDatasetMetadata()
@@ -233,8 +233,11 @@ class NemarMetadataSource:
             data_api = self._fetch_from_data_api(dataset_id)
             if isinstance(data_api, FetchSuccess):
                 return parse_nemar_dataset_metadata(data_api.value)
-            logger.info(
-                "data.nemar.org rich metadata unavailable for %s (%s); empty",
+            # Both sources failed: rich metadata is dropped for this dataset, a
+            # production degradation that should stand out in a 594-dataset run.
+            logger.warning(
+                "rich metadata unavailable for %s from GitHub and data.nemar.org "
+                "(%s); keywords/funding will be absent from output",
                 dataset_id,
                 data_api.reason,
             )
@@ -281,7 +284,13 @@ def parse_nemar_dataset_metadata(payload: dict[str, Any]) -> NemarDatasetMetadat
 
 
 def _parse_keywords(raw: Any) -> tuple[str, ...]:
+    # `None` = key absent (the common, expected case). A present-but-non-list
+    # value is a producer-side schema mismatch worth a WARN: it would otherwise
+    # silently zero out keywords for every affected dataset.
+    if raw is None:
+        return ()
     if not isinstance(raw, list):
+        logger.warning("keywords is not a list (got %s); dropping", type(raw).__name__)
         return ()
     terms: list[str] = []
     for entry in raw:
@@ -291,22 +300,27 @@ def _parse_keywords(raw: Any) -> tuple[str, ...]:
     return tuple(terms)
 
 
-def _parse_funding(raw: Any) -> tuple[dict[str, Any], ...]:
+def _parse_funding(raw: Any) -> tuple[dict[str, str], ...]:
     """Normalize funding entries to `{funder_name, award_number?, award_title?}`.
 
     Drops entries without a non-empty string `funder_name` and omits null/empty
-    optional keys so the serialized JSON stays minimal and deterministic.
+    optional keys so the serialized JSON stays minimal and deterministic. A
+    present-but-non-list `raw` is a schema mismatch and logs a WARN (vs `None`,
+    which just means the key is absent).
     """
-    if not isinstance(raw, list):
+    if raw is None:
         return ()
-    records: list[dict[str, Any]] = []
+    if not isinstance(raw, list):
+        logger.warning("funding is not a list (got %s); dropping", type(raw).__name__)
+        return ()
+    records: list[dict[str, str]] = []
     for entry in raw:
         if not isinstance(entry, dict):
             continue
         funder_name = entry.get("funder_name")
         if not isinstance(funder_name, str) or not funder_name.strip():
             continue
-        record: dict[str, Any] = {"funder_name": funder_name.strip()}
+        record: dict[str, str] = {"funder_name": funder_name.strip()}
         for key in ("award_number", "award_title"):
             value = entry.get(key)
             if isinstance(value, str) and value.strip():
