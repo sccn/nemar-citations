@@ -47,6 +47,16 @@ class ParseDataApiPayload(TestCase):
         for ref in self.refs:
             self.assertIn(ref.relation_type, allowed)
 
+    def test_keeps_real_isdescribedby_data_paper_doi(self) -> None:
+        # nm000104's live payload links a data paper via IsDescribedBy
+        # (10.48550/arXiv.2410.20081, normalized to lowercase). Real-data
+        # confirmation that #181 keeps it (the DOI is emitted; the two URL-typed
+        # IsDescribedBy entries are not).
+        described = [r for r in self.refs if r.relation_type == "IsDescribedBy"]
+        self.assertEqual(
+            [r.identifier for r in described], ["10.48550/arxiv.2410.20081"]
+        )
+
     def test_source_field(self) -> None:
         for ref in self.refs:
             self.assertEqual(ref.source, "nemar_metadata")

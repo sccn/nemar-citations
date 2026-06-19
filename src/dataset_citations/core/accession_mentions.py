@@ -7,7 +7,11 @@ are discovered by `backends/accession_search.py` and folded into the same
   - "cites dataset"   = accession mentions + anchor citations whose
                         source_relation is IsVersionOf / IsIdenticalTo
   - "cites data paper"= the remaining anchor citations (References /
-                        IsDerivedFrom)
+                        IsDerivedFrom / IsDescribedBy)
+
+`IsDescribedBy` (a data paper that describes the dataset, e.g. the on000117
+data paper) is intentionally NOT in `_DATASET_RELATIONS`: its citations are
+citations of the data paper, not of the dataset record itself.
 
 This module is pure (no network / I/O) and deterministic so repeated runs are
 content-idempotent (issue #165). Issue #169.
@@ -17,7 +21,9 @@ from __future__ import annotations
 
 from typing import Any
 
-# source_relation values whose anchor IS the dataset (vs the data paper).
+# Intentional subset of RelationType: only the relations whose anchor IS the
+# dataset record (vs a paper about it). IsDescribedBy/References/IsDerivedFrom
+# denote papers, so they stay out.
 _DATASET_RELATIONS = frozenset({"IsVersionOf", "IsIdenticalTo"})
 
 

@@ -9,9 +9,10 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import get_args
 from unittest import TestCase
 
-from dataset_citations.sources.models import FetchError, FetchSuccess
+from dataset_citations.sources.models import FetchError, FetchSuccess, RelationType
 from dataset_citations.sources.nemar_metadata import (
     NemarMetadataSource,
     parse_nemar_metadata,
@@ -84,6 +85,25 @@ class ParseNm000115(TestCase):
         # DOI-typed References/related entry.
         rel_types = {r.relation_type for r in self.refs}
         self.assertTrue(rel_types & {"References", "IsDerivedFrom", "IsIdenticalTo"})
+
+
+class RelationTypeMembers(TestCase):
+    """Pin the canonical RelationType members. The allow-lists derive from
+    get_args(RelationType), so this is the one place that asserts the literal's
+    exact contents and would catch a typo (e.g. "IsDescribedBY") or an
+    accidental removal that the derived tests cannot."""
+
+    def test_exact_members(self) -> None:
+        self.assertEqual(
+            set(get_args(RelationType)),
+            {
+                "References",
+                "IsDerivedFrom",
+                "IsIdenticalTo",
+                "IsVersionOf",
+                "IsDescribedBy",
+            },
+        )
 
 
 class ParseSyntheticEdgeCases(TestCase):
