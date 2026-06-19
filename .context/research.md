@@ -126,9 +126,44 @@ Phase 2 design adjustments derived from Phase 1 findings:
 
 ---
 
+# Per-source citation coverage (2026-06-19)
+
+Epic #180, phase 2. Probe script: `scripts/probe_source_coverage.py`. Raw output: `.context/research/source_coverage_2026-06-19.json`. opencite v0.5.4.
+
+## Why this re-probe
+Phase 2 moves the backend to **delegate fetching to opencite** (one `CitationExplorer` per batch, source selection via `config.disabled_sources`, throughput via opencite's process-wide shared rate limiter) and removes our hand-rolled `S2_SKIP_PREFIXES` router. Before committing to "OpenAlex + S2, PubMed unwired," we measured what each cited-by source contributes on its own. opencite exposes three clients with a `citing_papers` method: OpenAlex, Semantic Scholar (S2), and PubMed (NCBI `elink`); `CitationExplorer` only fans out to OpenAlex + S2 today.
+
+## Method
+Same 30 unique DOIs as the 2026-05-19 probe (`scripts/probe_datasets.json`). For each DOI, **three independent single-source lookups**: OpenAlex (`lookup_doi` -> `citing_papers`), S2 (`citing_papers("DOI:<doi>")`), PubMed (`lookup_doi` -> `citing_papers(pmid)`). Each source's returned citing papers are projected to a normalized-DOI set; "unique" = a DOI present in exactly one source's set. `max_results=100` per call, keyless (OpenAlex no key; S2 shared pool; PubMed 3 req/s).
+
+## Aggregate result (raw-DOI domain)
+
+| Source | Citing DOIs | Unique to it | % of union | DOIs unresolved on source |
+|---|---:|---:|---:|---:|
+| OpenAlex | 1206 | 766 | 38.4% | 0 / 30 |
+| Semantic Scholar | 914 | 454 | 22.8% | 17 / 30 |
+| PubMed | 476 | 242 | 12.1% | 18 / 30 |
+
+Union of all citing DOIs across the three sources: **1994**. S2 was unresolvable for 17 DOIs (the NEMAR / Zenodo / PhysioNet data-record families that 404 on S2); PubMed for 18 (anchors with no PMID). Even across only ~12-13 resolvable anchors each, S2 and PubMed each surfaced hundreds of citing DOIs absent from OpenAlex's set.
+
+## [CRITICAL] These per-source "unique" numbers are an UPPER BOUND
+This probe does **naive DOI-only set arithmetic**, not the title+ID dedup that opencite's `CitationExplorer.deduplicate()` performs. Three effects inflate apparent uniqueness here, so the figures are **not** directly comparable to the 2026-05-19 figure of 9.71% S2-unique (which was measured *through* opencite's merge+dedup):
+1. **DOI-less drops** — a paper a source returns without a DOI is dropped from that source's set, so the same paper found DOI-less by OpenAlex but with-DOI by S2 reads as "S2-unique."
+2. **DOI-only cross-matching** — papers matched across sources by other IDs (PMID, OpenAlex ID, title) in opencite's dedup are treated as distinct here.
+3. **Per-source top-100 truncation** — high-citation methodology anchors hit `max_results=100`; each source returns its own top-100, so disjointness is partly an artifact of which 100 each returned first.
+
+The conservative, dedup-correct figure for S2's *marginal* contribution remains ~9.71% (2026-05-19). The robust, direction-only conclusions below do not depend on the inflated magnitudes.
+
+## Decision
+1. **Delegate to opencite; keep S2.** Both probes agree S2 is not redundant. Its only problem is throughput (1 req/s), now handled by opencite's shared `"s2"` rate limiter rather than our prefix skip. `S2_SKIP_PREFIXES` / `should_skip_s2` / the OpenAlex-only branch are removed; source on/off is `OPENCITE_DISABLED_SOURCES`.
+2. **PubMed is worth wiring in.** Even as an upper bound, PubMed's contribution is clearly material and concentrated on biomedical anchors. Because measuring its *true* marginal value needs opencite's cross-source dedup, the right move is to **wire `PubMedClient.citing_papers` into `CitationExplorer` upstream in opencite** (DOI->PMID via `lookup_doi`, merge through the existing `deduplicate`), not to re-introduce a local multi-client merge here. Tracked as a follow-up against opencite.
+3. **Follow-up rigorous measurement.** Once PubMed is in `CitationExplorer`, re-run with higher `max_results` and report the deduped marginal contribution (apples-to-apples with the 9.71% S2 figure).
+
+---
+
 # S2 vs OpenAlex coverage (2026-05-19)
 
-Phase A of issue #53. Probe script: `scripts/probe_s2_vs_openalex.py`. Raw output: `.context/research/s2_vs_openalex_2026-05-19.json`.
+Phase A of issue #53. Probe script: `scripts/probe_s2_vs_openalex.py` (removed in epic #180 phase 2; superseded by `scripts/probe_source_coverage.py`, see the 2026-06-19 section above). Raw output: `.context/research/s2_vs_openalex_2026-05-19.json`.
 
 ## Method
 Twenty nm-* datasets from `api.nemar.org/datasets` (curated in `scripts/probe_datasets.json`), 44 DOI anchor entries collapsed to 30 unique DOIs. Each unique DOI run two ways:
