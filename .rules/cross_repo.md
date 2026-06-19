@@ -59,18 +59,18 @@ Two of our upstreams have throttled us in production: GitHub (on full-catalog di
 3. **Local checkout** at `/Users/yahya/Documents/git/nemar/<repo>/` — development / offline.
 4. **GitHub REST** — fallback only, for legacy `ds-*` IDs not yet ingested into the D1 catalog. Use a token; respect `X-RateLimit-Remaining`.
 
-### Citation backends inside opencite — order of preference
-1. **OpenAlex** — free, no key required. Set `OPENALEX_API_KEY` to enter the politeness pool. Most reliable for `cited_by(DOI)`. Treat as primary.
-2. **PubMed** (NCBI E-utilities) — free, 3 req/s without API key, 10 with. Use for PMID anchors and biomedical-only coverage.
-3. **Semantic Scholar (S2)** — **retained, but routed selectively.** The May 2026 probe (`.context/research/s2_vs_openalex_2026-05-19.json`) showed S2 contributes 9.71% unique coverage on mainstream journals (Nature, Scientific Data, PLOS ONE, JOSS, Elsevier, MDPI); retiring it would lose those. To stop S2 from burning rate budget on DOI families it never indexes, the backend skips S2 entirely for anchors matching `S2_SKIP_PREFIXES` in `src/dataset_citations/backends/opencite_backend.py`:
-   - `10.82901/nemar.*` — NEMAR-minted DOIs (too new for S2)
-   - `10.5281/zenodo.*` — Zenodo data records (not papers)
-   - `10.13026/*` — PhysioNet data records
-   Those anchors are routed through OpenAlex directly via `OpenAlexClient.lookup_doi -> citing_papers`. Widen the prefix list (with probe evidence) rather than disabling S2 globally.
+### Citation backends inside opencite — delegated, not hand-routed
+Source selection and per-source rate limiting are **delegated to opencite** (>= v0.5.4), not implemented in this repo. `backends/opencite_backend.py` opens one `CitationExplorer` per batch and lets opencite fan the `cited_by(DOI)` lookup across its enabled sources. There is no local per-anchor routing (the old `S2_SKIP_PREFIXES` filter was removed in epic #180, phase 2).
+
+- **OpenAlex** — free, no key required. Set `OPENALEX_API_KEY` to enter the politeness pool. Most reliable for `cited_by(DOI)`; opencite's primary source.
+- **Semantic Scholar (S2)** — kept. The May 2026 probe (`.context/research/s2_vs_openalex_2026-05-19.json`) showed S2 adds ~9.71% unique coverage on mainstream journals; per-source numbers refreshed in `.context/research/source_coverage_2026-06-19.json`. S2's only problem is throughput (1 req/s); opencite's **process-wide shared rate limiter** (`shared_limiter_key="s2"`) paces it globally so it no longer 429-storms, which is what the prefix filter used to work around. Set `SEMANTIC_SCHOLAR_API_KEY` to lift it off the unreliable shared pool.
+- **PubMed** — opencite has a `PubMedClient.citing_papers` (NCBI `elink`), but its `CitationExplorer` does **not** wire it yet, so it is not in our production fetch path. Whether to add it is being measured by the per-source probe; if it pays off, wire it **upstream in opencite** rather than re-introducing a local multi-client merge.
+
+**Disabling a source:** set `OPENCITE_DISABLED_SOURCES` (comma-separated, e.g. `s2`) — opencite skips it everywhere; no code change. Disabling both `openalex` and `s2` makes `CitationExplorer` raise.
 
 ### Guardrails (already partly in code; keep enforced)
 - `OPENCITE_MAX_CONCURRENCY` — env var, CI sets to 1 (PR #50). Don't raise in CI without sharding.
-- `OPENCITE_MAX_RETRIES` — env var, CI sets to 1 (down from opencite's default 3). The retry budget was the main contributor to the May 2026 6h timeout; with the S2 prefix filter (#59) eliminating the worst 429 sources, one attempt is enough. Local dev keeps the default 3 for single-dataset debugging.
+- `OPENCITE_MAX_RETRIES` — env var, CI sets to 1 (down from opencite's default 3). The retry budget was the main contributor to the May 2026 6h timeout; opencite's shared per-source rate limiter (>= v0.5.4) now caps the worst 429 sources, so one attempt is enough in CI. Local dev keeps the default 3 for single-dataset debugging.
 - Per-anchor checkpointing — persist partial progress; resume rather than refetch on retry.
 - Sharded backfill — split discovery+fetch into chunks small enough to finish inside a single GitHub Actions job (≤6h). Full catalog at concurrency=1 does **not** fit.
 - Batch git operations — don't commit per dataset; one commit per shard, one PR per run.
