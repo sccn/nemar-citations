@@ -144,7 +144,7 @@ Same 30 unique DOIs as the 2026-05-19 probe (`scripts/probe_datasets.json`). For
 | Semantic Scholar | 914 | 454 | 22.8% | 17 / 30 |
 | PubMed | 476 | 242 | 12.1% | 18 / 30 |
 
-Union of all citing DOIs across the three sources: **1994**. S2 was unresolvable for 17 DOIs (the NEMAR / Zenodo / PhysioNet data-record families that 404 on S2); PubMed for 18 (anchors with no PMID). Even across only ~12-13 resolvable anchors each, S2 and PubMed each surfaced hundreds of citing DOIs absent from OpenAlex's set.
+Union of all citing DOIs across the three sources: **1994**. S2 was unresolvable for 17 DOIs (the NEMAR / Zenodo / PhysioNet data-record families that 404 on S2); PubMed for 18 (anchors with no PMID). Transport errors were **0** for all three sources, so the counts above are not contaminated by failed lookups (a failed source would contribute an empty set and inflate the others' unique counts). Even across only ~12-13 resolvable anchors each, S2 and PubMed each surfaced hundreds of citing DOIs absent from OpenAlex's set.
 
 ## [CRITICAL] These per-source "unique" numbers are an UPPER BOUND
 This probe does **naive DOI-only set arithmetic**, not the title+ID dedup that opencite's `CitationExplorer.deduplicate()` performs. Three effects inflate apparent uniqueness here, so the figures are **not** directly comparable to the 2026-05-19 figure of 9.71% S2-unique (which was measured *through* opencite's merge+dedup):
@@ -156,7 +156,7 @@ The conservative, dedup-correct figure for S2's *marginal* contribution remains 
 
 ## Decision
 1. **Delegate to opencite; keep S2.** Both probes agree S2 is not redundant. Its only problem is throughput (1 req/s), now handled by opencite's shared `"s2"` rate limiter rather than our prefix skip. `S2_SKIP_PREFIXES` / `should_skip_s2` / the OpenAlex-only branch are removed; source on/off is `OPENCITE_DISABLED_SOURCES`.
-2. **PubMed is worth wiring in.** Even as an upper bound, PubMed's contribution is clearly material and concentrated on biomedical anchors. Because measuring its *true* marginal value needs opencite's cross-source dedup, the right move is to **wire `PubMedClient.citing_papers` into `CitationExplorer` upstream in opencite** (DOI->PMID via `lookup_doi`, merge through the existing `deduplicate`), not to re-introduce a local multi-client merge here. Tracked as a follow-up against opencite.
+2. **PubMed is worth wiring in.** Even as an upper bound, PubMed's contribution is clearly material and concentrated on biomedical anchors. Because measuring its *true* marginal value needs opencite's cross-source dedup, the right move is to **wire `PubMedClient.citing_papers` into `CitationExplorer` upstream in opencite** (DOI->PMID via `lookup_doi`, merge through the existing `deduplicate`), not to re-introduce a local multi-client merge here. Tracked upstream at neuromechanist/opencite#48; once it ships, the delegated backend picks PubMed up with zero downstream change.
 3. **Follow-up rigorous measurement.** Once PubMed is in `CitationExplorer`, re-run with higher `max_results` and report the deduped marginal contribution (apples-to-apples with the 9.71% S2 figure).
 
 ---

@@ -159,7 +159,7 @@ Both upstream sources we depend on have throttled us in production. Treat extern
 `backends/opencite_backend.py` opens one `CitationExplorer` per batch and lets opencite select sources and rate-limit them. No per-anchor routing lives here.
 1. **OpenAlex** — free, no key required but `OPENALEX_API_KEY` raises the politeness pool. Most reliable for `cited_by` against DOIs; opencite's primary.
 2. **Semantic Scholar (S2)** — kept for its ~9.71% unique coverage on mainstream journals. Its only issue is throughput (1 req/s); opencite's process-wide shared rate limiter paces it so it no longer 429-storms. `SEMANTIC_SCHOLAR_API_KEY` lifts it off the shared pool.
-3. **PubMed** — `PubMedClient.citing_papers` exists but `CitationExplorer` does not wire it yet, so it is not in the production fetch path. Per-source value is being measured (`.context/research/source_coverage_2026-06-19.json`); if it pays off, wire it upstream in opencite, not locally.
+3. **PubMed** — `PubMedClient.citing_papers` exists but `CitationExplorer` does not wire it yet, so it is not in the production fetch path. The per-source probe (`.context/research/source_coverage_2026-06-19.json`) shows material coverage; wiring it in is tracked upstream (neuromechanist/opencite#48), not locally.
 - **Disable a source** with `OPENCITE_DISABLED_SOURCES` (comma-separated); opencite honors it everywhere with no code change.
 
 **Guardrails to keep in code (not aspirational — already partially in place):**

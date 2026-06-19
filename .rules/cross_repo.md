@@ -64,7 +64,7 @@ Source selection and per-source rate limiting are **delegated to opencite** (>= 
 
 - **OpenAlex** — free, no key required. Set `OPENALEX_API_KEY` to enter the politeness pool. Most reliable for `cited_by(DOI)`; opencite's primary source.
 - **Semantic Scholar (S2)** — kept. The May 2026 probe (`.context/research/s2_vs_openalex_2026-05-19.json`) showed S2 adds ~9.71% unique coverage on mainstream journals; per-source numbers refreshed in `.context/research/source_coverage_2026-06-19.json`. S2's only problem is throughput (1 req/s); opencite's **process-wide shared rate limiter** (`shared_limiter_key="s2"`) paces it globally so it no longer 429-storms, which is what the prefix filter used to work around. Set `SEMANTIC_SCHOLAR_API_KEY` to lift it off the unreliable shared pool.
-- **PubMed** — opencite has a `PubMedClient.citing_papers` (NCBI `elink`), but its `CitationExplorer` does **not** wire it yet, so it is not in our production fetch path. Whether to add it is being measured by the per-source probe; if it pays off, wire it **upstream in opencite** rather than re-introducing a local multi-client merge.
+- **PubMed** — opencite has a `PubMedClient.citing_papers` (NCBI `elink`), but its `CitationExplorer` does **not** wire it yet, so it is not in our production fetch path. The per-source probe shows it adds material coverage; wiring it in is tracked **upstream in opencite** (neuromechanist/opencite#48) rather than via a local multi-client merge.
 
 **Disabling a source:** set `OPENCITE_DISABLED_SOURCES` (comma-separated, e.g. `s2`) — opencite skips it everywhere; no code change. Disabling both `openalex` and `s2` makes `CitationExplorer` raise.
 
