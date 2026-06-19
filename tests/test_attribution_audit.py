@@ -33,11 +33,13 @@ def _cite(doi: str, source_doi: str) -> dict:
 
 
 def _record(dataset_id: str, citations: list[dict], context: list[dict] | None = None):
+    # `context` is the kept=False subset of schema-v2.1 metadata.anchors[] (the
+    # anchors judgment bucketed out); the audit reads it for paper titles.
     return {
         "dataset_id": dataset_id,
         "num_citations": len(citations),
         "citation_details": citations,
-        "metadata": {"schema_version": "2.0", "context_anchors": context or []},
+        "metadata": {"schema_version": "2.1", "anchors": context or []},
     }
 
 
@@ -111,9 +113,10 @@ def test_context_anchors_excluded_and_paren_normalized():
             [_cite("10.x/p6", "10.1/data4")],
             context=[
                 {
-                    "anchor_identifier": "10.21105/joss.01896)",
-                    "anchor_identifier_type": "doi",
+                    "identifier": "10.21105/joss.01896)",
+                    "identifier_type": "doi",
                     "classification": "umbrella",
+                    "kept": False,
                     "paper_title": "MNE-BIDS",
                 }
             ],

@@ -26,6 +26,12 @@ logger = logging.getLogger(__name__)
 
 DiscoveryBackend = Literal["scholarly", "opencite"]
 SCHEMA_VERSION_V2 = "2.0"
+# Schema v2.1 (epic #180 phase 3): the per-dataset citation JSON is fully
+# self-describing. `metadata.anchors[]` is the superset of every anchor (kept +
+# context, replacing the old `context_anchors[]`); `metadata.searched_dois[]`,
+# `keywords`, `methods_description`, and `funding` are added. Additive over v2.0
+# except for the `context_anchors[]` -> `anchors[]` rename.
+SCHEMA_VERSION_V2_1 = "2.1"
 
 # Timestamp fields that advance on every pipeline run regardless of whether the
 # citation content changed. They are excluded from content-equality checks so a
@@ -190,9 +196,10 @@ def add_discovery_provenance(
     citation_json: Dict[str, Any],
     *,
     discovery_backend: DiscoveryBackend,
-    schema_version: str = SCHEMA_VERSION_V2,
+    schema_version: str = SCHEMA_VERSION_V2_1,
     anchor_judgment_model: Optional[str] = None,
-    context_anchors: Optional[list] = None,
+    anchors: Optional[list] = None,
+    searched_dois: Optional[list] = None,
 ) -> Dict[str, Any]:
     """Stamp a citation JSON with Phase 3 discovery-provenance markers.
 
@@ -216,14 +223,20 @@ def add_discovery_provenance(
         bucketed each dataset's anchors. Falsy values are normalized to
         ``None`` and persisted, since "no sidecar" is itself a meaningful
         signal for downstream code.
-      * `metadata.context_anchors` is the list of non-`data_paper` anchors
-        the pipeline chose NOT to fetch citations from but kept visible so
-        the dashboard can render them as context. Each entry is a dict with
-        at least ``anchor_identifier``, ``anchor_identifier_type``,
-        ``source_relation``, ``classification``, ``reason``, and
-        ``paper_title``. Phase 4 will surface these in the dashboard;
-        keeping the field shape stable now lets that work land without a
-        second schema change.
+      * `metadata.anchors` (schema v2.1, epic #180) is the list of EVERY anchor
+        extracted for the dataset, kept or not. Each entry is a dict with
+        ``identifier``, ``identifier_type``, ``source_relation``,
+        ``classification`` (gemma; ``None`` if unjudged), ``kept`` (``True`` =
+        fetched for citations, ``False`` = context-only), ``paper_title``,
+        ``paper_year``, ``paper_venue``, ``reason``, and ``judgment_model``.
+        This REPLACES the v2.0 ``context_anchors`` key (which was only the
+        ``kept=False`` subset); consumers select context anchors via
+        ``[a for a in anchors if not a["kept"]]``.
+      * `metadata.searched_dois` (schema v2.1) is the flat list of DOI anchors
+        actually sent to the citation backend (the ``kept`` DOIs), the citation
+        analog of ``metadata.searched_accessions`` (which the later
+        find-mentions step writes for the accession full-text search). The two
+        are disjoint provenance keys and never mix.
 
     The legacy scholarly path does not yet call this helper, so historical
     scholarly JSONs lack the markers (treat them as schema v1 by absence).
@@ -234,9 +247,35 @@ def add_discovery_provenance(
     metadata["schema_version"] = schema_version
     metadata["discovery_backend"] = discovery_backend
     metadata["anchor_judgment_model"] = anchor_judgment_model or None
-    metadata["context_anchors"] = list(context_anchors) if context_anchors else []
+    metadata["anchors"] = list(anchors) if anchors else []
+    metadata["searched_dois"] = list(searched_dois) if searched_dois else []
     for entry in citation_json.get("citation_details", []) or []:
         entry.setdefault("discovery_backend", discovery_backend)
+    return citation_json
+
+
+def stamp_dataset_metadata(
+    citation_json: Dict[str, Any],
+    *,
+    keywords: Optional[list] = None,
+    methods_description: Optional[str] = None,
+    funding: Optional[list] = None,
+) -> Dict[str, Any]:
+    """Write the schema-v2.1 descriptive dataset fields into ``metadata``.
+
+    Separate from `add_discovery_provenance` because these are dataset-describing
+    facts (pulled from ``.nemar/metadata.json``), not discovery provenance. Keys
+    are always written (empty defaults for legacy ds-* datasets that carry none)
+    so a consumer gating on schema v2.1 can assume their presence. Deterministic
+    and idempotent: repeated calls with the same inputs produce an identical dict,
+    so the issue-#165 content-equality write gate never churns on them.
+
+    Mutates and returns the input dict.
+    """
+    metadata = citation_json.setdefault("metadata", {})
+    metadata["keywords"] = list(keywords) if keywords else []
+    metadata["methods_description"] = methods_description or None
+    metadata["funding"] = list(funding) if funding else []
     return citation_json
 
 

@@ -55,8 +55,8 @@ class JudgmentSidecar:
     `metadata.anchor_judgment_model` so consumers can tell which LLM made
     each call. `context_details` carries the per-anchor metadata
     (paper_title, reason, source_relation, identifier_type) that the
-    pipeline writes into schema-v2's `metadata.context_anchors[]` for
-    non-`data_paper` anchors. `present` distinguishes "sidecar exists and
+    pipeline folds into schema-v2.1's `metadata.anchors[]` (every anchor,
+    with a `kept` flag). `present` distinguishes "sidecar exists and
     parsed cleanly" from "sidecar missing" — phase 3's pipeline uses this to
     log a single INFO line per dataset on the fallback path.
     """
