@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds005342",
-  "num_citations": 29,
+  "num_citations": 30,
   "date_last_updated": "2026-06-18T23:13:49.561436+00:00",
   "metadata": {
     "total_cumulative_citations": 105,
@@ -12,7 +12,13 @@
     "anchor_count": 1,
     "anchor_errors": {},
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds005342"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 2,
+    "num_datapaper_citations": 28
   },
   "citation_details": [
     {
@@ -634,7 +640,9 @@
         "dataset_text_length": 2364,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
+      },
+      "mentions_accession": true,
+      "matched_accession": "ds005342"
     },
     {
       "title": "The Multiverse of Time Series Machine Learning: an Archive for Multivariate Time Series Classification",
@@ -681,21 +689,46 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "The Dominant Hand-Area Network: Task-Signal Mismatch and the Decoupling of BCI Skill from Global Efficiency in Postural Motor Imagery",
+      "author": "Md Ahasanul Al Hasib Ayon",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2025,
+      "url": "https://doi.org/10.1101/2025.11.23.690036",
+      "cited_by": 0,
+      "abstract": "Abstract Rationale The neurophysiological basis of motor imagery (MI) is foundational to Brain-Computer Interface (BCI) development. While BCI decoding relies on local sensorimotor rhythms (SMRs), MI itself is a large-scale network process. It is an open, and clinically critical question whether an individual’s BCI decoding skill is related to global network integration. This is complicated when the instructed task (e.g., postural imagery) differs from the underlying neurophysiological signal (e.g., hand-area SMRs). This study investigates the network dynamics of this task-signal mismatch and its relation to BCI performance. Methods We analyzed a 64-channel EEG dataset of 32 healthy participants (from the OpenNeuro dataset ds005342 cohort) performing a cued motor imagery task (e.g., “sit-to-stand”) contrasted against an idle state. BCI decoding performance was quantified using a Common Spatial Patterns (CSP) pipeline with Linear Discriminant Analysis (LDA), Support Vector Machine (SVM), and Random Forest (RF) classifiers. We then constructed functional brain networks from the beta (13-30 Hz) band using Phase-Locking Value (PLV) and spectral Granger Causality (GC). Graph theory was employed to analyze network topology, and we correlated individual BCI accuracy with global network efficiency in both sensor and source space. Results BCI performance was robustly high (LDA (Mean: 82.10% ± 8.80% SD)), 95% CI [78.92%, 85.28%], p &lt; 10 −20 ), confirming a high-fidelity local SMR signal. Strikingly, CSP analysis revealed this signal originated not from the expected leg-area (Cz), but from the hand-area sensorimotor cortex (C3/C4) (See Figure 4 ). Despite this local-signal fidelity, this decoding skill was critically decoupled from whole-brain network integration, showing no correlation of BCI accuracy with global efficiency, in either sensor space (r (30) = 0.189, p = 0.299) or, more critically, in source space (r (30) = −0.054, p = 0.769, 95% CI [−0.395, 0.300]). Our network analysis, centered on this C3/C4-dominant signal, revealed a novel, hypothetical M1-centric model: the motor cortex (C3/C4) acted as the primary information broadcaster (via GC), driving activity in prefrontal coordinating hubs (F3/Fz). Furthermore, the MI state was characterized by a dynamic reconfiguration, increasing the informationgating centrality of the premotor (FC1) node while suppressing the parietal (P3) node. Conclusion BCI decoding skill reflects a local process driven by SMR signal fidelity from the dominant hand area—even during non-hand tasks—rather than a global process relying on whole-brain efficiency. We propose a hypothetical “Broadcasting Motor Cortex” model in which the MI network is not a simple PFC–M1 hierarchy but a dynamic, M1-centered system that re-routes information through premotor and parietal gateways. Within this framework, baseline network properties may influence skill, but task-evoked global integration does not emerge as a strong correlate of performance. Given that our study was powered only to detect large correlations (r &gt; 0.48), the absence of such effects suggests that baseline network states (16, 17), rather than active global integration, are more likely to predict individual BCI ability.",
+      "doi": "10.1101/2025.11.23.690036",
+      "pmid": null,
+      "openalex_id": "W4416819615",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005342",
+      "confidence_scoring": {
+        "confidence_score": 0.6140527287125588,
+        "similarity_score": 0.5316473841667175,
+        "citation_text_length": 1736,
+        "dataset_text_length": 2364,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:37:42.880716+00:00",
+    "scoring_date": "2026-06-19T10:21:23.937720+00:00",
     "dataset_text_length": 2364,
-    "num_citations_scored": 29,
+    "num_citations_scored": 30,
     "summary_stats": {
-      "mean_confidence": 0.5639361946593071,
-      "median_confidence": 0.5836461979150773,
-      "std_confidence": 0.10866720876363886,
+      "mean_confidence": 0.5656067457944155,
+      "median_confidence": 0.586833404749632,
+      "std_confidence": 0.10721881835862399,
       "min_confidence": 0.300532141327858,
       "max_confidence": 0.7544544339179993,
       "high_confidence_count": 2,
-      "medium_confidence_count": 25,
+      "medium_confidence_count": 26,
       "low_confidence_count": 2
     }
   }

@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds002725",
-  "num_citations": 0,
+  "num_citations": 7,
   "date_last_updated": "2026-06-15T10:01:27.432870+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
@@ -12,13 +12,205 @@
     "anchor_count": 0,
     "anchor_errors": {},
     "anchor_judgment_model": null,
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds002725"
+    ],
+    "num_accession_mentions": 7,
+    "num_dataset_citations": 7,
+    "num_datapaper_citations": 0
   },
-  "citation_details": [],
+  "citation_details": [
+    {
+      "title": "Neural and physiological data from participants listening to affective music",
+      "author": "Ian Daly, Nicoletta Nicolaou, Duncan Williams, Faustina Hwang, Alexis Kirke, Eduardo Reck Miranda, Slawomir J. Nasuto",
+      "venue": "Scientific Data",
+      "year": 2020,
+      "url": "https://doi.org/10.1038/s41597-020-0507-6",
+      "cited_by": 20,
+      "abstract": "Music provides a means of communicating affective meaning. However, the neurological mechanisms by which music induces affect are not fully understood. Our project sought to investigate this through a series of experiments into how humans react to affective musical stimuli and how physiological and neurological signals recorded from those participants change in accordance with self-reported changes in affect. In this paper, the datasets recorded over the course of this project are presented, including details of the musical stimuli, participant reports of their felt changes in affective states as they listened to the music, and concomitant recordings of physiological and neurological activity. We also include non-identifying meta data on our participant populations for purposes of further exploratory analysis. This data provides a large and valuable novel resource for researchers investigating emotion, music, and how they affect our neural and physiological activity.",
+      "doi": "10.1038/s41597-020-0507-6",
+      "pmid": "32541806",
+      "openalex_id": "W3034275316",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds002725",
+      "confidence_scoring": {
+        "confidence_score": 0.8127316501736641,
+        "similarity_score": 0.7036637663841248,
+        "citation_text_length": 1228,
+        "dataset_text_length": 1058,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A large-scale heterogeneous 3D magnetic resonance brain imaging dataset for self-supervised learning",
+      "author": "Stefano Cerri, Asbjørn Munk, Jakob Ambsdorf, Julia Machnio, Sebastian Nørgaard Llambias, Vardan Nersesjan, Christian Hedeager Krag, Peirong Liu, García, Pablo Rocamora, Mostafa Mehdipour Ghazi, Mikael Boesen, Michael E. Benros, Juan Eugenio Iglesias, Mads Nielsen",
+      "venue": "arXiv (Cornell University)",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arxiv.2506.14432",
+      "cited_by": 0,
+      "abstract": "We present FOMO260K, a large-scale, heterogeneous dataset of 260,927 brain Magnetic Resonance Imaging (MRI) scans from 77,589 MRI sessions and 55,378 subjects, aggregated from 910 publicly available sources. The dataset includes both clinical- and research-grade images, multiple MRI sequences, and a wide range of anatomical and pathological variability, including scans with large brain anomalies. Minimal preprocessing was applied to preserve the original image characteristics while reducing entry barriers for new users. Companion code for self-supervised pretraining and finetuning is provided, along with pretrained models. FOMO260K is intended to support the development and benchmarking of self-supervised learning methods in medical imaging at scale.",
+      "doi": "10.48550/arxiv.2506.14432",
+      "pmid": null,
+      "openalex_id": "W4415311847",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds002725",
+      "confidence_scoring": {
+        "confidence_score": 0.5229218754172326,
+        "similarity_score": 0.4527462124824524,
+        "citation_text_length": 1188,
+        "dataset_text_length": 1058,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Musical Intelligence Reproduction Archive — Results Layer (1,097 verdicts, engine-free)",
+      "author": "Amaç Erdem",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.19744623",
+      "cited_by": 0,
+      "abstract": "This release supersedes the prior narrow Cycle 17 ds003720 artifact (v1.0.0)with the comprehensive Musical Intelligence (MI) Reproduction Archive. The archive reproduces 1,097 pass/fail verdicts (180 claim-style CSV records+ 917 pytest sub-tests) covering every numerical claim in the MusicalIntelligence paper. Reproduction runs without access to the MI engine sourcecode and without raw audio (reviewer cache-mode), completing in ~55 minuteson a MacBook Air M2 8 GB. Coverage spans the full MI three-layer architecture: • R³ perceptual front-end (01.1): 531 pytest tests; 13-corpus consonance battery; zero-calibration audit on 16,248 engine constants. • T³ temporal layer (02.1): 207 pytest tests on the 32-horizon, 24-morph demand-driven temporal grammar. • C³ cognitive core (03.1–03.7): 89 mechanisms × 131 beliefs F1–F8; ECE = 0.084 belief calibration; Cheung 2019 reward replication (β = −0.158, ΔAIC = −33.5, held-out r = +0.615); ChillsDB, TenseMusic, PMEmo, Eerola GEMS behavioural benchmarks. • C³ biological substrate (04.1–04.2): 132/132 neurochemistry accumulation + 11/11 pharmacological cross-validations (Putkinen 2025 μ-opioid PET 7/7, Salimpoor 2011 caudate-leads-NAcc 52/56 at +0.9 s); RAM topology (28/31 ≤10 mm hub-coordinate match, both nulls p<0.0001). • fMRI brain grounding (05.1–05.7): Mendelssohn Op.54 single-subject pilot; mech×region encoding on ds002725 (16/22 BH-FDR pass); voxelwise routing ablation on ds003720 (MI 4/4 vs MI-naive 1/4 vs Random 0/4 vs MERT 4/4 vs CLAP 2/4; CKA 0.994/0.414/0.125); cross-paradigm fingerprint ρ = +0.998. • Portfolio falsifiability (06.1, 06.3): five pre-committed Table 5 cells all PASS; from-scratch AI baseline ablation 4/4 MI WINS (Marjieh Study 1A harmonic: baseline anti-predicts consonance ρ = −0.71 vs MI stumpf_fusion +0.81). Frozen engine pin (bit-identical to paper-time freeze): • Commit: 318eb2f529d7103e8b7d80b01228357fdc4e0217 • Aggregate SHA-256: 482ade45c50f5d3bf5c90c122e495b2c3230e6e6edc6542f72f22e3b5da37f88 (Re-verifiable via the canonical find+shasum command documented in README.) Engine IP note: The MI engine source code remains under SRC9 Sonic IntelligenceLLC copyright and is NOT included in this deposit. The reproduction archive isan artefact-only release — all numerical results are reproducible from thedeposited cache substrate, datasets, and verification scripts without engineaccess. Research-use source access available upon email request toamace@bu.edu. Heavy artefacts vendored separately on Zenodo: • 138 GB MI engine pre-compute (per-frame .npz feature caches) • ~3 GB Gen-2 behavioural dataset metadata • 702 MB ds002725 mech×region BOLD intermediatesThe ~185 MB cache substrate (_unit_test_oracles) needed for reviewer-modeR³/T³ pytest is included here. Runtime: ~55 min on MacBook Air M2 8 GB cache-mode (~1 h 45 min live-enginemode). Bundle integrity: 1,097 verdicts re-verifiable via verify_full_ledger.py. Source code repository: https://github.com/amacerdem/Musical_Intelligence_Results Update (2026-05-31) — Note on bundled upstream datasets. This archive includes copies of several upstream research datasets under Musical_Intelligence_Results/datasets/ and one file under engine_outputs/consonance/ — namely PMEmo, ChillsDB, TenseMusic, DEAM, Emotify, Eerola film soundtracks, Marjieh 2024, Harrison 2024 (carillon), and Bowling 2018 — bundled for reviewer reproducibility convenience. Each bundled dataset remains the intellectual property of its original authors and is included under its own original license. See DATASETS_LICENSE.md in the archive root for attribution and authoritative-source URLs. The PolyForm Noncommercial 1.0.0 license of this archive applies only to MI-authored content and does not override or extend to any bundled upstream dataset. For commercial use of either MI content or any upstream dataset, contact the respective copyright holders. If you are an upstream author and prefer your dataset to be removed from a future version of this deposit, please email amace@bu.edu — removal will be prompt and acknowledged.",
+      "doi": "10.5281/zenodo.19744623",
+      "pmid": null,
+      "openalex_id": "W7155541057",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds002725",
+      "confidence_scoring": {
+        "confidence_score": 0.5472290562093258,
+        "similarity_score": 0.4737913906574249,
+        "citation_text_length": 1692,
+        "dataset_text_length": 1058,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Musical Intelligence — Three-cycle validation bundle (V2 ds003720 + V3 ds002725 + V4 cross-cultural pilot + V5 audit-fixed cross-cultural confirmation)",
+      "author": "Amaç Erdem",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20040057",
+      "cited_by": 0,
+      "abstract": "Reproducibility bundle for Musical Intelligence (MI), a glass-box, literature-grounded NeuroAI architecture for music cognition. v2 extends v1 (Apr 24, 2026; ds003720 voxelwise encoding only) with three additional validation cycles: (V3) pre-registered ds002725 mechanism × region encoding (N=17 subjects, 22 target + 22 random pairs, seed 20260503, frozen 2026-05-03; observed 16/22 BH-FDR pass, target−random Δ = +0.105 in median r); (V4) cross-cultural pilot across six anchors (Pakistan Hindu-Kush consonance gradient, Hindustani raga pitch-class identity, gamelan-spectrum dyad consonance, cross-publication consonance breadth across 7 inconMore datasets / 593 chord stimuli, NHS-Discography song-type classification, Mridangam stroke discrimination; AMBIGUOUS composite, 6/6 STRONG_PASS Tier 1, 11/24 Tier 2 BH-FDR, Δ separation +0.311); (V5) audit-fixed cross-cultural pre-registered confirmation on four V4 axes under tightened protocol (frozen feature spec, signed-ρ aggregation, three-segment Saraga averaging, audit-fixed harmonic + bonang synthesis; NEGATIVE composite per strict gate at 2/4 PRIMARY PASS — Hindustani raga ρ = +0.565 with 7/7 ragas positive, cross-publication signed ρ = +0.408 with 6/7 datasets positive, bonang inharmonic ρ = +0.221 vs harmonic ρ = +0.404 calibration boundary, Pakistan stimulus-subset design lesson). Engine architectural anchor: 15df5177; live HEAD pin: 5b9aba41 (deterministic, bit-identical |Δρ| ≤ 8.8 × 10⁻⁵ across runs). Engine source code is not included; access available upon research-use license email request to amace@bu.edu.",
+      "doi": "10.5281/zenodo.20040057",
+      "pmid": null,
+      "openalex_id": "W7160332705",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds002725",
+      "confidence_scoring": {
+        "confidence_score": 0.5515979938209057,
+        "similarity_score": 0.47757402062416077,
+        "citation_text_length": 1756,
+        "dataset_text_length": 1058,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Musical Intelligence Reproduction Archive — Results Layer (1,097 verdicts, engine-free)",
+      "author": "Amaç Erdem",
+      "venue": "Open MIND",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20457643",
+      "cited_by": 0,
+      "abstract": "This release supersedes the prior narrow Cycle 17 ds003720 artifact (v1.0.0)with the comprehensive Musical Intelligence (MI) Reproduction Archive. The archive reproduces 1,097 pass/fail verdicts (180 claim-style CSV records+ 917 pytest sub-tests) covering every numerical claim in the MusicalIntelligence paper. Reproduction runs without access to the MI engine sourcecode and without raw audio (reviewer cache-mode), completing in ~55 minuteson a MacBook Air M2 8 GB. Coverage spans the full MI three-layer architecture: • R³ perceptual front-end (01.1): 531 pytest tests; 13-corpus consonance battery; zero-calibration audit on 16,248 engine constants. • T³ temporal layer (02.1): 207 pytest tests on the 32-horizon, 24-morph demand-driven temporal grammar. • C³ cognitive core (03.1–03.7): 89 mechanisms × 131 beliefs F1–F8; ECE = 0.084 belief calibration; Cheung 2019 reward replication (β = −0.158, ΔAIC = −33.5, held-out r = +0.615); ChillsDB, TenseMusic, PMEmo, Eerola GEMS behavioural benchmarks. • C³ biological substrate (04.1–04.2): 132/132 neurochemistry accumulation + 11/11 pharmacological cross-validations (Putkinen 2025 μ-opioid PET 7/7, Salimpoor 2011 caudate-leads-NAcc 52/56 at +0.9 s); RAM topology (28/31 ≤10 mm hub-coordinate match, both nulls p<0.0001). • fMRI brain grounding (05.1–05.7): Mendelssohn Op.54 single-subject pilot; mech×region encoding on ds002725 (16/22 BH-FDR pass); voxelwise routing ablation on ds003720 (MI 4/4 vs MI-naive 1/4 vs Random 0/4 vs MERT 4/4 vs CLAP 2/4; CKA 0.994/0.414/0.125); cross-paradigm fingerprint ρ = +0.998. • Portfolio falsifiability (06.1, 06.3): five pre-committed Table 5 cells all PASS; from-scratch AI baseline ablation 4/4 MI WINS (Marjieh Study 1A harmonic: baseline anti-predicts consonance ρ = −0.71 vs MI stumpf_fusion +0.81). Frozen engine pin (bit-identical to paper-time freeze): • Commit: 318eb2f529d7103e8b7d80b01228357fdc4e0217 • Aggregate SHA-256: 482ade45c50f5d3bf5c90c122e495b2c3230e6e6edc6542f72f22e3b5da37f88 (Re-verifiable via the canonical find+shasum command documented in README.) Engine IP note: The MI engine source code remains under SRC9 Sonic IntelligenceLLC copyright and is NOT included in this deposit. The reproduction archive isan artefact-only release — all numerical results are reproducible from thedeposited cache substrate, datasets, and verification scripts without engineaccess. Research-use source access available upon email request toamace@bu.edu. Heavy artefacts vendored separately on Zenodo: • 138 GB MI engine pre-compute (per-frame .npz feature caches) • ~3 GB Gen-2 behavioural dataset metadata • 702 MB ds002725 mech×region BOLD intermediatesThe ~185 MB cache substrate (_unit_test_oracles) needed for reviewer-modeR³/T³ pytest is included here. Runtime: ~55 min on MacBook Air M2 8 GB cache-mode (~1 h 45 min live-enginemode). Bundle integrity: 1,097 verdicts re-verifiable via verify_full_ledger.py. Source code repository: https://github.com/amacerdem/Musical_Intelligence_Results Update (2026-05-31) — Note on bundled upstream datasets. This archive includes copies of several upstream research datasets under Musical_Intelligence_Results/datasets/ and one file under engine_outputs/consonance/ — namely PMEmo, ChillsDB, TenseMusic, DEAM, Emotify, Eerola film soundtracks, Marjieh 2024, Harrison 2024 (carillon), and Bowling 2018 — bundled for reviewer reproducibility convenience. Each bundled dataset remains the intellectual property of its original authors and is included under its own original license. See DATASETS_LICENSE.md in the archive root for attribution and authoritative-source URLs. The PolyForm Noncommercial 1.0.0 license of this archive applies only to MI-authored content and does not override or extend to any bundled upstream dataset. For commercial use of either MI content or any upstream dataset, contact the respective copyright holders. If you are an upstream author and prefer your dataset to be removed from a future version of this deposit, please email amace@bu.edu — removal will be prompt and acknowledged.",
+      "doi": "10.5281/zenodo.20457643",
+      "pmid": null,
+      "openalex_id": "W7162876857",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds002725",
+      "confidence_scoring": {
+        "confidence_score": 0.5516931353509427,
+        "similarity_score": 0.47765639424324036,
+        "citation_text_length": 1645,
+        "dataset_text_length": 1058,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "MI Engine Outputs — Neuroimaging cache (ds002725, ds003720, ds004007, ds006583)",
+      "author": "Amaç Erdem",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20476218",
+      "cited_by": 0,
+      "abstract": "Heavy per-frame engine output cache for the Musical Intelligence (MI) Reproduction Archive. This deposit complements the main MI Reproduction Archive v2.0.0 (DOI: 10.5281/zenodo.20457643). It contains the per-frame .npz files required to reproduce the 05.3 ds002725 single-subject + 05.5 ds003720 voxelwise + 05.6 cross-dataset pytest phases in cache-mode (no engine source, no audio WAVs required). To use: Download and extract the main archive (DOI 10.5281/zenodo.20457643). Download this .tar file and extract into Musical_Intelligence_Results/engine_outputs/neuroimaging/. Run pytest under the relevant validation phase directory. Content: Per-frame .npz feature caches for 4 OpenNeuro fMRI datasets used in MI's mech×region grounding phases. Subdirs: ds002725/ (6.0 GB), ds003720/ (6.8 GB), ds003720_raw_gtzan/ (84 MB), ds004007/ (1.6 GB), ds006583/ (461 MB), ds006583_behav/ (462 MB). File: mi-engine-outputs-neuroimaging.tar — MD5: 7945f92848a6ff65fae1bf6cf6212130 Format: uncompressed tar (payload .npz is already zlib-compressed numpy zip; outer gzip would add wall-clock with ~0% size reduction). Engine version: SHA 318eb2f5 (FROZEN). Bit-identical reproduction guaranteed when paired with the engine at this commit. License: PolyForm Noncommercial 1.0.0 (matches the main archive). Engine source remains proprietary to SRC9 Sonic Intelligence LLC and is not included in this deposit.",
+      "doi": "10.5281/zenodo.20476218",
+      "pmid": null,
+      "openalex_id": "W7163030970",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds002725",
+      "confidence_scoring": {
+        "confidence_score": 0.5699802392721177,
+        "similarity_score": 0.4934893846511841,
+        "citation_text_length": 1579,
+        "dataset_text_length": 1058,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "MI Engine Outputs — Neuroimaging cache (ds002725, ds003720, ds004007, ds006583)",
+      "author": "Amaç Erdem",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20476219",
+      "cited_by": 0,
+      "abstract": "Heavy per-frame engine output cache for the Musical Intelligence (MI) Reproduction Archive. This deposit complements the main MI Reproduction Archive v2.0.0 (DOI: 10.5281/zenodo.20457643). It contains the per-frame .npz files required to reproduce the 05.3 ds002725 single-subject + 05.5 ds003720 voxelwise + 05.6 cross-dataset pytest phases in cache-mode (no engine source, no audio WAVs required). To use: Download and extract the main archive (DOI 10.5281/zenodo.20457643). Download this .tar file and extract into Musical_Intelligence_Results/engine_outputs/neuroimaging/. Run pytest under the relevant validation phase directory. Content: Per-frame .npz feature caches for 4 OpenNeuro fMRI datasets used in MI's mech×region grounding phases. Subdirs: ds002725/ (6.0 GB), ds003720/ (6.8 GB), ds003720_raw_gtzan/ (84 MB), ds004007/ (1.6 GB), ds006583/ (461 MB), ds006583_behav/ (462 MB). File: mi-engine-outputs-neuroimaging.tar — MD5: 7945f92848a6ff65fae1bf6cf6212130 Format: uncompressed tar (payload .npz is already zlib-compressed numpy zip; outer gzip would add wall-clock with ~0% size reduction). Engine version: SHA 318eb2f5 (FROZEN). Bit-identical reproduction guaranteed when paired with the engine at this commit. License: PolyForm Noncommercial 1.0.0 (matches the main archive). Engine source remains proprietary to SRC9 Sonic Intelligence LLC and is not included in this deposit.",
+      "doi": "10.5281/zenodo.20476219",
+      "pmid": null,
+      "openalex_id": "W7163004426",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds002725",
+      "confidence_scoring": {
+        "confidence_score": 0.5699802392721177,
+        "similarity_score": 0.4934893846511841,
+        "citation_text_length": 1579,
+        "dataset_text_length": 1058,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    }
+  ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-15T19:04:53.623422+00:00",
+    "scoring_date": "2026-06-19T10:11:13.039196+00:00",
     "dataset_text_length": 1058,
-    "num_citations_scored": 0
+    "num_citations_scored": 7,
+    "summary_stats": {
+      "mean_confidence": 0.5894477413594723,
+      "median_confidence": 0.5516931353509427,
+      "std_confidence": 0.09233463449335574,
+      "min_confidence": 0.5229218754172326,
+      "max_confidence": 0.8127316501736641,
+      "high_confidence_count": 1,
+      "medium_confidence_count": 6,
+      "low_confidence_count": 0
+    }
   }
 }

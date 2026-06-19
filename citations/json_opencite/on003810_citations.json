@@ -1,6 +1,6 @@
 {
   "dataset_id": "on003810",
-  "num_citations": 0,
+  "num_citations": 1,
   "date_last_updated": "2026-06-13T21:43:31.783248+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
@@ -12,13 +12,56 @@
     "anchor_count": 1,
     "anchor_errors": {},
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "on003810",
+      "ds003810"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 0
   },
-  "citation_details": [],
+  "citation_details": [
+    {
+      "title": "Croissant Baker: Metadata Generation for Discoverable, Governable, and Reusable ML Datasets",
+      "author": "Rafi Al Attrach, Rajna Fani, Sebastian Lobentanzer, Joan Giner-Miguelez, Debanshu Das, Varuni H. K., Nobin Sarwar, Rajat Ghosh, Anwai Archit, Surbhi Motghare, Christina Conrad Parry, Luis Oala, Lara Grosso, Joaquin Vanschoren, Steffen Vogler, Sujata Goswami, Eric S. Rosenthal, Marzyeh Ghassemi, Matthew McDermott, Tom Pollard",
+      "venue": "ArXiv.org",
+      "year": 2026,
+      "url": "https://openalex.org/W7161452222",
+      "cited_by": 0,
+      "abstract": "Croissant has emerged as the metadata standard for machine learning datasets, providing a structured, JSON-LD-based format that makes dataset discovery, automated ingestion, and reproducible analysis machine-checkable across ML platforms. Adoption has accelerated, and NeurIPS now requires Croissant metadata in every submission to its dataset tracks. Yet in practice Croissant generation usually starts with uploading data to a public platform, a path infeasible for governed and large local repositories that hold much of the high-value data ML increasingly relies on. We release Croissant Baker, a local-first, open-source command-line tool that generates validated Croissant metadata directly from a dataset directory through a modular handler registry. We evaluate Croissant Baker on over 140 datasets, scaling to MIMIC-IV at 886 million rows and 374 Parquet files. On held-out comparisons against producer-authored or standards-derived ground truth, Croissant Baker reaches 97-100% agreement across multiple domains.",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": "W7161452222",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003810",
+      "confidence_scoring": {
+        "confidence_score": 0.3898913669586182,
+        "similarity_score": 0.3375682830810547,
+        "citation_text_length": 1487,
+        "dataset_text_length": 1193,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    }
+  ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:28:35.707662+00:00",
+    "scoring_date": "2026-06-19T10:32:01.064808+00:00",
     "dataset_text_length": 1193,
-    "num_citations_scored": 0
+    "num_citations_scored": 1,
+    "summary_stats": {
+      "mean_confidence": 0.3898913669586182,
+      "median_confidence": 0.3898913669586182,
+      "std_confidence": 0.0,
+      "min_confidence": 0.3898913669586182,
+      "max_confidence": 0.3898913669586182,
+      "high_confidence_count": 0,
+      "medium_confidence_count": 0,
+      "low_confidence_count": 1
+    }
   }
 }

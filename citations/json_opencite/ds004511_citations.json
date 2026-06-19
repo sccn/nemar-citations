@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds004511",
-  "num_citations": 0,
+  "num_citations": 1,
   "date_last_updated": "2026-06-15T13:01:08.927179+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
@@ -12,13 +12,55 @@
     "anchor_count": 0,
     "anchor_errors": {},
     "anchor_judgment_model": null,
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds004511"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 0
   },
-  "citation_details": [],
+  "citation_details": [
+    {
+      "title": "Deception Detection from Five-Channel Wearable EEG on LieWaves: A Reproducible Baseline for Subject-Dependent and Subject-Independent Evaluation",
+      "author": "Șerban-Teodor Nicolescu, Felix–Constantin Adochiei, Florin-Ciprian Argatu, Bogdan-Adrian Enache, George-Călin Serițan",
+      "venue": "Sensors",
+      "year": 2026,
+      "url": "https://doi.org/10.3390/s26031027",
+      "cited_by": 0,
+      "abstract": "Deception detection with low-channel wearable EEG requires protocols that generalize across people while remaining practical for portable devices. Using the public LieWaves dataset (27 subjects recorded with a five-channel Emotiv Insight headset), we evaluate to what extent five-channel head-mounted EEG can support lie-truth discrimination under both subject-independent and subject-dependent evaluations. For the subject-independent setting, we train a compact Residual Network with Squeeze-and-Excitation blocks (ResNet-SE) model on raw overlapping windows with focal loss, light data augmentation, and grouped cross-validation by subject; out-of-fold window probabilities are averaged per session and converted to labels using a single decision threshold estimated from the cross-validated session scores. For the subject-dependent setting, we adopt an overlapping short-window Residual Temporal Convolutional Network with Squeeze-and-Excitation and Attention (Res-TCN-SE-Attention) model that fuses raw EEG with discrete wavelet transform (DWT)-based spectral and handcrafted band-power and Hjorth features, using an 80/10/10 split at the recording/session level (stratified by session label), so that all windows from a given session are assigned to a single subset; because each subject contributes two sessions, the same subject may still appear across subsets via different sessions. The subject-independent model attains 66.70% session-level accuracy with an AUC of 0.58 on unseen subjects, underscoring the difficulty of person-independent generalization from low-channel wearable EEG. Because practical deployment requires generalization to previously unseen individuals, we treat the subject-independent evaluation as the primary estimate of real-world generalization. In contrast, the subject-dependent pipeline reaches 99.94% window-level accuracy under the overlapping sliding-window (OSW) setting with a session-disjoint split (no session contributes windows to more than one subset). This near-ceiling performance reflects the optimistic nature of subject-dependent evaluation with highly overlapping windows, even when avoiding within-session train-test overlap, and should not be interpreted as a meaningful indicator of deception-detection capability under realistic deployment constraints. These results suggest limited, above-chance separability between lie and truth sessions in LieWaves using a five-channel wearable EEG under the studied protocol; however, performance remains far from deployment-ready and is strongly shaped by evaluation design. Explicit reporting of both protocols, together with clear rules for windowing, aggregation, and threshold selection, supports more reproducible and comparable benchmarking.",
+      "doi": "10.3390/s26031027",
+      "pmid": "41682543",
+      "openalex_id": "W7127570473",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004511",
+      "confidence_scoring": {
+        "confidence_score": 0.6769085794687272,
+        "similarity_score": 0.5860680341720581,
+        "citation_text_length": 1807,
+        "dataset_text_length": 2208,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    }
+  ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-15T19:10:09.583792+00:00",
+    "scoring_date": "2026-06-19T10:17:37.019218+00:00",
     "dataset_text_length": 2208,
-    "num_citations_scored": 0
+    "num_citations_scored": 1,
+    "summary_stats": {
+      "mean_confidence": 0.6769085794687272,
+      "median_confidence": 0.6769085794687272,
+      "std_confidence": 0.0,
+      "min_confidence": 0.6769085794687272,
+      "max_confidence": 0.6769085794687272,
+      "high_confidence_count": 0,
+      "medium_confidence_count": 1,
+      "low_confidence_count": 0
+    }
   }
 }

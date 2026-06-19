@@ -1,6 +1,6 @@
 {
   "dataset_id": "on005505",
-  "num_citations": 12,
+  "num_citations": 17,
   "date_last_updated": "2026-06-18T23:26:32.238888+00:00",
   "metadata": {
     "total_cumulative_citations": 62,
@@ -33,7 +33,14 @@
         "paper_venue": "Scientific Data",
         "reason": "The paper describes a separate dataset of 126 individuals, whereas the HBN-EEG dataset contains over 3000 participants."
       }
-    ]
+    ],
+    "searched_accessions": [
+      "on005505",
+      "ds005505"
+    ],
+    "num_accession_mentions": 5,
+    "num_dataset_citations": 5,
+    "num_datapaper_citations": 12
   },
   "citation_details": [
     {
@@ -311,21 +318,146 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Neuroelectromagnetic Data Archive and Repository: Open-source platform analysis",
+      "author": "Tracy Brandmeyer, Anna Riggs, Viraaj Reddi, Hayley Sullivan, Choonhan Youn, Subhashini Sivagnanam, Kenneth Yoshimoto, Russell A. Poldrack, Nell Hardcastle, Christopher Markiewicz, Amitava Majumdar, Yahya Shirazi, Dung Truong, Scott Makeig, A. Delorme",
+      "venue": "Aperture Neuro",
+      "year": 2026,
+      "url": "https://doi.org/10.52294/001c.154162",
+      "cited_by": 1,
+      "abstract": "Open data infrastructures are rapidly reshaping the landscape of neuroscience by enabling greater reproducibility through transparency, reusability, and collaboration, thus providing a foundation for sustainable and scalable scientific progress. This paper presents a systematic audit of the Neuroelectromagnetic Data Archive and Repository (NEMAR), a platform supporting the sharing and reuse of EEG, MEG, and iEEG datasets standardized through the Brain Imaging Data Structure (BIDS) format. Drawing on a detailed analysis of over 300 publicly available datasets, we assess the composition, metadata quality, and population coverage of data in NEMAR. Our findings reveal significant momentum in data sharing practices, particularly in EEG, and highlight key challenges, including inconsistent metadata, underrepresentation of clinical populations, and variable adherence to data standards. These insights highlight the importance of targeted support for policy and cultural development to ensure open repositories like NEMAR are not only accessible but also equitable, reusable, and scientifically robust.",
+      "doi": "10.52294/001c.154162",
+      "pmid": null,
+      "openalex_id": "W7124966518",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005505",
+      "confidence_scoring": {
+        "confidence_score": 0.6045694863796235,
+        "similarity_score": 0.5234367847442627,
+        "citation_text_length": 1489,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "5D Conscious State Test Suite: Reproducibility Package for The Geometry of Conscious States",
+      "author": "Spencer Howie",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.19600211",
+      "cited_by": 0,
+      "abstract": "Python test suite and intermediate results accompanying Howie (2026e), \"The Geometry of Conscious States: A Five-Dimensional Framework.\" Self-contained reproducibility package for every numeric result in the paper: every figure, table, and cited value reproduces from the deposited per-subject feature JSONs by running `scripts/run_all.sh --stage analyze` on a clean checkout. Five EEG datasets (~314 subjects after QC), processed with the CAR-harmonized v1.2 pipeline and analyzed under the 5D state-geometry framework: Sleep (ANPHY-Sleep, OSF: thsqg) — n = 28; sleep exit(W to N3) Cambridge propofol (Chennu et al. archive) — n = 19; propofol exit (Baseline to Moderate) DS005620 propofol (OpenNeuro ds005620) — n = 20; light-sedation hybrid - SRM (OpenNeuro ds003775) — n = 111; normative healthy-adult baseline HBN (OpenNeuro ds005505) — n = 136; rel_alpha swap verification (EC vs EO) What's included: Pipelines (raw EEG to per-subject 5D features): reprocess_car_local.py: Sleep + Cambridge CAR + I_Preprocessing ds003775_reprocess.py: SRM normative baseline ds005620_reprocess.py: light-sedation reprocessing hbn_reader.py / hbn_reprocess.py: HBN developmental normative phi5_swap_committed.py: rel_alpha swap verification driver Analyses (committed feature JSONs to canonical numbers): trajectory_geometry.py: group-mean 5D vectors, trajectory magnitudes, inter-paradigm angles trajectory_stats.py: per-subject trajectory statistics, bootstrap CIs, label-permutation tests, leave-one-out sensitivity angular_dispersion.py: per-subject trajectory dispersion dispersion_pathway_figure.py: dispersion / pathway visualization weighted_geomean_analysis.py: Fisher LDA weights vs equal-weights comparison via log-space LDA swap_effect_sizes.py: rel_alpha-vs-I_P channel-swap per-cohort effect sizes (Cohen's paired d_z, four-cohort composite) Outputs: outputs/<cohort>_5d_car_data.json: per-subject 5D featurevectors for each cohort outputs/canonical/: every result cited in the paper as CSV / JSON / log; verify_outputs.py diffs a fresh run against this outputs/figures/: PNG and SVG figure outputs Series-wide compute primitives (_framework_core/) shared byte-identically with the empirical-paper deposits: pairwise Granger causality, GC matrix construction, transitive closure, spectral radius, all five Phi5 channels. I_R operationalization: the canonical normalized spectral radius rho(W) / rho_max of the thresholded Granger-causality graph. Reproducibility: run_all.sh runs the full pipeline (preprocess to analyze to verify); accepts --datasets and --analysis filters for partial re-runs verify_outputs.py reports \"OK -- all canonical values reproduce within tolerance\" on a clean unzip environment.yml (conda) and requirements.txt (pip fallback) pin dependencies manifests/ tracks every QC'd subject ID across the five datasets Data sources (downloaded separately, not redistributed): ANPHY-Sleep (OSF: thsqg) Cambridge propofol (Chennu et al. archive; access details indatasets/manifest.md) OpenNeuro ds005620 (light-sedation paradigm) OpenNeuro ds003775 (resting-state normative cohort) OpenNeuro ds005505 (HBN developmental cohort) License: MIT.",
+      "doi": "10.5281/zenodo.19600211",
+      "pmid": null,
+      "openalex_id": "W7154568845",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005505",
+      "confidence_scoring": {
+        "confidence_score": 0.6197816669940949,
+        "similarity_score": 0.5366075038909912,
+        "citation_text_length": 1699,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "5D Conscious State Test Suite: Reproducibility Package for The Geometry of Conscious States",
+      "author": "Spencer Howie",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.19600212",
+      "cited_by": 0,
+      "abstract": "Standalone reproducibility package for the manuscript \"The Geometry of Conscious States: A Five-Dimensional Framework\" (Howie, 2026, Zenodo, forthcoming). The code and committed feature data regenerate every numeric result cited in that manuscript — group-mean state vectors and magnitudes, inter-paradigm angles, per-subject trajectory dispersion statistics, the pooled-baseline Φ_ref calibration (n=67), and the equal-weighted versus Fisher-weighted geometric-mean comparison — from five publicly available EEG datasets: ANPHY Sleep (OpenNeuro ds003768, n=28) — endogenous acute exit Cambridge propofol (n=19) — pharmacological acute exit ds005620 light propofol sedation (n=28) — partial pharmacological exit ds003775 SRM normative (n=111) — pooled-baseline anchor ds005505 HBN (n=136) — eyes-open / eyes-closed developmental contrast used in the channel-substitution audit Running bash scripts/run_all.sh --stage analyze from the committed feature JSONs reproduces every canonical output; python scripts/verify_outputs.py numerically checks each of the twenty pinned values against the frozen reference in outputs/canonical/paper5_numbers.csv. Raw BIDS preprocessing (CAR re-reference, epoching, feature extraction) is also included under pipelines/ and is invocable if users want to replicate from raw data. The composite implemented is the equal-weighted geometric mean of five channels — interaction asymmetry, organizational specificity (1 − H_norm), inverse memory depth (1 − I_M), recursive integration, and relative alpha power — with the Consciousness Index reported as 100·Φ₅/(Φ₅ + Φ_ref). Canonical Φ_ref = 0.716. The implementation lives in analyses/_common.py. Full directory layout, dataset provenance, and per-number output mapping are documented in the deposit's README.md and MANIFEST.md.",
+      "doi": "10.5281/zenodo.19600212",
+      "pmid": null,
+      "openalex_id": "W7154607616",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005505",
+      "confidence_scoring": {
+        "confidence_score": 0.5976569241285326,
+        "similarity_score": 0.5174518823623657,
+        "citation_text_length": 1699,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "5D Conscious State Test Suite: Reproducibility Package for The Geometry of Conscious States",
+      "author": "Spencer Howie",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.19654019",
+      "cited_by": 0,
+      "abstract": "Standalone reproducibility package for the manuscript \"The Geometry of Conscious States: A Five-Dimensional Framework\" (Howie, 2026, Zenodo, forthcoming). The code and committed feature data regenerate every numeric result cited in that manuscript — group-mean state vectors and magnitudes, inter-paradigm angles, per-subject trajectory dispersion statistics, the pooled-baseline Φ_ref calibration (n=67), and the equal-weighted versus Fisher-weighted geometric-mean comparison — from five publicly available EEG datasets: ANPHY Sleep (OpenNeuro ds003768, n=28) — endogenous acute exit Cambridge propofol (n=19) — pharmacological acute exit ds005620 light propofol sedation (n=28) — partial pharmacological exit ds003775 SRM normative (n=111) — pooled-baseline anchor ds005505 HBN (n=136) — eyes-open / eyes-closed developmental contrast used in the channel-substitution audit Running bash scripts/run_all.sh --stage analyze from the committed feature JSONs reproduces every canonical output; python scripts/verify_outputs.py numerically checks each of the twenty pinned values against the frozen reference in outputs/canonical/paper5_numbers.csv. Raw BIDS preprocessing (CAR re-reference, epoching, feature extraction) is also included under pipelines/ and is invocable if users want to replicate from raw data. The composite implemented is the equal-weighted geometric mean of five channels — interaction asymmetry, organizational specificity (1 − H_norm), inverse memory depth (1 − I_M), recursive integration, and relative alpha power — with the Consciousness Index reported as 100·Φ₅/(Φ₅ + Φ_ref). Canonical Φ_ref = 0.716. The implementation lives in analyses/_common.py. Full directory layout, dataset provenance, and per-number output mapping are documented in the deposit's README.md and MANIFEST.md.",
+      "doi": "10.5281/zenodo.19654019",
+      "pmid": null,
+      "openalex_id": "W7154897286",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005505",
+      "confidence_scoring": {
+        "confidence_score": 0.5976569241285326,
+        "similarity_score": 0.5174518823623657,
+        "citation_text_length": 1699,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "5D Conscious State Test Suite: Reproducibility Package for The Geometry of Conscious States",
+      "author": "Spencer Howie",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20110569",
+      "cited_by": 0,
+      "abstract": "Python test suite and intermediate results accompanying Howie (2026e), \"The Geometry of Conscious States: A Five-Dimensional Framework.\" Self-contained reproducibility package for every numeric result in the paper: every figure, table, and cited value reproduces from the deposited per-subject feature JSONs by running `scripts/run_all.sh --stage analyze` on a clean checkout. Five EEG datasets (~314 subjects after QC), processed with the CAR-harmonized v1.2 pipeline and analyzed under the 5D state-geometry framework: Sleep (ANPHY-Sleep, OSF: thsqg) — n = 28; sleep exit(W to N3) Cambridge propofol (Chennu et al. archive) — n = 19; propofol exit (Baseline to Moderate) DS005620 propofol (OpenNeuro ds005620) — n = 20; light-sedation hybrid - SRM (OpenNeuro ds003775) — n = 111; normative healthy-adult baseline HBN (OpenNeuro ds005505) — n = 136; rel_alpha swap verification (EC vs EO) What's included: Pipelines (raw EEG to per-subject 5D features): reprocess_car_local.py: Sleep + Cambridge CAR + I_Preprocessing ds003775_reprocess.py: SRM normative baseline ds005620_reprocess.py: light-sedation reprocessing hbn_reader.py / hbn_reprocess.py: HBN developmental normative phi5_swap_committed.py: rel_alpha swap verification driver Analyses (committed feature JSONs to canonical numbers): trajectory_geometry.py: group-mean 5D vectors, trajectory magnitudes, inter-paradigm angles trajectory_stats.py: per-subject trajectory statistics, bootstrap CIs, label-permutation tests, leave-one-out sensitivity angular_dispersion.py: per-subject trajectory dispersion dispersion_pathway_figure.py: dispersion / pathway visualization weighted_geomean_analysis.py: Fisher LDA weights vs equal-weights comparison via log-space LDA swap_effect_sizes.py: rel_alpha-vs-I_P channel-swap per-cohort effect sizes (Cohen's paired d_z, four-cohort composite) Outputs: outputs/<cohort>_5d_car_data.json: per-subject 5D featurevectors for each cohort outputs/canonical/: every result cited in the paper as CSV / JSON / log; verify_outputs.py diffs a fresh run against this outputs/figures/: PNG and SVG figure outputs Series-wide compute primitives (_framework_core/) shared byte-identically with the empirical-paper deposits: pairwise Granger causality, GC matrix construction, transitive closure, spectral radius, all five Phi5 channels. I_R operationalization: the canonical normalized spectral radius rho(W) / rho_max of the thresholded Granger-causality graph. Reproducibility: run_all.sh runs the full pipeline (preprocess to analyze to verify); accepts --datasets and --analysis filters for partial re-runs verify_outputs.py reports \"OK -- all canonical values reproduce within tolerance\" on a clean unzip environment.yml (conda) and requirements.txt (pip fallback) pin dependencies manifests/ tracks every QC'd subject ID across the five datasets Data sources (downloaded separately, not redistributed): ANPHY-Sleep (OSF: thsqg) Cambridge propofol (Chennu et al. archive; access details indatasets/manifest.md) OpenNeuro ds005620 (light-sedation paradigm) OpenNeuro ds003775 (resting-state normative cohort) OpenNeuro ds005505 (HBN developmental cohort) License: MIT.",
+      "doi": "10.5281/zenodo.20110569",
+      "pmid": null,
+      "openalex_id": "W7160772736",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005505",
+      "confidence_scoring": {
+        "confidence_score": 0.6197816669940949,
+        "similarity_score": 0.5366075038909912,
+        "citation_text_length": 1699,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:52:59.853332+00:00",
+    "scoring_date": "2026-06-19T10:34:03.014347+00:00",
     "dataset_text_length": 2351,
-    "num_citations_scored": 12,
+    "num_citations_scored": 17,
     "summary_stats": {
-      "mean_confidence": 0.6180435595164697,
-      "median_confidence": 0.6200626167654992,
-      "std_confidence": 0.09479753477253737,
+      "mean_confidence": 0.6150570225189714,
+      "median_confidence": 0.6045694863796235,
+      "std_confidence": 0.07996545718192949,
       "min_confidence": 0.3901838824152947,
       "max_confidence": 0.7263295787572862,
       "high_confidence_count": 3,
-      "medium_confidence_count": 8,
+      "medium_confidence_count": 13,
       "low_confidence_count": 1
     }
   }

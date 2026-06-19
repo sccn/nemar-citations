@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds003739",
-  "num_citations": 169,
+  "num_citations": 170,
   "date_last_updated": "2026-06-18T22:29:48.481697+00:00",
   "metadata": {
     "total_cumulative_citations": 2778,
@@ -12,7 +12,13 @@
     "anchor_count": 2,
     "anchor_errors": {},
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds003739"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 169
   },
   "citation_details": [
     {
@@ -3901,22 +3907,47 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Learning neural decoders without labels using multiple data streams",
+      "author": "Steven Peterson, Rajesh P. N. Rao, Bingni W. Brunton",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2021,
+      "url": "https://doi.org/10.1101/2021.09.10.459775",
+      "cited_by": 3,
+      "abstract": "Abstract Recent advances in neural decoding have accelerated the development of brain-computer interfaces aimed at assisting users with everyday tasks such as speaking, walking, and manipulating objects. However, current approaches for training neural decoders commonly require large quantities of labeled data, which can be laborious or infeasible to obtain in real-world settings. One intriguing alternative uses self-supervised models that share self-generated pseudo-labels between two data streams; such models have shown exceptional performance on unlabeled audio and video data, but it remains unclear how well they extend to neural decoding. Here, we learn neural decoders without labels by leveraging multiple simultaneously recorded data streams, including neural, kinematic, and physiological signals. Specifically, we apply cross-modal, self-supervised deep clustering to decode movements from brain recordings; these decoders are compared to supervised and unimodal, self-supervised models. We find that sharing pseudo-labels between two data streams during training substantially increases decoding performance compared to unimodal, self-supervised models, with accuracies approaching those of supervised decoders trained on labeled data. Next, we develop decoders trained on three modalities that match or slightly exceed the performance of supervised models, achieving state-of-the-art neural decoding accuracy. Cross-modal decoding is a flexible, promising approach for robust, adaptive neural decoding in real-world applications without any labels.",
+      "doi": "10.1101/2021.09.10.459775",
+      "pmid": null,
+      "openalex_id": "W3201539443",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003739",
+      "confidence_scoring": {
+        "confidence_score": 0.3707770067453385,
+        "similarity_score": 0.3210190534591675,
+        "citation_text_length": 1697,
+        "dataset_text_length": 1372,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:31:26.185587+00:00",
+    "scoring_date": "2026-06-19T10:14:09.774624+00:00",
     "dataset_text_length": 1372,
-    "num_citations_scored": 169,
+    "num_citations_scored": 170,
     "summary_stats": {
-      "mean_confidence": 0.5522186209746367,
-      "median_confidence": 0.5488641893863679,
-      "std_confidence": 0.07885185429483954,
+      "mean_confidence": 0.5511513173615232,
+      "median_confidence": 0.5477497874200346,
+      "std_confidence": 0.07983454686864967,
       "min_confidence": 0.3242990957200528,
       "max_confidence": 0.8263521033525468,
       "high_confidence_count": 3,
       "medium_confidence_count": 158,
-      "low_confidence_count": 8
+      "low_confidence_count": 9
     }
   }
 }

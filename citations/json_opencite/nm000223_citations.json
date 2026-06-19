@@ -1,6 +1,6 @@
 {
   "dataset_id": "nm000223",
-  "num_citations": 9,
+  "num_citations": 10,
   "date_last_updated": "2026-06-18T23:21:39.925828+00:00",
   "metadata": {
     "total_cumulative_citations": 22,
@@ -33,7 +33,13 @@
         "paper_venue": "Scientific Data",
         "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard, which is a technical specification used to organize and share EEG data like the one in this dataset."
       }
-    ]
+    ],
+    "searched_accessions": [
+      "nm000223"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 9
   },
   "citation_details": [
     {
@@ -242,22 +248,47 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "The Yin and the Yang of Keratin Amino Acid Substitutions and Epidermolysis Bullosa Simplex",
+      "author": "Dédée F. Murrell, Niken Trisnowati, Spiros Miyakis, Amy S. Paller",
+      "venue": "Journal of Investigative Dermatology",
+      "year": 2011,
+      "url": "https://doi.org/10.1038/jid.2011.206",
+      "cited_by": 16,
+      "abstract": null,
+      "doi": "10.1038/jid.2011.206",
+      "pmid": "21844930",
+      "openalex_id": "W1978491049",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "nm000223",
+      "confidence_scoring": {
+        "confidence_score": 0.20575997233390808,
+        "similarity_score": 0.20575997233390808,
+        "citation_text_length": 218,
+        "dataset_text_length": 2405,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:48:13.658287+00:00",
+    "scoring_date": "2026-06-19T10:29:12.308092+00:00",
     "dataset_text_length": 2405,
-    "num_citations_scored": 9,
+    "num_citations_scored": 10,
     "summary_stats": {
-      "mean_confidence": 0.5522103569408258,
-      "median_confidence": 0.5714183896780014,
-      "std_confidence": 0.06569720131877799,
-      "min_confidence": 0.38315125733613975,
+      "mean_confidence": 0.517565318480134,
+      "median_confidence": 0.5636642970889807,
+      "std_confidence": 0.12119000884764945,
+      "min_confidence": 0.20575997233390808,
       "max_confidence": 0.6301770150661469,
       "high_confidence_count": 0,
       "medium_confidence_count": 8,
-      "low_confidence_count": 1
+      "low_confidence_count": 2
     }
   }
 }

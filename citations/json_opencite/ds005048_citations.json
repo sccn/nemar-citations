@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds005048",
-  "num_citations": 25,
+  "num_citations": 30,
   "date_last_updated": "2026-06-18T23:13:30.020517+00:00",
   "metadata": {
     "total_cumulative_citations": 118,
@@ -12,7 +12,13 @@
     "anchor_count": 2,
     "anchor_errors": {},
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds005048"
+    ],
+    "num_accession_mentions": 5,
+    "num_dataset_citations": 5,
+    "num_datapaper_citations": 25
   },
   "citation_details": [
     {
@@ -589,21 +595,146 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "LEAD: An EEG Foundation Model for Alzheimer's Disease Detection",
+      "author": "Yihe Wang, Nan Huang, Nadia Mammone, Marco Cecchi, Xiang Zhang",
+      "venue": "arXiv (Cornell University)",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arxiv.2502.01678",
+      "cited_by": 1,
+      "abstract": "Electroencephalography (EEG) provides a non-invasive, highly accessible, and cost-effective approach for detecting Alzheimer's disease (AD). However, existing methods, whether based on handcrafted feature engineering or standard deep learning, face three major challenges: 1) the lack of large-scale EEG-based AD datasets for robust representation learning; 2) limited generalizability across subjects; and 3) difficulty in adapting to highly heterogeneous data. To address these challenges, we curate the world's largest EEG-AD corpus to date, comprising 2,238 subjects. Leveraging this unique resource, we propose LEAD, the first large-scale foundation model for EEG-based AD detection. Specifically, we design a gated temporal-spatial Transformer that can adapt to EEG recordings with arbitrary lengths, channel configurations, and sampling rates. In addition, we introduce a subject-regularized training strategy to enhance subject-level feature learning. We further employ medical contrastive learning for pre-training on 13 datasets, including 4 AD datasets and 9 non-AD neurological disorder datasets, and fine-tune/test the model on the other 5 AD datasets. LEAD achieves the best average ranking across all 20 evaluations on 5 downstream datasets, substantially outperforming existing approaches, including state-of-the-art (SOTA) EEG foundation models. These results strongly demonstrate the effectiveness and practical potential of the proposed method for real-world EEG-based AD detection. Source code: https://github.com/DL4mHealth/LEAD",
+      "doi": "10.48550/arxiv.2502.01678",
+      "pmid": null,
+      "openalex_id": "W4407184772",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005048",
+      "confidence_scoring": {
+        "confidence_score": 0.6186513277888299,
+        "similarity_score": 0.5356288552284241,
+        "citation_text_length": 1690,
+        "dataset_text_length": 2213,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Pre-Registered High-Resolution Test of the φ⁸ Binding Frequency Attractor in Resting-State EEG: A 608-Subject, 1000 Hz Replication of P69a",
+      "author": "Abby Davis",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20090327",
+      "cited_by": 0,
+      "abstract": "Fibonacci Causal Loop Theory (FCLT) predicts that neural gamma-band dynamics are governed by a φ⁸ binding frequency attractor at φ⁸ = 46.979 Hz, where φ = (1+√5)/2 = 1.6180… is the golden ratio. Paper 69a tested this prediction on OpenNeuro ds005048 (35 subjects, 250 Hz resting-state EEG) and returned a cohort mean δ = 0.083 (SD = 0.012), placing the result in the gray zone (0.05 ≤ δ ≤ 0.10) under Protocol V3.1. Instrumental analysis confirmed the 250 Hz sampling rate as the limiting factor: sub-Hz peak resolution in the 40–50 Hz band is unachievable at that sampling rate. This paper constitutes the pre-registration for P69b, a high-resolution follow-up using OpenNeuro ds005385 (608 subjects, 1000 Hz, BIDS-compliant), which provides 4× finer frequency binning. The pre-registered prediction is unchanged: cohort mean δ < 0.05 at φ⁸ = 46.979 Hz. The protocol is identical to P69a. Independent parallel convergences from Ruiz (Entropy, 2025) via thermodynamic symmetry and IFT (Castro & Davis 2026) via icosahedral tensor geometry provide independent theoretical support for φ-attractor behavior in neural systems. Results will be reported in full regardless of outcome; no post-hoc protocol adjustment is permitted after this timestamp.",
+      "doi": "10.5281/zenodo.20090327",
+      "pmid": null,
+      "openalex_id": "W7160618227",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005048",
+      "confidence_scoring": {
+        "confidence_score": 0.6392235839366913,
+        "similarity_score": 0.5534403324127197,
+        "citation_text_length": 1488,
+        "dataset_text_length": 2213,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "FCLT P69b Pre-Registration: Phi-Eighth Binding Frequency Attractor in Resting-State EEG at 1000 Hz Resolution",
+      "author": "Abby Davis",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20090328",
+      "cited_by": 0,
+      "abstract": "This document constitutes a formal pre-registration for FCLT Paper 69b (P69b), the high-resolution follow-up to P69a. P69a (OpenNeuro ds005048, 250 Hz) returned a mean deviation δ = 0.083 (SD = 0.012, gray zone) across 35 subjects, with the φ⁸ attractor at approximately 46.979 Hz present but unresolvable at 250 Hz sampling. The 250 Hz sampling rate is confirmed as the tech-gap limiting factor. P69b advances to OpenNeuro ds005385 (608 subjects, 1000 Hz, BIDS-compliant) using the identical protocol to close the tech-gap. The pre-registered confirmation threshold is δ < 0.05. This timestamp precedes all data analysis under Protocol V3.1.",
+      "doi": "10.5281/zenodo.20090328",
+      "pmid": null,
+      "openalex_id": "W7160663806",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005048",
+      "confidence_scoring": {
+        "confidence_score": 0.6566745507717133,
+        "similarity_score": 0.568549394607544,
+        "citation_text_length": 856,
+        "dataset_text_length": 2213,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "FCLT P69b Pre-Registration: Phi-Eighth Binding Frequency Attractor in Resting-State EEG at 1000 Hz Resolution",
+      "author": "Abby Davis",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20328198",
+      "cited_by": 0,
+      "abstract": "Formal pre-registration for FCLT Paper 69b, the high-resolution follow-up to P69a. P69a (OpenNeuro ds005048, 250 Hz, n=35) returned δ = 0.083 (SD = 0.012, gray zone) with the φ⁸ ≈ 46.979 Hz binding frequency attractor present across all 35 subjects but unresolvable at 250 Hz sampling. The 250 Hz ceiling is confirmed as the sole limiting factor. P69b advances to OpenNeuro ds005385 (608 subjects, 1000 Hz, BIDS-compliant) using an identical pre-registered protocol to close the instrumental gap. The pre-registered confirmation threshold is δ < 0.05. Zenodo timestamp constitutes the priority record under FCLT Protocol V3.1. No changes to prediction, dataset, protocol, or outcome thresholds permitted after timestamp. All results reported in full regardless of outcome.",
+      "doi": "10.5281/zenodo.20328198",
+      "pmid": null,
+      "openalex_id": "W7162002184",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005048",
+      "confidence_scoring": {
+        "confidence_score": 0.6349276891350747,
+        "similarity_score": 0.5497209429740906,
+        "citation_text_length": 986,
+        "dataset_text_length": 2213,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Pre-Registered High-Resolution Test of the φ⁸ Binding Frequency Attractor in Resting-State EEG: A 608-Subject, 1000 Hz Replication of P69a",
+      "author": "Abby Davis",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20467298",
+      "cited_by": 0,
+      "abstract": "Fibonacci Causal Loop Theory (FCLT) predicts that neural gamma-band dynamics are governed by a φ⁸ binding frequency attractor at φ⁸ = 46.979 Hz, where φ = (1+√5)/2 = 1.6180… is the golden ratio. Paper 69a tested this prediction on OpenNeuro ds005048 (35 subjects, 250 Hz resting-state EEG) and returned a cohort mean δ = 0.083 (SD = 0.012), placing the result in the gray zone (0.05 ≤ δ ≤ 0.10) under Protocol V3.1. Instrumental analysis confirmed the 250 Hz sampling rate as the limiting factor: sub-Hz peak resolution in the 40–50 Hz band is unachievable at that sampling rate. This paper constitutes the pre-registration for P69b, a high-resolution follow-up using OpenNeuro ds005385 (608 subjects, 1000 Hz, BIDS-compliant), which provides 4× finer frequency binning. The pre-registered prediction is unchanged: cohort mean δ < 0.05 at φ⁸ = 46.979 Hz. The protocol is identical to P69a. Independent parallel convergences from Ruiz (Entropy, 2025) via thermodynamic symmetry and IFT (Castro & Davis 2026) via icosahedral tensor geometry provide independent theoretical support for φ-attractor behavior in neural systems. Results will be reported in full regardless of outcome; no post-hoc protocol adjustment is permitted after this timestamp.",
+      "doi": "10.5281/zenodo.20467298",
+      "pmid": null,
+      "openalex_id": "W7162876327",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005048",
+      "confidence_scoring": {
+        "confidence_score": 0.6392235839366913,
+        "similarity_score": 0.5534403324127197,
+        "citation_text_length": 1488,
+        "dataset_text_length": 2213,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:36:48.366553+00:00",
+    "scoring_date": "2026-06-19T10:20:19.328815+00:00",
     "dataset_text_length": 2213,
-    "num_citations_scored": 25,
+    "num_citations_scored": 30,
     "summary_stats": {
-      "mean_confidence": 0.6384377937555314,
-      "median_confidence": 0.6599271243810655,
-      "std_confidence": 0.13150363454428846,
+      "mean_confidence": 0.6383215193152428,
+      "median_confidence": 0.652068516612053,
+      "std_confidence": 0.12014815592638993,
       "min_confidence": 0.3050973951816559,
       "max_confidence": 0.912283836901188,
       "high_confidence_count": 7,
-      "medium_confidence_count": 17,
+      "medium_confidence_count": 22,
       "low_confidence_count": 1
     }
   }

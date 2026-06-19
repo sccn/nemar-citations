@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds003922",
-  "num_citations": 25,
+  "num_citations": 26,
   "date_last_updated": "2026-06-18T22:30:00.877256+00:00",
   "metadata": {
     "total_cumulative_citations": 245,
@@ -12,7 +12,13 @@
     "anchor_count": 1,
     "anchor_errors": {},
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds003922"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 25
   },
   "citation_details": [
     {
@@ -589,20 +595,45 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Multisensory correlation computations in the human brain identified by a time-resolved encoding model",
+      "author": "Jacques Pesnot Lerousseau, Cesare Parise, Marc O. Ernst, Virginie van Wassenhove",
+      "venue": "Nature Communications",
+      "year": 2022,
+      "url": "https://doi.org/10.1038/s41467-022-29687-6",
+      "cited_by": 31,
+      "abstract": "Neural mechanisms that arbitrate between integrating and segregating multisensory information are essential for complex scene analysis and for the resolution of the multisensory correspondence problem. However, these mechanisms and their dynamics remain largely unknown, partly because classical models of multisensory integration are static. Here, we used the Multisensory Correlation Detector, a model that provides a good explanatory power for human behavior while incorporating dynamic computations. Participants judged whether sequences of auditory and visual signals originated from the same source (causal inference) or whether one modality was leading the other (temporal order), while being recorded with magnetoencephalography. First, we confirm that the Multisensory Correlation Detector explains causal inference and temporal order behavioral judgments well. Second, we found strong fits of brain activity to the two outputs of the Multisensory Correlation Detector in temporo-parietal cortices. Finally, we report an asymmetry in the goodness of the fits, which were more reliable during the causal inference task than during the temporal order judgment task. Overall, our results suggest the existence of multisensory correlation detectors in the human brain, which explain why and how causal inference is strongly driven by the temporal correlation of multisensory signals.",
+      "doi": "10.1038/s41467-022-29687-6",
+      "pmid": "35513362",
+      "openalex_id": "W4229069210",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003922",
+      "confidence_scoring": {
+        "confidence_score": 0.8379601961374283,
+        "similarity_score": 0.7255066633224487,
+        "citation_text_length": 1629,
+        "dataset_text_length": 2283,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:31:53.161982+00:00",
+    "scoring_date": "2026-06-19T10:15:12.702746+00:00",
     "dataset_text_length": 2283,
-    "num_citations_scored": 25,
+    "num_citations_scored": 26,
     "summary_stats": {
-      "mean_confidence": 0.5741729816794396,
-      "median_confidence": 0.5742430892586708,
-      "std_confidence": 0.09761221190102169,
+      "mean_confidence": 0.5843186437739777,
+      "median_confidence": 0.5745281007885934,
+      "std_confidence": 0.10832838188617545,
       "min_confidence": 0.33976079910993584,
-      "max_confidence": 0.7184279438853265,
-      "high_confidence_count": 1,
+      "max_confidence": 0.8379601961374283,
+      "high_confidence_count": 2,
       "medium_confidence_count": 22,
       "low_confidence_count": 2
     }

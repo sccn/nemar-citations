@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds004796",
-  "num_citations": 25,
+  "num_citations": 29,
   "date_last_updated": "2026-06-18T23:13:12.390481+00:00",
   "metadata": {
     "total_cumulative_citations": 60,
@@ -12,7 +12,13 @@
     "anchor_count": 1,
     "anchor_errors": {},
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": []
+    "context_anchors": [],
+    "searched_accessions": [
+      "ds004796"
+    ],
+    "num_accession_mentions": 4,
+    "num_dataset_citations": 6,
+    "num_datapaper_citations": 23
   },
   "citation_details": [
     {
@@ -289,7 +295,9 @@
         "dataset_text_length": 2356,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
+      },
+      "mentions_accession": true,
+      "matched_accession": "ds004796"
     },
     {
       "title": "The Selective Vulnerability of the Left Fimbria in Cognitively Normal APOE ε4 Carriers: A Localized Structural Correlate of High Genetic Risk for Alzheimer’s Disease",
@@ -427,7 +435,9 @@
         "dataset_text_length": 2356,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
+      },
+      "mentions_accession": true,
+      "matched_accession": "ds004796"
     },
     {
       "title": "ERP-based cognitive load decoding in middle-aged adults: effects of Alzheimer’s risk",
@@ -589,21 +599,121 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Task-Related EEG as a Biomarker for Preclinical Alzheimer’s Disease: An Explainable Deep Learning Approach",
+      "author": "Ziyang Li, Hong Wang, Lei Li",
+      "venue": "Biomimetics",
+      "year": 2025,
+      "url": "https://doi.org/10.3390/biomimetics10070468",
+      "cited_by": 4,
+      "abstract": "The early detection of Alzheimer's disease (AD) in cognitively healthy individuals remains a major preclinical challenge. EEG is a promising tool that has shown effectiveness in detecting AD risk. Task-related EEG has been rarely used in Alzheimer's disease research, as most studies have focused on resting-state EEG. An interpretable deep learning framework-Interpretable Convolutional Neural Network (InterpretableCNN)-was utilized to identify AD-related EEG features. EEG data were recorded during three cognitive task conditions, and samples were labeled based on APOE genotype and polygenic risk scores. A 100-fold leave-p%-subjects-out cross-validation (LPSO-CV) was used to evaluate model performance and generalizability. The model achieved an ROC AUC of 60.84% across the tasks and subjects, with a Kappa value of 0.22, indicating fair agreement. Interpretation revealed a consistent focus on theta and alpha activity in the parietal and temporal regions-areas commonly associated with AD pathology. Task-related EEG combined with interpretable deep learning can reveal early AD risk signatures in healthy individuals. InterpretableCNN enhances transparency in feature identification, offering a valuable tool for preclinical screening.",
+      "doi": "10.3390/biomimetics10070468",
+      "pmid": "40710281",
+      "openalex_id": "W4412474434",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004796",
+      "confidence_scoring": {
+        "confidence_score": 0.6708118110895157,
+        "similarity_score": 0.5807894468307495,
+        "citation_text_length": 1430,
+        "dataset_text_length": 2356,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "LEAD: An EEG Foundation Model for Alzheimer's Disease Detection",
+      "author": "Yihe Wang, Nan Huang, Nadia Mammone, Marco Cecchi, Xiang Zhang",
+      "venue": "arXiv (Cornell University)",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arxiv.2502.01678",
+      "cited_by": 1,
+      "abstract": "Electroencephalography (EEG) provides a non-invasive, highly accessible, and cost-effective approach for detecting Alzheimer's disease (AD). However, existing methods, whether based on handcrafted feature engineering or standard deep learning, face three major challenges: 1) the lack of large-scale EEG-based AD datasets for robust representation learning; 2) limited generalizability across subjects; and 3) difficulty in adapting to highly heterogeneous data. To address these challenges, we curate the world's largest EEG-AD corpus to date, comprising 2,238 subjects. Leveraging this unique resource, we propose LEAD, the first large-scale foundation model for EEG-based AD detection. Specifically, we design a gated temporal-spatial Transformer that can adapt to EEG recordings with arbitrary lengths, channel configurations, and sampling rates. In addition, we introduce a subject-regularized training strategy to enhance subject-level feature learning. We further employ medical contrastive learning for pre-training on 13 datasets, including 4 AD datasets and 9 non-AD neurological disorder datasets, and fine-tune/test the model on the other 5 AD datasets. LEAD achieves the best average ranking across all 20 evaluations on 5 downstream datasets, substantially outperforming existing approaches, including state-of-the-art (SOTA) EEG foundation models. These results strongly demonstrate the effectiveness and practical potential of the proposed method for real-world EEG-based AD detection. Source code: https://github.com/DL4mHealth/LEAD",
+      "doi": "10.48550/arxiv.2502.01678",
+      "pmid": null,
+      "openalex_id": "W4407184772",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004796",
+      "confidence_scoring": {
+        "confidence_score": 0.6026434555649758,
+        "similarity_score": 0.5217692255973816,
+        "citation_text_length": 1690,
+        "dataset_text_length": 2356,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Preclinical Neural Divergence associated with Genetic Risk for Alzheimer's Disease: A Multimodal Resting-State EEG and Neuroimaging Study",
+      "author": "Shlok Khare",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.19562976",
+      "cited_by": 0,
+      "abstract": "Pre-symptomatic Alzheimer’s risk detection is difficult precisely because genetically at-risk individuals look neurologically normal for years before any clinical presentation. This paper presents a multimodal neurophysiological framework distinguishing two biologically distinct risk pathways, APOE ε4 (N = 48) and PICALM rs3851179 (N = 30), using resting-state EEG and fMRI in a pre-symptomatic cohort (µage ≈55 years) from the PEARL-Neuro dataset (OpenNeuro ds004796). EEGNet trained under leave-one-subject-out cross-validation reveals a bimodal fold structure in which 57.8% of APOE e3/e4 carriers and 80.0% of PICALM carriers are correctly classified at the subject level, with no intermediate folds between near-perfect (F1 = 1.0, 50/77) and near-chance (F1 ≈0.47–0.50, 27/77) performance. This structure reflects genuine individual variability in pre-symptomatic EEG divergence onset, with age confirmed as non-explanatory (Mann-Whitney U, p>.05). SHAP analysis and EEGNet’s learned spatial filters converge independently on bilateral temporal and frontal channels as the primary discriminating anatomy. Default Mode Network (DMN) connectivity is the single most discriminative individual feature (mean |SHAP|= 0.038) despite showing no linear correlation with any EEG measure (r < 0.17, all p > .16, N = 68), indicating the two modalities access distinct biological aspects of the same risk process. Late fusion demonstrates a ceiling effect consistent with EEGNet’s near-perfect unimodal performance, but within the 24 maximally uncertain subjects, DMN provides genuine probability calibration improvement of approximately 0.20–0.25 in P(PICALM risk). A companion ResNet18 analysis on OASIS-2 (N = 150 baseline sessions) contributes neuroanatomical grounding through Grad-CAM, identifying posterior-inferior atrophy as the primary CDR-based MCI discriminator. Together, these results suggest the preclinical Alzheimer’s neural phenotype is modality-specific, pathway-dependent, and individually variable in its timing of emergence.",
+      "doi": "10.5281/zenodo.19562976",
+      "pmid": null,
+      "openalex_id": "W7154238673",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004796",
+      "confidence_scoring": {
+        "confidence_score": 0.8138241255283356,
+        "similarity_score": 0.7046096324920654,
+        "citation_text_length": 1743,
+        "dataset_text_length": 2356,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Preclinical Neural Divergence associated with Genetic Risk for Alzheimer's Disease: A Multimodal Resting-State EEG and Neuroimaging Study",
+      "author": "Shlok Khare",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.19562977",
+      "cited_by": 0,
+      "abstract": "Pre-symptomatic Alzheimer’s risk detection is difficult precisely because genetically at-risk individuals look neurologically normal for years before any clinical presentation. This paper presents a multimodal neurophysiological framework distinguishing two biologically distinct risk pathways, APOE ε4 (N = 48) and PICALM rs3851179 (N = 30), using resting-state EEG and fMRI in a pre-symptomatic cohort (µage ≈55 years) from the PEARL-Neuro dataset (OpenNeuro ds004796). EEGNet trained under leave-one-subject-out cross-validation reveals a bimodal fold structure in which 57.8% of APOE e3/e4 carriers and 80.0% of PICALM carriers are correctly classified at the subject level, with no intermediate folds between near-perfect (F1 = 1.0, 50/77) and near-chance (F1 ≈0.47–0.50, 27/77) performance. This structure reflects genuine individual variability in pre-symptomatic EEG divergence onset, with age confirmed as non-explanatory (Mann-Whitney U, p>.05). SHAP analysis and EEGNet’s learned spatial filters converge independently on bilateral temporal and frontal channels as the primary discriminating anatomy. Default Mode Network (DMN) connectivity is the single most discriminative individual feature (mean |SHAP|= 0.038) despite showing no linear correlation with any EEG measure (r < 0.17, all p > .16, N = 68), indicating the two modalities access distinct biological aspects of the same risk process. Late fusion demonstrates a ceiling effect consistent with EEGNet’s near-perfect unimodal performance, but within the 24 maximally uncertain subjects, DMN provides genuine probability calibration improvement of approximately 0.20–0.25 in P(PICALM risk). A companion ResNet18 analysis on OASIS-2 (N = 150 baseline sessions) contributes neuroanatomical grounding through Grad-CAM, identifying posterior-inferior atrophy as the primary CDR-based MCI discriminator. Together, these results suggest the preclinical Alzheimer’s neural phenotype is modality-specific, pathway-dependent, and individually variable in its timing of emergence.",
+      "doi": "10.5281/zenodo.19562977",
+      "pmid": null,
+      "openalex_id": "W7154262027",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004796",
+      "confidence_scoring": {
+        "confidence_score": 0.8138241255283356,
+        "similarity_score": 0.7046096324920654,
+        "citation_text_length": 1743,
+        "dataset_text_length": 2356,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:35:47.484829+00:00",
+    "scoring_date": "2026-06-19T10:19:22.656515+00:00",
     "dataset_text_length": 2356,
-    "num_citations_scored": 25,
+    "num_citations_scored": 29,
     "summary_stats": {
-      "mean_confidence": 0.5869631928920747,
-      "median_confidence": 0.5872120589017868,
-      "std_confidence": 0.09947281032449992,
+      "mean_confidence": 0.6060408048280356,
+      "median_confidence": 0.6026434555649758,
+      "std_confidence": 0.1093908720475616,
       "min_confidence": 0.42759446829557424,
       "max_confidence": 0.8151599621772767,
-      "high_confidence_count": 3,
-      "medium_confidence_count": 22,
+      "high_confidence_count": 5,
+      "medium_confidence_count": 24,
       "low_confidence_count": 0
     }
   }
