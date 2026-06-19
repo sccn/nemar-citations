@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-19T15:29:17.733316+00:00",
-  "elapsed_seconds": 98.22,
+  "generated_at": "2026-06-19T15:56:18.310450+00:00",
+  "elapsed_seconds": 98.52,
   "max_results_per_doi": 100,
   "sources": [
     "openalex",
@@ -26,10 +26,15 @@
       "s2": 22.77,
       "pubmed": 12.14
     },
-    "per_source_resolution_errors": {
+    "per_source_unresolved": {
       "openalex": 0,
       "s2": 17,
       "pubmed": 18
+    },
+    "per_source_transport_errors": {
+      "openalex": 0,
+      "s2": 0,
+      "pubmed": 0
     }
   },
   "per_doi": {
@@ -39,6 +44,7 @@
         "openalex": {
           "count": 98,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1002/9781119857655.ch2",
             "10.1007/978-3-030-01424-7_65",
@@ -143,6 +149,7 @@
         "s2": {
           "count": 88,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/978-3-030-01424-7_65",
             "10.1007/978-3-319-64265-9_8",
@@ -237,6 +244,7 @@
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -270,6 +278,7 @@
         "openalex": {
           "count": 53,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1002/adma.202521363",
             "10.1002/admt.202502222",
@@ -329,6 +338,7 @@
         "s2": {
           "count": 53,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1002/adfm.202528954",
             "10.1002/adma.202521363",
@@ -388,6 +398,7 @@
         "pubmed": {
           "count": 3,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1016/j.isci.2025.114517",
             "10.1038/s41467-025-66001-6",
@@ -425,6 +436,7 @@
         "openalex": {
           "count": 100,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1002/aur.2518",
             "10.1007/s00521-024-09521-4",
@@ -531,6 +543,7 @@
         "s2": {
           "count": 94,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1002/advs.202417408",
             "10.1002/epi.70101",
@@ -631,6 +644,7 @@
         "pubmed": {
           "count": 100,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1002/advs.202417408",
             "10.1002/epd2.20291",
@@ -765,6 +779,7 @@
         "openalex": {
           "count": 28,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/978-3-031-20910-9_53",
             "10.1007/s00500-023-09075-y",
@@ -799,6 +814,7 @@
         "s2": {
           "count": 29,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/s00500-023-09075-y",
             "10.1016/j.bios.2025.118102",
@@ -834,6 +850,7 @@
         "pubmed": {
           "count": 7,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1038/s41467-024-48682-7",
             "10.1038/s41597-023-02454-y",
@@ -875,6 +892,7 @@
         "openalex": {
           "count": 84,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/978-3-032-10554-7_6",
             "10.1007/978-981-92-0369-7_18",
@@ -965,6 +983,7 @@
         "s2": {
           "count": 88,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/s10044-025-01476-z",
             "10.1007/s11571-024-10186-x",
@@ -1059,6 +1078,7 @@
         "pubmed": {
           "count": 9,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/s11571-024-10186-x",
             "10.1038/s41597-024-04102-5",
@@ -1102,6 +1122,7 @@
         "openalex": {
           "count": 100,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1001/jamanetworkopen.2023.2066",
             "10.1002/aur.2587",
@@ -1208,6 +1229,7 @@
         "s2": {
           "count": 96,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1001/jamanetworkopen.2025.33848",
             "10.1001/jamapsychiatry.2026.0001",
@@ -1310,6 +1332,7 @@
         "pubmed": {
           "count": 100,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1001/jamanetworkopen.2025.33848",
             "10.1001/jamapsychiatry.2024.4105",
@@ -1444,6 +1467,7 @@
         "openalex": {
           "count": 98,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1002/mar.70002",
             "10.1007/978-3-031-17615-9_44",
@@ -1547,12 +1571,14 @@
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.1038/sdata.2017.40/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 28,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/s11357-023-00811-8",
             "10.1007/s11571-024-10123-y",
@@ -1615,6 +1641,7 @@
         "openalex": {
           "count": 3,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1016/j.bbe.2026.02.007",
             "10.1016/j.ibneur.2025.10.004",
@@ -1624,6 +1651,7 @@
         "s2": {
           "count": 6,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1016/j.bbe.2026.02.007",
             "10.1016/j.brainresbull.2026.111795",
@@ -1636,6 +1664,7 @@
         "pubmed": {
           "count": 1,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1016/j.ibneur.2025.10.004"
           ]
@@ -1671,6 +1700,7 @@
         "openalex": {
           "count": 100,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/978-3-319-08010-9_33",
             "10.1007/978-981-16-2102-4_36",
@@ -1776,12 +1806,14 @@
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.1161/01.cir.101.23.e215/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 100,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1001/jamainternmed.2025.6572",
             "10.1002/sim.70412",
@@ -1916,6 +1948,7 @@
         "openalex": {
           "count": 45,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/978-3-031-63646-2_17",
             "10.1007/978-3-032-23945-7_25",
@@ -1966,12 +1999,14 @@
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.13026/c2k01r/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -2005,6 +2040,7 @@
         "openalex": {
           "count": 2,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1109/qpain69676.2026.11546593",
             "10.1109/tbme.2024.3479232"
@@ -2012,12 +2048,14 @@
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.13026/ym7v-bh53/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -2051,6 +2089,7 @@
         "openalex": {
           "count": 99,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1001/jamaophthalmol.2017.0738",
             "10.1007/978-3-319-39955-3_24",
@@ -2156,6 +2195,7 @@
         "s2": {
           "count": 97,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/s10489-025-06859-7",
             "10.1007/s10586-025-05795-y",
@@ -2259,6 +2299,7 @@
         "pubmed": {
           "count": 49,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1001/jamaophthalmol.2017.0738",
             "10.1007/s11571-016-9398-9",
@@ -2342,6 +2383,7 @@
         "openalex": {
           "count": 62,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/978-3-030-00563-4_20",
             "10.1007/978-3-031-74650-5_12",
@@ -2410,6 +2452,7 @@
         "s2": {
           "count": 77,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/978-3-030-00563-4_20",
             "10.1007/978-3-032-12840-9_20",
@@ -2493,6 +2536,7 @@
         "pubmed": {
           "count": 10,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/s10916-018-1106-3",
             "10.1038/s41598-025-95178-5",
@@ -2537,6 +2581,7 @@
         "openalex": {
           "count": 50,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/978-3-030-36636-0_17",
             "10.1007/978-3-031-18272-3_1",
@@ -2593,6 +2638,7 @@
         "s2": {
           "count": 50,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/978-3-030-36636-0_17",
             "10.1016/j.bbe.2019.08.002",
@@ -2649,6 +2695,7 @@
         "pubmed": {
           "count": 9,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1155/2017/6076913",
             "10.1371/journal.pone.0267548",
@@ -2692,6 +2739,7 @@
         "openalex": {
           "count": 100,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1002/hbm.26668",
             "10.1007/s00034-023-02423-1",
@@ -2798,6 +2846,7 @@
         "s2": {
           "count": 96,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1002/hbm.26668",
             "10.1007/s00034-023-02423-1",
@@ -2900,6 +2949,7 @@
         "pubmed": {
           "count": 60,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1002/hbm.26668",
             "10.1007/s12021-025-09732-7",
@@ -2994,6 +3044,7 @@
         "openalex": {
           "count": 100,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1002/hbm.26480",
             "10.1007/978-3-031-15037-1_17",
@@ -3100,6 +3151,7 @@
         "s2": {
           "count": 89,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/s00521-024-10737-7",
             "10.1007/s00521-025-11683-8",
@@ -3195,6 +3247,7 @@
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -3228,6 +3281,7 @@
         "openalex": {
           "count": 43,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/978-3-319-72038-8",
             "10.1007/s11042-023-16468-6",
@@ -3276,12 +3330,14 @@
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.48550/arxiv.1602.00904/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -3315,16 +3371,19 @@
         "openalex": {
           "count": 0,
           "error": null,
+          "error_kind": null,
           "dois": []
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.5281/zenodo.17287903/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -3358,16 +3417,19 @@
         "openalex": {
           "count": 0,
           "error": null,
+          "error_kind": null,
           "dois": []
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.5281/zenodo.17306881/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -3401,16 +3463,19 @@
         "openalex": {
           "count": 0,
           "error": null,
+          "error_kind": null,
           "dois": []
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.5281/zenodo.17613953/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -3444,16 +3509,19 @@
         "openalex": {
           "count": 0,
           "error": null,
+          "error_kind": null,
           "dois": []
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.5281/zenodo.17613958/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -3487,16 +3555,19 @@
         "openalex": {
           "count": 0,
           "error": null,
+          "error_kind": null,
           "dois": []
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.5281/zenodo.17613961/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -3530,16 +3601,19 @@
         "openalex": {
           "count": 0,
           "error": null,
+          "error_kind": null,
           "dois": []
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.5281/zenodo.17613963/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -3573,6 +3647,7 @@
         "openalex": {
           "count": 8,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1109/icces54031.2021.9686158",
             "10.1109/icssit46314.2019.8987798",
@@ -3586,12 +3661,14 @@
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.6084/m9.figshare.2068677.v1/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -3625,6 +3702,7 @@
         "openalex": {
           "count": 33,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/978-3-032-27160-0_42",
             "10.1007/978-981-96-5210-5_48",
@@ -3664,6 +3742,7 @@
         "s2": {
           "count": 51,
           "error": null,
+          "error_kind": null,
           "dois": [
             "10.1007/s10489-021-02426-y",
             "10.1007/s10489-022-04159-y",
@@ -3721,6 +3800,7 @@
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -3754,16 +3834,19 @@
         "openalex": {
           "count": 0,
           "error": null,
+          "error_kind": null,
           "dois": []
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.82901/nemar.nm000104/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -3797,16 +3880,19 @@
         "openalex": {
           "count": 0,
           "error": null,
+          "error_kind": null,
           "dois": []
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.82901/nemar.nm000105/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -3840,16 +3926,19 @@
         "openalex": {
           "count": 0,
           "error": null,
+          "error_kind": null,
           "dois": []
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.82901/nemar.nm000106/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -3883,16 +3972,19 @@
         "openalex": {
           "count": 0,
           "error": null,
+          "error_kind": null,
           "dois": []
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.82901/nemar.nm000107/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },
@@ -3926,16 +4018,19 @@
         "openalex": {
           "count": 0,
           "error": null,
+          "error_kind": null,
           "dois": []
         },
         "s2": {
           "count": 0,
-          "error": "APIError: HTTP 404: Client error '404 Not Found' for url 'https://api.semanticscholar.org/graph/v1/paper/DOI:10.82901/nemar.nm000113/citations?fields=paperId%2Ctitle%2Cabstract%2Cyear%2Curl%2CopenAccessPdf%2CcitationCount%2CinfluentialCitationCount%2CexternalIds%2Cauthors%2Cjournal%2CisOpenAccess&limit=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+          "error": "no_s2_record",
+          "error_kind": "unresolved",
           "dois": []
         },
         "pubmed": {
           "count": 0,
           "error": "no_pmid",
+          "error_kind": "unresolved",
           "dois": []
         }
       },

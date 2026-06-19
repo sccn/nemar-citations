@@ -43,6 +43,7 @@ from opencite.clients.openalex import OpenAlexClient
 from opencite.clients.pubmed import PubMedClient
 from opencite.clients.semantic_scholar import SemanticScholarClient
 from opencite.config import Config
+from opencite.exceptions import APIError
 
 logger = logging.getLogger("probe_source_coverage")
 
@@ -126,7 +127,16 @@ async def _lookup_openalex(config: Config, doi: str, max_results: int) -> set[st
 async def _lookup_s2(config: Config, doi: str, max_results: int) -> set[str]:
     async with SemanticScholarClient(config) as s2:
         assert isinstance(s2, SemanticScholarClient)
-        cites = await s2.citing_papers(f"DOI:{doi}", max_results=max_results)
+        try:
+            cites = await s2.citing_papers(f"DOI:{doi}", max_results=max_results)
+        except APIError as exc:
+            # A 404 means S2 has not indexed this DOI (e.g. NEMAR/Zenodo data
+            # records) -- a legitimate "no record on this source", the same
+            # semantic as OpenAlex's no_openalex_id / PubMed's no_pmid. Surface
+            # it as LookupError so it is not counted as a transport failure.
+            if exc.status_code == 404:
+                raise LookupError("no_s2_record") from exc
+            raise
         return _paper_doi_set(cites)
 
 
@@ -157,21 +167,31 @@ async def _probe_one(
     record: dict[str, Any] = {"doi": doi, "sources": {}}
     source_dois: dict[str, set[str]] = {}
     for name in sources:
-        branch: dict[str, Any] = {"count": 0, "error": None, "dois": []}
+        # error_kind distinguishes "not indexed on this source" (a legitimate
+        # empty contribution) from "transport" (a real failure that hides what
+        # the source would have returned, contaminating the unique counts).
+        branch: dict[str, Any] = {
+            "count": 0,
+            "error": None,
+            "error_kind": None,
+            "dois": [],
+        }
         try:
             found = await _LOOKUPS[name](config, doi, max_results)
             source_dois[name] = found
             branch["count"] = len(found)
             branch["dois"] = sorted(found)
         except LookupError as exc:
-            # Anchor could not be resolved on this source (e.g. no PMID); a
-            # legitimate empty contribution, not a transport failure.
+            # Anchor not indexed on this source (no PMID / no OpenAlex id / S2
+            # 404). A genuine empty contribution, not a failure.
             source_dois[name] = set()
             branch["error"] = str(exc)
+            branch["error_kind"] = "unresolved"
         except Exception as exc:
             logger.exception("%s probe failed for %s", name, doi)
             source_dois[name] = set()
             branch["error"] = f"{type(exc).__name__}: {exc}"
+            branch["error_kind"] = "transport"
         record["sources"][name] = branch
 
     record["diff"] = summarize_source_sets(source_dois)
@@ -206,15 +226,22 @@ async def _run(
     totals_count: dict[str, int] = {s: 0 for s in sources}
     totals_unique: dict[str, int] = {s: 0 for s in sources}
     total_union = 0
-    source_errors: dict[str, int] = {s: 0 for s in sources}
+    # "unresolved" = anchor not indexed on the source (legitimate empty);
+    # "transport" = a real failure that hides what the source would have
+    # returned and therefore inflates every other source's unique count.
+    unresolved: dict[str, int] = {s: 0 for s in sources}
+    transport_errors: dict[str, int] = {s: 0 for s in sources}
     for rec in per_doi.values():
         diff = rec["diff"]
         total_union += diff["union"]
         for s in sources:
             totals_count[s] += diff["per_source"][s]["count"]
             totals_unique[s] += diff["per_source"][s]["unique"]
-            if rec["sources"][s]["error"]:
-                source_errors[s] += 1
+            kind = rec["sources"][s]["error_kind"]
+            if kind == "unresolved":
+                unresolved[s] += 1
+            elif kind == "transport":
+                transport_errors[s] += 1
 
     unique_pct = {
         s: (round(100.0 * totals_unique[s] / total_union, 2) if total_union else 0.0)
@@ -233,7 +260,8 @@ async def _run(
             "per_source_dois": totals_count,
             "per_source_unique_dois": totals_unique,
             "per_source_unique_pct_of_union": unique_pct,
-            "per_source_resolution_errors": source_errors,
+            "per_source_unresolved": unresolved,
+            "per_source_transport_errors": transport_errors,
         },
         "per_doi": per_doi,
     }
@@ -309,7 +337,15 @@ def main() -> int:
             f"  {s:9s} total={totals['per_source_dois'][s]:5d} "
             f"unique={totals['per_source_unique_dois'][s]:5d} "
             f"({totals['per_source_unique_pct_of_union'][s]}% of union) "
-            f"resolution_errors={totals['per_source_resolution_errors'][s]}"
+            f"unresolved={totals['per_source_unresolved'][s]} "
+            f"transport_errors={totals['per_source_transport_errors'][s]}"
+        )
+    if any(totals["per_source_transport_errors"].values()):
+        print(
+            "\nWARNING: transport errors occurred. A failed source contributes "
+            "an empty set, so the other sources' 'unique' counts above are "
+            "INFLATED for the affected anchors. Re-run, or read the unique%% as "
+            "an upper bound, when transport_errors > 0."
         )
     return 0
 

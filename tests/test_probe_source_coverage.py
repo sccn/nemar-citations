@@ -9,12 +9,17 @@ from __future__ import annotations
 
 import os
 import sys
+from types import SimpleNamespace
 from unittest import TestCase
 
 # The probe lives in scripts/, which is not an installed package.
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
 
-from probe_source_coverage import summarize_source_sets  # noqa: E402
+from probe_source_coverage import (  # noqa: E402
+    _normalize_doi,
+    _paper_doi_set,
+    summarize_source_sets,
+)
 
 
 class TestSummarizeSourceSets(TestCase):
@@ -65,3 +70,33 @@ class TestSummarizeSourceSets(TestCase):
         # 6 union = 4 unique (a,b,e,f) + 2 shared-by->=2-sources (c,d)
         self.assertEqual(total_unique, 4)
         self.assertEqual(shared, 2)
+
+    def test_empty_dict_input(self) -> None:
+        # No sources selected: every aggregate degrades to zero/empty without
+        # raising (guards the `--sources` -> nothing boundary).
+        result = summarize_source_sets({})
+        self.assertEqual(result["union"], 0)
+        self.assertEqual(result["per_source"], {})
+        self.assertEqual(result["pairwise_overlap"], {})
+        self.assertEqual(result["all_source_overlap"], 0)
+
+
+class TestPaperDoiSet(TestCase):
+    """`_paper_doi_set` / `_normalize_doi` feed the set arithmetic; their
+    normalization and DOI-less dropping are load-bearing for overlap counts."""
+
+    def test_normalize_doi(self) -> None:
+        self.assertEqual(_normalize_doi("  10.1/AbC  "), "10.1/abc")
+        self.assertIsNone(_normalize_doi(None))
+        self.assertIsNone(_normalize_doi(""))
+
+    def test_paper_doi_set_normalizes_and_drops_no_doi(self) -> None:
+        # SimpleNamespace is a real stdlib object with a real `doi` attribute,
+        # not a mock; this stays within the no-mocks policy.
+        papers = [
+            SimpleNamespace(doi="10.1234/abc"),
+            SimpleNamespace(doi=None),
+            SimpleNamespace(doi=""),
+            SimpleNamespace(doi="10.5678/DEF"),  # uppercase -> lowercased
+        ]
+        self.assertEqual(_paper_doi_set(papers), {"10.1234/abc", "10.5678/def"})
