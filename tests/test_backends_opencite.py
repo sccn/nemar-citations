@@ -113,78 +113,46 @@ class OpenCiteBackendUnitTests(TestCase):
         self.assertEqual(err.reason, "other")
 
 
-class ShouldSkipS2Tests(TestCase):
-    """The DOI-prefix S2 skip matcher. Pure function; no network."""
-
-    def setUp(self) -> None:
-        # Import inside setUp so the test class header doesn't depend on
-        # private symbols when this file is collected.
-        from dataset_citations.backends.opencite_backend import (
-            S2_SKIP_PREFIXES,
-            should_skip_s2,
-        )
-
-        self.should_skip_s2 = should_skip_s2
-        self.skip_prefixes = S2_SKIP_PREFIXES
-
-    def test_nemar_minted_dois_skip(self) -> None:
-        # Real NEMAR-minted DOIs from the May 2026 catalog.
-        self.assertTrue(self.should_skip_s2("10.82901/nemar.nm000104"))
-        self.assertTrue(self.should_skip_s2("10.82901/nemar.on005261"))
-        # Case-insensitive: upstream sometimes preserves the original case.
-        self.assertTrue(self.should_skip_s2("10.82901/NEMAR.nm000104"))
-
-    def test_zenodo_data_records_skip(self) -> None:
-        self.assertTrue(self.should_skip_s2("10.5281/zenodo.17287903"))
-        self.assertTrue(self.should_skip_s2("10.5281/zenodo.17613953"))
-
-    def test_physionet_data_records_skip(self) -> None:
-        self.assertTrue(self.should_skip_s2("10.13026/ym7v-bh53"))
-        self.assertTrue(self.should_skip_s2("10.13026/C2K01R"))
-
-    def test_journal_dois_not_skipped(self) -> None:
-        # Real DOIs that the May 2026 probe showed S2 contributes coverage on.
-        self.assertFalse(self.should_skip_s2("10.1038/sdata.2017.181"))
-        self.assertFalse(self.should_skip_s2("10.1038/s41586-025-09255-w"))
-        self.assertFalse(self.should_skip_s2("10.1371/journal.pone.0162657"))
-        self.assertFalse(self.should_skip_s2("10.21105/joss.01896"))
-
-    def test_empty_string_not_skipped(self) -> None:
-        self.assertFalse(self.should_skip_s2(""))
-
-    def test_prefixes_listed_in_lowercase(self) -> None:
-        # The matcher relies on lowercasing the input. The constant itself
-        # must be lowercase so the comparison is meaningful.
-        for prefix in self.skip_prefixes:
-            self.assertEqual(prefix, prefix.lower(), f"{prefix!r} not lowercase")
-
-
 @skipUnless(
     os.getenv("RUN_INTEGRATION_TESTS"),
     "live opencite calls; set RUN_INTEGRATION_TESTS=1 to enable",
 )
-class OpenAlexOnlyPathIntegration(TestCase):
-    """Anchors matching S2_SKIP_PREFIXES route through OpenAlex only.
+class DelegatedPathIntegration(TestCase):
+    """All anchors flow through opencite's `CitationExplorer`.
 
-    Real network. A success on a known-skip DOI is the structural proof
-    that the OpenAlex-only path works end-to-end; the bypass itself is
-    enforced in code by `should_skip_s2` + the `_lookup_openalex_only`
-    branch in `_batch_async`.
+    Real network. The backend no longer routes anchors per-DOI-prefix;
+    source selection and rate limiting are delegated to opencite (see the
+    module docstring of `opencite_backend`). These tests prove the single
+    delegated path completes the round-trip without crashing for both a
+    data-record DOI and a journal DOI.
     """
 
-    def test_zenodo_doi_resolves_via_openalex(self) -> None:
-        # 10.5281/zenodo.* is in S2_SKIP_PREFIXES; the matcher diverts this
-        # to the OpenAlex-only path. Asserting on the result type proves the
-        # backend completed the round-trip without crashing (the bypass took
-        # the right branch). Either FetchSuccess or a typed FetchError is
-        # acceptable since OpenAlex's catalog may or may not cover the DOI.
+    def test_data_record_doi_resolves(self) -> None:
+        # A Zenodo data record (formerly an S2-skip family). The delegated
+        # path must handle it without special-casing. Either FetchSuccess or
+        # a typed FetchError is acceptable since OpenAlex's catalog may or may
+        # not cover the DOI; the contract is that it does not crash.
         backend = OpenCiteBackend(max_results_per_doi=5)
         ref = _ref("10.5281/zenodo.17287903")
         result = backend.get_citing_works(ref)
         self.assertIsInstance(result, (FetchSuccess, FetchError))
         if isinstance(result, FetchSuccess):
-            # Works list may be empty (Zenodo data records rarely have OA
-            # citers), but the type contract must hold.
             for work in result.value:
                 self.assertTrue(work.title)
                 self.assertEqual(work.source_doi, ref.identifier)
+
+    def test_disabled_sources_runs_openalex_only(self) -> None:
+        # Config-driven source selection: disabling S2 via opencite's
+        # `disabled_sources` must still yield a working OpenAlex-only fetch,
+        # with no local routing involved.
+        prior = os.environ.get("OPENCITE_DISABLED_SOURCES")
+        os.environ["OPENCITE_DISABLED_SOURCES"] = "s2"
+        try:
+            backend = OpenCiteBackend(max_results_per_doi=5)
+            result = backend.get_citing_works(_ref("10.1038/sdata.2015.1"))
+            self.assertIsInstance(result, (FetchSuccess, FetchError))
+        finally:
+            if prior is None:
+                os.environ.pop("OPENCITE_DISABLED_SOURCES", None)
+            else:
+                os.environ["OPENCITE_DISABLED_SOURCES"] = prior
