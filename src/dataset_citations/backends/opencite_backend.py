@@ -5,17 +5,20 @@ rest of the pipeline (sync, pandas-first) can stay sync. Batches reuse a
 single `CitationExplorer` session so we get connection pooling and one
 catalog warm-up per call.
 
+Source selection and rate limiting are delegated to opencite, not
+hand-rolled here. `CitationExplorer` fans out the cited-by lookup across
+its enabled sources (OpenAlex + Semantic Scholar today), honoring
+`config.disabled_sources` so a deployment can drop a source via
+`OPENCITE_DISABLED_SOURCES` without a code change. opencite's process-wide
+per-source shared rate limiter (e.g. Semantic Scholar at 1 req/s under the
+`"s2"` key) keeps a slow source from triggering 429 storms, which is what
+the old `S2_SKIP_PREFIXES` router existed to avoid; that local routing has
+been removed (epic #180, phase 2).
+
 Errors are surfaced through `FetchResult`, never silently absorbed. The
 Phase 1 review found that an opencite rate limit was being cached as
 "this DOI has zero citing works"; here a rate limit returns
 `FetchError("rate_limit", ...)` and the caller decides whether to retry.
-
-DOIs whose prefixes are known to 404 on Semantic Scholar are routed
-through OpenAlex directly, bypassing the CitationExplorer (which would
-otherwise fire S2 in parallel and burn retry budget on a guaranteed
-miss). See the May 2026 coverage probe in
-`.context/research/s2_vs_openalex_2026-05-19.json` and `S2_SKIP_PREFIXES`
-below for the list.
 """
 
 from __future__ import annotations
@@ -29,6 +32,7 @@ import httpx
 from opencite.citations import CitationExplorer
 from opencite.clients.openalex import OpenAlexClient
 from opencite.config import Config
+from opencite.exceptions import APIKeyError, RateLimitError
 
 from dataset_citations.sources.models import (
     Author,
@@ -40,26 +44,6 @@ from dataset_citations.sources.models import (
 )
 
 logger = logging.getLogger(__name__)
-
-# DOI prefixes that the May 2026 coverage probe confirmed return 404 on
-# Semantic Scholar's `paper/cited_by` endpoint. For anchors matching any of
-# these, we call OpenAlex directly and skip the S2 round-trip entirely.
-# Keep this list lowercase; the matcher lowercases its input before checking.
-S2_SKIP_PREFIXES: tuple[str, ...] = (
-    "10.82901/nemar.",  # NEMAR-minted DOIs (too new for S2 index)
-    "10.5281/zenodo.",  # Zenodo data records (data, not papers)
-    "10.13026/",  # PhysioNet data records
-)
-
-
-def should_skip_s2(identifier: str) -> bool:
-    """Return True if this DOI is known to 404 on Semantic Scholar.
-
-    Pure function; safe to call from any layer. Lowercases the input so
-    matching is insensitive to the original DOI casing.
-    """
-    lowered = identifier.lower()
-    return any(lowered.startswith(p) for p in S2_SKIP_PREFIXES)
 
 
 class OpenCiteBackend:
@@ -146,27 +130,14 @@ class OpenCiteBackend:
     ) -> dict[str, FetchResult[list[CitingWork]]]:
         results: dict[str, FetchResult[list[CitingWork]]] = {}
         semaphore = asyncio.Semaphore(self._concurrency)
-        # Open both clients up-front so each batch can mix S2-skip and
-        # full-explorer paths without redundant session setup. The
-        # CitationExplorer owns its own internal OpenAlexClient; the second
-        # client below is what the S2-skip path uses.
-        async with (
-            CitationExplorer(self._config) as explorer,
-            OpenAlexClient(self._config) as openalex_base,
-        ):
-            # opencite's `__aenter__` returns the BaseClient bound; narrow
-            # back to OpenAlexClient so the method signature stays specific.
-            assert isinstance(openalex_base, OpenAlexClient), (
-                "opencite changed OpenAlexClient.__aenter__ return type; "
-                "expected an OpenAlexClient bound, got "
-                f"{type(openalex_base).__name__}"
-            )
-            openalex = openalex_base
+        # One CitationExplorer session for the whole batch. opencite fans the
+        # cited-by lookup across its enabled sources and applies its per-source
+        # shared rate limiter internally; source selection is config-driven
+        # (`config.disabled_sources`), so there is no per-anchor routing here.
+        async with CitationExplorer(self._config) as explorer:
 
             async def run_one(ref: DoiReference) -> FetchResult[list[CitingWork]]:
                 async with semaphore:
-                    if should_skip_s2(ref.identifier):
-                        return await self._lookup_openalex_only(openalex, ref)
                     return await self._lookup(explorer, ref)
 
             # return_exceptions=True isolates a single failing lookup from the
@@ -175,7 +146,15 @@ class OpenCiteBackend:
                 *(run_one(r) for r in refs), return_exceptions=True
             )
         for ref, outcome in zip(refs, outcomes, strict=True):
-            if isinstance(outcome, BaseException):
+            # `gather(return_exceptions=True)` also captures BaseExceptions like
+            # asyncio.CancelledError (not an Exception subclass since 3.8). A
+            # cancellation must propagate, not be demoted to FetchError("other"),
+            # or an outer timeout / Ctrl+C silently turns into phantom results.
+            if isinstance(outcome, BaseException) and not isinstance(
+                outcome, Exception
+            ):
+                raise outcome
+            if isinstance(outcome, Exception):
                 logger.exception(
                     "uncaught exception in opencite lookup for %s",
                     ref.identifier,
@@ -201,38 +180,30 @@ class OpenCiteBackend:
             # KeyboardInterrupt / SystemExit / asyncio.CancelledError escape.
             return classify_error(exc, ref.identifier)
 
+        # opencite >= v0.5.4 no longer raises when the anchor itself can't be
+        # resolved; `citing_papers` returns an empty result whose seed carries
+        # no OpenAlex/S2 id (a synthetic "Unknown" seed). Surface that as
+        # not_found so the caller does not record a genuinely-missing anchor as
+        # "0 citing works" (the Phase 1 review's exact concern).
+        #
+        # Residual gap (upstream, neuromechanist/opencite#33): if the seed
+        # resolves but BOTH `citing_papers` tasks fail, opencite's
+        # `_gather_papers` swallows them with its own WARNING and returns an
+        # empty list, which we cannot distinguish from a genuinely uncited
+        # anchor at this layer. Fixing that requires opencite to expose
+        # per-source task status; logging a warning here would fire on every
+        # legitimately-uncited anchor, so we do not.
+        if _is_unresolved_seed(result):
+            return FetchError(
+                "not_found",
+                f"{ref.identifier}: anchor not resolved on any opencite source",
+            )
+
         works = [
             _paper_to_citing_work(paper, ref)
             for paper in (result.papers or [])
             if paper.title
         ]
-        return FetchSuccess(works)
-
-    async def _lookup_openalex_only(
-        self, openalex: OpenAlexClient, ref: DoiReference
-    ) -> FetchResult[list[CitingWork]]:
-        """Resolve `ref` via OpenAlex only, skipping Semantic Scholar.
-
-        Two HTTP requests: `lookup_doi` to get the OpenAlex work ID, then
-        `citing_papers` against that ID. Used for DOI families that the May
-        2026 probe confirmed return 404 on S2 (`S2_SKIP_PREFIXES`).
-        """
-        try:
-            paper = await openalex.lookup_doi(ref.identifier)
-            if paper is None or not paper.ids.openalex_id:
-                return FetchError(
-                    "not_found",
-                    f"{ref.identifier}: not found in OpenAlex (S2 skipped by prefix)",
-                )
-            cite_papers = await openalex.citing_papers(
-                paper.ids.openalex_id,
-                max_results=self._max_results_per_doi,
-                sort="citations",
-            )
-        except Exception as exc:
-            return classify_error(exc, ref.identifier)
-
-        works = [_paper_to_citing_work(p, ref) for p in cite_papers if p.title]
         return FetchSuccess(works)
 
 
@@ -268,6 +239,21 @@ def _to_author(a: Any) -> Author:
     )
 
 
+def _is_unresolved_seed(result: Any) -> bool:
+    """True when opencite could not resolve the anchor on any source.
+
+    opencite >= v0.5.4 returns a `CitationResult` whose `seed_paper` is a
+    synthetic "Unknown" paper carrying only the input id (no `openalex_id`,
+    no `s2_id`) when `_lookup_seed` fails. A resolved anchor always has at
+    least one of those ids (the S2 `lookup` or the OpenAlex fallback in
+    opencite's `_lookup_seed`), so both-empty is the robust unresolved
+    signal. Checking the ids rather than `title == "Unknown"` pins the
+    structural invariant instead of a string constant that could change.
+    """
+    seed_ids = result.seed_paper.ids
+    return not seed_ids.openalex_id and not seed_ids.s2_id
+
+
 def classify_error(exc: BaseException, identifier: str) -> FetchError:
     """Map an opencite / httpx exception to a FetchError reason.
 
@@ -278,11 +264,22 @@ def classify_error(exc: BaseException, identifier: str) -> FetchError:
     'Cannot connect to host: not found in DNS' on a 429 reroute) is still
     routed to the correct bucket.
 
-    Uses httpx's `response.status_code` when the exception exposes one; falls
-    back to substring matching of the stringified exception. Tracked for
-    cleanup in neuromechanist/opencite#33 (typed exceptions upstream).
+    opencite's typed exceptions are checked first: `RateLimitError` and
+    `APIKeyError` carry no `status_code` and their messages contain none of
+    the substrings below, so without the isinstance checks a missing API key
+    would be misclassified as 'other' and a retry would burn rate budget.
+    After that, uses the exception's `status_code` (httpx or opencite
+    `APIError`) and finally substring matching. Tracked for cleanup in
+    neuromechanist/opencite#33 (typed exceptions upstream).
     """
     msg = f"{type(exc).__name__}: {exc}"
+    # Typed opencite exceptions first (most precise). RateLimitError and
+    # APIKeyError both subclass APIError, so check them before any generic
+    # APIError/status handling below.
+    if isinstance(exc, RateLimitError):
+        return FetchError("rate_limit", msg)
+    if isinstance(exc, APIKeyError):
+        return FetchError("auth", msg)
     status = _status_code_of(exc)
     if status == 429:
         return FetchError("rate_limit", msg)

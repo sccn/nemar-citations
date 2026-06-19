@@ -51,6 +51,12 @@ class OpenCiteBackendIntegration(TestCase):
         ref = _ref("10.99999/this-doi-does-not-exist-xyzabc")
         result = self.backend.get_citing_works(ref)
         self.assertIsInstance(result, FetchError)
+        assert isinstance(result, FetchError)
+        # The contract is specifically "unresolvable anchor -> not_found", not
+        # just "some error": opencite returns an empty result with an Unknown
+        # seed, which the backend must translate to not_found rather than
+        # FetchSuccess([]) (the Phase 1 silent-zero regression).
+        self.assertEqual(result.reason, "not_found")
 
     def test_batch_lookup(self) -> None:
         refs = [
@@ -112,79 +118,100 @@ class OpenCiteBackendUnitTests(TestCase):
         err = classify_error(RuntimeError("totally unexpected"), "x")
         self.assertEqual(err.reason, "other")
 
+    def test_classify_error_apikey_is_auth(self) -> None:
+        # opencite's APIKeyError carries no status_code and its message has
+        # none of the auth substrings, so without the typed check it would be
+        # misclassified as "other" and a bad key would be retried.
+        from opencite.exceptions import APIKeyError
 
-class ShouldSkipS2Tests(TestCase):
-    """The DOI-prefix S2 skip matcher. Pure function; no network."""
+        from dataset_citations.backends.opencite_backend import classify_error
 
-    def setUp(self) -> None:
-        # Import inside setUp so the test class header doesn't depend on
-        # private symbols when this file is collected.
-        from dataset_citations.backends.opencite_backend import (
-            S2_SKIP_PREFIXES,
-            should_skip_s2,
+        err = classify_error(APIKeyError(), "x")
+        self.assertEqual(err.reason, "auth")
+
+    def test_classify_error_ratelimit_typed(self) -> None:
+        from opencite.exceptions import RateLimitError
+
+        from dataset_citations.backends.opencite_backend import classify_error
+
+        err = classify_error(RateLimitError(), "x")
+        self.assertEqual(err.reason, "rate_limit")
+
+    def test_is_unresolved_seed(self) -> None:
+        # Real opencite dataclasses (no mocks). An "Unknown" seed carrying only
+        # the input DOI signals an unresolvable anchor; a seed with an
+        # OpenAlex or S2 id is resolved.
+        from opencite.models import CitationResult, IDSet, Paper
+
+        from dataset_citations.backends.opencite_backend import _is_unresolved_seed
+
+        unknown = CitationResult(
+            seed_paper=Paper(title="Unknown", ids=IDSet(doi="10.99/fake")),
+            papers=[],
+            direction="citing",
         )
+        self.assertTrue(_is_unresolved_seed(unknown))
 
-        self.should_skip_s2 = should_skip_s2
-        self.skip_prefixes = S2_SKIP_PREFIXES
+        resolved_oa = CitationResult(
+            seed_paper=Paper(title="Real", ids=IDSet(openalex_id="W123")),
+            papers=[],
+            direction="citing",
+        )
+        self.assertFalse(_is_unresolved_seed(resolved_oa))
 
-    def test_nemar_minted_dois_skip(self) -> None:
-        # Real NEMAR-minted DOIs from the May 2026 catalog.
-        self.assertTrue(self.should_skip_s2("10.82901/nemar.nm000104"))
-        self.assertTrue(self.should_skip_s2("10.82901/nemar.on005261"))
-        # Case-insensitive: upstream sometimes preserves the original case.
-        self.assertTrue(self.should_skip_s2("10.82901/NEMAR.nm000104"))
-
-    def test_zenodo_data_records_skip(self) -> None:
-        self.assertTrue(self.should_skip_s2("10.5281/zenodo.17287903"))
-        self.assertTrue(self.should_skip_s2("10.5281/zenodo.17613953"))
-
-    def test_physionet_data_records_skip(self) -> None:
-        self.assertTrue(self.should_skip_s2("10.13026/ym7v-bh53"))
-        self.assertTrue(self.should_skip_s2("10.13026/C2K01R"))
-
-    def test_journal_dois_not_skipped(self) -> None:
-        # Real DOIs that the May 2026 probe showed S2 contributes coverage on.
-        self.assertFalse(self.should_skip_s2("10.1038/sdata.2017.181"))
-        self.assertFalse(self.should_skip_s2("10.1038/s41586-025-09255-w"))
-        self.assertFalse(self.should_skip_s2("10.1371/journal.pone.0162657"))
-        self.assertFalse(self.should_skip_s2("10.21105/joss.01896"))
-
-    def test_empty_string_not_skipped(self) -> None:
-        self.assertFalse(self.should_skip_s2(""))
-
-    def test_prefixes_listed_in_lowercase(self) -> None:
-        # The matcher relies on lowercasing the input. The constant itself
-        # must be lowercase so the comparison is meaningful.
-        for prefix in self.skip_prefixes:
-            self.assertEqual(prefix, prefix.lower(), f"{prefix!r} not lowercase")
+        resolved_s2 = CitationResult(
+            seed_paper=Paper(title="Real", ids=IDSet(s2_id="abc123")),
+            papers=[],
+            direction="citing",
+        )
+        self.assertFalse(_is_unresolved_seed(resolved_s2))
 
 
 @skipUnless(
     os.getenv("RUN_INTEGRATION_TESTS"),
     "live opencite calls; set RUN_INTEGRATION_TESTS=1 to enable",
 )
-class OpenAlexOnlyPathIntegration(TestCase):
-    """Anchors matching S2_SKIP_PREFIXES route through OpenAlex only.
+class DelegatedPathIntegration(TestCase):
+    """All anchors flow through opencite's `CitationExplorer`.
 
-    Real network. A success on a known-skip DOI is the structural proof
-    that the OpenAlex-only path works end-to-end; the bypass itself is
-    enforced in code by `should_skip_s2` + the `_lookup_openalex_only`
-    branch in `_batch_async`.
+    Real network. The backend no longer routes anchors per-DOI-prefix;
+    source selection and rate limiting are delegated to opencite (see the
+    module docstring of `opencite_backend`). These tests prove the single
+    delegated path completes the round-trip without crashing for both a
+    data-record DOI and a journal DOI.
     """
 
-    def test_zenodo_doi_resolves_via_openalex(self) -> None:
-        # 10.5281/zenodo.* is in S2_SKIP_PREFIXES; the matcher diverts this
-        # to the OpenAlex-only path. Asserting on the result type proves the
-        # backend completed the round-trip without crashing (the bypass took
-        # the right branch). Either FetchSuccess or a typed FetchError is
-        # acceptable since OpenAlex's catalog may or may not cover the DOI.
+    def test_data_record_doi_resolves(self) -> None:
+        # A Zenodo data record (formerly an S2-skip family). The delegated
+        # path must handle it without special-casing. Either FetchSuccess or
+        # a typed FetchError is acceptable since OpenAlex's catalog may or may
+        # not cover the DOI; the contract is that it does not crash.
         backend = OpenCiteBackend(max_results_per_doi=5)
         ref = _ref("10.5281/zenodo.17287903")
         result = backend.get_citing_works(ref)
         self.assertIsInstance(result, (FetchSuccess, FetchError))
         if isinstance(result, FetchSuccess):
-            # Works list may be empty (Zenodo data records rarely have OA
-            # citers), but the type contract must hold.
             for work in result.value:
                 self.assertTrue(work.title)
                 self.assertEqual(work.source_doi, ref.identifier)
+
+    def test_disabled_sources_runs_openalex_only(self) -> None:
+        # Config-driven source selection: disabling S2 via opencite's
+        # `disabled_sources` must still yield a working OpenAlex-only fetch,
+        # with no local routing involved. `10.1038/sdata.2015.1` is heavily
+        # cited and resolvable on OpenAlex alone, so a non-empty FetchSuccess
+        # proves the OpenAlex-only path actually returned results (not merely
+        # that the backend did not crash with S2 off).
+        prior = os.environ.get("OPENCITE_DISABLED_SOURCES")
+        os.environ["OPENCITE_DISABLED_SOURCES"] = "s2"
+        try:
+            backend = OpenCiteBackend(max_results_per_doi=5)
+            result = backend.get_citing_works(_ref("10.1038/sdata.2015.1"))
+            self.assertIsInstance(result, FetchSuccess)
+            assert isinstance(result, FetchSuccess)
+            self.assertGreater(len(result.value), 0)
+        finally:
+            if prior is None:
+                os.environ.pop("OPENCITE_DISABLED_SOURCES", None)
+            else:
+                os.environ["OPENCITE_DISABLED_SOURCES"] = prior
