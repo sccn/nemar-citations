@@ -15,11 +15,11 @@ Definitions
 - An *anchor* is the ``source_doi`` that pulled a citing paper in. An anchor's
   *spread* is the number of distinct datasets in which it appears as a
   ``source_doi`` inside ``citation_details`` (its citers were fetched and
-  counted, not bucketed into ``metadata.context_anchors``).
+  counted, i.e. it is a ``kept`` entry in ``metadata.anchors``).
 - A *violation* is an anchor whose spread exceeds ``max_datasets_per_anchor``.
   These are the umbrella / methods anchors that anchor judgment (epic #76) is
-  meant to bucket out; once judged they move to ``context_anchors`` and no
-  longer inflate per-dataset counts.
+  meant to bucket out; once judged they become ``kept=False`` in
+  ``metadata.anchors`` and no longer inflate per-dataset counts.
 """
 
 from __future__ import annotations
@@ -169,17 +169,21 @@ def build_report(
             counts[akey] += 1
         per_dataset_counts[dataset_id] = counts
 
-        # context_anchors carry the anchor's own paper title and confirm which
-        # anchors judgment already buckets out (informational columns).
+        # anchors[] carry each anchor's own paper title; the kept=False subset is
+        # what judgment buckets out (informational columns). Schema v2.1 replaced
+        # context_anchors[] with anchors[] (the kept=False entries are the old
+        # context anchors).
         meta = rec.get("metadata") or {}
-        for ctx in meta.get("context_anchors") or []:
-            identifier = ctx.get("anchor_identifier")
+        for anc in meta.get("anchors") or []:
+            if anc.get("kept"):
+                continue
+            identifier = anc.get("identifier")
             if not identifier:
                 continue
             ckey = _anchor_key(identifier)
             anchor_context[ckey].add(dataset_id)
-            if ckey not in anchor_title and ctx.get("paper_title"):
-                anchor_title[ckey] = ctx["paper_title"]
+            if ckey not in anchor_title and anc.get("paper_title"):
+                anchor_title[ckey] = anc["paper_title"]
 
     spreads = [
         AnchorSpread(

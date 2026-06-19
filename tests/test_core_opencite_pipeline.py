@@ -108,7 +108,7 @@ class FetchViaOpenCiteTests(TestCase):
         )
         self.assertEqual(out["metadata"]["fetch_status"], "no_doi_references")
 
-    def test_happy_path_produces_schema_v2(self) -> None:
+    def test_happy_path_produces_schema_v2_1(self) -> None:
         ref = DoiReference(
             identifier="10.1038/sdata.2015.1",
             identifier_type="doi",
@@ -138,12 +138,21 @@ class FetchViaOpenCiteTests(TestCase):
         )
         self.assertEqual(out["dataset_id"], "ds000117")
         self.assertEqual(out["num_citations"], 1)
-        self.assertEqual(out["metadata"]["schema_version"], "2.0")
+        self.assertEqual(out["metadata"]["schema_version"], "2.1")
         self.assertEqual(out["metadata"]["discovery_backend"], "opencite")
         self.assertEqual(out["metadata"]["anchor_count"], 1)
         # Phase 3 review: happy path must be distinguishable from "stub empty".
         self.assertEqual(out["metadata"]["fetch_status"], "success")
         self.assertEqual(out["metadata"]["anchor_errors"], {})
+        # Schema v2.1: anchors[] superset + searched_dois present.
+        self.assertEqual(len(out["metadata"]["anchors"]), 1)
+        self.assertTrue(out["metadata"]["anchors"][0]["kept"])
+        self.assertIsNone(out["metadata"]["anchors"][0]["classification"])
+        self.assertEqual(out["metadata"]["searched_dois"], ["10.1038/sdata.2015.1"])
+        # Legacy ds-* (BIDS source) has no rich metadata -> empty keys present.
+        self.assertEqual(out["metadata"]["keywords"], [])
+        self.assertIsNone(out["metadata"]["methods_description"])
+        self.assertEqual(out["metadata"]["funding"], [])
         entry = out["citation_details"][0]
         self.assertEqual(entry["title"], "Method paper")
         self.assertEqual(entry["source_doi"], "10.1038/sdata.2015.1")
@@ -521,7 +530,7 @@ class FetchViaOpenCiteIntegration(TestCase):
         # Either we get real citations or a transient FetchError; both are
         # acceptable for the integration test as long as the schema is right.
         self.assertEqual(out["dataset_id"], "ds000117")
-        self.assertEqual(out["metadata"]["schema_version"], "2.0")
+        self.assertEqual(out["metadata"]["schema_version"], "2.1")
         self.assertEqual(out["metadata"]["discovery_backend"], "opencite")
         if out["num_citations"] > 0:
             entry = out["citation_details"][0]

@@ -26,11 +26,15 @@ from dataset_citations.sources.models import (
     RelationType,
 )
 from dataset_citations.sources.nemar_metadata import (
+    EMPTY_NEMAR_DATASET_METADATA,
+    NemarDatasetMetadata,
     NemarMetadataSource,
+    parse_nemar_dataset_metadata,
     parse_nemar_metadata,
 )
 
 __all__ = [
+    "EMPTY_NEMAR_DATASET_METADATA",
     "Author",
     "BidsMetadataSource",
     "CitingWork",
@@ -38,12 +42,14 @@ __all__ = [
     "FetchError",
     "FetchResult",
     "FetchSuccess",
+    "NemarDatasetMetadata",
     "NemarMetadataSource",
     "RelationType",
     "extract_identifiers",
     "is_openneuro_dataset_doi",
     "normalize_doi",
     "parse_bids_description",
+    "parse_nemar_dataset_metadata",
     "parse_nemar_metadata",
     "validate_identifier",
 ]

@@ -36,6 +36,7 @@ from dataset_citations.sources.models import (
     DoiReference,
     FetchSuccess,
 )
+from dataset_citations.sources.nemar_metadata import NemarDatasetMetadata
 
 WHEN = datetime(2026, 5, 22, tzinfo=timezone.utc)
 
@@ -98,6 +99,22 @@ class _StubSource:
 
     def get_doi_references(self, dataset_id):  # noqa: ARG002
         return self._outcome
+
+
+class _RichStubSource(_StubSource):
+    """`_StubSource` that also exposes the schema-v2.1 rich-metadata capability."""
+
+    def __init__(self, outcome, metadata: NemarDatasetMetadata):
+        super().__init__(outcome)
+        self._metadata = metadata
+
+    def get_dataset_metadata(self, dataset_id):  # noqa: ARG002
+        return self._metadata
+
+
+def _context_anchors(out: dict) -> list[dict]:
+    """The kept=False subset of metadata.anchors[] (the old context_anchors)."""
+    return [a for a in out["metadata"]["anchors"] if not a["kept"]]
 
 
 def _write_sidecar(
@@ -273,17 +290,36 @@ class PipelineBucketingTests(TestCase):
         self.assertEqual(out["metadata"]["anchor_count"], 1)
         self.assertEqual(out["metadata"]["fetch_status"], "success")
         self.assertEqual(out["metadata"]["anchor_judgment_model"], "gemma4:31b")
-        context = out["metadata"]["context_anchors"]
+        # anchors[] is the full superset: both anchors, with kept flags.
+        anchors = out["metadata"]["anchors"]
+        self.assertEqual(len(anchors), 2)
+        kept = {a["identifier"]: a for a in anchors if a["kept"]}
+        self.assertEqual(set(kept), {data_paper_ref.identifier})
+        self.assertEqual(
+            kept[data_paper_ref.identifier]["classification"], "data_paper"
+        )
+        # context_details is populated for data_paper too, so the kept anchor
+        # carries its own paper title (default "stub title" from _judgment()).
+        self.assertEqual(kept[data_paper_ref.identifier]["paper_title"], "stub title")
+        # searched_dois is the flat list of the fetched DOI anchor(s).
+        self.assertEqual(out["metadata"]["searched_dois"], [data_paper_ref.identifier])
+        # The context subset (kept=False) is the umbrella anchor.
+        context = _context_anchors(out)
         self.assertEqual(len(context), 1)
         self.assertEqual(context[0]["classification"], "umbrella")
-        self.assertEqual(context[0]["anchor_identifier"], umbrella_ref.identifier)
+        self.assertEqual(context[0]["identifier"], umbrella_ref.identifier)
         self.assertEqual(context[0]["paper_title"], "HBN umbrella paper")
         self.assertEqual(context[0]["source_relation"], "IsDerivedFrom")
-        # paper_year + paper_venue forwarded from the sidecar so phase 4's
-        # dashboard can render context anchors without re-opening it.
-        # _judgment() defaults these to 2024 / Journal of Stubs.
+        # paper_year + paper_venue forwarded from the sidecar so consumers can
+        # render anchors without re-opening it. _judgment() defaults these to
+        # 2024 / Journal of Stubs. judgment_model is stamped per anchor too.
         self.assertEqual(context[0]["paper_year"], 2024)
         self.assertEqual(context[0]["paper_venue"], "Journal of Stubs")
+        self.assertEqual(context[0]["judgment_model"], "gemma4:31b")
+        # _StubSource has no get_dataset_metadata -> empty rich-metadata keys.
+        self.assertEqual(out["metadata"]["keywords"], [])
+        self.assertIsNone(out["metadata"]["methods_description"])
+        self.assertEqual(out["metadata"]["funding"], [])
 
     def test_no_sidecar_falls_back_to_fetch_all(self) -> None:
         """Without a sidecar, all anchors get fetched (legacy behavior)."""
@@ -328,7 +364,17 @@ class PipelineBucketingTests(TestCase):
         self.assertEqual(out["num_citations"], 2)
         self.assertEqual(out["metadata"]["anchor_count"], 2)
         self.assertIsNone(out["metadata"]["anchor_judgment_model"])
-        self.assertEqual(out["metadata"]["context_anchors"], [])
+        # No sidecar -> every anchor is kept, with a null classification and
+        # null judgment_model; nothing is bucketed to context.
+        anchors = out["metadata"]["anchors"]
+        self.assertEqual(len(anchors), 2)
+        self.assertTrue(all(a["kept"] for a in anchors))
+        self.assertTrue(all(a["classification"] is None for a in anchors))
+        self.assertTrue(all(a["judgment_model"] is None for a in anchors))
+        self.assertEqual(_context_anchors(out), [])
+        self.assertEqual(
+            out["metadata"]["searched_dois"], [ref_a.identifier, ref_b.identifier]
+        )
 
     def test_out_of_taxonomy_entry_dropped_with_warning(self) -> None:
         """One bad entry doesn't sink the rest of the sidecar."""
@@ -402,10 +448,17 @@ class PipelineBucketingTests(TestCase):
             sorted([data_paper_ref.identifier, broken_ref.identifier]),
         )
         self.assertEqual(out["num_citations"], 2)
-        classifications = {
-            c["classification"] for c in out["metadata"]["context_anchors"]
-        }
+        # umbrella is the only context (kept=False); the dropped garbage_label
+        # anchor fell through to fetch (kept=True, classification None).
+        classifications = {c["classification"] for c in _context_anchors(out)}
         self.assertEqual(classifications, {"umbrella"})
+        broken = next(
+            a
+            for a in out["metadata"]["anchors"]
+            if a["identifier"] == broken_ref.identifier
+        )
+        self.assertTrue(broken["kept"])
+        self.assertIsNone(broken["classification"])
 
     def test_all_anchors_non_data_paper_zero_citations(self) -> None:
         """Every anchor classified as non-data_paper -> backend never called."""
@@ -447,7 +500,10 @@ class PipelineBucketingTests(TestCase):
         self.assertEqual(out["num_citations"], 0)
         self.assertEqual(out["metadata"]["fetch_status"], "no_data_paper_anchor")
         self.assertEqual(out["metadata"]["anchor_count"], 4)
-        self.assertEqual(out["metadata"]["context_anchors"].__len__(), 4)
+        # All four anchors are present, none kept (none reached the backend).
+        self.assertEqual(len(out["metadata"]["anchors"]), 4)
+        self.assertEqual(len(_context_anchors(out)), 4)
+        self.assertEqual(out["metadata"]["searched_dois"], [])
         # The model name is still surfaced on the stub payload.
         self.assertEqual(out["metadata"]["anchor_judgment_model"], "gemma4:31b")
 
@@ -499,12 +555,11 @@ class PipelineBucketingTests(TestCase):
         self.assertEqual(backend.calls, [[source_ref.identifier]])
         self.assertEqual(out["metadata"]["anchor_count"], 1)
         catalog_records = [
-            c
-            for c in out["metadata"]["context_anchors"]
-            if c["anchor_identifier"] == catalog_doi
+            a for a in out["metadata"]["anchors"] if a["identifier"] == catalog_doi
         ]
         self.assertEqual(len(catalog_records), 1)
         self.assertEqual(catalog_records[0]["classification"], "umbrella")
+        self.assertFalse(catalog_records[0]["kept"])
 
     def test_partial_sidecar_warns_per_dataset(self) -> None:
         """When the sidecar covers some but not all anchors, the uncovered
@@ -574,8 +629,158 @@ class PipelineBucketingTests(TestCase):
         ]
         self.assertEqual(len(warns), 1)
         self.assertIn("1/2 anchors", warns[0].getMessage())
-        # No context_anchors because everything was fetched, not bucketed.
-        self.assertEqual(out["metadata"]["context_anchors"], [])
+        # Nothing bucketed to context: everything was fetched (both kept).
+        self.assertEqual(_context_anchors(out), [])
+        self.assertEqual(
+            sorted(out["metadata"]["searched_dois"]),
+            sorted([judged_ref.identifier, unjudged_ref.identifier]),
+        )
+
+    def test_rich_metadata_capability_lands_in_metadata(self) -> None:
+        """A source exposing get_dataset_metadata populates the v2.1 keys."""
+        data_paper_ref = DoiReference(
+            identifier="10.1038/data.paper",
+            identifier_type="doi",
+            relation_type="IsDerivedFrom",
+            source="nemar_metadata",
+        )
+        metadata = NemarDatasetMetadata(
+            keywords=("EEG", "BIDS"),
+            methods_description="collected during cognitive tasks",
+            funding=({"funder_name": "NIH", "award_number": "R01MH1"},),
+        )
+        nemar = _RichStubSource(FetchSuccess([data_paper_ref]), metadata)
+        backend = _StubBackend(
+            {
+                data_paper_ref.identifier: FetchSuccess(
+                    [
+                        _make_work(
+                            "cites",
+                            doi="10.5/c",
+                            source_doi=data_paper_ref.identifier,
+                        )
+                    ]
+                )
+            }
+        )
+        _write_sidecar(
+            self.judgments_dir,
+            "nm000016",
+            [_judgment(data_paper_ref.identifier, "data_paper")],
+        )
+        out = fetch_dataset_citations_via_opencite(
+            "nm000016",
+            backend=backend,
+            nemar_source=nemar,
+            fetch_date=WHEN,
+            judgments_dir=self.judgments_dir,
+        )
+        self.assertEqual(out["metadata"]["keywords"], ["EEG", "BIDS"])
+        self.assertEqual(
+            out["metadata"]["methods_description"], "collected during cognitive tasks"
+        )
+        self.assertEqual(
+            out["metadata"]["funding"],
+            [{"funder_name": "NIH", "award_number": "R01MH1"}],
+        )
+
+    def test_rich_metadata_present_even_with_no_doi_references(self) -> None:
+        """A DOI-less dataset still carries its rich metadata (parsed before
+        the no_doi_references early-out)."""
+        metadata = NemarDatasetMetadata(keywords=("MEG",), methods_description=None)
+        nemar = _RichStubSource(FetchSuccess([]), metadata)
+        out = fetch_dataset_citations_via_opencite(
+            "nm000017",
+            backend=_ExplodingBackend(),
+            nemar_source=nemar,
+            fetch_date=WHEN,
+            judgments_dir=self.judgments_dir,
+        )
+        self.assertEqual(out["metadata"]["fetch_status"], "no_doi_references")
+        self.assertEqual(out["metadata"]["keywords"], ["MEG"])
+        self.assertEqual(out["metadata"]["anchors"], [])
+        self.assertEqual(out["metadata"]["searched_dois"], [])
+
+    def test_no_data_paper_stub_carries_rich_metadata(self) -> None:
+        """The no_data_paper_anchor stub still emits the dataset's rich metadata."""
+        umbrella_ref = DoiReference(
+            identifier="10.1/umbrella",
+            identifier_type="doi",
+            relation_type="IsDerivedFrom",
+            source="nemar_metadata",
+        )
+        metadata = NemarDatasetMetadata(
+            keywords=("EEG",),
+            methods_description="collected during tasks",
+            funding=({"funder_name": "NIH"},),
+        )
+        nemar = _RichStubSource(FetchSuccess([umbrella_ref]), metadata)
+        _write_sidecar(
+            self.judgments_dir,
+            "nm000018",
+            [_judgment(umbrella_ref.identifier, "umbrella")],
+        )
+        out = fetch_dataset_citations_via_opencite(
+            "nm000018",
+            backend=_ExplodingBackend(),
+            nemar_source=nemar,
+            fetch_date=WHEN,
+            judgments_dir=self.judgments_dir,
+        )
+        self.assertEqual(out["metadata"]["fetch_status"], "no_data_paper_anchor")
+        self.assertEqual(out["metadata"]["keywords"], ["EEG"])
+        self.assertEqual(
+            out["metadata"]["methods_description"], "collected during tasks"
+        )
+        self.assertEqual(out["metadata"]["funding"], [{"funder_name": "NIH"}])
+        self.assertEqual(out["metadata"]["searched_dois"], [])
+        self.assertEqual(len(_context_anchors(out)), 1)
+
+    def test_pmid_kept_anchor_excluded_from_searched_dois(self) -> None:
+        """A kept PMID anchor appears in anchors[] but not in searched_dois
+        (which is DOI-only)."""
+        pmid_ref = DoiReference(
+            identifier="pmid:12345",
+            identifier_type="pmid",
+            relation_type="References",
+            source="nemar_metadata",
+        )
+        doi_ref = DoiReference(
+            identifier="10.1/d",
+            identifier_type="doi",
+            relation_type="IsDerivedFrom",
+            source="nemar_metadata",
+        )
+        nemar = _StubSource(FetchSuccess([pmid_ref, doi_ref]))
+        backend = _StubBackend(
+            {
+                pmid_ref.identifier: FetchSuccess(
+                    [_make_work("p", doi="10.5/p", source_doi=pmid_ref.identifier)]
+                ),
+                doi_ref.identifier: FetchSuccess(
+                    [_make_work("d", doi="10.5/d", source_doi=doi_ref.identifier)]
+                ),
+            }
+        )
+        _write_sidecar(
+            self.judgments_dir,
+            "nm000019",
+            [
+                _judgment(pmid_ref.identifier, "data_paper", identifier_type="pmid"),
+                _judgment(doi_ref.identifier, "data_paper"),
+            ],
+        )
+        out = fetch_dataset_citations_via_opencite(
+            "nm000019",
+            backend=backend,
+            nemar_source=nemar,
+            fetch_date=WHEN,
+            judgments_dir=self.judgments_dir,
+        )
+        kept = {a["identifier"] for a in out["metadata"]["anchors"] if a["kept"]}
+        self.assertEqual(kept, {pmid_ref.identifier, doi_ref.identifier})
+        # searched_dois is DOI-only: the kept PMID anchor is excluded.
+        self.assertEqual(out["metadata"]["searched_dois"], [doi_ref.identifier])
 
 
 class SidecarShapeRegressionTests(TestCase):

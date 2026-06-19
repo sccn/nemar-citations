@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import json
 import logging
+from dataclasses import dataclass
 from typing import Any, cast, get_args
 
 import requests
@@ -46,6 +47,25 @@ _CITATION_RELATIONS: frozenset[RelationType] = frozenset(get_args(RelationType))
 
 DEFAULT_DATA_API_BASE = "https://data.nemar.org"
 DEFAULT_DATA_API_TIMEOUT = 15.0
+
+
+@dataclass(frozen=True, slots=True)
+class NemarDatasetMetadata:
+    """Descriptive dataset fields pulled from `.nemar/metadata.json` (schema v2.1).
+
+    `keywords` are flattened to plain strings; `funding` entries are normalized to
+    `{funder_name, award_number?, award_title?}`. `methods_description` is only
+    carried by the GitHub schema-2.0 doc, not the data.nemar.org neuroschema
+    (schema 0.3.0), so it is `None` whenever rich metadata falls back to the data
+    API. Empty instance = no rich metadata available (e.g. legacy ds-* datasets).
+    """
+
+    keywords: tuple[str, ...] = ()
+    methods_description: str | None = None
+    funding: tuple[dict[str, str], ...] = ()
+
+
+EMPTY_NEMAR_DATASET_METADATA = NemarDatasetMetadata()
 
 
 class NemarMetadataSource:
@@ -133,6 +153,20 @@ class NemarMetadataSource:
     def _fetch_from_github(
         self, dataset_id: str, org: str
     ) -> FetchResult[list[DoiReference]]:
+        result = self._github_payload(dataset_id, org)
+        if isinstance(result, FetchSuccess):
+            return FetchSuccess(parse_nemar_metadata(result.value))
+        return result
+
+    def _github_payload(self, dataset_id: str, org: str) -> FetchResult[dict[str, Any]]:
+        """Read the raw `.nemar/metadata.json` dict from GitHub, or a FetchError.
+
+        Shared by the DOI-reference path (`_fetch_from_github` maps the payload
+        through `parse_nemar_metadata`) and the rich-metadata path
+        (`get_dataset_metadata` maps it through `parse_nemar_dataset_metadata`),
+        so the GitHub file is decoded once per concern with one set of error
+        rules. Only reads `self.github`.
+        """
         try:
             repo = self.github.get_repo(f"{org}/{dataset_id}")
         except GithubException as e:
@@ -165,7 +199,49 @@ class NemarMetadataSource:
 
         if not isinstance(payload, dict):
             return FetchError("parse", "metadata.json root is not an object")
-        return FetchSuccess(parse_nemar_metadata(payload))
+        return FetchSuccess(payload)
+
+    def get_dataset_metadata(
+        self, dataset_id: str, org: str = "nemarDatasets"
+    ) -> NemarDatasetMetadata:
+        """Return keywords / methods_description / funding for one nm/on dataset.
+
+        Prefers the GitHub `.nemar/metadata.json` (schema 2.0): it carries the
+        latest producer-side fields, including `methods_description`, which the
+        data.nemar.org neuroschema (schema 0.3.0) does NOT expose and which ships
+        stale tag-versioned data. Falls back to the data.nemar.org payload for
+        keywords + funding when GitHub is unavailable (methods_description stays
+        None in that case). Returns `EMPTY_NEMAR_DATASET_METADATA` on total
+        failure, logged: rich metadata is provenance, never a hard dependency.
+
+        Distinct from `get_doi_references`, which prefers the data API for the
+        anchor extraction; the source-of-truth preference is deliberately
+        inverted here because only GitHub has the freshest descriptive fields.
+        """
+        github_payload = self._github_payload(dataset_id, org)
+        if isinstance(github_payload, FetchSuccess):
+            return parse_nemar_dataset_metadata(github_payload.value)
+
+        logger.info(
+            "GitHub .nemar/metadata.json unavailable for %s (%s: %s); "
+            "falling back to data.nemar.org for rich metadata",
+            dataset_id,
+            github_payload.reason,
+            github_payload.detail,
+        )
+        if self.prefer_data_api:
+            data_api = self._fetch_from_data_api(dataset_id)
+            if isinstance(data_api, FetchSuccess):
+                return parse_nemar_dataset_metadata(data_api.value)
+            # Both sources failed: rich metadata is dropped for this dataset, a
+            # production degradation that should stand out in a 594-dataset run.
+            logger.warning(
+                "rich metadata unavailable for %s from GitHub and data.nemar.org "
+                "(%s); keywords/funding will be absent from output",
+                dataset_id,
+                data_api.reason,
+            )
+        return EMPTY_NEMAR_DATASET_METADATA
 
 
 def parse_nemar_metadata(payload: dict[str, Any]) -> list[DoiReference]:
@@ -181,6 +257,76 @@ def parse_nemar_metadata(payload: dict[str, Any]) -> list[DoiReference]:
         if ref is not None:
             refs.append(ref)
     return refs
+
+
+def parse_nemar_dataset_metadata(payload: dict[str, Any]) -> NemarDatasetMetadata:
+    """Pure function: extract keywords / methods_description / funding (schema v2.1).
+
+    Tolerates both `.nemar/metadata.json` shapes:
+      * GitHub schema 2.0: `funding_references[]`, carries `methods_description`.
+      * data.nemar.org neuroschema 0.3.0: `funding[]`, no `methods_description`.
+    `keywords` entries are `{"term": str}` in both shapes (a bare string is also
+    accepted); each is flattened to its term. Exposed for unit testing against
+    fixture files; `get_dataset_metadata` delegates here after a fetch.
+    """
+    methods = payload.get("methods_description")
+    methods_description = (
+        methods if isinstance(methods, str) and methods.strip() else None
+    )
+    raw_funding = payload.get("funding_references")
+    if not isinstance(raw_funding, list):
+        raw_funding = payload.get("funding")
+    return NemarDatasetMetadata(
+        keywords=_parse_keywords(payload.get("keywords")),
+        methods_description=methods_description,
+        funding=_parse_funding(raw_funding),
+    )
+
+
+def _parse_keywords(raw: Any) -> tuple[str, ...]:
+    # `None` = key absent (the common, expected case). A present-but-non-list
+    # value is a producer-side schema mismatch worth a WARN: it would otherwise
+    # silently zero out keywords for every affected dataset.
+    if raw is None:
+        return ()
+    if not isinstance(raw, list):
+        logger.warning("keywords is not a list (got %s); dropping", type(raw).__name__)
+        return ()
+    terms: list[str] = []
+    for entry in raw:
+        term = entry.get("term") if isinstance(entry, dict) else entry
+        if isinstance(term, str) and term.strip():
+            terms.append(term.strip())
+    return tuple(terms)
+
+
+def _parse_funding(raw: Any) -> tuple[dict[str, str], ...]:
+    """Normalize funding entries to `{funder_name, award_number?, award_title?}`.
+
+    Drops entries without a non-empty string `funder_name` and omits null/empty
+    optional keys so the serialized JSON stays minimal and deterministic. A
+    present-but-non-list `raw` is a schema mismatch and logs a WARN (vs `None`,
+    which just means the key is absent).
+    """
+    if raw is None:
+        return ()
+    if not isinstance(raw, list):
+        logger.warning("funding is not a list (got %s); dropping", type(raw).__name__)
+        return ()
+    records: list[dict[str, str]] = []
+    for entry in raw:
+        if not isinstance(entry, dict):
+            continue
+        funder_name = entry.get("funder_name")
+        if not isinstance(funder_name, str) or not funder_name.strip():
+            continue
+        record: dict[str, str] = {"funder_name": funder_name.strip()}
+        for key in ("award_number", "award_title"):
+            value = entry.get(key)
+            if isinstance(value, str) and value.strip():
+                record[key] = value.strip()
+        records.append(record)
+    return tuple(records)
 
 
 def _entry_to_reference(entry: Any) -> DoiReference | None:
