@@ -32,6 +32,7 @@ import httpx
 from opencite.citations import CitationExplorer
 from opencite.clients.openalex import OpenAlexClient
 from opencite.config import Config
+from opencite.exceptions import APIKeyError, RateLimitError
 
 from dataset_citations.sources.models import (
     Author,
@@ -145,7 +146,15 @@ class OpenCiteBackend:
                 *(run_one(r) for r in refs), return_exceptions=True
             )
         for ref, outcome in zip(refs, outcomes, strict=True):
-            if isinstance(outcome, BaseException):
+            # `gather(return_exceptions=True)` also captures BaseExceptions like
+            # asyncio.CancelledError (not an Exception subclass since 3.8). A
+            # cancellation must propagate, not be demoted to FetchError("other"),
+            # or an outer timeout / Ctrl+C silently turns into phantom results.
+            if isinstance(outcome, BaseException) and not isinstance(
+                outcome, Exception
+            ):
+                raise outcome
+            if isinstance(outcome, Exception):
                 logger.exception(
                     "uncaught exception in opencite lookup for %s",
                     ref.identifier,
@@ -173,13 +182,18 @@ class OpenCiteBackend:
 
         # opencite >= v0.5.4 no longer raises when the anchor itself can't be
         # resolved; `citing_papers` returns an empty result whose seed carries
-        # no OpenAlex/S2 id (a synthetic "Unknown" seed). A resolved anchor
-        # always has at least one of those ids (S2 `lookup` or the OpenAlex
-        # fallback in opencite's `_lookup_seed`). Surface the unresolved case
-        # as not_found so the caller does not record a genuinely-missing anchor
-        # as "0 citing works" (the Phase 1 review's exact concern).
-        seed_ids = result.seed_paper.ids
-        if not seed_ids.openalex_id and not seed_ids.s2_id:
+        # no OpenAlex/S2 id (a synthetic "Unknown" seed). Surface that as
+        # not_found so the caller does not record a genuinely-missing anchor as
+        # "0 citing works" (the Phase 1 review's exact concern).
+        #
+        # Residual gap (upstream, neuromechanist/opencite#33): if the seed
+        # resolves but BOTH `citing_papers` tasks fail, opencite's
+        # `_gather_papers` swallows them with its own WARNING and returns an
+        # empty list, which we cannot distinguish from a genuinely uncited
+        # anchor at this layer. Fixing that requires opencite to expose
+        # per-source task status; logging a warning here would fire on every
+        # legitimately-uncited anchor, so we do not.
+        if _is_unresolved_seed(result):
             return FetchError(
                 "not_found",
                 f"{ref.identifier}: anchor not resolved on any opencite source",
@@ -225,6 +239,21 @@ def _to_author(a: Any) -> Author:
     )
 
 
+def _is_unresolved_seed(result: Any) -> bool:
+    """True when opencite could not resolve the anchor on any source.
+
+    opencite >= v0.5.4 returns a `CitationResult` whose `seed_paper` is a
+    synthetic "Unknown" paper carrying only the input id (no `openalex_id`,
+    no `s2_id`) when `_lookup_seed` fails. A resolved anchor always has at
+    least one of those ids (the S2 `lookup` or the OpenAlex fallback in
+    opencite's `_lookup_seed`), so both-empty is the robust unresolved
+    signal. Checking the ids rather than `title == "Unknown"` pins the
+    structural invariant instead of a string constant that could change.
+    """
+    seed_ids = result.seed_paper.ids
+    return not seed_ids.openalex_id and not seed_ids.s2_id
+
+
 def classify_error(exc: BaseException, identifier: str) -> FetchError:
     """Map an opencite / httpx exception to a FetchError reason.
 
@@ -235,11 +264,22 @@ def classify_error(exc: BaseException, identifier: str) -> FetchError:
     'Cannot connect to host: not found in DNS' on a 429 reroute) is still
     routed to the correct bucket.
 
-    Uses httpx's `response.status_code` when the exception exposes one; falls
-    back to substring matching of the stringified exception. Tracked for
-    cleanup in neuromechanist/opencite#33 (typed exceptions upstream).
+    opencite's typed exceptions are checked first: `RateLimitError` and
+    `APIKeyError` carry no `status_code` and their messages contain none of
+    the substrings below, so without the isinstance checks a missing API key
+    would be misclassified as 'other' and a retry would burn rate budget.
+    After that, uses the exception's `status_code` (httpx or opencite
+    `APIError`) and finally substring matching. Tracked for cleanup in
+    neuromechanist/opencite#33 (typed exceptions upstream).
     """
     msg = f"{type(exc).__name__}: {exc}"
+    # Typed opencite exceptions first (most precise). RateLimitError and
+    # APIKeyError both subclass APIError, so check them before any generic
+    # APIError/status handling below.
+    if isinstance(exc, RateLimitError):
+        return FetchError("rate_limit", msg)
+    if isinstance(exc, APIKeyError):
+        return FetchError("auth", msg)
     status = _status_code_of(exc)
     if status == 429:
         return FetchError("rate_limit", msg)

@@ -51,6 +51,12 @@ class OpenCiteBackendIntegration(TestCase):
         ref = _ref("10.99999/this-doi-does-not-exist-xyzabc")
         result = self.backend.get_citing_works(ref)
         self.assertIsInstance(result, FetchError)
+        assert isinstance(result, FetchError)
+        # The contract is specifically "unresolvable anchor -> not_found", not
+        # just "some error": opencite returns an empty result with an Unknown
+        # seed, which the backend must translate to not_found rather than
+        # FetchSuccess([]) (the Phase 1 silent-zero regression).
+        self.assertEqual(result.reason, "not_found")
 
     def test_batch_lookup(self) -> None:
         refs = [
@@ -112,6 +118,54 @@ class OpenCiteBackendUnitTests(TestCase):
         err = classify_error(RuntimeError("totally unexpected"), "x")
         self.assertEqual(err.reason, "other")
 
+    def test_classify_error_apikey_is_auth(self) -> None:
+        # opencite's APIKeyError carries no status_code and its message has
+        # none of the auth substrings, so without the typed check it would be
+        # misclassified as "other" and a bad key would be retried.
+        from opencite.exceptions import APIKeyError
+
+        from dataset_citations.backends.opencite_backend import classify_error
+
+        err = classify_error(APIKeyError(), "x")
+        self.assertEqual(err.reason, "auth")
+
+    def test_classify_error_ratelimit_typed(self) -> None:
+        from opencite.exceptions import RateLimitError
+
+        from dataset_citations.backends.opencite_backend import classify_error
+
+        err = classify_error(RateLimitError(), "x")
+        self.assertEqual(err.reason, "rate_limit")
+
+    def test_is_unresolved_seed(self) -> None:
+        # Real opencite dataclasses (no mocks). An "Unknown" seed carrying only
+        # the input DOI signals an unresolvable anchor; a seed with an
+        # OpenAlex or S2 id is resolved.
+        from opencite.models import CitationResult, IDSet, Paper
+
+        from dataset_citations.backends.opencite_backend import _is_unresolved_seed
+
+        unknown = CitationResult(
+            seed_paper=Paper(title="Unknown", ids=IDSet(doi="10.99/fake")),
+            papers=[],
+            direction="citing",
+        )
+        self.assertTrue(_is_unresolved_seed(unknown))
+
+        resolved_oa = CitationResult(
+            seed_paper=Paper(title="Real", ids=IDSet(openalex_id="W123")),
+            papers=[],
+            direction="citing",
+        )
+        self.assertFalse(_is_unresolved_seed(resolved_oa))
+
+        resolved_s2 = CitationResult(
+            seed_paper=Paper(title="Real", ids=IDSet(s2_id="abc123")),
+            papers=[],
+            direction="citing",
+        )
+        self.assertFalse(_is_unresolved_seed(resolved_s2))
+
 
 @skipUnless(
     os.getenv("RUN_INTEGRATION_TESTS"),
@@ -144,13 +198,18 @@ class DelegatedPathIntegration(TestCase):
     def test_disabled_sources_runs_openalex_only(self) -> None:
         # Config-driven source selection: disabling S2 via opencite's
         # `disabled_sources` must still yield a working OpenAlex-only fetch,
-        # with no local routing involved.
+        # with no local routing involved. `10.1038/sdata.2015.1` is heavily
+        # cited and resolvable on OpenAlex alone, so a non-empty FetchSuccess
+        # proves the OpenAlex-only path actually returned results (not merely
+        # that the backend did not crash with S2 off).
         prior = os.environ.get("OPENCITE_DISABLED_SOURCES")
         os.environ["OPENCITE_DISABLED_SOURCES"] = "s2"
         try:
             backend = OpenCiteBackend(max_results_per_doi=5)
             result = backend.get_citing_works(_ref("10.1038/sdata.2015.1"))
-            self.assertIsInstance(result, (FetchSuccess, FetchError))
+            self.assertIsInstance(result, FetchSuccess)
+            assert isinstance(result, FetchSuccess)
+            self.assertGreater(len(result.value), 0)
         finally:
             if prior is None:
                 os.environ.pop("OPENCITE_DISABLED_SOURCES", None)
