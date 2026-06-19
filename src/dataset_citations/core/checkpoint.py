@@ -18,7 +18,7 @@ import logging
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, cast
+from typing import Any, cast, get_args
 
 from dataset_citations.sources.models import (
     Author,
@@ -238,7 +238,9 @@ def _deserialize_work(raw: dict[str, Any]) -> CitingWork:
 
 
 def _validate_relation(value: Any) -> RelationType:
-    allowed = {"References", "IsDerivedFrom", "IsIdenticalTo", "IsVersionOf"}
+    # Derived from RelationType so a new relation (e.g. IsDescribedBy) can never
+    # drift out of sync with the source-of-truth literal in sources/models.py.
+    allowed = set(get_args(RelationType))
     if value not in allowed:
         raise ValueError(f"source_relation {value!r} not in allow-list")
     return value  # type: ignore[return-value]

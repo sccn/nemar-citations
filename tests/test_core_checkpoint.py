@@ -20,6 +20,7 @@ from dataset_citations.sources.models import (
     CitingWork,
     FetchError,
     FetchSuccess,
+    RelationType,
 )
 
 
@@ -28,6 +29,7 @@ def _make_work(
     title: str = "Test paper",
     doi: str | None = "10.1038/test.1",
     source_doi: str = "10.1038/anchor.1",
+    source_relation: RelationType = "References",
 ) -> CitingWork:
     return CitingWork(
         title=title,
@@ -40,7 +42,7 @@ def _make_work(
         abstract="…",
         citation_count=5,
         source_doi=source_doi,
-        source_relation="References",
+        source_relation=source_relation,
     )
 
 
@@ -73,6 +75,16 @@ class StoreRoundTrip(TestCase):
         works = loaded.successful_works("10.1038/anchor.1")
         self.assertEqual(len(works), 1)
         self.assertEqual(works[0], work)
+
+    def test_isdescribedby_relation_roundtrips(self) -> None:
+        # IsDescribedBy (the data-paper relation, #181) must survive
+        # _validate_relation on load, not be dropped as an unknown relation.
+        work = _make_work(source_relation="IsDescribedBy")
+        self.store.record_anchor("nm000001", "10.1038/anchor.1", FetchSuccess([work]))
+        loaded = self.store.load("nm000001")
+        works = loaded.successful_works("10.1038/anchor.1")
+        self.assertEqual(len(works), 1)
+        self.assertEqual(works[0].source_relation, "IsDescribedBy")
 
     def test_record_anchor_error_marks_non_success(self) -> None:
         self.store.record_anchor(

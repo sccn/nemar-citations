@@ -3,8 +3,11 @@
 The file follows a DataCite-style schema (v2.0) with a `related_identifiers`
 block. We honor a fixed allow-list of `relation_type` values that map to
 "citations of related work belong to this dataset" semantics: References,
-IsDerivedFrom, IsIdenticalTo, IsVersionOf. We skip URL-typed identifiers
-(they exist for human navigation, not literature lookup).
+IsDerivedFrom, IsIdenticalTo, IsVersionOf, IsDescribedBy. `IsDescribedBy` is
+how a data paper is linked (e.g. 10.1038/sdata.2015.1 describes on000117); the
+downstream gemma anchor judgment buckets each kept anchor (data_paper vs
+methodology / umbrella / ...). We skip URL-typed identifiers (they exist for
+human navigation, not literature lookup).
 
 Two fetch paths are supported. The default path GETs
 `https://data.nemar.org/<id>/metadata.json`, which is the same neuroschema

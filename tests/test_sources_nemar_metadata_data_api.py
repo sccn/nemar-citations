@@ -10,9 +10,10 @@ from __future__ import annotations
 import json
 import os
 from pathlib import Path
+from typing import get_args
 from unittest import TestCase, skipUnless
 
-from dataset_citations.sources.models import FetchError, FetchSuccess
+from dataset_citations.sources.models import FetchError, FetchSuccess, RelationType
 from dataset_citations.sources.nemar_metadata import (
     NemarMetadataSource,
     parse_nemar_metadata,
@@ -40,7 +41,9 @@ class ParseDataApiPayload(TestCase):
             self.assertTrue(ref.identifier.startswith("10."))
 
     def test_relation_types_in_allow_list(self) -> None:
-        allowed = {"References", "IsDerivedFrom", "IsIdenticalTo", "IsVersionOf"}
+        # Derived from RelationType (now includes IsDescribedBy since #181) so it
+        # tracks the source of truth instead of a hand-maintained copy.
+        allowed = set(get_args(RelationType))
         for ref in self.refs:
             self.assertIn(ref.relation_type, allowed)
 

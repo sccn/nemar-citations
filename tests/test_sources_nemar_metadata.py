@@ -33,12 +33,20 @@ class ParseNm000103(TestCase):
         self.refs = parse_nemar_metadata(self.payload)
 
     def test_emits_only_citation_relation_types(self) -> None:
+        # nm000103's IsDescribedBy entries are URL-typed, so they're dropped by
+        # the URL filter (not the relation allow-list, which now permits
+        # IsDescribedBy since #181). IsSupplementedBy is not a consumed relation.
         rel_types = {r.relation_type for r in self.refs}
-        self.assertNotIn("IsDescribedBy", rel_types)
         self.assertNotIn("IsSupplementedBy", rel_types)
         self.assertTrue(
             rel_types.issubset(
-                {"References", "IsDerivedFrom", "IsIdenticalTo", "IsVersionOf"}
+                {
+                    "References",
+                    "IsDerivedFrom",
+                    "IsIdenticalTo",
+                    "IsVersionOf",
+                    "IsDescribedBy",
+                }
             )
         )
 
@@ -72,7 +80,8 @@ class ParseNm000115(TestCase):
 
     def test_emits_at_least_one_reference(self) -> None:
         self.assertGreater(len(self.refs), 0)
-        # IsDescribedBy is excluded; we expect to see References or related.
+        # nm000115's IsDescribedBy entries are URL-typed (dropped); we expect a
+        # DOI-typed References/related entry.
         rel_types = {r.relation_type for r in self.refs}
         self.assertTrue(rel_types & {"References", "IsDerivedFrom", "IsIdenticalTo"})
 
@@ -88,7 +97,9 @@ class ParseSyntheticEdgeCases(TestCase):
         refs = parse_nemar_metadata({"related_identifiers": []})
         self.assertEqual(refs, [])
 
-    def test_filters_isdescribedby(self) -> None:
+    def test_drops_url_identifier_regardless_of_relation(self) -> None:
+        # A URL-typed identifier is dropped even when its relation is consumed
+        # (IsDescribedBy is allowed since #181); only the DOI survives.
         refs = parse_nemar_metadata(
             {
                 "related_identifiers": [
@@ -107,6 +118,25 @@ class ParseSyntheticEdgeCases(TestCase):
         )
         self.assertEqual(len(refs), 1)
         self.assertEqual(refs[0].identifier, "10.1038/foo.bar")
+
+    def test_keeps_isdescribedby_data_paper_doi(self) -> None:
+        # The data paper is linked via IsDescribedBy (e.g. 10.1038/sdata.2015.1
+        # describes on000117). Since #181 the DOI is kept so anchor judgment can
+        # bucket it; before, this relation was filtered and the paper was lost.
+        refs = parse_nemar_metadata(
+            {
+                "related_identifiers": [
+                    {
+                        "identifier": "10.1038/sdata.2015.1",
+                        "identifier_type": "DOI",
+                        "relation_type": "IsDescribedBy",
+                    },
+                ]
+            }
+        )
+        self.assertEqual(len(refs), 1)
+        self.assertEqual(refs[0].identifier, "10.1038/sdata.2015.1")
+        self.assertEqual(refs[0].relation_type, "IsDescribedBy")
 
     def test_skips_openneuro_dataset_doi(self) -> None:
         refs = parse_nemar_metadata(

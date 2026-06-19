@@ -14,7 +14,13 @@ from typing import Callable, Generic, Literal, Never, TypeVar
 
 IdentifierType = Literal["doi", "pmid", "arxiv"]
 SourceKind = Literal["nemar_metadata", "openneuro_description", "nemar_catalog"]
-RelationType = Literal["References", "IsDerivedFrom", "IsIdenticalTo", "IsVersionOf"]
+# DataCite relation types we treat as "citations of this work belong to the
+# dataset". IsDescribedBy is how a data paper is linked from .nemar/metadata.json
+# (e.g. 10.1038/sdata.2015.1 describes on000117); the gemma anchor judgment then
+# buckets each anchor (data_paper vs methodology/umbrella/etc.).
+RelationType = Literal[
+    "References", "IsDerivedFrom", "IsIdenticalTo", "IsVersionOf", "IsDescribedBy"
+]
 FetchErrorReason = Literal[
     "not_found", "auth", "network", "parse", "rate_limit", "other"
 ]
