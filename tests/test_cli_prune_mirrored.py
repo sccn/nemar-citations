@@ -11,6 +11,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import stat
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest import TestCase
@@ -98,3 +100,32 @@ class RunPruneMirroredTests(TestCase):
                 self.assertTrue((cdir / "ds005261_citations.json").exists())
         finally:
             cli.get_or_fetch_catalog = original  # type: ignore[assignment]
+
+    def test_missing_citations_dir_exits_nonzero(self) -> None:
+        # A wrong/absent --citations-dir must fail loudly, not look like a clean
+        # "nothing to prune" run.
+        with TemporaryDirectory() as tmp:
+            missing = Path(tmp) / "does_not_exist"
+            with self.assertRaises(SystemExit) as ctx:
+                cli.run_prune_mirrored(_args(missing))
+            self.assertEqual(ctx.exception.code, 1)
+
+    def test_unlink_failure_exits_nonzero_and_keeps_file(self) -> None:
+        # A delete that fails (read-only parent dir) is logged and the run exits
+        # non-zero so the cron WARN guard fires; the ds-* file is left in place
+        # rather than silently skipped behind an exit-0.
+        with TemporaryDirectory() as tmp:
+            cdir = Path(tmp) / "json_opencite"
+            _seed(cdir, "ds005261")
+            _seed(cdir, "on005261")
+            args = _args(cdir)  # writes the catalog cache to tmp/ before locking cdir
+            os.chmod(
+                cdir, stat.S_IREAD | stat.S_IEXEC
+            )  # 0o500: no write -> unlink fails
+            try:
+                with self.assertRaises(SystemExit) as ctx:
+                    cli.run_prune_mirrored(args)
+                self.assertEqual(ctx.exception.code, 1)
+                self.assertTrue((cdir / "ds005261_citations.json").exists())
+            finally:
+                os.chmod(cdir, stat.S_IRWXU)  # restore so the tempdir can be cleaned up

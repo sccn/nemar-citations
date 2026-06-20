@@ -39,8 +39,19 @@ def run_prune_mirrored(args: argparse.Namespace) -> None:
     failure it prunes nothing and returns normally: pruning is cleanup, not a
     critical step, and deleting without a confirmed mirror map would risk
     dropping a non-duplicated ds-* record.
+
+    Exits non-zero (SystemExit) when `--citations-dir` is missing or when any
+    individual deletion fails, so the cron WARN guard surfaces the problem
+    instead of an exit-0 masking it. A catalog failure still returns normally
+    (exit 0), as described above.
     """
     citations_dir = Path(args.citations_dir)
+    if not citations_dir.is_dir():
+        logger.error(
+            "citations-dir %s does not exist or is not a directory; aborting",
+            citations_dir,
+        )
+        raise SystemExit(1)
     result = get_or_fetch_catalog(
         cache_path=args.catalog_cache, max_age_seconds=args.catalog_cache_max_age
     )
@@ -59,6 +70,7 @@ def run_prune_mirrored(args: argparse.Namespace) -> None:
         return
 
     pruned = 0
+    failed = 0
     for path in duplicates:
         ds_alias = path.name.removesuffix("_citations.json")
         on_id = ds_to_on[ds_alias]
@@ -69,6 +81,7 @@ def run_prune_mirrored(args: argparse.Namespace) -> None:
             path.unlink()
         except OSError as e:
             logger.error("failed to prune %s: %s", path, e)
+            failed += 1
             continue
         pruned += 1
         logger.info("pruned %s (duplicate of %s)", path.name, on_id)
@@ -79,13 +92,18 @@ def run_prune_mirrored(args: argparse.Namespace) -> None:
             len(duplicates),
             citations_dir,
         )
-    else:
-        logger.info(
-            "prune-mirrored complete: pruned %d of %d duplicate(s) in %s",
-            pruned,
-            len(duplicates),
-            citations_dir,
-        )
+        return
+
+    logger.info(
+        "prune-mirrored complete: pruned %d of %d duplicate(s) in %s",
+        pruned,
+        len(duplicates),
+        citations_dir,
+    )
+    if failed:
+        # Exit non-zero so the cron WARN guard fires; the ERROR lines above name
+        # each skipped file. An exit-0 here would mask the partial failure.
+        raise SystemExit(1)
 
 
 def main() -> None:
@@ -106,7 +124,7 @@ def main() -> None:
         "--catalog-cache",
         type=Path,
         default=Path.home() / ".cache" / "dataset_citations" / "catalog.json",
-        help="Cached api.nemar.org/datasets response (for the on-* -> ds-* mirror map).",
+        help="Cached api.nemar.org/datasets response (for the ds-* -> on-* mirror map).",
     )
     parser.add_argument(
         "--catalog-cache-max-age",

@@ -146,13 +146,14 @@ OPENCITE_CONCURRENCY=4 \
 #     catalog id (its ds-* accession survives only as the on-* row's source_id),
 #     so discover --source catalog emits only the on-*. But a ds<N>_citations.json
 #     produced before the mirror existed lingers on disk and double-counts. Prune
-#     those stale ds-* files now -- AFTER update (so the on-* mirror is freshly
-#     present) and BEFORE find-mentions/score/dashboard glob them. Non-fatal:
-#     pruning is cleanup, and the CLI already prunes nothing on a catalog failure.
+#     those stale ds-* files now -- AFTER update (so the on-* mirror file exists in
+#     citations/json_opencite) and BEFORE find-mentions/score/dashboard glob them.
+#     Non-fatal: pruning is cleanup, and the CLI already prunes nothing on a
+#     catalog failure.
 echo "--- prune-mirrored (ds->on dedup) ---"
 uv run dataset-citations-prune-mirrored \
   --citations-dir citations/json_opencite \
-  || echo "WARN: dataset-citations-prune-mirrored failed; continuing" >&2
+  || echo "WARN: dataset-citations-prune-mirrored failed; stale ds-* files may remain and double-count in this run's find-mentions/score/dashboard output. See the error above." >&2
 
 # 3c. Accession-mention discovery (#169). People cite datasets by accession
 #     number in text (ds*/on*/nm*, plus the OpenNeuro ds- alias for on-*),
@@ -299,7 +300,7 @@ git commit -m "data: hallu nightly pipeline ($TS)
 
 GPU semantic scoring + embeddings on RTX 4090. Pipeline:
   catalog discover -> metadata -> judge-anchors -> opencite fetch
-  -> find-mentions -> score-confidence -> generate-embeddings
+  -> prune-mirrored -> find-mentions -> score-confidence -> generate-embeddings
 
 $(echo "$DIFFSTAT")"
 
