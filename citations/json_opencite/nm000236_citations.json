@@ -1,28 +1,187 @@
 {
   "dataset_id": "nm000236",
-  "num_citations": 1,
-  "date_last_updated": "2026-06-15T19:01:54.920176+00:00",
+  "num_citations": 6,
+  "date_last_updated": "2026-06-20T10:02:53.005319+00:00",
   "metadata": {
-    "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-15T19:01:54.920176+00:00",
+    "total_cumulative_citations": 74,
+    "fetch_date": "2026-06-20T10:02:53.005319+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
-    "fetch_status": "not_found",
+    "fetch_status": "success",
     "anchor_count": 2,
-    "anchor_errors": {
-      "10.5281/zenodo.2605204": "not_found"
-    },
+    "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.5281/zenodo.2605204",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000236",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.5281/zenodo.2605204",
+      "10.82901/nemar.nm000236"
+    ],
+    "keywords": [
+      "Electroencephalography",
+      "P300",
+      "Brain-Computer Interfaces",
+      "Virtual Reality",
+      "Event-Related Potentials, P300",
+      "Visual Perception"
+    ],
+    "methods_description": "EEG was recorded from 21 subjects using 16 electrodes (10-10 montage) at 512 Hz sampling rate with a g.USBamp amplifier and wet electrodes. Two randomized sessions (PC and VR) were conducted, each consisting of 12 blocks of 5 repetitions. Each repetition involved 12 flashes of groups of 6 symbols in a 6×6 matrix, with target and non-target stimuli presented visually. The VR condition used a passive HMD (VRElegiant) with a Huawei Ascend Mate 7 smartphone. Visual feedback was provided after each repetition. Reference electrode was placed at the right earlobe with ground at AFZ.",
+    "funding": [
+      {
+        "funder_name": "IHMTEK Company (Interaction Homme-Machine Technologie)"
+      },
+      {
+        "funder_name": "IHMTEK Company"
+      }
+    ],
     "searched_accessions": [
       "nm000236"
     ],
     "num_accession_mentions": 1,
     "num_dataset_citations": 1,
-    "num_datapaper_citations": 0
+    "num_datapaper_citations": 5
   },
   "citation_details": [
+    {
+      "title": "The largest EEG-based BCI reproducibility study for open science: the MOABB benchmark",
+      "author": "Sylvain Chevallier, Igor Carrara, Bruno Aristimunha, Pierre Guetschel, Sara Sedlar, Bruna J. Lopes, Sébastien Velut, Salim Khazem, Thomas Moreau",
+      "venue": "ArXiv",
+      "year": 2024,
+      "url": "https://doi.org/10.48550/arXiv.2404.15319",
+      "cited_by": 42,
+      "abstract": "Objective. This study conduct an extensive Brain-computer interfaces (BCI) reproducibility analysis on open electroencephalography datasets, aiming to assess existing solutions and establish open and reproducible benchmarks for effective comparison within the field. The need for such benchmark lies in the rapid industrial progress that has given rise to undisclosed proprietary solutions. Furthermore, the scientific literature is dense, often featuring challenging-to-reproduce evaluations, making comparisons between existing approaches arduous. Approach. Within an open framework, 30 machine learning pipelines (separated into raw signal: 11, Riemannian: 13, deep learning: 6) are meticulously re-implemented and evaluated across 36 publicly available datasets, including motor imagery (14), P300 (15), and SSVEP (7). The analysis incorporates statistical meta-analysis techniques for results assessment, encompassing execution time and environmental impact considerations. Main results. The stu",
+      "doi": "10.48550/arXiv.2404.15319",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.5281/zenodo.2605204",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6458836287260056,
+        "similarity_score": 0.5592066049575806,
+        "citation_text_length": 1273,
+        "dataset_text_length": 2338,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Building Brain Invaders: EEG data of an experimental validation",
+      "author": "G. V. Veen, A. Barachant, Anton Andreev, G. Cattan, P. Rodrigues, M. Congedo",
+      "venue": "ArXiv",
+      "year": 2019,
+      "url": "n/a",
+      "cited_by": 31,
+      "abstract": "We describe the experimental procedures for a dataset that we have made publicly available at https://doi.org/10.5281/zenodo.2649006 in mat and csv formats. This dataset contains electroencephalographic (EEG) recordings of 25 subjects testing the Brain Invaders (Congedo, 2011), a visual P300 Brain-Computer Interface inspired by the famous vintage video game Space Invaders (Taito, Tokyo, Japan). The visual P300 is an event-related potential elicited by a visual stimulation, peaking 240-600 ms after stimulus onset. EEG data were recorded by 16 electrodes in an experiment that took place in the GIPSA-lab, Grenoble, France, in 2012 (Van Veen, 2013 and Congedo, 2013). Python code for manipulating the data is available at https://github.com/plcrodrigues/py.BI.EEG.2012-GIPSA. The ID of this dataset is BI.EEG.2012-GIPSA.",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.5281/zenodo.2605204",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8144379198551178,
+        "similarity_score": 0.740398108959198,
+        "citation_text_length": 1007,
+        "dataset_text_length": 2338,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod L'evy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 1,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.5281/zenodo.2605204",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5561898118257523,
+        "similarity_score": 0.48154962062835693,
+        "citation_text_length": 1325,
+        "dataset_text_length": 2338,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "BTTDA: Block-Term Tensor Discriminant Analysis for Brain-Computer Interfacing",
+      "author": "Arne Van Den Kerchove, Hakim Si-Mohammed, Franccois Cabestaing, Marc M. Van Hulle",
+      "venue": "n/a",
+      "year": 2025,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "Brain-computer interfaces (BCIs) allow direct communication between the brain and external devices, frequently using electroencephalography (EEG) to record neural activity. Dimensionality reduction and structured regularization are essential for effectively classifying task-related brain signals, including event-related potentials (ERPs) and motor imagery (MI) rhythms. Current tensor-based approaches, such as Tucker and PARAFAC decompositions, often lack the flexibility needed to fully capture the complexity of EEG data. This study introduces Block-Term Tensor Discriminant Analysis (BTTDA): a novel tensor-based and supervised feature extraction method designed to enhance classification accuracy by providing flexible multilinear dimensionality reduction. Extending Higher Order Discriminant Analysis (HODA), BTTDA uses a novel and interpretable forward model for HODA combined with a deflation scheme to iteratively extract discriminant block terms, improving feature representation for clas",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.5281/zenodo.2605204",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5727843327820302,
+        "similarity_score": 0.4959171712398529,
+        "citation_text_length": 1200,
+        "dataset_text_length": 2338,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "The Riemannian Means Field Classifier for EEG-Based BCI Data",
+      "author": "Anton Andreev, G. Cattan, Marco Congedo",
+      "venue": "Sensors (Basel, Switzerland)",
+      "year": 2025,
+      "url": "https://doi.org/10.3390/s25072305",
+      "cited_by": 0,
+      "abstract": ": A substantial amount of research has demonstrated the robustness and accuracy of the Riemannian minimum distance to mean (MDM) classifier for all kinds of EEG-based brain–computer interfaces (BCIs). This classifier is simple, fully deterministic, robust to noise, computationally efficient, and prone to transfer learning. Its training is very simple, requiring just the computation of a geometric mean of a symmetric positive-definite (SPD) matrix per class. We propose an improvement of the MDM involving a number of power means of SPD matrices instead of the sole geometric mean. By the analysis of 20 public databases, 10 for the motor-imagery BCI paradigm and 10 for the P300 BCI paradigm, comprising 587 individuals in total, we show that the proposed classifier clearly outperforms the MDM, approaching the state-of-the art in terms of performance while retaining the simplicity and the deterministic behavior. In order to promote reproducible research, our code will be released as open sou",
+      "doi": "10.3390/s25072305",
+      "pmid": "40218817",
+      "openalex_id": null,
+      "source_doi": "10.5281/zenodo.2605204",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6628411951661111,
+        "similarity_score": 0.5738884806632996,
+        "citation_text_length": 1166,
+        "dataset_text_length": 2338,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
     {
       "title": "Glycosylation of endothelial lipase at asparagine-116 reduces activity and the hydrolysis of native lipoproteins in vitro and in vivo",
       "author": "Robert Brown, Gwen C. Miller, Griffon Nathalie, Christopher Long, Daniel J. Rader",
@@ -51,17 +210,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:29:20.949442+00:00",
+    "scoring_date": "2026-06-20T11:09:04.743711+00:00",
     "dataset_text_length": 2338,
-    "num_citations_scored": 1,
+    "num_citations_scored": 6,
     "summary_stats": {
-      "mean_confidence": 0.14284703135490417,
-      "median_confidence": 0.14284703135490417,
-      "std_confidence": 0.0,
+      "mean_confidence": 0.5658306532849869,
+      "median_confidence": 0.6093339807540179,
+      "std_confidence": 0.20683388705600714,
       "min_confidence": 0.14284703135490417,
-      "max_confidence": 0.14284703135490417,
-      "high_confidence_count": 0,
-      "medium_confidence_count": 0,
+      "max_confidence": 0.8144379198551178,
+      "high_confidence_count": 1,
+      "medium_confidence_count": 4,
       "low_confidence_count": 1
     }
   }

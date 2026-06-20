@@ -1,29 +1,100 @@
 {
   "dataset_id": "on005642",
-  "num_citations": 1,
-  "date_last_updated": "2026-06-18T23:26:57.039729+00:00",
+  "num_citations": 2,
+  "date_last_updated": "2026-06-20T10:03:54.843441+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-18T23:26:57.039729+00:00",
+    "fetch_date": "2026-06-20T10:03:54.843441+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
+    "fetch_status": "success",
+    "anchor_count": 2,
+    "anchor_errors": {},
+    "schema_version": "2.1",
     "discovery_backend": "opencite",
-    "fetch_status": "not_found",
-    "anchor_count": 1,
-    "anchor_errors": {
-      "10.82901/nemar.on005642": "not_found"
-    },
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.31234/osf.io/vrtbx_v1",
+        "identifier_type": "doi",
+        "source_relation": "IsDescribedBy",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.on005642",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.31234/osf.io/vrtbx_v1",
+      "10.82901/nemar.on005642"
+    ],
+    "keywords": [
+      "EEG",
+      "face perception",
+      "visual perception",
+      "event-related potentials",
+      "illusory faces",
+      "object recognition"
+    ],
+    "methods_description": "EEG data were collected during presentation of 300 images (human faces, illusory faces, and matched non-face objects) displayed centrally at 3.75 Hz. Participants completed three behavioral tasks: a triplet odd-one-out dissimilarity task, face-likeness ratings on a 0-10 scale, and a speeded face/object categorization task, while simultaneously performing an orthogonal target detection task during EEG recording.",
+    "funding": [
+      {
+        "funder_name": "Australian Research Council",
+        "award_number": "DE200101159",
+        "award_title": "Discovery Early Career Researcher Award"
+      },
+      {
+        "funder_name": "Australian Research Council",
+        "award_number": "FT200100843",
+        "award_title": "Future Fellowship"
+      }
+    ],
     "searched_accessions": [
       "on005642",
       "ds005642"
     ],
     "num_accession_mentions": 1,
     "num_dataset_citations": 1,
-    "num_datapaper_citations": 0
+    "num_datapaper_citations": 1
   },
   "citation_details": [
+    {
+      "title": "Contrast negation increases face pareidolia rates in natural scenes",
+      "author": "Benjamin Balas, Lily Roshau, Emily Westrick, Myra Morton, Molly Setchfield",
+      "venue": "n/a",
+      "year": 2025,
+      "url": "https://doi.org/10.31234/osf.io/xq8zv_v2",
+      "cited_by": 0,
+      "abstract": "Face pareidolia, the phenomenon of seeing face-like patterns in non-face images, has a dual nature: Pareidolic patterns are experienced as face-like, even while observers can recognize the true nature of the stimulus (Stuart et al., 2024). Though pareidolic faces seem to result largely from the canonical arrangement of eye spots and a mouth, we hypothesized that competition between veridical and face-like interpretations of pareidolic patterns may constrain face pareidolia in natural scenes and textures. Specifically, we predicted that contrast negation, which disrupts multiple aspects of mid- to high-level recognition, may increase rates of face pareidolia in complex natural textures by weakening the veridical, non-face stimulus interpretation. We presented adult participants (N=27) and 5-12 year-old children (N=67) with a series of natural images depicting textures like grass, leaves, shells, and rocks. We asked participants to circle any patterns in each image that looked face-like,",
+      "doi": "10.31234/osf.io/xq8zv_v2",
+      "pmid": null,
+      "openalex_id": "W4411089525",
+      "source_doi": "10.31234/osf.io/vrtbx_v1",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6685501688718797,
+        "similarity_score": 0.5788313150405884,
+        "citation_text_length": 1183,
+        "dataset_text_length": 1129,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
     {
       "title": "Neural correlates reveal separate stages of spontaneous face perception",
       "author": "Amanda K. Robinson, Greta Stuart, Sophia M. Shatek, Adrian Herbert, Jessica Taubert",
@@ -52,17 +123,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:34:15.900903+00:00",
+    "scoring_date": "2026-06-20T11:10:24.716149+00:00",
     "dataset_text_length": 1129,
-    "num_citations_scored": 1,
+    "num_citations_scored": 2,
     "summary_stats": {
-      "mean_confidence": 0.8436050766706468,
-      "median_confidence": 0.8436050766706468,
-      "std_confidence": 0.0,
-      "min_confidence": 0.8436050766706468,
+      "mean_confidence": 0.7560776227712632,
+      "median_confidence": 0.7560776227712632,
+      "std_confidence": 0.08752745389938354,
+      "min_confidence": 0.6685501688718797,
       "max_confidence": 0.8436050766706468,
       "high_confidence_count": 1,
-      "medium_confidence_count": 0,
+      "medium_confidence_count": 1,
       "low_confidence_count": 0
     }
   }
