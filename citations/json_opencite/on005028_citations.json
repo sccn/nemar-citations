@@ -1,29 +1,97 @@
 {
   "dataset_id": "on005028",
-  "num_citations": 1,
-  "date_last_updated": "2026-06-15T19:01:59.528891+00:00",
+  "num_citations": 2,
+  "date_last_updated": "2026-06-20T10:03:21.205860+00:00",
   "metadata": {
-    "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-15T19:01:59.528891+00:00",
+    "total_cumulative_citations": 1,
+    "fetch_date": "2026-06-20T10:03:21.205860+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
-    "fetch_status": "not_found",
-    "anchor_count": 1,
+    "fetch_status": "partial",
+    "anchor_count": 2,
     "anchor_errors": {
       "10.82901/nemar.on005028": "not_found"
     },
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1101/2022.06.24.22276882",
+        "identifier_type": "doi",
+        "source_relation": "IsDescribedBy",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.on005028",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.1101/2022.06.24.22276882",
+      "10.82901/nemar.on005028"
+    ],
+    "keywords": [
+      "EEG",
+      "P300",
+      "brain-computer interface",
+      "speller",
+      "language models",
+      "motor imagery"
+    ],
+    "methods_description": "Data were acquired using BCI2000. The study employed P300-based speller paradigms with multiple flashing conditions during online typing tasks. EEG signals were recorded and processed to evaluate typing performance across different flashing paradigms in conjunction with language model integration.",
+    "funding": [
+      {
+        "funder_name": "National Science Foundation",
+        "award_number": "DGE-2034835",
+        "award_title": "Graduate Research Fellowship Program"
+      }
+    ],
     "searched_accessions": [
       "on005028",
       "ds005028"
     ],
     "num_accession_mentions": 1,
     "num_dataset_citations": 1,
-    "num_datapaper_citations": 0
+    "num_datapaper_citations": 1
   },
   "citation_details": [
+    {
+      "title": "ChatBCI, a P300 speller BCI with context-driven word prediction leveraging large language models, from concept to evaluation",
+      "author": "Jiazhen Hong, Weinan Wang, Laleh Najafizadeh",
+      "venue": "Scientific Reports",
+      "year": 2026,
+      "url": "https://doi.org/10.1038/s41598-025-25660-7",
+      "cited_by": 1,
+      "abstract": "P300 speller brain computer interfaces (BCIs) allow users to compose sentences by selecting target keys on a graphical user interface (GUI) through the detection of P300 component in their electroencephalogram (EEG) signals following visual stimuli. Most existing P300 speller BCIs require users to spell all or the first few initial letters of the intended word, letter by letter. Consequently, a large number of keystrokes could be required to write an intended sentence, thereby, increasing user's time and cognitive load. There is a need for more efficient and user-friendly methods for faster, and practical sentence composition. In this work, we introduce ChatBCI, a P300 speller BCI that leverages the zero-shot learning capabilities of large language models (LLMs) to suggest words from user-spelled initial letters or predict the subsequent word(s), reducing keystrokes and accelerating sentence composition. ChatBCI retrieves word suggestions through remote queries to the GPT-3.5 API. A mo",
+      "doi": "10.1038/s41598-025-25660-7",
+      "pmid": "41698950",
+      "openalex_id": "W4404986384",
+      "source_doi": "10.1101/2022.06.24.22276882",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7153726065158845,
+        "similarity_score": 0.6193702220916748,
+        "citation_text_length": 1225,
+        "dataset_text_length": 1052,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
     {
       "title": "Comparing P300 flashing paradigms in online typing with language models",
       "author": "Nand Chandravadia, Shrita Pendekanti, Dustin Roberts, Robert K. Tran, Saarang Panchavati, Corey Arnold, Nader Pouratian, William Speier",
@@ -52,16 +120,16 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:33:11.152601+00:00",
+    "scoring_date": "2026-06-20T11:09:43.281773+00:00",
     "dataset_text_length": 1052,
-    "num_citations_scored": 1,
+    "num_citations_scored": 2,
     "summary_stats": {
-      "mean_confidence": 0.8596174925565722,
-      "median_confidence": 0.8596174925565722,
-      "std_confidence": 0.0,
-      "min_confidence": 0.8596174925565722,
+      "mean_confidence": 0.7874950495362283,
+      "median_confidence": 0.7874950495362283,
+      "std_confidence": 0.07212244302034382,
+      "min_confidence": 0.7153726065158845,
       "max_confidence": 0.8596174925565722,
-      "high_confidence_count": 1,
+      "high_confidence_count": 2,
       "medium_confidence_count": 0,
       "low_confidence_count": 0
     }

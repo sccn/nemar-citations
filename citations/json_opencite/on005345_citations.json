@@ -1,26 +1,59 @@
 {
   "dataset_id": "on005345",
-  "num_citations": 2,
-  "date_last_updated": "2026-06-18T23:26:27.629460+00:00",
+  "num_citations": 3,
+  "date_last_updated": "2026-06-20T10:03:48.194897+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-18T23:26:27.629460+00:00",
+    "fetch_date": "2026-06-20T10:03:48.194897+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
-    "fetch_status": "not_found",
+    "fetch_status": "success",
     "anchor_count": 1,
-    "anchor_errors": {
-      "10.82901/nemar.on005345": "not_found"
-    },
+    "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.82901/nemar.on005345",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.82901/nemar.on005345"
+    ],
+    "keywords": [
+      "fMRI",
+      "EEG",
+      "speech perception",
+      "selective attention",
+      "multi-talker listening",
+      "naturalistic stimuli",
+      "7T ultrahigh field",
+      "Mandarin Chinese",
+      "language processing",
+      "multimodal neuroimaging",
+      "auditory processing",
+      "Le Petit Prince",
+      "simultaneous EEG-fMRI",
+      "cocktail party problem",
+      "concurrent EEG-fMRI"
+    ],
+    "methods_description": "EEG data were acquired using a 64-channel actiCAP system sampled at 500 Hz with bandpass filtering (0.016–80 Hz). fMRI data were collected on a 7.0 T Siemens Terra scanner with 85 interleaved axial slices (1.6×1.6×1.6 mm voxel size, TR=1000 ms, TE=22.2 ms) and T1-weighted anatomical images (0.7×0.7×0.7 mm). Functional preprocessing included motion correction, slice-timing correction, multi-echo ICA denoising, and registration to MNI152NLin2009cAsym template using fMRIPrep (v20.2.0).",
+    "funding": [],
     "searched_accessions": [
       "on005345",
       "ds005345"
     ],
-    "num_accession_mentions": 2,
-    "num_dataset_citations": 2,
+    "num_accession_mentions": 3,
+    "num_dataset_citations": 3,
     "num_datapaper_citations": 0
   },
   "citation_details": [
@@ -73,20 +106,45 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Le Petit Prince (LPP) Multi-talker: Naturalistic 7T fMRI and EEG Dataset",
+      "author": "Zhengwu Ma, Nan Wang, Jixing Li",
+      "venue": "UC San Diego",
+      "year": 2026,
+      "url": "https://doi.org/10.82901/nemar.on005345",
+      "cited_by": 0,
+      "abstract": "This dataset comprises simultaneous 7T fMRI and EEG recordings from 25 native Mandarin Chinese speakers engaged in a naturalistic listening task featuring the Chinese version of Le Petit Prince under varying acoustic conditions (single-talker and multi-talker scenarios). The study investigates neural mechanisms of selective attention and speech comprehension in complex auditory environments, with participants attending to different talkers while maintaining fixation during fMRI acquisition. Preprocessed anatomical and functional MRI data, along with high-density EEG recordings, are provided in BIDS format alongside behavioral comprehension assessments. This dataset is derived from OpenNeuro ds005345 (v1.0.1) and has been curated for the NEMAR repository. Note: The README references French cohort considerations; however, the primary dataset composition consists of the 25 native Mandarin Chinese speakers described above.",
+      "doi": "10.82901/nemar.on005345",
+      "pmid": null,
+      "openalex_id": "W7165204196",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005345",
+      "confidence_scoring": {
+        "confidence_score": 1.0,
+        "similarity_score": 0.9108545780181885,
+        "citation_text_length": 1086,
+        "dataset_text_length": 2271,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:33:46.897092+00:00",
+    "scoring_date": "2026-06-20T11:10:16.423210+00:00",
     "dataset_text_length": 2271,
-    "num_citations_scored": 2,
+    "num_citations_scored": 3,
     "summary_stats": {
-      "mean_confidence": 0.6987595666944981,
-      "median_confidence": 0.6987595666944981,
-      "std_confidence": 0.2682212184369564,
+      "mean_confidence": 0.7991730444629987,
+      "median_confidence": 0.9669807851314546,
+      "std_confidence": 0.2610124155061096,
       "min_confidence": 0.4305383482575417,
-      "max_confidence": 0.9669807851314546,
-      "high_confidence_count": 1,
+      "max_confidence": 1.0,
+      "high_confidence_count": 2,
       "medium_confidence_count": 1,
       "low_confidence_count": 0
     }

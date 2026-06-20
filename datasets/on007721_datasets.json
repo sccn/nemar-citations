@@ -1,0 +1,44 @@
+{
+  "dataset_id": "on007721",
+  "date_retrieved": "2026-06-20T10:02:04.728480+00:00",
+  "dataset_description": {
+    "Name": "Bone conducted responses using the parallel auditory brainstem response (pABR) paradigm",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Melissa J. Polonenko",
+      "Ross K. Maddox"
+    ],
+    "Funding": [
+      "National Institute on Deafness and Other Communication Disorders (NIDCD) of the National Institutes of Health: R01 DC017962"
+    ],
+    "EthicsApprovals": [
+      "All research was performed under a single IRB protocol approved by the University of Michigan IRBMED (PI: Ross Maddox, HUM00252149) with a site-specific protocol approved by the University of Minnesota IRB (PI: Melissa Polonenko, SITE00000908 for IRBMED and SITE00001873 UMN)"
+    ],
+    "DatasetDOI": "10.82901/nemar.on007721",
+    "ReferencesAndLinks": [
+      "bioRxiv [Preprint]. 2025 Oct 7:2025.10.07.680974. doi: 10.1101/2025.10.07.680974."
+    ],
+    "License": "CC0",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds007721.v1.0.1"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on007721-blue)](https://doi.org/10.82901/nemar.on007721)\n\n\nREADME\n------\nDetails related to access to the data\n-------------------------------------\nPlease contact the following author for further information:\n    Melissa Polonenko(email: mpolonen@umn.edu)\n\nOverview\n--------\nThis is the dataset for the paper\nPolonenko MJ & Maddox RK (2026), with citation listed below.\n\nEar and Hearing:\nPolonenko, MJ, & Maddox, RK. Bone conducted responses using the parallel\nauditory brainstem response (pABR) paradigm. Accepted March 27, 2026.\n\nBioRxiv: \nPolonenko, MJ, & Maddox, RK. Bone conducted responses using the parallel\nauditory brainstem response (pABR) paradigm. bioRxiv [Preprint].\n2025 Oct 7:2025.10.07.680974. doi: 10.1101/2025.10.07.680974.\n\nData was collected from October to November 2024.\n\nAim: This study aimed to confirm the feasibility of bone conduction pABR.\n1) Create normative values for bone conducted pABR stimuli.\n2) Compare ABRs to air- and bone-conducted stimuli.\n\nThe details of the experiment can be found in the bioRxiv pre-print and article\ncited above. \n\nStimuli for EEG:\n    pABR stimuli with 500, 1000, 2000, 4000, 8000 Hz tone pips. \n    AC only: dichotic presentation with 40 Hz stimulation rate\n    BC: BC stimuli at 40 Hz presentation rate; contralateral masking presented\n        via AC at 400 Hz stimulation rate\n    Levels: 20, 40, 60, 70, 50, 30 dB peSPL\n    600 x 1 s trials for each level for each task (AC, BC)\n    Total of 3,600 trials for each task x 2 tasks = 7,200 trials total\n    Total of 60 minutes per task for a total of 120 minutes EEG recording.\n\nStimuli for BEH:\n    pABR stimuli with 500, 1000, 2000, 4000, 8000 Hz tone pips\n    Tone pips presented separately\n    Stimulation rates: 20, 40, 60, 80 Hz\n\nThe code for analyses is available in this dataset.\n\nFormat\n------\nThe EEG dataset is formatted according to the EEG Brain Imaging Data Structure.\nIt  includes EEG recording in raw brainvision format (.eeg, .vhdr, .vmrk)\nand stimuli files in format of .hdf5. The stimuli files contain the audio ('x') \nand the pulses ('x_pulse'), the latter of which is used to create the pulse\ninds for the regressors [take indices where abs(x_pulse) > 0.5] in the cross-\ncorrelation.\n\nGenerally, you can find detailed event data in the .tsv files and descriptions\nin the accompanying .json files. Raw eeg files are provided in the Brain\nProducts format.\n\nThe BEH dataset has a .log and .tab file with the data from the trackers that\ncan be recontructed using the expyfun package. This data is provided on GitHub\nat https://github.com/polonenkolab/pabr_bc_poc\n\n\nParticipants\n------------\n22 participants, mean ± SD age of 22.8 ± 2.7 years (19-31 years)\nNote: participants 15 & 21 do not have EEG data; \n      participants 3 & 4 do not have BEH data\n\nInclusion criteria:\n    1) Age between 18-40 years\n    2) Normal hearing: audiometric thresholds <25 dB HL from 500 to 8000 Hz\n\nPlease see participants.tsv for more information.\n\nApparatus\n---------\nParticipants sat in a darkened sound-isolating booth and rested while listening\nto the stimuli. They were encouraged to sleep. Stimuli were presented through\nER-2 insert earphones (AC) and a B-81 vibrator (BC) plugged into an RME\nDigiface USB digital sound card. Custom python scripts using expyfun were used\nto control the experiment and stimulus presentation.\n\nDetails about the experiment\n----------------------------\nFor a detailed description of the task, see Polonenko & Maddox (2026) and the\nsupplied `task-f0s_eeg.json` file. The levels for each task were interleaved\ninterleaved. \n\nTrigger onset times are not corrected for the delay of the insert earphones,\nbut the tsv files have both the uncorrected and corrected samples.\nTriggers with values of \"1\" were recorded to the onset of the 1 s audio, and\nshortly after triggers with values of \"4\" or \"8\" were stamped to indicate the\nwhich of the runs (levels) and tokens was played. This was done by converting\nthe decimal trial number to bits, denoted b, then calculating 2 ** (b + 2).\nWe've specified the metadata of the events in each of the '*_eeg_events.tsv\"\nfile, which is sufficient to know which trial corresponded to run and which\nstimulus file to use and which token index to use.\n\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on007721",
+    "exists": true,
+    "description": "Bone conducted responses using the parallel auditory brainstem response (pABR) paradigm",
+    "created_at": "2026-06-19T04:31:39+00:00",
+    "updated_at": "2026-06-19T04:38:52+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

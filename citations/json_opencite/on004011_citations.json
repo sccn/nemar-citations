@@ -1,41 +1,70 @@
 {
   "dataset_id": "on004011",
   "num_citations": 0,
-  "date_last_updated": "2026-06-18T23:25:50.776640+00:00",
+  "date_last_updated": "2026-06-20T10:03:02.111299+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-18T23:25:50.776640+00:00",
+    "fetch_date": "2026-06-20T10:03:02.111299+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "not_found",
     "anchor_count": 1,
     "anchor_errors": {
       "10.82901/nemar.on004011": "not_found"
     },
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which this dataset uses."
+        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which this dataset uses.",
+        "judgment_model": "gemma4:e4b"
       },
       {
-        "anchor_identifier": "10.1038/sdata.2018.110",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/sdata.2018.110",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MEG-BIDS, the brain imaging data structure extended to magnetoencephalography",
         "paper_year": 2018,
         "paper_venue": "Scientific Data",
-        "reason": "The paper introduces MEG-BIDS, a principled data structure and standard for organizing and sharing MEG data, which is a technical specification used in the dataset's format."
+        "reason": "The paper introduces MEG-BIDS, a principled data structure and standard for organizing and sharing MEG data, which is a technical specification used in the dataset's format.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.on004011",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
       }
     ],
+    "searched_dois": [
+      "10.82901/nemar.on004011"
+    ],
+    "keywords": [
+      "Magnetoencephalography",
+      "MEG",
+      "object representation",
+      "visual occlusion",
+      "eye tracking",
+      "neural dynamics"
+    ],
+    "methods_description": "MEG data were collected during a task involving dynamic occlusion and disappearance of visual stimuli. Behavioral responses and eye-tracking data (pupil size, eye position) were simultaneously recorded during the MEG session across multiple runs. Data were preprocessed and epoched relative to stimulus onset and position changes using CoSMoMVPA formatting.",
+    "funding": [],
     "searched_accessions": [
       "on004011",
       "ds004011"
@@ -47,7 +76,7 @@
   "citation_details": [],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:32:08.935764+00:00",
+    "scoring_date": "2026-06-20T11:09:25.154846+00:00",
     "dataset_text_length": 2306,
     "num_citations_scored": 0
   }

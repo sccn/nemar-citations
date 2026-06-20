@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds001849",
-  "num_citations": 44,
+  "num_citations": 45,
   "date_last_updated": "2026-06-18T22:26:00.396291+00:00",
   "metadata": {
     "total_cumulative_citations": 923,
@@ -16,8 +16,8 @@
     "searched_accessions": [
       "ds001849"
     ],
-    "num_accession_mentions": 1,
-    "num_dataset_citations": 2,
+    "num_accession_mentions": 2,
+    "num_dataset_citations": 3,
     "num_datapaper_citations": 42
   },
   "citation_details": [
@@ -1036,21 +1036,46 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "EEGDash: An open-source platform for machine learning on public neurophysiological data",
+      "author": "Bruno Aristimunha, Aviv Dotan, Pierre Guetschel, Aman Jaiswal, Gal Ashkenazi, Dung Truong, Kuntal Kokate, Amitrava Majumdar, Oren Shriki, Arnaud Delorme",
+      "venue": "ArXiv.org",
+      "year": 2026,
+      "url": "https://openalex.org/W7165063804",
+      "cited_by": 0,
+      "abstract": "Public neurophysiological datasets are increasingly accessible but remain hard to reuse: turning one into a trained model still takes thousands of lines of code for download, loading, format repair, windowing, and evaluation, and a dataset that meets metadata standards can still fail to load. EEG-Dash is a software resource that catalogues 791 publicly archived recordings (39,778 participants, over 86,051 hours) spanning electroencephalography (EEG), magnetoencephalography (MEG), intracranial EEG (iEEG), electromyography (EMG), and functional near-infrared spectroscopy (fNIRS) from the OpenNeuro and NEMAR archives. It exposes each dataset as an importable, queryable class that preserves signal attributes and loads into machine-learning workflows without custom code, delegating signal handling to MNE-Python, windowing to Braindecode, and format compliance to the official Brain Imaging Data Structure (BIDS) validator. A metadata-first registry adds semantic search, a format-repair layer, automatic dataset-level tags drawn from each source publication, and a feature-extraction framework. The catalogue, with per-record loadability and compliance metadata, supports benchmarking, model development, and cross-dataset analysis.",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": "W7165063804",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds001849",
+      "confidence_scoring": {
+        "confidence_score": 0.612932509481907,
+        "similarity_score": 0.5306774973869324,
+        "citation_text_length": 1526,
+        "dataset_text_length": 164,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:10:33.070434+00:00",
+    "scoring_date": "2026-06-20T11:08:17.020278+00:00",
     "dataset_text_length": 164,
-    "num_citations_scored": 44,
+    "num_citations_scored": 45,
     "summary_stats": {
-      "mean_confidence": 0.47699270624667417,
-      "median_confidence": 0.4793141131103039,
-      "std_confidence": 0.052350887242717206,
+      "mean_confidence": 0.4800135907630127,
+      "median_confidence": 0.47979116320610055,
+      "std_confidence": 0.05550896805247335,
       "min_confidence": 0.3108077645301819,
-      "max_confidence": 0.577825140953064,
+      "max_confidence": 0.612932509481907,
       "high_confidence_count": 0,
-      "medium_confidence_count": 42,
+      "medium_confidence_count": 43,
       "low_confidence_count": 2
     }
   }
