@@ -125,5 +125,62 @@ class TestWriteCitationJsonIfChanged(unittest.TestCase):
             self.assertEqual(json.loads(Path(path).read_text())["num_citations"], 1)
 
 
+class TestCitationReaders(unittest.TestCase):
+    """Real-file coverage for the surviving JSON read helpers.
+
+    These were only ever exercised by `@unittest.skip` stubs before epic #180
+    phase 5; the stubs were removed with the legacy write path, so this pins the
+    happy path and the error branches with real tempfile I/O (no mocks).
+    """
+
+    def _write(self, directory: str, name: str, text: str) -> str:
+        path = os.path.join(directory, name)
+        Path(path).write_text(text)
+        return path
+
+    def test_load_citation_json_round_trip(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            payload = {"dataset_id": "ds000001", "num_citations": 2}
+            path = self._write(tmp, "ds000001_citations.json", json.dumps(payload))
+            self.assertEqual(citation_utils.load_citation_json(path), payload)
+
+    def test_load_citation_json_missing_file_raises(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with self.assertRaises(FileNotFoundError):
+                citation_utils.load_citation_json(os.path.join(tmp, "missing.json"))
+
+    def test_load_citation_json_invalid_json_raises(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = self._write(tmp, "bad.json", "{not valid json")
+            with self.assertRaises(json.JSONDecodeError):
+                citation_utils.load_citation_json(path)
+
+    def test_load_citations_from_json_round_trip(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            payload = {"dataset_id": "ds000001", "citation_details": [{"title": "A"}]}
+            path = self._write(tmp, "ds000001_citations.json", json.dumps(payload))
+            self.assertEqual(citation_utils.load_citations_from_json(path), payload)
+
+    def test_get_citation_summary_from_json(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            payload = {
+                "dataset_id": "ds000117",
+                "num_citations": 3,
+                "date_last_updated": "2026-01-01T00:00:00",
+                "metadata": {"total_cumulative_citations": 42},
+            }
+            path = self._write(tmp, "ds000117_citations.json", json.dumps(payload))
+            summary = citation_utils.get_citation_summary_from_json(path)
+            self.assertEqual(
+                summary,
+                {
+                    "dataset_id": "ds000117",
+                    "num_citations": 3,
+                    "total_cumulative_citations": 42,
+                    "date_last_updated": "2026-01-01T00:00:00",
+                },
+            )
+
+
 if __name__ == "__main__":
     unittest.main()

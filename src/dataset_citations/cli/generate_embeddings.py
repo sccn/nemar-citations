@@ -236,7 +236,7 @@ def generate_citation_embeddings(
     storage_manager = EmbeddingStorageManager(embeddings_dir)
     model = SentenceTransformerModel(model_name=model_name, device=device)
 
-    # Find all citation files (accept both flat and legacy /json layouts).
+    # Find all citation files under the flat citations/json_opencite/ layout.
     search_dir, citation_files = _resolve_citation_files(citations_dir)
     total_files = len(citation_files)
 

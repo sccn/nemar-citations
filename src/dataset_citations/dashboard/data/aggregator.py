@@ -229,8 +229,10 @@ class DataAggregator:
             try:
                 bridge_data = self._read_csv_to_dict(bridge_file)
                 stats["bridge_papers"] = len(bridge_data)
-            except Exception:
-                pass
+            except OSError as e:
+                self.logger.warning(
+                    "could not read bridge papers %s: %s", bridge_file, e
+                )
 
         return stats
 
