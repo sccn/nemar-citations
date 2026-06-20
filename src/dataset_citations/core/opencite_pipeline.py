@@ -12,9 +12,10 @@ opencite result the moment it lands. A subsequent run only re-fetches anchors
 that hadn't completed successfully, which is what lets a 6h CI window resume
 where the previous one timed out.
 
-This module deliberately mirrors the legacy `core/citation_utils.save_citation_json`
-output shape so the dashboard aggregator and reporting tools keep working
-when reading from `citations/json_opencite/`.
+This module produces the canonical schema-v2.1 `citations/json_opencite/`
+output that the dashboard aggregator and reporting tools read. (The pre-opencite
+`citation_utils.save_citation_json` write path whose shape it originally
+mirrored was removed in epic #180 phase 5.)
 """
 
 from __future__ import annotations

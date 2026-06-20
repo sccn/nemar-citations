@@ -18,19 +18,17 @@ class DataAggregator:
         results_dir: Path,
         citations_dir: Optional[Path] = None,
         datasets_dir: Optional[Path] = None,
-        citations_opencite_dir: Optional[Path] = None,
     ):
         """
         Initialize data aggregator.
 
         Args:
             results_dir: Directory containing analysis results
-            citations_dir: Optional directory containing citation JSON files
+            citations_dir: Optional directory containing the canonical opencite
+                citation JSON files (`citations/json_opencite/`). This is the
+                sole citation source since epic #180 phase 5 retired the legacy
+                scholarly store and its dual-source split.
             datasets_dir: Optional directory containing dataset metadata
-            citations_opencite_dir: Optional directory containing opencite-
-                produced citation JSON files (Phase 3 side-by-side output).
-                If None, the aggregator auto-detects `citations/json_opencite`
-                next to `citations_dir`.
         """
         self.results_dir = Path(results_dir)
         # Check if dashboard_data exists as primary location
@@ -42,75 +40,7 @@ class DataAggregator:
 
         self.citations_dir = Path(citations_dir) if citations_dir else None
         self.datasets_dir = Path(datasets_dir) if datasets_dir else None
-        self.citations_opencite_dir = self._resolve_opencite_dir(citations_opencite_dir)
         self.logger = logging.getLogger(__name__)
-
-    def _resolve_opencite_dir(self, explicit: Optional[Path]) -> Optional[Path]:
-        """Pick the opencite citations dir: explicit > sibling > None.
-
-        Auto-detection assumes `citations_dir` points at the `json/`
-        subdirectory of the citations tree (e.g., `citations/json`) and
-        looks for `<parent>/json_opencite`. The CLI writes to
-        `<output-dir>/json_opencite/`, which matches this layout. Callers
-        that pass `citations_dir=citations/` directly will miss
-        auto-detection; pass `citations_opencite_dir=...` explicitly in
-        that case.
-        """
-        if explicit is not None:
-            p = Path(explicit)
-            return p if p.exists() else None
-        if self.citations_dir is not None:
-            sibling = self.citations_dir.parent / "json_opencite"
-            if sibling.exists():
-                return sibling
-        return None
-
-    def summary_by_backend(self) -> Dict[str, Dict[str, int]]:
-        """Return per-dataset citation counts split by discovery backend.
-
-        Shape: `{dataset_id: {"scholarly": N, "opencite": M}}`. Used by Phase 3
-        side-by-side reporting to confirm opencite parity before scholarly
-        is retired in Phase 4. Datasets that appear in only one directory
-        get a 0 for the missing backend.
-        """
-        out: Dict[str, Dict[str, int]] = {}
-        if self.citations_dir is not None and self.citations_dir.exists():
-            for entry in self._counts_from_dir(self.citations_dir):
-                out.setdefault(entry[0], {"scholarly": 0, "opencite": 0})
-                out[entry[0]]["scholarly"] = entry[1]
-        if (
-            self.citations_opencite_dir is not None
-            and self.citations_opencite_dir.exists()
-        ):
-            for entry in self._counts_from_dir(self.citations_opencite_dir):
-                out.setdefault(entry[0], {"scholarly": 0, "opencite": 0})
-                out[entry[0]]["opencite"] = entry[1]
-        return out
-
-    def _counts_from_dir(self, directory: Path):
-        """Yield (dataset_id, num_citations) from each *_citations.json.
-
-        Unreadable or malformed files are logged at warning level and skipped.
-        Phase 1 review flagged silent skip as a cache-poisoning anti-pattern
-        for parity reporting: a corrupted scholarly file silently dropping to
-        0 could trick a parity-gate decision. The warning log makes the
-        occurrence visible.
-        """
-        for path in sorted(directory.glob("*_citations.json")):
-            try:
-                payload = json.loads(path.read_text())
-            except OSError as e:
-                self.logger.warning("summary_by_backend: cannot read %s: %s", path, e)
-                continue
-            except json.JSONDecodeError as e:
-                self.logger.warning(
-                    "summary_by_backend: malformed JSON in %s: %s", path, e
-                )
-                continue
-            dataset_id = payload.get(
-                "dataset_id", path.name.removesuffix("_citations.json")
-            )
-            yield dataset_id, int(payload.get("num_citations") or 0)
 
     def aggregate_all_data(self) -> Dict[str, Any]:
         """

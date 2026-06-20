@@ -152,7 +152,7 @@ def main() -> None:
     parser.add_argument(
         "citations_dir",
         type=Path,
-        help="Directory containing citation JSON files (e.g., citations/json/)",
+        help="Directory containing citation JSON files (e.g., citations/json_opencite/)",
     )
 
     parser.add_argument(

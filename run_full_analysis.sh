@@ -49,12 +49,12 @@ run_full_analysis() {
     print_status "Starting full analysis workflow..."
 
     # Check if we have citation data
-    if [ ! -d "citations/json" ]; then
+    if [ ! -d "citations/json_opencite" ]; then
         print_error "No citation data found. Run discovery and scraping first."
         return 1
     fi
 
-    JSON_COUNT=$(find citations/json -name "*.json" 2>/dev/null | wc -l)
+    JSON_COUNT=$(find citations/json_opencite -name "*.json" 2>/dev/null | wc -l)
     print_info "Found $JSON_COUNT citation JSON files"
 
     # Clean up and prepare directories
@@ -71,7 +71,7 @@ run_full_analysis() {
     # Generate embeddings (required for UMAP and theme analysis)
     print_status "Step 2/8: Generating embeddings..."
     ~/miniconda3/bin/conda run -n dataset-citations dataset-citations-generate-embeddings \
-        --citations citations/json \
+        --citations citations/json_opencite \
         --datasets datasets \
         --embeddings-dir embeddings \
         --embedding-type both \
@@ -94,19 +94,19 @@ run_full_analysis() {
     # Generate theme analysis with wordclouds
     print_status "Step 4/8: Generating theme analysis with wordclouds..."
     ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_themes \
-        --citations-dir citations/json \
+        --citations-dir citations/json_opencite \
         --output-dir dashboard_data/themes 2>&1 | tee -a "$LOG_FILE" || print_warning "Theme generation had issues"
 
     # Generate network analysis data
     print_status "Step 5/8: Generating network analysis data..."
     ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_network \
-        --citations-dir citations/json \
+        --citations-dir citations/json_opencite \
         --output-dir dashboard_data/network 2>&1 | tee -a "$LOG_FILE"
 
     # Generate temporal analysis
     print_status "Step 6/8: Generating temporal analysis..."
     ~/miniconda3/bin/conda run -n dataset-citations python -m dataset_citations.analysis.generate_temporal \
-        --citations-dir citations/json \
+        --citations-dir citations/json_opencite \
         --output-dir dashboard_data/temporal 2>&1 | tee -a "$LOG_FILE"
 
     # Aggregate all data
@@ -119,7 +119,7 @@ import json
 # Create aggregator
 aggregator = DataAggregator(
     results_dir=Path('dashboard_data'),
-    citations_dir=Path('citations/json')
+    citations_dir=Path('citations/json_opencite')
 )
 
 # Aggregate all data
@@ -143,7 +143,7 @@ from pathlib import Path
 gen = DashboardGenerator(
     results_dir=Path('dashboard_data'),
     output_dir=Path('interactive_reports'),
-    citations_dir=Path('citations/json')
+    citations_dir=Path('citations/json_opencite')
 )
 
 output_path = gen.generate_dashboard(dashboard_type='nemar', lazy_load=True)

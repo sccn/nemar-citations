@@ -57,21 +57,21 @@ def main():
         epilog="""
 Examples:
   # Score all available datasets
-  dataset-citations-score-confidence --citations-dir citations/json --datasets-dir datasets
+  dataset-citations-score-confidence --citations-dir citations/json_opencite --datasets-dir datasets
 
   # Score specific datasets
-  dataset-citations-score-confidence --dataset-ids ds000117,ds000246 --citations-dir citations/json --datasets-dir datasets
+  dataset-citations-score-confidence --dataset-ids ds000117,ds000246 --citations-dir citations/json_opencite --datasets-dir datasets
 
   # Use custom model and save to different directory
-  dataset-citations-score-confidence --citations-dir citations/json --datasets-dir datasets --output-dir scored_citations --model Qwen/Qwen3-Embedding-0.6B
+  dataset-citations-score-confidence --citations-dir citations/json_opencite --datasets-dir datasets --output-dir scored_citations --model Qwen/Qwen3-Embedding-0.6B
         """,
     )
 
     parser.add_argument(
         "--citations-dir",
         type=str,
-        default="citations/json",
-        help="Directory containing citation JSON files (default: citations/json)",
+        default="citations/json_opencite",
+        help="Directory containing citation JSON files (default: citations/json_opencite)",
     )
 
     parser.add_argument(

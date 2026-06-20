@@ -31,16 +31,16 @@ Analyze citation timelines and trends:
 
 ```bash
 # Analyze all citations with default confidence threshold (0.4)
-dataset-citations-analyze-temporal citations/json --output-dir temporal_results
+dataset-citations-analyze-temporal citations/json_opencite --output-dir temporal_results
 
 # Analyze with custom confidence threshold
-dataset-citations-analyze-temporal citations/json --confidence-threshold 0.6
+dataset-citations-analyze-temporal citations/json_opencite --confidence-threshold 0.6
 
 # Analyze specific dataset
-dataset-citations-analyze-temporal citations/json --dataset-id ds000117
+dataset-citations-analyze-temporal citations/json_opencite --dataset-id ds000117
 
 # Verbose output
-dataset-citations-analyze-temporal citations/json --verbose
+dataset-citations-analyze-temporal citations/json_opencite --verbose
 ```
 
 **Output includes:**
@@ -57,22 +57,22 @@ Load citation data into Neo4j for interactive visualization:
 # Set environment variable: export NEO4J_PASSWORD="your-password"
 
 # Load citation graph (basic)
-dataset-citations-load-graph citations/json
+dataset-citations-load-graph citations/json_opencite
 
 # Load with dataset metadata enhancement
-dataset-citations-load-graph citations/json --datasets-dir datasets/
+dataset-citations-load-graph citations/json_opencite --datasets-dir datasets/
 
 # Custom Neo4j connection
-dataset-citations-load-graph citations/json \
+dataset-citations-load-graph citations/json_opencite \
   --neo4j-uri bolt://localhost:7687 \
   --neo4j-username neo4j \
   --neo4j-password your-password
 
 # Clear database before loading (WARNING: deletes all data)
-dataset-citations-load-graph citations/json --clear-db
+dataset-citations-load-graph citations/json_opencite --clear-db
 
 # Custom confidence threshold and batch size
-dataset-citations-load-graph citations/json \
+dataset-citations-load-graph citations/json_opencite \
   --confidence-threshold 0.5 \
   --batch-size 500
 ```
@@ -147,7 +147,7 @@ from dataset_citations.graph.temporal import analyze_citation_timeline
 
 # Programmatic analysis
 timeline_data = analyze_citation_timeline(
-    citations_dir=Path("citations/json"),
+    citations_dir=Path("citations/json_opencite"),
     confidence_threshold=0.5
 )
 
@@ -204,10 +204,10 @@ echo "RETURN 1" | cypher-shell -u neo4j -p your-password
 **No Citation Data Found**
 ```bash
 # Verify citations directory structure
-ls citations/json/*.json | head -5
+ls citations/json_opencite/*.json | head -5
 
 # Check JSON file format
-jq '.citation_details[0]' citations/json/ds000117_citations.json
+jq '.citation_details[0]' citations/json_opencite/ds000117_citations.json
 ```
 
 **Low Confidence Citations**

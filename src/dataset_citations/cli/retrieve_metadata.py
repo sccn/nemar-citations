@@ -61,21 +61,21 @@ def main():
         epilog="""
 Examples:
   # Retrieve metadata for all datasets with citation files
-  dataset-citations-retrieve-metadata --citations-dir citations/json --output-dir datasets
+  dataset-citations-retrieve-metadata --citations-dir citations/json_opencite --output-dir datasets
 
   # Retrieve metadata for specific datasets
   dataset-citations-retrieve-metadata --dataset-ids ds000117,ds000246 --output-dir datasets
 
   # Use custom GitHub token
-  dataset-citations-retrieve-metadata --citations-dir citations/json --output-dir datasets --github-token $GITHUB_TOKEN
+  dataset-citations-retrieve-metadata --citations-dir citations/json_opencite --output-dir datasets --github-token $GITHUB_TOKEN
         """,
     )
 
     parser.add_argument(
         "--citations-dir",
         type=str,
-        default="citations/json",
-        help="Directory containing citation JSON files (default: citations/json)",
+        default="citations/json_opencite",
+        help="Directory containing citation JSON files (default: citations/json_opencite)",
     )
 
     parser.add_argument(

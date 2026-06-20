@@ -34,7 +34,7 @@ class AddDiscoveryProvenanceTests(TestCase):
         payload = {
             "metadata": {
                 "schema_version": "1.0",
-                "discovery_backend": "scholarly",
+                "discovery_backend": "legacy",
             }
         }
         out = add_discovery_provenance(payload, discovery_backend="opencite")
@@ -54,12 +54,12 @@ class AddDiscoveryProvenanceTests(TestCase):
         pre-populate with finer-grained labels and not have them clobbered."""
         payload = {
             "citation_details": [
-                {"title": "A", "discovery_backend": "scholarly"},
+                {"title": "A", "discovery_backend": "legacy"},
                 {"title": "B"},
             ]
         }
         out = add_discovery_provenance(payload, discovery_backend="opencite")
-        self.assertEqual(out["citation_details"][0]["discovery_backend"], "scholarly")
+        self.assertEqual(out["citation_details"][0]["discovery_backend"], "legacy")
         self.assertEqual(out["citation_details"][1]["discovery_backend"], "opencite")
 
     def test_tolerates_none_citation_details(self) -> None:
