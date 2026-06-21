@@ -63,6 +63,21 @@ class BuildAnchorPromptTests(TestCase):
         # JSON-only directive is critical for parsing.
         self.assertIn("strict JSON only", prompt)
 
+    def test_prompt_distinguishes_journal_method_papers(self) -> None:
+        # Issue #131: e4b misclassified analysis-method papers published as
+        # journal articles (e.g. NeuroImage) as data_paper. The taxonomy
+        # definition and a dedicated few-shot example must steer methodology.
+        prompt = build_anchor_prompt(
+            dataset_id="ds004362",
+            dataset_description="EEG dataset.",
+            anchor_doi="10.1016/j.neuroimage.2020.117465",
+            anchor_relation="References",
+            paper_title="An automated pipeline for EEG artifact rejection",
+            paper_abstract="A general analysis method for EEG.",
+        )
+        self.assertIn("method/algorithm paper is methodology, NOT data_paper", prompt)
+        self.assertIn("analysis-method paper in a journal", prompt)
+
     def test_prompt_handles_missing_abstract(self) -> None:
         prompt = build_anchor_prompt(
             dataset_id="ds000999",

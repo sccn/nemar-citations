@@ -163,7 +163,7 @@ Choose exactly one class from this taxonomy:
 
 - data_paper: the paper IS this dataset's data paper, dataset preprint, or curation paper. It introduces, describes, or releases the data in this specific dataset.
 - umbrella: the paper is a multi-dataset / multi-study initiative (e.g. HBN, UK Biobank, ABCD) that this dataset belongs to, but the paper is NOT this specific dataset's data paper.
-- methodology: the paper is a software tool, analysis method, or technical specification that this dataset's protocol uses (e.g. MNE-Python, EEGLAB, BIDS-EEG spec, FieldTrip).
+- methodology: the paper is a software tool, analysis method, algorithm, or technical specification that this dataset's protocol or a downstream analysis uses (e.g. MNE-Python, EEGLAB, BIDS-EEG spec, FieldTrip, or an analysis-method paper in a journal such as NeuroImage). A peer-reviewed method/algorithm paper is methodology, NOT data_paper, even when it reads like a normal research article: it describes a technique reused across many studies, it does not introduce THIS dataset.
 - related_work: the paper is topically related (same brain region, task, modality) but does not describe this dataset specifically.
 - irrelevant: the paper has no meaningful relationship to this dataset (mis-attached anchor, token-collision false positive).
 
@@ -200,6 +200,11 @@ Example 3 (methodology tool):
   dataset_id: ds000117 (anchor DOI 10.3389/fnins.2013.00267)
   candidate paper: "MEG and EEG data analysis with MNE-Python"
   Correct output: {{"classification": "methodology", "reason": "Describes the MNE-Python analysis library; tool used in the protocol, not a paper about this dataset."}}
+
+Example 4 (analysis-method paper in a journal -> methodology, NOT data_paper):
+  dataset_id: ds004362 (anchor DOI 10.1016/j.neuroimage.2020.xxxxxx)
+  candidate paper: "An automated pipeline for EEG artifact rejection and independent component analysis" (NeuroImage)
+  Correct output: {{"classification": "methodology", "reason": "Describes a general EEG analysis method reused across many studies; a journal method paper, not a description of this dataset."}}
 
 Now classify the candidate paper for dataset {dataset_id}. Respond with the JSON object only."""
 
