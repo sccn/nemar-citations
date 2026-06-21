@@ -146,9 +146,10 @@ def build_anchor_prompt(
     Kept as a module-level pure function so phases 2/3/4 all build identical
     prompts. The opening lays out the taxonomy with one-line definitions,
     then hands the model the dataset description + candidate paper + the
-    DataCite `source_relation` value, then three few-shot examples covering
-    the acceptance-gate cases from epic #76 (HBN umbrella, dataset preprint,
-    MNE-Python methodology).
+    DataCite `source_relation` value, then four few-shot examples (HBN
+    umbrella, dataset preprint, MNE-Python methodology, and a journal
+    analysis-method paper added for issue #131 to stop e4b misclassifying
+    method papers as data_paper).
     """
     description = _truncate(dataset_description, _DATASET_DESCRIPTION_CHAR_LIMIT)
     abstract = _truncate(paper_abstract, _ABSTRACT_CHAR_LIMIT)
@@ -202,7 +203,7 @@ Example 3 (methodology tool):
   Correct output: {{"classification": "methodology", "reason": "Describes the MNE-Python analysis library; tool used in the protocol, not a paper about this dataset."}}
 
 Example 4 (analysis-method paper in a journal -> methodology, NOT data_paper):
-  dataset_id: ds004362 (anchor DOI 10.1016/j.neuroimage.2020.xxxxxx)
+  dataset_id: ds004362 (anchor DOI 10.1016/j.neuroimage.2020.117465)
   candidate paper: "An automated pipeline for EEG artifact rejection and independent component analysis" (NeuroImage)
   Correct output: {{"classification": "methodology", "reason": "Describes a general EEG analysis method reused across many studies; a journal method paper, not a description of this dataset."}}
 
