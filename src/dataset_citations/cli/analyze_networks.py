@@ -126,10 +126,10 @@ def save_analysis_results(
         return high_confidence_count
 
     # Count high-confidence citations from the citations directory
-    citations_dir = Path("citations/json")
+    citations_dir = Path("citations/json_opencite")
     if not citations_dir.exists():
         # Try relative path from current working directory
-        citations_dir = Path.cwd() / "citations" / "json"
+        citations_dir = Path.cwd() / "citations" / "json_opencite"
 
     total_high_confidence_citations = (
         count_high_confidence_citations(citations_dir) if citations_dir.exists() else 0

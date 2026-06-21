@@ -158,20 +158,20 @@ def main():
         epilog="""
 Examples:
   # Regenerate CSV files from JSON data
-  python regenerate_csv_from_json.py --json-dir citations/json --output-dir citations/
+  python regenerate_csv_from_json.py --json-dir citations/json_opencite --output-dir citations/
   
   # Regenerate with custom date suffix
-  python regenerate_csv_from_json.py --json-dir citations/json --output-dir citations/ --date-suffix 26072025
+  python regenerate_csv_from_json.py --json-dir citations/json_opencite --output-dir citations/ --date-suffix 26072025
   
   # Update previous_citations.csv as well
-  python regenerate_csv_from_json.py --json-dir citations/json --output-dir citations/ --update-previous
+  python regenerate_csv_from_json.py --json-dir citations/json_opencite --output-dir citations/ --update-previous
         """,
     )
 
     parser.add_argument(
         "--json-dir",
-        default="citations/json",
-        help="Directory containing JSON citation files (default: citations/json)",
+        default="citations/json_opencite",
+        help="Directory containing JSON citation files (default: citations/json_opencite)",
     )
     parser.add_argument(
         "--output-dir",

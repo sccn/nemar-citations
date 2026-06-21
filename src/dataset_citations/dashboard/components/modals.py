@@ -213,7 +213,7 @@ class ModalGenerator:
             }
         )
 
-        citations_dir = Path("citations/json")
+        citations_dir = Path("citations/json_opencite")
         if not citations_dir.exists():
             return []
 

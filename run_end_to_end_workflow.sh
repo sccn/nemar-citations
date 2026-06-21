@@ -150,7 +150,7 @@ test_citations = {
         ]
     }
 }
-output_path = Path('$TEST_OUTPUT_DIR/citations/json')
+output_path = Path('$TEST_OUTPUT_DIR/citations/json_opencite')
 output_path.mkdir(parents=True, exist_ok=True)
 (output_path / 'ds003555.json').write_text(json.dumps(test_citations['ds003555'], indent=2))
 print('Test citations generated')
@@ -175,7 +175,7 @@ print('Test metadata generated')
     print_status "Step 5/6: Running analysis..."
     # Temporal analysis (positional argument for citations_dir)
     uv rundataset-citations-analyze-temporal \
-        "$TEST_OUTPUT_DIR/citations/json" \
+        "$TEST_OUTPUT_DIR/citations/json_opencite" \
         --output-dir "$TEST_OUTPUT_DIR/results/temporal_analysis" || true
 
     # Network analysis (no citations_dir argument needed)
@@ -190,7 +190,7 @@ from pathlib import Path
 gen = DashboardGenerator(
     results_dir=Path('$TEST_OUTPUT_DIR/dashboard_data'),
     output_dir=Path('$TEST_OUTPUT_DIR/interactive_reports'),
-    citations_dir=Path('$TEST_OUTPUT_DIR/citations/json'),
+    citations_dir=Path('$TEST_OUTPUT_DIR/citations/json_opencite'),
 )
 
 output_path = gen.generate_dashboard(dashboard_type='nemar', lazy_load=True)
@@ -201,7 +201,7 @@ print(f'Dashboard generated: {output_path}')
     print_status "Validating test outputs..."
     VALIDATION_PASSED=true
 
-    if [ ! -f "$TEST_OUTPUT_DIR/citations/json/ds003555.json" ]; then
+    if [ ! -f "$TEST_OUTPUT_DIR/citations/json_opencite/ds003555.json" ]; then
         print_error "Citation JSON not generated"
         VALIDATION_PASSED=false
     fi
@@ -341,7 +341,7 @@ run_full_workflow() {
     # Step 3: Retrieving dataset metadata
     print_status "Step 3/8: Retrieving dataset metadata..."
     uv rundataset-citations-retrieve-metadata \
-        --citations-dir citations/json \
+        --citations-dir citations/json_opencite \
         --output-dir datasets \
         --skip-existing \
         --log-level INFO 2>&1 | tee -a "$LOG_FILE"
@@ -349,7 +349,7 @@ run_full_workflow() {
     # Step 4: Calculating confidence scores
     print_status "Step 4/8: Calculating confidence scores..."
     uv rundataset-citations-score-confidence \
-        --citations-dir citations/json \
+        --citations-dir citations/json_opencite \
         --datasets-dir datasets \
         --model Qwen/Qwen3-Embedding-0.6B \
         --skip-existing \
@@ -362,7 +362,7 @@ run_full_workflow() {
     mkdir -p dashboard_data/{network,themes,temporal,visualizations}
 
     uv rundataset-citations-generate-embeddings \
-        --citations citations/json \
+        --citations citations/json_opencite \
         --datasets datasets \
         --embeddings-dir embeddings \
         --embedding-type both \
@@ -381,15 +381,15 @@ run_full_workflow() {
         --verbose 2>&1 | tee -a "$LOG_FILE" || print_warning "UMAP analysis had issues"
 
     uv runpython -m dataset_citations.analysis.generate_themes \
-        --citations-dir citations/json \
+        --citations-dir citations/json_opencite \
         --output-dir dashboard_data/themes 2>&1 | tee -a "$LOG_FILE" || print_warning "Theme generation had issues"
 
     uv runpython -m dataset_citations.analysis.generate_network \
-        --citations-dir citations/json \
+        --citations-dir citations/json_opencite \
         --output-dir dashboard_data/network 2>&1 | tee -a "$LOG_FILE"
 
     uv runpython -m dataset_citations.analysis.generate_temporal \
-        --citations-dir citations/json \
+        --citations-dir citations/json_opencite \
         --output-dir dashboard_data/temporal 2>&1 | tee -a "$LOG_FILE"
 
     # Step 6: Generating interactive dashboard
@@ -401,7 +401,7 @@ from pathlib import Path
 gen = DashboardGenerator(
     results_dir=Path('dashboard_data'),
     output_dir=Path('interactive_reports'),
-    citations_dir=Path('citations/json')
+    citations_dir=Path('citations/json_opencite')
 )
 
 output_path = gen.generate_dashboard(dashboard_type='nemar', lazy_load=True)
@@ -410,7 +410,7 @@ print(f'Dashboard generated: {output_path}')
 
     # Validate outputs
     print_status "Validating outputs..."
-    JSON_COUNT=$(find citations/json -name "*.json" 2>/dev/null | wc -l)
+    JSON_COUNT=$(find citations/json_opencite -name "*.json" 2>/dev/null | wc -l)
     print_info "Generated $JSON_COUNT citation JSON files"
 
     if [ -f "interactive_reports/dataset_citations_dashboard_nemar.html" ]; then

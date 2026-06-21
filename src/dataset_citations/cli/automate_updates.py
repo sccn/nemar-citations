@@ -95,7 +95,7 @@ class EmbeddingUpdateAutomator:
         changed_files = {"citation_files": [], "dataset_files": []}
 
         # Check citation files
-        citation_files = list((self.citations_dir / "json").glob("ds*_citations.json"))
+        citation_files = list(self.citations_dir.glob("*_citations.json"))
         for file_path in citation_files:
             file_key = str(file_path.relative_to(self.citations_dir))
             current_hash = self.calculate_file_hash(file_path)
@@ -388,7 +388,7 @@ def main():
         epilog="""
 Examples:
   # Run automated update check
-  dataset-citations-automate-updates --citations-dir citations/ --datasets-dir datasets/
+  dataset-citations-automate-updates --citations-dir citations/json_opencite --datasets-dir datasets/
 
   # Force update check regardless of last update time
   dataset-citations-automate-updates --force-check
@@ -414,8 +414,8 @@ Examples:
     parser.add_argument(
         "--citations-dir",
         type=Path,
-        default="citations",
-        help="Path to citations directory (default: citations)",
+        default="citations/json_opencite",
+        help="Path to citation JSON directory (default: citations/json_opencite)",
     )
 
     parser.add_argument(

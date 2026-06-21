@@ -9,7 +9,6 @@ After installing the package with `pip install -e .`, all CLI commands are avail
 ```bash
 dataset-citations-discover --help
 dataset-citations-update --help
-dataset-citations-migrate --help
 dataset-citations-retrieve-metadata --help
 dataset-citations-score-confidence --help
 dataset-citations-regenerate --help
@@ -82,40 +81,6 @@ dataset-citations-update --dataset-list-file datasets.txt
 
 ---
 
-### `dataset-citations-migrate`
-
-**Purpose**: Convert legacy pickle citation files to modern JSON format.
-
-**Usage**:
-```bash
-dataset-citations-migrate [OPTIONS]
-```
-
-**Options**:
-- `--input-dir TEXT`: Directory containing pickle files (default: `citations/pickle/`)
-- `--output-dir TEXT`: Directory to save JSON files (default: `citations/json/`)
-- `--overwrite`: Overwrite existing JSON files
-- `--dataset-id TEXT`: Process specific dataset only
-- `--verbose`: Enable verbose logging
-- `--help`: Show help message
-
-**Examples**:
-```bash
-# Migrate all pickle files to JSON
-dataset-citations-migrate
-
-# Migrate with custom directories and overwrite
-dataset-citations-migrate \
-    --input-dir /path/to/pickle \
-    --output-dir /path/to/json \
-    --overwrite
-
-# Migrate specific dataset only
-dataset-citations-migrate --dataset-id ds002718
-```
-
----
-
 ### `dataset-citations-retrieve-metadata`
 
 **Purpose**: Retrieve dataset descriptions and README files from GitHub for use in confidence scoring.
@@ -138,17 +103,17 @@ dataset-citations-retrieve-metadata [OPTIONS]
 ```bash
 # Retrieve metadata for all datasets with citations
 dataset-citations-retrieve-metadata \
-    --citations-dir citations/json \
+    --citations-dir citations/json_opencite \
     --output-dir datasets
 
 # Retrieve metadata for specific datasets
 dataset-citations-retrieve-metadata \
-    --citations-dir citations/json \
+    --citations-dir citations/json_opencite \
     --dataset-ids ds002718 ds000117 ds000246
 
 # Force update existing metadata files
 dataset-citations-retrieve-metadata \
-    --citations-dir citations/json \
+    --citations-dir citations/json_opencite \
     --force-update \
     --github-token $GITHUB_TOKEN
 ```
@@ -179,19 +144,19 @@ dataset-citations-score-confidence [OPTIONS]
 ```bash
 # Basic confidence scoring with default settings
 dataset-citations-score-confidence \
-    --citations-dir citations/json \
+    --citations-dir citations/json_opencite \
     --datasets-dir datasets
 
 # Use CPU device and specific datasets
 dataset-citations-score-confidence \
-    --citations-dir citations/json \
+    --citations-dir citations/json_opencite \
     --datasets-dir datasets \
     --device cpu \
     --dataset-ids ds002718 ds000117
 
 # Custom model and threshold
 dataset-citations-score-confidence \
-    --citations-dir citations/json \
+    --citations-dir citations/json_opencite \
     --datasets-dir datasets \
     --model-name "all-MiniLM-L6-v2" \
     --threshold 0.5 \
@@ -210,7 +175,7 @@ dataset-citations-regenerate [OPTIONS]
 ```
 
 **Options**:
-- `--json-dir TEXT`: Directory containing JSON citation files (default: `citations/json/`)
+- `--json-dir TEXT`: Directory containing JSON citation files (default: `citations/json_opencite/`)
 - `--output-file TEXT`: Output CSV file path (default: `citations/regenerated_citations.csv`)
 - `--include-confidence`: Include confidence scores in CSV output
 - `--verbose`: Enable verbose logging
@@ -223,7 +188,7 @@ dataset-citations-regenerate
 
 # Custom paths with confidence scores
 dataset-citations-regenerate \
-    --json-dir citations/json \
+    --json-dir citations/json_opencite \
     --output-file reports/current_citations.csv \
     --include-confidence
 
@@ -260,32 +225,17 @@ dataset-citations-regenerate \
     --output-file reports/analysis.csv
 ```
 
-### Legacy Data Migration
-
-```bash
-# 1. Migrate existing pickle files
-dataset-citations-migrate \
-    --input-dir citations/pickle \
-    --output-dir citations/json \
-    --overwrite
-
-# 2. Regenerate CSV from migrated JSON
-dataset-citations-regenerate \
-    --json-dir citations/json \
-    --output-file citations/migrated_citations.csv
-```
-
 ### Confidence Scoring Update
 
 ```bash
 # 1. Update metadata for existing datasets
 dataset-citations-retrieve-metadata \
-    --citations-dir citations/json \
+    --citations-dir citations/json_opencite \
     --force-update
 
 # 2. Recalculate confidence scores
 dataset-citations-score-confidence \
-    --citations-dir citations/json \
+    --citations-dir citations/json_opencite \
     --datasets-dir datasets \
     --threshold 0.3
 ```

@@ -262,7 +262,7 @@ class NetworkDataExtractor:
         """Load citation titles from JSON files and build reverse index."""
         citation_data = {}
         all_citations = []  # Store all citations to build index
-        citations_dir = Path("citations/json")
+        citations_dir = Path("citations/json_opencite")
 
         if not citations_dir.exists():
             logger.warning("Citations JSON directory not found")

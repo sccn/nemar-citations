@@ -183,12 +183,10 @@ def generate_dataset_embeddings(
 def _resolve_citation_files(citations_dir: Path) -> tuple[Path, list[Path]]:
     """Locate per-dataset citation JSON files under ``citations_dir``.
 
-    Historically the CLI assumed a `<citations_dir>/json/` layout. The
-    opencite pipeline writes flat to `<citations_dir>` (e.g.
-    `citations/json_opencite/<id>_citations.json`). Accept either layout
-    transparently: if `citations_dir` already contains citation JSON
-    files, use it directly; otherwise fall back to the legacy `/json`
-    subdirectory.
+    The opencite pipeline writes flat to `<citations_dir>` (e.g.
+    `citations/json_opencite/<id>_citations.json`), which is the sole
+    citation source since epic #180 phase 5 removed the legacy
+    `<citations_dir>/json/` layout.
 
     Matches all three NEMAR catalog prefixes (`ds-`, `nm-`, `on-`) so the
     full ~594-dataset corpus is covered, not just legacy `ds-*` entries.
@@ -205,11 +203,7 @@ def _resolve_citation_files(citations_dir: Path) -> tuple[Path, list[Path]]:
             for f in root.glob(pattern)
         )
 
-    direct = _glob(citations_dir)
-    if direct:
-        return citations_dir, direct
-    legacy = citations_dir / "json"
-    return legacy, _glob(legacy)
+    return citations_dir, _glob(citations_dir)
 
 
 def generate_citation_embeddings(
@@ -242,7 +236,7 @@ def generate_citation_embeddings(
     storage_manager = EmbeddingStorageManager(embeddings_dir)
     model = SentenceTransformerModel(model_name=model_name, device=device)
 
-    # Find all citation files (accept both flat and legacy /json layouts).
+    # Find all citation files under the flat citations/json_opencite/ layout.
     search_dir, citation_files = _resolve_citation_files(citations_dir)
     total_files = len(citation_files)
 

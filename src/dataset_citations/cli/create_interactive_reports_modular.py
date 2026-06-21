@@ -37,8 +37,8 @@ def main():
     parser.add_argument(
         "--citations-dir",
         type=str,
-        default="citations/json",
-        help="Directory containing citation JSON files (default: citations/json)",
+        default="citations/json_opencite",
+        help="Directory containing citation JSON files (default: citations/json_opencite)",
     )
 
     parser.add_argument(

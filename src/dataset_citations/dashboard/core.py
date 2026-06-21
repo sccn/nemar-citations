@@ -33,7 +33,9 @@ class DashboardGenerator:
         Args:
             results_dir: Directory containing analysis results
             output_dir: Directory for output files
-            citations_dir: Optional directory containing citation JSON files
+            citations_dir: Optional directory containing the canonical opencite
+                citation JSON files (`citations/json_opencite/`), the sole
+                citation source since epic #180 phase 5
             datasets_dir: Optional directory containing dataset metadata
         """
         self.results_dir = Path(results_dir)

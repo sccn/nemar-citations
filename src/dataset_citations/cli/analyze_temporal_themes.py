@@ -98,7 +98,7 @@ class TemporalThemeAnalyzer:
         temporal_data = {}
 
         # Load all citation files to extract years
-        citation_files = list((self.citations_dir / "json").glob("ds*_citations.json"))
+        citation_files = list(self.citations_dir.glob("*_citations.json"))
 
         for citation_file in citation_files:
             dataset_id = citation_file.stem.replace("_citations", "")
@@ -703,7 +703,7 @@ def main():
         epilog="""
 Examples:
   # Basic temporal analysis
-  dataset-citations-analyze-temporal-themes --embeddings-dir embeddings/ --citations-dir citations/
+  dataset-citations-analyze-temporal-themes --embeddings-dir embeddings/ --citations-dir citations/json_opencite
 
   # Analysis with custom clustering file
   dataset-citations-analyze-temporal-themes --clustering-file embeddings/analysis/clustering/citations_clusters_dbscan_v1.pkl
@@ -726,8 +726,8 @@ Examples:
     parser.add_argument(
         "--citations-dir",
         type=Path,
-        default="citations",
-        help="Path to citations directory (default: citations)",
+        default="citations/json_opencite",
+        help="Path to citation JSON directory (default: citations/json_opencite)",
     )
 
     parser.add_argument(
