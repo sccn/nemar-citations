@@ -1,44 +1,92 @@
 {
   "dataset_id": "nm000168",
-  "num_citations": 101,
-  "date_last_updated": "2026-06-18T23:19:55.023256+00:00",
+  "num_citations": 100,
+  "date_last_updated": "2026-07-03T11:25:25.544418+00:00",
   "metadata": {
-    "total_cumulative_citations": 7481,
-    "fetch_date": "2026-06-18T23:19:55.023256+00:00",
+    "total_cumulative_citations": 7495,
+    "fetch_date": "2026-07-03T11:25:25.544418+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1109/tnsre.2010.2053387",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Learning From EEG Error-Related Potentials in Noninvasive Brain-Computer Interfaces",
+        "paper_year": 2010,
+        "paper_venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+        "reason": "The paper's DOI (10.1109/tnsre.2010.2053387) matches the DOI listed in the dataset's overview section, and the authors and topic (EEG Error-Related Potentials) match.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into the BIDS format, which is used for this dataset's BIDS version 1.9.0."
+        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into the BIDS format, which is used for this dataset's BIDS version 1.9.0.",
+        "judgment_model": "gemma4:31b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is cited in the dataset's BIDS version metadata."
+        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is cited in the dataset's BIDS version metadata.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000168",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.1109/tnsre.2010.2053387",
+      "10.82901/nemar.nm000168"
+    ],
+    "keywords": [
+      "error-related potentials",
+      "ErrP",
+      "Brain-Computer Interfaces",
+      "EEG",
+      "error detection",
+      "reinforcement learning",
+      "monitoring"
+    ],
+    "methods_description": "EEG data were acquired from 64 channels using a Biosemi ActiveTwo system at 512 Hz sampling rate with standard 10-20 montage. Subjects performed 20 sessions each, with 10 blocks per session. Each block contained approximately 50-64 trials with 2-second trial duration. Subjects monitored a visual cursor (green square) moving toward targets (blue for left, red for right) with no active control, only passive assessment of cursor performance.",
+    "funding": [
+      {
+        "funder_name": "European Commission",
+        "award_number": "BACS FP6-IST-027140"
       }
     ],
     "searched_accessions": [
       "nm000168"
     ],
-    "num_accession_mentions": 1,
-    "num_dataset_citations": 1,
+    "num_accession_mentions": 0,
+    "num_dataset_citations": 0,
     "num_datapaper_citations": 100
   },
   "citation_details": [
@@ -48,7 +96,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1088/1741-2552/aaf12e",
-      "cited_by": 940,
+      "cited_by": 943,
       "abstract": "Advances in brain science and computer technology in the past decade have led to exciting developments in brain-computer interface (BCI), thereby making BCI a top research area in applied science. The renaissance of BCI opens new methods of neurorehabilitation for physically disabled people (e.g. paralyzed patients and amputees) and patients with brain injuries (e.g. stroke patients). Recent technological advances such as wireless recording, machine learning analysis, and real-time temporal resolution have increased interest in electroencephalographic (EEG) based BCI approaches. Many BCI studies have focused on decoding EEG signals associated with whole-body kinematics/kinetics, motor imagery, and various senses. Thus, there is a need to understand the various experimental paradigms used in EEG-based BCI systems. Moreover, given that there are many available options, it is essential to choose the most appropriate BCI application to properly manipulate a neuroprosthetic or neurorehabili",
       "doi": "10.1088/1741-2552/aaf12e",
       "pmid": "30523919",
@@ -71,7 +119,7 @@
       "venue": "Nature Reviews Neurology",
       "year": 2016,
       "url": "https://doi.org/10.1038/nrneurol.2016.113",
-      "cited_by": 905,
+      "cited_by": 907,
       "abstract": null,
       "doi": "10.1038/nrneurol.2016.113",
       "pmid": "27539560",
@@ -94,7 +142,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2014,
       "url": "https://doi.org/10.3389/fnins.2014.00208",
-      "cited_by": 309,
+      "cited_by": 310,
       "abstract": "The ability to recognize errors is crucial for efficient behavior. Numerous studies have identified electrophysiological correlates of error recognition in the human brain (error-related potentials, ErrPs). Consequently, it has been proposed to use these signals to improve human-computer interaction (HCI) or brain-machine interfacing (BMI). Here, we present a review of over a decade of developments toward this goal. This body of work provides consistent evidence that ErrPs can be successfully detected on a single-trial basis, and that they can be effectively used in both HCI and BMI applications. We first describe the ErrP phenomenon and follow up with an analysis of different strategies to increase the robustness of a system by incorporating single-trial ErrP recognition, either by correcting the machine's actions or by providing means for its error-based adaptation. These approaches can be applied both when the user employs traditional HCI input devices or in combination with another",
       "doi": "10.3389/fnins.2014.00208",
       "pmid": "25100937",
@@ -117,7 +165,7 @@
       "venue": "International Journal of Human-Computer Interaction",
       "year": 2013,
       "url": "https://doi.org/10.1080/10447318.2013.780869",
-      "cited_by": 254,
+      "cited_by": 255,
       "abstract": "Abstract Brain–computer interface (BCI) technology has been studied with the fundamental goal of helping disabled people communicate with the outside world using brain signals. In particular, a large body of research has been reported in the electroencephalography (EEG)-based BCI research field during recent years. To provide a thorough summary of recent research trends in EEG-based BCIs, the present study reviewed BCI research articles published from 2007 to 2011 and investigated (a) the number of published BCI articles, (b) BCI paradigms, (c) aims of the articles, (d) target applications, (e) feature types, (f) classification algorithms, (g) BCI system types, and (h) nationalities of the author. The detailed survey results are presented and discussed one by one. [Supplemental materials are available for this article. Go to the publisher's online edition of International Journal of Human-Computer Interaction to view the free supplemental file: Supplementary Tables.pdf.] Acknowledgment",
       "doi": "10.1080/10447318.2013.780869",
       "pmid": null,
@@ -140,7 +188,7 @@
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1109/tbme.2018.2799661",
-      "cited_by": 227,
+      "cited_by": 228,
       "abstract": "GOAL: Traditional visual brain-computer interfaces (BCIs) preferred to use large-size stimuli to attract the user's attention and elicit distinct electroencephalography (EEG) features. However, the visual stimuli are of no interest to the users as they just serve as the hidden codes behind the characters. Furthermore, using stronger visual stimuli could cause visual fatigue and other adverse symptoms to users. Therefore, it's imperative for visual BCIs to use small and inconspicuous visual stimuli to code characters. METHODS: This study developed a new BCI speller based on miniature asymmetric visual evoked potentials (aVEPs), which encodes 32 characters with a space-code division multiple access scheme and decodes EEG features with a discriminative canonical pattern matching algorithm. Notably, the visual stimulus used in this study only subtended 0.5° of visual angle and was placed outside the fovea vision on the lateral side, which could only induce a miniature potential about 0.5 μ",
       "doi": "10.1109/tbme.2018.2799661",
       "pmid": "29683431",
@@ -209,7 +257,7 @@
       "venue": "Proceedings of the IEEE",
       "year": 2018,
       "url": "https://doi.org/10.1109/jproc.2018.2871163",
-      "cited_by": 164,
+      "cited_by": 165,
       "abstract": "Recognizing the very size of the brain's circuits, hyperdimensional (HD) computing can model neural activity patterns with points in a HD space, that is, with HD vectors. Key examined properties of HD computing include: a versatile set of arithmetic operations on HD vectors, generality, scalability, analyzability, one-shot learning, and energy efficiency. These make it a prime candidate for efficient biosignal processing where signals are noisy and nonstationary, training data sets are not huge, individual variability is significant, and energy-efficiency constraints are tight. Purely based on native HD computing operators, we describe a combined method for multiclass learning and classification of various ExG biosignals such as electromyography (EMG), electroencephalography (EEG), and electrocorticography (ECoG). We develop a full set of HD network templates that comprehensively encode body potentials and brain neural activity recorded from different electrodes into a single HD vector",
       "doi": "10.1109/jproc.2018.2871163",
       "pmid": null,
@@ -416,7 +464,7 @@
       "venue": "Cognitive Neurodynamics",
       "year": 2021,
       "url": "https://doi.org/10.1007/s11571-021-09676-z",
-      "cited_by": 96,
+      "cited_by": 97,
       "abstract": null,
       "doi": "10.1007/s11571-021-09676-z",
       "pmid": "34367361",
@@ -480,6 +528,29 @@
       }
     },
     {
+      "title": "A memristor-based adaptive neuromorphic decoder for brain–computer interfaces",
+      "author": "Zhengwu Liu, Jie Mei, Jianshi Tang, Minpeng Xu, Bin Gao, Kun Wang, Sanchuang Ding, Qi Liu, Qi Qin, Weize Chen, Yue Xi, Yijun Li, Peng Yao, Han Zhao, Ngai Wong, He Qian, Bo Hong, Tzyy‐Ping Jung, Dong Ming, Huaqiang Wu",
+      "venue": "Nature Electronics",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41928-025-01340-2",
+      "cited_by": 77,
+      "abstract": null,
+      "doi": "10.1038/s41928-025-01340-2",
+      "pmid": null,
+      "openalex_id": "W4407661905",
+      "source_doi": "10.1109/tnsre.2010.2053387",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4128008365631104,
+        "similarity_score": 0.3931436538696289,
+        "citation_text_length": 338,
+        "dataset_text_length": 2265,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Online asynchronous decoding of error-related potentials during the continuous control of a robot",
       "author": "Catarina Lopes-Dias, Andreea Ioana Sburlea, Gernot Müller-Putz",
       "venue": "Scientific Reports",
@@ -520,29 +591,6 @@
         "confidence_score": 0.4347658455371857,
         "similarity_score": 0.3952416777610779,
         "citation_text_length": 1273,
-        "dataset_text_length": 2265,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "A memristor-based adaptive neuromorphic decoder for brain–computer interfaces",
-      "author": "Zhengwu Liu, Jie Mei, Jianshi Tang, Minpeng Xu, Bin Gao, Kun Wang, Sanchuang Ding, Qi Liu, Qi Qin, Weize Chen, Yue Xi, Yijun Li, Peng Yao, Han Zhao, Ngai Wong, He Qian, Bo Hong, Tzyy‐Ping Jung, Dong Ming, Huaqiang Wu",
-      "venue": "Nature Electronics",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s41928-025-01340-2",
-      "cited_by": 74,
-      "abstract": null,
-      "doi": "10.1038/s41928-025-01340-2",
-      "pmid": null,
-      "openalex_id": "W4407661905",
-      "source_doi": "10.1109/tnsre.2010.2053387",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4128008365631104,
-        "similarity_score": 0.3931436538696289,
-        "citation_text_length": 338,
         "dataset_text_length": 2265,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -669,7 +717,7 @@
       "venue": "n/a",
       "year": 2014,
       "url": "https://doi.org/10.5220/0004708102140223",
-      "cited_by": 63,
+      "cited_by": 64,
       "abstract": "Evaluating human-computer interaction is essential as a broadening population\\nuses machines, sometimes in sensitive contexts. However, traditional evaluation\\nmethods may fail to combine real-time measures, an \"objective\" approach and\\ndata contextualization. In this review we look at how adding neuroimaging\\ntechniques can respond to such needs. We focus on electroencephalography (EEG),\\nas it could be handled effectively during a dedicated evaluation phase. We\\nidentify workload, attention, vigilance, fatigue, error recognition, emotions,\\nengagement, flow and immersion as being recognizable by EEG. We find that\\nworkload, attention and emotions assessments would benefit the most from EEG.\\nMoreover, we advocate to study further error recognition through neuroimaging\\nto enhance usability and increase user experience.\\n",
       "doi": "10.5220/0004708102140223",
       "pmid": null,
@@ -784,7 +832,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2022,
       "url": "https://doi.org/10.3389/fnhum.2022.898300",
-      "cited_by": 57,
+      "cited_by": 61,
       "abstract": "The brain-computer interface (BCI) has been investigated as a form of communication tool between the brain and external devices. BCIs have been extended beyond communication and control over the years. The 2020 international BCI competition aimed to provide high-quality neuroscientific data for open access that could be used to evaluate the current degree of technical advances in BCI. Although there are a variety of remaining challenges for future BCI advances, we discuss some of more recent application directions: (i) few-shot EEG learning, (ii) micro-sleep detection (iii) imagined speech decoding, (iv) cross-session classification, and (v) EEG(+ear-EEG) detection in an ambulatory environment. Not only did scientists from the BCI field compete, but scholars with a broad variety of backgrounds and nationalities participated in the competition to address these challenges. Each dataset was prepared and separated into three data that were released to the competitors in the form of trainin",
       "doi": "10.3389/fnhum.2022.898300",
       "pmid": "35937679",
@@ -848,35 +896,12 @@
       }
     },
     {
-      "title": "Network-based brain–computer interfaces: principles and applications",
-      "author": "Juliana Gonzalez-Astudillo, Tiziana Cattai, G. Bassignana, Marie-Constance Corsi, F. de Vico Fallani",
-      "venue": "Journal of Neural Engineering",
-      "year": 2020,
-      "url": "https://doi.org/10.1088/1741-2552/abc760",
-      "cited_by": 51,
-      "abstract": "Brain–computer interfaces (BCIs) make possible to interact with the external environment by decoding the mental intention of individuals. BCIs can therefore be used to address basic neuroscience questions but also to unlock a variety of applications from exoskeleton control to neurofeedback rehabilitation. In general, BCI usability depends on the ability to comprehensively characterize brain functioning and correctly identify the user’s mental state. To this end, much of the efforts have focused on improving the classification algorithms taking into account localized brain activities as input features. Despite considerable improvement BCI performance is still unstable and, as a matter of fact, current features represent oversimplified descriptors of brain functioning. In the last decade, growing evidence has shown that the brain works as a networked system composed of multiple specialized and spatially distributed areas that dynamically integrate information. While more complex, lookin",
-      "doi": "10.1088/1741-2552/abc760",
-      "pmid": "33147577",
-      "openalex_id": null,
-      "source_doi": "10.1109/tnsre.2010.2053387",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.3803295055031777,
-        "similarity_score": 0.32928961515426636,
-        "citation_text_length": 1236,
-        "dataset_text_length": 2265,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Open multi-session and multi-task EEG cognitive Dataset for passive brain-computer Interface Applications",
       "author": "Marcel F. Hinss, Emilie Jahanpour, Bertille Somon, Lou Pluchon, Frédéric Dehais, Raphaëlle N. Roy",
       "venue": "Scientific Data",
       "year": 2023,
       "url": "https://doi.org/10.1038/s41597-022-01898-y",
-      "cited_by": 50,
+      "cited_by": 51,
       "abstract": "Brain-Computer Interfaces and especially passive Brain-Computer interfaces (pBCI), with their ability to estimate and monitor user mental states, are receiving increasing attention from both the fundamental research and the applied research and development communities. Testing new pipelines and benchmarking classifiers and feature extraction algorithms is central to further research within this domain. Unfortunately, data sharing in pBCI research is still scarce. The COG-BCI database encompasses the recordings of 29 participants over 3 separate sessions with 4 different tasks (MATB, N-Back, PVT, Flanker) designed to elicit different mental states, for a total of over 100 hours of open EEG data. This dataset was validated on a subjective, behavioral and physiological level, to ensure its usefulness to the pBCI community. Furthermore, a proof of concept is given with an example of mental workload estimation pipeline and results, to ensure that the data can be used for the design and eval",
       "doi": "10.1038/s41597-022-01898-y",
       "pmid": "36765121",
@@ -894,12 +919,35 @@
       }
     },
     {
+      "title": "Network-based brain–computer interfaces: principles and applications",
+      "author": "J. Gonzalez-Astudillo, Tiziana Cattai, G. Bassignana, Marie-Constance Corsi, F. de Vico Fallani",
+      "venue": "Journal of Neural Engineering",
+      "year": 2020,
+      "url": "https://doi.org/10.1088/1741-2552/abc760",
+      "cited_by": 51,
+      "abstract": "Brain–computer interfaces (BCIs) make possible to interact with the external environment by decoding the mental intention of individuals. BCIs can therefore be used to address basic neuroscience questions but also to unlock a variety of applications from exoskeleton control to neurofeedback rehabilitation. In general, BCI usability depends on the ability to comprehensively characterize brain functioning and correctly identify the user’s mental state. To this end, much of the efforts have focused on improving the classification algorithms taking into account localized brain activities as input features. Despite considerable improvement BCI performance is still unstable and, as a matter of fact, current features represent oversimplified descriptors of brain functioning. In the last decade, growing evidence has shown that the brain works as a networked system composed of multiple specialized and spatially distributed areas that dynamically integrate information. While more complex, lookin",
+      "doi": "10.1088/1741-2552/abc760",
+      "pmid": "33147577",
+      "openalex_id": null,
+      "source_doi": "10.1109/tnsre.2010.2053387",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.37990735799074177,
+        "similarity_score": 0.32892411947250366,
+        "citation_text_length": 1231,
+        "dataset_text_length": 2265,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Human Computer Confluence",
       "author": "Andrea Gaggioli, Alois Ferscha, Giuseppe Riva, Stephen Dunne, Isabelle Viaud‐Delmon",
       "venue": "n/a",
       "year": 2015,
       "url": "https://doi.org/10.1515/9783110471137",
-      "cited_by": 49,
+      "cited_by": 50,
       "abstract": "The editors of this volume bring together a collection of papers that, taken together, provide an interesting snapshot of current research on Human Computer Confluence (HCC). HCC stands for a particular vision of how computing devices and human beings (users) can be fruitfully combined. The term was coined some 10 years ago in an attempt to make sense of the increasingly complex technological landscape that was emerging from different interrelated research strands in Information and Communication Technology (ICT). It was clear that computers could no longer be seen just as machines that execute algorithms for turning input into output data. This simply seemed to miss a lot of the ways in which computers were starting to be used, in which 'users' could interact with them and the multitudes of shapes they could take. After the era of 'desktop computing', the power of an application was no longer just residing in the sophistication of its algorithmic core, but also, or maybe even mainly, ",
       "doi": "10.1515/9783110471137",
       "pmid": null,
@@ -1124,6 +1172,29 @@
       }
     },
     {
+      "title": "Advancing EEG-based brain-computer interface technology via PEDOT:PSS electrodes",
+      "author": "Yang Li, Yuzhe Gu, Junchen Teng, Shuwen Zheng, Yuncong Pang, Xiao-Min Lu, Baoguang Liu, Shujuan Liu, Qiang Zhao",
+      "venue": "Matter",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.matt.2024.05.023",
+      "cited_by": 41,
+      "abstract": null,
+      "doi": "10.1016/j.matt.2024.05.023",
+      "pmid": null,
+      "openalex_id": "W4402222300",
+      "source_doi": "10.1109/tnsre.2010.2053387",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5383307665586472,
+        "similarity_score": 0.5126959681510925,
+        "citation_text_length": 224,
+        "dataset_text_length": 2265,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Accelerating Reinforcement Learning using EEG-based implicit human feedback",
       "author": "Duo Xu, Mohit Agarwal, Ekansh Gupta, Faramarz Fekri, Raghupathy Sivakumar",
       "venue": "Neurocomputing",
@@ -1164,29 +1235,6 @@
         "confidence_score": 0.6618414878845216,
         "similarity_score": 0.6016740798950195,
         "citation_text_length": 1292,
-        "dataset_text_length": 2265,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Advancing EEG-based brain-computer interface technology via PEDOT:PSS electrodes",
-      "author": "Yang Li, Yuzhe Gu, Junchen Teng, Shuwen Zheng, Yuncong Pang, Xiao-Min Lu, Baoguang Liu, Shujuan Liu, Qiang Zhao",
-      "venue": "Matter",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.matt.2024.05.023",
-      "cited_by": 39,
-      "abstract": null,
-      "doi": "10.1016/j.matt.2024.05.023",
-      "pmid": null,
-      "openalex_id": "W4402222300",
-      "source_doi": "10.1109/tnsre.2010.2053387",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5383307665586472,
-        "similarity_score": 0.5126959681510925,
-        "citation_text_length": 224,
         "dataset_text_length": 2265,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1262,6 +1310,29 @@
       }
     },
     {
+      "title": "Hypervector Design for Efficient Hyperdimensional Computing on Edge Devices",
+      "author": "T. Basaklar, Y. Tuncel, S. Y. Narayana, S. Gumussoy, U. Ogras",
+      "venue": "ArXiv",
+      "year": 2021,
+      "url": "n/a",
+      "cited_by": 37,
+      "abstract": "Hyperdimensional computing (HDC) has emerged as a new light-weight learning algorithm with smaller computation and energy requirements compared to conventional techniques. In HDC, data points are represented by high-dimensional vectors (hypervectors), which are mapped to high-dimensional space (hyperspace). Typically, a large hypervector dimension ($\\geq1000$) is required to achieve accuracies comparable to conventional alternatives. However, unnecessarily large hypervectors increase hardware and energy costs, which can undermine their benefits. This paper presents a technique to minimize the hypervector dimension while maintaining the accuracy and improving the robustness of the classifier. To this end, we formulate the hypervector design as a multi-objective optimization problem for the first time in the literature. The proposed approach decreases the hypervector dimension by more than $32\\times$ while maintaining or increasing the accuracy achieved by conventional HDC. Experiments o",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1109/tnsre.2010.2053387",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.2548904237151146,
+        "similarity_score": 0.22068434953689575,
+        "citation_text_length": 1180,
+        "dataset_text_length": 2265,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Factors that affect error potentials during a grasping task: toward a hybrid natural movement decoding BCI",
       "author": "Jason Omedes, Andreas Schwarz, Gernot Müller-Putz, Luis Montesano",
       "venue": "Journal of Neural Engineering",
@@ -1279,29 +1350,6 @@
         "confidence_score": 0.6558135628700257,
         "similarity_score": 0.5961941480636597,
         "citation_text_length": 1239,
-        "dataset_text_length": 2265,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Hypervector Design for Efficient Hyperdimensional Computing on Edge Devices",
-      "author": "T. Basaklar, Y. Tuncel, S. Y. Narayana, S. Gumussoy, U. Ogras",
-      "venue": "ArXiv",
-      "year": 2021,
-      "url": "n/a",
-      "cited_by": 36,
-      "abstract": "Hyperdimensional computing (HDC) has emerged as a new light-weight learning algorithm with smaller computation and energy requirements compared to conventional techniques. In HDC, data points are represented by high-dimensional vectors (hypervectors), which are mapped to high-dimensional space (hyperspace). Typically, a large hypervector dimension ($\\geq1000$) is required to achieve accuracies comparable to conventional alternatives. However, unnecessarily large hypervectors increase hardware and energy costs, which can undermine their benefits. This paper presents a technique to minimize the hypervector dimension while maintaining the accuracy and improving the robustness of the classifier. To this end, we formulate the hypervector design as a multi-objective optimization problem for the first time in the literature. The proposed approach decreases the hypervector dimension by more than $32\\times$ while maintaining or increasing the accuracy achieved by conventional HDC. Experiments o",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1109/tnsre.2010.2053387",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.2548904237151146,
-        "similarity_score": 0.22068434953689575,
-        "citation_text_length": 1180,
         "dataset_text_length": 2265,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1543,7 +1591,7 @@
       "venue": "Brain-Computer Interfaces",
       "year": 2017,
       "url": "https://doi.org/10.1080/2326263x.2016.1275488",
-      "cited_by": 29,
+      "cited_by": 30,
       "abstract": "The Sixth International Brain-Computer Interface (BCI) Meeting was held 30 May-3 June 2016 at the Asilomar Conference Grounds, Pacific Grove, California, USA. The conference included 28 workshops covering topics in BCI and brain-machine interface research. Topics included BCI for specific populations or applications, advancing BCI research through use of specific signals or technological advances, and translational and commercial issues to bring both implanted and non-invasive BCIs to market. BCI research is growing and expanding in the breadth of its applications, the depth of knowledge it can produce, and the practical benefit it can provide both for those with physical impairments and the general public. Here we provide summaries of each workshop, illustrating the breadth and depth of BCI research and highlighting important issues and calls for action to support future research and development.",
       "doi": "10.1080/2326263x.2016.1275488",
       "pmid": "29152523",
@@ -1578,29 +1626,6 @@
         "confidence_score": 0.4664170444011688,
         "similarity_score": 0.4664170444011688,
         "citation_text_length": 192,
-        "dataset_text_length": 2265,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Brain-Computer Interfaces",
-      "author": "Jane E. Huggins, C. Guger, Brendan Allison, C. Anderson, A. Batista, A. Brouwer, C. Brunner, Ricardo Chavarriaga, M. Fried-Oken, Aysegul Gunduz, D. Gupta, A. Kübler, R. Leeb, F. Lotte, L. E. Miller, Gernot R. Müller-Putz, Tomasz Rutkowski, M. Tangermann, David E. Thompson",
-      "venue": "Handbook of Clinical Neurology",
-      "year": 2020,
-      "url": "https://doi.org/10.1016/c2016-0-00385-6",
-      "cited_by": 29,
-      "abstract": "Brain-Computer Interfaces (BCIs) measure brain activity and can be used to control digital devices. The focus of BCI development has been on using the technology to allow patients to control assistive equipment such as wheelchairs or prostheses. Beyond medicine they are under development for applications in entertainment, marketing and defence. This POSTnote looks at the underpinning technology, its applications and the associated ethical and regulatory challenges.",
-      "doi": "10.1016/c2016-0-00385-6",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1109/tnsre.2010.2053387",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4039494574069978,
-        "similarity_score": 0.34973978996276855,
-        "citation_text_length": 835,
         "dataset_text_length": 2265,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1768,6 +1793,29 @@
       }
     },
     {
+      "title": "Combining VR with electroencephalography as a frontier of brain-computer interfaces",
+      "author": "Hongbian Li, Hyonyoung Shin, Luis Sentis, Ka‐Chun Siu, José del R. Millán, Nanshu Lu",
+      "venue": "Device",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.device.2024.100425",
+      "cited_by": 25,
+      "abstract": ".",
+      "doi": "10.1016/j.device.2024.100425",
+      "pmid": null,
+      "openalex_id": "W4399886581",
+      "source_doi": "10.1109/tnsre.2010.2053387",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4385657161474228,
+        "similarity_score": 0.41768163442611694,
+        "citation_text_length": 213,
+        "dataset_text_length": 2265,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Instrumentation, Measurement, and Signal Processing in Electroencephalography-Based Brain-Computer Interfaces: Situations and Prospects",
       "author": "Zifan Xue, Yunfan Zhang, Hui Li, Hongbin Chen, Shengnan Shen, Hejun Du",
       "venue": "IEEE Transactions on Instrumentation and Measurement",
@@ -1877,29 +1925,6 @@
         "confidence_score": 0.7368827158212663,
         "similarity_score": 0.6379936933517456,
         "citation_text_length": 1208,
-        "dataset_text_length": 2265,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Combining VR with electroencephalography as a frontier of brain-computer interfaces",
-      "author": "Hongbian Li, Hyonyoung Shin, Luis Sentis, Ka‐Chun Siu, José del R. Millán, Nanshu Lu",
-      "venue": "Device",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.device.2024.100425",
-      "cited_by": 23,
-      "abstract": ".",
-      "doi": "10.1016/j.device.2024.100425",
-      "pmid": null,
-      "openalex_id": "W4399886581",
-      "source_doi": "10.1109/tnsre.2010.2053387",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4385657161474228,
-        "similarity_score": 0.41768163442611694,
-        "citation_text_length": 213,
         "dataset_text_length": 2265,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2343,25 +2368,23 @@
       }
     },
     {
-      "title": "Multiple Gene Expression Analyses in Paraffin-Embedded Tissues by TaqMan Low-Density Array",
-      "author": "Adam D. Steg, Wenquan Wang, Carmelo Blanquicett, Jessica M. Grunda, Isam A. Eltoum, Kangsheng Wang, Donald J. Buchsbaum, Selwyn M. Vickers, Suzanne Russo, Robert B. Diasio, Andra R. Frost, Al F. Lobuglio, William E. Grizzle, Martin R. Johnson",
-      "venue": "Journal of Molecular Diagnostics",
-      "year": 2006,
-      "url": "https://doi.org/10.2353/jmoldx.2006.040402",
-      "cited_by": 82,
-      "abstract": null,
-      "doi": "10.2353/jmoldx.2006.040402",
-      "pmid": "16436637",
-      "openalex_id": "W1553996898",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000168",
+      "title": "Design of a brain-machine interface for reducing false activations of a lower-limb exoskeleton based on error related potential",
+      "author": "Paula Soriano-Segura, Mario Ortíz, Eduardo Iáñez, José M. Azorín",
+      "venue": "Computer Methods and Programs in Biomedicine",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.cmpb.2024.108332",
+      "cited_by": 17,
+      "abstract": "BACKGROUND AND OBJECTIVE: Brain-Machine Interfaces (BMIs) based on a motor imagination paradigm provide an intuitive approach for the exoskeleton control during gait. However, their clinical applicability remains difficulted by accuracy limitations and sensitivity to false activations. A proposed improvement involves integrating the BMI with methods based on detecting Error Related Potentials (ErrP) to self-tune erroneous commands and enhance not only the system accuracy, but also its usability. The aim of the current research is to characterize the ErrP at the beginning of the gait with a lower limb exoskeleton to reduce the false starts in the BMI system. Furthermore, this study is valuable for determining which type of feedback, Tactile, Visual, or Visuo-Tactile, achieves the best performance in evoking and detecting the ErrP. METHODS: The initial phase of the research concentrates on detecting ErrP at the beginning of gait to improve the efficiency of an asynchronous BMI based on m",
+      "doi": "10.1016/j.cmpb.2024.108332",
+      "pmid": "39053352",
+      "openalex_id": "W4400768740",
+      "source_doi": "10.1109/tnsre.2010.2053387",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.28609782457351685,
-        "similarity_score": 0.28609782457351685,
-        "citation_text_length": 391,
+        "confidence_score": 0.6189886602759362,
+        "similarity_score": 0.5359209179878235,
+        "citation_text_length": 1274,
         "dataset_text_length": 2265,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2370,18 +2393,18 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:27:40.417041+00:00",
+    "scoring_date": "2026-07-15T00:07:38.643518+00:00",
     "dataset_text_length": 2265,
-    "num_citations_scored": 101,
+    "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.5299165621960519,
-      "median_confidence": 0.5319626331329346,
-      "std_confidence": 0.1316567575575493,
+      "mean_confidence": 0.5345009201258423,
+      "median_confidence": 0.5389295880496503,
+      "std_confidence": 0.1296659968253936,
       "min_confidence": 0.14535650312900544,
       "max_confidence": 0.7962455230951311,
       "high_confidence_count": 8,
       "medium_confidence_count": 76,
-      "low_confidence_count": 17
+      "low_confidence_count": 16
     }
   }
 }

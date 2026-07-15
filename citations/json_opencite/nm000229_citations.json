@@ -1,24 +1,79 @@
 {
   "dataset_id": "nm000229",
-  "num_citations": 42,
-  "date_last_updated": "2026-06-18T23:21:48.806365+00:00",
+  "num_citations": 43,
+  "date_last_updated": "2026-07-03T13:25:26.430083+00:00",
   "metadata": {
-    "total_cumulative_citations": 366,
-    "fetch_date": "2026-06-18T23:21:48.806365+00:00",
+    "total_cumulative_citations": 384,
+    "fetch_date": "2026-07-03T13:25:26.430083+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1038/s41597-023-02752-5",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Introducing MEG-MASC a high-quality magneto-encephalography dataset for evaluating natural speech processing",
+        "paper_year": 2023,
+        "paper_venue": "Scientific Data",
+        "reason": "The candidate paper title and abstract explicitly introduce and describe the 'MEG-MASC' dataset, detailing its contents and structure.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000229",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1038/s41597-023-02752-5",
+      "10.82901/nemar.nm000229"
+    ],
+    "keywords": [
+      "Magnetoencephalography",
+      "MEG",
+      "speech processing",
+      "natural language",
+      "phonetic decoding",
+      "brain imaging",
+      "BIDS"
+    ],
+    "methods_description": "Participants listened to four fictional stories presented across two ~1-hour MEG sessions (5 subjects completed 1 session). Stories were synthesized using Mac OS Mojave text-to-speech with varying female voices (n=3) and speech rates (145-205 words per minute). Word and phoneme timing were inferred using forced-alignment between audio and text files via the 'gentle aligner' from the lowerquality Python module. Each recording session included story presentations intermixed with random word lists and comprehension questions.",
+    "funding": [
+      {
+        "funder_name": "Dingwall Foundation (L. Gwilliams)"
+      },
+      {
+        "funder_name": "Agence Nationale de la Recherche",
+        "award_number": "ANR-17-EURE-0017"
+      },
+      {
+        "funder_name": "Abu Dhabi Research Institute",
+        "award_number": "G1001"
+      },
+      {
+        "funder_name": "Dingwall Foundation"
+      }
+    ],
     "searched_accessions": [
       "nm000229"
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 42
+    "num_datapaper_citations": 43
   },
   "citation_details": [
     {
@@ -27,7 +82,7 @@
       "venue": "Nature Communications",
       "year": 2022,
       "url": "https://doi.org/10.1038/s41467-022-34326-1",
-      "cited_by": 116,
+      "cited_by": 117,
       "abstract": "Speech consists of a continuously-varying acoustic signal. Yet human listeners experience it as sequences of discrete speech sounds, which are used to recognise discrete words. To examine how the human brain appropriately sequences the speech signal, we recorded two-hour magnetoencephalograms from 21 participants listening to short narratives. Our analyses show that the brain continuously encodes the three most recently heard speech sounds in parallel, and maintains this information long past its dissipation from the sensory input. Each speech sound representation evolves over time, jointly encoding both its phonetic features and the amount of time elapsed since onset. As a result, this dynamic neural pattern encodes both the relative order and phonetic content of the speech sequence. These representations are active earlier when phonemes are more predictable, and are sustained longer when lexical identity is uncertain. Our results show how phonetic sequences in natural speech are repr",
       "doi": "10.1038/s41467-022-34326-1",
       "pmid": "36329058",
@@ -50,7 +105,7 @@
       "venue": "Proceedings of the National Academy of Sciences",
       "year": 2025,
       "url": "https://doi.org/10.1073/pnas.2422097122",
-      "cited_by": 37,
+      "cited_by": 40,
       "abstract": "Speech comprehension involves transforming an acoustic waveform into meaning. To do so, the human brain generates a hierarchy of features that converts the sensory input into increasingly abstract language properties. However, little is known about how rapid incoming sequences of hierarchical features are continuously coordinated. Here, we propose that each language feature is supported by a dynamic neural code, which represents the sequence history of hierarchical features in parallel. To test this \"hierarchical dynamic coding\" (HDC) hypothesis, we use time-resolved decoding of brain activity to track the construction, maintenance, and update of a comprehensive hierarchy of language features spanning phonetic, word form, lexical-syntactic, syntactic, and semantic representations. For this, we recorded 21 native English participants with magnetoencephalography (MEG), while they listened to two hours of short stories in English. Our analyses reveal three main findings. First, the brain ",
       "doi": "10.1073/pnas.2422097122",
       "pmid": "41105708",
@@ -73,7 +128,7 @@
       "venue": "arXiv (Cornell University)",
       "year": 2023,
       "url": "https://doi.org/10.48550/arxiv.2307.10246",
-      "cited_by": 34,
+      "cited_by": 35,
       "abstract": "Can artificial intelligence unlock the secrets of the human brain? How do the inner mechanisms of deep learning models relate to our neural circuits? Is it possible to enhance AI by tapping into the power of brain recordings? These captivating questions lie at the heart of an emerging field at the intersection of neuroscience and artificial intelligence. Our survey dives into this exciting domain, focusing on human brain recording studies and cutting-edge cognitive neuroscience datasets that capture brain activity during natural language processing, visual perception, and auditory experiences. We explore two fundamental approaches: encoding models, which attempt to generate brain activity patterns from sensory inputs; and decoding models, which aim to reconstruct our thoughts and perceptions from neural signals. These techniques not only promise breakthroughs in neurological diagnostics and brain-computer interfaces but also offer a window into the very nature of cognition. In this sur",
       "doi": "10.48550/arxiv.2307.10246",
       "pmid": null,
@@ -96,7 +151,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2505.18185",
-      "cited_by": 26,
+      "cited_by": 27,
       "abstract": "Electroencephalography (EEG) and magnetoencephalography (MEG) measure neural activity non-invasively by capturing electromagnetic fields generated by dendritic currents. Although rooted in the same biophysics, EEG and MEG exhibit distinct signal patterns, further complicated by variations in sensor configurations across modalities and recording devices. Existing approaches typically rely on separate, modality- and dataset-specific models, which limits the performance and cross-domain scalability. This paper proposes BrainOmni, the first brain foundation model that generalises across heterogeneous EEG and MEG recordings. To unify diverse data sources, we introduce BrainTokenizer,the first tokenizer that quantises spatiotemporal brain activity into discrete representations. Central to BrainTokenizer is a novel Sensor Encoder that encodes sensor properties such as spatial layout, orientation, and type, enabling compatibility across devices and modalities. Building upon the discrete repres",
       "doi": "10.48550/arXiv.2505.18185",
       "pmid": null,
@@ -119,7 +174,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2501.15322",
-      "cited_by": 22,
+      "cited_by": 26,
       "abstract": "Generative AI has recently propelled the decoding of images from brain activity. How do these approaches scale with the amount and type of neural recordings? Here, we systematically compare image decoding from four types of non-invasive devices: electroencephalography (EEG), magnetoencephalography (MEG), high-field functional Magnetic Resonance Imaging (3T fMRI) and ultra-high field (7T) fMRI. For this, we evaluate decoding models on the largest benchmark to date, encompassing 8 public datasets, 84 volunteers, 498 hours of brain recording and 2.3 million brain responses to natural images. Unlike previous work, we focus on single-trial decoding performance to simulate real-time settings. This systematic comparison reveals three main findings. First, the most precise neuroimaging devices tend to yield the best decoding performances, when the size of the training sets are similar. However, the gain enabled by deep learning - in comparison to linear models - is obtained with the noisiest d",
       "doi": "10.48550/arXiv.2501.15322",
       "pmid": null,
@@ -160,6 +215,29 @@
       }
     },
     {
+      "title": "Towards decoding individual words from non-invasive brain recordings",
+      "author": "Stéphane d’Ascoli, Corentin Bel, Jérémy Rapin, Hubert Banville, Yohann Benchetrit, Christophe Pallier, Jean-Rémi King",
+      "venue": "Nature Communications",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41467-025-65499-0",
+      "cited_by": 19,
+      "abstract": "While deep learning has enabled the decoding of language from intracranial brain recordings, achieving this with non-invasive recordings remains an open challenge. We introduce a deep learning pipeline to decode individual words from electro- (EEG) and magneto-encephalography (MEG) signals. We evaluate our approach on seven public datasets and two datasets which we collect ourselves, amounting to a total of 723 participants reading or listening to five million words in three languages. Our model outperforms existing methods consistently across participants, devices, languages, and tasks, and can decode words absent from the training set. Our analyses highlight the importance of the recording device and experimental protocol: MEG and reading are easier to decode than EEG and listening, and decoding performance consistently increases with the amount of data used for training and for averaging during testing. Overall, our findings delineate the path and remaining challenges towards buildi",
+      "doi": "10.1038/s41467-025-65499-0",
+      "pmid": "41298362",
+      "openalex_id": "W4416720553",
+      "source_doi": "10.1038/s41597-023-02752-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7367705011367799,
+        "similarity_score": 0.6378965377807617,
+        "citation_text_length": 1245,
+        "dataset_text_length": 2472,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "MAD: Multi-Alignment MEG-to-Text Decoding",
       "author": "Yiqian Yang, Hyejeong Jo, Yiqun Duan, Qiang Zhang, Jinni Zhou, Won Hee Lee, Renjing Xu, Hui Xiong",
       "venue": "ArXiv",
@@ -177,29 +255,6 @@
         "confidence_score": 0.6987377089262009,
         "similarity_score": 0.6049677133560181,
         "citation_text_length": 1182,
-        "dataset_text_length": 2472,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Towards decoding individual words from non-invasive brain recordings",
-      "author": "Stéphane d’Ascoli, Corentin Bel, Jérémy Rapin, Hubert Banville, Yohann Benchetrit, Christophe Pallier, Jean-Rémi King",
-      "venue": "Nature Communications",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s41467-025-65499-0",
-      "cited_by": 18,
-      "abstract": "While deep learning has enabled the decoding of language from intracranial brain recordings, achieving this with non-invasive recordings remains an open challenge. We introduce a deep learning pipeline to decode individual words from electro- (EEG) and magneto-encephalography (MEG) signals. We evaluate our approach on seven public datasets and two datasets which we collect ourselves, amounting to a total of 723 participants reading or listening to five million words in three languages. Our model outperforms existing methods consistently across participants, devices, languages, and tasks, and can decode words absent from the training set. Our analyses highlight the importance of the recording device and experimental protocol: MEG and reading are easier to decode than EEG and listening, and decoding performance consistently increases with the amount of data used for training and for averaging during testing. Overall, our findings delineate the path and remaining challenges towards buildi",
-      "doi": "10.1038/s41467-025-65499-0",
-      "pmid": "41298362",
-      "openalex_id": "W4416720553",
-      "source_doi": "10.1038/s41597-023-02752-5",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7367705011367799,
-        "similarity_score": 0.6378965377807617,
-        "citation_text_length": 1245,
         "dataset_text_length": 2472,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -252,6 +307,29 @@
       }
     },
     {
+      "title": "Examining predictive coding accounts of typical and autistic neurocognitive development",
+      "author": "Hannah Rapaport, Paul F. Sowman",
+      "venue": "Neuroscience & Biobehavioral Reviews",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.neubiorev.2024.105905",
+      "cited_by": 9,
+      "abstract": "Predictive coding has emerged as a prominent theoretical framework for understanding perception and its neural underpinnings. There has been a recent surge of interest in the predictive coding framework across the mind sciences. However, comparatively little of the research in this field has investigated the neural underpinnings of predictive coding in young neurotypical and autistic children. This paper provides an overview of predictive coding accounts of typical and autistic neurocognitive development and includes a review of the current electrophysiological evidence supporting these accounts. Based on the current evidence, it is clear that more research in pediatrics is needed to evaluate predictive coding accounts of neurocognitive development fully. If supported, these accounts could have wide-ranging practical implications for pedagogy, parenting, artificial intelligence, and clinical approaches to helping autistic children manage the barrage of everyday sensory information.",
+      "doi": "10.1016/j.neubiorev.2024.105905",
+      "pmid": "39326770",
+      "openalex_id": "W4402813937",
+      "source_doi": "10.1038/s41597-023-02752-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.3069182114303113,
+        "similarity_score": 0.2657300531864166,
+        "citation_text_length": 1189,
+        "dataset_text_length": 2472,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Unlocking Non-Invasive Brain-to-Text",
       "author": "D. Jayalath, Gilad Landau, Oiwi Parker Jones",
       "venue": "ArXiv",
@@ -275,23 +353,23 @@
       }
     },
     {
-      "title": "Examining predictive coding accounts of typical and autistic neurocognitive development",
-      "author": "Hannah Rapaport, Paul F. Sowman",
-      "venue": "Neuroscience & Biobehavioral Reviews",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.neubiorev.2024.105905",
-      "cited_by": 8,
-      "abstract": "Predictive coding has emerged as a prominent theoretical framework for understanding perception and its neural underpinnings. There has been a recent surge of interest in the predictive coding framework across the mind sciences. However, comparatively little of the research in this field has investigated the neural underpinnings of predictive coding in young neurotypical and autistic children. This paper provides an overview of predictive coding accounts of typical and autistic neurocognitive development and includes a review of the current electrophysiological evidence supporting these accounts. Based on the current evidence, it is clear that more research in pediatrics is needed to evaluate predictive coding accounts of neurocognitive development fully. If supported, these accounts could have wide-ranging practical implications for pedagogy, parenting, artificial intelligence, and clinical approaches to helping autistic children manage the barrage of everyday sensory information.",
-      "doi": "10.1016/j.neubiorev.2024.105905",
-      "pmid": "39326770",
-      "openalex_id": "W4402813937",
+      "title": "Stimulus dependencies—rather than next-word prediction—can explain pre-onset brain encoding in naturalistic listening designs",
+      "author": "Inés Schönmann, Jakub Szewczyk, Floris P. de Lange, Micha Heilbron",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2025,
+      "url": "https://doi.org/10.1101/2025.03.08.642140",
+      "cited_by": 6,
+      "abstract": "Abstract The human brain is thought to constantly predict future words during language processing. Recently, a new approach emerged that aims to capture neural prediction directly by using vector representations of words (embeddings) to predict brain activity prior to word onset. Two findings have been proposed as hallmarks of neural next-word prediction: (i) significant encoding prior to word onset and (ii) its modulation by word predictability. However, natural language is rife with temporal correlations, where upcoming words share statistical information with preceding ones. This raises a critical question: do these these hallmarks emerge from the brain actively predicting future content, or might they be equally well explained by the regression model exploiting these inherent stimulus dependencies? To distinguish between these alternatives, we applied the same encoding analysis to passive control systems, i.e., representational systems that encode the stimulus but cannot predict up",
+      "doi": "10.1101/2025.03.08.642140",
+      "pmid": "41960890",
+      "openalex_id": "W4408313997",
       "source_doi": "10.1038/s41597-023-02752-5",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.3069182114303113,
-        "similarity_score": 0.2657300531864166,
-        "citation_text_length": 1189,
+        "confidence_score": 0.5840043210983277,
+        "similarity_score": 0.5056314468383789,
+        "citation_text_length": 1269,
         "dataset_text_length": 2472,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -321,23 +399,92 @@
       }
     },
     {
-      "title": "Stimulus dependencies—rather than next-word prediction—can explain pre-onset brain encoding in naturalistic listening designs",
-      "author": "Inés Schönmann, Jakub Szewczyk, Floris P. de Lange, Micha Heilbron",
-      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
-      "year": 2025,
-      "url": "https://doi.org/10.1101/2025.03.08.642140",
-      "cited_by": 5,
-      "abstract": "Abstract The human brain is thought to constantly predict future words during language processing. Recently, a new approach emerged that aims to capture neural prediction directly by using vector representations of words (embeddings) to predict brain activity prior to word onset. Two findings have been proposed as hallmarks of neural next-word prediction: (i) significant encoding prior to word onset and (ii) its modulation by word predictability. However, natural language is rife with temporal correlations, where upcoming words share statistical information with preceding ones. This raises a critical question: do these these hallmarks emerge from the brain actively predicting future content, or might they be equally well explained by the regression model exploiting these inherent stimulus dependencies? To distinguish between these alternatives, we applied the same encoding analysis to passive control systems, i.e., representational systems that encode the stimulus but cannot predict up",
-      "doi": "10.1101/2025.03.08.642140",
-      "pmid": "41960890",
-      "openalex_id": "W4408313997",
+      "title": "Decoding phone pairs from MEG signals across speech modalities",
+      "author": "Xabier de Zuazo, Eva Navas, Ibon Saratxaga, Mathieu Bourguignon, Nicola Molinaro",
+      "venue": "Computer Speech & Language",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.csl.2026.101939",
+      "cited_by": 3,
+      "abstract": "Understanding the neural mechanisms underlying speech production is essential for both advancing cognitive neuroscience theory and developing practical communication technologies. In this study, we investigated magnetoencephalography (MEG) signals to perform binary phone-pair classification from brain activity during speech production and perception (passive listening and voice playback) tasks. Using a dataset comprising 18 participants, we performed pairwise phone classification, extending our analysis to 20 phonetic pairs. Multiple machine learning approaches, including regularized linear models and neural network architectures, were compared to determine their effectiveness in decoding phonetic information. Our results demonstrate significantly higher decoding accuracy during speech production (73.4%) compared to passive listening and playback modalities (approximately 51%), emphasizing the richer neural information available during overt speech. Among the models, the Elastic Net cl",
+      "doi": "10.1016/j.csl.2026.101939",
+      "pmid": null,
+      "openalex_id": "W4415328825",
       "source_doi": "10.1038/s41597-023-02752-5",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5840043210983277,
-        "similarity_score": 0.5056314468383789,
-        "citation_text_length": 1269,
+        "confidence_score": 0.7719460183382035,
+        "similarity_score": 0.6683515310287476,
+        "citation_text_length": 1207,
+        "dataset_text_length": 2472,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "NeuralSet: A High-Performing Python Package for Neuro-AI",
+      "author": "Jean-R'emi King, Corentin Bel, L. Evanson, Julien Gadonneix, Sophia Houhamdi, Jarod Lévy, Jos'ephine Raugel, Andrea Santos Revilla, Mingfang Zhang, Julie Bonnaire, Charlotte Caucheteux, Alexandre D'efossez, T. Desbordes, Pablo J. Diego-Sim'on, S. Khanna, Juliette Millet, Pierre Orhan, S. Panchavati, Antoine Ratouchniak, A. Thual, Teon L Brooks, K. Begany, Yohann Benchetrit, Marlène Careil, Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 3,
+      "abstract": "Artificial intelligence (AI) is increasingly central to understanding how the brain processes information. However, the integration of neuroscience and modern AI is bottlenecked by a fragmented software ecosystem. Current tools are siloed by recording modality and optimized for small-scale, in-memory workflows, limiting the use of massive, naturalistic datasets. Here, we introduce NeuralSet, a Python framework that efficiently unifies the processing of diverse neural recordings (including fMRI, M/EEG, and spikes) and complex experimental stimuli (such as text, audio, and video). By decoupling experimental metadata from lazy, memory-efficient data extraction, NeuralSet harmonizes standard neuroscientific preprocessing pipelines with pretrained deep learning embeddings. This approach provides a single PyTorch-ready interface that scales seamlessly from local prototyping to high-performance cluster execution. By eliminating manual data wrangling and ensuring full computational provenance,",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02752-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4872213242948056,
+        "similarity_score": 0.42183664441108704,
+        "citation_text_length": 1555,
+        "dataset_text_length": 2472,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Mitigating Subject Dependency in EEG Decoding with Subject-Specific Low-Rank Adapters",
+      "author": "Timon Klein, Piotr Minakowski, Sebastian Sager",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2510.08059",
+      "cited_by": 3,
+      "abstract": "Subject-specific distribution shifts represent a fundamental obstacle to developing foundation models for brain decoding. We propose the Subject-Specific Low-Rank Adapter (SuLoRA), a drop-in replacement for standard linear or convolutional layers that captures inter-subject variability by decomposing weights into a shared, subject-invariant component and a lightweight, low-rank correction unique to each subject. This explicit separation enables existing architectures to become robust to subject shifts without architectural redesign. We evaluate SuLoRA on MEG speech perception and EEG motor imagery tasks across CNN and transformer architectures. In the speech decoding task, SuLoRA exceeds the baseline performance with half of the parameters. On motor imagery dataset, SuLoRA outperforms both subject-agnostic models and independently trained subject-specific models. SuLoRA offers a practical path towards effective cross-subject foundation models for brain signal applications.",
+      "doi": "10.48550/arXiv.2510.08059",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02752-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5668938191235067,
+        "similarity_score": 0.4908171594142914,
+        "citation_text_length": 1162,
+        "dataset_text_length": 2472,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Phone Pair Classification During Speech Production Using MEG Recordings",
+      "author": "Xabier de Zuazo, Eva Navas, I. Saratxaga, Mathieu Bourguignon, Nicola Molinaro",
+      "venue": "IberSPEECH 2024",
+      "year": 2024,
+      "url": "https://doi.org/10.21437/iberspeech.2024-16",
+      "cited_by": 3,
+      "abstract": "Understanding the neural foundations of speech production is the cornerstone for advancing both theoretical knowledge and practical applications in neuroscience and speech technology. This study analyzes magnetoencephalography recordings to explore the classification of phonetic units (phones) from the brain during speech production. We employ machine learning techniques to decode phones in pairs from a dataset involving subjects performing speech perception and production tasks. Our findings indicate a superior decoding accuracy during speech production compared to listening. In fact, speech production is a modality much less explored in neuroscience due to its inherent complexities. This research not only deepens our understanding of speech processing in the brain but also underscores the critical need to investigate speech production, which, despite its challenges, holds the key to developing real-life applications such as improved brain-computer interfaces for communication aids.",
+      "doi": "10.21437/iberspeech.2024-16",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02752-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7488731646537782,
+        "similarity_score": 0.6483750343322754,
+        "citation_text_length": 1201,
         "dataset_text_length": 2472,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -413,75 +560,6 @@
       }
     },
     {
-      "title": "NeuralSet: A High-Performing Python Package for Neuro-AI",
-      "author": "Jean-R'emi King, Corentin Bel, L. Evanson, Julien Gadonneix, Sophia Houhamdi, Jarod L'evy, Jos'ephine Raugel, Andrea Santos Revilla, Mingfang Zhang, Julie Bonnaire, Charlotte Caucheteux, Alexandre D'efossez, T. Desbordes, Pablo J. Diego-Sim'on, S. Khanna, Juliette Millet, Pierre Orhan, S. Panchavati, Antoine Ratouchniak, A. Thual, Teon L Brooks, K. Begany, Yohann Benchetrit, Marlène Careil, Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin",
-      "venue": "n/a",
-      "year": 2026,
-      "url": "n/a",
-      "cited_by": 2,
-      "abstract": "Artificial intelligence (AI) is increasingly central to understanding how the brain processes information. However, the integration of neuroscience and modern AI is bottlenecked by a fragmented software ecosystem. Current tools are siloed by recording modality and optimized for small-scale, in-memory workflows, limiting the use of massive, naturalistic datasets. Here, we introduce NeuralSet, a Python framework that efficiently unifies the processing of diverse neural recordings (including fMRI, M/EEG, and spikes) and complex experimental stimuli (such as text, audio, and video). By decoupling experimental metadata from lazy, memory-efficient data extraction, NeuralSet harmonizes standard neuroscientific preprocessing pipelines with pretrained deep learning embeddings. This approach provides a single PyTorch-ready interface that scales seamlessly from local prototyping to high-performance cluster execution. By eliminating manual data wrangling and ensuring full computational provenance,",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02752-5",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4870145532488824,
-        "similarity_score": 0.42165762186050415,
-        "citation_text_length": 1556,
-        "dataset_text_length": 2472,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Mitigating Subject Dependency in EEG Decoding with Subject-Specific Low-Rank Adapters",
-      "author": "Timon Klein, Piotr Minakowski, Sebastian Sager",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2510.08059",
-      "cited_by": 2,
-      "abstract": "Subject-specific distribution shifts represent a fundamental obstacle to developing foundation models for brain decoding. We propose the Subject-Specific Low-Rank Adapter (SuLoRA), a drop-in replacement for standard linear or convolutional layers that captures inter-subject variability by decomposing weights into a shared, subject-invariant component and a lightweight, low-rank correction unique to each subject. This explicit separation enables existing architectures to become robust to subject shifts without architectural redesign. We evaluate SuLoRA on MEG speech perception and EEG motor imagery tasks across CNN and transformer architectures. In the speech decoding task, SuLoRA exceeds the baseline performance with half of the parameters. On motor imagery dataset, SuLoRA outperforms both subject-agnostic models and independently trained subject-specific models. SuLoRA offers a practical path towards effective cross-subject foundation models for brain signal applications.",
-      "doi": "10.48550/arXiv.2510.08059",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02752-5",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5668938191235067,
-        "similarity_score": 0.4908171594142914,
-        "citation_text_length": 1162,
-        "dataset_text_length": 2472,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Phone Pair Classification During Speech Production Using MEG Recordings",
-      "author": "Xabier de Zuazo, Eva Navas, I. Saratxaga, Mathieu Bourguignon, Nicola Molinaro",
-      "venue": "IberSPEECH 2024",
-      "year": 2024,
-      "url": "https://doi.org/10.21437/iberspeech.2024-16",
-      "cited_by": 2,
-      "abstract": "Understanding the neural foundations of speech production is the cornerstone for advancing both theoretical knowledge and practical applications in neuroscience and speech technology. This study analyzes magnetoencephalography recordings to explore the classification of phonetic units (phones) from the brain during speech production. We employ machine learning techniques to decode phones in pairs from a dataset involving subjects performing speech perception and production tasks. Our findings indicate a superior decoding accuracy during speech production compared to listening. In fact, speech production is a modality much less explored in neuroscience due to its inherent complexities. This research not only deepens our understanding of speech processing in the brain but also underscores the critical need to investigate speech production, which, despite its challenges, holds the key to developing real-life applications such as improved brain-computer interfaces for communication aids.",
-      "doi": "10.21437/iberspeech.2024-16",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02752-5",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7488731646537782,
-        "similarity_score": 0.6483750343322754,
-        "citation_text_length": 1201,
-        "dataset_text_length": 2472,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Decoding Linguistic Representations of Human Brain",
       "author": "Yu Wang, Heyang Liu, Yuhao Wang, Chuan Xuan, Yixuan Hou, Sheng Feng, Hongcheng Liu, Yusheng Liao, Yanfeng Wang",
       "venue": "ArXiv",
@@ -522,29 +600,6 @@
         "confidence_score": 0.741092418730259,
         "similarity_score": 0.641638457775116,
         "citation_text_length": 1107,
-        "dataset_text_length": 2472,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Decoding phone pairs from MEG signals across speech modalities",
-      "author": "Xabier de Zuazo, Eva Navas, Ibon Saratxaga, Mathieu Bourguignon, Nicola Molinaro",
-      "venue": "Computer Speech & Language",
-      "year": 2026,
-      "url": "https://doi.org/10.1016/j.csl.2026.101939",
-      "cited_by": 1,
-      "abstract": "Understanding the neural mechanisms underlying speech production is essential for both advancing cognitive neuroscience theory and developing practical communication technologies. In this study, we investigated magnetoencephalography (MEG) signals to perform binary phone-pair classification from brain activity during speech production and perception (passive listening and voice playback) tasks. Using a dataset comprising 18 participants, we performed pairwise phone classification, extending our analysis to 20 phonetic pairs. Multiple machine learning approaches, including regularized linear models and neural network architectures, were compared to determine their effectiveness in decoding phonetic information. Our results demonstrate significantly higher decoding accuracy during speech production (73.4%) compared to passive listening and playback modalities (approximately 51%), emphasizing the richer neural information available during overt speech. Among the models, the Elastic Net cl",
-      "doi": "10.1016/j.csl.2026.101939",
-      "pmid": null,
-      "openalex_id": "W4415328825",
-      "source_doi": "10.1038/s41597-023-02752-5",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7719460183382035,
-        "similarity_score": 0.6683515310287476,
-        "citation_text_length": 1207,
         "dataset_text_length": 2472,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -827,6 +882,29 @@
       }
     },
     {
+      "title": "Heterogeneous Neural Predictivity from Language Models During Naturalistic Comprehension",
+      "author": "Xiaoke Jia",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "Language-model representations provide structured, high-dimensional annotations of naturalistic language stimuli and can serve as informative neural predictors during comprehension. We analyzed locked derived data from Brain Treebank, MEG-MASC, and Podcast ECoG with eight frozen language models, blocked encoding models, and matched temporal, nuisance, and representation-capacity controls. Positive held-out prediction and gains over low-level baselines were widespread in source-level summaries. Across Brain Treebank and Podcast ECoG, 67 of 432 evaluable rows met a controlled predictive-only criterion, and model-side feature ablations changed prediction scores in most evaluable source rows. Brain-derived, timing-linked, acoustic, and implanted-signal controls confirmed component-level sensitivity of the analysis pipeline. These findings show that language-model-derived quantities can annotate neural activity during natural speech and text comprehension. Participant-level matched-control ",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02752-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6851839649677278,
+        "similarity_score": 0.5932328701019287,
+        "citation_text_length": 1140,
+        "dataset_text_length": 2472,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Large-Scale AI and Foundation Models for Neuroscience: A Comprehensive Review",
       "author": "Shihao Yang, Xiying Huang, Danilo Bernardo, Jun-En Ding, Andrew Michael, Guoan Wang, Jingmei Yang, Alison Anderson, D. Giritharan, P. Kwan, A. Raj, Yu Zhang, Feng Liu",
       "venue": "Meta-Radiology",
@@ -990,17 +1068,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:48:39.756176+00:00",
+    "scoring_date": "2026-07-15T00:12:54.407339+00:00",
     "dataset_text_length": 2472,
-    "num_citations_scored": 42,
+    "num_citations_scored": 43,
     "summary_stats": {
-      "mean_confidence": 0.6612117818033412,
-      "median_confidence": 0.6594875594973565,
-      "std_confidence": 0.12590539373933868,
+      "mean_confidence": 0.6617740830640462,
+      "median_confidence": 0.6602848345041276,
+      "std_confidence": 0.12447845968781936,
       "min_confidence": 0.3069182114303113,
       "max_confidence": 1.0,
       "high_confidence_count": 13,
-      "medium_confidence_count": 28,
+      "medium_confidence_count": 29,
       "low_confidence_count": 1
     }
   }

@@ -1,39 +1,81 @@
 {
   "dataset_id": "nm000237",
   "num_citations": 17,
-  "date_last_updated": "2026-06-18T23:22:02.298548+00:00",
+  "date_last_updated": "2026-07-03T13:26:10.087891+00:00",
   "metadata": {
-    "total_cumulative_citations": 51,
-    "fetch_date": "2026-06-18T23:22:02.298548+00:00",
+    "total_cumulative_citations": 56,
+    "fetch_date": "2026-07-03T13:26:10.087891+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.3389/fnhum.2021.701091",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Relative Power Correlates With the Decoding Performance of Motor Imagery Both Across Time and Subjects",
+        "paper_year": 2021,
+        "paper_venue": "Frontiers in Human Neuroscience",
+        "reason": "The candidate paper's title and abstract describe a seven-session motor-imagery (MI) experiment on 20 healthy subjects, matching the dataset's content and scope.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is relevant to the dataset's file structure."
+        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is relevant to the dataset's file structure.",
+        "judgment_model": "gemma4:e4b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper introduces EEG-BIDS, a standardized structure and set of tools for organizing EEG data, which is a technical specification used in the dataset's protocol."
+        "reason": "The paper introduces EEG-BIDS, a standardized structure and set of tools for organizing EEG data, which is a technical specification used in the dataset's protocol.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000237",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
       }
     ],
+    "searched_dois": [
+      "10.3389/fnhum.2021.701091",
+      "10.82901/nemar.nm000237"
+    ],
+    "keywords": [
+      "EEG",
+      "motor imagery",
+      "brain-computer interfaces",
+      "longitudinal study",
+      "common spatial patterns",
+      "support vector machines"
+    ],
+    "methods_description": "EEG data were acquired at 500 Hz sampling rate from 41 channels using a Neuroscan SynAmps2 system with Ag/AgCl sensors referenced to vertex (Cz) and grounded at AFz. Online bandpass filtering (0.5-100 Hz) and 50 Hz notch filtering were applied. Participants performed four motor imagery tasks (left hand, right hand, feet, rest) cued by visual arrows in a synchronous, offline paradigm without feedback. Each session consisted of 6 runs with 40 trials per run, yielding 240 trials per session across 7 sessions per subject.",
+    "funding": [],
     "searched_accessions": [
       "nm000237"
     ],
@@ -48,7 +90,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2022,
       "url": "https://doi.org/10.3389/fnhum.2022.831995",
-      "cited_by": 20,
+      "cited_by": 21,
       "abstract": "Significant variation in performance in motor imagery (MI) tasks impedes their wide adoption for brain-computer interface (BCI) applications. Previous researchers have found that resting-state alpha-band power is positively correlated with MI-BCI performance. In this study, we designed a neurofeedback training (NFT) protocol based on the up-regulation of the alpha band relative power (RP) to investigate its effect on MI-BCI performance. The principal finding of this study is that alpha NFT could successfully help subjects increase alpha-rhythm power and improve their MI-BCI performance. An individual difference was also found in this study in that subjects who increased alpha power more had a better performance improvement. Additionally, the functional connectivity (FC) of the frontal-parietal (FP) network was found to be enhanced after alpha NFT. However, the enhancement failed to reach a significant level after multiple comparisons correction. These findings contribute to a better un",
       "doi": "10.3389/fnhum.2022.831995",
       "pmid": "35463935",
@@ -106,6 +148,52 @@
         "confidence_score": 0.5120199778676033,
         "similarity_score": 0.4433073401451111,
         "citation_text_length": 1397,
+        "dataset_text_length": 2302,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Inter- and Intra-Subject Variability in EEG: A Systematic Survey",
+      "author": "Xuan-The Tran, Thien-Nhan Vo, S. Vu, Thoa T. Tran, M. Nguyen, T. Do, Chin-Teng Lin",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2602.01019",
+      "cited_by": 4,
+      "abstract": "Electroencephalography (EEG) underpins neuroscience, clinical neurophysiology, and brain-computer interfaces (BCIs), yet pronounced inter- and intra-subject variability limits reliability, reproducibility, and translation. This systematic review studies that quantified or modeled EEG variability across resting-state, event-related potentials (ERPs), and task-related/BCI paradigms (including motor imagery and SSVEP) in healthy and clinical cohorts. Across paradigms, inter-subject differences are typically larger than within-subject fluctuations, but both affect inference and model generalization. Stability is feature-dependent: alpha-band measures and individual alpha peak frequency are often relatively reliable, whereas higher-frequency and many connectivity-derived metrics show more heterogeneous reliability; ERP reliability varies by component, with P300 measures frequently showing moderate-to-good stability. We summarize major sources of variability (biological, state-related, techn",
+      "doi": "10.48550/arXiv.2602.01019",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.3389/fnhum.2021.701091",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5513220351934434,
+        "similarity_score": 0.4773350954055786,
+        "citation_text_length": 1190,
+        "dataset_text_length": 2302,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Depression Detection from Three-Channel Resting-State EEG Using a Hybrid Conv1D and Spectral–Statistical Fusion Model",
+      "author": "Oana-Isabela Știrbu, Florin-Ciprian Argatu, Felix–Constantin Adochiei, Bogdan-Adrian Enache, George-Călin Serițan",
+      "venue": "Sensors",
+      "year": 2026,
+      "url": "https://doi.org/10.3390/s26051417",
+      "cited_by": 2,
+      "abstract": "Major depressive disorder requires scalable, low-burden screening tools. We examined whether three-channel resting-state EEG can support reliable discrimination between major depressive disorder and healthy controls using a lightweight model compatible with portable implementations. This work makes three main contributions: (i) a compact hybrid fusion model combining raw-window Conv1D embeddings with per-channel spectral-statistical descriptors for three-channel resting-state EEG, (ii) a leakage-resistant subject-independent (cross-subject) evaluation protocol with subject-level inference via majority voting, and (iii) a preliminary external feasibility test on an independent portable three-channel cohort without fine-tuning. The proposed model fuses a Conv1D encoding of raw ≈15 s eyes-closed windows (3840 samples; 15.36 s at 250 Hz) with per-channel spectral and statistical descriptors. Training uses subject-independent splits to avoid leakage, class weighting, and data augmentation (",
+      "doi": "10.3390/s26051417",
+      "pmid": "41829384",
+      "openalex_id": "W7131348032",
+      "source_doi": "10.3389/fnhum.2021.701091",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5178512862324716,
+        "similarity_score": 0.44835609197616577,
+        "citation_text_length": 1276,
         "dataset_text_length": 2302,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -198,52 +286,6 @@
         "confidence_score": 0.5885762089490891,
         "similarity_score": 0.5095897912979126,
         "citation_text_length": 1353,
-        "dataset_text_length": 2302,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Depression Detection from Three-Channel Resting-State EEG Using a Hybrid Conv1D and Spectral–Statistical Fusion Model",
-      "author": "Oana-Isabela Știrbu, Florin-Ciprian Argatu, Felix–Constantin Adochiei, Bogdan-Adrian Enache, George-Călin Serițan",
-      "venue": "Sensors",
-      "year": 2026,
-      "url": "https://doi.org/10.3390/s26051417",
-      "cited_by": 1,
-      "abstract": "Major depressive disorder requires scalable, low-burden screening tools. We examined whether three-channel resting-state EEG can support reliable discrimination between major depressive disorder and healthy controls using a lightweight model compatible with portable implementations. This work makes three main contributions: (i) a compact hybrid fusion model combining raw-window Conv1D embeddings with per-channel spectral-statistical descriptors for three-channel resting-state EEG, (ii) a leakage-resistant subject-independent (cross-subject) evaluation protocol with subject-level inference via majority voting, and (iii) a preliminary external feasibility test on an independent portable three-channel cohort without fine-tuning. The proposed model fuses a Conv1D encoding of raw ≈15 s eyes-closed windows (3840 samples; 15.36 s at 250 Hz) with per-channel spectral and statistical descriptors. Training uses subject-independent splits to avoid leakage, class weighting, and data augmentation (",
-      "doi": "10.3390/s26051417",
-      "pmid": "41829384",
-      "openalex_id": "W7131348032",
-      "source_doi": "10.3389/fnhum.2021.701091",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5178512862324716,
-        "similarity_score": 0.44835609197616577,
-        "citation_text_length": 1276,
-        "dataset_text_length": 2302,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Inter- and Intra-Subject Variability in EEG: A Systematic Survey",
-      "author": "Xuan-The Tran, Thien-Nhan Vo, S. Vu, Thoa T. Tran, M. Nguyen, T. Do, Chin-Teng Lin",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2602.01019",
-      "cited_by": 1,
-      "abstract": "Electroencephalography (EEG) underpins neuroscience, clinical neurophysiology, and brain-computer interfaces (BCIs), yet pronounced inter- and intra-subject variability limits reliability, reproducibility, and translation. This systematic review studies that quantified or modeled EEG variability across resting-state, event-related potentials (ERPs), and task-related/BCI paradigms (including motor imagery and SSVEP) in healthy and clinical cohorts. Across paradigms, inter-subject differences are typically larger than within-subject fluctuations, but both affect inference and model generalization. Stability is feature-dependent: alpha-band measures and individual alpha peak frequency are often relatively reliable, whereas higher-frequency and many connectivity-derived metrics show more heterogeneous reliability; ERP reliability varies by component, with P300 measures frequently showing moderate-to-good stability. We summarize major sources of variability (biological, state-related, techn",
-      "doi": "10.48550/arXiv.2602.01019",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.3389/fnhum.2021.701091",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5513220351934434,
-        "similarity_score": 0.4773350954055786,
-        "citation_text_length": 1190,
         "dataset_text_length": 2302,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -395,7 +437,7 @@
       "venue": "The Journal of Clinical Endocrinology & Metabolism",
       "year": 2004,
       "url": "https://doi.org/10.1210/jc.2003-030760",
-      "cited_by": 289,
+      "cited_by": 291,
       "abstract": "Compared with the conventional approach, which recommended only insulin therapy when blood glucose levels exceeded 12 mmol/liter, strict maintenance of blood glucose levels less than 6.1 mmol/liter with intensive insulin therapy has shown to reduce intensive care mortality, acute renal failure, critical illness polyneuropathy, and bloodstream infections in critically ill patients by about 40%. This study of 363 patients, requiring intensive care for more than 7 d and randomly assigned to either conventional or intensive insulin therapy, examines the effects of intensive insulin therapy on glucose and lipid homeostasis and their respective impact on the improved outcome. Intensive insulin therapy effectively normalized blood glucose levels within 24 h, both in survivors and nonsurvivors. Intensive insulin therapy also increased serum levels of low-density lipoprotein (P = 0.007) and high-density lipoprotein (P = 0.005), whereas it suppressed the elevated serum triglyceride concentrations (P < 0.0001). Multivariate logistic regression analysis, corrected for baseline univariate risk factors and the effect on inflammation, indicated that lipid rather than glucose control independently determined the beneficial effects of intensive insulin therapy on morbidity and mortality. In postmortem biopsies obtained from 74 patients who died in the intensive care unit, intensive insulin therapy increased mRNA levels of skeletal muscle glucose transporter 4 (P = 0.02) and hexokinase (P = 0.03), unlike those of hepatic glucokinase. In conclusion, our data suggest that intensive insulin therapy normalizes blood glucose levels through stimulation of peripheral glucose uptake and concomitantly partially restores the abnormalities in the serum lipid profile, which may have contributed significantly to the improved outcome of protracted critical illness.",
       "doi": "10.1210/jc.2003-030760",
       "pmid": "14715853",
@@ -442,7 +484,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:29:25.135491+00:00",
+    "scoring_date": "2026-07-15T00:13:32.886823+00:00",
     "dataset_text_length": 2302,
     "num_citations_scored": 17,
     "summary_stats": {

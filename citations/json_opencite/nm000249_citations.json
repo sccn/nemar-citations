@@ -1,18 +1,65 @@
 {
   "dataset_id": "nm000249",
   "num_citations": 26,
-  "date_last_updated": "2026-06-18T23:24:10.914768+00:00",
+  "date_last_updated": "2026-07-03T14:24:19.151315+00:00",
   "metadata": {
-    "total_cumulative_citations": 252,
-    "fetch_date": "2026-06-18T23:24:10.914768+00:00",
+    "total_cumulative_citations": 253,
+    "fetch_date": "2026-07-03T14:24:19.151315+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1109/thms.2020.3038339",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "EEG Correlates of Difficulty Levels in Dynamical Transitions of Simulated Flying and Mapping Tasks",
+        "paper_year": 2020,
+        "paper_venue": "IEEE Transactions on Human-Machine Systems",
+        "reason": "The candidate paper title and abstract describe the specific protocol and results derived from the EEG data collected during flying and visual recognition tasks, matching the dataset's content.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000249",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1109/thms.2020.3038339",
+      "10.82901/nemar.nm000249"
+    ],
+    "keywords": [
+      "EEG",
+      "motor imagery",
+      "Brain-Computer Interfaces",
+      "workload assessment",
+      "closed-loop adaptation",
+      "visuomotor learning",
+      "real-time decoding",
+      "difficulty level classification",
+      "challenge point",
+      "simulated flying"
+    ],
+    "methods_description": "EEG data were acquired using a Biosemi ActiveTwo system with 64 channels at 256 Hz sampling rate (downsampled from 2048 Hz). Preprocessing included bandpass filtering (1-40 Hz, Butterworth order 14), SPHARA spatial filtering, common-average re-referencing, ICA-based EOG artifact removal, and amplitude thresholding (>50 µV rejection). Subjects performed a visuomotor task controlling simulated drone roll and pitch via joystick while navigating circular waypoints. Offline sessions consisted of 32 trajectories with v-shaped difficulty design; online sessions included 12 trajectories per condition with adaptive difficulty levels. Classification used LDA and elastic net regularization on power spectral density features.",
+    "funding": [
+      {
+        "funder_name": "Swiss National Centres of Competence in Research (NCCR) Robotics"
+      }
+    ],
     "searched_accessions": [
       "nm000249"
     ],
@@ -137,6 +184,29 @@
       }
     },
     {
+      "title": "Methods and Approaches for User Engagement and User Experience Analysis Based on Electroencephalography Recordings: A Systematic Review",
+      "author": "Christos Bellos, Kostas Stefanou, Alexandros T. Tzallas, Georgios Stergios, Markos G. Tsipouras",
+      "venue": "Electronics",
+      "year": 2025,
+      "url": "https://doi.org/10.3390/electronics14020251",
+      "cited_by": 11,
+      "abstract": "This review paper explores the intersection of user engagement and user experience studies with electroencephalography (EEG) analysis by investigating the existing literature in this field. User engagement describes the immediate, session-based experience of using interactive products and is commonly used as a metric to assess the success of games, online platforms, applications, and websites, while user experience encompasses the broader and longer-term aspects of user interaction. This review focuses on the use of EEG as a precise and objective method to gain insights into user engagement. EEG recordings capture brain activity as waves, which can be categorized into different frequency bands. By analyzing patterns of brain activity associated with attention, emotion, mental workload, and user experience, EEG provides valuable insights into user engagement. The review follows the PRISMA statement. The search process involved an extensive exploration of multiple databases, resulting in",
+      "doi": "10.3390/electronics14020251",
+      "pmid": null,
+      "openalex_id": "W4406221118",
+      "source_doi": "10.1109/thms.2020.3038339",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5019815826416016,
+        "similarity_score": 0.4346160888671875,
+        "citation_text_length": 1280,
+        "dataset_text_length": 2294,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Recognizing the situation awareness of forklift operators based on EEG techniques in a field experiment",
       "author": "Xin Li, Yutao Kang, Weijiong Chen, Feng Liu, Yu Jiao, Yabin Luo",
       "venue": "Frontiers in Neuroscience",
@@ -154,29 +224,6 @@
         "confidence_score": 0.5400577805936336,
         "similarity_score": 0.46758249402046204,
         "citation_text_length": 1230,
-        "dataset_text_length": 2294,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Methods and Approaches for User Engagement and User Experience Analysis Based on Electroencephalography Recordings: A Systematic Review",
-      "author": "Christos Bellos, Kostas Stefanou, Alexandros T. Tzallas, Georgios Stergios, Markos G. Tsipouras",
-      "venue": "Electronics",
-      "year": 2025,
-      "url": "https://doi.org/10.3390/electronics14020251",
-      "cited_by": 10,
-      "abstract": "This review paper explores the intersection of user engagement and user experience studies with electroencephalography (EEG) analysis by investigating the existing literature in this field. User engagement describes the immediate, session-based experience of using interactive products and is commonly used as a metric to assess the success of games, online platforms, applications, and websites, while user experience encompasses the broader and longer-term aspects of user interaction. This review focuses on the use of EEG as a precise and objective method to gain insights into user engagement. EEG recordings capture brain activity as waves, which can be categorized into different frequency bands. By analyzing patterns of brain activity associated with attention, emotion, mental workload, and user experience, EEG provides valuable insights into user engagement. The review follows the PRISMA statement. The search process involved an extensive exploration of multiple databases, resulting in",
-      "doi": "10.3390/electronics14020251",
-      "pmid": null,
-      "openalex_id": "W4406221118",
-      "source_doi": "10.1109/thms.2020.3038339",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5019815826416016,
-        "similarity_score": 0.4346160888671875,
-        "citation_text_length": 1280,
         "dataset_text_length": 2294,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -579,7 +626,7 @@
       "venue": "New England Journal of Medicine",
       "year": 2007,
       "url": "https://doi.org/10.1056/nejmoa064522",
-      "cited_by": 409,
+      "cited_by": 411,
       "abstract": "Persons who have hypermethylation of one allele of MLH1 in somatic cells throughout the body (a germ-line epimutation) have a predisposition for the development of cancer in a pattern typical of hereditary nonpolyposis colorectal cancer. By studying the families of two such persons, we found evidence that the epimutation was transmitted from a mother to her son but was erased in his spermatozoa. The affected maternal allele was inherited by three other siblings from these two families, but in those offspring the allele had reverted to the normal active state. These findings demonstrate a novel pattern of inheritance of cancer susceptibility and are consistent with transgenerational epigenetic inheritance.",
       "doi": "10.1056/nejmoa064522",
       "pmid": "17301300",
@@ -626,7 +673,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:29:49.958134+00:00",
+    "scoring_date": "2026-07-15T00:14:42.652552+00:00",
     "dataset_text_length": 2294,
     "num_citations_scored": 26,
     "summary_stats": {

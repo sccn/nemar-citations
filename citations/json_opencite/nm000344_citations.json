@@ -1,18 +1,93 @@
 {
   "dataset_id": "nm000344",
   "num_citations": 24,
-  "date_last_updated": "2026-06-18T23:25:19.860895+00:00",
+  "date_last_updated": "2026-07-03T15:25:34.978338+00:00",
   "metadata": {
-    "total_cumulative_citations": 64,
-    "fetch_date": "2026-06-18T23:25:19.860895+00:00",
+    "total_cumulative_citations": 69,
+    "fetch_date": "2026-07-03T15:25:34.978338+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1016/j.neuroimage.2023.120446",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Burst c-VEP Based BCI: Optimizing stimulus design for enhanced classification with minimal calibration data and improved user experience",
+        "paper_year": 2023,
+        "paper_venue": "NeuroImage",
+        "reason": "The candidate paper title and abstract introduce and describe the specific 'Burst c-VEP' approach and the data derived from it, making it the primary data paper.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.5281/zenodo.8255618",
+        "identifier_type": "doi",
+        "source_relation": "IsVersionOf",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "4-class code-VEP EEG data",
+        "paper_year": 2023,
+        "paper_venue": "Zenodo (CERN European Organization for Nuclear Research)",
+        "reason": "The candidate paper's title and abstract describe the collection and recording of EEG data from healthy volunteers, matching the dataset's content and protocol.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000344",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1016/j.neuroimage.2023.120446",
+      "10.5281/zenodo.8255618",
+      "10.82901/nemar.nm000344"
+    ],
+    "keywords": [
+      "EEG",
+      "Brain-Computer Interfaces",
+      "visual evoked potentials",
+      "code-VEP",
+      "convolutional neural networks",
+      "reactive BCI",
+      "amplitude depth reduction"
+    ],
+    "methods_description": "EEG was recorded from 12 healthy participants (mean age 30.6±7.1 years) at 500 Hz using a 32-channel BrainProducts LiveAmp system with standard 10-20 montage and active electrodes. Participants performed an offline 4-class c-VEP task with factorial manipulation of pattern type (burst vs m-sequence) and amplitude depth (100% vs 40%). Visual stimuli were presented on a 60 Hz Dell monitor using PsychoPy software. Burst codes consisted of brief flashes (~50ms) with minimum 200ms inter-burst intervals, while m-sequences used Fibonacci-type LFSR with segmented 132-frame subsequences. Classification employed a CNN architecture with spatial (8×1, 16 filters), temporal (1×32, 8 filters), and 2D convolution (5×5, 4 filters) layers using 250ms sliding windows with 2ms stride and Pearson correlation for target selection.",
+    "funding": [
+      {
+        "funder_name": "AID (Powerbrain project), France"
+      },
+      {
+        "funder_name": "AXA Research Fund Chair for Neuroergonomics, France"
+      },
+      {
+        "funder_name": "Chair for Neuroadaptive Technology, Artificial and Natural Intelligence Toulouse Institute (ANITI), France"
+      },
+      {
+        "funder_name": "AID",
+        "award_title": "Powerbrain project"
+      },
+      {
+        "funder_name": "AXA Research Fund",
+        "award_title": "Chair for Neuroergonomics"
+      },
+      {
+        "funder_name": "Artificial and Natural Intelligence Toulouse Institute (ANITI)",
+        "award_title": "Chair for Neuroadaptive Technology"
+      }
+    ],
     "searched_accessions": [
       "nm000344"
     ],
@@ -27,7 +102,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2024,
       "url": "https://doi.org/10.1088/1741-2552/ad8ef7",
-      "cited_by": 14,
+      "cited_by": 16,
       "abstract": "Abstract Objective. Reactive brain–computer interfaces typically rely on repetitive visual stimuli, which can strain the eyes and cause attentional distraction. To address these challenges, we propose a novel approach rooted in visual neuroscience to design visual Stimuli for Augmented Response (StAR). The StAR stimuli consist of small randomly-oriented Gabor or Ricker patches that optimize foveal neural response while reducing peripheral distraction. Approach. In a factorial design study, 24 participants equipped with an 8-dry electrode EEG system focused on series of target flickers presented under three formats: traditional Plain flickers, Gabor -based, or Ricker -based flickers. These flickers were part of a five-class code visually evoked potentials paradigm featuring low frequency, short, and aperiodic visual flashes. Main results. Subjective ratings revealed that Gabor and Ricker stimuli were visually comfortable and nearly invisible in peripheral vision compared to plain flicke",
       "doi": "10.1088/1741-2552/ad8ef7",
       "pmid": "39500051",
@@ -50,7 +125,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2025,
       "url": "https://doi.org/10.1088/1741-2552/add771",
-      "cited_by": 10,
+      "cited_by": 11,
       "abstract": "Abstract Objective. Sustaining vigilance over extended periods is crucial for many critical operations but remains challenging due to the cognitive resources required. Fatigue and other factors contribute to fluctuations in vigilance, causing attentional focus to drift from task-relevant information. Such lapses of attention, common in prolonged tasks, lead to decreased performance and missed critical information, with potentially serious consequences. Identifying physiological markers that predict inattention is key to developing preventive strategies. Approach. Previous research has established electroencephalography (EEG) responses to periodic visual stimuli, known as steady-state visual evoked potentials (SSVEP), as sensitive markers of attention. In this study, we evaluated a minimally intrusive SSVEP-based approach for tracking vigilance in healthy participants ( N = 16) during two sessions of a 45 min sustained visual attention task (Mackworth’s clock task). A 14 Hz frequency-ta",
       "doi": "10.1088/1741-2552/add771",
       "pmid": "40354807",
@@ -85,6 +160,29 @@
         "confidence_score": 0.32448338940739635,
         "similarity_score": 0.2809379994869232,
         "citation_text_length": 1134,
+        "dataset_text_length": 2239,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Frequency tagging of spatial attention using periliminal flickers",
+      "author": "Simon Ladouce, Frédéric Dehais",
+      "venue": "Imaging Neuroscience",
+      "year": 2024,
+      "url": "https://doi.org/10.1162/imag_a_00223",
+      "cited_by": 6,
+      "abstract": "Steady-State Visually Evoked Potentials (SSVEPs) manifest as a sustained rhythmic activity that can be observed in surface electroencephalography (EEG) in response to periodic visual stimuli, commonly referred to as flickers. SSVEPs are widely used in fundamental cognitive neuroscience paradigms and Brain-Computer Interfaces (BCI) due to their robust and rapid onset. However, they have drawbacks related to the intrusive saliency of flickering visual stimuli, which may induce eye strain, cognitive fatigue, and biases in visual exploration. Previous findings highlighted the potential of altering features of flicker stimuli to improve user experience. In this study, we propose to reduce the amplitude modulation depth of flickering stimuli down to the individuals' perceptual visibility threshold (periliminal) and below (subliminal). The stimulus amplitude modulation depth represents the contrast difference between the two alternating states of a flicker. A simple visual attention task wher",
+      "doi": "10.1162/imag_a_00223",
+      "pmid": "40800282",
+      "openalex_id": "W4399995597",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6248376613855363,
+        "similarity_score": 0.5409849882125854,
+        "citation_text_length": 1154,
         "dataset_text_length": 2239,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -131,29 +229,6 @@
         "confidence_score": 0.6883097979426385,
         "similarity_score": 0.5959392189979553,
         "citation_text_length": 1230,
-        "dataset_text_length": 2239,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Frequency tagging of spatial attention using periliminal flickers",
-      "author": "Simon Ladouce, Frédéric Dehais",
-      "venue": "Imaging Neuroscience",
-      "year": 2024,
-      "url": "https://doi.org/10.1162/imag_a_00223",
-      "cited_by": 5,
-      "abstract": "Steady-State Visually Evoked Potentials (SSVEPs) manifest as a sustained rhythmic activity that can be observed in surface electroencephalography (EEG) in response to periodic visual stimuli, commonly referred to as flickers. SSVEPs are widely used in fundamental cognitive neuroscience paradigms and Brain-Computer Interfaces (BCI) due to their robust and rapid onset. However, they have drawbacks related to the intrusive saliency of flickering visual stimuli, which may induce eye strain, cognitive fatigue, and biases in visual exploration. Previous findings highlighted the potential of altering features of flicker stimuli to improve user experience. In this study, we propose to reduce the amplitude modulation depth of flickering stimuli down to the individuals' perceptual visibility threshold (periliminal) and below (subliminal). The stimulus amplitude modulation depth represents the contrast difference between the two alternating states of a flicker. A simple visual attention task wher",
-      "doi": "10.1162/imag_a_00223",
-      "pmid": "40800282",
-      "openalex_id": "W4399995597",
-      "source_doi": "10.1016/j.neuroimage.2023.120446",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6248376613855363,
-        "similarity_score": 0.5409849882125854,
-        "citation_text_length": 1154,
         "dataset_text_length": 2239,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -252,6 +327,29 @@
       }
     },
     {
+      "title": "Rewiring Attention: Virtual Reality and Brain–Computer Interfaces in the Rehabilitation of Unilateral Spatial Neglect",
+      "author": "Alix Gouret, Alexandre Delaux, Solène Le Bars, Sylvie Chokron",
+      "venue": "Journal of Clinical Medicine",
+      "year": 2026,
+      "url": "https://doi.org/10.3390/jcm15031036",
+      "cited_by": 2,
+      "abstract": "Unilateral spatial neglect (USN) is a complex cognitive syndrome frequently observed after stroke. Characterized by a failure to attend, respond and orient to stimuli on the side opposite the brain lesion, USN significantly impairs patients' functional independence and presents significant challenges for rehabilitation. Current rehabilitation strategies often fall short in addressing the heterogenous manifestations of USN across perceptual modalities due to limited ecological validity, patient engagement and adaptability to individual needs. Recent advances in neurotechnologies such as virtual reality (VR) and brain-computer interfaces (BCIs) offer promising avenues for overcoming these limitations. These tools enable top-down rehabilitation strategies that directly engage cognitive recovery mechanisms to promote neuroplasticity, and support adaptive interventions tailored to individual profiles. This narrative review explores recent developments and future prospects of VR and BCI tech",
+      "doi": "10.3390/jcm15031036",
+      "pmid": "41682716",
+      "openalex_id": "W7125972707",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.3031199164688587,
+        "similarity_score": 0.262441486120224,
+        "citation_text_length": 1245,
+        "dataset_text_length": 2239,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Amplitude Modulation Depth Coding Method for SSVEP-Based Brain–Computer Interfaces",
       "author": "Ruxue Li, Zhenyu Wang, Xi Zhao, Guiying Xu, Honglin Hu, Ting Zhou, Tianheng Xu",
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
@@ -321,29 +419,6 @@
       }
     },
     {
-      "title": "Rewiring Attention: Virtual Reality and Brain–Computer Interfaces in the Rehabilitation of Unilateral Spatial Neglect",
-      "author": "Alix Gouret, Alexandre Delaux, Solène Le Bars, Sylvie Chokron",
-      "venue": "Journal of Clinical Medicine",
-      "year": 2026,
-      "url": "https://doi.org/10.3390/jcm15031036",
-      "cited_by": 1,
-      "abstract": "Unilateral spatial neglect (USN) is a complex cognitive syndrome frequently observed after stroke. Characterized by a failure to attend, respond and orient to stimuli on the side opposite the brain lesion, USN significantly impairs patients' functional independence and presents significant challenges for rehabilitation. Current rehabilitation strategies often fall short in addressing the heterogenous manifestations of USN across perceptual modalities due to limited ecological validity, patient engagement and adaptability to individual needs. Recent advances in neurotechnologies such as virtual reality (VR) and brain-computer interfaces (BCIs) offer promising avenues for overcoming these limitations. These tools enable top-down rehabilitation strategies that directly engage cognitive recovery mechanisms to promote neuroplasticity, and support adaptive interventions tailored to individual profiles. This narrative review explores recent developments and future prospects of VR and BCI tech",
-      "doi": "10.3390/jcm15031036",
-      "pmid": "41682716",
-      "openalex_id": "W7125972707",
-      "source_doi": "10.1016/j.neuroimage.2023.120446",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.3031199164688587,
-        "similarity_score": 0.262441486120224,
-        "citation_text_length": 1245,
-        "dataset_text_length": 2239,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Near-invisible c-VEP-based passive BCI for mental workload monitoring",
       "author": "Pietro Cimarosto, Sébastien Velut, Castillos-Cabrera Kalou, Torre Tresols Juan, Raphaëlle N. Roy, Frédéric Dehais",
       "venue": "Journal of Neural Engineering",
@@ -392,21 +467,21 @@
     {
       "title": "c-VEP and Burst-VEP dataset from Castillos et al. (2023)",
       "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
-      "venue": "Open MIND",
+      "venue": "UC San Diego",
       "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000163",
+      "url": "https://doi.org/10.82901/nemar.nm000163.v1.0.0",
       "cited_by": 0,
       "abstract": "This dataset comprises code-modulated Visual Evoked Potential (c-VEP) EEG recordings from 12 healthy participants performing a 2-class reactive brain-computer interface task with 4 targets. The study compares novel burst c-VEP sequences with traditional m-sequences at two stimulus amplitude depths (100% and 40%), evaluating classification performance, calibration efficiency, and user experience. EEG was recorded at 500 Hz using a 32-channel BrainProducts system with convolutional neural network decoding achieving 95.6% accuracy.",
-      "doi": "10.82901/nemar.nm000163",
+      "doi": "10.82901/nemar.nm000163.v1.0.0",
       "pmid": null,
-      "openalex_id": "W7160832225",
+      "openalex_id": "W7160853652",
       "source_doi": "10.1016/j.neuroimage.2023.120446",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.9436660847067834,
-        "similarity_score": 0.8170269131660461,
-        "citation_text_length": 709,
+        "confidence_score": 0.9426951867341996,
+        "similarity_score": 0.8161863088607788,
+        "citation_text_length": 712,
         "dataset_text_length": 2239,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -578,15 +653,15 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:31:00.357934+00:00",
+    "scoring_date": "2026-07-15T00:17:36.961294+00:00",
     "dataset_text_length": 2239,
     "num_citations_scored": 24,
     "summary_stats": {
-      "mean_confidence": 0.595156169901602,
+      "mean_confidence": 0.595115715819411,
       "median_confidence": 0.6127318654954435,
-      "std_confidence": 0.2077121584808793,
+      "std_confidence": 0.2076443621280475,
       "min_confidence": 0.13245496932417156,
-      "max_confidence": 0.9436660847067834,
+      "max_confidence": 0.9426951867341996,
       "high_confidence_count": 5,
       "medium_confidence_count": 15,
       "low_confidence_count": 4

@@ -1,45 +1,86 @@
 {
   "dataset_id": "nm000115",
-  "num_citations": 82,
-  "date_last_updated": "2026-06-18T23:17:43.792957+00:00",
+  "num_citations": 83,
+  "date_last_updated": "2026-07-03T10:23:40.280105+00:00",
   "metadata": {
-    "total_cumulative_citations": 1099,
-    "fetch_date": "2026-06-18T23:17:43.792957+00:00",
+    "total_cumulative_citations": 1122,
+    "fetch_date": "2026-07-03T10:23:40.280105+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1371/journal.pone.0162657",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "A Fully Automated Trial Selection Method for Optimization of Motor Imagery Based Brain-Computer Interface",
+        "paper_year": 2016,
+        "paper_venue": "PLoS ONE",
+        "reason": "The dataset description explicitly states the data was 'originally published by Zhou et al. (2016)' and the paper title matches the study's purpose.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset."
+        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset.",
+        "judgment_model": "gemma4:31b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes the EEG-BIDS standard, which is the data organization standard used to reformat this dataset into BIDS version 1.9.0."
+        "reason": "The paper describes the EEG-BIDS standard, which is the data organization standard used to reformat this dataset into BIDS version 1.9.0.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000115",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
       }
     ],
+    "searched_dois": [
+      "10.1371/journal.pone.0162657",
+      "10.82901/nemar.nm000115"
+    ],
+    "keywords": [
+      "EEG",
+      "motor imagery",
+      "brain-computer interface",
+      "trial selection",
+      "Electroencephalography"
+    ],
+    "methods_description": "EEG was recorded from 14 channels placed according to the extended 10/20 system (Fp1, Fp2, FC3, FCz, FC4, C3, Cz, C4, CP3, CPz, CP4, O1, Oz, O2) at a sampling frequency of 250 Hz with 50 Hz power line frequency. Each trial began with an auditory cue followed by a 5-second visual arrow stimulus indicating the motor imagery task, then a 4-second rest period. Four participants completed three recording sessions, each containing two runs with 75 trials per run (25 trials per class).",
+    "funding": [],
     "searched_accessions": [
       "nm000115"
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 82
+    "num_datapaper_citations": 83
   },
   "citation_details": [
     {
@@ -48,7 +89,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1088/1741-2552/aadea0",
-      "cited_by": 232,
+      "cited_by": 235,
       "abstract": "OBJECTIVE: Brain-computer interface (BCI) algorithm development has long been hampered by two major issues: small sample sets and a lack of reproducibility. We offer a solution to both of these problems via a software suite that streamlines both the issues of finding and preprocessing data in a reliable manner, as well as that of using a consistent interface for machine learning methods. APPROACH: By building on recent advances in software for signal analysis implemented in the MNE toolkit, and the unified framework for machine learning offered by the scikit-learn project, we offer a system that can improve BCI algorithm development. This system is fully open-source under the BSD licence and available at https://github.com/NeuroTechX/moabb. MAIN RESULTS: We analyze a set of state-of-the-art decoding algorithms across 12 open access datasets, including over 250 subjects. Our results show that even for the best methods, there are datasets which do not show significant improvements, and f",
       "doi": "10.1088/1741-2552/aadea0",
       "pmid": "30177583",
@@ -71,7 +112,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2020,
       "url": "https://doi.org/10.3389/fnhum.2020.00103",
-      "cited_by": 129,
+      "cited_by": 131,
       "abstract": "Cross-subject variability problems hinder practical usages of Brain-Computer Interfaces. Recently, deep learning has been introduced into the BCI community due to its better generalization and feature representation abilities. However, most studies currently only have validated deep learning models for single datasets, and the generalization ability for other datasets still needs to be further verified. In this paper, we validated deep learning models for eight MI datasets and demonstrated that the cross-dataset variability problem weakened the generalization ability of models. To alleviate the impact of cross-dataset variability, we proposed an online pre-alignment strategy for aligning the EEG distributions of different subjects before training and inference processes. The results of this study show that deep learning models with online pre-alignment strategies could significantly improve the generalization ability across datasets without any additional calibration data.",
       "doi": "10.3389/fnhum.2020.00103",
       "pmid": "32372929",
@@ -94,7 +135,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2510.21585",
-      "cited_by": 46,
+      "cited_by": 51,
       "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
       "doi": "10.48550/arXiv.2510.21585",
       "pmid": null,
@@ -117,7 +158,7 @@
       "venue": "IEEE Access",
       "year": 2022,
       "url": "https://doi.org/10.1109/access.2022.3204758",
-      "cited_by": 45,
+      "cited_by": 46,
       "abstract": "Brain–computer interface (BCI) is a technology that allows users to control computers by reflecting their intentions. Electroencephalogram (EEG)–based BCI has been developed because of its potential, however, its decoding performance is still insufficient to apply in the real–world environment. As deep learning methods achieve the significant performance in various domains, it has been applied in the EEG–based BCI domain. In particular, ShallowConvNet is one of the most widely used methods because of its robust decoding performance in multiple datasets. However, the model’s parameters have to be optimized to apply this model to various datasets each time, and we have also found some issues in architecture that disturb the stable training. In this paper, we highlight potential problems that might arise in ShallowConvNet and investigate the potential solutions. In addition, we propose a novel model, called M–ShallowConvNet, which solves the existing problems. The proposed model achieves ",
       "doi": "10.1109/access.2022.3204758",
       "pmid": null,
@@ -129,6 +170,29 @@
         "confidence_score": 0.6232151609659196,
         "similarity_score": 0.539580225944519,
         "citation_text_length": 1189,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "EEG-Based Brain-Computer Interface for Decoding Motor Imagery Tasks within the Same Hand Using Choi-Williams Time-Frequency Distribution",
+      "author": "Rami Alazrai, Hisham Alwanni, Yara Baslan, Nasim Alnuman, Mohammad I. Daoud",
+      "venue": "Sensors",
+      "year": 2017,
+      "url": "https://doi.org/10.3390/s17091937",
+      "cited_by": 44,
+      "abstract": "This paper presents an EEG-based brain-computer interface system for classifying eleven motor imagery (MI) tasks within the same hand. The proposed system utilizes the Choi-Williams time-frequency distribution (CWD) to construct a time-frequency representation (TFR) of the EEG signals. The constructed TFR is used to extract five categories of time-frequency features (TFFs). The TFFs are processed using a hierarchical classification model to identify the MI task encapsulated within the EEG signals. To evaluate the performance of the proposed approach, EEG data were recorded for eighteen intact subjects and four amputated subjects while imagining to perform each of the eleven hand MI tasks. Two performance evaluation analyses, namely channel- and TFF-based analyses, are conducted to identify the best subset of EEG channels and the TFFs category, respectively, that enable the highest classification accuracy between the MI tasks. In each evaluation analysis, the hierarchical classification",
+      "doi": "10.3390/s17091937",
+      "pmid": "28832513",
+      "openalex_id": "W2750484923",
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8085065722465515,
+        "similarity_score": 0.7350059747695923,
+        "citation_text_length": 1257,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -152,29 +216,6 @@
         "confidence_score": 0.677277029156685,
         "similarity_score": 0.586387038230896,
         "citation_text_length": 1316,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "EEG-Based Brain-Computer Interface for Decoding Motor Imagery Tasks within the Same Hand Using Choi-Williams Time-Frequency Distribution",
-      "author": "Rami Alazrai, Hisham Alwanni, Yara Baslan, Nasim Alnuman, Mohammad I. Daoud",
-      "venue": "Sensors",
-      "year": 2017,
-      "url": "https://doi.org/10.3390/s17091937",
-      "cited_by": 42,
-      "abstract": "This paper presents an EEG-based brain-computer interface system for classifying eleven motor imagery (MI) tasks within the same hand. The proposed system utilizes the Choi-Williams time-frequency distribution (CWD) to construct a time-frequency representation (TFR) of the EEG signals. The constructed TFR is used to extract five categories of time-frequency features (TFFs). The TFFs are processed using a hierarchical classification model to identify the MI task encapsulated within the EEG signals. To evaluate the performance of the proposed approach, EEG data were recorded for eighteen intact subjects and four amputated subjects while imagining to perform each of the eleven hand MI tasks. Two performance evaluation analyses, namely channel- and TFF-based analyses, are conducted to identify the best subset of EEG channels and the TFFs category, respectively, that enable the highest classification accuracy between the MI tasks. In each evaluation analysis, the hierarchical classification",
-      "doi": "10.3390/s17091937",
-      "pmid": "28832513",
-      "openalex_id": "W2750484923",
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.8085065722465515,
-        "similarity_score": 0.7350059747695923,
-        "citation_text_length": 1257,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -250,35 +291,12 @@
       }
     },
     {
-      "title": "Review of public motor imagery and execution datasets in brain-computer interfaces",
-      "author": "Daeun Gwon, Kyungho Won, Minseok Song, Chang S. Nam, Sung Chan Jun, Minkyu Ahn",
-      "venue": "Frontiers in Human Neuroscience",
-      "year": 2023,
-      "url": "https://doi.org/10.3389/fnhum.2023.1134869",
-      "cited_by": 30,
-      "abstract": "The demand for public datasets has increased as data-driven methodologies have been introduced in the field of brain-computer interfaces (BCIs). Indeed, many BCI datasets are available in various platforms or repositories on the web, and the studies that have employed these datasets appear to be increasing. Motor imagery is one of the significant control paradigms in the BCI field, and many datasets related to motor tasks are open to the public already. However, to the best of our knowledge, these studies have yet to investigate and evaluate the datasets, although data quality is essential for reliable results and the design of subject- or system-independent BCIs. In this study, we conducted a thorough investigation of motor imagery/execution EEG datasets recorded from healthy participants published over the past 13 years. The 25 datasets were collected from six repositories and subjected to a meta-analysis. In particular, we reviewed the specifications of the recording settings and ex",
-      "doi": "10.3389/fnhum.2023.1134869",
-      "pmid": "37063105",
-      "openalex_id": "W4361276743",
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.8278062817454339,
-        "similarity_score": 0.716715395450592,
-        "citation_text_length": 1230,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Functional Connectivity Ensemble Method to Enhance BCI Performance (FUCONE)",
       "author": "Marie-Constance Corsi, Sylvain Chevallier, Fabrizio De Vico Fallani, Florian Yger",
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2022,
       "url": "https://doi.org/10.1109/tbme.2022.3154885",
-      "cited_by": 29,
+      "cited_by": 31,
       "abstract": "OBJECTIVE: Relying on the idea that functional connectivity provides important insights on the underlying dynamic of neuronal interactions, we propose a novel framework that combines functional connectivity estimators and covariance-based pipelines to improve the classification of mental states, such as motor imagery. METHODS: A Riemannian classifier is trained for each estimator and an ensemble classifier combines the decisions in each feature space. A thorough assessment of the functional connectivity estimators is provided and the best performing pipeline among those tested, called FUCONE, is evaluated on different conditions and datasets. RESULTS: Using a meta-analysis to aggregate results across datasets, FUCONE performed significantly better than all state-of-the-art methods. CONCLUSION: The performance gain is mostly imputable to the improved diversity of the feature spaces, increasing the robustness of the ensemble classifier with respect to the inter- and intra-subject variabi",
       "doi": "10.1109/tbme.2022.3154885",
       "pmid": "35226599",
@@ -290,6 +308,29 @@
         "confidence_score": 0.6116975283622743,
         "similarity_score": 0.5296082496643066,
         "citation_text_length": 1238,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Review of public motor imagery and execution datasets in brain-computer interfaces",
+      "author": "Daeun Gwon, Kyungho Won, Minseok Song, Chang S. Nam, Sung Chan Jun, Minkyu Ahn",
+      "venue": "Frontiers in Human Neuroscience",
+      "year": 2023,
+      "url": "https://doi.org/10.3389/fnhum.2023.1134869",
+      "cited_by": 31,
+      "abstract": "The demand for public datasets has increased as data-driven methodologies have been introduced in the field of brain-computer interfaces (BCIs). Indeed, many BCI datasets are available in various platforms or repositories on the web, and the studies that have employed these datasets appear to be increasing. Motor imagery is one of the significant control paradigms in the BCI field, and many datasets related to motor tasks are open to the public already. However, to the best of our knowledge, these studies have yet to investigate and evaluate the datasets, although data quality is essential for reliable results and the design of subject- or system-independent BCIs. In this study, we conducted a thorough investigation of motor imagery/execution EEG datasets recorded from healthy participants published over the past 13 years. The 25 datasets were collected from six repositories and subjected to a meta-analysis. In particular, we reviewed the specifications of the recording settings and ex",
+      "doi": "10.3389/fnhum.2023.1134869",
+      "pmid": "37063105",
+      "openalex_id": "W4361276743",
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8278062817454339,
+        "similarity_score": 0.716715395450592,
+        "citation_text_length": 1230,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -480,6 +521,52 @@
       }
     },
     {
+      "title": "Classification of BCI-EEG Based on the Augmented Covariance Matrix",
+      "author": "Igor Carrara, Théodore Papadopoulo",
+      "venue": "IEEE Transactions on Biomedical Engineering",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/tbme.2024.3386219",
+      "cited_by": 14,
+      "abstract": "OBJECTIVE: Electroencephalography signals are recorded as multidimensional datasets. We propose a new framework based on the augmented covariance that stems from an autoregressive model to improve motor imagery classification. METHODS: From the autoregressive model can be derived the Yule-Walker equations, which show the emergence of a symmetric positive definite matrix: the augmented covariance matrix. The state-of the art for classifying covariance matrices is based on Riemannian Geometry. A fairly natural idea is therefore to apply this Riemannian Geometry based approach to these augmented covariance matrices. The methodology for creating the augmented covariance matrix shows a natural connection with the delay embedding theorem proposed by Takens for dynamical systems. Such an embedding method is based on the knowledge of two parameters: the delay and the embedding dimension, respectively related to the lag and the order of the autoregressive model. This approach provides new metho",
+      "doi": "10.1109/tbme.2024.3386219",
+      "pmid": "38587944",
+      "openalex_id": "W4321147766",
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6528673750162125,
+        "similarity_score": 0.5652531385421753,
+        "citation_text_length": 1182,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "DBConformer: Dual-Branch Convolutional Transformer for EEG Decoding",
+      "author": "Ziwei Wang, Hongbin Wang, Tianwang Jia, Xingyi He, Siyang Li, Dongrui Wu",
+      "venue": "IEEE Journal of Biomedical and Health Informatics",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/JBHI.2025.3622725",
+      "cited_by": 14,
+      "abstract": "Electroencephalography (EEG)-based brain-computer interfaces (BCIs) transform spontaneous/evoked neural activity into control commands for external communication. While convolutional neural networks (CNNs) remain the mainstream backbone for EEG decoding, their inherently short receptive field makes it difficult to capture long-range temporal dependencies and global inter-channel relationships. Recent CNN-Transformer (Conformer) hybrids partially address this issue, but most adopt a serial design, resulting in suboptimal integration of local and global features, and often overlook explicit channel-wise modeling. To address these limitations, we propose DBConformer, a dual-branch convolutional Transformer network tailored for EEG decoding. It integrates a temporal Conformer to model long-range temporal dependencies and a spatial Conformer to extract inter-channel interactions, capturing both temporal dynamics and spatial patterns in EEG signals. A lightweight channel attention module fur",
+      "doi": "10.1109/JBHI.2025.3622725",
+      "pmid": "41129442",
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6098783424496652,
+        "similarity_score": 0.5280331969261169,
+        "citation_text_length": 1227,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A comprehensive review of the movement imaginary brain-computer interface methods: Challenges and future directions",
       "author": "Sadaf Khademi, Mehrnoosh Neghabi, Morteza Farahi, Mehdi Shirzadi, Hamid Reza Marateb",
       "venue": "Elsevier eBooks",
@@ -503,29 +590,6 @@
       }
     },
     {
-      "title": "Classification of BCI-EEG Based on the Augmented Covariance Matrix",
-      "author": "Igor Carrara, Théodore Papadopoulo",
-      "venue": "IEEE Transactions on Biomedical Engineering",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/tbme.2024.3386219",
-      "cited_by": 13,
-      "abstract": "OBJECTIVE: Electroencephalography signals are recorded as multidimensional datasets. We propose a new framework based on the augmented covariance that stems from an autoregressive model to improve motor imagery classification. METHODS: From the autoregressive model can be derived the Yule-Walker equations, which show the emergence of a symmetric positive definite matrix: the augmented covariance matrix. The state-of the art for classifying covariance matrices is based on Riemannian Geometry. A fairly natural idea is therefore to apply this Riemannian Geometry based approach to these augmented covariance matrices. The methodology for creating the augmented covariance matrix shows a natural connection with the delay embedding theorem proposed by Takens for dynamical systems. Such an embedding method is based on the knowledge of two parameters: the delay and the embedding dimension, respectively related to the lag and the order of the autoregressive model. This approach provides new metho",
-      "doi": "10.1109/tbme.2024.3386219",
-      "pmid": "38587944",
-      "openalex_id": "W4321147766",
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6528673750162125,
-        "similarity_score": 0.5652531385421753,
-        "citation_text_length": 1182,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Minimizing Subject-dependent Calibration for BCI with Riemannian Transfer Learning",
       "author": "Salim Khazem, Sylvain Chevallier, Quentin Barthélemy, Karim Haroun, Camille Noûs",
       "venue": "2021 10th International IEEE/EMBS Conference on Neural Engineering (NER)",
@@ -543,29 +607,6 @@
         "confidence_score": 0.6150897163152695,
         "similarity_score": 0.5325452089309692,
         "citation_text_length": 1273,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "DBConformer: Dual-Branch Convolutional Transformer for EEG Decoding",
-      "author": "Ziwei Wang, Hongbin Wang, Tianwang Jia, Xingyi He, Siyang Li, Dongrui Wu",
-      "venue": "IEEE Journal of Biomedical and Health Informatics",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/JBHI.2025.3622725",
-      "cited_by": 13,
-      "abstract": "Electroencephalography (EEG)-based brain-computer interfaces (BCIs) transform spontaneous/evoked neural activity into control commands for external communication. While convolutional neural networks (CNNs) remain the mainstream backbone for EEG decoding, their inherently short receptive field makes it difficult to capture long-range temporal dependencies and global inter-channel relationships. Recent CNN-Transformer (Conformer) hybrids partially address this issue, but most adopt a serial design, resulting in suboptimal integration of local and global features, and often overlook explicit channel-wise modeling. To address these limitations, we propose DBConformer, a dual-branch convolutional Transformer network tailored for EEG decoding. It integrates a temporal Conformer to model long-range temporal dependencies and a spatial Conformer to extract inter-channel interactions, capturing both temporal dynamics and spatial patterns in EEG signals. A lightweight channel attention module fur",
-      "doi": "10.1109/JBHI.2025.3622725",
-      "pmid": "41129442",
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6098783424496652,
-        "similarity_score": 0.5280331969261169,
-        "citation_text_length": 1227,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -664,6 +705,29 @@
       }
     },
     {
+      "title": "Feature-aware domain invariant representation learning for EEG motor imagery decoding",
+      "author": "Jianxiu Li, Jiaxin Shi, Paula K. Yu, Xiaokai Yan, Yu-Ting Lin",
+      "venue": "Scientific Reports",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41598-025-95178-5",
+      "cited_by": 9,
+      "abstract": "Electroencephalography (EEG)-based motor imagery (MI) is extensively utilized in clinical rehabilitation and virtual reality-based movement control. Decoding EEG-based MI signals is challenging because of the inherent spatio-temporal variability of the original signal representation, coupled with a low signal-to-noise ratio (SNR), which impedes the extraction of clean and robust features. To address this issue, we propose a multi-scale spatio-temporal domain-invariant representation learning method, termed MSDI. By decomposing the original signal into spatial and temporal components, the proposed method extracts invariant features at multiple scales from both components. To further constrain the representation to invariant domains, we introduce a feature-aware shift operation that resamples the representation based on its feature statistics and feature measure, thereby projecting the features into a domain-invariant space. We evaluate our proposed method via two publicly available data",
+      "doi": "10.1038/s41598-025-95178-5",
+      "pmid": "40148520",
+      "openalex_id": "W4408946167",
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7003048592805863,
+        "similarity_score": 0.6063245534896851,
+        "citation_text_length": 1203,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Generalizable Movement Intention Recognition with Multiple Heterogeneous EEG Datasets",
       "author": "Xiao Gu, Jinpei Han, Guang‐Zhong Yang, Benny Lo",
       "venue": "2023 IEEE International Conference on Robotics and Automation (ICRA)",
@@ -681,6 +745,29 @@
         "confidence_score": 0.6998506307601929,
         "similarity_score": 0.605931282043457,
         "citation_text_length": 1239,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "MIRepNet: A pipeline and pre-trained model for EEG-based motor imagery classification",
+      "author": "Dingkun Liu, Zhu Chen, Jingwei Luo, Shijie Lian, Yuheng Chen, Shaojie Hou, Xiaolian Zhu, Dongrui Wu",
+      "venue": "Knowledge-Based Systems",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.knosys.2026.115966",
+      "cited_by": 9,
+      "abstract": "Brain-computer interfaces (BCIs) enable direct communication between the brain and external devices. Recent EEG foundation models aim to learn generalized representations across diverse BCI paradigms. However, these approaches overlook fundamental paradigm-specific neurophysiological distinctions, limiting their generalization ability. Importantly, in practical BCI deployments, the specific paradigm such as motor imagery (MI) for stroke rehabilitation or assistive robotics, is generally determined prior to data acquisition. This paper proposes MIRepNet, the first EEG foundation model tailored for the MI paradigm. MIRepNet comprises a high-quality EEG preprocessing pipeline incorporating a neurophysiologically-informed channel template, adaptable to EEG headsets with arbitrary electrode configurations. Furthermore, we introduce a hybrid pretraining strategy that combines self-supervised masked token reconstruction and supervised MI classification, facilitating rapid adaptation and accur",
+      "doi": "10.1016/j.knosys.2026.115966",
+      "pmid": null,
+      "openalex_id": "W7154894822",
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7883518052101136,
+        "similarity_score": 0.6825556755065918,
+        "citation_text_length": 1246,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -733,29 +820,6 @@
       }
     },
     {
-      "title": "MIRepNet: A pipeline and pre-trained model for EEG-based motor imagery classification",
-      "author": "Dingkun Liu, Zhu Chen, Jingwei Luo, Shijie Lian, Yuheng Chen, Shaojie Hou, Xiaolian Zhu, Dongrui Wu",
-      "venue": "Knowledge-Based Systems",
-      "year": 2026,
-      "url": "https://doi.org/10.1016/j.knosys.2026.115966",
-      "cited_by": 8,
-      "abstract": "Brain-computer interfaces (BCIs) enable direct communication between the brain and external devices. Recent EEG foundation models aim to learn generalized representations across diverse BCI paradigms. However, these approaches overlook fundamental paradigm-specific neurophysiological distinctions, limiting their generalization ability. Importantly, in practical BCI deployments, the specific paradigm such as motor imagery (MI) for stroke rehabilitation or assistive robotics, is generally determined prior to data acquisition. This paper proposes MIRepNet, the first EEG foundation model tailored for the MI paradigm. MIRepNet comprises a high-quality EEG preprocessing pipeline incorporating a neurophysiologically-informed channel template, adaptable to EEG headsets with arbitrary electrode configurations. Furthermore, we introduce a hybrid pretraining strategy that combines self-supervised masked token reconstruction and supervised MI classification, facilitating rapid adaptation and accur",
-      "doi": "10.1016/j.knosys.2026.115966",
-      "pmid": null,
-      "openalex_id": "W7154894822",
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7883518052101136,
-        "similarity_score": 0.6825556755065918,
-        "citation_text_length": 1246,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Surfing beta burst waveforms to improve motor imagery-based BCI",
       "author": "Sotirios Papadopoulos, Ludovic Darmet, Maciej J Szul, Marco Congedo, James Bonaiuto, Jérémie Mattout",
       "venue": "Imaging Neuroscience",
@@ -773,29 +837,6 @@
         "confidence_score": 0.7322443941235544,
         "similarity_score": 0.6339778304100037,
         "citation_text_length": 1222,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Feature-aware domain invariant representation learning for EEG motor imagery decoding",
-      "author": "Jianxiu Li, Jiaxin Shi, Paula K. Yu, Xiaokai Yan, Yu-Ting Lin",
-      "venue": "Scientific Reports",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s41598-025-95178-5",
-      "cited_by": 7,
-      "abstract": "Electroencephalography (EEG)-based motor imagery (MI) is extensively utilized in clinical rehabilitation and virtual reality-based movement control. Decoding EEG-based MI signals is challenging because of the inherent spatio-temporal variability of the original signal representation, coupled with a low signal-to-noise ratio (SNR), which impedes the extraction of clean and robust features. To address this issue, we propose a multi-scale spatio-temporal domain-invariant representation learning method, termed MSDI. By decomposing the original signal into spatial and temporal components, the proposed method extracts invariant features at multiple scales from both components. To further constrain the representation to invariant domains, we introduce a feature-aware shift operation that resamples the representation based on its feature statistics and feature measure, thereby projecting the features into a domain-invariant space. We evaluate our proposed method via two publicly available data",
-      "doi": "10.1038/s41598-025-95178-5",
-      "pmid": "40148520",
-      "openalex_id": "W4408946167",
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7003048592805863,
-        "similarity_score": 0.6063245534896851,
-        "citation_text_length": 1203,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1061,7 +1102,7 @@
       "year": 2020,
       "url": "https://doi.org/10.1080/03772063.2020.1816221",
       "cited_by": 4,
-      "abstract": "Nowadays, Brain Computer Interface has an important role in the life quality of parallelized people. However, this technique is mainly affected by the quality of the recorded signal in each trial. This problem could be solved by rejecting low-quality trials. But developing the processing based on the recorded signal from the brain, which is a mixture of the target signal plus noise and artifact, would not be favorable in situations that all trials have low quality. This paper solves this problem by presenting a new fast algorithm for separating recorded source signals. Results indicate the improvement in classification accuracy of the proposed method compared with the classification accuracy of processing on the recorded mixture signal.",
+      "abstract": "Nowadays, Brain Computer Interface has an important role in the life quality of paralyzed people. However, this technique is mainly affected by the quality of the recorded signal in each trial. This problem could be solved by rejecting low-quality trials. But developing the processing based on the recorded signal from the brain, which is a mixture of the target signal plus noise and artifact, would not be favourable in situations that all trials have low quality. This paper solves this problem by presenting a new fast algorithm for separating recorded source signals. Results indicate the improvement in classification accuracy of the proposed method compared with the well-known state of the art works.",
       "doi": "10.1080/03772063.2020.1816221",
       "pmid": null,
       "openalex_id": "W2954141432",
@@ -1069,9 +1110,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.7379092392325401,
-        "similarity_score": 0.6388824582099915,
-        "citation_text_length": 925,
+        "confidence_score": 0.7403009265661241,
+        "similarity_score": 0.6409531831741333,
+        "citation_text_length": 888,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1285,6 +1326,29 @@
       }
     },
     {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 2,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6594940307736398,
+        "similarity_score": 0.5709905028343201,
+        "citation_text_length": 1324,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "The Riemannian Means Field Classifier for EEG-Based BCI Data",
       "author": "Anton Andreev, Grégoire Cattan, Marco Congedo",
       "venue": "Sensors",
@@ -1400,23 +1464,23 @@
       }
     },
     {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod L'evy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "n/a",
+      "title": "LI-DSN: A Layer-wise Interactive Dual-Stream Network for EEG Decoding",
+      "author": "Cheng Yue, Zhiyuan Ma, Zhongye Xia, Xinche Zhang, Yisi Zhang, Xinke Shen, Sen Song",
+      "venue": "ArXiv",
       "year": 2026,
-      "url": "n/a",
+      "url": "https://doi.org/10.48550/arXiv.2604.01889",
       "cited_by": 1,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": null,
+      "abstract": "Electroencephalography (EEG) provides a non-invasive window into brain activity, offering high temporal resolution crucial for understanding and interacting with neural processes through brain-computer interfaces (BCIs). Current dual-stream neural networks for EEG often process temporal and spatial features independently through parallel branches, delaying their integration until a final, late-stage fusion. This design inherently leads to an\"information silo\"problem, precluding intermediate cross-stream refinement and hindering spatial-temporal decompositions essential for full feature utilization. We propose LI-DSN, a layer-wise interactive dual-stream network that facilitates progressive, cross-stream communication at each layer, thereby overcoming the limitations of late-fusion paradigms. LI-DSN introduces a novel Temporal-Spatial Integration Attention (TSIA) mechanism, which constructs a Spatial Affinity Correlation Matrix (SACM) to capture inter-electrode spatial structural relati",
+      "doi": "10.48550/arXiv.2604.01889",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.1371/journal.pone.0162657",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.660780919790268,
-        "similarity_score": 0.5721046924591064,
-        "citation_text_length": 1325,
+        "confidence_score": 0.5550908651947976,
+        "similarity_score": 0.4805981516838074,
+        "citation_text_length": 1195,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1676,6 +1740,29 @@
       }
     },
     {
+      "title": "B[FM]$^2$: Brain Foundation Model via Flow Matching with SplitUNet",
+      "author": "Jaedong Hwang, Kathleen Zhang, Wei Dai, Konstantinos Kontras, M. Vanmarcke, M. D. Vos, I. Fiete, Paul Pu Liang",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "EEG foundation models can learn generalizable representations from large-scale EEG corpora to enable single-backbone transfer across diverse clinical and brain-computer interface tasks. Existing models typically discretize the continuous multi-channel EEG waveform into patches or codebook tokens and train a transformer with masked self-supervision. Recognizing that this discretization fragments continuous brain rhythms and obscures fine-grained temporal dynamics, we present B[FM]$^2$(Brain Foundation Model via Flow Matching), whose inductive bias aligns with the data by pretraining directly on the raw signal using continuous-time flow matching without patches, tokenization, or masking. However, multi-channel EEG signals pose an architectural challenge for flow matching: time is densely sampled and highly autocorrelated (thousands of timepoints), while the electrode axis is short (tens of channels) at distinct scalp positions. To address this time-electrode asymmetry, we introduce Split",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.631187773346901,
+        "similarity_score": 0.5464829206466675,
+        "citation_text_length": 1218,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Temporal Out-of-Distribution Detection for Asynchronous Motor Imagery Brain-Computer Interfaces",
       "author": "Chenhao Liu, Siyang Li, Luofei Tan, Dongrui Wu",
       "venue": "n/a",
@@ -1716,29 +1803,6 @@
         "confidence_score": 0.5672035798430443,
         "similarity_score": 0.49108535051345825,
         "citation_text_length": 1233,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "LI-DSN: A Layer-wise Interactive Dual-Stream Network for EEG Decoding",
-      "author": "Cheng Yue, Zhiyuan Ma, Zhongye Xia, Xinche Zhang, Yisi Zhang, Xinke Shen, Sen Song",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2604.01889",
-      "cited_by": 0,
-      "abstract": "Electroencephalography (EEG) provides a non-invasive window into brain activity, offering high temporal resolution crucial for understanding and interacting with neural processes through brain-computer interfaces (BCIs). Current dual-stream neural networks for EEG often process temporal and spatial features independently through parallel branches, delaying their integration until a final, late-stage fusion. This design inherently leads to an\"information silo\"problem, precluding intermediate cross-stream refinement and hindering spatial-temporal decompositions essential for full feature utilization. We propose LI-DSN, a layer-wise interactive dual-stream network that facilitates progressive, cross-stream communication at each layer, thereby overcoming the limitations of late-fusion paradigms. LI-DSN introduces a novel Temporal-Spatial Integration Attention (TSIA) mechanism, which constructs a Spatial Affinity Correlation Matrix (SACM) to capture inter-electrode spatial structural relati",
-      "doi": "10.48550/arXiv.2604.01889",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5550908651947976,
-        "similarity_score": 0.4805981516838074,
-        "citation_text_length": 1195,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1884,7 +1948,7 @@
     },
     {
       "title": "Feature interpretability in BCIs: exploring the role of network lateralization",
-      "author": "Juliana Gonzalez-Astudillo, F. D. Fallani",
+      "author": "J. Gonzalez-Astudillo, F. D. Fallani",
       "venue": "n/a",
       "year": 2024,
       "url": "n/a",
@@ -1897,9 +1961,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5210189759731294,
-        "similarity_score": 0.4510986804962158,
-        "citation_text_length": 1161,
+        "confidence_score": 0.525091680586338,
+        "similarity_score": 0.45462483167648315,
+        "citation_text_length": 1156,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1931,17 +1995,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:40:35.355212+00:00",
+    "scoring_date": "2026-07-15T00:03:10.986353+00:00",
     "dataset_text_length": 2228,
-    "num_citations_scored": 82,
+    "num_citations_scored": 83,
     "summary_stats": {
-      "mean_confidence": 0.6249584431037671,
-      "median_confidence": 0.6234592294692993,
-      "std_confidence": 0.11516722646312624,
+      "mean_confidence": 0.6250958748287466,
+      "median_confidence": 0.6237032979726792,
+      "std_confidence": 0.11445359146027226,
       "min_confidence": 0.2541618543863297,
       "max_confidence": 1.0,
       "high_confidence_count": 17,
-      "medium_confidence_count": 61,
+      "medium_confidence_count": 62,
       "low_confidence_count": 4
     }
   }

@@ -1,18 +1,93 @@
 {
   "dataset_id": "nm000195",
   "num_citations": 36,
-  "date_last_updated": "2026-06-18T23:20:42.455197+00:00",
+  "date_last_updated": "2026-07-03T12:24:56.745584+00:00",
   "metadata": {
-    "total_cumulative_citations": 1163,
-    "fetch_date": "2026-06-18T23:20:42.455197+00:00",
+    "total_cumulative_citations": 1172,
+    "fetch_date": "2026-07-03T12:24:56.745584+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1109/mci.2018.2807039",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Unsupervised Learning for Brain-Computer Interfaces Based on Event-Related Potentials: Review and Online Comparison [Research Frontier]",
+        "paper_year": 2018,
+        "paper_venue": "IEEE Computational Intelligence Magazine",
+        "reason": "The paper title and abstract describe an online study using EEG data from twelve healthy participants controlling a visual speller, matching the dataset's content and authors.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000195",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1109/mci.2018.2807039",
+      "10.82901/nemar.nm000195"
+    ],
+    "keywords": [
+      "Brain-Computer Interfaces",
+      "Event-Related Potentials, P300",
+      "EEG",
+      "P300 speller",
+      "matrix speller",
+      "unsupervised learning",
+      "expectation-maximization",
+      "learning from label proportions",
+      "MIX method"
+    ],
+    "methods_description": "Online study with 12 healthy participants (8 female, 4 male; mean age 26, range 19-31 years) performing a P300 copy-spelling task. Participants spelled a 35-character German sentence across three blocks, each using a different unsupervised algorithm (EM, LLP, or MIX) in pseudo-randomized order. EEG was recorded at 1000 Hz from 31 channels (Ag/AgCl electrodes in extended 10-20 montage) using BrainAmp DC amplifier with nose reference. Visual stimuli were presented on a 24-inch screen at 80 cm distance with 250 ms stimulus onset asynchrony and 100 ms stimulus duration. A modified 6×6 grid with 10 additional # symbols was used with two interleaved highlighting sequences to enable unsupervised learning.",
+    "funding": [
+      {
+        "funder_name": "Special Research Fund of Ghent University"
+      },
+      {
+        "funder_name": "DFG",
+        "award_number": "EXC 1086",
+        "award_title": "BrainLinks-BrainTools Cluster of Excellence"
+      },
+      {
+        "funder_name": "DFG",
+        "award_number": "INST 39/963-1 FUGG",
+        "award_title": "bwHPC initiative"
+      },
+      {
+        "funder_name": "European Commission",
+        "award_number": "657679",
+        "award_title": "Marie Sklodowska-Curie grant agreement"
+      },
+      {
+        "funder_name": "DFG",
+        "award_number": "MU 987/14-1",
+        "award_title": "DFG SPP 1527"
+      },
+      {
+        "funder_name": "BMBF",
+        "award_number": "2017-0-00451"
+      },
+      {
+        "funder_name": "IITP",
+        "award_number": "1IS14013A",
+        "award_title": "Brain Korea 21 Plus Program"
+      }
+    ],
     "searched_accessions": [
       "nm000195"
     ],
@@ -27,7 +102,7 @@
       "venue": "Neurocomputing",
       "year": 2020,
       "url": "https://doi.org/10.1016/j.neucom.2020.09.017",
-      "cited_by": 464,
+      "cited_by": 466,
       "abstract": "Abstract Electroencephalogram (EEG) signal analysis, which is widely used for human-computer interaction and neurological disease diagnosis, requires a large amount of labeled data for training. However, the collection of substantial EEG data could be difficult owing to its randomness and non-stationary. Moreover, there is notable individual difference in EEG data, which affects the reusability and generalization of models. For mitigating the adverse effects from the above factors, transfer learning is applied in this field to transfer the knowledge learnt in one domain into a different but related domain. Transfer learning adjusts models with small-scale data of the task, and also maintains the learning ability with individual difference. This paper describes four main methods of transfer learning and explores their practical applications in EEG signal analysis in recent years. Finally, we discuss challenges and opportunities of transfer learning and suggest areas for further study.",
       "doi": "10.1016/j.neucom.2020.09.017",
       "pmid": null,
@@ -73,7 +148,7 @@
       "venue": "Physics Reports",
       "year": 2021,
       "url": "https://doi.org/10.1016/j.physrep.2021.03.002",
-      "cited_by": 208,
+      "cited_by": 209,
       "abstract": "Abstract Brain-computer interfaces (BCIs) development is closely related to physics. In this paper, we review the physical principles of BCIs, and underlying novel approaches for registration, analysis, and control of brain activity. We analyse recent advances in BCI studies focusing on their applications for (i) controlling the movement of robots and exoskeletons, (ii) revealing and preventing brain pathologies, (iii) assessing and controlling psychophysiological states, and (iv) monitoring and controlling normal and pathological cognitive activity. After introducing the topic to the reader in chapter 1, in chapter 2 we consider the BCI as a hardware/software communication system that allows interaction of humans or animals with their surroundings without the involvement of peripheral nerves and muscles, using control signals generated from brain cerebral activity. Classifying BCIs into three main types (active, reactive and passive), we describe their functional models and neuroimagi",
       "doi": "10.1016/j.physrep.2021.03.002",
       "pmid": null,
@@ -119,7 +194,7 @@
       "venue": "ArXiv",
       "year": 2024,
       "url": "https://doi.org/10.48550/arXiv.2404.15319",
-      "cited_by": 42,
+      "cited_by": 45,
       "abstract": "Objective. This study conduct an extensive Brain-computer interfaces (BCI) reproducibility analysis on open electroencephalography datasets, aiming to assess existing solutions and establish open and reproducible benchmarks for effective comparison within the field. The need for such benchmark lies in the rapid industrial progress that has given rise to undisclosed proprietary solutions. Furthermore, the scientific literature is dense, often featuring challenging-to-reproduce evaluations, making comparisons between existing approaches arduous. Approach. Within an open framework, 30 machine learning pipelines (separated into raw signal: 11, Riemannian: 13, deep learning: 6) are meticulously re-implemented and evaluated across 36 publicly available datasets, including motor imagery (14), P300 (15), and SSVEP (7). The analysis incorporates statistical meta-analysis techniques for results assessment, encompassing execution time and environmental impact considerations. Main results. The stu",
       "doi": "10.48550/arXiv.2404.15319",
       "pmid": null,
@@ -131,6 +206,29 @@
         "confidence_score": 0.5753618627786636,
         "similarity_score": 0.4981487989425659,
         "citation_text_length": 1273,
+        "dataset_text_length": 2360,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "An Effective Model for Human Cognitive Performance within a Human-Robot Collaboration Framework",
+      "author": "Khurram Monir Rabby, Mubbashar Altaf Khan, Ali Karimoddini, Steven Jiang",
+      "venue": "2019 IEEE International Conference on Systems, Man and Cybernetics (SMC)",
+      "year": 2019,
+      "url": "https://doi.org/10.1109/smc.2019.8914536",
+      "cited_by": 23,
+      "abstract": "With advances in technologies, robots can be employed in collaboration with human for completing the shared objective(s). This paper proposes a novel time-variant human cognitive performance modeling approach for human-robot collaborative actions. The proposed model considers human cognitive performance as a function of human cognitive workload, robot performance, and human physical performance. Novel about the proposed model is its ability to relate human cognitive workload and the task complexity to a utilization factor which is functionally correlated with the robot's mistake probability. The developed model is validated via a simulation environment and confirms that if the task complexity or the robot's mistake probability increases, human cognitive performance reduces over time.",
+      "doi": "10.1109/smc.2019.8914536",
+      "pmid": null,
+      "openalex_id": "W2991224891",
+      "source_doi": "10.1109/mci.2018.2807039",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.24150703102350238,
+        "similarity_score": 0.21955184638500214,
+        "citation_text_length": 1072,
         "dataset_text_length": 2360,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -154,29 +252,6 @@
         "confidence_score": 0.6322913324832917,
         "similarity_score": 0.547438383102417,
         "citation_text_length": 1241,
-        "dataset_text_length": 2360,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "An Effective Model for Human Cognitive Performance within a Human-Robot Collaboration Framework",
-      "author": "Khurram Monir Rabby, Mubbashar Altaf Khan, Ali Karimoddini, Steven Jiang",
-      "venue": "2019 IEEE International Conference on Systems, Man and Cybernetics (SMC)",
-      "year": 2019,
-      "url": "https://doi.org/10.1109/smc.2019.8914536",
-      "cited_by": 22,
-      "abstract": "With advances in technologies, robots can be employed in collaboration with human for completing the shared objective(s). This paper proposes a novel time-variant human cognitive performance modeling approach for human-robot collaborative actions. The proposed model considers human cognitive performance as a function of human cognitive workload, robot performance, and human physical performance. Novel about the proposed model is its ability to relate human cognitive workload and the task complexity to a utilization factor which is functionally correlated with the robot's mistake probability. The developed model is validated via a simulation environment and confirms that if the task complexity or the robot's mistake probability increases, human cognitive performance reduces over time.",
-      "doi": "10.1109/smc.2019.8914536",
-      "pmid": null,
-      "openalex_id": "W2991224891",
-      "source_doi": "10.1109/mci.2018.2807039",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.24150703102350238,
-        "similarity_score": 0.21955184638500214,
-        "citation_text_length": 1072,
         "dataset_text_length": 2360,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -344,6 +419,29 @@
       }
     },
     {
+      "title": "Towards physiology-informed data augmentation for EEG-based BCIs",
+      "author": "Oleksandr Zlatov, B. Blankertz",
+      "venue": "ArXiv",
+      "year": 2022,
+      "url": "https://doi.org/10.48550/arXiv.2203.14392",
+      "cited_by": 6,
+      "abstract": "Most EEG-based Brain-Computer Interfaces (BCIs) require a considerable amount of training data to calibrate the classification model, owing to the high variability in the EEG data, which manifests itself between participants, but also within participants from session to session (and, of course, from trial to trial). In general, the more complex the model, the more data for training is needed. We suggest a novel technique for augmenting the training data by generating new data from the data set at hand. Different from existing techniques, our method uses backward and forward projection using source localization and a head model to modify the current source dipoles of the model, thereby generating inter-participant variability in a physiologically meaningful way. In this manuscript, we explain the method and show first preliminary results for participant-independent motor-imagery classification. The accuracy was increased when using the proposed method of data augmentation by 13, 6 and 2",
+      "doi": "10.48550/arXiv.2203.14392",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1109/mci.2018.2807039",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5162647908926011,
+        "similarity_score": 0.4469825029373169,
+        "citation_text_length": 1138,
+        "dataset_text_length": 2360,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Unsupervised learning in a BCI chess application using label proportions and expectation-maximization",
       "author": "David Hübner, Albrecht Schall, Michael Tangermann",
       "venue": "Brain-Computer Interfaces",
@@ -384,29 +482,6 @@
         "confidence_score": 0.6992488709092141,
         "similarity_score": 0.6054102778434753,
         "citation_text_length": 1116,
-        "dataset_text_length": 2360,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Towards physiology-informed data augmentation for EEG-based BCIs",
-      "author": "Oleksandr Zlatov, B. Blankertz",
-      "venue": "ArXiv",
-      "year": 2022,
-      "url": "https://doi.org/10.48550/arXiv.2203.14392",
-      "cited_by": 5,
-      "abstract": "Most EEG-based Brain-Computer Interfaces (BCIs) require a considerable amount of training data to calibrate the classification model, owing to the high variability in the EEG data, which manifests itself between participants, but also within participants from session to session (and, of course, from trial to trial). In general, the more complex the model, the more data for training is needed. We suggest a novel technique for augmenting the training data by generating new data from the data set at hand. Different from existing techniques, our method uses backward and forward projection using source localization and a head model to modify the current source dipoles of the model, thereby generating inter-participant variability in a physiologically meaningful way. In this manuscript, we explain the method and show first preliminary results for participant-independent motor-imagery classification. The accuracy was increased when using the proposed method of data augmentation by 13, 6 and 2",
-      "doi": "10.48550/arXiv.2203.14392",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1109/mci.2018.2807039",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5162647908926011,
-        "similarity_score": 0.4469825029373169,
-        "citation_text_length": 1138,
         "dataset_text_length": 2360,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -459,6 +534,29 @@
       }
     },
     {
+      "title": "MCDDT: Mirror Center Loss-Based Dual-Scale Dual-Softmax Transformer for Multisource Subjects Transfer Learning in Motor Imagery Recognition",
+      "author": "Jing Luo, Jundong Li, Qi Mao, Yu Liu, Wenyao Yan, Yanmin Xue, Zhenghao Shi, Xinhong Hei",
+      "venue": "IEEE Transactions on Instrumentation and Measurement",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/tim.2025.3598395",
+      "cited_by": 4,
+      "abstract": "Accurate recognition of motor imagery (MI)-based electroencephalogram (EEG) signals is crucial for the performance of brain–computer interface (BCI). Given the limited number of EEG signals from a target subject, localizing neural activity in the sensorimotor cortex of the brain and transferring knowledge from source subject data with diverse distributions presented two significant challenges. In this article, we propose a mirror center loss-based dual-scale dual-Softmax transformer (MCDDT) model for multisource subjects transfer learning in MI recognition. Specifically, the mirror center loss is proposed to help the model enhance the localization ability of the neural activity, by minimizing the distance between the features with ipsilateral neural activity and maximizing that with contralateral neural activity. The dual-scale dual-Softmax transformer is introduced to adopt the different distribution of EEG signals from different source subjects, effectively transferring knowledge fro",
+      "doi": "10.1109/tim.2025.3598395",
+      "pmid": null,
+      "openalex_id": "W4413156973",
+      "source_doi": "10.1109/mci.2018.2807039",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.573530112951994,
+        "similarity_score": 0.4965628683567047,
+        "citation_text_length": 1317,
+        "dataset_text_length": 2360,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "EDAPT: towards calibration-free BCIs with continual online adaptation",
       "author": "Lisa Haxel, Jaivardhan Kapoor, Ulf Ziemann, Jakob H Macke",
       "venue": "Journal of Neural Engineering",
@@ -476,29 +574,6 @@
         "confidence_score": 0.4139971464872361,
         "similarity_score": 0.3584390878677368,
         "citation_text_length": 1194,
-        "dataset_text_length": 2360,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "MCDDT: Mirror Center Loss-Based Dual-Scale Dual-Softmax Transformer for Multisource Subjects Transfer Learning in Motor Imagery Recognition",
-      "author": "Jing Luo, Jundong Li, Qi Mao, Yu Liu, Wenyao Yan, Yanmin Xue, Zhenghao Shi, Xinhong Hei",
-      "venue": "IEEE Transactions on Instrumentation and Measurement",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/tim.2025.3598395",
-      "cited_by": 3,
-      "abstract": "Accurate recognition of motor imagery (MI)-based electroencephalogram (EEG) signals is crucial for the performance of brain–computer interface (BCI). Given the limited number of EEG signals from a target subject, localizing neural activity in the sensorimotor cortex of the brain and transferring knowledge from source subject data with diverse distributions presented two significant challenges. In this article, we propose a mirror center loss-based dual-scale dual-Softmax transformer (MCDDT) model for multisource subjects transfer learning in MI recognition. Specifically, the mirror center loss is proposed to help the model enhance the localization ability of the neural activity, by minimizing the distance between the features with ipsilateral neural activity and maximizing that with contralateral neural activity. The dual-scale dual-Softmax transformer is introduced to adopt the different distribution of EEG signals from different source subjects, effectively transferring knowledge fro",
-      "doi": "10.1109/tim.2025.3598395",
-      "pmid": null,
-      "openalex_id": "W4413156973",
-      "source_doi": "10.1109/mci.2018.2807039",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.573530112951994,
-        "similarity_score": 0.4965628683567047,
-        "citation_text_length": 1317,
         "dataset_text_length": 2360,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -852,7 +927,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:46:04.807428+00:00",
+    "scoring_date": "2026-07-15T00:09:54.774609+00:00",
     "dataset_text_length": 2360,
     "num_citations_scored": 36,
     "summary_stats": {

@@ -1,0 +1,240 @@
+{
+  "dataset_id": "on005555",
+  "num_citations": 7,
+  "date_last_updated": "2026-07-04T03:23:50.212018+00:00",
+  "metadata": {
+    "total_cumulative_citations": 1,
+    "fetch_date": "2026-07-04T03:23:50.212018+00:00",
+    "processing_version": "1.0",
+    "fetch_status": "success",
+    "anchor_count": 2,
+    "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
+    "anchor_judgment_model": "gemma4:e4b",
+    "anchors": [
+      {
+        "identifier": "10.1111/j.1365-2869.2008.00700.x",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "related_work",
+        "kept": false,
+        "paper_title": "Interrater reliability for sleep scoring according to the Rechtschaffen &amp; Kales and the new AASM standard",
+        "paper_year": 2009,
+        "paper_venue": "Journal of Sleep Research",
+        "reason": "The paper discusses interrater reliability for sleep scoring using the SIESTA database, which is topically related to sleep but does not describe the BOAS dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.5664/jcsm.2350",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "methodology",
+        "kept": false,
+        "paper_title": "The American Academy of Sleep Medicine Inter-scorer Reliability Program: Sleep Stage Scoring",
+        "paper_year": 2013,
+        "paper_venue": "Journal of Clinical Sleep Medicine",
+        "reason": "The paper, 'Inter-scorer Reliability Program: Sleep Stage Scoring,' describes a general clinical scoring method (sleep staging) used in the dataset, but does not introduce or describe the specific BOAS dataset itself.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.1101/2024.06.12.597764",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Automatic sleep scoring for real-time monitoring and stimulation in individuals with and without sleep apnea",
+        "paper_year": 2024,
+        "paper_venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+        "reason": "The paper's authors and focus on automatic sleep scoring using wearable sensors align directly with the BOAS dataset's goal of validating wearable EEG against PSG standards.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.on005555",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1101/2024.06.12.597764",
+      "10.82901/nemar.on005555"
+    ],
+    "keywords": [
+      "sleep staging",
+      "electroencephalography",
+      "Polysomnography",
+      "wearable sensors",
+      "deep learning",
+      "sleep monitoring"
+    ],
+    "methods_description": "Data were collected from 128 nights of simultaneous recording using two systems: a Micromed Brain Quick Plus Evolution PSG system (recording EEG from F3, F4, C3, C4, O1, O2; EOG; chin EMG; abdominal and thoracic breathing belts; thermistor and nasal cannula airflow; and PPG) and a Bitbrain wearable EEG headband (recording forehead EEG at AF7/AF8 locations, 6-axis IMU, and PPG). Sleep stages were independently scored by three expert raters following AASM criteria, with consensus labels derived when at least two raters agreed. A deep learning model was trained on consensus labels using cross-validation, achieving 87.13% accuracy on PSG data and 86.71% on wearable EEG data.",
+    "funding": [
+      {
+        "funder_name": "Programa Misiones de I+D en Inteligencia Artificial",
+        "award_number": "MIA.2021.M02.0007",
+        "award_title": "AI4HEALTHYAGING"
+      },
+      {
+        "funder_name": "Euripides",
+        "award_number": "IDI-20210522",
+        "award_title": "pAvIs"
+      },
+      {
+        "funder_name": "European Commission",
+        "award_number": "964677",
+        "award_title": "MITICS"
+      },
+      {
+        "funder_name": "European Commission",
+        "award_number": "101099555",
+        "award_title": "BAYFLEX"
+      },
+      {
+        "funder_name": "European Commission",
+        "award_number": "101135782",
+        "award_title": "MANOLO"
+      },
+      {
+        "funder_name": "Programa Aragon Investigo",
+        "award_number": "Z-0073-INVESCS-22"
+      },
+      {
+        "funder_name": "Government of Aragon",
+        "award_number": "IDMF/2023/0007"
+      },
+      {
+        "funder_name": "red.es",
+        "award_number": "2021/C005/00143341"
+      }
+    ],
+    "searched_accessions": [
+      "on005555",
+      "ds005555"
+    ],
+    "num_accession_mentions": 2,
+    "num_dataset_citations": 4,
+    "num_datapaper_citations": 3
+  },
+  "citation_details": [
+    {
+      "title": "A Systematic Evaluation of Self-Supervised Learning for Label-Efficient Sleep Staging with Wearable EEG",
+      "author": "Emilio Estevan, María Sierra-Torralba, Eduardo L'opez-Larraz, L. Montesano",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2510.07960",
+      "cited_by": 1,
+      "abstract": "Wearable EEG devices have emerged as a promising alternative to polysomnography (PSG). As affordable and scalable solutions, their widespread adoption results in the collection of massive volumes of unlabeled data that cannot be analyzed by clinicians at scale. Meanwhile, the recent success of deep learning for sleep scoring has relied on large annotated datasets. Self-supervised learning (SSL) offers an opportunity to bridge this gap, leveraging unlabeled signals to address label scarcity and reduce annotation effort. In this paper, we present the first systematic evaluation of SSL for sleep staging using wearable EEG. We introduce a structured benchmarking framework encompassing a range of SSL paradigms and propose a specialized pipeline tailored to the wearable EEG domain, evaluating them on two sleep databases acquired with the Ikon Sleep wearable headband: BOAS, a high-quality benchmark containing PSG and wearable EEG recordings with consensus labels, and HOGAR, a large collection",
+      "doi": "10.48550/arXiv.2510.07960",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1101/2024.06.12.597764",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "mentions_accession": true,
+      "matched_accession": "ds005555"
+    },
+    {
+      "title": "Sleep Staging for Wearable Electroencephalography Leveraging Machine Learning and Conventional Polysomnography Datasets <sup>*</sup>",
+      "author": "Gürkan Yılmaz, Cristina Sainz Martinez, Fabian Braun, Oriella Gnarra, Andrea Seiler, Kaspar Schindler, Markus H. Schmidt, Mathieu Lemay, João Jorge",
+      "venue": "2025 47th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/embc58623.2025.11254304",
+      "cited_by": 0,
+      "abstract": "Wearable electroencephalography (EEG) sensors are becoming increasingly accessible, enabling long-term, at-home automatic sleep profiling, with outstanding potential for personalized medicine and wellness applications. However, current devices remain less reliable for sleep stage classification than gold-standard, lab-based polysomnography (PSG). One of the main bottlenecks is the need to collect extensive datasets for each new wearable device together with a gold standard reference, to train robust algorithms. To tackle this challenge, here, we investigated machine learning and feature engineering techniques on a recent PSG dataset containing multi-channel EEG and reference sleep stage labels, to train classifiers tailored for sleep staging on a separate, wearable EEG headband (ULTEEMNite). We found that the classification performance improved when: (i) training on EEG configurations spatially closer to that of the wearable device, (ii) filtering the training data to approximate the s",
+      "doi": "10.1109/embc58623.2025.11254304",
+      "pmid": "41336713",
+      "openalex_id": "W4416962667",
+      "source_doi": "10.1101/2024.06.12.597764",
+      "source_relation": "References",
+      "discovery_backend": "opencite"
+    },
+    {
+      "title": "The Bitbrain Open Access Sleep (BOAS) dataset",
+      "author": "Eduardo López‐Larraz, María Sierra-Torralba, Sergio Clemente, Galit Fierro, David Oriol, Javier Minguez, Luis Montesano, Jens G. Klinzing",
+      "venue": "Open MIND",
+      "year": 2026,
+      "url": "https://doi.org/10.82901/nemar.on005555",
+      "cited_by": 0,
+      "abstract": "The Bitbrain Open Access Sleep (BOAS) dataset comprises 128 nights of simultaneous polysomnography and wearable EEG recordings from 108 unique participants, designed to validate emerging wearable EEG technology against clinical-grade sleep monitoring standards. The dataset includes human expert consensus sleep stage labels derived from three independent scorers following AASM criteria, as well as AI-generated sleep stage labels from a deep learning model trained on both PSG and wearable EEG data. This dual-recording approach provides a comprehensive resource for evaluating wearable EEG performance in sleep studies and advancing automated sleep staging algorithms.",
+      "doi": "10.82901/nemar.on005555",
+      "pmid": null,
+      "openalex_id": "W7166318531",
+      "source_doi": "10.1101/2024.06.12.597764",
+      "source_relation": "References",
+      "discovery_backend": "opencite"
+    },
+    {
+      "title": "Forehead and In-Ear EEG Acquisition and Processing: Biomarker Analysis and Memory-Efficient Deep Learning Algorithm for Sleep Staging with Optimized Feature Dimensionality",
+      "author": "Roberto De Fazio, Şule Esma Yalçınkaya, Ilaria Cascella, Carolina Del-Valle-Soto, Massimo De Vittorio, Paolo Visconti",
+      "venue": "Sensors",
+      "year": 2025,
+      "url": "https://doi.org/10.3390/s25196021",
+      "cited_by": 0,
+      "abstract": "Advancements in electroencephalography (EEG) technology and feature extraction methods have paved the way for wearable, non-invasive systems that enable continuous sleep monitoring outside clinical environments. This study presents the development and evaluation of an EEG-based acquisition system for sleep staging, which can be adapted for wearable applications. The system utilizes a custom experimental setup with the ADS1299EEG-FE-PDK evaluation board to acquire EEG signals from the forehead and in-ear regions under various conditions, including visual and auditory stimuli. Afterward, the acquired signals were processed to extract a wide range of features in time, frequency, and non-linear domains, selected based on their physiological relevance to sleep stages and disorders. The feature set was reduced using the Minimum Redundancy Maximum Relevance (mRMR) algorithm and Principal Component Analysis (PCA), resulting in a compact and informative subset of principal components. Experimen",
+      "doi": "10.3390/s25196021",
+      "pmid": "41094844",
+      "openalex_id": "W4414704804",
+      "source_doi": "10.1101/2024.06.12.597764",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "mentions_accession": true,
+      "matched_accession": "ds005555"
+    },
+    {
+      "title": "xSTAE: Explaining Classifier Decisions through EEG Signal Style Transfer Autoencoding",
+      "author": "Natalia Koliou, Panagiotis Zazos, C. Romesis, Cristian Bosch, S. Konstantopoulos, Panagiotis Trakadas",
+      "venue": "n/a",
+      "year": 2025,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": null,
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1101/2024.06.12.597764",
+      "source_relation": "References",
+      "discovery_backend": "opencite"
+    },
+    {
+      "title": "Sleep-Spindle-Rich Windows Are Associated With Local Meta-Noetic Phase-Space Shifts in N2 Sleep",
+      "author": "Robin Langell",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20038828",
+      "cited_by": 0,
+      "abstract": "Event-locked analysis of OpenNeuro ds005555 sleep EEG testing whether N2 sleep-spindle windows show local Meta-Noetic Phase Space (MNPS) shifts. The release includes manuscript files, figures, event-locked MNPS/9D/MNJ analyses, matched-control tests, temporal nulls, baseline-contamination checks, and spectral incremental-validity results. Findings support a bounded measurement-layer claim: spindle-rich N2 windows are associated with reproducible local MNPS/9D reconfiguration beyond pre-event baseline and matched non-spindle controls.",
+      "doi": "10.5281/zenodo.20038828",
+      "pmid": null,
+      "openalex_id": "W7160778749",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005555"
+    },
+    {
+      "title": "Sleep-Spindle-Rich Windows Are Associated With Local Meta-Noetic Phase-Space Shifts in N2 Sleep",
+      "author": "Robin Langell",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20038829",
+      "cited_by": 0,
+      "abstract": "Event-locked analysis of OpenNeuro ds005555 sleep EEG testing whether N2 sleep-spindle windows show local Meta-Noetic Phase Space (MNPS) shifts. The release includes manuscript files, figures, event-locked MNPS/9D/MNJ analyses, matched-control tests, temporal nulls, baseline-contamination checks, and spectral incremental-validity results. Findings support a bounded measurement-layer claim: spindle-rich N2 windows are associated with reproducible local MNPS/9D reconfiguration beyond pre-event baseline and matched non-spindle controls.",
+      "doi": "10.5281/zenodo.20038829",
+      "pmid": null,
+      "openalex_id": "W7160771054",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005555"
+    }
+  ]
+}

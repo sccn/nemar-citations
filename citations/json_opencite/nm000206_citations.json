@@ -1,24 +1,89 @@
 {
   "dataset_id": "nm000206",
-  "num_citations": 66,
-  "date_last_updated": "2026-06-18T23:21:04.663143+00:00",
+  "num_citations": 64,
+  "date_last_updated": "2026-07-03T12:26:04.980629+00:00",
   "metadata": {
-    "total_cumulative_citations": 289,
-    "fetch_date": "2026-06-18T23:21:04.663143+00:00",
+    "total_cumulative_citations": 298,
+    "fetch_date": "2026-07-03T12:26:04.980629+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1038/s41597-022-01898-y",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Open multi-session and multi-task EEG cognitive Dataset for passive brain-computer Interface Applications",
+        "paper_year": 2023,
+        "paper_venue": "Scientific Data",
+        "reason": "The candidate paper's title and abstract describe the release and utility of a specific EEG cognitive dataset, aligning with the dataset's focus on neuroergonomics and BCI applications.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.5281/zenodo.6874128",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "COG-BCI database: A multi-session and multi-task EEG cognitive dataset for passive brain-computer interfaces",
+        "paper_year": 2022,
+        "paper_venue": "Zenodo (CERN European Organization for Nuclear Research)",
+        "reason": "The candidate paper, 'COG-BCI database...', describes a multi-session EEG cognitive dataset, aligning with the neuroergonomic and EEG nature of the nm000206 dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000206",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1038/s41597-022-01898-y",
+      "10.5281/zenodo.6874128",
+      "10.82901/nemar.nm000206"
+    ],
+    "keywords": [
+      "EEG",
+      "Brain-Computer Interfaces",
+      "mental workload",
+      "neuroergonomics",
+      "cognitive load",
+      "resting state",
+      "passive BCI",
+      "MATB-II"
+    ],
+    "methods_description": "EEG data were acquired using an ActiCHamp system (Brain Products GmbH) with 62 active Ag/AgCl electrodes positioned according to the standard 10-20 montage, referenced to Fpz. Sampling rate was 500 Hz with a 50 Hz line frequency. Impedance was maintained below 25 kOhm. Participants completed two sessions each, performing resting state and three difficulty levels of the MATB-II task. An auxiliary ECG channel was recorded.",
+    "funding": [
+      {
+        "funder_name": "ERASMUS program"
+      },
+      {
+        "funder_name": "ANITI (Artificial and Natural Intelligence Toulouse Institute)"
+      },
+      {
+        "funder_name": "ANITI",
+        "award_title": "Artificial and Natural Intelligence Toulouse Institute"
+      }
+    ],
     "searched_accessions": [
       "nm000206"
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 66
+    "num_datapaper_citations": 64
   },
   "citation_details": [
     {
@@ -27,7 +92,7 @@
       "venue": "Scientific Data",
       "year": 2023,
       "url": "https://doi.org/10.1038/s41597-022-01898-y",
-      "cited_by": 50,
+      "cited_by": 51,
       "abstract": "Brain-Computer Interfaces and especially passive Brain-Computer interfaces (pBCI), with their ability to estimate and monitor user mental states, are receiving increasing attention from both the fundamental research and the applied research and development communities. Testing new pipelines and benchmarking classifiers and feature extraction algorithms is central to further research within this domain. Unfortunately, data sharing in pBCI research is still scarce. The COG-BCI database encompasses the recordings of 29 participants over 3 separate sessions with 4 different tasks (MATB, N-Back, PVT, Flanker) designed to elicit different mental states, for a total of over 100 hours of open EEG data. This dataset was validated on a subjective, behavioral and physiological level, to ensure its usefulness to the pBCI community. Furthermore, a proof of concept is given with an example of mental workload estimation pipeline and results, to ensure that the data can be used for the design and eval",
       "doi": "10.1038/s41597-022-01898-y",
       "pmid": "36765121",
@@ -91,6 +156,29 @@
       }
     },
     {
+      "title": "Reproducible machine learning research in mental workload classification using EEG",
+      "author": "Güliz Demirezen, Tuğba Taşkaya Temizel, Anne-Marie Brouwer",
+      "venue": "Frontiers in Neuroergonomics",
+      "year": 2024,
+      "url": "https://doi.org/10.3389/fnrgo.2024.1346794",
+      "cited_by": 18,
+      "abstract": "This study addresses concerns about reproducibility in scientific research, focusing on the use of electroencephalography (EEG) and machine learning to estimate mental workload. We established guidelines for reproducible machine learning research using EEG and used these to assess the current state of reproducibility in mental workload modeling. We first started by summarizing the current state of reproducibility efforts in machine learning and in EEG. Next, we performed a systematic literature review on Scopus, Web of Science, ACM Digital Library, and Pubmed databases to find studies about reproducibility in mental workload prediction using EEG. All of this previous work was used to formulate guidelines, which we structured along the widely recognized Cross-Industry Standard Process for Data Mining (CRISP-DM) framework. By using these guidelines, researchers can ensure transparency and comprehensiveness of their methodologies, therewith enhancing collaboration and knowledge-sharing wi",
+      "doi": "10.3389/fnrgo.2024.1346794",
+      "pmid": "38660590",
+      "openalex_id": "W4394684824",
+      "source_doi": "10.1038/s41597-022-01898-y",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5791046699881555,
+        "similarity_score": 0.5013893246650696,
+        "citation_text_length": 1207,
+        "dataset_text_length": 2285,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Unobtrusive measurement of cognitive load and physiological signals in uncontrolled environments",
       "author": "Christoph Anders, Sidratul Moontaha, Samik Real, Bert Arnrich",
       "venue": "Scientific Data",
@@ -108,29 +196,6 @@
         "confidence_score": 0.632384684085846,
         "similarity_score": 0.5475192070007324,
         "citation_text_length": 1211,
-        "dataset_text_length": 2285,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Reproducible machine learning research in mental workload classification using EEG",
-      "author": "Güliz Demirezen, Tuğba Taşkaya Temizel, Anne-Marie Brouwer",
-      "venue": "Frontiers in Neuroergonomics",
-      "year": 2024,
-      "url": "https://doi.org/10.3389/fnrgo.2024.1346794",
-      "cited_by": 17,
-      "abstract": "This study addresses concerns about reproducibility in scientific research, focusing on the use of electroencephalography (EEG) and machine learning to estimate mental workload. We established guidelines for reproducible machine learning research using EEG and used these to assess the current state of reproducibility in mental workload modeling. We first started by summarizing the current state of reproducibility efforts in machine learning and in EEG. Next, we performed a systematic literature review on Scopus, Web of Science, ACM Digital Library, and Pubmed databases to find studies about reproducibility in mental workload prediction using EEG. All of this previous work was used to formulate guidelines, which we structured along the widely recognized Cross-Industry Standard Process for Data Mining (CRISP-DM) framework. By using these guidelines, researchers can ensure transparency and comprehensiveness of their methodologies, therewith enhancing collaboration and knowledge-sharing wi",
-      "doi": "10.3389/fnrgo.2024.1346794",
-      "pmid": "38660590",
-      "openalex_id": "W4394684824",
-      "source_doi": "10.1038/s41597-022-01898-y",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5791046699881555,
-        "similarity_score": 0.5013893246650696,
-        "citation_text_length": 1207,
         "dataset_text_length": 2285,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -275,35 +340,12 @@
       }
     },
     {
-      "title": "A cross-attention swin transformer network for EEG-based subject-independent cognitive load assessment",
-      "author": "Zhongrui Li, RongKai Zhang, Tong Li, Ying Zeng, Yuanlong Gao, Kai Yang, Bin Yan",
-      "venue": "Cognitive Neurodynamics",
-      "year": 2024,
-      "url": "https://doi.org/10.1007/s11571-024-10160-7",
-      "cited_by": 6,
-      "abstract": null,
-      "doi": "10.1007/s11571-024-10160-7",
-      "pmid": "39712125",
-      "openalex_id": "W4401976276",
-      "source_doi": "10.1038/s41597-022-01898-y",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5600910276174546,
-        "similarity_score": 0.5334200263023376,
-        "citation_text_length": 231,
-        "dataset_text_length": 2285,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "NeuroIDBench: An open-source benchmark framework for the standardization of methodology in brainwave-based authentication research",
       "author": "Avinash Kumar Chaurasia, Matin Fallahi, Thorsten Strufe, Philipp Terhörst, Patricia Arias-Cabarcos",
       "venue": "Journal of Information Security and Applications",
       "year": 2024,
       "url": "https://doi.org/10.1016/j.jisa.2024.103832",
-      "cited_by": 6,
+      "cited_by": 7,
       "abstract": "Biometric systems based on brain activity have been proposed as an alternative to passwords or to complement current authentication techniques. By leveraging the unique brainwave patterns of individuals, these systems offer the possibility of creating authentication solutions that are resistant to theft, hands-free, accessible, and potentially even revocable. However, despite the growing stream of research in this area, faster advance is hindered by reproducibility problems. Issues such as the lack of standard reporting schemes for performance results and system configuration, or the absence of common evaluation benchmarks, make comparability and proper assessment of different biometric solutions challenging. Further, barriers are erected to future work when, as so often, source code is not published open access. To bridge this gap, we introduce NeuroIDBench, a flexible open source tool to benchmark brainwave-based authentication models. It incorporates nine diverse datasets, implement",
       "doi": "10.1016/j.jisa.2024.103832",
       "pmid": null,
@@ -326,7 +368,7 @@
       "venue": "IEEE Internet of Things Journal",
       "year": 2025,
       "url": "https://doi.org/10.1109/jiot.2025.3593907",
-      "cited_by": 5,
+      "cited_by": 6,
       "abstract": "High mental workload poses significant challenges across various domains, often impairing performance and decision-making. Recent advancements in Internet of Things (IoT) technologies have enabled continuous monitoring of brain activity via electroencephalography (EEG), facilitating real-time assessment of mental workload during task execution. Early detection of elevated workload levels is essential for mitigating potential adverse outcomes. This paper presents EEGMeNet, an end-to-end, multi-task neural network designed to classify mental workload levels from EEG signals. EEGMeNet consists of four key components: (1) a local feature learner that extracts spectral and spatial characteristics, (2) a global feature learner employing attention-based mechanisms to model temporal dependencies, (3) a feature preserver that enhances representation learning, and (4) a supervised classifier for mental workload classification. The proposed model is evaluated across five mental task EEG datasets—",
       "doi": "10.1109/jiot.2025.3593907",
       "pmid": null,
@@ -338,6 +380,29 @@
         "confidence_score": 0.5140339216589929,
         "similarity_score": 0.44505101442337036,
         "citation_text_length": 1335,
+        "dataset_text_length": 2285,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A cross-attention swin transformer network for EEG-based subject-independent cognitive load assessment",
+      "author": "Zhongrui Li, RongKai Zhang, Tong Li, Ying Zeng, Yuanlong Gao, Kai Yang, Bin Yan",
+      "venue": "Cognitive Neurodynamics",
+      "year": 2024,
+      "url": "https://doi.org/10.1007/s11571-024-10160-7",
+      "cited_by": 6,
+      "abstract": null,
+      "doi": "10.1007/s11571-024-10160-7",
+      "pmid": "39712125",
+      "openalex_id": "W4401976276",
+      "source_doi": "10.1038/s41597-022-01898-y",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5600910276174546,
+        "similarity_score": 0.5334200263023376,
+        "citation_text_length": 231,
         "dataset_text_length": 2285,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -413,6 +478,52 @@
       }
     },
     {
+      "title": "Functional Graph Image Representation applied to EEG-based Mental Workload Classification",
+      "author": "M. Sarkis, Mira Rizkallah, Saïd Moussaoui",
+      "venue": "2024 46th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/embc53108.2024.10781733",
+      "cited_by": 4,
+      "abstract": "A lot of research has been lately dedicated to develop machine learning and statistical signal processing methods exploiting graph representations to solve inference and estimation problems. This is particularly relevant in the case of functional connectivity analysis from Electroencephalography (EEG) signals. However, the widely adopted functional connectivity metrics are hand-crafted, and thus suffer from the redundant and sometimes irrelevant information due to the volume conduction problem. Besides, the actual locations of the nodes (i.e. the electrodes) in the functional graph are often overlooked. In this work, we introduce an innovative approach leveraging the image representation of functional graphs learned from EEG signals under sparsity and structural constraints, where both the locations of the electrodes and a sparse functional connectivity learned from data are explicitly encoded. The resulting images are then fed to a convolutional neural network to extract meaningful la",
+      "doi": "10.1109/embc53108.2024.10781733",
+      "pmid": "40038936",
+      "openalex_id": "W4405489722",
+      "source_doi": "10.1038/s41597-022-01898-y",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.528997577726841,
+        "similarity_score": 0.4580065608024597,
+        "citation_text_length": 1273,
+        "dataset_text_length": 2285,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "An Early Warning Approach for Pilots’ Cognitive Tipping Points Based Multi-Modal Signals",
+      "author": "Si Wang, Yadong Liu, Dewen Hu",
+      "venue": "IEEE Transactions on Automation Science and Engineering",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/tase.2024.3384504",
+      "cited_by": 3,
+      "abstract": "When executing complex missions in emergency scenarios, pilots’ cognitive state may deteriorate, posing significant challenges to flight safety and mission execution. This paper proposes a cross-subject and cross-session early warning approach based on small-sample and multi-modal signals for predicting cognitive collapse state. We designs an experimental paradigm that has been demonstrated to induce cognitive collapse in 87 <inline-formula xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"> <tex-math notation=\"LaTeX\">$\\%$</tex-math> </inline-formula> of trials by analyzing questionnaire scores, physiological signals, and task performance. The extracted multi-modal features are fused and selected to construct the optimal feature set. Further, a two-step early warning method is introduced to identify critical slowing down and to predict tipping points by detecting the high cognitive workload state and classifying the corresponding signals into earl",
+      "doi": "10.1109/tase.2024.3384504",
+      "pmid": null,
+      "openalex_id": "W4394897043",
+      "source_doi": "10.1038/s41597-022-01898-y",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.44056910187006,
+        "similarity_score": 0.38144510984420776,
+        "citation_text_length": 1211,
+        "dataset_text_length": 2285,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Novel SPD Matrix Representations Considering Cross-Frequency Coupling for EEG Classification Using Riemannian Geometry",
       "author": "Maria Sayu Yamamoto, Apolline Mellot, Sylvain Chevallier, Fabien Lotte",
       "venue": "2023 31st European Signal Processing Conference (EUSIPCO)",
@@ -459,23 +570,23 @@
       }
     },
     {
-      "title": "Functional Graph Image Representation applied to EEG-based Mental Workload Classification",
-      "author": "M. Sarkis, Mira Rizkallah, Saïd Moussaoui",
-      "venue": "2024 46th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/embc53108.2024.10781733",
+      "title": "ACXNet hybrid deep learning model for cross task mental workload estimation using EEG neural manifolds",
+      "author": "G. Abinaya, K. Dinakaran",
+      "venue": "Scientific Reports",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41598-025-19144-x",
       "cited_by": 3,
-      "abstract": "A lot of research has been lately dedicated to develop machine learning and statistical signal processing methods exploiting graph representations to solve inference and estimation problems. This is particularly relevant in the case of functional connectivity analysis from Electroencephalography (EEG) signals. However, the widely adopted functional connectivity metrics are hand-crafted, and thus suffer from the redundant and sometimes irrelevant information due to the volume conduction problem. Besides, the actual locations of the nodes (i.e. the electrodes) in the functional graph are often overlooked. In this work, we introduce an innovative approach leveraging the image representation of functional graphs learned from EEG signals under sparsity and structural constraints, where both the locations of the electrodes and a sparse functional connectivity learned from data are explicitly encoded. The resulting images are then fed to a convolutional neural network to extract meaningful la",
-      "doi": "10.1109/embc53108.2024.10781733",
-      "pmid": "40038936",
-      "openalex_id": "W4405489722",
+      "abstract": "Mental workload is an interdisciplinary construct that significantly influences human performance, particularly in tasks requiring sustained attention and cognitive processing. Effective mental workload assessment is critical for preventing cognitive overload, which can lead to errors and reduced efficiency in high-stakes environments. The approach leverages topographic neural manifolds (spatial electrode arrangements) and temporal neural manifolds (time-series patterns) to capture comprehensive brain activity representations.Traditional methods rely on subjective reports or task performance, but physiological signals like EEG provide a more objective and continuous means of monitoring cognitive states. Therefore, this paper proposes a hybrid novel approach ACXNet which integrates autoencoder, CNN and XGBoost to learn features of EEG from an individual cross task performance without prior subject-specific calibration or task specific pre-labeled .training data. Utilizing the STEW (Simu",
+      "doi": "10.1038/s41598-025-19144-x",
+      "pmid": "41062739",
+      "openalex_id": "W4414934606",
       "source_doi": "10.1038/s41597-022-01898-y",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.528997577726841,
-        "similarity_score": 0.4580065608024597,
-        "citation_text_length": 1273,
+        "confidence_score": 0.556386807113886,
+        "similarity_score": 0.4817201793193817,
+        "citation_text_length": 1183,
         "dataset_text_length": 2285,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -545,29 +656,6 @@
         "confidence_score": 0.6059553033113481,
         "similarity_score": 0.5246366262435913,
         "citation_text_length": 1240,
-        "dataset_text_length": 2285,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "An Early Warning Approach for Pilots’ Cognitive Tipping Points Based Multi-Modal Signals",
-      "author": "Si Wang, Yadong Liu, Dewen Hu",
-      "venue": "IEEE Transactions on Automation Science and Engineering",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/tase.2024.3384504",
-      "cited_by": 2,
-      "abstract": "When executing complex missions in emergency scenarios, pilots’ cognitive state may deteriorate, posing significant challenges to flight safety and mission execution. This paper proposes a cross-subject and cross-session early warning approach based on small-sample and multi-modal signals for predicting cognitive collapse state. We designs an experimental paradigm that has been demonstrated to induce cognitive collapse in 87 <inline-formula xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"> <tex-math notation=\"LaTeX\">$\\%$</tex-math> </inline-formula> of trials by analyzing questionnaire scores, physiological signals, and task performance. The extracted multi-modal features are fused and selected to construct the optimal feature set. Further, a two-step early warning method is introduced to identify critical slowing down and to predict tipping points by detecting the high cognitive workload state and classifying the corresponding signals into earl",
-      "doi": "10.1109/tase.2024.3384504",
-      "pmid": null,
-      "openalex_id": "W4394897043",
-      "source_doi": "10.1038/s41597-022-01898-y",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.44056910187006,
-        "similarity_score": 0.38144510984420776,
-        "citation_text_length": 1211,
         "dataset_text_length": 2285,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -666,6 +754,29 @@
       }
     },
     {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 2,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-022-01898-y",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6456682866811754,
+        "similarity_score": 0.5590201616287231,
+        "citation_text_length": 1324,
+        "dataset_text_length": 2285,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "CLNet: A Lightweight Real-Time Network for Monitoring Pilots’ Cognitive Load Based on Multi-Scale Spatiotemporal Convolution",
       "author": "Yuangan Li, Ke Li, Jingcheng Zhang, Shaofan Wang, Donghao Wang",
       "venue": "International Journal of Human-Computer Interaction",
@@ -735,29 +846,6 @@
       }
     },
     {
-      "title": "ACXNet hybrid deep learning model for cross task mental workload estimation using EEG neural manifolds",
-      "author": "G. Abinaya, K. Dinakaran",
-      "venue": "Scientific Reports",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s41598-025-19144-x",
-      "cited_by": 1,
-      "abstract": "Mental workload is an interdisciplinary construct that significantly influences human performance, particularly in tasks requiring sustained attention and cognitive processing. Effective mental workload assessment is critical for preventing cognitive overload, which can lead to errors and reduced efficiency in high-stakes environments. The approach leverages topographic neural manifolds (spatial electrode arrangements) and temporal neural manifolds (time-series patterns) to capture comprehensive brain activity representations.Traditional methods rely on subjective reports or task performance, but physiological signals like EEG provide a more objective and continuous means of monitoring cognitive states. Therefore, this paper proposes a hybrid novel approach ACXNet which integrates autoencoder, CNN and XGBoost to learn features of EEG from an individual cross task performance without prior subject-specific calibration or task specific pre-labeled .training data. Utilizing the STEW (Simu",
-      "doi": "10.1038/s41598-025-19144-x",
-      "pmid": "41062739",
-      "openalex_id": "W4414934606",
-      "source_doi": "10.1038/s41597-022-01898-y",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.556386807113886,
-        "similarity_score": 0.4817201793193817,
-        "citation_text_length": 1183,
-        "dataset_text_length": 2285,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Few-Shot Cross-Subject EEG Cognitive Load Assessment Based on Global Cross-Attention Domain Adaptation",
       "author": "Ruihan Cai, Sheng Dai, Xu Wu, Xuemei Song, Ming Li, Dewen Hu",
       "venue": "IEEE Sensors Journal",
@@ -775,29 +863,6 @@
         "confidence_score": 0.571289743334055,
         "similarity_score": 0.4946231544017792,
         "citation_text_length": 1221,
-        "dataset_text_length": 2285,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod L'evy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "n/a",
-      "year": 2026,
-      "url": "n/a",
-      "cited_by": 1,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-022-01898-y",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6477430191636085,
-        "similarity_score": 0.5608164668083191,
-        "citation_text_length": 1325,
         "dataset_text_length": 2285,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -867,6 +932,29 @@
         "confidence_score": 0.6746371614933016,
         "similarity_score": 0.5841014385223389,
         "citation_text_length": 1219,
+        "dataset_text_length": 2285,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "EEG-based cognition-aware task classification and scheduling using enhanced fuzzy transition modeling",
+      "author": "Aishwarya Shaji, S. Lakshmi Kruthika, Chandresh Prakash, S. Abinaya",
+      "venue": "Frontiers in Artificial Intelligence",
+      "year": 2026,
+      "url": "https://doi.org/10.3389/frai.2026.1862612",
+      "cited_by": 0,
+      "abstract": "The cognitive state modeling (CSM) problem is typically formulated as a classification problem, limiting the application of the CSM for adaptive real world applications, where the desired outputs are cognitive states to be desired and the inferred ones have to be used for decision making. While conventional methods classify states of the brain, they have not yet been able to connect the class to the task level. To address this, this paper suggests a neurosymbolic model of cognition as a continual latent process rather than an incremental labelling process. It includes a Pseudo Task based Neural State Encoder (PNSE) to encode EEG windows into a structured hyperspherical embedding space, a Neural Transition Graph Network (NTGN) to learn the relationships between cognitive states and tasks, and a Temporal Pseudo-Task Boundary Model (TPBM) to capture the temporal evolution of cognitive states. The neurosymbolic decision layer is used to produce a single scheduling metric using a neural com",
+      "doi": "10.3389/frai.2026.1862612",
+      "pmid": null,
+      "openalex_id": "W7165112442",
+      "source_doi": "10.1038/s41597-022-01898-y",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5256365758180619,
+        "similarity_score": 0.45509660243988037,
+        "citation_text_length": 1243,
         "dataset_text_length": 2285,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1469,90 +1557,21 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Hinss et al. 2021 — Open multi-session and multi-task EEG cognitive Dataset for passive brain-computer Interface Applications",
-      "author": "Marcel F. Hinss, Emilie S. Jahanpour, Bertille Somon, Lou Pluchon, Frédéric Dehais, Raphaëlle N. Roy",
-      "venue": "Open MIND",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000343",
-      "cited_by": 0,
-      "abstract": "This dataset comprises multi-session, multi-task EEG recordings from 15 healthy participants performing resting state and graded difficulty levels of the MATB-II task. Acquired at 500 Hz using 62 active electrodes, the dataset includes 90 trials per participant across two sessions and is designed to support passive brain-computer interface applications and mental workload estimation in neuroergonomic contexts. The dataset is in raw, unpreprocessed state and has been formatted according to BIDS standards for accessibility and reproducibility.",
-      "doi": "10.82901/nemar.nm000343",
-      "pmid": null,
-      "openalex_id": "W7163374271",
-      "source_doi": "10.5281/zenodo.6874128",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.8835280323028565,
-        "similarity_score": 0.7649593353271484,
-        "citation_text_length": 820,
-        "dataset_text_length": 2285,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Neuroergonomic 2021 dataset",
-      "author": "Marcel F. Hinss, Emilie S. Jahanpour, Bertille Somon, Lou Pluchon, Frédéric Dehais, Raphaëlle N. Roy",
-      "venue": "Open MIND",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000206",
-      "cited_by": 0,
-      "abstract": "A multi-session EEG dataset acquired from 15 healthy participants performing resting state and graded cognitive tasks (MATB-II at three difficulty levels). The dataset comprises 62-channel EEG recordings at 500 Hz sampling rate designed for passive brain-computer interface applications and mental workload estimation in neuroergonomic contexts. Raw EEG data are provided with standardized event annotations using HED 8.4.0 schema and MOABB-compatible feature extraction pipelines (bandpower analysis and Riemannian covariance methods) for benchmarking purposes.",
-      "doi": "10.82901/nemar.nm000206",
-      "pmid": null,
-      "openalex_id": "W7163165812",
-      "source_doi": "10.5281/zenodo.6874128",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.9622361004352571,
-        "similarity_score": 0.8331048488616943,
-        "citation_text_length": 737,
-        "dataset_text_length": 2285,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Hinss et al. 2021 — Open multi-session and multi-task EEG cognitive Dataset for passive brain-computer Interface Applications",
-      "author": "Marcel F. Hinss, Emilie S. Jahanpour, Bertille Somon, Lou Pluchon, Frédéric Dehais, Raphaëlle N. Roy",
-      "venue": "UC San Diego",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000343.v1.0.1",
-      "cited_by": 0,
-      "abstract": null,
-      "doi": "10.82901/nemar.nm000343.v1.0.1",
-      "pmid": null,
-      "openalex_id": "W7163394531",
-      "source_doi": "10.5281/zenodo.6874128",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7196703851222992,
-        "similarity_score": 0.6854003667831421,
-        "citation_text_length": 264,
-        "dataset_text_length": 2285,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:46:56.308689+00:00",
+    "scoring_date": "2026-07-15T00:10:55.631968+00:00",
     "dataset_text_length": 2285,
-    "num_citations_scored": 66,
+    "num_citations_scored": 64,
     "summary_stats": {
-      "mean_confidence": 0.5499687080085277,
-      "median_confidence": 0.5519657894968988,
-      "std_confidence": 0.13507928286856072,
+      "mean_confidence": 0.5352509695943446,
+      "median_confidence": 0.5451009795069695,
+      "std_confidence": 0.11729808715651338,
       "min_confidence": 0.19966435432434082,
-      "max_confidence": 0.9622361004352571,
-      "high_confidence_count": 7,
-      "medium_confidence_count": 51,
+      "max_confidence": 0.9547199195623399,
+      "high_confidence_count": 4,
+      "medium_confidence_count": 52,
       "low_confidence_count": 8
     }
   }

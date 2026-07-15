@@ -1,0 +1,104 @@
+{
+  "dataset_id": "on005810",
+  "num_citations": 1,
+  "date_last_updated": "2026-07-04T03:25:07.630977+00:00",
+  "metadata": {
+    "total_cumulative_citations": 0,
+    "fetch_date": "2026-07-04T03:25:07.630977+00:00",
+    "processing_version": "1.0",
+    "fetch_status": "success",
+    "anchor_count": 1,
+    "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
+    "anchor_judgment_model": "gemma4:e4b",
+    "anchors": [
+      {
+        "identifier": "10.1038/sdata.2018.110",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "methodology",
+        "kept": false,
+        "paper_title": "MEG-BIDS, the brain imaging data structure extended to magnetoencephalography",
+        "paper_year": 2018,
+        "paper_venue": "Scientific Data",
+        "reason": "The paper proposes MEG-BIDS, an extension of the BIDS standard to organize and share MEG data, making it a technical specification/methodology for data structure, not a paper describing the NOD-MEG dataset itself.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.on005810",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.82901/nemar.on005810"
+    ],
+    "keywords": [
+      "Magnetoencephalography",
+      "Electroencephalography",
+      "MEG",
+      "EEG",
+      "object recognition",
+      "naturalistic stimuli",
+      "Visual Perception",
+      "multimodal neuroimaging",
+      "temporal dynamics",
+      "fMRI",
+      "ImageNet"
+    ],
+    "methods_description": "MEG and EEG data were collected from subjects viewing naturalistic stimuli (ImageNet images) in multiple sessions and runs, using the same stimulus set as the previously collected NOD-fMRI dataset (ds004496). Raw data were preprocessed and epoched using MNE software (version 1.7.1). Preprocessed full time series and epoch data are provided in BIDS-compliant format with comprehensive trial metadata including stimulus category information and subject responses. The MEG dataset (ds005810) and EEG dataset (ds005811) together form the temporal resolution component of the trimodal NOD resource.",
+    "funding": [
+      {
+        "funder_name": "Beijing Natural Science Foundation",
+        "award_number": "L247010"
+      },
+      {
+        "funder_name": "National Natural Science Foundation of China",
+        "award_number": "62433015"
+      },
+      {
+        "funder_name": "National Natural Science Foundation of China",
+        "award_number": "31771251"
+      },
+      {
+        "funder_name": "Ministry of Science and Technology of China",
+        "award_number": "2021ZD0200407",
+        "award_title": "STI 2030-Major Projects"
+      }
+    ],
+    "searched_accessions": [
+      "on005810",
+      "ds005810"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 0
+  },
+  "citation_details": [
+    {
+      "title": "A large-scale MEG and EEG dataset for object recognition in naturalistic scenes",
+      "author": "Guohao Zhang, Ming Zhou, Shuyi Zhen, Shaohua Tang, Zheng Li, Zonglei Zhen",
+      "venue": "Scientific Data",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41597-025-05174-7",
+      "cited_by": 1,
+      "abstract": "Neuroimaging with large-scale naturalistic stimuli is increasingly employed to elucidate neural mechanisms of object recognition in natural scenes. However, most existing large-scale neuroimaging datasets with naturalistic stimuli primarily rely on functional magnetic resonance imaging (fMRI), which provides high spatial resolution but is limited in capturing the temporal dynamics. To address this limitation, we extended our Natural Object Dataset-fMRI (NOD-fMRI) by collecting both magnetoencephalography (MEG) and electroencephalography (EEG) data from the same participants while viewing the same naturalistic stimuli. As a result, NOD contains fMRI, MEG, and EEG responses to 57,000 naturalistic images from 30 participants. This enables the examination of brain activity elicited by naturalistic stimuli with both high spatial resolution (via fMRI) and high temporal resolution (via MEG and EEG). Furthermore, the multimodal nature of NOD allows researchers to combine datasets from different modalities to achieve a more comprehensive view of object processing. We believe that the NOD dataset will serve as a valuable resource for advancing our understanding of the cognitive and neural mechanisms underlying object recognition.",
+      "doi": "10.1038/s41597-025-05174-7",
+      "pmid": "40410207",
+      "openalex_id": "W4410631980",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005810"
+    }
+  ]
+}

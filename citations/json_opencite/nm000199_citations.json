@@ -1,27 +1,108 @@
 {
   "dataset_id": "nm000199",
-  "num_citations": 58,
-  "date_last_updated": "2026-06-18T23:20:50.276591+00:00",
+  "num_citations": 57,
+  "date_last_updated": "2026-07-03T12:25:19.791875+00:00",
   "metadata": {
-    "total_cumulative_citations": 606,
-    "fetch_date": "2026-06-18T23:20:50.276591+00:00",
+    "total_cumulative_citations": 612,
+    "fetch_date": "2026-07-03T12:25:19.791875+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1371/journal.pone.0175856",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Learning from label proportions in brain-computer interfaces: Online unsupervised learning with guarantees",
+        "paper_year": 2017,
+        "paper_venue": "PLoS ONE",
+        "reason": "The candidate paper's title and abstract introduce and describe the specific 'learning from label proportions' ERP paradigm used to generate this dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.5281/zenodo.192684",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Eeg Data For: \"Learning From Label Proportions In Brain-Computer Interfaces\"",
+        "paper_year": 2016,
+        "paper_venue": "INFM-OAR (INFN Catania)",
+        "reason": "The candidate paper's abstract explicitly states that the dataset is used and described in the 2017 article, which matches the dataset's topic and authors.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is a technical standard used by this dataset."
+        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is a technical standard used by this dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000199",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1371/journal.pone.0175856",
+      "10.5281/zenodo.192684",
+      "10.82901/nemar.nm000199"
+    ],
+    "keywords": [
+      "Brain-Computer Interfaces",
+      "event-related potentials",
+      "P300",
+      "EEG",
+      "unsupervised learning",
+      "calibration-free BCI",
+      "visual speller"
+    ],
+    "methods_description": "EEG data were acquired at 1000 Hz from 31 channels using a BrainAmp DC amplifier with passive Ag/AgCl electrodes in a standard 10-20 montage (nose reference, FCz ground). Subjects performed a visual copy-spelling task using a 6×7 grid with two stimulus sequences having different target/non-target ratios (3:8 and 2:18). Each character required 68 highlighting events. The LLP classifier exploited these known proportions to reconstruct mean target and non-target responses without labeled training data. Auxiliary channels recorded EOG, pulse, respiration, and EMG. Sessions lasted approximately 3 hours including setup.",
+    "funding": [
+      {
+        "funder_name": "Special Research Fund from Ghent University"
+      },
+      {
+        "funder_name": "German Research Foundation (DFG)",
+        "award_number": "EXC 1086",
+        "award_title": "BrainLinks-BrainTools Cluster of Excellence"
+      },
+      {
+        "funder_name": "bwHPC initiative",
+        "award_number": "INST 39/963-1 FUGG"
+      },
+      {
+        "funder_name": "European Union",
+        "award_number": "657679",
+        "award_title": "Horizon 2020 Marie Sklodowska-Curie grant"
+      },
+      {
+        "funder_name": "Ghent University",
+        "award_title": "Special Research Fund"
+      },
+      {
+        "funder_name": "Korean National Research Foundation",
+        "award_number": "2012-005741",
+        "award_title": "BK21 program"
       }
     ],
     "searched_accessions": [
@@ -29,7 +110,7 @@
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 58
+    "num_datapaper_citations": 57
   },
   "citation_details": [
     {
@@ -107,7 +188,7 @@
       "venue": "ArXiv",
       "year": 2024,
       "url": "https://doi.org/10.48550/arXiv.2404.15319",
-      "cited_by": 42,
+      "cited_by": 45,
       "abstract": "Objective. This study conduct an extensive Brain-computer interfaces (BCI) reproducibility analysis on open electroencephalography datasets, aiming to assess existing solutions and establish open and reproducible benchmarks for effective comparison within the field. The need for such benchmark lies in the rapid industrial progress that has given rise to undisclosed proprietary solutions. Furthermore, the scientific literature is dense, often featuring challenging-to-reproduce evaluations, making comparisons between existing approaches arduous. Approach. Within an open framework, 30 machine learning pipelines (separated into raw signal: 11, Riemannian: 13, deep learning: 6) are meticulously re-implemented and evaluated across 36 publicly available datasets, including motor imagery (14), P300 (15), and SSVEP (7). The analysis incorporates statistical meta-analysis techniques for results assessment, encompassing execution time and environmental impact considerations. Main results. The stu",
       "doi": "10.48550/arXiv.2404.15319",
       "pmid": null,
@@ -268,7 +349,7 @@
       "venue": "BMC Bioinformatics",
       "year": 2024,
       "url": "https://doi.org/10.1186/s12859-024-06024-w",
-      "cited_by": 15,
+      "cited_by": 16,
       "abstract": "BACKGROUND: The collection of substantial amounts of electroencephalogram (EEG) data is typically time-consuming and labor-intensive, which adversely impacts the development of decoding models with strong generalizability, particularly when the available data is limited. Utilizing sufficient EEG data from other subjects to aid in modeling the target subject presents a potential solution, commonly referred to as domain adaptation. Most current domain adaptation techniques for EEG decoding primarily focus on learning shared feature representations through domain alignment strategies. Since the domain shift cannot be completely removed, target EEG samples located near the edge of clusters are also susceptible to misclassification. METHODS: We propose a novel adaptive deep feature representation (ADFR) framework to improve the cross-subject EEG classification performance through learning transferable EEG feature representations. Specifically, we first minimize the distribution discrepancy ",
       "doi": "10.1186/s12859-024-06024-w",
       "pmid": "39741250",
@@ -498,7 +579,7 @@
       "venue": "Journal of Information Security and Applications",
       "year": 2024,
       "url": "https://doi.org/10.1016/j.jisa.2024.103832",
-      "cited_by": 6,
+      "cited_by": 7,
       "abstract": "Biometric systems based on brain activity have been proposed as an alternative to passwords or to complement current authentication techniques. By leveraging the unique brainwave patterns of individuals, these systems offer the possibility of creating authentication solutions that are resistant to theft, hands-free, accessible, and potentially even revocable. However, despite the growing stream of research in this area, faster advance is hindered by reproducibility problems. Issues such as the lack of standard reporting schemes for performance results and system configuration, or the absence of common evaluation benchmarks, make comparability and proper assessment of different biometric solutions challenging. Further, barriers are erected to future work when, as so often, source code is not published open access. To bridge this gap, we introduce NeuroIDBench, a flexible open source tool to benchmark brainwave-based authentication models. It incorporates nine diverse datasets, implement",
       "doi": "10.1016/j.jisa.2024.103832",
       "pmid": null,
@@ -769,6 +850,29 @@
       }
     },
     {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 2,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0175856",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5485859245061875,
+        "similarity_score": 0.4749661684036255,
+        "citation_text_length": 1324,
+        "dataset_text_length": 2373,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Learning from small datasets—review of workshop 6 of the 10th International BCI Meeting 2023",
       "author": "Michael Tangermann, Sylvain Chevallier, Matthias Dold, Pierre Guetschel, Reinmar J. Kobler, Théodore Papadopoulo, Jordy Thielen",
       "venue": "Journal of Neural Engineering",
@@ -878,29 +982,6 @@
         "confidence_score": 0.41917526721954346,
         "similarity_score": 0.41917526721954346,
         "citation_text_length": 190,
-        "dataset_text_length": 2373,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod L'evy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "n/a",
-      "year": 2026,
-      "url": "n/a",
-      "cited_by": 1,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0175856",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5518124064803125,
-        "similarity_score": 0.4777596592903137,
-        "citation_text_length": 1325,
         "dataset_text_length": 2373,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1327,7 +1408,7 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.nm000199",
       "cited_by": 0,
-      "abstract": "This dataset comprises event-related potential (ERP) recordings from 13 healthy subjects performing a visual P300 speller task using a 6×7 character matrix. The study introduces learning from label proportions (LLP), an unsupervised classification approach that enables calibration-free brain-computer interface operation by exploiting known target/non-target stimulus ratios. Subjects completed three copy-spelling sessions without prior calibration, achieving 84.5% character accuracy, demonstrating the feasibility of LLP for practical BCI applications.",
+      "abstract": "This dataset comprises EEG recordings from 13 healthy subjects performing a visual P300 speller task using a 6×7 character matrix. The study introduces learning from label proportions (LLP), an unsupervised classification approach that eliminates the need for subject-specific calibration data in brain-computer interfaces. Subjects completed three copy-spelling sessions spelling a German pangram sentence, with ERP responses recorded at 1000 Hz from 31 EEG channels. The dataset achieved 84.5% online spelling accuracy without prior calibration, demonstrating the feasibility of calibrationless BCI operation.",
       "doi": "10.82901/nemar.nm000199",
       "pmid": null,
       "openalex_id": "W7163214160",
@@ -1335,32 +1416,9 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 1.0,
-        "similarity_score": 0.8668575286865234,
-        "citation_text_length": 787,
-        "dataset_text_length": 2373,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Learning from label proportions for a visual matrix speller (ERP)",
-      "author": "David Hübner, Thibault Verhoeven, Konstantin Schmid, Klaus-Robert Müller, Michael Tangermann, Pieter-Jan Kindermans",
-      "venue": "Open MIND",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000199.v1.0.0",
-      "cited_by": 0,
-      "abstract": "This dataset comprises EEG recordings from 13 healthy subjects performing a visual P300 speller task using a 6×7 character matrix. The study introduces learning from label proportions (LLP), an unsupervised classification approach that eliminates the need for subject-specific calibration data in brain-computer interfaces. Subjects completed three copy-spelling sessions spelling a German pangram sentence, with ERP responses recorded at 1000 Hz from 31 EEG channels. The dataset achieved 84.5% online spelling accuracy without prior calibration, demonstrating the feasibility of calibrationless BCI operation.",
-      "doi": "10.82901/nemar.nm000199.v1.0.0",
-      "pmid": null,
-      "openalex_id": "W7163188623",
-      "source_doi": "10.5281/zenodo.192684",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.9811605218052866,
-        "similarity_score": 0.8494896292686462,
-        "citation_text_length": 839,
+        "confidence_score": 0.9802535104751589,
+        "similarity_score": 0.8487043380737305,
+        "citation_text_length": 842,
         "dataset_text_length": 2373,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1369,16 +1427,16 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:46:22.568264+00:00",
+    "scoring_date": "2026-07-15T00:10:17.638940+00:00",
     "dataset_text_length": 2373,
-    "num_citations_scored": 58,
+    "num_citations_scored": 57,
     "summary_stats": {
-      "mean_confidence": 0.5067855895888703,
-      "median_confidence": 0.5051766484230757,
-      "std_confidence": 0.15343507607854864,
+      "mean_confidence": 0.4980601877693022,
+      "median_confidence": 0.5026841163635254,
+      "std_confidence": 0.13996959843737156,
       "min_confidence": 0.1428113877773285,
-      "max_confidence": 1.0,
-      "high_confidence_count": 3,
+      "max_confidence": 0.9802535104751589,
+      "high_confidence_count": 2,
       "medium_confidence_count": 44,
       "low_confidence_count": 11
     }

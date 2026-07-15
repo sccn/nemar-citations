@@ -1,24 +1,84 @@
 {
   "dataset_id": "nm000251",
-  "num_citations": 15,
-  "date_last_updated": "2026-06-18T23:24:14.596140+00:00",
+  "num_citations": 16,
+  "date_last_updated": "2026-07-03T14:24:32.050649+00:00",
   "metadata": {
-    "total_cumulative_citations": 14,
-    "fetch_date": "2026-06-18T23:24:14.596140+00:00",
+    "total_cumulative_citations": 16,
+    "fetch_date": "2026-07-03T14:24:32.050649+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.5281/zenodo.14696348",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "VocalMind: A Stereotactic EEG Dataset for Vocalized, Mimed, and Imagined Speech in Tonal Language",
+        "paper_year": 2025,
+        "paper_venue": "Zenodo (CERN European Organization for Nuclear Research)",
+        "reason": "The candidate paper's title and abstract explicitly introduce and describe the 'VocalMind' dataset, which matches the dataset's content and scope.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.1038/s41597-025-04741-2",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "VocalMind: A Stereotactic EEG Dataset for Vocalized, Mimed, and Imagined Speech in Tonal Language",
+        "paper_year": 2025,
+        "paper_venue": "Scientific Data",
+        "reason": "The candidate paper's title and abstract explicitly introduce and describe the release of the 'VocalMind' sEEG dataset, matching the dataset's content.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000251",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.5281/zenodo.14696348",
+      "10.1038/s41597-025-04741-2",
+      "10.82901/nemar.nm000251"
+    ],
+    "keywords": [
+      "stereotactic EEG",
+      "intracranial EEG",
+      "speech decoding",
+      "brain-computer interfaces",
+      "imagined speech",
+      "tonal language",
+      "Mandarin Chinese"
+    ],
+    "methods_description": "Stereotactic EEG recordings were obtained while the participant performed three speech modes: vocalized, mimed, and imagined speech in Mandarin Chinese. Raw per-trial recordings at 1000 Hz were converted to BIDS iEEG BrainVision format using the EEGDash conversion pipeline, with per-trial files concatenated by speech mode and task type, and events.tsv files marking stimulus onsets.",
+    "funding": [
+      {
+        "funder_name": "National Natural Science Foundation of China"
+      },
+      {
+        "funder_name": "Shenzhen Science and Technology Innovation Program"
+      }
+    ],
     "searched_accessions": [
       "nm000251"
     ],
     "num_accession_mentions": 2,
     "num_dataset_citations": 2,
-    "num_datapaper_citations": 13
+    "num_datapaper_citations": 14
   },
   "citation_details": [
     {
@@ -27,7 +87,7 @@
       "venue": "Scientific Data",
       "year": 2025,
       "url": "https://doi.org/10.1038/s41597-025-04741-2",
-      "cited_by": 3,
+      "cited_by": 4,
       "abstract": "Speech BCIs based on implanted electrodes hold significant promise for enhancing spoken communication through high temporal resolution and invasive neural sensing. Despite the potential, acquiring such data is challenging due to its invasive nature, and publicly available datasets, particularly for tonal languages, are limited. In this study, we introduce VocalMind, a stereotactic electroencephalography (sEEG) dataset focused on Mandarin Chinese, a tonal language. This dataset includes sEEG-speech parallel recordings from three distinct speech modes, namely vocalized speech, mimed speech, and imagined speech, at both word and sentence levels, totaling over one hour of intracranial neural recordings related to speech production. This paper also presents a baseline model as the reference model for future studies, at the same time, ensuring the integrity of the dataset. The diversity of tasks and the substantial data volume provide a valuable resource for developing advanced algorithms fo",
       "doi": "10.1038/s41597-025-04741-2",
       "pmid": "40253415",
@@ -73,8 +133,8 @@
       "venue": "Nature Sensors",
       "year": 2026,
       "url": "https://doi.org/10.1038/s44460-025-00010-2",
-      "cited_by": 2,
-      "abstract": null,
+      "cited_by": 3,
+      "abstract": "Silent speech interfaces decode speech intent without audible sound, enabling communication in settings where voice is inaccessible, or for individuals with speech impairments. Here we examine how sensing technologies shape the capabilities of silent speech interfaces. We compare off-, on- and in-body sensing modalities, identifying how proximity, coupling stability and invasiveness govern signal fidelity, robustness and user comfort. We highlight key trends, including the rise of flexible bioelectronics, multimodal sensor fusion for artefact resilience, and the growing role of edge artificial intelligence in real-time, low-power decoding. We show that on-body systems currently offer the best balance between accuracy and deployability, whereas in-body approaches provide unmatched neural access for individuals with complete loss of articulation. Looking ahead, advances in multimodal sensing, embedded intelligence and closed-loop architectures are poised to expand silent communication ac",
       "doi": "10.1038/s44460-025-00010-2",
       "pmid": null,
       "openalex_id": null,
@@ -82,9 +142,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5066493630409241,
-        "similarity_score": 0.48252320289611816,
-        "citation_text_length": 197,
+        "confidence_score": 0.5404820966720583,
+        "similarity_score": 0.46794986724853516,
+        "citation_text_length": 1209,
         "dataset_text_length": 2439,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -206,6 +266,29 @@
       }
     },
     {
+      "title": "Bio-integrated systems for silent speech recognition: from advanced bioplatforms to machine learning-assisted biosignal decoding",
+      "author": "Penghao Dong, Yuanqing Song, Yizong Li, Petar M. Djurić, Shanshan Yao",
+      "venue": "Soft Science",
+      "year": 2026,
+      "url": "https://doi.org/10.20517/ss.2026.38",
+      "cited_by": 0,
+      "abstract": "Silent speech interfaces decode intended speech from physiological signals without the need for vocalized sound. These systems provide an alternative modality to voice-based spoken communication, addressing limitations posed by physiological constraints and environmental interferences. This review presents a comprehensive overview of bio-integrated systems for silent speech recognition, with emphasis on their physiological relevance, state-of-the-art hardware designs, signal characteristics, and machine learning (ML)-assisted speech decoding pipelines. Based on the level of physical intrusion into the body, bio-integrated speech interfaces can be categorized into epidermal, intraoral, and surgically embedded systems. Each modality captures distinct physiological signals involved in speech production. The design of bio-integrated systems involves critical trade-offs among recognition accuracy, invasiveness, portability, and robustness. Recent advances in flexible and stretchable electro",
+      "doi": "10.20517/ss.2026.38",
+      "pmid": null,
+      "openalex_id": "W7165633514",
+      "source_doi": "10.1038/s41597-025-04741-2",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5707211315631867,
+        "similarity_score": 0.49413084983825684,
+        "citation_text_length": 1248,
+        "dataset_text_length": 2439,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Neuromamba: Adaptive Frequency Filtering with a Pyramid Mamba for sEEG-driven Speech Synthesis",
       "author": "Jiayue Xie, Ruicong Wang, Xueyi Zhang, Siqi Cai, Hui Li",
       "venue": "ICASSP 2026 - 2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)",
@@ -258,7 +341,7 @@
       "year": 2026,
       "url": "https://doi.org/10.48550/arXiv.2603.04840",
       "cited_by": 0,
-      "abstract": "Speech production is a complex process spanning neural planning, motor control, muscle activation, and articulatory kinematics. While the acoustic speech signal is the most accessible product of the speech production act, it does not directly reveal its causal neurophysiological substrates. We present the first simultaneous acquisition of real-time (dynamic) MRI, EEG, and surface EMG, capturing several key aspects of the speech production chain: brain signals, muscle activations, and articulatory movements. This multimodal acquisition paradigm presents substantial technical challenges, including MRI-induced electromagnetic interference and myogenic artifacts. To mitigate these, we introduce an artifact suppression pipeline tailored to this tri-modal setting. Once fully developed, this framework is poised to offer an unprecedented window into speech neuroscience and insights leading to brain-computer interface advances.",
+      "abstract": "Speech production is a complex process spanning neural planning, motor control, muscle activation, and articulatory kinematics. While the acoustic speech signal is the most accessible product of the speech production act, it does not directly reveal its causal neurophysiological substrates. We present the first simultaneous acquisition of real-time (dynamic) MRI, EEG, and surface EMG, capturing several key aspects of the speech production chain: brain signals, muscle activations, and articulatory movements. This multimodal acquisition paradigm presents substantial technical challenges, including MRI-induced electromagnetic interference and myogenic artifacts. To mitigate these, we introduce an artifact suppression pipeline tailored to this tri-modal setting. Once fully developed, this framework is poised to offer an unprecedented window into speech neuroscience and insights leading to brain-computer interface advances. The source code and data are available.",
       "doi": "10.48550/arXiv.2603.04840",
       "pmid": null,
       "openalex_id": null,
@@ -266,9 +349,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.7244754892587663,
-        "similarity_score": 0.6272515058517456,
-        "citation_text_length": 1410,
+        "confidence_score": 0.7392442497611047,
+        "similarity_score": 0.6400383114814758,
+        "citation_text_length": 1450,
         "dataset_text_length": 2439,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -373,17 +456,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:29:54.888063+00:00",
+    "scoring_date": "2026-07-15T00:14:52.584244+00:00",
     "dataset_text_length": 2439,
-    "num_citations_scored": 15,
+    "num_citations_scored": 16,
     "summary_stats": {
-      "mean_confidence": 0.6993975214759509,
-      "median_confidence": 0.7700014686584473,
-      "std_confidence": 0.256024069075877,
+      "mean_confidence": 0.6943928404897453,
+      "median_confidence": 0.7669976261258127,
+      "std_confidence": 0.24855115672540212,
       "min_confidence": 0.09307626187801361,
       "max_confidence": 1.0,
       "high_confidence_count": 11,
-      "medium_confidence_count": 2,
+      "medium_confidence_count": 3,
       "low_confidence_count": 2
     }
   }

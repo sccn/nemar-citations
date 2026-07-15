@@ -1,25 +1,92 @@
 {
   "dataset_id": "on007176",
-  "num_citations": 3,
-  "date_last_updated": "2026-06-18T23:27:28.691194+00:00",
+  "num_citations": 4,
+  "date_last_updated": "2026-07-04T07:24:31.807221+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-18T23:27:28.691194+00:00",
+    "fetch_date": "2026-07-04T07:24:31.807221+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
+    "fetch_status": "partial",
+    "anchor_count": 3,
+    "anchor_errors": {
+      "10.1016/j.bspc.2024.109484": "not_found"
+    },
+    "schema_version": "2.1",
     "discovery_backend": "opencite",
-    "fetch_status": "success",
-    "anchor_count": 2,
-    "anchor_errors": {},
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1016/j.bspc.2026.109484",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Longitudinal test-retest reliability of quantitative EEG in healthy individuals using an automated preprocessing approach",
+        "paper_year": 2026,
+        "paper_venue": "Biomedical Signal Processing and Control",
+        "reason": "The paper title and authors match the dataset name and authors exactly, describing the same longitudinal test-retest reliability study in healthy individuals.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.1016/j.bspc.2024.109484",
+        "identifier_type": "doi",
+        "source_relation": "IsDescribedBy",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.on007176",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.1016/j.bspc.2026.109484",
+      "10.1016/j.bspc.2024.109484",
+      "10.82901/nemar.on007176"
+    ],
+    "keywords": [
+      "EEG",
+      "test-retest reliability",
+      "reproducibility",
+      "longitudinal study",
+      "resting-state",
+      "independent component analysis",
+      "artifact removal",
+      "quantitative EEG",
+      "healthy controls",
+      "preprocessing",
+      "BIDS",
+      "reliability"
+    ],
+    "methods_description": "Resting-state EEG recordings were collected from 43 healthy participants across four longitudinal sessions spanning approximately two years with an average interval of 7.2 months between sessions. Data were processed using an automated preprocessing pipeline incorporating independent component analysis and wavelet-enhanced artifact removal. EEG data are provided in BIDS-compliant format with raw signals and associated metadata describing recording parameters.",
+    "funding": [
+      {
+        "funder_name": "Comité para el Desarrollo de la Investigación - CODI, Universidad de Antioquia"
+      },
+      {
+        "funder_name": "Comité para el Desarrollo de la Investigación (CODI), Universidad de Antioquia"
+      }
+    ],
     "searched_accessions": [
       "on007176",
       "ds007176"
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 3
+    "num_datapaper_citations": 4
   },
   "citation_details": [
     {
@@ -52,17 +119,40 @@
       "year": 2026,
       "url": "https://doi.org/10.3389/fnhum.2026.1843779",
       "cited_by": 0,
-      "abstract": "\n This study aimed to investigate resting-state neural correlates of math anxiety in high school students using a graph-theoretical approach. Sixty 10th-grade students (35 females; mean age = 16.15 years) participated in the study. Resting-state EEG data were acquired using a 32-channel wireless dry-sensor system (Cognionics Quick-32 series). Math anxiety was assessed using the Abbreviated Math Anxiety Scale. Mean eigenvector centrality was significantly and negatively associated with math anxiety in the alpha band during eyes-closed rest, the theta band during eyes-open rest, and the beta band during eyes-closed rest, with correlation coefficients ranging from\n r\n  = −0.28 to −0.34. No significant associations were observed between centrality measures and sex. Overall, these findings are consistent with previous research linking reduced functional network integration to elevated math anxiety.\n",
+      "abstract": "This study aimed to investigate resting-state neural correlates of math anxiety in high school students using a graph-theoretical approach. Sixty 10th-grade students (35 females; mean age = 16.15 years) participated in the study. Resting-state EEG data were acquired using a 32-channel wireless dry-sensor system (Cognionics Quick-32 series). Math anxiety was assessed using the Abbreviated Math Anxiety Scale. Mean eigenvector centrality was significantly and negatively associated with math anxiety in the alpha band during eyes-closed rest, the theta band during eyes-open rest, and the beta band during eyes-closed rest, with correlation coefficients ranging from r = −0.28 to −0.34. No significant associations were observed between centrality measures and sex. Overall, these findings are consistent with previous research linking reduced functional network integration to elevated math anxiety.",
       "doi": "10.3389/fnhum.2026.1843779",
-      "pmid": null,
+      "pmid": "42311455",
       "openalex_id": "W7163130728",
       "source_doi": "10.1016/j.bspc.2026.109484",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5745712655782701,
-        "similarity_score": 0.49746429920196533,
-        "citation_text_length": 1113,
+        "confidence_score": 0.5690837609767915,
+        "similarity_score": 0.49271321296691895,
+        "citation_text_length": 1107,
+        "dataset_text_length": 2347,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "State sensitivity and five-year longitudinal stability of resting-state EEG biomarker candidates in healthy adults",
+      "author": "Ye-Ji Park, Beom-Jin Kwon, Hoo-Joon Lee, Jin-Hyoung Jeong",
+      "venue": "Frontiers in Aging Neuroscience",
+      "year": 2026,
+      "url": "https://doi.org/10.3389/fnagi.2026.1885392",
+      "cited_by": 0,
+      "abstract": "Resting-state EEG is widely used to investigate individual differences in brain function, as it allows repeated measurements with high temporal resolution and minimal task demands. However, validating EEG metrics as biomarker candidates requires more than demonstrating cross-sectional differences at a single time point. It is necessary to evaluate whether each metric is sensitive to transient state changes, such as eyes-open (EO) and eyes-closed (EC) conditions, and whether individual differences remain stable across long-term follow-up. This study investigated EO/EC state sensitivity and five-year longitudinal stability of posterior alpha relative power, alpha peak frequency, theta/beta ratio, and aperiodic exponent using publicly available resting-state EEG data from healthy adults. State sensitivity was evaluated using within-participant EO/EC differences and Cohen’s d , while longitudinal stability was assessed using intraclass correlation coefficients (ICC), baseline-follow-up sca",
+      "doi": "10.3389/fnagi.2026.1885392",
+      "pmid": "42395346",
+      "openalex_id": "W7165125312",
+      "source_doi": "10.1016/j.bspc.2026.109484",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8450379824638368,
+        "similarity_score": 0.7316346168518066,
+        "citation_text_length": 1241,
         "dataset_text_length": 2347,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -94,16 +184,16 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:54:46.270897+00:00",
+    "scoring_date": "2026-07-15T00:26:52.189554+00:00",
     "dataset_text_length": 2347,
-    "num_citations_scored": 3,
+    "num_citations_scored": 4,
     "summary_stats": {
-      "mean_confidence": 0.7619406022628149,
-      "median_confidence": 0.7112505412101746,
-      "std_confidence": 0.1773405645174636,
-      "min_confidence": 0.5745712655782701,
+      "mean_confidence": 0.7813430711627006,
+      "median_confidence": 0.7781442618370057,
+      "std_confidence": 0.15955788273379284,
+      "min_confidence": 0.5690837609767915,
       "max_confidence": 1.0,
-      "high_confidence_count": 2,
+      "high_confidence_count": 3,
       "medium_confidence_count": 1,
       "low_confidence_count": 0
     }

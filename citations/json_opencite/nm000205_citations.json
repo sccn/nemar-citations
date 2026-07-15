@@ -1,39 +1,84 @@
 {
   "dataset_id": "nm000205",
   "num_citations": 26,
-  "date_last_updated": "2026-06-18T23:21:01.632799+00:00",
+  "date_last_updated": "2026-07-03T12:25:59.833515+00:00",
   "metadata": {
-    "total_cumulative_citations": 161,
-    "fetch_date": "2026-06-18T23:21:01.632799+00:00",
+    "total_cumulative_citations": 162,
+    "fetch_date": "2026-07-03T12:25:59.833515+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.3389/fnins.2020.579469",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "A Cross-Session Dataset for Collaborative Brain-Computer Interfaces Based on Rapid Serial Visual Presentation",
+        "paper_year": 2020,
+        "paper_venue": "Frontiers in Neuroscience",
+        "reason": "The candidate paper title and abstract explicitly describe the presentation and content of a cross-session EEG dataset from 14 subjects, matching the dataset's description.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is a technical standard used by this dataset."
+        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is a technical standard used by this dataset.",
+        "judgment_model": "gemma4:e4b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard, which is a technical specification used for organizing and sharing EEG data like the one in this dataset."
+        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard, which is a technical specification used for organizing and sharing EEG data like the one in this dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000205",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
       }
     ],
+    "searched_dois": [
+      "10.3389/fnins.2020.579469",
+      "10.82901/nemar.nm000205"
+    ],
+    "keywords": [
+      "EEG",
+      "brain-computer interfaces",
+      "p300",
+      "Event-Related Potentials, P300",
+      "rapid serial visual presentation",
+      "target detection",
+      "collaborative BCI",
+      "visual search",
+      "target image detection"
+    ],
+    "methods_description": "EEG data were acquired using a Neuroscan Synamps2 system at 1000 Hz sampling rate from 62 electrodes in standard 10-20 montage with vertex (Cz) reference. Subjects performed RSVP-based target detection tasks with 100 ms stimulus onset asynchrony, viewing rapid sequences of human and non-human images. Data were collected across 2 sessions per subject with 3 runs per session, with visual feedback provided during the task.",
+    "funding": [],
     "searched_accessions": [
       "nm000205"
     ],
@@ -393,7 +438,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2025,
       "url": "https://doi.org/10.3389/fnins.2025.1522964",
-      "cited_by": 2,
+      "cited_by": 3,
       "abstract": "Introduction: Electroencephalogram (EEG) analysis has shown significant research value for brain disease diagnosis, neuromodulation and brain-computer interface (BCI) application. The analysis and processing of EEG signals is complex since EEG are nonstationary, nonlinear, and often contaminated by intense background noise. Principal component analysis (PCA) and independent component analysis (ICA), as the commonly used methods for multi-dimensional signal feature component extraction, still have some limitations in terms of performance and calculation. Methods: In this study, channel component correlation analysis (CCCA) method was proposed to extract feature components of multi-channel EEG. Firstly, empirical wavelet transform (EWT) decomposed each channel signal into different frequency bands, and reconstructed them into a multi-dimensional signal. Then the objective optimization function was constructed by maximizing the covariance between multi-dimensional signals. Finally the fea",
       "doi": "10.3389/fnins.2025.1522964",
       "pmid": "40242456",
@@ -643,7 +688,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:46:50.444230+00:00",
+    "scoring_date": "2026-07-15T00:10:50.704554+00:00",
     "dataset_text_length": 2327,
     "num_citations_scored": 26,
     "summary_stats": {

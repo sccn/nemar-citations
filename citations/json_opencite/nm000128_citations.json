@@ -1,39 +1,82 @@
 {
   "dataset_id": "nm000128",
   "num_citations": 7,
-  "date_last_updated": "2026-06-18T23:18:30.195495+00:00",
+  "date_last_updated": "2026-07-03T10:24:47.215880+00:00",
   "metadata": {
     "total_cumulative_citations": 23,
-    "fetch_date": "2026-06-18T23:18:30.195495+00:00",
+    "fetch_date": "2026-07-03T10:24:47.215880+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.26599/bsa.2023.9050020",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "A large database towards user-friendly SSVEP-based BCI",
+        "paper_year": 2023,
+        "paper_venue": "Brain Science Advances",
+        "reason": "The paper's title and abstract explicitly introduce the open database of EEG data from 59 healthy volunteers using a 40-target SSVEP speller, matching the dataset's metadata.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset (BIDS Version 1.9.0)."
+        "reason": "The paper describes MNE-BIDS, a tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset (BIDS Version 1.9.0).",
+        "judgment_model": "gemma4:31b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes the EEG-BIDS standard, which is the data organization standard used by this dataset (BIDS Version 1.9.0)."
+        "reason": "The paper describes the EEG-BIDS standard, which is the data organization standard used by this dataset (BIDS Version 1.9.0).",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000128",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
       }
     ],
+    "searched_dois": [
+      "10.26599/bsa.2023.9050020",
+      "10.82901/nemar.nm000128"
+    ],
+    "keywords": [
+      "EEG",
+      "steady-state visually evoked potentials",
+      "brain-computer interfaces",
+      "SSVEP",
+      "visual perception",
+      "adolescents",
+      "frequency modulation"
+    ],
+    "methods_description": "EEG data were acquired at 1000 Hz using a NeuSenW amplifier (Neuracle) with 8 semi-dry pre-gelled electrodes positioned over the occipital lobe (POz, PO3, PO4, PO7, PO8, Oz, O1, O2) according to the standard 10-05 montage, with reference at Fp1 and ground at Fp2. Stimulation frequencies ranged from 8.0 to 15.8 Hz (0.2 Hz step) in a 4×10 matrix layout. Each subject completed 4 blocks of 40 trials with 1 s cue, 4 s stimulation, and 1 s visual feedback per trial. Data were downsampled to 250 Hz and epoched into 5 s segments (0.5 s pre-stimulus + 4 s stimulation + 0.5 s post-stimulus).",
+    "funding": [],
     "searched_accessions": [
       "nm000128"
     ],
@@ -212,7 +255,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:26:36.039557+00:00",
+    "scoring_date": "2026-07-15T00:04:24.643211+00:00",
     "dataset_text_length": 2237,
     "num_citations_scored": 7,
     "summary_stats": {

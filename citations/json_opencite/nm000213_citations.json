@@ -1,44 +1,88 @@
 {
   "dataset_id": "nm000213",
-  "num_citations": 10,
-  "date_last_updated": "2026-06-18T23:21:20.496319+00:00",
+  "num_citations": 9,
+  "date_last_updated": "2026-07-03T13:23:40.813362+00:00",
   "metadata": {
     "total_cumulative_citations": 22,
-    "fetch_date": "2026-06-18T23:21:20.496319+00:00",
+    "fetch_date": "2026-07-03T13:23:40.813362+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.3389/fnhum.2024.1320457",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "A comprehensive dataset for home appliance control using ERP-based BCIs with the application of inter-subject transfer learning",
+        "paper_year": 2024,
+        "paper_venue": "Frontiers in Human Neuroscience",
+        "reason": "The candidate paper title and abstract describe the presentation of a comprehensive dataset of online ERP-based BCIs, which includes the specific TV control experiment data.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is relevant to the dataset's BIDS version and file structure."
+        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is relevant to the dataset's BIDS version and file structure.",
+        "judgment_model": "gemma4:e4b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard, which is a technical specification used to organize and share EEG data like this dataset."
+        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard, which is a technical specification used to organize and share EEG data like this dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000213",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
       }
     ],
+    "searched_dois": [
+      "10.3389/fnhum.2024.1320457",
+      "10.82901/nemar.nm000213"
+    ],
+    "keywords": [
+      "EEG",
+      "Event-Related Potentials, P300",
+      "Brain-Computer Interfaces",
+      "oddball paradigm",
+      "home appliance control",
+      "visual stimulation",
+      "Healthy",
+      "ERP"
+    ],
+    "methods_description": "EEG data were acquired using an actiCHamp system (Brain Products) with 31 active electrodes in a standard 10-20 montage, referenced to linked mastoids, sampled at 500 Hz with 60 Hz line frequency notch. Subjects performed a P300 oddball task with visual flash stimuli on an LCD display. Each subject completed one session with 50 training and 30 testing blocks, with trial duration of 1.0 s and stimulus onset asynchrony of 750 ms.",
+    "funding": [],
     "searched_accessions": [
       "nm000213"
     ],
-    "num_accession_mentions": 1,
-    "num_dataset_citations": 1,
+    "num_accession_mentions": 0,
+    "num_dataset_citations": 0,
     "num_datapaper_citations": 9
   },
   "citation_details": [
@@ -248,47 +292,22 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Epidermolysis Bullosa with Congenital Pyloric Atresia: Novel Mutations in the β4 Integrin Gene (ITGB4) and Genotype/Phenotype Correlations",
-      "author": "Aoi Nakano, Leena Pulkkinen, Dédée F. Murrell, Joyce Rico, Anne W. Lucky, Maria C. Garzón, Cathy A. Stevens, Stephen P. Robertson, Ellen G Pfendner, Jouni Uitto",
-      "venue": "Pediatric Research",
-      "year": 2001,
-      "url": "https://doi.org/10.1203/00006450-200105000-00003",
-      "cited_by": 106,
-      "abstract": null,
-      "doi": "10.1203/00006450-200105000-00003",
-      "pmid": "11328943",
-      "openalex_id": "W2048097348",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000213",
-      "confidence_scoring": {
-        "confidence_score": 0.2254992127418518,
-        "similarity_score": 0.2254992127418518,
-        "citation_text_length": 343,
-        "dataset_text_length": 2397,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:28:52.912199+00:00",
+    "scoring_date": "2026-07-15T00:11:37.331590+00:00",
     "dataset_text_length": 2397,
-    "num_citations_scored": 10,
+    "num_citations_scored": 9,
     "summary_stats": {
-      "mean_confidence": 0.5020709377974272,
-      "median_confidence": 0.5469638621807099,
-      "std_confidence": 0.10744307859083647,
-      "min_confidence": 0.2254992127418518,
+      "mean_confidence": 0.5328011294702688,
+      "median_confidence": 0.5518748474121095,
+      "std_confidence": 0.05816559707546064,
+      "min_confidence": 0.38379487395286566,
       "max_confidence": 0.5891471269726755,
       "high_confidence_count": 0,
       "medium_confidence_count": 8,
-      "low_confidence_count": 2
+      "low_confidence_count": 1
     }
   }
 }

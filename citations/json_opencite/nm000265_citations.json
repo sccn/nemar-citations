@@ -1,39 +1,85 @@
 {
   "dataset_id": "nm000265",
   "num_citations": 11,
-  "date_last_updated": "2026-06-18T23:24:27.341940+00:00",
+  "date_last_updated": "2026-07-03T14:25:43.040555+00:00",
   "metadata": {
     "total_cumulative_citations": 10,
-    "fetch_date": "2026-06-18T23:24:27.341940+00:00",
+    "fetch_date": "2026-07-03T14:25:43.040555+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-025-04861-9",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Dataset combining EEG, eye-tracking, and high-speed video for ocular activity analysis across BCI paradigms",
+        "paper_year": 2025,
+        "paper_venue": "Scientific Data",
+        "reason": "The candidate paper's title and abstract explicitly introduce and describe the release of this specific multimodal EEG/eye-tracking dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a technical specification and tool for organizing electrophysiological data into the BIDS format, which is used by this dataset."
+        "reason": "The paper describes MNE-BIDS, a technical specification and tool for organizing electrophysiological data into the BIDS format, which is used by this dataset.",
+        "judgment_model": "gemma4:e4b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard, which is a technical specification used to organize and share the EEG data contained in this dataset."
+        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard, which is a technical specification used to organize and share the EEG data contained in this dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000265",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
       }
     ],
+    "searched_dois": [
+      "10.1038/s41597-025-04861-9",
+      "10.82901/nemar.nm000265"
+    ],
+    "keywords": [
+      "EEG",
+      "motor imagery",
+      "brain-computer interfaces",
+      "eye tracking",
+      "multimodal neuroimaging",
+      "motor control",
+      "high-speed video",
+      "video recording",
+      "ocular activity",
+      "eye movements"
+    ],
+    "methods_description": "EEG data were acquired using a Neuroscan Quik-Cap 65-channel system with SynAmps2 amplifier at 1000 Hz sampling rate. The montage followed the standard 1005 electrode placement with 64 EEG channels, 1 EOG channel, and 1 stimulus channel. Reference electrode was placed at the right mastoid (M1) with ground at the forehead. Ag/AgCl sensors were used with online high-pass filtering (10 s time constant). Participants performed motor imagery tasks with 2-class hand grasping (left/right hand) across 40 trials per session, with up to 3 sessions per subject. Visual rectangle cues were presented for 2 seconds, followed by 4 seconds of imagery in a synchronous, offline paradigm without feedback.",
+    "funding": [],
     "searched_accessions": [
       "nm000265"
     ],
@@ -300,7 +346,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:30:22.913473+00:00",
+    "scoring_date": "2026-07-15T00:15:28.655554+00:00",
     "dataset_text_length": 2473,
     "num_citations_scored": 11,
     "summary_stats": {

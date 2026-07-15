@@ -1,24 +1,65 @@
 {
   "dataset_id": "nm000270",
-  "num_citations": 18,
-  "date_last_updated": "2026-06-18T23:24:37.923005+00:00",
+  "num_citations": 20,
+  "date_last_updated": "2026-07-03T15:23:13.169224+00:00",
   "metadata": {
     "total_cumulative_citations": 11,
-    "fetch_date": "2026-06-18T23:24:37.923005+00:00",
+    "fetch_date": "2026-07-03T15:23:13.169224+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1038/s41597-025-04618-4",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Lower limb motor imagery EEG dataset based on the multi-paradigm and longitudinal-training of stroke patients",
+        "paper_year": 2025,
+        "paper_venue": "Scientific Data",
+        "reason": "The candidate paper's title and abstract explicitly describe the collection, scope, and analysis of the raw EEG data from 27 stroke patients, indicating it is the primary paper for this dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000270",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1038/s41597-025-04618-4",
+      "10.82901/nemar.nm000270"
+    ],
+    "keywords": [
+      "motor imagery",
+      "stroke",
+      "rehabilitation",
+      "EEG",
+      "brain-computer interfaces",
+      "gait",
+      "lower limb",
+      "longitudinal"
+    ],
+    "methods_description": "Scalp EEG recordings were acquired during a lower-limb motor imagery task (task-imagery) using a multi-paradigm protocol with longitudinal training design in stroke patients undergoing rehabilitation. Data are organized in BIDS format with 27 participants.",
+    "funding": [],
     "searched_accessions": [
       "nm000270"
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 18
+    "num_datapaper_citations": 20
   },
   "citation_details": [
     {
@@ -208,11 +249,11 @@
     {
       "title": "Liu et al. 2025 — Lower limb motor imagery EEG dataset based on the multi-paradigm and longitudinal-training of stroke patients (Tianjin University)",
       "author": "Yanjie Liu, Zhuolan Gui,  De Yan, Zhuang Wang, Ruisi Gao, Ningxin Han, Junying Chen, Jialing Wu, Dong Ming",
-      "venue": "UC San Diego",
+      "venue": "Open MIND",
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.nm000270.v1.0.1",
       "cited_by": 0,
-      "abstract": "This dataset comprises scalp electroencephalography recordings from 27 stroke patients performing lower-limb motor imagery tasks as part of a longitudinal rehabilitation training protocol. The multi-paradigm design supports research on motor-imagery brain–computer interfaces for gait and lower-limb rehabilitation following stroke, with repeated sessions enabling investigation of learning and neuroplasticity during motor recovery.",
+      "abstract": "Re-hosted EEG data from Liu et al. (2025): Lower limb motor imagery dataset for stroke patients, originally deposited on Figshare under a CC BY 4.0 license. Data has been converted from non-standard BIDS (EEGLAB .set) to proper BIDS format (BrainVision .vhdr/.vmrk/.eeg) using mne_bids.write_raw_bids().PaperY. Liu, Z. Gui, D. Yan, Z. Wang, R. Gao, N. Han, J. Chen, J. Wu, D. Ming, “Lower limb motor imagery EEG dataset based on the multi-paradigm and longitudinal-training of stroke patients,” Scientific Data, 12, 314, 2025.DOI: 10.1038/s41597-025-04618-4ParadigmTaskGait motor imagery vs idle state (binary)Trials~40 MI + 40 idle per session (4 runs × 10+10)Timing3 s baseline → 1 s cue → 5 s MI/idle → restEventsCode 3 = gait MI onset, code 9 = idle onsetSessionsses-prePre-treatment (conventional MI, all 27 subjects)ses-misesMI + Sequential Electrical Stimulation (16 subjects)ses-miiesMI + Invariable Electrical Stimulation (16 subjects)ses-postPost-treatment assessment (all 27 subjects)ses-f",
       "doi": "10.82901/nemar.nm000270.v1.0.1",
       "pmid": null,
       "openalex_id": "W7165048710",
@@ -221,8 +262,8 @@
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 1.0,
-        "similarity_score": 0.9533353447914124,
-        "citation_text_length": 738,
+        "similarity_score": 0.9346745610237122,
+        "citation_text_length": 1302,
         "dataset_text_length": 2526,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -269,6 +310,29 @@
         "confidence_score": 0.7303611838817597,
         "similarity_score": 0.6323473453521729,
         "citation_text_length": 1297,
+        "dataset_text_length": 2526,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "The effect of rehabilitation training based on brain-computer interface on limb function in stroke patients: a systematic review and meta-analyses",
+      "author": "Ziqiu Zheng, Changyue Zhang, Changyue Zhang, Mengjiao Lv, Chunting Qian, Ge Gao, S S Wang, Rujing Zhu, Jie Yang, Chengwei Zhang, Chengwei Zhang, H G Xu",
+      "venue": "Frontiers in Neurology",
+      "year": 2026,
+      "url": "https://doi.org/10.3389/fneur.2026.1750875",
+      "cited_by": 0,
+      "abstract": "Background Characterized by high incidence rate, high disability rate, high mortality rate and high recurrence rate, stroke has become the second leading cause of death globally and the primary cause of adult disability. Though traditional rehabilitation methods have played a significant role in post-stroke functional recovery, their therapeutic efficacy is limited. In recent years, brain-computer interfaces (BCI) have advanced rapidly and are being used more frequently in rehabilitation training for stroke patients. Objective This systematic review and meta-analyses aimed to systematically assess the effect of brain-computer interface-based rehabilitation training on limb function in patients after stroke, and further investigate the efficacy differences among various types of brain-computer interfaces and treatment protocols. Methods The search strategy was conducted in 5 databases (PubMed, Scopus, Web of Science, Embase, and Cochrane Library databases) from inception to August 29, 2",
+      "doi": "10.3389/fneur.2026.1750875",
+      "pmid": null,
+      "openalex_id": "W7166814056",
+      "source_doi": "10.1038/s41597-025-04618-4",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7283276197314263,
+        "similarity_score": 0.6305866837501526,
+        "citation_text_length": 1358,
         "dataset_text_length": 2526,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -373,7 +437,7 @@
       "year": 2026,
       "url": "https://doi.org/10.1016/j.rineng.2026.110833",
       "cited_by": 0,
-      "abstract": null,
+      "abstract": "Electroencephalography (EEG)-based brain computer interface (BCI) has become a critical technology for intelligent exoskeletons, prosthetic systems, and rehabilitation robots, allowing direct neural control and adaptive human-robot interaction. This study offers a comprehensive synthesis of this rapidly evolving domain, employing an innovative, multidimensional methodological framework that integrates bibliometric analysis with machine learning-driven topic modeling. The combined use of these approaches enables a distinctive examination of both publication trends and latent thematic structures within literature. A total of 2064 articles retrieved from the Scopus database were analyzed for bibliometric indicators and thematic structures. The results showed that IEEE Transactions on Neural Systems and Rehabilitation Engineering, Clinical Neurophysiology, and the Journal of Neural Engineering were the most significant journals in the discipline. Furthermore, China, the United States, Indi",
       "doi": "10.1016/j.rineng.2026.110833",
       "pmid": null,
       "openalex_id": "W7160158250",
@@ -381,9 +445,32 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.636484506726265,
-        "similarity_score": 0.6061757206916809,
-        "citation_text_length": 248,
+        "confidence_score": 0.5937646579742432,
+        "similarity_score": 0.5140819549560547,
+        "citation_text_length": 1260,
+        "dataset_text_length": 2526,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "EEG-based dataset explicitly targets the transitions between sitting and standing for exploring neural activation patterns in motor imagery and execution",
+      "author": "Benjakarn Uengsawapak, Supavit Kongwudhikunakorn, Suktipol Kiatthaveephong, Wipamas Polpakdee, Rattanaphon Chaisaen, Chanitsada Chuenchit, P. Manoonpong, G. Bhakdisongkhram, Theerawit Wilaiprasitporn",
+      "venue": "GigaScience",
+      "year": 2026,
+      "url": "https://doi.org/10.1093/gigascience/giag065",
+      "cited_by": 0,
+      "abstract": "Abstract This study presents the first publicly accessible electroencephalography (EEG) dataset explicitly targeting sit-to-stand and stand-to-sit transitions during both motor execution (ME) and motor imagery (MI) tasks. Twenty-two healthy participants performed sitting and standing transitions under well-controlled experimental conditions while 60-channel EEG, electrooculography (EOG), and electromyography (EMG) signals were synchronously recorded. The dataset enables the exploration of neural activation patterns associated with lower-limb movements and supports the development of EEG-based brain–computer interface (BCI) algorithms for mobility assistance and rehabilitation. To validate the dataset, benchmark classification was conducted on three baseline deep learning methods—CTNet, EEGNet, and TCANet. Given the high inter-subject variability inherent to EEG, leave-one-subject-out cross-validation is used to ensure no subject bias during evaluation. Results demonstrated consistent d",
+      "doi": "10.1093/gigascience/giag065",
+      "pmid": "42214321",
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-025-04618-4",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8652260926365853,
+        "similarity_score": 0.7491135001182556,
+        "citation_text_length": 1402,
         "dataset_text_length": 2526,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -438,16 +525,16 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:30:39.026721+00:00",
+    "scoring_date": "2026-07-15T00:15:51.374099+00:00",
     "dataset_text_length": 2526,
-    "num_citations_scored": 18,
+    "num_citations_scored": 20,
     "summary_stats": {
-      "mean_confidence": 0.753153463833862,
-      "median_confidence": 0.718620980679989,
-      "std_confidence": 0.10832391593862052,
-      "min_confidence": 0.6180126428604126,
+      "mean_confidence": 0.755379810631275,
+      "median_confidence": 0.7293444018065931,
+      "std_confidence": 0.10864710854382577,
+      "min_confidence": 0.5937646579742432,
       "max_confidence": 1.0,
-      "high_confidence_count": 11,
+      "high_confidence_count": 13,
       "medium_confidence_count": 7,
       "low_confidence_count": 0
     }

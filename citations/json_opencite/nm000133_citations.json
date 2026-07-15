@@ -1,18 +1,63 @@
 {
   "dataset_id": "nm000133",
   "num_citations": 7,
-  "date_last_updated": "2026-06-18T23:18:41.122467+00:00",
+  "date_last_updated": "2026-07-03T10:25:17.398546+00:00",
   "metadata": {
-    "total_cumulative_citations": 73,
-    "fetch_date": "2026-06-18T23:18:41.122467+00:00",
+    "total_cumulative_citations": 77,
+    "fetch_date": "2026-07-03T10:25:17.398546+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.48550/arxiv.2404.05553",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Alljoined1 -- A dataset for EEG-to-Image decoding",
+        "paper_year": 2024,
+        "paper_venue": "arXiv (Cornell University)",
+        "reason": "The paper title 'Alljoined1 -- A dataset for EEG-to-Image decoding' and abstract explicitly state they are presenting and releasing the Alljoined1 dataset.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000133",
+        "identifier_type": "doi",
+        "source_relation": "IsVersionOf",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Alljoined1",
+        "paper_year": 2026,
+        "paper_venue": "UC San Diego",
+        "reason": "The candidate paper's title and abstract explicitly describe the release of the Alljoined1 EEG dataset, matching the dataset's description and participants.",
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.48550/arxiv.2404.05553",
+      "10.82901/nemar.nm000133"
+    ],
+    "keywords": [
+      "EEG",
+      "visual perception",
+      "image decoding",
+      "rapid serial visual presentation",
+      "natural images",
+      "oddball detection",
+      "neural responses",
+      "BioSemi",
+      "independent component analysis",
+      "artifact rejection",
+      "Natural Scenes Dataset",
+      "MS-COCO"
+    ],
+    "methods_description": "EEG was recorded using a 64-channel BioSemi ActiveTwo system (Ag/AgCl sintered electrodes, International 10-20 montage) at 512 Hz sampling rate with 24-bit A/D conversion. Participants performed an RSVP oddball detection task with 300 ms image presentations followed by 300 ms black screen plus 0-50 ms jitter. Preprocessing included 0.5-125 Hz band-pass filtering, 60 Hz notch filtering, FastICA (95% variance retained), -50 to 600 ms epoching, AutoReject artifact rejection, baseline correction, and average re-referencing.",
+    "funding": [],
     "searched_accessions": [
       "nm000133"
     ],
@@ -50,7 +95,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2501.15322",
-      "cited_by": 22,
+      "cited_by": 26,
       "abstract": "Generative AI has recently propelled the decoding of images from brain activity. How do these approaches scale with the amount and type of neural recordings? Here, we systematically compare image decoding from four types of non-invasive devices: electroencephalography (EEG), magnetoencephalography (MEG), high-field functional Magnetic Resonance Imaging (3T fMRI) and ultra-high field (7T) fMRI. For this, we evaluate decoding models on the largest benchmark to date, encompassing 8 public datasets, 84 volunteers, 498 hours of brain recording and 2.3 million brain responses to natural images. Unlike previous work, we focus on single-trial decoding performance to simulate real-time settings. This systematic comparison reveals three main findings. First, the most precise neuroimaging devices tend to yield the best decoding performances, when the size of the training sets are similar. However, the gain enabled by deep learning - in comparison to linear models - is obtained with the noisiest d",
       "doi": "10.48550/arXiv.2501.15322",
       "pmid": null,
@@ -187,7 +232,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:26:44.516284+00:00",
+    "scoring_date": "2026-07-15T00:04:55.647520+00:00",
     "dataset_text_length": 2185,
     "num_citations_scored": 7,
     "summary_stats": {

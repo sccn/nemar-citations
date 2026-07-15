@@ -1,18 +1,79 @@
 {
   "dataset_id": "nm000119",
   "num_citations": 45,
-  "date_last_updated": "2026-06-18T23:18:03.386730+00:00",
+  "date_last_updated": "2026-07-03T10:23:50.464888+00:00",
   "metadata": {
     "total_cumulative_citations": 423,
-    "fetch_date": "2026-06-18T23:18:03.386730+00:00",
+    "fetch_date": "2026-07-03T10:23:50.464888+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.48550/arxiv.1602.00904",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Comparative evaluation of state-of-the-art algorithms for SSVEP-based BCIs",
+        "paper_year": 2016,
+        "paper_venue": "arXiv (Cornell University)",
+        "reason": "The dataset's DOI in the README is 10.48550/arXiv.1602.00904, which matches the candidate paper's DOI and authors.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.6084/m9.figshare.2068677.v1",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "MAMEM EEG SSVEP Dataset I (256 channels, 11 subjects, 5 frequencies)",
+        "paper_year": 2016,
+        "paper_venue": "Figshare",
+        "reason": "The paper's title and abstract explicitly describe the release of the MAMEM EEG SSVEP Dataset I, matching the dataset's subjects, channels, and frequencies.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000119",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.48550/arxiv.1602.00904",
+      "10.6084/m9.figshare.2068677.v1",
+      "10.82901/nemar.nm000119"
+    ],
+    "keywords": [
+      "SSVEP",
+      "EEG",
+      "brain-computer interface",
+      "BCI",
+      "visual evoked potentials",
+      "signal processing",
+      "classification algorithms",
+      "comparative evaluation",
+      "state-of-the-art algorithms",
+      "MAMEM"
+    ],
+    "methods_description": "EEG signals were recorded using an EGI 300 Geodesic EEG System with a 256-channel GSN-HydroCel montage at 250 Hz sampling rate. Subjects focused attention on a single magenta flickering box presented on a 22-inch LCD monitor (60 Hz refresh rate, 1680×1080 resolution). Each frequency was presented for 5-second trials followed by 5-second rest periods, repeated 3 times per frequency with 30-second inter-frequency rest intervals. Data were acquired in raw, unpreprocessed format.",
+    "funding": [
+      {
+        "funder_name": "European Commission",
+        "award_number": "H2020-ICT-2014-644780"
+      }
+    ],
     "searched_accessions": [
       "nm000119"
     ],
@@ -1059,7 +1120,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:40:48.937966+00:00",
+    "scoring_date": "2026-07-15T00:03:24.683066+00:00",
     "dataset_text_length": 2344,
     "num_citations_scored": 45,
     "summary_stats": {

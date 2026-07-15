@@ -1,27 +1,84 @@
 {
   "dataset_id": "nm000144",
   "num_citations": 85,
-  "date_last_updated": "2026-06-18T23:19:04.256905+00:00",
+  "date_last_updated": "2026-07-03T11:23:22.124836+00:00",
   "metadata": {
-    "total_cumulative_citations": 2834,
-    "fetch_date": "2026-06-18T23:19:04.256905+00:00",
+    "total_cumulative_citations": 2859,
+    "fetch_date": "2026-07-03T11:23:22.124836+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1371/journal.pone.0123727",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Individually Adapted Imagery Improves Brain-Computer Interface Performance in End-Users with Disability",
+        "paper_year": 2015,
+        "paper_venue": "PLoS ONE",
+        "reason": "The dataset's DOI (10.1371/journal.pone.0123727) matches the candidate paper's DOI, and the authors and study population (CNS tissue damage) match.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is mentioned as the BIDS version 1.9.0 in the dataset metadata."
+        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is mentioned as the BIDS version 1.9.0 in the dataset metadata.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000144",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.1371/journal.pone.0123727",
+      "10.82901/nemar.nm000144"
+    ],
+    "keywords": [
+      "brain-computer interface",
+      "motor imagery",
+      "EEG",
+      "mental tasks",
+      "Stroke",
+      "spinal cord injury",
+      "rehabilitation"
+    ],
+    "methods_description": "EEG data were acquired at 256 Hz sampling rate from 30 active electrodes (g.LADYbird) arranged in 10-20 montage, referenced to bilateral mastoids. Online filtering included 0.5-100 Hz bandpass and 50 Hz notch filters. Preprocessing involved bandpass filtering (0.5-100 Hz), notch filtering at 50 Hz, and manual artifact rejection based on EOG recordings. Five mental imagery tasks were presented as visual cues with 7-second imagery periods per trial.",
+    "funding": [
+      {
+        "funder_name": "European Commission",
+        "award_number": "247447",
+        "award_title": "BrainAble"
+      },
+      {
+        "funder_name": "European Commission",
+        "award_number": "287774",
+        "award_title": "ABC"
+      },
+      {
+        "funder_name": "European Commission",
+        "award_number": "288566",
+        "award_title": "BackHome"
       }
     ],
     "searched_accessions": [
@@ -38,7 +95,7 @@
       "venue": "Sensors",
       "year": 2019,
       "url": "https://doi.org/10.3390/s19061423",
-      "cited_by": 590,
+      "cited_by": 592,
       "abstract": "Electroencephalography (EEG)-based brain-computer interfaces (BCIs), particularly those using motor-imagery (MI) data, have the potential to become groundbreaking technologies in both clinical and entertainment settings. MI data is generated when a subject imagines the movement of a limb. This paper reviews state-of-the-art signal processing techniques for MI EEG-based BCIs, with a particular focus on the feature extraction, feature selection and classification techniques used. It also summarizes the main applications of EEG-based BCIs, particularly those based on MI data, and finally presents a detailed discussion of the most prevalent challenges impeding the development and commercialization of EEG-based BCIs.",
       "doi": "10.3390/s19061423",
       "pmid": "30909489",
@@ -61,7 +118,7 @@
       "venue": "Neural Computing and Applications",
       "year": 2021,
       "url": "https://doi.org/10.1007/s00521-021-06352-5",
-      "cited_by": 564,
+      "cited_by": 566,
       "abstract": null,
       "doi": "10.1007/s00521-021-06352-5",
       "pmid": null,
@@ -84,7 +141,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1088/1741-2552/aadea0",
-      "cited_by": 232,
+      "cited_by": 235,
       "abstract": "OBJECTIVE: Brain-computer interface (BCI) algorithm development has long been hampered by two major issues: small sample sets and a lack of reproducibility. We offer a solution to both of these problems via a software suite that streamlines both the issues of finding and preprocessing data in a reliable manner, as well as that of using a consistent interface for machine learning methods. APPROACH: By building on recent advances in software for signal analysis implemented in the MNE toolkit, and the unified framework for machine learning offered by the scikit-learn project, we offer a system that can improve BCI algorithm development. This system is fully open-source under the BSD licence and available at https://github.com/NeuroTechX/moabb. MAIN RESULTS: We analyze a set of state-of-the-art decoding algorithms across 12 open access datasets, including over 250 subjects. Our results show that even for the best methods, there are datasets which do not show significant improvements, and f",
       "doi": "10.1088/1741-2552/aadea0",
       "pmid": "30177583",
@@ -153,7 +210,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2020,
       "url": "https://doi.org/10.1088/1741-2552/abca17",
-      "cited_by": 107,
+      "cited_by": 108,
       "abstract": "Mental-tasks based brain-computer interfaces (MT-BCIs) allow their users to interact with an external device solely by using brain signals produced through mental tasks. While MT-BCIs are promising for many applications, they are still barely used outside laboratories due to their lack of reliability. MT-BCIs require their users to develop the ability to self-regulate specific brain signals. However, the human learning process to control a BCI is still relatively poorly understood and how to optimally train this ability is currently under investigation. Despite their promises and achievements, traditional training programs have been shown to be sub-optimal and could be further improved. In order to optimize user training and improve BCI performance, human factors should be taken into account. An interdisciplinary approach should be adopted to provide learners with appropriate and/or adaptive training. In this article, we provide an overview of existing methods for MT-BCI user training-",
       "doi": "10.1088/1741-2552/abca17",
       "pmid": "33181488",
@@ -176,7 +233,7 @@
       "venue": "Brain-Computer Interfaces",
       "year": 2016,
       "url": "https://doi.org/10.1080/2326263x.2016.1263916",
-      "cited_by": 93,
+      "cited_by": 94,
       "abstract": "Research in brain-computer interfaces has achieved impressive progress towards implementing assistive technologies for restoration or substitution of lost motor capabilities, as well as supporting technologies for able-bodied subjects. Notwithstanding this progress, effective translation of these interfaces from proof-of concept prototypes into reliable applications remains elusive. As a matter of fact, most of the current BCI systems cannot be used independently for long periods of time by their intended end-users. Multiple factors that impair achieving this goal have already been identified. However, it is not clear how do they affect the overall BCI performance or how they should be tackled. This is worsened by the publication bias where only positive results are disseminated, preventing the research community from learning from its errors. This paper is the result of a workshop held at the 6th International BCI meeting in Asilomar. We summarize here the discussion on concrete resea",
       "doi": "10.1080/2326263x.2016.1263916",
       "pmid": "29629393",
@@ -222,7 +279,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2510.21585",
-      "cited_by": 46,
+      "cited_by": 51,
       "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
       "doi": "10.48550/arXiv.2510.21585",
       "pmid": null,
@@ -263,6 +320,29 @@
       }
     },
     {
+      "title": "The largest EEG-based BCI reproducibility study for open science: the MOABB benchmark",
+      "author": "Sylvain Chevallier, Igor Carrara, Bruno Aristimunha, Pierre Guetschel, Sara Sedlar, Bruna J. Lopes, Sébastien Velut, Salim Khazem, Thomas Moreau",
+      "venue": "ArXiv",
+      "year": 2024,
+      "url": "https://doi.org/10.48550/arXiv.2404.15319",
+      "cited_by": 45,
+      "abstract": "Objective. This study conduct an extensive Brain-computer interfaces (BCI) reproducibility analysis on open electroencephalography datasets, aiming to assess existing solutions and establish open and reproducible benchmarks for effective comparison within the field. The need for such benchmark lies in the rapid industrial progress that has given rise to undisclosed proprietary solutions. Furthermore, the scientific literature is dense, often featuring challenging-to-reproduce evaluations, making comparisons between existing approaches arduous. Approach. Within an open framework, 30 machine learning pipelines (separated into raw signal: 11, Riemannian: 13, deep learning: 6) are meticulously re-implemented and evaluated across 36 publicly available datasets, including motor imagery (14), P300 (15), and SSVEP (7). The analysis incorporates statistical meta-analysis techniques for results assessment, encompassing execution time and environmental impact considerations. Main results. The stu",
+      "doi": "10.48550/arXiv.2404.15319",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0123727",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6129262447357178,
+        "similarity_score": 0.5306720733642578,
+        "citation_text_length": 1273,
+        "dataset_text_length": 2340,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Single-trial effective brain connectivity patterns enhance discriminability of mental imagery tasks",
       "author": "Dheeraj Rathee, Hubert Cecotti, Girijesh Prasad",
       "venue": "Journal of Neural Engineering",
@@ -286,35 +366,12 @@
       }
     },
     {
-      "title": "The largest EEG-based BCI reproducibility study for open science: the MOABB benchmark",
-      "author": "Sylvain Chevallier, Igor Carrara, Bruno Aristimunha, Pierre Guetschel, Sara Sedlar, Bruna J. Lopes, Sébastien Velut, Salim Khazem, Thomas Moreau",
-      "venue": "ArXiv",
-      "year": 2024,
-      "url": "https://doi.org/10.48550/arXiv.2404.15319",
-      "cited_by": 42,
-      "abstract": "Objective. This study conduct an extensive Brain-computer interfaces (BCI) reproducibility analysis on open electroencephalography datasets, aiming to assess existing solutions and establish open and reproducible benchmarks for effective comparison within the field. The need for such benchmark lies in the rapid industrial progress that has given rise to undisclosed proprietary solutions. Furthermore, the scientific literature is dense, often featuring challenging-to-reproduce evaluations, making comparisons between existing approaches arduous. Approach. Within an open framework, 30 machine learning pipelines (separated into raw signal: 11, Riemannian: 13, deep learning: 6) are meticulously re-implemented and evaluated across 36 publicly available datasets, including motor imagery (14), P300 (15), and SSVEP (7). The analysis incorporates statistical meta-analysis techniques for results assessment, encompassing execution time and environmental impact considerations. Main results. The stu",
-      "doi": "10.48550/arXiv.2404.15319",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0123727",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6129262447357178,
-        "similarity_score": 0.5306720733642578,
-        "citation_text_length": 1273,
-        "dataset_text_length": 2340,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Quality Assessment of Single-Channel EEG for Wearable Devices",
       "author": "Fanny Grosselin, Xavier Navarro‐Sune, Alessia Vozzi, Katerina Pandremmenou, Fabrizio De Vico Fallani, Yohan Attal, Mario Chávez",
       "venue": "Sensors",
       "year": 2019,
       "url": "https://doi.org/10.3390/s19030601",
-      "cited_by": 33,
+      "cited_by": 34,
       "abstract": "The recent embedding of electroencephalographic (EEG) electrodes in wearable devices raises the problem of the quality of the data recorded in such uncontrolled environments. These recordings are often obtained with dry single-channel EEG devices, and may be contaminated by many sources of noise which can compromise the detection and characterization of the brain state studied. In this paper, we propose a classification-based approach to effectively quantify artefact contamination in EEG segments, and discriminate muscular artefacts. The performance of our method were assessed on different databases containing either artificially contaminated or real artefacts recorded with different type of sensors, including wet and dry EEG electrodes. Furthermore, the quality of unlabelled databases was evaluated. For all the studied databases, the proposed method is able to rapidly assess the quality of the EEG signals with an accuracy higher than 90%. The obtained performance suggests that our app",
       "doi": "10.3390/s19030601",
       "pmid": "30709004",
@@ -383,7 +440,7 @@
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2022,
       "url": "https://doi.org/10.1109/tbme.2022.3154885",
-      "cited_by": 29,
+      "cited_by": 31,
       "abstract": "OBJECTIVE: Relying on the idea that functional connectivity provides important insights on the underlying dynamic of neuronal interactions, we propose a novel framework that combines functional connectivity estimators and covariance-based pipelines to improve the classification of mental states, such as motor imagery. METHODS: A Riemannian classifier is trained for each estimator and an ensemble classifier combines the decisions in each feature space. A thorough assessment of the functional connectivity estimators is provided and the best performing pipeline among those tested, called FUCONE, is evaluated on different conditions and datasets. RESULTS: Using a meta-analysis to aggregate results across datasets, FUCONE performed significantly better than all state-of-the-art methods. CONCLUSION: The performance gain is mostly imputable to the improved diversity of the feature spaces, increasing the robustness of the ensemble classifier with respect to the inter- and intra-subject variabi",
       "doi": "10.1109/tbme.2022.3154885",
       "pmid": "35226599",
@@ -562,6 +619,29 @@
       }
     },
     {
+      "title": "Brain–computer interface control with artificial intelligence copilots",
+      "author": "Johannes Y. Lee, SangJoon Lee, Abhishek Mishra, Yan Xu, Brandon McMahan, Brent Gaisford, Charles Kobashigawa, Mike Qu, Chang Xie, Jonathan C. Kao",
+      "venue": "Nature Machine Intelligence",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s42256-025-01090-y",
+      "cited_by": 24,
+      "abstract": "Motor brain–computer interfaces (BCIs) decode neural signals to help people with paralysis move and communicate. Even with important advances in the past two decades, BCIs face a key obstacle to clinical viability: BCI performance should strongly outweigh costs and risks. To significantly increase the BCI performance, we use shared autonomy, where artificial intelligence (AI) copilots collaborate with BCI users to achieve task goals. We demonstrate this AI-BCI in a non-invasive BCI system decoding electroencephalography signals. We first contribute a hybrid adaptive decoding approach using a convolutional neural network and ReFIT-like Kalman filter, enabling healthy users and a participant with paralysis to control computer cursors and robotic arms via decoded electroencephalography signals. We then design two AI copilots to aid BCI users in a cursor control task and a robotic arm pick-and-place task. We demonstrate AI-BCIs that enable a participant with paralysis to achieve 3.9-times-",
+      "doi": "10.1038/s42256-025-01090-y",
+      "pmid": "41221369",
+      "openalex_id": "W4413883071",
+      "source_doi": "10.1371/journal.pone.0123727",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4080631582438946,
+        "similarity_score": 0.35330143570899963,
+        "citation_text_length": 1281,
+        "dataset_text_length": 2340,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "EEG-Based Mental Tasks Recognition via a Deep Learning-Driven Anomaly Detector",
       "author": "Abdelkader Dairi, Nabil Zerrouki, Fouzi Harrou, Ying Sun",
       "venue": "Diagnostics",
@@ -579,29 +659,6 @@
         "confidence_score": 0.579792897105217,
         "similarity_score": 0.5019851922988892,
         "citation_text_length": 1184,
-        "dataset_text_length": 2340,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Brain–computer interface control with artificial intelligence copilots",
-      "author": "Johannes Y. Lee, SangJoon Lee, Abhishek Mishra, Yan Xu, Brandon McMahan, Brent Gaisford, Charles Kobashigawa, Mike Qu, Chang Xie, Jonathan C. Kao",
-      "venue": "Nature Machine Intelligence",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s42256-025-01090-y",
-      "cited_by": 22,
-      "abstract": "Motor brain–computer interfaces (BCIs) decode neural signals to help people with paralysis move and communicate. Even with important advances in the past two decades, BCIs face a key obstacle to clinical viability: BCI performance should strongly outweigh costs and risks. To significantly increase the BCI performance, we use shared autonomy, where artificial intelligence (AI) copilots collaborate with BCI users to achieve task goals. We demonstrate this AI-BCI in a non-invasive BCI system decoding electroencephalography signals. We first contribute a hybrid adaptive decoding approach using a convolutional neural network and ReFIT-like Kalman filter, enabling healthy users and a participant with paralysis to control computer cursors and robotic arms via decoded electroencephalography signals. We then design two AI copilots to aid BCI users in a cursor control task and a robotic arm pick-and-place task. We demonstrate AI-BCIs that enable a participant with paralysis to achieve 3.9-times-",
-      "doi": "10.1038/s42256-025-01090-y",
-      "pmid": "41221369",
-      "openalex_id": "W4413883071",
-      "source_doi": "10.1371/journal.pone.0123727",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4080631582438946,
-        "similarity_score": 0.35330143570899963,
-        "citation_text_length": 1281,
         "dataset_text_length": 2340,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -659,7 +716,7 @@
       "venue": "HCA Healthcare Journal of Medicine",
       "year": 2021,
       "url": "https://doi.org/10.36518/2689-0216.1188",
-      "cited_by": 18,
+      "cited_by": 19,
       "abstract": "Description Sensorimotor rhythm-based brain-computer interfaces (SMR-BCIs) are used for the acquisition and translation of motor imagery-related brain signals into machine control commands, bypassing the usual central nervous system output. The selection of optimal external variable configuration can maximize SMR-BCI performance in both healthy and disabled people. This performance is especially important now when the BCI is targeted for everyday use in the environment beyond strictly regulated laboratory settings. In this review article, we summarize and critically evaluate the current body of knowledge pertaining to the effect of the external variables on SMR-BCI performance. When assessing the relationship between SMR-BCI performance and external variables, we broadly characterize them as elements that are less dependent on the BCI user and originate from beyond the user. These elements include such factors as BCI type, distractors, training, visual and auditory feedback, virtual re",
       "doi": "10.36518/2689-0216.1188",
       "pmid": "37427002",
@@ -751,7 +808,7 @@
       "venue": "Scientific Reports",
       "year": 2025,
       "url": "https://doi.org/10.1038/s41598-025-86294-3",
-      "cited_by": 15,
+      "cited_by": 16,
       "abstract": "Decoding the human brain using non-invasive methods is a significant challenge. This study aims to enhance electroencephalography (EEG) decoding by developing of machine learning methods. Specifically, we propose the novel, attention-based Patched Brain Transformer model to achieve this goal. The model exhibits flexibility regarding the number of EEG channels and recording duration, enabling effective pre-training across diverse datasets. We investigate the effect of data augmentation methods and pre-training on the training process. To gain insights into the training behavior, we incorporate an inspection of the architecture. We compare our model with state-of-the-art models and demonstrate superior performance using only a fraction of the parameters. The results are achieved with supervised pre-training, coupled with time shifts as data augmentation for multi-participant classification on motor imagery datasets.",
       "doi": "10.1038/s41598-025-86294-3",
       "pmid": "40157946",
@@ -1390,6 +1447,29 @@
       }
     },
     {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 2,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0123727",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6273331645131113,
+        "similarity_score": 0.5431455969810486,
+        "citation_text_length": 1324,
+        "dataset_text_length": 2340,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Virtual reality mediated brain-computer interface training improves sensorimotor neuromodulation in unimpaired and post spinal cord injury individuals",
       "author": "Malik Muhammad Naeem Mannan, Dinesh Palipana, Kyle Mulholland, Evan Jurd, E. L. Lloyd, Alastair R. J. Quinn, Claire Crossley, Mohammad Fazle Rabbi, David G. Lloyd, Yang D. Teng, Claudio Pizzolato",
       "venue": "medRxiv",
@@ -1545,29 +1625,6 @@
         "confidence_score": 0.45319816470146185,
         "similarity_score": 0.41199833154678345,
         "citation_text_length": 1179,
-        "dataset_text_length": 2340,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod L'evy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "n/a",
-      "year": 2026,
-      "url": "n/a",
-      "cited_by": 1,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0123727",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.630057434141636,
-        "similarity_score": 0.5455042719841003,
-        "citation_text_length": 1325,
         "dataset_text_length": 2340,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1760,7 +1817,7 @@
     {
       "title": "Towards Development of a Robust Asynchronous EEG-BCI using Error-related Potentials",
       "author": "Rozhin Yousefi",
-      "venue": "TSpace",
+      "venue": "TSpace (University of Toronto)",
       "year": 2019,
       "url": "n/a",
       "cited_by": 0,
@@ -1772,9 +1829,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5496500462293625,
-        "similarity_score": 0.49968186020851135,
-        "citation_text_length": 1142,
+        "confidence_score": 0.5485889732837678,
+        "similarity_score": 0.4987172484397888,
+        "citation_text_length": 1166,
         "dataset_text_length": 2340,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1829,7 +1886,7 @@
     {
       "title": "Development of a Novel Feedback System to Guide Skill Acquisition for Brain-Computer Interface Control",
       "author": "Nicolas Ivanov",
-      "venue": "TSpace",
+      "venue": "TSpace (University of Toronto)",
       "year": 2020,
       "url": "n/a",
       "cited_by": 0,
@@ -1841,32 +1898,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5056987801194192,
-        "similarity_score": 0.4378344416618347,
-        "citation_text_length": 1161,
-        "dataset_text_length": 2340,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Editorial: Mind over brain, brain over mind: cognitive causes and consequences of controlling brain activity - volume II",
-      "author": "Elisabeth V. C. Friedrich, Christa Neuper, Reinhold Scherer",
-      "venue": "Frontiers in Human Neuroscience",
-      "year": 2023,
-      "url": "https://doi.org/10.3389/fnhum.2023.1280095",
-      "cited_by": 0,
-      "abstract": "COPYRIGHT © 2023 Friedrich, Neuper and Scherer. This is an open-access article distributed under the terms of the Creative Commons Attribution License (CC BY). The use, distribution or reproduction in other forums is permitted, provided the original author(s) and the copyright owner(s) are credited and that the original publication in this journal is cited, in accordance with accepted academic practice. No use, distribution or reproduction is permitted which does not comply with these terms. Editorial: Mind over brain, brain over mind: cognitive causes and consequences of controlling brain activity volume II",
-      "doi": "10.3389/fnhum.2023.1280095",
-      "pmid": "37810762",
-      "openalex_id": "W4386917500",
-      "source_doi": "10.1371/journal.pone.0123727",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.46577926665544517,
-        "similarity_score": 0.4032720923423767,
-        "citation_text_length": 864,
+        "confidence_score": 0.4986279125511647,
+        "similarity_score": 0.43171247839927673,
+        "citation_text_length": 1185,
         "dataset_text_length": 2340,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1890,6 +1924,29 @@
         "confidence_score": 0.3413524389266968,
         "similarity_score": 0.32509756088256836,
         "citation_text_length": 210,
+        "dataset_text_length": 2340,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Editorial: Mind over brain, brain over mind: cognitive causes and consequences of controlling brain activity - volume II",
+      "author": "Elisabeth V. C. Friedrich, Christa Neuper, Reinhold Scherer",
+      "venue": "Frontiers in Human Neuroscience",
+      "year": 2023,
+      "url": "https://doi.org/10.3389/fnhum.2023.1280095",
+      "cited_by": 0,
+      "abstract": "COPYRIGHT © 2023 Friedrich, Neuper and Scherer. This is an open-access article distributed under the terms of the Creative Commons Attribution License (CC BY). The use, distribution or reproduction in other forums is permitted, provided the original author(s) and the copyright owner(s) are credited and that the original publication in this journal is cited, in accordance with accepted academic practice. No use, distribution or reproduction is permitted which does not comply with these terms. Editorial: Mind over brain, brain over mind: cognitive causes and consequences of controlling brain activity volume II",
+      "doi": "10.3389/fnhum.2023.1280095",
+      "pmid": "37810762",
+      "openalex_id": "W4386917500",
+      "source_doi": "10.1371/journal.pone.0123727",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.46577926665544517,
+        "similarity_score": 0.4032720923423767,
+        "citation_text_length": 864,
         "dataset_text_length": 2340,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1990,13 +2047,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:43:16.571466+00:00",
+    "scoring_date": "2026-07-15T00:05:56.769873+00:00",
     "dataset_text_length": 2340,
     "num_citations_scored": 85,
     "summary_stats": {
-      "mean_confidence": 0.5025855268853553,
-      "median_confidence": 0.5056987801194192,
-      "std_confidence": 0.10011945374614667,
+      "mean_confidence": 0.5024578067660332,
+      "median_confidence": 0.5044329702854157,
+      "std_confidence": 0.1000735402784868,
       "min_confidence": 0.22449894994497302,
       "max_confidence": 0.7138445591926575,
       "high_confidence_count": 1,

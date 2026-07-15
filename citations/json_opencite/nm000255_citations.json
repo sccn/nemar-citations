@@ -1,18 +1,55 @@
 {
   "dataset_id": "nm000255",
   "num_citations": 1,
-  "date_last_updated": "2026-06-13T21:42:19.354145+00:00",
+  "date_last_updated": "2026-07-03T14:24:56.252838+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-13T21:42:19.354145+00:00",
+    "fetch_date": "2026-07-03T14:24:56.252838+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.82901/nemar.nm000255",
+        "identifier_type": "doi",
+        "source_relation": "IsVersionOf",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "The Brain, Body, and Behaviour Dataset (1.0.0) - Experiment 2",
+        "paper_year": 2026,
+        "paper_venue": "UC San Diego",
+        "reason": "The candidate paper title and abstract explicitly name and describe the dataset (The Brain, Body, and Behaviour Dataset - Experiment 2) and its contents.",
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.82901/nemar.nm000255"
+    ],
+    "keywords": [
+      "EEG",
+      "eye tracking",
+      "attention",
+      "learning",
+      "multimodal neuroimaging",
+      "incidental learning",
+      "ECG",
+      "EOG"
+    ],
+    "methods_description": "Data collection involved 31 subjects completing two sessions: (1) an attentive condition where subjects watched five informative videos and answered 11-12 factual multiple-choice questions after each video, and (2) a distracted condition where subjects watched the same videos while silently counting backwards from a random prime number in steps of 7, with no subsequent testing. Simultaneous recordings included EEG (.bdf format), ECG, EOG, gaze coordinates (X, Y), pupil size, blinks, saccades, and head motion. Raw data were converted from MATLAB .mat files to BIDS-compliant formats (.bdf for EEG, .tsv.gz for physiological and eye-tracking data).",
+    "funding": [
+      {
+        "funder_name": "National Science Foundation",
+        "award_number": "DRL-1660548"
+      },
+      {
+        "funder_name": "National Science Foundation",
+        "award_number": "DRL-2201835"
+      }
+    ],
     "searched_accessions": [
       "nm000255"
     ],
@@ -49,7 +86,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:30:09.333839+00:00",
+    "scoring_date": "2026-07-15T00:15:06.266614+00:00",
     "dataset_text_length": 2289,
     "num_citations_scored": 1,
     "summary_stats": {

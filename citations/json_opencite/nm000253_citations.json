@@ -1,18 +1,58 @@
 {
   "dataset_id": "nm000253",
   "num_citations": 2,
-  "date_last_updated": "2026-06-18T23:24:16.444781+00:00",
+  "date_last_updated": "2026-07-03T14:24:45.397865+00:00",
   "metadata": {
     "total_cumulative_citations": 2,
-    "fetch_date": "2026-06-18T23:24:16.444781+00:00",
+    "fetch_date": "2026-07-03T14:24:45.397865+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.48550/arxiv.2411.08343",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Brain Treebank: Large-scale intracranial recordings from naturalistic language stimuli",
+        "paper_year": 2024,
+        "paper_venue": "arXiv (Cornell University)",
+        "reason": "The candidate paper's title and abstract explicitly introduce and describe the 'Brain Treebank,' which is the dataset contained in nm000253.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000253",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.48550/arxiv.2411.08343",
+      "10.82901/nemar.nm000253"
+    ],
+    "keywords": [
+      "intracranial EEG",
+      "stereo-EEG",
+      "language processing",
+      "naturalistic stimuli",
+      "epilepsy",
+      "neural recordings",
+      "syntax"
+    ],
+    "methods_description": "Intracranial EEG recordings were acquired at 2048 Hz from an average of 168 electrodes per subject during passive viewing of Hollywood movies. Audio transcripts were manually annotated for word onsets and parsed into Universal Dependencies syntax trees. Data were converted to BIDS-iEEG format (BrainVision, IEEE_FLOAT_32, multiplexed) with electrode coordinates and localization information provided per subject.",
+    "funding": [],
     "searched_accessions": [
       "nm000253"
     ],
@@ -72,7 +112,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:29:59.769231+00:00",
+    "scoring_date": "2026-07-15T00:14:57.129813+00:00",
     "dataset_text_length": 2530,
     "num_citations_scored": 2,
     "summary_stats": {

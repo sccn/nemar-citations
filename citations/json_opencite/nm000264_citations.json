@@ -1,21 +1,88 @@
 {
   "dataset_id": "nm000264",
   "num_citations": 9,
-  "date_last_updated": "2026-06-18T23:24:26.352423+00:00",
+  "date_last_updated": "2026-07-03T14:25:39.573800+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-18T23:24:26.352423+00:00",
+    "fetch_date": "2026-07-03T14:25:39.573800+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "partial",
     "anchor_count": 4,
     "anchor_errors": {
       "10.5281/zenodo.1494163": "not_found",
       "10.5281/zenodo.2669187": "not_found"
     },
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.5281/zenodo.1494163",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.5281/zenodo.2649006",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Building Brain Invaders: EEG data of an experimental validation",
+        "paper_year": 2019,
+        "paper_venue": "Zenodo (CERN European Organization for Nuclear Research)",
+        "reason": "The candidate paper explicitly describes the dataset, mentioning it contains EEG recordings of 25 subjects testing the Brain Invaders P300, which matches the dataset's content.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.5281/zenodo.2669187",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000264",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.5281/zenodo.1494163",
+      "10.5281/zenodo.2649006",
+      "10.5281/zenodo.2669187",
+      "10.82901/nemar.nm000264"
+    ],
+    "keywords": [
+      "Electroencephalography",
+      "P300",
+      "Brain-Computer Interface",
+      "Adaptive calibration",
+      "Riemannian geometry",
+      "Event-Related Potentials, P300",
+      "Experiment",
+      "Visual P300"
+    ],
+    "methods_description": "EEG data were recorded at 512 Hz sampling rate using 16 wet Silver/Silver Chloride electrodes in a standard 10-20 montage (Fp1, Fp2, F5, AFz, F6, T7, Cz, T8, P7, P3, Pz, P4, P8, O1, Oz, O2) with g.USBamp hardware and OpenVibe software. Reference electrode was placed at left earlobe with ground at FZ. Subjects performed visual P300 tasks with 36 symbols organized in 12 groups. Each session contained two runs (Non-Adaptive and Adaptive, randomized order), with training phases consisting of 80 target and 400 non-target flashes per run, and variable online phases based on performance. In Non-Adaptive mode, training data calibrated the MDM classifier for the online phase. In Adaptive mode, the classifier was initialized with generic class geometric means from a previous experiment and continuously adapted using Riemannian methods.",
+    "funding": [],
     "searched_accessions": [
       "nm000264"
     ],
@@ -240,7 +307,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:30:17.919378+00:00",
+    "scoring_date": "2026-07-15T00:15:24.311687+00:00",
     "dataset_text_length": 2455,
     "num_citations_scored": 9,
     "summary_stats": {

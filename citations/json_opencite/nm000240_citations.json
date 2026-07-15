@@ -1,55 +1,115 @@
 {
   "dataset_id": "nm000240",
-  "num_citations": 7,
-  "date_last_updated": "2026-06-18T23:22:40.777321+00:00",
+  "num_citations": 8,
+  "date_last_updated": "2026-07-03T14:23:16.360478+00:00",
   "metadata": {
     "total_cumulative_citations": 16,
-    "fetch_date": "2026-06-18T23:22:40.777321+00:00",
+    "fetch_date": "2026-07-03T14:23:16.360478+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.71569/7c67-v596",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Dataset: Influence of spatial frequency in visual stimuli for cVEP-based BCIs: evaluation of performance and user experience",
+        "paper_year": 2025,
+        "paper_venue": "UVaDOC UVaDOC University of Valladolid Documentary Repository (University of Valladolid)",
+        "reason": "The candidate paper title and abstract explicitly describe the dataset's content, focusing on cVEP-based BCIs and the evaluation of performance using specific checkerboard stimuli.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.3389/fnhum.2023.1288438",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Influence of spatial frequency in visual stimuli for cVEP-based BCIs: evaluation of performance and user experience",
+        "paper_year": 2023,
+        "paper_venue": "Frontiers in Human Neuroscience",
+        "reason": "The candidate paper investigates c-VEP using checkerboard stimuli, directly matching the dataset's focus on 'Checkerboard m-sequence-based c-VEP dataset'.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, which is a technical specification and tool for organizing electrophysiological data into the BIDS format, a standard used by this dataset."
+        "reason": "The paper describes MNE-BIDS, which is a technical specification and tool for organizing electrophysiological data into the BIDS format, a standard used by this dataset.",
+        "judgment_model": "gemma4:e4b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard, which is a technical specification used to organize and share EEG data like the dataset provided."
+        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard, which is a technical specification used to organize and share EEG data like the dataset provided.",
+        "judgment_model": "gemma4:e4b"
       },
       {
-        "anchor_identifier": "10.1016/j.cmpb.2023.107357",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1016/j.cmpb.2023.107357",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MEDUSA©: A novel Python-based software ecosystem to accelerate brain-computer interface and cognitive neuroscience research",
         "paper_year": 2023,
         "paper_venue": "Computer Methods and Programs in Biomedicine",
-        "reason": "The paper introduces MEDUSA©, a novel Python-based software ecosystem designed to accelerate BCI and cognitive neuroscience research, suggesting it is a tool used in the dataset's protocol."
+        "reason": "The paper introduces MEDUSA©, a novel Python-based software ecosystem designed to accelerate BCI and cognitive neuroscience research, suggesting it is a tool used in the dataset's protocol.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000240",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
       }
     ],
+    "searched_dois": [
+      "10.71569/7c67-v596",
+      "10.3389/fnhum.2023.1288438",
+      "10.82901/nemar.nm000240"
+    ],
+    "keywords": [
+      "EEG",
+      "brain-computer interfaces",
+      "code-modulated visual evoked potentials",
+      "visual stimulation",
+      "spatial frequency",
+      "checkerboard patterns",
+      "derivative dataset",
+      "HED annotations",
+      "MOABB"
+    ],
+    "methods_description": "EEG data were acquired at 256 Hz sampling rate using 16 channels in standard 1005 montage with 50 Hz line frequency. The experimental paradigm employed checkerboard m-sequence-based c-VEP stimulation with two stimulus classes. Each subject completed 8 sessions, with 3 runs per session (2 training, 1 testing), and trial intervals of 0-1 second.",
+    "funding": [],
     "searched_accessions": [
       "nm000240"
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 7
+    "num_datapaper_citations": 8
   },
   "citation_details": [
     {
@@ -101,7 +161,7 @@
     {
       "title": "BCHJam: a Brain-Computer Music Interface for Live Music Performance in Shared Mixed Reality Environments",
       "author": "Michele Romani, Gregorio Andrea Giudici, Domenico Stefani, Devis Zanoni, Alberto Boem, Luca Turchet",
-      "venue": "n/a",
+      "venue": "2024 IEEE 5th International Symposium on the Internet of Sounds (IS2)",
       "year": 2024,
       "url": "https://doi.org/10.1109/is262782.2024.10704087",
       "cited_by": 4,
@@ -113,9 +173,9 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.3210191568732262,
-        "similarity_score": 0.2779386639595032,
-        "citation_text_length": 1245,
+        "confidence_score": 0.3232510243356228,
+        "similarity_score": 0.27987101674079895,
+        "citation_text_length": 1311,
         "dataset_text_length": 2347,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -170,7 +230,7 @@
     {
       "title": "Visual Acuity Evaluation System Based on EEG Signals",
       "author": "Xuming Liu",
-      "venue": "n/a",
+      "venue": "2025 5th International Conference on Neural Networks, Information and Communication Engineering (NNICE)",
       "year": 2025,
       "url": "https://doi.org/10.1109/nnice64954.2025.11064337",
       "cited_by": 0,
@@ -182,9 +242,9 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4925633284449578,
-        "similarity_score": 0.42646175622940063,
-        "citation_text_length": 1013,
+        "confidence_score": 0.4872008089721203,
+        "similarity_score": 0.42181888222694397,
+        "citation_text_length": 1113,
         "dataset_text_length": 2347,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -212,22 +272,45 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "BrainForm: a Serious Game for BCI Training and Data Collection",
+      "author": "Michele Romani, Devis Zanoni, Elisabetta Farella, Luca Turchet",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2510.10169",
+      "cited_by": 0,
+      "abstract": "$\\textit{BrainForm}$ is a gamified Brain-Computer Interface (BCI) training system designed for scalable data collection using consumer hardware and a minimal setup. We investigated (1) how users develop BCI control skills across repeated sessions and (2) perceptual and performance effects of two visual stimulation textures. Game Experience Questionnaire (GEQ) scores for Flow, Positive Affect, Competence and Challenge were strongly positive, indicating sustained engagement. A within-subject study with multiple runs, two task complexities, and post-session questionnaires revealed no significant performance differences between textures but increased ocular irritation over time. Online metrics$\\unicode{x2013}$Task Accuracy, Task Time, and Information Transfer Rate$\\unicode{x2013}$improved across sessions, confirming learning effects for symbol spelling, even under pressure conditions. Our results highlight the potential of $\\textit{BrainForm}$ as a scalable, user-friendly BCI research tool",
+      "doi": "10.48550/arXiv.2510.10169",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.3389/fnhum.2023.1288438",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.3888865980505944,
+        "similarity_score": 0.33669835329055786,
+        "citation_text_length": 1168,
+        "dataset_text_length": 2347,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:49:18.623981+00:00",
+    "scoring_date": "2026-07-15T00:13:47.033748+00:00",
     "dataset_text_length": 2347,
-    "num_citations_scored": 7,
+    "num_citations_scored": 8,
     "summary_stats": {
-      "mean_confidence": 0.6188789592896189,
-      "median_confidence": 0.6007936656475067,
-      "std_confidence": 0.19067752804535595,
-      "min_confidence": 0.3210191568732262,
+      "mean_confidence": 0.5897385826334358,
+      "median_confidence": 0.5981164003908634,
+      "std_confidence": 0.19386449598572242,
+      "min_confidence": 0.3232510243356228,
       "max_confidence": 1.0,
       "high_confidence_count": 1,
       "medium_confidence_count": 5,
-      "low_confidence_count": 1
+      "low_confidence_count": 2
     }
   }
 }

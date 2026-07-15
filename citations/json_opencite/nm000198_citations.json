@@ -1,44 +1,88 @@
 {
   "dataset_id": "nm000198",
-  "num_citations": 101,
-  "date_last_updated": "2026-06-18T23:20:47.889440+00:00",
+  "num_citations": 100,
+  "date_last_updated": "2026-07-03T12:25:14.699261+00:00",
   "metadata": {
-    "total_cumulative_citations": 9965,
-    "fetch_date": "2026-06-18T23:20:47.889440+00:00",
+    "total_cumulative_citations": 9972,
+    "fetch_date": "2026-07-03T12:25:14.699261+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1088/1741-2560/8/6/066003",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Gaze-independent brain–computer interfaces based on covert attention and feature attention",
+        "paper_year": 2011,
+        "paper_venue": "Journal of Neural Engineering",
+        "reason": "The candidate paper's title and abstract describe a visual speller experiment using 13 participants, matching the core paradigm and subject count of the dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, which is a technical specification for organizing electrophysiological data into the BIDS format, a standard used in the dataset's metadata (BIDS Version: 1.9.0)."
+        "reason": "The paper describes MNE-BIDS, which is a technical specification for organizing electrophysiological data into the BIDS format, a standard used in the dataset's metadata (BIDS Version: 1.9.0).",
+        "judgment_model": "gemma4:e4b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper introduces EEG-BIDS, a standardized structure and set of tools for organizing EEG data, which is a technical specification used in the dataset's protocol."
+        "reason": "The paper introduces EEG-BIDS, a standardized structure and set of tools for organizing EEG data, which is a technical specification used in the dataset's protocol.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000198",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
       }
     ],
+    "searched_dois": [
+      "10.1088/1741-2560/8/6/066003",
+      "10.82901/nemar.nm000198"
+    ],
+    "keywords": [
+      "Event-Related Potentials, P300",
+      "Brain-Computer Interfaces",
+      "EEG",
+      "covert attention",
+      "feature attention",
+      "visual speller",
+      "speller",
+      "gaze-independent"
+    ],
+    "methods_description": "EEG data were acquired using a 63-channel Brain Products actiCAP system at 250 Hz sampling rate with a 10-10 electrode montage. Online bandpass filtering (0.016-250 Hz) was applied during acquisition with reference to left mastoid and ground at forehead. Preprocessing included downsampling to 250 Hz, lowpass filtering below 49 Hz using Chebyshev filter, and baseline correction using a -200 ms prestimulus interval. Participants performed a visual speller task with sequential presentation of geometric shapes while maintaining central fixation and covert attention to target stimuli.",
+    "funding": [],
     "searched_accessions": [
       "nm000198"
     ],
-    "num_accession_mentions": 1,
-    "num_dataset_citations": 1,
+    "num_accession_mentions": 0,
+    "num_dataset_citations": 0,
     "num_datapaper_citations": 100
   },
   "citation_details": [
@@ -48,7 +92,7 @@
       "venue": "Sensors",
       "year": 2012,
       "url": "https://doi.org/10.3390/s120201211",
-      "cited_by": 2063,
+      "cited_by": 2068,
       "abstract": "A brain-computer interface (BCI) is a hardware and software communications system that permits cerebral activity alone to control computers or external devices. The immediate goal of BCI research is to provide communications capabilities to severely disabled people who are totally paralyzed or 'locked in' by neurological neuromuscular disorders, such as amyotrophic lateral sclerosis, brain stem stroke, or spinal cord injury. Here, we review the state-of-the-art of BCIs, looking at the different steps that form a standard BCI: signal acquisition, preprocessing or signal enhancement, feature extraction, classification and the control interface. We discuss their advantages, drawbacks, and latest advances, and we survey the numerous technologies reported in the scientific literature to design each step of a BCI. First, the review examines the neuroimaging modalities used in the signal acquisition step, each of which monitors a different functional brain activity such as electrical, magneti",
       "doi": "10.3390/s120201211",
       "pmid": "22438708",
@@ -71,7 +115,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2012,
       "url": "https://doi.org/10.3389/fnins.2012.00055",
-      "cited_by": 1214,
+      "cited_by": 1221,
       "abstract": "The BCI competition IV stands in the tradition of prior BCI competitions that aim to provide high quality neuroscientific data for open access to the scientific community. As experienced already in prior competitions not only scientists from the narrow field of BCI compete, but scholars with a broad variety of backgrounds and nationalities. They include high specialists as well as students. The goals of all BCI competitions have always been to challenge with respect to novel paradigms and complex data. We report on the following challenges: (1) asynchronous data, (2) synthetic, (3) multi-class continuous data, (4) session-to-session transfer, (5) directionally modulated MEG, (6) finger movements recorded by ECoG. As after past competitions, our hope is that winning entries may enhance the analysis methods of future BCIs.",
       "doi": "10.3389/fnins.2012.00055",
       "pmid": "22811657",
@@ -94,7 +138,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2013,
       "url": "https://doi.org/10.1088/1741-2560/10/5/056014",
-      "cited_by": 426,
+      "cited_by": 427,
       "abstract": "OBJECTIVE: The past two decades have seen dramatic progress in our ability to model brain signals recorded by electroencephalography, functional near-infrared spectroscopy, etc., and to derive real-time estimates of user cognitive state, response, or intent for a variety of purposes: to restore communication by the severely disabled, to effect brain-actuated control and, more recently, to augment human-computer interaction. Continuing these advances, largely achieved through increases in computational power and methods, requires software tools to streamline the creation, testing, evaluation and deployment of new data analysis methods. APPROACH: Here we present BCILAB, an open-source MATLAB-based toolbox built to address the need for the development and testing of brain-computer interface (BCI) methods by providing an organized collection of over 100 pre-implemented methods and method variants, an easily extensible framework for the rapid prototyping of new methods, and a highly automat",
       "doi": "10.1088/1741-2560/10/5/056014",
       "pmid": "23985960",
@@ -117,7 +161,7 @@
       "venue": "Brain Sciences",
       "year": 2018,
       "url": "https://doi.org/10.3390/brainsci8040057",
-      "cited_by": 383,
+      "cited_by": 384,
       "abstract": "A Brain-Computer Interface (BCI) provides a novel non-muscular communication method via brain signals. A BCI-speller can be considered as one of the first published BCI applications and has opened the gate for many advances in the field. Although many BCI-spellers have been developed during the last few decades, to our knowledge, no reviews have described the different spellers proposed and studied in this vital field. The presented speller systems are categorized according to major BCI paradigms: P300, steady-state visual evoked potential (SSVEP), and motor imagery (MI). Different BCI paradigms require specific electroencephalogram (EEG) signal features and lead to the development of appropriate Graphical User Interfaces (GUIs). The purpose of this review is to consolidate the most successful BCI-spellers published since 2010, while mentioning some other older systems which were built explicitly for spelling purposes. We aim to assist researchers and concerned individuals in the field",
       "doi": "10.3390/brainsci8040057",
       "pmid": "29601538",
@@ -140,7 +184,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2014,
       "url": "https://doi.org/10.3389/fnins.2014.00208",
-      "cited_by": 309,
+      "cited_by": 310,
       "abstract": "The ability to recognize errors is crucial for efficient behavior. Numerous studies have identified electrophysiological correlates of error recognition in the human brain (error-related potentials, ErrPs). Consequently, it has been proposed to use these signals to improve human-computer interaction (HCI) or brain-machine interfacing (BMI). Here, we present a review of over a decade of developments toward this goal. This body of work provides consistent evidence that ErrPs can be successfully detected on a single-trial basis, and that they can be effectively used in both HCI and BMI applications. We first describe the ErrP phenomenon and follow up with an analysis of different strategies to increase the robustness of a system by incorporating single-trial ErrP recognition, either by correcting the machine's actions or by providing means for its error-based adaptation. These approaches can be applied both when the user employs traditional HCI input devices or in combination with another",
       "doi": "10.3389/fnins.2014.00208",
       "pmid": "25100937",
@@ -278,7 +322,7 @@
       "venue": "Brain",
       "year": 2020,
       "url": "https://doi.org/10.1093/brain/awaa026",
-      "cited_by": 150,
+      "cited_by": 151,
       "abstract": "Cognitive motor dissociation describes a subset of patients with disorders of consciousness who show neuroimaging evidence of consciousness but no detectable command-following behaviours. Although essential for family counselling, decision-making, and the design of rehabilitation programmes, the prognosis for patients with cognitive motor dissociation remains under-investigated. The current study included 78 patients with disorders of consciousness who showed no detectable command-following behaviours. These patients included 45 patients with unresponsive wakefulness syndrome and 33 patients in a minimally conscious state, as diagnosed using the Coma Recovery Scale-Revised. Each patient underwent an EEG-based brain-computer interface experiment, in which he or she was instructed to perform an item-selection task (i.e. select a photograph or a number from two candidates). Patients who achieved statistically significant brain-computer interface accuracies were identified as cognitive mot",
       "doi": "10.1093/brain/awaa026",
       "pmid": "32101603",
@@ -715,7 +759,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2014,
       "url": "https://doi.org/10.1088/1741-2560/11/2/026009",
-      "cited_by": 75,
+      "cited_by": 76,
       "abstract": "OBJECTIVE: Polyphonic music (music consisting of several instruments playing in parallel) is an intuitive way of embedding multiple information streams. The different instruments in a musical piece form concurrent information streams that seamlessly integrate into a coherent and hedonistically appealing entity. Here, we explore polyphonic music as a novel stimulation approach for use in a brain-computer interface. APPROACH: In a multi-streamed oddball experiment, we had participants shift selective attention to one out of three different instruments in music audio clips. Each instrument formed an oddball stream with its own specific standard stimuli (a repetitive musical pattern) and oddballs (deviating musical pattern). MAIN RESULTS: Contrasting attended versus unattended instruments, ERP analysis shows subject- and instrument-specific responses including P300 and early auditory components. The attended instrument can be classified offline with a mean accuracy of 91% across 11 partici",
       "doi": "10.1088/1741-2560/11/2/026009",
       "pmid": "24608228",
@@ -727,6 +771,29 @@
         "confidence_score": 0.5249231815338136,
         "similarity_score": 0.4772028923034668,
         "citation_text_length": 1250,
+        "dataset_text_length": 2252,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Brain–Computer Interface Software: A Review and Discussion",
+      "author": "Pierce Stegman, Chris Crawford, Marvin Andujar, Anton Nijholt, Juan E. Gilbert",
+      "venue": "IEEE Transactions on Human-Machine Systems",
+      "year": 2020,
+      "url": "https://doi.org/10.1109/thms.2020.2968411",
+      "cited_by": 71,
+      "abstract": "Software is a critical component of brain-computer interfaces (BCIs). While BCI hardware enables the retrieval of brain signals, BCI software is required to analyze these signals, produce output, and provide feedback. Users from multiple research areas have adopted BCI software platforms to investigate various concepts. Recently, interest in web-based BCI software has also emerged. The system design and control signal techniques of state-of-the-art BCI software platforms have been previously investigated. However, there is limited literature discussing user adoption of BCI software platforms. Additionally, there is a lack of work discussing the recent emergence of web tools relevant to BCI applications. This article aims to address these gaps by presenting a bibliometric review of the state-of-the-art BCI software. Furthermore, we discuss web-based BCIs and present tools that may be used to develop future web-based BCI applications.",
+      "doi": "10.1109/thms.2020.2968411",
+      "pmid": null,
+      "openalex_id": "W3005723318",
+      "source_doi": "10.1088/1741-2560/8/6/066003",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.3116472686827183,
+        "similarity_score": 0.26982447504997253,
+        "citation_text_length": 1163,
         "dataset_text_length": 2252,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -750,29 +817,6 @@
         "confidence_score": 0.4579865336418152,
         "similarity_score": 0.4579865336418152,
         "citation_text_length": 204,
-        "dataset_text_length": 2252,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Brain–Computer Interface Software: A Review and Discussion",
-      "author": "Pierce Stegman, Chris Crawford, Marvin Andujar, Anton Nijholt, Juan E. Gilbert",
-      "venue": "IEEE Transactions on Human-Machine Systems",
-      "year": 2020,
-      "url": "https://doi.org/10.1109/thms.2020.2968411",
-      "cited_by": 70,
-      "abstract": "Software is a critical component of brain-computer interfaces (BCIs). While BCI hardware enables the retrieval of brain signals, BCI software is required to analyze these signals, produce output, and provide feedback. Users from multiple research areas have adopted BCI software platforms to investigate various concepts. Recently, interest in web-based BCI software has also emerged. The system design and control signal techniques of state-of-the-art BCI software platforms have been previously investigated. However, there is limited literature discussing user adoption of BCI software platforms. Additionally, there is a lack of work discussing the recent emergence of web tools relevant to BCI applications. This article aims to address these gaps by presenting a bibliometric review of the state-of-the-art BCI software. Furthermore, we discuss web-based BCIs and present tools that may be used to develop future web-based BCI applications.",
-      "doi": "10.1109/thms.2020.2968411",
-      "pmid": null,
-      "openalex_id": "W3005723318",
-      "source_doi": "10.1088/1741-2560/8/6/066003",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.3116472686827183,
-        "similarity_score": 0.26982447504997253,
-        "citation_text_length": 1163,
         "dataset_text_length": 2252,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -830,7 +874,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2021,
       "url": "https://doi.org/10.3389/fnhum.2021.643294",
-      "cited_by": 60,
+      "cited_by": 61,
       "abstract": "Brain-computer interfaces (BCIs) represent a new frontier in the effort to maximize the ability of individuals with profound motor impairments to interact and communicate. While much literature points to BCIs' promise as an alternative access pathway, there have historically been few applications involving children and young adults with severe physical disabilities. As research is emerging in this sphere, this article aims to evaluate the current state of translating BCIs to the pediatric population. A systematic review was conducted using the Scopus, PubMed, and Ovid Medline databases. Studies of children and adolescents that reported BCI performance published in English in peer-reviewed journals between 2008 and May 2020 were included. Twelve publications were identified, providing strong evidence for continued research in pediatric BCIs. Research evidence was generally at multiple case study or exploratory study level, with modest sample sizes. Seven studies focused on BCIs for comm",
       "doi": "10.3389/fnhum.2021.643294",
       "pmid": "34335203",
@@ -968,7 +1012,7 @@
       "venue": "n/a",
       "year": 2015,
       "url": "https://doi.org/10.1515/9783110471137",
-      "cited_by": 49,
+      "cited_by": 50,
       "abstract": "The editors of this volume bring together a collection of papers that, taken together, provide an interesting snapshot of current research on Human Computer Confluence (HCC). HCC stands for a particular vision of how computing devices and human beings (users) can be fruitfully combined. The term was coined some 10 years ago in an attempt to make sense of the increasingly complex technological landscape that was emerging from different interrelated research strands in Information and Communication Technology (ICT). It was clear that computers could no longer be seen just as machines that execute algorithms for turning input into output data. This simply seemed to miss a lot of the ways in which computers were starting to be used, in which 'users' could interact with them and the multitudes of shapes they could take. After the era of 'desktop computing', the power of an application was no longer just residing in the sophistication of its algorithmic core, but also, or maybe even mainly, ",
       "doi": "10.1515/9783110471137",
       "pmid": null,
@@ -1078,6 +1122,29 @@
       }
     },
     {
+      "title": "Assessing the quality of steady-state visual-evoked potentials for moving humans using a mobile electroencephalogram headset",
+      "author": "Yuan‐Pin Lin, Yijun Wang, Chun-Shu Wei, Tzyy‐Ping Jung",
+      "venue": "Frontiers in Human Neuroscience",
+      "year": 2014,
+      "url": "https://doi.org/10.3389/fnhum.2014.00182",
+      "cited_by": 45,
+      "abstract": "Recent advances in mobile electroencephalogram (EEG) systems, featuring non-prep dry electrodes and wireless telemetry, have enabled and promoted the applications of mobile brain-computer interfaces (BCIs) in our daily life. Since the brain may behave differently while people are actively situated in ecologically-valid environments versus highly-controlled laboratory environments, it remains unclear how well the current laboratory-oriented BCI demonstrations can be translated into operational BCIs for users with naturalistic movements. Understanding inherent links between natural human behaviors and brain activities is the key to ensuring the applicability and stability of mobile BCIs. This study aims to assess the quality of steady-state visual-evoked potentials (SSVEPs), which is one of promising channels for functioning BCI systems, recorded using a mobile EEG system under challenging recording conditions, e.g., walking. To systematically explore the effects of walking locomotion on",
+      "doi": "10.3389/fnhum.2014.00182",
+      "pmid": "24744718",
+      "openalex_id": "W2022132387",
+      "source_doi": "10.1088/1741-2560/8/6/066003",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.40211488008499147,
+        "similarity_score": 0.3655589818954468,
+        "citation_text_length": 1248,
+        "dataset_text_length": 2252,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Brain–Computer Interfaces for Detection and Localization of Targets in Aerial Images",
       "author": "Ana Matran‐Fernandez, Riccardo Poli",
       "venue": "IEEE Transactions on Biomedical Engineering",
@@ -1095,29 +1162,6 @@
         "confidence_score": 0.5993523001670837,
         "similarity_score": 0.5448657274246216,
         "citation_text_length": 1201,
-        "dataset_text_length": 2252,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Assessing the quality of steady-state visual-evoked potentials for moving humans using a mobile electroencephalogram headset",
-      "author": "Yuan‐Pin Lin, Yijun Wang, Chun-Shu Wei, Tzyy‐Ping Jung",
-      "venue": "Frontiers in Human Neuroscience",
-      "year": 2014,
-      "url": "https://doi.org/10.3389/fnhum.2014.00182",
-      "cited_by": 44,
-      "abstract": "Recent advances in mobile electroencephalogram (EEG) systems, featuring non-prep dry electrodes and wireless telemetry, have enabled and promoted the applications of mobile brain-computer interfaces (BCIs) in our daily life. Since the brain may behave differently while people are actively situated in ecologically-valid environments versus highly-controlled laboratory environments, it remains unclear how well the current laboratory-oriented BCI demonstrations can be translated into operational BCIs for users with naturalistic movements. Understanding inherent links between natural human behaviors and brain activities is the key to ensuring the applicability and stability of mobile BCIs. This study aims to assess the quality of steady-state visual-evoked potentials (SSVEPs), which is one of promising channels for functioning BCI systems, recorded using a mobile EEG system under challenging recording conditions, e.g., walking. To systematically explore the effects of walking locomotion on",
-      "doi": "10.3389/fnhum.2014.00182",
-      "pmid": "24744718",
-      "openalex_id": "W2022132387",
-      "source_doi": "10.1088/1741-2560/8/6/066003",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.40211488008499147,
-        "similarity_score": 0.3655589818954468,
-        "citation_text_length": 1248,
         "dataset_text_length": 2252,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1814,29 +1858,6 @@
       }
     },
     {
-      "title": "Brain-Computer Interfaces",
-      "author": "Jane E. Huggins, C. Guger, Brendan Allison, C. Anderson, A. Batista, A. Brouwer, C. Brunner, Ricardo Chavarriaga, M. Fried-Oken, Aysegul Gunduz, D. Gupta, A. Kübler, R. Leeb, F. Lotte, L. E. Miller, Gernot R. Müller-Putz, Tomasz Rutkowski, M. Tangermann, David E. Thompson",
-      "venue": "Handbook of Clinical Neurology",
-      "year": 2020,
-      "url": "https://doi.org/10.1016/c2016-0-00385-6",
-      "cited_by": 29,
-      "abstract": "Brain-Computer Interfaces (BCIs) measure brain activity and can be used to control digital devices. The focus of BCI development has been on using the technology to allow patients to control assistive equipment such as wheelchairs or prostheses. Beyond medicine they are under development for applications in entertainment, marketing and defence. This POSTnote looks at the underpinning technology, its applications and the associated ethical and regulatory challenges.",
-      "doi": "10.1016/c2016-0-00385-6",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1088/1741-2560/8/6/066003",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.38354793280363086,
-        "similarity_score": 0.33207613229751587,
-        "citation_text_length": 835,
-        "dataset_text_length": 2252,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Improving bit rate in an auditory BCI: Exploiting error-related potentials",
       "author": "Timothy Zeyl, Erwei Yin, Michelle Keightley, Tom Chau",
       "venue": "Brain-Computer Interfaces",
@@ -1906,6 +1927,29 @@
       }
     },
     {
+      "title": "Uncovering EEG Correlates of Covert Attention in Soccer Goalkeepers: Towards Innovative Sport Training Procedures",
+      "author": "Camille Jeunet, Luca Tonin, Louis Albert, Ricardo Chavarriaga, Benoît Bideau, Ferran Argelaguet, José del R. Millán, Anatole Lécuyer, Richard Kulpa",
+      "venue": "Scientific Reports",
+      "year": 2020,
+      "url": "https://doi.org/10.1038/s41598-020-58533-2",
+      "cited_by": 27,
+      "abstract": "Advances in sports sciences and neurosciences offer new opportunities to design efficient and motivating sport training tools. For instance, using NeuroFeedback (NF), athletes can learn to self-regulate specific brain rhythms and consequently improve their performances. Here, we focused on soccer goalkeepers' Covert Visual Spatial Attention (CVSA) abilities, which are essential for these athletes to reach high performances. We looked for Electroencephalography (EEG) markers of CVSA usable for virtual reality-based NF training procedures, i.e., markers that comply with the following criteria: (1) specific to CVSA, (2) detectable in real-time and (3) related to goalkeepers' performance/expertise. Our results revealed that the best-known EEG marker of CVSA-increased α-power ipsilateral to the attended hemi-field- was not usable since it did not comply with criteria 2 and 3. Nonetheless, we highlighted a significant positive correlation between athletes' improvement in CVSA abilities and t",
+      "doi": "10.1038/s41598-020-58533-2",
+      "pmid": "32015376",
+      "openalex_id": "W3004359465",
+      "source_doi": "10.1088/1741-2560/8/6/066003",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5036201579868794,
+        "similarity_score": 0.43603476881980896,
+        "citation_text_length": 1317,
+        "dataset_text_length": 2252,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Brain–computer interface channel selection optimization using meta-heuristics and evolutionary algorithms",
       "author": "Víctor Martínez-Cagigal, Eduardo Santamaría-Vázquez, Roberto Hornero",
       "venue": "Applied Soft Computing",
@@ -1946,29 +1990,6 @@
         "confidence_score": 0.47235576510429383,
         "similarity_score": 0.4294143319129944,
         "citation_text_length": 1198,
-        "dataset_text_length": 2252,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Uncovering EEG Correlates of Covert Attention in Soccer Goalkeepers: Towards Innovative Sport Training Procedures",
-      "author": "Camille Jeunet, Luca Tonin, Louis Albert, Ricardo Chavarriaga, Benoît Bideau, Ferran Argelaguet, José del R. Millán, Anatole Lécuyer, Richard Kulpa",
-      "venue": "Scientific Reports",
-      "year": 2020,
-      "url": "https://doi.org/10.1038/s41598-020-58533-2",
-      "cited_by": 26,
-      "abstract": "Advances in sports sciences and neurosciences offer new opportunities to design efficient and motivating sport training tools. For instance, using NeuroFeedback (NF), athletes can learn to self-regulate specific brain rhythms and consequently improve their performances. Here, we focused on soccer goalkeepers' Covert Visual Spatial Attention (CVSA) abilities, which are essential for these athletes to reach high performances. We looked for Electroencephalography (EEG) markers of CVSA usable for virtual reality-based NF training procedures, i.e., markers that comply with the following criteria: (1) specific to CVSA, (2) detectable in real-time and (3) related to goalkeepers' performance/expertise. Our results revealed that the best-known EEG marker of CVSA-increased α-power ipsilateral to the attended hemi-field- was not usable since it did not comply with criteria 2 and 3. Nonetheless, we highlighted a significant positive correlation between athletes' improvement in CVSA abilities and t",
-      "doi": "10.1038/s41598-020-58533-2",
-      "pmid": "32015376",
-      "openalex_id": "W3004359465",
-      "source_doi": "10.1088/1741-2560/8/6/066003",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5036201579868794,
-        "similarity_score": 0.43603476881980896,
-        "citation_text_length": 1317,
         "dataset_text_length": 2252,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2021,29 +2042,6 @@
       }
     },
     {
-      "title": "Toward High Performance, Weakly Invasive Brain Computer Interfaces Using Selective Visual Attention",
-      "author": "David Rotermund, Udo Ernst, Sunita Mandon, Katja Taylor, Yulia Smiyukha, Andreas K. Kreiter, Klaus Pawelzik",
-      "venue": "Journal of Neuroscience",
-      "year": 2013,
-      "url": "https://doi.org/10.1523/jneurosci.4225-12.2013",
-      "cited_by": 26,
-      "abstract": "Brain-computer interfaces have been proposed as a solution for paralyzed persons to communicate and interact with their environment. However, the neural signals used for controlling such prostheses are often noisy and unreliable, resulting in a low performance of real-world applications. Here we propose neural signatures of selective visual attention in epidural recordings as a fast, reliable, and high-performance control signal for brain prostheses. We recorded epidural field potentials with chronically implanted electrode arrays from two macaque monkeys engaged in a shape-tracking task. For single trials, we classified the direction of attention to one of two visual stimuli based on spectral amplitude, coherence, and phase difference in time windows fixed relative to stimulus onset. Classification performances reached up to 99.9%, and the information about attentional states could be transferred at rates exceeding 580 bits/min. Good classification can already be achieved in time wind",
-      "doi": "10.1523/jneurosci.4225-12.2013",
-      "pmid": "23554481",
-      "openalex_id": "W2138708458",
-      "source_doi": "10.1088/1741-2560/8/6/066003",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4897514671087265,
-        "similarity_score": 0.44522860646247864,
-        "citation_text_length": 1268,
-        "dataset_text_length": 2252,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Optimizing the Performance of the Visual P300-Speller Through Active Mental Tasks Based on Color Distinction and Modulation of Task Difficulty",
       "author": "Qi Li, Zhaohua Lu, Ning Gao, Jingjing Yang",
       "venue": "Frontiers in Human Neuroscience",
@@ -2061,6 +2059,29 @@
         "confidence_score": 0.7380405366420747,
         "similarity_score": 0.670945942401886,
         "citation_text_length": 1254,
+        "dataset_text_length": 2252,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Toward High Performance, Weakly Invasive Brain Computer Interfaces Using Selective Visual Attention",
+      "author": "David Rotermund, Udo Ernst, Sunita Mandon, Katja Taylor, Yulia Smiyukha, Andreas K. Kreiter, Klaus Pawelzik",
+      "venue": "Journal of Neuroscience",
+      "year": 2013,
+      "url": "https://doi.org/10.1523/jneurosci.4225-12.2013",
+      "cited_by": 25,
+      "abstract": "Brain-computer interfaces have been proposed as a solution for paralyzed persons to communicate and interact with their environment. However, the neural signals used for controlling such prostheses are often noisy and unreliable, resulting in a low performance of real-world applications. Here we propose neural signatures of selective visual attention in epidural recordings as a fast, reliable, and high-performance control signal for brain prostheses. We recorded epidural field potentials with chronically implanted electrode arrays from two macaque monkeys engaged in a shape-tracking task. For single trials, we classified the direction of attention to one of two visual stimuli based on spectral amplitude, coherence, and phase difference in time windows fixed relative to stimulus onset. Classification performances reached up to 99.9%, and the information about attentional states could be transferred at rates exceeding 580 bits/min. Good classification can already be achieved in time wind",
+      "doi": "10.1523/jneurosci.4225-12.2013",
+      "pmid": "23554481",
+      "openalex_id": "W2138708458",
+      "source_doi": "10.1088/1741-2560/8/6/066003",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4897514671087265,
+        "similarity_score": 0.44522860646247864,
+        "citation_text_length": 1268,
         "dataset_text_length": 2252,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2343,25 +2364,23 @@
       }
     },
     {
-      "title": "Molecular and Enzymatic Characterizations of Novel Bifunctional 3β-Hydroxysteroid Dehydrogenases/C-4 Decarboxylases from Arabidopsis thaliana",
-      "author": "Alain Rahier, Sylvain Darnet, Florence Bouvier, Bilal Camara, Martin Bard",
-      "venue": "Journal of Biological Chemistry",
-      "year": 2006,
-      "url": "https://doi.org/10.1074/jbc.m604431200",
-      "cited_by": 44,
-      "abstract": "We have isolated two cDNAs from Arabidopsis thaliana encoding bifunctional 3beta-hydroxysteroid dehydrogenase/C-4 decarboxylases (3betaHSD/D) involved in sterol synthesis, termed At3betaHSD/D1 and At3betaHSD/D2. Transformation of the yeast ergosterol auxotroph erg26 mutant, which lacks 3betaHSD/D activity, with the At3betaHSD/D1 isoform or with At3betaHSD/D2 isoform containing a C-terminal At3betaHSD/D1 endoplasmic reticulum-retrieval sequence restored growth and ergosterol synthesis in erg26. An in vitro enzymatic assay revealed high 3betaHSD/D activity for both isoenzymes in the corresponding microsomal extracts. The two At3betaHSD/D isoenzymes showed similar substrate specificities that required free 3beta-hydroxyl and C-4-carboxyl groups but were quite tolerant in terms of variations of the sterol nucleus and side chain structures. Data obtained with 4alpha-carboxy-cholest-7-en-3beta-ol and its 3alpha-deuterated analog revealed that 3alpha-hydrogen-carbon bond cleavage is not the rate-limiting step of the reaction. In planta reduction on the expression of the 3betaHSD/D gene as a consequence of VIGS-mediated gene silencing in Nicotiana benthamiana led to a substantial accumulation of 3beta-hydroxy-4beta,14-dimethyl-5alpha-ergosta-9beta,19-cyclo-24(24(1))-en-4alpha-carboxylic acid, consistent with a decrease in 3betaHSD/D activity. These two novel oxidative decarboxylases constitute the first molecularly and functionally characterized HSDs from a short chain dehydrogenase/reductase family in plants.",
-      "doi": "10.1074/jbc.m604431200",
-      "pmid": "16835224",
-      "openalex_id": "W2074893470",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000198",
+      "title": "Real-time EEG Feedback on Alpha Power Lateralization Leads to Behavioral Improvements in a Covert Attention Task",
+      "author": "Christoph Schneider, Michael Pereira, Luca Tonin, José del R. Millán",
+      "venue": "Brain Topography",
+      "year": 2019,
+      "url": "https://doi.org/10.1007/s10548-019-00725-9",
+      "cited_by": 15,
+      "abstract": "Visual attention can be spatially oriented, even in the absence of saccadic eye-movements, to facilitate the processing of incoming visual information. One behavioral proxy for this so-called covert visuospatial attention (CVSA) is the validity effect (VE): the reduction in reaction time (RT) to visual stimuli at attended locations and the increase in RT to stimuli at unattended locations. At the electrophysiological level, one correlate of CVSA is the lateralization in the occipital α\\documentclass[12pt]{minimal} \\usepackage{amsmath} \\usepackage{wasysym} \\usepackage{amsfonts} \\usepackage{amssymb} \\usepackage{amsbsy} \\usepackage{mathrsfs} \\usepackage{upgreek} \\setlength{\\oddsidemargin}{-69pt} \\begin{document}$$\\alpha$$\\end{document}-band oscillations, resulting from α\\documentclass[12pt]{minimal} \\usepackage{amsmath} \\usepackage{wasysym} \\usepackage{amsfonts} \\usepackage{amssymb} \\usepackage{amsbsy} \\usepackage{mathrsfs} \\usepackage{upgreek} \\setlength{\\oddsidemargin}{-69pt} \\begin{doc",
+      "doi": "10.1007/s10548-019-00725-9",
+      "pmid": "31317285",
+      "openalex_id": "W2962420203",
+      "source_doi": "10.1088/1741-2560/8/6/066003",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.23891420960426332,
-        "similarity_score": 0.21719473600387573,
-        "citation_text_length": 1784,
+        "confidence_score": 0.5319499909877777,
+        "similarity_score": 0.48359090089797974,
+        "citation_text_length": 1235,
         "dataset_text_length": 2252,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2370,18 +2389,18 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:28:26.282929+00:00",
+    "scoring_date": "2026-07-15T00:10:10.411650+00:00",
     "dataset_text_length": 2252,
-    "num_citations_scored": 101,
+    "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.5060640358165054,
-      "median_confidence": 0.5001723855733872,
-      "std_confidence": 0.11877583590009848,
+      "mean_confidence": 0.5102195546604693,
+      "median_confidence": 0.5013497605919839,
+      "std_confidence": 0.1156478120163396,
       "min_confidence": 0.17763414084911347,
       "max_confidence": 0.7427104771137238,
       "high_confidence_count": 7,
-      "medium_confidence_count": 73,
-      "low_confidence_count": 21
+      "medium_confidence_count": 74,
+      "low_confidence_count": 19
     }
   }
 }

@@ -1,37 +1,98 @@
 {
   "dataset_id": "nm000207",
   "num_citations": 4,
-  "date_last_updated": "2026-06-18T23:21:06.749888+00:00",
+  "date_last_updated": "2026-07-03T12:26:12.120467+00:00",
   "metadata": {
     "total_cumulative_citations": 2,
-    "fetch_date": "2026-06-18T23:21:06.749888+00:00",
+    "fetch_date": "2026-07-03T12:26:12.120467+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.7910/dvn/1ujdv6",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Replication Data for: Four-class ASME BCI: investigation of the feasibility and comparison of two strategies for multiclassing",
+        "paper_year": 2024,
+        "paper_venue": "Harvard Dataverse",
+        "reason": "The candidate paper title and abstract explicitly state that it is the replication data for the 'Four-class ASME BCI: investigation of the feasibility and comparison of two strategies for multiclassing' dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.3389/fnhum.2024.1461960",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Four-class ASME BCI: investigation of the feasibility and comparison of two strategies for multiclassing",
+        "paper_year": 2024,
+        "paper_venue": "Frontiers in Human Neuroscience",
+        "reason": "The paper title, 'Four-class ASME BCI: investigation of the feasibility and comparison of two strategies for multiclassing,' directly matches the dataset's theme and authors, indicating it describes the data release.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is used by this dataset."
+        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is used by this dataset.",
+        "judgment_model": "gemma4:e4b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard, which is a technical specification used for organizing and sharing EEG data like the one in this dataset."
+        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard, which is a technical specification used for organizing and sharing EEG data like the one in this dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000207",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.7910/dvn/1ujdv6",
+      "10.3389/fnhum.2024.1461960",
+      "10.82901/nemar.nm000207"
+    ],
+    "keywords": [
+      "Brain-Computer Interfaces",
+      "Electroencephalography",
+      "event-related potentials",
+      "auditory scene analysis",
+      "stream segregation",
+      "P300",
+      "machine learning"
+    ],
+    "methods_description": "EEG was recorded at 1000 Hz from 64 channels (64 EEG + 2 EOG) using a BrainAmp system with EasyCap electrodes referenced to the right mastoid. Subjects performed 12 runs alternating between ASME-4stream (4 streams, SOA=150ms, 600 stimuli/trial) and ASME-2stream (2 streams, SOA=300ms, 300 stimuli/trial) paradigms. Preprocessing included ICA-based artifact removal (15 components), bandpass filtering (1-40 Hz for ERP analysis, 0.1-8 Hz for classification), epoching (-0.1 to 1.2s), and downsampling to 250 Hz. Classification employed shrinkage-LDA with mean amplitudes from 10 non-overlapping intervals (0-1.0s) as features, evaluated via 4-fold chronological cross-validation.",
+    "funding": [
+      {
+        "funder_name": "JSPS",
+        "award_number": "JP23K11811"
       }
     ],
     "searched_accessions": [
@@ -137,7 +198,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:47:03.184601+00:00",
+    "scoring_date": "2026-07-15T00:11:01.620351+00:00",
     "dataset_text_length": 2431,
     "num_citations_scored": 4,
     "summary_stats": {

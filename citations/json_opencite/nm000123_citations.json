@@ -1,39 +1,86 @@
 {
   "dataset_id": "nm000123",
   "num_citations": 100,
-  "date_last_updated": "2026-06-18T23:18:16.270833+00:00",
+  "date_last_updated": "2026-07-03T10:24:15.120608+00:00",
   "metadata": {
-    "total_cumulative_citations": 5155,
-    "fetch_date": "2026-06-18T23:18:16.270833+00:00",
+    "total_cumulative_citations": 5182,
+    "fetch_date": "2026-07-03T10:24:15.120608+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1016/j.neucom.2016.01.007",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Online SSVEP-based BCI using Riemannian geometry",
+        "paper_year": 2016,
+        "paper_venue": "Neurocomputing",
+        "reason": "The dataset's DOI in the README is 10.1016/j.neucom.2016.01.007, which matches the candidate paper's DOI exactly.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into the BIDS format, which is used by this dataset's BIDS version 1.9.0."
+        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into the BIDS format, which is used by this dataset's BIDS version 1.9.0.",
+        "judgment_model": "gemma4:31b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes the EEG-BIDS standard, which is the data organization standard used by this dataset (BIDS Version 1.9.0)."
+        "reason": "The paper describes the EEG-BIDS standard, which is the data organization standard used by this dataset (BIDS Version 1.9.0).",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000123",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
       }
     ],
+    "searched_dois": [
+      "10.1016/j.neucom.2016.01.007",
+      "10.82901/nemar.nm000123"
+    ],
+    "keywords": [
+      "steady-state visually evoked potentials",
+      "SSVEP",
+      "Brain-Computer Interfaces",
+      "EEG",
+      "Riemannian geometry",
+      "Riemannian manifold",
+      "online BCI",
+      "assistive robotics",
+      "assistive technology",
+      "exoskeleton",
+      "wheelchair control"
+    ],
+    "methods_description": "EEG data were acquired using a g.tec MobiLab amplifier with 8 electrodes (Oz, O1, O2, POz, PO3, PO4, PO7, PO8) positioned according to the standard 1005 montage with right mastoid reference. Sampling rate was 256 Hz with 50 Hz line frequency. Subjects viewed a panel of LEDs blinking at 13, 17, and 21 Hz frequencies, with trials lasting 6 seconds preceded by 3-second inter-trial intervals. Each session consisted of 32 trials (8 per frequency plus 8 rest trials) with auditory cues indicating target stimuli.",
+    "funding": [],
     "searched_accessions": [
       "nm000123"
     ],
@@ -48,7 +95,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1088/1741-2552/aab2f2",
-      "cited_by": 2115,
+      "cited_by": 2125,
       "abstract": "OBJECTIVE: Most current electroencephalography (EEG)-based brain-computer interfaces (BCIs) are based on machine learning algorithms. There is a large diversity of classifier types that are used in this field, as described in our 2007 review paper. Now, approximately ten years after this review publication, many new algorithms have been developed and tested to classify EEG signals in BCIs. The time is therefore ripe for an updated review of EEG classification algorithms for BCIs. APPROACH: We surveyed the BCI and machine learning literature from 2007 to 2017 to identify the new classification approaches that have been investigated to design BCIs. We synthesize these studies in order to present such algorithms, to report how they were used for BCIs, what were the outcomes, and to identify their pros and cons. MAIN RESULTS: We found that the recently designed classification algorithms for EEG-based BCIs can be divided into four main categories: adaptive classifiers, matrix and tensor cla",
       "doi": "10.1088/1741-2552/aab2f2",
       "pmid": "29488902",
@@ -71,7 +118,7 @@
       "venue": "Frontiers in Neurorobotics",
       "year": 2020,
       "url": "https://doi.org/10.3389/fnbot.2020.00025",
-      "cited_by": 482,
+      "cited_by": 486,
       "abstract": "Brain-Computer Interface (BCI), in essence, aims at controlling different assistive devices through the utilization of brain waves. It is worth noting that the application of BCI is not limited to medical applications, and hence, the research in this field has gained due attention. Moreover, the significant number of related publications over the past two decades further indicates the consistent improvements and breakthroughs that have been made in this particular field. Nonetheless, it is also worth mentioning that with these improvements, new challenges are constantly discovered. This article provides a comprehensive review of the state-of-the-art of a complete BCI system. First, a brief overview of electroencephalogram (EEG)-based BCI systems is given. Secondly, a considerable number of popular BCI applications are reviewed in terms of electrophysiological control signals, feature extraction, classification algorithms, and performance evaluation metrics. Finally, the challenges to t",
       "doi": "10.3389/fnbot.2020.00025",
       "pmid": "32581758",
@@ -94,7 +141,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2020,
       "url": "https://doi.org/10.1088/1741-2552/abc902",
-      "cited_by": 272,
+      "cited_by": 273,
       "abstract": "Brain signals refer to the biometric information collected from the human brain. The research on brain signals aims to discover the underlying neurological or physical status of the individuals by signal decoding. The emerging deep learning techniques have improved the study of brain signals significantly in recent years. In this work, we first present a taxonomy of non-invasive brain signals and the basics of deep learning algorithms. Then, we provide the frontiers of applying deep learning for non-invasive brain signals analysis, by summarizing a large number of recent publications. Moreover, upon the deep learning-powered brain signal studies, we report the potential real-world applications which benefit not only disabled people but also normal individuals. Finally, we discuss the opening challenges and future directions.",
       "doi": "10.1088/1741-2552/abc902",
       "pmid": "33171452",
@@ -163,7 +210,7 @@
       "venue": "Cognitive Neurodynamics",
       "year": 2021,
       "url": "https://doi.org/10.1007/s11571-021-09676-z",
-      "cited_by": 96,
+      "cited_by": 97,
       "abstract": null,
       "doi": "10.1007/s11571-021-09676-z",
       "pmid": "34367361",
@@ -462,7 +509,7 @@
       "venue": "ArXiv",
       "year": 2024,
       "url": "https://doi.org/10.48550/arXiv.2404.15319",
-      "cited_by": 42,
+      "cited_by": 45,
       "abstract": "Objective. This study conduct an extensive Brain-computer interfaces (BCI) reproducibility analysis on open electroencephalography datasets, aiming to assess existing solutions and establish open and reproducible benchmarks for effective comparison within the field. The need for such benchmark lies in the rapid industrial progress that has given rise to undisclosed proprietary solutions. Furthermore, the scientific literature is dense, often featuring challenging-to-reproduce evaluations, making comparisons between existing approaches arduous. Approach. Within an open framework, 30 machine learning pipelines (separated into raw signal: 11, Riemannian: 13, deep learning: 6) are meticulously re-implemented and evaluated across 36 publicly available datasets, including motor imagery (14), P300 (15), and SSVEP (7). The analysis incorporates statistical meta-analysis techniques for results assessment, encompassing execution time and environmental impact considerations. Main results. The stu",
       "doi": "10.48550/arXiv.2404.15319",
       "pmid": null,
@@ -549,6 +596,29 @@
       }
     },
     {
+      "title": "Feature Extraction Methods for Electroencephalography based Brain-Computer Interface: A Review",
+      "author": "D. Pawar, Sudhir N. Dhage",
+      "venue": "n/a",
+      "year": 2020,
+      "url": "n/a",
+      "cited_by": 33,
+      "abstract": null,
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4938078224658966,
+        "similarity_score": 0.47029316425323486,
+        "citation_text_length": 149,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A Lasso quantile periodogram based feature extraction for EEG-based motor imagery",
       "author": "Aymen Meziani, Karim Djouani, Tarek Medkour, Abdelghani Chibani",
       "venue": "Journal of Neuroscience Methods",
@@ -572,23 +642,23 @@
       }
     },
     {
-      "title": "Feature Extraction Methods for Electroencephalography based Brain-Computer Interface: A Review",
-      "author": "D. Pawar, Sudhir N. Dhage",
-      "venue": "n/a",
-      "year": 2020,
-      "url": "n/a",
-      "cited_by": 32,
-      "abstract": null,
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
+      "title": "Functional Connectivity Ensemble Method to Enhance BCI Performance (FUCONE)",
+      "author": "Marie-Constance Corsi, Sylvain Chevallier, Fabrizio De Vico Fallani, Florian Yger",
+      "venue": "IEEE Transactions on Biomedical Engineering",
+      "year": 2022,
+      "url": "https://doi.org/10.1109/tbme.2022.3154885",
+      "cited_by": 31,
+      "abstract": "OBJECTIVE: Relying on the idea that functional connectivity provides important insights on the underlying dynamic of neuronal interactions, we propose a novel framework that combines functional connectivity estimators and covariance-based pipelines to improve the classification of mental states, such as motor imagery. METHODS: A Riemannian classifier is trained for each estimator and an ensemble classifier combines the decisions in each feature space. A thorough assessment of the functional connectivity estimators is provided and the best performing pipeline among those tested, called FUCONE, is evaluated on different conditions and datasets. RESULTS: Using a meta-analysis to aggregate results across datasets, FUCONE performed significantly better than all state-of-the-art methods. CONCLUSION: The performance gain is mostly imputable to the improved diversity of the feature spaces, increasing the robustness of the ensemble classifier with respect to the inter- and intra-subject variabi",
+      "doi": "10.1109/tbme.2022.3154885",
+      "pmid": "35226599",
+      "openalex_id": "W3212754101",
       "source_doi": "10.1016/j.neucom.2016.01.007",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4938078224658966,
-        "similarity_score": 0.47029316425323486,
-        "citation_text_length": 149,
+        "confidence_score": 0.42295480415225034,
+        "similarity_score": 0.36619463562965393,
+        "citation_text_length": 1238,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -612,29 +682,6 @@
         "confidence_score": 0.5198944884538651,
         "similarity_score": 0.4501250982284546,
         "citation_text_length": 1305,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Functional Connectivity Ensemble Method to Enhance BCI Performance (FUCONE)",
-      "author": "Marie-Constance Corsi, Sylvain Chevallier, Fabrizio De Vico Fallani, Florian Yger",
-      "venue": "IEEE Transactions on Biomedical Engineering",
-      "year": 2022,
-      "url": "https://doi.org/10.1109/tbme.2022.3154885",
-      "cited_by": 29,
-      "abstract": "OBJECTIVE: Relying on the idea that functional connectivity provides important insights on the underlying dynamic of neuronal interactions, we propose a novel framework that combines functional connectivity estimators and covariance-based pipelines to improve the classification of mental states, such as motor imagery. METHODS: A Riemannian classifier is trained for each estimator and an ensemble classifier combines the decisions in each feature space. A thorough assessment of the functional connectivity estimators is provided and the best performing pipeline among those tested, called FUCONE, is evaluated on different conditions and datasets. RESULTS: Using a meta-analysis to aggregate results across datasets, FUCONE performed significantly better than all state-of-the-art methods. CONCLUSION: The performance gain is mostly imputable to the improved diversity of the feature spaces, increasing the robustness of the ensemble classifier with respect to the inter- and intra-subject variabi",
-      "doi": "10.1109/tbme.2022.3154885",
-      "pmid": "35226599",
-      "openalex_id": "W3212754101",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.42295480415225034,
-        "similarity_score": 0.36619463562965393,
-        "citation_text_length": 1238,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -669,7 +716,7 @@
       "venue": "Frontiers in Neuroergonomics",
       "year": 2022,
       "url": "https://doi.org/10.3389/fnrgo.2022.824780",
-      "cited_by": 25,
+      "cited_by": 26,
       "abstract": "The present study proposes a novel concept of neuroadaptive technology, namely a dual passive-reactive Brain-Computer Interface (BCI), that enables bi-directional interaction between humans and machines. We have implemented such a system in a realistic flight simulator using the NextMind classification algorithms and framework to decode pilots' intention (reactive BCI) and to infer their level of attention (passive BCI). Twelve pilots used the reactive BCI to perform checklists along with an anti-collision radar monitoring task that was supervised by the passive BCI. The latter simulated an automatic avoidance maneuver when it detected that pilots missed an incoming collision. The reactive BCI reached 100% classification accuracy with a mean reaction time of 1.6 s when exclusively performing the checklist task. Accuracy was up to 98.5% with a mean reaction time of 2.5 s when pilots also had to fly the aircraft and monitor the anti-collision radar. The passive BCI achieved a F 1 −score ",
       "doi": "10.3389/fnrgo.2022.824780",
       "pmid": "38235478",
@@ -986,6 +1033,29 @@
       }
     },
     {
+      "title": "Motor Imagery Classification via Kernel-Based Domain Adaptation on an SPD Manifold",
+      "author": "Qin Jiang, Yi Zhang, Kai Zheng",
+      "venue": "Brain Sciences",
+      "year": 2022,
+      "url": "https://doi.org/10.3390/brainsci12050659",
+      "cited_by": 17,
+      "abstract": "BACKGROUND: Recording the calibration data of a brain-computer interface is a laborious process and is an unpleasant experience for the subjects. Domain adaptation is an effective technology to remedy the shortage of target data by leveraging rich labeled data from the sources. However, most prior methods have needed to extract the features of the EEG signal first, which triggers another challenge in BCI classification, due to small sample sets or a lack of labels for the target. METHODS: In this paper, we propose a novel domain adaptation framework, referred to as kernel-based Riemannian manifold domain adaptation (KMDA). KMDA circumvents the tedious feature extraction process by analyzing the covariance matrices of electroencephalogram (EEG) signals. Covariance matrices define a symmetric positive definite space (SPD) that can be described by Riemannian metrics. In KMDA, the covariance matrices are aligned in the Riemannian manifold, and then are mapped to a high dimensional space by",
+      "doi": "10.3390/brainsci12050659",
+      "pmid": "35625045",
+      "openalex_id": "W4280651473",
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5073753914237024,
+        "similarity_score": 0.4392860531806946,
+        "citation_text_length": 1165,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Phase space reconstruction, geometric filtering based Fisher discriminant analysis and minimum distance to the Riemannian means algorithm for epileptic seizure classification",
       "author": "Xueling Zhou, Bingo Wing‐Kuen Ling, Yang Zhou, Ngai Fong Law",
       "venue": "Expert Systems with Applications",
@@ -1003,29 +1073,6 @@
         "confidence_score": 0.4685600504279137,
         "similarity_score": 0.4462476670742035,
         "citation_text_length": 293,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Motor Imagery Classification via Kernel-Based Domain Adaptation on an SPD Manifold",
-      "author": "Qin Jiang, Yi Zhang, Kai Zheng",
-      "venue": "Brain Sciences",
-      "year": 2022,
-      "url": "https://doi.org/10.3390/brainsci12050659",
-      "cited_by": 15,
-      "abstract": "BACKGROUND: Recording the calibration data of a brain-computer interface is a laborious process and is an unpleasant experience for the subjects. Domain adaptation is an effective technology to remedy the shortage of target data by leveraging rich labeled data from the sources. However, most prior methods have needed to extract the features of the EEG signal first, which triggers another challenge in BCI classification, due to small sample sets or a lack of labels for the target. METHODS: In this paper, we propose a novel domain adaptation framework, referred to as kernel-based Riemannian manifold domain adaptation (KMDA). KMDA circumvents the tedious feature extraction process by analyzing the covariance matrices of electroencephalogram (EEG) signals. Covariance matrices define a symmetric positive definite space (SPD) that can be described by Riemannian metrics. In KMDA, the covariance matrices are aligned in the Riemannian manifold, and then are mapped to a high dimensional space by",
-      "doi": "10.3390/brainsci12050659",
-      "pmid": "35625045",
-      "openalex_id": "W4280651473",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5073753914237024,
-        "similarity_score": 0.4392860531806946,
-        "citation_text_length": 1165,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1448,7 +1495,7 @@
     {
       "title": "End-to-end P300 BCI using Bayesian accumulation of Riemannian probabilities",
       "author": "Quentin Barthélemy, Sylvain Chevallier, Raphaëlle Bertrand-Lalo, Pierre Clisson",
-      "venue": "arXiv (Cornell University)",
+      "venue": "ArXiv.org",
       "year": 2022,
       "url": "https://doi.org/10.1080/2326263x.2022.2140467",
       "cited_by": 7,
@@ -1460,9 +1507,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.3841042560338974,
-        "similarity_score": 0.3325577974319458,
-        "citation_text_length": 1219,
+        "confidence_score": 0.3876359206438065,
+        "similarity_score": 0.33561551570892334,
+        "citation_text_length": 1202,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1486,6 +1533,29 @@
         "confidence_score": 0.25225795671343804,
         "similarity_score": 0.21840515732765198,
         "citation_text_length": 915,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Frequency tagging of spatial attention using periliminal flickers",
+      "author": "Simon Ladouce, Frédéric Dehais",
+      "venue": "Imaging Neuroscience",
+      "year": 2024,
+      "url": "https://doi.org/10.1162/imag_a_00223",
+      "cited_by": 6,
+      "abstract": "Steady-State Visually Evoked Potentials (SSVEPs) manifest as a sustained rhythmic activity that can be observed in surface electroencephalography (EEG) in response to periodic visual stimuli, commonly referred to as flickers. SSVEPs are widely used in fundamental cognitive neuroscience paradigms and Brain-Computer Interfaces (BCI) due to their robust and rapid onset. However, they have drawbacks related to the intrusive saliency of flickering visual stimuli, which may induce eye strain, cognitive fatigue, and biases in visual exploration. Previous findings highlighted the potential of altering features of flicker stimuli to improve user experience. In this study, we propose to reduce the amplitude modulation depth of flickering stimuli down to the individuals' perceptual visibility threshold (periliminal) and below (subliminal). The stimulus amplitude modulation depth represents the contrast difference between the two alternating states of a flicker. A simple visual attention task wher",
+      "doi": "10.1162/imag_a_00223",
+      "pmid": "40800282",
+      "openalex_id": "W4399995597",
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.712348592877388,
+        "similarity_score": 0.616752028465271,
+        "citation_text_length": 1154,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1630,52 +1700,6 @@
       }
     },
     {
-      "title": "Frequency tagging of spatial attention using periliminal flickers",
-      "author": "Simon Ladouce, Frédéric Dehais",
-      "venue": "Imaging Neuroscience",
-      "year": 2024,
-      "url": "https://doi.org/10.1162/imag_a_00223",
-      "cited_by": 5,
-      "abstract": "Steady-State Visually Evoked Potentials (SSVEPs) manifest as a sustained rhythmic activity that can be observed in surface electroencephalography (EEG) in response to periodic visual stimuli, commonly referred to as flickers. SSVEPs are widely used in fundamental cognitive neuroscience paradigms and Brain-Computer Interfaces (BCI) due to their robust and rapid onset. However, they have drawbacks related to the intrusive saliency of flickering visual stimuli, which may induce eye strain, cognitive fatigue, and biases in visual exploration. Previous findings highlighted the potential of altering features of flicker stimuli to improve user experience. In this study, we propose to reduce the amplitude modulation depth of flickering stimuli down to the individuals' perceptual visibility threshold (periliminal) and below (subliminal). The stimulus amplitude modulation depth represents the contrast difference between the two alternating states of a flicker. A simple visual attention task wher",
-      "doi": "10.1162/imag_a_00223",
-      "pmid": "40800282",
-      "openalex_id": "W4399995597",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.712348592877388,
-        "similarity_score": 0.616752028465271,
-        "citation_text_length": 1154,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Riemannian tangent space mapping and elastic net regularization for cost-effective EEG markers of brain atrophy in Alzheimer's disease",
-      "author": "Wolfgang Fruehwirt, Matthias Gerstgrasser, Pengfei Zhang, Leonard Weydemann, Markus Waser, Reinhold Schmidt, Thomas Benke, Peter Dal‐Bianco, Gerhard Ransmayr, Dieter Grossegger, Heinrich Garn, Gareth W. Peters, Stephen Roberts, Georg Dorffner",
-      "venue": "arXiv (Cornell University)",
-      "year": 2017,
-      "url": "https://doi.org/10.48550/arxiv.1711.08359",
-      "cited_by": 5,
-      "abstract": "The diagnosis of Alzheimer's disease (AD) in routine clinical practice is most commonly based on subjective clinical interpretations. Quantitative electroencephalography (QEEG) measures have been shown to reflect neurodegenerative processes in AD and might qualify as affordable and thereby widely available markers to facilitate the objectivization of AD assessment. Here, we present a novel framework combining Riemannian tangent space mapping and elastic net regression for the development of brain atrophy markers. While most AD QEEG studies are based on small sample sizes and psychological test scores as outcome measures, here we train and test our models using data of one of the largest prospective EEG AD trials ever conducted, including MRI biomarkers of brain atrophy.",
-      "doi": "10.48550/arxiv.1711.08359",
-      "pmid": null,
-      "openalex_id": "W2770006305",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.43847053647041323,
-        "similarity_score": 0.39860957860946655,
-        "citation_text_length": 1221,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Brain-Machine Interface for Mechanical Ventilation Using Respiratory-Related Evoked Potential",
       "author": "Sylvain Chevallier, Guillaume Bao, Mayssa Hammami, Fabienne Marlats, Louis Mayaud, Djillali Annane, Frédéric Lofaso, Éric Azabou",
       "venue": "Lecture notes in computer science",
@@ -1699,6 +1723,29 @@
       }
     },
     {
+      "title": "Deep Learning Approaches for EEG-Based Biometrics: A Systematic Review",
+      "author": "Ali E. Albaiati, M. F. Akbar, Murtadha D. Hssayeni, Ashraf Khalil, Mohd Nadhir Ab Wahab, Sundus Sulaiman Weli, Enas A. Raheem",
+      "venue": "IEEE Access",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/ACCESS.2025.3605614",
+      "cited_by": 5,
+      "abstract": "Biometics such as fingerprint, face, and iris are vulnerable to spoof attacks. The unique characteristics of Electroencephalography (EEG) make it a promising biometric modality especially because of its resistance to spoofing attacks. Many deep learning methods have been proposed for EEG-based biometric systems. This systematic review examines these methods in terms of their feature extraction ability and authentication performance. We follow the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) guidelines to search IEEE Xplore, PubMed, Web of Science, ScienceDirect, and Springer databases. Initially, we identified 285 relevant articles published between 2018 and 2024. After removing duplicates and applying predefined inclusion and exclusion criteria, 34 of them were selected and investigated thoroughly. This review highlights that deep learning architectures such as Convolutional Neural Networks (CNNs), Recurrent Neural Networks (RNNs), Generative Adversarial",
+      "doi": "10.1109/ACCESS.2025.3605614",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.509419178813696,
+        "similarity_score": 0.441055566072464,
+        "citation_text_length": 1245,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A Voting-Enhanced Dynamic-Window-Length Classifier for SSVEP-Based BCIs",
       "author": "Hadi Habibzadeh, James J. S. Norton, Theresa M. Vaughan, Tolga Soyata, Daphney–Stavroula Zois",
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
@@ -1716,6 +1763,29 @@
         "confidence_score": 0.6253068977594376,
         "similarity_score": 0.5413912534713745,
         "citation_text_length": 1269,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Riemannian tangent space mapping and elastic net regularization for cost-effective EEG markers of brain atrophy in Alzheimer's disease",
+      "author": "Wolfgang Fruehwirt, Matthias Gerstgrasser, Pengfei Zhang, Leonard Weydemann, Markus Waser, Reinhold Schmidt, Thomas Benke, Peter Dal‐Bianco, Gerhard Ransmayr, Dieter Grossegger, Heinrich Garn, Gareth W. Peters, Stephen Roberts, Georg Dorffner",
+      "venue": "ArXiv.org",
+      "year": 2017,
+      "url": "https://doi.org/10.48550/arxiv.1711.08359",
+      "cited_by": 4,
+      "abstract": "The diagnosis of Alzheimer's disease (AD) in routine clinical practice is most commonly based on subjective clinical interpretations. Quantitative electroencephalography (QEEG) measures have been shown to reflect neurodegenerative processes in AD and might qualify as affordable and thereby widely available markers to facilitate the objectivization of AD assessment. Here, we present a novel framework combining Riemannian tangent space mapping and elastic net regression for the development of brain atrophy markers. While most AD QEEG studies are based on small sample sizes and psychological test scores as outcome measures, here we train and test our models using data of one of the largest prospective EEG AD trials ever conducted, including MRI biomarkers of brain atrophy.",
+      "doi": "10.48550/arxiv.1711.08359",
+      "pmid": null,
+      "openalex_id": "W2770006305",
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.44063543081283574,
+        "similarity_score": 0.4005776643753052,
+        "citation_text_length": 1204,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1831,29 +1901,6 @@
         "confidence_score": 0.4910766559839249,
         "similarity_score": 0.4251745939254761,
         "citation_text_length": 534,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Deep Learning Approaches for EEG-Based Biometrics: A Systematic Review",
-      "author": "Ali E. Albaiati, M. F. Akbar, Murtadha D. Hssayeni, Ashraf Khalil, Mohd Nadhir Ab Wahab, Sundus Sulaiman Weli, Enas A. Raheem",
-      "venue": "IEEE Access",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/ACCESS.2025.3605614",
-      "cited_by": 4,
-      "abstract": "Biometics such as fingerprint, face, and iris are vulnerable to spoof attacks. The unique characteristics of Electroencephalography (EEG) make it a promising biometric modality especially because of its resistance to spoofing attacks. Many deep learning methods have been proposed for EEG-based biometric systems. This systematic review examines these methods in terms of their feature extraction ability and authentication performance. We follow the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) guidelines to search IEEE Xplore, PubMed, Web of Science, ScienceDirect, and Springer databases. Initially, we identified 285 relevant articles published between 2018 and 2024. After removing duplicates and applying predefined inclusion and exclusion criteria, 34 of them were selected and investigated thoroughly. This review highlights that deep learning architectures such as Convolutional Neural Networks (CNNs), Recurrent Neural Networks (RNNs), Generative Adversarial",
-      "doi": "10.1109/ACCESS.2025.3605614",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.509419178813696,
-        "similarity_score": 0.441055566072464,
-        "citation_text_length": 1245,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2021,29 +2068,6 @@
       }
     },
     {
-      "title": "Mechanism Research and Application of Brain-computer Interface",
-      "author": "Yunxin Zhang",
-      "venue": "Proceedings of the 1st International Symposium on Artificial Intelligence in Medical Sciences",
-      "year": 2020,
-      "url": "https://doi.org/10.1145/3429889.3430085",
-      "cited_by": 2,
-      "abstract": "As a special human-computer interaction mode, brain-computer interface (BCI) has attracted more and more attention and become a research hotspot in the field of artificial intelligence and control, it has been widely studied and applied in many fields. This paper first introduces the formation and classification of Electroencephalogram (EEG) signals, the collection methods, the problems and the current solutions, then introduces several classical theories of core technologies and introduces some innovative algorithms. In addition, the application of BCI system in medical recovery and auxiliary work is introduced. Finally, the paper makes the expectation and prospect for the future development.",
-      "doi": "10.1145/3429889.3430085",
-      "pmid": null,
-      "openalex_id": "W3112175087",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.3676893818378449,
-        "similarity_score": 0.3183457851409912,
-        "citation_text_length": 908,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Design and Implement the Continuous Flickering SSVEP-BCI in Augmented Reality",
       "author": "Ruiyan Wang, Yufeng Ke, Shuang Liu, Jiale Du, Cheng Zhe Xu, Bohao Xing, Dong Ming",
       "venue": "Journal of Physics Conference Series",
@@ -2061,6 +2085,29 @@
         "confidence_score": 0.48259508460760125,
         "similarity_score": 0.4178312420845032,
         "citation_text_length": 1233,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Mechanism Research and Application of Brain-computer Interface",
+      "author": "Yunxin Zhang",
+      "venue": "Proceedings of the 1st International Symposium on Artificial Intelligence in Medical Sciences",
+      "year": 2020,
+      "url": "https://doi.org/10.1145/3429889.3430085",
+      "cited_by": 2,
+      "abstract": "As a special human-computer interaction mode, brain-computer interface (BCI) has attracted more and more attention and become a research hotspot in the field of artificial intelligence and control, it has been widely studied and applied in many fields. This paper first introduces the formation and classification of Electroencephalogram (EEG) signals, the collection methods, the problems and the current solutions, then introduces several classical theories of core technologies and introduces some innovative algorithms. In addition, the application of BCI system in medical recovery and auxiliary work is introduced. Finally, the paper makes the expectation and prospect for the future development.",
+      "doi": "10.1145/3429889.3430085",
+      "pmid": null,
+      "openalex_id": "W3112175087",
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.3676893818378449,
+        "similarity_score": 0.3183457851409912,
+        "citation_text_length": 908,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2107,6 +2154,29 @@
         "confidence_score": 0.4781516584753991,
         "similarity_score": 0.41398411989212036,
         "citation_text_length": 1228,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 2,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.520779194533825,
+        "similarity_score": 0.45089107751846313,
+        "citation_text_length": 1324,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2318,40 +2388,17 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "CTSSP: A temporal–spectral-spatial joint optimization algorithm for motor imagery EEG decoding",
-      "author": "Lincong Pan, Kun Wang, Weibo Yi, Yang Zhang, Minpeng Xu, Dong MING",
-      "venue": "Journal of Neural Engineering",
-      "year": 2026,
-      "url": "https://doi.org/10.1088/1741-2552/ae34ea",
-      "cited_by": 1,
-      "abstract": "Abstract Objective. Motor imagery brain–computer interfaces hold significant promise for neurorehabilitation, yet their performance is often compromised by electroencephalography (EEG) non-stationarity, low signal-to-noise ratios, and severe cross-session variability. Current decoding methods typically suffer from fragmented optimization, treating temporal, spectral, and spatial features in isolation. Approach. We propose common temporal–spectral-spatial patterns (CTSSP), a unified framework that jointly optimizes filters across all three domains. The algorithm integrates: (1) multi-scale temporal segmentation to capture dynamic neural evolution, (2) channel-adaptive finite impulse response filters to enhance task-relevant rhythms, and (3) low-rank regularization to improve generalization. Main results. Evaluated across five public datasets, CTSSP achieves state-of-the-art performance. It yielded mean accuracies of 76.9% (within-subject), 68.8% (cross-session), and 69.8% (cross-subject",
-      "doi": "10.1088/1741-2552/ae34ea",
-      "pmid": "41499961",
-      "openalex_id": "W7118401152",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.535268726348877,
-        "similarity_score": 0.4634361267089844,
-        "citation_text_length": 1228,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:41:15.046382+00:00",
+    "scoring_date": "2026-07-15T00:03:49.675028+00:00",
     "dataset_text_length": 2296,
     "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.47944303096979857,
+      "mean_confidence": 0.4793551012411713,
       "median_confidence": 0.470926396548748,
-      "std_confidence": 0.12099768244910426,
+      "std_confidence": 0.12090499000537219,
       "min_confidence": 0.16762980669736863,
       "max_confidence": 0.7390335202217103,
       "high_confidence_count": 6,

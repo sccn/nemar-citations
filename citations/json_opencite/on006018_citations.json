@@ -1,0 +1,250 @@
+{
+  "dataset_id": "on006018",
+  "num_citations": 10,
+  "date_last_updated": "2026-07-04T04:24:33.434013+00:00",
+  "metadata": {
+    "total_cumulative_citations": 17,
+    "fetch_date": "2026-07-04T04:24:33.434013+00:00",
+    "processing_version": "1.0",
+    "fetch_status": "success",
+    "anchor_count": 3,
+    "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
+    "anchor_judgment_model": "gemma4:e4b",
+    "anchors": [
+      {
+        "identifier": "10.1038/s41597-025-05209-z",
+        "identifier_type": "doi",
+        "source_relation": "IsDescribedBy",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Cognitive Electrophysiology in Socioeconomic Context in Adulthood",
+        "paper_year": 2025,
+        "paper_venue": "Scientific Data",
+        "reason": "The candidate paper's title and abstract explicitly describe the contents and purpose of this specific EEG dataset, including the 127 young adults and SES indicators.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.1371/journal.pone.0307406",
+        "identifier_type": "doi",
+        "source_relation": "IsDescribedBy",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Childhood family socioeconomic status is linked to adult brain electrophysiology",
+        "paper_year": 2024,
+        "paper_venue": "PLoS ONE",
+        "reason": "The paper title and abstract directly investigate associations using the specific electrophysiological indices (MMN and P3b) and SES data collected in this dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.1016/j.neuroimage.2020.117465",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "methodology",
+        "kept": false,
+        "paper_title": "ERP CORE: An open resource for human event-related potential research",
+        "paper_year": 2020,
+        "paper_venue": "NeuroImage",
+        "reason": "The paper introduces ERP CORE, a standardized resource of paradigms and pipelines, which is a technical resource used in the dataset's tasks, but it does not describe the specific data collection or cohort of on006018.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.on006018",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1038/s41597-025-05209-z",
+      "10.1371/journal.pone.0307406",
+      "10.82901/nemar.on006018"
+    ],
+    "keywords": [
+      "EEG",
+      "event-related potentials",
+      "ERP CORE",
+      "socioeconomic status",
+      "cognitive electrophysiology",
+      "neurocognitive",
+      "ADHD symptoms",
+      "young adults"
+    ],
+    "methods_description": "EEG data were recorded using a Brain Products actiCHamp Plus system with a 32-channel actiCAP slim active electrode system mounted according to the international 10/20 system, sampled at 500 Hz and referenced to Cz. Electrooculogram (EOG) was recorded from three electrodes (horizontal and vertical) to capture eye artifacts. Two mastoid electrodes were repurposed for re-referencing. Stimuli were presented with approximately 20 ms delay for both visual and auditory modalities. Experimental tasks were directly acquired from or adapted from the ERP CORE protocol.",
+    "funding": [
+      {
+        "funder_name": "Research start-up funds awarded to Elif Isbell by University of California Merced."
+      },
+      {
+        "funder_name": "University of California Merced",
+        "award_title": "Research start-up funds"
+      }
+    ],
+    "searched_accessions": [
+      "on006018",
+      "ds006018"
+    ],
+    "num_accession_mentions": 0,
+    "num_dataset_citations": 0,
+    "num_datapaper_citations": 10
+  },
+  "citation_details": [
+    {
+      "title": "Benchmarking ERP Analysis: Manual Features, Deep Learning, and Foundation Models",
+      "author": "Yihe Wang, Zhiqi Kang, Bo Chen, Y. Zhang, Xiang Zhang",
+      "venue": "IEEE transactions on bio-medical engineering",
+      "year": 2026,
+      "url": "https://doi.org/10.1109/TBME.2026.3686229",
+      "cited_by": 5,
+      "abstract": "Event-related potential (ERP), a specialized paradigm of electroencephalographic (EEG), reflects neurological responses to external stimuli or events, generally associated with the brain's processing of specific cognitive tasks. ERP plays a critical role in cognitive analysis, the detection of neurological diseases, and the assessment of psychological states. Recent years have seen substantial advances in deep learning-based methods for spontaneous EEG and other non-time-locked task-related EEG signals. However, their effectiveness on ERP data remains underexplored, and many existing ERP studies still rely heavily on manually extracted features. In this paper, we conduct a comprehensive benchmark study that systematically compares traditional manual features (followed by a linear classifier), deep learning models, and pre-trained EEG foundation models for ERP analysis. We establish a unified data preprocessing and training pipeline and evaluate these approaches on two representative ta",
+      "doi": "10.1109/TBME.2026.3686229",
+      "pmid": "42060433",
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-025-05209-z",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite"
+    },
+    {
+      "title": "Laya: A LeJEPA Approach to EEG via Latent Prediction over Reconstruction",
+      "author": "S. Panchavati, Uddhav Panchavati, Corey W. Arnold, W. Speier",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2603.16281",
+      "cited_by": 1,
+      "abstract": "Electroencephalography (EEG) is a widely used tool for studying brain function, with applications in clinical neuroscience, diagnosis, and brain-computer interfaces (BCIs). Recent EEG foundation models trained on large unlabeled corpora aim to learn transferable representations, but their effectiveness remains unclear; reported improvements over smaller task-specific models are often modest, sensitive to downstream adaptation and fine-tuning strategies, and limited under linear probing. We hypothesize that one contributing factor is the reliance on signal reconstruction as the primary self-supervised learning (SSL) objective, which biases representations toward high-variance artifacts rather than task-relevant neural structure. To address this limitation, we explore an SSL paradigm based on Joint Embedding Predictive Architectures (JEPA), which learn by predicting latent representations instead of reconstructing raw signals. We introduce Laya, the first EEG foundation model based on Le",
+      "doi": "10.48550/arXiv.2603.16281",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-025-05209-z",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite"
+    },
+    {
+      "title": "Early-life Family Socioeconomic and Educational Impacts on Adult EEG and Behavioral Signatures of Visual Cognitive Function",
+      "author": "Shuxuan Mao, Xuan Zhang, Fengrui Zhang",
+      "venue": "Research Square",
+      "year": 2025,
+      "url": "https://doi.org/10.21203/rs.3.rs-7239089/v1",
+      "cited_by": 0,
+      "abstract": null,
+      "doi": "10.21203/rs.3.rs-7239089/v1",
+      "pmid": null,
+      "openalex_id": "W4414442997",
+      "source_doi": "10.1038/s41597-025-05209-z",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite"
+    },
+    {
+      "title": "Adaptive Split-MMD Training for Small-Sample Cross-Dataset P300 EEG Classification",
+      "author": "Weiyu Chen, A. Delorme",
+      "venue": "2025 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/bibm66473.2025.11356119",
+      "cited_by": 0,
+      "abstract": "Detecting single-trial P300 from EEG is difficult when only a few labeled trials are available. When attempting to boost a small target set with a large source dataset through transfer learning, cross-dataset shift arises. To address this challenge, we study transfer between two public visual-oddball ERP datasets using five shared electrodes (Fz, Pz, P3, P4, Oz) under a strict small-sample regime (target: 10 trials/subject; source: 80 trials/subject). We introduce Adaptive Split Maximum Mean Discrepancy Training (AS-MMD), which combines (i) a target-weighted loss with warm-up tied to the square root of the source/target size ratio, (ii) Split Batch Normalization (Split-BN) with shared affine parameters and per-domain running statistics, and (iii) a parameter-free logit-level Radial Basis Function kernel Maximum Mean Discrepancy (RBF-MMD) term using the median-bandwidth heuristic. Implemented on an EEG Conformer, AS-MMD is backbone-agnostic and leaves the inference-time model unchanged.",
+      "doi": "10.1109/bibm66473.2025.11356119",
+      "pmid": null,
+      "openalex_id": "W7126114115",
+      "source_doi": "10.1038/s41597-025-05209-z",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite"
+    },
+    {
+      "title": "Cognitive Electrophysiology in Socioeconomic Context in Adulthood",
+      "author": "Elif Isbell, Amanda Peters, Dylan Matthew Richardson, Nancy E. Rodas De León",
+      "venue": "Scientific Data",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41597-025-05209-z",
+      "cited_by": 3,
+      "abstract": "This dataset contains electroencephalography (EEG) recordings of 127 young adults (18-30 years old), along with retrospective objective and subjective reports of childhood family socioeconomic status (SES), as well as SES indicators in adulthood, such as educational attainment, food security, and home and neighborhood characteristics. The EEG data were recorded during commonly used cognitive electrophysiology tasks that were directly acquired or adapted from the Event-Related Potentials Compendium of Open Resources and Experiments, i.e., ERP CORE. This dataset can be used to address questions of cognitive electrophysiology in the context of childhood and adulthood SES. It can also be used to conduct EEG methodology research, such as investigating the precision and reliability of measurements in diverse samples of young adults. In addition, this dataset includes self-reports of attention-deficit/hyperactivity disorder (ADHD) symptoms and can be used to assess the links between ADHD symp",
+      "doi": "10.1038/s41597-025-05209-z",
+      "pmid": "40404753",
+      "openalex_id": "W4410601209",
+      "source_doi": "10.1371/journal.pone.0307406",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite"
+    },
+    {
+      "title": "Adolescent Risky Alcohol Use Is Associated With Electrophysiological Markers of Error Processing: Findings From a Large Cohort Study",
+      "author": "Olga D. Boer, H. El Marroun, Doga Ultanir, I. Franken",
+      "venue": "Biological Psychiatry Global Open Science",
+      "year": 2025,
+      "url": "https://doi.org/10.1016/j.bpsgos.2025.100615",
+      "cited_by": 3,
+      "abstract": "Background Altered electrophysiological error processing, measured via the error-related negativity (ERN), error-related positivity (Pe), and midfrontal theta power (FM-theta), has been associated with problematic alcohol use and alcohol dependence in clinical populations. However, large-scale studies focusing on adolescent use in the general population are scarce. Moreover, the extent to which potential confounding factors shape the relationship between brain activity and alcohol use remains unclear. Methods In the current study, we examined the relationship between adolescent alcohol use and electrophysiological markers of error processing (ERN, Pe, and FM-theta) in a large adolescent sample drawn from a population-based cohort (N = 1525, 806 female, mean age = 18.4). Alcohol use variables included initiation, age at initiation, recent alcohol use quantity, and recent binge drinking frequency. Confounders included sex, IQ, socioeconomic factors, and alcohol-related risk factors such ",
+      "doi": "10.1016/j.bpsgos.2025.100615",
+      "pmid": "41210887",
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0307406",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite"
+    },
+    {
+      "title": "The Impact of Socioeconomic Factors on Cognitive Ability in Community-Dwelling Older Adults: Mediating Effect of Social Participation and Social Support",
+      "author": "Yilin Zheng, Yu Zhang, Mingzhu Ye, Tingting Wang, Huining Guo, G. Zheng",
+      "venue": "Healthcare",
+      "year": 2025,
+      "url": "https://doi.org/10.3390/healthcare13050551",
+      "cited_by": 3,
+      "abstract": "Background and Purpose: Previous studies have shown that socioeconomic status influences cognitive health in adults. Therefore, it is important for the development of healthy aging policies to further investigate the effect of specific socioeconomic factors on cognitive function in older people and the possible mechanism. In this study, three specific socioeconomic factors (i.e., income, occupation, and education) were used as independent variables, and social support and social participation were used as the parallel or serial mediating variables to investigate the effect on cognitive function in community-dwelling older adults and the specific pathway of influence. Methods: A cross-sectional study was conducted in the Pudong New District of Shanghai, China. A total of 970 community-dwelling older adults aged over 60 years old who had lived in their current location for more than 5 years were enrolled. Socioeconomic factors in older adults, including income, education level, and occup",
+      "doi": "10.3390/healthcare13050551",
+      "pmid": "40077112",
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0307406",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite"
+    },
+    {
+      "title": "Water sources and educational attainment in Colombian adults: evidence from the national nutritional survey",
+      "author": "Victor Florez-Garcia, Javith Torres-Saballeth, Rafael Tuesca Molina, Jorge Acosta‐Reyes, Edwin Guevara-Romero, Natalia Nohora, Esmeralda Santacruz‐Salas, Tania Acosta-Vergara",
+      "venue": "BMC Public Health",
+      "year": 2025,
+      "url": "https://doi.org/10.1186/s12889-025-22577-8",
+      "cited_by": 2,
+      "abstract": "BACKGROUND: Academic achievement is essential to people's individual and social development by enhancing opportunities for significant personal achievement throughout life. Exposure to toxic agents due to poor water quality may negatively influence neurodevelopment in children and adolescents into adulthood. OBJECTIVE: We aimed to estimate the association between the type of water for drinking purposes and academic achievements in Colombian adults. METHODS: We designed a cross-sectional study based on the National Survey of Nutritional Situation in Colombia (Encuesta Nacional de la Situación Nutricional en Colombia -ENSIN-) 2015. Academic achievement in our study was classified as less than complete primary school (0-4 years), between complete primary and incomplete secondary (5-10 years), between complete secondary and incomplete higher education (11-15 years), and complete higher education and more (16-24 years). We utilized adjusted ordinal logistic regression to estimate betas (β's",
+      "doi": "10.1186/s12889-025-22577-8",
+      "pmid": "40221690",
+      "openalex_id": "W4409380703",
+      "source_doi": "10.1371/journal.pone.0307406",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite"
+    },
+    {
+      "title": "Reliability of Electrophysiological Measures of Cognitive Control and Sociodemographic Correlates in a Large Adolescent and Emerging Adult Cohort",
+      "author": "Olga D. Boer, Miranda C. Lutz, Hanan El Marroun, Greg Hajcak, Ingmar H. A. Franken",
+      "venue": "Psychophysiology",
+      "year": 2026,
+      "url": "https://doi.org/10.1111/psyp.70330",
+      "cited_by": 0,
+      "abstract": "ABSTRACT Decreased cognitive control, encompassing processes like response inhibition and error processing, has been identified as a potential neurocognitive risk factor for psychopathology. Although electroencephalography (EEG) shows promise as a cost‐effective and high temporal resolution method for linking brain function to behavior, large‐scale EEG research to realize this potential remains limited. In this study, a population‐based sample of 2994 adolescents and emerging adults ( M age = 18.4 years, range 16–21 years) was utilized to first assess reliability of EEG markers of cognitive control (ERN/Pe, No‐Go N2/P3) measured during a Go/No‐Go task. This involved computing split‐half reliability, Cronbach's Alpha (CA) and Pearson's correlations for an increasing number of error/No‐Go trials. Given the low‐density setup, our analyses focused on the electrode locations FCz and Cz. Moderate reliability (split‐half reliability and CA ≥ 0.6) was obtained with a minimum of 9/10 errors for",
+      "doi": "10.1111/psyp.70330",
+      "pmid": "42178645",
+      "openalex_id": "W7162329175",
+      "source_doi": "10.1371/journal.pone.0307406",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite"
+    },
+    {
+      "title": "Longitudinal Associations Between Family Socioeconomic Status and Adolescent Depressive Symptom Trajectories in China: A Chain Multiple Mediation Model",
+      "author": "Jing Zeng, Mei Zhang, Yong Li, Yunting Chen",
+      "venue": "Journal of Youth and Adolescence",
+      "year": 2026,
+      "url": "https://doi.org/10.1007/s10964-026-02355-4",
+      "cited_by": 0,
+      "abstract": "Abstract Although family socioeconomic status (SES) has been widely associated with adolescent depressive symptoms, less is known about how multidimensional SES shapes depressive symptom trajectories through family and individual mechanisms. Guided by the Family Stress Model, this study examined the associations between family SES and adolescents’ depressive symptom trajectories and tested the mediating roles of maternal mental health, parenting practices, and adolescent self-esteem. Data were drawn from six waves of the China Family Panel Studies (2010–2020), including 2,245 children followed from early childhood into adolescence ( M age = 6.45 years, SD = 1.12; 54% female). Latent growth modeling was used to estimate the intercept and slope of depressive symptoms, and structural equation modeling was applied to test mediation pathways. Results showed that across all family SES indicators, there was an indirect effect on the intercept of adolescent depressive symptoms through the sequ",
+      "doi": "10.1007/s10964-026-02355-4",
+      "pmid": "41945248",
+      "openalex_id": "W7151335438",
+      "source_doi": "10.1371/journal.pone.0307406",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite"
+    }
+  ]
+}

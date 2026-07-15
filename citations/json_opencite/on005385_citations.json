@@ -1,35 +1,78 @@
 {
   "dataset_id": "on005385",
-  "num_citations": 18,
-  "date_last_updated": "2026-06-18T23:26:28.653647+00:00",
+  "num_citations": 20,
+  "date_last_updated": "2026-07-04T02:23:26.234907+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-18T23:26:28.653647+00:00",
+    "fetch_date": "2026-07-04T02:23:26.234907+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 1,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.2196/32352",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.2196/32352",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "irrelevant",
+        "kept": false,
         "paper_title": "In vivo measurement of uranium contamination in the lung",
         "paper_year": 1974,
         "paper_venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
-        "reason": "The dataset concerns EEG activity and cognitive function, while the paper discusses in vivo measurement of uranium contamination in the lung."
+        "reason": "The dataset concerns EEG activity and cognitive function, while the paper discusses in vivo measurement of uranium contamination in the lung.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.on005385",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.82901/nemar.on005385"
+    ],
+    "keywords": [
+      "EEG",
+      "resting-state",
+      "cognitive aging",
+      "longitudinal study",
+      "lifespan development",
+      "brain activity",
+      "follow-up",
+      "longitudinal",
+      "Electroencephalography",
+      "Aging"
+    ],
+    "methods_description": "Resting-state EEG was recorded using a 64-channel elastic cap (actiCap, Brain Products GmbH) arranged according to the 10-20 system with FCz as online reference. Recordings were acquired with a BrainVision Brainamp DC amplifier at 1000 Hz sampling rate with online 250 Hz low-pass filtering. Each session consisted of three-minute recordings with eyes closed followed by eyes open, both before and after a 2-hour cognitive task block. Impedances were maintained below 10 kOhm.",
+    "funding": [
+      {
+        "funder_name": "The Dortmund Vital Study is funded by the institute’s budget (no grant number). Thus, the study design, collection, management, analysis, interpretation of data, writing of the report, and the decision to submit the report for publication is not influenced or biased by any sponsor."
+      },
+      {
+        "funder_name": "German Center for Mental Health (DZPG)",
+        "award_title": "Dortmund Vital Study"
+      },
+      {
+        "funder_name": "Institute budget (IfADo)",
+        "award_title": "Dortmund Vital Study"
       }
     ],
     "searched_accessions": [
       "on005385",
       "ds005385"
     ],
-    "num_accession_mentions": 18,
-    "num_dataset_citations": 18,
+    "num_accession_mentions": 20,
+    "num_dataset_citations": 20,
     "num_datapaper_citations": 0
   },
   "citation_details": [
@@ -64,7 +107,7 @@
       "venue": "Scientific Data",
       "year": 2024,
       "url": "https://doi.org/10.1038/s41597-024-03797-w",
-      "cited_by": 21,
+      "cited_by": 23,
       "abstract": "This dataset consists of 64-channels resting-state EEG recordings of 608 participants aged between 20 and 70 years, 61.8% female, as well as follow-up measurements after approximately 5 years of 208 participants, starting 2021. The EEG was measured for three minutes with eyes open and eyes closed before and after a 2-hour block of cognitive experimental tasks. The data set is part of the Dortmund Vital Study, a prospective study on the determinants of healthy cognitive aging. The dataset can be used for (1) analyzing cross-sectional resting-state EEG of healthy individuals across the adult life span; (2) generating normalization data sets for comparison of resting-state EEG data of patients with clinically relevant disorders; (3) studying effects of performing cognitive tasks on resting-state EEG and age; (4) exploring intra-individual changes in resting-state EEG and effects of task performance over a time period of about 5 years. The data are provided in Brain Imaging Data Structure (BIDS) format and are available on OpenNeuro.",
       "doi": "10.1038/s41597-024-03797-w",
       "pmid": "39256413",
@@ -189,7 +232,7 @@
       "venue": "Brain Sciences",
       "year": 2025,
       "url": "https://doi.org/10.3390/brainsci15060546",
-      "cited_by": 0,
+      "cited_by": 1,
       "abstract": "Background: Both aging and cognitive fatigue are significant factors influencing alpha activity in the brain. However, the interactive effects of age and mental fatigue on the alpha spectrum and functional connectivity have not been fully elucidated. Methods: Using resting-state EEG data from an open-access dataset (younger: N = 198; older: N = 227) collected before and after a 2 h cognitive task block, we systematically examined the effects of aging and mental fatigue on alpha (8–13 Hz) oscillations via an aperiodic-corrected power spectrum, the weighted phase lag index (wPLI), and graph theory analysis. Results: In both spectral power and network efficiency, mental fatigue primarily modulates low alpha in younger individuals, while high alpha reflects stable age-related changes. The aperiodic offset and exponent decrease with age, while mental fatigue leads to an increase in the exponent. Notable interactions between age and mental fatigue are observed in low-alpha power, the aperiodic exponent, and the network efficiency of both low- and high-alpha bands. Conclusions: This study provides valuable insights into the differential modulation patterns of alpha activity by age and mental fatigue, as well as their interactions. These findings advance our understanding of how aging and mental fatigue differentially and interactively shape neural dynamics.",
       "doi": "10.3390/brainsci15060546",
       "pmid": "40563718",
@@ -228,31 +271,6 @@
         "confidence_score": 0.585880853533745,
         "similarity_score": 0.5072561502456665,
         "citation_text_length": 1690,
-        "dataset_text_length": 2381,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Code and trained models for: HC-Anchored Rank Normalization for Cross-Cohort EEG Classification of Alzheimer's Disease",
-      "author": "Spencer Howie",
-      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
-      "year": 2026,
-      "url": "https://doi.org/10.5281/zenodo.19855980",
-      "cited_by": 0,
-      "abstract": "Cross-cohort EEG-AD classification pipeline accompanying Howie (2026g), \"HC-Anchored Rank Normalization for Cross-Cohort EEG Classification of Alzheimer's Disease.\" What's included: Full preprocessing pipeline (10-20 channel selection, FFT resampling to 100 Hz, 30-second epoching, common-average referencing). Feature extraction for the canonical v2 17-feature pool (CHANNELS_4D + AP_TOPO + CONN_ALPHA + CONN_THETA) via a shared canonical ingest layer (_framework_core/) with cryptographic SHA-256 pipeline-version stamping. The legacy 15-feature v1 pool is preserved as core/feature_spec.py::ALL_V1_LEGACY for sensitivity-table reproduction. Per-cohort HC-anchored rank-based inverse-normal normalization, HC-covariance whitening, and Platt-scaled probability output. Bundled trained model (trained_model/trained_model.json) with v2 parameters (AUC 0.9476, BA 0.9362, sens 0.8824, spec 0.9900, PPV at 30% prevalence 0.9742, NPV at 30% 0.9515; classifier threshold tau = -2.3967; Platt a / b = 0.8202 / 1.3742) — direct application to new EEG without re-running training. Pre-computed 10,000-permutation LDA-target null on the v2 pool (in-pool AUC observed 0.9238, LOO 0.9102, LOCO 0.8382; all 0/10000 permutations greater than or equal to observed; p less than or equal to 0.0001 floor on each statistic). Three smoke tests in tests/test_canonical_pipeline.py confirm byte-identical pipeline output on a clean unzip. An 80%-coverage filter on sparse photic-driving features and a demographic deny-list (age, sex, MMSE) prevent label leakage. Reproducibility: The classification pipeline reproduces the paper's headline numbers byte-identically when run against the cited public datasets (ds004504, ds006036, ds003775, ds005385, BrainLat, MPI-LEMON age greater than or equal to 60 yr, figshare 5450293). README.md documents the full quick-start; CHANGELOG.md tracks v1 to v2 substantive changes; notes/RESEARCH_LOG.md preserves the development log for contex. License: MIT.",
-      "doi": "10.5281/zenodo.19855980",
-      "pmid": null,
-      "openalex_id": "W7156688796",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "ds005385",
-      "confidence_scoring": {
-        "confidence_score": 0.6440964549779892,
-        "similarity_score": 0.5576592683792114,
-        "citation_text_length": 1726,
         "dataset_text_length": 2381,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -334,13 +352,13 @@
       }
     },
     {
-      "title": "Sleep Onset as Fibonacci Necessity Depth Collapse: EEG Band Boundaries as φ-Structured Attractors and the F(8) = 21 Hz Tipping Point",
+      "title": "Sleep onset as Fibonacci necessity-depth collapse: tests of four φ-structured frequency predictions in waking EEG, sleep transition, and cognitive-load gamma",
       "author": "Abby Davis",
       "venue": "Zenodo (CERN European Organization for Nuclear Research)",
       "year": 2026,
       "url": "https://doi.org/10.5281/zenodo.20139379",
       "cited_by": 0,
-      "abstract": "Fibonacci Causal Loop Theory (FCLT) predicts that necessity-governed systems exhibit Fibonacci-structured transition thresholds and φ-ratio boundary conditions. Four predictions tested against published EEG and cognitive neuroscience data. P72a: Standard clinical EEG band boundaries at 8 Hz = F(6) and 13 Hz = F(7) are exact consecutive Fibonacci numbers; ratio 13/8 = 1.625, δ = 0.004 — CONFIRMS. P72b: Sleep onset tipping point (Li et al., 2025, Nature Neuroscience) at 21 Hz = F(8) exactly, δ = 0.000 — CONFIRMS. P72c: Post-tipping endpoint at 15.5 Hz, δ = 0.162 — FALSIFIES under Protocol V3.1, reported honestly. P72d: Peak gamma during high cognitive load on OpenNeuro ds005385 (multitaper analysis, n=608, pre-specified protocol): F(9) = 34.1 Hz (δ = 0.003) and F(10) = 54.9 Hz (δ = 0.005) — CONFIRMS. Supersedes prior gray zone result; pre-specified pipeline confirmed as final extraction method per Protocol V3.1 precedent. FCLT necessity depth interpretation: wakefulness corresponds to necessity depth 8 (F(8) = 21 Hz); sleep onset is necessity depth collapse; high cognitive load recruits F(9) and F(10). The Fibonacci ladder of the brain is confirmed from F(6) to F(10). Updated FCLT scorecard: 22 confirmed / 5 falsified / 25 tech-gap / 2 gray zone.",
+      "abstract": "Fibonacci Causal Loop Theory (FCLT) predicts that necessity-governed systems exhibit Fibonacci-structured transition thresholds and φ-ratio boundary conditions (P42). We test four such predictions against published EEG and cognitive-neuroscience data. P72a: the standard clinical EEG band boundaries at 8 Hz and 13 Hz are the consecutive Fibonacci numbers F(6) and F(7), with ratio 13/8 = 1.625 against φ = 1.618 (δ = 0.004). P72b: the sleep-onset tipping point reported by Li et al. (Nature Neuroscience, 2025) sits at exactly 21 Hz = F(8) (δ = 0.000), interpreted as a transition from necessity-depth 8 (wakefulness) to a collapsed lower-depth state (sleep). P72c (pre-registered falsification target): the post-tipping sleep endpoint at 15.5 Hz is not Fibonacci-structured (δ = 0.162). P72d: multitaper gamma analysis on the OpenNeuro ds005385 cognitive-load EEG dataset (n = 608, pre-specified pipeline) identifies peaks under high cognitive load at 34.1 Hz and 54.9 Hz, matching F(9) = 34 Hz (δ = 0.003) and F(10) = 55 Hz (δ = 0.002) respectively. Under Protocol V3.1, P72a, P72b, and P72d each survive at δ < 0.05; survival is not confirmation. P72c falsifies at δ > 0.10 and is retained without revision. The independent corroboration by Ursachi (2026, Front. Hum. Neurosci.) of φ-organization in human EEG theta–alpha bands across n = 320 in two datasets provides a second observational anchor for the band-boundary identification. Survival criterion δ < 0.05; falsification δ > 0.10.",
       "doi": "10.5281/zenodo.20139379",
       "pmid": null,
       "openalex_id": "W7160938298",
@@ -350,9 +368,9 @@
       "discovery_method": "accession_mention",
       "matched_accession": "ds005385",
       "confidence_scoring": {
-        "confidence_score": 0.5562848845124245,
-        "similarity_score": 0.48163193464279175,
-        "citation_text_length": 1501,
+        "confidence_score": 0.5712277498841286,
+        "similarity_score": 0.49456948041915894,
+        "citation_text_length": 1754,
         "dataset_text_length": 2381,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -434,6 +452,31 @@
       }
     },
     {
+      "title": "Sleep onset as Fibonacci necessity-depth collapse: tests of four φ-structured frequency predictions in waking EEG, sleep transition, and cognitive-load gamma",
+      "author": "Abby Davis",
+      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "year": 2026,
+      "url": "https://doi.org/10.5281/zenodo.20800362",
+      "cited_by": 0,
+      "abstract": "Fibonacci Causal Loop Theory (FCLT) predicts that necessity-governed systems exhibit Fibonacci-structured transition thresholds and φ-ratio boundary conditions (P42). We test four such predictions against published EEG and cognitive-neuroscience data. P72a: the standard clinical EEG band boundaries at 8 Hz and 13 Hz are the consecutive Fibonacci numbers F(6) and F(7), with ratio 13/8 = 1.625 against φ = 1.618 (δ = 0.004). P72b: the sleep-onset tipping point reported by Li et al. (Nature Neuroscience, 2025) sits at exactly 21 Hz = F(8) (δ = 0.000), interpreted as a transition from necessity-depth 8 (wakefulness) to a collapsed lower-depth state (sleep). P72c (pre-registered falsification target): the post-tipping sleep endpoint at 15.5 Hz is not Fibonacci-structured (δ = 0.162). P72d: multitaper gamma analysis on the OpenNeuro ds005385 cognitive-load EEG dataset (n = 608, pre-specified pipeline) identifies peaks under high cognitive load at 34.1 Hz and 54.9 Hz, matching F(9) = 34 Hz (δ = 0.003) and F(10) = 55 Hz (δ = 0.002) respectively. Under Protocol V3.1, P72a, P72b, and P72d each survive at δ < 0.05; survival is not confirmation. P72c falsifies at δ > 0.10 and is retained without revision. The independent corroboration by Ursachi (2026, Front. Hum. Neurosci.) of φ-organization in human EEG theta–alpha bands across n = 320 in two datasets provides a second observational anchor for the band-boundary identification. Survival criterion δ < 0.05; falsification δ > 0.10.",
+      "doi": "10.5281/zenodo.20800362",
+      "pmid": null,
+      "openalex_id": "W7165568788",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005385",
+      "confidence_scoring": {
+        "confidence_score": 0.5712277498841286,
+        "similarity_score": 0.49456948041915894,
+        "citation_text_length": 1754,
+        "dataset_text_length": 2381,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A Preoperative Electroencephalography Signature for Predicting Treatment Response to Deep Brain Stimulation in Obsessive-Compulsive Disorder",
       "author": "Wenlong Wang, Jiayue Cheng, Xi Zhang, Xi Wu, Hanyang Ruan, Bo Huang, T. L. Xu, Feifei Qi, Yan Liang, Hongyi Zhi, Jian Gao, Luolong Cao, Yufei Wang, Kaiming Zhuo, Corey J. Keller, Gerwin Schalk, Jing Jiang, Qing Fan, Nolan Williams, Huiqin Han, Wei Wu, Zhen Wang",
       "venue": "medRxiv",
@@ -453,6 +496,31 @@
         "confidence_score": 0.6140746897459031,
         "similarity_score": 0.5316663980484009,
         "citation_text_length": 1947,
+        "dataset_text_length": 2381,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Scalp EEG reveals functional dissociable aperiodic timescales in divergence of mental health",
+      "author": "Yuhan Lu, Hangze Mao, Xing Tian",
+      "venue": "medRxiv",
+      "year": 2026,
+      "url": "https://doi.org/10.64898/2026.06.27.26355457",
+      "cited_by": 0,
+      "abstract": "Abstract Understanding the divergence of mental health requires recognizing the brain’s real-time information processing. For example, aperiodic neural activity characterizing intrinsic brain dynamics is increasingly used as a biomarker in mental health, yet how its temporal complexity relates to mental deviations in ageing and disorders remains unknown. Here, using resting-state electroencephalography from approximately 1,700 participants across healthy, neurological and psychiatric disorders and chronic-pain cohorts, we show that the knee-like frequency structure recovered from individual spectra of neural activity converges into two reproducible, population-level temporal components. These slow and fast aperiodic timescales showed distinct functional profiles: the slow component remained stable across all states of mental health, whereas the fast component increased with healthy ageing, decreased in mental disorders and was unchanged in chronic pain. These findings establish that scalp EEG preserves functionally dissociable aperiodic timescales, possibly reflecting body-mind interactions, offering scalable, non-invasive temporal markers for quantifying divergent states of mental health.",
+      "doi": "10.64898/2026.06.27.26355457",
+      "pmid": null,
+      "openalex_id": "W7166728303",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005385",
+      "confidence_scoring": {
+        "confidence_score": 0.6386401364207268,
+        "similarity_score": 0.5529351830482483,
+        "citation_text_length": 1377,
         "dataset_text_length": 2381,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -482,21 +550,46 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "NeuroShield: A Device-Agnostic Foundation Model for EEG Authentication",
+      "author": "Matin Fallahi, Patricia Arias-Cabarcos, Thorsten Strufe",
+      "venue": "arXiv (Cornell University)",
+      "year": 2026,
+      "url": "https://openalex.org/W7165816959",
+      "cited_by": 0,
+      "abstract": "A central challenge in EEG authentication is that models are typically tied to the acquisition settings in which they are trained. In particular, variations in headset hardware, channel layout, and signal duration create heterogeneous recordings that existing models are not designed to handle, causing each new headset or dataset to be treated as a separate model-development problem. This fragmentation limits multi-dataset learning, hinders knowledge transfer, and reduces model reusability. To address this limitation, we present NeuroShield, a reusable foundation model for EEG authentication that learns identity-discriminative embeddings from variable-channel and variable-length EEG recordings through a dual-stage transformer architecture. We pretrain NeuroShield on three public EEG datasets comprising 15{,}762 subjects and 28{,}116 sessions, and evaluate transfer on two unseen downstream datasets. Our evaluations show that, after fine-tuning, NeuroShield reduces equal error rate by 0.44--8.06 percentage points relative to the state of the art. NeuroShield further generalizes to segments longer than those seen during training and operates across channel layouts not encountered during pretraining. These results establish NeuroShield as a reusable and adaptable EEG identity encoder across heterogeneous recording settings. We release NeuroShield as open source to support reproducibility and community adoption.",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": "W7165816959",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005385",
+      "confidence_scoring": {
+        "confidence_score": 0.6115183979272842,
+        "similarity_score": 0.5294531583786011,
+        "citation_text_length": 1619,
+        "dataset_text_length": 2381,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:33:50.852548+00:00",
+    "scoring_date": "2026-07-15T00:24:07.794255+00:00",
     "dataset_text_length": 2381,
-    "num_citations_scored": 18,
+    "num_citations_scored": 20,
     "summary_stats": {
-      "mean_confidence": 0.6147807669474018,
+      "mean_confidence": 0.6129143249839546,
       "median_confidence": 0.5946620312333107,
-      "std_confidence": 0.10715196497676241,
+      "std_confidence": 0.10165888499933676,
       "min_confidence": 0.45107924938201904,
       "max_confidence": 1.0,
       "high_confidence_count": 1,
-      "medium_confidence_count": 17,
+      "medium_confidence_count": 19,
       "low_confidence_count": 0
     }
   }

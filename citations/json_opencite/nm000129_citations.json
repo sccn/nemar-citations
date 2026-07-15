@@ -1,18 +1,76 @@
 {
   "dataset_id": "nm000129",
   "num_citations": 100,
-  "date_last_updated": "2026-06-18T23:18:31.843595+00:00",
+  "date_last_updated": "2026-07-03T10:24:52.356457+00:00",
   "metadata": {
-    "total_cumulative_citations": 2785,
-    "fetch_date": "2026-06-18T23:18:31.843595+00:00",
+    "total_cumulative_citations": 2804,
+    "fetch_date": "2026-07-03T10:24:52.356457+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.3389/fnins.2020.00627",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "BETA: A Large Benchmark Database Toward SSVEP-BCI Application",
+        "paper_year": 2020,
+        "paper_venue": "Frontiers in Neuroscience",
+        "reason": "The paper title 'BETA: A Large Benchmark Database Toward SSVEP-BCI Application' and abstract explicitly describe the release and design of the BETA database used in this dataset.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000129",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.3389/fnins.2020.00627",
+      "10.82901/nemar.nm000129"
+    ],
+    "keywords": [
+      "SSVEP",
+      "Brain-Computer Interfaces",
+      "EEG",
+      "steady-state visual evoked potentials",
+      "benchmark dataset",
+      "joint frequency and phase modulation",
+      "cued-spelling",
+      "speller application"
+    ],
+    "methods_description": "EEG data were acquired using a Synamps2 amplifier (Neuroscan) with 64 channels in the international 10-10 system, referenced to Cz. Stimulation employed joint frequency and phase modulation (JFPM) with 40 targets arranged in a 5×8 QWERTY keyboard. Frequencies ranged from 8.0 to 15.8 Hz with a 0.2 Hz step. Stimulation duration was 2 seconds for experienced subjects (S1-S15) and 3 seconds for naive subjects (S16-S70), plus a 0.5-second visual cue. Data were recorded at 1000 Hz and downsampled to 250 Hz. Each subject completed 4 blocks of 40 trials, with epochs of 3 seconds duration.",
+    "funding": [
+      {
+        "funder_name": "National Key Research and Development Program of China",
+        "award_number": "2017YFB1002505"
+      },
+      {
+        "funder_name": "Strategic Priority Research Program of Chinese Academy of Sciences",
+        "award_number": "XDB32040200"
+      },
+      {
+        "funder_name": "Key Research and Development Program of Guangdong Province",
+        "award_number": "2018B030339001"
+      },
+      {
+        "funder_name": "National Natural Science Foundation of China",
+        "award_number": "61431007"
+      }
+    ],
     "searched_accessions": [
       "nm000129"
     ],
@@ -27,7 +85,7 @@
       "venue": "Brain Sciences",
       "year": 2021,
       "url": "https://doi.org/10.3390/brainsci11010043",
-      "cited_by": 270,
+      "cited_by": 272,
       "abstract": "Over the last few decades, the Brain-Computer Interfaces have been gradually making their way to the epicenter of scientific interest. Many scientists from all around the world have contributed to the state of the art in this scientific domain by developing numerous tools and methods for brain signal acquisition and processing. Such a spectacular progress would not be achievable without accompanying technological development to equip the researchers with the proper devices providing what is absolutely necessary for any kind of discovery as the core of every analysis: the data reflecting the brain activity. The common effort has resulted in pushing the whole domain to the point where the communication between a human being and the external world through BCI interfaces is no longer science fiction but nowadays reality. In this work we present the most relevant aspects of the BCIs and all the milestones that have been made over nearly 50-year history of this research domain. We mention pe",
       "doi": "10.3390/brainsci11010043",
       "pmid": "33401571",
@@ -50,7 +108,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2021,
       "url": "https://doi.org/10.1109/tnsre.2021.3114340",
-      "cited_by": 200,
+      "cited_by": 201,
       "abstract": "A brain-computer interface (BCI) provides a direct communication channel between a brain and an external device. Steady-state visual evoked potential based BCI (SSVEP-BCI) has received increasing attention due to its high information transfer rate, which is accomplished by individual calibration for frequency recognition. Task-related component analysis (TRCA) is a recent and state-of-the-art method for individually calibrated SSVEP-BCIs. However, in TRCA, the spatial filter learned from each stimulus may be redundant and temporal information is not fully utilized. To address this issue, this paper proposes a novel method, i.e., task-discriminant component analysis (TDCA), to further improve the performance of individually calibrated SSVEP-BCI. The performance of TDCA was evaluated by two publicly available benchmark datasets, and the results demonstrated that TDCA outperformed ensemble TRCA and other competing methods by a significant margin. An offline and online experiment testing 1",
       "doi": "10.1109/tnsre.2021.3114340",
       "pmid": "34543200",
@@ -114,6 +172,29 @@
       }
     },
     {
+      "title": "EEGformer: A transformer–based brain activity classification method using EEG signal",
+      "author": "Zhijiang Wan, Manyu Li, Shichang Liu, Jiajin Huang, Hai Tan, Wenfeng Duan",
+      "venue": "Frontiers in Neuroscience",
+      "year": 2023,
+      "url": "https://doi.org/10.3389/fnins.2023.1148855",
+      "cited_by": 94,
+      "abstract": "Background: The effective analysis methods for steady-state visual evoked potential (SSVEP) signals are critical in supporting an early diagnosis of glaucoma. Most efforts focused on adopting existing techniques to the SSVEPs-based brain-computer interface (BCI) task rather than proposing new ones specifically suited to the domain. Method: Given that electroencephalogram (EEG) signals possess temporal, regional, and synchronous characteristics of brain activity, we proposed a transformer-based EEG analysis model known as EEGformer to capture the EEG characteristics in a unified manner. We adopted a one-dimensional convolution neural network (1DCNN) to automatically extract EEG-channel-wise features. The output was fed into the EEGformer, which is sequentially constructed using three components: regional, synchronous, and temporal transformers. In addition to using a large benchmark database (BETA) toward SSVEP-BCI application to validate model performance, we compared the EEGformer to ",
+      "doi": "10.3389/fnins.2023.1148855",
+      "pmid": "37034169",
+      "openalex_id": "W4360871668",
+      "source_doi": "10.3389/fnins.2020.00627",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6669243639707566,
+        "similarity_score": 0.5774236917495728,
+        "citation_text_length": 1221,
+        "dataset_text_length": 2292,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A novel training-free recognition method for SSVEP-based BCIs using dynamic window strategy",
       "author": "Yonghao Chen, Chen Yang, Xiaogang Chen, Yijun Wang, Xiaorong Gao",
       "venue": "Journal of Neural Engineering",
@@ -137,35 +218,12 @@
       }
     },
     {
-      "title": "EEGformer: A transformer–based brain activity classification method using EEG signal",
-      "author": "Zhijiang Wan, Manyu Li, Shichang Liu, Jiajin Huang, Hai Tan, Wenfeng Duan",
-      "venue": "Frontiers in Neuroscience",
-      "year": 2023,
-      "url": "https://doi.org/10.3389/fnins.2023.1148855",
-      "cited_by": 92,
-      "abstract": "Background: The effective analysis methods for steady-state visual evoked potential (SSVEP) signals are critical in supporting an early diagnosis of glaucoma. Most efforts focused on adopting existing techniques to the SSVEPs-based brain-computer interface (BCI) task rather than proposing new ones specifically suited to the domain. Method: Given that electroencephalogram (EEG) signals possess temporal, regional, and synchronous characteristics of brain activity, we proposed a transformer-based EEG analysis model known as EEGformer to capture the EEG characteristics in a unified manner. We adopted a one-dimensional convolution neural network (1DCNN) to automatically extract EEG-channel-wise features. The output was fed into the EEGformer, which is sequentially constructed using three components: regional, synchronous, and temporal transformers. In addition to using a large benchmark database (BETA) toward SSVEP-BCI application to validate model performance, we compared the EEGformer to ",
-      "doi": "10.3389/fnins.2023.1148855",
-      "pmid": "37034169",
-      "openalex_id": "W4360871668",
-      "source_doi": "10.3389/fnins.2020.00627",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6669243639707566,
-        "similarity_score": 0.5774236917495728,
-        "citation_text_length": 1221,
-        "dataset_text_length": 2292,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "A Large Finer-grained Affective Computing EEG Dataset",
       "author": "Jingjing Chen, Xiaobin Wang, Chen Huang, Xin Hu, Xinke Shen, Dan Zhang",
       "venue": "Scientific Data",
       "year": 2023,
       "url": "https://doi.org/10.1038/s41597-023-02650-w",
-      "cited_by": 78,
+      "cited_by": 81,
       "abstract": "Affective computing based on electroencephalogram (EEG) has gained increasing attention for its objectivity in measuring emotional states. While positive emotions play a crucial role in various real-world applications, such as human-computer interactions, the state-of-the-art EEG datasets have primarily focused on negative emotions, with less consideration given to positive emotions. Meanwhile, these datasets usually have a relatively small sample size, limiting exploration of the important issue of cross-subject affective computing. The proposed Finer-grained Affective Computing EEG Dataset (FACED) aimed to address these issues by recording 32-channel EEG signals from 123 subjects. During the experiment, subjects watched 28 emotion-elicitation video clips covering nine emotion categories (amusement, inspiration, joy, tenderness; anger, fear, disgust, sadness, and neutral emotion), providing a fine-grained and balanced categorization on both the positive and negative sides of emotion. ",
       "doi": "10.1038/s41597-023-02650-w",
       "pmid": "37880266",
@@ -188,7 +246,7 @@
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2021,
       "url": "https://doi.org/10.1109/tbme.2021.3105331",
-      "cited_by": 69,
+      "cited_by": 70,
       "abstract": "OBJECTIVE: The steady-state visual evoked potential based brain-computer interface (SSVEP-BCI) implemented in dry electrodes is a promising paradigm for alternative and augmentative communication in real-world applications. To improve its performance and reduce the calibration effort for dry-electrode systems, we utilize cross-device transfer learning by exploiting auxiliary individual wet-electrode electroencephalogram (EEG). METHODS: We proposed a novel transfer learning framework named ALign and Pool for EEG Headset domain Adaptation (ALPHA), which aligns the spatial pattern and the covariance for domain adaptation. To evaluate its efficacy, 75 subjects performed an experiment of 2 sessions involving a 12-target SSVEP-BCI task. RESULTS: ALPHA significantly outperformed a baseline approach (canonical correlation analysis, CCA) and two competing transfer learning approaches (transfer template CCA, ttCCA and least square transformation, LST) in two transfer directions. When transferrin",
       "doi": "10.1109/tbme.2021.3105331",
       "pmid": "34406934",
@@ -257,7 +315,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2022,
       "url": "https://doi.org/10.1109/tnsre.2022.3208717",
-      "cited_by": 50,
+      "cited_by": 52,
       "abstract": "The practical functionality of a brain-computer interface (BCI) is critically affected by the number of stimuli, especially for steady-state visual evoked potential based BCI (SSVEP-BCI), which shows promise for the implementation of a multi-target system for real-world applications. Joint frequency-phase modulation (JFPM) is an effective and widely used method in modulating SSVEPs. However, the ability of JFPM to implement an SSVEP-BCI system with a large number of stimuli, e.g., over 100 stimuli, remains unclear. To address this issue, a spectrally-dense JPFM (sJFPM) method is proposed to encode a broad array of stimuli, which modulates the low- and medium-frequency SSVEPs with a frequency interval of 0.1 Hz and triples the number of stimuli in conventional SSVEP-BCI to 120. To validate the effectiveness of the proposed 120-target BCI system, an offline experiment and a subsequent online experiment testing 18 healthy subjects in total were conducted. The offline experiment verified t",
       "doi": "10.1109/tnsre.2022.3208717",
       "pmid": "36136927",
@@ -556,10 +614,10 @@
       "venue": "Journal of Neural Engineering",
       "year": 2023,
       "url": "https://doi.org/10.1088/1741-2552/acbee0",
-      "cited_by": 32,
+      "cited_by": 34,
       "abstract": "Abstract Objective. The traditional uniform flickering stimulation pattern shows strong steady-state visual evoked potential (SSVEP) responses and poor user experience with intense flicker perception. To achieve a balance between performance and comfort in SSVEP-based brain–computer interface (BCI) systems, this study proposed a new grid stimulation pattern with reduced stimulation area and low spatial contrast. Approach. A spatial contrast scanning experiment was conducted first to clarify the relationship between the SSVEP characteristics and the signs and values of spatial contrast. Four stimulation patterns were involved in the experiment: the ON and OFF grid stimulation patterns that separately activated the positive or negative contrast information processing pathways, the ON–OFF grid stimulation pattern that simultaneously activated both pathways, and the uniform flickering stimulation pattern that served as a control group. The contrast-intensity and contrast-user experience cu",
       "doi": "10.1088/1741-2552/acbee0",
-      "pmid": null,
+      "pmid": "36827704",
       "openalex_id": "W4321765932",
       "source_doi": "10.3389/fnins.2020.00627",
       "source_relation": "IsDerivedFrom",
@@ -781,6 +839,29 @@
       }
     },
     {
+      "title": "Convolutional Transformer-Based Cross Subject Model for SSVEP-Based BCI Classification",
+      "author": "Jiawei Liu, Ruimin Wang, Yuankui Yang, Yuan Zong, Yue Leng, Wenming Zheng, Sheng Ge",
+      "venue": "IEEE Journal of Biomedical and Health Informatics",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/jbhi.2024.3454158",
+      "cited_by": 21,
+      "abstract": "Steady-state visual evoked potential (SSVEP) is a commonly used brain-computer interface (BCI) paradigm. The performance of cross-subject SSVEP classification has a strong impact on SSVEP-BCI. This study designed a cross subject generalization SSVEP classification model based on an improved transformer structure that uses domain generalization (DG). The global receptive field of multi-head self-attention is used to learn the global generalized SSVEP temporal information across subjects. This is combined with a parallel local convolution module, designed to avoid oversmoothing the oscillation characteristics of temporal SSVEP data and better fit the feature. Moreover, to improve the cross-subject calibration-free SSVEP classification performance, an DG method named StableNet is combined with the proposed convolutional transformer structure to form the DG-Conformer method, which can eliminate spurious correlations between SSVEP discriminative information and background noise to improve c",
+      "doi": "10.1109/jbhi.2024.3454158",
+      "pmid": "39226201",
+      "openalex_id": "W4402167723",
+      "source_doi": "10.3389/fnins.2020.00627",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6573578900098802,
+        "similarity_score": 0.5691410303115845,
+        "citation_text_length": 1257,
+        "dataset_text_length": 2292,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Representative-Based Cold Start for Adaptive SSVEP-BCI",
       "author": "Nanlin Shi, Xiang Li, Bingchuan Liu, Chen Yang, Yijun Wang, Xiaorong Gao",
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
@@ -827,29 +908,6 @@
       }
     },
     {
-      "title": "Convolutional Transformer-Based Cross Subject Model for SSVEP-Based BCI Classification",
-      "author": "Jiawei Liu, Ruimin Wang, Yuankui Yang, Yuan Zong, Yue Leng, Wenming Zheng, Sheng Ge",
-      "venue": "IEEE Journal of Biomedical and Health Informatics",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/jbhi.2024.3454158",
-      "cited_by": 20,
-      "abstract": "Steady-state visual evoked potential (SSVEP) is a commonly used brain-computer interface (BCI) paradigm. The performance of cross-subject SSVEP classification has a strong impact on SSVEP-BCI. This study designed a cross subject generalization SSVEP classification model based on an improved transformer structure that uses domain generalization (DG). The global receptive field of multi-head self-attention is used to learn the global generalized SSVEP temporal information across subjects. This is combined with a parallel local convolution module, designed to avoid oversmoothing the oscillation characteristics of temporal SSVEP data and better fit the feature. Moreover, to improve the cross-subject calibration-free SSVEP classification performance, an DG method named StableNet is combined with the proposed convolutional transformer structure to form the DG-Conformer method, which can eliminate spurious correlations between SSVEP discriminative information and background noise to improve c",
-      "doi": "10.1109/jbhi.2024.3454158",
-      "pmid": "39226201",
-      "openalex_id": "W4402167723",
-      "source_doi": "10.3389/fnins.2020.00627",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6573578900098802,
-        "similarity_score": 0.5691410303115845,
-        "citation_text_length": 1257,
-        "dataset_text_length": 2292,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Employment of Domain Adaptation Techniques in SSVEP-Based Brain–Computer Interfaces",
       "author": "Andrea Apicella, Pasquale Arpaïa, Egidio De Benedetto, Nicola Donato, Luigi Duraccio, Salvatore Giugliano, Roberto Prevete",
       "venue": "IEEE Access",
@@ -867,6 +925,29 @@
         "confidence_score": 0.6654283976554871,
         "similarity_score": 0.5761284828186035,
         "citation_text_length": 1255,
+        "dataset_text_length": 2292,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A Survey of Few-Shot Learning for Biomedical Time Series",
+      "author": "Chenqi Li, Timothy Denison, Tingting Zhu",
+      "venue": "IEEE Reviews in Biomedical Engineering",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/rbme.2024.3492381",
+      "cited_by": 18,
+      "abstract": "Advancements in wearable sensor technologies and the digitization of medical records have contributed to the unprecedented ubiquity of biomedical time series data. Data-driven models have tremendous potential to assist clinical diagnosis and improve patient care by improving long-term monitoring capabilities, facilitating early disease detection and intervention, as well as promoting personalized healthcare delivery. However, accessing extensively labeled datasets to train data-hungry deep learning models encounters many barriers, such as long-tail distribution of rare diseases, cost of annotation, privacy and security concerns, data-sharing regulations, and ethical considerations. An emerging approach to overcome the scarcity of labeled data is to augment AI methods with human-like capabilities to leverage past experiences to learn new tasks with limited examples, called few-shot learning. This survey provides a comprehensive review and comparison of few-shot learning methods for biom",
+      "doi": "10.1109/rbme.2024.3492381",
+      "pmid": "39504299",
+      "openalex_id": "W4404101349",
+      "source_doi": "10.3389/fnins.2020.00627",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.3727930502593518,
+        "similarity_score": 0.3227645456790924,
+        "citation_text_length": 1173,
         "dataset_text_length": 2292,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1011,45 +1092,22 @@
       }
     },
     {
-      "title": "A Survey of Few-Shot Learning for Biomedical Time Series",
-      "author": "Chenqi Li, Timothy Denison, Tingting Zhu",
-      "venue": "IEEE Reviews in Biomedical Engineering",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/rbme.2024.3492381",
-      "cited_by": 16,
-      "abstract": "Advancements in wearable sensor technologies and the digitization of medical records have contributed to the unprecedented ubiquity of biomedical time series data. Data-driven models have tremendous potential to assist clinical diagnosis and improve patient care by improving long-term monitoring capabilities, facilitating early disease detection and intervention, as well as promoting personalized healthcare delivery. However, accessing extensively labeled datasets to train data-hungry deep learning models encounters many barriers, such as long-tail distribution of rare diseases, cost of annotation, privacy and security concerns, data-sharing regulations, and ethical considerations. An emerging approach to overcome the scarcity of labeled data is to augment AI methods with human-like capabilities to leverage past experiences to learn new tasks with limited examples, called few-shot learning. This survey provides a comprehensive review and comparison of few-shot learning methods for biom",
-      "doi": "10.1109/rbme.2024.3492381",
-      "pmid": "39504299",
-      "openalex_id": "W4404101349",
-      "source_doi": "10.3389/fnins.2020.00627",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.3727930502593518,
-        "similarity_score": 0.3227645456790924,
-        "citation_text_length": 1173,
-        "dataset_text_length": 2292,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "GDNet-EEG: An attention-aware deep neural network based on group depth-wise convolution for SSVEP stimulation frequency recognition",
       "author": "Zhijiang Wan, Wangxinjun Cheng, Manyu Li, Renping Zhu, Wenfeng Duan",
       "venue": "Frontiers in Neuroscience",
       "year": 2023,
       "url": "https://doi.org/10.3389/fnins.2023.1160040",
       "cited_by": 15,
-      "abstract": "Background Steady state visually evoked potentials (SSVEPs) based early glaucoma diagnosis requires effective data processing (e.g., deep learning) to provide accurate stimulation frequency recognition. Thus, we propose a group depth-wise convolutional neural network (GDNet-EEG), a novel electroencephalography (EEG)-oriented deep learning model tailored to learn regional characteristics and network characteristics of EEG-based brain activity to perform SSVEPs-based stimulation frequency recognition. Method Group depth-wise convolution is proposed to extract temporal and spectral features from the EEG signal of each brain region and represent regional characteristics as diverse as possible. Furthermore, EEG attention consisting of EEG channel-wise attention and specialized network-wise attention is designed to identify essential brain regions and form significant feature maps as specialized brain functional networks. Two publicly SSVEPs datasets (large-scale benchmark and BETA dataset) ",
+      "abstract": "Background: Steady state visually evoked potentials (SSVEPs) based early glaucoma diagnosis requires effective data processing (e.g., deep learning) to provide accurate stimulation frequency recognition. Thus, we propose a group depth-wise convolutional neural network (GDNet-EEG), a novel electroencephalography (EEG)-oriented deep learning model tailored to learn regional characteristics and network characteristics of EEG-based brain activity to perform SSVEPs-based stimulation frequency recognition. Method: Group depth-wise convolution is proposed to extract temporal and spectral features from the EEG signal of each brain region and represent regional characteristics as diverse as possible. Furthermore, EEG attention consisting of EEG channel-wise attention and specialized network-wise attention is designed to identify essential brain regions and form significant feature maps as specialized brain functional networks. Two publicly SSVEPs datasets (large-scale benchmark and BETA dataset",
       "doi": "10.3389/fnins.2023.1160040",
-      "pmid": null,
+      "pmid": "37123356",
       "openalex_id": "W4365455526",
       "source_doi": "10.3389/fnins.2020.00627",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.7001376387476922,
-        "similarity_score": 0.6061797738075256,
+        "confidence_score": 0.6981993538141251,
+        "similarity_score": 0.6045016050338745,
         "citation_text_length": 1262,
         "dataset_text_length": 2292,
         "scoring_method": "sentence_transformers",
@@ -1195,6 +1253,29 @@
       }
     },
     {
+      "title": "Evaluation of an online SSVEP-BCI with fast system setup",
+      "author": "Xiaodong Li, Junlin Wang, Xiang Cao, Yong Huang, Wei Huang, Feng Wan, Michael To, Sheng Quan Xie",
+      "venue": "Journal of Neurorestoratology",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.jnrt.2024.100122",
+      "cited_by": 13,
+      "abstract": "The brain–computer interface (BCI) plays an important role in neural restoration. Current BCI systems generally require complex experimental preparation to perform well, but this time-consuming process may hinder their use in clinical applications. To explore the feasibility of simplifying the BCI system setup, a wearable BCI system based on the steady-state visual evoked potential (SSVEP) was developed and evaluated. Fifteen healthy participants were recruited to test the fast-setup system using dry and wet electrodes in a real-life scenario. In this study, the average system setup time for the dry electrode was 38.40 seconds and that for the wet electrode was 103.40 seconds, which are times appreciably shorter than those in previous BCI experiments, enabling a rapid setup of the BCI system. Although the electroencephalogram (EEG) signal quality was low in this fast-setup BCI experiment, the BCI system achieved an information transfer rate of 138.89 bits/min with an eight-channel wet ",
+      "doi": "10.1016/j.jnrt.2024.100122",
+      "pmid": null,
+      "openalex_id": "W4394912954",
+      "source_doi": "10.3389/fnins.2020.00627",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6575454881787302,
+        "similarity_score": 0.5693034529685974,
+        "citation_text_length": 1220,
+        "dataset_text_length": 2292,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Group ensemble learning enhances the accuracy and convenience of SSVEP-based BCIs via exploiting inter-subject information",
       "author": "Changkai Tong, Huali Wang, Chen Yang, Xue Ni",
       "venue": "Biomedical Signal Processing and Control",
@@ -1218,6 +1299,29 @@
       }
     },
     {
+      "title": "Subject-specific CNN model with parameter-based transfer learning for SSVEP detection",
+      "author": "Zhouyu Ji, Tao Xu, Chuangquan Chen, Haojun Yin, Feng Wan, Hongtao Wang",
+      "venue": "Biomedical Signal Processing and Control",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.bspc.2024.107404",
+      "cited_by": 13,
+      "abstract": null,
+      "doi": "10.1016/j.bspc.2024.107404",
+      "pmid": null,
+      "openalex_id": "W4405844194",
+      "source_doi": "10.3389/fnins.2020.00627",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6599858790636063,
+        "similarity_score": 0.6285579800605774,
+        "citation_text_length": 222,
+        "dataset_text_length": 2292,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A comparative study of stereo-dependent SSVEP targets and their impact on VR-BCI performance",
       "author": "Haifeng Liu, Z. F. Wang, Ruxue Li, Xi Zhao, Tianheng Xu, Ting Zhou, Honglin Hu",
       "venue": "Frontiers in Neuroscience",
@@ -1235,29 +1339,6 @@
         "confidence_score": 0.6300112402439119,
         "similarity_score": 0.545464277267456,
         "citation_text_length": 1234,
-        "dataset_text_length": 2292,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Evaluation of an online SSVEP-BCI with fast system setup",
-      "author": "Xiaodong Li, Junlin Wang, Xiang Cao, Yong Huang, Wei Huang, Feng Wan, Michael To, Sheng Quan Xie",
-      "venue": "Journal of Neurorestoratology",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.jnrt.2024.100122",
-      "cited_by": 12,
-      "abstract": "The brain–computer interface (BCI) plays an important role in neural restoration. Current BCI systems generally require complex experimental preparation to perform well, but this time-consuming process may hinder their use in clinical applications. To explore the feasibility of simplifying the BCI system setup, a wearable BCI system based on the steady-state visual evoked potential (SSVEP) was developed and evaluated. Fifteen healthy participants were recruited to test the fast-setup system using dry and wet electrodes in a real-life scenario. In this study, the average system setup time for the dry electrode was 38.40 seconds and that for the wet electrode was 103.40 seconds, which are times appreciably shorter than those in previous BCI experiments, enabling a rapid setup of the BCI system. Although the electroencephalogram (EEG) signal quality was low in this fast-setup BCI experiment, the BCI system achieved an information transfer rate of 138.89 bits/min with an eight-channel wet ",
-      "doi": "10.1016/j.jnrt.2024.100122",
-      "pmid": null,
-      "openalex_id": "W4394912954",
-      "source_doi": "10.3389/fnins.2020.00627",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6575454881787302,
-        "similarity_score": 0.5693034529685974,
-        "citation_text_length": 1220,
         "dataset_text_length": 2292,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1327,29 +1408,6 @@
         "confidence_score": 0.6639891582727433,
         "similarity_score": 0.5748823881149292,
         "citation_text_length": 1231,
-        "dataset_text_length": 2292,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Subject-specific CNN model with parameter-based transfer learning for SSVEP detection",
-      "author": "Zhouyu Ji, Tao Xu, Chuangquan Chen, Haojun Yin, Feng Wan, Hongtao Wang",
-      "venue": "Biomedical Signal Processing and Control",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.bspc.2024.107404",
-      "cited_by": 12,
-      "abstract": null,
-      "doi": "10.1016/j.bspc.2024.107404",
-      "pmid": null,
-      "openalex_id": "W4405844194",
-      "source_doi": "10.3389/fnins.2020.00627",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6599858790636063,
-        "similarity_score": 0.6285579800605774,
-        "citation_text_length": 222,
         "dataset_text_length": 2292,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2253,6 +2311,29 @@
       }
     },
     {
+      "title": "A quantization algorithm of visual fatigue based on underdamped second order stochastic resonance for steady state visual evoked potentials",
+      "author": "Peiyuan Tian, Guanghua Xu, Chengcheng Han, Xun Zhang, Xiaowei Zheng, Wei Fan, Sicong Zhang, Zhe Zhao",
+      "venue": "Frontiers in Neuroscience",
+      "year": 2023,
+      "url": "https://doi.org/10.3389/fnins.2023.1278652",
+      "cited_by": 6,
+      "abstract": "Introduction: In recent years, more and more attention has been paid to the visual fatigue caused by steady state visual evoked potential (SSVEP) paradigm. It is well known that the large-scale application of brain-computer interface is closely related to SSVEP, and the fatigue caused by SSVEP paradigm leads to the reduction of application effect. At present, the mainstream method of objectively quantifying visual fatigue in SSVEP paradigm is based on traditional canonical correlation analysis (CCA). Methods: In this paper, we propose a new SSVEP paradigm visual fatigue quantification algorithm based on underdamped second-order stochastic resonance (USSR) to accurately quantify visual fatigue caused by SSVEP paradigm in different working modes using single-channel electroencephalogram (EEG) signals. This scheme uses the fixed-step energy parameter optimization algorithm we designed, combined with the USSR model, to significantly improve the signal-to-noise ratio of the processed signal",
+      "doi": "10.3389/fnins.2023.1278652",
+      "pmid": "38075275",
+      "openalex_id": "W4388941276",
+      "source_doi": "10.3389/fnins.2020.00627",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6308419042825699,
+        "similarity_score": 0.5461834669113159,
+        "citation_text_length": 1303,
+        "dataset_text_length": 2292,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Steady-State Visual Evoked Potential-Based Brain–Computer Interface System for Enhanced Human Activity Monitoring and Assessment",
       "author": "Yuankun Chen, Xiyu Shi, Varuna De Silva, Safak Dogan",
       "venue": "Sensors (Basel, Switzerland)",
@@ -2297,44 +2378,21 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Filter bank approach for enhancement of supervised Canonical Correlation Analysis methods for SSVEP-based BCI spellers",
-      "author": "Mario Corral Bolaños, Sheyla Barrado Ballestero, Sadasivan Puthusserypady",
-      "venue": "2021 43rd Annual International Conference of the IEEE Engineering in Medicine &amp; Biology Society (EMBC)",
-      "year": 2021,
-      "url": "https://doi.org/10.1109/embc46164.2021.9630838",
-      "cited_by": 5,
-      "abstract": "Canonical correlation analysis (CCA) is one of the most used algorithms in the steady-state visual evoked potentials (SSVEP)-based brain-computer interface (BCI) systems due to its simplicity, efficiency, and robustness. Researchers have proposed modifications to CCA to improve its speed, allowing high-speed spelling and thus a more natural communication. In this work, we combine two approaches, the filter-bank (FB) approach to extract more information from the harmonics, and a range of different supervised methods which optimize the reference signals to improve the SSVEP detection. The proposed models are tested on the publicly available benchmark dataset for SSVEP-based BCIs and the results show improved performance compared to the state-of-the-art methods and, in particular, the proposed FBMwayCCA approach achieves the best results with an information transfer rate (ITR) of 134.8±8.4 bits/minute. This study indeed suggests the feasibility of combining the fundamental and harmonic SS",
-      "doi": "10.1109/embc46164.2021.9630838",
-      "pmid": "34891304",
-      "openalex_id": "W4200391367",
-      "source_doi": "10.3389/fnins.2020.00627",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6333411937952043,
-        "similarity_score": 0.5483473539352417,
-        "citation_text_length": 1336,
-        "dataset_text_length": 2292,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:41:51.622857+00:00",
+    "scoring_date": "2026-07-15T00:04:29.231754+00:00",
     "dataset_text_length": 2292,
     "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.6303675197079778,
+      "mean_confidence": 0.6303231439635157,
       "median_confidence": 0.6574516890943052,
-      "std_confidence": 0.10594074462946677,
+      "std_confidence": 0.10592774003321581,
       "min_confidence": 0.351555113196373,
       "max_confidence": 0.8784546893835068,
-      "high_confidence_count": 19,
-      "medium_confidence_count": 78,
+      "high_confidence_count": 18,
+      "medium_confidence_count": 79,
       "low_confidence_count": 3
     }
   }

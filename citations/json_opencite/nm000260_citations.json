@@ -1,24 +1,64 @@
 {
   "dataset_id": "nm000260",
-  "num_citations": 7,
-  "date_last_updated": "2026-06-18T23:24:25.102388+00:00",
+  "num_citations": 4,
+  "date_last_updated": "2026-07-03T14:25:18.794210+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-18T23:24:25.102388+00:00",
+    "fetch_date": "2026-07-03T14:25:18.794210+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.5281/zenodo.2649006",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Building Brain Invaders: EEG data of an experimental validation",
+        "paper_year": 2019,
+        "paper_venue": "Zenodo (CERN European Organization for Nuclear Research)",
+        "reason": "The candidate paper title and abstract explicitly describe and introduce the EEG data from the 'Brain Invaders' experiment, which is the content of this dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000260",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.5281/zenodo.2649006",
+      "10.82901/nemar.nm000260"
+    ],
+    "keywords": [
+      "Electroencephalography",
+      "P300 event-related potential",
+      "Brain-Computer Interfaces",
+      "visual evoked potentials",
+      "motor imagery",
+      "EEG classification",
+      "Riemannian geometry"
+    ],
+    "methods_description": "EEG data were acquired using a NeXus-32 system (MindMedia/TMSi) with 16 electrodes positioned according to the standard 10-20 montage (F7, F3, F4, F8, T7, C3, Cz, C4, T8, P7, P3, Pz, P4, P8, O1, O2). Sampling rate was 128 Hz with a hardware common average reference and ground at FZ. Wet silver/silver chloride electrodes were used. The experiment employed a visual P300 paradigm with 12 flashes per repetition (2 target, 10 non-target) presented as flashing alien groups. Participants completed a training session (8 repetitions, 128 target and 640 non-target trials) and an online session with three difficulty levels.",
+    "funding": [],
     "searched_accessions": [
       "nm000260"
     ],
     "num_accession_mentions": 1,
     "num_dataset_citations": 1,
-    "num_datapaper_citations": 6
+    "num_datapaper_citations": 3
   },
   "citation_details": [
     {
@@ -28,7 +68,7 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.nm000202.v1.0.0",
       "cited_by": 0,
-      "abstract": "This dataset comprises electroencephalographic (EEG) recordings from 25 healthy subjects performing a visual P300 brain-computer interface task inspired by the Space Invaders video game. Participants viewed sequences of flashing alien groups and silently counted target stimuli while 16-channel EEG was recorded at 128 Hz. The dataset includes both training and online sessions with performance-dependent feedback, providing a benchmark resource for P300-based BCI research and algorithm development.",
+      "abstract": "This dataset comprises electroencephalographic (EEG) recordings from 25 healthy subjects performing a visual P300 brain-computer interface task inspired by the Space Invaders video game. Participants were presented with visual flashes of alien groups while 16-channel EEG was recorded at 128 Hz, with the objective of detecting target versus non-target stimuli. The dataset includes both training and online sessions with a total of 128 target trials and 640 non-target trials per subject, providing a benchmark resource for P300-based BCI research and algorithm development.",
       "doi": "10.82901/nemar.nm000202.v1.0.0",
       "pmid": null,
       "openalex_id": "W7163191673",
@@ -36,9 +76,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.97208297342062,
-        "similarity_score": 0.8416302800178528,
-        "citation_text_length": 683,
+        "confidence_score": 0.9796630409359932,
+        "similarity_score": 0.8481931090354919,
+        "citation_text_length": 758,
         "dataset_text_length": 2424,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -91,75 +131,6 @@
       }
     },
     {
-      "title": "P300 dataset BI2012 from a \"Brain Invaders\" experiment",
-      "author": "G.F.P. Van Veen, A. Barachant, A. Andreev, G. Cattan, P. Rodrigues, M. Congedo",
-      "venue": "Open MIND",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000202",
-      "cited_by": 0,
-      "abstract": "This dataset comprises electroencephalographic (EEG) recordings from 25 healthy subjects performing a visual P300 brain-computer interface task inspired by the Space Invaders video game. Participants were presented with visual flashes of alien groups while 16-channel EEG was recorded at 128 Hz, with the objective of detecting target versus non-target stimuli. The dataset includes both training and online sessions with a total of 128 target trials and 640 non-target trials per subject, providing a benchmark resource for P300-based BCI research and algorithm development.",
-      "doi": "10.82901/nemar.nm000202",
-      "pmid": null,
-      "openalex_id": "W7163134515",
-      "source_doi": "10.5281/zenodo.2649006",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.9809647312760355,
-        "similarity_score": 0.849320113658905,
-        "citation_text_length": 755,
-        "dataset_text_length": 2424,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Vaineau, Barachant &amp; Andreev 2013 — Brain Invaders Adaptive versus Non-Adaptive P300 Brain-Computer Interface dataset (BI2013a)",
-      "author": "E. Vaineau, A. Barachant, A. Andreev, P. Rodrigues, G. Cattan, M. Congedo",
-      "venue": "UC San Diego",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000264.v1.0.1",
-      "cited_by": 0,
-      "abstract": null,
-      "doi": "10.82901/nemar.nm000264.v1.0.1",
-      "pmid": null,
-      "openalex_id": "W7163414076",
-      "source_doi": "10.5281/zenodo.2649006",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7239916205406189,
-        "similarity_score": 0.6895158290863037,
-        "citation_text_length": 243,
-        "dataset_text_length": 2424,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Van Veen, Barachant &amp; Andreev 2012 — Building Brain Invaders: EEG data of an experimental validation (BI2012)",
-      "author": "G.F.P. Van Veen, A. Barachant, A. Andreev, G. Cattan, P. Rodrigues, M. Congedo",
-      "venue": "UC San Diego",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000260.v1.0.1",
-      "cited_by": 0,
-      "abstract": null,
-      "doi": "10.82901/nemar.nm000260.v1.0.1",
-      "pmid": null,
-      "openalex_id": "W7163395657",
-      "source_doi": "10.5281/zenodo.2649006",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.8388053923845291,
-        "similarity_score": 0.7988622784614563,
-        "citation_text_length": 230,
-        "dataset_text_length": 2424,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Clinical Heterogeneity Associated with MYO7A Variants Relies on Affected Domains",
       "author": "Sun Young Joo, Gina Na, Jung Ah Kim, Jee Eun Yoo, Da Hye Kim, Se Jin Kim, Seung Hyun Jang, Seyoung Yu, Hye‐Youn Kim, Jae Young Choi, Heon Yung Gee, Jinsei Jung",
       "venue": "Biomedicines",
@@ -187,16 +158,16 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:30:13.568861+00:00",
+    "scoring_date": "2026-07-15T00:15:19.783644+00:00",
     "dataset_text_length": 2424,
-    "num_citations_scored": 7,
+    "num_citations_scored": 4,
     "summary_stats": {
-      "mean_confidence": 0.7807925325259567,
-      "median_confidence": 0.8497660070657732,
-      "std_confidence": 0.28531814633708724,
+      "mean_confidence": 0.7323415127489716,
+      "median_confidence": 0.9147145240008832,
+      "std_confidence": 0.3594272557864511,
       "min_confidence": 0.1167967525497079,
       "max_confidence": 0.9831402504444123,
-      "high_confidence_count": 6,
+      "high_confidence_count": 3,
       "medium_confidence_count": 0,
       "low_confidence_count": 1
     }

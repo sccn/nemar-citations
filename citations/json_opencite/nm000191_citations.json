@@ -1,39 +1,83 @@
 {
   "dataset_id": "nm000191",
   "num_citations": 0,
-  "date_last_updated": "2026-06-13T21:38:54.236047+00:00",
+  "date_last_updated": "2026-07-03T12:24:39.034890+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-13T21:38:54.236047+00:00",
+    "fetch_date": "2026-07-03T12:24:39.034890+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.13026/0byy-ry86",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "bigP3BCI: An Open, Diverse and Machine Learning Ready P300-based Brain-Computer Interface Dataset",
+        "paper_year": 2024,
+        "paper_venue": "PhysioNet",
+        "reason": "The paper title 'bigP3BCI: An Open, Diverse and Machine Learning Ready P300-based Brain-Computer Interface Dataset' and abstract describe the release of the BCI dataset.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset."
+        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset.",
+        "judgment_model": "gemma4:31b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes the EEG-BIDS standard, which is the data organization standard used by this dataset (BIDS Version 1.9.0)."
+        "reason": "The paper describes the EEG-BIDS standard, which is the data organization standard used by this dataset (BIDS Version 1.9.0).",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000191",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
       }
     ],
+    "searched_dois": [
+      "10.13026/0byy-ry86",
+      "10.82901/nemar.nm000191"
+    ],
+    "keywords": [
+      "EEG",
+      "P300",
+      "brain-computer interface",
+      "Event-Related Potentials, P300",
+      "Visual Perception",
+      "speller paradigm",
+      "ALS",
+      "derivative"
+    ],
+    "methods_description": "EEG data were acquired from ALS patients using a g.USBamp amplifier (g.tec) with 16 channels arranged in a standard 10-20 montage at a sampling rate of 256 Hz with 60 Hz line frequency filtering. Subjects performed a P300 speller task with visual stimulus presentations in a laboratory setting, with online feedback provided during the experimental protocol. Data were processed and organized into BIDS format using MOABB v1.5.0.",
+    "funding": [],
     "searched_accessions": [
       "nm000191"
     ],
@@ -44,7 +88,7 @@
   "citation_details": [],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:27:06.491274+00:00",
+    "scoring_date": "2026-07-15T00:09:35.455291+00:00",
     "dataset_text_length": 2345,
     "num_citations_scored": 0
   }

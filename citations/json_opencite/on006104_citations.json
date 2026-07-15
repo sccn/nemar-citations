@@ -1,0 +1,165 @@
+{
+  "dataset_id": "on006104",
+  "num_citations": 4,
+  "date_last_updated": "2026-07-04T04:25:02.704024+00:00",
+  "metadata": {
+    "total_cumulative_citations": 0,
+    "fetch_date": "2026-07-04T04:25:02.704024+00:00",
+    "processing_version": "1.0",
+    "fetch_status": "success",
+    "anchor_count": 1,
+    "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
+    "anchor_judgment_model": "gemma4:e4b",
+    "anchors": [
+      {
+        "identifier": "10.1097/aud.0b013e3181b1d42d",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "related_work",
+        "kept": false,
+        "paper_title": "Contribution of Spectrotemporal Features on Auditory Event-Related Potentials Elicited by Consonant-Vowel Syllables",
+        "paper_year": 2009,
+        "paper_venue": "Ear and Hearing",
+        "reason": "The paper studies ERPs from consonant-vowel syllables, which is topically related to the dataset's phoneme discrimination task, but it does not describe or introduce the specific dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.1523/jneurosci.2383-16.2017",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "related_work",
+        "kept": false,
+        "paper_title": "Dynamic Encoding of Acoustic Features in Neural Responses to Continuous Speech",
+        "paper_year": 2017,
+        "paper_venue": "Journal of Neuroscience",
+        "reason": "The paper discusses general EEG responses to continuous speech and phoneme encoding, which is topically related to the dataset's focus on speech decoding, but does not describe the specific data or collection process.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.1002/hbm.22016",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "related_work",
+        "kept": false,
+        "paper_title": "Assessing cortical network properties using TMS–EEG",
+        "paper_year": 2012,
+        "paper_venue": "Human Brain Mapping",
+        "reason": "The paper discusses general advancements in TMS-EEG techniques and artifact reduction, which is topically related to the dataset's use of TMS, but does not describe or introduce this specific dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.on006104",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.82901/nemar.on006104"
+    ],
+    "keywords": [
+      "EEG",
+      "transcranial magnetic stimulation",
+      "speech perception",
+      "phoneme discrimination",
+      "motor cortex",
+      "articulation",
+      "coarticulation"
+    ],
+    "methods_description": "EEG recordings were collected during phoneme discrimination tasks with concurrent TMS stimulation. Study 1 (2019) included 8 participants performing CV and VC phoneme pair discrimination with TMS applied to left lip motor cortex (-56, -8, 46) and tongue motor cortex (-60, -10, 25). Study 2 (2021) involved 16 participants discriminating single phonemes, CV/VC pairs, real words, and pseudowords with expanded TMS targets including Broca's area (BA 44: -51, 7, 23) and verbal memory region (BA 6: -46, 1, 41). TMS was delivered using a Magstim Super Rapid Plus1 stimulator with a figure-of-eight 40 mm coil at 110% of resting motor threshold as paired pulses with 50 ms interpulse interval.",
+    "funding": [
+      {
+        "funder_name": "U.S. Russia Foundation",
+        "award_number": "20-AUG-19-UCLA"
+      },
+      {
+        "funder_name": "National Research University Higher School of Economics"
+      }
+    ],
+    "searched_accessions": [
+      "on006104",
+      "ds006104"
+    ],
+    "num_accession_mentions": 4,
+    "num_dataset_citations": 4,
+    "num_datapaper_citations": 0
+  },
+  "citation_details": [
+    {
+      "title": "CIPHER: Conformer-based Inference of Phonemes from High-density EEG",
+      "author": "Varshith Madishetty",
+      "venue": "arXiv (Cornell University)",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arxiv.2604.02362",
+      "cited_by": 0,
+      "abstract": "Decoding speech information from scalp EEG remains difficult due to low SNR and spatial blurring. We present CIPHER (Conformer-based Inference of Phonemes from High-density EEG Representations), a dual-pathway model using (i) ERP features and (ii) broadband DDA coefficients. On OpenNeuro ds006104 (24 participants, two studies with concurrent TMS), binary articulatory tasks reach near-ceiling performance but are highly confound-vulnerable (acoustic onset separability and TMS-target blocking). On the primary 11-class CVC phoneme task under full Study 2 LOSO (16 held-out subjects), performance is substantially lower (real-word WER: ERP 0.671 +/- 0.080, DDA 0.688 +/- 0.096, indicating limited fine-grained discriminability. We therefore position this work as a benchmark and feature-comparison study rather than an EEG-to-text system, and we constrain neural-representation claims to confound-controlled evidence.",
+      "doi": "10.48550/arxiv.2604.02362",
+      "pmid": null,
+      "openalex_id": "W7151085102",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds006104"
+    },
+    {
+      "title": "How Well Can We Decode Vowels from Auditory EEG -- A Rigorous Cross-Subject Benchmark with Honest Assessment",
+      "author": "Xiaoyang Li",
+      "venue": "arXiv (Cornell University)",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arxiv.2605.00865",
+      "cited_by": 0,
+      "abstract": "EEG based phoneme decoding is promising for brain computer interfaces, but many prior studies rely on within subject evaluation, small cohorts, or weak leakage control. We present a reproducible cross subject benchmark for five class vowel decoding (a, e, i, o, u) from auditory EEG using OpenNeuro ds006104 (16 subjects, 61 channels, 256 Hz). Under strict leave one subject out evaluation with training only normalization and explicit anti leakage checks, we compare 14 pipelines from classical machine learning, deep learning, and Riemannian methods. The best full feature model (XGBoost) reaches 24.5 percent accuracy (chance 20 percent), while differential entropy features with LightGBM reach 25.5 percent in feature specific analysis. After multiple comparison correction, strong pairwise model advantages are limited. Classical methods are competitive with deep models in this low signal regime. Additional analyses (ablation, pairwise vowels, within subject CV, ERP, temporal generalization, and electrode importance) indicate that vowel information is real but weak and mainly carried by early transient auditory responses. We release code and evaluation scripts for full reproducibility.",
+      "doi": "10.48550/arxiv.2605.00865",
+      "pmid": null,
+      "openalex_id": "W7160267332",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds006104"
+    },
+    {
+      "title": "CIPHER: Conformer-based Inference of Phonemes from High-density EEG",
+      "author": "Varshith Madishetty",
+      "venue": "arXiv (Cornell University)",
+      "year": 2026,
+      "url": "https://openalex.org/W7151673542",
+      "cited_by": 0,
+      "abstract": "Decoding speech information from scalp EEG remains difficult due to low SNR and spatial blurring. We present CIPHER (Conformer-based Inference of Phonemes from High-density EEG Representations), a dual-pathway model using (i) ERP features and (ii) broadband DDA coefficients. On OpenNeuro ds006104 (24 participants, two studies with concurrent TMS), binary articulatory tasks reach near-ceiling performance but are highly confound-vulnerable (acoustic onset separability and TMS-target blocking). On the primary 11-class CVC phoneme task under full Study 2 LOSO (16 held-out subjects), performance is substantially lower (real-word WER: ERP 0.671 +/- 0.080, DDA 0.688 +/- 0.096, indicating limited fine-grained discriminability. We therefore position this work as a benchmark and feature-comparison study rather than an EEG-to-text system, and we constrain neural-representation claims to confound-controlled evidence.",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": "W7151673542",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds006104"
+    },
+    {
+      "title": "How Well Can We Decode Vowels from Auditory EEG -- A Rigorous Cross-Subject Benchmark with Honest Assessment",
+      "author": "Xiaoyang Li",
+      "venue": "arXiv (Cornell University)",
+      "year": 2026,
+      "url": "https://openalex.org/W7160457462",
+      "cited_by": 0,
+      "abstract": "EEG based phoneme decoding is promising for brain computer interfaces, but many prior studies rely on within subject evaluation, small cohorts, or weak leakage control. We present a reproducible cross subject benchmark for five class vowel decoding (a, e, i, o, u) from auditory EEG using OpenNeuro ds006104 (16 subjects, 61 channels, 256 Hz). Under strict leave one subject out evaluation with training only normalization and explicit anti leakage checks, we compare 14 pipelines from classical machine learning, deep learning, and Riemannian methods. The best full feature model (XGBoost) reaches 24.5 percent accuracy (chance 20 percent), while differential entropy features with LightGBM reach 25.5 percent in feature specific analysis. After multiple comparison correction, strong pairwise model advantages are limited. Classical methods are competitive with deep models in this low signal regime. Additional analyses (ablation, pairwise vowels, within subject CV, ERP, temporal generalization, and electrode importance) indicate that vowel information is real but weak and mainly carried by early transient auditory responses. We release code and evaluation scripts for full reproducibility.",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": "W7160457462",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds006104"
+    }
+  ]
+}

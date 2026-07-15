@@ -1,18 +1,96 @@
 {
   "dataset_id": "nm000118",
   "num_citations": 102,
-  "date_last_updated": "2026-06-18T23:18:01.020023+00:00",
+  "date_last_updated": "2026-07-03T10:23:45.370329+00:00",
   "metadata": {
-    "total_cumulative_citations": 6413,
-    "fetch_date": "2026-06-18T23:18:01.020023+00:00",
+    "total_cumulative_citations": 6435,
+    "fetch_date": "2026-07-03T10:23:45.370329+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1371/journal.pone.0140703",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "A Comparison Study of Canonical Correlation Analysis Based Methods for Detecting Steady-State Visual Evoked Potentials",
+        "paper_year": 2015,
+        "paper_venue": "PLoS ONE",
+        "reason": "The dataset metadata explicitly lists the DOI 10.1371/journal.pone.0140703 and the paper describes the 12-class SSVEP dataset used in the study.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000118",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.1371/journal.pone.0140703",
+      "10.82901/nemar.nm000118"
+    ],
+    "keywords": [
+      "steady-state visual evoked potentials",
+      "Brain-Computer Interfaces",
+      "EEG",
+      "canonical correlation analysis",
+      "SSVEP",
+      "BCI",
+      "frequency-phase modulation",
+      "preprocessing",
+      "derivative dataset"
+    ],
+    "methods_description": "EEG data were acquired using a Biosemi ActiveTwo amplifier with 8 electrodes (PO7, PO3, POz, PO4, PO8, O1, Oz, O2) in standard 10-20 montage at 256 Hz sampling rate from 9 healthy subjects. Subjects performed a 12-class SSVEP target identification task with visual stimuli flickering at frequencies ranging from 9.25 to 14.75 Hz (0.5 Hz resolution). Each trial lasted 4 seconds with a 1-second cue period. Data were preprocessed with zero-phase IIR bandpass filtering (6-80 Hz) and downsampling, with a 135-ms latency delay applied to account for visual system delay. This derivative dataset contains the preprocessed data from the original study.",
+    "funding": [
+      {
+        "funder_name": "Swartz Foundation gift fund"
+      },
+      {
+        "funder_name": "UC Proof of Concept Grant Award (269228)"
+      },
+      {
+        "funder_name": "Recruitment Program for Young Professionals"
+      },
+      {
+        "funder_name": "U.S. Office of Naval Research",
+        "award_number": "N00014-08-1215"
+      },
+      {
+        "funder_name": "Army Research Office",
+        "award_number": "W911NF-09-1-0510"
+      },
+      {
+        "funder_name": "Army Research Laboratory",
+        "award_number": "W911NF-10-2-0022"
+      },
+      {
+        "funder_name": "DARPA",
+        "award_number": "USDI D11PC20183"
+      },
+      {
+        "funder_name": "NIH",
+        "award_number": "1R21EY025056-01"
+      },
+      {
+        "funder_name": "Swartz Foundation"
+      },
+      {
+        "funder_name": "University of California"
+      }
+    ],
     "searched_accessions": [
       "nm000118"
     ],
@@ -27,7 +105,7 @@
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2017,
       "url": "https://doi.org/10.1109/tbme.2017.2694818",
-      "cited_by": 802,
+      "cited_by": 803,
       "abstract": "OBJECTIVE: This study proposes and evaluates a novel data-driven spatial filtering approach for enhancing steady-state visual evoked potentials (SSVEPs) detection toward a high-speed brain-computer interface (BCI) speller. METHODS: Task-related component analysis (TRCA), which can enhance reproducibility of SSVEPs across multiple trials, was employed to improve the signal-to-noise ratio (SNR) of SSVEP signals by removing background electroencephalographic (EEG) activities. An ensemble method was further developed to integrate TRCA filters corresponding to multiple stimulation frequencies. This study conducted a comparison of BCI performance between the proposed TRCA-based method and an extended canonical correlation analysis (CCA)-based method using a 40-class SSVEP dataset recorded from 12 subjects. An online BCI speller was further implemented using a cue-guided target selection task with 20 subjects and a free-spelling task with 10 of the subjects. RESULTS: The offline comparison re",
       "doi": "10.1109/tbme.2017.2694818",
       "pmid": "28436836",
@@ -142,7 +220,7 @@
       "venue": "IEEE Sensors Journal",
       "year": 2020,
       "url": "https://doi.org/10.1109/jsen.2020.3017491",
-      "cited_by": 147,
+      "cited_by": 148,
       "abstract": "Electroencephalograph (EEG) has been widely applied for brain-computer interface (BCI) which enables paralyzed people to directly communicate with and control external devices, due to its portability, high temporal resolution, ease of use and low cost. Of various EEG paradigms, steady-state visual evoked potential (SSVEP)-based BCI system which uses multiple visual stimuli (such as LEDs or boxes on a computer screen) flickering at different frequencies has been widely explored in the past decades due to its fast communication rate and high signal-to-noise ratio. In this article, we review the current research in SSVEP-based BCI, focusing on the data analytics that enables continuous, accurate detection of SSVEPs and thus high information transfer rate. The main technical challenges, including signal pre-processing, spectrum analysis, signal decomposition, spatial filtering in particular canonical correlation analysis and its variations, and classification techniques are described in th",
       "doi": "10.1109/jsen.2020.3017491",
       "pmid": null,
@@ -188,7 +266,7 @@
       "venue": "Sensors",
       "year": 2023,
       "url": "https://doi.org/10.3390/s23136001",
-      "cited_by": 138,
+      "cited_by": 139,
       "abstract": "This paper provides a comprehensive overview of the state-of-the-art in brain-computer interfaces (BCI). It begins by providing an introduction to BCIs, describing their main operation principles and most widely used platforms. The paper then examines the various components of a BCI system, such as hardware, software, and signal processing algorithms. Finally, it looks at current trends in research related to BCI use for medical, educational, and other purposes, as well as potential future applications of this technology. The paper concludes by highlighting some key challenges that still need to be addressed before widespread adoption can occur. By presenting an up-to-date assessment of the state-of-the-art in BCI technology, this paper will provide valuable insight into where this field is heading in terms of progress and innovation.",
       "doi": "10.3390/s23136001",
       "pmid": "37447849",
@@ -303,7 +381,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2021,
       "url": "https://doi.org/10.1088/1741-2552/ac0bfa",
-      "cited_by": 112,
+      "cited_by": 113,
       "abstract": "Abstract Objective. Steady-state visual evoked potential (SSVEP) is an essential paradigm of electroencephalogram based brain–computer interface (BCI). Previous studies in the BCI research field mostly focused on enhancing classification accuracy and reducing stimuli duration. This study, however, concentrated on increasing the number of available targets in the BCI systems without calibration. Approach . Motivated by the idea of multiple frequency sequential coding, we developed a calibration-free SSVEP–BCI system implementing 160 targets by four continuous sinusoidal stimuli that lasted four seconds in total. Taking advantage of the benchmark dataset of SSVEP–BCI, this study optimized an arrangement of stimuli sequences, maximizing the response distance between different stimuli. We proposed an effective classification algorithm based on filter bank canonical correlation analysis. To evaluate the performance of this system, we conducted offline and online experiments using cue-guided",
       "doi": "10.1088/1741-2552/ac0bfa",
       "pmid": "34134091",
@@ -372,7 +450,7 @@
       "venue": "PLoS ONE",
       "year": 2018,
       "url": "https://doi.org/10.1371/journal.pone.0191673",
-      "cited_by": 104,
+      "cited_by": 105,
       "abstract": "Brain-computer interface (BCI) paradigms are usually tested when environmental and biological artifacts are intentionally avoided. In this study, we deliberately introduced different perturbations in order to test the robustness of a steady state visual evoked potential (SSVEP) based BCI. Specifically we investigated to what extent a drop in performance is related to the degraded quality of EEG signals or rather due to increased cognitive load. In the online tasks, subjects focused on one of the four circles and gave feedback on the correctness of the classification under four conditions randomized across subjects: Control (no perturbation), Speaking (counting loudly and repeatedly from one to ten), Thinking (mentally counting repeatedly from one to ten), and Listening (listening to verbal counting from one to ten). Decision tree, Naïve Bayes and K-Nearest Neighbor classifiers were used to evaluate the classification performance using features generated by canonical correlation analysi",
       "doi": "10.1371/journal.pone.0191673",
       "pmid": "29360843",
@@ -395,7 +473,7 @@
       "venue": "JAMA Ophthalmology",
       "year": 2017,
       "url": "https://doi.org/10.1001/jamaophthalmol.2017.0738",
-      "cited_by": 98,
+      "cited_by": 99,
       "abstract": "Importance: The current assessment of visual field loss in diseases such as glaucoma is affected by the subjectivity of patient responses and the lack of portability of standard perimeters. Objective: To describe the development and initial validation of a portable brain-computer interface (BCI) for objectively assessing visual function loss. Design, Setting, and Participants: This case-control study involved 62 eyes of 33 patients with glaucoma and 30 eyes of 17 healthy participants. Glaucoma was diagnosed based on a masked grading of optic disc stereophotographs. All participants underwent testing with a BCI device and standard automated perimetry (SAP) within 3 months. The BCI device integrates wearable, wireless, dry electroencephalogram and electrooculogram systems and a cellphone-based head-mounted display to enable the detection of multifocal steady state visual-evoked potentials associated with visual field stimulation. The performances of global and sectoral multifocal steady ",
       "doi": "10.1001/jamaophthalmol.2017.0738",
       "pmid": "28448641",
@@ -407,6 +485,29 @@
         "confidence_score": 0.4039592266082764,
         "similarity_score": 0.3672356605529785,
         "citation_text_length": 1317,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A Tutorial on Canonical Correlation Methods",
+      "author": "Viivi Uurtio, João M. Monteiro, Jaz Kandola, John Shawe-Taylor, Delmiro Fernandez-Reyes, Juho Rousu",
+      "venue": "ACM Computing Surveys",
+      "year": 2017,
+      "url": "https://doi.org/10.1145/3136624",
+      "cited_by": 97,
+      "abstract": "Canonical correlation analysis is a family of multivariate statistical methods for the analysis of paired sets of variables. Since its proposition, canonical correlation analysis has, for instance, been extended to extract relations between two sets of variables when the sample size is insufficient in relation to the data dimensionality, when the relations have been considered to be non-linear, and when the dimensionality is too large for human interpretation. This tutorial explains the theory of canonical correlation analysis, including its regularised, kernel, and sparse variants. Additionally, the deep and Bayesian CCA extensions are briefly reviewed. Together with the numerical examples, this overview provides a coherent compendium on the applicability of the variants of canonical correlation analysis. By bringing together techniques for solving the optimisation problems, evaluating the statistical significance and generalisability of the canonical correlation model, and interpreti",
+      "doi": "10.1145/3136624",
+      "pmid": null,
+      "openalex_id": "W2767589925",
+      "source_doi": "10.1371/journal.pone.0140703",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.16785041689872743,
+        "similarity_score": 0.1525912880897522,
+        "citation_text_length": 1202,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -430,29 +531,6 @@
         "confidence_score": 0.6097064077854157,
         "similarity_score": 0.554278552532196,
         "citation_text_length": 1268,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "A Tutorial on Canonical Correlation Methods",
-      "author": "Viivi Uurtio, João M. Monteiro, Jaz Kandola, John Shawe-Taylor, Delmiro Fernandez-Reyes, Juho Rousu",
-      "venue": "ACM Computing Surveys",
-      "year": 2017,
-      "url": "https://doi.org/10.1145/3136624",
-      "cited_by": 96,
-      "abstract": "Canonical correlation analysis is a family of multivariate statistical methods for the analysis of paired sets of variables. Since its proposition, canonical correlation analysis has, for instance, been extended to extract relations between two sets of variables when the sample size is insufficient in relation to the data dimensionality, when the relations have been considered to be non-linear, and when the dimensionality is too large for human interpretation. This tutorial explains the theory of canonical correlation analysis, including its regularised, kernel, and sparse variants. Additionally, the deep and Bayesian CCA extensions are briefly reviewed. Together with the numerical examples, this overview provides a coherent compendium on the applicability of the variants of canonical correlation analysis. By bringing together techniques for solving the optimisation problems, evaluating the statistical significance and generalisability of the canonical correlation model, and interpreti",
-      "doi": "10.1145/3136624",
-      "pmid": null,
-      "openalex_id": "W2767589925",
-      "source_doi": "10.1371/journal.pone.0140703",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.16785041689872743,
-        "similarity_score": 0.1525912880897522,
-        "citation_text_length": 1202,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -574,6 +652,29 @@
       }
     },
     {
+      "title": "Improving user experience of SSVEP BCI through low amplitude depth and high frequency stimuli design",
+      "author": "Simon Ladouce, Ludovic Darmet, Juan Jesús Torre, Sébastien Velut, Giuseppe Ferraro, Frédéric Dehais",
+      "venue": "Scientific Reports",
+      "year": 2022,
+      "url": "https://doi.org/10.1038/s41598-022-12733-0",
+      "cited_by": 78,
+      "abstract": "Steady-States Visually Evoked Potentials (SSVEP) refer to the sustained rhythmic activity observed in surface electroencephalography (EEG) in response to the presentation of repetitive visual stimuli (RVS). Due to their robustness and rapid onset, SSVEP have been widely used in Brain Computer Interfaces (BCI). However, typical SSVEP stimuli are straining to the eyes and present risks of triggering epileptic seizures. Reducing visual stimuli contrast or extending their frequency range both appear as relevant solutions to address these issues. It however remains sparsely documented how BCI performance is impacted by these features and to which extent user experience can be improved. We conducted two studies to systematically characterize the effects of frequency and amplitude depth reduction on SSVEP response. The results revealed that although high frequency stimuli improve visual comfort, their classification performance were not competitive enough to design a reliable/responsive BCI. ",
+      "doi": "10.1038/s41598-022-12733-0",
+      "pmid": "35614168",
+      "openalex_id": "W4281483625",
+      "source_doi": "10.1371/journal.pone.0140703",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7443814793229104,
+        "similarity_score": 0.644486129283905,
+        "citation_text_length": 1256,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Boosting template-based SSVEP decoding by cross-domain transfer learning",
       "author": "Kuan-Jung Chiang, Chun-Shu Wei, Masaki Nakanishi, Tzyy‐Ping Jung",
       "venue": "Journal of Neural Engineering",
@@ -591,29 +692,6 @@
         "confidence_score": 0.6605172497034073,
         "similarity_score": 0.5718764066696167,
         "citation_text_length": 1204,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Improving user experience of SSVEP BCI through low amplitude depth and high frequency stimuli design",
-      "author": "Simon Ladouce, Ludovic Darmet, Juan Jesús Torre, Sébastien Velut, Giuseppe Ferraro, Frédéric Dehais",
-      "venue": "Scientific Reports",
-      "year": 2022,
-      "url": "https://doi.org/10.1038/s41598-022-12733-0",
-      "cited_by": 76,
-      "abstract": "Steady-States Visually Evoked Potentials (SSVEP) refer to the sustained rhythmic activity observed in surface electroencephalography (EEG) in response to the presentation of repetitive visual stimuli (RVS). Due to their robustness and rapid onset, SSVEP have been widely used in Brain Computer Interfaces (BCI). However, typical SSVEP stimuli are straining to the eyes and present risks of triggering epileptic seizures. Reducing visual stimuli contrast or extending their frequency range both appear as relevant solutions to address these issues. It however remains sparsely documented how BCI performance is impacted by these features and to which extent user experience can be improved. We conducted two studies to systematically characterize the effects of frequency and amplitude depth reduction on SSVEP response. The results revealed that although high frequency stimuli improve visual comfort, their classification performance were not competitive enough to design a reliable/responsive BCI. ",
-      "doi": "10.1038/s41598-022-12733-0",
-      "pmid": "35614168",
-      "openalex_id": "W4281483625",
-      "source_doi": "10.1371/journal.pone.0140703",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7443814793229104,
-        "similarity_score": 0.644486129283905,
-        "citation_text_length": 1256,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -786,7 +864,7 @@
       "venue": "Sensors",
       "year": 2020,
       "url": "https://doi.org/10.3390/s20030891",
-      "cited_by": 60,
+      "cited_by": 61,
       "abstract": "Steady-state visual evoked potentials (SSVEPs) have been extensively utilized to develop brain-computer interfaces (BCIs) due to the advantages of robustness, large number of commands, high classification accuracies, and information transfer rates (ITRs). However, the use of several simultaneous flickering stimuli often causes high levels of user discomfort, tiredness, annoyingness, and fatigue. Here we propose to design a stimuli-responsive hybrid speller by using electroencephalography (EEG) and video-based eye-tracking to increase user comfortability levels when presented with large numbers of simultaneously flickering stimuli. Interestingly, a canonical correlation analysis (CCA)-based framework was useful to identify target frequency with a 1 s duration of flickering signal. Our proposed BCI-speller uses only six frequencies to classify forty-eight targets, thus achieve greatly increased ITR, whereas basic SSVEP BCI-spellers use an equal number of frequencies to the number of targ",
       "doi": "10.3390/s20030891",
       "pmid": "32046131",
@@ -878,7 +956,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2023,
       "url": "https://doi.org/10.1109/tnsre.2023.3299350",
-      "cited_by": 55,
+      "cited_by": 56,
       "abstract": "OBJECTIVE: A brain-computer interface (BCI) can be used to translate neuronal activity into commands to control external devices. However, using noninvasive BCI to control a robotic arm for movements in three-dimensional (3D) environments and accomplish complicated daily tasks, such as grasping and drinking, remains a challenge. APPROACH: In this study, a shared robotic arm control system based on hybrid asynchronous BCI and computer vision was presented. The BCI model, which combines steady-state visual evoked potentials (SSVEPs) and blink-related electrooculography (EOG) signals, allows users to freely choose from fifteen commands in an asynchronous mode corresponding to robot actions in a 3D workspace and reach targets with a wide movement range, while computer vision can identify objects and assist a robotic arm in completing more precise tasks, such as grasping a target automatically. RESULTS: Ten subjects participated in the experiments and achieved an average accuracy of more th",
       "doi": "10.1109/tnsre.2023.3299350",
       "pmid": "37498753",
@@ -913,6 +991,29 @@
         "confidence_score": 0.6121766567230225,
         "similarity_score": 0.6121766567230225,
         "citation_text_length": 213,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "REVE: A Foundation Model for EEG - Adapting to Any Setup with Large-Scale Pretraining on 25,000 Subjects",
+      "author": "Yassine El Ouahidi, Jonathan Lys, Philipp Thölke, Nicolas Farrugia, B. Pasdeloup, Vincent Gripon, Karim Jerbi, Giulia Lioi",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2510.21585",
+      "cited_by": 51,
+      "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
+      "doi": "10.48550/arXiv.2510.21585",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0140703",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6017383030056954,
+        "similarity_score": 0.5209855437278748,
+        "citation_text_length": 1270,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -988,29 +1089,6 @@
       }
     },
     {
-      "title": "REVE: A Foundation Model for EEG - Adapting to Any Setup with Large-Scale Pretraining on 25,000 Subjects",
-      "author": "Yassine El Ouahidi, Jonathan Lys, Philipp Thölke, Nicolas Farrugia, B. Pasdeloup, Vincent Gripon, Karim Jerbi, Giulia Lioi",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2510.21585",
-      "cited_by": 46,
-      "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
-      "doi": "10.48550/arXiv.2510.21585",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0140703",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6017383030056954,
-        "similarity_score": 0.5209855437278748,
-        "citation_text_length": 1270,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "The effect of stimulus number on the recognition accuracy and information transfer rate of SSVEP–BCI in augmented reality",
       "author": "Rui Zhang, Zongxin Xu, Lipeng Zhang, Lijun Cao, Yuxia Hu, Beihan Lu, Li Shi, Dezhong Yao, Xincan Zhao",
       "venue": "Journal of Neural Engineering",
@@ -1057,6 +1135,29 @@
       }
     },
     {
+      "title": "The largest EEG-based BCI reproducibility study for open science: the MOABB benchmark",
+      "author": "Sylvain Chevallier, Igor Carrara, Bruno Aristimunha, Pierre Guetschel, Sara Sedlar, Bruna J. Lopes, Sébastien Velut, Salim Khazem, Thomas Moreau",
+      "venue": "ArXiv",
+      "year": 2024,
+      "url": "https://doi.org/10.48550/arXiv.2404.15319",
+      "cited_by": 45,
+      "abstract": "Objective. This study conduct an extensive Brain-computer interfaces (BCI) reproducibility analysis on open electroencephalography datasets, aiming to assess existing solutions and establish open and reproducible benchmarks for effective comparison within the field. The need for such benchmark lies in the rapid industrial progress that has given rise to undisclosed proprietary solutions. Furthermore, the scientific literature is dense, often featuring challenging-to-reproduce evaluations, making comparisons between existing approaches arduous. Approach. Within an open framework, 30 machine learning pipelines (separated into raw signal: 11, Riemannian: 13, deep learning: 6) are meticulously re-implemented and evaluated across 36 publicly available datasets, including motor imagery (14), P300 (15), and SSVEP (7). The analysis incorporates statistical meta-analysis techniques for results assessment, encompassing execution time and environmental impact considerations. Main results. The stu",
+      "doi": "10.48550/arXiv.2404.15319",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0140703",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5434615342319012,
+        "similarity_score": 0.4705294668674469,
+        "citation_text_length": 1273,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "EEG-based Human Recognition Using Steady-State AEPs and Subject-Unique Spatial Filters",
       "author": "Sherif Nagib Abbas Seha, Dimitrios Hatzinakos",
       "venue": "IEEE Transactions on Information Forensics and Security",
@@ -1074,29 +1175,6 @@
         "confidence_score": 0.5632901099324227,
         "similarity_score": 0.4876970648765564,
         "citation_text_length": 1225,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "The largest EEG-based BCI reproducibility study for open science: the MOABB benchmark",
-      "author": "Sylvain Chevallier, Igor Carrara, Bruno Aristimunha, Pierre Guetschel, Sara Sedlar, Bruna J. Lopes, Sébastien Velut, Salim Khazem, Thomas Moreau",
-      "venue": "ArXiv",
-      "year": 2024,
-      "url": "https://doi.org/10.48550/arXiv.2404.15319",
-      "cited_by": 42,
-      "abstract": "Objective. This study conduct an extensive Brain-computer interfaces (BCI) reproducibility analysis on open electroencephalography datasets, aiming to assess existing solutions and establish open and reproducible benchmarks for effective comparison within the field. The need for such benchmark lies in the rapid industrial progress that has given rise to undisclosed proprietary solutions. Furthermore, the scientific literature is dense, often featuring challenging-to-reproduce evaluations, making comparisons between existing approaches arduous. Approach. Within an open framework, 30 machine learning pipelines (separated into raw signal: 11, Riemannian: 13, deep learning: 6) are meticulously re-implemented and evaluated across 36 publicly available datasets, including motor imagery (14), P300 (15), and SSVEP (7). The analysis incorporates statistical meta-analysis techniques for results assessment, encompassing execution time and environmental impact considerations. Main results. The stu",
-      "doi": "10.48550/arXiv.2404.15319",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0140703",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5434615342319012,
-        "similarity_score": 0.4705294668674469,
-        "citation_text_length": 1273,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1172,6 +1250,29 @@
       }
     },
     {
+      "title": "Stress-Induced Effects in Resting EEG Spectra Predict the Performance of SSVEP-Based BCI",
+      "author": "Haoyan Zhang, Cory Stevenson, Tzyy‐Ping Jung, Li‐Wei Ko",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2020,
+      "url": "https://doi.org/10.1109/tnsre.2020.3005771",
+      "cited_by": 38,
+      "abstract": "Most research in Brain-Computer-Interfaces (BCI) focuses on technologies to improve accuracy and speed. Little has been done on the effects of subject variability, both across individuals and within the same individual, on BCI performance. For example, stress, arousal, motivation, and fatigue can all affect the electroencephalogram (EEG) signals used by a BCI, which in turn impacts performance. Overcoming the impact of such user variability on BCI performance is an impending and inevitable challenge for routine applications of BCIs in the real world. To systematically explore the factors affecting BCI performance, this study embeds a Steady-State Visually Evoked Potential (SSVEP) based BCI into a \"game with a purpose\" (GWAP) to obtain data over significant lengths of time, under both high- and low-stress conditions. Ten healthy volunteers played a GWAP that resembles popular match-three games, such as Jewel Quest, Zoo Boom, or Candy Crush. We recorded the target search time, target sea",
+      "doi": "10.1109/tnsre.2020.3005771",
+      "pmid": "32746309",
+      "openalex_id": "W3038940525",
+      "source_doi": "10.1371/journal.pone.0140703",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6888825747370722,
+        "similarity_score": 0.5964351296424866,
+        "citation_text_length": 1248,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Effects of Paradigm Color and Screen Brightness on Visual Fatigue in Light Environment of Night Based on Eye Tracker and EEG Acquisition Equipment",
       "author": "Peiyuan Tian, Guanghua Xu, Chengcheng Han, Xiaowei Zheng, Kai Zhang, Chenghang Du, Wei Fan, Sicong Zhang",
       "venue": "Sensors",
@@ -1235,29 +1336,6 @@
         "confidence_score": 0.5832249224185944,
         "similarity_score": 0.5302044749259949,
         "citation_text_length": 1214,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Stress-Induced Effects in Resting EEG Spectra Predict the Performance of SSVEP-Based BCI",
-      "author": "Haoyan Zhang, Cory Stevenson, Tzyy‐Ping Jung, Li‐Wei Ko",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2020,
-      "url": "https://doi.org/10.1109/tnsre.2020.3005771",
-      "cited_by": 37,
-      "abstract": "Most research in Brain-Computer-Interfaces (BCI) focuses on technologies to improve accuracy and speed. Little has been done on the effects of subject variability, both across individuals and within the same individual, on BCI performance. For example, stress, arousal, motivation, and fatigue can all affect the electroencephalogram (EEG) signals used by a BCI, which in turn impacts performance. Overcoming the impact of such user variability on BCI performance is an impending and inevitable challenge for routine applications of BCIs in the real world. To systematically explore the factors affecting BCI performance, this study embeds a Steady-State Visually Evoked Potential (SSVEP) based BCI into a \"game with a purpose\" (GWAP) to obtain data over significant lengths of time, under both high- and low-stress conditions. Ten healthy volunteers played a GWAP that resembles popular match-three games, such as Jewel Quest, Zoo Boom, or Candy Crush. We recorded the target search time, target sea",
-      "doi": "10.1109/tnsre.2020.3005771",
-      "pmid": "32746309",
-      "openalex_id": "W3038940525",
-      "source_doi": "10.1371/journal.pone.0140703",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6888825747370722,
-        "similarity_score": 0.5964351296424866,
-        "citation_text_length": 1248,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1517,29 +1595,6 @@
       }
     },
     {
-      "title": "IENet: a robust convolutional neural network for EEG based brain-computer interfaces",
-      "author": "Yipeng Du, Jian Liu",
-      "venue": "Journal of Neural Engineering",
-      "year": 2022,
-      "url": "https://doi.org/10.1088/1741-2552/ac7257",
-      "cited_by": 31,
-      "abstract": "Abstract Objective. Brain-computer interfaces (BCIs) based on electroencephalogram (EEG) develop into novel application areas with more complex scenarios, which put forward higher requirements for the robustness of EEG signal processing algorithms. Deep learning can automatically extract discriminative features and potential dependencies via deep structures, demonstrating strong analytical capabilities in numerous domains such as computer vision and natural language processing. Making full use of deep learning technology to design a robust algorithm that is capable of analyzing EEG across BCI paradigms is our main work in this paper. Approach. Inspired by InceptionV4 and InceptionTime architecture, we introduce a neural network ensemble named InceptionEEG-Net (IENet), where multi-scale convolutional layer and convolution of length 1 enable model to extract rich high-dimensional features with limited parameters. In addition, we propose the average receptive field (RF) gain for convoluti",
-      "doi": "10.1088/1741-2552/ac7257",
-      "pmid": "35605585",
-      "openalex_id": "W4281399130",
-      "source_doi": "10.1371/journal.pone.0140703",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4731870192289353,
-        "similarity_score": 0.40968573093414307,
-        "citation_text_length": 1171,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Self-adaptive shared control with brain state evaluation network for human-wheelchair cooperation",
       "author": "Xiaoyan Deng, Zhu Liang Yu, Canguang Lin, Zhenghui Gu, Yuanqing Li",
       "venue": "Journal of Neural Engineering",
@@ -1557,6 +1612,29 @@
         "confidence_score": 0.39736328154802325,
         "similarity_score": 0.3440374732017517,
         "citation_text_length": 1231,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "IENet: a robust convolutional neural network for EEG based brain-computer interfaces",
+      "author": "Yipeng Du, Jian Liu",
+      "venue": "Journal of Neural Engineering",
+      "year": 2022,
+      "url": "https://doi.org/10.1088/1741-2552/ac7257",
+      "cited_by": 31,
+      "abstract": "Abstract Objective. Brain-computer interfaces (BCIs) based on electroencephalogram (EEG) develop into novel application areas with more complex scenarios, which put forward higher requirements for the robustness of EEG signal processing algorithms. Deep learning can automatically extract discriminative features and potential dependencies via deep structures, demonstrating strong analytical capabilities in numerous domains such as computer vision and natural language processing. Making full use of deep learning technology to design a robust algorithm that is capable of analyzing EEG across BCI paradigms is our main work in this paper. Approach. Inspired by InceptionV4 and InceptionTime architecture, we introduce a neural network ensemble named InceptionEEG-Net (IENet), where multi-scale convolutional layer and convolution of length 1 enable model to extract rich high-dimensional features with limited parameters. In addition, we propose the average receptive field (RF) gain for convoluti",
+      "doi": "10.1088/1741-2552/ac7257",
+      "pmid": "35605585",
+      "openalex_id": "W4281399130",
+      "source_doi": "10.1371/journal.pone.0140703",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4731870192289353,
+        "similarity_score": 0.40968573093414307,
+        "citation_text_length": 1171,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1977,6 +2055,52 @@
       }
     },
     {
+      "title": "Adaptive Time Segment Analysis for Steady-State Visual Evoked Potential Based Brain–Computer Interfaces",
+      "author": "Hubert Cecotti",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2020,
+      "url": "https://doi.org/10.1109/tnsre.2020.2968307",
+      "cited_by": 22,
+      "abstract": "The research in non-invasive Brain-Computer Interface (BCI) has led to significant improvements in the recent years for potential end users. However, the user experience and the BCI illiteracy problem remains challenging areas to address for obtaining robust and resilient clinical applications. In this study, we address the choice of the time segment for the detection of steady state visual evoked potential (SSVEP) detection. This problem has been widely addressed for the detection of event-related potentials compared to SSVEP based BCIs. The choice of this parameter is typically fixed and has a direct influence on both the detection accuracy and the information transfer rate. We propose to shift the problem of the time segment to the choice of the threshold for determining if a response has been properly detected. We consider two open-datasets for benchmarking the rationale of the approach. The results support the conclusion that an adaptive time segment for each trial, based on the s",
+      "doi": "10.1109/tnsre.2020.2968307",
+      "pmid": "31985428",
+      "openalex_id": "W3001567762",
+      "source_doi": "10.1371/journal.pone.0140703",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6762133991718293,
+        "similarity_score": 0.5854661464691162,
+        "citation_text_length": 1222,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Time–frequency transform based EEG data augmentation for brain–computer interfaces",
+      "author": "Ziwei Wang, Siyang Li, Xiaoqing Chen, Dongrui Wu",
+      "venue": "Knowledge-Based Systems",
+      "year": 2025,
+      "url": "https://doi.org/10.1016/j.knosys.2025.113074",
+      "cited_by": 22,
+      "abstract": null,
+      "doi": "10.1016/j.knosys.2025.113074",
+      "pmid": null,
+      "openalex_id": "W4407099082",
+      "source_doi": "10.1371/journal.pone.0140703",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5076144218444825,
+        "similarity_score": 0.4834423065185547,
+        "citation_text_length": 180,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Tradeoff between User Experience and BCI Classification Accuracy with Frequency Modulated Steady-State Visual Evoked Potentials",
       "author": "Alexander M. Dreyer, Christoph S. Herrmann, Jochem W. Rieger",
       "venue": "Frontiers in Human Neuroscience",
@@ -2000,29 +2124,6 @@
       }
     },
     {
-      "title": "Adaptive Time Segment Analysis for Steady-State Visual Evoked Potential Based Brain–Computer Interfaces",
-      "author": "Hubert Cecotti",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2020,
-      "url": "https://doi.org/10.1109/tnsre.2020.2968307",
-      "cited_by": 21,
-      "abstract": "The research in non-invasive Brain-Computer Interface (BCI) has led to significant improvements in the recent years for potential end users. However, the user experience and the BCI illiteracy problem remains challenging areas to address for obtaining robust and resilient clinical applications. In this study, we address the choice of the time segment for the detection of steady state visual evoked potential (SSVEP) detection. This problem has been widely addressed for the detection of event-related potentials compared to SSVEP based BCIs. The choice of this parameter is typically fixed and has a direct influence on both the detection accuracy and the information transfer rate. We propose to shift the problem of the time segment to the choice of the threshold for determining if a response has been properly detected. We consider two open-datasets for benchmarking the rationale of the approach. The results support the conclusion that an adaptive time segment for each trial, based on the s",
-      "doi": "10.1109/tnsre.2020.2968307",
-      "pmid": "31985428",
-      "openalex_id": "W3001567762",
-      "source_doi": "10.1371/journal.pone.0140703",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6762133991718293,
-        "similarity_score": 0.5854661464691162,
-        "citation_text_length": 1222,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Enhancing SSVEP Identification With Less Individual Calibration Data Using Periodically Repeated Component Analysis",
       "author": "Yufeng Ke, Shuang Liu, Dong Ming",
       "venue": "IEEE Transactions on Biomedical Engineering",
@@ -2040,29 +2141,6 @@
         "confidence_score": 0.7624113500118257,
         "similarity_score": 0.6600964069366455,
         "citation_text_length": 1229,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Time–frequency transform based EEG data augmentation for brain–computer interfaces",
-      "author": "Ziwei Wang, Siyang Li, Xiaoqing Chen, Dongrui Wu",
-      "venue": "Knowledge-Based Systems",
-      "year": 2025,
-      "url": "https://doi.org/10.1016/j.knosys.2025.113074",
-      "cited_by": 21,
-      "abstract": null,
-      "doi": "10.1016/j.knosys.2025.113074",
-      "pmid": null,
-      "openalex_id": "W4407099082",
-      "source_doi": "10.1371/journal.pone.0140703",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5076144218444825,
-        "similarity_score": 0.4834423065185547,
-        "citation_text_length": 180,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2374,7 +2452,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:26:18.998776+00:00",
+    "scoring_date": "2026-07-15T00:03:17.390863+00:00",
     "dataset_text_length": 2270,
     "num_citations_scored": 102,
     "summary_stats": {
