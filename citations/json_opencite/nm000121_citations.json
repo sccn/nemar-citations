@@ -1,39 +1,95 @@
 {
   "dataset_id": "nm000121",
   "num_citations": 45,
-  "date_last_updated": "2026-06-18T23:18:10.045412+00:00",
+  "date_last_updated": "2026-07-03T10:24:02.792585+00:00",
   "metadata": {
     "total_cumulative_citations": 423,
-    "fetch_date": "2026-06-18T23:18:10.045412+00:00",
+    "fetch_date": "2026-07-03T10:24:02.792585+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.48550/arxiv.1602.00904",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Comparative evaluation of state-of-the-art algorithms for SSVEP-based BCIs",
+        "paper_year": 2016,
+        "paper_venue": "arXiv (Cornell University)",
+        "reason": "The dataset's DOI in the README is 10.48550/arXiv.1602.00904, which matches the candidate paper's DOI and authors.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.6084/m9.figshare.2068677.v1",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "MAMEM EEG SSVEP Dataset I (256 channels, 11 subjects, 5 frequencies)",
+        "paper_year": 2016,
+        "paper_venue": "Figshare",
+        "reason": "The paper describes the release of the MAMEM EEG SSVEP Dataset I, which matches the dataset's subjects (11), frequencies (6.66-12.00 Hz), and hardware (EGI 300 GES 300).",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into the BIDS format, which is used for the dataset's BIDS version 1.9.0."
+        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into the BIDS format, which is used for the dataset's BIDS version 1.9.0.",
+        "judgment_model": "gemma4:31b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is the standard used by this dataset (BIDS Version 1.9.0)."
+        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is the standard used by this dataset (BIDS Version 1.9.0).",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000121",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
       }
     ],
+    "searched_dois": [
+      "10.48550/arxiv.1602.00904",
+      "10.6084/m9.figshare.2068677.v1",
+      "10.82901/nemar.nm000121"
+    ],
+    "keywords": [
+      "SSVEP",
+      "brain-computer interface",
+      "EEG",
+      "visual evoked potentials",
+      "signal processing",
+      "feature extraction",
+      "classification algorithms"
+    ],
+    "methods_description": "EEG signals were acquired using an EGI 300 Geodesic EEG System (GES 300) with 14 scalp electrodes arranged in a 10-20 montage at 128 Hz sampling rate. Preprocessing included bandpass filtering (5-48 Hz), 50 Hz notch filtering, artifact removal using AMUSE and ICA, and common average referencing. Subjects performed SSVEP tasks with 5-second stimulus presentation periods separated by 5-second rest intervals. Each subject completed one adaptation period followed by five experimental sessions. Comparative evaluation of state-of-the-art algorithms was performed using leave-one-subject-out cross-validation, examining filtering methods (IIR, FIR), artifact removal techniques (AMUSE, ICA), feature extraction methods (Periodogram, Welch, Goertzel, Yule-AR, STFT, DWT), feature selection approaches (Shannon entropy, PCA, ICA), and multiple classifiers (LDA, SVM, kNN, Naive Bayes, Random Forest, CCA, ELM, Decision Trees).",
+    "funding": [],
     "searched_accessions": [
       "nm000121"
     ],
@@ -1080,7 +1136,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:41:02.476555+00:00",
+    "scoring_date": "2026-07-15T00:03:38.189155+00:00",
     "dataset_text_length": 2344,
     "num_citations_scored": 45,
     "summary_stats": {

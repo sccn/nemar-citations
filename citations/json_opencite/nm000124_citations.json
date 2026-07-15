@@ -1,37 +1,92 @@
 {
   "dataset_id": "nm000124",
   "num_citations": 6,
-  "date_last_updated": "2026-06-18T23:18:18.687940+00:00",
+  "date_last_updated": "2026-07-03T10:24:20.259437+00:00",
   "metadata": {
     "total_cumulative_citations": 7,
-    "fetch_date": "2026-06-18T23:18:18.687940+00:00",
+    "fetch_date": "2026-07-03T10:24:20.259437+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1109/tnsre.2024.3380635",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Enhancing SSVEP-BCI Performance Under Fatigue State Using Dynamic Stopping Strategy",
+        "paper_year": 2024,
+        "paper_venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+        "reason": "The paper's authors, subjects (24), and DOI (10.1109/TNSRE.2024.3380635) match the dataset's metadata exactly, and the abstract mentions a self-recorded fatigue dataset.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into the BIDS format, which is used by this dataset's BIDS version 1.9.0."
+        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into the BIDS format, which is used by this dataset's BIDS version 1.9.0.",
+        "judgment_model": "gemma4:31b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes the EEG-BIDS standard, which is the data organization standard used by this dataset (BIDS Version 1.9.0)."
+        "reason": "The paper describes the EEG-BIDS standard, which is the data organization standard used by this dataset (BIDS Version 1.9.0).",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000124",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.1109/tnsre.2024.3380635",
+      "10.82901/nemar.nm000124"
+    ],
+    "keywords": [
+      "SSVEP",
+      "brain-computer interfaces",
+      "EEG",
+      "fatigue",
+      "visual evoked potentials",
+      "frequency paradigm"
+    ],
+    "methods_description": "EEG was recorded at 1000 Hz using a 64-channel Synamps2 system (Neuroscan) with standard 10-05 montage referenced to Cz. Participants performed two SSVEP-BCI tasks with low-frequency (16 targets, 8.0-15.5 Hz) and high-frequency (16 targets, 25.5-33.0 Hz) paradigms using JFPM encoding in a 4×4 matrix layout. Each paradigm consisted of training (6 blocks) and fatigue (24 blocks) phases, with 2-second stimulus presentations per trial. Data were epoched to 3-second windows (3000 samples).",
+    "funding": [
+      {
+        "funder_name": "National Key Research and Development Program of China",
+        "award_number": "2021YFF1200603"
+      },
+      {
+        "funder_name": "National Natural Science Foundation of China",
+        "award_number": "62276184"
+      },
+      {
+        "funder_name": "National Natural Science Foundation of China",
+        "award_number": "61806141"
       }
     ],
     "searched_accessions": [
@@ -183,7 +238,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:41:22.392557+00:00",
+    "scoring_date": "2026-07-15T00:03:56.714127+00:00",
     "dataset_text_length": 2303,
     "num_citations_scored": 6,
     "summary_stats": {

@@ -1,37 +1,90 @@
 {
   "dataset_id": "nm000103",
   "num_citations": 0,
-  "date_last_updated": "2026-06-13T21:36:18.760753+00:00",
+  "date_last_updated": "2026-07-03T10:22:59.586394+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-13T21:36:18.760753+00:00",
+    "fetch_date": "2026-07-03T10:22:59.586394+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.1038/sdata.2017.181",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/sdata.2017.181",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "umbrella",
+        "kept": false,
         "paper_title": "An open resource for transdiagnostic research in pediatric mental health and learning disorders",
         "paper_year": 2017,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes the Healthy Brain Network (HBN) initiative as a whole, while the dataset is a specific EEG/Eye-Tracking section of that project."
+        "reason": "The paper describes the Healthy Brain Network (HBN) initiative as a whole, while the dataset is a specific EEG/Eye-Tracking section of that project.",
+        "judgment_model": "gemma4:31b"
       },
       {
-        "anchor_identifier": "10.1038/sdata.2017.40",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/sdata.2017.40",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "umbrella",
+        "kept": false,
         "paper_title": "A resource for assessing information processing in the developing brain using EEG and eye tracking",
         "paper_year": 2017,
         "paper_venue": "Scientific Data",
-        "reason": "The dataset description explicitly states it is part of the larger HBN project and cites Alexander et al. (2017) as the initiative's reference, which matches this paper's authors and venue."
+        "reason": "The dataset description explicitly states it is part of the larger HBN project and cites Alexander et al. (2017) as the initiative's reference, which matches this paper's authors and venue.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.5281/zenodo.17306881",
+        "identifier_type": "doi",
+        "source_relation": "IsIdenticalTo",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "HBN-EEG NC - BIDS Dataset",
+        "paper_year": 2025,
+        "paper_venue": "Zenodo (CERN European Organization for Nuclear Research)",
+        "reason": "The paper title 'HBN-EEG NC - BIDS Dataset' and abstract explicitly describe the release of the Healthy Brain Network EEG non-commercial dataset.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000103",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.5281/zenodo.17306881",
+      "10.82901/nemar.nm000103"
+    ],
+    "keywords": [
+      "EEG",
+      "child and adolescent mental health",
+      "neurodevelopment",
+      "behavioral assessment",
+      "hierarchical event descriptors",
+      "internalizing and externalizing behaviors",
+      "HED",
+      "Healthy Brain Network"
+    ],
+    "methods_description": "EEG data were collected during various cognitive and behavioral tasks from HBN participants. Behavioral responses including reaction times and accuracy were recorded concurrently with EEG acquisition. Events are annotated using Hierarchical Event Descriptors (HED version 8.3.0) to enable systematic meta-analysis. Quality control procedures verified data integrity, task completeness, and preprocessing readiness.",
+    "funding": [
+      {
+        "funder_name": "See https://childmind.org/science/global-open-science/healthy-brain-network/#donors"
+      },
+      {
+        "funder_name": "NIH",
+        "award_number": "R01MH125934",
+        "award_title": "BIDS data preparation"
       }
     ],
     "searched_accessions": [
@@ -44,7 +97,7 @@
   "citation_details": [],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-13T22:21:19.325814+00:00",
+    "scoring_date": "2026-07-15T00:02:24.163966+00:00",
     "dataset_text_length": 2384,
     "num_citations_scored": 0
   }

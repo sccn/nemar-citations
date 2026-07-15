@@ -1,18 +1,59 @@
 {
   "dataset_id": "nm000138",
   "num_citations": 1,
-  "date_last_updated": "2026-06-13T21:37:39.638063+00:00",
+  "date_last_updated": "2026-07-03T10:25:43.774815+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-13T21:37:39.638063+00:00",
+    "fetch_date": "2026-07-03T10:25:43.774815+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.5281/zenodo.806022",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Eeg Motor Imagery Dataset From The Phd Thesis \"Commande Robuste D'Un Effecteur Par Une Interface Cerveau Machine Eeg Asynchrone\"",
+        "paper_year": 2012,
+        "paper_venue": "Zenodo (CERN European Organization for Nuclear Research)",
+        "reason": "The paper's title and abstract explicitly describe the release of the EEG Motor Imagery Dataset from Alexandre Barachant's PhD thesis, matching the dataset's subjects, channels, and paradigm.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000138",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.5281/zenodo.806022",
+      "10.82901/nemar.nm000138"
+    ],
+    "keywords": [
+      "motor imagery",
+      "Brain-Computer Interfaces",
+      "EEG",
+      "Riemannian geometry",
+      "Common Spatial Pattern",
+      "covariance matrices",
+      "asynchronous BCI",
+      "brain-switch"
+    ],
+    "methods_description": "EEG data were acquired at 512 Hz sampling rate using 16 active electrodes (Fpz, F7, F3, Fz, F4, F8, T7, C3, Cz, C4, T8, P7, P3, Pz, P4, P8) in standard 1005 montage with g.tec g.USBamp amplifier. Reference electrode placed on earlobe. Subjects performed cue-based motor imagery tasks following visual cues: right hand, feet, and rest conditions, with 20 trials per class lasting 3 seconds each. Data were recorded using Matlab/Simulink software with g.tec drivers. Line frequency: 50 Hz. Data were re-referenced to earlobe.",
+    "funding": [],
     "searched_accessions": [
       "nm000138"
     ],
@@ -49,7 +90,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:26:53.200182+00:00",
+    "scoring_date": "2026-07-15T00:05:22.754086+00:00",
     "dataset_text_length": 2202,
     "num_citations_scored": 1,
     "summary_stats": {

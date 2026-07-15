@@ -1,18 +1,60 @@
 {
   "dataset_id": "nm000347",
   "num_citations": 5,
-  "date_last_updated": "2026-06-18T23:25:25.345408+00:00",
+  "date_last_updated": "2026-07-03T15:25:54.347307+00:00",
   "metadata": {
     "total_cumulative_citations": 2,
-    "fetch_date": "2026-06-18T23:25:25.345408+00:00",
+    "fetch_date": "2026-07-03T15:25:54.347307+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1038/s41597-025-06100-7",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "HEFMI-ICH: a hybrid EEG-fNIRS motor imagery dataset for brain-computer interface in intracerebral hemorrhage",
+        "paper_year": 2025,
+        "paper_venue": "Scientific Data",
+        "reason": "The candidate paper title and abstract explicitly introduce and describe the HEFMI-ICH dataset, detailing its hybrid EEG-fNIRS nature and purpose.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000347",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1038/s41597-025-06100-7",
+      "10.82901/nemar.nm000347"
+    ],
+    "keywords": [
+      "EEG",
+      "motor imagery",
+      "Brain-Computer Interfaces",
+      "intracerebral hemorrhage",
+      "stroke rehabilitation",
+      "fNIRS",
+      "clinical neuroimaging",
+      "rehabilitation",
+      "BCI applications"
+    ],
+    "methods_description": "EEG data were acquired using a g.HIamp amplifier (g.tec medical engineering GmbH) with 32 channels at 256 Hz sampling rate using a biosemi32 montage. Participants performed cued motor imagery tasks with 2-second visual cues (directional arrows) followed by 10-second imagery periods. The experimental protocol included 2-class imagery (left/right hand grasping) with synchronous, offline feedback. Data were preprocessed with frequency band filtering (0.5-30 Hz) and spatially filtered using Common Spatial Patterns (CSP) and Filter Bank CSP (FBCSP) methods.",
+    "funding": [],
     "searched_accessions": [
       "nm000347"
     ],
@@ -141,7 +183,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:31:09.530126+00:00",
+    "scoring_date": "2026-07-15T00:17:52.737946+00:00",
     "dataset_text_length": 2552,
     "num_citations_scored": 5,
     "summary_stats": {

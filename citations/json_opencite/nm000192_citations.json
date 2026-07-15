@@ -1,24 +1,75 @@
 {
   "dataset_id": "nm000192",
-  "num_citations": 84,
-  "date_last_updated": "2026-06-18T23:20:33.205956+00:00",
+  "num_citations": 85,
+  "date_last_updated": "2026-07-03T12:24:44.421354+00:00",
   "metadata": {
-    "total_cumulative_citations": 1712,
-    "fetch_date": "2026-06-18T23:20:33.205956+00:00",
+    "total_cumulative_citations": 1718,
+    "fetch_date": "2026-07-03T12:24:44.421354+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1088/1741-2560/11/2/026009",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Decoding auditory attention to instruments in polyphonic music using single-trial EEG classification",
+        "paper_year": 2014,
+        "paper_venue": "Journal of Neural Engineering",
+        "reason": "The candidate paper's title and abstract describe the methodology and results of the specific 'multi-streamed oddball experiment' using the P300 paradigm, which matches the dataset's content.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000192",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1088/1741-2560/11/2/026009",
+      "10.82901/nemar.nm000192"
+    ],
+    "keywords": [
+      "Brain-Computer Interfaces",
+      "EEG",
+      "auditory attention",
+      "oddball paradigm",
+      "P300",
+      "music perception",
+      "selective attention",
+      "polyphonic music",
+      "musical stimulus"
+    ],
+    "methods_description": "EEG data were acquired from 64 active electrodes (Brain Products actiCAP, 10-10 montage) at 1000 Hz with left mastoid reference. Participants listened to 40-second polyphonic music clips containing three concurrent instruments (Synth-Pop or Jazz conditions) with embedded standard and deviant patterns. Preprocessing included downsampling to 250 Hz, Chebyshev lowpass filtering (42 Hz passband), epoching (-200 to 1200 ms), baseline correction, and artifact rejection (100 μV threshold on Fp1/Fp2). Classification used linear discriminant analysis with shrinkage covariance on spatio-temporal features, evaluated via leave-one-clip-out cross-validation.",
+    "funding": [
+      {
+        "funder_name": "German Bundesministerium für Bildung und Forschung",
+        "award_number": "16SV5839"
+      },
+      {
+        "funder_name": "German Bundesministerium für Bildung und Forschung",
+        "award_number": "01GQ0850"
+      }
+    ],
     "searched_accessions": [
       "nm000192"
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 84
+    "num_datapaper_citations": 85
   },
   "citation_details": [
     {
@@ -27,7 +78,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2020,
       "url": "https://doi.org/10.3389/fnins.2020.00289",
-      "cited_by": 241,
+      "cited_by": 242,
       "abstract": "MVPA-Light is a MATLAB toolbox for multivariate pattern analysis (MVPA). It provides native implementations of a range of classifiers and regression models, using modern optimization algorithms. High-level functions allow for the multivariate analysis of multi-dimensional data, including generalization (e.g., time x time) and searchlight analysis. The toolbox performs cross-validation, hyperparameter tuning, and nested preprocessing. It computes various classification and regression metrics and establishes their statistical significance, is modular and easily extendable. Furthermore, it offers interfaces for LIBSVM and LIBLINEAR as well as an integration into the FieldTrip neuroimaging toolbox. After introducing MVPA-Light, example analyses of MEG and fMRI datasets, and benchmarking results on the classifiers and regression models are presented.",
       "doi": "10.3389/fnins.2020.00289",
       "pmid": "32581662",
@@ -326,7 +377,7 @@
       "venue": "Brain-Computer Interfaces",
       "year": 2017,
       "url": "https://doi.org/10.1080/2326263x.2016.1275488",
-      "cited_by": 29,
+      "cited_by": 30,
       "abstract": "The Sixth International Brain-Computer Interface (BCI) Meeting was held 30 May-3 June 2016 at the Asilomar Conference Grounds, Pacific Grove, California, USA. The conference included 28 workshops covering topics in BCI and brain-machine interface research. Topics included BCI for specific populations or applications, advancing BCI research through use of specific signals or technological advances, and translational and commercial issues to bring both implanted and non-invasive BCIs to market. BCI research is growing and expanding in the breadth of its applications, the depth of knowledge it can produce, and the practical benefit it can provide both for those with physical impairments and the general public. Here we provide summaries of each workshop, illustrating the breadth and depth of BCI research and highlighting important issues and calls for action to support future research and development.",
       "doi": "10.1080/2326263x.2016.1275488",
       "pmid": "29152523",
@@ -372,7 +423,7 @@
       "venue": "Journal of Neuroscience",
       "year": 2021,
       "url": "https://doi.org/10.1523/jneurosci.2891-20.2021",
-      "cited_by": 23,
+      "cited_by": 24,
       "abstract": "In natural conversations, listeners must attend to what others are saying while ignoring extraneous background sounds. Recent studies have used encoding models to predict electroencephalography (EEG) responses to speech in noise-free listening situations, sometimes referred to as “speech tracking.” Researchers have analyzed how speech tracking changes with different types of background noise. It is unclear, however, whether neural responses from acoustically rich, naturalistic environments with and without background noise can be generalized to more controlled stimuli. If encoding models for acoustically rich, naturalistic stimuli are generalizable to other tasks, this could aid in data collection from populations of individuals who may not tolerate listening to more controlled and less engaging stimuli for long periods of time. We recorded noninvasive scalp EEG while 17 human participants (8 male/9 female) listened to speech without noise and audiovisual speech stimuli containing over",
       "doi": "10.1523/jneurosci.2891-20.2021",
       "pmid": "34503996",
@@ -487,7 +538,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2023,
       "url": "https://doi.org/10.1109/tnsre.2023.3291239",
-      "cited_by": 18,
+      "cited_by": 19,
       "abstract": "It has been demonstrated that from cortical recordings, it is possible to detect which speaker a person is attending in a cocktail party scenario. The stimulus reconstruction approach, based on linear regression, has been shown to be useable to reconstruct an approximation of the envelopes of the sounds attended to and not attended to by a listener from the electroencephalogram data (EEG). Comparing the reconstructed envelopes with the envelopes of the stimuli, a higher correlation between the envelopes of the attended sound is observed. Most of the studies focused on speech listening, and only a few studies investigated the performances and the mechanisms of auditory attention decoding during music listening. In the present study, auditory attention detection (AAD) techniques that have been proven successful for speech listening were applied to a situation where the listener is actively listening to music concomitant with a distracting sound. Results show that AAD can be successful fo",
       "doi": "10.1109/tnsre.2023.3291239",
       "pmid": "37390005",
@@ -574,6 +625,29 @@
       }
     },
     {
+      "title": "Alpha band modulation caused by selective attention to music enables EEG classification",
+      "author": "Kana Mizokuchi, Toshihisa Tanaka, Takashi G. Sato, Yoshifumi Shiraki",
+      "venue": "Cognitive Neurodynamics",
+      "year": 2023,
+      "url": "https://doi.org/10.1007/s11571-023-09955-x",
+      "cited_by": 16,
+      "abstract": "Humans are able to pay selective attention to music or speech in the presence of multiple sounds. It has been reported that in the speech domain, selective attention enhances the cross-correlation between the envelope of speech and electroencephalogram (EEG) while also affecting the spatial modulation of the alpha band. However, when multiple music pieces are performed at the same time, it is unclear how selective attention affects neural entrainment and spatial modulation. In this paper, we hypothesized that the entrainment to the attended music differs from that to the unattended music and that spatial modulation in the alpha band occurs in conjunction with attention. We conducted experiments in which we presented musical excerpts to 15 participants, each listening to two excerpts simultaneously but paying attention to one of the two. The results showed that the cross-correlation function between the EEG signal and the envelope of the unattended melody had a more prominent peak than ",
+      "doi": "10.1007/s11571-023-09955-x",
+      "pmid": "38826648",
+      "openalex_id": "W4362701120",
+      "source_doi": "10.1088/1741-2560/11/2/026009",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5936431494355202,
+        "similarity_score": 0.5139767527580261,
+        "citation_text_length": 1217,
+        "dataset_text_length": 2250,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Decoding Music Attention from “EEG Headphones”: A User-Friendly Auditory Brain-Computer Interface",
       "author": "Winko W. An, Barbara Shinn‐Cunningham, Hannes Gamper, Dimitra Emmanouilidou, David Johnston, Mihai Jalobeanu, Edward Cutrell, Andrew D. Wilson, Kuan-Jung Chiang, Ivan Tashev",
       "venue": "ICASSP 2021 - 2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)",
@@ -614,29 +688,6 @@
         "confidence_score": 0.6903622150421143,
         "similarity_score": 0.6903622150421143,
         "citation_text_length": 221,
-        "dataset_text_length": 2250,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Alpha band modulation caused by selective attention to music enables EEG classification",
-      "author": "Kana Mizokuchi, Toshihisa Tanaka, Takashi G. Sato, Yoshifumi Shiraki",
-      "venue": "Cognitive Neurodynamics",
-      "year": 2023,
-      "url": "https://doi.org/10.1007/s11571-023-09955-x",
-      "cited_by": 15,
-      "abstract": "Humans are able to pay selective attention to music or speech in the presence of multiple sounds. It has been reported that in the speech domain, selective attention enhances the cross-correlation between the envelope of speech and electroencephalogram (EEG) while also affecting the spatial modulation of the alpha band. However, when multiple music pieces are performed at the same time, it is unclear how selective attention affects neural entrainment and spatial modulation. In this paper, we hypothesized that the entrainment to the attended music differs from that to the unattended music and that spatial modulation in the alpha band occurs in conjunction with attention. We conducted experiments in which we presented musical excerpts to 15 participants, each listening to two excerpts simultaneously but paying attention to one of the two. The results showed that the cross-correlation function between the EEG signal and the envelope of the unattended melody had a more prominent peak than ",
-      "doi": "10.1007/s11571-023-09955-x",
-      "pmid": "38826648",
-      "openalex_id": "W4362701120",
-      "source_doi": "10.1088/1741-2560/11/2/026009",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5936431494355202,
-        "similarity_score": 0.5139767527580261,
-        "citation_text_length": 1217,
         "dataset_text_length": 2250,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1379,6 +1430,29 @@
       }
     },
     {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 2,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1088/1741-2560/11/2/026009",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5678984159231186,
+        "similarity_score": 0.49168694019317627,
+        "citation_text_length": 1324,
+        "dataset_text_length": 2250,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Correlation of EEG Responses Reflects Structural Similarity of Choruses in Popular Music",
       "author": "N.R. Rajagopalan, Blair Kaneshiro",
       "venue": "n/a",
@@ -1473,7 +1547,7 @@
     {
       "title": "The ear: Gateway to the brain. Exploring the Feasibility of a novel in-ear electroencephalography device in an auditory brain-computer interface",
       "author": "Rami Saab",
-      "venue": "TSpace",
+      "venue": "TSpace (University of Toronto)",
       "year": 2018,
       "url": "n/a",
       "cited_by": 1,
@@ -1485,9 +1559,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6036351442337037,
-        "similarity_score": 0.5487592220306396,
-        "citation_text_length": 1198,
+        "confidence_score": 0.6072526991367341,
+        "similarity_score": 0.5520479083061218,
+        "citation_text_length": 1222,
         "dataset_text_length": 2250,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1542,7 +1616,7 @@
     {
       "title": "Deep Neural Networks on EEG Signals to Predict Auditory Attention Score Using Gramian Angular Difference Field",
       "author": "Mahak Kothari, Shreyansh Joshi, Adarsh Nandanwar, Aadetya Jaiswal, Veeky Baths",
-      "venue": "arXiv (Cornell University)",
+      "venue": "ArXiv.org",
       "year": 2021,
       "url": "https://doi.org/10.48550/arxiv.2110.12503",
       "cited_by": 1,
@@ -1554,32 +1628,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5913658797740936,
-        "similarity_score": 0.512005090713501,
-        "citation_text_length": 1253,
-        "dataset_text_length": 2250,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod L'evy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "n/a",
-      "year": 2026,
-      "url": "n/a",
-      "cited_by": 1,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1088/1741-2560/11/2/026009",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5698508825898171,
-        "similarity_score": 0.4933773875236511,
-        "citation_text_length": 1325,
+        "confidence_score": 0.5877374213933945,
+        "similarity_score": 0.5088635683059692,
+        "citation_text_length": 1236,
         "dataset_text_length": 2250,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1701,6 +1752,29 @@
       }
     },
     {
+      "title": "Effects of Raga Kirwani on EEG Microstates: An Inquiry of Brain Network Dynamics",
+      "author": "Rupam Banerjee, Debashina Das, Anwesha Chakrabarti",
+      "venue": "NeuroRegulation",
+      "year": 2026,
+      "url": "https://doi.org/10.15540/nr.13.2.127",
+      "cited_by": 0,
+      "abstract": "The raga system of Indian classical music has long been associated with emotional and cognitive regulations, but its effect on large-scale brain networks is still not adequately explored. This study sought to examine the impact of Raga Kirwani on resting-state brain dynamics using EEG microstate analysis. A within-subject approach was utilized with 10 healthy adult volunteers (M = 20.5 years, SD = 3.32). EEG data were acquired prior to and after a 5-min listening session of Raga Kirwani. Microstate characteristics, such as mean duration, occurrence, coverage, global explained variance (GEV), and transition probabilities, were obtained using the MICROSTATE toolbox in EEGLAB. Results indicated a decline in coverage of microstate B, reduced transition from C to B, and increased transition from C to D—a reduction in visual-spatial processing and an increase in executive activities. Although early, these findings offer basic evidence that Indian classical music may in fact function as a cul",
+      "doi": "10.15540/nr.13.2.127",
+      "pmid": null,
+      "openalex_id": "W7166552121",
+      "source_doi": "10.1088/1741-2560/11/2/026009",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5523345489799977,
+        "similarity_score": 0.47821173071861267,
+        "citation_text_length": 1184,
+        "dataset_text_length": 2250,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "BNCI 2015-006 Music BCI dataset",
       "author": "M S Treder, H Purwins, D Miklody, I Sturm, B Blankertz",
       "venue": "UC San Diego",
@@ -1772,7 +1846,7 @@
     {
       "title": "A Novel Combination of Natural Language Processing and Brain Computer Interface in a Communication System",
       "author": "Maryam Fallah",
-      "venue": "TSpace",
+      "venue": "TSpace (University of Toronto)",
       "year": 2019,
       "url": "n/a",
       "cited_by": 0,
@@ -1784,9 +1858,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4800203919410706,
-        "similarity_score": 0.4363821744918823,
-        "citation_text_length": 1163,
+        "confidence_score": 0.48066856861114504,
+        "similarity_score": 0.43697142601013184,
+        "citation_text_length": 1187,
         "dataset_text_length": 2250,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1956,17 +2030,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:45:44.914905+00:00",
+    "scoring_date": "2026-07-15T00:09:39.554564+00:00",
     "dataset_text_length": 2250,
-    "num_citations_scored": 84,
+    "num_citations_scored": 85,
     "summary_stats": {
-      "mean_confidence": 0.5707148490846158,
-      "median_confidence": 0.57918221950531,
-      "std_confidence": 0.09287518918365882,
+      "mean_confidence": 0.5704831373954522,
+      "median_confidence": 0.5790032386779785,
+      "std_confidence": 0.09234877250516278,
       "min_confidence": 0.3431914746761322,
       "max_confidence": 0.9520788815617562,
       "high_confidence_count": 4,
-      "medium_confidence_count": 77,
+      "medium_confidence_count": 78,
       "low_confidence_count": 3
     }
   }

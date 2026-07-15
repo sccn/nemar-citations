@@ -1,24 +1,63 @@
 {
   "dataset_id": "nm000271",
-  "num_citations": 2,
-  "date_last_updated": "2026-06-18T23:24:39.965323+00:00",
+  "num_citations": 3,
+  "date_last_updated": "2026-07-03T15:23:18.414546+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-18T23:24:39.965323+00:00",
+    "fetch_date": "2026-07-03T15:23:18.414546+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1038/s41597-025-06147-6",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "A multi-paradigm EEG dataset for studying upper limb rehabilitation exercises",
+        "paper_year": 2025,
+        "paper_venue": "Scientific Data",
+        "reason": "The candidate paper's title and abstract explicitly describe the construction and release of this specific multi-paradigm EEG dataset for upper limb rehabilitation.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000271",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1038/s41597-025-06147-6",
+      "10.82901/nemar.nm000271"
+    ],
+    "keywords": [
+      "EEG",
+      "motor imagery",
+      "upper limb rehabilitation",
+      "brain-computer interfaces",
+      "Electroencephalography",
+      "Motor Cortex"
+    ],
+    "methods_description": "Scalp EEG recordings were acquired while participants performed or imagined upper-limb rehabilitation exercises under a multi-paradigm protocol. The dataset includes motor imagery task data (task-imagery) organized in BIDS format across 28 subjects.",
+    "funding": [],
     "searched_accessions": [
       "nm000271"
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 2
+    "num_datapaper_citations": 3
   },
   "citation_details": [
     {
@@ -66,21 +105,44 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Disentangling Confusable Actions in Multimodal HAR: A Stability-driven Feature Selection Framework for EEG and EMG-IMU",
+      "author": "Le Hoang Nhat Do, Ngoc Tuong Vy Le, Quoc Thai Le, Q. Trinh, Phi Hoai Nguyen, Nhat Ngoc Nguyen, N. Le",
+      "venue": "2026 International Conference on Activity and Behavior Computing (ABC)",
+      "year": 2026,
+      "url": "https://doi.org/10.1109/ABC68169.2026.11567137",
+      "cited_by": 0,
+      "abstract": null,
+      "doi": "10.1109/ABC68169.2026.11567137",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-025-06147-6",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5750959396362305,
+        "similarity_score": 0.5477104187011719,
+        "citation_text_length": 315,
+        "dataset_text_length": 2488,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:30:43.414979+00:00",
+    "scoring_date": "2026-07-15T00:15:55.964598+00:00",
     "dataset_text_length": 2488,
-    "num_citations_scored": 2,
+    "num_citations_scored": 3,
     "summary_stats": {
-      "mean_confidence": 0.6891161650419235,
-      "median_confidence": 0.6891161650419235,
-      "std_confidence": 0.3108838349580765,
+      "mean_confidence": 0.6511094232400259,
+      "median_confidence": 0.5750959396362305,
+      "std_confidence": 0.25946392954889236,
       "min_confidence": 0.37823233008384705,
       "max_confidence": 1.0,
       "high_confidence_count": 1,
-      "medium_confidence_count": 0,
+      "medium_confidence_count": 1,
       "low_confidence_count": 1
     }
   }

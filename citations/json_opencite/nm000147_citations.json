@@ -1,44 +1,135 @@
 {
   "dataset_id": "nm000147",
-  "num_citations": 5,
-  "date_last_updated": "2026-06-18T23:19:10.414731+00:00",
+  "num_citations": 4,
+  "date_last_updated": "2026-07-03T11:23:34.769371+00:00",
   "metadata": {
     "total_cumulative_citations": 2,
-    "fetch_date": "2026-06-18T23:19:10.414731+00:00",
+    "fetch_date": "2026-07-03T11:23:34.769371+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
-    "fetch_status": "success",
+    "fetch_status": "partial",
     "anchor_count": 3,
-    "anchor_errors": {},
+    "anchor_errors": {
+      "10.1101/2025.04.29.651259": "not_found"
+    },
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1101/2025.04.29.651259",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.1038/s41597-026-07215-1",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "The Brain, Body, and Behavior Dataset (BBBD): Multimodal Recordings during Educational Videos",
+        "paper_year": 2025,
+        "paper_venue": "Scientific Data",
+        "reason": "The candidate paper title and abstract explicitly describe the 'Brain, Body, and Behavior Dataset (BBBD)' and its multimodal recordings, which is the dataset represented by nm000147.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000147",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1101/2025.04.29.651259",
+      "10.1038/s41597-026-07215-1",
+      "10.82901/nemar.nm000147"
+    ],
+    "keywords": [
+      "EEG",
+      "eye tracking",
+      "attention",
+      "learning",
+      "educational videos",
+      "multimodal neuroimaging",
+      "physiological signals",
+      "cardiac",
+      "respiration",
+      "ECG",
+      "cognitive engagement"
+    ],
+    "methods_description": "Data collection involved simultaneous recording of EEG, EOG, ECG, respiration, pupillary responses, gaze coordinates, and head position during two sessions: an attentive condition with post-video comprehension testing (Session 1) and a distracted condition with concurrent backward counting task (Session 2). EEG data were recorded in BDF format; physiological and eye-tracking data were converted to compressed TSV format using MATLAB-based processing pipelines.",
+    "funding": [
+      {
+        "funder_name": "National Science Foundation",
+        "award_number": "DRL-1660548"
+      },
+      {
+        "funder_name": "National Science Foundation",
+        "award_number": "DRL-2201835"
+      }
+    ],
     "searched_accessions": [
       "nm000147"
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 5
+    "num_datapaper_citations": 4
   },
   "citation_details": [
     {
       "title": "Attentional state, not trait, predicts test performance in video-based learning",
       "author": "Jens Madsen, Lucas C. Parra",
-      "venue": "iScience",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
       "year": 2025,
-      "url": "https://doi.org/10.1016/j.isci.2025.113622",
+      "url": "https://doi.org/10.1101/2025.05.02.651980",
       "cited_by": 2,
-      "abstract": "Poor academic performance is often linked to attention deficits, but it remains unclear whether these reflect enduring traits or momentary lapses in focus. In this study, we examined how state and trait-level attention relate to learning from short educational videos. Across four experiments (N = 152), participants completed standardized assessments of inattention, hyperactivity, working memory capacity, and GPA. They then viewed 3-6-minute educational videos while electroencephalography (EEG) tracked neural responses, followed by quizzes assessing short-term retention. Neural synchrony during video viewing, a measure of attentional state, strongly predicted test performance (p < 0.001). In contrast, trait inattention did not predict retention (p > 0.05), although it was negatively associated with GPA. Attentional state was positively associated with working memory capacity but not with trait inattention. These findings suggest that students with attentional difficulties can still lear",
-      "doi": "10.1016/j.isci.2025.113622",
+      "abstract": "Summary Poor academic performance is often linked to attention deficits, but it remains unclear whether these reflect enduring traits or momentary lapses in focus. In this study, we examined how state and trait-level attention relate to learning from short educational videos. Across four experiments (N = 152), participants completed standardized assessments of inattention, hyperactivity, working memory capacity, and GPA. They then viewed 3-6-minute educational videos while electroencephalography (EEG) tracked neural responses, followed by quizzes assessing short-term retention. Neural synchrony during video viewing, a measure of attentional state, strongly predicted test performance (p &lt; 0.001). In contrast, trait inattention did not predict retention (p &gt; 0.05), although it was negatively associated with GPA. Attentional state was positively associated with working memory capacity but not with trait inattention. These findings suggest that students with attentional difficulties ",
+      "doi": "10.1101/2025.05.02.651980",
       "pmid": "41126884",
-      "openalex_id": null,
-      "source_doi": "10.1101/2025.04.29.651259",
-      "source_relation": "References",
+      "openalex_id": "W4410089733",
+      "source_doi": "10.1038/s41597-026-07215-1",
+      "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.582284751534462,
-        "similarity_score": 0.5041426420211792,
-        "citation_text_length": 1153,
+        "confidence_score": 0.5872482204437257,
+        "similarity_score": 0.5084400177001953,
+        "citation_text_length": 1184,
+        "dataset_text_length": 2289,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "The Brain, Body, and Behaviour Dataset (1.0.0) - Experiment 4",
+      "author": "Jens Madsen, Nikhil Kuppa, Lucas Parra",
+      "venue": "UC San Diego",
+      "year": 2026,
+      "url": "https://doi.org/10.82901/nemar.nm000147.v1.0.0",
+      "cited_by": 0,
+      "abstract": "The Brain, Body, and Behaviour Dataset (Experiment 4) is a multimodal neurophysiological dataset comprising simultaneous recordings of EEG, eye-tracking, cardiac, respiratory, and electrooculographic signals from 43 subjects across two sessions. Participants watched three educational videos (Stim-04, Stim-05, Stim-06) under two attention conditions. In Session 1 (attentive condition), participants viewed the videos and answered comprehension questions afterward. In Session 2 (distracted condition), participants viewed the same three videos in the same order while performing a concurrent backward counting task, with no comprehension testing. This derivative dataset supports investigation of neural and behavioral correlates of attention, learning, and cognitive load during naturalistic video viewing.",
+      "doi": "10.82901/nemar.nm000147.v1.0.0",
+      "pmid": null,
+      "openalex_id": "W7165028704",
+      "source_doi": "10.1038/s41597-026-07215-1",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8594646602869035,
+        "similarity_score": 0.744125247001648,
+        "citation_text_length": 959,
         "dataset_text_length": 2289,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -55,8 +146,8 @@
       "doi": "10.1109/SCSE70081.2026.11499773",
       "pmid": null,
       "openalex_id": null,
-      "source_doi": "10.1101/2025.04.29.651259",
-      "source_relation": "References",
+      "source_doi": "10.1038/s41597-026-07215-1",
+      "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 0.5847682759165764,
@@ -78,8 +169,8 @@
       "doi": "10.1109/SCSE70081.2026.11499902",
       "pmid": null,
       "openalex_id": null,
-      "source_doi": "10.1101/2025.04.29.651259",
-      "source_relation": "References",
+      "source_doi": "10.1038/s41597-026-07215-1",
+      "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 0.5142809316515924,
@@ -89,67 +180,21 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "The Brain, Body, and Behaviour Dataset (1.0.0) - Experiment 4",
-      "author": "Madsen, Jens, Kuppa, Nikhil, Parra, Lucas",
-      "venue": "UC San Diego",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000147.v1.0.0",
-      "cited_by": 0,
-      "abstract": "The Brain, Body, and Behaviour Dataset (Experiment 4) is a multimodal neurophysiological dataset comprising simultaneous recordings of EEG, eye-tracking, cardiac, respiratory, and electrooculographic signals from 43 subjects across two sessions. Participants watched three educational videos (Stim-04, Stim-05, Stim-06) under two attention conditions. In Session 1 (attentive condition), participants viewed the videos and answered comprehension questions afterward. In Session 2 (distracted condition), participants viewed the same three videos in the same order while performing a concurrent backward counting task, with no comprehension testing. This derivative dataset supports investigation of neural and behavioral correlates of attention, learning, and cognitive load during naturalistic video viewing.",
-      "doi": "10.82901/nemar.nm000147.v1.0.0",
-      "pmid": null,
-      "openalex_id": "W7165028704",
-      "source_doi": "10.1038/s41597-026-07215-1",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.8597993767261506,
-        "similarity_score": 0.7444150447845459,
-        "citation_text_length": 962,
-        "dataset_text_length": 2289,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Attentional state, not trait, predicts test performance in video-based learning",
-      "author": "Jens Madsen, Lucas C. Parra",
-      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
-      "year": 2025,
-      "url": "https://doi.org/10.1101/2025.05.02.651980",
-      "cited_by": 0,
-      "abstract": "Summary Poor academic performance is often linked to attention deficits, but it remains unclear whether these reflect enduring traits or momentary lapses in focus. In this study, we examined how state and trait-level attention relate to learning from short educational videos. Across four experiments (N = 152), participants completed standardized assessments of inattention, hyperactivity, working memory capacity, and GPA. They then viewed 3-6-minute educational videos while electroencephalography (EEG) tracked neural responses, followed by quizzes assessing short-term retention. Neural synchrony during video viewing, a measure of attentional state, strongly predicted test performance (p &lt; 0.001). In contrast, trait inattention did not predict retention (p &gt; 0.05), although it was negatively associated with GPA. Attentional state was positively associated with working memory capacity but not with trait inattention. These findings suggest that students with attentional difficulties ",
-      "doi": "10.1101/2025.05.02.651980",
-      "pmid": null,
-      "openalex_id": "W4410089733",
-      "source_doi": "10.1038/s41597-026-07215-1",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5872482204437257,
-        "similarity_score": 0.5084400177001953,
-        "citation_text_length": 1184,
-        "dataset_text_length": 2289,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:27:15.980207+00:00",
+    "scoring_date": "2026-07-15T00:06:12.158552+00:00",
     "dataset_text_length": 2289,
-    "num_citations_scored": 5,
+    "num_citations_scored": 4,
     "summary_stats": {
-      "mean_confidence": 0.6256763112545014,
-      "median_confidence": 0.5847682759165764,
-      "std_confidence": 0.12021277249629193,
+      "mean_confidence": 0.6364405220746996,
+      "median_confidence": 0.5860082481801511,
+      "std_confidence": 0.1320536210412421,
       "min_confidence": 0.5142809316515924,
-      "max_confidence": 0.8597993767261506,
+      "max_confidence": 0.8594646602869035,
       "high_confidence_count": 1,
-      "medium_confidence_count": 4,
+      "medium_confidence_count": 3,
       "low_confidence_count": 0
     }
   }

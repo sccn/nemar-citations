@@ -1,24 +1,77 @@
 {
   "dataset_id": "nm000254",
-  "num_citations": 42,
-  "date_last_updated": "2026-06-18T23:24:18.859258+00:00",
+  "num_citations": 44,
+  "date_last_updated": "2026-07-03T14:24:50.903845+00:00",
   "metadata": {
-    "total_cumulative_citations": 174,
-    "fetch_date": "2026-06-18T23:24:18.859258+00:00",
+    "total_cumulative_citations": 190,
+    "fetch_date": "2026-07-03T14:24:50.903845+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1038/s41597-023-02458-8",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "An open-access dataset of naturalistic viewing using simultaneous EEG-fMRI",
+        "paper_year": 2023,
+        "paper_venue": "Scientific Data",
+        "reason": "The candidate paper's title and abstract explicitly state that it presents and describes the open-access dataset combining simultaneous EEG-fMRI recordings.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000254",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1038/s41597-023-02458-8",
+      "10.82901/nemar.nm000254"
+    ],
+    "keywords": [
+      "EEG",
+      "fMRI",
+      "simultaneous EEG-fMRI",
+      "naturalistic viewing",
+      "eye tracking",
+      "hemodynamics",
+      "brain function",
+      "multimodal neuroimaging",
+      "simultaneous recording",
+      "naturalistic stimuli"
+    ],
+    "methods_description": "Data were collected using simultaneous EEG-fMRI acquisition with a customized Brain Products BrainCapMR 64-channel system. Eye tracking was performed using EyeLink 1000 inside the scanner. Physiological monitoring included respiratory recordings via BIOPAC MP150. Participants completed behavioral assessments including the Pittsburgh Sleep Quality Index, sleep duration, and caffeine intake prior to scanning.",
+    "funding": [
+      {
+        "funder_name": "NIH",
+        "award_number": "R24MH114806",
+        "award_title": "BRAIN Initiative Grant"
+      },
+      {
+        "funder_name": "National Institute of Mental Health",
+        "award_number": "P50MH109429"
+      }
+    ],
     "searched_accessions": [
       "nm000254"
     ],
     "num_accession_mentions": 1,
     "num_dataset_citations": 1,
-    "num_datapaper_citations": 41
+    "num_datapaper_citations": 43
   },
   "citation_details": [
     {
@@ -27,7 +80,7 @@
       "venue": "Nature Neuroscience",
       "year": 2025,
       "url": "https://doi.org/10.1038/s41593-025-01945-y",
-      "cited_by": 44,
+      "cited_by": 50,
       "abstract": null,
       "doi": "10.1038/s41593-025-01945-y",
       "pmid": "40335772",
@@ -50,7 +103,7 @@
       "venue": "Trans. Mach. Learn. Res.",
       "year": 2023,
       "url": "https://doi.org/10.48550/arXiv.2307.10246",
-      "cited_by": 34,
+      "cited_by": 35,
       "abstract": "Can artificial intelligence unlock the secrets of the human brain? How do the inner mechanisms of deep learning models relate to our neural circuits? Is it possible to enhance AI by tapping into the power of brain recordings? These captivating questions lie at the heart of an emerging field at the intersection of neuroscience and artificial intelligence. Our survey dives into this exciting domain, focusing on human brain recording studies and cutting-edge cognitive neuroscience datasets that capture brain activity during natural language processing, visual perception, and auditory experiences. We explore two fundamental approaches: encoding models, which attempt to generate brain activity patterns from sensory inputs; and decoding models, which aim to reconstruct our thoughts and perceptions from neural signals. These techniques not only promise breakthroughs in neurological diagnostics and brain-computer interfaces but also offer a window into the very nature of cognition. In this sur",
       "doi": "10.48550/arXiv.2307.10246",
       "pmid": null,
@@ -119,7 +172,7 @@
       "venue": "Advances in Neural Information Processing Systems 37",
       "year": 2024,
       "url": "https://doi.org/10.52202/079017-3060",
-      "cited_by": 14,
+      "cited_by": 15,
       "abstract": "We present the Brain Treebank, a large-scale dataset of electrophysiological neural responses, recorded from intracranial probes while 10 subjects watched one or more Hollywood movies. Subjects watched on average 2.6 Hollywood movies, for an average viewing time of 4.3 hours, and a total of 43 hours. The audio track for each movie was transcribed with manual corrections. Word onsets were manually annotated on spectrograms of the audio track for each movie. Each transcript was automatically parsed and manually corrected into the universal dependencies (UD) formalism, assigning a part of speech to every word and a dependency parse to every sentence. In total, subjects heard over 38,000 sentences (223,000 words), while they had on average 168 electrodes implanted. This is the largest dataset of intracranial recordings featuring grounded naturalistic language, one of the largest English UD treebanks in general, and one of only a few UD treebanks aligned to multimodal features. We hope that",
       "doi": "10.52202/079017-3060",
       "pmid": null,
@@ -160,6 +213,52 @@
       }
     },
     {
+      "title": "Omni-fMRI: A Universal Atlas-Free fMRI Foundation Model",
+      "author": "Mo Wang, Wenhao Ye, Junfeng Xia, Junxiang Zhang, Xuanye Pan, Minghao Xu, Haotian Deng, Hongkai Wen, Quanying Liu",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2601.23090",
+      "cited_by": 6,
+      "abstract": "Self-supervised fMRI foundation models have shown promising transfer performance, yet most rely on predefined region-level parcellations that discard fine-grained voxel information and introduce atlas-dependent biases. We propose Omni-fMRI, an atlas-free foundation model that operates directly on voxel-level signals. To enable scalable pretraining on 49,497 fMRI sessions across nine datasets, Omni-fMRI introduces a dynamic patching mechanism that substantially reduces computational cost while preserving informative spatial structure. To support reproducibility and fair comparison, we establish a comprehensive benchmark suite spanning 11 datasets and a diverse set of resting-state and task-based fMRI tasks. Experimental results demonstrate that Omni-fMRI consistently outperforms existing foundation models, providing a scalable and reproducible framework for atlas-free brain representation learning. Code and logs are available.",
+      "doi": "10.48550/arXiv.2601.23090",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02458-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.46576301962137223,
+        "similarity_score": 0.4032580256462097,
+        "citation_text_length": 1150,
+        "dataset_text_length": 2482,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Brain-DiT: A Universal Multi-state fMRI Foundation Model with Metadata-Conditioned Pretraining",
+      "author": "Junfeng Xia, Wenhao Ye, Xuanye Pan, Xinke Shen, Mo Wang, Quanying Liu",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2604.12683",
+      "cited_by": 5,
+      "abstract": "Current fMRI foundation models primarily rely on a limited range of brain states and mismatched pretraining tasks, restricting their ability to learn generalized representations across diverse brain states. We present Brain-DiT, a universal multi-state fMRI foundation model pretrained on 349,898 sessions from 24 datasets spanning resting, task, naturalistic, disease, and sleep states. Unlike prior fMRI foundation models that rely on masked reconstruction in the raw-signal space or a latent space, Brain-DiT adopts metadata-conditioned diffusion pretraining with a Diffusion Transformer (DiT), enabling the model to learn multi-scale representations that capture both fine-grained functional structure and global semantics. Across extensive evaluations and ablations on 7 downstream tasks, we find consistent evidence that diffusion-based generative pretraining is a stronger proxy than reconstruction or alignment, with metadata-conditioned pretraining further improving downstream performance b",
+      "doi": "10.48550/arXiv.2604.12683",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02458-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5090324512124063,
+        "similarity_score": 0.44072073698043823,
+        "citation_text_length": 1207,
+        "dataset_text_length": 2482,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Beyond the Surface: Revealing the Depths of Brain Activity by Predicting fMRI from EEG with Deep Learning",
       "author": "Ilia Semenkov, P. D. Rudych, Alexei Ossadtchi",
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
@@ -184,7 +283,7 @@
     },
     {
       "title": "A Feasibility Study of Task-Based fMRI at 0.55 T",
-      "author": "Parsa Razmara, Takfarinas Medani, Anand A. Joshi, Majid Abbasi Sisara, Ye Tian, Sophia X Cui, J. Haldar, Krishna S. Nayak, Richard M. Leahy",
+      "author": "Parsa Razmara, Takfarinas Medani, Anand A Joshi, Majid Abbasi Sisara, Ye Tian, Sophia X Cui, J. Haldar, Krishna S. Nayak, Richard M. Leahy",
       "venue": "ISMRM Annual Meeting",
       "year": 2025,
       "url": "https://doi.org/10.58530/2025/0491",
@@ -197,55 +296,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5109777925908566,
-        "similarity_score": 0.44240501523017883,
-        "citation_text_length": 1246,
-        "dataset_text_length": 2482,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Brain-DiT: A Universal Multi-state fMRI Foundation Model with Metadata-Conditioned Pretraining",
-      "author": "Junfeng Xia, Wenhao Ye, Xuanye Pan, Xinke Shen, Mo Wang, Quanying Liu",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2604.12683",
-      "cited_by": 3,
-      "abstract": "Current fMRI foundation models primarily rely on a limited range of brain states and mismatched pretraining tasks, restricting their ability to learn generalized representations across diverse brain states. We present \\textit{Brain-DiT}, a universal multi-state fMRI foundation model pretrained on 349,898 sessions from 24 datasets spanning resting, task, naturalistic, disease, and sleep states. Unlike prior fMRI foundation models that rely on masked reconstruction in the raw-signal space or a latent space, \\textit{Brain-DiT} adopts metadata-conditioned diffusion pretraining with a Diffusion Transformer (DiT), enabling the model to learn multi-scale representations that capture both fine-grained functional structure and global semantics. Across extensive evaluations and ablations on 7 downstream tasks, we find consistent evidence that diffusion-based generative pretraining is a stronger proxy than reconstruction or alignment, with metadata-conditioned pretraining further improving downst",
-      "doi": "10.48550/arXiv.2604.12683",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02458-8",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5088617196679116,
-        "similarity_score": 0.44057291746139526,
-        "citation_text_length": 1207,
-        "dataset_text_length": 2482,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Omni-fMRI: A Universal Atlas-Free fMRI Foundation Model",
-      "author": "Mo Wang, Wenhao Ye, Junfeng Xia, Junxiang Zhang, Xuanye Pan, Minghao Xu, Haotian Deng, Hongkai Wen, Quanying Liu",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2601.23090",
-      "cited_by": 3,
-      "abstract": "Self-supervised fMRI foundation models have shown promising transfer performance, yet most rely on predefined region-level parcellations that discard fine-grained voxel information and introduce atlas-dependent biases. We propose Omni-fMRI, an atlas-free foundation model that operates directly on voxel-level signals. To enable scalable pretraining on 49,497 fMRI sessions across nine datasets, Omni-fMRI introduces a dynamic patching mechanism that substantially reduces computational cost while preserving informative spatial structure. To support reproducibility and fair comparison, we establish a comprehensive benchmark suite spanning 11 datasets and a diverse set of resting-state and task-based fMRI tasks. Experimental results demonstrate that Omni-fMRI consistently outperforms existing foundation models, providing a scalable and reproducible framework for atlas-free brain representation learning. Code and logs are available.",
-      "doi": "10.48550/arXiv.2601.23090",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02458-8",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.46576301962137223,
-        "similarity_score": 0.4032580256462097,
-        "citation_text_length": 1150,
+        "confidence_score": 0.5097590585052968,
+        "similarity_score": 0.4413498342037201,
+        "citation_text_length": 1245,
         "dataset_text_length": 2482,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -361,6 +414,29 @@
         "confidence_score": 0.6105384814739229,
         "similarity_score": 0.5286047458648682,
         "citation_text_length": 1356,
+        "dataset_text_length": 2482,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "BrainWorld: A Structural-Prior-Conditioned Generative Model for Whole-Brain 4D fMRI Dynamics",
+      "author": "Junfeng Xia, Wenhao Ye, Junxiang Zhang, Xuanye Pan, Mo Wang, Quanying Liu",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 2,
+      "abstract": "Whole-brain 4D fMRI generation is valuable for modeling functional brain dynamics, yet existing fMRI foundation models mainly target representation learning and downstream prediction rather than conditional predictive generation. We introduce BrainWorld, a structural-prior-conditioned generative model for whole-brain 4D fMRI dynamics. BrainWorld uses sMRI as subject-level anatomical context to guide future fMRI generation, integrating structural information into the denoising process rather than treating it as a parallel modality. Evaluated on 22 datasets spanning diverse cohorts and brain states, BrainWorld generates stable 4D fMRI trajectories up to 400 frames, improves downstream performance through generated-example augmentation, and learns transferable multimodal representations that outperform baselines. Together, these results establish BrainWorld as a condition-aware generative framework for long-horizon brain dynamics modeling and multimodal representation learning.",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02458-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4980738955736161,
+        "similarity_score": 0.4312328100204468,
+        "citation_text_length": 1196,
         "dataset_text_length": 2482,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -551,8 +627,31 @@
       }
     },
     {
+      "title": "Behavioural and neural signatures across diverse cognitive demands in a multimodal electroencephalography-functional magnetic resonance imaging design",
+      "author": "K. Hiromitsu, S. Chiyohara, T. Asai, A. Katayama, M. Wakabayashi, H. Imamizu",
+      "venue": "bioRxiv",
+      "year": 2026,
+      "url": "https://doi.org/10.64898/2026.05.24.727533",
+      "cited_by": 1,
+      "abstract": null,
+      "doi": "10.64898/2026.05.24.727533",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02458-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.640811562538147,
+        "similarity_score": 0.6102967262268066,
+        "citation_text_length": 260,
+        "dataset_text_length": 2482,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Feasibility of simultaneous EEG-fMRI at 0.55 T: Recording, Denoising, and Functional Mapping",
-      "author": "Parsa Razmara, Takfarinas Medani, Majid Abbasi Sisara, Anand A. Joshi, Rui Chen, Woojae Jeong, Ye Tian, Krishna S. Nayak, Richard M. Leahy",
+      "author": "Parsa Razmara, Takfarinas Medani, Majid Abbasi Sisara, Anand A Joshi, Rui Chen, Woojae Jeong, Ye Tian, Krishna S. Nayak, Richard M. Leahy",
       "venue": "n/a",
       "year": 2026,
       "url": "n/a",
@@ -565,9 +664,32 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.7087056773900987,
-        "similarity_score": 0.6135979890823364,
-        "citation_text_length": 1272,
+        "confidence_score": 0.709181935787201,
+        "similarity_score": 0.6140103340148926,
+        "citation_text_length": 1271,
+        "dataset_text_length": 2482,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Comparing aperiodic brain activity between eyes open rest and dynamic visual input using magnetoencephalography",
+      "author": "Tzu‐Yu Hsu, Ko-Ping Chou, Yi-Ju Liu, Niall W. Duncan",
+      "venue": "NeuroImage",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.neuroimage.2026.122093",
+      "cited_by": 0,
+      "abstract": "Inscapes is a low demand abstract animation used as an alternative to eyes open rest in neuroimaging studies, particularly with paediatric and clinical populations prone to head motion. Although prior work has established that functional connectivity patterns during Inscapes closely resemble those during rest, no study has examined whether the two conditions differ in aperiodic neural activity, a broadband feature of the power spectrum linked to excitation/inhibition balance. Here we used magnetoencephalography (MEG) in 54 healthy adults to compare spectrally parameterised aperiodic and periodic measures between eyes open rest and Inscapes viewing (visual component only, without audio). At the sensor level, both the aperiodic exponent and offset were significantly higher during rest than during Inscapes across widespread frontoparietal and occipital distributions in both magnetometers and gradiometers. Source level analyses at both the parcellation and vertex levels largely supported t",
+      "doi": "10.1016/j.neuroimage.2026.122093",
+      "pmid": "42379400",
+      "openalex_id": "W7166743145",
+      "source_doi": "10.1038/s41597-023-02458-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.599403617978096,
+        "similarity_score": 0.5189641714096069,
+        "citation_text_length": 1212,
         "dataset_text_length": 2482,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -712,29 +834,6 @@
       }
     },
     {
-      "title": "Comparing aperiodic brain activity between eyes open rest and dynamic visual input using magnetoencephalography",
-      "author": "Tzu‐Yu Hsu, Ko-Ping Chou, Yi-Ju Liu, Niall W. Duncan",
-      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
-      "year": 2026,
-      "url": "https://doi.org/10.64898/2026.03.28.714956",
-      "cited_by": 0,
-      "abstract": "Abstract Inscapes is a low demand abstract animation used as an alternative to eyes open rest in neuroimaging studies, particularly with pediatric and clinical populations prone to head motion. Although prior work has established that functional connectivity patterns during Inscapes closely resemble those during rest, no study has examined whether the two conditions differ in aperiodic neural activity, a broadband feature of the power spectrum linked to excitation/inhibition balance. Here we used magnetoencephalography (MEG) in 54 healthy adults to compare spectrally parameterised aperiodic and periodic measures between eyes open rest and Inscapes viewing (visual component only, without audio). At the sensor level, both the aperiodic exponent and offset were significantly higher during rest than during Inscapes across widespread frontoparietal and occipital distributions in both magnetometers and gradiometers. Source level analyses at both the parcellation and vertex levels largely sup",
-      "doi": "10.64898/2026.03.28.714956",
-      "pmid": null,
-      "openalex_id": "W7147043503",
-      "source_doi": "10.1038/s41597-023-02458-8",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5890574929118156,
-        "similarity_score": 0.5100064873695374,
-        "citation_text_length": 1241,
-        "dataset_text_length": 2482,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "MedicalBench: Evaluating Large Language Models Towards Improved Medical Concept Extraction",
       "author": "Zhichao Yang, Gregory D. Lyng, Sanjit Singh Batra, Robert E. Tillman",
       "venue": "medRxiv",
@@ -760,7 +859,7 @@
     {
       "title": "Naturalistic viewing: An open-access dataset using simultaneous EEG-fMRI",
       "author": "Qawi K. Telesford, Eduardo Gonzalez-Moreira, Ting Xu, Yiwen Tian, Stanley Colcombe, Jessica Cloud, Brian E. Russ, Arnaud Falchier, Maximilian Nentwich, Jens Madsen, Lucas Parra, Charles Schroeder, Michael Milham, Alexandre Rosa Franco",
-      "venue": "UC San Diego",
+      "venue": "Open MIND",
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.nm000254",
       "cited_by": 0,
@@ -773,8 +872,8 @@
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 1.0,
-        "similarity_score": 0.9187688827514648,
-        "citation_text_length": 900,
+        "similarity_score": 0.9182121753692627,
+        "citation_text_length": 897,
         "dataset_text_length": 2482,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -873,23 +972,23 @@
       }
     },
     {
-      "title": "Behavioural and neural signatures across diverse cognitive demands in a multimodal electroencephalography-functional magnetic resonance imaging design",
-      "author": "K. Hiromitsu, S. Chiyohara, T. Asai, A. Katayama, M. Wakabayashi, H. Imamizu",
-      "venue": "bioRxiv",
+      "title": "Connectivity Estimation using Stochastic Graph Heat Modelling",
+      "author": "S. Goerttler, Min Wu, F. He",
+      "venue": "n/a",
       "year": 2026,
-      "url": "https://doi.org/10.64898/2026.05.24.727533",
+      "url": "n/a",
       "cited_by": 0,
-      "abstract": null,
-      "doi": "10.64898/2026.05.24.727533",
+      "abstract": "A growing number of techniques leverage the spatial structures that underlie many real-world datasets. Despite these advances, the complementary task of estimating spatial structures and understanding their role within these techniques has often been overlooked. In neurophysiological data analysis specifically, numerous methods exist to estimate brain connectivity, but most are not explicitly model-based, dynamic, multivariate, or directed. To address these limitations, we previously introduced noise-driven heat modelling on graphs for neurophysiological connectivity estimation. In this study, we extend this framework by relaxing earlier noise assumptions and adding regularisation to improve robustness. We also develop a simulation procedure to characterise and evaluate our technique in a controlled setting. Finally, we demonstrate that the technique is able to capture meaningful spatial structure across two experiments, each using two real-world datasets. The explicit model formulatio",
+      "doi": null,
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.1038/s41597-023-02458-8",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.640811562538147,
-        "similarity_score": 0.6102967262268066,
-        "citation_text_length": 260,
+        "confidence_score": 0.47034812539815907,
+        "similarity_score": 0.4072278141975403,
+        "citation_text_length": 1130,
         "dataset_text_length": 2482,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -992,17 +1091,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:30:04.392456+00:00",
+    "scoring_date": "2026-07-15T00:15:01.298077+00:00",
     "dataset_text_length": 2482,
-    "num_citations_scored": 42,
+    "num_citations_scored": 44,
     "summary_stats": {
-      "mean_confidence": 0.5728479275710526,
-      "median_confidence": 0.5611420764774084,
-      "std_confidence": 0.14977131328261023,
+      "mean_confidence": 0.569041121815416,
+      "median_confidence": 0.5592749239504338,
+      "std_confidence": 0.14757763993589043,
       "min_confidence": 0.18526847496628762,
       "max_confidence": 1.0,
       "high_confidence_count": 7,
-      "medium_confidence_count": 31,
+      "medium_confidence_count": 33,
       "low_confidence_count": 4
     }
   }

@@ -1,39 +1,81 @@
 {
   "dataset_id": "nm000321",
   "num_citations": 3,
-  "date_last_updated": "2026-06-13T21:42:44.246627+00:00",
+  "date_last_updated": "2026-07-03T15:24:24.019315+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-13T21:42:44.246627+00:00",
+    "fetch_date": "2026-07-03T15:24:24.019315+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.13026/0byy-ry86",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "bigP3BCI: An Open, Diverse and Machine Learning Ready P300-based Brain-Computer Interface Dataset",
+        "paper_year": 2024,
+        "paper_venue": "PhysioNet",
+        "reason": "The candidate paper title and abstract explicitly describe and introduce the 'bigP3BCI' dataset, detailing its contents and purpose.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is a technical standard used by this dataset."
+        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is a technical standard used by this dataset.",
+        "judgment_model": "gemma4:e4b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard for organizing and sharing EEG data, which is a technical specification used by the dataset."
+        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard for organizing and sharing EEG data, which is a technical specification used by the dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000321",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
       }
     ],
+    "searched_dois": [
+      "10.13026/0byy-ry86",
+      "10.82901/nemar.nm000321"
+    ],
+    "keywords": [
+      "E1A-Associated p300 Protein",
+      "brain-computer interface",
+      "EEG",
+      "speller paradigm",
+      "event-related potential",
+      "visual perception"
+    ],
+    "methods_description": "EEG data were acquired using g.USBamp hardware (g.tec) with 32 channels arranged in standard 10-20 montage at 256 Hz sampling rate. The experimental paradigm employed a 6x6 character grid with color intensification stimuli. Each subject completed 3 sessions with target and non-target visual stimuli presented in a laboratory setting with online feedback. Data were processed using HED 8.4.0 event annotations and feature extraction based on P300 ERP detection.",
+    "funding": [],
     "searched_accessions": [
       "nm000321"
     ],
@@ -120,7 +162,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:30:51.709134+00:00",
+    "scoring_date": "2026-07-15T00:16:32.733882+00:00",
     "dataset_text_length": 2461,
     "num_citations_scored": 3,
     "summary_stats": {

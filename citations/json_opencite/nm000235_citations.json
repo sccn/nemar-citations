@@ -1,39 +1,81 @@
 {
   "dataset_id": "nm000235",
   "num_citations": 10,
-  "date_last_updated": "2026-06-18T23:21:59.310352+00:00",
+  "date_last_updated": "2026-07-03T13:25:59.644654+00:00",
   "metadata": {
     "total_cumulative_citations": 10,
-    "fetch_date": "2026-06-18T23:21:59.310352+00:00",
+    "fetch_date": "2026-07-03T13:25:59.644654+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-025-04861-9",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Dataset combining EEG, eye-tracking, and high-speed video for ocular activity analysis across BCI paradigms",
+        "paper_year": 2025,
+        "paper_venue": "Scientific Data",
+        "reason": "The candidate paper's title and abstract explicitly introduce and describe the large, multimodal dataset, matching the content of the dataset's overview.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a technical specification and tool for organizing electrophysiological data into the BIDS format, which is relevant to the dataset's BIDS version."
+        "reason": "The paper describes MNE-BIDS, a technical specification and tool for organizing electrophysiological data into the BIDS format, which is relevant to the dataset's BIDS version.",
+        "judgment_model": "gemma4:e4b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper introduces EEG-BIDS, a standardized structure and set of tools for organizing EEG data, which is a technical specification used in the dataset's file format (BIDS)."
+        "reason": "The paper introduces EEG-BIDS, a standardized structure and set of tools for organizing EEG data, which is a technical specification used in the dataset's file format (BIDS).",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000235",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
       }
     ],
+    "searched_dois": [
+      "10.1038/s41597-025-04861-9",
+      "10.82901/nemar.nm000235"
+    ],
+    "keywords": [
+      "EEG",
+      "motor imagery",
+      "brain-computer interfaces",
+      "eye tracking",
+      "motor control",
+      "multimodal neuroimaging"
+    ],
+    "methods_description": "EEG data were acquired using a Neuroscan Quik-Cap 65-channel system with SynAmps2 amplifier at 1000 Hz sampling rate. Sixty-four EEG channels were recorded using Ag/AgCl sensors in a standard 1005 montage, referenced to the right mastoid (M1) with ground at the forehead. Online high-pass filtering (10 s time constant) was applied. Participants performed 2-class motor imagery tasks (left and right hand grasping) with visual rectangle cues, 40 trials per session across up to 3 sessions. Trial duration was 7.5 s with 4 s imagery period following a 2 s cue presentation.",
+    "funding": [],
     "searched_accessions": [
       "nm000235"
     ],
@@ -275,7 +317,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:49:07.324685+00:00",
+    "scoring_date": "2026-07-15T00:13:24.045026+00:00",
     "dataset_text_length": 2295,
     "num_citations_scored": 10,
     "summary_stats": {

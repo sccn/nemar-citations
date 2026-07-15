@@ -1,27 +1,86 @@
 {
   "dataset_id": "nm000243",
   "num_citations": 100,
-  "date_last_updated": "2026-06-18T23:23:48.379039+00:00",
+  "date_last_updated": "2026-07-03T14:23:34.437299+00:00",
   "metadata": {
-    "total_cumulative_citations": 7436,
-    "fetch_date": "2026-06-18T23:23:48.379039+00:00",
+    "total_cumulative_citations": 7461,
+    "fetch_date": "2026-07-03T14:23:34.437299+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1088/1741-2560/8/5/056001",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "EEG potentials predict upcoming emergency brakings during simulated driving",
+        "paper_year": 2011,
+        "paper_venue": "Journal of Neural Engineering",
+        "reason": "The candidate paper's title and abstract directly describe the results and data derived from the 'Emergency Braking during Simulated Driving' study, which is the content of the dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is used by this dataset."
+        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is used by this dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000243",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1088/1741-2560/8/5/056001",
+      "10.82901/nemar.nm000243"
+    ],
+    "keywords": [
+      "EEG",
+      "emergency braking",
+      "driving simulation",
+      "Event-Related Potentials, P300",
+      "brain-computer interface",
+      "neuroergonomics",
+      "EMG",
+      "machine learning",
+      "driver assistance"
+    ],
+    "methods_description": "Data were acquired using a BrainAmp system with 59 EEG channels (extended 10-20 montage, Ag/AgCl sensors, nose reference), 1 EMG channel, 2 EOG channels, and 7 miscellaneous technical channels at 200 Hz sampling rate. Participants performed three 45-minute blocks of simulated driving with 10-15 minute rest intervals. Emergency braking events were triggered by lead vehicle deceleration (20-40s inter-stimulus-interval) requiring immediate response. Preprocessing included highpass filtering (0.1 Hz), lowpass filtering (45 Hz for EEG), bandpass filtering (15-90 Hz for EMG), 50 Hz notch filtering, EMG rectification, baseline correction, and synchronization across all signals.",
+    "funding": [
+      {
+        "funder_name": "DFG grant"
+      },
+      {
+        "funder_name": "BMBF grant"
+      },
+      {
+        "funder_name": "Bernstein Focus Neurotechnology, Berlin"
+      },
+      {
+        "funder_name": "DFG"
+      },
+      {
+        "funder_name": "BMBF"
       }
     ],
     "searched_accessions": [
@@ -38,7 +97,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2012,
       "url": "https://doi.org/10.3389/fnins.2012.00055",
-      "cited_by": 1214,
+      "cited_by": 1221,
       "abstract": "The BCI competition IV stands in the tradition of prior BCI competitions that aim to provide high quality neuroscientific data for open access to the scientific community. As experienced already in prior competitions not only scientists from the narrow field of BCI compete, but scholars with a broad variety of backgrounds and nationalities. They include high specialists as well as students. The goals of all BCI competitions have always been to challenge with respect to novel paradigms and complex data. We report on the following challenges: (1) asynchronous data, (2) synthetic, (3) multi-class continuous data, (4) session-to-session transfer, (5) directionally modulated MEG, (6) finger movements recorded by ECoG. As after past competitions, our hope is that winning entries may enhance the analysis methods of future BCIs.",
       "doi": "10.3389/fnins.2012.00055",
       "pmid": "22811657",
@@ -107,7 +166,7 @@
       "venue": "Big Data and Cognitive Computing",
       "year": 2018,
       "url": "https://doi.org/10.3390/bdcc2030021",
-      "cited_by": 253,
+      "cited_by": 255,
       "abstract": "The increasing amount of data in electromyographic (EMG) signal research has greatly increased the importance of developing advanced data analysis and machine learning techniques which are better able to handle “big data”. Consequently, more advanced applications of EMG pattern recognition have been developed. This paper begins with a brief introduction to the main factors that expand EMG data resources into the era of big data, followed by the recent progress of existing shared EMG data sets. Next, we provide a review of recent research and development in EMG pattern recognition methods that can be applied to big data analytics. These modern EMG signal analysis methods can be divided into two main categories: (1) methods based on feature engineering involving a promising big data exploration tool called topological data analysis; and (2) methods based on feature learning with a special emphasis on “deep learning”. Finally, directions for future research in EMG pattern recognition are ",
       "doi": "10.3390/bdcc2030021",
       "pmid": null,
@@ -130,7 +189,7 @@
       "venue": "Proceedings of the National Academy of Sciences",
       "year": 2015,
       "url": "https://doi.org/10.1073/pnas.1513569112",
-      "cited_by": 242,
+      "cited_by": 243,
       "abstract": "In humans, spontaneous movements are often preceded by early brain signals. One such signal is the readiness potential (RP) that gradually arises within the last second preceding a movement. An important question is whether people are able to cancel movements after the elicitation of such RPs, and if so until which point in time. Here, subjects played a game where they tried to press a button to earn points in a challenge with a brain-computer interface (BCI) that had been trained to detect their RPs in real time and to emit stop signals. Our data suggest that subjects can still veto a movement even after the onset of the RP. Cancellation of movements was possible if stop signals occurred earlier than 200 ms before movement onset, thus constituting a point of no return.",
       "doi": "10.1073/pnas.1513569112",
       "pmid": "26668390",
@@ -268,7 +327,7 @@
       "venue": "Journal of Neuroscience Methods",
       "year": 2020,
       "url": "https://doi.org/10.1016/j.jneumeth.2020.108740",
-      "cited_by": 165,
+      "cited_by": 166,
       "abstract": "In recent years, multiple noninvasive imaging modalities have been used to develop a better understanding of the human brain functionality, including positron emission tomography, single-photon emission computed tomography, and functional magnetic resonance imaging, all of which provide brain images with millimeter spatial resolutions. Despite good spatial resolution, time resolution of these methods are poor and values are about seconds. Scalp electroencephalography recordings can be used to perform the inverse problem in order to specify the location of the dominant sources of the brain activity. In this paper, EEG source localization method, diagnosis of brain abnormalities using common EEG source localization methods, investigating the effect of the head model on EEG source imaging results have been studied. In this review we present enough evidence that provides motivation for consideration in the future research using EEG source localization methods.",
       "doi": "10.1016/j.jneumeth.2020.108740",
       "pmid": "32353472",
@@ -337,7 +396,7 @@
       "venue": "PLoS ONE",
       "year": 2020,
       "url": "https://doi.org/10.1371/journal.pone.0242857",
-      "cited_by": 139,
+      "cited_by": 141,
       "abstract": "BACKGROUND: Neuroergonomics combines neuroscience with ergonomics to study human performance using recorded brain signals. Such neural signatures of performance can be measured using a variety of neuroimaging techniques, including functional magnetic resonance imaging (fMRI), functional near-infrared spectroscopy (fNIRS), and electroencephalography (EEG). EEG has an excellent temporal resolution, and EEG indices are highly sensitive to human brain activity fluctuations. OBJECTIVE: The focus of this systematic review was to explore the applications of EEG indices for quantifying human performance in a variety of cognitive tasks at the macro and micro scales. To identify trends and the state of the field, we examined global patterns among selected articles, such as journal contributions, highly cited papers, affiliations, and high-frequency keywords. Moreover, we discussed the most frequently used EEG indices and synthesized current knowledge regarding the EEG signatures of associated hu",
       "doi": "10.1371/journal.pone.0242857",
       "pmid": "33275632",
@@ -360,7 +419,7 @@
       "venue": "RePEc: Research Papers in Economics",
       "year": 2019,
       "url": "https://doi.org/10.1093/jjfinec/nbaa007",
-      "cited_by": 137,
+      "cited_by": 139,
       "abstract": "\n Many econometric and data-science applications require a reliable estimate of the covariance matrix, such as Markowitz’s portfolio selection. When the number of variables is of the same magnitude as the number of observations, this constitutes a difficult estimation problem; the sample covariance matrix certainly will not do. In this article, we review our work in this area, going back 15+ years. We have promoted various shrinkage estimators, which can be classified into linear and nonlinear. Linear shrinkage is simpler to understand, to derive, and to implement. But nonlinear shrinkage can deliver another level of performance improvement, especially if overlaid with stylized facts such as time-varying co-volatility or factor models.",
       "doi": "10.1093/jjfinec/nbaa007",
       "pmid": null,
@@ -383,7 +442,7 @@
       "venue": "International Journal of Human-Computer Interaction",
       "year": 2021,
       "url": "https://doi.org/10.1080/10447318.2020.1860517",
-      "cited_by": 136,
+      "cited_by": 137,
       "abstract": "Automated vehicles (AVs) are on the edge of being available on the mass market. Research often focuses on technical aspects of automation, such as computer vision, sensing, or artificial intelligence. Nevertheless, researchers also identified several challenges from a human perspective that need to be considered for a successful introduction of these technologies. In this paper, we first analyze human needs and system acceptance in the context of AVs. Then, based on a literature review, we provide a summary of current research on in-car driver-vehicle interaction and related human factor issues. This work helps researchers, designers, and practitioners to get an overview of the current state of the art.",
       "doi": "10.1080/10447318.2020.1860517",
       "pmid": null,
@@ -659,7 +718,7 @@
       "venue": "Scientific Data",
       "year": 2024,
       "url": "https://doi.org/10.1038/s41597-024-03222-2",
-      "cited_by": 63,
+      "cited_by": 64,
       "abstract": "Physiological signal monitoring and driver behavior analysis have gained increasing attention in both fundamental research and applied research. This study involved the analysis of driving behavior using multimodal physiological data collected from 35 participants. The data included 59-channel EEG, single-channel ECG, 4-channel EMG, single-channel GSR, and eye movement data obtained via a six-degree-of-freedom driving simulator. We categorized driving behavior into five groups: smooth driving, acceleration, deceleration, lane changing, and turning. Through extensive experiments, we confirmed that both physiological and vehicle data met the requirements. Subsequently, we developed classification models, including linear discriminant analysis (LDA), MMPNet, and EEGNet, to demonstrate the correlation between physiological data and driving behaviors. Notably, we propose a multimodal physiological dataset for analyzing driving behavior(MPDB). The MPDB dataset's scale, accuracy, and multimod",
       "doi": "10.1038/s41597-024-03222-2",
       "pmid": "38609440",
@@ -935,7 +994,7 @@
       "venue": "IEEE Communications Surveys & Tutorials",
       "year": 2021,
       "url": "https://doi.org/10.1109/comst.2021.3090778",
-      "cited_by": 46,
+      "cited_by": 47,
       "abstract": "This paper presents the first comprehensive tutorial on a promising research field located at the frontier of two well-established domains, neurosciences and wireless communications, motivated by the ongoing efforts to define the Sixth Generation of Mobile Networks (6G). In particular, this tutorial first provides a novel integrative approach that bridges the gap between these two seemingly disparate fields. Then, we present the state-of-the-art and key challenges of these two topics. In particular, we propose a novel systematization that divides the contributions into two groups, one focused on what neurosciences will offer to future wireless technologies in terms of new applications and systems architecture (Neurosciences for Wireless Networks), and the other on how wireless communication theory and next-generation wireless systems can provide new ways to study the brain (Wireless Networks for Neurosciences). For the first group, we explain concretely how current scientific understan",
       "doi": "10.1109/comst.2021.3090778",
       "pmid": null,
@@ -958,7 +1017,7 @@
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2020,
       "url": "https://doi.org/10.1109/tbme.2020.3034112",
-      "cited_by": 46,
+      "cited_by": 47,
       "abstract": "Decoding human movement parameters from electroencephalograms (EEG) signals is of great value for human-machine collaboration. However, existing studies on hand movement direction decoding concentrate on the decoding of a single-hand movement direction from EEG signals given the opposite hand is maintained still. In practice, the cooperative movement of both hands is common. In this paper, we investigated the neural signatures and decoding of single-hand and both-hand movement directions from EEG signals. The potentials of EEG signals and power sums in the low frequency band of EEG signals from 24 channels were used as decoding features. The linear discriminant analysis (LDA) and support vector machine (SVM) classifiers were used for decoding. Experimental results showed a significant difference in the negative offset maximums of movement-related cortical potentials (MRCPs) at electrode Cz between single-hand and both-hand movements. The recognition accuracies for six-class classificat",
       "doi": "10.1109/tbme.2020.3034112",
       "pmid": "33108279",
@@ -1022,6 +1081,29 @@
       }
     },
     {
+      "title": "On the Use of Cognitive Neurometric Indexes in Aeronautic and Air Traffic Management Environments",
+      "author": "Gianluca Di Flumeri, Gianluca Borghini, Pietro Aricò, Alfredo Colosimo, Simone Pozzi, Stefano Bonelli, Alessia Golfetti, Wanzeng Kong, Fabio Babiloni",
+      "venue": "Lecture notes in computer science",
+      "year": 2015,
+      "url": "https://doi.org/10.1007/978-3-319-24917-9_5",
+      "cited_by": 41,
+      "abstract": null,
+      "doi": "10.1007/978-3-319-24917-9_5",
+      "pmid": null,
+      "openalex_id": "W2294877083",
+      "source_doi": "10.1088/1741-2560/8/5/056001",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.39462658762931824,
+        "similarity_score": 0.39462658762931824,
+        "citation_text_length": 306,
+        "dataset_text_length": 2360,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Recognition of Drivers’ Hard and Soft Braking Intentions Based on Hybrid Brain-Computer Interfaces",
       "author": "Jiawei Ju, Aberham Genetu Feleke, Longxi Luo, Xinan Fan",
       "venue": "Cyborg and Bionic Systems",
@@ -1039,29 +1121,6 @@
         "confidence_score": 0.6454384875297546,
         "similarity_score": 0.5588212013244629,
         "citation_text_length": 1172,
-        "dataset_text_length": 2360,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "On the Use of Cognitive Neurometric Indexes in Aeronautic and Air Traffic Management Environments",
-      "author": "Gianluca Di Flumeri, Gianluca Borghini, Pietro Aricò, Alfredo Colosimo, Simone Pozzi, Stefano Bonelli, Alessia Golfetti, Wanzeng Kong, Fabio Babiloni",
-      "venue": "Lecture notes in computer science",
-      "year": 2015,
-      "url": "https://doi.org/10.1007/978-3-319-24917-9_5",
-      "cited_by": 40,
-      "abstract": null,
-      "doi": "10.1007/978-3-319-24917-9_5",
-      "pmid": null,
-      "openalex_id": "W2294877083",
-      "source_doi": "10.1088/1741-2560/8/5/056001",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.39462658762931824,
-        "similarity_score": 0.39462658762931824,
-        "citation_text_length": 306,
         "dataset_text_length": 2360,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1620,6 +1679,29 @@
       }
     },
     {
+      "title": "Identifying Granger causal relationships between neural power dynamics and variables of interest",
+      "author": "Irene Winkler, Stefan Haufe, Anne K. Porbadnigk, Klaus‐Robert Müller, Sven Dähne",
+      "venue": "NeuroImage",
+      "year": 2014,
+      "url": "https://doi.org/10.1016/j.neuroimage.2014.12.059",
+      "cited_by": 23,
+      "abstract": null,
+      "doi": "10.1016/j.neuroimage.2014.12.059",
+      "pmid": "25554431",
+      "openalex_id": "W2047686615",
+      "source_doi": "10.1088/1741-2560/8/5/056001",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.36150240898132324,
+        "similarity_score": 0.36150240898132324,
+        "citation_text_length": 213,
+        "dataset_text_length": 2360,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "BNCI Horizon 2020 – Towards a Roadmap for Brain/Neural Computer Interaction",
       "author": "Clemens Brunner, Benjamin Blankertz, Febo Cincotti, Andrea Kübler, Donatella Mattia, Felip Miralles, Anton Nijholt, Begonya Otal, Patric R. Salomon, Gernot Müller-Putz",
       "venue": "Lecture notes in computer science",
@@ -1637,29 +1719,6 @@
         "confidence_score": 0.45657995343208313,
         "similarity_score": 0.45657995343208313,
         "citation_text_length": 302,
-        "dataset_text_length": 2360,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Identifying Granger causal relationships between neural power dynamics and variables of interest",
-      "author": "Irene Winkler, Stefan Haufe, Anne K. Porbadnigk, Klaus‐Robert Müller, Sven Dähne",
-      "venue": "NeuroImage",
-      "year": 2014,
-      "url": "https://doi.org/10.1016/j.neuroimage.2014.12.059",
-      "cited_by": 22,
-      "abstract": null,
-      "doi": "10.1016/j.neuroimage.2014.12.059",
-      "pmid": "25554431",
-      "openalex_id": "W2047686615",
-      "source_doi": "10.1088/1741-2560/8/5/056001",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.36150240898132324,
-        "similarity_score": 0.36150240898132324,
-        "citation_text_length": 213,
         "dataset_text_length": 2360,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1827,6 +1886,52 @@
       }
     },
     {
+      "title": "Evaluating rider steering responses to an unexpected collision hazard using a motorcycle riding simulator",
+      "author": "Marilee Nugent, Giovanni Savino, Christine Mulvihill, Mike Lenné, Michael Fitzharris",
+      "venue": "Transportation Research Part F Traffic Psychology and Behaviour",
+      "year": 2019,
+      "url": "https://doi.org/10.1016/j.trf.2019.09.005",
+      "cited_by": 18,
+      "abstract": "Abstract Motorcycle rider steer responses to unexpected collision emergencies have not been studied experimentally. We used a motorcycle simulator with elastic steer mechanism and modified car driving model to simulate the input-output counter steering response of two-wheeled vehicles in combination with a car pop-up paradigm from driving studies to evaluate rider responses to unexpected collision hazards. We manipulated time-to-crash – either 1 s or 1.5 s – to probe the threshold between not enough and just enough time to respond. The median response time of 570 ms was similar to previously recorded latencies for motorcycle emergency braking responses. Although median response time and steer torque did not depend on time-to-crash (TTC), the distribution and variability of response measures were increased when TTC was shorter. Riders showed improved lateral displacement toward the road centerline by the third TTC1.5 trial and were almost 8 times more likely to produce a successful virt",
+      "doi": "10.1016/j.trf.2019.09.005",
+      "pmid": null,
+      "openalex_id": "W2974078412",
+      "source_doi": "10.1088/1741-2560/8/5/056001",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5634456992149354,
+        "similarity_score": 0.5122233629226685,
+        "citation_text_length": 1291,
+        "dataset_text_length": 2360,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Convolutional spiking neural networks for intent detection based on anticipatory brain potentials using electroencephalogram",
+      "author": "Nathan Lutes, Venkata Sriram, Siddhardh Nadendla, K. Krishnamurthy",
+      "venue": "Scientific Reports",
+      "year": 2024,
+      "url": "https://doi.org/10.1038/s41598-024-59469-7",
+      "cited_by": 18,
+      "abstract": "Spiking neural networks (SNNs) are receiving increased attention because they mimic synaptic connections in biological systems and produce spike trains, which can be approximated by binary values for computational efficiency. Recently, the addition of convolutional layers to combine the feature extraction power of convolutional networks with the computational efficiency of SNNs has been introduced. This paper studies the feasibility of using a convolutional spiking neural network (CSNN) to detect anticipatory slow cortical potentials (SCPs) related to braking intention in human participants using an electroencephalogram (EEG). Data was collected during an experiment wherein participants operated a remote-controlled vehicle on a testbed designed to simulate an urban environment. Participants were alerted to an incoming braking event via an audio countdown to elicit anticipatory potentials that were measured using an EEG. The CSNN's performance was compared to a standard CNN, EEGNet and ",
+      "doi": "10.1038/s41598-024-59469-7",
+      "pmid": "38632436",
+      "openalex_id": "W4394882899",
+      "source_doi": "10.1088/1741-2560/8/5/056001",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5600813207030296,
+        "similarity_score": 0.48491889238357544,
+        "citation_text_length": 1247,
+        "dataset_text_length": 2360,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Noninvasive neural signal-based detection of soft and emergency braking intentions of drivers",
       "author": "Jiawei Ju, Luzheng Bi, Aberham Genetu Feleke",
       "venue": "Biomedical Signal Processing and Control",
@@ -1850,29 +1955,6 @@
       }
     },
     {
-      "title": "Evaluating rider steering responses to an unexpected collision hazard using a motorcycle riding simulator",
-      "author": "Marilee Nugent, Giovanni Savino, Christine Mulvihill, Mike Lenné, Michael Fitzharris",
-      "venue": "Transportation Research Part F Traffic Psychology and Behaviour",
-      "year": 2019,
-      "url": "https://doi.org/10.1016/j.trf.2019.09.005",
-      "cited_by": 17,
-      "abstract": "Abstract Motorcycle rider steer responses to unexpected collision emergencies have not been studied experimentally. We used a motorcycle simulator with elastic steer mechanism and modified car driving model to simulate the input-output counter steering response of two-wheeled vehicles in combination with a car pop-up paradigm from driving studies to evaluate rider responses to unexpected collision hazards. We manipulated time-to-crash – either 1 s or 1.5 s – to probe the threshold between not enough and just enough time to respond. The median response time of 570 ms was similar to previously recorded latencies for motorcycle emergency braking responses. Although median response time and steer torque did not depend on time-to-crash (TTC), the distribution and variability of response measures were increased when TTC was shorter. Riders showed improved lateral displacement toward the road centerline by the third TTC1.5 trial and were almost 8 times more likely to produce a successful virt",
-      "doi": "10.1016/j.trf.2019.09.005",
-      "pmid": null,
-      "openalex_id": "W2974078412",
-      "source_doi": "10.1088/1741-2560/8/5/056001",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5634456992149354,
-        "similarity_score": 0.5122233629226685,
-        "citation_text_length": 1291,
-        "dataset_text_length": 2360,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "EEG-based emergency braking intention detection during simulated driving",
       "author": "Xinbin Liang, Yang Yu, Yadong Liu, Kaixuan Liu, Yaru Liu, Zongtan Zhou, Yaru Liu, Zongtan Zhou",
       "venue": "BioMedical Engineering OnLine",
@@ -1890,29 +1972,6 @@
         "confidence_score": 0.8059358462691308,
         "similarity_score": 0.6977799534797668,
         "citation_text_length": 1234,
-        "dataset_text_length": 2360,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Convolutional spiking neural networks for intent detection based on anticipatory brain potentials using electroencephalogram",
-      "author": "Nathan Lutes, Venkata Sriram, Siddhardh Nadendla, K. Krishnamurthy",
-      "venue": "Scientific Reports",
-      "year": 2024,
-      "url": "https://doi.org/10.1038/s41598-024-59469-7",
-      "cited_by": 17,
-      "abstract": "Spiking neural networks (SNNs) are receiving increased attention because they mimic synaptic connections in biological systems and produce spike trains, which can be approximated by binary values for computational efficiency. Recently, the addition of convolutional layers to combine the feature extraction power of convolutional networks with the computational efficiency of SNNs has been introduced. This paper studies the feasibility of using a convolutional spiking neural network (CSNN) to detect anticipatory slow cortical potentials (SCPs) related to braking intention in human participants using an electroencephalogram (EEG). Data was collected during an experiment wherein participants operated a remote-controlled vehicle on a testbed designed to simulate an urban environment. Participants were alerted to an incoming braking event via an audio countdown to elicit anticipatory potentials that were measured using an EEG. The CSNN's performance was compared to a standard CNN, EEGNet and ",
-      "doi": "10.1038/s41598-024-59469-7",
-      "pmid": "38632436",
-      "openalex_id": "W4394882899",
-      "source_doi": "10.1088/1741-2560/8/5/056001",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5600813207030296,
-        "similarity_score": 0.48491889238357544,
-        "citation_text_length": 1247,
         "dataset_text_length": 2360,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1988,29 +2047,6 @@
       }
     },
     {
-      "title": "Detection of Emergency Braking Intention From Soft Braking and Normal Driving Intentions Using EMG Signals",
-      "author": "Jiawei Ju, Luzheng Bi, Aberham Genetu Feleke",
-      "venue": "IEEE Access",
-      "year": 2021,
-      "url": "https://doi.org/10.1109/access.2021.3114341",
-      "cited_by": 16,
-      "abstract": "Emergency braking intention detection has a vital practical value for improving driving safety. This paper proposed an electromyography (EMG)-based method to detect emergency braking intention from soft braking and normal driving intentions. Temporal and spectral signatures of EMG signals of emergency braking, soft braking, and normal driving intentions were investigated. Common spatial pattern (CSP) was used to generate virtual channels. The power spectrum density and linear envelope amplitude of EMG signals were used as features, respectively. Chi-square test (Chi) was used to select features. Regularized linear discrimination analysis was developed to detect emergency braking intention from the other two driving intentions. Experiment results showed significant differences in temporal and spectral domains between three kinds of driving. Furthermore, on average, the proposed method based on spectral features can detect emergency braking intention 155.70 ms before behavior under emerg",
-      "doi": "10.1109/access.2021.3114341",
-      "pmid": null,
-      "openalex_id": "W3199149203",
-      "source_doi": "10.1088/1741-2560/8/5/056001",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.793405596613884,
-        "similarity_score": 0.6869312524795532,
-        "citation_text_length": 1200,
-        "dataset_text_length": 2360,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "A study of the effects of advanced driver assistance systems alerts on driver performance",
       "author": "Javier Izquierdo-Reyes, Ricardo A. Ramírez-Mendoza, Martin R. Bustamante-Bello",
       "venue": "International Journal on Interactive Design and Manufacturing (IJIDeM)",
@@ -2034,12 +2070,35 @@
       }
     },
     {
+      "title": "Detection of Emergency Braking Intention From Soft Braking and Normal Driving Intentions Using EMG Signals",
+      "author": "Jiawei Ju, Luzheng Bi, Aberham Genetu Feleke",
+      "venue": "IEEE Access",
+      "year": 2021,
+      "url": "https://doi.org/10.1109/access.2021.3114341",
+      "cited_by": 16,
+      "abstract": "Emergency braking intention detection has a vital practical value for improving driving safety. This paper proposed an electromyography (EMG)-based method to detect emergency braking intention from soft braking and normal driving intentions. Temporal and spectral signatures of EMG signals of emergency braking, soft braking, and normal driving intentions were investigated. Common spatial pattern (CSP) was used to generate virtual channels. The power spectrum density and linear envelope amplitude of EMG signals were used as features, respectively. Chi-square test (Chi) was used to select features. Regularized linear discrimination analysis was developed to detect emergency braking intention from the other two driving intentions. Experiment results showed significant differences in temporal and spectral domains between three kinds of driving. Furthermore, on average, the proposed method based on spectral features can detect emergency braking intention 155.70 ms before behavior under emerg",
+      "doi": "10.1109/access.2021.3114341",
+      "pmid": null,
+      "openalex_id": "W3199149203",
+      "source_doi": "10.1088/1741-2560/8/5/056001",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.793405596613884,
+        "similarity_score": 0.6869312524795532,
+        "citation_text_length": 1200,
+        "dataset_text_length": 2360,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Neurosciences and 6G: Lessons from and Needs of Communicative Brains",
       "author": "R. Moioli, P. Nardelli, Michael Taynnan Barros, W. Saad, Amin Hekmatmanesh, Pedro E. Gória Silva, A. S. D. Sena, Merim Dzaferagic, H. Šiljak, W. V. Leekwijck, Dick Carrillo, Steven Latr'e",
       "venue": "ArXiv",
       "year": 2020,
       "url": "n/a",
-      "cited_by": 15,
+      "cited_by": 16,
       "abstract": "This paper presents the first comprehensive tutorial on a promising research field located at the frontier of two well-established domains: Neurosciences and wireless communications, motivated by the ongoing efforts to define how the sixth generation of mobile networks (6G) will be. In particular, this tutorial first provides a novel integrative approach that bridges the gap between these two, seemingly disparate fields. Then, we present the state-of-the-art and key challenges of these two topics. In particular, we propose a novel systematization that divides the contributions into two groups, one focused on what neurosciences will offer to 6G in terms of new applications and systems architecture (Neurosciences for Wireless), and the other focused on how wireless communication theory and 6G systems can provide new ways to study the brain (Wireless for Neurosciences). For the first group, we concretely explain how current scientific understanding of the brain would enable new applicatio",
       "doi": null,
       "pmid": null,
@@ -2195,6 +2254,29 @@
       }
     },
     {
+      "title": "Influence of Time Pressure on Inhibitory Brain Control During Emergency Driving",
+      "author": "Jung‐Tai King, Mukesh Prasad, Tsen Tsai, Yurui Ming, Chin‐Teng Lin",
+      "venue": "IEEE Transactions on Systems Man and Cybernetics Systems",
+      "year": 2018,
+      "url": "https://doi.org/10.1109/tsmc.2018.2850323",
+      "cited_by": 12,
+      "abstract": "It is believed that failures of people’s reaction to emergencies occurred during driving are closely related to the inhibitory mechanism of brain’s operations. To investigate the role of this function in emergency driving, two virtual realistic driving conditions based on stop signal task were designed and time limitation was manipulated to increase the stress in one condition. Sixteen subjects with behavioral encephalography recordings were collected and analyzed. By comparing successful and unsuccessful stop trials with event-related spectral perturbation analysis, <inline-formula> <tex-math notation=\"LaTeX\">${\\delta }$ </tex-math></inline-formula> and <inline-formula> <tex-math notation=\"LaTeX\">${\\theta }$ </tex-math></inline-formula> band power increases in frontal and central areas are correlated with driving inhibitory control of the brain. Moreover, <inline-formula> <tex-math notation=\"LaTeX\">${\\beta }$ </tex-math></inline-formula> and <inline-formula> <tex-math notation=\"LaTeX\"",
+      "doi": "10.1109/tsmc.2018.2850323",
+      "pmid": null,
+      "openalex_id": "W2987025732",
+      "source_doi": "10.1088/1741-2560/8/5/056001",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6741182923316956,
+        "similarity_score": 0.6128348112106323,
+        "citation_text_length": 1240,
+        "dataset_text_length": 2360,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Revisiting embodiment for brain–computer interfaces",
       "author": "Baris Serim, Michiel M. A. Spapé, Giulio Jacucci",
       "venue": "Human–Computer Interaction",
@@ -2308,44 +2390,21 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Detection of emergency braking intention using driver's electroencephalographic signals",
-      "author": "Luis Hernández, Efraín Martínez, Javier M. Antelis",
-      "venue": "IEEE Latin America Transactions",
-      "year": 2019,
-      "url": "https://doi.org/10.1109/tla.2019.8826702",
-      "cited_by": 11,
-      "abstract": "This work investigates the recognition of the intention to perform emergency braking from driver's electroencephalographic (EEG) signals. To do so, brain signals and vehicle data were recorded in a simulated driving environment while participants had to drive and to avoid potential collisions by performing emergency braking. To resemble realistic conditions, emergency braking were performed during the presence and absence of stress, workload and fatigue. Brain signals were used to study the classification between emergency braking ntention and normal driving. The results showed significant classification accuracies around 80% using EEG signals from the left hemisphere. On the basic of these results, this work shows the feasibility of incorporating recognizable driver's brain signals into advanced driver-assistance systems to carry out early detection of emergency braking situations.",
-      "doi": "10.1109/tla.2019.8826702",
-      "pmid": null,
-      "openalex_id": "W2972485191",
-      "source_doi": "10.1088/1741-2560/8/5/056001",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7537260055541993,
-        "similarity_score": 0.6852054595947266,
-        "citation_text_length": 1102,
-        "dataset_text_length": 2360,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:49:30.061697+00:00",
+    "scoring_date": "2026-07-15T00:13:59.455842+00:00",
     "dataset_text_length": 2360,
     "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.5218612231552602,
+      "mean_confidence": 0.5210651460230351,
       "median_confidence": 0.5133140429854393,
-      "std_confidence": 0.13469412048816007,
+      "std_confidence": 0.1335517941970509,
       "min_confidence": 0.24218469858169556,
       "max_confidence": 0.8253385782241822,
-      "high_confidence_count": 11,
-      "medium_confidence_count": 70,
+      "high_confidence_count": 10,
+      "medium_confidence_count": 71,
       "low_confidence_count": 19
     }
   }

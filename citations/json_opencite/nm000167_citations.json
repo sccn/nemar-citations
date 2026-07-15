@@ -1,37 +1,107 @@
 {
   "dataset_id": "nm000167",
   "num_citations": 57,
-  "date_last_updated": "2026-06-18T23:19:50.076275+00:00",
+  "date_last_updated": "2026-07-03T11:25:18.234882+00:00",
   "metadata": {
-    "total_cumulative_citations": 1239,
-    "fetch_date": "2026-06-18T23:19:50.076275+00:00",
+    "total_cumulative_citations": 1252,
+    "fetch_date": "2026-07-03T11:25:18.234882+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-020-0535-2",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Multi-channel EEG recording during motor imagery of different joints from the same limb",
+        "paper_year": 2020,
+        "paper_venue": "Scientific Data",
+        "reason": "The paper's title and abstract explicitly describe the release of the multi-subject motor imagery dataset involving 25 healthy subjects and the same limb joints, matching the dataset's metadata.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.7910/dvn/rbn3xg",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Multi-channel EEG recording during motor imagery of different joints from the same limb",
+        "paper_year": 2020,
+        "paper_venue": "Harvard Dataverse",
+        "reason": "The paper title and abstract explicitly describe the release of the multi-channel EEG recording during motor imagery dataset by Ma et al. 2020.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset."
+        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset.",
+        "judgment_model": "gemma4:31b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is a technical specification used for organizing the dataset."
+        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is a technical specification used for organizing the dataset.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000167",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.1038/s41597-020-0535-2",
+      "10.7910/dvn/rbn3xg",
+      "10.82901/nemar.nm000167"
+    ],
+    "keywords": [
+      "motor imagery",
+      "EEG",
+      "BCI",
+      "kinesthetic imagery",
+      "motor rehabilitation",
+      "same limb",
+      "hand",
+      "elbow"
+    ],
+    "methods_description": "EEG data were acquired using a Neuroscan SynAmps2 system with 62 channels at 1000 Hz sampling rate. Subjects performed motor imagery tasks (right hand vs. right elbow) following visual cues in a synchronous, offline paradigm. Each session consisted of 40 trials (20 per class) with 4-second imagery periods. Data were collected across 3 days with 5 sessions per day, totaling 15 sessions per subject.",
+    "funding": [
+      {
+        "funder_name": "National Key Research and Development Plan of China",
+        "award_number": "2017YFB1002502"
+      },
+      {
+        "funder_name": "National Natural Science Foundation of China",
+        "award_number": "61976209"
+      },
+      {
+        "funder_name": "National Natural Science Foundation of China",
+        "award_number": "61906188"
       }
     ],
     "searched_accessions": [
@@ -48,7 +118,7 @@
       "venue": "Neural Computing and Applications",
       "year": 2021,
       "url": "https://doi.org/10.1007/s00521-021-06352-5",
-      "cited_by": 564,
+      "cited_by": 566,
       "abstract": null,
       "doi": "10.1007/s00521-021-06352-5",
       "pmid": null,
@@ -71,7 +141,7 @@
       "venue": "IEEE Reviews in Biomedical Engineering",
       "year": 2024,
       "url": "https://doi.org/10.1109/rbme.2024.3449790",
-      "cited_by": 131,
+      "cited_by": 134,
       "abstract": "Brain-computer interface (BCI) is a rapidly evolving technology that has the potential to widely influence research, clinical and recreational use. Non-invasive BCI approaches are particularly common as they can impact a large number of participants safely and at a relatively low cost. Where traditional non-invasive BCIs were used for simple computer cursor tasks, it is now increasingly common for these systems to control robotic devices for complex tasks that may be useful in daily life. In this review, we provide an overview of the general BCI framework as well as the various methods that can be used to record neural activity, extract signals of interest, and decode brain states. In this context, we summarize the current state-of-the-art of non-invasive BCI research, focusing on trends in both the application of BCIs for controlling external devices and algorithm development to optimize their use. We also discuss various open-source BCI toolboxes and software, and describe their impa",
       "doi": "10.1109/rbme.2024.3449790",
       "pmid": "39186407",
@@ -94,7 +164,7 @@
       "venue": "Sensors",
       "year": 2023,
       "url": "https://doi.org/10.3390/s23094221",
-      "cited_by": 64,
+      "cited_by": 66,
       "abstract": "Medical time series are sequential data collected over time that measures health-related signals, such as electroencephalography (EEG), electrocardiography (ECG), and intensive care unit (ICU) readings. Analyzing medical time series and identifying the latent patterns and trends that lead to uncovering highly valuable insights for enhancing diagnosis, treatment, risk assessment, and disease progression. However, data mining in medical time series is heavily limited by the sample annotation which is time-consuming and labor-intensive, and expert-depending. To mitigate this challenge, the emerging self-supervised contrastive learning, which has shown great success since 2020, is a promising solution. Contrastive learning aims to learn representative embeddings by contrasting positive and negative samples without the requirement for explicit labels. Here, we conducted a systematic review of how contrastive learning alleviates the label scarcity in medical time series based on PRISMA stand",
       "doi": "10.3390/s23094221",
       "pmid": "37177423",
@@ -117,7 +187,7 @@
       "venue": "Scientific Data",
       "year": 2024,
       "url": "https://doi.org/10.1038/s41597-023-02787-8",
-      "cited_by": 56,
+      "cited_by": 58,
       "abstract": "The brain-computer interface (BCI) is a technology that involves direct communication with parts of the brain and has evolved rapidly in recent years; it has begun to be used in clinical practice, such as for patient rehabilitation. Patient electroencephalography (EEG) datasets are critical for algorithm optimization and clinical applications of BCIs but are rare at present. We collected data from 50 acute stroke patients with wireless portable saline EEG devices during the performance of two tasks: 1) imagining right-handed movements and 2) imagining left-handed movements. The dataset consists of four types of data: 1) the motor imagery instructions, 2) raw recording data, 3) pre-processed data after removing artefacts and other manipulations, and 4) patient characteristics. This is the first open dataset to address left- and right-handed motor imagery in acute stroke patients. We believe that the dataset will be very helpful for analysing brain activation and designing decoding metho",
       "doi": "10.1038/s41597-023-02787-8",
       "pmid": "38272904",
@@ -227,6 +297,29 @@
       }
     },
     {
+      "title": "Review of public motor imagery and execution datasets in brain-computer interfaces",
+      "author": "Daeun Gwon, Kyungho Won, Minseok Song, Chang S. Nam, Sung Chan Jun, Minkyu Ahn",
+      "venue": "Frontiers in Human Neuroscience",
+      "year": 2023,
+      "url": "https://doi.org/10.3389/fnhum.2023.1134869",
+      "cited_by": 26,
+      "abstract": "The demand for public datasets has increased as data-driven methodologies have been introduced in the field of brain-computer interfaces (BCIs). Indeed, many BCI datasets are available in various platforms or repositories on the web, and the studies that have employed these datasets appear to be increasing. Motor imagery is one of the significant control paradigms in the BCI field, and many datasets related to motor tasks are open to the public already. However, to the best of our knowledge, these studies have yet to investigate and evaluate the datasets, although data quality is essential for reliable results and the design of subject- or system-independent BCIs. In this study, we conducted a thorough investigation of motor imagery/execution EEG datasets recorded from healthy participants published over the past 13 years. The 25 datasets were collected from six repositories and subjected to a meta-analysis. In particular, we reviewed the specifications of the recording settings and ex",
+      "doi": "10.3389/fnhum.2023.1134869",
+      "pmid": "37063105",
+      "openalex_id": "W4361276743",
+      "source_doi": "10.1038/s41597-020-0535-2",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7829621958732607,
+        "similarity_score": 0.677889347076416,
+        "citation_text_length": 1230,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Virtual reality and motor imagery for early post-stroke rehabilitation",
       "author": "Chi Sang Choy, Qiang Fang, Katrina Neville, Bingrui Ding, Akshay Kumar, Seedahmed S. Mahmoud, Xudong Gu, Jianming Fu, Beth Jelfs",
       "venue": "BioMedical Engineering OnLine",
@@ -250,35 +343,12 @@
       }
     },
     {
-      "title": "Review of public motor imagery and execution datasets in brain-computer interfaces",
-      "author": "Daeun Gwon, Kyungho Won, Minseok Song, Chang S. Nam, Sung Chan Jun, Minkyu Ahn",
-      "venue": "Frontiers in Human Neuroscience",
-      "year": 2023,
-      "url": "https://doi.org/10.3389/fnhum.2023.1134869",
-      "cited_by": 25,
-      "abstract": "The demand for public datasets has increased as data-driven methodologies have been introduced in the field of brain-computer interfaces (BCIs). Indeed, many BCI datasets are available in various platforms or repositories on the web, and the studies that have employed these datasets appear to be increasing. Motor imagery is one of the significant control paradigms in the BCI field, and many datasets related to motor tasks are open to the public already. However, to the best of our knowledge, these studies have yet to investigate and evaluate the datasets, although data quality is essential for reliable results and the design of subject- or system-independent BCIs. In this study, we conducted a thorough investigation of motor imagery/execution EEG datasets recorded from healthy participants published over the past 13 years. The 25 datasets were collected from six repositories and subjected to a meta-analysis. In particular, we reviewed the specifications of the recording settings and ex",
-      "doi": "10.3389/fnhum.2023.1134869",
-      "pmid": "37063105",
-      "openalex_id": "W4361276743",
-      "source_doi": "10.1038/s41597-020-0535-2",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7829621958732607,
-        "similarity_score": 0.677889347076416,
-        "citation_text_length": 1230,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Favoring the cognitive-motor process in the closed-loop of BCI mediated post stroke motor function recovery: challenges and approaches",
       "author": "Jing Mang, Zhuo Xu, YingBin Qi, Ting Zhang",
       "venue": "Frontiers in Neurorobotics",
       "year": 2023,
       "url": "https://doi.org/10.3389/fnbot.2023.1271967",
-      "cited_by": 23,
+      "cited_by": 24,
       "abstract": "The brain-computer interface (BCI)-mediated rehabilitation is emerging as a solution to restore motor skills in paretic patients after stroke. In the human brain, cortical motor neurons not only fire when actions are carried out but are also activated in a wired manner through many cognitive processes related to movement such as imagining, perceiving, and observing the actions. Moreover, the recruitment of motor cortexes can usually be regulated by environmental conditions, forming a closed-loop through neurofeedback. However, this cognitive-motor control loop is often interrupted by the impairment of stroke. The requirement to bridge the stroke-induced gap in the motor control loop is promoting the evolution of the BCI-based motor rehabilitation system and, notably posing many challenges regarding the disease-specific process of post stroke motor function recovery. This review aimed to map the current literature surrounding the new progress in BCI-mediated post stroke motor function r",
       "doi": "10.3389/fnbot.2023.1271967",
       "pmid": "37881517",
@@ -457,6 +527,29 @@
       }
     },
     {
+      "title": "EEG-over-BLE: A Novel Low-Power Architecture for Multi-Channel EEG Monitoring Systems",
+      "author": "Filippo Battaglia, Giovanni Gugliandolo, Giuseppe Campobello, Nicola Donato",
+      "venue": "n/a",
+      "year": 2022,
+      "url": "https://doi.org/10.1109/mn55117.2022.9887765",
+      "cited_by": 6,
+      "abstract": "The availability of energy-efficient wireless proto-cols and architectures is a mandatory requirement for the development of wearable measurement instruments suitable for continuous monitoring of medical parameters. In this context, we propose EEG-over-BLE, a novel architecture for multi-channel electroencephalogram (EEG) monitoring systems. Basically, the proposed architecture combines Bluetooth technology with a near-lossless EEG compression algorithm and a simple channel encoding scheme in order to largely reduce power consumption. Here we present the results of a detailed simulation campaign aimed at assessing the performance of the proposed architecture in terms of energy consumption, packet loss rate and end-to-end latency. According to simulation results, when EEG-over- BLE sensor nodes are powered with commercial small form factor batteries, their lifetime is over 66 days. At the same time, a packet loss rate lower than 0.1 % and a latency below 40 ms are achieved.",
+      "doi": "10.1109/mn55117.2022.9887765",
+      "pmid": null,
+      "openalex_id": "W4297099645",
+      "source_doi": "10.1038/s41597-020-0535-2",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.341450593918562,
+        "similarity_score": 0.29562821984291077,
+        "citation_text_length": 1189,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "FBATCNet: A Temporal Convolutional Network With Frequency Band Attention for Decoding Motor Imagery EEG",
       "author": "Shuaishuai Ma, Jidong Lv, Wenjie Li, Yan Liu, Ling Zou, Yakang Dai",
       "venue": "IEEE Access",
@@ -503,23 +596,23 @@
       }
     },
     {
-      "title": "EEG-over-BLE: A Novel Low-Power Architecture for Multi-Channel EEG Monitoring Systems",
-      "author": "Filippo Battaglia, Giovanni Gugliandolo, Giuseppe Campobello, Nicola Donato",
+      "title": "An Intuitive Real-Time Brain Control Interface based on Motor Imagery and Execution",
+      "author": "Himanshu Rishikesh Giri, Pranshu Chandra Bhusan Singh Negi, Shiru Sharma, Neeraj Sharma",
       "venue": "n/a",
-      "year": 2022,
-      "url": "https://doi.org/10.1109/mn55117.2022.9887765",
-      "cited_by": 5,
-      "abstract": "The availability of energy-efficient wireless proto-cols and architectures is a mandatory requirement for the development of wearable measurement instruments suitable for continuous monitoring of medical parameters. In this context, we propose EEG-over-BLE, a novel architecture for multi-channel electroencephalogram (EEG) monitoring systems. Basically, the proposed architecture combines Bluetooth technology with a near-lossless EEG compression algorithm and a simple channel encoding scheme in order to largely reduce power consumption. Here we present the results of a detailed simulation campaign aimed at assessing the performance of the proposed architecture in terms of energy consumption, packet loss rate and end-to-end latency. According to simulation results, when EEG-over- BLE sensor nodes are powered with commercial small form factor batteries, their lifetime is over 66 days. At the same time, a packet loss rate lower than 0.1 % and a latency below 40 ms are achieved.",
-      "doi": "10.1109/mn55117.2022.9887765",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/ichms59971.2024.10555763",
+      "cited_by": 4,
+      "abstract": "This study introduces a real-time EEG-based Brain-Computer Interface (BCI) for precise motor imagery and execution classification, focusing on the opening and closing of the hand. The proposed BCI aims to offer intuitive control for external devices, such as neuroprosthetic arms or hand orthoses, by using time and frequency domain features of EEG data when performing or imagining these specific hand movements. The temporal and spectral features are processed through a Machine Learning classifier, employing Support Vector Machine (SVM), Logistic Regression and Random Forest algorithms. The algorithm’s accuracy and response time are evaluated in real-time simulations. The results show promising classification accuracy, with training accuracy about 80% for real movement and 75% for imagined movement, and evaluation accuracy exceeding 72% for real movement and 68% for imagined movement, with less than 45 ms latency in all cases. The study addresses a crucial gap in research by focusing on ",
+      "doi": "10.1109/ichms59971.2024.10555763",
       "pmid": null,
-      "openalex_id": "W4297099645",
+      "openalex_id": "W4399801503",
       "source_doi": "10.1038/s41597-020-0535-2",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.341450593918562,
-        "similarity_score": 0.29562821984291077,
-        "citation_text_length": 1189,
+        "confidence_score": 0.7477174222469332,
+        "similarity_score": 0.6473743915557861,
+        "citation_text_length": 1212,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -549,29 +642,6 @@
       }
     },
     {
-      "title": "An Intuitive Real-Time Brain Control Interface based on Motor Imagery and Execution",
-      "author": "Himanshu Rishikesh Giri, Pranshu Chandra Bhusan Singh Negi, Shiru Sharma, Neeraj Sharma",
-      "venue": "n/a",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/ichms59971.2024.10555763",
-      "cited_by": 4,
-      "abstract": "This study introduces a real-time EEG-based Brain-Computer Interface (BCI) for precise motor imagery and execution classification, focusing on the opening and closing of the hand. The proposed BCI aims to offer intuitive control for external devices, such as neuroprosthetic arms or hand orthoses, by using time and frequency domain features of EEG data when performing or imagining these specific hand movements. The temporal and spectral features are processed through a Machine Learning classifier, employing Support Vector Machine (SVM), Logistic Regression and Random Forest algorithms. The algorithm’s accuracy and response time are evaluated in real-time simulations. The results show promising classification accuracy, with training accuracy about 80% for real movement and 75% for imagined movement, and evaluation accuracy exceeding 72% for real movement and 68% for imagined movement, with less than 45 ms latency in all cases. The study addresses a crucial gap in research by focusing on ",
-      "doi": "10.1109/ichms59971.2024.10555763",
-      "pmid": null,
-      "openalex_id": "W4399801503",
-      "source_doi": "10.1038/s41597-020-0535-2",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7477174222469332,
-        "similarity_score": 0.6473743915557861,
-        "citation_text_length": 1212,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "A multi-modal dataset of electroencephalography and functional near-infrared spectroscopy recordings for motor imagery of multi-types of joints from unilateral upper limb",
       "author": "Weibo Yi, Jiaming Chen, Dan Wang, Xiaoling Hu, Meng Xu, Fangda Li, Shuhan Wu, Jin Qian",
       "venue": "Scientific Data",
@@ -589,29 +659,6 @@
         "confidence_score": 0.8336327022314073,
         "similarity_score": 0.7217599153518677,
         "citation_text_length": 1310,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Applications of Self-Supervised Learning to Biomedical Signals: where are we now",
-      "author": "Federico Del Pup, Manfredo Atzori",
-      "venue": "n/a",
-      "year": 2023,
-      "url": "https://doi.org/10.36227/techrxiv.22567021.v1",
-      "cited_by": 3,
-      "abstract": "Over the last decade, deep learning applications in biomedical research have exploded, demonstrating the ability to often outperform previous machine learning approaches in various tasks. However, training deep learning models requires large amounts of data annotated by experts, whose collection is often time- and cost- prohibitive in the biomedical domain. Self-Supervised Learning (SSL) has emerged as a prominent solution for these problems, as it allows to learn powerful data representations in an unsupervised manner. Despite most applications in biomedical research targeted images, the high amount of recent works targeting biosignals can make it difficult for researchers to have a complete picture of the current situation. The aim of this paper is to outline and clarify the state of the art in the domain. The article briefly summarizes the nature and acquisition modality of biomedical signals, introduces the SSL method, and provides a complete but synthetic overview of the main work",
-      "doi": "10.36227/techrxiv.22567021.v1",
-      "pmid": null,
-      "openalex_id": "W4362706001",
-      "source_doi": "10.1038/s41597-020-0535-2",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.3775551867485047,
-        "similarity_score": 0.3268876075744629,
-        "citation_text_length": 1155,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -641,23 +688,23 @@
       }
     },
     {
-      "title": "Uncovering Low-Dimensional Manifolds of Neural Dynamics for Motor-Imagery Based Stroke Rehabilitation: An EEG-Based Brain–Computer Interface Study",
-      "author": "Tao Liu, Ziwei Wang, Sadia Shakil, Raymond Kai‐Yu Tong",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/tnsre.2025.3600824",
+      "title": "Applications of Self-Supervised Learning to Biomedical Signals: where are we now",
+      "author": "Federico Del Pup, Manfredo Atzori",
+      "venue": "n/a",
+      "year": 2023,
+      "url": "https://doi.org/10.36227/techrxiv.22567021.v1",
       "cited_by": 3,
-      "abstract": "Stroke rehabilitation aims to repair neural circuits and dynamics through the remapping of neuronal functions. However, there is currently a gap in understanding the alteration of neural population dynamics-the fundamental computational unit driving functions-under clinical settings. In this study, we introduced a novel method to identify stable low-dimensional structures of neural population dynamics in stroke patients during motor tasks. Using whole-brain EEG recordings from chronic stroke patients performing motor imagery (MI) tasks before and after brain-computer interface (BCI) training, as well as a public EEG dataset of acute stroke patients performing MI tasks, we projected EEG signals from sensor space to voxel space via source localization (eLORETA), simulating neural population activity in regions of interest. By applying dimensionality reduction, we successfully obtained low-dimensional neural manifolds to represent neural population dynamics. Our analysis revealed three ke",
-      "doi": "10.1109/tnsre.2025.3600824",
-      "pmid": "40833894",
-      "openalex_id": "W4413371244",
+      "abstract": "Over the last decade, deep learning applications in biomedical research have exploded, demonstrating the ability to often outperform previous machine learning approaches in various tasks. However, training deep learning models requires large amounts of data annotated by experts, whose collection is often time- and cost- prohibitive in the biomedical domain. Self-Supervised Learning (SSL) has emerged as a prominent solution for these problems, as it allows to learn powerful data representations in an unsupervised manner. Despite most applications in biomedical research targeted images, the high amount of recent works targeting biosignals can make it difficult for researchers to have a complete picture of the current situation. The aim of this paper is to outline and clarify the state of the art in the domain. The article briefly summarizes the nature and acquisition modality of biomedical signals, introduces the SSL method, and provides a complete but synthetic overview of the main work",
+      "doi": "10.36227/techrxiv.22567021.v1",
+      "pmid": null,
+      "openalex_id": "W4362706001",
       "source_doi": "10.1038/s41597-020-0535-2",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5462230481207371,
-        "similarity_score": 0.47292038798332214,
-        "citation_text_length": 1305,
+        "confidence_score": 0.3775551867485047,
+        "similarity_score": 0.3268876075744629,
+        "citation_text_length": 1155,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -681,6 +728,29 @@
         "confidence_score": 0.35578650176525123,
         "similarity_score": 0.3080402612686157,
         "citation_text_length": 1252,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Uncovering Low-Dimensional Manifolds of Neural Dynamics for Motor-Imagery Based Stroke Rehabilitation: An EEG-Based Brain–Computer Interface Study",
+      "author": "Tao Liu, Ziwei Wang, Sadia Shakil, Raymond Kai‐Yu Tong",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/tnsre.2025.3600824",
+      "cited_by": 3,
+      "abstract": "Stroke rehabilitation aims to repair neural circuits and dynamics through the remapping of neuronal functions. However, there is currently a gap in understanding the alteration of neural population dynamics-the fundamental computational unit driving functions-under clinical settings. In this study, we introduced a novel method to identify stable low-dimensional structures of neural population dynamics in stroke patients during motor tasks. Using whole-brain EEG recordings from chronic stroke patients performing motor imagery (MI) tasks before and after brain-computer interface (BCI) training, as well as a public EEG dataset of acute stroke patients performing MI tasks, we projected EEG signals from sensor space to voxel space via source localization (eLORETA), simulating neural population activity in regions of interest. By applying dimensionality reduction, we successfully obtained low-dimensional neural manifolds to represent neural population dynamics. Our analysis revealed three ke",
+      "doi": "10.1109/tnsre.2025.3600824",
+      "pmid": "40833894",
+      "openalex_id": "W4413371244",
+      "source_doi": "10.1038/s41597-020-0535-2",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5462230481207371,
+        "similarity_score": 0.47292038798332214,
+        "citation_text_length": 1305,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -796,6 +866,29 @@
         "confidence_score": 0.6931656646728517,
         "similarity_score": 0.6001434326171875,
         "citation_text_length": 1292,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Neurophysiological predictors of deep learning based unilateral upper limb motor imagery classification",
+      "author": "Justin Sonntag, Lin Yu, Xilu Wang, Thomas Schack",
+      "venue": "Frontiers in Human Neuroscience",
+      "year": 2025,
+      "url": "https://doi.org/10.3389/fnhum.2025.1617748",
+      "cited_by": 2,
+      "abstract": "Introduction: Motor imagery-based brain-computer interfaces (BCIs) are a technique for decoding and classifying the intention of motor execution, solely based on imagined (rather than executed) movements. Although deep learning techniques have increased the potential of BCIs, the complexity of decoding unilateral upper limb motor imagery remains challenging. To understand whether neurophysiological features, which are directly related to neural mechanisms of motor imagery, might influence classification accuracy, most studies have largely leveraged traditional machine learning frameworks, leaving deep learning-based techniques underexplored. Methods: In this work, three different deep learning models from the literature (EEGNet, FBCNet, NFEEG) and two common spatial pattern-based machine learning classifiers (SVM, LDA) were used to classify imagined right elbow flexion and extension from participants using electroencephalography data. From two recorded resting states (eyes-open, eyes-c",
+      "doi": "10.3389/fnhum.2025.1617748",
+      "pmid": "40688356",
+      "openalex_id": "W4412034028",
+      "source_doi": "10.1038/s41597-020-0535-2",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7652544432878495,
+        "similarity_score": 0.6625579595565796,
+        "citation_text_length": 1221,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -934,29 +1027,6 @@
         "confidence_score": 0.7100753161311151,
         "similarity_score": 0.6147838234901428,
         "citation_text_length": 1123,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Neurophysiological predictors of deep learning based unilateral upper limb motor imagery classification",
-      "author": "Justin Sonntag, Lin Yu, Xilu Wang, Thomas Schack",
-      "venue": "Frontiers in Human Neuroscience",
-      "year": 2025,
-      "url": "https://doi.org/10.3389/fnhum.2025.1617748",
-      "cited_by": 1,
-      "abstract": "Introduction: Motor imagery-based brain-computer interfaces (BCIs) are a technique for decoding and classifying the intention of motor execution, solely based on imagined (rather than executed) movements. Although deep learning techniques have increased the potential of BCIs, the complexity of decoding unilateral upper limb motor imagery remains challenging. To understand whether neurophysiological features, which are directly related to neural mechanisms of motor imagery, might influence classification accuracy, most studies have largely leveraged traditional machine learning frameworks, leaving deep learning-based techniques underexplored. Methods: In this work, three different deep learning models from the literature (EEGNet, FBCNet, NFEEG) and two common spatial pattern-based machine learning classifiers (SVM, LDA) were used to classify imagined right elbow flexion and extension from participants using electroencephalography data. From two recorded resting states (eyes-open, eyes-c",
-      "doi": "10.3389/fnhum.2025.1617748",
-      "pmid": "40688356",
-      "openalex_id": "W4412034028",
-      "source_doi": "10.1038/s41597-020-0535-2",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7652544432878495,
-        "similarity_score": 0.6625579595565796,
-        "citation_text_length": 1221,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1124,29 +1194,6 @@
       }
     },
     {
-      "title": "MBMLPMixer: Multiple Branch Multi-Layer Perceptron-Mixer Network for Multi-class Fine Joint Motor Imagery Decoding",
-      "author": "Tianxing Wang, Jiaming Chen",
-      "venue": "n/a",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/cisce65916.2025.11065011",
-      "cited_by": 0,
-      "abstract": "Motor imagery brain-computer interfaces (MI-BCIs) face significant challenges such as distinguishing neural patterns of hand, wrist, elbow, and shoulder movements in decoding Fine Joint Motor Imagery (FJMI) tasks due to minimal spatial differences in EEG signals. To address this issue, we proposed the Multiple Branch Multi-Layer Perceptron Mixer Network (MBMLP-Mixer), a novel architecture that integrates multiscale feature extraction and MLP-Mixer units to simultaneously capture and fuse spatial-temporal information across four FJMI tasks. Evaluated on unilateral upper-limb FJMI-EEG data, the model achieved a 4-class classification accuracy of 46.11%, outperforming typical deep learning methods. This study demonstrates the efficacy of combining multiscale embeddings with MLP-Mixer-based feature integration for multi-class FJMI decoding, highlighting the potential of MLP-Mixer networks in enhancing discriminative capability for EEG-based FJMI-BCI applications.",
-      "doi": "10.1109/cisce65916.2025.11065011",
-      "pmid": null,
-      "openalex_id": "W4412171522",
-      "source_doi": "10.1038/s41597-020-0535-2",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6793136912584306,
-        "similarity_score": 0.5881503820419312,
-        "citation_text_length": 1156,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Research on combining motor imagery and somatosensory attentional orientation to enhance BCI performance",
       "author": "wei jianqiu, Banghua Yang, Xiang Chen, Junhua Chen, Shuai Kuang",
       "venue": "Biomedical Physics & Engineering Express",
@@ -1164,6 +1211,29 @@
         "confidence_score": 0.6714373219013215,
         "similarity_score": 0.5813310146331787,
         "citation_text_length": 1246,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "MBMLPMixer: Multiple Branch Multi-Layer Perceptron-Mixer Network for Multi-class Fine Joint Motor Imagery Decoding",
+      "author": "Tianxing Wang, Jiaming Chen",
+      "venue": "n/a",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/cisce65916.2025.11065011",
+      "cited_by": 0,
+      "abstract": "Motor imagery brain-computer interfaces (MI-BCIs) face significant challenges such as distinguishing neural patterns of hand, wrist, elbow, and shoulder movements in decoding Fine Joint Motor Imagery (FJMI) tasks due to minimal spatial differences in EEG signals. To address this issue, we proposed the Multiple Branch Multi-Layer Perceptron Mixer Network (MBMLP-Mixer), a novel architecture that integrates multiscale feature extraction and MLP-Mixer units to simultaneously capture and fuse spatial-temporal information across four FJMI tasks. Evaluated on unilateral upper-limb FJMI-EEG data, the model achieved a 4-class classification accuracy of 46.11%, outperforming typical deep learning methods. This study demonstrates the efficacy of combining multiscale embeddings with MLP-Mixer-based feature integration for multi-class FJMI decoding, highlighting the potential of MLP-Mixer networks in enhancing discriminative capability for EEG-based FJMI-BCI applications.",
+      "doi": "10.1109/cisce65916.2025.11065011",
+      "pmid": null,
+      "openalex_id": "W4412171522",
+      "source_doi": "10.1038/s41597-020-0535-2",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6793136912584306,
+        "similarity_score": 0.5881503820419312,
+        "citation_text_length": 1156,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1356,7 +1426,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:44:07.699023+00:00",
+    "scoring_date": "2026-07-15T00:07:32.795823+00:00",
     "dataset_text_length": 2270,
     "num_citations_scored": 57,
     "summary_stats": {

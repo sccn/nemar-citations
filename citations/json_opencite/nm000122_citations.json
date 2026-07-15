@@ -1,37 +1,90 @@
 {
   "dataset_id": "nm000122",
   "num_citations": 56,
-  "date_last_updated": "2026-06-18T23:18:13.970467+00:00",
+  "date_last_updated": "2026-07-03T10:24:10.021902+00:00",
   "metadata": {
-    "total_cumulative_citations": 1709,
-    "fetch_date": "2026-06-18T23:18:13.970467+00:00",
+    "total_cumulative_citations": 1714,
+    "fetch_date": "2026-07-03T10:24:10.021902+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1371/journal.pone.0178385",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Application of a single-flicker online SSVEP BCI for spatial navigation",
+        "paper_year": 2017,
+        "paper_venue": "PLoS ONE",
+        "reason": "The paper's title and abstract describe the specific SSVEP BCI for spatial navigation and the dataset's DOI matches the paper's DOI (10.1371/journal.pone.0178385).",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset."
+        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset.",
+        "judgment_model": "gemma4:31b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is mentioned as the BIDS version 1.9.0 in the dataset metadata."
+        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is mentioned as the BIDS version 1.9.0 in the dataset metadata.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000122",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.1371/journal.pone.0178385",
+      "10.82901/nemar.nm000122"
+    ],
+    "keywords": [
+      "SSVEP",
+      "brain-computer interface",
+      "EEG",
+      "spatial navigation",
+      "single-flicker paradigm",
+      "online BCI",
+      "visual evoked potentials"
+    ],
+    "methods_description": "EEG data were recorded from 12 healthy subjects (7 female, 5 male; mean age 23.5 years, range 19-32) using a BioSemi ActiveTwo amplifier with 32 active electrodes in a biosemi32 montage and CMS/DRL reference. Training session data were acquired at 2048 Hz in XDF format with 2 runs of 100 trials per subject (50 trials per direction). Online session data were acquired at 512 Hz in MAT format with variable-length trials from approximately 16 game rounds per subject. All trials were approximately 3.5 seconds in duration.",
+    "funding": [
+      {
+        "funder_name": "DFG",
+        "award_number": "TRR169/B1/Z2",
+        "award_title": "Crossmodal Learning"
+      },
+      {
+        "funder_name": "Landesforschungsfoerderung Hamburg",
+        "award_number": "CROSS FV25"
       }
     ],
     "searched_accessions": [
@@ -48,7 +101,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1088/1741-2552/aaf12e",
-      "cited_by": 940,
+      "cited_by": 943,
       "abstract": "Advances in brain science and computer technology in the past decade have led to exciting developments in brain-computer interface (BCI), thereby making BCI a top research area in applied science. The renaissance of BCI opens new methods of neurorehabilitation for physically disabled people (e.g. paralyzed patients and amputees) and patients with brain injuries (e.g. stroke patients). Recent technological advances such as wireless recording, machine learning analysis, and real-time temporal resolution have increased interest in electroencephalographic (EEG) based BCI approaches. Many BCI studies have focused on decoding EEG signals associated with whole-body kinematics/kinetics, motor imagery, and various senses. Thus, there is a need to understand the various experimental paradigms used in EEG-based BCI systems. Moreover, given that there are many available options, it is essential to choose the most appropriate BCI application to properly manipulate a neuroprosthetic or neurorehabili",
       "doi": "10.1088/1741-2552/aaf12e",
       "pmid": "30523919",
@@ -71,7 +124,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2021,
       "url": "https://doi.org/10.1088/1741-2552/ac0bfa",
-      "cited_by": 112,
+      "cited_by": 113,
       "abstract": "Abstract Objective. Steady-state visual evoked potential (SSVEP) is an essential paradigm of electroencephalogram based brain–computer interface (BCI). Previous studies in the BCI research field mostly focused on enhancing classification accuracy and reducing stimuli duration. This study, however, concentrated on increasing the number of available targets in the BCI systems without calibration. Approach . Motivated by the idea of multiple frequency sequential coding, we developed a calibration-free SSVEP–BCI system implementing 160 targets by four continuous sinusoidal stimuli that lasted four seconds in total. Taking advantage of the benchmark dataset of SSVEP–BCI, this study optimized an arrangement of stimuli sequences, maximizing the response distance between different stimuli. We proposed an effective classification algorithm based on filter bank canonical correlation analysis. To evaluate the performance of this system, we conducted offline and online experiments using cue-guided",
       "doi": "10.1088/1741-2552/ac0bfa",
       "pmid": "34134091",
@@ -163,7 +216,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2024,
       "url": "https://doi.org/10.3389/fnhum.2024.1416683",
-      "cited_by": 31,
+      "cited_by": 32,
       "abstract": "Computer-based learning has gained popularity in recent years, providing learners greater flexibility and freedom. However, these learning environments do not consider the learner’s mental state in real-time, resulting in less optimized learning experiences. This research aimed to explore the effect on the learning experience of a novel EEG-based Brain-Computer Interface (BCI) that adjusts the speed of information presentation in real-time during a learning task according to the learner’s cognitive load. We also explored how motivation moderated these effects. In accordance with three experimental groups (non-adaptive, adaptive, and adaptive with motivation), participants performed a calibration task ( n -back), followed by a memory-based learning task concerning astrological constellations. Learning gains were assessed based on performance on the learning task. Self-perceived mental workload, cognitive absorption and satisfaction were assessed using a post-test questionnaire. Between-",
       "doi": "10.3389/fnhum.2024.1416683",
       "pmid": "39435350",
@@ -877,7 +930,7 @@
       "year": 2023,
       "url": "https://doi.org/10.3389/fnins.2023.1178283",
       "cited_by": 4,
-      "abstract": "Introduction Traditional visual Brain-Computer Interfaces (v-BCIs) usually use large-size stimuli to attract more attention from users and then elicit more distinct and robust EEG responses, which would cause visual fatigue and limit the length of use of the system. On the contrary, small-size stimuli always need multiple and repeated stimulus to code more instructions and increase separability among each code. These common v-BCIs paradigms can cause problems such as redundant coding, long calibration time, and visual fatigue. Methods To address these problems, this study presented a novel v-BCI paradigm using weak and small number of stimuli, and realized a nine-instruction v-BCI system that controlled by only three tiny stimuli. Each of these stimuli were located between instructions, occupied area with eccentricities subtended 0.4°, and flashed in the row-column paradigm. The weak stimuli around each instruction would evoke specific evoked related potentials (ERPs), and a template-m",
+      "abstract": "Introduction: Traditional visual Brain-Computer Interfaces (v-BCIs) usually use large-size stimuli to attract more attention from users and then elicit more distinct and robust EEG responses, which would cause visual fatigue and limit the length of use of the system. On the contrary, small-size stimuli always need multiple and repeated stimulus to code more instructions and increase separability among each code. These common v-BCIs paradigms can cause problems such as redundant coding, long calibration time, and visual fatigue. Methods: To address these problems, this study presented a novel v-BCI paradigm using weak and small number of stimuli, and realized a nine-instruction v-BCI system that controlled by only three tiny stimuli. Each of these stimuli were located between instructions, occupied area with eccentricities subtended 0.4°, and flashed in the row-column paradigm. The weak stimuli around each instruction would evoke specific evoked related potentials (ERPs), and a template",
       "doi": "10.3389/fnins.2023.1178283",
       "pmid": "37342465",
       "openalex_id": "W4379471270",
@@ -885,8 +938,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5714090144634247,
-        "similarity_score": 0.49472641944885254,
+        "confidence_score": 0.5721739330887795,
+        "similarity_score": 0.4953886866569519,
         "citation_text_length": 1285,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
@@ -1149,7 +1202,7 @@
     {
       "title": "A Novel Combination of Natural Language Processing and Brain Computer Interface in a Communication System",
       "author": "Maryam Fallah",
-      "venue": "TSpace",
+      "venue": "TSpace (University of Toronto)",
       "year": 2019,
       "url": "n/a",
       "cited_by": 0,
@@ -1161,9 +1214,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4425230830907822,
-        "similarity_score": 0.40229371190071106,
-        "citation_text_length": 1163,
+        "confidence_score": 0.4386606752872467,
+        "similarity_score": 0.3987824320793152,
+        "citation_text_length": 1187,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1245,7 +1298,7 @@
       "year": 2026,
       "url": "https://doi.org/10.64898/2026.04.13.718144",
       "cited_by": 0,
-      "abstract": null,
+      "abstract": "The visual receptive field (RF) characterizes the spatiotemporal properties of the visual pathway and serves as a fundamental unit for information encoding. While RFs have been extensively studied across various neural modalities, such as functional Magnetic Resonance Imaging (fMRI), Electrocorticography (ECoG), and Magnetoencephalography (MEG), their investigation via Electroencephalography (EEG) remains limited. In this study, we introduce a stimulation paradigm that combines white noise image sequences with a letter detection task to elicit central visual field EEG responses. Using the aligned/shuffled reverse correlation, we estimate RFs across different resolutions and demonstrate that the resulting RFs exhibit rich spatiotemporal characteristics. To validate the reliability of the estimated RFs, we constructed a visual EEG reconstruction model, which achieved good performance in a classification task. The same RF estimation method was subsequently applied to high-density EEG reco",
       "doi": "10.64898/2026.04.13.718144",
       "pmid": null,
       "openalex_id": null,
@@ -1253,9 +1306,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5461460530757904,
-        "similarity_score": 0.5201390981674194,
-        "citation_text_length": 132,
+        "confidence_score": 0.5729687985777855,
+        "similarity_score": 0.49607688188552856,
+        "citation_text_length": 1144,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1333,13 +1386,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:41:08.250382+00:00",
+    "scoring_date": "2026-07-15T00:03:43.826532+00:00",
     "dataset_text_length": 2296,
     "num_citations_scored": 56,
     "summary_stats": {
-      "mean_confidence": 0.5880522940733603,
+      "mean_confidence": 0.588475959364857,
       "median_confidence": 0.5840986365079881,
-      "std_confidence": 0.13339833703554152,
+      "std_confidence": 0.13336992522648183,
       "min_confidence": 0.25885632634162903,
       "max_confidence": 0.8225429311394693,
       "high_confidence_count": 16,

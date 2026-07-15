@@ -1,39 +1,81 @@
 {
   "dataset_id": "nm000131",
   "num_citations": 3,
-  "date_last_updated": "2026-06-18T23:18:38.157608+00:00",
+  "date_last_updated": "2026-07-03T10:25:05.106886+00:00",
   "metadata": {
     "total_cumulative_citations": 12,
-    "fetch_date": "2026-06-18T23:18:38.157608+00:00",
+    "fetch_date": "2026-07-03T10:25:05.106886+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1111/ejn.15030",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Single stimulus location for two inputs: A combined brain–computer interface based on Steady‐State Visual Evoked Potential (SSVEP)",
+        "paper_year": 2020,
+        "paper_venue": "European Journal of Neuroscience",
+        "reason": "The paper's title and authors match the dataset's name (Wang2021) and authors, and the dataset's DOI field explicitly lists the paper's DOI (10.1111/ejn.15030).",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset."
+        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset.",
+        "judgment_model": "gemma4:31b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is the technical specification used to organize this dataset."
+        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is the technical specification used to organize this dataset.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000131",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
       }
     ],
+    "searched_dois": [
+      "10.1111/ejn.15030",
+      "10.82901/nemar.nm000131"
+    ],
+    "keywords": [
+      "SSVEP",
+      "brain-computer interface",
+      "EEG",
+      "steady-state visual evoked potential",
+      "covert attention",
+      "visual perception"
+    ],
+    "methods_description": "EEG data were acquired at 1000 Hz sampling rate using a 32-channel ANT Neuro eego mylab amplifier with standard 1005 montage. Each trial consisted of 500 ms fixation, 500 ms cue, and 5000 ms stimulation periods. Stimuli were overlapping SSVEP arrows presented at a single location on a CRT monitor (85 Hz refresh rate), with four frequency classes: 14.17 Hz, 12.14 Hz, 9.44 Hz, and 7.73 Hz.",
+    "funding": [],
     "searched_accessions": [
       "nm000131"
     ],
@@ -114,7 +156,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:42:06.310115+00:00",
+    "scoring_date": "2026-07-15T00:04:42.695888+00:00",
     "dataset_text_length": 2351,
     "num_citations_scored": 3,
     "summary_stats": {

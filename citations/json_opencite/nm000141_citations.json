@@ -1,39 +1,81 @@
 {
   "dataset_id": "nm000141",
   "num_citations": 17,
-  "date_last_updated": "2026-06-18T23:18:58.502035+00:00",
+  "date_last_updated": "2026-07-03T11:23:05.980673+00:00",
   "metadata": {
     "total_cumulative_citations": 187,
-    "fetch_date": "2026-06-18T23:18:58.502035+00:00",
+    "fetch_date": "2026-07-03T11:23:05.980673+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1371/journal.pone.0193722",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Exploration of neural correlates of movement intention based on characterisation of temporal dependencies in electroencephalography",
+        "paper_year": 2018,
+        "paper_venue": "PLoS ONE",
+        "reason": "The dataset description explicitly names the paper (Wairagkar et al 2018) and provides the DOI 10.1371/journal.pone.0193722, which matches the candidate paper.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into the BIDS format, which is used by this dataset's BIDS version 1.9.0."
+        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into the BIDS format, which is used by this dataset's BIDS version 1.9.0.",
+        "judgment_model": "gemma4:31b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is mentioned as the BIDS Version 1.9.0 in the dataset metadata."
+        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is mentioned as the BIDS Version 1.9.0 in the dataset metadata.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000141",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
       }
     ],
+    "searched_dois": [
+      "10.1371/journal.pone.0193722",
+      "10.82901/nemar.nm000141"
+    ],
+    "keywords": [
+      "motor imagery",
+      "EEG",
+      "brain-computer interfaces",
+      "motor control",
+      "event-related desynchronization",
+      "asynchronous paradigm"
+    ],
+    "methods_description": "EEG data were acquired using a Deymed TruScan 32 system at 1024 Hz sampling rate with 19 Ag/AgCl ring electrodes in standard 10-20 montage (reference: FCz, ground: AFz). Online filters included 0.5 Hz high-pass, 60 Hz low-pass, and 50 Hz notch filtering. Preprocessing involved DC offset removal, ICA-based artifact removal (EEGLAB infomax), and trial segmentation from -3 to +3 seconds around movement onset. Participants performed asynchronous voluntary finger tapping (right, left, or rest) following visual text cues within a 10-second window.",
+    "funding": [],
     "searched_accessions": [
       "nm000141"
     ],
@@ -436,7 +478,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:42:55.430368+00:00",
+    "scoring_date": "2026-07-15T00:05:40.674671+00:00",
     "dataset_text_length": 2285,
     "num_citations_scored": 17,
     "summary_stats": {

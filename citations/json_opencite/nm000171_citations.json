@@ -1,18 +1,82 @@
 {
   "dataset_id": "nm000171",
   "num_citations": 109,
-  "date_last_updated": "2026-06-18T23:20:01.164442+00:00",
+  "date_last_updated": "2026-07-03T11:25:41.511511+00:00",
   "metadata": {
-    "total_cumulative_citations": 3434,
-    "fetch_date": "2026-06-18T23:20:01.164442+00:00",
+    "total_cumulative_citations": 3447,
+    "fetch_date": "2026-07-03T11:25:41.511511+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1007/s00500-012-0895-4",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Brain–computer interfacing: more than the sum of its parts",
+        "paper_year": 2012,
+        "paper_venue": "Soft Computing",
+        "reason": "The dataset's DOI in the overview section is 10.1007/s00500-012-0895-4, which matches the candidate paper's DOI exactly.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.3217/978-3-85125-378-8-61",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Motor Imagery Brain-Computer Interfaces: Random Forests Vs Regularized Lda - Non-Linear Beats Linear",
+        "paper_year": 2020,
+        "paper_venue": "TUGraz OPEN Library (Graz University of Technology)",
+        "reason": "The paper re-analyses the dataset (BNCI 2014-002) and shares the same authors as the dataset, describing the specific data used in the BCI study.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000171",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.1007/s00500-012-0895-4",
+      "10.3217/978-3-85125-378-8-61",
+      "10.82901/nemar.nm000171"
+    ],
+    "keywords": [
+      "Brain-Computer Interfaces",
+      "motor imagery",
+      "EEG",
+      "sensorimotor rhythms",
+      "machine learning",
+      "Common Spatial Patterns",
+      "linear discriminant analysis"
+    ],
+    "methods_description": "EEG data were acquired from 14 healthy subjects (age 20-30 years) using a g.USBamp amplifier with 15 active Ag/AgCl electrodes in a g.LADYbird cap, sampled at 512 Hz with left mastoid reference and right mastoid ground. Online acquisition employed 8th order Butterworth band-pass filtering and Laplacian spatial filtering via BCI2000 software. Subjects performed cue-guided motor imagery of right hand or feet movements (5 s duration) across 8 runs per session with visual bar-graph feedback, yielding 160 trials total (80 per class). Data preprocessing included bandpass filtering with feature extraction using Common Spatial Patterns, Discrete Fourier Transform, and bandpower analysis in alpha (6-14 Hz) and beta (14-40 Hz) bands.",
+    "funding": [
+      {
+        "funder_name": "European Commission",
+        "award_number": "288566",
+        "award_title": "BackHome"
+      },
+      {
+        "funder_name": "European Commission",
+        "award_number": "287774",
+        "award_title": "ABC"
+      }
+    ],
     "searched_accessions": [
       "nm000171"
     ],
@@ -142,7 +206,7 @@
       "venue": "Brain-Computer Interfaces",
       "year": 2016,
       "url": "https://doi.org/10.1080/2326263x.2016.1263916",
-      "cited_by": 93,
+      "cited_by": 94,
       "abstract": "Research in brain-computer interfaces has achieved impressive progress towards implementing assistive technologies for restoration or substitution of lost motor capabilities, as well as supporting technologies for able-bodied subjects. Notwithstanding this progress, effective translation of these interfaces from proof-of concept prototypes into reliable applications remains elusive. As a matter of fact, most of the current BCI systems cannot be used independently for long periods of time by their intended end-users. Multiple factors that impair achieving this goal have already been identified. However, it is not clear how do they affect the overall BCI performance or how they should be tackled. This is worsened by the publication bias where only positive results are disseminated, preventing the research community from learning from its errors. This paper is the result of a workshop held at the 6th International BCI meeting in Asilomar. We summarize here the discussion on concrete resea",
       "doi": "10.1080/2326263x.2016.1263916",
       "pmid": "29629393",
@@ -188,7 +252,7 @@
       "venue": "International Journal of Psychophysiology",
       "year": 2013,
       "url": "https://doi.org/10.1016/j.ijpsycho.2013.08.011",
-      "cited_by": 72,
+      "cited_by": 73,
       "abstract": null,
       "doi": "10.1016/j.ijpsycho.2013.08.011",
       "pmid": "24012908",
@@ -257,7 +321,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2021,
       "url": "https://doi.org/10.3389/fnhum.2021.643294",
-      "cited_by": 60,
+      "cited_by": 61,
       "abstract": "Brain-computer interfaces (BCIs) represent a new frontier in the effort to maximize the ability of individuals with profound motor impairments to interact and communicate. While much literature points to BCIs' promise as an alternative access pathway, there have historically been few applications involving children and young adults with severe physical disabilities. As research is emerging in this sphere, this article aims to evaluate the current state of translating BCIs to the pediatric population. A systematic review was conducted using the Scopus, PubMed, and Ovid Medline databases. Studies of children and adolescents that reported BCI performance published in English in peer-reviewed journals between 2008 and May 2020 were included. Twelve publications were identified, providing strong evidence for continued research in pediatric BCIs. Research evidence was generally at multiple case study or exploratory study level, with modest sample sizes. Seven studies focused on BCIs for comm",
       "doi": "10.3389/fnhum.2021.643294",
       "pmid": "34335203",
@@ -326,7 +390,7 @@
       "venue": "Multimedia Tools and Applications",
       "year": 2023,
       "url": "https://doi.org/10.1007/s11042-023-15653-x",
-      "cited_by": 54,
+      "cited_by": 55,
       "abstract": "Brain-Computer Interfaces (BCI) is an exciting and emerging research area for researchers and scientists. It is a suitable combination of software and hardware to operate any device mentally. This review emphasizes the significant stages in the BCI domain, current problems, and state-of-the-art findings. This article also covers how current results can contribute to new knowledge about BCI, an overview of BCI from its early developments to recent advancements, BCI applications, challenges, and future directions. The authors pointed to unresolved issues and expressed how BCI is valuable for analyzing the human brain. Humans' dependence on machines has led humankind into a new future where BCI can play an essential role in improving this modern world.",
       "doi": "10.1007/s11042-023-15653-x",
       "pmid": "37362726",
@@ -464,7 +528,7 @@
       "venue": "Stroke",
       "year": 2021,
       "url": "https://doi.org/10.1161/strokeaha.120.030596",
-      "cited_by": 33,
+      "cited_by": 34,
       "abstract": "Background and Purpose: Perinatal stroke is the leading cause of hemiparetic cerebral palsy resulting in lifelong disability for millions of people worldwide. Options for motor rehabilitation are limited, especially for the most severely affected children. Brain computer interfaces (BCIs) sample brain activity to allow users to control external devices. Functional electrical stimulation enhances motor recovery after stroke, and BCI-activated functional electrical stimulation was recently shown to improve upper extremity function in adult stroke. We aimed to determine the ability of children with perinatal stroke to operate a simple BCI. Methods: Twenty-one children with magnetic resonance imaging–confirmed perinatal stroke (57% male, mean [SD] 13.5 [2.6] years, range 9–18) were compared with 24 typically developing controls (71% male, mean age [SD] 13.7 [3.7] years, range 6–18). Participants trained on a simple EEG-based BCI over 2 sessions (10 trials each) utilizing 2 different mental",
       "doi": "10.1161/strokeaha.120.030596",
       "pmid": "34039029",
@@ -1103,6 +1167,29 @@
       }
     },
     {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 2,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1007/s00500-012-0895-4",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5537416040897369,
+        "similarity_score": 0.4794299602508545,
+        "citation_text_length": 1324,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Acceleration of Therapeutic Use of Brain Computer Interfaces by Development for Gaming",
       "author": "Julia A. Scott, Max H. Sims",
       "venue": "Lecture notes of the Institute for Computer Sciences, Social Informatics and Telecommunications Engineering",
@@ -1120,29 +1207,6 @@
         "confidence_score": 0.39251883029937745,
         "similarity_score": 0.3738274574279785,
         "citation_text_length": 247,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod L'evy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "n/a",
-      "year": 2026,
-      "url": "n/a",
-      "cited_by": 1,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1007/s00500-012-0895-4",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5555455411970617,
-        "similarity_score": 0.48099181056022644,
-        "citation_text_length": 1325,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1384,7 +1448,7 @@
       "venue": "Neural Computing and Applications",
       "year": 2021,
       "url": "https://doi.org/10.1007/s00521-021-06352-5",
-      "cited_by": 564,
+      "cited_by": 566,
       "abstract": null,
       "doi": "10.1007/s00521-021-06352-5",
       "pmid": null,
@@ -1430,7 +1494,7 @@
       "venue": "ACM Computing Surveys",
       "year": 2019,
       "url": "https://doi.org/10.1145/3230632",
-      "cited_by": 141,
+      "cited_by": 143,
       "abstract": "Brainwaves, which reflect brain electrical activity and have been studied for a long time in the domain of cognitive neuroscience, have recently been proposed as a promising biometric approach due to their unique advantages of confidentiality, resistance to spoofing/circumvention, sensitivity to emotional and mental state, continuous nature, and cancelability. Recent research efforts have explored many possible ways of using brain biometrics and demonstrated that they are a promising candidate for more robust and secure personal identification and authentication. Although existing research on brain biometrics has obtained some intriguing insights, much work is still necessary to achieve a reliable ready-to-deploy brain biometric system. This article aims to provide a detailed survey of the current literature and outline the scientific work conducted on brain biometric systems. It provides an up-to-date review of state-of-the-art acquisition, collection, processing, and analysis of brai",
       "doi": "10.1145/3230632",
       "pmid": null,
@@ -1614,7 +1678,7 @@
       "venue": "IEEE Internet of Things Journal",
       "year": 2024,
       "url": "https://doi.org/10.1109/JIOT.2024.3402254",
-      "cited_by": 23,
+      "cited_by": 24,
       "abstract": "Recent advances in deep learning (DL) have significantly impacted motor imagery (MI)-based brain-computer interface (BCI) systems, enhancing the decoding of electroencephalography (EEG) signals. However, most studies struggle to identify discriminative patterns across subjects during MI tasks, limiting MI classification performance. In this article, we propose MixNet, a novel classification framework designed to overcome this limitation by utilizing spectral-spatial signals from MI data, along with a multitask learning architecture named MIN2Net, for classification. Here, the spectral-spatial signals are generated using the filter-bank common spatial patterns (FBCSPs) method on MI data. Since the multitask learning architecture is used for the classification task, the learning in each task may exhibit different generalization rates and potential overfitting across tasks. To address this issue, we implement adaptive gradient blending, simultaneously regulating multiple loss weights and ",
       "doi": "10.1109/JIOT.2024.3402254",
       "pmid": null,
@@ -1637,7 +1701,7 @@
       "venue": "Medicine in Novel Technology and Devices",
       "year": 2023,
       "url": "https://doi.org/10.1016/j.medntd.2023.100215",
-      "cited_by": 22,
+      "cited_by": 23,
       "abstract": "Motor imagery (MI) based Brain-computer interfaces (BCIs) have a wide range of applications in the stroke rehabilitation field. However, due to the low signal-to-noise ratio and high cross-subject variation of the electroencephalogram (EEG) signals generated by motor imagery, the classification performance of the existing methods still needs to be improved to meet the need of real practice. To overcome this problem, we propose a multi-scale spatial-temporal convolutional neural network called MSCNet. We introduce the contrastive learning into a multi-temporal convolution scale backbone to further improve the robustness and discrimination of embedding vectors. Experimental results of binary classification show that MSCNet outperforms the state-of-the-art methods, achieving accuracy improvement of 6.04%, 3.98%, and 8.15% on BCIC IV 2a, SMR-BCI, and OpenBMI datasets in subject-dependent manner, respectively. The results show that the contrastive learning method can significantly improve t",
       "doi": "10.1016/j.medntd.2023.100215",
       "pmid": null,
@@ -1839,6 +1903,29 @@
       }
     },
     {
+      "title": "Motor Imagery EEG Signal Classification Using Distinctive Feature Fusion with Adaptive Structural LASSO",
+      "author": "Weihai Huang, Xinyue Liu, Weize Yang, Yihua Li, Qiyan Sun, Xiangzeng Kong",
+      "venue": "Sensors",
+      "year": 2024,
+      "url": "https://doi.org/10.3390/s24123755",
+      "cited_by": 9,
+      "abstract": "A motor imagery brain-computer interface connects the human brain and computers via electroencephalography (EEG). However, individual differences in the frequency ranges of brain activity during motor imagery tasks pose a challenge, limiting the manual feature extraction for motor imagery classification. To extract features that match specific subjects, we proposed a novel motor imagery classification model using distinctive feature fusion with adaptive structural LASSO. Specifically, we extracted spatial domain features from overlapping and multi-scale sub-bands of EEG signals and mined discriminative features by fusing the task relevance of features with spatial information into the adaptive LASSO-based feature selection. We evaluated the proposed model on public motor imagery EEG datasets, demonstrating that the model has excellent performance. Meanwhile, ablation studies and feature selection visualization of the proposed model further verified the great potential of EEG analysis.",
+      "doi": "10.3390/s24123755",
+      "pmid": "38931540",
+      "openalex_id": "W4399495064",
+      "source_doi": "10.3217/978-3-85125-378-8-61",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6775376701354981,
+        "similarity_score": 0.5866127014160156,
+        "citation_text_length": 1221,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Beta bursts question the ruling power for brain–computer interfaces",
       "author": "Sotirios Papadopoulos, Maciej J Szul, Marco Congedo, James Bonaiuto, Jérémie Mattout",
       "venue": "Journal of Neural Engineering",
@@ -1902,29 +1989,6 @@
         "confidence_score": 0.5707383751869202,
         "similarity_score": 0.5707383751869202,
         "citation_text_length": 142,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Motor Imagery EEG Signal Classification Using Distinctive Feature Fusion with Adaptive Structural LASSO",
-      "author": "Weihai Huang, Xinyue Liu, Weize Yang, Yihua Li, Qiyan Sun, Xiangzeng Kong",
-      "venue": "Sensors",
-      "year": 2024,
-      "url": "https://doi.org/10.3390/s24123755",
-      "cited_by": 8,
-      "abstract": "A motor imagery brain-computer interface connects the human brain and computers via electroencephalography (EEG). However, individual differences in the frequency ranges of brain activity during motor imagery tasks pose a challenge, limiting the manual feature extraction for motor imagery classification. To extract features that match specific subjects, we proposed a novel motor imagery classification model using distinctive feature fusion with adaptive structural LASSO. Specifically, we extracted spatial domain features from overlapping and multi-scale sub-bands of EEG signals and mined discriminative features by fusing the task relevance of features with spatial information into the adaptive LASSO-based feature selection. We evaluated the proposed model on public motor imagery EEG datasets, demonstrating that the model has excellent performance. Meanwhile, ablation studies and feature selection visualization of the proposed model further verified the great potential of EEG analysis.",
-      "doi": "10.3390/s24123755",
-      "pmid": "38931540",
-      "openalex_id": "W4399495064",
-      "source_doi": "10.3217/978-3-85125-378-8-61",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6775376701354981,
-        "similarity_score": 0.5866127014160156,
-        "citation_text_length": 1221,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2531,13 +2595,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:44:33.304248+00:00",
+    "scoring_date": "2026-07-15T00:07:58.285134+00:00",
     "dataset_text_length": 2270,
     "num_citations_scored": 109,
     "summary_stats": {
-      "mean_confidence": 0.5165048662784997,
+      "mean_confidence": 0.516488316396781,
       "median_confidence": 0.4925754547119141,
-      "std_confidence": 0.1357791143356955,
+      "std_confidence": 0.13577446458641923,
       "min_confidence": 0.199038527905941,
       "max_confidence": 1.0,
       "high_confidence_count": 8,

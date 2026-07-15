@@ -1,18 +1,85 @@
 {
   "dataset_id": "on007823",
   "num_citations": 2,
-  "date_last_updated": "2026-06-18T23:27:38.738051+00:00",
+  "date_last_updated": "2026-07-04T08:25:25.865142+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-18T23:27:38.738051+00:00",
+    "fetch_date": "2026-07-04T08:25:25.865142+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
+    "fetch_status": "partial",
+    "anchor_count": 3,
+    "anchor_errors": {
+      "10.1016/j.cnp.2023.02.007": "not_found"
+    },
+    "schema_version": "2.1",
     "discovery_backend": "opencite",
-    "fetch_status": "success",
-    "anchor_count": 2,
-    "anchor_errors": {},
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1016/j.cnp.2026.02.007",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "EEG Signatures of COVID-19 Survival compared to close contacts and the Cuban EEG normative database",
+        "paper_year": 2026,
+        "paper_venue": "Clinical Neurophysiology Practice",
+        "reason": "The paper title and abstract directly analyze the EEG data from COVID-19 survivors and close contacts, which matches the dataset's content.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.1016/j.cnp.2023.02.007",
+        "identifier_type": "doi",
+        "source_relation": "IsDescribedBy",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.on007823",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1016/j.cnp.2026.02.007",
+      "10.1016/j.cnp.2023.02.007",
+      "10.82901/nemar.on007823"
+    ],
+    "keywords": [
+      "EEG",
+      "COVID-19",
+      "resting-state EEG",
+      "neurophysiology",
+      "electroencephalography",
+      "post-COVID syndrome",
+      "COVID-19 survivors",
+      "close contacts",
+      "neurological sequelae",
+      "brain oscillations"
+    ],
+    "methods_description": "EEG was acquired using a 10-20 standard montage. Resting EEG was recorded for 8 minutes with eyes closed in all participants. Additional recordings included 2 minutes of alternating closed and open eyes, followed by 2 minutes of recovery.",
+    "funding": [
+      {
+        "funder_name": "National Key R&D Program of China",
+        "award_number": "2024YFE0215100"
+      },
+      {
+        "funder_name": "Chengdu Science and Technology Bureau",
+        "award_number": "2022-GH02-00042-HZ"
+      }
+    ],
     "searched_accessions": [
       "on007823",
       "ds007823"
@@ -48,7 +115,7 @@
     {
       "title": "Post-COVID EEG Reproducibility Across OpenNeuro ds007823 and ds007605",
       "author": "Project contributors",
-      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+      "venue": "Open MIND",
       "year": 2026,
       "url": "https://doi.org/10.5281/zenodo.20692643",
       "cited_by": 0,
@@ -62,9 +129,9 @@
       "discovery_method": "accession_mention",
       "matched_accession": "ds007823",
       "confidence_scoring": {
-        "confidence_score": 0.7920904129743578,
-        "similarity_score": 0.6857925653457642,
-        "citation_text_length": 452,
+        "confidence_score": 0.786092228293419,
+        "similarity_score": 0.6805993318557739,
+        "citation_text_length": 405,
         "dataset_text_length": 1298,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -73,14 +140,14 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:34:53.697677+00:00",
+    "scoring_date": "2026-07-15T00:27:36.594995+00:00",
     "dataset_text_length": 1298,
     "num_citations_scored": 2,
     "summary_stats": {
-      "mean_confidence": 0.8960452064871789,
-      "median_confidence": 0.8960452064871789,
-      "std_confidence": 0.10395479351282111,
-      "min_confidence": 0.7920904129743578,
+      "mean_confidence": 0.8930461141467094,
+      "median_confidence": 0.8930461141467094,
+      "std_confidence": 0.10695388585329052,
+      "min_confidence": 0.786092228293419,
       "max_confidence": 1.0,
       "high_confidence_count": 2,
       "medium_confidence_count": 0,

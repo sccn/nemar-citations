@@ -1,29 +1,70 @@
 {
   "dataset_id": "nm000134",
   "num_citations": 1,
-  "date_last_updated": "2026-06-18T23:18:43.086915+00:00",
+  "date_last_updated": "2026-07-03T10:25:22.862645+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-06-18T23:18:43.086915+00:00",
+    "fetch_date": "2026-07-03T10:25:22.862645+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.82901/nemar.nm000232",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.48550/arxiv.2508.18571",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Alljoined-1.6M: A Million-Trial EEG-Image Dataset for Evaluating Affordable Brain-Computer Interfaces",
+        "paper_year": 2025,
+        "paper_venue": "arXiv (Cornell University)",
+        "reason": "The paper title and abstract explicitly introduce and describe the release of the 'Alljoined-1.6M' EEG dataset.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000134",
+        "identifier_type": "doi",
+        "source_relation": "IsVersionOf",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Alljoined-1.6M",
+        "paper_year": 2026,
+        "paper_venue": "UC San Diego",
+        "reason": "The paper's title and abstract explicitly describe the release and characteristics of the Alljoined-1.6M dataset, matching the dataset description.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000232",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "related_work",
+        "kept": false,
         "paper_title": "THINGS-EEG2: A large and rich EEG dataset for modeling human visual object recognition",
         "paper_year": 2026,
         "paper_venue": "UC San Diego",
-        "reason": "The candidate paper describes a different EEG dataset (THINGS-EEG2) for visual object recognition, which is topically related to the Alljoined-1.6M dataset."
+        "reason": "The candidate paper describes a different EEG dataset (THINGS-EEG2) for visual object recognition, which is topically related to the Alljoined-1.6M dataset.",
+        "judgment_model": "gemma4:31b"
       }
     ],
+    "searched_dois": [
+      "10.48550/arxiv.2508.18571",
+      "10.82901/nemar.nm000134"
+    ],
+    "keywords": [
+      "EEG",
+      "brain-computer interfaces",
+      "rapid serial visual presentation",
+      "semantic decoding",
+      "visual perception",
+      "consumer-grade neuroimaging",
+      "oddball detection"
+    ],
+    "methods_description": "EEG data were recorded using a 32-channel EMOTIV FLEX2 system with sintered Ag/AgCl gel-based electrodes in an extended 10-20 montage at 256 Hz sampling rate. Participants completed rapid serial visual presentation (RSVP) tasks with 100 ms image presentations followed by 100 ms blank intervals. An oddball detection task required button presses to catch trials featuring a Toy Story character (approximately 6% of sequences). Stimuli consisted of 16,740 unique images from the THINGS database, with test images presented 80 times per participant and training images presented 4-5 times. Data were recorded wirelessly via Bluetooth 5.2 with built-in 50/60 Hz notch filtering.",
+    "funding": [],
     "searched_accessions": [
       "nm000134"
     ],
@@ -58,7 +99,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:42:16.104290+00:00",
+    "scoring_date": "2026-07-15T00:05:00.147396+00:00",
     "dataset_text_length": 2280,
     "num_citations_scored": 1,
     "summary_stats": {

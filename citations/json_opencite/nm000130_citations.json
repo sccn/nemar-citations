@@ -1,37 +1,111 @@
 {
   "dataset_id": "nm000130",
   "num_citations": 31,
-  "date_last_updated": "2026-06-18T23:18:34.071306+00:00",
+  "date_last_updated": "2026-07-03T10:24:57.557559+00:00",
   "metadata": {
-    "total_cumulative_citations": 261,
-    "fetch_date": "2026-06-18T23:18:34.071306+00:00",
+    "total_cumulative_citations": 262,
+    "fetch_date": "2026-07-03T10:24:57.557559+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-022-01372-9",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "eldBETA: A Large Eldercare-oriented Benchmark Database of SSVEP-BCI for the Aging Population",
+        "paper_year": 2022,
+        "paper_venue": "Scientific Data",
+        "reason": "The paper title 'eldBETA: A Large Eldercare-oriented Benchmark Database of SSVEP-BCI for the Aging Population' and abstract explicitly describe the release of the eldBETA dataset.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.6084/m9.figshare.18032669",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "eldBETA: A Large Eldercare-oriented Benchmark Database of SSVEP-BCI for the Aging Population",
+        "paper_year": 2022,
+        "paper_venue": "Figshare",
+        "reason": "The paper's title and abstract explicitly describe the release of the eldBETA database, which matches the dataset's name, subjects (100), and paradigm (SSVEP).",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a software tool for organizing data into the BIDS format, which is the format used by this dataset."
+        "reason": "The paper describes MNE-BIDS, a software tool for organizing data into the BIDS format, which is the format used by this dataset.",
+        "judgment_model": "gemma4:31b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is the format used by this dataset (BIDS Version 1.9.0)."
+        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is the format used by this dataset (BIDS Version 1.9.0).",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000130",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.1038/s41597-022-01372-9",
+      "10.6084/m9.figshare.18032669",
+      "10.82901/nemar.nm000130"
+    ],
+    "keywords": [
+      "SSVEP",
+      "Brain-Computer Interfaces",
+      "EEG",
+      "elderly",
+      "aging",
+      "benchmark dataset",
+      "JFPM",
+      "speller"
+    ],
+    "methods_description": "EEG data were acquired using a 64-channel Synamps2 system (Neuroscan) at 1000 Hz sampling rate with standard 10-05 electrode montage referenced to Cz. Participants performed a 9-target SSVEP speller task with visual feedback. Each trial consisted of a 4-second target cue followed by 5 seconds of SSVEP stimulation and 1 second rest. Stimuli used joint frequency and phase modulation (JFPM) with frequencies from 8.0 to 12.0 Hz in 0.5 Hz steps. Data were recorded in BIDS-formatted GDF files with event annotations marking stimulus onsets.",
+    "funding": [
+      {
+        "funder_name": "Doctoral Brain+X Seed Grant Program of Tsinghua University"
+      },
+      {
+        "funder_name": "National Natural Science Foundation of China",
+        "award_number": "62171473"
+      },
+      {
+        "funder_name": "Tsinghua University",
+        "award_title": "Doctoral Brain+X Seed Grant Program"
+      },
+      {
+        "funder_name": "Chinese Academy of Sciences",
+        "award_number": "XDB32040200",
+        "award_title": "Strategic Priority Research Program"
       }
     ],
     "searched_accessions": [
@@ -296,6 +370,29 @@
       }
     },
     {
+      "title": "High-frequency SSVEP-BCI system for detecting intermodulation frequency components using task-discriminant component analysis",
+      "author": "Hongyan Cui, Meng Li, Xiaodong Ma, Xiaogang Chen",
+      "venue": "Biomedical Signal Processing and Control",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.bspc.2024.106868",
+      "cited_by": 6,
+      "abstract": null,
+      "doi": "10.1016/j.bspc.2024.106868",
+      "pmid": null,
+      "openalex_id": "W4402441286",
+      "source_doi": "10.1038/s41597-022-01372-9",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.584476974606514,
+        "similarity_score": 0.5566447377204895,
+        "citation_text_length": 240,
+        "dataset_text_length": 2310,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Wearable gold–graphene dry electrode-based headband for effective brain–computer interface applications",
       "author": "Yuhang Zheng, Yongyue Sun, Hongji Li, Xiuwei Xuan, Penghai Li, Mingji Li",
       "venue": "Journal of Materials Chemistry C",
@@ -313,29 +410,6 @@
         "confidence_score": 0.43808055192232137,
         "similarity_score": 0.37929052114486694,
         "citation_text_length": 416,
-        "dataset_text_length": 2310,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "High-frequency SSVEP-BCI system for detecting intermodulation frequency components using task-discriminant component analysis",
-      "author": "Hongyan Cui, Meng Li, Xiaodong Ma, Xiaogang Chen",
-      "venue": "Biomedical Signal Processing and Control",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.bspc.2024.106868",
-      "cited_by": 5,
-      "abstract": null,
-      "doi": "10.1016/j.bspc.2024.106868",
-      "pmid": null,
-      "openalex_id": "W4402441286",
-      "source_doi": "10.1038/s41597-022-01372-9",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.584476974606514,
-        "similarity_score": 0.5566447377204895,
-        "citation_text_length": 240,
         "dataset_text_length": 2310,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -758,7 +832,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:42:01.249675+00:00",
+    "scoring_date": "2026-07-15T00:04:37.579178+00:00",
     "dataset_text_length": 2310,
     "num_citations_scored": 31,
     "summary_stats": {

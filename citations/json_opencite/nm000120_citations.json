@@ -1,27 +1,73 @@
 {
   "dataset_id": "nm000120",
   "num_citations": 42,
-  "date_last_updated": "2026-06-18T23:18:07.308502+00:00",
+  "date_last_updated": "2026-07-03T10:23:57.648109+00:00",
   "metadata": {
     "total_cumulative_citations": 418,
-    "fetch_date": "2026-06-18T23:18:07.308502+00:00",
+    "fetch_date": "2026-07-03T10:23:57.648109+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.48550/arxiv.1602.00904",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Comparative evaluation of state-of-the-art algorithms for SSVEP-based BCIs",
+        "paper_year": 2016,
+        "paper_venue": "arXiv (Cornell University)",
+        "reason": "The dataset's DOI (10.48550/arXiv.1602.00904) matches the candidate paper's DOI, and the authors and topic (SSVEP) match perfectly.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into the BIDS format, which is used for the dataset's BIDS version 1.9.0."
+        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into the BIDS format, which is used for the dataset's BIDS version 1.9.0.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000120",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.48550/arxiv.1602.00904",
+      "10.82901/nemar.nm000120"
+    ],
+    "keywords": [
+      "SSVEP",
+      "brain-computer interface",
+      "EEG",
+      "visual evoked potentials",
+      "signal processing",
+      "feature extraction",
+      "classification algorithms"
+    ],
+    "methods_description": "EEG signals were acquired using an EGI 300 Geodesic EEG System with a 256-channel HydroCel Geodesic Sensor Net montage at 250 Hz sampling rate, referenced to Cz. Subjects were exposed to five simultaneously flickering boxes at different frequencies, with each stimulus presented for 5 seconds followed by 5 seconds of rest. Each subject underwent one adaptation period before five experimental sessions. Signal processing evaluation included filtering (FIR vs IIR), artifact removal (AMUSE vs FastICA), feature extraction (PWelch, Periodogram, FFT, Goertzel, PYULEAR, STFT, DWT), and classification (LDA, SVM, Random Forest, kNN, Naive Bayes, AdaBoost). Leave-one-subject-out cross-validation was employed for performance evaluation.",
+    "funding": [
+      {
+        "funder_name": "European Commission",
+        "award_number": "H2020-ICT-2014-644780"
       }
     ],
     "searched_accessions": [
@@ -1001,7 +1047,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:40:56.043162+00:00",
+    "scoring_date": "2026-07-15T00:03:31.566137+00:00",
     "dataset_text_length": 2344,
     "num_citations_scored": 42,
     "summary_stats": {

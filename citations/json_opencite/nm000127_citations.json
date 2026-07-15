@@ -1,18 +1,70 @@
 {
   "dataset_id": "nm000127",
   "num_citations": 5,
-  "date_last_updated": "2026-06-18T23:18:26.353106+00:00",
+  "date_last_updated": "2026-07-03T10:24:39.894565+00:00",
   "metadata": {
     "total_cumulative_citations": 1,
-    "fetch_date": "2026-06-18T23:18:26.353106+00:00",
+    "fetch_date": "2026-07-03T10:24:39.894565+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 3,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [],
+    "anchors": [
+      {
+        "identifier": "10.1038/s41597-025-06032-2",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "A 40-Class SSVEP Speller Dataset: Beta Range Stimulation for Low-Fatigue BCI Applications",
+        "paper_year": 2025,
+        "paper_venue": "Scientific Data",
+        "reason": "The paper title and abstract explicitly describe the release of the 40-class SSVEP speller dataset acquired from 40 participants, matching the dataset's metadata.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.6084/m9.figshare.28806815.v2",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "SSVEP 40class dataset",
+        "paper_year": 2025,
+        "paper_venue": "Figshare",
+        "reason": "The paper title 'SSVEP 40class dataset' and abstract explicitly describe the release of the 40-class Beta range SSVEP dataset described in the dataset metadata.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000127",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.1038/s41597-025-06032-2",
+      "10.6084/m9.figshare.28806815.v2",
+      "10.82901/nemar.nm000127"
+    ],
+    "keywords": [
+      "SSVEP",
+      "brain-computer interfaces",
+      "EEG",
+      "beta oscillations",
+      "visual fatigue",
+      "speller paradigm"
+    ],
+    "methods_description": "EEG data were acquired at 1024 Hz using a BioSemi ActiveTwo system with 31 scalp electrodes plus 2 mastoid references (standard 10-05 montage). Participants completed 6 blocks of 40 trials per session, with each trial consisting of 1.5 s rest, 0.5 s cue, and 5.0 s SSVEP stimulation. Stimuli were presented in a 5×8 matrix on a 120 Hz monitor using JFPM with 0.5π phase differences between adjacent stimuli. Stored epochs span [−2000, 5000] ms relative to stimulus onset.",
+    "funding": [],
     "searched_accessions": [
       "nm000127"
     ],
@@ -46,7 +98,7 @@
     },
     {
       "title": "NeuroAtlas: Benchmarking Foundation Models for Clinical EEG and Brain-Computer Interfaces",
-      "author": "Konstantinos Kontras, Trui Osselaer, Stylianos G Mouslech, Angeliki-Ilektra Karaiskou, Guido Gagliardi, Thomas Strypsteen, Mohammad Hossein Badiei, Anku Rani, M. Vanmarcke, Miguel Bhagubai, C. Ekbote, Jaedong Hwang, Christos Chatzichristos, Paul Pu Liang, M. D. Vos",
+      "author": "Konstantinos Kontras, Trui Osselaer, Stylianos G Mouslech, Angeliki-Ilektra Karaiskou, Guido Gagliardi, Thomas Strypsteen, Mohammad Hossein Badiei, Anku Rani, M. Vanmarcke, Miguel Bhagubai, C. Ekbote, Jaedong Hwang, C. Chatzichristos, Paul Pu Liang, M. D. Vos",
       "venue": "n/a",
       "year": 2026,
       "url": "n/a",
@@ -59,9 +111,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5496269738674164,
-        "similarity_score": 0.47586750984191895,
-        "citation_text_length": 1396,
+        "confidence_score": 0.5495668047666551,
+        "similarity_score": 0.47581541538238525,
+        "citation_text_length": 1390,
         "dataset_text_length": 2280,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -141,13 +193,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:26:31.548345+00:00",
+    "scoring_date": "2026-07-15T00:04:20.240349+00:00",
     "dataset_text_length": 2280,
     "num_citations_scored": 5,
     "summary_stats": {
-      "mean_confidence": 0.6555863876342773,
+      "mean_confidence": 0.6555743538141251,
       "median_confidence": 0.6798469519615175,
-      "std_confidence": 0.2518214226935438,
+      "std_confidence": 0.25182648728779344,
       "min_confidence": 0.24145475924015047,
       "max_confidence": 0.9770721209049226,
       "high_confidence_count": 2,

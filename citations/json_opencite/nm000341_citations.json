@@ -1,47 +1,101 @@
 {
   "dataset_id": "nm000341",
-  "num_citations": 21,
-  "date_last_updated": "2026-06-18T23:25:14.936316+00:00",
+  "num_citations": 22,
+  "date_last_updated": "2026-07-03T15:25:17.349571+00:00",
   "metadata": {
-    "total_cumulative_citations": 247,
-    "fetch_date": "2026-06-18T23:25:14.936316+00:00",
+    "total_cumulative_citations": 271,
+    "fetch_date": "2026-07-03T15:25:17.349571+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
-    "fetch_status": "partial",
+    "fetch_status": "success",
     "anchor_count": 3,
-    "anchor_errors": {
-      "10.5281/zenodo.2617084": "not_found"
-    },
+    "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.5281/zenodo.2617084",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.2312/vriphys.20181064",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "The Impact of Passive Head-Mounted Virtual Reality Devices on the Quality of EEG Signals",
+        "paper_year": 2018,
+        "paper_venue": "HAL (Le Centre pour la Communication Scientifique Directe)",
+        "reason": "The candidate paper, 'The Impact of Passive Head-Mounted Virtual Reality Devices on the Quality of EEG Signals,' involves 12 subjects and HMD-EEG setup, directly relating to the PHMD dataset's acquisition context.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, which is a technical specification and tool for organizing electrophysiological data into the BIDS format, a standard used in neuroimaging protocols."
+        "reason": "The paper describes MNE-BIDS, which is a technical specification and tool for organizing electrophysiological data into the BIDS format, a standard used in neuroimaging protocols.",
+        "judgment_model": "gemma4:e4b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard, which is a technical specification used to organize and share EEG data like this dataset."
+        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard, which is a technical specification used to organize and share EEG data like this dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000341",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
       }
     ],
+    "searched_dois": [
+      "10.5281/zenodo.2617084",
+      "10.2312/vriphys.20181064",
+      "10.82901/nemar.nm000341"
+    ],
+    "keywords": [
+      "Electroencephalography",
+      "EEG",
+      "virtual reality",
+      "head-mounted display",
+      "resting state",
+      "music listening",
+      "brain-computer interfaces"
+    ],
+    "methods_description": "EEG data were acquired from 12 subjects using a 16-channel g.USBamp system (sampling rate: 512 Hz) with wet electrodes in a standard 10-20 montage (reference: right earlobe, ground: AFz). Subjects sat approximately 50 cm from a screen and listened to Bach Inventions while maintaining visual fixation on a marker. Each experimental session consisted of 10 blocks (60 seconds each) with randomized alternation between smartphone switched-off and switched-on conditions. Data were recorded without digital filtering or Faraday cage shielding to simulate real-world usage conditions.",
+    "funding": [],
     "searched_accessions": [
       "nm000341"
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 21
+    "num_datapaper_citations": 22
   },
   "citation_details": [
     {
@@ -526,21 +580,44 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Using electrophysiological measures to evaluate the sense of presence in immersive virtual environments: An event‐related potential study",
+      "author": "Simone Grassini, K. Laumann, Sebastian Thorp, V. Topranin",
+      "venue": "Brain and Behavior",
+      "year": 2021,
+      "url": "https://doi.org/10.1002/brb3.2269",
+      "cited_by": 24,
+      "abstract": "Sense of presence has been often explored in the context of virtual reality (VR) and immersive visual technologies; however, standardized and objective measures of the sense of presence have been difficult to find. Studies attempting to find physiological correlates of sense presence using electroencephalography (EEG) have reported mixed results. In the present study, we used brain event‐related potentials (ERPs) elicited by auditory stimuli to identify an objective physiological index of sense of presence during VR, attempting to replicate the findings of previous studies and explain the heterogeneity of results reported in the literature. Participants in our experiment were asked to experience an immersive virtual environment using a modern head‐mounted display while passively hearing task‐irrelevant frequent standard and infrequent deviant tones as in a classic auditory oddball paradigm. Subsequently, they were asked to complete a battery of questionnaires aimed to estimate their se",
+      "doi": "10.1002/brb3.2269",
+      "pmid": "34173347",
+      "openalex_id": null,
+      "source_doi": "10.5281/zenodo.2617084",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5691756324470044,
+        "similarity_score": 0.4927927553653717,
+        "citation_text_length": 1251,
+        "dataset_text_length": 2365,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-19T10:30:55.784401+00:00",
+    "scoring_date": "2026-07-15T00:17:20.900078+00:00",
     "dataset_text_length": 2365,
-    "num_citations_scored": 21,
+    "num_citations_scored": 22,
     "summary_stats": {
-      "mean_confidence": 0.5412549199376787,
-      "median_confidence": 0.501729565858841,
-      "std_confidence": 0.16537031410495792,
+      "mean_confidence": 0.5425240432335572,
+      "median_confidence": 0.5042324774712325,
+      "std_confidence": 0.16167283010773315,
       "min_confidence": 0.3619695997238159,
       "max_confidence": 1.0,
       "high_confidence_count": 2,
-      "medium_confidence_count": 16,
+      "medium_confidence_count": 17,
       "low_confidence_count": 3
     }
   }

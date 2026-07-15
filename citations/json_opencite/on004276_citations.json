@@ -1,0 +1,131 @@
+{
+  "dataset_id": "on004276",
+  "num_citations": 2,
+  "date_last_updated": "2026-07-03T21:23:49.450868+00:00",
+  "metadata": {
+    "total_cumulative_citations": 0,
+    "fetch_date": "2026-07-03T21:23:49.450868+00:00",
+    "processing_version": "1.0",
+    "fetch_status": "success",
+    "anchor_count": 1,
+    "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
+    "anchor_judgment_model": "gemma4:e4b",
+    "anchors": [
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
+        "source_relation": "IsDescribedBy",
+        "classification": "methodology",
+        "kept": false,
+        "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
+        "paper_year": 2019,
+        "paper_venue": "The Journal of Open Source Software",
+        "reason": "The paper describes MNE-BIDS, a tool/specification for organizing electrophysiological data into the BIDS format, which is used in this dataset's README.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.1038/sdata.2018.110",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "methodology",
+        "kept": false,
+        "paper_title": "MEG-BIDS, the brain imaging data structure extended to magnetoencephalography",
+        "paper_year": 2018,
+        "paper_venue": "Scientific Data",
+        "reason": "The paper proposes MEG-BIDS, a data structure standard for organizing MEG data, which is a technical specification/methodology used in the dataset's protocol.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.1162/nol_a_00069",
+        "identifier_type": "doi",
+        "source_relation": "IsDescribedBy",
+        "classification": "related_work",
+        "kept": false,
+        "paper_title": "A Weak Shadow of Early Life Language Processing Persists in the Right Hemisphere of the Mature Brain",
+        "paper_year": 2022,
+        "paper_venue": "Neurobiology of Language",
+        "reason": "The paper studies language processing in the mature brain using fMRI, which is topically related to the dataset's focus on auditory word comprehension, but does not describe the dataset itself.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.on004276",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.82901/nemar.on004276"
+    ],
+    "keywords": [
+      "MEG",
+      "auditory processing",
+      "word recognition",
+      "lexical decision",
+      "magnetoencephalography",
+      "neuroimaging",
+      "BIDS",
+      "MALD",
+      "Massive Auditory Lexical Decision",
+      "MNE-BIDS"
+    ],
+    "methods_description": "MEG data were collected during an auditory word recognition task using stimuli from the Massive Auditory Lexical Decision database. Data were converted to BIDS format using MNE-BIDS.",
+    "funding": [
+      {
+        "funder_name": "NSF",
+        "award_number": "BCS-1749407"
+      }
+    ],
+    "searched_accessions": [
+      "on004276",
+      "ds004276"
+    ],
+    "num_accession_mentions": 2,
+    "num_dataset_citations": 2,
+    "num_datapaper_citations": 0
+  },
+  "citation_details": [
+    {
+      "title": "Recurrent neural networks as neuro-computational models of human speech recognition",
+      "author": "Christian Brodbeck, Thomas Hannagan, James S. Magnuson",
+      "venue": "PLoS Computational Biology",
+      "year": 2025,
+      "url": "https://doi.org/10.1371/journal.pcbi.1013244",
+      "cited_by": 2,
+      "abstract": "Human speech recognition transforms a continuous acoustic signal into categorical linguistic units, by aggregating information that is distributed in time. It has been suggested that this kind of information processing may be understood through the computations of a Recurrent Neural Network (RNN) that receives input frame by frame, linearly in time, but builds an incremental representation of this input through a continually evolving internal state. While RNNs can simulate several key behavioral observations about human speech and language processing, it is unknown whether RNNs also develop computational dynamics that resemble human neural speech processing. Here we show that the internal dynamics of long short-term memory (LSTM) RNNs, trained to recognize speech from auditory spectrograms, predict human neural population responses to the same stimuli, beyond predictions from auditory features. Variations in the RNN architecture motivated by cognitive principles further improved this predictive power. Specifically, modifications that allow more human-like phonetic competition also led to more human-like temporal dynamics. Overall, our results suggest that RNNs provide plausible computational models of the cortical processes supporting human speech recognition.",
+      "doi": "10.1371/journal.pcbi.1013244",
+      "pmid": "40720506",
+      "openalex_id": "W4412726145",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004276"
+    },
+    {
+      "title": "Auditory single word recognition in MEG",
+      "author": "Phoebe Gaston, Christian Brodbeck, Colin Phillips, Ellen Lau",
+      "venue": "UC San Diego",
+      "year": 2026,
+      "url": "https://doi.org/10.82901/nemar.on004276",
+      "cited_by": 0,
+      "abstract": "This dataset comprises magnetoencephalography (MEG) recordings of auditory single word recognition in human subjects. Participants listened to isolated words while neural activity was recorded, providing insights into the temporal dynamics of auditory word comprehension. The dataset is described in Gaston et al. (2022) 'Auditory word comprehension is less incremental in isolated words' published in Neurobiology of Language. The dataset includes raw MEG data, stimulus information, and associated metadata organized according to the Brain Imaging Data Structure (BIDS) standard. This is a NEMAR-converted version of OpenNeuro dataset ds004276.",
+      "doi": "10.82901/nemar.on004276",
+      "pmid": null,
+      "openalex_id": "W7165685696",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004276"
+    }
+  ]
+}

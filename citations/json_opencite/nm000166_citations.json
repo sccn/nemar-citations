@@ -1,37 +1,117 @@
 {
   "dataset_id": "nm000166",
   "num_citations": 32,
-  "date_last_updated": "2026-06-18T23:19:47.965079+00:00",
+  "date_last_updated": "2026-07-03T11:25:13.061069+00:00",
   "metadata": {
-    "total_cumulative_citations": 178,
-    "fetch_date": "2026-06-18T23:19:47.965079+00:00",
+    "total_cumulative_citations": 182,
+    "fetch_date": "2026-07-03T11:25:13.061069+00:00",
     "processing_version": "1.0",
-    "schema_version": "2.0",
-    "discovery_backend": "opencite",
     "fetch_status": "success",
     "anchor_count": 2,
     "anchor_errors": {},
+    "schema_version": "2.1",
+    "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
-    "context_anchors": [
+    "anchors": [
       {
-        "anchor_identifier": "10.21105/joss.01896",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1016/j.neuroimage.2022.119666",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "M3CV: A multi-subject, multi-session, and multi-task database for EEG-based biometrics challenge",
+        "paper_year": 2022,
+        "paper_venue": "NeuroImage",
+        "reason": "The paper title and abstract explicitly introduce the 'M3CV' database, which matches the dataset name and description provided.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
         "paper_year": 2019,
         "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset."
+        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset.",
+        "judgment_model": "gemma4:31b"
       },
       {
-        "anchor_identifier": "10.1038/s41597-019-0104-8",
-        "anchor_identifier_type": "doi",
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
         "source_relation": "References",
         "classification": "methodology",
+        "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
         "paper_year": 2019,
         "paper_venue": "Scientific Data",
-        "reason": "The paper describes the EEG-BIDS standard, which is the data organization standard used by this dataset's BIDS version."
+        "reason": "The paper describes the EEG-BIDS standard, which is the data organization standard used by this dataset's BIDS version.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000166",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
+    ],
+    "searched_dois": [
+      "10.1016/j.neuroimage.2022.119666",
+      "10.82901/nemar.nm000166"
+    ],
+    "keywords": [
+      "EEG",
+      "brain-computer interfaces",
+      "biometric identification",
+      "motor imagery",
+      "steady-state evoked potentials",
+      "P300",
+      "resting state"
+    ],
+    "methods_description": "EEG was recorded at 1000 Hz using a 64-channel BrainAmp amplifier with Easycap (10-20 positions), referenced to FCz online and re-referenced to linked mastoids offline. Preprocessing included manual bad channel interpolation, bandpass filtering (0.01-200 Hz), notch filtering (49-51 Hz), ICA-based artifact removal, and downsampling to 250 Hz. Subjects performed 6 paradigms with 15 runs per session (~50 minutes recording per session) including eyes-closed/open resting, motor execution (hand/foot), transient sensory stimulation (visual/auditory/somatosensory evoked potentials), SSVEP variants, and P300 oddball tasks.",
+    "funding": [
+      {
+        "funder_name": "National Natural Science Foundation of China",
+        "award_number": "62271326"
+      },
+      {
+        "funder_name": "National Natural Science Foundation of China",
+        "award_number": "81871443"
+      },
+      {
+        "funder_name": "National Natural Science Foundation of China",
+        "award_number": "61906122"
+      },
+      {
+        "funder_name": "National Natural Science Foundation of China",
+        "award_number": "81901831"
+      },
+      {
+        "funder_name": "Shenzhen Municipality Science, Technology and Innovation Commission",
+        "award_number": "JCYJ20190908181739182"
+      },
+      {
+        "funder_name": "Shenzhen Science and Technology Program",
+        "award_number": "JSGG20210713091811038"
+      },
+      {
+        "funder_name": "Shenzhen Hong Kong Institute of Brain Science-Shenzhen Fundamental Research Institutions",
+        "award_number": "2022SHIBS0003"
+      },
+      {
+        "funder_name": "Shenzhen Sanming Project of Medicine",
+        "award_number": "SZSM202111009"
+      },
+      {
+        "funder_name": "Shenzhen Special Project for Sustainable Development",
+        "award_number": "KCXFZ20201221173400001"
       }
     ],
     "searched_accessions": [
@@ -48,7 +128,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2023,
       "url": "https://doi.org/10.3389/fnins.2023.1122661",
-      "cited_by": 57,
+      "cited_by": 58,
       "abstract": "Introduction: Inter- and intra-subject variability are caused by the variability of the psychological and neurophysiological factors over time and across subjects. In the application of in Brain-Computer Interfaces (BCI), the existence of inter- and intra-subject variability reduced the generalization ability of machine learning models seriously, which further limited the use of BCI in real life. Although many transfer learning methods can compensate for the inter- and intra-subject variability to some extent, there is still a lack of clear understanding about the change of feature distribution between the cross-subject and cross-session electroencephalography (EEG) signal. Methods: To investigate this issue, an online platform for motor-imagery BCI decoding has been built in this work. The EEG signal from both the multi-subject (Exp1) and multi-session (Exp2) experiments has been analyzed from multiple perspectives. Results: Firstly we found that with the similar variability of classi",
       "doi": "10.3389/fnins.2023.1122661",
       "pmid": "36860620",
@@ -71,7 +151,7 @@
       "venue": "Electronics",
       "year": 2023,
       "url": "https://doi.org/10.3390/electronics12122743",
-      "cited_by": 30,
+      "cited_by": 31,
       "abstract": "A preponderance of brain–computer interface (BCI) publications proposing artificial neural networks for motor imagery (MI) electroencephalography (EEG) signal classification utilize one of the BCI Competition datasets. However, these databases encompass MI EEG data from a limited number of subjects, typically less than or equal to 10. Furthermore, the algorithms usually include only bandpass filtering as a means of reducing noise and increasing signal quality. In this study, we conducted a comparative analysis of five renowned neural networks (Shallow ConvNet, Deep ConvNet, EEGNet, EEGNet Fusion, and MI-EEGNet) utilizing open-access databases with a larger subject pool in conjunction with the BCI Competition IV 2a dataset to obtain statistically significant results. We employed the FASTER algorithm to eliminate artifacts from the EEG as a signal processing step and explored the potential for transfer learning to enhance classification results on artifact-filtered data. Our objective wa",
       "doi": "10.3390/electronics12122743",
       "pmid": null,
@@ -186,7 +266,7 @@
       "venue": "Computers",
       "year": 2025,
       "url": "https://doi.org/10.3390/computers14080299",
-      "cited_by": 5,
+      "cited_by": 6,
       "abstract": "This overview examines recent advancements in EEG-based biometric identification, focusing on integrating emotional recognition to enhance the robustness and accuracy of biometric systems. By leveraging the unique physiological properties of EEG signals, biometric systems can identify individuals based on neural responses. The overview discusses the influence of emotional states on EEG signals and the consequent impact on biometric reliability. It also evaluates recent emotion recognition techniques, including machine learning methods such as support vector machines (SVMs), convolutional neural networks (CNNs), and long short-term memory networks (LSTMs). Additionally, the role of multimodal EEG datasets in enhancing emotion recognition accuracy is explored. Findings from key studies are synthesized to highlight the potential of EEG for secure, adaptive biometric systems that account for emotional variability. This overview emphasizes the need for future research on resilient biometric",
       "doi": "10.3390/computers14080299",
       "pmid": null,
@@ -221,6 +301,29 @@
         "confidence_score": 0.6243608522415163,
         "similarity_score": 0.5405721664428711,
         "citation_text_length": 1249,
+        "dataset_text_length": 2337,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Brainprint Recognition Based on the Stable SSVEP Space-Frequency Energy Distribution",
+      "author": "Lijie Wang, Linqing Feng, Tao Tang, Dongping Yang, Yina Wei",
+      "venue": "n/a",
+      "year": 2023,
+      "url": "https://doi.org/10.1109/embc40787.2023.10341185",
+      "cited_by": 4,
+      "abstract": "Brainprint recognition has received increasing attention in information security. Electroencephalography (EEG) signals measured under task-related or task-free conditions have been exploited as brain biometrics. However, what components make the uniqueness of one's brain signals remains unclear. In this study, we proposed an interpretable biomarker based on steady-state visual evoked potentials (SSVEP) signals for EEG biometric identification. Firstly, we recovered pure SSVEP components from EEG by a point-position equivalent reconstruction (PPER) method. Then, we calculated the distribution properties of SSVEP components in space and frequency. By using the uniform manifold approximation and projection, we reduced the distribution features to 2-dimensions, which shows the separability of the subjects. Lastly, we built a long short-term memory (LSTM) network to perform brainprint recognition on the SSVEP benchmark dataset. The average recognition accuracy can reach up to 98.33%. Our re",
+      "doi": "10.1109/embc40787.2023.10341185",
+      "pmid": "38082842",
+      "openalex_id": "W4389538431",
+      "source_doi": "10.1016/j.neuroimage.2022.119666",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5508671870827676,
+        "similarity_score": 0.4769412875175476,
+        "citation_text_length": 1185,
         "dataset_text_length": 2337,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -290,29 +393,6 @@
         "confidence_score": 0.5099606662988664,
         "similarity_score": 0.4415243864059448,
         "citation_text_length": 1203,
-        "dataset_text_length": 2337,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Brainprint Recognition Based on the Stable SSVEP Space-Frequency Energy Distribution",
-      "author": "Lijie Wang, Linqing Feng, Tao Tang, Dongping Yang, Yina Wei",
-      "venue": "n/a",
-      "year": 2023,
-      "url": "https://doi.org/10.1109/embc40787.2023.10341185",
-      "cited_by": 3,
-      "abstract": "Brainprint recognition has received increasing attention in information security. Electroencephalography (EEG) signals measured under task-related or task-free conditions have been exploited as brain biometrics. However, what components make the uniqueness of one's brain signals remains unclear. In this study, we proposed an interpretable biomarker based on steady-state visual evoked potentials (SSVEP) signals for EEG biometric identification. Firstly, we recovered pure SSVEP components from EEG by a point-position equivalent reconstruction (PPER) method. Then, we calculated the distribution properties of SSVEP components in space and frequency. By using the uniform manifold approximation and projection, we reduced the distribution features to 2-dimensions, which shows the separability of the subjects. Lastly, we built a long short-term memory (LSTM) network to perform brainprint recognition on the SSVEP benchmark dataset. The average recognition accuracy can reach up to 98.33%. Our re",
-      "doi": "10.1109/embc40787.2023.10341185",
-      "pmid": "38082842",
-      "openalex_id": "W4389538431",
-      "source_doi": "10.1016/j.neuroimage.2022.119666",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5508671870827676,
-        "similarity_score": 0.4769412875175476,
-        "citation_text_length": 1185,
         "dataset_text_length": 2337,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -781,7 +861,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-06-18T23:44:02.070865+00:00",
+    "scoring_date": "2026-07-15T00:07:27.674976+00:00",
     "dataset_text_length": 2337,
     "num_citations_scored": 32,
     "summary_stats": {
