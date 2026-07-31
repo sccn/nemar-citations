@@ -16,13 +16,18 @@ import argparse
 import json
 import logging
 import os
-from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 from dataset_citations.backends import OpenCiteBackend
 from dataset_citations.core.citation_utils import strip_volatile_timestamps
 from dataset_citations.core.opencite_pipeline import (
     fetch_dataset_citations_via_opencite,
+)
+from dataset_citations.core.run_state import (
+    checked_within,
+    load_state,
+    save_state,
+    stamp_checked,
 )
 from dataset_citations.sources.doi import normalize_doi
 from dataset_citations.sources.models import FetchSuccess
@@ -84,55 +89,6 @@ def _has_stable_status(filepath: str) -> bool:
         return False
     status = metadata.get("fetch_status")
     return isinstance(status, str) and status not in _API_FAILURE_STATUSES
-
-
-def _checked_within(
-    dataset_id: str, fetch_state: dict[str, str], max_age_seconds: int
-) -> bool:
-    """Return True if `dataset_id` was fetched within `max_age_seconds`.
-
-    Reads the last-checked timestamp from the fetch-state cache. Any missing
-    entry or unparseable timestamp returns False (re-fetch).
-    """
-    raw = fetch_state.get(dataset_id)
-    if not isinstance(raw, str):
-        return False
-    try:
-        checked_at = datetime.fromisoformat(raw)
-    except ValueError:
-        return False
-    if checked_at.tzinfo is None:
-        checked_at = checked_at.replace(tzinfo=UTC)
-    return datetime.now(UTC) - checked_at <= timedelta(seconds=max_age_seconds)
-
-
-def _load_fetch_state(path: str) -> dict[str, str]:
-    """Load the {dataset_id: last_checked_iso} cache; empty dict if absent."""
-    data = _read_json_or_none(path)
-    if data is None:
-        return {}
-    valid = {k: v for k, v in data.items() if isinstance(v, str)}
-    dropped = len(data) - len(valid)
-    if dropped:
-        logger.warning(
-            "fetch-state %s: dropped %d entries with non-string values", path, dropped
-        )
-    return valid
-
-
-def _save_fetch_state(path: str, state: dict[str, str]) -> None:
-    """Persist the fetch-state cache. Best-effort: log and continue on failure.
-
-    Logged at ERROR (not WARNING): a failed save means the next run starts
-    from a cold cache and re-fetches every dataset, and the same disk/perms
-    condition likely failed the citation writes too, so this should be
-    visible in the cron log.
-    """
-    try:
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(state, f, indent=2, sort_keys=True)
-    except OSError as e:
-        logger.error("Could not write fetch-state cache %s: %s", path, e)
 
 
 def _load_catalog_doi_map(
@@ -225,7 +181,7 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
     # detect a fully-degraded run instead of silently shipping empty JSONs.
     max_age_seconds = args.max_age_days * 86400 if args.max_age_days > 0 else None
     fetch_state_path = os.path.join(args.output_dir, _FETCH_STATE_FILENAME)
-    fetch_state = _load_fetch_state(fetch_state_path)
+    fetch_state = load_state(fetch_state_path)
     successes = 0
     stub_only = 0
     write_failures = 0
@@ -241,7 +197,7 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
         if (
             max_age_seconds is not None
             and _has_stable_status(filepath)
-            and _checked_within(dataset_id, fetch_state, max_age_seconds)
+            and checked_within(dataset_id, fetch_state, max_age_seconds)
         ):
             logger.info(
                 "%s: skipping (checked within %d days, stable status)",
@@ -282,7 +238,7 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
                 write_failures += 1
                 continue
         # Record the fetch attempt so the freshness gate can skip it next run.
-        fetch_state[dataset_id] = datetime.now(UTC).isoformat()
+        stamp_checked(fetch_state, dataset_id)
         if payload["num_citations"] > 0:
             successes += 1
         else:
@@ -292,7 +248,7 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
                 api_failures += 1
             logger.info("%s: 0 citations (status=%s)", dataset_id, status)
 
-    _save_fetch_state(fetch_state_path, fetch_state)
+    save_state(fetch_state_path, fetch_state)
     logger.info(
         "opencite run complete: %d with citations, %d empty/stub "
         "(%d API-failure), %d write failures, %d unchanged, %d skipped (fresh), "
