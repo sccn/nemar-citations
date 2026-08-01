@@ -71,7 +71,7 @@ class ThemeGenerator:
                 target = self.output_dir / "data" / "themes"
                 try:
                     self._render_wordcloud_png(top_words, target, theme_id)
-                except Exception as exc:  # noqa: BLE001
+                except Exception as exc:
                     # Defensive: never let a rendering failure kill the whole
                     # dashboard build. Log and leave wordcloud=None so the
                     # template renders the tag-cloud fallback only.

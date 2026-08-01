@@ -111,10 +111,7 @@ class DashboardGenerator:
 
         # Step 7: Copy assets and prepare data files
         self.logger.info("Managing assets")
-        if lazy_load:
-            data_file = self.asset_manager.create_data_file(data)
-        else:
-            data_file = None
+        data_file = self.asset_manager.create_data_file(data) if lazy_load else None
 
         self.asset_manager.copy_support_files()
         # Theme images now use relative paths, no need to copy

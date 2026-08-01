@@ -57,9 +57,11 @@ def load_dataset_metadata(dataset_id: str, datasets_dir: Path) -> str | None:
         if "dataset_description" in dataset_data:
             desc = dataset_data["dataset_description"]
             if isinstance(desc, dict):
-                for field in ["Name", "Description", "TaskName", "Instructions"]:
-                    if field in desc:
-                        metadata_parts.append(str(desc[field]))
+                metadata_parts.extend(
+                    str(desc[field])
+                    for field in ["Name", "Description", "TaskName", "Instructions"]
+                    if field in desc
+                )
 
         combined_text = " ".join(metadata_parts).strip()
 
@@ -348,7 +350,9 @@ def process_citation_batch(
 
         # Store each embedding
         batch_generated = 0
-        for i, (embedding, metadata) in enumerate(zip(embeddings, batch_metadata)):
+        for i, (embedding, metadata) in enumerate(
+            zip(embeddings, batch_metadata, strict=False)
+        ):
             try:
                 storage_manager.store_citation_embedding(
                     citation_text=batch_texts[i],

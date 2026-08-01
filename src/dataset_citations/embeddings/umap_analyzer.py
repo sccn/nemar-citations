@@ -270,7 +270,9 @@ class UMAPAnalyzer:
 
         # Group by cluster
         clusters = {}
-        for i, (emb_id, cluster_id) in enumerate(zip(embedding_ids, cluster_labels)):
+        for i, (emb_id, cluster_id) in enumerate(
+            zip(embedding_ids, cluster_labels, strict=False)
+        ):
             if cluster_id not in clusters:
                 clusters[cluster_id] = []
             clusters[cluster_id].append(
@@ -280,10 +282,7 @@ class UMAPAnalyzer:
         # Analyze each cluster
         cluster_analysis = {}
         for cluster_id, members in clusters.items():
-            if cluster_id == -1:
-                cluster_name = "noise"
-            else:
-                cluster_name = f"cluster_{cluster_id}"
+            cluster_name = "noise" if cluster_id == -1 else f"cluster_{cluster_id}"
 
             analysis = {
                 "cluster_id": cluster_id,
@@ -440,6 +439,7 @@ class UMAPAnalyzer:
             zip(
                 clustering_results["embedding_ids"],
                 clustering_results["cluster_labels"],
+                strict=False,
             )
         ):
             cluster_data.append(

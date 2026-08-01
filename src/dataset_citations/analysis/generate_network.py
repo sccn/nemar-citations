@@ -172,7 +172,7 @@ def generate_network(citations_dir: Path, output_dir: Path):
 
     # Calculate and save dataset co-citations
     co_citation_counts = Counter()
-    for author, datasets in author_datasets.items():
+    for datasets in author_datasets.values():
         if len(datasets) > 1:
             datasets_list = sorted(datasets)
             for i in range(len(datasets_list)):

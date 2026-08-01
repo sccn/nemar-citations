@@ -217,15 +217,15 @@ def find_author_overlaps(
         overlapping_authors = dataset_author_set.intersection(citation_author_set)
 
         if overlapping_authors:
-            for author in overlapping_authors:
-                overlap_data.append(
-                    {
-                        "dataset_id": dataset_id,
-                        "author": author,
-                        "author_type": "dataset_creator_and_citation_author",
-                        "overlap_count": 1,
-                    }
-                )
+            overlap_data.extend(
+                {
+                    "dataset_id": dataset_id,
+                    "author": author,
+                    "author_type": "dataset_creator_and_citation_author",
+                    "overlap_count": 1,
+                }
+                for author in overlapping_authors
+            )
 
     df = pd.DataFrame(overlap_data)
     if not df.empty:

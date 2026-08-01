@@ -212,16 +212,16 @@ def _deserialize_work(raw: dict[str, Any]) -> CitingWork:
     authors_raw = raw.get("authors") or []
     authors: list[Author] = []
     if isinstance(authors_raw, list):
-        for a in authors_raw:
-            if isinstance(a, dict) and "name" in a:
-                authors.append(
-                    Author(
-                        name=a["name"],
-                        family=a.get("family"),
-                        given=a.get("given"),
-                        orcid=a.get("orcid"),
-                    )
-                )
+        authors.extend(
+            Author(
+                name=a["name"],
+                family=a.get("family"),
+                given=a.get("given"),
+                orcid=a.get("orcid"),
+            )
+            for a in authors_raw
+            if isinstance(a, dict) and "name" in a
+        )
     return CitingWork(
         title=raw["title"],
         doi=raw.get("doi"),

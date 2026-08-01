@@ -133,10 +133,7 @@ class EmbeddingStorageManager:
 
         # Get next version number
         current_embedding = self.registry.get_current_dataset_embedding(dataset_id)
-        if current_embedding:
-            version = current_embedding["version"] + 1
-        else:
-            version = 1
+        version = current_embedding["version"] + 1 if current_embedding else 1
 
         return f"{dataset_id}_v{version}_{date}.pkl"
 
@@ -158,10 +155,7 @@ class EmbeddingStorageManager:
 
         # Get next version number
         current_embedding = self.registry.get_current_citation_embedding(citation_hash)
-        if current_embedding:
-            version = current_embedding["version"] + 1
-        else:
-            version = 1
+        version = current_embedding["version"] + 1 if current_embedding else 1
 
         return f"citation_{citation_hash}_v{version}_{date}.pkl"
 

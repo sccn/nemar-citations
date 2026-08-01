@@ -118,7 +118,43 @@ extend-exclude = [
 ]
 
 [tool.ruff.lint]
-extend-select = ["I"]
+# Declare the rule set explicitly instead of inheriting ruff's default, which
+# is a moving target: ruff 0.16 widened that default from a handful of rules to
+# most of the catalog, which turned `main` red overnight with 721 findings and
+# blocked every open PR (issue #199). Pinning the selection here means a ruff
+# upgrade changes lint only when we choose to change this list.
+select = [
+    "E4", "E7", "E9",  # pycodestyle: the subset ruff has always defaulted to
+    "F",               # pyflakes
+    "I",               # isort
+    "UP",              # pyupgrade: modern syntax for our py313 floor
+    "DTZ",             # timezone-aware datetimes (see utils/datetime_utils.py)
+    "LOG",             # module loggers, never the root logger
+    "EXE",             # shebang/permission consistency
+    "SIM", "C4", "PIE", "PERF", "FURB",  # readability + obvious inefficiency
+    "B",               # bugbear
+    "S",               # bandit security checks
+    "RUF",
+]
+# Every blind `except Exception` in this package sits at a deliberate batch
+# resilience boundary: the pipelines iterate ~750 datasets, and one unparseable
+# file or one upstream library raising something undocumented must not kill a
+# nightly run. All 42 current sites log or re-raise, so the project rule that
+# actually matters (no silent failures, see AGENTS.md) is satisfied. Narrowing
+# them would mean enumerating every failure mode of torch, sentence-transformers
+# and networkx, where a miss becomes a 03:00 crash rather than a logged skip.
+ignore = [
+    "BLE001",
+    # The embedding store is pickle by design (`embeddings/*.pkl`, written and
+    # read only by this package from its own working tree). S301 is about
+    # deserializing untrusted input, which is not the threat model here.
+    "S301",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Tests assert; that is the job. S603/S607 cover the preflight tests that shell
+# out to `bash -n` to syntax-check the cron scripts, with no untrusted input.
+"tests/*" = ["S101", "S603", "S607"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["dataset_citations"]

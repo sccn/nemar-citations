@@ -150,21 +150,20 @@ class ModalGenerator:
         bridge_papers = network_data.get("bridge_papers", [])
 
         # Fix field names and sort by number of datasets bridged
-        fixed_papers = []
-        for paper in bridge_papers:
-            fixed_papers.append(
-                {
-                    "bridge_paper_title": paper.get("title", "Unknown Title"),
-                    "bridge_paper_author": paper.get("author", "Unknown Authors"),
-                    "bridge_paper_year": paper.get("year", ""),
-                    "num_datasets_bridged": int(paper.get("num_datasets", 0)),
-                    "datasets_bridged": (
-                        paper.get("datasets_bridged", "").split(",")
-                        if paper.get("datasets_bridged")
-                        else []
-                    ),
-                }
-            )
+        fixed_papers = [
+            {
+                "bridge_paper_title": paper.get("title", "Unknown Title"),
+                "bridge_paper_author": paper.get("author", "Unknown Authors"),
+                "bridge_paper_year": paper.get("year", ""),
+                "num_datasets_bridged": int(paper.get("num_datasets", 0)),
+                "datasets_bridged": (
+                    paper.get("datasets_bridged", "").split(",")
+                    if paper.get("datasets_bridged")
+                    else []
+                ),
+            }
+            for paper in bridge_papers
+        ]
 
         # Sort by number of datasets bridged and get top 20
         top_papers = sorted(

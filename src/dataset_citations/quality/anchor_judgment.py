@@ -40,6 +40,7 @@ Email: shirazi@ieee.org
 
 from __future__ import annotations
 
+import contextlib
 import json
 import logging
 import os
@@ -162,7 +163,7 @@ def _judge_one_anchor(
             judged_at=judged_at,
             error=f"paper_lookup_failed:{paper_result.reason}:{paper_result.detail}",
         )
-    assert isinstance(paper_result, FetchSuccess)
+    assert isinstance(paper_result, FetchSuccess)  # noqa: S101 - upstream contract guard
     paper = paper_result.value
 
     prompt = build_anchor_prompt(
@@ -252,7 +253,7 @@ def judge_dataset_anchors(
             "judgment_model": client.model,
             "judgments": [],
         }
-    assert isinstance(refs_result, FetchSuccess)
+    assert isinstance(refs_result, FetchSuccess)  # noqa: S101 - upstream contract guard
     refs: list[DoiReference] = [
         r for r in refs_result.value if r.identifier_type == "doi"
     ]
@@ -316,10 +317,8 @@ def save_judgment_sidecar(path: str | Path, payload: dict[str, Any]) -> None:
         os.replace(tmp_path, target)
     except Exception:
         # Best-effort cleanup of the temp file on any write/replace failure.
-        try:
+        with contextlib.suppress(FileNotFoundError):
             os.unlink(tmp_path)
-        except FileNotFoundError:
-            pass
         raise
 
 

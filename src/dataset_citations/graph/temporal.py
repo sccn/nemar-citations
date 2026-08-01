@@ -34,7 +34,7 @@ def extract_years_from_citations(citation_file: Path) -> list[int]:
         with open(citation_file, encoding="utf-8") as f:
             data = json.load(f)
     except json.JSONDecodeError as e:
-        raise ValueError(f"Invalid JSON in {citation_file}: {e}")
+        raise ValueError(f"Invalid JSON in {citation_file}: {e}") from e
 
     years = []
     citation_details = data.get("citation_details", [])

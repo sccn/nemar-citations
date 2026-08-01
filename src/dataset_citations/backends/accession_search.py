@@ -34,8 +34,7 @@ def reconstruct_abstract(inverted: dict[str, list[int]] | None) -> str | None:
         return None
     positions: list[tuple[int, str]] = []
     for word, idxs in inverted.items():
-        for i in idxs:
-            positions.append((i, word))
+        positions.extend((i, word) for i in idxs)
     if not positions:
         return None
     positions.sort()
@@ -178,7 +177,7 @@ class AccessionSearchBackend:
     async def _search_all(self, terms: list[str]) -> list[dict[str, Any]]:
         hit_lists: list[list[dict[str, Any]]] = []
         async with OpenAlexClient(self._config) as client:
-            assert isinstance(client, OpenAlexClient), (
+            assert isinstance(client, OpenAlexClient), (  # noqa: S101 - upstream contract guard
                 "opencite changed OpenAlexClient.__aenter__ return type; "
                 f"got {type(client).__name__}"
             )

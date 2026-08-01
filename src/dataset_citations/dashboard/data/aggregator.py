@@ -256,6 +256,5 @@ class DataAggregator:
         data = []
         with open(file_path, encoding="utf-8") as f:
             reader = csv.DictReader(f)
-            for row in reader:
-                data.append(dict(row))
+            data.extend(dict(row) for row in reader)
         return data

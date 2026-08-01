@@ -170,7 +170,7 @@ class TemporalThemeAnalyzer:
         theme_timeline = defaultdict(lambda: defaultdict(list))
         cluster_years = defaultdict(list)
 
-        for i, (emb_id, cluster_id) in enumerate(zip(embedding_ids, cluster_labels)):
+        for emb_id, cluster_id in zip(embedding_ids, cluster_labels, strict=False):
             if cluster_id == -1:  # Skip noise
                 continue
 
@@ -235,10 +235,11 @@ class TemporalThemeAnalyzer:
             all_years.update(cluster_years_list)
 
         for year in sorted(all_years):
-            active_themes = []
-            for cluster_id in theme_timeline:
-                if year in theme_timeline[cluster_id]:
-                    active_themes.append(cluster_id)
+            active_themes = [
+                cluster_id
+                for cluster_id in theme_timeline
+                if year in theme_timeline[cluster_id]
+            ]
 
             if len(active_themes) > 1:
                 for i, theme1 in enumerate(active_themes):

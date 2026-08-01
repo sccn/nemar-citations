@@ -42,22 +42,20 @@ DEFAULT_PER_PAGE = 100
 
 TARGET_MODALITIES = ["eeg", "ieeg", "meg"]
 ALL_POSSIBLE_BIDS_MODALITIES = sorted(
-    set(
-        TARGET_MODALITIES
-        + [
-            "anat",
-            "func",
-            "dwi",
-            "fmap",
-            "perf",
-            "pet",
-            "beh",
-            "micr",
-            "motion",
-            "nirs",
-            "mrs",
-        ]
-    )
+    {
+        *TARGET_MODALITIES,
+        "anat",
+        "func",
+        "dwi",
+        "fmap",
+        "perf",
+        "pet",
+        "beh",
+        "micr",
+        "motion",
+        "nirs",
+        "mrs",
+    }
 )
 
 LOOKUP_TABLE_PATH = "citations/dataset_modalities_lookup.csv"

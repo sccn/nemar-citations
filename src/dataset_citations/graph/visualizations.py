@@ -5,6 +5,7 @@ This module provides visualization functions for citation analysis results,
 creating publication-ready charts and network diagrams.
 """
 
+import ast
 import logging
 from pathlib import Path
 
@@ -162,7 +163,7 @@ def create_citation_impact_dashboard(
     ax1.grid(axis="x", alpha=0.3)
 
     # Add value labels on bars
-    for i, bar in enumerate(bars1):
+    for _i, bar in enumerate(bars1):
         width = bar.get_width()
         ax1.text(
             width + width * 0.01,
@@ -190,7 +191,7 @@ def create_citation_impact_dashboard(
     ax2.grid(axis="x", alpha=0.3)
 
     # Add value labels
-    for i, bar in enumerate(bars2):
+    for _i, bar in enumerate(bars2):
         width = bar.get_width()
         ax2.text(
             width + width * 0.01,
@@ -268,7 +269,7 @@ def create_author_network_diagram(
     for _, author_row in top_authors.iterrows():
         author_name = author_row["author"]
         datasets = (
-            eval(author_row["datasets_cited"])
+            ast.literal_eval(author_row["datasets_cited"])
             if isinstance(author_row["datasets_cited"], str)
             else author_row["datasets_cited"]
         )
@@ -386,7 +387,7 @@ def create_dataset_popularity_ranking(
     ax1.grid(axis="x", alpha=0.3)
 
     # Add value labels
-    for i, bar in enumerate(bars):
+    for _i, bar in enumerate(bars):
         width = bar.get_width()
         ax1.text(
             width + width * 0.01,
