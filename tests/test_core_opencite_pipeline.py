@@ -12,7 +12,7 @@ RUN_INTEGRATION_TESTS=1.
 from __future__ import annotations
 
 import os
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from unittest import TestCase, skipUnless
 
 from dataset_citations.backends.opencite_backend import OpenCiteBackend
@@ -72,11 +72,11 @@ class _StubSource:
     def __init__(self, outcome):
         self._outcome = outcome
 
-    def get_doi_references(self, dataset_id):  # noqa: ARG002
+    def get_doi_references(self, dataset_id):
         return self._outcome
 
 
-WHEN = datetime(2026, 5, 18, tzinfo=timezone.utc)
+WHEN = datetime(2026, 5, 18, tzinfo=UTC)
 
 
 class FetchViaOpenCiteTests(TestCase):
@@ -296,10 +296,10 @@ class FetchViaOpenCiteTests(TestCase):
         recorded: list[str] = []
 
         class RecordingNemarSource:
-            def __init__(self, github_token=None):  # noqa: ARG002
+            def __init__(self, github_token=None):
                 recorded.append("constructed")
 
-            def get_doi_references(self, dataset_id):  # noqa: ARG002
+            def get_doi_references(self, dataset_id):
                 return FetchSuccess([])
 
         original = pipeline_module.NemarMetadataSource

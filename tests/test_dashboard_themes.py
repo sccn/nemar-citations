@@ -11,7 +11,7 @@ fallback so the cards always have content.
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
 
 import pytest
 
@@ -21,7 +21,7 @@ from dataset_citations.dashboard.templates.nemar_simple import (
 )
 
 
-def _sample_themes_payload() -> Dict[str, Any]:
+def _sample_themes_payload() -> dict[str, Any]:
     """Minimal payload matching the live dashboard shape (issue #79 example)."""
     return {
         "theme_analysis": {

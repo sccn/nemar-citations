@@ -4,7 +4,6 @@ import argparse
 import json
 import logging
 from pathlib import Path
-from typing import Optional
 
 import pandas as pd
 
@@ -29,7 +28,7 @@ def save_results(
     timeline_data: dict,
     summary_df: pd.DataFrame,
     output_dir: Path,
-    dataset_id: Optional[str] = None,
+    dataset_id: str | None = None,
 ) -> None:
     """
     Save temporal analysis results to files.
@@ -106,7 +105,7 @@ def run_temporal_analysis(
     citations_dir: Path,
     output_dir: Path,
     confidence_threshold: float = 0.4,
-    dataset_id: Optional[str] = None,
+    dataset_id: str | None = None,
     verbose: bool = False,
 ) -> None:
     """

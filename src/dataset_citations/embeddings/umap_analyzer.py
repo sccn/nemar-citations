@@ -5,9 +5,9 @@ UMAP analysis for thematic clustering and dimensionality reduction of embeddings
 import json
 import logging
 import pickle
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Dict, Optional, Union
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -44,7 +44,7 @@ class UMAPAnalyzer:
     - Integration with existing embedding storage
     """
 
-    def __init__(self, embeddings_dir: Union[str, Path]):
+    def __init__(self, embeddings_dir: str | Path):
         """
         Initialize UMAP analyzer.
 
@@ -79,7 +79,7 @@ class UMAPAnalyzer:
         metric: str = "cosine",
         random_state: int = 42,
         save_results: bool = True,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Run UMAP dimensionality reduction on embeddings.
 
@@ -140,13 +140,13 @@ class UMAPAnalyzer:
                 "random_state": random_state,
             },
             "embedding_type": embedding_type,
-            "created": datetime.now().isoformat(),
+            "created": datetime.now(UTC).isoformat(),
             "n_samples": len(embedding_ids),
         }
 
         if save_results:
             # Save UMAP results
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            timestamp = datetime.now(UTC).strftime("%Y%m%d_%H%M%S")
             filename = f"{embedding_type}_umap_{n_components}d_v1_{timestamp}.pkl"
             file_path = self.analysis_dir / "umap_projections" / filename
 
@@ -162,11 +162,11 @@ class UMAPAnalyzer:
 
     def cluster_umap_embeddings(
         self,
-        umap_results: Dict[str, Any],
+        umap_results: dict[str, Any],
         method: str = "dbscan",
         save_results: bool = True,
         **clustering_kwargs,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Cluster UMAP embeddings to identify research themes.
 
@@ -222,7 +222,7 @@ class UMAPAnalyzer:
             "n_clusters": n_clusters,
             "n_noise": n_noise,
             "silhouette_score": silhouette,
-            "created": datetime.now().isoformat(),
+            "created": datetime.now(UTC).isoformat(),
             "based_on_umap": umap_results.get("created", "unknown"),
         }
 
@@ -232,7 +232,7 @@ class UMAPAnalyzer:
 
         if save_results:
             # Save clustering results
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            timestamp = datetime.now(UTC).strftime("%Y%m%d_%H%M%S")
             filename = (
                 f"{umap_results['embedding_type']}_clusters_{method}_v1_{timestamp}.pkl"
             )
@@ -252,8 +252,8 @@ class UMAPAnalyzer:
         return clustering_results
 
     def _analyze_clusters(
-        self, clustering_results: Dict[str, Any], umap_results: Dict[str, Any]
-    ) -> Dict[str, Any]:
+        self, clustering_results: dict[str, Any], umap_results: dict[str, Any]
+    ) -> dict[str, Any]:
         """
         Analyze clusters to extract meaningful information about research themes.
 
@@ -319,7 +319,7 @@ class UMAPAnalyzer:
         return cluster_analysis
 
     def _save_cluster_summary(
-        self, clustering_results: Dict[str, Any], umap_results: Dict[str, Any]
+        self, clustering_results: dict[str, Any], umap_results: dict[str, Any]
     ):
         """
         Save human-readable cluster summary.
@@ -344,7 +344,7 @@ class UMAPAnalyzer:
         }
 
         # Save as JSON for easy reading
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        timestamp = datetime.now(UTC).strftime("%Y%m%d_%H%M%S")
         filename = f"{umap_results['embedding_type']}_cluster_summary_{timestamp}.json"
         file_path = self.analysis_dir / "themes" / filename
 
@@ -355,10 +355,10 @@ class UMAPAnalyzer:
 
     def create_research_theme_visualization(
         self,
-        clustering_results: Dict[str, Any],
-        output_dir: Optional[Union[str, Path]] = None,
+        clustering_results: dict[str, Any],
+        output_dir: str | Path | None = None,
         create_plots: bool = True,
-    ) -> Dict[str, Path]:
+    ) -> dict[str, Path]:
         """
         Create visualizations for research themes identified through clustering.
 
@@ -384,7 +384,7 @@ class UMAPAnalyzer:
                 import matplotlib.pyplot as plt
 
                 # Create UMAP scatter plot with cluster colors
-                fig, axes = plt.subplots(1, 2, figsize=(15, 6))
+                _fig, axes = plt.subplots(1, 2, figsize=(15, 6))
 
                 umap_embeddings = clustering_results["umap_embeddings"]
                 cluster_labels = clustering_results["cluster_labels"]
@@ -423,7 +423,7 @@ class UMAPAnalyzer:
                 plt.tight_layout()
 
                 # Save plot
-                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                timestamp = datetime.now(UTC).strftime("%Y%m%d_%H%M%S")
                 plot_file = output_dir / f"research_themes_umap_{timestamp}.png"
                 plt.savefig(plot_file, dpi=300, bbox_inches="tight")
                 plt.close()
@@ -458,7 +458,7 @@ class UMAPAnalyzer:
         df = pd.DataFrame(cluster_data)
         csv_file = (
             output_dir
-            / f"research_themes_data_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+            / f"research_themes_data_{datetime.now(UTC).strftime('%Y%m%d_%H%M%S')}.csv"
         )
         df.to_csv(csv_file, index=False)
         saved_files["cluster_data"] = csv_file
@@ -468,7 +468,7 @@ class UMAPAnalyzer:
         return saved_files
 
     def _update_analysis_registry(
-        self, analysis_type: str, filename: str, results: Dict[str, Any]
+        self, analysis_type: str, filename: str, results: dict[str, Any]
     ):
         """
         Update analysis registry with new analysis results.
@@ -502,7 +502,7 @@ class UMAPAnalyzer:
         registry["analysis"][analysis_type].append(analysis_record)
         self.storage_manager.registry._save_registry()
 
-    def get_analysis_summary(self) -> Dict[str, Any]:
+    def get_analysis_summary(self) -> dict[str, Any]:
         """
         Get summary of all UMAP analyses performed.
 

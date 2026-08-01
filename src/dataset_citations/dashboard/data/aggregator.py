@@ -5,9 +5,9 @@ Data aggregation module for collecting and organizing analysis results.
 import csv
 import json
 import logging
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 
 class DataAggregator:
@@ -16,8 +16,8 @@ class DataAggregator:
     def __init__(
         self,
         results_dir: Path,
-        citations_dir: Optional[Path] = None,
-        datasets_dir: Optional[Path] = None,
+        citations_dir: Path | None = None,
+        datasets_dir: Path | None = None,
     ):
         """
         Initialize data aggregator.
@@ -42,7 +42,7 @@ class DataAggregator:
         self.datasets_dir = Path(datasets_dir) if datasets_dir else None
         self.logger = logging.getLogger(__name__)
 
-    def aggregate_all_data(self) -> Dict[str, Any]:
+    def aggregate_all_data(self) -> dict[str, Any]:
         """
         Aggregate all available data from analysis results.
 
@@ -60,7 +60,7 @@ class DataAggregator:
 
         return data
 
-    def aggregate_minimal_data(self) -> Dict[str, Any]:
+    def aggregate_minimal_data(self) -> dict[str, Any]:
         """
         Aggregate minimal data for testing purposes.
 
@@ -72,7 +72,7 @@ class DataAggregator:
             "metadata": self._get_metadata(),
         }
 
-    def _load_network_analysis(self) -> Dict[str, Any]:
+    def _load_network_analysis(self) -> dict[str, Any]:
         """Load network analysis results."""
         network_data = {}
 
@@ -114,7 +114,7 @@ class DataAggregator:
 
         return network_data
 
-    def _load_temporal_analysis(self) -> Dict[str, Any]:
+    def _load_temporal_analysis(self) -> dict[str, Any]:
         """Load temporal analysis results."""
         temporal_data = {}
 
@@ -135,7 +135,7 @@ class DataAggregator:
 
         return temporal_data
 
-    def _load_theme_analysis(self) -> Dict[str, Any]:
+    def _load_theme_analysis(self) -> dict[str, Any]:
         """Load theme analysis results."""
         theme_data = {}
 
@@ -157,7 +157,7 @@ class DataAggregator:
 
         return theme_data
 
-    def _load_citation_similarities(self) -> List[Dict[str, Any]]:
+    def _load_citation_similarities(self) -> list[dict[str, Any]]:
         """Load citation similarity data if available."""
         similarities = []
 
@@ -171,7 +171,7 @@ class DataAggregator:
 
         return similarities
 
-    def _calculate_summary_stats(self) -> Dict[str, Any]:
+    def _calculate_summary_stats(self) -> dict[str, Any]:
         """Calculate summary statistics from available data."""
         stats = {
             "total_datasets": 0,
@@ -179,7 +179,7 @@ class DataAggregator:
             "high_confidence_citations": 0,
             "bridge_papers": 0,
             "confidence_threshold": 0.4,
-            "analysis_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "analysis_date": datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S"),
         }
 
         # Count datasets
@@ -236,12 +236,12 @@ class DataAggregator:
 
         return stats
 
-    def _get_metadata(self) -> Dict[str, Any]:
+    def _get_metadata(self) -> dict[str, Any]:
         """Get metadata about the analysis."""
         return {
             "generator": "NEMAR Dataset Citations Analysis",
             "version": "2.0",
-            "timestamp": datetime.now().isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
             "data_sources": {
                 "results_dir": str(self.results_dir),
                 "citations_dir": (
@@ -251,7 +251,7 @@ class DataAggregator:
             },
         }
 
-    def _read_csv_to_dict(self, file_path: Path) -> List[Dict[str, Any]]:
+    def _read_csv_to_dict(self, file_path: Path) -> list[dict[str, Any]]:
         """Read CSV file and convert to list of dictionaries."""
         data = []
         with open(file_path, encoding="utf-8") as f:

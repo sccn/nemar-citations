@@ -5,9 +5,8 @@ Embedding storage manager for file operations and embedding generation.
 import hashlib
 import logging
 import pickle
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Dict, List, Optional, Union
 
 import numpy as np
 
@@ -27,7 +26,7 @@ class EmbeddingStorageManager:
     - Batch operations for efficiency
     """
 
-    def __init__(self, embeddings_dir: Union[str, Path]):
+    def __init__(self, embeddings_dir: str | Path):
         """
         Initialize storage manager.
 
@@ -58,7 +57,7 @@ class EmbeddingStorageManager:
         (self.composite_dir / "confidence_pairs").mkdir(exist_ok=True)
 
     def save_embedding(
-        self, embedding: np.ndarray, file_path: Union[str, Path], compress: bool = True
+        self, embedding: np.ndarray, file_path: str | Path, compress: bool = True
     ) -> Path:
         """
         Save embedding to file with optional compression.
@@ -88,7 +87,7 @@ class EmbeddingStorageManager:
         logger.debug(f"Saved embedding to: {full_path}")
         return full_path
 
-    def load_embedding(self, file_path: Union[str, Path]) -> np.ndarray:
+    def load_embedding(self, file_path: str | Path) -> np.ndarray:
         """
         Load embedding from file.
 
@@ -117,7 +116,7 @@ class EmbeddingStorageManager:
         return embedding
 
     def generate_dataset_filename(
-        self, dataset_id: str, date: Optional[str] = None
+        self, dataset_id: str, date: str | None = None
     ) -> str:
         """
         Generate filename for dataset embedding.
@@ -130,7 +129,7 @@ class EmbeddingStorageManager:
             Filename string
         """
         if date is None:
-            date = datetime.now().strftime("%Y%m%d")
+            date = datetime.now(UTC).strftime("%Y%m%d")
 
         # Get next version number
         current_embedding = self.registry.get_current_dataset_embedding(dataset_id)
@@ -142,7 +141,7 @@ class EmbeddingStorageManager:
         return f"{dataset_id}_v{version}_{date}.pkl"
 
     def generate_citation_filename(
-        self, citation_hash: str, date: Optional[str] = None
+        self, citation_hash: str, date: str | None = None
     ) -> str:
         """
         Generate filename for citation embedding.
@@ -155,7 +154,7 @@ class EmbeddingStorageManager:
             Filename string
         """
         if date is None:
-            date = datetime.now().strftime("%Y%m%d")
+            date = datetime.now(UTC).strftime("%Y%m%d")
 
         # Get next version number
         current_embedding = self.registry.get_current_citation_embedding(citation_hash)
@@ -170,10 +169,10 @@ class EmbeddingStorageManager:
         self,
         dataset_id: str,
         embedding: np.ndarray,
-        content_sources: Dict[str, str],
+        content_sources: dict[str, str],
         model: str = "Qwen/Qwen3-Embedding-0.6B",
-        metadata: Optional[Dict] = None,
-    ) -> Dict:
+        metadata: dict | None = None,
+    ) -> dict:
         """
         Store dataset embedding with registry tracking.
 
@@ -211,10 +210,10 @@ class EmbeddingStorageManager:
         citation_text: str,
         title: str,
         embedding: np.ndarray,
-        text_sources: Dict[str, str],
+        text_sources: dict[str, str],
         model: str = "Qwen/Qwen3-Embedding-0.6B",
-        metadata: Optional[Dict] = None,
-    ) -> Dict:
+        metadata: dict | None = None,
+    ) -> dict:
         """
         Store citation embedding with registry tracking.
 
@@ -258,7 +257,7 @@ class EmbeddingStorageManager:
         citation_hash: str,
         embedding: np.ndarray,
         confidence_score: float,
-        metadata: Optional[Dict] = None,
+        metadata: dict | None = None,
     ) -> str:
         """
         Store composite embedding for dataset-citation confidence scoring.
@@ -283,7 +282,7 @@ class EmbeddingStorageManager:
             "confidence_score": confidence_score,
             "dataset_id": dataset_id,
             "citation_hash": citation_hash,
-            "created": datetime.now().isoformat(),
+            "created": datetime.now(UTC).isoformat(),
             "metadata": metadata or {},
         }
 
@@ -300,8 +299,8 @@ class EmbeddingStorageManager:
         return file_path
 
     def load_dataset_embedding(
-        self, dataset_id: str, version: Optional[int] = None
-    ) -> Optional[np.ndarray]:
+        self, dataset_id: str, version: int | None = None
+    ) -> np.ndarray | None:
         """
         Load dataset embedding by ID.
 
@@ -335,8 +334,8 @@ class EmbeddingStorageManager:
             return None
 
     def load_citation_embedding(
-        self, citation_hash: str, version: Optional[int] = None
-    ) -> Optional[np.ndarray]:
+        self, citation_hash: str, version: int | None = None
+    ) -> np.ndarray | None:
         """
         Load citation embedding by hash.
 
@@ -373,7 +372,7 @@ class EmbeddingStorageManager:
 
     def get_all_current_embeddings(
         self, embedding_type: str = "both"
-    ) -> Dict[str, np.ndarray]:
+    ) -> dict[str, np.ndarray]:
         """
         Load all current embeddings of specified type.
 
@@ -401,7 +400,7 @@ class EmbeddingStorageManager:
 
     def cleanup_obsolete_embeddings(
         self, dry_run: bool = True, older_than_days: int = 90
-    ) -> Dict[str, List[str]]:
+    ) -> dict[str, list[str]]:
         """
         Clean up obsolete embedding files.
 
@@ -419,13 +418,13 @@ class EmbeddingStorageManager:
             for file_desc in files:
                 # Parse file description to get file path
                 if ":" in file_desc:
-                    item_id, file_path = file_desc.split(": ", 1)
+                    _item_id, file_path = file_desc.split(": ", 1)
                     full_path = self.embeddings_dir / file_path
 
                     if full_path.exists():
                         # Check age
                         file_age = (
-                            datetime.now().timestamp() - full_path.stat().st_mtime
+                            datetime.now(UTC).timestamp() - full_path.stat().st_mtime
                         ) / (24 * 3600)
 
                         if file_age > older_than_days:
@@ -445,7 +444,7 @@ class EmbeddingStorageManager:
 
         return deleted
 
-    def get_storage_stats(self) -> Dict:
+    def get_storage_stats(self) -> dict:
         """
         Get storage statistics.
 

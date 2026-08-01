@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Citation confidence scoring using sentence transformers.
 
@@ -16,7 +15,7 @@ Email: shirazi@ieee.org
 import json
 import logging
 import os
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -118,7 +117,7 @@ class CitationConfidenceScorer:
                     "Could not load any sentence transformer model"
                 ) from fallback_error
 
-    def extract_citation_text(self, citation: Dict[str, Any]) -> str:
+    def extract_citation_text(self, citation: dict[str, Any]) -> str:
         """
         Extract combined text content from citation for similarity scoring.
 
@@ -181,8 +180,8 @@ class CitationConfidenceScorer:
             return 0.0
 
     def score_citation(
-        self, citation: Dict[str, Any], dataset_text: str
-    ) -> Dict[str, Any]:
+        self, citation: dict[str, Any], dataset_text: str
+    ) -> dict[str, Any]:
         """
         Calculate confidence score for a single citation.
 
@@ -223,7 +222,7 @@ class CitationConfidenceScorer:
         }
 
     def _adjust_confidence_score(
-        self, similarity_score: float, citation: Dict[str, Any], citation_text: str
+        self, similarity_score: float, citation: dict[str, Any], citation_text: str
     ) -> float:
         """
         Apply adjustments to the base similarity score.
@@ -256,8 +255,8 @@ class CitationConfidenceScorer:
         return max(0.0, min(1.0, confidence))
 
     def score_all_citations(
-        self, citations_data: Dict[str, Any], dataset_metadata: Dict[str, Any]
-    ) -> Dict[str, Any]:
+        self, citations_data: dict[str, Any], dataset_metadata: dict[str, Any]
+    ) -> dict[str, Any]:
         """
         Calculate confidence scores for all citations in a dataset.
 
@@ -347,7 +346,7 @@ class CitationConfidenceScorer:
 def score_dataset_citations(
     citations_file: str,
     dataset_metadata_file: str,
-    output_file: Optional[str] = None,
+    output_file: str | None = None,
     model_name: str = "Qwen/Qwen3-Embedding-0.6B",
     device: str = "mps",
 ) -> str:
@@ -386,10 +385,10 @@ def score_dataset_citations(
 def batch_score_citations(
     citations_dir: str,
     datasets_dir: str,
-    output_dir: Optional[str] = None,
+    output_dir: str | None = None,
     model_name: str = "Qwen/Qwen3-Embedding-0.6B",
     device: str = "mps",
-) -> List[str]:
+) -> list[str]:
     """
     Score citations for multiple datasets in batch.
 
@@ -499,7 +498,7 @@ class SentenceTransformerModel:
                     "Could not load any sentence transformer model"
                 ) from fallback_error
 
-    def encode(self, texts: List[str]) -> np.ndarray:
+    def encode(self, texts: list[str]) -> np.ndarray:
         """
         Encode texts into embeddings.
 

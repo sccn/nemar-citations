@@ -6,17 +6,20 @@ import argparse
 import hashlib
 import json
 import logging
+import sys
 import time
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from typing import Dict, List, Optional
 
 from ..core.citation_utils import load_citations_from_json
 from ..embeddings.storage_manager import EmbeddingStorageManager
+from ..utils.datetime_utils import parse_iso_utc
 from .generate_embeddings import (
     generate_citation_embeddings,
     generate_dataset_embeddings,
 )
+
+logger = logging.getLogger(__name__)
 
 
 def setup_logging(verbose: bool = False):
@@ -44,7 +47,7 @@ class EmbeddingUpdateAutomator:
         self.state_dir.mkdir(parents=True, exist_ok=True)
         self.state_file = self.state_dir / "update_state.json"
 
-    def load_update_state(self) -> Dict:
+    def load_update_state(self) -> dict:
         """Load the current update state."""
         if self.state_file.exists():
             with open(self.state_file) as f:
@@ -58,7 +61,7 @@ class EmbeddingUpdateAutomator:
                 "update_history": [],
             }
 
-    def save_update_state(self, state: Dict):
+    def save_update_state(self, state: dict):
         """Save the update state."""
         # Convert sets to lists for JSON serialization
         if "processed_citations" in state and isinstance(
@@ -78,8 +81,8 @@ class EmbeddingUpdateAutomator:
         return hasher.hexdigest()
 
     def detect_changed_files(
-        self, since_time: Optional[datetime] = None
-    ) -> Dict[str, List[Path]]:
+        self, since_time: datetime | None = None
+    ) -> dict[str, list[Path]]:
         """
         Detect changed citation and dataset files.
 
@@ -100,18 +103,17 @@ class EmbeddingUpdateAutomator:
             file_key = str(file_path.relative_to(self.citations_dir))
             current_hash = self.calculate_file_hash(file_path)
 
-            # Check if file is new or changed
+            # New or changed, and (when since_time is given) modified since it
             if (
                 file_key not in current_hashes
                 or current_hashes[file_key] != current_hash
+            ) and (
+                since_time is None
+                or datetime.fromtimestamp(file_path.stat().st_mtime, tz=UTC)
+                > since_time
             ):
-                # Also check modification time if since_time is specified
-                if (
-                    since_time is None
-                    or datetime.fromtimestamp(file_path.stat().st_mtime) > since_time
-                ):
-                    changed_files["citation_files"].append(file_path)
-                    current_hashes[file_key] = current_hash
+                changed_files["citation_files"].append(file_path)
+                current_hashes[file_key] = current_hash
 
         # Check dataset files
         dataset_files = list(self.datasets_dir.glob("ds*_datasets.json"))
@@ -122,13 +124,13 @@ class EmbeddingUpdateAutomator:
             if (
                 file_key not in current_hashes
                 or current_hashes[file_key] != current_hash
+            ) and (
+                since_time is None
+                or datetime.fromtimestamp(file_path.stat().st_mtime, tz=UTC)
+                > since_time
             ):
-                if (
-                    since_time is None
-                    or datetime.fromtimestamp(file_path.stat().st_mtime) > since_time
-                ):
-                    changed_files["dataset_files"].append(file_path)
-                    current_hashes[file_key] = current_hash
+                changed_files["dataset_files"].append(file_path)
+                current_hashes[file_key] = current_hash
 
         # Update state with new hashes
         state["file_hashes"] = current_hashes
@@ -137,8 +139,8 @@ class EmbeddingUpdateAutomator:
         return changed_files
 
     def identify_outdated_embeddings(
-        self, changed_files: Dict[str, List[Path]]
-    ) -> Dict[str, List[str]]:
+        self, changed_files: dict[str, list[Path]]
+    ) -> dict[str, list[str]]:
         """
         Identify embeddings that need to be updated based on changed files.
 
@@ -203,7 +205,7 @@ class EmbeddingUpdateAutomator:
                         processed_citation_hashes.add(citation_hash)
 
             except Exception as e:
-                logging.warning(f"Error processing citation file {citation_file}: {e}")
+                logger.warning(f"Error processing citation file {citation_file}: {e}")
 
         # Note: Composite embeddings will be regenerated when confidence scoring runs
         # after citation embeddings are updated
@@ -212,10 +214,10 @@ class EmbeddingUpdateAutomator:
 
     def update_embeddings(
         self,
-        outdated_embeddings: Dict[str, List[str]],
+        outdated_embeddings: dict[str, list[str]],
         model_name: str = "Qwen/Qwen3-Embedding-0.6B",
         min_confidence: float = 0.4,
-    ) -> Dict[str, int]:
+    ) -> dict[str, int]:
         """
         Update outdated embeddings.
 
@@ -231,7 +233,7 @@ class EmbeddingUpdateAutomator:
 
         # Update dataset embeddings
         if outdated_embeddings["dataset_embeddings"]:
-            logging.info(
+            logger.info(
                 f"Updating {len(outdated_embeddings['dataset_embeddings'])} dataset embeddings"
             )
 
@@ -245,12 +247,12 @@ class EmbeddingUpdateAutomator:
                 )
                 update_counts["datasets_updated"] = count
             except Exception as e:
-                logging.error(f"Error updating dataset embeddings: {e}")
+                logger.error(f"Error updating dataset embeddings: {e}")
                 update_counts["errors"] += 1
 
         # Update citation embeddings
         if outdated_embeddings["citation_embeddings"]:
-            logging.info(
+            logger.info(
                 f"Updating {len(outdated_embeddings['citation_embeddings'])} citation embeddings"
             )
 
@@ -265,7 +267,7 @@ class EmbeddingUpdateAutomator:
                 )
                 update_counts["citations_updated"] = count
             except Exception as e:
-                logging.error(f"Error updating citation embeddings: {e}")
+                logger.error(f"Error updating citation embeddings: {e}")
                 update_counts["errors"] += 1
 
         return update_counts
@@ -276,7 +278,7 @@ class EmbeddingUpdateAutomator:
         model_name: str = "Qwen/Qwen3-Embedding-0.6B",
         min_confidence: float = 0.4,
         max_age_days: int = 7,
-    ) -> Dict:
+    ) -> dict:
         """
         Run automated update check and processing.
 
@@ -294,20 +296,20 @@ class EmbeddingUpdateAutomator:
         # Check if we should run update
         last_update = state.get("last_update")
         if last_update:
-            last_update_time = datetime.fromisoformat(last_update)
-            time_since_update = datetime.now() - last_update_time
+            last_update_time = parse_iso_utc(last_update)
+            time_since_update = datetime.now(UTC) - last_update_time
 
             if time_since_update < timedelta(hours=check_interval_hours):
-                logging.info(
+                logger.info(
                     f"Skipping update - last update was {time_since_update.total_seconds() / 3600:.1f} hours ago"
                 )
                 return {"status": "skipped", "reason": "too_recent"}
 
         # Set cutoff time for file changes
-        cutoff_time = datetime.now() - timedelta(days=max_age_days)
+        cutoff_time = datetime.now(UTC) - timedelta(days=max_age_days)
         since_time = last_update_time if last_update else cutoff_time
 
-        logging.info(f"Checking for file changes since {since_time}")
+        logger.info(f"Checking for file changes since {since_time}")
 
         # Detect changed files
         changed_files = self.detect_changed_files(since_time)
@@ -317,14 +319,14 @@ class EmbeddingUpdateAutomator:
         )
 
         if total_changed == 0:
-            logging.info("No file changes detected")
-            state["last_update"] = datetime.now().isoformat()
+            logger.info("No file changes detected")
+            state["last_update"] = datetime.now(UTC).isoformat()
             self.save_update_state(state)
             return {"status": "no_changes", "changed_files": changed_files}
 
-        logging.info(f"Detected {total_changed} changed files")
-        logging.info(f"  - Citation files: {len(changed_files['citation_files'])}")
-        logging.info(f"  - Dataset files: {len(changed_files['dataset_files'])}")
+        logger.info(f"Detected {total_changed} changed files")
+        logger.info(f"  - Citation files: {len(changed_files['citation_files'])}")
+        logger.info(f"  - Dataset files: {len(changed_files['dataset_files'])}")
 
         # Identify outdated embeddings
         outdated_embeddings = self.identify_outdated_embeddings(changed_files)
@@ -332,8 +334,8 @@ class EmbeddingUpdateAutomator:
         total_outdated = sum(len(items) for items in outdated_embeddings.values())
 
         if total_outdated == 0:
-            logging.info("No embeddings need updating")
-            state["last_update"] = datetime.now().isoformat()
+            logger.info("No embeddings need updating")
+            state["last_update"] = datetime.now(UTC).isoformat()
             self.save_update_state(state)
             return {
                 "status": "no_updates_needed",
@@ -341,7 +343,7 @@ class EmbeddingUpdateAutomator:
                 "outdated_embeddings": outdated_embeddings,
             }
 
-        logging.info(f"Found {total_outdated} outdated embeddings")
+        logger.info(f"Found {total_outdated} outdated embeddings")
 
         # Update embeddings
         update_counts = self.update_embeddings(
@@ -352,13 +354,13 @@ class EmbeddingUpdateAutomator:
 
         # Update state
         update_record = {
-            "timestamp": datetime.now().isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
             "changed_files": {k: [str(f) for f in v] for k, v in changed_files.items()},
             "outdated_embeddings": outdated_embeddings,
             "update_counts": update_counts,
         }
 
-        state["last_update"] = datetime.now().isoformat()
+        state["last_update"] = datetime.now(UTC).isoformat()
         state["update_history"].append(update_record)
 
         # Keep only last 10 update records
@@ -477,15 +479,15 @@ Examples:
 
     # Validate inputs
     if not args.embeddings_dir.exists():
-        logging.error(f"Embeddings directory not found: {args.embeddings_dir}")
+        logger.error(f"Embeddings directory not found: {args.embeddings_dir}")
         return 1
 
     if not args.citations_dir.exists():
-        logging.error(f"Citations directory not found: {args.citations_dir}")
+        logger.error(f"Citations directory not found: {args.citations_dir}")
         return 1
 
     if not args.datasets_dir.exists():
-        logging.error(f"Datasets directory not found: {args.datasets_dir}")
+        logger.error(f"Datasets directory not found: {args.datasets_dir}")
         return 1
 
     try:
@@ -501,7 +503,7 @@ Examples:
             # Reset state
             if automator.state_file.exists():
                 automator.state_file.unlink()
-            logging.info("✅ Automation state reset")
+            logger.info("✅ Automation state reset")
             return 0
 
         if args.show_status:
@@ -514,8 +516,8 @@ Examples:
 
             last_update = state.get("last_update")
             if last_update:
-                last_update_time = datetime.fromisoformat(last_update)
-                time_since = datetime.now() - last_update_time
+                last_update_time = parse_iso_utc(last_update)
+                time_since = datetime.now(UTC) - last_update_time
                 print(
                     f"📅 Last Update: {last_update_time.strftime('%Y-%m-%d %H:%M:%S')}"
                 )
@@ -541,9 +543,9 @@ Examples:
             return 0
 
         # Run automated update
-        logging.info("=" * 60)
-        logging.info("AUTOMATED EMBEDDING UPDATE")
-        logging.info("=" * 60)
+        logger.info("=" * 60)
+        logger.info("AUTOMATED EMBEDDING UPDATE")
+        logger.info("=" * 60)
 
         # Override check interval if force check
         check_interval = 0 if args.force_check else args.check_interval
@@ -583,9 +585,9 @@ Examples:
         return 0
 
     except Exception as e:
-        logging.error(f"Error during automated update: {e}")
+        logger.error(f"Error during automated update: {e}")
         return 1
 
 
 if __name__ == "__main__":
-    exit(main())
+    sys.exit(main())

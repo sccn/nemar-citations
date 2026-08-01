@@ -45,7 +45,7 @@ import logging
 import os
 import tempfile
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -130,7 +130,7 @@ def _pick_source(
 
 def _utcnow_iso() -> str:
     """Return current time as a timezone-aware ISO-8601 UTC string."""
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def _judge_one_anchor(
@@ -332,7 +332,7 @@ def load_judgment_sidecar(path: str | Path) -> dict[str, Any]:
     with open(path, encoding="utf-8") as fh:
         payload = json.load(fh)
     if not isinstance(payload, dict):
-        raise ValueError(f"{path}: sidecar root is not a JSON object")
+        raise TypeError(f"{path}: sidecar root is not a JSON object")
     return payload
 
 
@@ -358,6 +358,6 @@ def is_judgment_fresh(payload: dict[str, Any], *, max_age_days: int) -> bool:
     except ValueError:
         return False
     if when.tzinfo is None:
-        when = when.replace(tzinfo=timezone.utc)
-    age = datetime.now(timezone.utc) - when
+        when = when.replace(tzinfo=UTC)
+    age = datetime.now(UTC) - when
     return age <= timedelta(days=max_age_days)

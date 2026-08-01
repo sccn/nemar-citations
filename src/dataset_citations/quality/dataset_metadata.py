@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Dataset metadata retrieval from GitHub API.
 
@@ -26,8 +25,8 @@ import json
 import logging
 import os
 import re
-from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from datetime import UTC, datetime
+from typing import Any
 
 from github.GithubException import GithubException
 
@@ -64,7 +63,7 @@ def _org_for_dataset(dataset_id: str) -> str:
 class DatasetMetadataRetriever:
     """Retrieve dataset metadata from GitHub repositories."""
 
-    def __init__(self, github_token: Optional[str] = None):
+    def __init__(self, github_token: str | None = None):
         """
         Initialize the metadata retriever.
 
@@ -76,7 +75,7 @@ class DatasetMetadataRetriever:
         # build_github also spaces requests to stay under the secondary limit.
         self.github = build_github(github_token, timeout=_GITHUB_TIMEOUT_SECONDS)
 
-    def get_dataset_metadata(self, dataset_id: str) -> Dict[str, Any]:
+    def get_dataset_metadata(self, dataset_id: str) -> dict[str, Any]:
         """
         Retrieve metadata for a specific dataset from OpenNeuro GitHub.
 
@@ -97,7 +96,7 @@ class DatasetMetadataRetriever:
         org = _org_for_dataset(dataset_id)
         metadata = {
             "dataset_id": dataset_id,
-            "date_retrieved": datetime.now(timezone.utc).isoformat(),
+            "date_retrieved": datetime.now(UTC).isoformat(),
             "dataset_description": None,
             "readme_content": None,
             "github_info": {
@@ -148,9 +147,7 @@ class DatasetMetadataRetriever:
 
         return metadata
 
-    def _get_dataset_description(
-        self, repo, dataset_id: str
-    ) -> Optional[Dict[str, Any]]:
+    def _get_dataset_description(self, repo, dataset_id: str) -> dict[str, Any] | None:
         """Retrieve and parse dataset_description.json."""
         try:
             content = repo.get_contents("dataset_description.json")
@@ -171,7 +168,7 @@ class DatasetMetadataRetriever:
             logger.warning(f"dataset_description.json unreadable for {dataset_id}: {e}")
             return None
 
-    def _get_readme_content(self, repo, dataset_id: str) -> Optional[str]:
+    def _get_readme_content(self, repo, dataset_id: str) -> str | None:
         """Retrieve README content."""
         readme_files = ["README.md", "README.txt", "README", "readme.md", "readme.txt"]
 
@@ -193,8 +190,8 @@ class DatasetMetadataRetriever:
         return None
 
     def retrieve_multiple_datasets(
-        self, dataset_ids: List[str]
-    ) -> Dict[str, Dict[str, Any]]:
+        self, dataset_ids: list[str]
+    ) -> dict[str, dict[str, Any]]:
         """
         Retrieve metadata for multiple datasets.
 
@@ -213,7 +210,7 @@ class DatasetMetadataRetriever:
                 logger.error(f"Failed to retrieve metadata for {dataset_id}: {e}")
                 results[dataset_id] = {
                     "dataset_id": dataset_id,
-                    "date_retrieved": datetime.now(timezone.utc).isoformat(),
+                    "date_retrieved": datetime.now(UTC).isoformat(),
                     "error": str(e),
                     "retrieval_status": {
                         "dataset_description": "error",
@@ -225,7 +222,7 @@ class DatasetMetadataRetriever:
         return results
 
 
-def save_dataset_metadata(metadata: Dict[str, Any], output_dir: str) -> str:
+def save_dataset_metadata(metadata: dict[str, Any], output_dir: str) -> str:
     """
     Save dataset metadata to JSON file.
 
@@ -250,7 +247,7 @@ def save_dataset_metadata(metadata: Dict[str, Any], output_dir: str) -> str:
     return filepath
 
 
-def load_dataset_metadata(filepath: str) -> Dict[str, Any]:
+def load_dataset_metadata(filepath: str) -> dict[str, Any]:
     """
     Load dataset metadata from JSON file.
 
@@ -266,7 +263,7 @@ def load_dataset_metadata(filepath: str) -> Dict[str, Any]:
     return metadata
 
 
-def extract_dataset_text(metadata: Dict[str, Any]) -> str:
+def extract_dataset_text(metadata: dict[str, Any]) -> str:
     """
     Extract combined text content from dataset metadata for similarity scoring.
 

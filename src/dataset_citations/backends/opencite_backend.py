@@ -104,7 +104,7 @@ class OpenCiteBackend:
                     f"{type(openalex_base).__name__}"
                 )
                 paper = await openalex_base.lookup_doi(doi)
-        except (httpx.HTTPError, asyncio.TimeoutError, OSError) as exc:
+        except (TimeoutError, httpx.HTTPError, OSError) as exc:
             return classify_error(exc, doi)
 
         if paper is None or not paper.title:

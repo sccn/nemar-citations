@@ -9,8 +9,9 @@ with legitimately empty results.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable, Generic, Literal, Never, TypeVar
+from typing import Literal, Never, TypeVar
 
 IdentifierType = Literal["doi", "pmid", "arxiv"]
 SourceKind = Literal["nemar_metadata", "openneuro_description", "nemar_catalog"]
@@ -103,7 +104,7 @@ U = TypeVar("U")
 
 
 @dataclass(frozen=True, slots=True)
-class FetchSuccess(Generic[T]):
+class FetchSuccess[T]:
     value: T
 
     @property
@@ -116,7 +117,7 @@ class FetchSuccess(Generic[T]):
     def unwrap(self) -> T:
         return self.value
 
-    def unwrap_or(self, default: T) -> T:  # noqa: ARG002 - Result-style API
+    def unwrap_or(self, default: T) -> T:
         return self.value
 
 
@@ -129,7 +130,7 @@ class FetchError:
     def ok(self) -> Literal[False]:
         return False
 
-    def map(self, fn: Callable[[U], U]) -> "FetchError":  # noqa: ARG002
+    def map(self, fn: Callable[[U], U]) -> FetchError:
         return self
 
     def unwrap(self) -> Never:

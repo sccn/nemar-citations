@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """Generate network analysis data from citation JSON files."""
 
 import csv
@@ -90,7 +89,7 @@ def generate_network(citations_dir: Path, output_dir: Path):
                     "title": title,
                     "author": author,
                     "year": paper_info["year"] or "",
-                    "datasets_bridged": ",".join(sorted(list(paper_info["datasets"]))),
+                    "datasets_bridged": ",".join(sorted(paper_info["datasets"])),
                     "num_datasets": len(paper_info["datasets"]),
                 }
             )
@@ -111,7 +110,7 @@ def generate_network(citations_dir: Path, output_dir: Path):
             writer.writerow(
                 {
                     "author": author,
-                    "datasets_cited": ",".join(sorted(list(datasets))),
+                    "datasets_cited": ",".join(sorted(datasets)),
                     "num_datasets": len(datasets),
                 }
             )
@@ -175,7 +174,7 @@ def generate_network(citations_dir: Path, output_dir: Path):
     co_citation_counts = Counter()
     for author, datasets in author_datasets.items():
         if len(datasets) > 1:
-            datasets_list = sorted(list(datasets))
+            datasets_list = sorted(datasets)
             for i in range(len(datasets_list)):
                 for j in range(i + 1, len(datasets_list)):
                     pair = tuple(sorted([datasets_list[i], datasets_list[j]]))

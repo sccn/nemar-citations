@@ -5,7 +5,7 @@ Asset management for dashboard files and resources.
 import json
 import shutil
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any
 
 
 class AssetManager:
@@ -22,7 +22,7 @@ class AssetManager:
         self.data_dir = self.output_dir / "data"
         self.data_dir.mkdir(parents=True, exist_ok=True)
 
-    def create_data_file(self, data: Dict[str, Any]) -> str:
+    def create_data_file(self, data: dict[str, Any]) -> str:
         """
         Create external data file for lazy loading.
 
@@ -57,7 +57,7 @@ class AssetManager:
                 if source_file.resolve() != dest_file.resolve():
                     shutil.copy2(source_file, dest_file)
 
-    def copy_theme_images(self, image_files: List[str]):
+    def copy_theme_images(self, image_files: list[str]):
         """
         Copy theme wordcloud images.
 
@@ -74,7 +74,7 @@ class AssetManager:
                 if source_file.resolve() != dest_file.resolve():
                     shutil.copy2(source_file, dest_file)
 
-    def _clean_data_for_web(self, data: Dict[str, Any]) -> Dict[str, Any]:
+    def _clean_data_for_web(self, data: dict[str, Any]) -> dict[str, Any]:
         """
         Clean and optimize data for web usage.
 

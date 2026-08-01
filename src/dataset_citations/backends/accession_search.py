@@ -185,11 +185,6 @@ class AccessionSearchBackend:
             for term in terms:
                 try:
                     hit_lists.append(await _search_term(client, term))
-                except (
-                    OpenCiteError,
-                    httpx.HTTPError,
-                    asyncio.TimeoutError,
-                    OSError,
-                ) as e:
+                except (TimeoutError, OpenCiteError, httpx.HTTPError, OSError) as e:
                     logger.warning("accession search failed for %s: %s", term, e)
         return dedup_citations(hit_lists)

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Unit tests for citation_utils module.
 
@@ -145,9 +144,11 @@ class TestCitationReaders(unittest.TestCase):
             self.assertEqual(citation_utils.load_citation_json(path), payload)
 
     def test_load_citation_json_missing_file_raises(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            with self.assertRaises(FileNotFoundError):
-                citation_utils.load_citation_json(os.path.join(tmp, "missing.json"))
+        with (
+            tempfile.TemporaryDirectory() as tmp,
+            self.assertRaises(FileNotFoundError),
+        ):
+            citation_utils.load_citation_json(os.path.join(tmp, "missing.json"))
 
     def test_load_citation_json_invalid_json_raises(self):
         with tempfile.TemporaryDirectory() as tmp:

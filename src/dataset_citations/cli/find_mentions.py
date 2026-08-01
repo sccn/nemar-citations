@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Find dataset accession-mention citations via OpenAlex and merge them in.
 
 For each dataset that already has a citation JSON, full-text search OpenAlex

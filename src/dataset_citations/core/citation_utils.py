@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Utility functions for handling citation data in JSON format.
 
@@ -20,7 +19,7 @@ import copy
 import json
 import logging
 import os
-from typing import Any, Dict, Literal, Optional
+from typing import Any, Literal
 
 logger = logging.getLogger(__name__)
 
@@ -44,7 +43,7 @@ _VOLATILE_TIMESTAMP_PATHS: tuple[tuple[str, ...], ...] = (
 )
 
 
-def strip_volatile_timestamps(payload: Dict[str, Any]) -> Dict[str, Any]:
+def strip_volatile_timestamps(payload: dict[str, Any]) -> dict[str, Any]:
     """Return a deep copy of ``payload`` with per-run timestamp fields removed.
 
     The result is only ever used to compare two citation payloads for
@@ -65,7 +64,7 @@ def strip_volatile_timestamps(payload: Dict[str, Any]) -> Dict[str, Any]:
     return clone
 
 
-def write_citation_json_if_changed(filepath: str, payload: Dict[str, Any]) -> bool:
+def write_citation_json_if_changed(filepath: str, payload: dict[str, Any]) -> bool:
     """Write `payload` as pretty JSON unless only volatile timestamps differ.
 
     Compares against the file already on disk after stripping volatile
@@ -95,14 +94,14 @@ def write_citation_json_if_changed(filepath: str, payload: Dict[str, Any]) -> bo
 
 
 def add_discovery_provenance(
-    citation_json: Dict[str, Any],
+    citation_json: dict[str, Any],
     *,
     discovery_backend: DiscoveryBackend,
     schema_version: str = SCHEMA_VERSION_V2_1,
-    anchor_judgment_model: Optional[str] = None,
-    anchors: Optional[list] = None,
-    searched_dois: Optional[list] = None,
-) -> Dict[str, Any]:
+    anchor_judgment_model: str | None = None,
+    anchors: list | None = None,
+    searched_dois: list | None = None,
+) -> dict[str, Any]:
     """Stamp a citation JSON with Phase 3 discovery-provenance markers.
 
     Mutates and returns the input dict. Always overwrites the top-level
@@ -152,12 +151,12 @@ def add_discovery_provenance(
 
 
 def stamp_dataset_metadata(
-    citation_json: Dict[str, Any],
+    citation_json: dict[str, Any],
     *,
-    keywords: Optional[list] = None,
-    methods_description: Optional[str] = None,
-    funding: Optional[list] = None,
-) -> Dict[str, Any]:
+    keywords: list | None = None,
+    methods_description: str | None = None,
+    funding: list | None = None,
+) -> dict[str, Any]:
     """Write the schema-v2.1 descriptive dataset fields into ``metadata``.
 
     Separate from `add_discovery_provenance` because these are dataset-describing
@@ -176,7 +175,7 @@ def stamp_dataset_metadata(
     return citation_json
 
 
-def load_citation_json(filepath: str) -> Dict[str, Any]:
+def load_citation_json(filepath: str) -> dict[str, Any]:
     """
     Load citation data from JSON file.
 
@@ -201,7 +200,7 @@ def load_citation_json(filepath: str) -> Dict[str, Any]:
         raise
 
 
-def get_citation_summary_from_json(json_filepath: str) -> Dict[str, Any]:
+def get_citation_summary_from_json(json_filepath: str) -> dict[str, Any]:
     """
     Extract summary information from a citation JSON file.
 
@@ -224,7 +223,7 @@ def get_citation_summary_from_json(json_filepath: str) -> Dict[str, Any]:
     }
 
 
-def load_citations_from_json(file_path: str) -> Dict[str, Any]:
+def load_citations_from_json(file_path: str) -> dict[str, Any]:
     """
     Load citation data from a JSON file.
 

@@ -59,6 +59,7 @@ def test_preflight_exits_2_when_ollama_unreachable() -> None:
         ["bash", "-c", snippet],
         capture_output=True,
         text=True,
+        check=False,  # the test asserts on returncode itself
         timeout=15,
     )
     assert result.returncode == 2, (
@@ -96,6 +97,7 @@ def test_cron_script_bash_syntax_clean() -> None:
         ["bash", "-n", str(CRON_SCRIPT)],
         capture_output=True,
         text=True,
+        check=False,  # the test asserts on returncode itself
         timeout=10,
     )
     assert result.returncode == 0, f"bash -n failed: {result.stderr}"
@@ -107,6 +109,7 @@ def test_rerun_script_bash_syntax_clean() -> None:
         ["bash", "-n", str(RERUN_SCRIPT)],
         capture_output=True,
         text=True,
+        check=False,  # the test asserts on returncode itself
         timeout=10,
     )
     assert result.returncode == 0, f"bash -n failed: {result.stderr}"

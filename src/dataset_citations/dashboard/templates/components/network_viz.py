@@ -2,14 +2,14 @@
 Cytoscape.js network visualization component.
 """
 
-from typing import Any, Dict
+from typing import Any
 
 
 class NetworkVisualization:
     """Generate Cytoscape.js network visualization JavaScript."""
 
     @staticmethod
-    def generate_javascript(network_data: Dict[str, Any]) -> str:
+    def generate_javascript(network_data: dict[str, Any]) -> str:
         """
         Generate JavaScript code for network visualization.
 

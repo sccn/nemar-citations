@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Update citation lists for the datasets in a dataset-IDs file.
 
 Runs the opencite-backed citation discovery pipeline against each dataset
@@ -17,7 +16,7 @@ import argparse
 import json
 import logging
 import os
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 from dataset_citations.backends import OpenCiteBackend
@@ -103,8 +102,8 @@ def _checked_within(
     except ValueError:
         return False
     if checked_at.tzinfo is None:
-        checked_at = checked_at.replace(tzinfo=timezone.utc)
-    return datetime.now(timezone.utc) - checked_at <= timedelta(seconds=max_age_seconds)
+        checked_at = checked_at.replace(tzinfo=UTC)
+    return datetime.now(UTC) - checked_at <= timedelta(seconds=max_age_seconds)
 
 
 def _load_fetch_state(path: str) -> dict[str, str]:
@@ -283,7 +282,7 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
                 write_failures += 1
                 continue
         # Record the fetch attempt so the freshness gate can skip it next run.
-        fetch_state[dataset_id] = datetime.now(timezone.utc).isoformat()
+        fetch_state[dataset_id] = datetime.now(UTC).isoformat()
         if payload["num_citations"] > 0:
             successes += 1
         else:

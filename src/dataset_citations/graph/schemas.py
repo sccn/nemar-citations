@@ -1,7 +1,5 @@
 """Pydantic schemas for dataset citations graph database."""
 
-from typing import Dict, List, Optional
-
 from pydantic import BaseModel, ConfigDict
 
 
@@ -12,14 +10,14 @@ class Dataset(BaseModel):
 
     uid: str  # Dataset ID (e.g., ds000117)
     name: str  # Dataset name from dataset_description.json
-    description: Optional[str] = None  # Dataset description
-    authors: Optional[List[str]] = None  # Dataset authors
+    description: str | None = None  # Dataset description
+    authors: list[str] | None = None  # Dataset authors
     num_citations: int = 0  # Direct citations to this dataset
     total_cumulative_citations: int = 0  # Sum of all citation impacts
-    date_last_updated: Optional[str] = None  # Last update from citations JSON
-    bids_version: Optional[str] = None  # BIDS specification version
-    data_type: Optional[str] = None  # Type of neuroimaging data
-    modality: Optional[str] = None  # Imaging modality (fMRI, EEG, etc.)
+    date_last_updated: str | None = None  # Last update from citations JSON
+    bids_version: str | None = None  # BIDS specification version
+    data_type: str | None = None  # Type of neuroimaging data
+    modality: str | None = None  # Imaging modality (fMRI, EEG, etc.)
 
 
 class Citation(BaseModel):
@@ -29,13 +27,13 @@ class Citation(BaseModel):
 
     uid: str  # Unique identifier for this citation
     title: str  # Paper title
-    author: Optional[str] = None  # Primary author or authors string
-    venue: Optional[str] = None  # Journal or conference name
-    year: Optional[int] = None  # Publication year
-    abstract: Optional[str] = None  # Paper abstract
+    author: str | None = None  # Primary author or authors string
+    venue: str | None = None  # Journal or conference name
+    year: int | None = None  # Publication year
+    abstract: str | None = None  # Paper abstract
     cited_by: int = 0  # Number of times this paper is cited
-    confidence_score: Optional[float] = None  # Our confidence scoring (0.0-1.0)
-    url: Optional[str] = None  # Link to paper
+    confidence_score: float | None = None  # Our confidence scoring (0.0-1.0)
+    url: str | None = None  # Link to paper
     dataset_id: str  # Which dataset this citation references
 
 
@@ -81,11 +79,11 @@ class ClusterAnalysis(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     algorithm: str  # Clustering algorithm used
-    parameters: Dict[str, str]  # Algorithm parameters
-    clusters: Dict[int, List[str]]  # Cluster ID -> List of citation/dataset UIDs
-    silhouette_score: Optional[float] = None
-    davies_bouldin_score: Optional[float] = None
-    calinski_harabasz_score: Optional[float] = None
+    parameters: dict[str, str]  # Algorithm parameters
+    clusters: dict[int, list[str]]  # Cluster ID -> List of citation/dataset UIDs
+    silhouette_score: float | None = None
+    davies_bouldin_score: float | None = None
+    calinski_harabasz_score: float | None = None
 
 
 class DimensionReductionResult(BaseModel):
@@ -95,8 +93,8 @@ class DimensionReductionResult(BaseModel):
 
     method: str  # Method used (e.g., "UMAP")
     params: UMAPParams  # Parameters used
-    item_uids: List[str]  # UIDs of items (citations/datasets)
-    reduced_dimensions: List[List[float]]  # 2D coordinates
+    item_uids: list[str]  # UIDs of items (citations/datasets)
+    reduced_dimensions: list[list[float]]  # 2D coordinates
 
 
 class ExtendedDataset(Dataset):
@@ -105,22 +103,22 @@ class ExtendedDataset(Dataset):
     model_config = ConfigDict(extra="forbid")
 
     # Embeddings from dataset metadata (description + README)
-    embedding: Optional[List[float]] = None
+    embedding: list[float] | None = None
 
     # Clustering results
-    kmeans_clusters: Optional[Dict[str, int]] = None
-    dbscan_clusters: Optional[Dict[str, int]] = None
-    agglomerative_clusters: Optional[Dict[str, int]] = None
+    kmeans_clusters: dict[str, int] | None = None
+    dbscan_clusters: dict[str, int] | None = None
+    agglomerative_clusters: dict[str, int] | None = None
 
     # Dimensionality reduction coordinates
-    umap: Optional[List[float]] = None
-    tsne: Optional[List[float]] = None
-    pca: Optional[List[float]] = None
+    umap: list[float] | None = None
+    tsne: list[float] | None = None
+    pca: list[float] | None = None
 
     # Temporal analysis
-    first_citation_year: Optional[int] = None
-    last_citation_year: Optional[int] = None
-    citation_years: Optional[List[int]] = None
+    first_citation_year: int | None = None
+    last_citation_year: int | None = None
+    citation_years: list[int] | None = None
 
 
 class ExtendedCitation(Citation):
@@ -129,17 +127,17 @@ class ExtendedCitation(Citation):
     model_config = ConfigDict(extra="forbid")
 
     # Embeddings from abstract and title
-    embedding: Optional[List[float]] = None
+    embedding: list[float] | None = None
 
     # Clustering results (thematic groupings)
-    kmeans_clusters: Optional[Dict[str, int]] = None
-    dbscan_clusters: Optional[Dict[str, int]] = None
-    agglomerative_clusters: Optional[Dict[str, int]] = None
+    kmeans_clusters: dict[str, int] | None = None
+    dbscan_clusters: dict[str, int] | None = None
+    agglomerative_clusters: dict[str, int] | None = None
 
     # Dimensionality reduction coordinates
-    umap: Optional[List[float]] = None
-    tsne: Optional[List[float]] = None
-    pca: Optional[List[float]] = None
+    umap: list[float] | None = None
+    tsne: list[float] | None = None
+    pca: list[float] | None = None
 
     # Filtering criteria
     is_high_confidence: bool = False  # confidence_score >= 0.4

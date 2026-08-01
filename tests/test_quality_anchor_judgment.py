@@ -14,7 +14,7 @@ from __future__ import annotations
 import json
 import os
 import tempfile
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from unittest import TestCase, skipUnless
 
@@ -61,7 +61,7 @@ class _FakeClient(OllamaJudgmentClient):
             self._responses = list(responses)
         self._call_index = 0
 
-    def _generate(self, prompt: str) -> str:  # noqa: ARG002 - prompt unused
+    def _generate(self, prompt: str) -> str:
         if self._call_index < len(self._responses):
             response = self._responses[self._call_index]
             self._call_index += 1
@@ -92,7 +92,7 @@ class _StubSource:
     def __init__(self, outcome) -> None:
         self._outcome = outcome
 
-    def get_doi_references(self, dataset_id):  # noqa: ARG002
+    def get_doi_references(self, dataset_id):
         return self._outcome
 
 
@@ -410,28 +410,28 @@ class SidecarRoundTripTests(TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "bad.json"
             path.write_text(json.dumps(["not", "an", "object"]))
-            with self.assertRaises(ValueError):
+            with self.assertRaises(TypeError):
                 load_judgment_sidecar(path)
 
 
 class IsJudgmentFreshTests(TestCase):
     def test_fresh_payload_returns_true(self) -> None:
         payload = {
-            "judged_at": datetime.now(timezone.utc).isoformat(),
+            "judged_at": datetime.now(UTC).isoformat(),
         }
         self.assertTrue(is_judgment_fresh(payload, max_age_days=7))
 
     def test_stale_payload_returns_false(self) -> None:
-        stale = datetime.now(timezone.utc) - timedelta(days=30)
+        stale = datetime.now(UTC) - timedelta(days=30)
         payload = {"judged_at": stale.isoformat()}
         self.assertFalse(is_judgment_fresh(payload, max_age_days=7))
 
     def test_zero_max_age_days_returns_false(self) -> None:
-        payload = {"judged_at": datetime.now(timezone.utc).isoformat()}
+        payload = {"judged_at": datetime.now(UTC).isoformat()}
         self.assertFalse(is_judgment_fresh(payload, max_age_days=0))
 
     def test_negative_max_age_days_returns_false(self) -> None:
-        payload = {"judged_at": datetime.now(timezone.utc).isoformat()}
+        payload = {"judged_at": datetime.now(UTC).isoformat()}
         self.assertFalse(is_judgment_fresh(payload, max_age_days=-1))
 
     def test_missing_judged_at_returns_false(self) -> None:
@@ -441,7 +441,7 @@ class IsJudgmentFreshTests(TestCase):
         self.assertFalse(is_judgment_fresh({"judged_at": "not-a-date"}, max_age_days=7))
 
     def test_naive_timestamp_treated_as_utc(self) -> None:
-        naive_now = datetime.now(timezone.utc).replace(tzinfo=None).isoformat()
+        naive_now = datetime.now(UTC).replace(tzinfo=None).isoformat()
         self.assertTrue(is_judgment_fresh({"judged_at": naive_now}, max_age_days=7))
 
 
@@ -463,7 +463,7 @@ class AnchorJudgmentIntegration(TestCase):
         )
 
         class _OneRefSource:
-            def get_doi_references(self, dataset_id):  # noqa: ARG002
+            def get_doi_references(self, dataset_id):
                 return FetchSuccess([ref])
 
         with OllamaJudgmentClient() as client:

@@ -13,6 +13,7 @@ import os
 import sys
 import tempfile
 from contextlib import redirect_stdout
+from datetime import UTC
 from pathlib import Path
 from unittest import TestCase
 
@@ -307,19 +308,19 @@ class FreshnessGateTests(TestCase):
             self.assertFalse(_has_stable_status(str(headerless)))
 
     def test_checked_within_true_for_recent(self) -> None:
-        from datetime import datetime, timezone
+        from datetime import datetime
 
         from dataset_citations.cli.update import _checked_within
 
-        state = {"ds1": datetime.now(timezone.utc).isoformat()}
+        state = {"ds1": datetime.now(UTC).isoformat()}
         self.assertTrue(_checked_within("ds1", state, 7 * 86400))
 
     def test_checked_within_false_for_stale(self) -> None:
-        from datetime import datetime, timedelta, timezone
+        from datetime import datetime, timedelta
 
         from dataset_citations.cli.update import _checked_within
 
-        stale = (datetime.now(timezone.utc) - timedelta(days=30)).isoformat()
+        stale = (datetime.now(UTC) - timedelta(days=30)).isoformat()
         self.assertFalse(_checked_within("ds1", {"ds1": stale}, 7 * 86400))
 
     def test_checked_within_false_for_missing_or_unparseable(self) -> None:
@@ -329,11 +330,11 @@ class FreshnessGateTests(TestCase):
         self.assertFalse(_checked_within("ds1", {"ds1": "not-a-date"}, 7 * 86400))
 
     def test_checked_within_treats_naive_timestamp_as_utc(self) -> None:
-        from datetime import datetime, timezone
+        from datetime import datetime
 
         from dataset_citations.cli.update import _checked_within
 
-        naive_now = datetime.now(timezone.utc).replace(tzinfo=None).isoformat()
+        naive_now = datetime.now(UTC).replace(tzinfo=None).isoformat()
         self.assertTrue(_checked_within("ds1", {"ds1": naive_now}, 7 * 86400))
 
     def test_fetch_state_roundtrip(self) -> None:
@@ -511,7 +512,7 @@ class IdempotentWriteTests(TestCase):
             self.assertNotIn("confidence_scoring", on_disk)
 
     def test_fresh_stable_dataset_is_skipped(self) -> None:
-        from datetime import datetime, timezone
+        from datetime import datetime
 
         from dataset_citations.cli import update as cli_module
 
@@ -529,7 +530,7 @@ class IdempotentWriteTests(TestCase):
             self._seed(out_dir, "ds000005", existing)
             # Mark it as checked just now in the fetch-state cache.
             (Path(out_dir) / ".fetch_state.json").write_text(
-                json.dumps({"ds000005": datetime.now(timezone.utc).isoformat()})
+                json.dumps({"ds000005": datetime.now(UTC).isoformat()})
             )
             list_file = Path(out_dir) / "list.txt"
             list_file.write_text("ds000005\n")
@@ -611,7 +612,7 @@ class IdempotentWriteTests(TestCase):
             self.assertNotIn("ds000007", on_disk)
 
     def test_transient_failure_forces_refetch_despite_fresh_state(self) -> None:
-        from datetime import datetime, timezone
+        from datetime import datetime
 
         from dataset_citations.cli import update as cli_module
 
@@ -629,7 +630,7 @@ class IdempotentWriteTests(TestCase):
             }
             self._seed(out_dir, "ds000008", existing)
             (Path(out_dir) / ".fetch_state.json").write_text(
-                json.dumps({"ds000008": datetime.now(timezone.utc).isoformat()})
+                json.dumps({"ds000008": datetime.now(UTC).isoformat()})
             )
             list_file = Path(out_dir) / "list.txt"
             list_file.write_text("ds000008\n")

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Dataset Citations Package.
 
 Automated BIDS dataset citation tracking and JSON generation. The legacy

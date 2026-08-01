@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """Generate temporal analysis data from citation JSON files."""
 
 import argparse
@@ -6,7 +5,7 @@ import csv
 import json
 import sys
 from collections import defaultdict
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 # Default confidence threshold; matches the dashboard's high-confidence filter
@@ -37,7 +36,7 @@ def generate_temporal(
     if max_year is None:
         # Allow next-year preprints; the previous hardcoded `< 2025` silently
         # dropped every 2025+ citation.
-        max_year = datetime.now(timezone.utc).year + 1
+        max_year = datetime.now(UTC).year + 1
 
     yearly_citations: dict[int, int] = defaultdict(int)
     yearly_high_conf: dict[int, int] = defaultdict(int)

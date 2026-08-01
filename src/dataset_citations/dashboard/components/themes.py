@@ -13,8 +13,9 @@ the `wordcloud` library (already a runtime dependency).
 from __future__ import annotations
 
 import logging
+from collections.abc import Iterable, Sequence
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Sequence
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -22,7 +23,7 @@ logger = logging.getLogger(__name__)
 class ThemeGenerator:
     """Generate research theme visualizations."""
 
-    def __init__(self, output_dir: Optional[Path] = None) -> None:
+    def __init__(self, output_dir: Path | None = None) -> None:
         """Initialize the theme generator.
 
         Args:
@@ -33,7 +34,7 @@ class ThemeGenerator:
         """
         self.output_dir = Path(output_dir) if output_dir is not None else None
 
-    def generate_themes(self, data: Dict[str, Any]) -> Dict[str, Any]:
+    def generate_themes(self, data: dict[str, Any]) -> dict[str, Any]:
         """Generate theme visualization data.
 
         Reads themes from
@@ -54,7 +55,7 @@ class ThemeGenerator:
         )
         generated_themes = theme_data.get("themes", [])
 
-        themes: List[Dict[str, Any]] = []
+        themes: list[dict[str, Any]] = []
         for theme in generated_themes:
             theme_id = theme.get("id", 0)
             theme_name = theme.get("name", f"Theme {theme_id + 1}")
@@ -148,7 +149,7 @@ class ThemeGenerator:
         return path
 
 
-def _build_frequency_map(top_words: Iterable[str]) -> Dict[str, float]:
+def _build_frequency_map(top_words: Iterable[str]) -> dict[str, float]:
     """Turn an ordered list of phrases into a frequency map.
 
     Earlier phrases get higher weights (linear decay) so the resulting

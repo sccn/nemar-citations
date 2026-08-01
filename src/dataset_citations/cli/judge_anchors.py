@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Batch CLI for LLM-based anchor adjudication.
 
 Reads a dataset-IDs file, builds (or refreshes) a per-dataset judgment
@@ -57,7 +56,10 @@ def _should_skip(
     if max_age_days > 0:
         try:
             payload = load_judgment_sidecar(sidecar)
-        except (OSError, ValueError):
+        except (OSError, ValueError, TypeError):
+            # TypeError covers a sidecar whose JSON root is not an object;
+            # ValueError still covers JSONDecodeError. A malformed sidecar must
+            # fall through to a re-judge, never crash the cron's judge step.
             return False, ""
         if is_judgment_fresh(payload, max_age_days=max_age_days):
             return True, f"fresh<={max_age_days}d"

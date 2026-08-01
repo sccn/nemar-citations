@@ -16,7 +16,7 @@ import argparse
 import logging
 import os
 import time
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pandas as pd
@@ -101,7 +101,7 @@ def get_github_api_response(api_url: str, headers: dict) -> requests.Response | 
                 "Rate limit: %d/%d remaining; resets %s",
                 remaining,
                 limit,
-                datetime.fromtimestamp(reset_time),
+                datetime.fromtimestamp(reset_time, tz=UTC),
             )
             if remaining < 20:
                 wait = max(0.0, reset_time - time.time()) + 15
@@ -251,7 +251,7 @@ def discover_via_github(
 
     logger.info("Total GitHub repos listed: %d", len(all_repos))
     processed = 0
-    now_iso = datetime.now().isoformat()
+    now_iso = datetime.now(UTC).isoformat()
 
     for repo_data in all_repos:
         if max_repos is not None and processed >= max_repos:
@@ -412,8 +412,7 @@ def main() -> None:
     if args.output_file:
         Path(args.output_file).parent.mkdir(parents=True, exist_ok=True)
         with open(args.output_file, "w") as f:
-            for name in discovered:
-                f.write(f"{name}\n")
+            f.writelines(f"{name}\n" for name in discovered)
         logger.info("Wrote %d names to %s", len(discovered), args.output_file)
     else:
         logger.info("No --output-file given; not writing list to disk.")

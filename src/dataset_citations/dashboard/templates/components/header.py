@@ -1,10 +1,8 @@
 """HTML header component."""
 
-from typing import Optional
-
 
 def generate_header(
-    title: str = "Dataset Citations Analysis Dashboard", data_file: Optional[str] = None
+    title: str = "Dataset Citations Analysis Dashboard", data_file: str | None = None
 ) -> str:
     """Generate HTML header with all required scripts and styles."""
 
