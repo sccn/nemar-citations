@@ -1,0 +1,43 @@
+{
+  "dataset_id": "on006563",
+  "date_retrieved": "2026-08-01T10:22:48.601471+00:00",
+  "dataset_description": {
+    "Name": "Dimension-based attention modulates early visual processing",
+    "License": "CC0",
+    "Authors": [
+      "Klaus Gramann, Thomas Töllner, Hermann J. Müller"
+    ],
+    "ReferencesAndLinks": [
+      "Gramann, K., Töllner, T. and Müller, H.J. (2010), Dimension-based attention modulates early visual processing. Psychophysiology, 47: 968-978. https://doi.org/10.1111/j.1469-8986.2010.00998.x"
+    ],
+    "BIDSVersion": "1.8.0",
+    "HEDVersion": "8.1.0",
+    "GeneratedBy": [
+      {
+        "Name": "EEG-BIDS",
+        "Version": "10.2"
+      }
+    ],
+    "DatasetDOI": "10.82901/nemar.on006563",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds006563.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on006563-blue)](https://doi.org/10.82901/nemar.on006563)\n\n## Overview\nThis dataset was originally published in\nGramann, K., Töllner, T. and Müller, H.J. (2010), Dimension-based attention modulates early visual processing. Psychophysiology, 47: 968-978. https://doi.org/10.1111/j.1469-8986.2010.00998.x\nIt was subsequently used to investigate automatic labeling of independent components in ICA and is referred to as the \"Cue\" dataset:\nFrølich, L., Andersen, T.S. and Mørup, M. (2015), Multi-class classification of ICS of EEG. Psychophysiol, 52: 32-45. https://doi.org/10.1111/psyp.12290\n\"64 scalp channels “referenced to Cz and re-referenced off-line to linked mastoids” from 12 subjects during a visual task (Gramann et al., 2010). ICA was performed with the implementation of the ICA infomax algorithm in the Brain Vision Analyzer software from Brain Products GmbH.2 The data sets we had access to were between 56 and 66 min long for the different subjects.\" After contacting the above authors, Laura Frølich provided a copy of the data. With Klaus Gramann's permission, this was converted to BIDS format by Austin J. Brockmeier and Carlos H. Mendoza-Cardenas.\nContinuous EEG from 12 with ICA weights.\n\n### Subjects\n\"Twelve observers took part in the Experiment (2 female; age range 21–25 years). All were right-handed, had normal or corrected-to-normal vision, and reported no history of neurological disorder. Observers were either paid or received course credit for participating. All observers provided written informed consent, and the experimental procedure was approved by the ethics committee of the Department of Psychology, University of Munich, in accordance with the Code of Ethics of the World Medical Association (Declaration of Helsinki).\"\n\n## Expert-annotated Independent Components (ICs)\nThe expert-annotated labels of the ICs can be found in the field `expert_ica_labels`, and the class names in `ica_classes`. `expert_ica_labels(i)` is the Matlab-index of `ica_classes` for the i-th IC. ICs can be computed using the fields `data`, `icasphere`, and `icaweights` (e.g., `icaact = icaweights * icasphere * data`).\n\n## Details related to access to the data\nCC-BY\n\nContact persons:\nklaus.gramann@tu-berlin.de  https://orcid.org/0000-0003-2673-1832\najbrock@udel.edu https://orcid.org/0000-0002-7293-8140\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on006563",
+    "exists": true,
+    "description": "Dimension-based attention modulates early visual processing",
+    "created_at": "2026-06-29T05:01:49+00:00",
+    "updated_at": "2026-07-23T01:29:43+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

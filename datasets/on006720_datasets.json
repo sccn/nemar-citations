@@ -1,0 +1,55 @@
+{
+  "dataset_id": "on006720",
+  "date_retrieved": "2026-08-01T10:23:15.482070+00:00",
+  "dataset_description": {
+    "Name": "Alpha power indexes working memory load for durations",
+    "BIDSVersion": "1.6.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Sophie K. Herbst [1]",
+      "Izem Mangione [1]",
+      "Charbel-Raphaël Segerie [2]",
+      "Richard Höchenberger [2]",
+      "Tadeusz Kononowicz [1, 3, 4]",
+      "Alexandre Gramfort [2]",
+      "Virginie van Wassenhove [1]",
+      "[1] Cognitive Neuroimaging Unit, INSERM, CEA, Université Paris-Saclay, NeuroSpin, 91191 Gif/Yvette, France [2] Inria, CEA, Université Paris-Saclay, Palaiseau, France [3] Institute of Psychology, The Polish Academy of Sciences, ul. Jaracza 1, 00-378 Warsaw, Poland [4] Institut NeuroPSI - UMR9197 CNRS Université Paris-Saclay"
+    ],
+    "EthicsApprovals": [
+      "Prior to the study, all participants signed a written informed consent in accordance with the Ethics Committee on Human Research at Neurospin: CPP n° 100049 (Gif-sur-Yvette, France), and the Declaration of Helsinki (2013)."
+    ],
+    "License": "CC0",
+    "Funding": [
+      "Agence Nationale de la Recherche: AutoTime (ANR-16-CE37-0004-04) granted to Virginie van Wassenhove",
+      "Agence Nationale de la Recherche: meegBIDS.fr (ANR-19-DATA-0023), granted to Alexandre Gramfort (Coordinator), Sophie Herbst, Maximilien Chaumon, and Virginie van Wassenhove (collaborators)",
+      "European Union’s Horizon 2020 research and innovation program: FET Experience (grant agreement No. 101017727), to Virginie van Wassenhovegrant agreement No. 101017727, FET Experience granted to Virginie van Wassenhove"
+    ],
+    "Acknowledgements": "NeuroSpin, NeuroPSI, UNICOG, Cognition & Brain Dynamics, and the Mind Lab are part of the DIM C-BRAINS, funded by the Conseil Régional d’Ile-de-France. We would also like to thank the NeuroSpin MEG platform staff, and in particular Leila Azizi, for their support during data acquisition.",
+    "HowToAcknowledge": "Please cite the dataset and the corresponding preprint or published version:\nhttps://www.biorxiv.org/content/10.1101/2025.05.12.653390v1",
+    "ReferencesAndLinks": [
+      "Alpha power indexes working memory load for durations Sophie K. Herbst, Mangione Izem, Charbel-Raphaël Segerie, Richard Höchenberger, Tadeusz Kononowicz, Alexandre Gramfort, Virginie van Wassenhove bioRxiv 2025.05.12.653390; doi: https://doi.org/10.1101/2025.05.12.653390",
+      "https://www.biorxiv.org/content/10.1101/2025.05.12.653390v1"
+    ],
+    "DatasetDOI": "10.82901/nemar.on006720",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds006720.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on006720-blue)](https://doi.org/10.82901/nemar.on006720)\n\nThe data set contains anonymized raw magnetoencephalography (MEG) recordings of 23 healthy adult participants, performed at Neurospin, Gif sur Yvette, France. Participants performed an n-item delayed temporal reproduction task: They were presented with a sequence of one or three “empty” intervals (see cover figure), delimited by short pure tones. They had to maintain the sequence in memory (retention), and, upon a prompt, reproduce the whole sequence by pressing a button for each tone. Eight task runs were recorded (~ 10 min each). The dataset also contains recordings of the electro-occulogram (EOG, horizontal and vertical eye movements) and -cardiogram (ECG), and the 3D coordinates of the EEG electrodes, four head-position indicator coils, and three fiducial points (nasion, left and right pre-auricular areas). A two-minute-long resting state recording (eyes open) was performed after the task. To improve the spatial resolution of the source reconstruction, individual high-resolution structural Magnetic Resonance Imaging (MRI) recordings were acquired. The data are reusable for researchers with a dedicated interest in the neural dynamics of working memory, but also to a broader community interested in neural dynamics in the healthy adult brain, in relation to auditory stimuli, motor responses, and during periods of rest. \n\nThe data were formatted in BIDS and anonymized using the following software: \n\nMNE Python version 1.8.0\nMNE-BIDS version 1.6.0\t\n\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A. and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. Journal of Open Source Software 4: (1896). https://doi.org/10.21105/joss.01896\n\nNiso, G., Gorgolewski, K. J., Bock, E., Brooks, T. L., Flandin, G., Gramfort, A., Henson, R. N., Jas, M., Litvak, V., Moreau, J., Oostenveld, R., Schoffelen, J., Tadel, F., Wexler, J., Baillet, S. (2018). MEG-BIDS, the brain imaging data structure extended to magnetoencephalography. Scientific Data, 5, 180110. https://doi.org/10.1038/sdata.2018.110\n\nMEG recording:\n\nBefore undergoing the MEG recording, participants were equipped with external electrodes, positioned to record the electro-occulogram (EOG, horizontal and vertical eye movements) and -cardiogram (ECG). The positions of the EEG electrodes, four head-position indicator coils, and three fiducial points (nasion, left and right pre-auricular areas) were digitized using a 3D digitizer (Polhemus, US/Canada) for subsequent co-registration with the individual&apos;s anatomical MRI. The MEG recordings took place in a magnetically shielded chamber, where the participant was seated in an armchair under the MEG helmet. The electromagnetic brain activity was recorded using a whole-head Elekta Neuromag Vector View 306 MEG system (Neuromag Elekta LTD, Helsinki) with 102 triple-sensors elements (two orthogonal planar gradiometers, and one magnetometer per sensor location). Participants were instructed to fixate their gaze on a screen positioned in front of them, at about one meter distance. The chamber was dimly lit. Their head position was measured before each recording run (8 in total) using the head-position indicator coils. MEG recordings were sampled online at 1 kHz, high-pass filtered at 0.03 Hz, and low-pass filtered at 330 Hz. A two-minute-long resting state recording (eyes open) was performed after the task, used to compute the noise covariance matrix for source reconstruction.\n\nAnatomical MRI recordings:\n\nTo improve the spatial resolution of the source reconstruction, individual high-resolution structural Magnetic Resonance Imaging (MRI) recordings were used. These were recorded on another day, using a Siemens 3 T Magnetom Prisma Fit MRI scanner. Parameters of the sequence were: slice thickness: 1 mm, repetition time TR = 2300 ms, echo time TE = 2.98 ms, and flip angle = 9 degrees.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on006720",
+    "exists": true,
+    "description": "Alpha power indexes working memory load for durations",
+    "created_at": "2026-06-29T08:31:44+00:00",
+    "updated_at": "2026-07-23T01:30:01+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000347",
-  "num_citations": 5,
-  "date_last_updated": "2026-07-03T15:25:54.347307+00:00",
+  "num_citations": 6,
+  "date_last_updated": "2026-08-01T15:38:09.852489+00:00",
   "metadata": {
-    "total_cumulative_citations": 2,
-    "fetch_date": "2026-07-03T15:25:54.347307+00:00",
+    "total_cumulative_citations": 3,
+    "fetch_date": "2026-08-01T15:38:09.852489+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -60,7 +60,7 @@
     ],
     "num_accession_mentions": 1,
     "num_dataset_citations": 1,
-    "num_datapaper_citations": 4
+    "num_datapaper_citations": 5
   },
   "citation_details": [
     {
@@ -69,7 +69,7 @@
       "venue": "Brain Hemorrhages",
       "year": 2026,
       "url": "https://doi.org/10.1016/j.hest.2026.01.002",
-      "cited_by": 2,
+      "cited_by": 3,
       "abstract": "Objective: Brain–computer interfaces (BCIs) decode neural signals to support alternative communication for individuals with motor and speech impairments, including severe speech disorders. We review EEG-BCI decoding research from 2020 to 2025 and analyze how signal-processing protocol decisions influence fair comparison and cross-paradigm generalization. Methods: We systematically reviewed EEG-BCI studies across six paradigms, summarizing commonly used datasets and experimental designs. Focusing on the conversion from raw multichannel EEG to model inputs, we analyzed preprocessing and channel selection and assessed how their implementation and reporting affect downstream modeling and evaluation. Results: Key challenges include dataset heterogeneity, low signal-to-noise ratio, and cross-subject/cross-session nonstationarity, which can confound performance comparisons. We synthesized prevailing practices in bandpass filtering, artifact handling, segmentation, and normalization, emphasizi",
       "doi": "10.1016/j.hest.2026.01.002",
       "pmid": null,
@@ -133,6 +133,29 @@
       }
     },
     {
+      "title": "Bayesian Complete-Pooling in Cross-Subject Classification for Motor Imagery Electroencephalogram",
+      "author": "Ethan Davis",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "Brain-computer interfaces (BCIs) have long sought calibration-free operation, but classifiers are typically benchmarked by discrimination alone, blind to whether predicted probabilities are well calibrated - a meaningful gap given nonstationary electroencephalogram (EEG) signals and the risk of overconfident point-estimate classifiers under distribution shift. We conducted a large-scale study contrasting Bayesian complete-pooling models against frequentist baselines for cross-subject, left-hand versus right-hand motor imagery EEG classification across 20 datasets. Six frequentist pipelines were each paired with an analogous Bayesian pipeline sharing identical feature engineering, fit via Markov chain Monte Carlo posterior sampling. Our primary metric was the Brier score, decomposed into reliability and resolution, alongside AUROC for discrimination and Shannon entropy for sharpness. Each metric was analyzed via random-effects meta-analysis (REML, Knapp-Hartung adjustment), verified by ",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-025-06100-7",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6803619691729547,
+        "similarity_score": 0.589057981967926,
+        "citation_text_length": 1149,
+        "dataset_text_length": 2552,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A game-theoretic framework for multimodal information utilization under heterogeneous processing environments in neuroscience and perception science",
       "author": "Zhanhong Cui, Kai Li",
       "venue": "Frontiers in Neuroscience",
@@ -183,17 +206,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-07-15T00:17:52.737946+00:00",
+    "scoring_date": "2026-08-01T16:43:33.160776+00:00",
     "dataset_text_length": 2552,
-    "num_citations_scored": 5,
+    "num_citations_scored": 6,
     "summary_stats": {
-      "mean_confidence": 0.5346188528835774,
-      "median_confidence": 0.6350637924671173,
-      "std_confidence": 0.25863612074026066,
+      "mean_confidence": 0.5589093722651403,
+      "median_confidence": 0.657712880820036,
+      "std_confidence": 0.24226847872853643,
       "min_confidence": 0.0944183386862278,
       "max_confidence": 0.8384470564126969,
       "high_confidence_count": 1,
-      "medium_confidence_count": 3,
+      "medium_confidence_count": 4,
       "low_confidence_count": 1
     }
   }

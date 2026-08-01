@@ -1,0 +1,66 @@
+{
+  "dataset_id": "on006890",
+  "date_retrieved": "2026-08-01T10:24:09.181463+00:00",
+  "dataset_description": {
+    "Name": "Longitudinal Multitask Wireless ECoG Data from Two Fully Implanted Macaca fuscata",
+    "BIDSVersion": "1.9.0",
+    "DatasetType": "raw",
+    "GeneratedBy": [
+      {
+        "Name": "custom-bids-converter",
+        "Version": "1.0",
+        "Description": "Python script that converts raw .bin recordings to BIDS iEEG structure"
+      }
+    ],
+    "Authors": [
+      "Huixiang Yang",
+      "Ryohei Fukuma",
+      "Tomoyuki Namima",
+      "Kotaro Okuda",
+      "Asaya Nishi",
+      "Takamitsu Iwata",
+      "Abdi Reza",
+      "Kota S Sasaki",
+      "Taro Kaiju",
+      "Gurlal Gill",
+      "Haruhiko Kishima",
+      "Shinji Nishimoto",
+      "Takufumi Yanagisawa"
+    ],
+    "HowToAcknowledge": "Please cite our Scientific Data article once available. Provisional citation: []",
+    "Funding": [
+      "Grant JPMJER1801 from JST, JPMJMS2012 (TY) from Moonshot R&D, JPMJCR18A5 (TY) from CREST, JPMJCR24U2 (TY) from AIP"
+    ],
+    "ReferencesAndLinks": [
+      ""
+    ],
+    "DatasetDOI": "10.82901/nemar.on006890",
+    "License": "CC0",
+    "SourceDatasets": [
+      {
+        "Name": "In-house raw recordings",
+        "URL": "n/a",
+        "Version": "2024-12-27",
+        "Notes": "This dataset was derived directly from in-house raw .bin recordings acquired with a custom acquisition system (not publicly released)."
+      },
+      {
+        "DOI": "doi:10.18112/openneuro.ds006890.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on006890-blue)](https://doi.org/10.82901/nemar.on006890)\n\nLongitudinal Multitask Wireless ECoG Data from Two Fully Implanted Macaca fuscata — README\n\n## Overview\nThis repository contains a wireless subdural ECoG (iEEG) dataset from *Macaca fuscata* monkeys,\norganized in compliance with the iEEG-BIDS specification.\nRecordings were acquired several times each week using a wireless, inductively powered implant. The data were curated and organized in BIDS format to facilitate reproducible research in neuroscience.\n\nKeywords: wireless subdural ECoG, iEEG, Macaca fuscata, BIDS-compliant dataset,\nlongitudinal recordings, task-based neurophysiology\n\n## BIDS Organization\n- dataset_description.json\n- participants.tsv, participants.json\n- README.md, CHANGES.md\n- sub-<id>/ses-<index>/ieeg/ (with *_ieeg.edf, *_ieeg.json, *_channels.tsv, *_events.tsv, *_scans.tsv, *_electrodes.tsv, *_electrodes.json, *_coordsystem.json)\n\n## Tasks\nTasks include rest, pressing, reaching, listening, sep.\nOnly curated and validated tasks are exported.\n\n## Signals and Channels\n- Uniform sampling rate per file.\n- channels.tsv lists physiological (ECoG), trigger (TRIGGER) and auxiliary channels (MISC).\n\n## Usage\nThis dataset can be loaded with BIDS-compatible toolboxes such as MNE-Python, FieldTrip, or EEGLAB.\nInspect *_events.tsv for task timing and *_channels.tsv for channel information.\n\n## Participants\nEach subject corresponds to an individual monkey (e.g., sub-monkeyb, sub-monkeyc).\n\n## Ethics\nAll animal procedures complied with Japanese laws and institutional regulations, including the Science Council of Japan Guidelines for Proper Conduct of Animal Experiments and national standards on pain relief and euthanasia, and were approved by the Animal Experiment Committee — The University of Osaka (approval FBS-25-002). \n\n## License and Citation\nLicense: CC BY 4.0\nCitation: [Authors], “[Dataset Title],” [Repository/DOI], [Year].\n\n## Contact\nMaintainer: Huixiang Yang, The University of Osaka, yanghuixiang@bci.med.osaka-u.ac.jp\nFor issues, please use the repository issue tracker.",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on006890",
+    "exists": true,
+    "description": "Longitudinal Multitask Wireless ECoG Data from Two Fully Implanted Macaca fuscata",
+    "created_at": "2026-06-29T15:31:45+00:00",
+    "updated_at": "2026-07-23T01:30:35+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

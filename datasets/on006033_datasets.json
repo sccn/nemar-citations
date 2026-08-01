@@ -1,0 +1,55 @@
+{
+  "dataset_id": "on006033",
+  "date_retrieved": "2026-08-01T10:20:37.273486+00:00",
+  "dataset_description": {
+    "Name": "Synchronous EEG and fMRI dataset on inner speech",
+    "BIDSVersion": "1.7.0",
+    "HEDVersion": "8.3.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Foteini Simistira Liwicki"
+    ],
+    "License": "CC0",
+    "Funding": [
+      "Kompetensutveckling till professor, Lulea University of Technology, Sweden [LTU-154-2023]",
+      "Labbfonden Medel för infrastruktur vid Luleå tekniska universitet, 2023 [LTU-4908-2022]",
+      "Kempe Foundation, Sweden [JCSMK23-0102]"
+    ],
+    "Acknowledgements": "We thank the participants and research staff involved in data collection.",
+    "HowToAcknowledge": "Please cite: [Your Publication or DOI]",
+    "ReferencesAndLinks": [
+      " https://your-lab-website.com"
+    ],
+    "DatasetDOI": "10.82901/nemar.on006033",
+    "GeneratedBy": [
+      {
+        "Name": "MNE-BIDS",
+        "Version": "0.12",
+        "Description": "BIDS conversion of EEG data."
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds006033.v1.0.1"
+      }
+    ],
+    "EthicsApprovals": [
+      "The study was approved by the Swedish Ethical Review Authority (Etikprövning myndigheden, ID: 2023-05177-01) (https://etikprovningsmyndigheten.se/) in accordance with the Swedish Ethical Review Act (SFS 2003:460). "
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on006033-blue)](https://doi.org/10.82901/nemar.on006033)\n\n# Inner Speech EEG-fMRI Dataset\n\n## Description\nThis dataset contains simultaneous EEG-fMRI recordings for inner speech experiments. Data were collected using a 3T MRI scanner and 64-channel BrainProducts EEG system. The EEG data have undergone preprocessing, including pulse artifact removal, using the BrainVision Analyzer software. No further data transformations have been applied to ensure the dataset remains BIDS-compliant as \"raw\".\n\n## Subjects\n- Number of subjects: 3\n- Sessions per subject: 2\n- Tasks: Inner speech\n\n## Experimental Protocol\n- Each trial includes a fixation period (2s), stimulus display (2s), and rest (12s).\n- 8 words were presented in random order, each repeated 40 times.\n- EEG sampled at 5000 Hz, fMRI acquired with TR=2s.\n\n## Data Organization\n- Functional MRI data: `sub-xx/ses-xx/func/`\n- EEG data: `sub-xx/ses-xx/eeg/`\n- Event markers: `events.tsv`\n- BIDS-compatible metadata included in JSON sidecars.\n\n## Contact\nFor inquiries, contact: Foteini Simistira Liwicki (Foteini.liwicki@ltu.se)\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on006033",
+    "exists": true,
+    "description": "Synchronous EEG and fMRI dataset on inner speech",
+    "created_at": "2026-06-28T09:30:58+00:00",
+    "updated_at": "2026-07-23T01:28:06+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

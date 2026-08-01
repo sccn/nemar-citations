@@ -1,0 +1,36 @@
+{
+  "dataset_id": "on004264",
+  "date_retrieved": "2026-08-01T10:08:33.588224+00:00",
+  "dataset_description": {
+    "Name": "Steer the Ship",
+    "BIDSVersion": "1.2.1",
+    "License": "CC0",
+    "Authors": [
+      "Cameron D. Hassall",
+      "Yan Yan",
+      "Laurence T. Hunt"
+    ],
+    "DatasetType": "raw",
+    "DatasetDOI": "10.82901/nemar.on004264",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds004264.v1.1.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on004264-blue)](https://doi.org/10.82901/nemar.on004264)\n\n# Steer the Ship\n\nTwenty-one participants learned to control the trajectory of a ship, represented by centrally presented rotating arrow. Prior to each round participants were cued about the degree of controller and environmental noise (\"wind\") they would experience. During the round, participants pressed the 'f' and 'j' keys to apply angular force in either a clockwise or counterclockwise direction. The goal of the task was to keep the ship closely oriented towards a target. Points were accumulated depending on the mean distance to target. The ship would crash if it strayed too far from the target (and the round would end). Each round lasted up to 1 minute. The underlying physics were based on the pole-and-cart problem (i.e., unstable).  \n\nThere were four noise conditions:  \n1: No noise  \n2: Environmental noise only (ship occasionally moved on its own)  \n3: Controller noise only (amount of force varied)  \n4: Environmental and controller noise  \n\nParticipant 12 should be excluded from event-locked analyses due to bad triggers (trigger cable was partially disconnected).  \n\nAlso note that the RT for the first button press in each round is not recorded (but is recorded in the participantActions column).\n\nTrigger Modifiers (added to condition numbers)  \nAdd 0: Condition cue  \nAdd 10: Start of round  \nAdd 20: Left button press  \nAdd 30: Right button press  \nAdd 40: Left button press (computer)  \nAdd 50: Right button press (computer)  \nAdd 60: Crash  \nAdd 70: Success (reached 1 minute of play)  \nAdd 80: Points displayed    \n﻿\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on004264",
+    "exists": true,
+    "description": "Steer the Ship",
+    "created_at": "2026-06-23T20:31:44+00:00",
+    "updated_at": "2026-07-23T01:17:46+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

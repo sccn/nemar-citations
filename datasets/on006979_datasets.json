@@ -1,0 +1,58 @@
+{
+  "dataset_id": "on006979",
+  "date_retrieved": "2026-08-01T10:24:36.311576+00:00",
+  "dataset_description": {
+    "BIDSVersion": "1.7.0",
+    "Name": "Examining Perceptual Grouping on Stages of Processing in Visual Working Memory: An ERP Study",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Hanane Ramzaoui",
+      "Melissa Beck"
+    ],
+    "Funding": [
+      "n/a"
+    ],
+    "EthicsApprovals": [
+      "Institutional Review Board of Louisiana State University (IRBAM-23-0273 from March 1, 2023)"
+    ],
+    "TaskName": "visualworkingmemorytask",
+    "TaskDescription": "Bilateral change-detection task investigating the influence of color grouping on stages of processing in visual working memory.",
+    "ReferencesAndLinks": [
+      "Ramzaoui, H., & Beck, M. (2024). Examining perceptual grouping on stages of processing in visual working memory: An ERP study. Scientific Reports. (Registered Report Stage I): https://doi.org/10.17605/OSF.IO/RZS96",
+      "Please update this entry with the final Registered Report (Stage 2) publication details when published."
+    ],
+    "GeneratedBy": [
+      {
+        "Name": "FieldTrip",
+        "Version": "20240417",
+        "Description": "Programmatic BIDS conversion executed via a custom MATLAB script using the FieldTrip data2bids function.",
+        "Container": {
+          "Type": "None",
+          "Tag": "Local MATLAB execution"
+        }
+      }
+    ],
+    "DatasetDOI": "10.82901/nemar.on006979",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds006979.v1.0.1"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on006979-blue)](https://doi.org/10.82901/nemar.on006979)\n\n# BIDS-EEG Dataset: Examining Perceptual Grouping on Stages of Processing in Visual Working Memory: An ERP Study\n\n**Authors: Hanane Ramzaoui, Melissa Beck**\n\n## 1. Description: Project Overview\n\nWe present an electrophysiological dataset recorded from fifty-three subjects performing a bilateral change-detection task to investigate how perceptual grouping, based on color repetition, influences Visual Working Memory (VWM) processing efficiency.\n\nThe study is designed to temporally isolate and measure the neural correlates of several critical VWM stages: **individuation encoding**, **maintenance**, **initial comparison**, **percept-memory comparison**, and **decision making/late comparison**. This is achieved using specific **Event-Related Potential (ERP) markers** (N2pc, CDA, N2, FN400).\n\n---\n\n## 2. Experimental Task and Conditions\n\nSubjects were cued to encode the colors of 2 or 3 squares in one visual hemifield. After a maintenance period, a single-item probe was presented to determine if its color had changed.\n\n### Key Manipulations\n\nThe memory array contained four primary conditions:\n\n* **Unrepeated (UR):** Arrays with 2 or 3 unique colors (**2-UR, 3-UR**).\n* **Repeated (R):** Arrays with 3 items, where two colors were repeated. This condition was further subdivided based on spatial arrangement:\n    * Two repeated colors with strong spatial proximity **(3-RSP)**.\n    * Two repeated colors with weak spatial proximity **(3-RWP)**.\n\nThe Probe in Repeated Conditions\n\nIn the repeated conditions (3-RSP and 3-RWP), the single-item probe could test two different item types for change detection:\n\n* **Repeated Item:** The probe tests one of the two squares that share the same color.\n* **Unrepeated Item (Singleton):** The probe tests the single square with the unique color.\n\n---\n\n## 3. Primary Neurophysiological Measurements\n\nThe study leverages the following ERP components to index different VWM processing stages: \n\n| VWM Stage | ERP Marker | Event Locking |\n| :--- | :--- | :--- |\n| **Individuation Encoding** | **N2pc** | Stimulus-Locked |\n| **Maintenance/Load** | **CDA** (Contralateral Delay Activity) | Stimulus-Locked |\n| **Initial Comparison** | **N2pc** | Probe-Locked |\n| **Percept-Memory Comparison** | **N2** | Probe-Locked |\n| **Decision Making/Late Comparison** | **FN400** | Probe-Locked |\n\n---\n\n## 4. Acquisition Details and Structure\n\n### Acquisition Parameters\n\n| Parameter | Detail |\n| :--- | :--- |\n| **Subjects (N)** | 53 (N=39 used for stimulus-locked ERPs, see `participants.tsv` for details) |\n| **Electrode System** | BioSemi ActiveTwo System |\n| **Number of Channels** | 71 (64 scalp, 3 EOG, 2 Mastoid, 1 CMS/DRL) |\n| **Sampling Rate (Acquisition)** | 512 Hz |\n| **Total Trials** | 1248 trials |\n\n### BIDS Compliance\n\nThe data is structured following the Brain Imaging Data Structure (BIDS) standard for EEG.\n\n* **Acquisition Parameters:** Detailed recording specifications (e.g., 512 Hz sampling rate, Sinc filter details) are provided in the task-level BIDS JSON files (task-myexperiment_eeg.json).\n* **Methodology:** Comprehensive details on offline preprocessing (e.g., re-referencing to average mastoids, ICA artifact removal, 0.1 Hz high-pass filtering) and the precise analysis plan (e.g., ERP measurement windows, HEOG artifact thresholds, channel clusters) are provided in the stage 1 protocol on OSF (https://doi.org/10.17605/OSF.IO/8ZS96).\n\n---\n\n## 5. Event Codes/Triggers\n\nThe following table maps the trigger codes recorded in the EEG data to the specific experimental events.\n\n* **Acronym Key:** UR = Unrepeated; RWP = Repeated Weak Proximity; RSP = Repeated Strong Proximity.\n\n| Trigger Code | Event Description |\n| :---: | :--- |\n| \"11\" | Stimulus: 2-UR \\| Left Cue \\| Change \\| Unrepeated Probe |\n| \"12\" | Stimulus: 3-UR \\| Left Cue \\| Change \\| Unrepeated Probe |\n| \"13\" | Stimulus: 3-RWP \\| Left Cue \\| Change \\| Unrepeated Probe |\n| \"14\" | Stimulus: 3-RSP \\| Left Cue \\| Change \\| Unrepeated Probe |\n| \"17\" | Stimulus: 3-RWP \\| Left Cue \\| Change \\| Repeated Probe |\n| \"18\" | Stimulus: 3-RSP \\| Left Cue \\| Change \\| Repeated Probe |\n| \"19\" | Stimulus: 2-UR \\| Left Cue \\| No-Change \\| Unrepeated Probe |\n| \"20\" | Stimulus: 3-UR \\| Left Cue \\| No-Change \\| Unrepeated Probe |\n| \"21\" | Stimulus: 3-RWP \\| Left Cue \\| No-Change \\| Unrepeated Probe |\n| \"22\" | Stimulus: 3-RSP \\| Left Cue \\| No-Change \\| Unrepeated Probe |\n| \"25\" | Stimulus: 3-RWP \\| Left Cue \\| No-Change \\| Repeated Probe |\n| \"26\" | Stimulus: 3-RSP \\| Left Cue \\| No-Change \\| Repeated Probe |\n| \"27\" | Stimulus: 2-UR \\| Right Cue \\| Change \\| Unrepeated Probe |\n| \"28\" | Stimulus: 3-UR \\| Right Cue \\| Change \\| Unrepeated Probe |\n| \"29\" | Stimulus: 3-RWP \\| Right Cue \\| Change \\| Unrepeated Probe |\n| \"30\" | Stimulus: 3-RSP \\| Right Cue \\| Change \\| Unrepeated Probe |\n| \"33\" | Stimulus: 3-RWP \\| Right Cue \\| Change \\| Repeated Probe |\n| \"34\" | Stimulus: 3-RSP \\| Right Cue \\| Change \\| Repeated Probe |\n| \"35\" | Stimulus: 2-UR \\| Right Cue \\| No-Change \\| Unrepeated Probe |\n| \"36\" | Stimulus: 3-UR \\| Right Cue \\| No-Change \\| Unrepeated Probe |\n| \"37\" | Stimulus: 3-RWP \\| Right Cue \\| No-Change \\| Unrepeated Probe |\n| \"38\" | Stimulus: 3-RSP \\| Right Cue \\| No-Change \\| Unrepeated Probe |\n| \"41\" | Stimulus: 3-RWP \\| Right Cue \\| No-Change \\| Repeated Probe |\n| \"42\" | Stimulus: 3-RSP \\| Right Cue \\| No-Change \\| Repeated Probe |\n| \"51\" | Probe Onset event: 2-UR \\| Left Cue |\n| \"52\" | Probe Onset event: 3-UR \\| Left Cue |\n| \"53\" | Probe Onset event: 3-RWP \\| Left Cue |\n| \"54\" | Probe Onset event: 3-RSP \\| Left Cue |\n| \"55\" | Probe Onset event: 2-UR \\| Right Cue |\n| \"56\" | Probe Onset event: 3-UR \\| Right Cue |\n| \"57\" | Probe Onset event: 3-RWP \\| Right Cue |\n| \"58\" | Probe Onset event: 3-RSP \\| Right Cue |\n| \"120\" | Manual Response: Correct. |\n| \"121\" | Manual Response: Incorrect. |\n\n---\n\n## 6. Protocol Registration and Reference\n\nFor this dataset project, the approved Stage 1 protocol (registered report) can be found at this OSF link (2024, October 15): https://doi.org/10.17605/OSF.IO/8ZS96\n\n---\n\n## 7. Contact and Ethics\n\n* **Affiliation:** Louisiana State University\n* **Ethical Approval:** Institutional Review Board of Louisiana State University (IRBAM-23-0273 from March 1, 2023)\n* **Contact:** hramzaoui@lsu.edu\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on006979",
+    "exists": true,
+    "description": "Examining Perceptual Grouping on Stages of Processing in Visual Working Memory: An ERP Study",
+    "created_at": "2026-06-29T19:31:36+00:00",
+    "updated_at": "2026-07-23T01:30:56+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

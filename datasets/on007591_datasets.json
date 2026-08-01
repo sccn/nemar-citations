@@ -1,0 +1,53 @@
+{
+  "dataset_id": "on007591",
+  "date_retrieved": "2026-08-01T10:26:47.018166+00:00",
+  "dataset_description": {
+    "Name": "Delineating neural contributions to EEG-based speech decoding",
+    "BIDSVersion": "1.9.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Motoshige Sato",
+      "Yasuo Kabe",
+      "Sensho Nobe",
+      "Akito Yoshida",
+      "Masakazu Inoue",
+      "Mayumi Shimizu",
+      "Kenichi Tomeoka",
+      "Shuntaro Sasai"
+    ],
+    "Acknowledgements": "We thank Ryota Kanai, for helpful discussions, and Rousslan Fernand Julien Dossa for data collection. Special thanks to Anna Maria Hadjiev for her meticulous proofreading, significantly enhancing our manuscript's quality.",
+    "Funding": [
+      "JST, Moonshot R&D Grant Number JPMJMS2012"
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.1101/2024.05.09.591996"
+    ],
+    "HowToAcknowledge": "Please cite the following paper (doi: https://doi.org/10.1101/2024.05.09.591996) and this dataset using its OpenNeuro DOI.",
+    "EthicsApprovals": [
+      "Shiba Palace Clinic Ethics Review Committee",
+      "Declaration of Helsinki"
+    ],
+    "DatasetDOI": "10.82901/nemar.on007591",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds007591.v1.0.1"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on007591-blue)](https://doi.org/10.82901/nemar.on007591)\n\n# Delineating neural contributions to EEG-based speech decoding\n\n## Overview\n128-channel EEG recordings during speech production tasks.\nParticipants produced one of 5 color words (green, magenta, orange, violet, yellow)\nunder three speech conditions: overt, minimally overt, and covert.\n\nEach trial consists of 5 repetitions of the same word (1.25 sec per repetition).\n\n## Channel layout (139 channels total)\n- Channels 1-128: EEG\n- Channels 129-130: DISPLAY (bipolar pair, misc)\n- Channels 131-132: MIC (bipolar pair, misc)\n- Channels 133-134: EOG (bipolar pair)\n- Channels 135-136: EMG upper orbicularis oris (bipolar pair)\n- Channels 137-138: EMG lower orbicularis oris (bipolar pair)\n- Channel 139: TRIGGER (marks trial onsets)\n\n## Session types\n- calibration: Offline data collection for decoder training\n- online: Real-time decoding with trained decoder\n\n## Preprocessing note\nThe EEG channels were recorded with a 10x preamp gain.\nRaw values have been converted to Volts (×1e-6).\n\n## Code\nCode for data loading, preprocessing, and decoding models is available at:\nhttps://github.com/arayabrain/uhd-gmail-public\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on007591",
+    "exists": true,
+    "description": "Delineating neural contributions to EEG-based speech decoding",
+    "created_at": "2026-06-30T13:31:31+00:00",
+    "updated_at": "2026-07-23T01:33:06+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

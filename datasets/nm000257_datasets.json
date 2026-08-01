@@ -1,0 +1,63 @@
+{
+  "dataset_id": "nm000257",
+  "date_retrieved": "2026-08-01T10:00:58.386821+00:00",
+  "dataset_description": {
+    "Name": "Imagined speech EEG dataset — short words condition (Nguyen et al. 2017)",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "other-open",
+    "Authors": [
+      "Chuong H. Nguyen",
+      "George K. Karavas",
+      "Panagiotis Artemiadis"
+    ],
+    "ReferencesAndLinks": [
+      "https://zenodo.org/records/19502794",
+      "10.1088/1741-2552/aa8235"
+    ],
+    "Keywords": [
+      "imagined speech",
+      "EEG",
+      "Riemannian manifold",
+      "covariance matrix",
+      "relevance vector machines",
+      "brain-computer interface",
+      "short words"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000257",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0dev0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1088/1741-2552/aa8235",
+        "URL": "https://zenodo.org/records/19502794"
+      },
+      {
+        "DOI": "doi:10.1088/1741-2552/aa8235"
+      }
+    ],
+    "PublicationYear": 2018,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000257-blue)](https://doi.org/10.82901/nemar.nm000257)\n\n# Imagined speech EEG dataset — short words condition (Nguyen et al. 2017)\n\n## Overview\n\nThis dataset comprises preprocessed EEG recordings from 6 healthy participants performing imagined speech tasks with three short word conditions (out, in, up). The study employed a motor imagery paradigm with auditory and visual cueing, yielding 5,400 trials analyzed using Riemannian manifold methods and relevance vector machines for brain-computer interface applications.\n\n## Dataset Summary\n\n| Property | Value |\n|---|---|\n| Subjects | 6 |\n| Channels | 64 |\n| Classes | 3 |\n| Trial length | 5 s |\n| Sampling frequency | 256 Hz |\n| Sessions | 1 |\n| Total trials | 1800 |\n| Paradigm | MotorImagery |\n\n## Data Collection Methods\n\nEEG data were acquired at 256 Hz using 64 channels (60 EEG, 4 EOG) with a BrainProducts ActiCHamp system. Preprocessing included bandpass filtering (8-70 Hz, 5th order Butterworth), 60 Hz notch filtering, EOG artifact removal via adaptive filtering. Trials were 2 seconds in duration, extracted from a 5-second post-stimulus interval following an auditory beep sequence.\n\n## How to Access via MOABB\n\nInstall MOABB and load this dataset directly:\n\n```python\nfrom moabb.datasets import Nguyen2017_S\nfrom moabb.paradigms import MotorImagery\nparadigm = MotorImagery()\n\ndataset = Nguyen2017_S()\nX, y, metadata = paradigm.get_data(dataset)\n```\n\nFor more details see the [MOABB documentation](https://moabb.neurotechx.com/) and the\n[MOABB dataset page](https://moabb.neurotechx.com/docs/generated/moabb.datasets.Nguyen2017_S.html).\n\n## Citation\n\nIf you use this dataset please cite the primary publication:\n\n> DOI: [10.1088/1741-2552/aa8235](https://doi.org/10.1088/1741-2552/aa8235)\n\n## NEMAR / MOABB Benchmark Collection\n\nThis BIDS-formatted dataset was converted from the original data using the\n[MOABB](https://moabb.neurotechx.com/) pipeline and re-hosted on\n[NEMAR](https://nemar.org/) as part of the MOABB benchmark collection.\nThe original data and license terms apply — see `dataset_description.json` for details.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000257",
+    "exists": true,
+    "description": "Imagined speech EEG dataset — short words condition (Nguyen et al. 2017)",
+    "created_at": "2026-06-19T23:06:16+00:00",
+    "updated_at": "2026-07-23T01:09:52+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

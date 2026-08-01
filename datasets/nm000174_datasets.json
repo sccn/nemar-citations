@@ -1,0 +1,63 @@
+{
+  "dataset_id": "nm000174",
+  "date_retrieved": "2026-08-01T10:00:28.447544+00:00",
+  "dataset_description": {
+    "Name": "Imagined Speech EEG dataset comparing paradigm designs (Aguilera-Rodriguez et al. 2025)",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-NC-ND-4.0",
+    "Authors": [
+      "Edgar Aguilera-Rodriguez",
+      "Alma Cuevas-Romero",
+      "Santiago Mendoza-Franco",
+      "Jonathan Wornovitzky-Green",
+      "Eduardo Rivera-Cerros",
+      "David Villanueva-Cazares",
+      "Luis Alberto Munoz-Ubando",
+      "David Ibarra-Zarate",
+      "Luz Maria Alonso-Valerdi"
+    ],
+    "ReferencesAndLinks": [
+      "10.1038/s41597-025-05926-5"
+    ],
+    "Keywords": [
+      "imagined speech",
+      "EEG",
+      "gamified paradigm"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000174",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0dev0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1038/s41597-025-05926-5"
+      },
+      {
+        "DOI": "doi:10.1038/s41597-025-05926-5"
+      }
+    ],
+    "PublicationYear": 2025,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000174-blue)](https://doi.org/10.82901/nemar.nm000174)\n\n# Imagined Speech EEG dataset comparing paradigm designs (Aguilera-Rodriguez et al. 2025)\n\n## Overview\n\nAn EEG dataset of imagined speech from 15 healthy participants comparing traditional cue-based and gamified (Pac-Man maze) paradigms for brain-computer interface applications. The dataset comprises 1,800 trials across four Spanish directional commands (avanzar, retroceder, derecha, izquierda) recorded at 500 Hz from 24 electrodes using the mBrainTrain Smarting system. This derivative dataset enables systematic evaluation of paradigm design effects on imagined speech decoding performance.\n\n## Dataset Summary\n\n| Property | Value |\n|---|---|\n| Subjects | 15 |\n| Channels | 24 |\n| Classes | 4 |\n| Trial length | 4 s |\n| Sampling frequency | 500 Hz |\n| Sessions | 1 |\n| Total trials | 1800 |\n| Paradigm | MotorImagery |\n\n## Data Collection Methods\n\nEEG data were acquired from 15 healthy participants (8 male, 7 female, ages 18-27) using a 24-channel mBrainTrain Smarting system at 500 Hz sampling rate with FCz reference and Fpz ground. Two experimental paradigms were compared: (1) traditional cue-based with visual and auditory cues (5 beeps at 1.4s rhythm) followed by 7 imagined speech repetitions, with the last 3 repetitions extracted for analysis, and (2) gamified paradigm using a Pac-Man maze interface with 1.4s periods for movement decision, imagined speech, and vocalized speech. Each participant completed 2 sessions with 120 trials per session (30 per class), yielding 450 trials per class across the dataset. The final dataset contains the last 3 imagined speech repetitions per trial from the traditional paradigm.\n\n## How to Access via MOABB\n\nInstall MOABB and load this dataset directly:\n\n```python\nfrom moabb.datasets import AguileraRodriguez2025\nfrom moabb.paradigms import MotorImagery\nparadigm = MotorImagery()\n\ndataset = AguileraRodriguez2025()\nX, y, metadata = paradigm.get_data(dataset)\n```\n\nFor more details see the [MOABB documentation](https://moabb.neurotechx.com/) and the\n[MOABB dataset page](https://moabb.neurotechx.com/docs/generated/moabb.datasets.AguileraRodriguez2025.html).\n\n## Citation\n\nIf you use this dataset please cite the primary publication:\n\n> DOI: [10.1038/s41597-025-05926-5](https://doi.org/10.1038/s41597-025-05926-5)\n\n## NEMAR / MOABB Benchmark Collection\n\nThis BIDS-formatted dataset was converted from the original data using the\n[MOABB](https://moabb.neurotechx.com/) pipeline and re-hosted on\n[NEMAR](https://nemar.org/) as part of the MOABB benchmark collection.\nThe original data and license terms apply — see `dataset_description.json` for details.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000174",
+    "exists": true,
+    "description": "Imagined Speech EEG dataset comparing paradigm designs (Aguilera-Rodriguez et al. 2025)",
+    "created_at": "2026-06-19T17:07:42+00:00",
+    "updated_at": "2026-07-23T01:06:53+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

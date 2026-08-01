@@ -1,0 +1,34 @@
+{
+  "dataset_id": "on007558",
+  "date_retrieved": "2026-08-01T10:26:43.218417+00:00",
+  "dataset_description": {
+    "Name": "EEG Pre/Post Intervention Dataset",
+    "BIDSVersion": "1.8.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Mengsha Qi"
+    ],
+    "DatasetDOI": "10.82901/nemar.on007558",
+    "License": "CC0",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds007558.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on007558-blue)](https://doi.org/10.82901/nemar.on007558)\n\n# Dataset Description\n\n## Overview\nThis dataset contains EEG recordings from a study investigating neural activity changes before and after an intervention. The data are organized following the Brain Imaging Data Structure (BIDS) specification.\n\nThe dataset includes multiple participant groups and timepoints:\n- Group 1, Group 2, Group 3\n- Pre-intervention (pre) and Post-intervention (post)\n\n## Participants\nParticipants are labeled using anonymized IDs (e.g., sub-001, sub-002, etc.). Demographic and session-related information are provided in the corresponding TSV files where applicable.\n\n## Data Structure\nThe dataset follows the BIDS format:\n\n- `sub-XXX/`\n  - `ses-pre/` or `ses-post/`\n    - `eeg/`\n      - EEG recordings (.edf)\n      - Metadata files (.json)\n      - Events files (.tsv)\n\nEach subject contains EEG recordings organized by session (pre/post).\n\n## Experimental Design\nThe study compares neural activity before and after an intervention. Participants are divided into different groups to evaluate potential differences in outcomes.\n\n## Data Acquisition\nEEG data were recorded using standard acquisition systems. Detailed acquisition parameters are stored in the accompanying JSON sidecar files.\n\n## Data Processing\nThe dataset has been reorganized into BIDS format. File naming, metadata, and structure have been standardized to ensure compatibility with BIDS-compliant tools.\n\n## Known Issues\n- Some warnings may appear during BIDS validation but do not affect data usability.\n- All critical validation errors have been resolved.\n\n## Usage Notes\nThis dataset can be used for:\n- EEG signal analysis\n- Functional connectivity studies\n- Pre/post intervention comparisons\n\n## License\nPlease refer to the dataset repository for licensing information.\n\n## Acknowledgements\nWe thank all participants and researchers involved in data collection and processing.",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on007558",
+    "exists": true,
+    "description": "EEG Pre/Post Intervention Dataset",
+    "created_at": "2026-06-30T13:01:36+00:00",
+    "updated_at": "2026-07-23T01:33:05+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "dataset_id": "on007058",
+  "date_retrieved": "2026-08-01T10:24:55.284959+00:00",
+  "dataset_description": {
+    "Name": "Silent Visual Reading EEG",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Jiawei Li",
+      "Adrien Doerig",
+      "Radoslaw Martin Cichy"
+    ],
+    "GeneratedBy": [
+      {
+        "Name": "MNE-BIDS",
+        "Version": "0.17.0",
+        "CodeURL": "https://mne.tools/mne-bids/"
+      }
+    ],
+    "License": "CC0",
+    "DatasetDOI": "10.82901/nemar.on007058",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds007058.v1.1.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on007058-blue)](https://doi.org/10.82901/nemar.on007058)\n\n# EEG Dataset for \"Auditory representations of words during silent visual reading\"\n\nThis dataset contains the raw and processed EEG data accompanying the paper.\nIf you use these data in your research, please cite the above paper.\n\n---\n\n## Dataset Description\n\nThe dataset includes raw EEG recordings in **BrainVision format**:\n\n* `.eeg`\n* `.vhdr`\n* `.vmrk`\n\nAll participants’ data follow the **BIDS (Brain Imaging Data Structure)** specification.\n\n### Event Annotations\n\nEach run includes an **events file** with onsets, durations, trial types, and event values for all trials.\n\n### Stimulus Presentation\n\nParticipants viewed word stimuli forming naturalistic narratives, presented on a grey background with a central fixation cross.\n\nTrigger | Type |\n| :--- | :--- \n `S111` | Onset of a word in a unique story\n `S71` | Onset of a word in a repeated story\n\n### Additional Triggers\n\n* **Run onset:** `S71`\n* **Run end:** `S78`\n\n---\n\n## Derivatives\n\nProcessed data files are stored in the `./derivatives` folder.  \nThis folder contains the processed EEG, as well as the accompanying meta-data and feature embeddings.\n\n### MetaData\n\nThe following files are found in the `./derivatives/MetaData/` sub-folder:\n\n#### Story–Run–Session Match Table\n**Path:** `./derivatives/MetaData/session_story_run`  \n**Description:**  \nA table matching each recording session to the specific story and run it contains.\n\n#### Story Indexes for Each Epoch\n**Path:** `./derivatives/MetaData/story_epoch_match`  \n**Description:**  \nProvides the specific story index corresponding to each epoch in the processed EEG data.\n\n#### Expected Index for Each Epoch\n**Path:** `./derivatives/MetaData/expect_or_not`  \n**Description:**  \nIndicates whether the epoch was expected or unexpected.  \n**Values:**  \n- `1` = expected  \n- `0` = unexpected\n\n### Processed EEG Data\n\nThe preprocessed EEG signals are located in: `./derivatives/eeg_processed/`\n\n\nData are organized by channel, where each channel file has the following specifications:\n\n- **Shape:** `(nWords, nTimepoints)`  \n- **nWords:** number of words (epochs)  \n- **nTimepoints:** number of time points per epoch\n\n### Corresponding Feature Embeddings\n\nFeature (embeddings) are stored in: `./derivatives/Features/`\n\nThese feature files follow the same word-level indexing (`nWords`) as the EEG data:\n\n- **Shape:** `(nWords,)`  \n- **nWords:** number of words (epochs) in the EEG data\n\n---\n\n## References\n\n* Appelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A., & Jas, M. (2019). **MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis.** *Journal of Open Source Software, 4*(1896). [https://doi.org/10.21105/joss.01896](https://doi.org/10.21105/joss.01896)\n* Pernet, C. R., Appelhoff, S., Gorgolewski, K. J., Flandin, G., Phillips, C., Delorme, A., & Oostenveld, R. (2019). **EEG-BIDS, an extension to the brain imaging data structure for electroencephalography.** *Scientific Data, 6*, 103. [https://doi.org/10.1038/s41597-019-0104-8](https://doi.org/10.1038/s41597-019-0104-8)",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on007058",
+    "exists": true,
+    "description": "Silent Visual Reading EEG",
+    "created_at": "2026-06-29T22:01:32+00:00",
+    "updated_at": "2026-07-23T01:31:14+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

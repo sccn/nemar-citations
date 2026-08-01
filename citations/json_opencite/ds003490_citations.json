@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds003490",
-  "num_citations": 15,
+  "num_citations": 17,
   "date_last_updated": "2026-06-18T22:27:38.571105+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
@@ -16,8 +16,8 @@
     "searched_accessions": [
       "ds003490"
     ],
-    "num_accession_mentions": 15,
-    "num_dataset_citations": 15,
+    "num_accession_mentions": 17,
+    "num_dataset_citations": 17,
     "num_datapaper_citations": 0
   },
   "citation_details": [
@@ -395,21 +395,71 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "An EEG Signals-based Deep Spatio-Temporal Feature Extraction with Dual Attention for Detecting Parkinson’s Disease",
+      "author": "A. Dhavapandiammal, Kalavathi Palanisamy",
+      "venue": "Research Square",
+      "year": 2026,
+      "url": "https://doi.org/10.21203/rs.3.rs-9318311/v1",
+      "cited_by": 0,
+      "abstract": null,
+      "doi": "10.21203/rs.3.rs-9318311/v1",
+      "pmid": null,
+      "openalex_id": "W7167800137",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003490",
+      "confidence_scoring": {
+        "confidence_score": 0.6737242609262467,
+        "similarity_score": 0.641642153263092,
+        "citation_text_length": 196,
+        "dataset_text_length": 977,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Stress-Testing EEG Foundation Models for Clinical Decoding: Dataset Identity and Targeted Negative Controls",
+      "author": "Marzieh Zare",
+      "venue": "arXiv (Cornell University)",
+      "year": 2026,
+      "url": "https://openalex.org/W7171748390",
+      "cited_by": 0,
+      "abstract": "Pretrained EEG foundation models are increasingly proposed for clinical decoding, but their transfer across populations and robustness to negative controls remain unclear. We benchmark six models (LaBraM, EEGMamba, CBraMod, REVE, BENDR, and BIOT) on five clinical tasks across four datasets using frozen linear probes with leave-one-subject-out, subject-grouped, or explicitly identified recording-level splits. Selected REVE findings are tested against random initialisation, random features, label permutation, scrambled-label fine-tuning, and projection sensitivity. On Korean dementia (CAUEEG, three-way), frozen REVE reaches 0.568 AUROC versus 0.769 for classical features; the ordering persists on a patient-disjoint held-out split (0.565 versus 0.768). Dataset identity is readily decoded from frozen embeddings (AUROC 1.000 at PCA-50; 0.9998 after band restriction and per-epoch z-scoring), whereas the same PCA-50 pipeline decodes Korean diagnosis at 0.528. A randomly initialised encoder also outperforms pretrained REVE on this task (0.659 versus 0.570). On Alzheimer's disease, Gaussian random projection and PCA of the same pretrained embeddings perform similarly, and classical features nominally exceed REVE at the subject level. The clearest controlled positive is cross-subject ictal detection on CHB-MIT (n=23), where REVE achieves 0.793 AUROC, 9.2 percentage points above a randomly initialised encoder. These results show that EEG foundation-model conclusions depend strongly on evaluation unit, dataset shift, comparator strength, and targeted controls.",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": "W7171748390",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003490",
+      "confidence_scoring": {
+        "confidence_score": 0.6619573840498925,
+        "similarity_score": 0.5731232762336731,
+        "citation_text_length": 1684,
+        "dataset_text_length": 977,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-07-15T00:02:04.015907+00:00",
+    "scoring_date": "2026-08-01T16:26:04.088357+00:00",
     "dataset_text_length": 977,
-    "num_citations_scored": 15,
+    "num_citations_scored": 17,
     "summary_stats": {
-      "mean_confidence": 0.6137444481253626,
-      "median_confidence": 0.6147105270624161,
-      "std_confidence": 0.11366624310931829,
+      "mean_confidence": 0.6201087274621516,
+      "median_confidence": 0.6207804465293885,
+      "std_confidence": 0.10820289182766739,
       "min_confidence": 0.31279602348804475,
       "max_confidence": 0.7761972337961198,
       "high_confidence_count": 3,
-      "medium_confidence_count": 11,
+      "medium_confidence_count": 13,
       "low_confidence_count": 1
     }
   }

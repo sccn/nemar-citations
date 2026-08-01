@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000193",
-  "num_citations": 8,
-  "date_last_updated": "2026-07-03T12:24:49.538265+00:00",
+  "num_citations": 11,
+  "date_last_updated": "2026-08-01T15:25:57.373487+00:00",
   "metadata": {
-    "total_cumulative_citations": 10,
-    "fetch_date": "2026-07-03T12:24:49.538265+00:00",
+    "total_cumulative_citations": 15,
+    "fetch_date": "2026-08-01T15:25:57.373487+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -74,9 +74,9 @@
     "searched_accessions": [
       "nm000193"
     ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 8
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 10
   },
   "citation_details": [
     {
@@ -86,7 +86,7 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.nm000193",
       "cited_by": 0,
-      "abstract": "This dataset comprises 64-channel EEG recordings from 11 healthy participants performing an auditory P300-based brain-computer interface task using selective attention to three tone streams. Participants attended to one of three auditory streams of musical tones and counted target stimuli, with P300 activity elicited by targets in the attended stream. Classification using Riemannian geometry achieved &gt;80% accuracy for 5 subjects and &gt;75% for 9 subjects, demonstrating the feasibility of multi-class auditory BCIs based on auditory stream segregation.",
+      "abstract": "An auditory brain-computer interface dataset based on selective attention to multiple tone streams using P300 event-related potentials. Eleven healthy subjects performed a 3-class auditory task involving selective attention to one of three segregated musical tone streams while EEG and EOG signals were recorded at 1000 Hz from 64 channels. Classification was performed using Riemannian geometry methods, achieving over 80% accuracy in five subjects and over 75% in nine subjects.",
       "doi": "10.82901/nemar.nm000193",
       "pmid": null,
       "openalex_id": "W7163212103",
@@ -95,8 +95,31 @@
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 1.0,
-        "similarity_score": 0.8713871240615845,
-        "citation_text_length": 762,
+        "similarity_score": 0.8806594610214233,
+        "citation_text_length": 682,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Clinical practice of Brain–Machine interfaces in neurological disorders",
+      "author": "Kaishan Wang, Penghu Wei, Yongzhi Shan, Guoguang Zhao",
+      "venue": "EngMedicine",
+      "year": 2025,
+      "url": "https://doi.org/10.1016/j.engmed.2025.100090",
+      "cited_by": 6,
+      "abstract": "Neurological disorders, such as Parkinson’s disease, stroke, and spinal cord injury, present significant global health challenges, contributing to high morbidity, mortality, and loss of functional independence for afflicted patients. Brain–machine interfaces (BMIs) have emerged as a transformative technology with promising potential for the diagnosis, treatment, and management of these conditions. By creating a direct communication interface between the brain and external devices, BMIs allow patients with severe neurological impairments to regain partial motor function, engage in nonverbal communication, and restore control over lost physiological functions. This review provides a comprehensive overview of recent clinical advancements in BMI applications for neurological disorders, including motor, consciousness, and affective disorders. This study highlights the utility of BMIs in improving motor and sensory functions, enabling communication between severely disabled patients, and del",
+      "doi": "10.1016/j.engmed.2025.100090",
+      "pmid": null,
+      "openalex_id": "W4412473935",
+      "source_doi": "10.1371/journal.pone.0303565",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.42581548690795906,
+        "similarity_score": 0.3686714172363281,
+        "citation_text_length": 1174,
         "dataset_text_length": 2403,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -126,46 +149,23 @@
       }
     },
     {
-      "title": "Clinical practice of Brain–Machine interfaces in neurological disorders",
-      "author": "Kaishan Wang, Penghu Wei, Yongzhi Shan, Guoguang Zhao",
-      "venue": "EngMedicine",
-      "year": 2025,
-      "url": "https://doi.org/10.1016/j.engmed.2025.100090",
-      "cited_by": 3,
-      "abstract": "Neurological disorders, such as Parkinson’s disease, stroke, and spinal cord injury, present significant global health challenges, contributing to high morbidity, mortality, and loss of functional independence for afflicted patients. Brain–machine interfaces (BMIs) have emerged as a transformative technology with promising potential for the diagnosis, treatment, and management of these conditions. By creating a direct communication interface between the brain and external devices, BMIs allow patients with severe neurological impairments to regain partial motor function, engage in nonverbal communication, and restore control over lost physiological functions. This review provides a comprehensive overview of recent clinical advancements in BMI applications for neurological disorders, including motor, consciousness, and affective disorders. This study highlights the utility of BMIs in improving motor and sensory functions, enabling communication between severely disabled patients, and del",
-      "doi": "10.1016/j.engmed.2025.100090",
-      "pmid": null,
-      "openalex_id": "W4412473935",
-      "source_doi": "10.1371/journal.pone.0303565",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.42581548690795906,
-        "similarity_score": 0.3686714172363281,
-        "citation_text_length": 1174,
-        "dataset_text_length": 2403,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
       "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "n/a",
+      "venue": "ArXiv",
       "year": 2026,
-      "url": "n/a",
-      "cited_by": 2,
+      "url": "https://doi.org/10.48550/arXiv.2605.08495",
+      "cited_by": 4,
       "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": null,
+      "doi": "10.48550/arXiv.2605.08495",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.1371/journal.pone.0303565",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6169150981307031,
-        "similarity_score": 0.5341256260871887,
-        "citation_text_length": 1324,
+        "confidence_score": 0.6204594987630845,
+        "similarity_score": 0.5371943712234497,
+        "citation_text_length": 1326,
         "dataset_text_length": 2403,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -262,22 +262,93 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Overcoming brain non-stationarity: adaptive RLS classification for stable BCIs based on auditory evoked potentials",
+      "author": "Dovilė Kurmanavičiūtė, Matilda Makkonen, I. Zubarev, Olli-Pekka Kahilakoski, L. Parkkonen",
+      "venue": "Journal of Neural Engineering",
+      "year": 2026,
+      "url": "https://doi.org/10.1088/1741-2552/ae863e",
+      "cited_by": 0,
+      "abstract": "Objective. Brain–computer interfaces (BCIs) based on selective auditory attention aim to restore communication by decoding selective attention from auditory evoked potentials. Clinical translation of such BCIs requires maintaining sufficient decoding performance despite brain-state non-stationarity. Approach. We compared classifiers across four evaluation settings: offline baseline classifiers using shuffled 5-fold cross-validation; a causal classifier using a chronological 20%/80% calibration/test split; simulated real-time deployment with a static classifier calibrated on 20 trials; and simulated real-time deployment with an adaptive recursive least squares (RLS) classifier, evaluated within-subject and in a leave-one-subject-out (LOSO) setting. The analysis used 62-channel electroencephalography recorded from 25 healthy adults (18 retained after artifact rejection). Main results. The best offline baseline classifier, logistic regression with point-to-point features, achieved a mean ",
+      "doi": "10.1088/1741-2552/ae863e",
+      "pmid": "42398529",
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0303565",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6481730148196221,
+        "similarity_score": 0.5611887574195862,
+        "citation_text_length": 1271,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Auditory electroencephalogram feature recognition technology based on P300 and ASSR dual-modal stimulation",
+      "author": "Yu Liu, Hongyuan Pan, Hanpu Tang, Jie Yang",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "https://doi.org/10.1117/12.3114752",
+      "cited_by": 0,
+      "abstract": "Brain-computer interface (BCI) enables direct brain-external device communication bypassing peripheral pathways, serving as a core input module for intelligent control systems by translating neural signals into actionable control commands. While non-invasive visual BCIs are mature, they rely on vision and are unsuitable for visually impaired individuals, limiting their applicability in complex control scenarios. To address this, this study proposes a multimodal auditory BCI paradigm fusing auditory steady-state response (ASSR) and P300 event-related potential (ERP), combining three background stimuli (chirp, music, tone) with the Oddball task. A standardized signal processing pipeline—tailored for control engineering applications—was adopted, including Butterworth 1-95 Hz bandpass filtering, optimized 4-second epoch extraction, multi-class discriminative spatial pattern (DSP) feature extraction, and Support Vector Machine (SVM) classification. DSP, a core preprocessing algorithm in int",
+      "doi": "10.1117/12.3114752",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0303565",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7438849121332171,
+        "similarity_score": 0.6440562009811401,
+        "citation_text_length": 1190,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Multiple Gene Expression Analyses in Paraffin-Embedded Tissues by TaqMan Low-Density Array",
+      "author": "Adam D. Steg, Wenquan Wang, Carmelo Blanquicett, Jessica M. Grunda, Isam A. Eltoum, Kangsheng Wang, Donald J. Buchsbaum, Selwyn M. Vickers, Suzanne Russo, Robert B. Diasio, Andra R. Frost, Al F. Lobuglio, William E. Grizzle, Martin R. Johnson",
+      "venue": "Journal of Molecular Diagnostics",
+      "year": 2006,
+      "url": "https://doi.org/10.2353/jmoldx.2006.040402",
+      "cited_by": 82,
+      "abstract": null,
+      "doi": "10.2353/jmoldx.2006.040402",
+      "pmid": "16436637",
+      "openalex_id": "W1553996898",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "nm000193",
+      "confidence_scoring": {
+        "confidence_score": 0.30279573798179626,
+        "similarity_score": 0.30279573798179626,
+        "citation_text_length": 391,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-07-15T00:09:46.223369+00:00",
+    "scoring_date": "2026-08-01T16:33:56.900332+00:00",
     "dataset_text_length": 2403,
-    "num_citations_scored": 8,
+    "num_citations_scored": 11,
     "summary_stats": {
-      "mean_confidence": 0.6825458540022373,
-      "median_confidence": 0.6801739579439164,
-      "std_confidence": 0.14706716232704292,
-      "min_confidence": 0.42581548690795906,
+      "mean_confidence": 0.650796808871356,
+      "median_confidence": 0.6678436982631685,
+      "std_confidence": 0.1680485383019122,
+      "min_confidence": 0.30279573798179626,
       "max_confidence": 1.0,
-      "high_confidence_count": 2,
-      "medium_confidence_count": 6,
-      "low_confidence_count": 0
+      "high_confidence_count": 3,
+      "medium_confidence_count": 7,
+      "low_confidence_count": 1
     }
   }
 }

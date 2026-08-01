@@ -1,0 +1,41 @@
+{
+  "dataset_id": "on008062",
+  "date_retrieved": "2026-08-01T10:27:56.068882+00:00",
+  "dataset_description": {
+    "Name": "EEG and hedonic responses to sonic-seasoning soundscapes",
+    "BIDSVersion": "1.9.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Attila Pohlmann",
+      "Felipe Reinoso-Carvalho",
+      "Brayan Rodríguez"
+    ],
+    "Acknowledgements": "",
+    "HowToAcknowledge": "Please cite the associated Data in Brief article and this dataset.",
+    "EthicsApprovals": [
+      "Comité de Ética de Investigación en Seres Humanos, Universidad San Francisco de Quito (CEISH-USFQ); approval Oficio N° 078-2022-CA-P22-053M-CEISH-USFQ"
+    ],
+    "DatasetDOI": "10.82901/nemar.on008062",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds008062.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on008062-blue)](https://doi.org/10.82901/nemar.on008062)\n\nEEG and liking responses to sonic-seasoning soundscapes.\n\nPer participant: one combined EEG file (eyes-open + eyes-closed baseline + ~17 s exposure to jungle and deconstruct\nsoundscapes), events.tsv marking segments, with liking ratings and baseline-state survey items in participants.tsv,\nand stimulus audio in /stimuli. Released as recorded (EPOC X hardware bandpass only; no additional software filtering). Recording timestamps removed.\nParticipant IDs are de-identified (sequential sub-NN); the mapping to original recording IDs is held privately and\nis not part of this dataset. See the associated Data in Brief article for full description.\n\nEEGLAB USERS\n------------\nA processed, EEGLAB-ready version of the two soundscape conditions (jungle, deconstruct)\nis provided under derivatives/eeglab/ as per-condition .set files that import directly\ninto an EEGLAB STUDY with conditions assigned. See derivatives/eeglab/README for details.\nThe raw combined EDFs at the repository root remain the primary, archival data.\n\nRESTING CALIBRATION (eyes-open / eyes-closed) — IMPORTANT NOTE\n-------------------------------------------------------------\nThe eyes-open and eyes-closed calibration segments had a fixed intended duration of\n~20 s each, but in the experiment builder each advanced on a participant-controlled\n\"continue\" button (not a hard timer). Segment markers therefore span from segment\nstart to that button press, so recorded durations vary across participants\n(eyes-open mostly ~24 s, a few longer; eyes-closed ~26-63 s), and the button-press\ntimes were not logged. The full segments are released unmodified.\n=> For length-matched comparisons (e.g. with the 17 s soundscape exposures), use the\n   FIRST 17 s of each calibration segment: it falls within the fixed instructed window\n   for all participants and precedes any post-task advance interval.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on008062",
+    "exists": true,
+    "description": "EEG and hedonic responses to sonic-seasoning soundscapes",
+    "created_at": "2026-06-30T22:31:28+00:00",
+    "updated_at": "2026-07-23T01:34:35+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

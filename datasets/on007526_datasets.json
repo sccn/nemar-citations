@@ -1,0 +1,46 @@
+{
+  "dataset_id": "on007526",
+  "date_retrieved": "2026-08-01T10:26:31.540948+00:00",
+  "dataset_description": {
+    "Name": "PD-EEG: Resting-State & Walking EEG in Parkinson's Disease",
+    "BIDSVersion": "1.10.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Zoya Katzir",
+      "Daniel Vered",
+      "Inbal Maidan (inbalm@tlvmc.gov.il)"
+    ],
+    "HowToAcknowledge": "Please contact the authors.",
+    "DatasetDOI": "10.82901/nemar.on007526",
+    "GeneratedBy": [
+      {
+        "Name": "mne-bids",
+        "Version": "0.18.0"
+      }
+    ],
+    "ReferencesAndLinks": [
+      "Electroencephalography-Based Clustering Reveals Robust Neurophysiological Subtypes in Parkinson's Disease: https://doi.org/10.1002/mds.70348"
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds007526.v1.0.2"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on007526-blue)](https://doi.org/10.82901/nemar.on007526)\n\n# PD-EEG: Resting-State & Walking EEG in Parkinson's Disease\n\n## Overview\n\nThis dataset contains EEG recordings from Parkinson's disease (PD) patients and healthy controls (HC), collected under two behavioral conditions: resting state (sitting) and walking. The dataset was acquired at the Neurology Institute, Tel Aviv Sourasky Medical Center.\n\n---\n\n## Participants\n\n- **Parkinson’s disease (PD):** 116 participants\n- **Healthy controls (HC):** 28 participants\n\n### Inclusion criteria (PD):\n- Age 40–90  \n- Hoehn & Yahr stage ≤ 3 \n- MoCA ≥ 21  \n- Able to walk independently  \n\n### Exclusion criteria:\n- History of stroke or major neurological disorder  \n- Brain surgery  \n- Significant head injury  \n- Inability to walk independently  \n\nAll participants provided informed consent. The study was approved by the local ethics committee and conducted in accordance with the Declaration of Helsinki.\n\n---\n\n## Experimental Design\n\nEach participant underwent EEG recording under two conditions:\n\n1. **Resting State** (144 Recordings)\n   - Sitting\n   - Eyes open\n   - Duration: ~4 minutes  \n\n2. **Walking** (133 Recordings)\n   - Walking on a treadmill at a comfortable speed while holding the handrails.\n   - Duration: ~4 minutes  \n\nAdditional clinical data were collected, including:\n\n- **Demographic data**\n- **LEDD** (Levodopa Equivalent Daily Dose) - a measure of anti-parkinsonian medication dosage.\n- **MoCA** (Montreal Cognitive Assessment) - a global measure of cognitive function.  \n- **MDS-UPDRS**  - Movement Disorder Society Unified Parkinson's Disease Rating Scale - the gold standard clinical rating scale for Parkinson's Disease.\n- **CTT** - Color Trails Test - a measure of executive function and processing speed.\n---\n## Additional Data\n\nThe `sourcedata\\clinical_data` directory contains additional clinical files:\n\n- `full_UPDRS_data.tsv`: item-level UPDRS data for all PD participants, including scores for each individual UPDRS item rather than only part-level summary scores.\n- `longitudinal_clinical_data.tsv`: longitudinal clinical follow-up data, available for a subset of participants.\n---\n\n## EEG Acquisition\n\n- **System:** 64-channel Geodesic EEG System 400 (EGI system)\n- **Montage:** International 10–20 system  \n\n---\n\n## Data Organization\n\nThis dataset follows the **Brain Imaging Data Structure (BIDS)** specification.\n\nTypical structure:\n\n```\nsub-001/\n    eeg/\n        sub-001_task-rest_eeg.*\n        sub-001_task-walk_eeg.*\n\nparticipants.tsv\nparticipants.json\ndataset_description.json\n```\n\n**Inbal Maidan, PhD**  \nTel Aviv Sourasky Medical Center  \nEmail: inbalm@tlvmc.gov.il\n\n**Daniel Vered, BSc**\nTel Aviv Sourasky Medical Center  \nEmail: vereddan@tlvmc.gov.il",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on007526",
+    "exists": true,
+    "description": "PD-EEG: Resting-State & Walking EEG in Parkinson's Disease",
+    "created_at": "2026-06-30T11:31:32+00:00",
+    "updated_at": "2026-07-23T01:32:59+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

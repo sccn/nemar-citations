@@ -1,0 +1,62 @@
+{
+  "dataset_id": "on005811",
+  "date_retrieved": "2026-08-01T10:19:35.571963+00:00",
+  "dataset_description": {
+    "Name": "NOD-EEG",
+    "BIDSVersion": "1.10.1",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Guohao Zhang",
+      "Ming Zhou",
+      "Shuyi Zhen",
+      "Shaohua Tang",
+      "Zheng Li",
+      "Zonglei Zhen"
+    ],
+    "Acknowledgements": "This research was supported by Beijing Natural Science Foundation (L247010), National Natural Science Foundation of China (62433015, 31771251) and STI 2030-Major Projects of the Ministry of Science and Technology of China (2021ZD0200407). The funders had no role in the study design; data collection, analysis, and interpretation; writing of the manuscript; or the decision to submit the article for publication.",
+    "HowToAcknowledge": "https://doi.org/10.1038/s41597-025-05174-7",
+    "Funding": [
+      "Beijing Natural Science Foundation (#L247010)",
+      "National Natural Science Foundation of China (#62433015, #31771251)",
+      "STI 2030-436 Major Projects of the Ministry of Science and Technology of China437 (#2021ZD0200407)"
+    ],
+    "EthicsApprovals": [
+      "name: Beijing Normal University",
+      "number: ICBIR_A_0111_001_02"
+    ],
+    "ReferencesAndLinks": [
+      "NOD-fMRI: doi:10.18112/openneuro.ds004496"
+    ],
+    "DatasetDOI": "10.82901/nemar.on005811",
+    "GeneratedBy": [
+      {
+        "Name": "mne",
+        "Version": "1.7.1"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds004496"
+      },
+      {
+        "DOI": "doi:10.18112/openneuro.ds005811.v1.0.9"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on005811-blue)](https://doi.org/10.82901/nemar.on005811)\n\n# Summary\n\nThe human brain can rapidly recognize meaningful objects from natural scenes encountered in everyday life. Neuroimaging with large-scale naturalistic stimuli is increasingly employed to elucidate these neural mechanisms of object recognition across these rich and daily natural scenes. However, most existing large-scale neuroimaging datasets with naturalistic stimuli primarily rely on functional magnetic resonance imaging (fMRI), which provides high spatial resolution to characterize spatial representation patterns but is limited in capturing the temporal dynamics inherent in visual cognitive processing.\n\nTo address this limitation, we extended our previously collected Natural Object Dataset-fMRI (NOD-fMRI) by collecting both magnetoencephalography (MEG) and electroencephalography (EEG) data from the same subjects while viewing the same set of naturalistic stimuli. As a result, the NOD uniquely integrates three different modalities—fMRI, MEG, and EEG—thus offering promising avenues to examine brain activity induced by naturalistic stimuli with both high spatial and high temporal resolutions. Additionally, the NOD encompasses a diverse array of naturalistic stimuli and a broader subject pool, enabling researchers to explore differences in neural activation patterns across both stimuli and subjects. \n\nWe anticipate that the NOD dataset will serve as a valuable resource for advancing our understanding of the cognitive and neural mechanisms underlying object recognition. \n\nThe MEG data's accession number is `ds005810`.\n\n---\n\n# Data Records\n\n## Directory Structure\n\nThe raw data from each subject are stored in the `sub-subID` directory, while preprocessed data and epoch data are stored in the following directories:\n- **Preprocessed Data:** `derivatives/preprocessed/raw`\n- **Epoch Data:** `derivatives/preprocessed/epochs`\n\n### Stimulus Images\n\nThe stimulus images used for MEG and EEG are identical and are stored in the `stimuli/ImageNet` directory. Images within this folder are named in the `synsetID_imageID.JPEG` Where:\n- `synsetID` is the ILSVRC category information.\n- `imageID` is the unique number for the image within that category.\n\nThe image metadata, including category information, is available in the table files under the `stimuli/metadata` directory.\n\n### Raw Data\n\nRaw EEG data are stored in BIDS format. Each subject's directory contains multiple session folders, designated as `ses-sesID`. Comprehensive trial information for each subject is documented in the file: `derivatives/detailed_events/sub-subID_events.csv` Where each row corresponds to a trial, and each column contains metadata for that trial, including the session and run number, category information of the stimuli, and subject response.\n\n### Preprocessed Data\n\nThe full time series data of preprocessed data are archived in the `derivatives/raw` directory, named as: `sub-subID_ses-sesID_task-ImageNet_run-runID_eeg_clean.fif`. The epoch data derived from preprocessed data are stored within the `derivatives/epochs` directory. In this directory, all data for each subject are concatenated into a single file, labeled as: `sub-subID_epo.fif`\n\nThe trial information within each subject's epochs data can be accessed via the metadata of the epochs data, which are aligned with the content of the subject's `sub-subID_events.csv` file.\n\n---\n\n# References\nAppelhoff, S., Sanderson, M., Brooks, T., Vliet, M., Quentin, R., Holdgraf, C., Chaumon, M., Mikulan, E., Tavabi, K., Höchenberger, R., Welke, D., Brunner, C., Rockhill, A., Larson, E., Gramfort, A., and Jas, M. (2019). MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis. *Journal of Open Source Software, 4*(1896). [https://doi.org/10.21105/joss.01896](https://doi.org/10.21105/joss.01896)\n\n\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on005811",
+    "exists": true,
+    "description": "NOD-EEG",
+    "created_at": "2026-06-27T22:48:06+00:00",
+    "updated_at": "2026-07-23T01:27:13+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

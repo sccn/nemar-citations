@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000233",
-  "num_citations": 68,
-  "date_last_updated": "2026-07-03T13:25:46.168677+00:00",
+  "num_citations": 74,
+  "date_last_updated": "2026-08-01T15:30:50.531112+00:00",
   "metadata": {
-    "total_cumulative_citations": 939,
-    "fetch_date": "2026-07-03T13:25:46.168677+00:00",
+    "total_cumulative_citations": 1022,
+    "fetch_date": "2026-08-01T15:30:50.531112+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -61,7 +61,7 @@
     ],
     "num_accession_mentions": 1,
     "num_dataset_citations": 1,
-    "num_datapaper_citations": 67
+    "num_datapaper_citations": 73
   },
   "citation_details": [
     {
@@ -70,14 +70,22 @@
       "venue": "ArXiv",
       "year": 2024,
       "url": "https://doi.org/10.48550/arXiv.2412.07236",
-      "cited_by": 175,
+      "cited_by": 191,
       "abstract": "Electroencephalography (EEG) is a non-invasive technique to measure and record brain electrical activity, widely used in various BCI and healthcare applications. Early EEG decoding methods rely on supervised learning, limited by specific tasks and datasets, hindering model performance and generalizability. With the success of large language models, there is a growing body of studies focusing on EEG foundation models. However, these studies still leave challenges: Firstly, most of existing EEG foundation models employ full EEG modeling strategy. It models the spatial and temporal dependencies between all EEG patches together, but ignores that the spatial and temporal dependencies are heterogeneous due to the unique structural characteristics of EEG signals. Secondly, existing EEG foundation models have limited generalizability on a wide range of downstream BCI tasks due to varying formats of EEG data, making it challenging to adapt to. To address these challenges, we propose a novel fou",
       "doi": "10.48550/arXiv.2412.07236",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5079278938472271,
+        "similarity_score": 0.4397644102573395,
+        "citation_text_length": 1200,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Non-Invasive Brain-Computer Interfaces: State of the Art and Trends",
@@ -85,14 +93,22 @@
       "venue": "IEEE Reviews in Biomedical Engineering",
       "year": 2024,
       "url": "https://doi.org/10.1109/rbme.2024.3449790",
-      "cited_by": 134,
+      "cited_by": 149,
       "abstract": "Brain-computer interface (BCI) is a rapidly evolving technology that has the potential to widely influence research, clinical and recreational use. Non-invasive BCI approaches are particularly common as they can impact a large number of participants safely and at a relatively low cost. Where traditional non-invasive BCIs were used for simple computer cursor tasks, it is now increasingly common for these systems to control robotic devices for complex tasks that may be useful in daily life. In this review, we provide an overview of the general BCI framework as well as the various methods that can be used to record neural activity, extract signals of interest, and decode brain states. In this context, we summarize the current state-of-the-art of non-invasive BCI research, focusing on trends in both the application of BCIs for controlling external devices and algorithm development to optimize their use. We also discuss various open-source BCI toolboxes and software, and describe their impa",
       "doi": "10.1109/rbme.2024.3449790",
       "pmid": "39186407",
       "openalex_id": "W4401879161",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.47920847296714786,
+        "similarity_score": 0.4148991107940674,
+        "citation_text_length": 1249,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "EEG-Channel-Temporal-Spectral-Attention Correlation for Motor Imagery EEG Classification",
@@ -107,7 +123,15 @@
       "openalex_id": "W4323913936",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6913797301054001,
+        "similarity_score": 0.5985971689224243,
+        "citation_text_length": 1218,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "REVE: A Foundation Model for EEG - Adapting to Any Setup with Large-Scale Pretraining on 25,000 Subjects",
@@ -115,29 +139,22 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2510.21585",
-      "cited_by": 51,
+      "cited_by": 64,
       "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
       "doi": "10.48550/arXiv.2510.21585",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "Real-Time Deep Neurolinguistic Learning Enhances Noninvasive Neural Language Decoding for Brain–Machine Interaction",
-      "author": "Ji-Hoon Jeong, Jeong-Hyun Cho, Byeong-Hoo Lee, Seong–Whan Lee",
-      "venue": "IEEE Transactions on Cybernetics",
-      "year": 2022,
-      "url": "https://doi.org/10.1109/tcyb.2022.3211694",
-      "cited_by": 46,
-      "abstract": "Electroencephalogram (EEG)-based brain-machine interface (BMI) has been utilized to help patients regain motor function and has recently been validated for its use in healthy people because of its ability to directly decipher human intentions. In particular, neurolinguistic research using EEGs has been investigated as an intuitive and naturalistic communication tool between humans and machines. In this study, the human mind directly decoded the neural languages based on speech imagery using the proposed deep neurolinguistic learning. Through real-time experiments, we evaluated whether BMI-based cooperative tasks between multiple users could be accomplished using a variety of neural languages. We successfully demonstrated a BMI system that allows a variety of scenarios, such as essential activity, collaborative play, and emotional interaction. This outcome presents a novel BMI frontier that can interact at the level of human-like intelligence in real time and extends the boundaries of t",
-      "doi": "10.1109/tcyb.2022.3211694",
-      "pmid": "36251899",
-      "openalex_id": "W4306729455",
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5686033719778062,
+        "similarity_score": 0.49229729175567627,
+        "citation_text_length": 1270,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Deep learning in motor imagery EEG signal decoding: A Systematic Review",
@@ -145,14 +162,45 @@
       "venue": "Neurocomputing",
       "year": 2024,
       "url": "https://doi.org/10.1016/j.neucom.2024.128577",
-      "cited_by": 45,
+      "cited_by": 48,
       "abstract": null,
       "doi": "10.1016/j.neucom.2024.128577",
       "pmid": null,
       "openalex_id": "W4402535853",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6215963155031204,
+        "similarity_score": 0.5919964909553528,
+        "citation_text_length": 154,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Real-Time Deep Neurolinguistic Learning Enhances Noninvasive Neural Language Decoding for Brain–Machine Interaction",
+      "author": "Ji-Hoon Jeong, Jeong-Hyun Cho, Byeong-Hoo Lee, Seong–Whan Lee",
+      "venue": "IEEE Transactions on Cybernetics",
+      "year": 2022,
+      "url": "https://doi.org/10.1109/tcyb.2022.3211694",
+      "cited_by": 47,
+      "abstract": "Electroencephalogram (EEG)-based brain-machine interface (BMI) has been utilized to help patients regain motor function and has recently been validated for its use in healthy people because of its ability to directly decipher human intentions. In particular, neurolinguistic research using EEGs has been investigated as an intuitive and naturalistic communication tool between humans and machines. In this study, the human mind directly decoded the neural languages based on speech imagery using the proposed deep neurolinguistic learning. Through real-time experiments, we evaluated whether BMI-based cooperative tasks between multiple users could be accomplished using a variety of neural languages. We successfully demonstrated a BMI system that allows a variety of scenarios, such as essential activity, collaborative play, and emotional interaction. This outcome presents a novel BMI frontier that can interact at the level of human-like intelligence in real time and extends the boundaries of t",
+      "doi": "10.1109/tcyb.2022.3211694",
+      "pmid": "36251899",
+      "openalex_id": "W4306729455",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5727131143212318,
+        "similarity_score": 0.49585551023483276,
+        "citation_text_length": 1247,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "CSBrain: A Cross-scale Spatiotemporal Brain Foundation Model for EEG Decoding",
@@ -160,44 +208,22 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2506.23075",
-      "cited_by": 40,
+      "cited_by": 42,
       "abstract": "Understanding and decoding brain activity from electroencephalography (EEG) signals is a fundamental challenge in neuroscience and AI, with applications in cognition, emotion recognition, diagnosis, and brain-computer interfaces. While recent EEG foundation models advance generalized decoding via unified architectures and large-scale pretraining, they adopt a scale-agnostic dense modeling paradigm inherited from NLP and vision. This design neglects a core property of neural activity: cross-scale spatiotemporal structure. EEG task patterns span a wide range of temporal and spatial scales, from short bursts to slow rhythms, and from localized cortical responses to distributed interactions. Ignoring this diversity leads to suboptimal representations and weak generalization. We propose CSBrain, a Cross-scale Spatiotemporal Brain foundation model for generalized EEG decoding. CSBrain introduces: (i) Cross-scale Spatiotemporal Tokenization (CST), which aggregates multi-scale features from lo",
       "doi": "10.48550/arXiv.2506.23075",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "META-EEG: Meta-learning-based class-relevant EEG representation learning for zero-calibration brain–computer interfaces",
-      "author": "Ji-Wung Han, Soyeon Bak, Jun-Mo Kim, WooHyeok Choi, Dong-Hee Shin, Young-Han Son, Tae‐Eui Kam",
-      "venue": "Expert Systems with Applications",
-      "year": 2023,
-      "url": "https://doi.org/10.1016/j.eswa.2023.121986",
-      "cited_by": 28,
-      "abstract": null,
-      "doi": "10.1016/j.eswa.2023.121986",
-      "pmid": null,
-      "openalex_id": "W4387492882",
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "Bridging the BCI illiteracy gap: a subject-to-subject semantic style transfer for EEG-based motor imagery classification",
-      "author": "Da-Hyun Kim, Donghee Shin, Tae‐Eui Kam",
-      "venue": "Frontiers in Human Neuroscience",
-      "year": 2023,
-      "url": "https://doi.org/10.3389/fnhum.2023.1194751",
-      "cited_by": 27,
-      "abstract": "Introduction: Brain-computer interfaces (BCIs) facilitate direct interaction between the human brain and computers, enabling individuals to control external devices through cognitive processes. Despite its potential, the problem of BCI illiteracy remains one of the major challenges due to inter-subject EEG variability, which hinders many users from effectively utilizing BCI systems. In this study, we propose a subject-to-subject semantic style transfer network (SSSTN) at the feature-level to address the BCI illiteracy problem in electroencephalogram (EEG)-based motor imagery (MI) classification tasks. Methods: Our approach uses the continuous wavelet transform method to convert high-dimensional EEG data into images as input data. The SSSTN 1) trains a classifier for each subject, 2) transfers the distribution of class discrimination styles from the source subject (the best-performing subject for the classifier, i.e., BCI expert) to each subject of the target domain (the remaining subje",
-      "doi": "10.3389/fnhum.2023.1194751",
-      "pmid": "37256201",
-      "openalex_id": "W4376615369",
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4589255310595036,
+        "similarity_score": 0.3973381221294403,
+        "citation_text_length": 1245,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "EEGMamba: An EEG foundation model with Mamba",
@@ -205,14 +231,68 @@
       "venue": "Neural Networks",
       "year": 2025,
       "url": "https://doi.org/10.1016/j.neunet.2025.107816",
-      "cited_by": 27,
+      "cited_by": 30,
       "abstract": "Electroencephalography (EEG) captures brain activity and has been widely used in clinic and brain-computer interfaces (BCIs). Classic EEG decoding methods rely on supervised learning, limiting their performance and generalizability. Inspired by the revolutionary impact of large models in other fields, researchers are now investigating EEG foundation models. Recently, state space models (SSMs), such as Mamba, have demonstrated strong sequence modeling capabilities, which may be suitable to model the spatiotemporal dependencies of EEG signals. However, the application of Mamba for EEG representation learning remains largely unexplored. In this paper, we investigate the potential of Mamba for learning generic EEG representations and propose a novel EEG foundation model, EEGMamba. Specifically, we employ Mamba encoder as the backbone of EEGMamba to model the spatiotemporal dependencies among EEG patches. Meanwhile, we use patch-based masked EEG reconstruction to learn generic EEG represent",
       "doi": "10.1016/j.neunet.2025.107816",
       "pmid": "40714477",
       "openalex_id": "W4412467931",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5022273534536362,
+        "similarity_score": 0.43482887744903564,
+        "citation_text_length": 1169,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "META-EEG: Meta-learning-based class-relevant EEG representation learning for zero-calibration brain–computer interfaces",
+      "author": "Ji-Wung Han, Soyeon Bak, Jun-Mo Kim, WooHyeok Choi, Dong-Hee Shin, Young-Han Son, Tae‐Eui Kam",
+      "venue": "Expert Systems with Applications",
+      "year": 2023,
+      "url": "https://doi.org/10.1016/j.eswa.2023.121986",
+      "cited_by": 29,
+      "abstract": null,
+      "doi": "10.1016/j.eswa.2023.121986",
+      "pmid": null,
+      "openalex_id": "W4387492882",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5858004570007325,
+        "similarity_score": 0.5579051971435547,
+        "citation_text_length": 271,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Bridging the BCI illiteracy gap: a subject-to-subject semantic style transfer for EEG-based motor imagery classification",
+      "author": "Da-Hyun Kim, Donghee Shin, Tae‐Eui Kam",
+      "venue": "Frontiers in Human Neuroscience",
+      "year": 2023,
+      "url": "https://doi.org/10.3389/fnhum.2023.1194751",
+      "cited_by": 28,
+      "abstract": "Introduction: Brain-computer interfaces (BCIs) facilitate direct interaction between the human brain and computers, enabling individuals to control external devices through cognitive processes. Despite its potential, the problem of BCI illiteracy remains one of the major challenges due to inter-subject EEG variability, which hinders many users from effectively utilizing BCI systems. In this study, we propose a subject-to-subject semantic style transfer network (SSSTN) at the feature-level to address the BCI illiteracy problem in electroencephalogram (EEG)-based motor imagery (MI) classification tasks. Methods: Our approach uses the continuous wavelet transform method to convert high-dimensional EEG data into images as input data. The SSSTN 1) trains a classifier for each subject, 2) transfers the distribution of class discrimination styles from the source subject (the best-performing subject for the classifier, i.e., BCI expert) to each subject of the target domain (the remaining subje",
+      "doi": "10.3389/fnhum.2023.1194751",
+      "pmid": "37256201",
+      "openalex_id": "W4376615369",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7189799988269807,
+        "similarity_score": 0.6224935054779053,
+        "citation_text_length": 1228,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Decoding Imagined Speech from EEG Data: A Hybrid Deep Learning Approach to Capturing Spatial and Temporal Features",
@@ -220,14 +300,114 @@
       "venue": "Life",
       "year": 2024,
       "url": "https://doi.org/10.3390/life14111501",
-      "cited_by": 22,
+      "cited_by": 25,
       "abstract": "Neuroimaging is revolutionizing our ability to investigate the brain's structural and functional properties, enabling us to visualize brain activity during diverse mental processes and actions. One of the most widely used neuroimaging techniques is electroencephalography (EEG), which records electrical activity from the brain using electrodes positioned on the scalp. EEG signals capture both spatial (brain region) and temporal (time-based) data. While a high temporal resolution is achievable with EEG, spatial resolution is comparatively limited. Consequently, capturing both spatial and temporal information from EEG data to recognize mental activities remains challenging. In this paper, we represent spatial and temporal information obtained from EEG signals by transforming EEG data into sequential topographic brain maps. We then apply hybrid deep learning models to capture the spatiotemporal features of the EEG topographic images and classify imagined English words. The hybrid framework",
       "doi": "10.3390/life14111501",
       "pmid": "39598300",
       "openalex_id": "W4404481915",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6050597888231278,
+        "similarity_score": 0.523861289024353,
+        "citation_text_length": 1197,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Lower limb motor imagery EEG dataset based on the multi-paradigm and longitudinal-training of stroke patients",
+      "author": "Yuan Liu, Zhuolan Gui, Yan De, Zhuang Wang, Rui Gao, Na Han, Junying Chen, Jialing Wu, Dong Ming",
+      "venue": "Scientific Data",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41597-025-04618-4",
+      "cited_by": 18,
+      "abstract": "Motor dysfunction is one of the most significant sequelae of stroke, with lower limb impairment being a major concern for stroke patients. Motor imagery (MI) technology based on brain-computer interface (BCI) offers promising rehabilitation potential for stroke patients by activating motor-related brain areas. However, developing a robust BCI-MI system and uncovering the underlying mechanisms of neural plasticity during stroke recovery through such systems requires large-scale datasets. These datasets are particularly needed for accurate lower limb MI in stroke patients and for longitudinal data reflecting the rehabilitation process. This study addresses this gap by collecting EEG data from 27 stroke patients, covering two enhanced paradigms and three different time points. The dataset includes raw EEG signals, preprocessed data, and patient information. An initial analysis using CSP-SVM on the dataset yielded an average classification accuracy of 80.50%. We anticipate that this datase",
+      "doi": "10.1038/s41597-025-04618-4",
+      "pmid": "39984530",
+      "openalex_id": "W4407841324",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7853686845302583,
+        "similarity_score": 0.6799728870391846,
+        "citation_text_length": 1259,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A Powered Prosthetic Hand With Vision System for Enhancing the Anthropopathic Grasp",
+      "author": "Yansong Xu, Xiaohui Wang, Junlin Li, Xiaoqian Zhang, Feng Li, Qing Gao, Chenglong Fu, Yuquan Leng",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/tnsre.2025.3567392",
+      "cited_by": 18,
+      "abstract": "The anthropomorphic grasping capability of prosthetic hands is critical for enhancing user experience and functional efficiency. Existing prosthetic hands relying on brain-computer interfaces (BCI) and electromyography (EMG) face limitations in achieving natural grasping due to insufficient gesture adaptability and intent recognition. While vision systems enhance object perception, they lack dynamic human-like gesture control during grasping. To address these challenges, we propose a vision-powered prosthetic hand system that integrates two innovations. Spatial Geometry-based Gesture Mapping (SG-GM) dynamically models finger joint angles as polynomial functions of hand-object distance, derived from geometric features of human grasping sequences. These functions enable continuous anthropomorphic gesture transitions, mimicking natural hand movements. Motion Trajectory Regression-based Grasping Intent Estimation (MTR-GIE) predicts user intent in multi-object environments by regressing wri",
+      "doi": "10.1109/tnsre.2025.3567392",
+      "pmid": "40327498",
+      "openalex_id": "W4410118226",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.58216544598341,
+        "similarity_score": 0.5040393471717834,
+        "citation_text_length": 1285,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A Simple Review of EEG Foundation Models: Datasets, Advancements and Future Perspectives",
+      "author": "Junhong Lai, Jiyu Wei, Lin Yao, Yueming Wang",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2504.20069",
+      "cited_by": 17,
+      "abstract": "Electroencephalogram (EEG) signals play a crucial role in understanding brain activity and diagnosing neurological diseases. Because supervised EEG encoders are unable to learn robust EEG patterns and rely too heavily on expensive signal annotation, research has turned to general-purpose self-supervised EEG encoders, known as EEG-based models (EEG-FMs), to achieve robust and scalable EEG feature extraction. However, the readiness of early EEG-FMs for practical applications and the standards for long-term research progress remain unclear. Therefore, a systematic and comprehensive review of first-generation EEG-FMs is necessary to understand their current state-of-the-art and identify key directions for future EEG-FMs. To this end, this study reviews 14 early EEG-FMs and provides a critical comprehensive analysis of their methodologies, empirical findings, and unaddressed research gaps. This review focuses on the latest developments in EEG-based models (EEG-FMs), which have shown great p",
+      "doi": "10.48550/arXiv.2504.20069",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4798822085559369,
+        "similarity_score": 0.41548243165016174,
+        "citation_text_length": 1176,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Identifying stable EEG patterns over time for mental workload recognition using transfer DS-CNN framework",
+      "author": "Lin Jin, Hongquan Qu, Liping Pang, Zheng Zhang, Zhuoyang Lyu",
+      "venue": "Biomedical Signal Processing and Control",
+      "year": 2023,
+      "url": "https://doi.org/10.1016/j.bspc.2023.105662",
+      "cited_by": 16,
+      "abstract": null,
+      "doi": "10.1016/j.bspc.2023.105662",
+      "pmid": null,
+      "openalex_id": "W4388701551",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5354506731033325,
+        "similarity_score": 0.5099530220031738,
+        "citation_text_length": 232,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "An Adaptive Task-Related Component Analysis Method for SSVEP Recognition",
@@ -242,37 +422,15 @@
       "openalex_id": "W4304783939",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "Lower limb motor imagery EEG dataset based on the multi-paradigm and longitudinal-training of stroke patients",
-      "author": "Yuan Liu, Zhuolan Gui, Yan De, Zhuang Wang, Rui Gao, Na Han, Junying Chen, Jialing Wu, Dong Ming",
-      "venue": "Scientific Data",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s41597-025-04618-4",
-      "cited_by": 16,
-      "abstract": "Motor dysfunction is one of the most significant sequelae of stroke, with lower limb impairment being a major concern for stroke patients. Motor imagery (MI) technology based on brain-computer interface (BCI) offers promising rehabilitation potential for stroke patients by activating motor-related brain areas. However, developing a robust BCI-MI system and uncovering the underlying mechanisms of neural plasticity during stroke recovery through such systems requires large-scale datasets. These datasets are particularly needed for accurate lower limb MI in stroke patients and for longitudinal data reflecting the rehabilitation process. This study addresses this gap by collecting EEG data from 27 stroke patients, covering two enhanced paradigms and three different time points. The dataset includes raw EEG signals, preprocessed data, and patient information. An initial analysis using CSP-SVM on the dataset yielded an average classification accuracy of 80.50%. We anticipate that this datase",
-      "doi": "10.1038/s41597-025-04618-4",
-      "pmid": "39984530",
-      "openalex_id": "W4407841324",
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "A Powered Prosthetic Hand With Vision System for Enhancing the Anthropopathic Grasp",
-      "author": "Yansong Xu, Xiaohui Wang, Junlin Li, Xiaoqian Zhang, Feng Li, Qing Gao, Chenglong Fu, Yuquan Leng",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/tnsre.2025.3567392",
-      "cited_by": 16,
-      "abstract": "The anthropomorphic grasping capability of prosthetic hands is critical for enhancing user experience and functional efficiency. Existing prosthetic hands relying on brain-computer interfaces (BCI) and electromyography (EMG) face limitations in achieving natural grasping due to insufficient gesture adaptability and intent recognition. While vision systems enhance object perception, they lack dynamic human-like gesture control during grasping. To address these challenges, we propose a vision-powered prosthetic hand system that integrates two innovations. Spatial Geometry-based Gesture Mapping (SG-GM) dynamically models finger joint angles as polynomial functions of hand-object distance, derived from geometric features of human grasping sequences. These functions enable continuous anthropomorphic gesture transitions, mimicking natural hand movements. Motion Trajectory Regression-based Grasping Intent Estimation (MTR-GIE) predicts user intent in multi-object environments by regressing wri",
-      "doi": "10.1109/tnsre.2025.3567392",
-      "pmid": "40327498",
-      "openalex_id": "W4410118226",
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5294888783991337,
+        "similarity_score": 0.4584319293498993,
+        "citation_text_length": 1091,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "CodeBrain: Bridging Decoupled Tokenizer and Multi-Scale Architecture for EEG Foundation Model",
@@ -287,67 +445,15 @@
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "Identifying stable EEG patterns over time for mental workload recognition using transfer DS-CNN framework",
-      "author": "Lin Jin, Hongquan Qu, Liping Pang, Zheng Zhang, Zhuoyang Lyu",
-      "venue": "Biomedical Signal Processing and Control",
-      "year": 2023,
-      "url": "https://doi.org/10.1016/j.bspc.2023.105662",
-      "cited_by": 15,
-      "abstract": null,
-      "doi": "10.1016/j.bspc.2023.105662",
-      "pmid": null,
-      "openalex_id": "W4388701551",
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "A Simple Review of EEG Foundation Models: Datasets, Advancements and Future Perspectives",
-      "author": "Junhong Lai, Jiyu Wei, Lin Yao, Yueming Wang",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2504.20069",
-      "cited_by": 15,
-      "abstract": "Electroencephalogram (EEG) signals play a crucial role in understanding brain activity and diagnosing neurological diseases. Because supervised EEG encoders are unable to learn robust EEG patterns and rely too heavily on expensive signal annotation, research has turned to general-purpose self-supervised EEG encoders, known as EEG-based models (EEG-FMs), to achieve robust and scalable EEG feature extraction. However, the readiness of early EEG-FMs for practical applications and the standards for long-term research progress remain unclear. Therefore, a systematic and comprehensive review of first-generation EEG-FMs is necessary to understand their current state-of-the-art and identify key directions for future EEG-FMs. To this end, this study reviews 14 early EEG-FMs and provides a critical comprehensive analysis of their methodologies, empirical findings, and unaddressed research gaps. This review focuses on the latest developments in EEG-based models (EEG-FMs), which have shown great p",
-      "doi": "10.48550/arXiv.2504.20069",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "Identifying Thematics in a Brain‐Computer Interface Research",
-      "author": "Hadeel Alharbi",
-      "venue": "Computational Intelligence and Neuroscience",
-      "year": 2023,
-      "url": "https://doi.org/10.1155/2023/2793211",
-      "cited_by": 13,
-      "abstract": "This umbrella review is motivated to understand the shift in research themes on brain‐computer interfacing (BCI) and it determined that a shift away from themes that focus on medical advancement and system development to applications that included education, marketing, gaming, safety, and security has occurred. The background of this review examined aspects of BCI categorisation, neuroimaging methods, brain control signal classification, applications, and ethics. The specific area of BCI software and hardware development was not examined. A search using One Search was undertaken and 92 BCI reviews were selected for inclusion. Publication demographics indicate the average number of authors on review papers considered was 4.2 ± 1.8. The results also indicate a rapid increase in the number of BCI reviews from 2003, with only three reviews before that period, two in 1972, and one in 1996. While BCI authors were predominantly Euro‐American in early reviews, this shifted to a more global aut",
-      "doi": "10.1155/2023/2793211",
-      "pmid": "36643889",
-      "openalex_id": "W4313591617",
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "Functional Mapping of the Brain for Brain–Computer Interfacing: A Review",
-      "author": "Satya P. Singh, Sachin Mishra, Sukrit Gupta, Parasuraman Padmanabhan, Jia Lu, Teo Kok Ann Colin, Yeo Tseng Tsai, Teo Kejia, Pramod Sankarapillai, Anand Mohan, Balázs Gulyás",
-      "venue": "Electronics",
-      "year": 2023,
-      "url": "https://doi.org/10.3390/electronics12030604",
-      "cited_by": 13,
-      "abstract": "Brain–computer interfacing has been applied in a range of domains including rehabilitation, neuro-prosthetics, and neurofeedback. Neuroimaging techniques provide insight into the structural and functional aspects of the brain. There is a need to identify, map and understand the various structural areas of the brain together with their functionally active roles for the accurate and efficient design of a brain–computer interface. In this review, the functionally active areas of the brain are reviewed by analyzing the research available in the literature on brain–computer interfacing in conjunction with neuroimaging experiments. This review first provides an overview of various approaches of brain–computer interfacing and basic components in the BCI system and then discuss active functional areas of the brain being utilized in non-invasive brain–computer interfacing performed with hemodynamic signals and electrophysiological recording-based signals. This paper also discusses various chall",
-      "doi": "10.3390/electronics12030604",
-      "pmid": null,
-      "openalex_id": "W4318052262",
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4927882397174836,
+        "similarity_score": 0.42665648460388184,
+        "citation_text_length": 1218,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Few-shot Algorithms for Consistent Neural Decoding (FALCON) Benchmark",
@@ -355,14 +461,45 @@
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
       "year": 2024,
       "url": "https://doi.org/10.1101/2024.09.15.613126",
-      "cited_by": 13,
+      "cited_by": 15,
       "abstract": "Intracortical brain-computer interfaces (iBCIs) can restore movement and communication abilities to individuals with paralysis by decoding their intended behavior from neural activity recorded with an implanted device. While this activity yields high-performance decoding over short timescales, neural data are often nonstationary, which can lead to decoder failure if not accounted for. To maintain performance, users must frequently recalibrate decoders, which requires the arduous collection of new neural and behavioral data. Aiming to reduce this burden, several approaches have been developed that either limit recalibration data requirements (few-shot approaches) or eliminate explicit recalibration entirely (zero-shot approaches). However, progress is limited by a lack of standardized datasets and comparison metrics, causing methods to be compared in an ad hoc manner. Here we introduce the FALCON benchmark suite (Few-shot Algorithms for COnsistent Neural decoding) to standardize evaluat",
       "doi": "10.1101/2024.09.15.613126",
       "pmid": "39345641",
       "openalex_id": "W4402630696",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5334214523434639,
+        "similarity_score": 0.4618367552757263,
+        "citation_text_length": 1530,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Identifying Thematics in a Brain‐Computer Interface Research",
+      "author": "Hadeel Alharbi",
+      "venue": "Computational Intelligence and Neuroscience",
+      "year": 2023,
+      "url": "https://doi.org/10.1155/2023/2793211",
+      "cited_by": 14,
+      "abstract": "This umbrella review is motivated to understand the shift in research themes on brain‐computer interfacing (BCI) and it determined that a shift away from themes that focus on medical advancement and system development to applications that included education, marketing, gaming, safety, and security has occurred. The background of this review examined aspects of BCI categorisation, neuroimaging methods, brain control signal classification, applications, and ethics. The specific area of BCI software and hardware development was not examined. A search using One Search was undertaken and 92 BCI reviews were selected for inclusion. Publication demographics indicate the average number of authors on review papers considered was 4.2 ± 1.8. The results also indicate a rapid increase in the number of BCI reviews from 2003, with only three reviews before that period, two in 1972, and one in 1996. While BCI authors were predominantly Euro‐American in early reviews, this shifted to a more global aut",
+      "doi": "10.1155/2023/2793211",
+      "pmid": "36643889",
+      "openalex_id": "W4313591617",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4759737297892571,
+        "similarity_score": 0.4120984673500061,
+        "citation_text_length": 1156,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Ensemble-based feature engineering mechanism to decode imagined speech from brain signals",
@@ -370,14 +507,45 @@
       "venue": "Informatics in Medicine Unlocked",
       "year": 2024,
       "url": "https://doi.org/10.1016/j.imu.2024.101491",
-      "cited_by": 12,
+      "cited_by": 14,
       "abstract": "Speech impairments, resulting from brain injuries, mental disorders, or vocal abuse, substantially affect an individual’s quality of life and can lead to social isolation. Brain-Computer Interfaces (BCIs), particularly those based on EEG, offer a promising support mechanism by harnessing brain signals. Owing to their clinical efficacy, cost-effective EEG devices, and expanding applications in the medical and social spheres, their usage has surged. This study introduces an ensemble-based feature engineering mechanism to pinpoint the optimal brain rhythm, channel subset, and feature set for accurately predicting imagined words from EEG signals via machine learning models. Leveraging the 2020 International BCI competition dataset, we employed bandpass filtering, channel wrapping, and ranking methods were applied to discern suitable brain rhythms and features associated with imagined speech. Subsequent application of kernel-based principal component analysis enabled us to compress the feat",
       "doi": "10.1016/j.imu.2024.101491",
       "pmid": null,
       "openalex_id": "W4393950835",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6640741109848023,
+        "similarity_score": 0.574955940246582,
+        "citation_text_length": 1232,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Functional Mapping of the Brain for Brain–Computer Interfacing: A Review",
+      "author": "Satya P. Singh, Sachin Mishra, Sukrit Gupta, Parasuraman Padmanabhan, Jia Lu, Teo Kok Ann Colin, Yeo Tseng Tsai, Teo Kejia, Pramod Sankarapillai, Anand Mohan, Balázs Gulyás",
+      "venue": "Electronics",
+      "year": 2023,
+      "url": "https://doi.org/10.3390/electronics12030604",
+      "cited_by": 14,
+      "abstract": "Brain–computer interfacing has been applied in a range of domains including rehabilitation, neuro-prosthetics, and neurofeedback. Neuroimaging techniques provide insight into the structural and functional aspects of the brain. There is a need to identify, map and understand the various structural areas of the brain together with their functionally active roles for the accurate and efficient design of a brain–computer interface. In this review, the functionally active areas of the brain are reviewed by analyzing the research available in the literature on brain–computer interfacing in conjunction with neuroimaging experiments. This review first provides an overview of various approaches of brain–computer interfacing and basic components in the BCI system and then discuss active functional areas of the brain being utilized in non-invasive brain–computer interfacing performed with hemodynamic signals and electrophysiological recording-based signals. This paper also discusses various chall",
+      "doi": "10.3390/electronics12030604",
+      "pmid": null,
+      "openalex_id": "W4318052262",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.49901584491133694,
+        "similarity_score": 0.43204835057258606,
+        "citation_text_length": 1294,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Effect of natural and synthetic noise data augmentation on physical action classification by brain–computer interface and deep learning",
@@ -385,14 +553,22 @@
       "venue": "Frontiers in Neuroinformatics",
       "year": 2025,
       "url": "https://doi.org/10.3389/fninf.2025.1521805",
-      "cited_by": 12,
+      "cited_by": 14,
       "abstract": "Analysis of electroencephalography (EEG) signals gathered by brain–computer interface (BCI) recently demonstrated that deep neural networks (DNNs) can be effectively used for investigation of time sequences for physical actions (PA) classification. In this study, the relatively simple DNN with fully connected network (FCN) components and convolutional neural network (CNN) components was considered to classify finger-palm-hand manipulations each from the grasp-and-lift (GAL) dataset. The main aim of this study was to imitate and investigate environmental influence by the proposed noise data augmentation (NDA) of two kinds: (i) natural NDA by inclusion of noise EEG data from neighboring regions by increasing the sampling size N and the different offset values for sample labeling and (ii) synthetic NDA by adding the generated Gaussian noise. The natural NDA by increasing N leads to the higher micro and macro area under the curve (AUC) for receiver operating curve values for the bigger N v",
       "doi": "10.3389/fninf.2025.1521805",
       "pmid": "40083893",
       "openalex_id": "W4408005301",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6260243144631387,
+        "similarity_score": 0.5420123934745789,
+        "citation_text_length": 1292,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Chaos and Synchronization - Potential Ingredients of Innovation in Analog Circuit Design?",
@@ -400,14 +576,45 @@
       "venue": "IEICE Transactions on Electronics",
       "year": 2024,
       "url": "https://doi.org/10.1587/transele.2023cti0001",
-      "cited_by": 8,
+      "cited_by": 9,
       "abstract": "Recent years have seen a general resurgence of interest in analog signal processing and computing architectures. In addition, extensive theoretical and experimental literature on chaos and analog chaotic oscillators exists. One peculiarity of these circuits is the ability to generate, despite their structural simplicity, complex spatiotemporal patterns when several of them are brought towards synchronization via coupling mechanisms. While by no means a systematic survey, this paper provides a personal perspective on this area. After briefly covering design aspects and the synchronization phenomena that can arise, a selection of results exemplifying potential applications is presented, including in robot control, distributed sensing, reservoir computing, and data augmentation. Despite their interesting properties, the industrial applications of these circuits remain largely to be realized, seemingly due to a variety of technical and organizational factors including a paucity of design a",
       "doi": "10.1587/transele.2023cti0001",
       "pmid": null,
       "openalex_id": "W4392631389",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.24019174575805669,
+        "similarity_score": 0.20795822143554688,
+        "citation_text_length": 1176,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "DeeperBrain: A Neuro-Grounded EEG Foundation Model Towards Universal BCI",
+      "author": "Jiquan Wang, Sha Zhao, Yangxuan Zhou, Yiming Kang, Shijian Li, Gang Pan",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2601.06134",
+      "cited_by": 8,
+      "abstract": "Electroencephalography (EEG) foundation models hold significant promise for universal Brain-Computer Interfaces (BCIs). However, existing approaches often rely on end-to-end fine-tuning and exhibit limited efficacy under frozen-probing protocols, lacking the intrinsic universality required for broad generalization. This limitation stems from adapting general-purpose sequence architectures that overlook the biophysical and dynamical principles of neural activity. To bridge this gap, we propose DeeperBrain, a neuro-grounded foundation model integrating domain-specific inductive biases into its model design and learning objectives. Architecturally, DeeperBrain incorporates a volume conduction-aware channel encoding to model spatial mixing via 3D geometry, and a neurodynamics-aware temporal encoding capturing slow adaptations using oscillatory and exponential bases. For pretraining, we introduce a dual-objective strategy combining Masked EEG Reconstruction (MER) for local fidelity and Neur",
+      "doi": "10.48550/arXiv.2601.06134",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6049934238195419,
+        "similarity_score": 0.5238038301467896,
+        "citation_text_length": 1187,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Iteratively Calibratable Network for Reliable EEG-Based Robotic Arm Control",
@@ -422,7 +629,15 @@
       "openalex_id": "W4401070049",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5543758235871792,
+        "similarity_score": 0.4799790680408478,
+        "citation_text_length": 1253,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Mental performance classification using fused multilevel feature generation with EEG signals",
@@ -437,22 +652,15 @@
       "openalex_id": "W4302286651",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "DeeperBrain: A Neuro-Grounded EEG Foundation Model Towards Universal BCI",
-      "author": "Jiquan Wang, Sha Zhao, Yangxuan Zhou, Yiming Kang, Shijian Li, Gang Pan",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2601.06134",
-      "cited_by": 7,
-      "abstract": "Electroencephalography (EEG) foundation models hold significant promise for universal Brain-Computer Interfaces (BCIs). However, existing approaches often rely on end-to-end fine-tuning and exhibit limited efficacy under frozen-probing protocols, lacking the intrinsic universality required for broad generalization. This limitation stems from adapting general-purpose sequence architectures that overlook the biophysical and dynamical principles of neural activity. To bridge this gap, we propose DeeperBrain, a neuro-grounded foundation model integrating domain-specific inductive biases into its model design and learning objectives. Architecturally, DeeperBrain incorporates a volume conduction-aware channel encoding to model spatial mixing via 3D geometry, and a neurodynamics-aware temporal encoding capturing slow adaptations using oscillatory and exponential bases. For pretraining, we introduce a dual-objective strategy combining Masked EEG Reconstruction (MER) for local fidelity and Neur",
-      "doi": "10.48550/arXiv.2601.06134",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5620511358976366,
+        "similarity_score": 0.4866243600845337,
+        "citation_text_length": 1337,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "ECHO: Toward Contextual Seq2Seq Paradigms in Large EEG Models",
@@ -467,7 +675,38 @@
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4877218843996525,
+        "similarity_score": 0.4222700297832489,
+        "citation_text_length": 1184,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Combining EEGNet with SPDNet Towards an End-To-End Architecture for Imagined Speech Decoding",
+      "author": "Georgios Rousis, Fotis P. Kalaganis, S. Nikolopoulos, Y. Kompatsiaris, Panagiotis C. Petrantonakis",
+      "venue": "2024 32nd European Signal Processing Conference (EUSIPCO)",
+      "year": 2024,
+      "url": "https://doi.org/10.23919/eusipco63174.2024.10715364",
+      "cited_by": 7,
+      "abstract": "Imagined speech is the mental task where individu-als internally simulate the articulation of a prompt without actual vocalization. Recently, it gained widespread attention due to its simplicity and intuitiveness as a Brain-Computer Interface (BCI) paradigm. Hence, the decoding of imagined speech from brain signals emerges as a pivotal challenge addressed with various signal processing and machine learning techniques documented in the literature. The most commonly employed neuroimaging method is Electroencephalography (EEG) because of its non-invasive nature, low cost and high temporal resolution. Recent attempts of deciphering imagined speech from EEG signals deploy Convolutional Neural Network (CNN) architectures such as shallow Conv Net, deep Conv Net and EEGNet while others use Cross-Covariance (CCV) matrices as an alternative form of signal representation. Our novel architecture combines EEGNet with CCV matrices, extracting discriminative features from the latter with the use of b",
+      "doi": "10.23919/eusipco63174.2024.10715364",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6039990502595902,
+        "similarity_score": 0.5229429006576538,
+        "citation_text_length": 1286,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Posthoc Interpretability of Neural Responses by Grouping Subject Motor Imagery Skills Using CNN-Based Connectivity",
@@ -482,7 +721,15 @@
       "openalex_id": "W4323044431",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7302469038963318,
+        "similarity_score": 0.6322484016418457,
+        "citation_text_length": 1294,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Speech Synthesis from Brain Signals Based on Generative Model",
@@ -497,7 +744,15 @@
       "openalex_id": "W4361185897",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5415622490644456,
+        "similarity_score": 0.46888506412506104,
+        "citation_text_length": 1257,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "CodeBrain : Towards Decoupled Interpretability and Multi-Scale Architecture for EEG Foundation Model",
@@ -512,7 +767,15 @@
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.43944644927978516,
+        "similarity_score": 0.43944644927978516,
+        "citation_text_length": 211,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Imagined Speech Recognition and the Role of Brain Areas Based on Topographical Maps of EEG Signal",
@@ -527,7 +790,38 @@
       "openalex_id": "W4401110632",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.62120851457119,
+        "similarity_score": 0.537842869758606,
+        "citation_text_length": 1260,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Multi-Signal Reconstruction Using Masked Autoencoder From EEG During Polysomnography",
+      "author": "Young-Seok Kweon, Gi-Hwan Shin, Heon-Gyu Kwak, Ha-Na Jo, Seong-Whan Lee",
+      "venue": "2024 12th International Winter Conference on Brain-Computer Interface (BCI)",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/bci60775.2024.10480481",
+      "cited_by": 5,
+      "abstract": "Polysomnography (PSG) is an indispensable diagnostic tool in sleep medicine, essential for identifying various sleep disorders. By capturing physiological signals, including EEG, EOG, EMG, and cardiorespiratory metrics, PSG presents a patient’s sleep architecture. However, its dependency on complex equipment and expertise confines its use to specialized clinical settings. Addressing these limitations, our study aims to perform PSG by developing a system that requires only a single EEG measurement. We propose a novel system capable of reconstructing multi-signal PSG from a single-channel EEG based on a masked autoencoder. The masked autoencoder was trained and evaluated using the Sleep-EDF-20 dataset, with mean squared error as the metric for assessing the similarity between original and reconstructed signals. The model demonstrated proficiency in reconstructing multi-signal data. Our results present promise for the development of more accessible and long-term sleep monitoring systems. ",
+      "doi": "10.1109/bci60775.2024.10480481",
+      "pmid": null,
+      "openalex_id": "W4393406749",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4621687763929368,
+        "similarity_score": 0.40014612674713135,
+        "citation_text_length": 1269,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Exploiting Approximate Joint Diagonalization for Covariance Estimation in Imagined Speech Decoding",
@@ -542,22 +836,15 @@
       "openalex_id": "W4386639957",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "Combining EEGNet with SPDNet Towards an End-To-End Architecture for Imagined Speech Decoding",
-      "author": "Georgios Rousis, Fotis P. Kalaganis, S. Nikolopoulos, Y. Kompatsiaris, Panagiotis C. Petrantonakis",
-      "venue": "2024 32nd European Signal Processing Conference (EUSIPCO)",
-      "year": 2024,
-      "url": "https://doi.org/10.23919/eusipco63174.2024.10715364",
-      "cited_by": 5,
-      "abstract": "Imagined speech is the mental task where individu-als internally simulate the articulation of a prompt without actual vocalization. Recently, it gained widespread attention due to its simplicity and intuitiveness as a Brain-Computer Interface (BCI) paradigm. Hence, the decoding of imagined speech from brain signals emerges as a pivotal challenge addressed with various signal processing and machine learning techniques documented in the literature. The most commonly employed neuroimaging method is Electroencephalography (EEG) because of its non-invasive nature, low cost and high temporal resolution. Recent attempts of deciphering imagined speech from EEG signals deploy Convolutional Neural Network (CNN) architectures such as shallow Conv Net, deep Conv Net and EEGNet while others use Cross-Covariance (CCV) matrices as an alternative form of signal representation. Our novel architecture combines EEGNet with CCV matrices, extracting discriminative features from the latter with the use of b",
-      "doi": "10.23919/eusipco63174.2024.10715364",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.3328169882297516,
+        "similarity_score": 0.31696856021881104,
+        "citation_text_length": 280,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Enhancing Word-Level Imagined Speech BCI Through Heterogeneous Transfer Learning",
@@ -572,7 +859,15 @@
       "openalex_id": "W4405488773",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6419786953926088,
+        "similarity_score": 0.5558257102966309,
+        "citation_text_length": 1286,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "A systematic review of EEG-based Imagined Speech decoding",
@@ -587,22 +882,15 @@
       "openalex_id": "W4413097492",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "Multi-Signal Reconstruction Using Masked Autoencoder From EEG During Polysomnography",
-      "author": "Young-Seok Kweon, Gi-Hwan Shin, Heon-Gyu Kwak, Ha-Na Jo, Seong-Whan Lee",
-      "venue": "2024 12th International Winter Conference on Brain-Computer Interface (BCI)",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/bci60775.2024.10480481",
-      "cited_by": 4,
-      "abstract": "Polysomnography (PSG) is an indispensable diagnostic tool in sleep medicine, essential for identifying various sleep disorders. By capturing physiological signals, including EEG, EOG, EMG, and cardiorespiratory metrics, PSG presents a patient’s sleep architecture. However, its dependency on complex equipment and expertise confines its use to specialized clinical settings. Addressing these limitations, our study aims to perform PSG by developing a system that requires only a single EEG measurement. We propose a novel system capable of reconstructing multi-signal PSG from a single-channel EEG based on a masked autoencoder. The masked autoencoder was trained and evaluated using the Sleep-EDF-20 dataset, with mean squared error as the metric for assessing the similarity between original and reconstructed signals. The model demonstrated proficiency in reconstructing multi-signal data. Our results present promise for the development of more accessible and long-term sleep monitoring systems. ",
-      "doi": "10.1109/bci60775.2024.10480481",
-      "pmid": null,
-      "openalex_id": "W4393406749",
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5227295145392418,
+        "similarity_score": 0.497837632894516,
+        "citation_text_length": 146,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "NeuroTTT: Bridging Pretraining-Downstream Task Misalignment in EEG Foundation Models via Test-Time Training",
@@ -617,7 +905,38 @@
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5886692851781845,
+        "similarity_score": 0.5096703767776489,
+        "citation_text_length": 1213,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Progressive transfer learning Unifies Multi-Corpus EEG for robust and scalable Imagined-Speech decoding",
+      "author": "Hatem T.M. Duhair, Masrullizam bin Mat Ibrahim, Jamil Abedalrahim Jamil Alsayaydeh, Rex Bacarra, Ahmed Hussein Ahmed",
+      "venue": "Biomedical Signal Processing and Control",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.bspc.2026.109475",
+      "cited_by": 3,
+      "abstract": "Imagined-speech brain-computer interfaces (BCIs) face limitations due to limited, subject-specific data and the risk of catastrophic forgetting during sequential adaptation. We present a gated progressive neural network (PNN) that assimilates information from diverse imagined-speech EEG datasets and applies it to new users. The signals are processed through a standard pipeline that includes 1–70 Hz band-pass filtering, baseline correction, per-channel z-normalisation, and ICA, followed by a comprehensive, physiologically motivated feature vector that encompasses spatial (CSP), time–frequency (discrete wavelet statistics), spectral (δ–γ band powers), and time-domain dynamics (Hjorth parameters, autocorrelation, higher-order moments). The PNN evolves by incorporating a new column for each task; previously established columns remain unchanged while lateral adapter layers and a shared gate control how prior learned embeddings influence the new column, effectively preventing forgetting whil",
+      "doi": "10.1016/j.bspc.2026.109475",
+      "pmid": null,
+      "openalex_id": "W7118758951",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6541320276260376,
+        "similarity_score": 0.5663480758666992,
+        "citation_text_length": 1298,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Towards Neural Decoding of Imagined Speech based on Spoken Speech",
@@ -632,7 +951,15 @@
       "openalex_id": "W4361186065",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5761274354159833,
+        "similarity_score": 0.49881163239479065,
+        "citation_text_length": 1250,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "DeepSMR: Decoding high-complex motor imagery via subject-dependent multi-feature refinement in deep convolutional networks",
@@ -647,7 +974,38 @@
       "openalex_id": "W4413412040",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7082164764404297,
+        "similarity_score": 0.6131744384765625,
+        "citation_text_length": 1267,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "EEG-based speech imagery decoding by dynamic hypergraph learning within projected and selected feature subspaces",
+      "author": "Yibing Li, Zhenye Zhao, Jiangchuan Liu, Yong Peng, Kenneth P. Camilleri, Wanzeng Kong, Andrzej Cichocki",
+      "venue": "Journal of Neural Engineering",
+      "year": 2025,
+      "url": "https://doi.org/10.1088/1741-2552/adeec8",
+      "cited_by": 2,
+      "abstract": "Abstract Objective. Speech imagery is a nascent paradigm that is receiving widespread attention in current brain–computer interface (BCI) research. By collecting the electroencephalogram (EEG) data generated when imagining the pronunciation of a sentence or word in human mind, machine learning methods are used to decode the intention that the subject wants to express. Among existing decoding methods, graph is often used as an effective tool to model the data structure; however, in the field of BCI research, the correlations between EEG samples may not be fully characterized by simple pairwise relationships. Therefore, this paper attempts to employ a more effective data structure to model EEG data. Approach. In this paper, we introduce hypergraph to describe the high-order correlations between samples by viewing feature vectors extracted from each sample as vertices and then connecting them through hyperedges. We also dynamically update the weights of hyperedges, the weights of vertices",
+      "doi": "10.1088/1741-2552/adeec8",
+      "pmid": "40645212",
+      "openalex_id": "W4412355555",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6391895753145218,
+        "similarity_score": 0.5534108877182007,
+        "citation_text_length": 1283,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Motor Imagery Recognition Based on GMM-JCSFE Model",
@@ -662,7 +1020,15 @@
       "openalex_id": "W4401989987",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6047838646173478,
+        "similarity_score": 0.5236223936080933,
+        "citation_text_length": 1195,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "EEGDiffuser: Label-guided EEG signals synthesis via diffusion model for BCI applications",
@@ -677,7 +1043,15 @@
       "openalex_id": "W7118158378",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5523600429296494,
+        "similarity_score": 0.5260571837425232,
+        "citation_text_length": 200,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Subject-Transfer with Subject-Specific Fine-Tuning Based on Multi-Model CNN for Motor Imagery Brain-Computer Interface",
@@ -692,22 +1066,38 @@
       "openalex_id": "W4361185978",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.709468737244606,
+        "similarity_score": 0.6142586469650269,
+        "citation_text_length": 1317,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
-      "title": "Progressive transfer learning Unifies Multi-Corpus EEG for robust and scalable Imagined-Speech decoding",
-      "author": "Hatem T.M. Duhair, Masrullizam bin Mat Ibrahim, Jamil Abedalrahim Jamil Alsayaydeh, Rex Bacarra, Ahmed Hussein Ahmed",
-      "venue": "Biomedical Signal Processing and Control",
+      "title": "SpecMoE: Spectral Mixture-of-Experts Foundation Model for Cross-Species EEG Decoding",
+      "author": "D. Darankoum, C. Habermacher, J. Volle, S. Grudinin",
+      "venue": "ArXiv",
       "year": 2026,
-      "url": "https://doi.org/10.1016/j.bspc.2026.109475",
+      "url": "https://doi.org/10.48550/arXiv.2603.16739",
       "cited_by": 2,
-      "abstract": "Imagined-speech brain-computer interfaces (BCIs) face limitations due to limited, subject-specific data and the risk of catastrophic forgetting during sequential adaptation. We present a gated progressive neural network (PNN) that assimilates information from diverse imagined-speech EEG datasets and applies it to new users. The signals are processed through a standard pipeline that includes 1–70 Hz band-pass filtering, baseline correction, per-channel z-normalisation, and ICA, followed by a comprehensive, physiologically motivated feature vector that encompasses spatial (CSP), time–frequency (discrete wavelet statistics), spectral (δ–γ band powers), and time-domain dynamics (Hjorth parameters, autocorrelation, higher-order moments). The PNN evolves by incorporating a new column for each task; previously established columns remain unchanged while lateral adapter layers and a shared gate control how prior learned embeddings influence the new column, effectively preventing forgetting whil",
-      "doi": "10.1016/j.bspc.2026.109475",
+      "abstract": "Decoding the orchestration of neural activity in electroencephalography (EEG) signals is a central challenge in bridging neuroscience with artificial intelligence. Foundation models have made strides in generalized EEG decoding, yet many existing frameworks primarily relying on separate temporal and spectral masking of raw signals during self-supervised pretraining. Such strategies often tend to bias learning toward high-frequency oscillations, as low-frequency rhythmic patterns can be easily inferred from the unmasked signal. We introduce a foundation model that utilizes a novel Gaussian-smoothed masking scheme applied to short-time Fourier transform (STFT) maps. By jointly applying time, frequency, and time-frequency Gaussian masks, we make the reconstruction task much more challenging, forcing the model to learn intricate neural patterns across both high- and low-frequency domains. To effectively recover signals under this aggressive masking strategy, we design SpecHi-Net, a U-shape",
+      "doi": "10.48550/arXiv.2603.16739",
       "pmid": null,
-      "openalex_id": "W7118758951",
+      "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4769473814964295,
+        "similarity_score": 0.41294145584106445,
+        "citation_text_length": 1179,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "LEAF: Language-EEG Aligned Foundation Model for Brain-Computer Interfaces",
@@ -722,7 +1112,15 @@
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5679824048280717,
+        "similarity_score": 0.49175965785980225,
+        "citation_text_length": 1261,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Imagined Speech State Classification for Robust Brain-Computer Interface",
@@ -737,22 +1135,15 @@
       "openalex_id": "W4408898795",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "EEG-based speech imagery decoding by dynamic hypergraph learning within projected and selected feature subspaces",
-      "author": "Yibing Li, Zhenye Zhao, Jiangchuan Liu, Yong Peng, Kenneth P. Camilleri, Wanzeng Kong, Andrzej Cichocki",
-      "venue": "Journal of Neural Engineering",
-      "year": 2025,
-      "url": "https://doi.org/10.1088/1741-2552/adeec8",
-      "cited_by": 1,
-      "abstract": "Abstract Objective. Speech imagery is a nascent paradigm that is receiving widespread attention in current brain–computer interface (BCI) research. By collecting the electroencephalogram (EEG) data generated when imagining the pronunciation of a sentence or word in human mind, machine learning methods are used to decode the intention that the subject wants to express. Among existing decoding methods, graph is often used as an effective tool to model the data structure; however, in the field of BCI research, the correlations between EEG samples may not be fully characterized by simple pairwise relationships. Therefore, this paper attempts to employ a more effective data structure to model EEG data. Approach. In this paper, we introduce hypergraph to describe the high-order correlations between samples by viewing feature vectors extracted from each sample as vertices and then connecting them through hyperedges. We also dynamically update the weights of hyperedges, the weights of vertices",
-      "doi": "10.1088/1741-2552/adeec8",
-      "pmid": "40645212",
-      "openalex_id": "W4412355555",
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6136981165409089,
+        "similarity_score": 0.5313403606414795,
+        "citation_text_length": 1221,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Improving CCA Algorithms on SSVEP Classification with Reinforcement Learning Based Temporal Filtering",
@@ -767,22 +1158,15 @@
       "openalex_id": "W4389009085",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "Decoding Speech Imagery: A Spectro-Spatial Approach to Electroencephalography Band Power Analysis",
-      "author": "Nilam Fitriah, Hasballah Zakaria, Astri Budikayanti, Andriyan Bayu Suksmono, Tati Latifah Mengko",
-      "venue": "IEEE Journal of Biomedical and Health Informatics",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/jbhi.2025.3631062",
-      "cited_by": 1,
-      "abstract": "Decoding speech imagery from brain signals potentially assists individuals with speech impairments. However, limited data and complex brain activity in recent studies have made accurate decoding challenging. We analyzed both the spectral (frequency) and spatial (location) aspects of brain activity to enhance decoding accuracy in small datasets. To our knowledge, previous studies have mainly used generated features without adequately considering spectro-spatial aspects. We trained machine learning with time-frequency representation (TFR) features using a public dataset from the Brain-Computer Interface (BCI) competition (BCI-DB) and our own recordings (PrimAudio-DB). The results showed prominent feature patterns of speech imagery in the frontal region and Gamma band, achieving accuracies of 98.6% in BCI-DB (exceeding benchmarks) and 81.7% in PrimAudio-DB. Moreover, our analysis revealed insights regarding speech differences (language and semantics). This study contributed to non-invasiv",
-      "doi": "10.1109/jbhi.2025.3631062",
-      "pmid": "41212707",
-      "openalex_id": "W4416078157",
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4076051652431488,
+        "similarity_score": 0.3881953954696655,
+        "citation_text_length": 256,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "EEG-to-Speech Decoding for Paralysis Rehabilitation Using Deep Learning Architectures",
@@ -797,7 +1181,61 @@
       "openalex_id": "W4415969936",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.602753536105156,
+        "similarity_score": 0.5218645334243774,
+        "citation_text_length": 1244,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Decoding Speech Imagery: A Spectro-Spatial Approach to Electroencephalography Band Power Analysis",
+      "author": "Nilam Fitriah, Hasballah Zakaria, Astri Budikayanti, Andriyan Bayu Suksmono, Tati Latifah Mengko",
+      "venue": "IEEE Journal of Biomedical and Health Informatics",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/jbhi.2025.3631062",
+      "cited_by": 1,
+      "abstract": "Decoding speech imagery from brain signals potentially assists individuals with speech impairments. However, limited data and complex brain activity in recent studies have made accurate decoding challenging. We analyzed both the spectral (frequency) and spatial (location) aspects of brain activity to enhance decoding accuracy in small datasets. To our knowledge, previous studies have mainly used generated features without adequately considering spectro-spatial aspects. We trained machine learning with time-frequency representation (TFR) features using a public dataset from the Brain-Computer Interface (BCI) competition (BCI-DB) and our own recordings (PrimAudio-DB). The results showed prominent feature patterns of speech imagery in the frontal region and Gamma band, achieving accuracies of 98.6% in BCI-DB (exceeding benchmarks) and 81.7% in PrimAudio-DB. Moreover, our analysis revealed insights regarding speech differences (language and semantics). This study contributed to non-invasiv",
+      "doi": "10.1109/jbhi.2025.3631062",
+      "pmid": "41212707",
+      "openalex_id": "W4416078157",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5986873716115951,
+        "similarity_score": 0.5183440446853638,
+        "citation_text_length": 1281,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "UGR-MINDVOICE: A multimodal EEG-audio dataset for overt and covert Iberian Spanish speech production",
+      "author": "Ibon Vales Cortina, Owais Mujtaba Khanday, Marc Ouellet, José L. Pérez-Córdoba, Pablo Rodríguez-San Esteban, Laura Miccoli, Alberto Galdón, G Olivares-Granados, José A. González",
+      "venue": "Computer Speech & Language",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.csl.2026.101964",
+      "cited_by": 1,
+      "abstract": "We present UGR-MINDVOICE, the University of Granada (UGR) multimodal electroencephalography (EEG) and audio dataset for overt and covert speech in Iberian Spanish intended for basic neuroscience and brain-computer interface (BCI) research. The dataset features EEG and audio recordings from 15 native Spanish speakers engaged in both overt and covert speech production tasks. This dataset is unique in its inclusion of all Spanish phonemes and a diverse set of words spanning various semantic categories and different usage frequencies. Validation of the dataset confirmed the presence of robust sensory event-related potentials, including the visual P100 and the auditory N1 (N100), indicating reliable early perceptual processing and sustained participant attention to both visual and auditory stimuli. Additionally, the EEG data were classified into rest, covert speech, and overt speech conditions with an accuracy of 81.40%, demonstrating active participant engagement in the tasks. By providing",
+      "doi": "10.1016/j.csl.2026.101964",
+      "pmid": null,
+      "openalex_id": "W7130819148",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.640968556702137,
+        "similarity_score": 0.5549511313438416,
+        "citation_text_length": 1342,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "BrainPro: Towards Large-scale Brain State-aware EEG Representation Learning",
@@ -812,7 +1250,15 @@
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.44809760570526125,
+        "similarity_score": 0.38796329498291016,
+        "citation_text_length": 1231,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Steady-state visual evoked potentials-based 2D continuous control of brain-computer interface",
@@ -827,7 +1273,15 @@
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5378088055551054,
+        "similarity_score": 0.4656353294849396,
+        "citation_text_length": 1102,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "ELASTIQ: EEG-Language Alignment with Semantic Task Instruction and Querying",
@@ -842,7 +1296,15 @@
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.46443661451339724,
+        "similarity_score": 0.4423205852508545,
+        "citation_text_length": 253,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "BCI Competition 2020 Track 4 — Upper-limb grasping motor imagery",
@@ -851,13 +1313,44 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.nm000233.v1.0.1",
       "cited_by": 0,
-      "abstract": "BCIComp2020UpperLimb is a preprocessed derivative EEG dataset from BCI Competition 2020 Track 4 comprising motor imagery recordings of three grasping tasks (cylindrical, spherical, lumbrical) from 15 healthy subjects across three sessions. The dataset contains 60-channel EEG data sampled at 250 Hz with 450 trials per subject (150 trials per session). This is a processed version of the original BCI Competition 2020 data, designed to evaluate session-to-session transfer learning in brain-computer interface applications. Original 10 s trials (3 s rest, 3 s visual cue, 4 s motor imagery) have been preprocessed with 60 Hz notch filtering and cue-aligned epoching, with the 4 s motor imagery window extracted for analysis.",
+      "abstract": "BCIComp2020UpperLimb is a preprocessed EEG dataset from BCI Competition 2020 Track 4 containing motor imagery recordings of three upper-limb grasping tasks (cylindrical, spherical, lumbrical) from 15 healthy subjects across three sessions. The dataset comprises 60-channel EEG data sampled at 250 Hz with 450 trials per subject (150 trials per session × 3 sessions), designed to evaluate session-to-session transfer learning in brain-computer interface applications. Data were preprocessed with 60 Hz notch filtering and cue-aligned epoching, with the 4-second motor imagery window extracted for analysis.",
       "doi": "10.82901/nemar.nm000233.v1.0.1",
       "pmid": null,
       "openalex_id": "W7165644708",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 1.0,
+        "similarity_score": 0.9548235535621643,
+        "citation_text_length": 867,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Adaptive Machine Learning based Noise Filtering for EEG Signals for BCI Applications",
+      "author": "Dommeti Durga Prasad, N Reshma, M Jayanth, P Raviteja, M Adhil",
+      "venue": "2026 International Conference on Computer Networks and Inventive Communication Technologies (ICCNCT)",
+      "year": 2026,
+      "url": "https://doi.org/10.1109/iccnct68477.2026.11589986",
+      "cited_by": 0,
+      "abstract": "The Electroencephalogram (EEG) is the primary non-invasive modality for Brain-Computer Interfaces (BCIs), yet it is highly susceptible to artifacts from muscle activity, eye blinks, and environmental noise. Traditional filtering techniques often fail to handle the non-stationarity of these signals. This paper presents an adaptive 1D Convolutional Denoising Autoencoder (CNN-DAE) framework that learns to separate noise from neural signals directly from clinical data. Validated on the PhysioNet EEG Motor Movement/Imagery Dataset, the proposed system achieves an average Signal-to-Noise Ratio Improvement (SNRI) of 5.47 dB and a morphology preservation rate of up to 86.5%. Our result demonstrates that the lightweight CNN architecture is suitable for real-time BCI applications, ensuring high-fidelity signal reconstruction for accurate neural decoding.",
+      "doi": "10.1109/iccnct68477.2026.11589986",
+      "pmid": null,
+      "openalex_id": "W7167581549",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5728388567268848,
+        "similarity_score": 0.495964378118515,
+        "citation_text_length": 1141,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Speech Synthesis from EEG Signals Using Machine Learning Techniques",
@@ -872,7 +1365,15 @@
       "openalex_id": "W4417510000",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5123496343195438,
+        "similarity_score": 0.44359275698661804,
+        "citation_text_length": 1265,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Neuro-SIT : Neural Speech Imagery Transformer with Token-Level Representation for Sentence-Level EEG Decoding",
@@ -881,13 +1382,21 @@
       "year": 2026,
       "url": "https://doi.org/10.1145/3748522.3779851",
       "cited_by": 0,
-      "abstract": null,
+      "abstract": "Brain-computer interface (BCI) technology holds promising potential as an intuitive communication tool, especially in applications such as speech rehabilitation. Moreover, the rising prevalence of stroke and aphasia further underscores the clinical need for such technologies. Although decoding isolated phoneme or words provides limited communicative meaning, as it cannot capture relations such as subject, verb, and object, sentence-level representations enable more direct and functional communication. Nevertheless, BCI-based speech imagery decoding remains largely confined to the phoneme or word level. This study proposes a robust framework for sentence-level speech imagery decoding that infers a user's intended speech content using only electroencephalography (EEG) signals. To support applicability in search-oriented BCI scenarios, we designed a sentence-level decoding task using five semantically related sentences and collected EEG data from 38 participants. We propose the neural spe",
       "doi": "10.1145/3748522.3779851",
       "pmid": null,
       "openalex_id": "W7164030006",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6292273896932603,
+        "similarity_score": 0.5447856187820435,
+        "citation_text_length": 1310,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Decoding EEG-Based Motor Imagery of Hand Grasp Types for an Amputee Due to Birth Trauma",
@@ -902,7 +1411,61 @@
       "openalex_id": "W4408899003",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8051129615306856,
+        "similarity_score": 0.6970674991607666,
+        "citation_text_length": 1279,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Graph-Biased EEG Transformers for Silent Speech Decoding",
+      "author": "Saravanakumar Duraisamy, Eugénie J. M. Delaunay, Luis A. Leiva",
+      "venue": "ICASSP 2026 - 2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)",
+      "year": 2026,
+      "url": "https://doi.org/10.1109/icassp55912.2026.11465134",
+      "cited_by": 0,
+      "abstract": null,
+      "doi": "10.1109/icassp55912.2026.11465134",
+      "pmid": null,
+      "openalex_id": "W7155095832",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.45490653365850453,
+        "similarity_score": 0.4332443177700043,
+        "citation_text_length": 245,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "EEG-Aware Data Augmentation for Imagined Speech Classification Using Topographic Feature Mapping and 3D-CNN",
+      "author": "Sanae Belfrouh, Fatima Zahra Salmam, Rahhal Errattahi",
+      "venue": "2026 IEEE 13th International Symposium on Signal, Image, Video and Communications (ISIVC)",
+      "year": 2026,
+      "url": "https://doi.org/10.1109/isivc69944.2026.11574120",
+      "cited_by": 0,
+      "abstract": "Brain-computer interfaces (BCIs) based on imagined speech offer a promising avenue for restoring communication in paralyzed individuals. However, achieving high classification accuracy remains challenging due to low signal-to-noise ratios and limited training data. In this paper, we propose an EEG-aware data augmentation framework combined with Topographic Feature Mapping (TOPO-FM) and a three-dimensional convolutional neural network (3D-CNN) for five-class imagined speech classification. Our augmentation techniques-temporal jittering, amplitude scaling, channel-wise variability, spatial perturbations, and realistic noise injection-are designed to preserve neurophysiological signal properties while expanding training diversity. Using the BCI Competition 2020 Track 3 dataset, we systematically compare two augmentation ratios $(50 \\%, 100 \\%)$ against a non-augmented baseline under pooled subject-dependent 10-fold cross-validation. Results show that moderate augmentation (100%) achieves ",
+      "doi": "10.1109/isivc69944.2026.11574120",
+      "pmid": null,
+      "openalex_id": "W7166800751",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6373338335752488,
+        "similarity_score": 0.5518041849136353,
+        "citation_text_length": 1288,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Multimodal EEG–EMG and FEM-Based Adaptive Control of Passive Upper-Limb Exoskeletons",
@@ -917,22 +1480,61 @@
       "openalex_id": "W7165678874",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5804479417204857,
+        "similarity_score": 0.502552330493927,
+        "citation_text_length": 1198,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
-      "title": "UGR-MINDVOICE: A multimodal EEG-audio dataset for overt and covert Iberian Spanish speech production",
-      "author": "Ibon Vales Cortina, Owais Mujtaba Khanday, Marc Ouellet, José L. Pérez-Córdoba, Pablo Rodríguez-San Esteban, Laura Miccoli, Alberto Galdón, G Olivares-Granados, José A. González",
-      "venue": "Computer Speech & Language",
+      "title": "A discrete articulatory codebook for imagined-speech EEG: Weakly supervised mapping to surrogate kinematics",
+      "author": "Hatem T.M. Duhair, Masrullizam bin Mat Ibrahim, Jamil Abedalrahim Jamil Alsayaydeh, Rex Bacarra, Mohammed Al-Mhiqani, Ahmad Ali AlZubi",
+      "venue": "Array",
       "year": 2026,
-      "url": "https://doi.org/10.1016/j.csl.2026.101964",
+      "url": "https://doi.org/10.1016/j.array.2026.101073",
       "cited_by": 0,
-      "abstract": "We present UGR-MINDVOICE, the University of Granada (UGR) multimodal electroencephalography (EEG) and audio dataset for overt and covert speech in Iberian Spanish intended for basic neuroscience and brain-computer interface (BCI) research. The dataset features EEG and audio recordings from 15 native Spanish speakers engaged in both overt and covert speech production tasks. This dataset is unique in its inclusion of all Spanish phonemes and a diverse set of words spanning various semantic categories and different usage frequencies. Validation of the dataset confirmed the presence of robust sensory event-related potentials, including the visual P100 and the auditory N1 (N100), indicating reliable early perceptual processing and sustained participant attention to both visual and auditory stimuli. Additionally, the EEG data were classified into rest, covert speech, and overt speech conditions with an accuracy of 81.40%, demonstrating active participant engagement in the tasks. By providing",
-      "doi": "10.1016/j.csl.2026.101964",
+      "abstract": ": Decoding imagined speech from non-invasive EEG is constrained by low signal-to-noise ratios and by the absence of datasets that jointly record brain activity and articulation. We address both with a two-stage framework that maps EEG to a discrete articulatory representation under consensus-based weak supervision, requiring no simultaneous EEG and articulator recordings. Stage 1 trains a vector-quantised variational autoencoder on the Haskins Production Rate Comparison (HPRC) corpus, learning a fully utilised codebook of 32 articulatory primitives from 48-dimensional electromagnetic articulography. A label-free Connectionist Temporal Classification (CTC) probe recovers phonetic structure 19.8 percentage points above chance, with a phone error rate of 77.73% against 97.50%, confirming that the codes carry linguistic content independently of the downstream supervision. Stage 2 maps the five-dimensional class-probability vector of a gated progressive neural network to frame-wise code dis",
+      "doi": "10.1016/j.array.2026.101073",
       "pmid": null,
-      "openalex_id": "W7130819148",
+      "openalex_id": "W7167638814",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5955116960406305,
+        "similarity_score": 0.5155945420265198,
+        "citation_text_length": 1285,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Artificial intelligence for brain-to-speech decoding in paralysis: a systematic review",
+      "author": "Sanae Belfrouh, Fatima Zahra Salmam, Rahhal Errattahi, Mohamed Hanine, Waeal J. Obidallah, Hisham Alhulayyil",
+      "venue": "BMC Medical Informatics and Decision Making",
+      "year": 2026,
+      "url": "https://doi.org/10.1186/s12911-026-03552-8",
+      "cited_by": 0,
+      "abstract": "The loss of communication constitutes a critical challenge for people living with paralysis. Brain-computer interfaces (BCIs) paired with artificial intelligence (AI) provide an opportunity to restore this ability. This systematic review examined the use of AI to decode speech from brain signals through both invasive and non-invasive neural interfaces. Using the Preferred Reporting Items for Systematic reviews and Meta-Analyses (PRISMA) guidelines, we reviewed 115 studies published between 2019 and 2025 to extract data on acquisition protocols, signal preprocessing, and AI architectures. The quality of each study was evaluated using Quality Assessment of Diagnostic Accuracy Studies-2 (QUADAS-2). The results indicated that the invasive approach achieved a higher median multiclass classification accuracy than the non-invasive method (77.7%, interquartile range (IQR): 61.4-93.2% vs. 73.0%, IQR: 49.3-89.2%; N = 82 studies with comparable multiclass metrics), computed from the best-performi",
+      "doi": "10.1186/s12911-026-03552-8",
+      "pmid": "42186045",
+      "openalex_id": "W7162332574",
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4457809920608998,
+        "similarity_score": 0.3859575688838959,
+        "citation_text_length": 1276,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "BCI Competition 2020 Track 5 — ERP during walking (scalp, ear-EEG, and IMU)",
@@ -941,13 +1543,90 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.nm000184.v1.0.1",
       "cited_by": 0,
-      "abstract": "This dataset comprises EEG recordings from 15 healthy participants performing a visual P300 oddball task while walking on a treadmill at 1.6 m/s. The study includes simultaneous scalp-EEG (46 channels), ear-EEG (14 channels, 7 per ear), electrooculography (4 channels), and inertial measurement unit recordings (6 channels: 3-axis accelerometer and gyroscope) sampled at 100 Hz. Data were collected as part of BCI Competition 2020 Track 5 to evaluate brain-computer interface performance under ambulatory conditions, with trials temporally divided into training, validation, and test sets.",
+      "abstract": "This BIDS-formatted derivative dataset comprises EEG recordings from 15 healthy participants performing a visual P300 oddball task during treadmill walking at 1.6 m/s. The study includes simultaneous scalp-EEG (46 channels), ear-EEG (14 channels), electrooculography (4 channels), and inertial measurement unit recordings (6 channels) sampled at 100 Hz. Data were collected as part of BCI Competition 2020 Track 5 to evaluate brain-computer interface performance under ambulatory conditions. Trials are temporally divided into training, validation, and test sets.",
       "doi": "10.82901/nemar.nm000184.v1.0.1",
       "pmid": null,
       "openalex_id": "W7165668428",
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7920389181375505,
+        "similarity_score": 0.6857479810714722,
+        "citation_text_length": 833,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Does EEG Foundation Models Transfer to Speech? A Benchmark on Overt and Imagined Speech Decoding",
+      "author": "O. M. Khanday, Mohamed Baha Ben Ticha, Sanae Belfrouh, Marc Ouellet, Jose A.Gonzalez-Lopez",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "EEG foundation models pretrained on thousands of hours have shown large gains over task-specific networks for motor imagery, seizure detection, sleep staging, and emotion recognition, but their transfer to speech decoding-arguably the most demanding non-invasive BCI application-remains untested. We present the first systematic benchmark of EEG foundation models against strong convolutional baselines for speech decoding, using two corpora: UGR-MINDVOICE (overt and covert Iberian Spanish) and BCI Competition 2020 Track 3 (imagined speech). We compare two foundation models (LaBraM, EEGMamba) against three established baselines (EEGNet, ShallowFBCSPNet, EEGConformer) under a unified preprocessing and fine-tuning protocol. Large-scale EEG pretraining yields no consistent advantage over a 16K-parameter CNN on speech tasks, indicating that current general-purpose EEG pretraining does not yet transfer to speech production and motivating speech-specific foundation models.",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6036277779936792,
+        "similarity_score": 0.5226214528083801,
+        "citation_text_length": 1205,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Decoding Error-Related Potentials under Multisensory Feedback with Varying Congruency",
+      "author": "Yixin Liu, Kang Yin, Hye-Bin Shin, Seong-Whan Lee",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "Error-related potentials (ErrPs) are widely studied neural signatures associated with error processing in human-machine interaction. In realistic settings, error perception often occurs under heterogeneous multisensory feedback, where variability induced by sensory modality and feedback congruency poses challenges for reliable ErrP decoding. In particular, incongruent feedback is associated with increased decoding difficulty and reduced classification performance. To address this challenge, we investigate learning strategies for robust ErrP decoding under multimodal visual, auditory, and tactile feedback with controlled sensory congruency. We adopt a multi-branch EEGNet-based architecture with auxiliary supervision to improve robustness across heterogeneous conditions, without relying on explicit modality-specific assumptions. Experiments were conducted using a maze-observation task with unimodal, bimodal, and trimodal feedback configurations. Across subjects, the proposed approach ach",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4457821968197823,
+        "similarity_score": 0.38595861196517944,
+        "citation_text_length": 1176,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Rapid Calibration for Cross-Subject Imagined Speech Decoding Toward Restoring Communication",
+      "author": "Sanae Belfrouh, Rahhal Errattahi, Fatima Zahra Salmam",
+      "venue": "Odyssey 2026",
+      "year": 2026,
+      "url": "https://doi.org/10.21437/odyssey.2026-21",
+      "cited_by": 0,
+      "abstract": "Cross-subject generalization remains a critical barrier for EEG-based imagined speech decoding, limiting clinical viability of brain-computer interfaces for paralyzed individuals. We evaluate rapid calibration through over 28,000 experiments across three architectures, two channel configurations, seven calibration methods, and nine budgets on a 15-subject five-class dataset. Using leave-one-subject-out evaluation with topographic feature maps, we show that zero-shot transfer fails at chance level, while rapid calibration recovers performance substantially: the best configuration reaches 53.71% with 25 minutes of calibration. Most notably, we find a strong positive correlation between source-domain training accuracy and calibration effectiveness, suggesting that adaptation efficiency, rather than cross-subject generalization, may be the more useful de-sign objective for calibration-targeted BCIs in this regime.",
+      "doi": "10.21437/odyssey.2026-21",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.3389/fnhum.2022.898300",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6710564115643503,
+        "similarity_score": 0.5810012221336365,
+        "citation_text_length": 1118,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "B[FM]$^2$: Brain Foundation Model via Flow Matching with SplitUNet",
@@ -962,7 +1641,15 @@
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5627716505527497,
+        "similarity_score": 0.48724818229675293,
+        "citation_text_length": 1218,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "EvoBrain: Continual Learning of EEG Foundation Models Across Heterogeneous BCI Tasks",
@@ -977,67 +1664,38 @@
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "EEG-Aware Data Augmentation for Imagined Speech Classification Using Topographic Feature Mapping and 3D-CNN",
-      "author": "Sanae Belfrouh, Fatima Zahra Salmam, Rahhal Errattahi",
-      "venue": "2026 IEEE 13th International Symposium on Signal, Image, Video and Communications (ISIVC)",
-      "year": 2026,
-      "url": "https://doi.org/10.1109/ISIVC69944.2026.11574120",
-      "cited_by": 0,
-      "abstract": null,
-      "doi": "10.1109/ISIVC69944.2026.11574120",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5702441158890725,
+        "similarity_score": 0.49371784925460815,
+        "citation_text_length": 1185,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "TRACE: Temporal Routing with Autoregressive Cross-channel Experts for EEG Representation Learning",
       "author": "Fan Ma, Qier An, Peng Chen, Lingfei Qian, Xiang Lan, M. Jiang, Zhiling Gu, X. Papademetris, Huakun Xu",
-      "venue": "n/a",
-      "year": 2026,
-      "url": "n/a",
-      "cited_by": 0,
-      "abstract": "Learning transferable representations for electroencephalography (EEG) remains challenging because EEG signals are inherently multi-channel and non-stationary. Channels observed at the same time provide coupled measurements of neural activity, while the relevant temporal dynamics vary across contexts. This structure is poorly matched by architectures that apply uniform computation across time or route each channel patch independently. To this end, we propose TRACE, an autoregressive EEG pre-training framework that predicts future EEG patches from causal context while performing temporally adaptive and cross-channel coherent computation. At each temporal step, TRACE derives an expert routing decision from the causal cross-channel history and applies it jointly to all channels at that step. This preserves instantaneous cross-channel coherence while allowing different temporal regimes to activate different computation. Since routing is defined over the available channel set and causal tem",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "Graph-Biased EEG Transformers for Silent Speech Decoding",
-      "author": "Saravanakumar Duraisamy, Eugénie J. M. Delaunay, Luis A. Leiva",
-      "venue": "ICASSP 2026 - 2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)",
-      "year": 2026,
-      "url": "https://doi.org/10.1109/icassp55912.2026.11465134",
-      "cited_by": 0,
-      "abstract": null,
-      "doi": "10.1109/icassp55912.2026.11465134",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.3389/fnhum.2022.898300",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "SpecMoE: Spectral Mixture-of-Experts Foundation Model for Cross-Species EEG Decoding",
-      "author": "D. Darankoum, C. Habermacher, J. Volle, S. Grudinin",
       "venue": "ArXiv",
       "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2603.16739",
+      "url": "https://doi.org/10.48550/arXiv.2605.11380",
       "cited_by": 0,
-      "abstract": "Decoding the orchestration of neural activity in electroencephalography (EEG) signals is a central challenge in bridging neuroscience with artificial intelligence. Foundation models have made strides in generalized EEG decoding, yet many existing frameworks primarily relying on separate temporal and spectral masking of raw signals during self-supervised pretraining. Such strategies often tend to bias learning toward high-frequency oscillations, as low-frequency rhythmic patterns can be easily inferred from the unmasked signal. We introduce a foundation model that utilizes a novel Gaussian-smoothed masking scheme applied to short-time Fourier transform (STFT) maps. By jointly applying time, frequency, and time-frequency Gaussian masks, we make the reconstruction task much more challenging, forcing the model to learn intricate neural patterns across both high- and low-frequency domains. To effectively recover signals under this aggressive masking strategy, we design SpecHi-Net, a U-shape",
-      "doi": "10.48550/arXiv.2603.16739",
+      "abstract": "Learning transferable representations for electroencephalography (EEG) remains challenging because EEG signals are inherently multi-channel and non-stationary. Channels observed at the same time provide coupled measurements of neural activity, while the relevant temporal dynamics vary across contexts. This structure is poorly matched by architectures that apply uniform computation across time or route each channel patch independently. To this end, we propose TRACE, an autoregressive EEG pre-training framework that predicts future EEG patches from causal context while performing temporally adaptive and cross-channel coherent computation. At each temporal step, TRACE derives an expert routing decision from the causal cross-channel history and applies it jointly to all channels at that step. This preserves instantaneous cross-channel coherence while allowing different temporal regimes to activate different computation. Since routing is defined over the available channel set and causal tem",
+      "doi": "10.48550/arXiv.2605.11380",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5625961688160896,
+        "similarity_score": 0.48709625005722046,
+        "citation_text_length": 1242,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Multi-band CSP-AL-CWT feature extraction and CNN-BiLSTM-GRU for Motor Imagery Classification",
@@ -1052,7 +1710,15 @@
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6011406362056733,
+        "similarity_score": 0.5725148916244507,
+        "citation_text_length": 216,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Effect of Spoken Speech in Decoding Imagined Speech from Non-Invasive Human Brain Signals",
@@ -1067,7 +1733,15 @@
       "openalex_id": null,
       "source_doi": "10.3389/fnhum.2022.898300",
       "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.475224307179451,
+        "similarity_score": 0.4525945782661438,
+        "citation_text_length": 191,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Program Comprehension Support for Assembly Language: Assessing the Needs of Specialized Groups",
@@ -1084,7 +1758,31 @@
       "source_relation": null,
       "discovery_backend": "openalex",
       "discovery_method": "accession_mention",
-      "matched_accession": "nm000233"
+      "matched_accession": "nm000233",
+      "confidence_scoring": {
+        "confidence_score": 0.16804234236478807,
+        "similarity_score": 0.15276576578617096,
+        "citation_text_length": 1512,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
-  ]
+  ],
+  "confidence_scoring": {
+    "model_used": "Qwen/Qwen3-Embedding-0.6B",
+    "scoring_date": "2026-08-01T16:37:40.158670+00:00",
+    "dataset_text_length": 2403,
+    "num_citations_scored": 74,
+    "summary_stats": {
+      "mean_confidence": 0.5667504612658475,
+      "median_confidence": 0.5714786151051522,
+      "std_confidence": 0.11920912655645341,
+      "min_confidence": 0.16804234236478807,
+      "max_confidence": 1.0,
+      "high_confidence_count": 8,
+      "medium_confidence_count": 63,
+      "low_confidence_count": 3
+    }
+  }
 }

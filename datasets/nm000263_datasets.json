@@ -1,0 +1,61 @@
+{
+  "dataset_id": "nm000263",
+  "date_retrieved": "2026-08-01T10:01:13.886011+00:00",
+  "dataset_description": {
+    "Name": "Visual object ERP EEG dataset (Kaneshiro et al. 2015)",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-3.0",
+    "Authors": [
+      "Blair Kaneshiro",
+      "Marcos Perreau Guimaraes",
+      "Hyung-Suk Kim",
+      "Anthony M. Norcia",
+      "Patrick Suppes"
+    ],
+    "ReferencesAndLinks": [
+      "https://purl.stanford.edu/bq914sc3730"
+    ],
+    "Keywords": [
+      "Healthy",
+      "ERP",
+      "Visual ERP",
+      "p300"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000263",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0dev0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1371/journal.pone.0135697",
+        "URL": "https://purl.stanford.edu/bq914sc3730"
+      },
+      {
+        "DOI": "doi:10.1371/journal.pone.0135697"
+      }
+    ],
+    "PublicationYear": 2015,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000263-blue)](https://doi.org/10.82901/nemar.nm000263)\n\n# Visual object ERP EEG dataset (Kaneshiro et al. 2015)\n\n## Overview\n\nA visual event-related potential (ERP) dataset comprising 124-channel EEG recordings from 10 healthy participants viewing photographs from six object categories (human body, human face, animal body, animal face, fruit/vegetable, and inanimate objects). The dataset contains 5,184 trials collected during a visual object recognition task with 72 images per category, each presented for 500 ms with a 750 ms interstimulus interval. Data were acquired at 62.5 Hz using a high-density geodesic sensor net and are suitable for investigating neural representations of object categories through single-trial EEG classification and representational similarity analysis.\n\n## Dataset Summary\n\n| Property | Value |\n|---|---|\n| Subjects | 10 |\n| Channels | 124 |\n| Classes | 6 |\n| Trial length | 0.5 s |\n| Sampling frequency | 62.5 Hz |\n| Sessions | 1 |\n| Total trials | 5184 |\n| Paradigm | P300 |\n\n## Data Collection Methods\n\nEEG data were acquired from 10 healthy participants using a 124-channel EGI Net Amps 300 system with HydroCel Geodesic Sensor Net montage (GSN-HydroCel-128) at a sampling rate of 62.5 Hz with average reference. Participants viewed 72 photographs from six object categories presented for 500 ms each with a 750 ms interstimulus interval. Data were preprocessed and organized in BIDS format.\n\n## How to Access via MOABB\n\nInstall MOABB and load this dataset directly:\n\n```python\nfrom moabb.datasets import Kaneshiro2015\nfrom moabb.paradigms import P300\nparadigm = P300()\n\ndataset = Kaneshiro2015()\nX, y, metadata = paradigm.get_data(dataset)\n```\n\nFor more details see the [MOABB documentation](https://moabb.neurotechx.com/) and the\n[MOABB dataset page](https://moabb.neurotechx.com/docs/generated/moabb.datasets.Kaneshiro2015.html).\n\n## Citation\n\nIf you use this dataset please cite the primary publication:\n\n> DOI: [10.1371/journal.pone.0135697](https://doi.org/10.1371/journal.pone.0135697)\n\n## NEMAR / MOABB Benchmark Collection\n\nThis BIDS-formatted dataset was converted from the original data using the\n[MOABB](https://moabb.neurotechx.com/) pipeline and re-hosted on\n[NEMAR](https://nemar.org/) as part of the MOABB benchmark collection.\nThe original data and license terms apply — see `dataset_description.json` for details.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000263",
+    "exists": true,
+    "description": "Visual object ERP EEG dataset (Kaneshiro et al. 2015)",
+    "created_at": "2026-06-19T23:22:49+00:00",
+    "updated_at": "2026-07-23T01:10:23+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

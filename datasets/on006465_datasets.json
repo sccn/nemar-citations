@@ -1,0 +1,40 @@
+{
+  "dataset_id": "on006465",
+  "date_retrieved": "2026-08-01T10:22:17.890715+00:00",
+  "dataset_description": {
+    "Name": "3M-CPSEED：An EEG-based Dataset for Chinese Pinyin Production in Overt, Silent-intended, and Imagined Speech",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Xinyu Ma",
+      "Jiang Yi",
+      "Ning Jiang"
+    ],
+    "HowToAcknowledge": "",
+    "License": "CC0",
+    "DatasetDOI": "10.82901/nemar.on006465",
+    "Funding": [
+      "a 1.3.5 project for disciplines of excellence from West China Hospital (#ZYYC22001)"
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds006465.v2.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on006465-blue)](https://doi.org/10.82901/nemar.on006465)\n\nOverview\n\nThis dataset, named 3M-CPSEED, consists of electroencephalogram (EEG) recordings obtained from 20 participants engaged in imagined speech tasks. 3M-CPSEED holds significant implications for speech neurophysiology research, not only facilitating exploration of neural activity differences across pinyin articulations but also enabling robust transfer learning studies for other alphabetic languages.\n\nData Collection\n\nParticipants: 20 healthy, right-handed individuals (average age: 24.55 years, standard deviation: 2.58 years; 11 females, 9 males) who are native Chinese speakers.\n\nMaterials: To strike a balance between comprehensively capturing the articulatory features of the Chinese phonological system and maintaining a concise, controllable set of stimuli, we selected this set of Pinyin sounds: Finals: \"a, i, u, ü\"; Initials: \"m, f, j, l, k, ch\".\n\nProcedure: Participants read Pinyin displayed on a screen at 'speak', 'Silently articulated' and 'imagined' phase. Each participant completed 4 blocks of 1600 trials in total.\n\nData Structure\n\nThe dataset is organized according to the BIDS standard:\n\nMain Folder:\ndataset_description.json: Description of the dataset.\nparticipants.tsv: Participant information.\nparticipants.json: Details of columns in participants.tsv.\nREADME: General information about the dataset.\ndata_all.mat: Labeled EEG data of all subjects in MAT format.\nDerivative Data:\npreproc/: Preprocessed data, including subfolders for each subject (sub-01, etc.), with data in .mat formats .\n\nAcknowledgments\nThis work was supported by a 1.3.5 project for disciplines of excellence from West China Hospital (#ZYYC22001).",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on006465",
+    "exists": true,
+    "description": "3M-CPSEED：An EEG-based Dataset for Chinese Pinyin Production in Overt, Silent-intended, and Imagined Speech",
+    "created_at": "2026-06-29T01:01:36+00:00",
+    "updated_at": "2026-07-23T01:29:20+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

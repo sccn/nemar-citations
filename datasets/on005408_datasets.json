@@ -1,0 +1,44 @@
+{
+  "dataset_id": "on005408",
+  "date_retrieved": "2026-08-01T10:17:21.721813+00:00",
+  "dataset_description": {
+    "Name": "The effect of speech masking on the human subcortical response to continuous speech",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Melissa J. Polonenko",
+      "Ross K. Maddox"
+    ],
+    "Funding": [
+      "NIDCD R01DC017962"
+    ],
+    "EthicsApprovals": [
+      "Approved by the University of Rochester Subjects Review Board (#1227)"
+    ],
+    "DatasetDOI": "10.82901/nemar.on005408",
+    "ReferencesAndLinks": [
+      "Polonenko, M. J., & Maddox, R. K. (2025). The effect of speech masking on the human subcortical response to continuous speech. eNeuro 24 March 2025, 12 (4) ENEURO.0561-24.2025; https://doi.org/10.1523/ENEURO.0561-24.2025"
+    ],
+    "License": "CC0",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds005408.v1.0.1"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on005408-blue)](https://doi.org/10.82901/nemar.on005408)\n\n\nREADME\n------\nDetails related to access to the data\n-------------------------------------\nPlease contact the following authors for further information:\n    Melissa Polonenko (email: mpolonen@umn.edu) [corresponding author]\n    Ross Maddox (email: rkmaddox@med.umich.edu)\n\nOverview\n--------\nThis is the \"peaky_snr\" dataset for the paper by\nPolonenko MJ & Maddox RK, with citation listed below.\n\neNeuro: Polonenko, M. J., & Maddox, R. K. (2025). The effect of speech masking on the human subcortical response to continuous speech. eNeuro 24 March 2025, 12 (4) ENEURO.0561-24.2025; https://doi.org/10.1523/ENEURO.0561-24.2025\n\nBioRxiv: https://www.biorxiv.org/content/10.1101/2024.12.10.627771v1\n\nAuditory brainstem responses (ABRs) were derived to continuous peaky speech\nfrom between one up to five simultaneously presented talkers and from clicks.\nData was collected from June to July 2021.\n\n\nGoal: To better understand masking’s effects on the subcortical neural encoding\nof naturally uttered speech in human listeners.\n\nTo do this we leveraged our recently developed method for determining the\nauditory brainstem response (ABR) to speech (Polonenko and Maddox, 2021).\nWhereas our previous work was aimed at encoding of single talkers, here we\ndetermined the ABR to speech in quiet as well as in the presence of varying\nnumbers of other talkers. \n\nThe details of the experiment can be found at Polonenko & Maddox (2024). \n\nStimuli:\n    1) randomized click trains at an average rate of 40 Hz, \n    60 x 10 s trials for a total of 10 minutes;\n    2) peaky speech for up to 5 male narrators. 30 minutes of each SNR\n    (clean, 0 dB, -3 dB, -6 dB), corresponding to 1, 2, 3, and 5 talkers\n    presented simultaneously, each set to 65 dB. \n    \n    NOTE: files for each story were completely randomized. Random combinations\n    were created so that each story was equally represented in the data.\n\nThe code for stimulus preprocessing and EEG analysis is available on Github:\n    https://github.com/polonenkolab/peaky_snr\n\nFormat\n------\nThe dataset is formatted according to the EEG Brain Imaging Data Structure. It \nincludes EEG recording from participant 01 to 25 in raw brainvision format\n(3 files: .eeg, .vhdr, .vmrk) and stimuli files in format of .hdf5. The stimuli\nfiles contain the audio ('audio'), and regressors for the deconvolution \n('pinds' are the pulse indices, 'anm' is an auditory nerve model regressor,\n which was used during analyses but was not included as part of the article). \n\nGenerally, you can find detailed event data in the .tsv files and descriptions\nin the accompanying .json files. Raw eeg files are provided in the Brain\nProducts format.\n\nParticipants\n------------\n25 participants, mean ± SD age of 23.4 ± 5.5 years (19-37 years)\n\nInclusion criteria:\n    1) Age between 18-40 years\n    2) Normal hearing: audiometric thresholds 20 dB HL or better from 500 to 8000 Hz\n    3) Speak English as their primary language\n\nPlease see participants.tsv for more information.\n\nApparatus\n---------\nParticipants sat in a darkened sound-isolating booth and rested or watched\nsilent videos with closed captioning. Stimuli were presented at an average level\nof 65 dB SPL (per story; total for 5 talkers = 71 dB) and a sampling rate of \n48 kHz through ER-2 insert earphones plugged into an RME Babyface Pro digital\nsound card. Custom python scripts using expyfun were used to control the \nexperiment and stimulus presentation.\n\nDetails about the experiment\n----------------------------\nFor a detailed description of the task, see Polonenko & Maddox (2024) and the\nsupplied `task-peaky_snr_eeg.json` file. The 4 SNR speech conditions and the\nstory tokens were randomized. This means that the participant would not be able\nto follow the stories. For clicks the trials were not randomized\n(already random clicks).\n\nTrigger onset times in the tsv files have already been corrected for the tubing\ndelay of the insert earphones (but not in the events of the raw files).\nTriggers with values of \"1\" were recorded to the onset of the 10 s audio, and\nshortly after triggers with values of \"4\" or \"8\" were stamped to indicate info\nabout the trial. This was done by converting the decimal trial number to bits,\ndenoted b, then calculating 2 ** (b + 2). We've specified these trial triggers\nand more metadata of the events in each of the '*_eeg_events.tsv\" file, which\nis sufficient to know which trial corresponded to which type of stimulus\n(clicks or speech), snr, and which files of which stories were presented.\ne.g., alice_000_peaky_diotic_regress.hdf5 for the first file of the story\ncalled 'alice' (Alice in Wonderland).\n\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on005408",
+    "exists": true,
+    "description": "The effect of speech masking on the human subcortical response to continuous speech",
+    "created_at": "2026-06-27T01:01:38+00:00",
+    "updated_at": "2026-07-23T01:24:24+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

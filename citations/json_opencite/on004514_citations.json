@@ -1,29 +1,77 @@
 {
   "dataset_id": "on004514",
   "num_citations": 0,
-  "date_last_updated": "2026-07-03T22:24:17.751078+00:00",
+  "date_last_updated": "2026-08-01T15:55:24.972765+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-07-03T22:24:17.751078+00:00",
+    "fetch_date": "2026-08-01T15:55:24.972765+00:00",
     "processing_version": "1.0",
-    "fetch_status": "other",
-    "anchor_count": 0,
-    "anchor_errors": {},
+    "fetch_status": "not_found",
+    "anchor_count": 1,
+    "anchor_errors": {
+      "10.82901/nemar.on004514": "not_found"
+    },
     "schema_version": "2.1",
     "discovery_backend": "opencite",
-    "anchor_judgment_model": null,
-    "anchors": [],
-    "searched_dois": [],
-    "keywords": [],
-    "methods_description": null,
-    "funding": [],
-    "searched_accessions": [
-      "on004514",
-      "ds004514"
+    "anchor_judgment_model": "gemma4:e4b",
+    "anchors": [
+      {
+        "identifier": "10.1038/s41598-024-78992-1",
+        "identifier_type": "doi",
+        "source_relation": "IsDescribedBy",
+        "classification": "irrelevant",
+        "kept": false,
+        "paper_title": "Major alteration of lung microbiome and the host responses in critically ill COVID-19 patients with high viral load",
+        "paper_year": 2024,
+        "paper_venue": "Scientific Reports",
+        "reason": "The dataset concerns EEG/fNIRS for semantic decoding, while the paper discusses lung microbiome and COVID-19, showing no topical or methodological link.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.1088/1741-2552/ac0bfa",
+        "identifier_type": "doi",
+        "source_relation": "IsDescribedBy",
+        "classification": "related_work",
+        "kept": false,
+        "paper_title": "Implementing a calibration-free SSVEP-based BCI system with 160 targets",
+        "paper_year": 2021,
+        "paper_venue": "Journal of Neural Engineering",
+        "reason": "The paper describes a general SSVEP-BCI system with 160 targets, which is topically related to EEG but does not introduce or describe the specific simultaneous EEG/fNIRS dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.on004514",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
     ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 0
+    "searched_dois": [
+      "10.82901/nemar.on004514"
+    ],
+    "keywords": [
+      "EEG",
+      "fNIRS",
+      "semantic decoding",
+      "brain-computer interfaces",
+      "motor imagery",
+      "multimodal neuroimaging",
+      "mental imagery"
+    ],
+    "methods_description": "EEG data were acquired using a BioSemi ActiveTwo system with 64 electrodes positioned according to the 10-20 system at 2048 Hz sampling rate, supplemented with earlobe reference electrodes, galvanic skin response measurement, and respiration monitoring. fNIRS data were collected simultaneously using a NIRx NIRScoutXP continuous wave imaging system with 8 light sources and 4 detectors in integrated fNIRS-EEG montages (frontal and temporal configurations).",
+    "funding": []
   },
-  "citation_details": []
+  "citation_details": [],
+  "confidence_scoring": {
+    "model_used": "Qwen/Qwen3-Embedding-0.6B",
+    "scoring_date": "2026-08-01T16:58:43.147437+00:00",
+    "dataset_text_length": 2329,
+    "num_citations_scored": 0
+  }
 }

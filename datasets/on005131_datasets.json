@@ -1,0 +1,35 @@
+{
+  "dataset_id": "on005131",
+  "date_retrieved": "2026-08-01T10:15:49.911886+00:00",
+  "dataset_description": {
+    "Name": "Evoked responses to elevated sounds",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Ole Bialas",
+      "Marc Schoewiesner"
+    ],
+    "DatasetDOI": "10.82901/nemar.on005131",
+    "License": "CC0",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds005131.v1.0.1"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on005131-blue)](https://doi.org/10.82901/nemar.on005131)\n\n# Overview\n\nThe dataset consists of data from two experiments in which subjects were presented bursts of noise from loudspeakers at different elevations. Subjects who participated in either experiment were initially tested in their ability to localize elevated sound sources. Both experiments were conducted in a hemi-anechoic chamber.\nLocalization Tests\n\nBursts of pink noise were presented from loudspeakers at different elevations and 10° azimuth (to the listeners right). In the localization test preceding experiment I, these loudspeakers were positioned at elevations of +50°, +25°, 0° and -25° while the localization test preceding experiment II also included a loudspeaker at -50° elevation. Localization test data is missing for sub-001, sub-002 and sub-003\n\n# Deviant Detection (Experiment 1)\n\nSubjects 001-023 participated in this experiment. Subjects heard a long trail of noise from one loudspeaker (adapter), followed by a short burst of noise from another loudspeaker (probe). The elevation of the adapter and probe are encoded in the event values: 2: adapter at 37.5°, probe at 12.5° 3: adapter at 37.5°, probe at -12.5° 4: adapter at 37.5°, probe at -37.5° 5: adapter at -37.5°, probe at 37.5° 6: adapter at -37.5°, probe at 12.5° 7: adapter at -37.5°, probe at -12.5° 8: no adapter, any non-target location (deviant) The behavioral data contains the trial numbers where a deviant was presented and weather the subject responded within one second by pressing a button.\n\n# One-Back (Experiment II)\n\nSubjects 100-134 participated in this experiment. Subjects heard a long trail of white noise through open headphones followed by a short burst of noise from one of the loudspeakers. The loudspeaker's elevation is encoded in the event values: 1: 37.5°, 2: 12.5°, 3:-23.5°, 4:-37.5° Roughly five percent of trials were targets where subjects heard a beep after the trial, prompting them to localize the previously heard sound. The number of those target trials, as well as the target's elevation and the subject's response can be found in thee behavioral data.\nA subset (sub-130-134) participated in a second session of the experiment. This session was identical to the first task with the difference that the subjects had molds inserted that disrupted their ability to perceive sound elevation.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on005131",
+    "exists": true,
+    "description": "Evoked responses to elevated sounds",
+    "created_at": "2026-06-26T11:31:43+00:00",
+    "updated_at": "2026-07-23T01:22:55+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000274",
   "num_citations": 2,
-  "date_last_updated": "2026-07-03T15:23:36.343668+00:00",
+  "date_last_updated": "2026-08-01T15:35:34.947625+00:00",
   "metadata": {
     "total_cumulative_citations": 3,
-    "fetch_date": "2026-07-03T15:23:36.343668+00:00",
+    "fetch_date": "2026-08-01T15:35:34.947625+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -105,7 +105,15 @@
       "openalex_id": "W4400969643",
       "source_doi": "10.48550/arxiv.2202.12950",
       "source_relation": "References",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6071573084592821,
+        "similarity_score": 0.5256773233413696,
+        "citation_text_length": 1218,
+        "dataset_text_length": 2655,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "BEETL Competition 2021 Motor Imagery Dataset A — transfer learning benchmark",
@@ -120,7 +128,31 @@
       "openalex_id": "W7165621908",
       "source_doi": "10.48550/arxiv.2202.12950",
       "source_relation": "References",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 1.0,
+        "similarity_score": 0.939359188079834,
+        "citation_text_length": 1144,
+        "dataset_text_length": 2655,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
-  ]
+  ],
+  "confidence_scoring": {
+    "model_used": "Qwen/Qwen3-Embedding-0.6B",
+    "scoring_date": "2026-08-01T16:41:29.988739+00:00",
+    "dataset_text_length": 2655,
+    "num_citations_scored": 2,
+    "summary_stats": {
+      "mean_confidence": 0.803578654229641,
+      "median_confidence": 0.803578654229641,
+      "std_confidence": 0.19642134577035897,
+      "min_confidence": 0.6071573084592821,
+      "max_confidence": 1.0,
+      "high_confidence_count": 1,
+      "medium_confidence_count": 1,
+      "low_confidence_count": 0
+    }
+  }
 }

@@ -1,0 +1,43 @@
+{
+  "dataset_id": "on006576",
+  "date_retrieved": "2026-08-01T10:22:52.437044+00:00",
+  "dataset_description": {
+    "BIDSVersion": "1.6.0",
+    "Authors": [
+      "Elizabeth A. McDevitt",
+      "Ghootae Kim",
+      "Nicholas B. Turk-Browne",
+      "Kenneth A. Norman"
+    ],
+    "Name": "The role of REM sleep in neural differentiation of memories in the hippocampus",
+    "DatasetType": "raw",
+    "HowToAcknowledge": "Please cite: \nE.A. McDevitt, G. Kim, N.B. Turk-Browne, K.A. Norman (2026). The role of rapid eye movement sleep in neural differentiation of memories in the hippocampus. Journal of Cognitive Neuroscience, 10.1162/jocn.a.82",
+    "Funding": [
+      "NIMH R01-MH069456",
+      "NIMH K99-MH126154"
+    ],
+    "Acknowledgements": "Funding for the acquisition of the data was provided in part by the Regina and John Scully ’66 Center for the Neuroscience of Mind and Behavior.",
+    "DatasetDOI": "10.82901/nemar.on006576",
+    "License": "CC0",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds006576.v1.0.5"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on006576-blue)](https://doi.org/10.82901/nemar.on006576)\n\nThis dataset contains the fMRI and EEG data for E.A. McDevitt, G. Kim, N.B. Turk-Browne, K.A. Norman (2026). The role of rapid eye movement sleep in neural differentiation of memories in the hippocampus. Journal of Cognitive Neuroscience, 10.1162/jocn.a.82\n\nPlease refer to the paper for detailed methods. \n\nThe dataset includes 69 participants with three fMRI scans and one EEG session per participant. Depending on the participant's condition, the EEG session either contains sleep data from a nap or data recorded during a quiet wake session.  \n\nPlease contact Elizabeth McDevitt (emcdevitt@princeton.edu) if you have any questions. \n\nNotes about the dataset: \n\nThe following subjects/sessions do not include a T1w anatomical scan: sub-160 ses-00; sub-170 ses-00; sub-178 ses-01\n\n- sub-107/ses-02/func: There are three runs of the decision task included instead of two. During decision_run-01, the participant did not respond to 'B' trials (coded in column trial_type). Therefore, there are many trials with no response_accuracy or response_times recorded in task-decision_run-01_events.tsv. Immediately following this run, the same task was re-run as decision_run-03 to collect behavioral responses; therefore the data associated with task-decision_run-03 can be considered a \"repeat\" of task-decision_run-01. Decision_run-02 was run as expected during the second cycle of the reward prediction task.  \n\n- sub-108_ses-02_task-reward_run-01_events.tsv: Many trials have no response_accuracy or response_time recorded. The participant misunderstood instructions and did not respond on trials where they predicted a \"neutral\" outcome. \n\n- sub-182_ses-01_task-study_run-01_events.tsv: There was an issue with Matlab not recording \"2\" button presses during this run of the task. The experimenter recoded all \"no response\" trials as \"2\" and used this to code response_accuracy. However, there were no response_times recorded for these trials. ",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on006576",
+    "exists": true,
+    "description": "The role of REM sleep in neural differentiation of memories in the hippocampus",
+    "created_at": "2026-06-29T05:31:46+00:00",
+    "updated_at": "2026-07-23T01:29:46+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

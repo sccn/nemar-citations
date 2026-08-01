@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000205",
-  "num_citations": 26,
-  "date_last_updated": "2026-07-03T12:25:59.833515+00:00",
+  "num_citations": 27,
+  "date_last_updated": "2026-08-01T15:27:17.620299+00:00",
   "metadata": {
-    "total_cumulative_citations": 162,
-    "fetch_date": "2026-07-03T12:25:59.833515+00:00",
+    "total_cumulative_citations": 176,
+    "fetch_date": "2026-08-01T15:27:17.620299+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -84,7 +84,7 @@
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 26
+    "num_datapaper_citations": 27
   },
   "citation_details": [
     {
@@ -93,7 +93,7 @@
       "venue": "IEEE Communications Surveys & Tutorials",
       "year": 2024,
       "url": "https://doi.org/10.1109/comst.2024.3396847",
-      "cited_by": 27,
+      "cited_by": 31,
       "abstract": "Brain-computer interfaces (BCIs) aim to directly bridge the human brain and the outside world through acquiring and processing the brain signals in real time. In recent two decades, tremendous progress has been made in terms of BCI paradigms and decoding algorithms. The information transfer rate of the BCI systems has been significantly enhanced, and the communication community are considering including the BCI technologies into the 6G networks and beyond. However, some critical problems and challenges remain. To some extent, the BCI systems resemble the wireless communication systems, as brain signals are generated and transmitted by the neurons and received by the sensors, propagating through multiple brain tissues which cause inevitable attenuation and mixing effects. Therefore, by following this idea, a systematic review of the BCI technologies is provided through comparing it with wireless communications. The main challenges of BCI lie in brain channel modelling, modulation, signa",
       "doi": "10.1109/comst.2024.3396847",
       "pmid": null,
@@ -116,7 +116,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2024,
       "url": "https://doi.org/10.1109/tnsre.2024.3357863",
-      "cited_by": 22,
+      "cited_by": 23,
       "abstract": "Electroencephalography (EEG) datasets are characterized by low signal-to-noise signals and unquantifiable noisy labels, which hinder the classification performance in rapid serial visual presentation (RSVP) tasks. Previous approaches primarily relied on supervised learning (SL), which may result in overfitting and reduced generalization performance. In this paper, we propose a novel multi-task collaborative network (MTCN) that integrates both SL and self-supervised learning (SSL) to extract more generalized EEG representations. The original SL task, i.e., the RSVP EEG classification task, is used to capture initial representations and establish classification thresholds for targets and non-targets. Two SSL tasks, including the masked temporal/spatial recognition task, are designed to enhance temporal dynamics extraction and capture the inherent spatial relationships among brain regions, respectively. The MTCN simultaneously learns from multiple tasks to derive a comprehensive represent",
       "doi": "10.1109/tnsre.2024.3357863",
       "pmid": "38265910",
@@ -162,7 +162,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2023,
       "url": "https://doi.org/10.3389/fnins.2023.1132290",
-      "cited_by": 13,
+      "cited_by": 16,
       "abstract": "Introduction: Currently, it is still a challenge to detect single-trial P300 from electroencephalography (EEG) signals. In this paper, to address the typical problems faced by existing single-trial P300 classification, such as complex, time-consuming and low accuracy processes, a single-trial P300 classification algorithm based on multiplayer data fusion convolutional neural network (CNN) is proposed to construct a centralized collaborative brain-computer interfaces (cBCI) for fast and highly accurate classification of P300 EEG signals. Methods: In this paper, two multi-person data fusion methods (parallel data fusion and serial data fusion) are used in the data pre-processing stage to fuse multi-person EEG information stimulated by the same task instructions, and then the fused data is fed as input to the CNN for classification. In building the CNN network for single-trial P300 classification, the Conv layer was first used to extract the features of single-trial P300, and then the Max",
       "doi": "10.3389/fnins.2023.1132290",
       "pmid": "36908799",
@@ -174,6 +174,29 @@
         "confidence_score": 0.6794524794816972,
         "similarity_score": 0.5882705450057983,
         "citation_text_length": 1214,
+        "dataset_text_length": 2327,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Single-Trial EEG Classification Using Spatio-Temporal Weighting and Correlation Analysis for RSVP-Based Collaborative Brain Computer Interface",
+      "author": "Ziwei Zhao, Yanfei Lin, Yijun Wang, Xiaorong Gao",
+      "venue": "IEEE Transactions on Biomedical Engineering",
+      "year": 2023,
+      "url": "https://doi.org/10.1109/tbme.2023.3309255",
+      "cited_by": 12,
+      "abstract": "OBJECTIVE: Since single brain computer interface (BCI) is limited in performance, it is necessary to develop collaborative BCI (cBCI) systems which integrate multi-user electroencephalogram (EEG) information to improve system performance. However, there are still some challenges in cBCI systems, including effective discriminant feature extraction of multi-user EEG data, fusion algorithms, time reduction of system calibration, etc. Methods: This study proposed an event-related potential (ERP) feature extraction and classification algorithm of spatio-temporal weighting and correlation analysis (STC) to improve the performance of cBCI systems. The proposed STC algorithm consisted of three modules. First, source extraction and interval modeling were used to overcome the problem of inter-trial variability. Second, spatio-temporal weighting and temporal projection were utilized to extract effective discriminant features for multi-user information fusion and cross-session transfer. Third, cor",
+      "doi": "10.1109/tbme.2023.3309255",
+      "pmid": "37756179",
+      "openalex_id": "W4387092736",
+      "source_doi": "10.3389/fnins.2020.579469",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6919779101014139,
+        "similarity_score": 0.5991150736808777,
+        "citation_text_length": 1272,
         "dataset_text_length": 2327,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -197,29 +220,6 @@
         "confidence_score": 0.4869886681437493,
         "similarity_score": 0.4216352105140686,
         "citation_text_length": 1160,
-        "dataset_text_length": 2327,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Single-Trial EEG Classification Using Spatio-Temporal Weighting and Correlation Analysis for RSVP-Based Collaborative Brain Computer Interface",
-      "author": "Ziwei Zhao, Yanfei Lin, Yijun Wang, Xiaorong Gao",
-      "venue": "IEEE Transactions on Biomedical Engineering",
-      "year": 2023,
-      "url": "https://doi.org/10.1109/tbme.2023.3309255",
-      "cited_by": 11,
-      "abstract": "OBJECTIVE: Since single brain computer interface (BCI) is limited in performance, it is necessary to develop collaborative BCI (cBCI) systems which integrate multi-user electroencephalogram (EEG) information to improve system performance. However, there are still some challenges in cBCI systems, including effective discriminant feature extraction of multi-user EEG data, fusion algorithms, time reduction of system calibration, etc. Methods: This study proposed an event-related potential (ERP) feature extraction and classification algorithm of spatio-temporal weighting and correlation analysis (STC) to improve the performance of cBCI systems. The proposed STC algorithm consisted of three modules. First, source extraction and interval modeling were used to overcome the problem of inter-trial variability. Second, spatio-temporal weighting and temporal projection were utilized to extract effective discriminant features for multi-user information fusion and cross-session transfer. Third, cor",
-      "doi": "10.1109/tbme.2023.3309255",
-      "pmid": "37756179",
-      "openalex_id": "W4387092736",
-      "source_doi": "10.3389/fnins.2020.579469",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6919779101014139,
-        "similarity_score": 0.5991150736808777,
-        "citation_text_length": 1272,
         "dataset_text_length": 2327,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -324,7 +324,7 @@
       "year": 2023,
       "url": "https://doi.org/10.1109/tcds.2023.3245048",
       "cited_by": 5,
-      "abstract": "The electroencephalogram (EEG) hyperscanning technique has been demonstrated to facilitate the applicability of a collaborative brain–computer interface (cBCI) to augment human performance with respect to the collective intelligence of multiple brains. However, assembling a hyperscanning platform with commercial products inevitably introduces practical and cost burdens regarding labor and hardware setup, hindering group scalability. This work thus explores how effectively a low-cost, custom-made EEG hyperscanning platform can be achieved by demonstrating a cBCI framework. This work quantifies brain–computer interface (BCI) performance in collaborative and single-brain scenarios applied to the EEG data set collected from three subjects simultaneously participating in a target-distractor differentiation task over ten days. This work also compares various brain-fusion scenarios with feature-extraction methods for multiple brains. Given the 30 pseudo brains (i.e., 3 subjects <inline-formul",
+      "abstract": "The electroencephalogram (EEG) hyperscanning technique has been demonstrated to facilitate the applicability of a collaborative brain–computer interface (cBCI) to augment human performance with respect to the collective intelligence of multiple brains. However, assembling a hyperscanning platform with commercial products inevitably introduces practical and cost burdens regarding labor and hardware setup, hindering group scalability. This work thus explores how effectively a low-cost, custom-made EEG hyperscanning platform can be achieved by demonstrating a cBCI framework. This work quantifies brain–computer interface (BCI) performance in collaborative and single-brain scenarios applied to the EEG data set collected from three subjects simultaneously participating in a target-distractor differentiation task over ten days. This work also compares various brain-fusion scenarios with feature-extraction methods for multiple brains. Given the 30 pseudo brains (i.e., 3 subjects$\\times10$day s",
       "doi": "10.1109/tcds.2023.3245048",
       "pmid": null,
       "openalex_id": "W4321609158",
@@ -332,9 +332,32 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6720187041163446,
-        "similarity_score": 0.5818343758583069,
+        "confidence_score": 0.6755403864383699,
+        "similarity_score": 0.584883451461792,
         "citation_text_length": 1297,
+        "dataset_text_length": 2327,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Channel component correlation analysis for multi-channel EEG feature component extraction",
+      "author": "Wenqiang Yan, Qi Luo, Chenghang Du",
+      "venue": "Frontiers in Neuroscience",
+      "year": 2025,
+      "url": "https://doi.org/10.3389/fnins.2025.1522964",
+      "cited_by": 5,
+      "abstract": "Introduction: Electroencephalogram (EEG) analysis has shown significant research value for brain disease diagnosis, neuromodulation and brain-computer interface (BCI) application. The analysis and processing of EEG signals is complex since EEG are nonstationary, nonlinear, and often contaminated by intense background noise. Principal component analysis (PCA) and independent component analysis (ICA), as the commonly used methods for multi-dimensional signal feature component extraction, still have some limitations in terms of performance and calculation. Methods: In this study, channel component correlation analysis (CCCA) method was proposed to extract feature components of multi-channel EEG. Firstly, empirical wavelet transform (EWT) decomposed each channel signal into different frequency bands, and reconstructed them into a multi-dimensional signal. Then the objective optimization function was constructed by maximizing the covariance between multi-dimensional signals. Finally the fea",
+      "doi": "10.3389/fnins.2025.1522964",
+      "pmid": "40242456",
+      "openalex_id": "W4409080232",
+      "source_doi": "10.3389/fnins.2020.579469",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.46808324754238134,
+        "similarity_score": 0.4052668809890747,
+        "citation_text_length": 1187,
         "dataset_text_length": 2327,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -433,58 +456,12 @@
       }
     },
     {
-      "title": "Channel component correlation analysis for multi-channel EEG feature component extraction",
-      "author": "Wenqiang Yan, Qi Luo, Chenghang Du",
-      "venue": "Frontiers in Neuroscience",
-      "year": 2025,
-      "url": "https://doi.org/10.3389/fnins.2025.1522964",
-      "cited_by": 3,
-      "abstract": "Introduction: Electroencephalogram (EEG) analysis has shown significant research value for brain disease diagnosis, neuromodulation and brain-computer interface (BCI) application. The analysis and processing of EEG signals is complex since EEG are nonstationary, nonlinear, and often contaminated by intense background noise. Principal component analysis (PCA) and independent component analysis (ICA), as the commonly used methods for multi-dimensional signal feature component extraction, still have some limitations in terms of performance and calculation. Methods: In this study, channel component correlation analysis (CCCA) method was proposed to extract feature components of multi-channel EEG. Firstly, empirical wavelet transform (EWT) decomposed each channel signal into different frequency bands, and reconstructed them into a multi-dimensional signal. Then the objective optimization function was constructed by maximizing the covariance between multi-dimensional signals. Finally the fea",
-      "doi": "10.3389/fnins.2025.1522964",
-      "pmid": "40242456",
-      "openalex_id": "W4409080232",
-      "source_doi": "10.3389/fnins.2020.579469",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.46808324754238134,
-        "similarity_score": 0.4052668809890747,
-        "citation_text_length": 1187,
-        "dataset_text_length": 2327,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "EEG-DGRN: dynamic graph representation network for subject-independent ERP detection",
-      "author": "Jiabin Zhu, Xuanyu Jin, Yuhang Ming, Wanzeng Kong",
-      "venue": "Brain-Apparatus Communication A Journal of Bacomics",
-      "year": 2025,
-      "url": "https://doi.org/10.1080/27706710.2024.2447576",
-      "cited_by": 1,
-      "abstract": "Objectives The inter-subject variability remains a formidable challenge in electroencephalogram (EEG) signal processing. Existing event-related potential (ERP) detection methods inadequately consider the dynamic connectivity of EEG signals and event response differences between subjects, limiting the discriminability of task-related features.Methods In this article, we propose EEG-DGRN, a dynamic graph representation network designed for subject-independent ERP detection. Specifically, the dynamic graph mechanism is used to capture the task-relevant connectivity relationship between EEG channels over time. Then, considering the local and global topology structure, a dual-branch graph pooling module is employed to prune features from different granularity. After that, the temporal dynamic attention module enables the model to pay more attention to subject-invariant representations.Results Our EEG-DGRN model is evaluated on a publicly available rapid serial visual presentation dataset. I",
-      "doi": "10.1080/27706710.2024.2447576",
-      "pmid": null,
-      "openalex_id": "W4406180331",
-      "source_doi": "10.3389/fnins.2020.579469",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.562257459461689,
-        "similarity_score": 0.48680299520492554,
-        "citation_text_length": 1223,
-        "dataset_text_length": 2327,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Joint disentangled representation and domain adversarial training for EEG-based cross-session biometric recognition in single-task protocols",
       "author": "Honggang Liu, Xuanyu Jin, Dongjun Liu, Wanzeng Kong, Jiajia Tang, Yong Peng",
       "venue": "Cognitive Neurodynamics",
       "year": 2025,
       "url": "https://doi.org/10.1007/s11571-024-10214-w",
-      "cited_by": 1,
+      "cited_by": 3,
       "abstract": null,
       "doi": "10.1007/s11571-024-10214-w",
       "pmid": "39866660",
@@ -496,6 +473,29 @@
         "confidence_score": 0.6007263243198395,
         "similarity_score": 0.5721203088760376,
         "citation_text_length": 265,
+        "dataset_text_length": 2327,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "EEG-DGRN: dynamic graph representation network for subject-independent ERP detection",
+      "author": "Jiabin Zhu, Xuanyu Jin, Yuhang Ming, Wanzeng Kong",
+      "venue": "Brain-Apparatus Communication A Journal of Bacomics",
+      "year": 2025,
+      "url": "https://doi.org/10.1080/27706710.2024.2447576",
+      "cited_by": 2,
+      "abstract": "Objectives The inter-subject variability remains a formidable challenge in electroencephalogram (EEG) signal processing. Existing event-related potential (ERP) detection methods inadequately consider the dynamic connectivity of EEG signals and event response differences between subjects, limiting the discriminability of task-related features.Methods In this article, we propose EEG-DGRN, a dynamic graph representation network designed for subject-independent ERP detection. Specifically, the dynamic graph mechanism is used to capture the task-relevant connectivity relationship between EEG channels over time. Then, considering the local and global topology structure, a dual-branch graph pooling module is employed to prune features from different granularity. After that, the temporal dynamic attention module enables the model to pay more attention to subject-invariant representations.Results Our EEG-DGRN model is evaluated on a publicly available rapid serial visual presentation dataset. I",
+      "doi": "10.1080/27706710.2024.2447576",
+      "pmid": null,
+      "openalex_id": "W4406180331",
+      "source_doi": "10.3389/fnins.2020.579469",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.562257459461689,
+        "similarity_score": 0.48680299520492554,
+        "citation_text_length": 1223,
         "dataset_text_length": 2327,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -640,6 +640,29 @@
       }
     },
     {
+      "title": "BFRCNet: addressing the class imbalance problem in the rapid serial visual presentation paradigm for decoding",
+      "author": "Meng Xu, Xinyan Gao, Fu Li, Baiwen Zhang, Yuanfang Chen",
+      "venue": "Journal of Neural Engineering",
+      "year": 2025,
+      "url": "https://doi.org/10.1088/1741-2552/ae2d9a",
+      "cited_by": 0,
+      "abstract": "Abstract Objective. Imbalanced sample sizes in rapid serial visual presentation (RSVP) can substantially compromise the classification accuracy of electroencephalogram (EEG) analyses based on RSVP system. Approaches. We propose a balanced strategy-based network for feature representation, recombination, and classification for RSVP paradigm (BFRCNet), a specialized neural network architecture designed to enhance classification under imbalanced EEG data conditions. This architecture comprises three stages, in feature representation stage, a pyramid structure integrates multiscale spatiotemporal patterns while mimicking visual physiological mechanisms to enhance EEG feature extraction. The recombination stage incorporates anchor samples as auxiliary categories, transforming the imbalanced distribution into a balanced representation. The last classification stage leverages a novel focal loss function that integrates class and sample weights, thereby enhancing the reward for minority sample",
+      "doi": "10.1088/1741-2552/ae2d9a",
+      "pmid": "41401516",
+      "openalex_id": "W4417411779",
+      "source_doi": "10.3389/fnins.2020.579469",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6539086997509003,
+        "similarity_score": 0.5661547183990479,
+        "citation_text_length": 1232,
+        "dataset_text_length": 2327,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Sub-Group Partition Strategy for RSVP-based Collaborative Brain-Computer Interfaces",
       "author": "Yuan Si, Zhenyu Wang, Xi Zhao, Tianheng Xu, Ting Zhou, Honglin Hu",
       "venue": "2025 47th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)",
@@ -688,17 +711,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-07-15T00:10:50.704554+00:00",
+    "scoring_date": "2026-08-01T16:35:04.625948+00:00",
     "dataset_text_length": 2327,
-    "num_citations_scored": 26,
+    "num_citations_scored": 27,
     "summary_stats": {
-      "mean_confidence": 0.6100448499963835,
-      "median_confidence": 0.6297049686312676,
-      "std_confidence": 0.10072290341882607,
+      "mean_confidence": 0.6117998697029221,
+      "median_confidence": 0.6297315984964371,
+      "std_confidence": 0.0992681491145744,
       "min_confidence": 0.41291245043277747,
       "max_confidence": 0.7745725992321969,
       "high_confidence_count": 5,
-      "medium_confidence_count": 21,
+      "medium_confidence_count": 22,
       "low_confidence_count": 0
     }
   }

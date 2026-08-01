@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000215",
-  "num_citations": 17,
-  "date_last_updated": "2026-07-03T13:23:55.475998+00:00",
+  "num_citations": 18,
+  "date_last_updated": "2026-08-01T15:28:30.402429+00:00",
   "metadata": {
-    "total_cumulative_citations": 582,
-    "fetch_date": "2026-07-03T13:23:55.475998+00:00",
+    "total_cumulative_citations": 601,
+    "fetch_date": "2026-08-01T15:28:30.402429+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -58,17 +58,17 @@
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 17
+    "num_datapaper_citations": 18
   },
   "citation_details": [
     {
-      "title": "Deep learning in mining biological data",
+      "title": "Deep Learning in Mining Biological Data",
       "author": "Mufti Mahmud, M. Shamim Kaiser, T.M. McGinnity, Amir Hussain",
       "venue": "Nottingham Trent University's Institutional Repository (Nottingham Trent Repository)",
-      "year": 2021,
+      "year": 2020,
       "url": "https://doi.org/10.1007/s12559-020-09773-x",
-      "cited_by": 441,
-      "abstract": "Recent technological advancements in data acquisition tools allowed life scientists to acquire multimodal data from different biological application domains. Categorized in three broad types (i.e. images, signals, and sequences), these data are huge in amount and complex in nature. Mining such enormous amount of data for pattern recognition is a big challenge and requires sophisticated data-intensive machine learning techniques. Artificial neural network-based learning systems are well known for their pattern recognition capabilities, and lately their deep architectures-known as deep learning (DL)-have been successfully applied to solve many complex pattern recognition problems. To investigate how DL-especially its different architectures-has contributed and been utilized in the mining of biological data pertaining to those three types, a meta-analysis has been performed and the resulting resources have been critically analysed. Focusing on the use of DL to analyse patterns in data fro",
+      "cited_by": 442,
+      "abstract": "Recent technological advancements in data acquisition tools allowed life\\nscientists to acquire multimodal data from different biological application\\ndomains. Broadly categorized in three types (i.e., sequences, images, and\\nsignals), these data are huge in amount and complex in nature. Mining such an\\nenormous amount of data for pattern recognition is a big challenge and requires\\nsophisticated data-intensive machine learning techniques. Artificial neural\\nnetwork-based learning systems are well known for their pattern recognition\\ncapabilities and lately their deep architectures - known as deep learning (DL)\\n- have been successfully applied to solve many complex pattern recognition\\nproblems. Highlighting the role of DL in recognizing patterns in biological\\ndata, this article provides - applications of DL to biological sequences,\\nimages, and signals data; overview of open access sources of these data;\\ndescription of open source DL tools applicable on these data; and comparison o",
       "doi": "10.1007/s12559-020-09773-x",
       "pmid": "33425045",
       "openalex_id": "W3091860120",
@@ -76,9 +76,32 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.2995735538005829,
-        "similarity_score": 0.2593710422515869,
+        "confidence_score": 0.30105974435806276,
+        "similarity_score": 0.26065778732299805,
         "citation_text_length": 1222,
+        "dataset_text_length": 2373,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "REVE: A Foundation Model for EEG - Adapting to Any Setup with Large-Scale Pretraining on 25,000 Subjects",
+      "author": "Yassine El Ouahidi, Jonathan Lys, Philipp Thölke, Nicolas Farrugia, B. Pasdeloup, Vincent Gripon, Karim Jerbi, Giulia Lioi",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2510.21585",
+      "cited_by": 64,
+      "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
+      "doi": "10.48550/arXiv.2510.21585",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.5281/zenodo.3267301",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5545652116835118,
+        "similarity_score": 0.4801430404186249,
+        "citation_text_length": 1270,
         "dataset_text_length": 2373,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -108,23 +131,23 @@
       }
     },
     {
-      "title": "REVE: A Foundation Model for EEG - Adapting to Any Setup with Large-Scale Pretraining on 25,000 Subjects",
-      "author": "Yassine El Ouahidi, Jonathan Lys, Philipp Thölke, Nicolas Farrugia, B. Pasdeloup, Vincent Gripon, Karim Jerbi, Giulia Lioi",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2510.21585",
-      "cited_by": 51,
-      "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
-      "doi": "10.48550/arXiv.2510.21585",
+      "title": "NeuroIDBench: An open-source benchmark framework for the standardization of methodology in brainwave-based authentication research",
+      "author": "Avinash Kumar Chaurasia, Matin Fallahi, Thorsten Strufe, Philipp Terhörst, Patricia Arias-Cabarcos",
+      "venue": "Journal of Information Security and Applications",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.jisa.2024.103832",
+      "cited_by": 8,
+      "abstract": "Biometric systems based on brain activity have been proposed as an alternative to passwords or to complement current authentication techniques. By leveraging the unique brainwave patterns of individuals, these systems offer the possibility of creating authentication solutions that are resistant to theft, hands-free, accessible, and potentially even revocable. However, despite the growing stream of research in this area, faster advance is hindered by reproducibility problems. Issues such as the lack of standard reporting schemes for performance results and system configuration, or the absence of common evaluation benchmarks, make comparability and proper assessment of different biometric solutions challenging. Further, barriers are erected to future work when, as so often, source code is not published open access. To bridge this gap, we introduce NeuroIDBench, a flexible open source tool to benchmark brainwave-based authentication models. It incorporates nine diverse datasets, implement",
+      "doi": "10.1016/j.jisa.2024.103832",
       "pmid": null,
-      "openalex_id": null,
+      "openalex_id": "W4400761915",
       "source_doi": "10.5281/zenodo.3267301",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5545652116835118,
-        "similarity_score": 0.4801430404186249,
-        "citation_text_length": 1270,
+        "confidence_score": 0.50028645247221,
+        "similarity_score": 0.43314844369888306,
+        "citation_text_length": 1315,
         "dataset_text_length": 2373,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -171,29 +194,6 @@
         "confidence_score": 0.6288574254512788,
         "similarity_score": 0.5444653034210205,
         "citation_text_length": 1254,
-        "dataset_text_length": 2373,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "NeuroIDBench: An open-source benchmark framework for the standardization of methodology in brainwave-based authentication research",
-      "author": "Avinash Kumar Chaurasia, Matin Fallahi, Thorsten Strufe, Philipp Terhörst, Patricia Arias-Cabarcos",
-      "venue": "Journal of Information Security and Applications",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.jisa.2024.103832",
-      "cited_by": 7,
-      "abstract": "Biometric systems based on brain activity have been proposed as an alternative to passwords or to complement current authentication techniques. By leveraging the unique brainwave patterns of individuals, these systems offer the possibility of creating authentication solutions that are resistant to theft, hands-free, accessible, and potentially even revocable. However, despite the growing stream of research in this area, faster advance is hindered by reproducibility problems. Issues such as the lack of standard reporting schemes for performance results and system configuration, or the absence of common evaluation benchmarks, make comparability and proper assessment of different biometric solutions challenging. Further, barriers are erected to future work when, as so often, source code is not published open access. To bridge this gap, we introduce NeuroIDBench, a flexible open source tool to benchmark brainwave-based authentication models. It incorporates nine diverse datasets, implement",
-      "doi": "10.1016/j.jisa.2024.103832",
-      "pmid": null,
-      "openalex_id": "W4400761915",
-      "source_doi": "10.5281/zenodo.3267301",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.50028645247221,
-        "similarity_score": 0.43314844369888306,
-        "citation_text_length": 1315,
         "dataset_text_length": 2373,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -248,21 +248,44 @@
     {
       "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
       "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "n/a",
+      "venue": "ArXiv",
       "year": 2026,
-      "url": "n/a",
-      "cited_by": 2,
+      "url": "https://doi.org/10.48550/arXiv.2605.08495",
+      "cited_by": 4,
       "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": null,
+      "doi": "10.48550/arXiv.2605.08495",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.5281/zenodo.3267301",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5639867359399796,
-        "similarity_score": 0.4883002042770386,
-        "citation_text_length": 1324,
+        "confidence_score": 0.5665656083822251,
+        "similarity_score": 0.4905329942703247,
+        "citation_text_length": 1326,
+        "dataset_text_length": 2373,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "The Riemannian Means Field Classifier for EEG-Based BCI Data",
+      "author": "Anton Andreev, G. Cattan, Marco Congedo",
+      "venue": "Sensors (Basel, Switzerland)",
+      "year": 2025,
+      "url": "https://doi.org/10.3390/s25072305",
+      "cited_by": 3,
+      "abstract": ": A substantial amount of research has demonstrated the robustness and accuracy of the Riemannian minimum distance to mean (MDM) classifier for all kinds of EEG-based brain–computer interfaces (BCIs). This classifier is simple, fully deterministic, robust to noise, computationally efficient, and prone to transfer learning. Its training is very simple, requiring just the computation of a geometric mean of a symmetric positive-definite (SPD) matrix per class. We propose an improvement of the MDM involving a number of power means of SPD matrices instead of the sole geometric mean. By the analysis of 20 public databases, 10 for the motor-imagery BCI paradigm and 10 for the P300 BCI paradigm, comprising 587 individuals in total, we show that the proposed classifier clearly outperforms the MDM, approaching the state-of-the art in terms of performance while retaining the simplicity and the deterministic behavior. In order to promote reproducible research, our code will be released as open sou",
+      "doi": "10.3390/s25072305",
+      "pmid": "40218817",
+      "openalex_id": null,
+      "source_doi": "10.5281/zenodo.3267301",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5573260371387005,
+        "similarity_score": 0.48253336548805237,
+        "citation_text_length": 1166,
         "dataset_text_length": 2373,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -292,29 +315,6 @@
       }
     },
     {
-      "title": "The Riemannian Means Field Classifier for EEG-Based BCI Data",
-      "author": "Anton Andreev, G. Cattan, Marco Congedo",
-      "venue": "Sensors (Basel, Switzerland)",
-      "year": 2025,
-      "url": "https://doi.org/10.3390/s25072305",
-      "cited_by": 1,
-      "abstract": ": A substantial amount of research has demonstrated the robustness and accuracy of the Riemannian minimum distance to mean (MDM) classifier for all kinds of EEG-based brain–computer interfaces (BCIs). This classifier is simple, fully deterministic, robust to noise, computationally efficient, and prone to transfer learning. Its training is very simple, requiring just the computation of a geometric mean of a symmetric positive-definite (SPD) matrix per class. We propose an improvement of the MDM involving a number of power means of SPD matrices instead of the sole geometric mean. By the analysis of 20 public databases, 10 for the motor-imagery BCI paradigm and 10 for the P300 BCI paradigm, comprising 587 individuals in total, we show that the proposed classifier clearly outperforms the MDM, approaching the state-of-the art in terms of performance while retaining the simplicity and the deterministic behavior. In order to promote reproducible research, our code will be released as open sou",
-      "doi": "10.3390/s25072305",
-      "pmid": "40218817",
-      "openalex_id": null,
-      "source_doi": "10.5281/zenodo.3267301",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5573260371387005,
-        "similarity_score": 0.48253336548805237,
-        "citation_text_length": 1166,
-        "dataset_text_length": 2373,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "P300 dataset BI2014b from a \"Brain Invaders\" experiment",
       "author": "Louis Korczowski, Ekaterina Ostaschenko, Anton Andreev, Grégoire Cattan, Pedro Luiz Coelho Rodrigues, Violette Gautheret, Marco Congedo",
       "venue": "UC San Diego",
@@ -338,13 +338,13 @@
       }
     },
     {
-      "title": "DANCE: Detect and Classify Events in EEG",
-      "author": "Jarod Lévy, Hubert J. Banville, Jérémy Rapin, Jean-Rémi King, Thomas Moreau, Stéphane d’Ascoli",
+      "title": "RMISC: A Large-scale Real-world Multivariate Corpus for Time Series Foundation Models",
+      "author": "Qian Sun, Yong-Ming Tian, Jiawei Huang, Cheng Feng, Shao-Qun Zhang",
       "venue": "n/a",
       "year": 2026,
       "url": "n/a",
       "cited_by": 0,
-      "abstract": "Event identification in continuous neural recordings is a critical task in neuroscience. Decoding in EEG is dominated by classifying windows aligned to known event onsets. However, while available in controlled experiments, such onsets are absent in continuous real-world monitoring. Here, we introduce DANCE, a deep learning pipeline that frames neural decoding as a set-prediction problem and jointly detects and classifies events directly from raw, unaligned signals. Evaluated separately on ten datasets curated from the literature with a wide variety of event types (ranging from milliseconds to minutes in duration), our model outperforms existing methods on a broad range of cognitive, clinical and BCI tasks. This single architecture establishes a new state of the art in the competitive task of seizure monitoring and matches the accuracy of onset-informed models for BCI tasks. Overall, our method marks a step towards end-to-end asynchronous neural decoding models",
+      "abstract": "Recent years have witnessed the emergence of multivariate modeling using time series foundation models (TSFMs), which achieve advanced zero-shot generalization. Modern multivariate TSFMs are predominantly pretrained on multivariate synthetic data, which is easier to scale but may fail to capture the complex temporal dynamics and cross-variable relationships present in real-world time series. This raises a key question: Whether and to what extent the leading TSFMs trained with the real-world corpus perform better than those trained with synthetic data? To answer this, we establish the RMISC corpus, a considerably large-scale, high-quality, openly accessible, real-world, and multivariate time series archive that contains around 200 datasets and 142 billion time points across diverse domains. Furthermore, we pretrain four advanced TSFMs on univariate, synthetic multivariate, and real-world multivariate data and evaluate their zero-shot generalization capabilities on standard in-distributi",
       "doi": null,
       "pmid": null,
       "openalex_id": null,
@@ -352,9 +352,32 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5290767475962639,
-        "similarity_score": 0.4580751061439514,
-        "citation_text_length": 1151,
+        "confidence_score": 0.33169848382472994,
+        "similarity_score": 0.28718483448028564,
+        "citation_text_length": 1193,
+        "dataset_text_length": 2373,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "DANCE: Detect and Classify Events in EEG",
+      "author": "Jarod Lévy, Hubert J. Banville, Jérémy Rapin, Jean-Rémi King, Thomas Moreau, Stéphane d’Ascoli",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2605.10688",
+      "cited_by": 0,
+      "abstract": "Event identification in continuous neural recordings is a critical task in neuroscience. Decoding in EEG is dominated by classifying windows aligned to known event onsets. However, while available in controlled experiments, such onsets are absent in continuous real-world monitoring. Here, we introduce DANCE, a deep learning pipeline that frames neural decoding as a set-prediction problem and jointly detects and classifies events directly from raw, unaligned signals. Evaluated separately on ten datasets curated from the literature with a wide variety of event types (ranging from milliseconds to minutes in duration), our model outperforms existing methods on a broad range of cognitive, clinical and BCI tasks. This single architecture establishes a new state of the art in the competitive task of seizure monitoring and matches the accuracy of onset-informed models for BCI tasks. Overall, our method marks a step towards end-to-end asynchronous neural decoding models",
+      "doi": "10.48550/arXiv.2605.10688",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.5281/zenodo.3267301",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.530943366587162,
+        "similarity_score": 0.45969122648239136,
+        "citation_text_length": 1153,
         "dataset_text_length": 2373,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -455,18 +478,18 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-07-15T00:11:48.113517+00:00",
+    "scoring_date": "2026-08-01T16:36:01.004043+00:00",
     "dataset_text_length": 2373,
-    "num_citations_scored": 17,
+    "num_citations_scored": 18,
     "summary_stats": {
-      "mean_confidence": 0.5437147752064116,
-      "median_confidence": 0.5545652116835118,
-      "std_confidence": 0.16214025778279278,
+      "mean_confidence": 0.5322656302402416,
+      "median_confidence": 0.5539984414726496,
+      "std_confidence": 0.16479766428292858,
       "min_confidence": 0.19704069197177887,
       "max_confidence": 1.0,
       "high_confidence_count": 1,
       "medium_confidence_count": 14,
-      "low_confidence_count": 2
+      "low_confidence_count": 3
     }
   }
 }

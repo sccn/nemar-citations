@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000329",
-  "num_citations": 12,
-  "date_last_updated": "2026-07-03T15:24:41.964054+00:00",
+  "num_citations": 13,
+  "date_last_updated": "2026-08-01T15:36:44.622375+00:00",
   "metadata": {
-    "total_cumulative_citations": 178,
-    "fetch_date": "2026-07-03T15:24:41.964054+00:00",
+    "total_cumulative_citations": 190,
+    "fetch_date": "2026-08-01T15:36:44.622375+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -90,7 +90,7 @@
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 12
+    "num_datapaper_citations": 13
   },
   "citation_details": [
     {
@@ -99,7 +99,7 @@
       "venue": "Scientific Data",
       "year": 2024,
       "url": "https://doi.org/10.1038/s41597-023-02787-8",
-      "cited_by": 69,
+      "cited_by": 73,
       "abstract": "The brain-computer interface (BCI) is a technology that involves direct communication with parts of the brain and has evolved rapidly in recent years; it has begun to be used in clinical practice, such as for patient rehabilitation. Patient electroencephalography (EEG) datasets are critical for algorithm optimization and clinical applications of BCIs but are rare at present. We collected data from 50 acute stroke patients with wireless portable saline EEG devices during the performance of two tasks: 1) imagining right-handed movements and 2) imagining left-handed movements. The dataset consists of four types of data: 1) the motor imagery instructions, 2) raw recording data, 3) pre-processed data after removing artefacts and other manipulations, and 4) patient characteristics. This is the first open dataset to address left- and right-handed motor imagery in acute stroke patients. We believe that the dataset will be very helpful for analysing brain activation and designing decoding metho",
       "doi": "10.1038/s41597-023-02787-8",
       "pmid": "38272904",
@@ -122,7 +122,7 @@
       "venue": "Neurocomputing",
       "year": 2024,
       "url": "https://doi.org/10.1016/j.neucom.2024.128577",
-      "cited_by": 45,
+      "cited_by": 48,
       "abstract": null,
       "doi": "10.1016/j.neucom.2024.128577",
       "pmid": null,
@@ -145,7 +145,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2024,
       "url": "https://doi.org/10.1109/tnsre.2024.3432102",
-      "cited_by": 19,
+      "cited_by": 20,
       "abstract": "Motor imagery refers to the brain's response during the mental simulation of physical activities, which can be detected through electroencephalogram (EEG) signals. However, EEG signals exhibit a low signal-to-noise ratio (SNR) due to various artifacts originating from other physiological sources. To enhance the classification performance of motor imagery tasks by increasing the SNR of EEG signals, several signal decomposition approaches have been proposed. Empirical mode decomposition (EMD) has shown promising results in extracting EEG components associated with motor imagery tasks more effectively than traditional linear decomposition algorithms such as Fourier and wavelet methods. Nevertheless, the EMD-based algorithm suffers from a significant challenge known as mode mixing, where frequency components intertwine with the intrinsic mode functions obtained through EMD. This issue severely hampers the accuracy of motor imagery classification. Despite numerous algorithms proposed, mode ",
       "doi": "10.1109/tnsre.2024.3432102",
       "pmid": "39037874",
@@ -168,7 +168,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2022,
       "url": "https://doi.org/10.1109/tnsre.2022.3183023",
-      "cited_by": 18,
+      "cited_by": 20,
       "abstract": "In this study, we propose a graph sequence neural network (GSNN) to accurately decode patterns of motor imagery from electroencephalograms (EEGs) in the presence of distractions. GSNN aims to build subgraphs by exploiting biological topologies among brain regions to capture local and global relationships across characteristic channels. Specifically, we model the similarity between pairwise EEG channels by the adjacency matrix of the graph sequence neural network. In addition, we propose a node domain attention selection network in which the connection and sparsity of the adjacency matrix can be adjusted dynamically according to the EEG signals acquired from different subjects. Extensive experiments on the public Berlin-distraction dataset show that in most experimental settings, our model performs considerably better than the state-of-the-art models. Moreover, comparative experiments indicate that our proposed node domain attention selection network plays a crucial role in improving th",
       "doi": "10.1109/tnsre.2022.3183023",
       "pmid": "35700243",
@@ -191,7 +191,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2022,
       "url": "https://doi.org/10.3389/fnhum.2022.909112",
-      "cited_by": 16,
+      "cited_by": 18,
       "abstract": "Brain-machine interfaces combining visual, auditory, and tactile feedback have been previously used to generate embodiment experiences during spinal cord injury (SCI) rehabilitation. It is not known if adding temperature to these modalities can result in discomfort with embodiment experiences. Here, comfort levels with the embodiment experiences were investigated in an intervention that required a chronic pain SCI patient to generate lower limb motor imagery commands in an immersive environment combining visual (virtual reality -VR), auditory, tactile, and thermal feedback. Assessments were made pre-/ post-, throughout the intervention (Weeks 0-5), and at 7 weeks follow up. Overall, high levels of embodiment in the adapted three-domain scale of embodiment were found throughout the sessions. No significant adverse effects of VR were reported. Although sessions induced only a modest reduction in pain levels, an overall reduction occurred in all pain scales (Faces, Intensity, and Verbal) ",
       "doi": "10.3389/fnhum.2022.909112",
       "pmid": "35669203",
@@ -324,6 +324,29 @@
       }
     },
     {
+      "title": "Bayesian Complete-Pooling in Cross-Subject Classification for Motor Imagery Electroencephalogram",
+      "author": "Ethan Davis",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "Brain-computer interfaces (BCIs) have long sought calibration-free operation, but classifiers are typically benchmarked by discrimination alone, blind to whether predicted probabilities are well calibrated - a meaningful gap given nonstationary electroencephalogram (EEG) signals and the risk of overconfident point-estimate classifiers under distribution shift. We conducted a large-scale study contrasting Bayesian complete-pooling models against frequentist baselines for cross-subject, left-hand versus right-hand motor imagery EEG classification across 20 datasets. Six frequentist pipelines were each paired with an analogous Bayesian pipeline sharing identical feature engineering, fit via Markov chain Monte Carlo posterior sampling. Our primary metric was the Brier score, decomposed into reliability and resolution, alongside AUROC for discrimination and Shannon entropy for sharpness. Each metric was analyzed via random-effects meta-analysis (REML, Knapp-Hartung adjustment), verified by ",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.3389/fnins.2020.566147",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6645290279388428,
+        "similarity_score": 0.5753498077392578,
+        "citation_text_length": 1149,
+        "dataset_text_length": 2344,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A Multimodal fNIRS-EEG Dataset for Unilateral Limb Motor Imagery",
       "author": "Lufeng Feng, Baomin Xu, Haoran Zhang, Bihai Lin, Zuxuan Deng, Sidi Tao, Chenyu Liu, Shifan Jia, Li Duan, Ziyu Jia",
       "venue": "ArXiv",
@@ -372,17 +395,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-07-15T00:16:48.650361+00:00",
+    "scoring_date": "2026-08-01T16:42:29.454927+00:00",
     "dataset_text_length": 2344,
-    "num_citations_scored": 12,
+    "num_citations_scored": 13,
     "summary_stats": {
-      "mean_confidence": 0.6386019789427518,
-      "median_confidence": 0.6109600500762463,
-      "std_confidence": 0.09695146318816592,
+      "mean_confidence": 0.6405963673270667,
+      "median_confidence": 0.6195970416069031,
+      "std_confidence": 0.0934038122415057,
       "min_confidence": 0.49143915072083477,
       "max_confidence": 0.8200678056478501,
       "high_confidence_count": 4,
-      "medium_confidence_count": 8,
+      "medium_confidence_count": 9,
       "low_confidence_count": 0
     }
   }

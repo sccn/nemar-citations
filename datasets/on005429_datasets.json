@@ -1,0 +1,49 @@
+{
+  "dataset_id": "on005429",
+  "date_retrieved": "2026-08-01T10:17:40.678739+00:00",
+  "dataset_description": {
+    "Name": "Auditory oddball comparison (Optimum-1, Learning-oddball, and the local–global paradigm)",
+    "BIDSVersion": "1.8",
+    "DatasetType": "raw",
+    "GeneratedBy": [
+      {
+        "Name": "FieldTrip",
+        "Version": "20240214",
+        "Description": "data2bids converter",
+        "URI": "https://www.fieldtriptoolbox.org"
+      }
+    ],
+    "License": "CC0",
+    "Authors": [
+      "Renate Rutiku",
+      "Chiara Fiscone",
+      "Marcello Massimini",
+      "Simone Sarasso"
+    ],
+    "ReferencesAndLinks": [
+      "Rutiku, R., Fiscone, C., Massimini, M., & Sarasso, S. (2024). Assessing mismatch negativity (MMN) and P3b within‐individual sensitivity — A comparison between the local–global paradigm and two specialized oddball sequences. European Journal of Neuroscience, 59(5), 842-859."
+    ],
+    "HowToAcknowledge": "Please cite: \nRutiku, R., Fiscone, C., Massimini, M., & Sarasso, S. (2024). Assessing mismatch negativity (MMN) and P3b within‐individual sensitivity — A comparison between the local–global paradigm and two specialized oddball sequences. European Journal of Neuroscience, 59(5), 842-859.",
+    "DatasetDOI": "10.82901/nemar.on005429",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds005429.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on005429-blue)](https://doi.org/10.82901/nemar.on005429)\n\n## Introduction\n\nThis is the raw EEG data used in: \nRutiku, R., Fiscone, C., Massimini, M., & Sarasso, S. (2024). Assessing mismatch negativity (MMN) and P3b within‐individual sensitivity — A comparison between the local–global paradigm and two specialized oddball sequences. European Journal of Neuroscience, 59(5), 842-859.\n\n### What's in this dataset\n\nEach participant (n=15) completed three different auditory oddball sequences: the Optimum-1 for MMN, the learning-oddball for P3b, and the local–global paradigm for the local and global effect. The tasks are formatted as different sessions but they were all recorded consecutively within one EEG experiment (order differed between participants). The local-global sequence was recorded in two separate EEG files (except for participant 5; see below for exception notes). Note that whereas the .vmrk files contain the original triggers for each recording, the _events files contain the correct event samples used in the analysis (in the fieldtrip cfg.trl format). It namely sometimes happened that some triggers were skipped by the recording system and these triggers needed to be interpolated using the event timestamps from the psychtoolbox output that was used to run the stimulation sequence (see below). Note also that the local-global sequence contains triggers for every single sound, but trials should be cut only for the first sound of every quintlet. The _events files already take that into account. \n\n| Subject | Session      | Run   |\n| ------- |--------------|-------|  \n| sub-01  | ses-MMN      |       | \n| sub-01  | ses-P3b      |       |\n| sub-01  | ses-LGeffect | run-1 |\n| sub-01  | ses-LGeffect | run-2 | \n\n\n### Auditory stimulation specs\n\nThe stimulation sequence information is provided in the original .mat format in the sourcedata folder. \nThere are two files for each sequence: a file containing the sound definitions (_stimulation_SEQUENCE) and a file containing the timestamps for each sound (_critical_events).\nThe code used to run these sequences is included in the paradigms folder. \n\n\n### Exceptions\n\nParticipant 13 was recorded with 5000 Hz EEG sampling rate whereas all other participants were recorded with 2500 Hz EEG sampling rate. \nParticipants 13, 14, and 15 were recorded chronologically first and they have slightly more trials for the oddball sequences. After inspecting their data, it was decided that trial numbers can be reduced for the rest of the participants in order to keep the recording time as short as possible while still having good sensitivity for the effects of interest. \nParticipant 5 has three runs for the local-global task due to a need for an extra break by the participant. \n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on005429",
+    "exists": true,
+    "description": "Auditory oddball comparison (Optimum-1, Learning-oddball, and the local–global paradigm)",
+    "created_at": "2026-06-27T03:31:38+00:00",
+    "updated_at": "2026-07-23T01:24:38+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}
