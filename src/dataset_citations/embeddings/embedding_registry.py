@@ -5,9 +5,10 @@ Embedding registry system for tracking embedding versions and metadata.
 import hashlib
 import json
 import logging
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Dict, List, Optional, Union
+
+from dataset_citations.utils.datetime_utils import parse_iso_utc
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +24,7 @@ class EmbeddingRegistry:
     - Tracking dependency relationships
     """
 
-    def __init__(self, embeddings_dir: Union[str, Path]):
+    def __init__(self, embeddings_dir: str | Path):
         """
         Initialize embedding registry.
 
@@ -53,8 +54,8 @@ class EmbeddingRegistry:
                 "citations": {},
                 "analysis": {"umap_projections": [], "clustering": []},
                 "metadata": {
-                    "created": datetime.now().isoformat(),
-                    "last_updated": datetime.now().isoformat(),
+                    "created": datetime.now(UTC).isoformat(),
+                    "last_updated": datetime.now(UTC).isoformat(),
                     "version": "1.0",
                 },
             }
@@ -62,7 +63,7 @@ class EmbeddingRegistry:
 
     def _save_registry(self):
         """Save registry to JSON file."""
-        self.registry["metadata"]["last_updated"] = datetime.now().isoformat()
+        self.registry["metadata"]["last_updated"] = datetime.now(UTC).isoformat()
         with open(self.registry_file, "w") as f:
             json.dump(self.registry, f, indent=2)
 
@@ -82,10 +83,10 @@ class EmbeddingRegistry:
         self,
         dataset_id: str,
         embedding_file: str,
-        content_sources: Dict[str, str],
+        content_sources: dict[str, str],
         model: str = "Qwen/Qwen3-Embedding-0.6B",
-        metadata: Optional[Dict] = None,
-    ) -> Dict:
+        metadata: dict | None = None,
+    ) -> dict:
         """
         Register a new dataset embedding.
 
@@ -114,7 +115,7 @@ class EmbeddingRegistry:
                     emb["status"] = "obsolete"
                     emb["obsoleted_by"] = embedding_file
                     emb["obsoleted_reason"] = "new version created"
-                    emb["obsoleted_date"] = datetime.now().isoformat()
+                    emb["obsoleted_date"] = datetime.now(UTC).isoformat()
         else:
             new_version = 1
             self.registry["datasets"][dataset_id] = {
@@ -126,7 +127,7 @@ class EmbeddingRegistry:
         embedding_record = {
             "version": new_version,
             "file": embedding_file,
-            "created": datetime.now().isoformat(),
+            "created": datetime.now(UTC).isoformat(),
             "content_hash": content_hash,
             "metadata_sources": list(content_sources.keys()),
             "model": model,
@@ -154,10 +155,10 @@ class EmbeddingRegistry:
         citation_hash: str,
         title: str,
         embedding_file: str,
-        text_sources: Dict[str, str],
+        text_sources: dict[str, str],
         model: str = "Qwen/Qwen3-Embedding-0.6B",
-        metadata: Optional[Dict] = None,
-    ) -> Dict:
+        metadata: dict | None = None,
+    ) -> dict:
         """
         Register a new citation embedding.
 
@@ -194,7 +195,7 @@ class EmbeddingRegistry:
         embedding_record = {
             "version": new_version,
             "file": embedding_file,
-            "created": datetime.now().isoformat(),
+            "created": datetime.now(UTC).isoformat(),
             "content_hash": content_hash,
             "text_sources": list(text_sources.keys()),
             "model": model,
@@ -218,7 +219,7 @@ class EmbeddingRegistry:
         return embedding_record
 
     def _update_dataset_hashes(
-        self, dataset_id: str, content_sources: Dict[str, str], combined_hash: str
+        self, dataset_id: str, content_sources: dict[str, str], combined_hash: str
     ):
         """Update dataset content hashes."""
         # Load existing hashes
@@ -233,20 +234,22 @@ class EmbeddingRegistry:
             hashes[dataset_id] = {"history": []}
 
         # Add to history if hash changed
-        if hashes[dataset_id].get("current_hash") != combined_hash:
-            if "current_hash" in hashes[dataset_id]:
-                hashes[dataset_id]["history"].append(
-                    {
-                        "hash": hashes[dataset_id]["current_hash"],
-                        "date": hashes[dataset_id]["last_checked"],
-                        "change_reason": "content updated",
-                    }
-                )
+        if (
+            hashes[dataset_id].get("current_hash") != combined_hash
+            and "current_hash" in hashes[dataset_id]
+        ):
+            hashes[dataset_id]["history"].append(
+                {
+                    "hash": hashes[dataset_id]["current_hash"],
+                    "date": hashes[dataset_id]["last_checked"],
+                    "change_reason": "content updated",
+                }
+            )
 
         hashes[dataset_id].update(
             {
                 "current_hash": combined_hash,
-                "last_checked": datetime.now().isoformat(),
+                "last_checked": datetime.now(UTC).isoformat(),
                 "content_sources": {
                     source: self.generate_content_hash(content)
                     for source, content in content_sources.items()
@@ -259,7 +262,7 @@ class EmbeddingRegistry:
             json.dump(hashes, f, indent=2)
 
     def _update_citation_hashes(
-        self, citation_hash: str, text_sources: Dict[str, str], combined_hash: str
+        self, citation_hash: str, text_sources: dict[str, str], combined_hash: str
     ):
         """Update citation content hashes."""
         # Load existing hashes
@@ -276,7 +279,7 @@ class EmbeddingRegistry:
         hashes[citation_hash].update(
             {
                 "current_hash": combined_hash,
-                "last_checked": datetime.now().isoformat(),
+                "last_checked": datetime.now(UTC).isoformat(),
                 "text_sources": {
                     source: self.generate_content_hash(content)
                     for source, content in text_sources.items()
@@ -288,7 +291,7 @@ class EmbeddingRegistry:
         with open(self.citation_hashes_file, "w") as f:
             json.dump(hashes, f, indent=2)
 
-    def get_current_dataset_embedding(self, dataset_id: str) -> Optional[Dict]:
+    def get_current_dataset_embedding(self, dataset_id: str) -> dict | None:
         """
         Get current embedding info for a dataset.
 
@@ -306,7 +309,7 @@ class EmbeddingRegistry:
                 return emb
         return None
 
-    def get_current_citation_embedding(self, citation_hash: str) -> Optional[Dict]:
+    def get_current_citation_embedding(self, citation_hash: str) -> dict | None:
         """
         Get current embedding info for a citation.
 
@@ -324,7 +327,7 @@ class EmbeddingRegistry:
                 return emb
         return None
 
-    def check_obsolete_embeddings(self) -> Dict[str, List[str]]:
+    def check_obsolete_embeddings(self) -> dict[str, list[str]]:
         """
         Check for obsolete embeddings that can be cleaned up.
 
@@ -338,10 +341,10 @@ class EmbeddingRegistry:
             for emb in dataset_info["embeddings"]:
                 if emb["status"] == "obsolete":
                     # Check if older than grace period (30 days)
-                    obsolete_date = datetime.fromisoformat(
+                    obsolete_date = parse_iso_utc(
                         emb.get("obsoleted_date", emb["created"])
                     )
-                    days_old = (datetime.now() - obsolete_date).days
+                    days_old = (datetime.now(UTC) - obsolete_date).days
                     if days_old > 30:
                         obsolete["datasets"].append(f"{dataset_id}: {emb['file']}")
 
@@ -349,10 +352,10 @@ class EmbeddingRegistry:
         for citation_hash, citation_info in self.registry["citations"].items():
             for emb in citation_info["embeddings"]:
                 if emb["status"] == "obsolete":
-                    obsolete_date = datetime.fromisoformat(
+                    obsolete_date = parse_iso_utc(
                         emb.get("obsoleted_date", emb["created"])
                     )
-                    days_old = (datetime.now() - obsolete_date).days
+                    days_old = (datetime.now(UTC) - obsolete_date).days
                     if days_old > 30:
                         obsolete["citations"].append(f"{citation_hash}: {emb['file']}")
 
@@ -374,19 +377,19 @@ class EmbeddingRegistry:
                 if emb["status"] == "current":
                     emb["status"] = "obsolete"
                     emb["obsoleted_reason"] = reason
-                    emb["obsoleted_date"] = datetime.now().isoformat()
+                    emb["obsoleted_date"] = datetime.now(UTC).isoformat()
 
         elif embedding_type == "citation" and item_id in self.registry["citations"]:
             for emb in self.registry["citations"][item_id]["embeddings"]:
                 if emb["status"] == "current":
                     emb["status"] = "obsolete"
                     emb["obsoleted_reason"] = reason
-                    emb["obsoleted_date"] = datetime.now().isoformat()
+                    emb["obsoleted_date"] = datetime.now(UTC).isoformat()
 
         self._save_registry()
         logger.info(f"Marked {embedding_type} {item_id} as obsolete: {reason}")
 
-    def get_registry_stats(self) -> Dict:
+    def get_registry_stats(self) -> dict:
         """
         Get statistics about the embedding registry.
 

@@ -5,9 +5,9 @@ This module provides visualization functions for citation analysis results,
 creating publication-ready charts and network diagrams.
 """
 
+import ast
 import logging
 from pathlib import Path
-from typing import Tuple
 
 import matplotlib.pyplot as plt
 import networkx as nx
@@ -25,7 +25,7 @@ def create_temporal_growth_chart(
     temporal_df: pd.DataFrame,
     output_path: Path,
     title: str = "BIDS Dataset Citation Growth Over Time",
-    figsize: Tuple[int, int] = (12, 8),
+    figsize: tuple[int, int] = (12, 8),
 ) -> None:
     """
     Create a temporal growth chart showing citation evolution over years.
@@ -36,7 +36,7 @@ def create_temporal_growth_chart(
         title: Chart title
         figsize: Figure size (width, height)
     """
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=figsize, height_ratios=[2, 1])
+    _fig, (ax1, ax2) = plt.subplots(2, 1, figsize=figsize, height_ratios=[2, 1])
 
     # Main growth chart
     years = temporal_df["year"]
@@ -89,8 +89,8 @@ def create_temporal_growth_chart(
             textcoords="axes fraction",
             fontsize=11,
             fontweight="bold",
-            bbox=dict(boxstyle="round,pad=0.3", facecolor="lightblue", alpha=0.7),
-            arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=0.2"),
+            bbox={"boxstyle": "round,pad=0.3", "facecolor": "lightblue", "alpha": 0.7},
+            arrowprops={"arrowstyle": "->", "connectionstyle": "arc3,rad=0.2"},
         )
 
     # Confidence score trend (bottom subplot)
@@ -126,7 +126,7 @@ def create_citation_impact_dashboard(
     popularity_df: pd.DataFrame,
     output_path: Path,
     top_n: int = 10,
-    figsize: Tuple[int, int] = (15, 10),
+    figsize: tuple[int, int] = (15, 10),
 ) -> None:
     """
     Create a comprehensive citation impact dashboard.
@@ -163,7 +163,7 @@ def create_citation_impact_dashboard(
     ax1.grid(axis="x", alpha=0.3)
 
     # Add value labels on bars
-    for i, bar in enumerate(bars1):
+    for _i, bar in enumerate(bars1):
         width = bar.get_width()
         ax1.text(
             width + width * 0.01,
@@ -191,7 +191,7 @@ def create_citation_impact_dashboard(
     ax2.grid(axis="x", alpha=0.3)
 
     # Add value labels
-    for i, bar in enumerate(bars2):
+    for _i, bar in enumerate(bars2):
         width = bar.get_width()
         ax2.text(
             width + width * 0.01,
@@ -246,7 +246,7 @@ def create_author_network_diagram(
     author_df: pd.DataFrame,
     output_path: Path,
     top_n: int = 20,
-    figsize: Tuple[int, int] = (14, 10),
+    figsize: tuple[int, int] = (14, 10),
 ) -> None:
     """
     Create a network diagram showing influential authors and their dataset connections.
@@ -269,7 +269,7 @@ def create_author_network_diagram(
     for _, author_row in top_authors.iterrows():
         author_name = author_row["author"]
         datasets = (
-            eval(author_row["datasets_cited"])
+            ast.literal_eval(author_row["datasets_cited"])
             if isinstance(author_row["datasets_cited"], str)
             else author_row["datasets_cited"]
         )
@@ -355,7 +355,7 @@ def create_dataset_popularity_ranking(
     popularity_df: pd.DataFrame,
     output_path: Path,
     top_n: int = 15,
-    figsize: Tuple[int, int] = (12, 8),
+    figsize: tuple[int, int] = (12, 8),
 ) -> None:
     """
     Create a dataset popularity ranking visualization.
@@ -366,7 +366,7 @@ def create_dataset_popularity_ranking(
         top_n: Number of top datasets to show
         figsize: Figure size (width, height)
     """
-    fig, (ax1, ax2) = plt.subplots(
+    _fig, (ax1, ax2) = plt.subplots(
         1, 2, figsize=figsize, gridspec_kw={"width_ratios": [2, 1]}
     )
 
@@ -387,7 +387,7 @@ def create_dataset_popularity_ranking(
     ax1.grid(axis="x", alpha=0.3)
 
     # Add value labels
-    for i, bar in enumerate(bars):
+    for _i, bar in enumerate(bars):
         width = bar.get_width()
         ax1.text(
             width + width * 0.01,

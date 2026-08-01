@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Prune ds-* citation JSONs that are now duplicated by an on-* mirror.
 
 When an OpenNeuro `ds-*` dataset is imported into NEMAR it gains an `on-*`

@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """Generate theme analysis with wordclouds from citation data."""
 
 import json
@@ -11,8 +10,8 @@ import matplotlib
 # Non-interactive backend: the nightly pipeline runs headless on hallu, so
 # savefig must not require a display. Set before importing pyplot.
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
-from wordcloud import WordCloud  # noqa: E402
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
 
 
 def generate_themes(citations_dir: Path, output_dir: Path):

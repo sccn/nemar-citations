@@ -1,7 +1,7 @@
 """Chart visualization components."""
 
 import json
-from typing import Any, Dict
+from typing import Any
 
 
 def generate_chart_containers() -> str:
@@ -44,7 +44,7 @@ def generate_chart_containers() -> str:
                 </div>"""
 
 
-def generate_chart_javascript(stats: Dict[str, Any], charts: Dict[str, Any]) -> str:
+def generate_chart_javascript(stats: dict[str, Any], charts: dict[str, Any]) -> str:
     """Generate JavaScript for rendering charts."""
 
     quality = charts.get("quality_chart", {})

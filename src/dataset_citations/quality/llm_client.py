@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Ollama-backed LLM client for anchor adjudication.
 
@@ -39,7 +38,9 @@ from __future__ import annotations
 import json
 import logging
 import os
-from typing import Any, Iterable
+from collections.abc import Iterable
+from types import TracebackType
+from typing import Any, Self
 
 import httpx
 
@@ -247,14 +248,14 @@ class OllamaJudgmentClient:
     def close(self) -> None:
         self._client.close()
 
-    def __enter__(self) -> "OllamaJudgmentClient":
+    def __enter__(self) -> Self:
         return self
 
     def __exit__(
         self,
         exc_type: type[BaseException] | None,
         exc_val: BaseException | None,
-        exc_tb: Any,
+        exc_tb: TracebackType | None,
     ) -> None:
         del exc_type, exc_val, exc_tb
         self.close()

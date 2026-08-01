@@ -147,12 +147,11 @@ from dataset_citations.graph.temporal import analyze_citation_timeline
 
 # Programmatic analysis
 timeline_data = analyze_citation_timeline(
-    citations_dir=Path("citations/json_opencite"),
-    confidence_threshold=0.5
+    citations_dir=Path("citations/json_opencite"), confidence_threshold=0.5
 )
 
 # Access specific dataset stats
-dataset_stats = timeline_data['datasets']['ds000117']
+dataset_stats = timeline_data["datasets"]["ds000117"]
 print(f"First citation: {dataset_stats['first_year']}")
 print(f"Total citations: {dataset_stats['total_citations']}")
 ```

@@ -1,9 +1,9 @@
 """Hero section component."""
 
-from typing import Any, Dict, List
+from typing import Any
 
 
-def generate_hero_section(cards: List[Dict[str, Any]]) -> str:
+def generate_hero_section(cards: list[dict[str, Any]]) -> str:
     """Generate hero section with statistics cards."""
 
     stat_cards_html = ""

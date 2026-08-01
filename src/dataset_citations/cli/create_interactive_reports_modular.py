@@ -10,6 +10,8 @@ from pathlib import Path
 
 from dataset_citations.dashboard import DashboardGenerator
 
+logger = logging.getLogger(__name__)
+
 
 def setup_logging(verbose: bool = False) -> None:
     """Set up logging configuration."""
@@ -94,7 +96,7 @@ def main():
             dashboard_type=args.dashboard_type, lazy_load=not args.no_lazy_load
         )
 
-    logging.info(f"Dashboard generated successfully: {output_file}")
+    logger.info(f"Dashboard generated successfully: {output_file}")
 
 
 if __name__ == "__main__":

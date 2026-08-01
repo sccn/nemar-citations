@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 CLI command for retrieving dataset metadata from GitHub.
 
@@ -16,7 +15,7 @@ Email: shirazi@ieee.org
 import argparse
 import logging
 import os
-from typing import List
+import sys
 
 from ..quality.dataset_metadata import DatasetMetadataRetriever, save_dataset_metadata
 
@@ -37,7 +36,7 @@ def resolve_exit_code(
     return 1 if failed > max_failures else 0
 
 
-def get_dataset_ids_from_citations_dir(citations_dir: str) -> List[str]:
+def get_dataset_ids_from_citations_dir(citations_dir: str) -> list[str]:
     """Extract dataset IDs from citation JSON files."""
     dataset_ids = []
 
@@ -213,4 +212,4 @@ Examples:
 
 
 if __name__ == "__main__":
-    exit(main())
+    sys.exit(main())

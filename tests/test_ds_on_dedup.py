@@ -53,7 +53,8 @@ class MirrorMapTests(TestCase):
         )
 
     def test_ignores_rows_without_ds_source_id(self) -> None:
-        rows = _fixture_rows() + [
+        rows = [
+            *_fixture_rows(),
             parse_catalog_row({"dataset_id": "nm000207", "source": "nemar"}),
             # on-* with no source_id (NEMAR-native) -> not a mirror.
             parse_catalog_row({"dataset_id": "on000001", "source": "nemar"}),

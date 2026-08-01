@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 CLI command for calculating citation confidence scores.
 
@@ -17,14 +16,14 @@ import argparse
 import json
 import logging
 import os
-from typing import List
+import sys
 
 # Lazy import to avoid sentence-transformers issues during CLI help
 
 logger = logging.getLogger(__name__)
 
 
-def get_available_datasets(citations_dir: str, datasets_dir: str) -> List[str]:
+def get_available_datasets(citations_dir: str, datasets_dir: str) -> list[str]:
     """Find datasets that have both citation and metadata files."""
     available_datasets = []
 
@@ -227,4 +226,4 @@ Examples:
 
 
 if __name__ == "__main__":
-    exit(main())
+    sys.exit(main())

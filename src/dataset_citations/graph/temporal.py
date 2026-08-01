@@ -4,7 +4,6 @@ import json
 import logging
 from collections import defaultdict
 from pathlib import Path
-from typing import Dict, List, Optional
 
 import pandas as pd
 from pydantic import ValidationError
@@ -14,7 +13,7 @@ from .schemas import CitationCitedInYear
 logger = logging.getLogger(__name__)
 
 
-def extract_years_from_citations(citation_file: Path) -> List[int]:
+def extract_years_from_citations(citation_file: Path) -> list[int]:
     """
     Extract publication years from a dataset citation JSON file.
 
@@ -35,7 +34,7 @@ def extract_years_from_citations(citation_file: Path) -> List[int]:
         with open(citation_file, encoding="utf-8") as f:
             data = json.load(f)
     except json.JSONDecodeError as e:
-        raise ValueError(f"Invalid JSON in {citation_file}: {e}")
+        raise ValueError(f"Invalid JSON in {citation_file}: {e}") from e
 
     years = []
     citation_details = data.get("citation_details", [])
@@ -58,7 +57,7 @@ def extract_years_from_citations(citation_file: Path) -> List[int]:
 
 def analyze_citation_timeline(
     citations_dir: Path, confidence_threshold: float = 0.4
-) -> Dict:
+) -> dict:
     """
     Analyze citation timeline across all datasets.
 
@@ -146,7 +145,7 @@ def analyze_citation_timeline(
     return dict(timeline_data)
 
 
-def create_temporal_summary(timeline_data: Dict) -> pd.DataFrame:
+def create_temporal_summary(timeline_data: dict) -> pd.DataFrame:
     """
     Create a summary DataFrame for temporal analysis.
 
@@ -179,7 +178,7 @@ def create_temporal_summary(timeline_data: Dict) -> pd.DataFrame:
     return pd.DataFrame(summary_data)
 
 
-def get_dataset_temporal_stats(timeline_data: Dict, dataset_id: str) -> Optional[Dict]:
+def get_dataset_temporal_stats(timeline_data: dict, dataset_id: str) -> dict | None:
     """
     Get temporal statistics for a specific dataset.
 
@@ -195,7 +194,7 @@ def get_dataset_temporal_stats(timeline_data: Dict, dataset_id: str) -> Optional
 
 def create_citation_year_relationships(
     citations_dir: Path, confidence_threshold: float = 0.4
-) -> List[CitationCitedInYear]:
+) -> list[CitationCitedInYear]:
     """
     Create Citation-Year relationship objects for Neo4j loading.
 

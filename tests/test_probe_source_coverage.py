@@ -15,7 +15,7 @@ from unittest import TestCase
 # The probe lives in scripts/, which is not an installed package.
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
 
-from probe_source_coverage import (  # noqa: E402
+from probe_source_coverage import (
     _normalize_doi,
     _paper_doi_set,
     summarize_source_sets,

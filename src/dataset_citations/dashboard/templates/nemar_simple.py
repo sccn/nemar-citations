@@ -4,7 +4,7 @@ Simplified NEMAR dashboard template using modular components.
 
 import html as html_lib
 import json
-from typing import Any, Dict, Optional
+from typing import Any
 
 from .components.charts import generate_chart_containers, generate_chart_javascript
 from .components.header import generate_header
@@ -15,13 +15,13 @@ from .modal_handler import ModalHandler
 
 
 def generate_nemar_dashboard(
-    stats: Dict[str, Any],
-    charts: Dict[str, Any],
-    networks: Dict[str, Any],
-    themes: Dict[str, Any],
-    modals: Dict[str, Any],
-    data: Optional[Dict[str, Any]],
-    data_file: Optional[str],
+    stats: dict[str, Any],
+    charts: dict[str, Any],
+    networks: dict[str, Any],
+    themes: dict[str, Any],
+    modals: dict[str, Any],
+    data: dict[str, Any] | None,
+    data_file: str | None,
     timestamp: str,
 ) -> str:
     """Generate complete NEMAR dashboard HTML."""

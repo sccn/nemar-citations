@@ -229,13 +229,17 @@ def format_text(report: AttributionReport, top: int = 20) -> str:
         f"Summed citations:  {report.summed_citations}",
         f"Unique citations:  {report.unique_citations}",
         f"Inflation ratio:   {report.inflation_ratio:.2f}x",
-        f"Est. true total:   {report.estimated_true_total} "
-        f"(after dropping {len(report.violations)} over-spread anchors)",
+        (
+            f"Est. true total:   {report.estimated_true_total} "
+            f"(after dropping {len(report.violations)} over-spread anchors)"
+        ),
         f"Threshold:         > {report.max_datasets_per_anchor} datasets per anchor",
         f"Violations:        {len(report.violations)} anchors exceed the threshold",
         "",
-        f"Top {min(top, len(report.anchor_spreads))} anchors by dataset spread "
-        "(! = violation, ctx = datasets that bucket it as context):",
+        (
+            f"Top {min(top, len(report.anchor_spreads))} anchors by dataset spread "
+            "(! = violation, ctx = datasets that bucket it as context):"
+        ),
         f"  {'#ds':>4} {'attr':>6} {'ctx':>4}  anchor / title",
     ]
     for anchor in report.anchor_spreads[:top]:
@@ -258,8 +262,10 @@ def format_markdown(report: AttributionReport, top: int = 20) -> str:
         f"- Globally unique citations: **{report.unique_citations}**",
         f"- Inflation ratio: **{report.inflation_ratio:.2f}x**",
         f"- Estimated true total: **{report.estimated_true_total}**",
-        f"- Violations (> {report.max_datasets_per_anchor} datasets/anchor): "
-        f"**{len(report.violations)}**",
+        (
+            f"- Violations (> {report.max_datasets_per_anchor} datasets/anchor): "
+            f"**{len(report.violations)}**"
+        ),
         "",
         f"## Top {min(top, len(report.anchor_spreads))} anchors by dataset spread",
         "",

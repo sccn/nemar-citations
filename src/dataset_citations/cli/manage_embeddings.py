@@ -5,11 +5,13 @@ CLI command for embedding management and maintenance operations.
 import argparse
 import json
 import logging
+import sys
 import time
 from pathlib import Path
-from typing import Dict
 
 from ..embeddings.storage_manager import EmbeddingStorageManager
+
+logger = logging.getLogger(__name__)
 
 
 def setup_logging(verbose: bool = False):
@@ -20,7 +22,7 @@ def setup_logging(verbose: bool = False):
     )
 
 
-def show_embedding_stats(embeddings_dir: Path) -> Dict:
+def show_embedding_stats(embeddings_dir: Path) -> dict:
     """
     Display comprehensive embedding statistics.
 
@@ -30,7 +32,7 @@ def show_embedding_stats(embeddings_dir: Path) -> Dict:
     Returns:
         Statistics dictionary
     """
-    logging.info("Gathering embedding statistics...")
+    logger.info("Gathering embedding statistics...")
 
     storage_manager = EmbeddingStorageManager(embeddings_dir)
     registry_stats = storage_manager.registry.get_registry_stats()
@@ -78,7 +80,7 @@ def show_embedding_stats(embeddings_dir: Path) -> Dict:
     return combined_stats
 
 
-def check_embedding_health(embeddings_dir: Path) -> Dict:
+def check_embedding_health(embeddings_dir: Path) -> dict:
     """
     Check health of embedding storage system.
 
@@ -88,7 +90,7 @@ def check_embedding_health(embeddings_dir: Path) -> Dict:
     Returns:
         Health check results
     """
-    logging.info("Running embedding health check...")
+    logger.info("Running embedding health check...")
 
     storage_manager = EmbeddingStorageManager(embeddings_dir)
     health_results = {
@@ -111,7 +113,7 @@ def check_embedding_health(embeddings_dir: Path) -> Dict:
         return health_results
 
     # Check for missing embedding files
-    for dataset_id, dataset_info in registry_data["datasets"].items():
+    for dataset_info in registry_data["datasets"].values():
         for emb in dataset_info["embeddings"]:
             if emb["status"] == "current":
                 file_path = embeddings_dir / emb["file"]
@@ -121,7 +123,7 @@ def check_embedding_health(embeddings_dir: Path) -> Dict:
                         f"Missing dataset embedding: {emb['file']}"
                     )
 
-    for citation_hash, citation_info in registry_data["citations"].items():
+    for citation_info in registry_data["citations"].values():
         for emb in citation_info["embeddings"]:
             if emb["status"] == "current":
                 file_path = embeddings_dir / emb["file"]
@@ -193,7 +195,7 @@ def check_embedding_health(embeddings_dir: Path) -> Dict:
 
 def cleanup_obsolete_embeddings(
     embeddings_dir: Path, older_than_days: int = 90, dry_run: bool = True
-) -> Dict:
+) -> dict:
     """
     Clean up obsolete embeddings.
 
@@ -208,7 +210,7 @@ def cleanup_obsolete_embeddings(
     storage_manager = EmbeddingStorageManager(embeddings_dir)
 
     action = "Would delete" if dry_run else "Deleting"
-    logging.info(f"{action} obsolete embeddings older than {older_than_days} days...")
+    logger.info(f"{action} obsolete embeddings older than {older_than_days} days...")
 
     # Perform cleanup
     deleted_files = storage_manager.cleanup_obsolete_embeddings(
@@ -240,7 +242,7 @@ def cleanup_obsolete_embeddings(
     return deleted_files
 
 
-def export_embedding_metadata(embeddings_dir: Path, output_file: Path) -> Dict:
+def export_embedding_metadata(embeddings_dir: Path, output_file: Path) -> dict:
     """
     Export embedding metadata for external analysis.
 
@@ -251,7 +253,7 @@ def export_embedding_metadata(embeddings_dir: Path, output_file: Path) -> Dict:
     Returns:
         Export results
     """
-    logging.info(f"Exporting embedding metadata to {output_file}")
+    logger.info(f"Exporting embedding metadata to {output_file}")
 
     storage_manager = EmbeddingStorageManager(embeddings_dir)
     registry = storage_manager.registry.registry
@@ -396,7 +398,7 @@ Examples:
 
     # Validate inputs
     if not args.embeddings_dir.exists():
-        logging.error(f"Embeddings directory not found: {args.embeddings_dir}")
+        logger.error(f"Embeddings directory not found: {args.embeddings_dir}")
         return 1
 
     # If no action specified, show stats by default
@@ -451,9 +453,9 @@ Examples:
         return 0
 
     except Exception as e:
-        logging.error(f"Error during embedding management: {e}")
+        logger.error(f"Error during embedding management: {e}")
         return 1
 
 
 if __name__ == "__main__":
-    exit(main())
+    sys.exit(main())

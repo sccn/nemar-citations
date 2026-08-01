@@ -12,7 +12,7 @@ import os
 import stat
 import sys
 import tempfile
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from unittest import TestCase
 
@@ -96,7 +96,7 @@ class CliOllamaPreflight(TestCase):
             base_url = "http://dead-host:11434"
             model = "dead-model"
 
-            def __init__(self, base_url=None, model=None):  # noqa: ARG002
+            def __init__(self, base_url=None, model=None):
                 pass
 
             def __enter__(self):
@@ -137,7 +137,7 @@ class _UpClient:
     base_url = "http://test"
     model = "test-model"
 
-    def __init__(self, base_url=None, model=None):  # noqa: ARG002
+    def __init__(self, base_url=None, model=None):
         pass
 
     def __enter__(self):
@@ -201,7 +201,7 @@ class CliSkipExistingAndMaxAge(TestCase):
             _seed_sidecar(
                 output_dir,
                 "nm000104",
-                judged_at=datetime.now(timezone.utc).isoformat(),
+                judged_at=datetime.now(UTC).isoformat(),
             )
             list_file = _write_list(tmp_path, ["nm000104", "nm000999"])
 
@@ -213,7 +213,7 @@ class CliSkipExistingAndMaxAge(TestCase):
                 judge_recorder=recorded,
                 judge_payload_factory=lambda did: {
                     "dataset_id": did,
-                    "judged_at": datetime.now(timezone.utc).isoformat(),
+                    "judged_at": datetime.now(UTC).isoformat(),
                     "judgment_model": "test-model",
                     "judgments": [],
                 },
@@ -230,7 +230,7 @@ class CliSkipExistingAndMaxAge(TestCase):
             tmp_path = Path(tmp)
             output_dir = tmp_path / "out"
             # Stale: judged 30 days ago. Fresh threshold is 7 days.
-            stale = datetime.now(timezone.utc) - timedelta(days=30)
+            stale = datetime.now(UTC) - timedelta(days=30)
             _seed_sidecar(output_dir, "nm000104", judged_at=stale.isoformat())
             list_file = _write_list(tmp_path, ["nm000104"])
 
@@ -242,7 +242,7 @@ class CliSkipExistingAndMaxAge(TestCase):
                 judge_recorder=recorded,
                 judge_payload_factory=lambda did: {
                     "dataset_id": did,
-                    "judged_at": datetime.now(timezone.utc).isoformat(),
+                    "judged_at": datetime.now(UTC).isoformat(),
                     "judgment_model": "test-model",
                     "judgments": [],
                 },
@@ -257,7 +257,7 @@ class CliSkipExistingAndMaxAge(TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
             output_dir = tmp_path / "out"
-            fresh = datetime.now(timezone.utc) - timedelta(days=2)
+            fresh = datetime.now(UTC) - timedelta(days=2)
             _seed_sidecar(output_dir, "nm000104", judged_at=fresh.isoformat())
             list_file = _write_list(tmp_path, ["nm000104"])
 
@@ -269,7 +269,7 @@ class CliSkipExistingAndMaxAge(TestCase):
                 judge_recorder=recorded,
                 judge_payload_factory=lambda did: {
                     "dataset_id": did,
-                    "judged_at": datetime.now(timezone.utc).isoformat(),
+                    "judged_at": datetime.now(UTC).isoformat(),
                     "judgment_model": "test-model",
                     "judgments": [],
                 },
@@ -293,7 +293,7 @@ class CliWritesJudgmentRecords(TestCase):
             def fake_judge(dataset_id, **_):
                 return {
                     "dataset_id": dataset_id,
-                    "judged_at": datetime.now(timezone.utc).isoformat(),
+                    "judged_at": datetime.now(UTC).isoformat(),
                     "judgment_model": "test-model",
                     "judgments": [
                         {
@@ -305,7 +305,7 @@ class CliWritesJudgmentRecords(TestCase):
                             "paper_title": "A paper",
                             "paper_year": 2020,
                             "paper_venue": "Venue",
-                            "judged_at": datetime.now(timezone.utc).isoformat(),
+                            "judged_at": datetime.now(UTC).isoformat(),
                             "error": None,
                         },
                         {
@@ -317,7 +317,7 @@ class CliWritesJudgmentRecords(TestCase):
                             "paper_title": None,
                             "paper_year": None,
                             "paper_venue": None,
-                            "judged_at": datetime.now(timezone.utc).isoformat(),
+                            "judged_at": datetime.now(UTC).isoformat(),
                             "error": "paper_lookup_failed:not_found:404",
                         },
                     ],
@@ -364,7 +364,7 @@ class CliWritesJudgmentRecords(TestCase):
             def fake_judge(dataset_id, **_):
                 return {
                     "dataset_id": dataset_id,
-                    "judged_at": datetime.now(timezone.utc).isoformat(),
+                    "judged_at": datetime.now(UTC).isoformat(),
                     "judgment_model": "test-model",
                     "judgments": [],
                 }

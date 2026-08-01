@@ -3,7 +3,7 @@ HTML template builder for dashboard generation.
 """
 
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any
 
 from .nemar_simple import generate_nemar_dashboard
 
@@ -18,13 +18,13 @@ class TemplateBuilder:
     def build_dashboard(
         self,
         dashboard_type: str,
-        stats: Dict[str, Any],
-        charts: Dict[str, Any],
-        networks: Dict[str, Any],
-        themes: Dict[str, Any],
-        modals: Dict[str, Any],
-        data: Optional[Dict[str, Any]],
-        data_file: Optional[str],
+        stats: dict[str, Any],
+        charts: dict[str, Any],
+        networks: dict[str, Any],
+        themes: dict[str, Any],
+        modals: dict[str, Any],
+        data: dict[str, Any] | None,
+        data_file: str | None,
         timestamp: str,
     ) -> str:
         """
@@ -53,7 +53,7 @@ class TemplateBuilder:
                 stats, charts, networks, themes, modals, data, data_file, timestamp
             )
 
-    def build_minimal_dashboard(self, stats: Dict[str, Any], timestamp: str) -> str:
+    def build_minimal_dashboard(self, stats: dict[str, Any], timestamp: str) -> str:
         """
         Build minimal dashboard for testing.
 
@@ -85,13 +85,13 @@ class TemplateBuilder:
 
     def _build_nemar_dashboard(
         self,
-        stats: Dict[str, Any],
-        charts: Dict[str, Any],
-        networks: Dict[str, Any],
-        themes: Dict[str, Any],
-        modals: Dict[str, Any],
-        data: Optional[Dict[str, Any]],
-        data_file: Optional[str],
+        stats: dict[str, Any],
+        charts: dict[str, Any],
+        networks: dict[str, Any],
+        themes: dict[str, Any],
+        modals: dict[str, Any],
+        data: dict[str, Any] | None,
+        data_file: str | None,
         timestamp: str,
     ) -> str:
         """Build NEMAR-styled dashboard."""
@@ -101,13 +101,13 @@ class TemplateBuilder:
 
     def _build_standard_dashboard(
         self,
-        stats: Dict[str, Any],
-        charts: Dict[str, Any],
-        networks: Dict[str, Any],
-        themes: Dict[str, Any],
-        modals: Dict[str, Any],
-        data: Optional[Dict[str, Any]],
-        data_file: Optional[str],
+        stats: dict[str, Any],
+        charts: dict[str, Any],
+        networks: dict[str, Any],
+        themes: dict[str, Any],
+        modals: dict[str, Any],
+        data: dict[str, Any] | None,
+        data_file: str | None,
         timestamp: str,
     ) -> str:
         """Build standard dashboard."""

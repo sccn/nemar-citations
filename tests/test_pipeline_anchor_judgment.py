@@ -12,9 +12,10 @@ breaks this file loudly instead of silently.
 
 from __future__ import annotations
 
+import dataclasses
 import json
 import logging
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest import TestCase
@@ -38,7 +39,7 @@ from dataset_citations.sources.models import (
 )
 from dataset_citations.sources.nemar_metadata import NemarDatasetMetadata
 
-WHEN = datetime(2026, 5, 22, tzinfo=timezone.utc)
+WHEN = datetime(2026, 5, 22, tzinfo=UTC)
 
 
 def _make_work(
@@ -97,7 +98,7 @@ class _StubSource:
     def __init__(self, outcome):
         self._outcome = outcome
 
-    def get_doi_references(self, dataset_id):  # noqa: ARG002
+    def get_doi_references(self, dataset_id):
         return self._outcome
 
 
@@ -108,7 +109,7 @@ class _RichStubSource(_StubSource):
         super().__init__(outcome)
         self._metadata = metadata
 
-    def get_dataset_metadata(self, dataset_id):  # noqa: ARG002
+    def get_dataset_metadata(self, dataset_id):
         return self._metadata
 
 
@@ -789,5 +790,5 @@ class SidecarShapeRegressionTests(TestCase):
     def test_judgment_sidecar_is_frozen_dataclass(self) -> None:
         # If phase 4 starts mutating sidecar.lookup, this test fails loudly.
         sidecar = JudgmentSidecar(present=True, model="m", lookup={"a": "b"})
-        with self.assertRaises(Exception):
+        with self.assertRaises(dataclasses.FrozenInstanceError):
             sidecar.lookup = {}  # type: ignore[misc]

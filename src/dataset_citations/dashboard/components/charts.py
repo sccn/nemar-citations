@@ -2,13 +2,13 @@
 Chart generation component for dashboard.
 """
 
-from typing import Any, Dict
+from typing import Any
 
 
 class ChartGenerator:
     """Generate Plotly chart configurations."""
 
-    def generate_all_charts(self, data: Dict[str, Any]) -> Dict[str, Any]:
+    def generate_all_charts(self, data: dict[str, Any]) -> dict[str, Any]:
         """
         Generate all chart configurations.
 
@@ -24,7 +24,7 @@ class ChartGenerator:
             "modality_chart": self._generate_modality_chart(data),
         }
 
-    def _generate_quality_chart(self, data: Dict[str, Any]) -> Dict[str, Any]:
+    def _generate_quality_chart(self, data: dict[str, Any]) -> dict[str, Any]:
         """Generate citation quality bar chart configuration."""
         stats = data.get("summary_stats", {})
         high_conf = stats.get("high_confidence_citations", 0)
@@ -40,7 +40,7 @@ class ChartGenerator:
             },
         }
 
-    def _generate_growth_chart(self, data: Dict[str, Any]) -> Dict[str, Any]:
+    def _generate_growth_chart(self, data: dict[str, Any]) -> dict[str, Any]:
         """Generate citation growth timeline chart.
 
         Reads `temporal_analysis.temporal_summary` (list of per-year rows with
@@ -91,7 +91,7 @@ class ChartGenerator:
             },
         }
 
-    def _generate_modality_chart(self, data: Dict[str, Any]) -> Dict[str, Any]:
+    def _generate_modality_chart(self, data: dict[str, Any]) -> dict[str, Any]:
         """Generate data modality pie chart."""
         return {
             "type": "pie",

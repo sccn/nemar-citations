@@ -21,7 +21,7 @@ mirrored was removed in epic #180 phase 5.)
 from __future__ import annotations
 
 import logging
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -113,7 +113,7 @@ def fetch_dataset_citations_via_opencite(
       - Any other value (e.g. "rate_limit", "not_found", "no_doi_references",
         "unsupported_prefix:...") indicates a stub payload with zero citations.
     """
-    when = fetch_date or datetime.now(timezone.utc)
+    when = fetch_date or datetime.now(UTC)
     backend = backend or OpenCiteBackend()
     store = checkpoint_store or (
         CheckpointStore(base_dir=DEFAULT_CHECKPOINT_DIR) if use_checkpoint else None
@@ -122,7 +122,7 @@ def fetch_dataset_citations_via_opencite(
         judgments_dir if judgments_dir is not None else DEFAULT_JUDGMENTS_DIR
     )
 
-    if dataset_id.startswith("nm") or dataset_id.startswith("on"):
+    if dataset_id.startswith(("nm", "on")):
         # nm-* = NEMAR-native; on-* = OpenNeuro imported into NEMAR. Both carry
         # .nemar/metadata.json so the same source handles them.
         source: Any = nemar_source or NemarMetadataSource(github_token=github_token)

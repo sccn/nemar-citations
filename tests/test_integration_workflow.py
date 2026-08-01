@@ -302,7 +302,6 @@ class TestIntegrationWorkflow(TestCase):
         """Test simulated full pipeline execution (slow test)."""
         # This would test the complete pipeline but is skipped by default
         # Set RUN_SLOW_TESTS=1 to run this test
-        pass
 
 
 class TestEdgeCases(TestCase):

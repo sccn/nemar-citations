@@ -6,7 +6,7 @@ import json
 import logging
 import pickle
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 class NetworkDataExtractor:
     """Extract and prepare network data for Cytoscape.js visualization."""
 
-    def __init__(self, embeddings_dir: Optional[Path] = None):
+    def __init__(self, embeddings_dir: Path | None = None):
         """
         Initialize the network data extractor.
 
@@ -24,7 +24,7 @@ class NetworkDataExtractor:
         self.embeddings_dir = embeddings_dir or Path("embeddings")
         self.umap_cache = {}
 
-    def load_umap_coordinates(self) -> Dict[str, Any]:
+    def load_umap_coordinates(self) -> dict[str, Any]:
         """
         Load UMAP coordinates from pickle files.
 
@@ -83,7 +83,7 @@ class NetworkDataExtractor:
 
         return result
 
-    def prepare_network_data(self, aggregated_data: Dict[str, Any]) -> Dict[str, Any]:
+    def prepare_network_data(self, aggregated_data: dict[str, Any]) -> dict[str, Any]:
         """
         Prepare complete network data for visualization.
 
@@ -121,10 +121,10 @@ class NetworkDataExtractor:
 
     def _prepare_dataset_network(
         self,
-        popularity: List[Dict],
-        co_citations: List[Dict],
-        umap_coords: Dict[str, Dict[str, float]],
-    ) -> Dict[str, Any]:
+        popularity: list[dict],
+        co_citations: list[dict],
+        umap_coords: dict[str, dict[str, float]],
+    ) -> dict[str, Any]:
         """Prepare dataset network data."""
         nodes = []
         edges = []
@@ -178,10 +178,10 @@ class NetworkDataExtractor:
 
     def _prepare_citation_network(
         self,
-        citations: List[Dict],
-        similarities: List[Dict],
-        umap_coords: Dict[str, Dict[str, float]],
-    ) -> Dict[str, Any]:
+        citations: list[dict],
+        similarities: list[dict],
+        umap_coords: dict[str, dict[str, float]],
+    ) -> dict[str, Any]:
         """Prepare citation network data."""
         nodes = []
         edges = []
@@ -232,7 +232,7 @@ class NetworkDataExtractor:
 
         return {"nodes": nodes, "edges": edges}
 
-    def _load_dataset_names(self) -> Dict[str, str]:
+    def _load_dataset_names(self) -> dict[str, str]:
         """Load dataset names from metadata JSON files."""
         dataset_names = {}
         datasets_dir = Path("datasets")
@@ -258,7 +258,7 @@ class NetworkDataExtractor:
 
         return dataset_names
 
-    def _load_citation_titles(self) -> Dict[str, Dict[str, Any]]:
+    def _load_citation_titles(self) -> dict[str, dict[str, Any]]:
         """Load citation titles from JSON files and build reverse index."""
         citation_data = {}
         all_citations = []  # Store all citations to build index
@@ -303,7 +303,7 @@ class NetworkDataExtractor:
 
         return citation_data
 
-    def _calculate_bounds(self, umap_coords: Dict[str, Dict]) -> Dict[str, float]:
+    def _calculate_bounds(self, umap_coords: dict[str, dict]) -> dict[str, float]:
         """Calculate the bounds of UMAP coordinates for proper scaling."""
         all_x = []
         all_y = []

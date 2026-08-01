@@ -3,17 +3,20 @@ Modal content generation component for dashboard.
 """
 
 import json
+import logging
 from collections import defaultdict
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any
+
+logger = logging.getLogger(__name__)
 
 
 class ModalGenerator:
     """Generate modal dialog content."""
 
     def generate_modals(
-        self, data: Dict[str, Any], stats: Dict[str, Any]
-    ) -> Dict[str, Any]:
+        self, data: dict[str, Any], stats: dict[str, Any]
+    ) -> dict[str, Any]:
         """
         Generate modal content for detail views.
 
@@ -32,8 +35,8 @@ class ModalGenerator:
         }
 
     def _generate_dataset_modal(
-        self, data: Dict[str, Any], stats: Dict[str, Any]
-    ) -> Dict[str, Any]:
+        self, data: dict[str, Any], stats: dict[str, Any]
+    ) -> dict[str, Any]:
         """Generate dataset details modal content."""
         # Get top datasets from network analysis
         network_data = data.get("network_analysis", {})
@@ -103,8 +106,8 @@ class ModalGenerator:
         }
 
     def _generate_citation_modal(
-        self, data: Dict[str, Any], stats: Dict[str, Any]
-    ) -> Dict[str, Any]:
+        self, data: dict[str, Any], stats: dict[str, Any]
+    ) -> dict[str, Any]:
         """Generate citation details modal content."""
         high_conf = stats["summary"].get("high_confidence_citations", 0)
         total = stats["summary"].get("total_citations", 0)
@@ -140,28 +143,27 @@ class ModalGenerator:
         }
 
     def _generate_bridge_modal(
-        self, data: Dict[str, Any], stats: Dict[str, Any]
-    ) -> Dict[str, Any]:
+        self, data: dict[str, Any], stats: dict[str, Any]
+    ) -> dict[str, Any]:
         """Generate bridge papers modal content."""
         network_data = data.get("network_analysis", {})
         bridge_papers = network_data.get("bridge_papers", [])
 
         # Fix field names and sort by number of datasets bridged
-        fixed_papers = []
-        for paper in bridge_papers:
-            fixed_papers.append(
-                {
-                    "bridge_paper_title": paper.get("title", "Unknown Title"),
-                    "bridge_paper_author": paper.get("author", "Unknown Authors"),
-                    "bridge_paper_year": paper.get("year", ""),
-                    "num_datasets_bridged": int(paper.get("num_datasets", 0)),
-                    "datasets_bridged": (
-                        paper.get("datasets_bridged", "").split(",")
-                        if paper.get("datasets_bridged")
-                        else []
-                    ),
-                }
-            )
+        fixed_papers = [
+            {
+                "bridge_paper_title": paper.get("title", "Unknown Title"),
+                "bridge_paper_author": paper.get("author", "Unknown Authors"),
+                "bridge_paper_year": paper.get("year", ""),
+                "num_datasets_bridged": int(paper.get("num_datasets", 0)),
+                "datasets_bridged": (
+                    paper.get("datasets_bridged", "").split(",")
+                    if paper.get("datasets_bridged")
+                    else []
+                ),
+            }
+            for paper in bridge_papers
+        ]
 
         # Sort by number of datasets bridged and get top 20
         top_papers = sorted(
@@ -179,7 +181,7 @@ class ModalGenerator:
             },
         }
 
-    def _generate_threshold_modal(self, stats: Dict[str, Any]) -> Dict[str, Any]:
+    def _generate_threshold_modal(self, stats: dict[str, Any]) -> dict[str, Any]:
         """Generate confidence threshold explanation modal."""
         return {
             "title": "Confidence Threshold Information",
@@ -200,7 +202,7 @@ class ModalGenerator:
             },
         }
 
-    def _get_top_citations_from_json(self, limit: int = 20) -> List[Dict[str, Any]]:
+    def _get_top_citations_from_json(self, limit: int = 20) -> list[dict[str, Any]]:
         """Load top citations directly from JSON files."""
         citation_impacts = defaultdict(
             lambda: {
@@ -248,7 +250,8 @@ class ModalGenerator:
                                 citation_impacts[title]["confidence_score"], conf_score
                             )
                             citation_impacts[title]["datasets"].append(dataset_id)
-            except Exception:
+            except (OSError, json.JSONDecodeError, TypeError, KeyError) as e:
+                logger.warning("skipping %s while ranking citations: %s", json_file, e)
                 continue
 
         # Sort by citation impact and return top N
@@ -258,7 +261,7 @@ class ModalGenerator:
 
         return sorted_citations[:limit]
 
-    def _load_dataset_names(self) -> Dict[str, str]:
+    def _load_dataset_names(self) -> dict[str, str]:
         """Load dataset names from metadata JSON files."""
         dataset_names = {}
         datasets_dir = Path("datasets")
@@ -278,7 +281,10 @@ class ModalGenerator:
                         dataset_name = dataset_id
                     if dataset_id:
                         dataset_names[dataset_id] = dataset_name
-            except Exception:
+            except (OSError, json.JSONDecodeError, TypeError, AttributeError) as e:
+                logger.warning(
+                    "skipping %s while reading dataset name: %s", json_file, e
+                )
                 continue
 
         return dataset_names

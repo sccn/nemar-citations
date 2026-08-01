@@ -5,13 +5,15 @@ CLI command for generating embeddings from existing dataset and citation data.
 import argparse
 import json
 import logging
+import sys
 import time
 from pathlib import Path
-from typing import Optional
 
 from ..core.citation_utils import load_citations_from_json
 from ..embeddings.storage_manager import EmbeddingStorageManager
 from ..quality.confidence_scoring import SentenceTransformerModel
+
+logger = logging.getLogger(__name__)
 
 
 def setup_logging(verbose: bool = False):
@@ -22,7 +24,7 @@ def setup_logging(verbose: bool = False):
     )
 
 
-def load_dataset_metadata(dataset_id: str, datasets_dir: Path) -> Optional[str]:
+def load_dataset_metadata(dataset_id: str, datasets_dir: Path) -> str | None:
     """
     Load dataset metadata text for embedding generation.
 
@@ -36,7 +38,7 @@ def load_dataset_metadata(dataset_id: str, datasets_dir: Path) -> Optional[str]:
     dataset_file = datasets_dir / f"{dataset_id}_datasets.json"
 
     if not dataset_file.exists():
-        logging.warning(f"Dataset metadata not found: {dataset_file}")
+        logger.warning(f"Dataset metadata not found: {dataset_file}")
         return None
 
     try:
@@ -55,23 +57,25 @@ def load_dataset_metadata(dataset_id: str, datasets_dir: Path) -> Optional[str]:
         if "dataset_description" in dataset_data:
             desc = dataset_data["dataset_description"]
             if isinstance(desc, dict):
-                for field in ["Name", "Description", "TaskName", "Instructions"]:
-                    if field in desc:
-                        metadata_parts.append(str(desc[field]))
+                metadata_parts.extend(
+                    str(desc[field])
+                    for field in ["Name", "Description", "TaskName", "Instructions"]
+                    if field in desc
+                )
 
         combined_text = " ".join(metadata_parts).strip()
 
         if not combined_text:
-            logging.warning(f"No metadata text found for dataset {dataset_id}")
+            logger.warning(f"No metadata text found for dataset {dataset_id}")
             return None
 
-        logging.debug(
+        logger.debug(
             f"Loaded {len(combined_text)} characters of metadata for {dataset_id}"
         )
         return combined_text
 
     except Exception as e:
-        logging.error(f"Error loading dataset metadata for {dataset_id}: {e}")
+        logger.error(f"Error loading dataset metadata for {dataset_id}: {e}")
         return None
 
 
@@ -97,7 +101,7 @@ def generate_dataset_embeddings(
     Returns:
         Number of embeddings generated
     """
-    logging.info("Starting dataset embedding generation...")
+    logger.info("Starting dataset embedding generation...")
 
     # Initialize components
     storage_manager = EmbeddingStorageManager(embeddings_dir)
@@ -115,10 +119,10 @@ def generate_dataset_embeddings(
     total_datasets = len(dataset_files)
 
     if total_datasets == 0:
-        logging.error(f"No dataset files found in {datasets_dir}")
+        logger.error(f"No dataset files found in {datasets_dir}")
         return 0
 
-    logging.info(f"Found {total_datasets} dataset files")
+    logger.info(f"Found {total_datasets} dataset files")
 
     generated_count = 0
     skipped_count = 0
@@ -127,7 +131,7 @@ def generate_dataset_embeddings(
     for i in range(0, total_datasets, batch_size):
         batch_files = dataset_files[i : i + batch_size]
 
-        logging.info(
+        logger.info(
             f"Processing batch {i // batch_size + 1}/{(total_datasets + batch_size - 1) // batch_size}"
         )
 
@@ -140,19 +144,19 @@ def generate_dataset_embeddings(
                     dataset_id
                 )
                 if existing:
-                    logging.debug(f"Skipping {dataset_id} - embedding already exists")
+                    logger.debug(f"Skipping {dataset_id} - embedding already exists")
                     skipped_count += 1
                     continue
 
             # Load dataset metadata
             metadata_text = load_dataset_metadata(dataset_id, datasets_dir)
             if not metadata_text:
-                logging.warning(f"Skipping {dataset_id} - no metadata available")
+                logger.warning(f"Skipping {dataset_id} - no metadata available")
                 continue
 
             try:
                 # Generate embedding
-                logging.info(f"Generating embedding for {dataset_id}")
+                logger.info(f"Generating embedding for {dataset_id}")
                 embedding = model.encode([metadata_text])[0]
 
                 # Store embedding
@@ -168,13 +172,13 @@ def generate_dataset_embeddings(
                 )
 
                 generated_count += 1
-                logging.info(f"Generated embedding for {dataset_id}")
+                logger.info(f"Generated embedding for {dataset_id}")
 
             except Exception as e:
-                logging.error(f"Error generating embedding for {dataset_id}: {e}")
+                logger.error(f"Error generating embedding for {dataset_id}: {e}")
                 continue
 
-    logging.info(
+    logger.info(
         f"Dataset embedding generation complete: {generated_count} generated, {skipped_count} skipped"
     )
     return generated_count
@@ -230,7 +234,7 @@ def generate_citation_embeddings(
     Returns:
         Number of embeddings generated
     """
-    logging.info("Starting citation embedding generation...")
+    logger.info("Starting citation embedding generation...")
 
     # Initialize components
     storage_manager = EmbeddingStorageManager(embeddings_dir)
@@ -241,10 +245,10 @@ def generate_citation_embeddings(
     total_files = len(citation_files)
 
     if total_files == 0:
-        logging.error(f"No citation files found in {search_dir}")
+        logger.error(f"No citation files found in {search_dir}")
         return 0
 
-    logging.info(f"Found {total_files} citation files")
+    logger.info(f"Found {total_files} citation files")
 
     generated_count = 0
     skipped_count = 0
@@ -260,7 +264,7 @@ def generate_citation_embeddings(
             citations_data = load_citations_from_json(citation_file)
 
             if "citation_details" not in citations_data:
-                logging.warning(f"No citation details in {citation_file}")
+                logger.warning(f"No citation details in {citation_file}")
                 continue
 
             # Process each citation
@@ -316,12 +320,12 @@ def generate_citation_embeddings(
                     batch_metadata = []
 
         except Exception as e:
-            logging.error(f"Error processing citation file {citation_file}: {e}")
+            logger.error(f"Error processing citation file {citation_file}: {e}")
             continue
 
         # Progress logging
         if (file_idx + 1) % 10 == 0:
-            logging.info(f"Processed {file_idx + 1}/{total_files} citation files")
+            logger.info(f"Processed {file_idx + 1}/{total_files} citation files")
 
     # Process remaining batch
     if batch_texts:
@@ -329,7 +333,7 @@ def generate_citation_embeddings(
             batch_texts, batch_metadata, model, storage_manager, model_name
         )
 
-    logging.info(
+    logger.info(
         f"Citation embedding generation complete: {generated_count} generated, {skipped_count} skipped"
     )
     return generated_count
@@ -341,14 +345,14 @@ def process_citation_batch(
     """Process a batch of citations for embedding generation."""
     try:
         # Generate embeddings for batch
-        logging.debug(
-            f"Generating embeddings for batch of {len(batch_texts)} citations"
-        )
+        logger.debug(f"Generating embeddings for batch of {len(batch_texts)} citations")
         embeddings = model.encode(batch_texts)
 
         # Store each embedding
         batch_generated = 0
-        for i, (embedding, metadata) in enumerate(zip(embeddings, batch_metadata)):
+        for i, (embedding, metadata) in enumerate(
+            zip(embeddings, batch_metadata, strict=False)
+        ):
             try:
                 storage_manager.store_citation_embedding(
                     citation_text=batch_texts[i],
@@ -366,17 +370,17 @@ def process_citation_batch(
                 batch_generated += 1
 
             except Exception as e:
-                logging.error(
+                logger.error(
                     f"Error storing embedding for citation {metadata['citation_hash']}: {e}"
                 )
 
-        logging.info(
+        logger.info(
             f"Generated {batch_generated}/{len(batch_texts)} embeddings in batch"
         )
         return batch_generated
 
     except Exception as e:
-        logging.error(f"Error processing citation batch: {e}")
+        logger.error(f"Error processing citation batch: {e}")
         return 0
 
 
@@ -400,14 +404,14 @@ def _resolve_device(spec: str) -> str:
         # cuda is unavailable so we fall through to mps; cpu is the last
         # resort.
         if torch.cuda.is_available():
-            logging.info("device=auto -> cuda detected")
+            logger.info("device=auto -> cuda detected")
             return "cuda"
         if hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
-            logging.info("device=auto -> mps detected")
+            logger.info("device=auto -> mps detected")
             return "mps"
     except ImportError:
         pass
-    logging.info("device=auto -> falling back to cpu")
+    logger.info("device=auto -> falling back to cpu")
     return "cpu"
 
 
@@ -522,11 +526,11 @@ Examples:
 
     # Validate inputs
     if args.embedding_type in ["datasets", "both"] and not args.datasets.exists():
-        logging.error(f"Datasets directory not found: {args.datasets}")
+        logger.error(f"Datasets directory not found: {args.datasets}")
         return 1
 
     if args.embedding_type in ["citations", "both"] and not args.citations.exists():
-        logging.error(f"Citations directory not found: {args.citations}")
+        logger.error(f"Citations directory not found: {args.citations}")
         return 1
 
     # Create embeddings directory
@@ -548,9 +552,9 @@ Examples:
     try:
         # Generate dataset embeddings
         if args.embedding_type in ["datasets", "both"]:
-            logging.info("=" * 60)
-            logging.info("GENERATING DATASET EMBEDDINGS")
-            logging.info("=" * 60)
+            logger.info("=" * 60)
+            logger.info("GENERATING DATASET EMBEDDINGS")
+            logger.info("=" * 60)
 
             dataset_count = generate_dataset_embeddings(
                 datasets_dir=args.datasets,
@@ -564,9 +568,9 @@ Examples:
 
         # Generate citation embeddings
         if args.embedding_type in ["citations", "both"]:
-            logging.info("=" * 60)
-            logging.info("GENERATING CITATION EMBEDDINGS")
-            logging.info("=" * 60)
+            logger.info("=" * 60)
+            logger.info("GENERATING CITATION EMBEDDINGS")
+            logger.info("=" * 60)
 
             citation_count = generate_citation_embeddings(
                 citations_dir=args.citations,
@@ -581,25 +585,25 @@ Examples:
 
         # Final summary
         elapsed_time = time.time() - start_time
-        logging.info("=" * 60)
-        logging.info("EMBEDDING GENERATION COMPLETE")
-        logging.info("=" * 60)
-        logging.info(f"Total embeddings generated: {total_generated}")
-        logging.info(f"Total time: {elapsed_time:.1f} seconds")
+        logger.info("=" * 60)
+        logger.info("EMBEDDING GENERATION COMPLETE")
+        logger.info("=" * 60)
+        logger.info(f"Total embeddings generated: {total_generated}")
+        logger.info(f"Total time: {elapsed_time:.1f} seconds")
 
         # Show storage stats
         storage_manager = EmbeddingStorageManager(args.embeddings_dir)
         stats = storage_manager.get_storage_stats()
-        logging.info(
+        logger.info(
             f"Storage stats: {stats['total_files']} files, {stats['total_file_size_mb']:.1f} MB"
         )
 
         return 0
 
     except Exception as e:
-        logging.error(f"Error during embedding generation: {e}")
+        logger.error(f"Error during embedding generation: {e}")
         return 1
 
 
 if __name__ == "__main__":
-    exit(main())
+    sys.exit(main())

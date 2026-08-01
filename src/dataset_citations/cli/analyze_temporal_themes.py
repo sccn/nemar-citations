@@ -7,9 +7,8 @@ import json
 import logging
 import pickle
 from collections import Counter, defaultdict
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Dict, List, Optional
 
 import numpy as np
 
@@ -20,8 +19,12 @@ try:
 except ImportError:
     PLOTTING_AVAILABLE = False
 
+import sys
+
 from ..core.citation_utils import load_citations_from_json
 from ..embeddings.umap_analyzer import UMAPAnalyzer
+
+logger = logging.getLogger(__name__)
 
 
 def setup_logging(verbose: bool = False):
@@ -44,8 +47,8 @@ class TemporalThemeAnalyzer:
         self.analyzer = UMAPAnalyzer(embeddings_dir)
 
     def load_clustering_with_temporal_data(
-        self, clustering_file: Optional[Path] = None
-    ) -> Dict:
+        self, clustering_file: Path | None = None
+    ) -> dict:
         """
         Load clustering results and augment with temporal information.
 
@@ -74,7 +77,7 @@ class TemporalThemeAnalyzer:
                 )
 
             latest_file = max(clustering_files, key=lambda f: f.stat().st_mtime)
-            logging.info(f"Loading clustering results from: {latest_file}")
+            logger.info(f"Loading clustering results from: {latest_file}")
 
             with open(latest_file, "rb") as f:
                 clustering_results = pickle.load(f)
@@ -85,7 +88,7 @@ class TemporalThemeAnalyzer:
 
         return clustering_results
 
-    def _extract_temporal_data(self, embedding_ids: List[str]) -> Dict:
+    def _extract_temporal_data(self, embedding_ids: list[str]) -> dict:
         """
         Extract temporal information for citations.
 
@@ -138,15 +141,15 @@ class TemporalThemeAnalyzer:
                             }
 
             except Exception as e:
-                logging.warning(f"Error processing {citation_file}: {e}")
+                logger.warning(f"Error processing {citation_file}: {e}")
                 continue
 
-        logging.info(f"Extracted temporal data for {len(temporal_data)} citations")
+        logger.info(f"Extracted temporal data for {len(temporal_data)} citations")
         return temporal_data
 
     def analyze_theme_evolution(
-        self, clustering_results: Dict, year_window: int = 3
-    ) -> Dict:
+        self, clustering_results: dict, year_window: int = 3
+    ) -> dict:
         """
         Analyze how research themes evolve over time.
 
@@ -157,7 +160,7 @@ class TemporalThemeAnalyzer:
         Returns:
             Theme evolution analysis results
         """
-        logging.info("Analyzing temporal theme evolution...")
+        logger.info("Analyzing temporal theme evolution...")
 
         temporal_data = clustering_results["temporal_data"]
         cluster_labels = clustering_results["cluster_labels"]
@@ -167,7 +170,7 @@ class TemporalThemeAnalyzer:
         theme_timeline = defaultdict(lambda: defaultdict(list))
         cluster_years = defaultdict(list)
 
-        for i, (emb_id, cluster_id) in enumerate(zip(embedding_ids, cluster_labels)):
+        for emb_id, cluster_id in zip(embedding_ids, cluster_labels, strict=False):
             if cluster_id == -1:  # Skip noise
                 continue
 
@@ -232,10 +235,11 @@ class TemporalThemeAnalyzer:
             all_years.update(cluster_years_list)
 
         for year in sorted(all_years):
-            active_themes = []
-            for cluster_id in theme_timeline:
-                if year in theme_timeline[cluster_id]:
-                    active_themes.append(cluster_id)
+            active_themes = [
+                cluster_id
+                for cluster_id in theme_timeline
+                if year in theme_timeline[cluster_id]
+            ]
 
             if len(active_themes) > 1:
                 for i, theme1 in enumerate(active_themes):
@@ -252,7 +256,7 @@ class TemporalThemeAnalyzer:
 
         return evolution_analysis
 
-    def _calculate_trend(self, year_counts: Dict[int, int]) -> Dict:
+    def _calculate_trend(self, year_counts: dict[int, int]) -> dict:
         """Calculate simple trend analysis."""
         years = sorted(year_counts.keys())
         counts = [year_counts[year] for year in years]
@@ -285,7 +289,7 @@ class TemporalThemeAnalyzer:
             "years_analyzed": len(years),
         }
 
-    def _identify_emergence_patterns(self, theme_timeline: Dict) -> Dict:
+    def _identify_emergence_patterns(self, theme_timeline: dict) -> dict:
         """Identify emergence and decline patterns."""
         patterns = {
             "emerging_themes": [],  # Themes that start after 2015 and show growth
@@ -362,8 +366,8 @@ class TemporalThemeAnalyzer:
         return patterns
 
     def create_temporal_visualizations(
-        self, evolution_analysis: Dict, clustering_results: Dict, output_dir: Path
-    ) -> List[Path]:
+        self, evolution_analysis: dict, clustering_results: dict, output_dir: Path
+    ) -> list[Path]:
         """
         Create visualizations for temporal theme evolution.
 
@@ -376,10 +380,10 @@ class TemporalThemeAnalyzer:
             List of created visualization files
         """
         if not PLOTTING_AVAILABLE:
-            logging.error("Matplotlib/seaborn not available for plotting")
+            logger.error("Matplotlib/seaborn not available for plotting")
             return []
 
-        logging.info("Creating temporal theme visualizations...")
+        logger.info("Creating temporal theme visualizations...")
 
         viz_dir = output_dir / "temporal_visualizations"
         viz_dir.mkdir(parents=True, exist_ok=True)
@@ -418,11 +422,11 @@ class TemporalThemeAnalyzer:
         return created_files
 
     def _create_lifespan_timeline(
-        self, lifespans: Dict, output_file: Path
-    ) -> Optional[Path]:
+        self, lifespans: dict, output_file: Path
+    ) -> Path | None:
         """Create timeline visualization of theme lifespans."""
         try:
-            fig, ax = plt.subplots(figsize=(14, 8))
+            _fig, ax = plt.subplots(figsize=(14, 8))
 
             themes = list(lifespans.keys())
             y_positions = range(len(themes))
@@ -464,16 +468,16 @@ class TemporalThemeAnalyzer:
             plt.savefig(output_file, dpi=300, bbox_inches="tight")
             plt.close()
 
-            logging.info(f"Created lifespan timeline: {output_file}")
+            logger.info(f"Created lifespan timeline: {output_file}")
             return output_file
 
         except Exception as e:
-            logging.error(f"Error creating lifespan timeline: {e}")
+            logger.error(f"Error creating lifespan timeline: {e}")
             return None
 
     def _create_yearly_heatmap(
-        self, yearly_distribution: Dict, output_file: Path
-    ) -> Optional[Path]:
+        self, yearly_distribution: dict, output_file: Path
+    ) -> Path | None:
         """Create heatmap of yearly theme activity."""
         try:
             # Prepare data for heatmap
@@ -494,7 +498,7 @@ class TemporalThemeAnalyzer:
                 matrix.append(row)
 
             # Create heatmap
-            fig, ax = plt.subplots(
+            _fig, ax = plt.subplots(
                 figsize=(max(len(years) * 0.4, 10), max(len(themes) * 0.3, 6))
             )
 
@@ -535,21 +539,21 @@ class TemporalThemeAnalyzer:
             plt.savefig(output_file, dpi=300, bbox_inches="tight")
             plt.close()
 
-            logging.info(f"Created yearly heatmap: {output_file}")
+            logger.info(f"Created yearly heatmap: {output_file}")
             return output_file
 
         except Exception as e:
-            logging.error(f"Error creating yearly heatmap: {e}")
+            logger.error(f"Error creating yearly heatmap: {e}")
             return None
 
-    def _create_trends_plot(self, trends: Dict, output_file: Path) -> Optional[Path]:
+    def _create_trends_plot(self, trends: dict, output_file: Path) -> Path | None:
         """Create plot of theme trends."""
         try:
             if not trends:
-                logging.warning("No trend data available for visualization")
+                logger.warning("No trend data available for visualization")
                 return None
 
-            fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
+            _fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
 
             # Plot 1: Trend directions
             trend_counts = Counter(
@@ -577,19 +581,19 @@ class TemporalThemeAnalyzer:
             plt.savefig(output_file, dpi=300, bbox_inches="tight")
             plt.close()
 
-            logging.info(f"Created trends plot: {output_file}")
+            logger.info(f"Created trends plot: {output_file}")
             return output_file
 
         except Exception as e:
-            logging.error(f"Error creating trends plot: {e}")
+            logger.error(f"Error creating trends plot: {e}")
             return None
 
     def _create_emergence_summary(
-        self, emergence_patterns: Dict, output_file: Path
-    ) -> Optional[Path]:
+        self, emergence_patterns: dict, output_file: Path
+    ) -> Path | None:
         """Create summary visualization of emergence patterns."""
         try:
-            fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 10))
+            _fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 10))
 
             # Plot 1: Emerging themes
             emerging = emergence_patterns["emerging_themes"]
@@ -687,11 +691,11 @@ class TemporalThemeAnalyzer:
             plt.savefig(output_file, dpi=300, bbox_inches="tight")
             plt.close()
 
-            logging.info(f"Created emergence summary: {output_file}")
+            logger.info(f"Created emergence summary: {output_file}")
             return output_file
 
         except Exception as e:
-            logging.error(f"Error creating emergence summary: {e}")
+            logger.error(f"Error creating emergence summary: {e}")
             return None
 
 
@@ -769,20 +773,20 @@ Examples:
 
     # Validate inputs
     if not args.embeddings_dir.exists():
-        logging.error(f"Embeddings directory not found: {args.embeddings_dir}")
+        logger.error(f"Embeddings directory not found: {args.embeddings_dir}")
         return 1
 
     if not args.citations_dir.exists():
-        logging.error(f"Citations directory not found: {args.citations_dir}")
+        logger.error(f"Citations directory not found: {args.citations_dir}")
         return 1
 
     # Create output directory
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
     try:
-        logging.info("=" * 60)
-        logging.info("TEMPORAL THEME EVOLUTION ANALYSIS")
-        logging.info("=" * 60)
+        logger.info("=" * 60)
+        logger.info("TEMPORAL THEME EVOLUTION ANALYSIS")
+        logger.info("=" * 60)
 
         # Initialize analyzer
         analyzer = TemporalThemeAnalyzer(
@@ -793,9 +797,7 @@ Examples:
         clustering_results = analyzer.load_clustering_with_temporal_data(
             args.clustering_file
         )
-        logging.info(
-            f"Loaded clustering with {clustering_results['n_clusters']} themes"
-        )
+        logger.info(f"Loaded clustering with {clustering_results['n_clusters']} themes")
 
         # Analyze theme evolution
         evolution_analysis = analyzer.analyze_theme_evolution(
@@ -827,9 +829,9 @@ Examples:
         # Create visualizations
         created_files = []
         if args.create_visualizations:
-            logging.info("=" * 40)
-            logging.info("CREATING VISUALIZATIONS")
-            logging.info("=" * 40)
+            logger.info("=" * 40)
+            logger.info("CREATING VISUALIZATIONS")
+            logger.info("=" * 40)
 
             viz_files = analyzer.create_temporal_visualizations(
                 evolution_analysis=evolution_analysis,
@@ -844,7 +846,7 @@ Examples:
 
             export_data = {
                 "analysis_metadata": {
-                    "timestamp": datetime.now().isoformat(),
+                    "timestamp": datetime.now(UTC).isoformat(),
                     "clustering_file": (
                         str(args.clustering_file) if args.clustering_file else "latest"
                     ),
@@ -862,22 +864,22 @@ Examples:
             with open(args.export_results, "w") as f:
                 json.dump(export_data, f, indent=2, default=str)
 
-            logging.info(f"Exported results to: {args.export_results}")
+            logger.info(f"Exported results to: {args.export_results}")
 
         # Final summary
-        logging.info("=" * 60)
-        logging.info("TEMPORAL ANALYSIS COMPLETE")
-        logging.info("=" * 60)
-        logging.info(f"Results saved to: {args.output_dir}")
+        logger.info("=" * 60)
+        logger.info("TEMPORAL ANALYSIS COMPLETE")
+        logger.info("=" * 60)
+        logger.info(f"Results saved to: {args.output_dir}")
         if created_files:
-            logging.info(f"Created {len(created_files)} visualization files")
+            logger.info(f"Created {len(created_files)} visualization files")
 
         return 0
 
     except Exception as e:
-        logging.error(f"Error during temporal analysis: {e}")
+        logger.error(f"Error during temporal analysis: {e}")
         return 1
 
 
 if __name__ == "__main__":
-    exit(main())
+    sys.exit(main())

@@ -3,9 +3,8 @@ Core dashboard generator orchestrating all components.
 """
 
 import logging
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Optional
 
 from .assets.manager import AssetManager
 from .components.charts import ChartGenerator
@@ -24,8 +23,8 @@ class DashboardGenerator:
         self,
         results_dir: Path,
         output_dir: Path,
-        citations_dir: Optional[Path] = None,
-        datasets_dir: Optional[Path] = None,
+        citations_dir: Path | None = None,
+        datasets_dir: Path | None = None,
     ):
         """
         Initialize dashboard generator.
@@ -112,10 +111,7 @@ class DashboardGenerator:
 
         # Step 7: Copy assets and prepare data files
         self.logger.info("Managing assets")
-        if lazy_load:
-            data_file = self.asset_manager.create_data_file(data)
-        else:
-            data_file = None
+        data_file = self.asset_manager.create_data_file(data) if lazy_load else None
 
         self.asset_manager.copy_support_files()
         # Theme images now use relative paths, no need to copy
@@ -131,7 +127,7 @@ class DashboardGenerator:
             modals=modals,
             data=data if not lazy_load else None,
             data_file=data_file,
-            timestamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            timestamp=datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S"),
         )
 
         # Step 9: Write output file
@@ -152,7 +148,7 @@ class DashboardGenerator:
         stats = self.stats_generator.generate_statistics(data)
 
         html_content = self.template_builder.build_minimal_dashboard(
-            stats=stats, timestamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            stats=stats, timestamp=datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S")
         )
 
         output_file = self.output_dir / "dataset_citations_dashboard_minimal.html"

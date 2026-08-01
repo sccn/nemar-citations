@@ -35,7 +35,7 @@ class _FakeClient(OllamaJudgmentClient):
         self.timeout = 5
         self._canned_response = canned_response
 
-    def _generate(self, prompt: str) -> str:  # noqa: ARG002 - prompt unused in stub
+    def _generate(self, prompt: str) -> str:
         return self._canned_response
 
 

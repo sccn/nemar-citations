@@ -3,7 +3,7 @@ Modal HTML and JavaScript generation for NEMAR dashboard.
 """
 
 import json
-from typing import Any, Dict
+from typing import Any
 
 
 class ModalHandler:
@@ -33,7 +33,7 @@ class ModalHandler:
         """
 
     @staticmethod
-    def generate_modal_javascript(modals: Dict[str, Any]) -> str:
+    def generate_modal_javascript(modals: dict[str, Any]) -> str:
         """Generate JavaScript for modal functionality."""
         # Format the JSON with proper indentation to avoid parser issues
         modal_json = json.dumps(modals, indent=2) if modals else "{}"

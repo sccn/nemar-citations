@@ -3,7 +3,7 @@ Network visualization component for dashboard.
 """
 
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any
 
 from .network_data import NetworkDataExtractor
 
@@ -11,7 +11,7 @@ from .network_data import NetworkDataExtractor
 class NetworkGenerator:
     """Generate network visualization configurations."""
 
-    def __init__(self, embeddings_dir: Optional[Path] = None):
+    def __init__(self, embeddings_dir: Path | None = None):
         """
         Initialize the network generator.
 
@@ -20,7 +20,7 @@ class NetworkGenerator:
         """
         self.data_extractor = NetworkDataExtractor(embeddings_dir)
 
-    def generate_networks(self, data: Dict[str, Any]) -> Dict[str, Any]:
+    def generate_networks(self, data: dict[str, Any]) -> dict[str, Any]:
         """
         Generate network visualization data with UMAP coordinates.
 
@@ -40,7 +40,7 @@ class NetworkGenerator:
             "cytoscape_config": self._generate_cytoscape_config(),
         }
 
-    def _generate_cytoscape_config(self) -> Dict[str, Any]:
+    def _generate_cytoscape_config(self) -> dict[str, Any]:
         """Generate Cytoscape.js configuration."""
         return {
             "style": [

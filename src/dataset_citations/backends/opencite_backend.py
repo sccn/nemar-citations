@@ -98,13 +98,13 @@ class OpenCiteBackend:
         # _lookup branch's handling if it widens in the future.
         try:
             async with OpenAlexClient(self._config) as openalex_base:
-                assert isinstance(openalex_base, OpenAlexClient), (
+                assert isinstance(openalex_base, OpenAlexClient), (  # noqa: S101 - upstream contract guard
                     "opencite changed OpenAlexClient.__aenter__ return type; "
                     "expected an OpenAlexClient bound, got "
                     f"{type(openalex_base).__name__}"
                 )
                 paper = await openalex_base.lookup_doi(doi)
-        except (httpx.HTTPError, asyncio.TimeoutError, OSError) as exc:
+        except (TimeoutError, httpx.HTTPError, OSError) as exc:
             return classify_error(exc, doi)
 
         if paper is None or not paper.title:
@@ -155,7 +155,7 @@ class OpenCiteBackend:
             ):
                 raise outcome
             if isinstance(outcome, Exception):
-                logger.exception(
+                logger.error(
                     "uncaught exception in opencite lookup for %s",
                     ref.identifier,
                     exc_info=outcome,
@@ -297,7 +297,7 @@ def classify_error(exc: BaseException, identifier: str) -> FetchError:
         return FetchError("not_found", msg)
     if "timeout" in text or "timed out" in text or "connect" in text:
         return FetchError("network", msg)
-    logger.exception("unclassified opencite failure for %s", identifier, exc_info=exc)
+    logger.error("unclassified opencite failure for %s", identifier, exc_info=exc)
     return FetchError("other", msg)
 
 

@@ -44,8 +44,7 @@ def normalize_doi(s: str) -> str:
         "https://dx.doi.org/",
         "http://dx.doi.org/",
     ):
-        if s.startswith(prefix):
-            s = s[len(prefix) :]
+        s = s.removeprefix(prefix)
     s = _balance_parens(s).rstrip(".,;:")
     return s.strip().lower()
 

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Script to regenerate CSV summary files from existing JSON citation data.
 
@@ -17,7 +16,8 @@ Email: shirazi@ieee.org
 import argparse
 import logging
 import os
-from datetime import datetime
+import sys
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pandas as pd
@@ -65,7 +65,7 @@ def scan_json_files(json_dir: str) -> dict:
 
 
 def generate_citations_csv(
-    citation_counts: dict, output_dir: str, date_suffix: str = None
+    citation_counts: dict, output_dir: str, date_suffix: str | None = None
 ) -> str:
     """
     Generate the citations_DDMMYYYY.csv file from citation counts.
@@ -79,7 +79,7 @@ def generate_citations_csv(
         str: Path to generated CSV file
     """
     if date_suffix is None:
-        date_suffix = datetime.now().strftime("%d%m%Y")
+        date_suffix = datetime.now(UTC).strftime("%d%m%Y")
 
     filename = f"citations_{date_suffix}.csv"
     filepath = os.path.join(output_dir, filename)
@@ -98,7 +98,7 @@ def generate_citations_csv(
 
 
 def generate_updated_datasets_csv(
-    citation_counts: dict, output_dir: str, date_suffix: str = None
+    citation_counts: dict, output_dir: str, date_suffix: str | None = None
 ) -> str:
     """
     Generate the updated_datasets_DDMMYYYY.csv file from citation counts.
@@ -112,7 +112,7 @@ def generate_updated_datasets_csv(
         str: Path to generated CSV file
     """
     if date_suffix is None:
-        date_suffix = datetime.now().strftime("%d%m%Y")
+        date_suffix = datetime.now(UTC).strftime("%d%m%Y")
 
     filename = f"updated_datasets_{date_suffix}.csv"
     filepath = os.path.join(output_dir, filename)
@@ -236,4 +236,4 @@ Examples:
 
 
 if __name__ == "__main__":
-    exit(main())
+    sys.exit(main())

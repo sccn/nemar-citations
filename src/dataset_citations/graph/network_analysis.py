@@ -4,7 +4,6 @@ import json
 import logging
 from collections import defaultdict
 from pathlib import Path
-from typing import Dict, List, Tuple
 
 import pandas as pd
 
@@ -13,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 def find_multi_dataset_citations(
     citations_dir: Path, confidence_threshold: float = 0.4
-) -> Dict[str, List[str]]:
+) -> dict[str, list[str]]:
     """
     Find citations that appear across multiple datasets (shared citations).
 
@@ -77,7 +76,7 @@ def find_multi_dataset_citations(
 
 
 def analyze_dataset_co_citations(
-    multi_dataset_citations: Dict[str, List[str]],
+    multi_dataset_citations: dict[str, list[str]],
 ) -> pd.DataFrame:
     """
     Analyze which datasets are commonly co-cited together.
@@ -90,7 +89,7 @@ def analyze_dataset_co_citations(
     """
     co_citation_counts = defaultdict(int)
 
-    for citation_title, datasets in multi_dataset_citations.items():
+    for datasets in multi_dataset_citations.values():
         # Create all pairwise combinations of datasets
         for i in range(len(datasets)):
             for j in range(i + 1, len(datasets)):
@@ -119,7 +118,7 @@ def analyze_dataset_co_citations(
 
 def extract_author_networks(
     citations_dir: Path, datasets_dir: Path, confidence_threshold: float = 0.4
-) -> Tuple[Dict[str, List[str]], Dict[str, List[str]]]:
+) -> tuple[dict[str, list[str]], dict[str, list[str]]]:
     """
     Extract author networks from datasets and citations.
 
@@ -193,7 +192,7 @@ def extract_author_networks(
 
 
 def find_author_overlaps(
-    dataset_authors: Dict[str, List[str]], citation_authors: Dict[str, List[str]]
+    dataset_authors: dict[str, list[str]], citation_authors: dict[str, list[str]]
 ) -> pd.DataFrame:
     """
     Find overlaps between dataset authors and citation authors.
@@ -207,26 +206,26 @@ def find_author_overlaps(
     """
     overlap_data = []
 
-    for dataset_id in dataset_authors.keys():
+    for dataset_id, _authors in dataset_authors.items():
         if dataset_id not in citation_authors:
             continue
 
-        dataset_author_set = set(dataset_authors[dataset_id])
+        dataset_author_set = set(_authors)
         citation_author_set = set(citation_authors[dataset_id])
 
         # Find overlapping authors
         overlapping_authors = dataset_author_set.intersection(citation_author_set)
 
         if overlapping_authors:
-            for author in overlapping_authors:
-                overlap_data.append(
-                    {
-                        "dataset_id": dataset_id,
-                        "author": author,
-                        "author_type": "dataset_creator_and_citation_author",
-                        "overlap_count": 1,
-                    }
-                )
+            overlap_data.extend(
+                {
+                    "dataset_id": dataset_id,
+                    "author": author,
+                    "author_type": "dataset_creator_and_citation_author",
+                    "overlap_count": 1,
+                }
+                for author in overlapping_authors
+            )
 
     df = pd.DataFrame(overlap_data)
     if not df.empty:

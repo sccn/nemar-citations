@@ -2,13 +2,13 @@
 Statistics generation component for dashboard.
 """
 
-from typing import Any, Dict
+from typing import Any
 
 
 class StatisticsGenerator:
     """Generate statistics cards and summary information."""
 
-    def generate_statistics(self, data: Dict[str, Any]) -> Dict[str, Any]:
+    def generate_statistics(self, data: dict[str, Any]) -> dict[str, Any]:
         """
         Generate statistics from aggregated data.
 
@@ -60,7 +60,7 @@ class StatisticsGenerator:
             },
         }
 
-    def _count_datasets_with_citations(self, data: Dict[str, Any]) -> int:
+    def _count_datasets_with_citations(self, data: dict[str, Any]) -> int:
         """Count datasets that have at least one citation."""
         # This would be calculated from the actual data
         return data.get("summary_stats", {}).get("total_datasets", 0)

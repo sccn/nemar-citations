@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import tempfile
 from pathlib import Path
+from typing import ClassVar
 from unittest import TestCase
 
 from dataset_citations.sources.bids_metadata import (
@@ -247,7 +248,9 @@ class GetDoiReferencesCacheTests(TestCase):
     local_metadata_dir instead of hitting GitHub, avoiding the cold-start
     rate-limit storm; it falls back to GitHub when the cache is absent. #174."""
 
-    _DESC = {"ReferencesAndLinks": ["https://doi.org/10.1038/sdata.2015.1"]}
+    _DESC: ClassVar[dict[str, list[str]]] = {
+        "ReferencesAndLinks": ["https://doi.org/10.1038/sdata.2015.1"]
+    }
 
     def _source(self, github: object, local_dir: str | None) -> BidsMetadataSource:
         src = BidsMetadataSource.__new__(BidsMetadataSource)

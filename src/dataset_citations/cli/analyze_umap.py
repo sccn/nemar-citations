@@ -5,10 +5,13 @@ CLI command for UMAP analysis and research theme identification.
 import argparse
 import json
 import logging
+import sys
 import time
 from pathlib import Path
 
 from ..embeddings.umap_analyzer import UMAPAnalyzer
+
+logger = logging.getLogger(__name__)
 
 
 def setup_logging(verbose: bool = False):
@@ -45,7 +48,7 @@ def run_umap_analysis(
     Returns:
         UMAP analysis results
     """
-    logging.info(f"Running UMAP analysis on {embedding_type} embeddings")
+    logger.info(f"Running UMAP analysis on {embedding_type} embeddings")
 
     # Initialize analyzer
     analyzer = UMAPAnalyzer(embeddings_dir)
@@ -61,10 +64,10 @@ def run_umap_analysis(
         save_results=True,
     )
 
-    logging.info(
+    logger.info(
         f"UMAP analysis complete: {umap_results['n_samples']} embeddings processed"
     )
-    logging.info(f"Output shape: {umap_results['umap_embeddings'].shape}")
+    logger.info(f"Output shape: {umap_results['umap_embeddings'].shape}")
 
     return umap_results
 
@@ -89,19 +92,19 @@ def run_clustering_analysis(
     Returns:
         Clustering analysis results
     """
-    logging.info(f"Running {method} clustering analysis")
+    logger.info(f"Running {method} clustering analysis")
 
     # Run clustering
     clustering_results = analyzer.cluster_umap_embeddings(
         umap_results=umap_results, method=method, save_results=True, **clustering_kwargs
     )
 
-    logging.info(
+    logger.info(
         f"Clustering complete: {clustering_results['n_clusters']} clusters found"
     )
-    logging.info(f"Noise points: {clustering_results['n_noise']}")
+    logger.info(f"Noise points: {clustering_results['n_noise']}")
     if clustering_results["silhouette_score"]:
-        logging.info(f"Silhouette score: {clustering_results['silhouette_score']:.3f}")
+        logger.info(f"Silhouette score: {clustering_results['silhouette_score']:.3f}")
 
     return clustering_results
 
@@ -120,7 +123,7 @@ def create_theme_visualizations(
     Returns:
         Dict of created visualization files
     """
-    logging.info("Creating theme visualizations")
+    logger.info("Creating theme visualizations")
 
     # Create visualizations
     viz_files = analyzer.create_research_theme_visualization(
@@ -128,7 +131,7 @@ def create_theme_visualizations(
     )
 
     for viz_type, file_path in viz_files.items():
-        logging.info(f"Created {viz_type}: {file_path}")
+        logger.info(f"Created {viz_type}: {file_path}")
 
     return viz_files
 
@@ -144,7 +147,7 @@ def generate_theme_summary(clustering_results: dict, output_dir: Path) -> Path:
     Returns:
         Path to summary file
     """
-    logging.info("Generating comprehensive theme summary")
+    logger.info("Generating comprehensive theme summary")
 
     # Prepare summary data
     summary = {
@@ -166,7 +169,7 @@ def generate_theme_summary(clustering_results: dict, output_dir: Path) -> Path:
     with open(summary_file, "w") as f:
         json.dump(summary, f, indent=2, default=str)
 
-    logging.info(f"Saved comprehensive summary to: {summary_file}")
+    logger.info(f"Saved comprehensive summary to: {summary_file}")
     return summary_file
 
 
@@ -418,7 +421,7 @@ Examples:
 
     # Validate inputs
     if not args.embeddings_dir.exists():
-        logging.error(f"Embeddings directory not found: {args.embeddings_dir}")
+        logger.error(f"Embeddings directory not found: {args.embeddings_dir}")
         return 1
 
     # Create output directory
@@ -427,9 +430,9 @@ Examples:
     start_time = time.time()
 
     try:
-        logging.info("=" * 60)
-        logging.info("UMAP RESEARCH THEME ANALYSIS")
-        logging.info("=" * 60)
+        logger.info("=" * 60)
+        logger.info("UMAP RESEARCH THEME ANALYSIS")
+        logger.info("=" * 60)
 
         # Run UMAP analysis
         umap_results = run_umap_analysis(
@@ -446,9 +449,9 @@ Examples:
         # Run clustering if requested
         clustering_results = None
         if args.clustering:
-            logging.info("=" * 60)
-            logging.info("CLUSTERING ANALYSIS")
-            logging.info("=" * 60)
+            logger.info("=" * 60)
+            logger.info("CLUSTERING ANALYSIS")
+            logger.info("=" * 60)
 
             # Initialize analyzer
             analyzer = UMAPAnalyzer(args.embeddings_dir)
@@ -471,9 +474,9 @@ Examples:
 
             # Create visualizations if requested
             if args.create_visualizations:
-                logging.info("=" * 60)
-                logging.info("CREATING VISUALIZATIONS")
-                logging.info("=" * 60)
+                logger.info("=" * 60)
+                logger.info("CREATING VISUALIZATIONS")
+                logger.info("=" * 60)
 
                 create_theme_visualizations(
                     analyzer=analyzer,
@@ -488,23 +491,23 @@ Examples:
 
         # Final summary
         elapsed_time = time.time() - start_time
-        logging.info("=" * 60)
-        logging.info("UMAP ANALYSIS COMPLETE")
-        logging.info("=" * 60)
-        logging.info(f"Processed {umap_results['n_samples']} embeddings")
+        logger.info("=" * 60)
+        logger.info("UMAP ANALYSIS COMPLETE")
+        logger.info("=" * 60)
+        logger.info(f"Processed {umap_results['n_samples']} embeddings")
         if clustering_results:
-            logging.info(
+            logger.info(
                 f"Identified {clustering_results['n_clusters']} research themes"
             )
-        logging.info(f"Results saved to: {args.output_dir}")
-        logging.info(f"Total time: {elapsed_time:.1f} seconds")
+        logger.info(f"Results saved to: {args.output_dir}")
+        logger.info(f"Total time: {elapsed_time:.1f} seconds")
 
         return 0
 
     except Exception as e:
-        logging.error(f"Error during UMAP analysis: {e}")
+        logger.error(f"Error during UMAP analysis: {e}")
         return 1
 
 
 if __name__ == "__main__":
-    exit(main())
+    sys.exit(main())
