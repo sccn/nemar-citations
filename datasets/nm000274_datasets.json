@@ -1,0 +1,88 @@
+{
+  "dataset_id": "nm000274",
+  "date_retrieved": "2026-08-01T10:01:25.301886+00:00",
+  "dataset_description": {
+    "Name": "BEETL Competition 2021 Motor Imagery Dataset B — transfer learning benchmark",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Xiaoxi Wei",
+      "A. Aldo Faisal",
+      "Moritz Grosse-Wentrup",
+      "Alexandre Gramfort",
+      "Sylvain Chevallier",
+      "Vinay Jayaram",
+      "Camille Jeunet",
+      "Stylianos Bakas",
+      "Siegfried Ludwig",
+      "Konstantinos Barmpas",
+      "Mehdi Bahri",
+      "Yannis Panagakis",
+      "Nikolaos Laskaris",
+      "Dimitrios A. Adamos",
+      "Stefanos Zafeiriou",
+      "William C. Duong",
+      "Stephen M. Gordon",
+      "Vernon J. Lawhern",
+      "Maciej Śliwowski",
+      "Vincent Rouanne",
+      "Piotr Tempczyk"
+    ],
+    "Funding": [
+      "UKRI Turing AI Fellowship Grant (EP/V025449/1)",
+      "ANR BrAIN AI chair (ANR-20-CHIA-0016)",
+      "CEA NUMERICS program",
+      "European Union Horizon 2020 Marie Sklodowska-Curie grant No 800945",
+      "Facebook Reality Labs",
+      "BCI Society"
+    ],
+    "ReferencesAndLinks": [
+      "https://beetl.ai/data",
+      "10.48550/arXiv.2202.12950"
+    ],
+    "Keywords": [
+      "machine learning",
+      "transfer learning",
+      "domain adaptation",
+      "Brain-Computer-Interfaces (BCI)",
+      "EEG",
+      "neuroscience",
+      "motor imagery",
+      "cross-dataset",
+      "NeurIPS2021"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0dev0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "n/a",
+        "URL": "https://beetl.ai/data"
+      }
+    ],
+    "PublicationYear": 2022,
+    "Version": "1.0.1",
+    "DatasetDOI": "10.82901/nemar.nm000274"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000274-blue)](https://doi.org/10.82901/nemar.nm000274)\n\n# BEETL Competition 2021 Motor Imagery Dataset B — transfer learning benchmark\n\n## Overview\n\nBeetl2021-B is a preprocessed EEG dataset from the NeurIPS 2021 BEETL competition focused on transfer learning for motor imagery decoding. The dataset contains 32-channel EEG recordings from 2 healthy subjects performing 4-class motor imagery tasks (left hand, right hand, feet, and rest) sampled at 200 Hz. Designed to address the critical challenge of cross-subject and cross-dataset generalization in brain-computer interfaces, this dataset supports benchmarking of transfer learning and domain adaptation algorithms for motor imagery classification.\n\n## Dataset Summary\n\n| Property | Value |\n|---|---|\n| Subjects | 2 |\n| Channels | 32 |\n| Classes | 4 |\n| Trial length | 4 s |\n| Sampling frequency | 200 Hz |\n| Sessions | 1 |\n| Total trials | 1590 |\n| Paradigm | MotorImagery |\n\n## Data Collection Methods\n\nEEG data acquired at 200 Hz sampling rate using 32 channels positioned around the motor cortex (standard 1005 montage). Online bandpass filtering (1-100 Hz) applied during acquisition. Data preprocessed with frequency-domain bandpass filtering (1-100 Hz) and organized into 4-second trials. Motor imagery paradigm with visual cues for four classes: left hand, right hand, feet, and rest. Block-wise 5-fold cross-validation employed for evaluation with cross-subject and cross-dataset assessment.\n\n## How to Access via MOABB\n\nInstall MOABB and load this dataset directly:\n\n```python\nfrom moabb.datasets import Beetl2021_B\nfrom moabb.paradigms import MotorImagery\nparadigm = MotorImagery()\n\ndataset = Beetl2021_B()\nX, y, metadata = paradigm.get_data(dataset)\n```\n\nFor more details see the [MOABB documentation](https://moabb.neurotechx.com/) and the\n[MOABB dataset page](https://moabb.neurotechx.com/docs/generated/moabb.datasets.Beetl2021_B.html).\n\n## Citation\n\nIf you use this dataset please cite the primary publication:\n\n> DOI: [10.48550/arXiv.2202.12950](https://doi.org/10.48550/arXiv.2202.12950)\n\n## NEMAR / MOABB Benchmark Collection\n\nThis BIDS-formatted dataset was converted from the original data using the\n[MOABB](https://moabb.neurotechx.com/) pipeline and re-hosted on\n[NEMAR](https://nemar.org/) as part of the MOABB benchmark collection.\nThe original data and license terms apply — see `dataset_description.json` for details.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000274",
+    "exists": true,
+    "description": "BEETL Competition 2021 Motor Imagery Dataset B — transfer learning benchmark",
+    "created_at": "2026-06-20T19:52:12+00:00",
+    "updated_at": "2026-07-23T01:10:28+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

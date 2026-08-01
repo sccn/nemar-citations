@@ -1,0 +1,56 @@
+{
+  "dataset_id": "on006525",
+  "date_retrieved": "2026-08-01T10:22:37.095043+00:00",
+  "dataset_description": {
+    "Name": "Resting EEG",
+    "GeneratedBy": [
+      {
+        "Name": "BIDScoin",
+        "Version": "4.2.1",
+        "CodeURL": "https://github.com/Donders-Institute/bidscoin"
+      }
+    ],
+    "BIDSVersion": "1.8.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Computational Neuroimaging and Neuroengineering Lab ar the University of Oklahoma"
+    ],
+    "Acknowledgements": "Please cite the paper with doi: 10.1088/1741-2552/ab7ad3 that reported the dataset for the first time.",
+    "HowToAcknowledge": "Cite the following paper.\n33.\tShou GF, Yuan H, Li C, Chen YF, Chen YX, and Ding L: Whole-brain Electrophysiological Functional Connectivity Dynamics in Resting-state EEG, Journal of Neural Engineering, 17(2): 026016, 2020.",
+    "Funding": [
+      "OPTIONAL. List of sources of funding (grant numbers)"
+    ],
+    "EthicsApprovals": [
+      "OPTIONAL. List of ethics committee approvals of the research protocols and/or protocol identifiers"
+    ],
+    "ReferencesAndLinks": [
+      "OPTIONAL. List of references to publication that contain information on the dataset, or links",
+      "https://github.com/Donders-Institute/bidscoin",
+      "doi: 10.1088/1741-2552/ab7ad3",
+      "doi: 10.1016/j.neuroimage.2022.119461",
+      "doi: 10.1016/j.neuroimage.2025.121408"
+    ],
+    "DatasetDOI": "10.82901/nemar.on006525",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds006525.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on006525-blue)](https://doi.org/10.82901/nemar.on006525)\n\nIntroduction: The EEG data was recorded using the 128-channel Amps 300 amplifier (Electrical Geodesics Inc., OR, USA) at a sampling frequency of 1000 Hz. \nThe EEG data acquisition was conducted  during the resting.\nStructural MRI data for the same participants were acquired at the University of Oklahoma Health Science Center (OUHSC) MRI facility using a GE MR750 scanner. The scans were obtained with GE’s BRAVO sequence, with a field of view (FOV) of 240 mm and 180 axial slices per slab\n\nPreprocessing in EEGLAB: After the data acquisition, a band-pass filter (0.5–100 Hz) and a notch filter (58–62 Hz) were applied to remove noise. \nNoisy channels and artifacts (e.g., from eye blinks, muscle movements, or heartbeats) were identified and removed. \nBad channels were replaced using interpolation, and the data was re-referenced to the average of all electrodes. \nThe data was then sampled down to 250 Hz to reduce file size while keeping enough detail. No data segments were removed to ensure the continuity needed for later analysis. \n\n\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on006525",
+    "exists": true,
+    "description": "Resting EEG",
+    "created_at": "2026-06-29T03:31:38+00:00",
+    "updated_at": "2026-07-23T01:29:36+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

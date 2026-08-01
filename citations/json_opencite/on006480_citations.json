@@ -1,10 +1,10 @@
 {
   "dataset_id": "on006480",
   "num_citations": 2,
-  "date_last_updated": "2026-07-04T05:24:38.788248+00:00",
+  "date_last_updated": "2026-08-01T16:14:14.123588+00:00",
   "metadata": {
-    "total_cumulative_citations": 7,
-    "fetch_date": "2026-07-04T05:24:38.788248+00:00",
+    "total_cumulative_citations": 8,
+    "fetch_date": "2026-08-01T16:14:14.123588+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -69,14 +69,7 @@
         "funder_name": "National Institute on Aging",
         "award_number": "Not available"
       }
-    ],
-    "searched_accessions": [
-      "on006480",
-      "ds006480"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 2
+    ]
   },
   "citation_details": [
     {
@@ -85,14 +78,22 @@
       "venue": "ArXiv",
       "year": 2026,
       "url": "https://doi.org/10.48550/arXiv.2601.06134",
-      "cited_by": 7,
+      "cited_by": 8,
       "abstract": "Electroencephalography (EEG) foundation models hold significant promise for universal Brain-Computer Interfaces (BCIs). However, existing approaches often rely on end-to-end fine-tuning and exhibit limited efficacy under frozen-probing protocols, lacking the intrinsic universality required for broad generalization. This limitation stems from adapting general-purpose sequence architectures that overlook the biophysical and dynamical principles of neural activity. To bridge this gap, we propose DeeperBrain, a neuro-grounded foundation model integrating domain-specific inductive biases into its model design and learning objectives. Architecturally, DeeperBrain incorporates a volume conduction-aware channel encoding to model spatial mixing via 3D geometry, and a neurodynamics-aware temporal encoding capturing slow adaptations using oscillatory and exponential bases. For pretraining, we introduce a dual-objective strategy combining Masked EEG Reconstruction (MER) for local fidelity and Neur",
       "doi": "10.48550/arXiv.2601.06134",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.1101/2025.10.02.680040",
       "source_relation": "References",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4680651417374611,
+        "similarity_score": 0.4052512049674988,
+        "citation_text_length": 1187,
+        "dataset_text_length": 2276,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Young Adult Resting State and Auditory Oddball Task EEG Data",
@@ -101,13 +102,37 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.on006480",
       "cited_by": 0,
-      "abstract": "This dataset comprises electroencephalography (EEG) recordings from young adult participants during resting state and auditory oddball task conditions. Data were collected under two experimental conditions: a control condition and an arousal condition involving threat of unpredictable shock. The dataset includes both passive and active variants of the auditory oddball task, as well as resting state recordings with eyes open and closed, providing a comprehensive resource for investigating neural responses to auditory stimuli and the effects of threat-induced arousal on brain activity.",
+      "abstract": "This dataset comprises electroencephalography (EEG) recordings from young adult participants during resting state and auditory oddball task conditions. Data were collected under two experimental conditions: a control condition and a shock threat condition involving threat of unpredictable shock. The dataset includes both passive and active variants of the auditory oddball task, as well as resting state recordings with eyes open and closed, designed to investigate locus coeruleus-noradrenaline system function and its relationship to attention and arousal.",
       "doi": "10.82901/nemar.on006480",
       "pmid": null,
       "openalex_id": "W7166505936",
       "source_doi": "10.1101/2025.10.02.680040",
       "source_relation": "References",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.992521260380745,
+        "similarity_score": 0.8593257665634155,
+        "citation_text_length": 728,
+        "dataset_text_length": 2276,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
-  ]
+  ],
+  "confidence_scoring": {
+    "model_used": "Qwen/Qwen3-Embedding-0.6B",
+    "scoring_date": "2026-08-01T17:15:17.464462+00:00",
+    "dataset_text_length": 2276,
+    "num_citations_scored": 2,
+    "summary_stats": {
+      "mean_confidence": 0.730293201059103,
+      "median_confidence": 0.730293201059103,
+      "std_confidence": 0.2622280593216419,
+      "min_confidence": 0.4680651417374611,
+      "max_confidence": 0.992521260380745,
+      "high_confidence_count": 1,
+      "medium_confidence_count": 1,
+      "low_confidence_count": 0
+    }
+  }
 }

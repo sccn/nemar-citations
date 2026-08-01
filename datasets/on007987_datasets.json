@@ -1,0 +1,37 @@
+{
+  "dataset_id": "on007987",
+  "date_retrieved": "2026-08-01T10:27:48.452406+00:00",
+  "dataset_description": {
+    "Name": "Raw resting-state EEG dataset with alternating eyes-open and eyes-closed recordings in healthy adults",
+    "BIDSVersion": "1.8.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Lydia Arana",
+      "Enrique Stern",
+      "Almudena Capilla"
+    ],
+    "InstitutionName": "Universidad Autónoma de Madrid",
+    "License": "CC0",
+    "DatasetDOI": "10.82901/nemar.on007987",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds007987.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on007987-blue)](https://doi.org/10.82901/nemar.on007987)\n\nThis dataset contains raw EEG recordings in resting state from healthy participants with no current psychiatric or neurological diagnosis, recorded at the Universidad Autónoma de Madrid, inside a Faraday cage. \n\nNo preprocessing was applied prior to data sharing, only conversion to bids from .bdf format (.bdf files are also available upon request). \n\n\n- Dataset organization:\n\nAll EEG recordings were acquired during a single recording session lasting approximately 20 minutes. Participants completed four consecutive 5-minute runs: two eyes-open (EO) runs and two eyes-closed (EC) runs. Conditions alternated throughout the session, and participants were randomly assigned to one of two acquisition sequences: EO run-1 → EC run-1 → EO run-2 → EC run-2, or EC run-1 → EO run-1 → EC run-2 → EO run-2.\n\nIn the BIDS structure, recordings are organized into two session folders for each participant: \"ses-OA\" (Ojos Abiertos: eyes open) and \"ses-OC\" (Ojos Cerrados: eyes closed). These session labels are used only to separate recording conditions and do not indicate different visits or recording days.\n\nExample:\n\nsub-05/\n├── ses-OA/\n│ └── eeg/\n│   ├── ...run-1...\n│   └── ...run-2...\n└── ses-OC/\n  └── eeg/\n    ├── ...run-1...\n    └── ...run-2...\n\nNote that file names also use Spanish abbreviations: OA = Ojos Abiertos (eyes open) and OC = Ojos Cerrados (eyes closed).\n\n- Recording system: \n\nBiosemi ActiveTwo 128 channels.\n1024 Hz sampling rate (except for subj 19, 20, 31, 33, 37, 38, 39, 40, 41, 42, 47 with 2048 Hz).\n\nNote that the power line frequency in Spain is 50 Hz (and harmonics).\n\nDim light (120-150 lux). \n\nParticipants were instructed to sit still and avoid muscle tension.\n\nBlack fixation point over white wall for OA condition. \n\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on007987",
+    "exists": true,
+    "description": "Raw resting-state EEG dataset with alternating eyes-open and eyes-closed recordings in healthy adults",
+    "created_at": "2026-06-30T21:31:29+00:00",
+    "updated_at": "2026-07-23T01:34:21+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

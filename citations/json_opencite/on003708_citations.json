@@ -1,10 +1,10 @@
 {
   "dataset_id": "on003708",
   "num_citations": 3,
-  "date_last_updated": "2026-07-03T18:25:30.726053+00:00",
+  "date_last_updated": "2026-08-01T15:46:07.033206+00:00",
   "metadata": {
-    "total_cumulative_citations": 84,
-    "fetch_date": "2026-07-03T18:25:30.726053+00:00",
+    "total_cumulative_citations": 86,
+    "fetch_date": "2026-08-01T15:46:07.033206+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -60,14 +60,7 @@
         "award_number": "R01MH122258",
         "award_title": "CRCNS: Processing speed in the human connectome across the lifespan"
       }
-    ],
-    "searched_accessions": [
-      "on003708",
-      "ds003708"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 3
+    ]
   },
   "citation_details": [
     {
@@ -76,14 +69,22 @@
       "venue": "Brain",
       "year": 2023,
       "url": "https://doi.org/10.1093/brain/awad007",
-      "cited_by": 82,
+      "cited_by": 84,
       "abstract": "Over the past 10 years, the drive to improve outcomes from epilepsy surgery has stimulated widespread interest in methods to quantitatively guide epilepsy surgery from intracranial EEG (iEEG). Many patients fail to achieve seizure freedom, in part due to the challenges in subjective iEEG interpretation. To address this clinical need, quantitative iEEG analytics have been developed using a variety of approaches, spanning studies of seizures, interictal periods, and their transitions, and encompass a range of techniques including electrographic signal analysis, dynamical systems modeling, machine learning and graph theory. Unfortunately, many methods fail to generalize to new data and are sensitive to differences in pathology and electrode placement. Here, we critically review selected literature on computational methods of identifying the epileptogenic zone from iEEG. We highlight shared methodological challenges common to many studies in this field and propose ways that they can be add",
       "doi": "10.1093/brain/awad007",
       "pmid": "36623936",
       "openalex_id": "W4313892341",
       "source_doi": "10.1101/2021.01.24.428020",
       "source_relation": "References",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5281002388894559,
+        "similarity_score": 0.4572296440601349,
+        "citation_text_length": 1272,
+        "dataset_text_length": 2254,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Impact of stimulation location relative to grey and white matter on single pulse electrical stimulation responses in the human brain",
@@ -98,7 +99,15 @@
       "openalex_id": "W3205260955",
       "source_doi": "10.1101/2021.01.24.428020",
       "source_relation": "References",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7465101850032807,
+        "similarity_score": 0.6463291645050049,
+        "citation_text_length": 1403,
+        "dataset_text_length": 2254,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Basis profile curve identification to understand electrical stimulation effects in human brain networks",
@@ -107,13 +116,37 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.on003708",
       "cited_by": 0,
-      "abstract": "This dataset comprises intracranial EEG recordings from a single patient undergoing single-pulse electrical stimulation, collected at Mayo Clinic as part of an NIH-funded initiative to develop a comprehensive database of stimulation responses. The study aims to advance understanding of human brain connectivity and network responses to electrical stimulation across the lifespan through systematic characterization of evoked potentials and network effects. The patient was at rest during the stimulation protocol.",
+      "abstract": "This dataset comprises intracranial EEG recordings from a single patient undergoing single-pulse electrical stimulation, collected at Mayo Clinic as part of an NIH-funded initiative to develop a comprehensive database of stimulation responses. The study aims to advance understanding of human brain connectivity and network responses to electrical stimulation across the lifespan through systematic analysis of evoked potentials and network effects.",
       "doi": "10.82901/nemar.on003708",
       "pmid": null,
       "openalex_id": "W7165597636",
       "source_doi": "10.1101/2021.01.24.428020",
       "source_relation": "References",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.9962501612305642,
+        "similarity_score": 0.8625542521476746,
+        "citation_text_length": 697,
+        "dataset_text_length": 2254,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
-  ]
+  ],
+  "confidence_scoring": {
+    "model_used": "Qwen/Qwen3-Embedding-0.6B",
+    "scoring_date": "2026-08-01T16:50:15.704303+00:00",
+    "dataset_text_length": 2254,
+    "num_citations_scored": 3,
+    "summary_stats": {
+      "mean_confidence": 0.7569535283744336,
+      "median_confidence": 0.7465101850032807,
+      "std_confidence": 0.19126401475895788,
+      "min_confidence": 0.5281002388894559,
+      "max_confidence": 0.9962501612305642,
+      "high_confidence_count": 2,
+      "medium_confidence_count": 1,
+      "low_confidence_count": 0
+    }
+  }
 }

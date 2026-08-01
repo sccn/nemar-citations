@@ -1,0 +1,44 @@
+{
+  "dataset_id": "on006502",
+  "date_retrieved": "2026-08-01T10:22:29.428242+00:00",
+  "dataset_description": {
+    "Name": "Skill learning and consolidation in healthy humans",
+    "License": "CC0",
+    "Authors": [
+      "Bönstrup, M",
+      "Buch, ER",
+      "Cohen, LG"
+    ],
+    "Acknowledgements": "This research was supported by the Intramural Research Program of the National Institutes of Health (NIH). The contributions of the NIH author(s) were made as part of their official duties as NIH federal employees, are in compliance with agency policy requirements, and are considered Works of the United States Government. However, the findings and conclusions presented in this paper are those of the author(s) and do not necessarily reflect the views of the NIH or the U.S. Department of Health and Human Services.",
+    "HowToAcknowledge": "Cite this paper: https://www.ncbi.nlm.nih.gov/pubmed/25977808 and consider including the following message: 'This data was obtained from the OpenNeuro database. Its accession number is ds000117'",
+    "Funding": [
+      "Intramural Research Program (IRP) of the National Institute of Neurological Disorders and Stroke (NINDS), National Institutes of Health (NIH), Bethesda, MD, USA."
+    ],
+    "ReferencesAndLinks": [
+      ""
+    ],
+    "BIDSVersion": "1.10.0",
+    "DatasetDOI": "10.82901/nemar.on006502",
+    "DatasetType": "raw",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds006502.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on006502-blue)](https://doi.org/10.82901/nemar.on006502)\n\n# README\n\n## Contact\n\nFor additional information, please contact:\nEthan R. Buch (ethan.buch@nih.gov; ORCID: 0000-0002-5443-8222)\n\n## Overview\n\nThis study was carried out by the Human Cortical Physiology & Neurorehabilitation Section (HCPS) in the NINDS Intramural Research Program. \n\nThe primary aim of the study was to investigate changes in brain activity associated with early skill learning during an initial training session, overnight skill consolidation and longer-term skill retention. A longitudinal design was used. Skill learning was assessed using the sequential finger tapping task (SFTT). Participants completed an initial session in which anatomical MRI data was acquired, followed by up to three separate MEG session. During the first MEG training session, participants repeatedly typed a 5-item skill sequence (i.e. – 4-1-3-2-4) with their non-dominant left hand over 36 practice trials (lasting 10s each) inter-leaved with short 10s rest breaks. Their instructed goal was to type the sequence as fast and as accurately as possible. This first training session was typically followed by up to two separate MEG retest sessions occurring approximately 24 (mean+/-SD: 23.44+/- 1.32) hours and 30 (29.45 +/- 6.77) days later. During these later MEG sessions, participants were retested on the trained skill (over 9 trials) and 9 different untrained control skill sequences (one trial each). Resting state MEG data was acquired before and after practice blocks during all three MEG sessions. Skill performance, eye gaze and pupillometry, and left wrist flexor/extensor EMG data were also acquired and synchronized with MEG recordings. \n\n## Methods\n\n### Ethics Review\n\nAll study procedures were approved by the Combined Neuroscience Institutional Review Board of the National Institutes of Health (NIH).\n\n### Subjects\n\nStudy data was acquired from a total of 31 right-handed, healthy adults (21 females; mean+/-SD age = 26.14 +/- 4.17). All participants provided written informed consent. Verification of clinical status was based upon a comprehensive health history assessment, physical and neurological examination, and unremarkable clinical Brain MRI scan prior to study data collection. \n\nInclusion criteria: Healthy right-handed adults.\nExclusion criteria: Active musicians were excluded from the study.\n\n### Apparatus\n\nT1-weighted high-resolution (1mm3 isotropic MPRAGE sequence) anatomical brain MRI volumes were acquired for each participant on 3T MRI scanners (GE Excite HDxt and Siemens Skyra) with a standard 32-channel head coil. \n\nContinuous MEG and EMG data were acquired on a CTF-275 system (CTF Systems, Inc.) at a sampling frequency of 600Hz (60Hz power line frequency). All recordings were performed in a seated position inside a magnetically shielded room. Head position was determined before and after each scan run using three head localization coils attached to the right and left preauricular and nasion landmarks with adhesive tape. The locations for the coils was digitized and mapped the individual participant’s anatomical MRI volume using BrainSight (Rogue Research Inc.).\n\nBehavioral stimuli were presented and response data acquired using E-Prime 2 (Psychology Software Tools, Inc.) and the Cedrus LS-Line (Cedrus Corp) four-key response pad, respectively.\n\nEye gaze and pupillometry data was acquired using the EyeLink 1000 Plus (SR Research Ltd.) eye-tracker device and recorded using ADC channel inputs to the CTF-275 system. \n\n### Task details\n\nParticipants typed a 5-item numerical sequence displayed on a computer screen (41324) as quickly and as accurately as possible, with their non-dominant left hand.  No explicit feedback related to performance accuracy or speed was provided. Small asterisks appeared above each sequence item as keypresses were recorded to provide location information to participants during practice. Individual practice trials lasted 10s each. All practice trials were interleaved with short 10s rest breaks. The displayed numerical target sequence was replaced with “XXXXX” during the rest breaks. \n\n### MEG session design\n\nMEG1:\n1)\t6-minute rest scan\n2)\t12-minute “training” scan (4-1-3-2-4)\n3)\t6-minute rest scan\n\nMEG2 (approximately 24 hours after MEG1 session on average; precise inter-session intervals can be found in participants.tsv file):\n1)\t6-minute rest scan\n2)\t3-minute trained sequence “retest” scan (4-1-3-2-4; 36 practice trials lasting 10s each with 10s interleaved rest breaks)\n3)\t6-minute rest scan\n4)\t3-minute “control” sequence scan (one 10s trial each of 9 different untrained sequences [2-1-3-4-2, 4-2-4-3-1, 3-4-2-3-1, 1-4-3-4-2, 3-2-4-3-1, 1-4-2-3-1, 3-2-4-2-1, 2-3-1-4-2, 4-2-3-1-4] with 10s interleaved rest breaks)\n5)\t6-minute rest scan\n\nMEG3 (approximately 30 days after MEG1 session on average; precise inter-session intervals can be found in participants.tsv file):\n1)\t6-minute rest scan\n2)\t3-minute trained sequence “retest” scan (4-1-3-2-4; 9 practice trials lasting 10s each with 10s interleaved rest breaks)\n3)\t6-minute rest scan\n4)\t3-minute “control” sequence scan (one 10s trial each of 9 different untrained sequences [2-1-3-4-2, 3-1-2-1-4, 1-2-4-3-4, 4-1-3-2-1, 2-3-2-4-1, 3-1-4-3-2, 2-3-1-3-4, 1-2-1-3-4, 4-3-2-4-1] with 10s interleaved rest breaks)\n5)\t6-minute rest scan\n\n### Experimental location\n\nAll study data was acquired in the Nuclear Magnetic Resonance Facility (NMRF) at the NIH Clinical Center in Bethesda, MD.\n\n### Missing data\n\nThree of the gradiometers were malfunctioning and were not used, resulting in 272 total channels of MEG data.\n\nSome participants did not complete the 2nd and 3rd MEG sessions. \n\nNo keypress responses were recorded for participant “sub-01” on trial 1 of MEG1 training.\n\nThe MEG recording for participant “sub-10” MEG1 training terminated during the rest break after practice trial 34. No MEG data was recorded for practice trials 35 and 36.\n\nNo keypress responses were recorded for participant “sub-23” on trial 1 of MEG1 training and trials 1 and 2 of MEG2 retest.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on006502",
+    "exists": true,
+    "description": "Skill learning and consolidation in healthy humans",
+    "created_at": "2026-06-29T02:31:43+00:00",
+    "updated_at": "2026-07-23T01:29:32+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "dataset_id": "nm000233",
+  "date_retrieved": "2026-08-01T10:00:50.805028+00:00",
+  "dataset_description": {
+    "Name": "BCI Competition 2020 Track 4 — Upper-limb grasping motor imagery",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Ji-Hoon Jeong",
+      "Jeong-Hyun Cho",
+      "Young-Eun Lee",
+      "Seo-Hyun Lee",
+      "Gi-Hwan Shin",
+      "Young-Seok Kweon",
+      "Jose del R. Millan",
+      "Klaus-Robert Muller",
+      "Seong-Whan Lee"
+    ],
+    "ReferencesAndLinks": [
+      "https://osf.io/pq7vb/",
+      "10.3389/fnhum.2022.898300"
+    ],
+    "Keywords": [
+      "motor imagery",
+      "upper-limb",
+      "grasping",
+      "session-to-session transfer",
+      "BCI competition",
+      "EEG"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000233",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0dev0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.3389/fnhum.2022.898300",
+        "URL": "https://osf.io/pq7vb/"
+      },
+      {
+        "DOI": "doi:10.3389/fnhum.2022.898300"
+      }
+    ],
+    "PublicationYear": 2022,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000233-blue)](https://doi.org/10.82901/nemar.nm000233)\n\n# BCI Competition 2020 Track 4 — Upper-limb grasping motor imagery\n\n## Overview\n\nBCIComp2020UpperLimb is a preprocessed derivative EEG dataset from BCI Competition 2020 Track 4 comprising motor imagery recordings of three grasping tasks (cylindrical, spherical, lumbrical) from 15 healthy subjects across three sessions. The dataset contains 60-channel EEG data sampled at 250 Hz with 450 trials per subject (150 trials per session). This is a processed version of the original BCI Competition 2020 data, designed to evaluate session-to-session transfer learning in brain-computer interface applications. Original 10 s trials (3 s rest, 3 s visual cue, 4 s motor imagery) have been preprocessed with 60 Hz notch filtering and cue-aligned epoching, with the 4 s motor imagery window extracted for analysis.\n\n## Dataset Summary\n\n| Property | Value |\n|---|---|\n| Subjects | 15 |\n| Channels | 60 |\n| Classes | 3 |\n| Trial length | 4 s |\n| Sampling frequency | 250 Hz |\n| Sessions | 3 |\n| Total trials | 6750 |\n| Paradigm | MotorImagery |\n\n## Data Collection Methods\n\nEEG data were acquired using a BrainAmp system (BrainProducts GmbH) with 60 channels at 250 Hz sampling rate, referenced to FCz with Fpz as ground. Subjects performed cue-based motor imagery of three right-arm grasping tasks in three sessions separated by 7 days. Each trial consisted of a 3 s rest period, 3 s visual cue, and 4 s motor imagery window. Data were preprocessed with 60 Hz notch filtering and cue-aligned epoching. The 4 s motor imagery window (corresponding to seconds 6-10 of each original 10 s trial) was extracted by the loader for analysis.\n\n## How to Access via MOABB\n\nInstall MOABB and load this dataset directly:\n\n```python\nfrom moabb.datasets import BCIComp2020UpperLimb\nfrom moabb.paradigms import MotorImagery\nparadigm = MotorImagery()\n\ndataset = BCIComp2020UpperLimb()\nX, y, metadata = paradigm.get_data(dataset)\n```\n\nFor more details see the [MOABB documentation](https://moabb.neurotechx.com/) and the\n[MOABB dataset page](https://moabb.neurotechx.com/docs/generated/moabb.datasets.BCIComp2020UpperLimb.html).\n\n## Citation\n\nIf you use this dataset please cite the primary publication:\n\n> DOI: [10.3389/fnhum.2022.898300](https://doi.org/10.3389/fnhum.2022.898300)\n\n## NEMAR / MOABB Benchmark Collection\n\nThis BIDS-formatted dataset was converted from the original data using the\n[MOABB](https://moabb.neurotechx.com/) pipeline and re-hosted on\n[NEMAR](https://nemar.org/) as part of the MOABB benchmark collection.\nThe original data and license terms apply — see `dataset_description.json` for details.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000233",
+    "exists": true,
+    "description": "BCI Competition 2020 Track 4 — Upper-limb grasping motor imagery",
+    "created_at": "2026-06-19T23:06:16+00:00",
+    "updated_at": "2026-07-23T01:08:58+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "dataset_id": "on008092",
+  "date_retrieved": "2026-08-01T10:28:11.493968+00:00",
+  "dataset_description": {
+    "Name": "Food-image categorization with consumer EEG (vegetarian vs. meat)",
+    "BIDSVersion": "1.9.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "[ADD AUTHORS]"
+    ],
+    "Acknowledgements": "[OPTIONAL]",
+    "HowToAcknowledge": "[ADD CITATION / DOI AFTER UPLOAD]",
+    "EthicsApprovals": [
+      "[ADD ETHICS APPROVAL NUMBER]"
+    ],
+    "ReferencesAndLinks": [
+      "[ADD ASSOCIATED ARTICLE DOI]"
+    ],
+    "DatasetDOI": "10.82901/nemar.on008092",
+    "License": "CC0",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds008092.v1.0.2"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on008092-blue)](https://doi.org/10.82901/nemar.on008092)\n\n# Food-image categorization with consumer EEG (vegetarian vs. meat)\n\n## Overview\n14-channel EEG (EMOTIV EPOC X / EPOC+, scalp positions AF3 F7 F3 FC5 T7 P7 O1\nO2 P8 T8 FC6 F4 F8 AF4) recorded while participants categorized prepared-food\nimages as meat or vegetarian. Each recording also includes a short eyes-open /\neyes-closed resting baseline that precedes the task.\n\nThese data were collected within longer sessions that also recorded other\nmeasures (reported elsewhere). Only the categorization paradigm and its resting\nbaseline are released here.\n\n## Task\nThe same set of 37 prepared-food images was presented twice (up to ~74 trials).\nOn each trial a participant pressed M (meat) or X (vegetarian). Response times\nwere recorded.\n\nIn the events files:\n- `stim_category` is the displayed image's true category: m (meat) or v (vegetarian).\n- `response_key` is the physical key pressed: M or X.\n- `response` is that key mapped back to category (m/v) so it lines up with `stim_category`.\n- `accuracy` is 1 when `response` matches `stim_category`.\n\n## Files\n- `participants.tsv` / `participants.json`: one row per participant, with\n  demographics, baseline questionnaire, derived dietary indicators, and per-subject\n  task summaries. `.tsv` is tab-separated and opens like a CSV.\n- `sub-NN/eeg/`: the trimmed recording (`_eeg.edf`), `_events.tsv`,\n  `_channels.tsv` (with per-channel contact-quality), and `_eeg.json` sidecar.\n\n## Data quality\nData are released minimally processed: no filtering, no artifact rejection, no\nICA. Per-channel EMOTIV contact-quality values are provided in each\n`channels.tsv` so re-users can apply their own quality criteria. The resting\nbaseline supports a per-participant eyes-closed alpha-reactivity check.\n\n## Notes for re-use\n- EEG is unfiltered (sidecars report `SoftwareFilters: n/a`).\n- All recordings are sampled at 128 Hz.\n- Event labels are embedded in each EDF as EDF+ annotations (rest_eyesopen, rest_eyesclosed,\n  categorize/meat, categorize/veg), so any reader displays them directly. The events.tsv holds\n  the full trial-level record (response, response time, accuracy).\n- Resting segments were advanced by participant button-press; a fixed 30 s window\n  inside each instructed eyes-open and eyes-closed segment is released.\n- Recording timestamps have been removed; recordings carry a neutral fixed date.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on008092",
+    "exists": true,
+    "description": "Food-image categorization with consumer EEG (vegetarian vs. meat)",
+    "created_at": "2026-07-02T16:31:27+00:00",
+    "updated_at": "2026-07-23T01:34:48+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

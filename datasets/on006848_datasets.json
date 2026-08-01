@@ -1,0 +1,42 @@
+{
+  "dataset_id": "on006848",
+  "date_retrieved": "2026-08-01T10:23:53.792935+00:00",
+  "dataset_description": {
+    "Name": "AlphaDirection1: EEG, ECG, PPG in the resting state and working memory for sequentially and simultaneously presented digits",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Alexandra I. Kosachenko",
+      "Danil I. Syttykov",
+      "Dmitry A. Tarasov",
+      "Alexander I. Kotyusov",
+      "Yuri G. Pavlov"
+    ],
+    "HowToAcknowledge": "If you reference this dataset in a publication, please acknowledge its authors and cite the paper: Kosachenko, A. I., Syttykov, D. I., Tarasov, D. A., Kotyusov, A. I., Kasanov, D., Kotchoubey, B., & Pavlov, Y. G. (2025). Alpha activity during verbal working memory retention depends on the stimulus presentation mode. bioRxiv, 2025-05. https://doi.org/10.1101/2025.05.04.652111",
+    "ReferencesAndLinks": [
+      "in prep"
+    ],
+    "DatasetDOI": "10.82901/nemar.on006848",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds006848.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on006848-blue)](https://doi.org/10.82901/nemar.on006848)\n\nOverview\n\nThis dataset consists of raw 64-channel EEG, electrocardiography (ECG), photoplethysmography (PPG), and behavioral data recorded from 30 healthy young adults during two experimental conditions: resting state and a verbal working memory (digit span) task with serial recall.\n\nResting-state recording\n\nDuring the resting-state session, participants alternated between four 1-minute blocks of eyes-closed and eyes-open resting, followed by 3 minutes 52 seconds of passive cartoon watching (“The Man Who Was Afraid of Falling”, 2011).\nEEG, ECG, and PPG were recorded continuously throughout this session.\n\nVerbal working memory task\n\nIn the verbal working memory task, participants were presented visually with sequences of seven digits under four different presentation modes:\n 1. Simultaneous – all seven digits presented together for 2800 ms;\n 2. Fast sequential – each digit presented for 400 ms;\n 3. Fast + delay sequential – each digit presented for 400 ms with a 600 ms inter-stimulus interval (ISI);\n 4. Slow sequential – each digit presented for 1000 ms.\n\nThey were instructed to memorize each sequence and type the digits in serial order using the right hand on the numpad. Behavioral accuracy and partial-score measures were computed for each trial.\n\nData organization\n\nEach participant folder (sub-XXX) contains:\n • eeg/ — EEG, ECG, and PPG recordings in BrainVision format (.vhdr, .vmrk, .eeg) accompanied by event (_events.tsv) and metadata (.json) files.\nWhen available, both the resting-state (task-rest) and working-memory (task-verbalwm) recordings are stored here.\n • beh/ — behavioral data (_beh.tsv and _beh.json) with trial-by-trial recall accuracy, sequence information, and response measures.\n\nParticipants\n\nThe dataset includes 30 participants (age range 18–32 years; 23 females, 7 males). Most were right-handed, with a few left-handed or ambidextrous.\nAll participants contributed working memory EEG and behavioral data. Several lacked resting state data for EEG, PPG, and ECG: sub-002, sub-003, sub-004, sub-005, sub-006, sub-008, sub-009, sub-011.\n\nPotential applications\n\nThis dataset can be used to:\n1. Develop algorithms that classify working memory load.\n2. Study neural signals, including event-related potentials and oscillations, alongside peripheral physiology from ECG and PPG during encoding, maintenance, and retrieval at a fine time scale for each sequential item.\n3. Examine how neural and physiological signals relate to behavioral accuracy and retrieval time on a trial-by-trial basis.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on006848",
+    "exists": true,
+    "description": "AlphaDirection1: EEG, ECG, PPG in the resting state and working memory for sequentially and simultaneously presented digits",
+    "created_at": "2026-06-29T13:31:44+00:00",
+    "updated_at": "2026-07-23T01:30:23+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

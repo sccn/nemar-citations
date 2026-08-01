@@ -1,0 +1,40 @@
+{
+  "dataset_id": "on007020",
+  "date_retrieved": "2026-08-01T10:24:47.717375+00:00",
+  "dataset_description": {
+    "Name": "EEG Mortality Dataset in Parkinson's Disease",
+    "BIDSVersion": "1.8.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Simin Jamshidi",
+      "Arturo Espinoza",
+      "Soura Dasgupta",
+      "Nandakumar Narayanan"
+    ],
+    "Modalities": [
+      "EEG"
+    ],
+    "DatasetDOI": "10.82901/nemar.on007020",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds007020.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on007020-blue)](https://doi.org/10.82901/nemar.on007020)\n\nThis dataset contains de-identified resting-state EEG recordings from individuals with Parkinson’s disease (PD) and age-matched healthy control subjects. All EEG data were recorded using standard clinical EEG systems at Neurology Clinic.\r\nDataset Purpose:\r\nThis dataset was originally used to evaluate whether resting-state EEG can help distinguish subjects who were later deceased from those who remained living (mortality classification). Only de-identified EEG data and mortality labels are included.\r\n\r\nParticipant Information:\r\n- Participants are labeled as either \"living\" or \"deceased\" in participants.tsv\r\n- No other demographic or clinical information (age, cognition, UPDRS, disease duration, etc.) is included per data-sharing guidelines.\r\n- All participant IDs are anonymized following BIDS convention (e.g., sub-PD1301).\r\n\r\nEEG Acquisition Details:\r\n- Recording type: Resting-state EEG (eyes open)\r\n- Device: Clinical BrainVision EEG system\r\n- File formats: .vhdr, .eeg, .vmrk\r\n- Sampling rate: 500 Hz\r\n- Montage: Standard 10–20 international system\r\n- Recording condition: “task-rest” (no task)\r\n\r\nData Organization:\r\nData are structured following the BIDS (Brain Imaging Data Structure) EEG standard:\r\n    sub-<ID>/\r\n        ses-01/\r\n            eeg/\r\n                sub-<ID>_ses-01_task-rest_eeg.vhdr\r\n                sub-<ID>_ses-01_task-rest_eeg.eeg\r\n                sub-<ID>_ses-01_task-rest_eeg.vmrk\r\n\r\nMortality Label Format:\r\n- Living subjects: survival_status = \"living\"\r\n- Deceased subjects: survival_status = \"deceased\"\r\n\r\nEthics & Privacy:\r\nAll subjects provided consent for EEG recording at the University of Iowa Hospitals and Clinics. The publicly shared version here is fully de-identified and contains no clinical or personal health information other than mortality classification.\r\n\r\nSuggested Use:\r\nThis dataset can be used to explore EEG biomarkers of mortality risk, EEG signal characteristics in PD, or to build machine learning models for classification.\r\n\r\nQuestions or requests:\r\nPlease contact nandakumar-narayanan@uiowa.edu.\r\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on007020",
+    "exists": true,
+    "description": "EEG Mortality Dataset in Parkinson's Disease",
+    "created_at": "2026-06-29T21:01:44+00:00",
+    "updated_at": "2026-07-23T01:31:08+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

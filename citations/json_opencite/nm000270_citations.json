@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000270",
-  "num_citations": 20,
-  "date_last_updated": "2026-07-03T15:23:13.169224+00:00",
+  "num_citations": 22,
+  "date_last_updated": "2026-08-01T15:35:06.514471+00:00",
   "metadata": {
-    "total_cumulative_citations": 11,
-    "fetch_date": "2026-07-03T15:23:13.169224+00:00",
+    "total_cumulative_citations": 12,
+    "fetch_date": "2026-08-01T15:35:06.514471+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -59,7 +59,7 @@
     ],
     "num_accession_mentions": 0,
     "num_dataset_citations": 0,
-    "num_datapaper_citations": 20
+    "num_datapaper_citations": 22
   },
   "citation_details": [
     {
@@ -80,6 +80,29 @@
         "confidence_score": 0.6735961121320725,
         "similarity_score": 0.5832000970840454,
         "citation_text_length": 1217,
+        "dataset_text_length": 2526,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A multi-paradigm EEG dataset for studying upper limb rehabilitation exercises",
+      "author": "Wenwen Chang, Weixuan Kong, Guanghui Yan, Renjie Lv, Kaiyue Du, Muhammad Tariq Sadiq, Bin Guo, Rong Yin, Xuan Liu",
+      "venue": "Scientific Data",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41597-025-06147-6",
+      "cited_by": 2,
+      "abstract": "Most stroke survivors experience persistent upper limb motor dysfunction, and brain-computer interface (BCI) rehabilitation technologies have been widely explored to address this issue. However, systematic comparisons and analyses of differences among rehabilitation paradigms remain challenging due to the lack of multi-paradigm EEG datasets from the same subjects. This study aims to construct an EEG dataset that collects various rehabilitation paradigms for the same subjects. A total of 28 healthy subjects were recruited, and EEG data were collected under six types of upper limb rehabilitation paradigms. Each paradigm involves two or three actions, including grasping and releasing with the left, right, or both hands. The dataset includes both raw EEG signals and preprocessed versions with bandpass filtering and artifact removal. This resource will support studies comparing the neural mechanisms underlying different rehabilitation paradigms and aid in the development of optimized rehabi",
+      "doi": "10.1038/s41597-025-06147-6",
+      "pmid": "41315347",
+      "openalex_id": "W4416794698",
+      "source_doi": "10.1038/s41597-025-04618-4",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.9253984290361406,
+        "similarity_score": 0.8012107610702515,
+        "citation_text_length": 1244,
         "dataset_text_length": 2526,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -126,29 +149,6 @@
         "confidence_score": 0.6415594518184662,
         "similarity_score": 0.6110090017318726,
         "citation_text_length": 203,
-        "dataset_text_length": 2526,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "A multi-paradigm EEG dataset for studying upper limb rehabilitation exercises",
-      "author": "Wenwen Chang, Weixuan Kong, Guanghui Yan, Renjie Lv, Kaiyue Du, Muhammad Tariq Sadiq, Bin Guo, Rong Yin, Xuan Liu",
-      "venue": "Scientific Data",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s41597-025-06147-6",
-      "cited_by": 1,
-      "abstract": "Most stroke survivors experience persistent upper limb motor dysfunction, and brain-computer interface (BCI) rehabilitation technologies have been widely explored to address this issue. However, systematic comparisons and analyses of differences among rehabilitation paradigms remain challenging due to the lack of multi-paradigm EEG datasets from the same subjects. This study aims to construct an EEG dataset that collects various rehabilitation paradigms for the same subjects. A total of 28 healthy subjects were recruited, and EEG data were collected under six types of upper limb rehabilitation paradigms. Each paradigm involves two or three actions, including grasping and releasing with the left, right, or both hands. The dataset includes both raw EEG signals and preprocessed versions with bandpass filtering and artifact removal. This resource will support studies comparing the neural mechanisms underlying different rehabilitation paradigms and aid in the development of optimized rehabi",
-      "doi": "10.1038/s41597-025-06147-6",
-      "pmid": "41315347",
-      "openalex_id": "W4416794698",
-      "source_doi": "10.1038/s41597-025-04618-4",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.9253984290361406,
-        "similarity_score": 0.8012107610702515,
-        "citation_text_length": 1244,
         "dataset_text_length": 2526,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -253,7 +253,7 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.nm000270.v1.0.1",
       "cited_by": 0,
-      "abstract": "Re-hosted EEG data from Liu et al. (2025): Lower limb motor imagery dataset for stroke patients, originally deposited on Figshare under a CC BY 4.0 license. Data has been converted from non-standard BIDS (EEGLAB .set) to proper BIDS format (BrainVision .vhdr/.vmrk/.eeg) using mne_bids.write_raw_bids().PaperY. Liu, Z. Gui, D. Yan, Z. Wang, R. Gao, N. Han, J. Chen, J. Wu, D. Ming, “Lower limb motor imagery EEG dataset based on the multi-paradigm and longitudinal-training of stroke patients,” Scientific Data, 12, 314, 2025.DOI: 10.1038/s41597-025-04618-4ParadigmTaskGait motor imagery vs idle state (binary)Trials~40 MI + 40 idle per session (4 runs × 10+10)Timing3 s baseline → 1 s cue → 5 s MI/idle → restEventsCode 3 = gait MI onset, code 9 = idle onsetSessionsses-prePre-treatment (conventional MI, all 27 subjects)ses-misesMI + Sequential Electrical Stimulation (16 subjects)ses-miiesMI + Invariable Electrical Stimulation (16 subjects)ses-postPost-treatment assessment (all 27 subjects)ses-f",
+      "abstract": "This dataset comprises scalp electroencephalography recordings from 27 stroke patients performing lower-limb motor imagery tasks as part of a longitudinal rehabilitation training protocol. The multi-paradigm design supports research on motor-imagery brain–computer interfaces for gait and lower-limb rehabilitation following stroke, with repeated sessions enabling investigation of learning and neuroplastic changes over time.",
       "doi": "10.82901/nemar.nm000270.v1.0.1",
       "pmid": null,
       "openalex_id": "W7165048710",
@@ -262,8 +262,8 @@
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 1.0,
-        "similarity_score": 0.9346745610237122,
-        "citation_text_length": 1302,
+        "similarity_score": 0.9566097855567932,
+        "citation_text_length": 728,
         "dataset_text_length": 2526,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -324,7 +324,7 @@
       "cited_by": 0,
       "abstract": "Background Characterized by high incidence rate, high disability rate, high mortality rate and high recurrence rate, stroke has become the second leading cause of death globally and the primary cause of adult disability. Though traditional rehabilitation methods have played a significant role in post-stroke functional recovery, their therapeutic efficacy is limited. In recent years, brain-computer interfaces (BCI) have advanced rapidly and are being used more frequently in rehabilitation training for stroke patients. Objective This systematic review and meta-analyses aimed to systematically assess the effect of brain-computer interface-based rehabilitation training on limb function in patients after stroke, and further investigate the efficacy differences among various types of brain-computer interfaces and treatment protocols. Methods The search strategy was conducted in 5 databases (PubMed, Scopus, Web of Science, Embase, and Cochrane Library databases) from inception to August 29, 2",
       "doi": "10.3389/fneur.2026.1750875",
-      "pmid": null,
+      "pmid": "42459855",
       "openalex_id": "W7166814056",
       "source_doi": "10.1038/s41597-025-04618-4",
       "source_relation": "IsDerivedFrom",
@@ -333,29 +333,6 @@
         "confidence_score": 0.7283276197314263,
         "similarity_score": 0.6305866837501526,
         "citation_text_length": 1358,
-        "dataset_text_length": 2526,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Is GB34-Based Acupuncture Combined With Conventional Rehabilitation More Beneficial for Post-Stroke Lower Limb Motor Recovery? A Systematic Review and Meta-Analysis",
-      "author": "Yu-Xin Zhuang, Liang-Xiao Ma, Jing-Si Wen, Jialing He, Ling-Hui Ma, Jing-Yun null Xiu, Meng‐Yu Chen",
-      "venue": "American Journal of Therapeutics",
-      "year": 2026,
-      "url": "https://doi.org/10.1097/mjt.0000000000002093",
-      "cited_by": 0,
-      "abstract": null,
-      "doi": "10.1097/mjt.0000000000002093",
-      "pmid": "41505162",
-      "openalex_id": "W7118993431",
-      "source_doi": "10.1038/s41597-025-04618-4",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6180126428604126,
-        "similarity_score": 0.5885834693908691,
-        "citation_text_length": 322,
         "dataset_text_length": 2526,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -385,6 +362,52 @@
       }
     },
     {
+      "title": "Is GB34-Based Acupuncture Combined With Conventional Rehabilitation More Beneficial for Post-Stroke Lower Limb Motor Recovery? A Systematic Review and Meta-Analysis",
+      "author": "Yu-Xin Zhuang, Liang-Xiao Ma, Jing-Si Wen, Jialing He, Ling-Hui Ma, Jing-Yun null Xiu, Meng‐Yu Chen",
+      "venue": "American Journal of Therapeutics",
+      "year": 2026,
+      "url": "https://doi.org/10.1097/mjt.0000000000002093",
+      "cited_by": 0,
+      "abstract": null,
+      "doi": "10.1097/mjt.0000000000002093",
+      "pmid": "41505162",
+      "openalex_id": "W7118993431",
+      "source_doi": "10.1038/s41597-025-04618-4",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6180126428604126,
+        "similarity_score": 0.5885834693908691,
+        "citation_text_length": 322,
+        "dataset_text_length": 2526,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Motor imagery interventions in stroke patients modulate their brain-heart network dynamics",
+      "author": "Diego Candia‐Rivera, Marie‐Constance Corsi, Juliana Gonzalez-Astudillo, Charlotte Rosso, Fabrizio De Vico Fallani, Mario Chavez",
+      "venue": "medRxiv",
+      "year": 2026,
+      "url": "https://doi.org/10.64898/2026.06.23.26355958",
+      "cited_by": 0,
+      "abstract": "Abstract Background Motor imagery is widely used in post-stroke rehabilitation research, as it is thought to promote neuroplastic mechanisms underlying motor recovery. The characterization of the associated neurophysiological patterns is therefore crucial to improve our understanding and eventually optimize rehabilitative brain–computer interface applications. Emerging evidence suggests that cardiac dynamics are actively related to motor-related brain processes, yet the role of brain–heart interactions (BHI) in post-stroke recovery remains largely unexplored. This study aimed to investigate how BHI evolve during motor imagery interventions in stroke patients, with the hypothesis that BHI would exhibit a progressive change across motor imagery interventions. Methods We analyzed two independent cohorts comprising a total of 15 stroke survivors with upper or lower limb motor impairments undergoing motor imagery-based interventions. BHI were quantified by assessing the coupling between car",
+      "doi": "10.64898/2026.06.23.26355958",
+      "pmid": null,
+      "openalex_id": "W7167239539",
+      "source_doi": "10.1038/s41597-025-04618-4",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7655778694152833,
+        "similarity_score": 0.6628379821777344,
+        "citation_text_length": 1263,
+        "dataset_text_length": 2526,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "An EEG dataset for handwriting imagery decoding of Chinese character strokes and Pinyin single vowels",
       "author": "Fan Wang, Yanxiao Chen, Peng Wang, Anmin Gong, Jiaping Xu, Yunfa Fu",
       "venue": "Scientific Data",
@@ -402,6 +425,29 @@
         "confidence_score": 0.7990148851275445,
         "similarity_score": 0.6917877793312073,
         "citation_text_length": 1222,
+        "dataset_text_length": 2526,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Core muscle rehabilitation during early mobilization after stroke: a narrative review and clinical framework",
+      "author": "Chang-lan Ling-hu, Qin Yu, M M Li, Liu Z, Xia-pei Peng",
+      "venue": "Frontiers in Neurology",
+      "year": 2026,
+      "url": "https://doi.org/10.3389/fneur.2026.1783386",
+      "cited_by": 0,
+      "abstract": "Objective: This narrative review clarifies the clinical framework for trunk- or core-focused rehabilitation after stroke, with particular attention to the early rehabilitation period. It distinguishes between preparatory bed-level exercise and true early mobilization. Methods: This narrative review selectively synthesizes recent reviews, consensus statements, randomized controlled trials, and cohort studies to inform clinical statements on early mobilization, trunk training, balance, falls, dysphagia, and clinical safety. Supplementary clinical reports are included primarily to illustrate practical exercise content and implementation patterns, rather than to form the primary basis for strong recommendations. Results: This review distinguishes upright early mobilization from preparatory bed-level trunk activation. Fixed hyperacute dose prescriptions are not supported by current evidence; core training is positioned as an adjunct to, rather than a substitute for, evidence-based functiona",
+      "doi": "10.3389/fneur.2026.1783386",
+      "pmid": "42494403",
+      "openalex_id": "W7167812936",
+      "source_doi": "10.1038/s41597-025-04618-4",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5219198946654797,
+        "similarity_score": 0.45187869668006897,
+        "citation_text_length": 1223,
         "dataset_text_length": 2526,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -525,17 +571,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-07-15T00:15:51.374099+00:00",
+    "scoring_date": "2026-08-01T16:41:09.910613+00:00",
     "dataset_text_length": 2526,
-    "num_citations_scored": 20,
+    "num_citations_scored": 22,
     "summary_stats": {
-      "mean_confidence": 0.755379810631275,
+      "mean_confidence": 0.7452315443957395,
       "median_confidence": 0.7293444018065931,
-      "std_confidence": 0.10864710854382577,
-      "min_confidence": 0.5937646579742432,
+      "std_confidence": 0.1145000388839701,
+      "min_confidence": 0.5219198946654797,
       "max_confidence": 1.0,
-      "high_confidence_count": 13,
-      "medium_confidence_count": 7,
+      "high_confidence_count": 14,
+      "medium_confidence_count": 8,
       "low_confidence_count": 0
     }
   }

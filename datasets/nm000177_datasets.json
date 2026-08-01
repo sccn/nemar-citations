@@ -1,0 +1,73 @@
+{
+  "dataset_id": "nm000177",
+  "date_retrieved": "2026-08-01T10:00:31.643945+00:00",
+  "dataset_description": {
+    "Name": "Multi-session longitudinal motor imagery EEG dataset (Kumar et al. 2024)",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Satyam Kumar",
+      "Hussein Alawieh",
+      "Frigyes Samuel Racz",
+      "Rawan Fakhreddine",
+      "Jose del R. Millan"
+    ],
+    "Funding": [
+      "Coleman Fung Foundation",
+      "Sinclair Foundation"
+    ],
+    "EthicsApprovals": [
+      "The University of Texas at Austin (Protocol 2020-03-0073)"
+    ],
+    "ReferencesAndLinks": [
+      "https://zenodo.org/records/10694880",
+      "10.1093/pnasnexus/pgae076"
+    ],
+    "Keywords": [
+      "motor imagery",
+      "brain-computer interface",
+      "EEG",
+      "transfer learning",
+      "domain adaptation",
+      "Riemannian geometry",
+      "longitudinal training",
+      "BCI skill acquisition"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000177",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0dev0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1093/pnasnexus/pgae076",
+        "URL": "https://zenodo.org/records/10694880"
+      },
+      {
+        "DOI": "doi:10.1093/pnasnexus/pgae076"
+      }
+    ],
+    "PublicationYear": 2024,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000177-blue)](https://doi.org/10.82901/nemar.nm000177)\n\n# Multi-session longitudinal motor imagery EEG dataset (Kumar et al. 2024)\n\n## Overview\n\nA longitudinal motor imagery EEG dataset from 18 BCI-naive subjects across 6 sessions (1 offline + 5 online) demonstrating transfer learning for brain-computer interface skill acquisition. The study compares two domain adaptation frameworks—Generic Recentering (unsupervised) and Personally Assisted Recentering (supervised)—for calibration-free BCI training using left/right hand motor imagery with visual feedback. Data were acquired at 512 Hz using 22 EEG channels and processed with Riemannian geometry-based classifiers.\n\n## Dataset Summary\n\n| Property | Value |\n|---|---|\n| Subjects | 18 |\n| Channels | 22 |\n| Classes | 2 |\n| Trial length | 5 s |\n| Sampling frequency | 512 Hz |\n| Sessions | 6 |\n| Total trials | 7156 |\n| Paradigm | MotorImagery |\n\n## Data Collection Methods\n\nEEG data were recorded from 18 healthy subjects (age mean=23.22±3.59 years) across 6 sessions using ANT Neuro eego mylab hardware with 22 EEG channels and 3 EOG channels at 512 Hz sampling rate. Subjects performed cue-based left/right hand motor imagery tasks with continuous visual feedback across bar-feedback runs and car racing games. Session 1 consisted of 4 offline runs (80 trials); sessions 2-6 included 3-4 online runs each. EEG signals were bandpass filtered at 8-30 Hz using second-order Butterworth filters. Features were extracted as covariance matrices and classified using Riemannian Minimum Distance to Mean decoder.\n\n## How to Access via MOABB\n\nInstall MOABB and load this dataset directly:\n\n```python\nfrom moabb.datasets import Kumar2024\nfrom moabb.paradigms import MotorImagery\nparadigm = MotorImagery()\n\ndataset = Kumar2024()\nX, y, metadata = paradigm.get_data(dataset)\n```\n\nFor more details see the [MOABB documentation](https://moabb.neurotechx.com/) and the\n[MOABB dataset page](https://moabb.neurotechx.com/docs/generated/moabb.datasets.Kumar2024.html).\n\n## Citation\n\nIf you use this dataset please cite the primary publication:\n\n> DOI: [10.1093/pnasnexus/pgae076](https://doi.org/10.1093/pnasnexus/pgae076)\n\n## NEMAR / MOABB Benchmark Collection\n\nThis BIDS-formatted dataset was converted from the original data using the\n[MOABB](https://moabb.neurotechx.com/) pipeline and re-hosted on\n[NEMAR](https://nemar.org/) as part of the MOABB benchmark collection.\nThe original data and license terms apply — see `dataset_description.json` for details.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000177",
+    "exists": true,
+    "description": "Multi-session longitudinal motor imagery EEG dataset (Kumar et al. 2024)",
+    "created_at": "2026-06-19T17:29:07+00:00",
+    "updated_at": "2026-07-23T01:07:00+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

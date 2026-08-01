@@ -1,0 +1,54 @@
+{
+  "dataset_id": "on005795",
+  "date_retrieved": "2026-08-01T10:19:27.961493+00:00",
+  "dataset_description": {
+    "Acknowledgements": " ",
+    "Authors": [
+      "Jörg Stadler",
+      "Torsten Stöter",
+      "Nicole Angenstein",
+      "Andreas Fügner",
+      "Marcel Lommerzheim",
+      "Artur Mathysiak",
+      "Anke Michalsky",
+      "Gabriele Schöps",
+      "Johann van der Meer",
+      "Susann Wolff",
+      "André Brechmann"
+    ],
+    "BIDSVersion": "1.10.0",
+    "DatasetDOI": "10.82901/nemar.on005795",
+    "Funding": [
+      "German Science Foundation (BR2267/9-1)"
+    ],
+    "HowToAcknowledge": "Data was provided by the human brain imaging group of the Combinatorial NeuroImaging (CNI) core facility at the Leibniz Institute for Neurobiology (LIN) Magdeburg.",
+    "License": "CC0",
+    "Name": "MULTI-CLARID (Multimodal Category Learning and Resting-state Imaging Data)",
+    "ReferencesAndLinks": [
+      "www.lin-magdeburg.de/cni"
+    ],
+    "Ethics Approvals": [
+      "The study was approved by the ethics committee of the University of Magdeburg, Germany"
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds005795.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on005795-blue)](https://doi.org/10.82901/nemar.on005795)\n\nOverview\n\nThe study comprises data of a combined fMRI/EEG experiment. The EEG files contain 63 head channels, ECG, EOG, facial EMG and skin conductance data. A physio file contains respiration and finger-pulse data. In addition, a T1 weighted whole-brain anatomical MR scan, a PD weighted (UTE) scan for electrode localization is provided (defacing was performed using https://github.com/cbinyu/pydeface). Additional data of the participants (T2 weighted images, button press dynamics, hearing threshold, hearing abilities, and personality traits (NEO-FFI, BIS/BAS, SVF, ERQ, MMG) are available on request.\nThe study was conducted at the Combinatorial NeuroImaging (CNI) core facility of the Leibniz Institute for Neurobiology (LIN) Magdeburg and was approved by the ethics committee of the University of Magdeburg, Germany. All participants gave written informed consent.\nCurrently you will only find 5 data-sets that include the multi-dimensional category learning experiment (cf. Wolff & Brechmann, Cerebral Cortex, 2023) because of the copyright policy of OpenNeuro (i.e. CC0). If you are interested in the remaining data-sets, please contact brechmann@lin-magdeburg.de. Collaboration is highly welcome!\n\nDetails of the learning task\n\nThe auditory category learning experiment comprised 180 trials for which 160 different frequency modulated sounds were presented in pseudo-randomized order with a jittered inter-trial interval of 6, 8, or 10 s plus 19-95 ms in steps of 19 ms in order to ensure a pseudo-random jitter of the sound onset with the onset of the acquisition of an MR volume. Each sound had five different binary features, i.e. duration (short: 400 ms, long 800 ms), direction of the frequency modulation (rising, falling), intensity (soft: 76–81 dB, loud: 86–91 dB), speed of the frequency modulation (slow: 0.25 octaves/s, fast: 0.5 octaves/s), and frequency range (low: 500–831 Hz, high: 1630–2639 Hz with 5 different ranges each). Participants had to learn a target category defined by a combination of the features duration and direction (i.e. long/rising, long/falling, short/rising, or short/falling) by trial and error. In each trial, participants had to indicate via button press whether they thought a sound belonged to the target category (right index finger) or not (right middle finger). They received feedback about the correctness of the response by a prerecorded, female voice in standard German; e.g., \"ja\" (yes) or \"richtig\" (right) following correct responses, \"nein\" (no) or \"falsch\" (wrong) following incorrect responses. In 90% of the trials the feedback immediately followed the button press, in 10% it was delayed by 1500 ms. If participants failed to respond within 2 seconds after FM tone onset, a timeout feedback (\"zu spät\", too late) was presented. During the ~27 min learning experiment, participants were asked to fixate a white cross on grey background and avoid any movements. For the 10 min rs-fMRI, they were asked to close their eyes.\n\nTechnical details\n\nMR data were acquired with a 3 Tesla MRI scanner (Philips Achieva dStream) equipped with a 32-channel head coil. The MR scanner generates a trigger signal used to synchronize the multimodal data acquisition. The timing of stimulus events and the participants' responses were controlled by the software Presentation (Neurobehavioral Systems) running on a Windows stimulation-PC. \nAuditory stimuli were presented via a Mark II+ (MR-Confon, Magdeburg, Germany) audio control unit to MR compatible electrodynamic headphones with integrated ear muffs that provide passive damping of ambient scanner noise by ~24 dB. Earplugs (Bilsom 303) further reduce the noise by ~29 dB (SNR).\nButton presses of the participants were recorded with the ResponseBox 2.0 by Covilex (Magdeburg, Germany) that includes a response pad with two buttons. The device delivers continuous 8-bit data at a sampling rate of 500 Hz. The Teensy converts left and right button presses that exceed a defined threshold into USB keyboard events handled by the stimulation-PC.\nRespiration and heart rate was recorded with Invivo MRI Sensors at a sampling rate of 100 Hz and stored on the MRI acquisition PC at 496 Hz sampling rate.\n64-channel EEG (including ECG) was recorded at 5 kHz using two 32-channel amplifiers BrainAmp MRplus (Brain Products GmbH, Gilching, Germany). The amplifier's discriminative resolution was set to 0.5 µV/bit (range of +/-16.38 mV) and the signals were hardware-filtered in the frequency band between 0.01 Hz and 250 Hz. A bipolar 16-channel amplifier BrainAmp ExG MR was used to record 2 EOG, 4 EMG (Corrugator, Zygomaticus) channels as well as signals from 4 carbon wire loops (CWL) for correcting pulse and motion related artifacts. Another BrainAmp ExG MR amplifier with an ExG AUX box was used to record the skin conductance (GSR) at the index finger of the participant's non-dominant hand. All signals are synchronized with the MR trigger via a Sync box and two USB2 adapter. All data were recorded and stored with the BrainVision Recorder software. Preprocessing (MR-artifact correction, bandpass filtering between 0.3 and 125 Hz, downsampling to 500 Hz with subsequent CWL correction) and export of the EEG-data was performed in BrainVision Analyzer 2.3. Raw data for optimized artifact correction are available upon request. \n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on005795",
+    "exists": true,
+    "description": "MULTI-CLARID (Multimodal Category Learning and Resting-state Imaging Data)",
+    "created_at": "2026-06-27T19:01:01+00:00",
+    "updated_at": "2026-07-23T01:26:32+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

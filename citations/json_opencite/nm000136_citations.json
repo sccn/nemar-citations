@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000136",
-  "num_citations": 11,
-  "date_last_updated": "2026-07-03T10:25:33.456444+00:00",
+  "num_citations": 14,
+  "date_last_updated": "2026-08-01T15:21:03.416241+00:00",
   "metadata": {
-    "total_cumulative_citations": 10,
-    "fetch_date": "2026-07-03T10:25:33.456444+00:00",
+    "total_cumulative_citations": 14,
+    "fetch_date": "2026-08-01T15:21:03.416241+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -86,7 +86,7 @@
     ],
     "num_accession_mentions": 1,
     "num_dataset_citations": 1,
-    "num_datapaper_citations": 10
+    "num_datapaper_citations": 13
   },
   "citation_details": [
     {
@@ -95,7 +95,7 @@
       "venue": "Biosensors and Bioelectronics",
       "year": 2025,
       "url": "https://doi.org/10.1016/j.bios.2025.118102",
-      "cited_by": 5,
+      "cited_by": 9,
       "abstract": "Recent advances in flexible high-density microelectrode arrays (FHD-MEA) have revolutionized brain-computer interfaces (BCIs) by providing high spatial resolution, mechanical compliance, and long-term biocompatibility. This technology enables stable neural recording and precise stimulation, addressing the shortcomings of conventional rigid BCI arrays. In this review, we outline the challenges of signal acquisition and stimulation of conventional low-density, rigid BCI systems. These include poor spatial resolution, micro-motor-induced instability, electrochemical degradation, wiring bottlenecks, off-target activation, and charge injection hazards. We then describe how these barriers are addressed through advanced materials, device designs, and system-level integration. We summarize representative applications of clinical therapy for sensory enhancement, human-machine interfaces, and neurological diseases, highlighting translational potential. Collectively, this review article presents ",
       "doi": "10.1016/j.bios.2025.118102",
       "pmid": "41100980",
@@ -228,6 +228,52 @@
       }
     },
     {
+      "title": "VEOS: vision-based vertical electrooculography inference from monocular periocular video for ocular artefact suppression in EEG",
+      "author": "Peter Redmond, Andrew Fleury, Tomas Ward",
+      "venue": "Biomedical Physics & Engineering Express",
+      "year": 2026,
+      "url": "https://doi.org/10.1088/2057-1976/ae83bb",
+      "cited_by": 0,
+      "abstract": "Abstract Objective. Ocular artefacts from blinks and eye movements remain a persistent obstacle to reliable electroencephalography (EEG), particularly when dedicated electrooculography (EOG) electrodes are unavailable or undesirable. We investigate whether monocular periocular video can provide a vertical EOG (VEOG)-like surrogate for ocular artefact suppression in EEG. Approach. We present VEOS, a video-to-VEOG inference pipeline based on monocular periocular tracking, canthus-defined geometric normalisation, engineered eyelid and iris features, and temporal modelling with a temporal convolutional network. The inferred VEOG is used as an auxiliary reference in blink-window lagged ridge-regression subtraction of ocular artefacts from EEG. Evaluation used leave-one-subject-out validation on two multimodal datasets: an in-house development dataset (VEOS-Dev; 5 participants with synchronised EEG, EOG and 120 Hz video) and the public Eye–brain–computer interface (BCI) dataset (31 subjects,",
+      "doi": "10.1088/2057-1976/ae83bb",
+      "pmid": "42372761",
+      "openalex_id": "W7166532478",
+      "source_doi": "10.1038/s41597-025-04861-9",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.696936628818512,
+        "similarity_score": 0.6034083366394043,
+        "citation_text_length": 1246,
+        "dataset_text_length": 2455,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Spatial Insight: How Data-Driven Regions of Interest Selection Enhances Single-Trial P300 Classification in EEG-Based BCIs",
+      "author": "Eva Guttmann-Flury, J Z Zhao, Mohamad Sawan",
+      "venue": "2025 12th International IEEE/EMBS Conference on Neural Engineering (NER)",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/ner61569.2025.11589040",
+      "cited_by": 0,
+      "abstract": "EEG-based Brain-Computer Interfaces (BCIs) frequently face spatial specificity limitations in detecting singletrial P300 potentials, a neurophysiological hallmark leveraged for both BCI control and neurodegenerative disease diagnostics. We present a novel framework combining eLORETA source localization with cross-subject functional connectivity to identify stable regions of interest (ROIs) across sessions. Analyzing 62-channel EEG data from 31 subjects (63 sessions, 2,520 trials), we demonstrate that phase-lagged connectivity metrics can reliably isolate task-relevant hubs in deeper cortical-subcortical structures like the insula and parietal regions - critical for Alzheimer's disease biomarkers. By integrating spatially stable ROIs with dynamic temporal agreement, our hybrid classification systematically outperforms whole-brain approaches in different frequency bands (up to 5.4% depending on the connectivity method and the spectral range) while maintaining millisecond-level temporal p",
+      "doi": "10.1109/ner61569.2025.11589040",
+      "pmid": null,
+      "openalex_id": "W7167801705",
+      "source_doi": "10.1038/s41597-025-04861-9",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7730526754260064,
+        "similarity_score": 0.669309675693512,
+        "citation_text_length": 1276,
+        "dataset_text_length": 2455,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Does Re-referencing Matter? Large Laplacian Filter Optimizes Single-Trial P300 BCI Performance",
       "author": "Eva Guttmann-Flury, Jian Zhao, Mohamad Sawan",
       "venue": "2025 IEEE Biomedical Circuits and Systems Conference (BioCAS)",
@@ -251,6 +297,52 @@
       }
     },
     {
+      "title": "Bayesian Complete-Pooling in Cross-Subject Classification for Motor Imagery Electroencephalogram",
+      "author": "Ethan Davis",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "Brain-computer interfaces (BCIs) have long sought calibration-free operation, but classifiers are typically benchmarked by discrimination alone, blind to whether predicted probabilities are well calibrated - a meaningful gap given nonstationary electroencephalogram (EEG) signals and the risk of overconfident point-estimate classifiers under distribution shift. We conducted a large-scale study contrasting Bayesian complete-pooling models against frequentist baselines for cross-subject, left-hand versus right-hand motor imagery EEG classification across 20 datasets. Six frequentist pipelines were each paired with an analogous Bayesian pipeline sharing identical feature engineering, fit via Markov chain Monte Carlo posterior sampling. Our primary metric was the Brier score, decomposed into reliability and resolution, alongside AUROC for discrimination and Shannon entropy for sharpness. Each metric was analyzed via random-effects meta-analysis (REML, Knapp-Hartung adjustment), verified by ",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-025-04861-9",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6313829442858697,
+        "similarity_score": 0.5466518998146057,
+        "citation_text_length": 1149,
+        "dataset_text_length": 2455,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A Multimodal Framework for Blink Detection: Audio-Anchored Synchronization and Comparative Analysis of EOG and Video Signals",
+      "author": "Semanur Pak, Esma Cetinkaya, Mahmut Nedim Ekersular, Ahmet Alkan",
+      "venue": "2026 4th Cognitive Models and Artificial Intelligence Conference (AICCONF)",
+      "year": 2026,
+      "url": "https://doi.org/10.1109/AICCONF69182.2026.11600654",
+      "cited_by": 0,
+      "abstract": "Accurate blink detection is important for cognitive, neurological, and brain–computer interface studies, yet the comparative reliability of electrophysiological and video-based approaches remains an open question. In this study, we developed a synchronized multimodal framework integrating bipolar electrooculography (EOG) and two-camera video recordings (front and side) for blink analysis. A shared acoustic beep signal was used as a temporal anchor to align EOG recordings stored in MAT format with video streams, enabling precise cross-modal delay estimation and event comparison. Beep detection was independently performed on audio-leakage components observed in the EOG channel and on the extracted video-audio waveform. Synchronization quality control demonstrated a stable temporal offset between modalities. Blink-related activity was quantified using an EOG-derived blinkness representation and region-of-interest (ROI) intensity signals from video frames. Detection coverage was comparable",
+      "doi": "10.1109/AICCONF69182.2026.11600654",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-025-04861-9",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6950655350089074,
+        "similarity_score": 0.601788341999054,
+        "citation_text_length": 1301,
+        "dataset_text_length": 2455,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "An eye-tracking study on the experience of young viewers with cultural subtitle translation and transmission based on optical communication",
       "author": "Wenyao Li",
       "venue": "n/a",
@@ -268,29 +360,6 @@
         "confidence_score": 0.37922453507781034,
         "similarity_score": 0.32833293080329895,
         "citation_text_length": 1002,
-        "dataset_text_length": 2455,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Spatial Insight: How Data-Driven Regions of Interest Selection Enhances Single-Trial P300 Classification in EEG-Based BCIs",
-      "author": "E. Guttmann-Flury, Jian Zhao, Mohamad Sawan",
-      "venue": "n/a",
-      "year": 2025,
-      "url": "n/a",
-      "cited_by": 0,
-      "abstract": "EEG-based Brain-Computer Interfaces (BCIs) frequently face spatial specificity limitations in detecting single-trial P300 potentials, a neurophysiological hallmark leveraged for both BCI control and neurodegenerative disease diagnostics. We present a novel framework combining eLORETA source localization with cross-subject functional connectivity to identify stable regions of interest (ROIs) across sessions. Analyzing 62-channel EEG data from 31 subjects (63 sessions, 2,520 trials), we demonstrate that phase-lagged connectivity metrics can reliably isolate task-relevant hubs in deeper cortical-subcortical structures like the insula and parietal regions - critical for Alzheimer's disease biomarkers. By integrating spatially stable ROIs with dynamic temporal agreement, our hybrid classification systematically outperforms whole-brain approaches in different frequency bands (up to 5.4% depending on the connectivity method and the spectral range) while maintaining millisecond-level temporal ",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-025-04861-9",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7767620247602464,
-        "similarity_score": 0.6725212335586548,
-        "citation_text_length": 1207,
         "dataset_text_length": 2455,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -325,7 +394,7 @@
       "venue": "Journal of Clinical Investigation",
       "year": 2007,
       "url": "https://doi.org/10.1172/jci31772",
-      "cited_by": 131,
+      "cited_by": 132,
       "abstract": "The molecular pathogenesis of the myeloid leukemias that frequently occur in patients with Fanconi anemia (FA) is not well defined. Hematopoietic stem cells bearing inactivating mutations of FA complementation group C (FANCC) are genetically unstable and hypersensitive to apoptotic cytokine cues including IFN-gamma and TNF-alpha, but neoplastic stem cell clones that arise frequently in vivo are resistant to these cytokines. Reasoning that the combination of genetic instability and cytokine hypersensitivity might create an environment supporting the emergence of leukemic stem cells, we tested the leukemia-promoting effects of TNF-alpha in murine stem cells. TNF-alpha exposure initially profoundly inhibited the growth of Fancc-/- stem cells. However, longer-term exposure of these cells promoted the outgrowth of cytogenetically abnormal clones that, upon transplantation into congenic WT mice, led to acute myelogenous leukemia. TNF-alpha induced ROS-dependent genetic instability in Fancc-/- but not in WT cells. The leukemic clones were TNF-alpha resistant but retained their characteristic hypersensitivity to mitomycin C and exhibited high levels of chromosomal instability. Expression of FANCC cDNA in Fancc-/- stem cells protected them from TNF-alpha-induced clonal evolution. We conclude that TNF-alpha exposure creates an environment in which somatically mutated preleukemic stem cell clones are selected and from which unaltered TNF-alpha-hypersensitive Fancc-/- stem cells are purged.",
       "doi": "10.1172/jci31772",
       "pmid": "17960249",
@@ -347,17 +416,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-07-15T00:05:11.239917+00:00",
+    "scoring_date": "2026-08-01T16:29:17.222549+00:00",
     "dataset_text_length": 2455,
-    "num_citations_scored": 11,
+    "num_citations_scored": 14,
     "summary_stats": {
-      "mean_confidence": 0.5590774725377561,
-      "median_confidence": 0.6522434476017953,
-      "std_confidence": 0.18461928043486972,
+      "mean_confidence": 0.5835377111924547,
+      "median_confidence": 0.6650797404348852,
+      "std_confidence": 0.17064491630809012,
       "min_confidence": 0.13846552819013597,
-      "max_confidence": 0.7767620247602464,
+      "max_confidence": 0.7730526754260064,
       "high_confidence_count": 2,
-      "medium_confidence_count": 6,
+      "medium_confidence_count": 9,
       "low_confidence_count": 3
     }
   }

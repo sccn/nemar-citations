@@ -1,0 +1,35 @@
+{
+  "dataset_id": "on005411",
+  "date_retrieved": "2026-08-01T10:17:29.296540+00:00",
+  "dataset_description": {
+    "Name": "Free Recall of Word Lists with Repeated Items",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "raw",
+    "Authors": [
+      "Haydn G. Herrema",
+      "Michael J. Kahana"
+    ],
+    "DatasetDOI": "10.82901/nemar.on005411",
+    "License": "CC0",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds005411.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on005411-blue)](https://doi.org/10.82901/nemar.on005411)\n\n### Free Recall of Word Lists with Repeated Items\n\n#### Description\nThis dataset contains behavioral events and intracranial electrophysiological recordings from a repated item free recall task.  The experiment consists of participants studying a list of words, presented visually one at a time, and then freely recalling the words from the just-presented list in any order. On each list, there is a 7-second delay period between the encoding and recall phases.  The data were collected at clinical sites across the country as part of a collaboration with the Computational Memory Lab at the University of Pennsylvania.\n\nThe main manipulation in this paradigm is the repetition of items in the studied list. In total, each list contains 27 encoding events, but only 12 unique words: 3 are presented one time, 3 are presented two times, and 6 are presented three times.  \n\n\n#### To Note\n* The duration of the encoding events (i.e., length of word presentation) varies among sessions.  For some sessions, the words remained on screen from 750 ms, while in other sessions presentation lasted for 1600 ms. The `duration` column of the events tsv files contains this information.\n* The iEEG recordings are labeled either \"monopolar\" or \"bipolar.\"  The monopolar recordings are referenced (typically a mastoid reference), but should always be re-referenced before analysis.  The bipolar recordings are referenced according to a paired scheme indicated by the accompanying bipolar channels tables.\n* Each subject has a unique montage of electrode locations.  MNI and Talairach coordinates are provided when available.\n* Recordings done with the Blackrock system are in units of 250 nV, while recordings done with the Medtronic system are estimated through testing to have units of 0.1 uV.  We have completed the scaling to provide values in V.\n\n#### Contact\nFor questions or inquiries, please contact sas-kahana-sysadmin@sas.upenn.edu.",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on005411",
+    "exists": true,
+    "description": "Free Recall of Word Lists with Repeated Items",
+    "created_at": "2026-06-27T02:01:47+00:00",
+    "updated_at": "2026-07-23T01:24:28+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "dataset_id": "nm000269",
+  "date_retrieved": "2026-08-01T10:01:17.688498+00:00",
+  "dataset_description": {
+    "Name": "BigP3BCI Study A — P300 BCI EEG dataset (13 healthy subjects, Mainsah et al. 2025)",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Boyla Mainsah",
+      "Chance Fleeting",
+      "Thomas Balmat",
+      "Eric Sellers",
+      "Leslie Collins"
+    ],
+    "ReferencesAndLinks": [
+      "https://physionet.org/content/bigp3bci/1.0.0/"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000269",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.13026/0byy-ry86",
+        "URL": "https://physionet.org/content/bigp3bci/1.0.0/"
+      },
+      {
+        "DOI": "doi:10.13026/0byy-ry86"
+      }
+    ],
+    "Keywords": [
+      "visual",
+      "perception",
+      "p300",
+      "speller"
+    ],
+    "PublicationYear": 2025,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000269-blue)](https://doi.org/10.82901/nemar.nm000269)\n\n# BigP3BCI Study A — P300 BCI EEG dataset (13 healthy subjects, Mainsah et al. 2025)\n\n## Overview\n\nMainsah2025-A is a derivative P300 brain-computer interface dataset containing EEG recordings from 13 healthy subjects (1 session each) performing a visual speller task using a 6x6 checkerboard stimulus paradigm. The dataset comprises 32-channel EEG data sampled at 256 Hz with binary classification of target and non-target events, annotated using HED 8.4.0 schema. This dataset represents Study A of the BigP3BCI collection (10.13026/0byy-ry86), the largest public P300 BCI dataset, and is processed using the MOABB (Mother of All BCI Benchmarks) framework.\n\n## Dataset Summary\n\n| Property | Value |\n|---|---|\n| Subjects | 13 |\n| Channels | 32 |\n| Classes | 2 |\n| Trial length | 1 s |\n| Sampling frequency | 256 Hz |\n| Sessions | 1 |\n\n| Paradigm | P300 |\n\n## Data Collection Methods\n\nEEG data were acquired using a g.USBamp amplifier (g.tec) with 32 channels arranged in a standard 10-20 montage, sampled at 256 Hz with a 60 Hz line frequency notch. Subjects performed a visual P300 speller task using a 6x6 checkerboard stimulus paradigm with row-column and random presentation modes. Trial intervals were defined from 0 to 1.0 seconds post-stimulus, with binary classification of target and non-target events.\n\n## How to Access via MOABB\n\nInstall MOABB and load this dataset directly:\n\n```python\nfrom moabb.datasets import Mainsah2025_A\nfrom moabb.paradigms import P300\nparadigm = P300()\n\ndataset = Mainsah2025_A()\nX, y, metadata = paradigm.get_data(dataset)\n```\n\nFor more details see the [MOABB documentation](https://moabb.neurotechx.com/) and the\n[MOABB dataset page](https://moabb.neurotechx.com/docs/generated/moabb.datasets.Mainsah2025_A.html).\n\n## Citation\n\nIf you use this dataset please cite the primary publication:\n\n> DOI: [10.13026/0byy-ry86](https://doi.org/10.13026/0byy-ry86)\n\n## NEMAR / MOABB Benchmark Collection\n\nThis BIDS-formatted dataset was converted from the original data using the\n[MOABB](https://moabb.neurotechx.com/) pipeline and re-hosted on\n[NEMAR](https://nemar.org/) as part of the MOABB benchmark collection.\nThe original data and license terms apply — see `dataset_description.json` for details.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000269",
+    "exists": true,
+    "description": "BigP3BCI Study A — P300 BCI EEG dataset (13 healthy subjects, Mainsah et al. 2025)",
+    "created_at": "2026-06-20T18:41:09+00:00",
+    "updated_at": "2026-07-23T01:10:17+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

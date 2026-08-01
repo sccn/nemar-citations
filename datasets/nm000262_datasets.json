@@ -1,0 +1,59 @@
+{
+  "dataset_id": "nm000262",
+  "date_retrieved": "2026-08-01T10:01:09.866786+00:00",
+  "dataset_description": {
+    "Name": "P300 BCI EEG dataset (Chailloux Peguero et al. 2020)",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC0",
+    "Authors": [
+      "J. David Chailloux Peguero",
+      "Omar Mendoza-Montoya",
+      "Javier M. Antelis"
+    ],
+    "ReferencesAndLinks": [
+      "https://openneuro.org/datasets/ds003190"
+    ],
+    "Keywords": [
+      "Healthy",
+      "ERP",
+      "P300",
+      "p300"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000262",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0dev0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.3390/s20247198",
+        "URL": "https://openneuro.org/datasets/ds003190"
+      },
+      {
+        "DOI": "doi:10.3390/s20247198"
+      }
+    ],
+    "PublicationYear": 2020,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000262-blue)](https://doi.org/10.82901/nemar.nm000262)\n\n# P300 BCI EEG dataset (Chailloux Peguero et al. 2020)\n\n## Overview\n\nA P300 brain-computer interface dataset comprising EEG recordings from 19 healthy participants across 3 sessions each. The study investigates how visual stimulation conditions (standard flash vs. cartoon face stimuli) affect P300-BCI performance using an 8-channel montage sampled at 256 Hz. Data were collected using a P300 paradigm with 5 grid sizes (4-9 symbols) and include target and non-target event classifications.\n\n## Dataset Summary\n\n| Property | Value |\n|---|---|\n| Subjects | 19 |\n| Channels | 8 |\n| Classes | 2 |\n| Trial length | 1 s |\n| Sampling frequency | 256 Hz |\n| Sessions | 3 |\n\n| Paradigm | P300 |\n\n## Data Collection Methods\n\nEEG data were acquired using a g.USBamp amplifier (g.tec) with 8 passive g.SCARABEO electrodes positioned at Fz, Cz, P3, Pz, P4, PO7, PO8, and Oz according to the standard 10-20 montage. Sampling rate was 256 Hz with right earlobe reference and AFz ground. Line frequency was 60 Hz. The P300 paradigm employed visual stimulation with two stimulus types (standard flash and cartoon face) across 5 grid sizes (4-9 symbols), with an inter-stimulus interval of 75 ms and stimulus onset asynchrony of 150 ms.\n\n## How to Access via MOABB\n\nInstall MOABB and load this dataset directly:\n\n```python\nfrom moabb.datasets import Chailloux2020\nfrom moabb.paradigms import P300\nparadigm = P300()\n\ndataset = Chailloux2020()\nX, y, metadata = paradigm.get_data(dataset)\n```\n\nFor more details see the [MOABB documentation](https://moabb.neurotechx.com/) and the\n[MOABB dataset page](https://moabb.neurotechx.com/docs/generated/moabb.datasets.Chailloux2020.html).\n\n## Citation\n\nIf you use this dataset please cite the primary publication:\n\n> DOI: [10.3390/s20247198](https://doi.org/10.3390/s20247198)\n\n## NEMAR / MOABB Benchmark Collection\n\nThis BIDS-formatted dataset was converted from the original data using the\n[MOABB](https://moabb.neurotechx.com/) pipeline and re-hosted on\n[NEMAR](https://nemar.org/) as part of the MOABB benchmark collection.\nThe original data and license terms apply — see `dataset_description.json` for details.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000262",
+    "exists": true,
+    "description": "P300 BCI EEG dataset (Chailloux Peguero et al. 2020)",
+    "created_at": "2026-06-19T23:19:39+00:00",
+    "updated_at": "2026-07-23T01:10:01+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

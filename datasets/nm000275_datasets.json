@@ -1,0 +1,68 @@
+{
+  "dataset_id": "nm000275",
+  "date_retrieved": "2026-08-01T10:01:29.104136+00:00",
+  "dataset_description": {
+    "Name": "Multi-channel EEG recordings during a sustained-attention driving task",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.2.0",
+    "DatasetType": "raw",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Zehong Cao",
+      "Chun-Hsiang Chuang",
+      "Jung-Kai King",
+      "Chin-Teng Lin"
+    ],
+    "Acknowledgements": "Data collected (2005-2012) at the Brain Research Center, National Chiao Tung University, Hsinchu, Taiwan. The authors thank their partner groups at the University of California San Diego (UCSD) and the DCS Corporation for independent validation.",
+    "HowToAcknowledge": "Please cite Cao, Z., Chuang, C.-H., King, J.-K. & Lin, C.-T. Multi-channel EEG recordings during a sustained-attention driving task. Sci. Data 6, 19 (2019). https://doi.org/10.1038/s41597-019-0027-4",
+    "Funding": [
+      "U.S. Army Research Laboratory (ARL) and Army Research Office (ARO), grant W911NF-10-2-0022",
+      "U.S. Army Research Laboratory (ARL), grant W911NF-10-D-0002/TO 0023"
+    ],
+    "EthicsApprovals": [
+      "Approved by the Institutional Review Board of the Veterans General Hospital, Taipei, Taiwan. The study followed the Guide for the Committee of Laboratory Care and Use of National Chiao Tung University, Taiwan. All participants gave written informed consent."
+    ],
+    "ReferencesAndLinks": [
+      "https://doi.org/10.1038/s41597-019-0027-4",
+      "https://doi.org/10.6084/m9.figshare.6427334.v5",
+      "https://doi.org/10.6084/m9.figshare.7666055.v3",
+      "https://doi.org/10.1016/j.neuroimage.2014.01.015",
+      "https://doi.org/10.1038/srep21353",
+      "https://doi.org/10.1109/TBCAS.2014.2316224",
+      "https://doi.org/10.1109/TNNLS.2013.2275003",
+      "https://doi.org/10.1016/j.knosys.2015.01.007",
+      "https://doi.org/10.1109/TNNLS.2015.2496330",
+      "https://doi.org/10.1109/TFUZZ.2016.2633379"
+    ],
+    "SourceDatasets": [
+      {
+        "URL": "https://doi.org/10.6084/m9.figshare.6427334.v5",
+        "Version": "5",
+        "Description": "Raw EEGLAB .set files (figshare 6427334 v5), CC BY 4.0"
+      }
+    ],
+    "GeneratedBy": [
+      {
+        "Name": "mne-bids",
+        "Version": "0.19.0",
+        "Description": "Converted the original EEGLAB .set recordings to BIDS-EEG (EEGLAB format retained) using the scripts in code/ (convert_to_bids.py, finalize_bids.py); added nominal 10-20 template electrode positions and enriched metadata from the source publication."
+      }
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000275",
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000275-blue)](https://doi.org/10.82901/nemar.nm000275)\n\n# Multi-channel EEG recordings during a sustained-attention driving task\n\nBIDS-EEG conversion of the **raw** dataset from:\n\n> Cao, Z., Chuang, C.-H., King, J.-K. & Lin, C.-T. (2019).\n> Multi-channel EEG recordings during a sustained-attention driving task.\n> *Scientific Data* 6, 19. https://doi.org/10.1038/s41597-019-0027-4\n\nOriginal data (CC BY 4.0): figshare https://doi.org/10.6084/m9.figshare.6427334.v5 (raw),\nhttps://doi.org/10.6084/m9.figshare.7666055.v3 (pre-processed). Open-access full text: PMC6472414.\n\n## Dataset at a glance\n\n| Property | Value |\n|---|---|\n| Modality | EEG (`eeg`) |\n| Task | `driving` (event-related lane-departure, sustained attention) |\n| Participants | 27 healthy adults (aged 22-28) |\n| Sessions (recordings) | 62 |\n| Total recording time | ~82 hours (per-session ~41-118 min) |\n| Channels | 32 EEG (30 scalp + A1/A2 mastoid refs) + 1 `vehicle_position` (misc) |\n| Sampling rate | 500 Hz, 16-bit |\n| Lane-departure (deviation) trials | 27192 total |\n| Event markers | 251/252 deviation L/R, 253 response onset, 254 response offset (+ undocumented 255 in 2 recordings) |\n| Data format | EEGLAB `.set` (BIDS-EEG) |\n| Electrode positions | nominal 10-20 template (not individually measured) |\n| License | CC BY 4.0 |\n| BIDS version | 1.9.0 |\n\n## Authors and affiliations\n\n1. Zehong Cao (ORCID 0000-0003-3656-0328) - Discipline of ICT, School of Technology, Environments and Design, University of Tasmania, Hobart, TAS, Australia\n2. Chun-Hsiang Chuang - Department of Computer Science and Engineering, National Taiwan Ocean University, Keelung, Taiwan\n3. Jung-Kai King - Brain Research Center, National Chiao Tung University, Hsinchu, Taiwan\n4. Chin-Teng Lin - Centre for Artificial Intelligence, Faculty of Engineering and IT, University of Technology Sydney, Sydney, NSW, Australia\n\n## Overview\n\n27 participants (students/staff of National Chiao Tung University, aged\n22-28, normal or corrected-to-normal vision, all holding a valid driver's\nlicence and with no history of psychological/neurological disorders or drug\nuse) performed a sustained-attention driving task (designed for ~90 minutes),\nat one or more sessions on the same or different days, yielding **62 EEG\nsessions**. Actual recording durations vary\n(~41-118 min; median ~70 min).\nRecordings were collected between 2005 and 2012. Participants received ~USD $20\nper session and completed a pre-test session to rule out simulator sickness.\n\n### Task: event-related lane-departure paradigm\n\nA virtual-reality (VR) dynamic driving simulator (built with WorldToolKit R9 and\nVisual C++) was mounted on a six-degree-of-freedom Stewart motion platform, with\na real Ford Probe car frame and six projected scenes giving a near-360-degree\nfield of view. Participants drove a visually monotonous night-time straight\nfour-lane divided highway with no other traffic at a constant 100 km/h, keeping\nthe car centred in the third lane. Road position was quantised to 0-255 (lane\nwidth 60 units). Lane-departure events were randomly induced with equal\nprobability to the left or right (**deviation onset**); the participant\ncounter-steered (**response onset**) to bring the car back to the lane centre\n(**response offset**), using the steering wheel only (no accelerator/brake). The\nnext trial began 5-10 s after the previous one. The interval from deviation\nonset to response onset is the **reaction time (RT)**, an index of fatigue and\ndrowsiness. The task was designed to run ~90 minutes without breaks; the actual\nrecorded duration varies by session (see the glance table and each\n`sub-XX_sessions.tsv`).\n\n## Acquisition\n\n- Amplifier: Compumedics Neuroscan **Scan SynAmps2 Express** system (Compumedics\n  Ltd., VIC, Australia). NOTE: the source paper inconsistently also refers to a\n  \"Scan NuAmps Express\" system in one section.\n- Cap: 32-channel **Quik-Cap** (Compumedics NeuroScan), Ag/AgCl electrodes.\n- Acquisition software: Neuroscan Scan 4.5 (raw saved originally as .cnt).\n- Sampling rate: 500 Hz; 16-bit quantisation.\n- Electrodes: 30 scalp EEG electrodes (modified international 10-20 system) plus\n  2 mastoid reference electrodes (A1, A2). Electrode-skin impedance kept < 5 kOhm\n  (NaCl conductive Quik-Gel; Nuprep + 70% isopropyl-alcohol skin prep).\n- Power-line frequency: 60 Hz (Taiwan).\n- Channel order (32 EEG): FP1, FP2, F7, F3, FZ, F4, F8, FT7, FC3, FCZ, FC4, FT8, T3, C3, CZ, C4, T4, TP7, CP3, CPZ, CP4, TP8, A1, T5, P3, PZ, P4, T6, A2, O1, OZ, O2.\n  Classic names map to modern ones as T3/T4/T5/T6 = T7/T8/P7/P8.\n- A 33rd channel, `vehicle_position` (BIDS type `misc`), stores the simulated\n  car's lateral position (quantised 0-255) sampled with the EEG at 500 Hz. In\n  the source files it is literally named \"vehicle position\"; the space was\n  replaced by an underscore for BIDS.\n\n### Electrode positions\n\nThe source recordings did **not** include measured electrode coordinates. For\nconvenience, each recording carries **nominal 10-20 template positions** (MNE\n`standard_1020`) under the original channel names, written to\n`*_electrodes.tsv` / `*_coordsystem.json`. These are idealised, identical across\nall recordings, and are **not** individually measured - treat them as\napproximate only.\n\n## Events\n\nEach `*_events.tsv` has `trial_type` (descriptive label) and `value` (original\ninteger trigger):\n\n| value | trial_type             | meaning                                          |\n|-------|------------------------|--------------------------------------------------|\n| 251   | deviation_onset_left   | car drift induced toward the left                |\n| 252   | deviation_onset_right  | car drift induced toward the right               |\n| 253   | response_onset         | subject starts steering back toward lane centre  |\n| 254   | response_offset        | subject finishes steering; car back at centre    |\n| 255   | undocumented_255       | extra trigger in sub-54 & sub-55 only (21x); not defined in the source publication, meaning unknown |\n\n## Subjects and sessions\n\nSubject labels preserve the original numbering (`sub-01` = original `s01`), so\nnumbering is non-consecutive. Sessions `ses-01`, `ses-02`, ... are ordered\nchronologically per subject. `sub-XX/sub-XX_sessions.tsv` maps each session to\nthe original recording file name, acquisition date, and the original one-letter\nfilename suffix (`m`/`n`) - an opaque label from the source naming whose meaning\nis not defined in the original publication.\n\n## Relationship to the pre-processed dataset\n\nA separately published pre-processed version (https://doi.org/10.6084/m9.figshare.7666055.v3) applied a 1-Hz\nhigh-pass and 50-Hz low-pass FIR filter and removed ocular/muscular artefacts\n(manual eye-blink rejection + the EEGLAB AAR plug-in). **This** BIDS dataset\ncontains the **raw**, unfiltered recordings.\n\n## Related publications using this dataset\n\n- https://doi.org/10.1016/j.neuroimage.2014.01.015\n- https://doi.org/10.1038/srep21353\n- https://doi.org/10.1109/TBCAS.2014.2316224\n- https://doi.org/10.1109/TNNLS.2013.2275003\n- https://doi.org/10.1016/j.knosys.2015.01.007\n- https://doi.org/10.1109/TNNLS.2015.2496330\n- https://doi.org/10.1109/TFUZZ.2016.2633379\n\n## Loading the data (Python / MNE)\n\n```python\nimport mne\nfrom mne_bids import BIDSPath, read_raw_bids\nbp = BIDSPath(subject=\"01\", session=\"01\", task=\"driving\",\n              datatype=\"eeg\", root=\"/path/to/this/dataset\")\nraw = read_raw_bids(bp)          # mne Raw with events as annotations\nprint(raw.info)                  # 32 EEG + vehicle_position (misc), 500 Hz\nevents, event_id = mne.events_from_annotations(raw)\n```\n\nThe `vehicle_position` channel (type `misc`) holds the simulated car's lateral\nposition (quantised 0-255) and can be epoched alongside the EEG to recover the\nsteering trajectory and verify reaction times.\n\n## Validation\n\nThis dataset passes the official `bids-validator` (Deno schema validator,\nv1.15.0+) with **0 errors**. One non-blocking warning remains\n(`MISSING_SESSION`): participants intentionally have different numbers of\nsessions (1-5), which is an inherent property of the original study design, not\nan error.\n\n## Differences from the original figshare release\n\nThis is a faithful BIDS repackaging of the raw recordings; signal values and\nevent latencies are unchanged. The following organisational changes were made:\n\n- Files renamed to BIDS entities; original names are preserved in each\n  `sub-XX/sub-XX_sessions.tsv` (`original_filename`).\n- Subject labels keep the original numbers (`sub-01` = `s01`), so they are\n  non-consecutive (no s03, s07, s08, s10, ...).\n- The behavioural channel \"vehicle position\" was renamed `vehicle_position`\n  (space -> underscore) and typed `misc`.\n- Numeric event codes were given descriptive `trial_type` labels while the\n  original integer code is retained in the `value` column.\n- Nominal 10-20 **template** electrode coordinates were added (the source\n  provided none); they are documented as template-only in `*_coordsystem.json`.\n- Metadata was enriched from the source paper and its ISA-Tab record (equipment,\n  task, ethics, funding, references).\n\n## License\n\nReleased under **CC BY 4.0** (see the `LICENSE` file), matching the original\ndata record and publication. When you use these data, please cite the original\nData Descriptor (see \"How to acknowledge\" / `dataset_description.json`).\n\n## Provenance / source data\n\n`sourcedata/` holds the exact materials used for this conversion:\n- `meta/esm_extracted/` - ISA-Tab study metadata (Springer ESM, CC0).\n- `meta/pmc_*` - open-access full text (PMC6472414) + BioC.\n- `meta/crossref_article.json`, `meta/datacite_*` - citation metadata.\n- `meta/figshare_*` - figshare API records (file manifests + checksums).\n- `raw/manifest.tsv`, `raw/md5sums.txt`, `raw/download_progress.log` - download\n  manifest, checksums, and verified-download log (all files md5-checked).\n- `raw/*.set` - original EEGLAB files; `raw/code availability.zip` and the\n  tutorial PDF as provided on figshare.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000275",
+    "exists": true,
+    "description": "Multi-channel EEG recordings during a sustained-attention driving task",
+    "created_at": "2026-06-25T18:21:31+00:00",
+    "updated_at": "2026-07-23T01:10:43+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

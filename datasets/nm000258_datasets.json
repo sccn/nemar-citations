@@ -1,0 +1,62 @@
+{
+  "dataset_id": "nm000258",
+  "date_retrieved": "2026-08-01T10:01:02.226283+00:00",
+  "dataset_description": {
+    "Name": "Imagined Speech EEG database — Spanish vowels and commands (Pressel et al. 2016)",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "other-open",
+    "Authors": [
+      "German A. Pressel Coretto",
+      "Ivan E. Gareis",
+      "Hugo Leonardo Rufiner"
+    ],
+    "ReferencesAndLinks": [
+      "https://zenodo.org/records/19502780",
+      "10.1117/12.2255697"
+    ],
+    "Keywords": [
+      "imagined speech",
+      "EEG",
+      "Spanish",
+      "vowels",
+      "directional commands",
+      "open access database"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000258",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0dev0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.1117/12.2255697",
+        "URL": "https://zenodo.org/records/19502780"
+      },
+      {
+        "DOI": "doi:10.1117/12.2255697"
+      }
+    ],
+    "PublicationYear": 2017,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000258-blue)](https://doi.org/10.82901/nemar.nm000258)\n\n# Imagined Speech EEG database — Spanish vowels and commands (Pressel et al. 2016)\n\n## Overview\n\nAn open-access EEG dataset comprising recordings from 15 healthy Spanish-speaking subjects during imagined speech tasks. The dataset includes 11 imagery classes: 5 Spanish vowels and 6 directional commands, acquired using 6-channel EEG at 1024 Hz with preprocessed data (bandpass filtered 2-45 Hz). Trials consist of 4-second periods with a 3-second imagery window occurring within each trial. This resource supports brain-computer interface research and motor imagery classification studies.\n\n## Dataset Summary\n\n| Property | Value |\n|---|---|\n| Subjects | 15 |\n| Channels | 6 |\n| Classes | 11 |\n| Trial length | 4 s |\n| Sampling frequency | 1024 Hz |\n| Sessions | 1 |\n| Total trials | 8670 |\n| Paradigm | MotorImagery |\n\n## Data Collection Methods\n\nEEG signals were recorded from 15 healthy subjects (age 24-28 years) using a Grass 8-18-36 amplifier with DataTranslation DT9816 ADC. Six channels (F3, F4, C3, C4, P3, P4) were positioned according to the standard 10-20 montage. Sampling rate was 1024 Hz with online bandpass filtering (2-45 Hz). Subjects performed cue-based imagery tasks of 5 Spanish vowels and 6 directional commands in response to visual stimuli, with trial duration of 4 seconds and imagery period of 3 seconds. Data were preprocessed with bandpass filtering and artifact rejection applied.\n\n## How to Access via MOABB\n\nInstall MOABB and load this dataset directly:\n\n```python\nfrom moabb.datasets import Pressel2016\nfrom moabb.paradigms import MotorImagery\nparadigm = MotorImagery()\n\ndataset = Pressel2016()\nX, y, metadata = paradigm.get_data(dataset)\n```\n\nFor more details see the [MOABB documentation](https://moabb.neurotechx.com/) and the\n[MOABB dataset page](https://moabb.neurotechx.com/docs/generated/moabb.datasets.Pressel2016.html).\n\n## Citation\n\nIf you use this dataset please cite the primary publication:\n\n> DOI: [10.1117/12.2255697](https://doi.org/10.1117/12.2255697)\n\n## NEMAR / MOABB Benchmark Collection\n\nThis BIDS-formatted dataset was converted from the original data using the\n[MOABB](https://moabb.neurotechx.com/) pipeline and re-hosted on\n[NEMAR](https://nemar.org/) as part of the MOABB benchmark collection.\nThe original data and license terms apply — see `dataset_description.json` for details.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000258",
+    "exists": true,
+    "description": "Imagined Speech EEG database — Spanish vowels and commands (Pressel et al. 2016)",
+    "created_at": "2026-06-19T23:12:16+00:00",
+    "updated_at": "2026-07-23T01:09:54+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

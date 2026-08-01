@@ -1,10 +1,10 @@
 {
   "dataset_id": "on005545",
   "num_citations": 2,
-  "date_last_updated": "2026-07-04T03:23:44.608243+00:00",
+  "date_last_updated": "2026-08-01T16:08:03.287338+00:00",
   "metadata": {
     "total_cumulative_citations": 5,
-    "fetch_date": "2026-07-04T03:23:44.608243+00:00",
+    "fetch_date": "2026-08-01T16:08:03.287338+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -57,14 +57,7 @@
       {
         "funder_name": "N/A"
       }
-    ],
-    "searched_accessions": [
-      "on005545",
-      "ds005545"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 2
+    ]
   },
   "citation_details": [
     {
@@ -80,7 +73,15 @@
       "openalex_id": "W4409644236",
       "source_doi": "10.1101/2025.03.07.641428",
       "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.678423340022564,
+        "similarity_score": 0.587379515171051,
+        "citation_text_length": 1480,
+        "dataset_text_length": 1264,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Millisecond-Scale White Matter Dynamics Underlying Visuomotor Integration",
@@ -95,7 +96,31 @@
       "openalex_id": "W4409142298",
       "source_doi": "10.1101/2025.03.07.641428",
       "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.585596668124199,
+        "similarity_score": 0.5070101022720337,
+        "citation_text_length": 1303,
+        "dataset_text_length": 1264,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
-  ]
+  ],
+  "confidence_scoring": {
+    "model_used": "Qwen/Qwen3-Embedding-0.6B",
+    "scoring_date": "2026-08-01T17:09:54.393834+00:00",
+    "dataset_text_length": 1264,
+    "num_citations_scored": 2,
+    "summary_stats": {
+      "mean_confidence": 0.6320100040733815,
+      "median_confidence": 0.6320100040733815,
+      "std_confidence": 0.04641333594918251,
+      "min_confidence": 0.585596668124199,
+      "max_confidence": 0.678423340022564,
+      "high_confidence_count": 0,
+      "medium_confidence_count": 2,
+      "low_confidence_count": 0
+    }
+  }
 }

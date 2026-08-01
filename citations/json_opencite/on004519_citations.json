@@ -1,47 +1,99 @@
 {
   "dataset_id": "on004519",
   "num_citations": 1,
-  "date_last_updated": "2026-07-03T22:24:18.020061+00:00",
+  "date_last_updated": "2026-08-01T15:55:34.487058+00:00",
   "metadata": {
-    "total_cumulative_citations": 0,
-    "fetch_date": "2026-07-03T22:24:18.020061+00:00",
+    "total_cumulative_citations": 9,
+    "fetch_date": "2026-08-01T15:55:34.487058+00:00",
     "processing_version": "1.0",
-    "fetch_status": "other",
-    "anchor_count": 0,
-    "anchor_errors": {},
+    "fetch_status": "partial",
+    "anchor_count": 2,
+    "anchor_errors": {
+      "10.82901/nemar.on004519": "not_found"
+    },
     "schema_version": "2.1",
     "discovery_backend": "opencite",
-    "anchor_judgment_model": null,
-    "anchors": [],
-    "searched_dois": [],
-    "keywords": [],
-    "methods_description": null,
-    "funding": [],
-    "searched_accessions": [
-      "on004519",
-      "ds004519"
+    "anchor_judgment_model": "gemma4:e4b",
+    "anchors": [
+      {
+        "identifier": "10.1101/2022.07.05.498906",
+        "identifier_type": "doi",
+        "source_relation": "IsDescribedBy",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Internal selective attention is delayed by competition between endogenous and exogenous factors",
+        "paper_year": 2022,
+        "paper_venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+        "reason": "The candidate paper's title and abstract directly describe the research findings and data source ('Internal selective attention is delayed by competition between endogenous and exogenous factors') associated with this dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.on004519",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
     ],
-    "num_accession_mentions": 1,
-    "num_dataset_citations": 1,
-    "num_datapaper_citations": 0
+    "searched_dois": [
+      "10.1101/2022.07.05.498906",
+      "10.82901/nemar.on004519"
+    ],
+    "keywords": [
+      "EEG",
+      "selective attention",
+      "endogenous attention",
+      "exogenous attention",
+      "attention competition",
+      "preprocessed data"
+    ],
+    "methods_description": "EEG data were collected and preprocessed, with results provided in BIDS-compliant .set format. Behavioral summary data (.mat files) are included for alignment with EEG recordings to enable integrated analysis of neural and behavioral measures.",
+    "funding": []
   },
   "citation_details": [
     {
-      "title": "Internal selective attention is delayed by competition between endogenous and exogenous factors",
-      "author": "Edward F. Ester, Asal Nouri",
-      "venue": "iScience",
-      "year": 2023,
-      "url": "https://doi.org/10.1016/j.isci.2023.107259",
-      "cited_by": 7,
-      "abstract": "External attention is mediated by competition between endogenous (goal-driven) and exogenous (stimulus-driven) factors, with the balance of competition determining which stimuli are selected. Occasionally, exogenous factors \"win\" this competition and drive the selection of task-irrelevant stimuli. Endogenous and exogenous selection mechanisms may also compete to control the selection of internal representations (e.g., those stored in working memory), but whether this competition is resolved in the same way as external attention is unknown. Here, we leveraged the high temporal resolution of human EEG to determine how competition between endogenous and exogenous factors influences the selection of internal representations. Unlike external attention, competition did not prompt the selection of task-irrelevant working memory content. Instead, it delayed the endogenous selection of task-relevant working memory content by several hundred milliseconds. Thus, competition between endogenous and exogenous factors influences internal selective attention, but in a different way than external selective attention.",
-      "doi": "10.1016/j.isci.2023.107259",
-      "pmid": "37519902",
-      "openalex_id": "W4382983320",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "ds004519"
+      "title": "Neural Signatures of Competition between Voluntary and Involuntary Influences over the Focus of Attention in Visual Working Memory",
+      "author": "Yun Ding, Bradley R. Postle, Freek van Ede",
+      "venue": "Journal of Cognitive Neuroscience",
+      "year": 2024,
+      "url": "https://doi.org/10.1162/jocn_a_02123",
+      "cited_by": 9,
+      "abstract": "Adaptive behavior relies on the selection and prioritization of relevant sensory inputs from the external environment as well as from among internal sensory representations held in working memory. Recent behavioral evidence suggests that the classic distinction between voluntary (goal-driven) and involuntary (stimulus-driven) influences over attentional allocation also applies to the selection of internal representations held in working memory. In the current EEG study, we set out to investigate the neural dynamics associated with the competition between voluntary and involuntary control over the focus of attention in visual working memory. We show that when voluntary and involuntary factors compete for the internal focus of attention, prioritization of the appropriate item is delayed-as reflected both in delayed gaze biases that track internal selection and in delayed neural beta (15-25 Hz) dynamics that track the planning for the upcoming memory-guided manual action. We further show ",
+      "doi": "10.1162/jocn_a_02123",
+      "pmid": "38319683",
+      "openalex_id": "W4391563176",
+      "source_doi": "10.1101/2022.07.05.498906",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7753200316429139,
+        "similarity_score": 0.6712727546691895,
+        "citation_text_length": 1244,
+        "dataset_text_length": 1293,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
-  ]
+  ],
+  "confidence_scoring": {
+    "model_used": "Qwen/Qwen3-Embedding-0.6B",
+    "scoring_date": "2026-08-01T16:58:55.288344+00:00",
+    "dataset_text_length": 1293,
+    "num_citations_scored": 1,
+    "summary_stats": {
+      "mean_confidence": 0.7753200316429139,
+      "median_confidence": 0.7753200316429139,
+      "std_confidence": 0.0,
+      "min_confidence": 0.7753200316429139,
+      "max_confidence": 0.7753200316429139,
+      "high_confidence_count": 1,
+      "medium_confidence_count": 0,
+      "low_confidence_count": 0
+    }
+  }
 }

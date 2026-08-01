@@ -1,0 +1,44 @@
+{
+  "dataset_id": "on006695",
+  "date_retrieved": "2026-08-01T10:23:11.602849+00:00",
+  "dataset_description": {
+    "Name": "Validation of Sleep Staging with Forehead EEG Patch",
+    "Authors": [
+      "Julie Onton",
+      "Sarah Mednick"
+    ],
+    "ReferencesAndLinks": [
+      "Onton, J. A., Simon, K. C., Morehouse, A. B., Shuster, A. E., Zhang, J., Peña, A. A., & Mednick, S. C. (2024). Validation of spectral sleep scoring with polysomnography using forehead EEG device. Frontiers in Sleep, 3, Article 1349537. https://doi.org/10.3389/frsle.2024.1349537"
+    ],
+    "License": "CC0",
+    "BIDSVersion": "1.8.0",
+    "HEDVersion": "8.1.0",
+    "GeneratedBy": [
+      {
+        "Name": "EEG-BIDS",
+        "Version": "10.3"
+      }
+    ],
+    "DatasetDOI": "10.82901/nemar.on006695",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds006695.v1.0.2"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on006695-blue)](https://doi.org/10.82901/nemar.on006695)\n\n# UCSD Forehead Patch Sleep Validation Dataset\n\nCurated EEG recordings for validating sleep staging from a three-electrode forehead patch against standard 33-channel polysomnography.\n\n## What is included\n- CGX patch `.set` files that contain `EEG.VisualHypnogram` and `EEG.SpectralScoring`. The 33-channel data is not included in this release -- this release only includes the three-electrode data. The 33-channel data will be released separately.\n\n## Sleep stage labels\n`EEG.VisualHypnogram` is manual scoring in 30-second epochs using the following integers\n\n1 equals Wake  \n2 equals REM  \n3 equals N1  \n4 equals N2  \n5 equals N3  \n0 equals unknown or movement\n\n`EEG.SpectralScoring` is spectral staging from the forehead patch. One row per patch channel. One column per 30-second epoch (see publication).\n\n## Alignment policy\nThe 33-channel cap data used to score polysomnography and the 3-channel patch EEG data do not always start and stop at the same clock times. CGX patch data were aligned to the cap start time based on a spreadsheet completed by the data collector, so the start may be off by a few seconds. The 3-channel EEG data were segmented into 30-second windows, and the number of these windows should approximately match the number of values in the EEG.VisualHypnogram for the same dataset. If the patch data ended up shorter than the visual hypnogram, the hypnogram was trimmed at the end to match the patch length. If the hypnogram was longer, it was left untrimmed. In general, the mismatch at the end of the recording is less than one 30-second window.\n\n## Subject exclusions\n113 and 121 are excluded. The CGX patch was inadequate or unavailable.\n\n## Citation\nOnton JA, Simon KC, Morehouse AB, Shuster AE, Zhang J, Peña AA, Mednick SC. Validation of spectral sleep scoring with polysomnography using forehead EEG device. Frontiers in Sleep. 2024. doi 10.3389/frsle.2024.1349537.  \nAmerican Academy of Sleep Medicine. The AASM manual for the scoring of sleep and associated events. 2007 and later.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on006695",
+    "exists": true,
+    "description": "Validation of Sleep Staging with Forehead EEG Patch",
+    "created_at": "2026-06-29T08:01:51+00:00",
+    "updated_at": "2026-07-23T01:29:59+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

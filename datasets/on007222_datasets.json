@@ -1,0 +1,49 @@
+{
+  "dataset_id": "on007222",
+  "date_retrieved": "2026-08-01T10:25:41.770942+00:00",
+  "dataset_description": {
+    "Name": "Visual Occlusions with Treadmill Walking Speeds EEG",
+    "BIDSVersion": "1.10.0",
+    "HEDVersion": "8.2.0",
+    "DatasetType": "raw",
+    "License": "CC0",
+    "Authors": [
+      "Jonel Morris",
+      "Kenneth Cruz",
+      "Raydeep Kainth",
+      "Daniel Ferris"
+    ],
+    "Acknowledgements": "We thank HNL lab members for help with data collection: Ryland Swearinger, Crosman Cruz, Gabriel Veliz, Sarah Scott, Wilson Huang, Braden Denny, Drew Johnson, Caleb Leimer, Abigail Pope, Alexus Nesbit, and Leela Zhou for extended assistance with data collection. We thank Chang Lui and Jacob Salminen for help with scripts for data preprocessing and analysis. We thank members of the HNL lab for feedback and intellectual support to improve methods of data analysis.",
+    "HowToAcknowledge": "Please cite 'Morris, Cruz, Kainth, Ferris, 2026' ",
+    "Funding": [
+      "The National Institutes of Health (R01NS104772)"
+    ],
+    "EthicsApprovals": [
+      "The University of Florida Institutional Review Board approved the protocol and all participants completed a written informed consent document. The study adhered to the principles outlined in the Declaration of Helsinki"
+    ],
+    "ReferencesAndLinks": [
+      ""
+    ],
+    "DatasetDOI": "10.82901/nemar.on007222",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds007222.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on007222-blue)](https://doi.org/10.82901/nemar.on007222)\n\n# README\n\nMore info here: https://neurostars.org/t/where-in-a-bids-dataset-should-i-put-notes-about-individual-mri-acqusitions/17315/3\n## Details related to access to the data\n- [ ] Data user agreement\nIf the dataset requires a data user agreement, link to the relevant information.\n***\n- [ Jonel Raven Morris (jmorris2@ufl.edu; ORCID: 0000-0003-0239-1917)] Contact person\n***\n## Overview\n- [Visual Occlusions on Treadmill at Different Speeds with Stationary Visual Display ] Project name \n***\n- [ 2022-2023 ] Year(s) that the project ran\n***\n- [ To understand the neurophysiological responses of visual processing, we investigated whether the response to intermittent loss of vision during human walking would change with different gait speeds. This was investigated by looking at the EEG responses of fifteen healthy adults who stood stationary and walked on a treadmill at speeds 0.4, 0.8, 1.2, 1.6 m/s while viewing a static scene through liquid crystal lenses that alternated between transparent and opaque states.] Brief overview of the tasks in the experiment\n\n- [This dataset contains data from 8 Brain Vision Amplifiers: 120 EEG scalp electrodes with one GND and one REF, 110 mechanically coupled outward facing noise electrodes with one GND and one REF, & 8 EMG electrodes (Inferior and Superior; Left and Right: Sternocleidomastoid and Trapezius). For most subjects it also contains Left & Right GRF from Loadsol insols, IMU (X,Y,Z,GYRx, GYRy, GYRz, Magx, Magy, Magz) from Opal APDM sensor located on the participants lower back] Description of the contents of the dataset\n\n***\n- [Gait speeds: 0.0 m/s, 0.4 m/s, 0.8 m/s, 1.2 m/s, and 1.6 m/s] Independent variables\n\n\n- [Electrocortical alpha synchronization in response to 'close_oc' event ] Dependent variables\n\n- [All participants were young (18 - 29) healthy adults, had normal to corrected vision, no history of musculoskeletal or neurological disorders, static visual presentation was the same for each participant across the walking speeds, but was slightly different between subjects. The projector screen was placed in the same location relative to the treadmill each time. Participants were told to begin in the center of the treadmill and were told to try to remain there. We used the same EEG system for each subject. We used a script for each participant, explaining the experiment the same for each condition] Control variables\n\n- [ ] Quality assessment of the data\nProvide a short summary of the quality of the data ideally with descriptive statistics if relevant and with a link to more comprehensive description (like with MRIQC) if possible.\n***\n\n## Methods\n### Subjects\n15 healthy, young adults were recruited from the local University of Florida community. Of these 15 participants, 5 identified as male and 10 were identified as female with various racial/ethnic backgrounds such as self-identified white, black, asian, hispanic, and mixed race groups.\n\n- Recruited healthy young participants between the ages of 18 and 29 years.  All participants reported normal vision (20/20) with or without corrective contact lenses and no history of musculoskeletal or neurological disorders.\n\n***\n### Apparatus\nThe experiment utilized a treadmill that we set to the various gait speeds for the different experimental conditions with the static image projected onto a screen in front of the participant. The participants wore a safety harness while they were walking on the treadmill. They also wore loadsol insole sensors that recorded gait events and an IMU placed on their lower back. All participants wore liquid crystal (LCD) lens goggles that generated intermittent visual occlusions. The entire experiment was mobile and the participant wore a fanny pack with the synchronization devices inside. \n\n### Initial setup\nAfter the subject arrived and they completed the informed consent form with the experimenters, they were seated and equipped with an EEG cap. Loadsol insole sensors, IMU, safety harness, and liquid crystal goggles were placed on the participant once gelling was complete and all systems were synchronized together.\n\n### Task organization\nWalking speed order was randomized with the 0.0 m/s condition being performed before or after all speeds. Breaks were offered to participants in between each condition and were taken as needed, this data has been cropped out so that only trials and 5 seconds of padding before and after are in each condition file.\n\n\n***\n### Task details\nEach walking condition (0.0m/s, 0.4 m/s, 0.8 m/s, 1.2 m/s, and 1.6 m/s) lasted 3 minutes. Visual occlusion events would occur every 8-10 seconds and last 1.5 seconds each time. Participants walked while viewing a stationary visual display of a track projected from a rear-projector.\n\n### Additional data acquired\nTI-MRI images were obtained for each participant for use in custom head modeling. The de-identification of the MRI data is complicated and this data may be available in the future, but is currently unavailable. Demographic information about each participant is recorded in the participants.tsv\n***\n\n### Experimental location\nThis experiment was completed using the facilities of the Health Professions, Nursing, Pharmacy Building at the University of Florida in Gainesville, Florida, USA. \n\n### Missing data\nSome participants are missing loadsol data, or their loadsol data is incomplete/contains a drift (sub-05, sub-06, sub-07). One subject is missing part of their noise sensor array. A few participants also do not have IMU data (sub-02, sub-04, sub-06, sub-12).  \n\n***\n### Notes\nThis data is from a larger protocol with 13 other conditions (in total 4 different \"walking\" modalities with 4 different speeds and a stationary condition). For each participant, the order of the modalities was randomized as was the walking speed w/in each modality.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on007222",
+    "exists": true,
+    "description": "Visual Occlusions with Treadmill Walking Speeds EEG",
+    "created_at": "2026-06-30T04:00:59+00:00",
+    "updated_at": "2026-07-23T01:32:04+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

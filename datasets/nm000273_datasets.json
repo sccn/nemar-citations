@@ -1,0 +1,48 @@
+{
+  "dataset_id": "nm000273",
+  "date_retrieved": "2026-08-01T10:01:21.454660+00:00",
+  "dataset_description": {
+    "Name": "OpenBMI SSVEP EEG dataset (Lee et al. 2019)",
+    "BIDSVersion": "1.7.0",
+    "DatasetType": "derivative",
+    "Authors": [
+      "Min-Ho Lee",
+      "O-Yeon Kwon",
+      "Yong-Jeong Kim",
+      "Hong-Kyung Kim",
+      "Young-Eun Lee",
+      "John Williamson",
+      "Siamac Fazli",
+      "Seong-Whan Lee"
+    ],
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.2.0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.5524/100542"
+      }
+    ],
+    "Version": "1.0.2",
+    "DatasetDOI": "10.82901/nemar.nm000273"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000273-blue)](https://doi.org/10.82901/nemar.nm000273)\n\n# OpenBMI SSVEP EEG dataset (Lee et al. 2019)\n\n## Overview\n\nA derivative dataset of SSVEP (steady-state visually evoked potential) recordings processed and organized using the Mother of All BCI Benchmarks (MOABB) framework. This dataset represents EEG data formatted according to BIDS standards, enabling standardized analysis and benchmarking of brain-computer interface paradigms based on steady-state visual stimulation. The dataset is derived from the Lee2019 source dataset (DOI: 10.5524/100542) and has been converted to BIDS format using MNE-BIDS tools. The dataset contains EEG recordings from multiple subjects across multiple sessions with SSVEP stimulation paradigms.\n\n## Dataset Summary\n\n| Property | Value |\n|---|---|\n| Subjects | 54 |\n| Channels | 62 |\n| Classes | 4 |\n| Trial length | 4 s |\n| Sampling frequency | 1000 Hz |\n| Sessions | 2 |\n| Total trials | 21600 |\n| Paradigm | SSVEP |\n\n## Data Collection Methods\n\nSee the primary publication for details on data collection and experimental protocol.\n\n## How to Access via MOABB\n\nInstall MOABB and load this dataset directly:\n\n```python\nfrom moabb.datasets import Lee2019_SSVEP\nfrom moabb.paradigms import SSVEP\nparadigm = SSVEP()\n\ndataset = Lee2019_SSVEP()\nX, y, metadata = paradigm.get_data(dataset)\n```\n\nFor more details see the [MOABB documentation](https://moabb.neurotechx.com/) and the\n[MOABB dataset page](https://moabb.neurotechx.com/docs/generated/moabb.datasets.Lee2019_SSVEP.html).\n\n## Citation\n\nIf you use this dataset please cite the primary publication:\n\n> DOI: [10.1093/gigascience/giz002](https://doi.org/10.1093/gigascience/giz002)\n\n## NEMAR / MOABB Benchmark Collection\n\nThis BIDS-formatted dataset was converted from the original data using the\n[MOABB](https://moabb.neurotechx.com/) pipeline and re-hosted on\n[NEMAR](https://nemar.org/) as part of the MOABB benchmark collection.\nThe original data and license terms apply — see `dataset_description.json` for details.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000273",
+    "exists": true,
+    "description": "OpenBMI SSVEP EEG dataset (Lee et al. 2019)",
+    "created_at": "2026-06-20T18:42:06+00:00",
+    "updated_at": "2026-07-23T01:10:25+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

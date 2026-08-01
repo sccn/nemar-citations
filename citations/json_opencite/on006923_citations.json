@@ -1,10 +1,10 @@
 {
   "dataset_id": "on006923",
   "num_citations": 0,
-  "date_last_updated": "2026-07-04T06:24:51.162744+00:00",
+  "date_last_updated": "2026-08-01T16:16:29.838045+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-07-04T06:24:51.162744+00:00",
+    "fetch_date": "2026-08-01T16:16:29.838045+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 1,
@@ -35,10 +35,16 @@
       "juvenile delinquency",
       "neurocognition",
       "spectral analysis",
-      "artifact removal",
-      "feature extraction"
+      "adolescents",
+      "preprocessing",
+      "BIDS",
+      "Biosemi",
+      "Colombia",
+      "Atlántico",
+      "juvenile justice",
+      "neurocognitive dysfunction"
     ],
-    "methods_description": "EEG data were acquired using a Biosemi ActiveTwo system with 128 channels at 2048 Hz sampling rate, subsequently downsampled to 128 Hz. Resting-state recordings consisted of 4-minute alternating eyes-closed/open sequences. Preprocessing included visual inspection, rereferencing to average reference, bandpass filtering (1-40 Hz), artifact removal via bad channel rejection and ICA with ICLabel, and downsampling. Spectral features were extracted using Welch's method across four frequency bands (delta, theta, alpha, beta).",
+    "methods_description": "EEG data were acquired using a Biosemi ActiveTwo system with 128 channels sampled at 2048 Hz and subsequently downsampled to 128 Hz. Recordings consisted of 12-minute resting-state sessions with alternating eyes-closed and eyes-open conditions. Preprocessing included visual inspection, rereferencing to average reference, bandpass filtering (1-40 Hz), artifact removal via bad channel rejection and Artifact Subspace Reconstruction (ASR), and independent component analysis with ICLabel. Spectral features were extracted using Welch's method across delta (1-4 Hz), theta (4-8 Hz), alpha (8-13 Hz), and beta (13-30 Hz) frequency bands.",
     "funding": [
       {
         "funder_name": "SISTEMA GENERAL DE REGALÍAS (SGR)"
@@ -47,14 +53,13 @@
         "funder_name": "MINISTERIO DE CIENCIA TECNOLOGÍA E INNOVACIÓN (MINCIENCIAS)",
         "award_number": "BPIN 2020000100006"
       }
-    ],
-    "searched_accessions": [
-      "on006923",
-      "ds006923"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 0
+    ]
   },
-  "citation_details": []
+  "citation_details": [],
+  "confidence_scoring": {
+    "model_used": "Qwen/Qwen3-Embedding-0.6B",
+    "scoring_date": "2026-08-01T17:17:32.278215+00:00",
+    "dataset_text_length": 2296,
+    "num_citations_scored": 0
+  }
 }

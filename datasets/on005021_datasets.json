@@ -1,0 +1,46 @@
+{
+  "dataset_id": "on005021",
+  "date_retrieved": "2026-08-01T10:15:00.079820+00:00",
+  "dataset_description": {
+    "Name": "Tilt Illusion by Phase",
+    "BIDSVersion": "1.2.1",
+    "License": "CC0",
+    "Authors": [
+      "Jessica G. Williams",
+      "William J. Harrison",
+      "Henry A. Beale",
+      "Jason B. Mattingley",
+      "Anthony M. Harris"
+    ],
+    "HowToAcknowledge": "Please cite Williams, Harrison, Beale, Mattingley, & Harris (2024). Effects of alpha oscillation power and phase on discrimination performance in a visual tilt illusion. Current Biology",
+    "DatasetDOI": "10.82901/nemar.on005021",
+    "Funding": [
+      "Australian Research Council (DE190100136)",
+      "Australian Research Council (DE220101019)",
+      "National Health and Medical Research Council (NHMRC) Australia Investigator Grant (GNT2010141)"
+    ],
+    "EthicsApprovals": [
+      "All experimental procedures were approved by the Human Research Ethics Committee at The University of Queensland (2021/HE002284). "
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds005021.v1.2.1"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on005021-blue)](https://doi.org/10.82901/nemar.on005021)\n\n# Overview\n\nThis is the \"Tilt Illusion\" dataset.\n\nIn brief, it contains EEG data for 36 subjects responding to the percieved orientation \nof a central target grating, that is titrated to appear vertical on average, and is \nsurrounded by an anular grating of +-30 degrees. We then looked at the prestimulus \nEEG correlates of an increased or decreased tilt illusion.\n\n# Citing this dataset\n\nPlease cite as follows:\n\n> Williams, J.G., Harrison, W.J., Beale, H.A., Mattingley, J.B., & Harris, A.M. (2024). Effects of alpha oscillation power and phase on discrimination performance in a visual tilt illusion. Current Biology.\n\nFor more information, see the `dataset_description.json` file.\n\n# License\n\nThe `tilt illusion` dataset is made available under the CC BY 4.0 license.\n\nCopyright (c) 2024, Jessica Williams, William Harrison, Henry Beale, Jason Mattingley, & Anthony Harris\n\nA human readable information can be found at:\n\nhttps://creativecommons.org/licenses/by/4.0/deed.en\n\n# Format\n\nThe dataset is formatted according to the Brain Imaging Data Structure (BIDS).\nSee the `dataset_description.json` file for the specific version used.\n\nGenerally, you can find metadata in the `.tsv` files and documentation thereof in the accompanying `.json` files.\n\nAn important BIDS definition to consider is the \"Inheritance Principle\", which\nis described in the BIDS specification under the following link:\n\nhttps://bids-specification.readthedocs.io/en/latest/common-principles.html#the-inheritance-principle\n\nIn brief, the Inheritance Pinciple states that any metadata file (such as `.json`, `.tsv`)\nmay be defined at any directory level, but no more than one applicable file may be defined at a given level [...],\nand the values from the top level are inherited by all lower levels --\nunless they are overridden by a file at the lower level.\n\n# Details about the experiment\n\nFor a detailed description of the task, see Williams et al. (2024)\nWhat follows is a brief summary.\n\nParticipants were seated in front of a computer screen placed on a desk.\nOn each trial they were presented with a central target grating, surrounded by \nan annular grating of +-30 degrees. This induced a 'tilt illusion' whereby the \npercieved angle of the central grating was biased away from the angle of the \nsurround. We first titrated the angle of the central grating to each participant's\npercieved vertical angle, separately for each surround. Percieved vertical was \ndefined as the angle at which the participant reported the grating as tilted \nleftward and rightward equally often. Participants responded with their right \nhand by pressing the left and right arrow keys on a standard USB keyboard. Stimuli\nwere presented very briefly (8.3ms) at 60% contrast, and were clearly visible.\nBetween trials, a mask made from the combination of several gratings was presented\nto prevent the buildup of tilt aftereffects across trials.\n\nThroughout the experiment, EEG data was recorded using a Biosemi Active 2 system\nwith 64 scalp electrods and 6 EOG electrodes (left and right HEOG, VEOG on left\neye, and left and right mastoids - in positions EXG 3-8). \n\nFor more information, you can also consult the events.tsv and events.json files.\n\nThe original data was recorded in `.bdf` format using Actiview. It is stored in \nthe `/sourcedata` directory. To comply with the BIDS format, the .bdf format was \nconverted to EEGLab format, constituting a '.set' file and a 'fdt' file for each \ndataset. \n\nParticipant 1's data was corrupted by large artefacts that could not be corrected.\nParticipants 8, 16, and 28 had no EEG data recorded, as their pre-task titration\nfailed to converge. As such, the data for these 4 participants are not included \nin this dataset.",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on005021",
+    "exists": true,
+    "description": "Tilt Illusion by Phase",
+    "created_at": "2026-06-26T04:01:41+00:00",
+    "updated_at": "2026-07-23T01:22:22+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

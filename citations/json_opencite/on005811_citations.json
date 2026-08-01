@@ -1,10 +1,10 @@
 {
   "dataset_id": "on005811",
-  "num_citations": 10,
-  "date_last_updated": "2026-07-04T03:25:11.979552+00:00",
+  "num_citations": 5,
+  "date_last_updated": "2026-08-01T16:09:51.259586+00:00",
   "metadata": {
-    "total_cumulative_citations": 6,
-    "fetch_date": "2026-07-04T03:25:11.979552+00:00",
+    "total_cumulative_citations": 7,
+    "fetch_date": "2026-08-01T16:09:51.259586+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -56,14 +56,13 @@
     ],
     "keywords": [
       "EEG",
-      "Magnetoencephalography",
       "object recognition",
-      "Visual Perception",
       "naturalistic stimuli",
       "multimodal neuroimaging",
-      "temporal dynamics"
+      "Visual Perception",
+      "brain imaging"
     ],
-    "methods_description": "EEG data were collected from subjects viewing naturalistic stimuli from ImageNet across multiple sessions and runs. Raw EEG data are stored in BIDS format with comprehensive trial information including stimulus category metadata and subject responses. Data were preprocessed using MNE (version 1.7.1) and organized into both continuous and epoched formats for analysis.",
+    "methods_description": "EEG data were collected from subjects viewing naturalistic stimuli images from ImageNet. Raw EEG data are stored in BIDS format with multiple sessions per subject. Data were preprocessed using MNE (version 1.7.1) and are available as both continuous time series and epoched data. Trial information including stimulus category and subject responses are documented in detailed event files.",
     "funding": [
       {
         "funder_name": "Beijing Natural Science Foundation",
@@ -82,16 +81,32 @@
         "award_number": "2021ZD0200407",
         "award_title": "STI 2030-Major Projects"
       }
-    ],
-    "searched_accessions": [
-      "on005811",
-      "ds005811"
-    ],
-    "num_accession_mentions": 5,
-    "num_dataset_citations": 5,
-    "num_datapaper_citations": 5
+    ]
   },
   "citation_details": [
+    {
+      "title": "Progressive transfer learning Unifies Multi-Corpus EEG for robust and scalable Imagined-Speech decoding",
+      "author": "Hatem T.M. Duhair, Masrullizam bin Mat Ibrahim, Jamil Abedalrahim Jamil Alsayaydeh, Rex Bacarra, Ahmed Hussein Ahmed",
+      "venue": "Biomedical Signal Processing and Control",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.bspc.2026.109475",
+      "cited_by": 3,
+      "abstract": "Imagined-speech brain-computer interfaces (BCIs) face limitations due to limited, subject-specific data and the risk of catastrophic forgetting during sequential adaptation. We present a gated progressive neural network (PNN) that assimilates information from diverse imagined-speech EEG datasets and applies it to new users. The signals are processed through a standard pipeline that includes 1–70 Hz band-pass filtering, baseline correction, per-channel z-normalisation, and ICA, followed by a comprehensive, physiologically motivated feature vector that encompasses spatial (CSP), time–frequency (discrete wavelet statistics), spectral (δ–γ band powers), and time-domain dynamics (Hjorth parameters, autocorrelation, higher-order moments). The PNN evolves by incorporating a new column for each task; previously established columns remain unchanged while lateral adapter layers and a shared gate control how prior learned embeddings influence the new column, effectively preventing forgetting whil",
+      "doi": "10.1016/j.bspc.2026.109475",
+      "pmid": null,
+      "openalex_id": "W7118758951",
+      "source_doi": "10.1038/s41597-025-05174-7",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4784578393399716,
+        "similarity_score": 0.4142492115497589,
+        "citation_text_length": 1298,
+        "dataset_text_length": 2203,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
     {
       "title": "SingLEM: Single-Channel Large EEG Model",
       "author": "Jamiyan Sukhbaatar, S. Imamura, Ibuki Inoue, Shoya Murakami, Kazi Mahmudul Hassan, Seungwoo Han, Ingon Chanpornpakdi, Toshihisa Tanaka",
@@ -105,22 +120,15 @@
       "openalex_id": null,
       "source_doi": "10.1038/s41597-025-05174-7",
       "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "Progressive transfer learning Unifies Multi-Corpus EEG for robust and scalable Imagined-Speech decoding",
-      "author": "Hatem T.M. Duhair, Masrullizam bin Mat Ibrahim, Jamil Abedalrahim Jamil Alsayaydeh, Rex Bacarra, Ahmed Hussein Ahmed",
-      "venue": "Biomedical Signal Processing and Control",
-      "year": 2026,
-      "url": "https://doi.org/10.1016/j.bspc.2026.109475",
-      "cited_by": 2,
-      "abstract": "Imagined-speech brain-computer interfaces (BCIs) face limitations due to limited, subject-specific data and the risk of catastrophic forgetting during sequential adaptation. We present a gated progressive neural network (PNN) that assimilates information from diverse imagined-speech EEG datasets and applies it to new users. The signals are processed through a standard pipeline that includes 1–70 Hz band-pass filtering, baseline correction, per-channel z-normalisation, and ICA, followed by a comprehensive, physiologically motivated feature vector that encompasses spatial (CSP), time–frequency (discrete wavelet statistics), spectral (δ–γ band powers), and time-domain dynamics (Hjorth parameters, autocorrelation, higher-order moments). The PNN evolves by incorporating a new column for each task; previously established columns remain unchanged while lateral adapter layers and a shared gate control how prior learned embeddings influence the new column, effectively preventing forgetting whil",
-      "doi": "10.1016/j.bspc.2026.109475",
-      "pmid": null,
-      "openalex_id": "W7118758951",
-      "source_doi": "10.1038/s41597-025-05174-7",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5592882451415062,
+        "similarity_score": 0.48423224687576294,
+        "citation_text_length": 1217,
+        "dataset_text_length": 2203,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Artificial fragrances and semisynthetic perfumes: The hidden health risks",
@@ -135,7 +143,15 @@
       "openalex_id": null,
       "source_doi": "10.1038/s41597-025-05174-7",
       "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.19528246521949771,
+        "similarity_score": 0.16907572746276855,
+        "citation_text_length": 1305,
+        "dataset_text_length": 2203,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "A large-scale fMRI dataset for vision-language semantic association",
@@ -150,7 +166,15 @@
       "openalex_id": null,
       "source_doi": "10.1038/s41597-025-05174-7",
       "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6185252755880356,
+        "similarity_score": 0.5355197191238403,
+        "citation_text_length": 1177,
+        "dataset_text_length": 2203,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     },
     {
       "title": "Multi-Modal EEG Datasets and Benchmarks for EEG-Based Neural Decoding Research",
@@ -165,92 +189,31 @@
       "openalex_id": null,
       "source_doi": "10.1038/s41597-025-05174-7",
       "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite"
-    },
-    {
-      "title": "A large-scale MEG and EEG dataset for object recognition in naturalistic scenes",
-      "author": "Guohao Zhang, Ming Zhou, Shuyi Zhen, Shaohua Tang, Zheng Li, Zonglei Zhen",
-      "venue": "Scientific Data",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s41597-025-05174-7",
-      "cited_by": 1,
-      "abstract": "Neuroimaging with large-scale naturalistic stimuli is increasingly employed to elucidate neural mechanisms of object recognition in natural scenes. However, most existing large-scale neuroimaging datasets with naturalistic stimuli primarily rely on functional magnetic resonance imaging (fMRI), which provides high spatial resolution but is limited in capturing the temporal dynamics. To address this limitation, we extended our Natural Object Dataset-fMRI (NOD-fMRI) by collecting both magnetoencephalography (MEG) and electroencephalography (EEG) data from the same participants while viewing the same naturalistic stimuli. As a result, NOD contains fMRI, MEG, and EEG responses to 57,000 naturalistic images from 30 participants. This enables the examination of brain activity elicited by naturalistic stimuli with both high spatial resolution (via fMRI) and high temporal resolution (via MEG and EEG). Furthermore, the multimodal nature of NOD allows researchers to combine datasets from different modalities to achieve a more comprehensive view of object processing. We believe that the NOD dataset will serve as a valuable resource for advancing our understanding of the cognitive and neural mechanisms underlying object recognition.",
-      "doi": "10.1038/s41597-025-05174-7",
-      "pmid": "40410207",
-      "openalex_id": "W4410631980",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "ds005811"
-    },
-    {
-      "title": "NOD-MEG",
-      "author": "Guohao Zhang, Ming Zhou, Shuyi Zhen, Shaohua Tang, Zheng Li, Zonglei Zhen",
-      "venue": "UC San Diego",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.on005810",
-      "cited_by": 0,
-      "abstract": "The Natural Object Dataset (NOD) integrates magnetoencephalography (MEG), electroencephalography (EEG), and functional magnetic resonance imaging (fMRI) data collected from the same subjects viewing naturalistic stimuli from ImageNet. This trimodal neuroimaging resource provides both high spatial resolution (fMRI) and high temporal resolution (MEG/EEG) for investigating object recognition mechanisms. The dataset encompasses diverse naturalistic stimuli and a broad subject pool, facilitating exploration of neural activation patterns across stimuli and subjects. The EEG component is available as a separate dataset (ds005811).",
-      "doi": "10.82901/nemar.on005810",
-      "pmid": null,
-      "openalex_id": "W7166351106",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "ds005811"
-    },
-    {
-      "title": "NOD-MEG",
-      "author": "Guohao Zhang, Ming Zhou, Shuyi Zhen, Shaohua Tang, Zheng Li, Zonglei Zhen",
-      "venue": "UC San Diego",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.on005810.v1.0.0",
-      "cited_by": 0,
-      "abstract": "The Natural Object Dataset-MEG (NOD-MEG) provides magnetoencephalography data collected from subjects viewing naturalistic stimuli from ImageNet. This dataset is part of the larger Natural Object Dataset (NOD) that integrates MEG, EEG (ds005811), and fMRI (ds004496) data from the same subjects, enabling investigation of neural mechanisms underlying object recognition with high temporal resolution. The MEG component complements the fMRI data's high spatial resolution, facilitating exploration of neural activation patterns across both stimuli and individual differences.",
-      "doi": "10.82901/nemar.on005810.v1.0.0",
-      "pmid": null,
-      "openalex_id": "W7166359357",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "ds005811"
-    },
-    {
-      "title": "NOD-MEG",
-      "author": "G. Zhang, Ming Zhou, Shuyi Zhen, Shaohua Tang, Zheng Li, Zonglei Zhen",
-      "venue": "Open MIND",
-      "year": 2026,
-      "url": "https://openalex.org/W7166598608",
-      "cited_by": 0,
-      "abstract": "The Natural Object Dataset-MEG (NOD-MEG) provides magnetoencephalography data collected from subjects viewing naturalistic stimuli from ImageNet. This dataset is part of the larger Natural Object Dataset (NOD) that integrates MEG, EEG (ds005811), and fMRI (ds004496) data from the same subjects, enabling investigation of neural mechanisms underlying object recognition with high temporal resolution. The MEG component complements the fMRI data's high spatial resolution, facilitating exploration of neural activation patterns across both stimuli and individual differences.",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": "W7166598608",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "ds005811"
-    },
-    {
-      "title": "NOD-MEG",
-      "author": "G. Zhang, Ming Zhou, Shuyi Zhen, Shaohua Tang, Zheng Li, Zonglei Zhen",
-      "venue": "Open MIND",
-      "year": 2026,
-      "url": "https://openalex.org/W7166612565",
-      "cited_by": 0,
-      "abstract": "The Natural Object Dataset (NOD) integrates magnetoencephalography (MEG), electroencephalography (EEG), and functional magnetic resonance imaging (fMRI) data collected from the same subjects viewing naturalistic stimuli from ImageNet. This trimodal neuroimaging resource provides both high spatial resolution (fMRI) and high temporal resolution (MEG/EEG) for investigating object recognition mechanisms. The dataset encompasses diverse naturalistic stimuli and a broad subject pool, facilitating exploration of neural activation patterns across stimuli and subjects. The EEG component is available as a separate dataset (ds005811).",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": "W7166612565",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "ds005811"
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6945043927431107,
+        "similarity_score": 0.6013025045394897,
+        "citation_text_length": 1243,
+        "dataset_text_length": 2203,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
-  ]
+  ],
+  "confidence_scoring": {
+    "model_used": "Qwen/Qwen3-Embedding-0.6B",
+    "scoring_date": "2026-08-01T17:11:34.513479+00:00",
+    "dataset_text_length": 2203,
+    "num_citations_scored": 5,
+    "summary_stats": {
+      "mean_confidence": 0.5092116436064245,
+      "median_confidence": 0.5592882451415062,
+      "std_confidence": 0.17221374193745143,
+      "min_confidence": 0.19528246521949771,
+      "max_confidence": 0.6945043927431107,
+      "high_confidence_count": 0,
+      "medium_confidence_count": 4,
+      "low_confidence_count": 1
+    }
+  }
 }

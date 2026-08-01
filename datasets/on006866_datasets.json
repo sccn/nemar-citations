@@ -1,0 +1,51 @@
+{
+  "dataset_id": "on006866",
+  "date_retrieved": "2026-08-01T10:24:05.245642+00:00",
+  "dataset_description": {
+    "Name": "Discrepancy between self-report and neurophysiological markers of socio-affective responses in lonely individuals",
+    "Authors": [
+      "Szymon Mąka",
+      "Marta Chrustowicz",
+      "Łukasz Okruszek"
+    ],
+    "License": "CC0",
+    "ReferencesAndLinks": [
+      ""
+    ],
+    "BIDSVersion": "1.8.0",
+    "HEDVersion": "8.1.0",
+    "GeneratedBy": [
+      {
+        "Name": "EEG-BIDS",
+        "Version": "10.3"
+      }
+    ],
+    "Funding": [
+      "National Science Centre, Poland (Grant No: 2019/35/B/HS6/00517)"
+    ],
+    "EthicsApprovals": [
+      "Ethical Committee at the Institute of Psychology PAS: decision 16/VI/2021"
+    ],
+    "DatasetDOI": "10.82901/nemar.on006866",
+    "SourceDatasets": [
+      {
+        "DOI": "doi:10.18112/openneuro.ds006866.v1.0.0"
+      }
+    ],
+    "Version": "1.0.0"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.on006866-blue)](https://doi.org/10.82901/nemar.on006866)\n\n# Emotion Processing and Regulation Task (Static Stimuli) — EEG Dataset\n\nThis dataset contains EEG recordings and behavioral data from the **Emotion Processing and Regulation** task with static emotional stimuli. \n\n* **Preregistration:** [https://osf.io/g8qey](https://osf.io/g8qey)\n* **Preprint:** [https://osf.io/preprints/psyarxiv/v9dt3_v2](https://osf.io/preprints/psyarxiv/v9dt3_v2)\n\n---\n\n## Participants\n\n* **N = 148** right-handed, neurologically healthy adults with normal or corrected-to-normal vision.\n\n---\n\n## Experimental Design\n\nThe single session comprised 240 trials, split evenly across six conditions defined by stimulus content type Participants completed 240 trials in a single session, evenly allocated to a 2 (content: social, non-social) × 3 (regulation requirement: watch-neutral, watch-negative, reappraise-negative) factorial design. On each trial, they viewed a static image for 5 s and either passively watched it or reappraised it as instructed. They then rated arousal and subsequently valence of the image on separate 9-point scales.\n\n---\n\n## EEG Data Acquisition\n\n* **EEG Cap:** 64-channel QuickCap\n* **Amplifier:** Neuroscan SynampsRT\n* **Sampling rate:** 1000 Hz\n* **Impedance:** below 5 kΩ\n\n### Recorded Channels\n\nFP1, FPZ, FP2, AF3, AF4, F7, F5, F3, F1, FZ, F2, F4, F6, F8,\nFT7, FC5, FC3, FC1, FCZ, FC2, FC4, FC6, FT8, T7, C5, C3, C1, CZ, C2, C4, C6, T8,\nM1, TP7, CP5, CP3, CP1, CPZ, CP2, CP4, CP6, TP8, M2, P7, P5, P3, P1, PZ, P2, P4, P6, P8,\nPO7, PO5, PO3, POZ, PO4, PO6, PO8, CB1, O1, OZ, O2, CB2\n\n### Additional Sensors\n\n* HEO (Horizontal EOG)\n* VEO (Vertical EOG)\n* EKG\n* GSR/EDA\n\n---\n\n## EEG Preprocessing\n\nAll preprocessing was conducted in **MATLAB R2020b** using **EEGLAB 2023.0** and **ERPLAB 9.10**. The preprocessing pipeline and fully commented scripts are available in `code/Preprocessing_EEG.m`.\n\n### Summary of preprocessing steps\n\n1. **Band-pass filtering:** 0.1–30 Hz (zero-phase Hamming-windowed FIR)\n2. **Downsampling:** 250 Hz\n3. **Re-referencing:** average mastoids (M1, M2)\n4. **Automatic bad-channel rejection:** *clean_rawdata* (autocorrelation = 0.8)\n5. **ICA:** *runica* algorithm\n6. **Automatic component rejection:** **ADJUST** and **SASICA**\n7. **Spherical interpolation** of removed channels\n8. **Epoching:** −200 to 5000 ms relative to stimulus onset\n9. **Baseline correction:** −200 ms pre-stimulus\n10. **Artifact rejection:** ±100 µV within 200 ms moving window (100 ms step)\n11. **Condition averaging:** using ERPLAB\n\n---\n\n## Derivatives & Supplemental Data\n\n### `derivatives/processed_erps/`\n\nContains averaged ERP files (`.erp`) for each participant after preprocessing.\n\n### `code/`\n\nIncludes MATLAB preprocessing scripts and documentation (`Preprocessing_EEG.m`).\n\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/on006866",
+    "exists": true,
+    "description": "Discrepancy between self-report and neurophysiological markers of socio-affective responses in lonely individuals",
+    "created_at": "2026-06-29T15:01:53+00:00",
+    "updated_at": "2026-07-23T01:30:34+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}

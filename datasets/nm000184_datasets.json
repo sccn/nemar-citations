@@ -1,0 +1,69 @@
+{
+  "dataset_id": "nm000184",
+  "date_retrieved": "2026-08-01T10:00:39.314870+00:00",
+  "dataset_description": {
+    "Name": "BCI Competition 2020 Track 5 — ERP during walking (scalp, ear-EEG, and IMU)",
+    "BIDSVersion": "1.9.0",
+    "HEDVersion": "8.4.0",
+    "DatasetType": "derivative",
+    "License": "CC-BY-4.0",
+    "Authors": [
+      "Ji-Hoon Jeong",
+      "Jeong-Hyun Cho",
+      "Young-Eun Lee",
+      "Seo-Hyun Lee",
+      "Gi-Hwan Shin",
+      "Young-Seok Kweon",
+      "Jose del R. Millan",
+      "Klaus-Robert Muller",
+      "Seong-Whan Lee"
+    ],
+    "ReferencesAndLinks": [
+      "https://osf.io/pq7vb/",
+      "10.3389/fnhum.2022.898300"
+    ],
+    "Keywords": [
+      "P300",
+      "ERP",
+      "ambulatory BCI",
+      "walking",
+      "ear-EEG",
+      "IMU",
+      "BCI competition"
+    ],
+    "DatasetDOI": "10.82901/nemar.nm000184",
+    "GeneratedBy": [
+      {
+        "CodeURL": "https://github.com/NeuroTechX/moabb",
+        "Name": "moabb",
+        "Description": "Mother of All BCI Benchmarks",
+        "Version": "1.5.0dev0"
+      }
+    ],
+    "SourceDatasets": [
+      {
+        "DOI": "10.3389/fnhum.2022.898300",
+        "URL": "https://osf.io/pq7vb/"
+      },
+      {
+        "DOI": "doi:10.3389/fnhum.2022.898300"
+      }
+    ],
+    "PublicationYear": 2022,
+    "Version": "1.0.1"
+  },
+  "readme_content": "[![DOI](https://img.shields.io/badge/DOI-10.82901%2Fnemar.nm000184-blue)](https://doi.org/10.82901/nemar.nm000184)\n\n# BCI Competition 2020 Track 5 — ERP during walking (scalp, ear-EEG, and IMU)\n\n## Overview\n\nThis dataset comprises EEG recordings from 15 healthy participants performing a visual P300 oddball task while walking on a treadmill at 1.6 m/s. The study includes simultaneous scalp-EEG (46 channels), ear-EEG (14 channels, 7 per ear), electrooculography (4 channels), and inertial measurement unit recordings (6 channels: 3-axis accelerometer and gyroscope) sampled at 100 Hz. Data were collected as part of BCI Competition 2020 Track 5 to evaluate brain-computer interface performance under ambulatory conditions, with trials temporally divided into training, validation, and test sets.\n\n## Dataset Summary\n\n| Property | Value |\n|---|---|\n| Subjects | 15 |\n| Channels | 46 |\n| Classes | 2 |\n| Trial length | 1 s |\n| Sampling frequency | 100 Hz |\n| Sessions | 1 |\n| Total trials | 4500 |\n| Paradigm | P300 |\n\n## Data Collection Methods\n\nParticipants performed a visual oddball P300 paradigm with target ('OOO') and non-target ('XXX') stimuli (target ratio 0.2) while walking on a treadmill at 1.6 m/s. EEG was recorded from 46 scalp channels (standard 10-20 montage) plus 14 ear-EEG channels (7 per ear), 4 EOG channels, and 6 IMU channels (3-axis accelerometer and gyroscope) at 100 Hz sampling rate. Data were epoched from -190 ms to +800 ms around stimulus onset.\n\n## How to Access via MOABB\n\nInstall MOABB and load this dataset directly:\n\n```python\nfrom moabb.datasets import BCIComp2020WalkingERP\nfrom moabb.paradigms import P300\nparadigm = P300()\n\ndataset = BCIComp2020WalkingERP()\nX, y, metadata = paradigm.get_data(dataset)\n```\n\nFor more details see the [MOABB documentation](https://moabb.neurotechx.com/) and the\n[MOABB dataset page](https://moabb.neurotechx.com/docs/generated/moabb.datasets.BCIComp2020WalkingERP.html).\n\n## Citation\n\nIf you use this dataset please cite the primary publication:\n\n> DOI: [10.3389/fnhum.2022.898300](https://doi.org/10.3389/fnhum.2022.898300)\n\n## NEMAR / MOABB Benchmark Collection\n\nThis BIDS-formatted dataset was converted from the original data using the\n[MOABB](https://moabb.neurotechx.com/) pipeline and re-hosted on\n[NEMAR](https://nemar.org/) as part of the MOABB benchmark collection.\nThe original data and license terms apply — see `dataset_description.json` for details.\n",
+  "github_info": {
+    "repository_url": "https://github.com/nemarDatasets/nm000184",
+    "exists": true,
+    "description": "BCI Competition 2020 Track 5 — ERP during walking (scalp, ear-EEG, and IMU)",
+    "created_at": "2026-06-19T22:55:13+00:00",
+    "updated_at": "2026-07-23T01:07:15+00:00",
+    "default_branch": "main"
+  },
+  "retrieval_status": {
+    "dataset_description": "not_found",
+    "readme": "not_found",
+    "repository": "success"
+  }
+}
