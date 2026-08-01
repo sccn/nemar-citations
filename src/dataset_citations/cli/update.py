@@ -161,6 +161,19 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
             args.datasets_dir,
         )
 
+    # nm-*/on-* DOIs normally come from data.nemar.org, but when that returns
+    # 5xx the pipeline falls back to GitHub. Unauthenticated that is 60 req/hr,
+    # and a single 403 makes PyGithub sleep until the primary reset (~56 min),
+    # which is what stalled the 2026-08-01 run for hours (issue #201). Every
+    # other CLI in the pipeline already reads this env var; this one did not.
+    github_token = args.github_token or os.getenv("GITHUB_TOKEN")
+    if not github_token:
+        logger.warning(
+            "no GitHub token (--github-token / GITHUB_TOKEN); the data.nemar.org "
+            "fallback will use the 60 req/hr anonymous pool and can stall on "
+            "long PyGithub backoffs"
+        )
+
     # Load the catalog once so each dataset can be seeded with its own
     # NEMAR-minted DOI as an additional opencite anchor. The catalog cache
     # is shared with the discover step in the same workflow run, so this
@@ -212,6 +225,7 @@ def run_opencite_backend(args: argparse.Namespace) -> None:
             catalog_doi=catalog_dois.get(dataset_id),
             use_checkpoint=True,
             local_metadata_dir=args.datasets_dir,
+            github_token=github_token,
         )
         # Content-idempotent write. The opencite payload never carries the
         # confidence_scoring block (the separate score step adds it), so we
@@ -291,6 +305,11 @@ def main():
         "--dataset-list-file",
         required=True,
         help="Path to the file containing the list of dataset IDs (one per line).",
+    )
+    parser.add_argument(
+        "--github-token",
+        type=str,
+        help="GitHub token for API access (uses environment variable GITHUB_TOKEN if not provided)",
     )
     parser.add_argument(
         "--output-dir",
