@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+from dataclasses import dataclass
 from typing import Any
 
 import httpx
@@ -21,6 +22,29 @@ from opencite.config import Config
 from opencite.exceptions import OpenCiteError
 
 logger = logging.getLogger(__name__)
+
+
+@dataclass(frozen=True, slots=True)
+class AccessionSearchResult:
+    """Citations found for a dataset's accession terms, plus what failed.
+
+    `failed_terms` exists because a per-term failure is NOT fatal here (a
+    rate-limited or timed-out term is logged and skipped), so an empty
+    `citations` list is ambiguous on its own: it means either "genuinely no
+    papers mention this accession" or "we never got an answer". The freshness
+    gate in `cli/find_mentions.py` must tell those apart, since recording a
+    degraded search as a completed one would hide the dataset for a full
+    `--max-age-days` window with no citation coverage and no error.
+    """
+
+    citations: list[dict[str, Any]]
+    failed_terms: list[str]
+
+    @property
+    def degraded(self) -> bool:
+        """True if any term failed, so this dataset was not fully searched."""
+        return bool(self.failed_terms)
+
 
 # Safety bound on cursor pagination per term (50 * 100 = 5000 works). Accession
 # searches return far fewer, but this caps a pathological term and pairs with
@@ -159,23 +183,29 @@ class AccessionSearchBackend:
         self._config = config or Config.from_env()
         self._max_results = max_results
 
-    def search(self, terms: list[str]) -> list[dict[str, Any]]:
-        """Return deduped citation dicts mentioning any of `terms`.
+    def search(self, terms: list[str]) -> AccessionSearchResult:
+        """Return citations mentioning any of `terms`, plus the terms that failed.
 
-        Output is sorted by a stable key and truncated to `max_results` AFTER
-        the sort, so the kept subset is identical across runs even when a term
-        has more hits than the cap (content-idempotent writes depend on this).
-        Per-term failures are logged and skipped, never fatal.
+        Citations are sorted by a stable key and truncated to `max_results`
+        AFTER the sort, so the kept subset is identical across runs even when a
+        term has more hits than the cap (content-idempotent writes depend on
+        this). Per-term failures are logged and skipped rather than raised, so
+        one dead term still yields the others' hits; the failures are reported
+        in `failed_terms` so the caller can tell a complete search from a
+        degraded one.
         """
         if not terms:
-            return []
-        deduped = asyncio.run(self._search_all(terms))
+            return AccessionSearchResult(citations=[], failed_terms=[])
+        deduped, failed = asyncio.run(self._search_all(terms))
         if self._max_results and len(deduped) > self._max_results:
-            return deduped[: self._max_results]
-        return deduped
+            deduped = deduped[: self._max_results]
+        return AccessionSearchResult(citations=deduped, failed_terms=failed)
 
-    async def _search_all(self, terms: list[str]) -> list[dict[str, Any]]:
+    async def _search_all(
+        self, terms: list[str]
+    ) -> tuple[list[dict[str, Any]], list[str]]:
         hit_lists: list[list[dict[str, Any]]] = []
+        failed: list[str] = []
         async with OpenAlexClient(self._config) as client:
             assert isinstance(client, OpenAlexClient), (  # noqa: S101 - upstream contract guard
                 "opencite changed OpenAlexClient.__aenter__ return type; "
@@ -186,4 +216,5 @@ class AccessionSearchBackend:
                     hit_lists.append(await _search_term(client, term))
                 except (TimeoutError, OpenCiteError, httpx.HTTPError, OSError) as e:
                     logger.warning("accession search failed for %s: %s", term, e)
-        return dedup_citations(hit_lists)
+                    failed.append(term)
+        return dedup_citations(hit_lists), failed

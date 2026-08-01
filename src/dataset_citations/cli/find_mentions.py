@@ -91,10 +91,12 @@ def run_find_mentions(args: argparse.Namespace) -> None:
     total_candidates = len(dataset_ids)
 
     # Rolling freshness gate (issue #197). A full pass over the corpus costs far
-    # more OpenAlex requests than the daily credit budget allows, and an
-    # exhausted budget makes opencite sleep on a 24h Retry-After while holding
-    # the cron's flock. Refreshing only the stale slice each night keeps a run
-    # inside one day's budget and still covers everything every --max-age-days.
+    # more OpenAlex requests than the daily credit budget allows (measured
+    # 2026-07-03: ~2.6 requests per dataset, so ~1,979 for a 750-dataset corpus
+    # against a ~1,000-request daily budget), and an exhausted budget makes
+    # opencite sleep on a 24h Retry-After while holding the cron's flock.
+    # Refreshing only the stale slice each night keeps a run inside one day's
+    # budget and still covers everything every --max-age-days.
     state_path = os.path.join(json_dir, _MENTION_STATE_FILENAME)
     mention_state = load_state(state_path)
     max_age_seconds = args.max_age_days * 86400 if args.max_age_days > 0 else None
@@ -109,8 +111,9 @@ def run_find_mentions(args: argparse.Namespace) -> None:
         dataset_ids = stale
 
     # Stalest first so a --max-datasets truncation always advances the oldest
-    # entries; without it the same alphabetical head would be re-searched every
-    # night and the tail would never refresh.
+    # entries; without it the same head of the list (alphabetical for the
+    # default directory glob) would be re-searched every night and the tail
+    # would never refresh.
     dataset_ids = stalest_first(dataset_ids, mention_state)
 
     deferred = 0
@@ -134,6 +137,7 @@ def run_find_mentions(args: argparse.Namespace) -> None:
     no_terms = 0
     missing = 0
     write_failures = 0
+    degraded = 0
     total_mentions = 0
     try:
         for dataset_id in dataset_ids:
@@ -144,10 +148,11 @@ def run_find_mentions(args: argparse.Namespace) -> None:
             terms = accession_search_terms(dataset_id, source_ids.get(dataset_id))
             if not terms:
                 no_terms += 1
-                # Stamped even though no request was made: nothing about this
-                # dataset will change until the catalog gives it an accession,
-                # so leaving it unstamped would let it occupy a --max-datasets
-                # slot every night and starve datasets that need searching.
+                # Stamped even though no request was made: the id itself does
+                # not match the ds/on/nm + 6-digit accession pattern, so no
+                # search is possible until the id changes. Leaving it unstamped
+                # would let it occupy a --max-datasets slot every night and
+                # starve datasets that can actually be searched.
                 stamp_checked(mention_state, dataset_id)
                 continue
             try:
@@ -157,9 +162,9 @@ def run_find_mentions(args: argparse.Namespace) -> None:
                 logger.warning("%s: could not read (%s); skipping", dataset_id, e)
                 continue
             processed += 1
-            mentions = backend.search(terms)
-            total_mentions += len(mentions)
-            merged = merge_accession_mentions(citation_json, mentions, terms)
+            result = backend.search(terms)
+            total_mentions += len(result.citations)
+            merged = merge_accession_mentions(citation_json, result.citations, terms)
             try:
                 if write_citation_json_if_changed(filepath, merged):
                     updated += 1
@@ -167,29 +172,49 @@ def run_find_mentions(args: argparse.Namespace) -> None:
                 logger.error("Failed to write %s: %s", filepath, e)
                 write_failures += 1
                 continue
-            # Only after the search AND the write succeeded. A dataset whose
-            # search raised (rate limit, network) never reaches here, so it
-            # stays stale and is retried first on the next run.
+            if result.degraded:
+                # A rate-limited or timed-out term is logged and skipped inside
+                # the backend rather than raised, so an empty result does not
+                # imply "no papers mention this accession". Stamping here would
+                # hide the dataset for a full --max-age-days window on the
+                # strength of a search that never actually ran, which is a
+                # silent loss of citation coverage. Leave it stale so
+                # stalest-first retries it tomorrow.
+                degraded += 1
+                logger.warning(
+                    "%s: search degraded (%d/%d term(s) failed: %s); not marking "
+                    "checked, will retry next run",
+                    dataset_id,
+                    len(result.failed_terms),
+                    len(terms),
+                    ",".join(result.failed_terms),
+                )
+                continue
             stamp_checked(mention_state, dataset_id)
             logger.info(
-                "%s: %d mention(s) for %s", dataset_id, len(mentions), ",".join(terms)
+                "%s: %d mention(s) for %s",
+                dataset_id,
+                len(result.citations),
+                ",".join(terms),
             )
     finally:
-        # In a `finally` because the common failure here is the OpenAlex budget
-        # running out mid-loop and the exception propagating. Without this the
-        # whole run's progress would be discarded and the next run would redo
-        # every dataset, which is the exact behaviour issue #197 removes.
+        # In a `finally` so an exception escaping the loop (opencite raising
+        # after its retries are exhausted, a KeyboardInterrupt) still keeps the
+        # datasets already completed. Without this the whole run's progress
+        # would be discarded and the next run would redo every dataset, which
+        # is the exact behaviour issue #197 removes.
         save_state(state_path, mention_state)
 
     logger.info(
         "accession-mention run complete: %d processed, %d updated, %d mentions found, "
-        "%d no-terms, %d missing-json, %d write failures.",
+        "%d no-terms, %d missing-json, %d write failures, %d degraded (will retry).",
         processed,
         updated,
         total_mentions,
         no_terms,
         missing,
         write_failures,
+        degraded,
     )
     if processed and write_failures == processed:
         raise SystemExit(2)

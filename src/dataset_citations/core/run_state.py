@@ -15,6 +15,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import tempfile
 from datetime import UTC, datetime, timedelta
 
 logger = logging.getLogger(__name__)
@@ -49,24 +50,58 @@ def load_state(path: str) -> dict[str, str]:
 
 
 def save_state(path: str, state: dict[str, str]) -> None:
-    """Persist the state cache. Best-effort: log and continue on failure.
+    """Atomically persist the state cache. Best-effort: log and continue.
+
+    Written to a temp file in the same directory and then `os.replace`d, which
+    is atomic on POSIX. A plain `open(path, "w")` truncates the existing cache
+    before writing, so a disk-full or a kill mid-write (this runs on a shared
+    GPU box where jobs do get OOM-killed) would leave a truncated file behind
+    and the NEXT run would parse it as corrupt, fall back to an empty cache,
+    and re-search the whole corpus. That is precisely the failure issue #197
+    exists to prevent, so the cache must never be left half-written.
 
     Logged at ERROR (not WARNING): a failed save means the next run starts from
     a cold cache and re-checks every dataset, and the same disk/permission
     condition likely failed the citation writes too, so it must be visible in
     the cron log.
     """
+    tmp_path = None
     try:
-        with open(path, "w", encoding="utf-8") as f:
+        directory = os.path.dirname(path) or "."
+        with tempfile.NamedTemporaryFile(
+            "w",
+            encoding="utf-8",
+            dir=directory,
+            prefix=f".{os.path.basename(path)}.",
+            suffix=".tmp",
+            delete=False,
+        ) as f:
+            tmp_path = f.name
             json.dump(state, f, indent=2, sort_keys=True)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp_path, path)
+        tmp_path = None
     except OSError as e:
         logger.error("Could not write state cache %s: %s", path, e)
+    finally:
+        if tmp_path is not None:
+            # The replace never happened, so the original cache is still
+            # intact; just clear the orphan rather than leaving it to
+            # accumulate in the citations directory every failed run.
+            try:
+                os.unlink(tmp_path)
+            except OSError as e:
+                logger.error("Could not remove temp state file %s: %s", tmp_path, e)
 
 
 def parse_checked_at(state: dict[str, str], dataset_id: str) -> datetime | None:
     """Return `dataset_id`'s last-checked time, or None if absent/unparseable.
 
-    Naive timestamps are read as UTC, matching what `stamp_checked` writes.
+    A naive timestamp (no UTC offset) is read as UTC. That is a defensive
+    fallback for hand-edited or legacy cache entries; `stamp_checked` itself
+    always writes an offset-aware UTC timestamp, so the normal write path never
+    produces one.
     """
     raw = state.get(dataset_id)
     if not isinstance(raw, str):

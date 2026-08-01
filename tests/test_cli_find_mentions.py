@@ -12,10 +12,11 @@ import json
 import os
 import stat
 import tempfile
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from unittest import TestCase
 
+from dataset_citations.backends.accession_search import AccessionSearchResult
 from dataset_citations.cli import find_mentions as cli
 
 
@@ -25,8 +26,8 @@ class _FakeBackend:
     def __init__(self, *args: object, **kwargs: object) -> None:
         pass
 
-    def search(self, terms: list[str]) -> list[dict]:
-        return []
+    def search(self, terms: list[str]) -> AccessionSearchResult:
+        return AccessionSearchResult(citations=[], failed_terms=[])
 
 
 def _args(
@@ -174,7 +175,7 @@ class FreshnessGateTests(TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             cdir = Path(tmp) / "json_opencite"
             _seed(cdir, "ds002718")
-            stale = (datetime.now(timezone.utc) - timedelta(days=30)).isoformat()
+            stale = (datetime.now(UTC) - timedelta(days=30)).isoformat()
             (cdir / ".mention_state.json").write_text(json.dumps({"ds002718": stale}))
             cli.run_find_mentions(_args(cdir, max_age_days=7))
             state = json.loads((cdir / ".mention_state.json").read_text())
@@ -217,11 +218,11 @@ class FreshnessGateTests(TestCase):
             def __init__(self, *args: object, **kwargs: object) -> None:
                 self.calls = 0
 
-            def search(self, terms: list[str]) -> list[dict]:
+            def search(self, terms: list[str]) -> AccessionSearchResult:
                 self.calls += 1
                 if self.calls > 1:
-                    raise RuntimeError("rate limited")
-                return []
+                    raise RuntimeError("connection reset")
+                return AccessionSearchResult(citations=[], failed_terms=[])
 
         with tempfile.TemporaryDirectory() as tmp:
             cdir = Path(tmp) / "json_opencite"
@@ -237,3 +238,120 @@ class FreshnessGateTests(TestCase):
 
             state = json.loads((cdir / ".mention_state.json").read_text())
             self.assertEqual(len(state), 1)  # the one that succeeded
+
+    def test_write_failure_does_not_stamp_and_retries_next_run(self) -> None:
+        """A dataset whose write failed must NOT be recorded as checked.
+
+        Regression guard for the silent-skip failure mode: if `stamp_checked`
+        ever moved above the write's try/except, a transient write error would
+        mark the dataset checked and drop it from citation coverage for a full
+        --max-age-days window with nothing in the cron log to show for it.
+        """
+        with tempfile.TemporaryDirectory() as tmp:
+            cdir = Path(tmp) / "json_opencite"
+            path = _seed(cdir, "ds002718")
+            _seed(cdir, "ds002719")
+            os.chmod(path, stat.S_IRUSR)  # read-only -> open('w') raises
+            try:
+                cli.run_find_mentions(_args(cdir, max_age_days=7))
+                state = json.loads((cdir / ".mention_state.json").read_text())
+                self.assertNotIn("ds002718", state)  # failed write -> unstamped
+                self.assertIn("ds002719", state)  # its neighbour still recorded
+            finally:
+                os.chmod(path, stat.S_IRWXU)
+
+            # Still stale, so the next run picks it up again.
+            cli.run_find_mentions(_args(cdir, max_age_days=7))
+            state = json.loads((cdir / ".mention_state.json").read_text())
+            self.assertIn("ds002718", state)
+
+    def test_unreadable_citation_json_does_not_stamp(self) -> None:
+        """A corrupt citation JSON must stay stale rather than be marked done."""
+        with tempfile.TemporaryDirectory() as tmp:
+            cdir = Path(tmp) / "json_opencite"
+            cdir.mkdir(parents=True)
+            (cdir / "ds002718_citations.json").write_text("{not valid json")
+            _seed(cdir, "ds002719")
+            cli.run_find_mentions(_args(cdir, max_age_days=7))
+            state = json.loads((cdir / ".mention_state.json").read_text())
+            self.assertNotIn("ds002718", state)
+            self.assertIn("ds002719", state)
+
+    def test_no_terms_dataset_is_stamped(self) -> None:
+        """Locks in the deliberate choice at find_mentions.py: a dataset with no
+        usable accession IS stamped, so it stops consuming a --max-datasets slot
+        every night even though no request was made for it.
+        """
+        with tempfile.TemporaryDirectory() as tmp:
+            cdir = Path(tmp) / "json_opencite"
+            _seed(cdir, "experiment-1")  # fails the accession regex
+            cli.run_find_mentions(_args(cdir, max_age_days=7))
+            state = json.loads((cdir / ".mention_state.json").read_text())
+            self.assertIn("experiment-1", state)
+
+            # And is therefore filtered out as fresh on the next run.
+            cli.run_find_mentions(_args(cdir, max_age_days=7))
+            self.assertEqual(
+                json.loads((cdir / ".mention_state.json").read_text()), state
+            )
+
+
+class DegradedSearchTests(TestCase):
+    """A rate-limited search must NOT be recorded as a completed one.
+
+    `AccessionSearchBackend` logs and skips a failed term rather than raising
+    (accession_search.py `_search_all`), so an empty result is ambiguous.
+    Stamping on a degraded search would hide the dataset for a full
+    --max-age-days window with no citation coverage and no error anywhere.
+    """
+
+    class _DegradedBackend:
+        def __init__(self, *args: object, **kwargs: object) -> None:
+            pass
+
+        def search(self, terms: list[str]) -> AccessionSearchResult:
+            # Every term failed: exactly what an exhausted OpenAlex budget
+            # produces once opencite's retries are used up.
+            return AccessionSearchResult(citations=[], failed_terms=list(terms))
+
+    def setUp(self) -> None:
+        self._orig = cli.AccessionSearchBackend
+        cli.AccessionSearchBackend = self._DegradedBackend  # type: ignore[misc]
+
+    def tearDown(self) -> None:
+        cli.AccessionSearchBackend = self._orig  # type: ignore[misc]
+
+    def test_degraded_search_is_not_stamped(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            cdir = Path(tmp) / "json_opencite"
+            _seed(cdir, "ds002718")
+            cli.run_find_mentions(_args(cdir, max_age_days=7))
+            state = json.loads((cdir / ".mention_state.json").read_text())
+            self.assertEqual(state, {})
+
+    def test_degraded_dataset_is_retried_next_run(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            cdir = Path(tmp) / "json_opencite"
+            _seed(cdir, "ds002718")
+            cli.run_find_mentions(_args(cdir, max_age_days=7))
+            # Backend recovers; the dataset is still stale so it gets searched.
+            cli.AccessionSearchBackend = _FakeBackend  # type: ignore[misc]
+            cli.run_find_mentions(_args(cdir, max_age_days=7))
+            state = json.loads((cdir / ".mention_state.json").read_text())
+            self.assertIn("ds002718", state)
+
+    def test_partial_term_failure_also_withholds_the_stamp(self) -> None:
+        class _PartialBackend:
+            def __init__(self, *args: object, **kwargs: object) -> None:
+                pass
+
+            def search(self, terms: list[str]) -> AccessionSearchResult:
+                return AccessionSearchResult(citations=[], failed_terms=terms[:1])
+
+        cli.AccessionSearchBackend = _PartialBackend  # type: ignore[misc]
+        with tempfile.TemporaryDirectory() as tmp:
+            cdir = Path(tmp) / "json_opencite"
+            _seed(cdir, "ds002718")
+            cli.run_find_mentions(_args(cdir, max_age_days=7))
+            state = json.loads((cdir / ".mention_state.json").read_text())
+            self.assertNotIn("ds002718", state)

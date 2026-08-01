@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Tests for the shared freshness-state cache (issue #197).
 
 Real temp files and real clock arithmetic; no mocks. These cover the gate that
@@ -8,7 +7,7 @@ and cold-start cases matter as much as the round-trip.
 
 import json
 import tempfile
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from unittest import TestCase
 
@@ -23,7 +22,7 @@ from dataset_citations.core.run_state import (
 
 
 def _ago(**kwargs) -> str:
-    return (datetime.now(timezone.utc) - timedelta(**kwargs)).isoformat()
+    return (datetime.now(UTC) - timedelta(**kwargs)).isoformat()
 
 
 class StateRoundTripTests(TestCase):
@@ -76,7 +75,7 @@ class FreshnessTests(TestCase):
         self.assertFalse(checked_within("ds1", {"ds1": 42}, 7 * 86400))  # type: ignore[dict-item]
 
     def test_naive_timestamp_read_as_utc(self) -> None:
-        naive = datetime.now(timezone.utc).replace(tzinfo=None).isoformat()
+        naive = datetime.now(UTC).replace(tzinfo=None).isoformat()
         self.assertTrue(checked_within("ds1", {"ds1": naive}, 7 * 86400))
 
     def test_stamp_then_fresh(self) -> None:
