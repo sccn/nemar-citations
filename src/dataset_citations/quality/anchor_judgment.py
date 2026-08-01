@@ -338,7 +338,7 @@ def load_judgment_sidecar(path: str | Path) -> dict[str, Any]:
 def is_judgment_fresh(payload: dict[str, Any], *, max_age_days: int) -> bool:
     """Return True iff the sidecar's `judged_at` is within `max_age_days`.
 
-    Mirrors the freshness semantics from `cli/update.py::_checked_within`
+    Mirrors the freshness semantics from `core/run_state.py::checked_within`
     (which currently uses `<=`; issue #80 tracks the off-by-one fix). We
     keep `<=` here so phase-2 freshness behaves identically to the existing
     citation freshness gate; once #80 lands, both gates should be updated

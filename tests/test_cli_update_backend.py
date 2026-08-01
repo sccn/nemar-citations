@@ -236,7 +236,7 @@ class RunOpenciteBackendTests(TestCase):
 class FreshnessGateTests(TestCase):
     """Direct tests for the decoupled freshness helpers (issue #165).
 
-    `_has_stable_status` reads the on-disk JSON; `_checked_within` reads the
+    `_has_stable_status` reads the on-disk JSON; `checked_within` reads the
     fetch-state cache. Together they gate a re-fetch. Pure functions, real
     fixtures on disk, no stubs.
     """
@@ -310,51 +310,49 @@ class FreshnessGateTests(TestCase):
     def test_checked_within_true_for_recent(self) -> None:
         from datetime import datetime
 
-        from dataset_citations.cli.update import _checked_within
+        from dataset_citations.core.run_state import checked_within
 
         state = {"ds1": datetime.now(UTC).isoformat()}
-        self.assertTrue(_checked_within("ds1", state, 7 * 86400))
+        self.assertTrue(checked_within("ds1", state, 7 * 86400))
 
     def test_checked_within_false_for_stale(self) -> None:
         from datetime import datetime, timedelta
 
-        from dataset_citations.cli.update import _checked_within
+        from dataset_citations.core.run_state import checked_within
 
         stale = (datetime.now(UTC) - timedelta(days=30)).isoformat()
-        self.assertFalse(_checked_within("ds1", {"ds1": stale}, 7 * 86400))
+        self.assertFalse(checked_within("ds1", {"ds1": stale}, 7 * 86400))
 
     def test_checked_within_false_for_missing_or_unparseable(self) -> None:
-        from dataset_citations.cli.update import _checked_within
+        from dataset_citations.core.run_state import checked_within
 
-        self.assertFalse(_checked_within("ds1", {}, 7 * 86400))
-        self.assertFalse(_checked_within("ds1", {"ds1": "not-a-date"}, 7 * 86400))
+        self.assertFalse(checked_within("ds1", {}, 7 * 86400))
+        self.assertFalse(checked_within("ds1", {"ds1": "not-a-date"}, 7 * 86400))
 
     def test_checked_within_treats_naive_timestamp_as_utc(self) -> None:
         from datetime import datetime
 
-        from dataset_citations.cli.update import _checked_within
+        from dataset_citations.core.run_state import checked_within
 
         naive_now = datetime.now(UTC).replace(tzinfo=None).isoformat()
-        self.assertTrue(_checked_within("ds1", {"ds1": naive_now}, 7 * 86400))
+        self.assertTrue(checked_within("ds1", {"ds1": naive_now}, 7 * 86400))
 
     def test_fetch_state_roundtrip(self) -> None:
-        from dataset_citations.cli.update import _load_fetch_state, _save_fetch_state
+        from dataset_citations.core.run_state import load_state, save_state
 
         with tempfile.TemporaryDirectory() as tmp:
             path = str(Path(tmp) / ".fetch_state.json")
-            self.assertEqual(_load_fetch_state(path), {})  # absent -> empty
-            _save_fetch_state(path, {"ds1": "2026-06-18T00:00:00+00:00"})
-            self.assertEqual(
-                _load_fetch_state(path), {"ds1": "2026-06-18T00:00:00+00:00"}
-            )
+            self.assertEqual(load_state(path), {})  # absent -> empty
+            save_state(path, {"ds1": "2026-06-18T00:00:00+00:00"})
+            self.assertEqual(load_state(path), {"ds1": "2026-06-18T00:00:00+00:00"})
 
     def test_load_fetch_state_returns_empty_on_corrupt_file(self) -> None:
-        from dataset_citations.cli.update import _load_fetch_state
+        from dataset_citations.core.run_state import load_state
 
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / ".fetch_state.json"
             path.write_text("not json at all")
-            self.assertEqual(_load_fetch_state(str(path)), {})
+            self.assertEqual(load_state(str(path)), {})
 
 
 class IdempotentWriteTests(TestCase):

@@ -163,10 +163,23 @@ uv run dataset-citations-prune-mirrored \
 #     merge into) and BEFORE score-confidence (which then ranks the merged
 #     citations; merge drops the stale confidence block when it adds new ones
 #     so --skip-existing re-scores). OpenAlex-only + idempotent writes, so it
-#     is cheap and non-churning. Guard with `|| exit 2` like the other steps.
+#     is non-churning on the git side (the request cost is a separate
+#     constraint, see the budget note below). Guard with `|| exit 2` like the
+#     other steps.
+#     Budget note (#197, measured 2026-07-03): OpenAlex bills ~10 credits per request against a
+#     daily allowance that resets at 00:00 UTC (10,000 credits/day with our
+#     API key, so ~1,000 requests). A full pass over the corpus is ~1,979
+#     requests (~2.6 per dataset, so it scales with the corpus), i.e. ~2
+#     days of budget, and an exhausted budget makes opencite
+#     sleep on a 24h Retry-After while still holding this script's flock. The
+#     7-day rolling window refreshes ~1/7 of the corpus per night (~280
+#     requests) and --max-datasets caps the cold-start pass so the first few
+#     nights stagger instead of blowing the budget.
 echo "--- find-mentions (openalex accession search) ---"
 uv run dataset-citations-find-mentions \
-  --citations-dir citations/json_opencite || {
+  --citations-dir citations/json_opencite \
+  --max-age-days 7 \
+  --max-datasets 250 || {
   echo "ERROR: dataset-citations-find-mentions failed; aborting before score." >&2
   exit 2
 }
