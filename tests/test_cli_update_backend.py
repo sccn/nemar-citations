@@ -26,6 +26,7 @@ def _make_args(
     *,
     catalog_doi_map: dict[str, str] | None = None,
     max_age_days: int = 0,
+    github_token: str | None = None,
 ) -> argparse.Namespace:
     """Build the argparse.Namespace `run_opencite_backend` expects.
 
@@ -63,6 +64,7 @@ def _make_args(
         catalog_cache=cache_path,
         catalog_cache_max_age=3600,
         max_age_days=max_age_days,
+        github_token=github_token,
     )
 
 
@@ -705,3 +707,66 @@ class CatalogDoiWiringTests(TestCase):
             # Both calls opt in to checkpoint resume.
             self.assertTrue(captured[0]["use_checkpoint"])
             self.assertTrue(captured[1]["use_checkpoint"])
+
+
+class GithubTokenPassthroughTests(TestCase):
+    """The update stage must authenticate its GitHub fallback (issue #201).
+
+    nm-*/on-* DOIs normally come from data.nemar.org; when that 5xxs the
+    pipeline falls back to GitHub. Unauthenticated that is 60 req/hr and a
+    single 403 makes PyGithub sleep ~56 minutes, which stalled the 2026-08-01
+    run for hours. These assert the token actually reaches the pipeline.
+    """
+
+    def _capture_token(self, monkey_env: dict[str, str], **arg_kw) -> list:
+        """Run the CLI against a recording substitute and return seen tokens."""
+        seen: list = []
+
+        def _recording_pipeline(dataset_id, **kwargs):
+            seen.append(kwargs.get("github_token"))
+            return {
+                "dataset_id": dataset_id,
+                "num_citations": 0,
+                "date_last_updated": "2026-01-01T00:00:00+00:00",
+                "metadata": {"fetch_status": "no_doi_references"},
+                "citation_details": [],
+            }
+
+        from dataset_citations.cli import update as cli_module
+
+        original = cli_module.fetch_dataset_citations_via_opencite
+        old_env = os.environ.get("GITHUB_TOKEN")
+        cli_module.fetch_dataset_citations_via_opencite = _recording_pipeline  # type: ignore[assignment]
+        try:
+            for k, v in monkey_env.items():
+                os.environ[k] = v
+            if "GITHUB_TOKEN" not in monkey_env:
+                os.environ.pop("GITHUB_TOKEN", None)
+            with tempfile.TemporaryDirectory() as out_dir:
+                list_file = Path(out_dir) / "ids.txt"
+                list_file.write_text("ds000117\n")
+                cli_module.run_opencite_backend(
+                    _make_args(list_file, out_dir, **arg_kw)
+                )
+        finally:
+            cli_module.fetch_dataset_citations_via_opencite = original  # type: ignore[assignment]
+            if old_env is None:
+                os.environ.pop("GITHUB_TOKEN", None)
+            else:
+                os.environ["GITHUB_TOKEN"] = old_env
+        return seen
+
+    def test_env_token_reaches_the_pipeline(self) -> None:
+        seen = self._capture_token({"GITHUB_TOKEN": "env-token-value"})
+        self.assertEqual(seen, ["env-token-value"])
+
+    def test_explicit_flag_wins_over_env(self) -> None:
+        seen = self._capture_token(
+            {"GITHUB_TOKEN": "env-token-value"},
+            github_token="flag-token-value",  # noqa: S106 - test fixture, not a secret
+        )
+        self.assertEqual(seen, ["flag-token-value"])
+
+    def test_absent_token_passes_none(self) -> None:
+        seen = self._capture_token({})
+        self.assertEqual(seen, [None])
