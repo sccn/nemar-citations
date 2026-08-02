@@ -1,6 +1,6 @@
 {
   "dataset_id": "on003498",
-  "num_citations": 100,
+  "num_citations": 101,
   "date_last_updated": "2026-08-01T15:43:28.367526+00:00",
   "metadata": {
     "total_cumulative_citations": 2886,
@@ -76,7 +76,14 @@
       "fast ripples"
     ],
     "methods_description": "iEEG recordings were obtained during slow-wave sleep. Electrode contacts evoking motor or language responses during electrical stimulation were excluded. In temporal lobe epilepsy patients, only the 3 most mesial bipolar channels were included. HFO events were detected and marked in the original study using morphology-based methods. Data conversion to BIDS format was performed using MNE-BIDS.",
-    "funding": []
+    "funding": [],
+    "searched_accessions": [
+      "on003498",
+      "ds003498"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 3,
+    "num_datapaper_citations": 98
   },
   "citation_details": [
     {
@@ -123,7 +130,9 @@
         "dataset_text_length": 2284,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
+      },
+      "mentions_accession": true,
+      "matched_accession": "ds003498"
     },
     {
       "title": "Persistent hippocampal neural firing and hippocampal-cortical coupling predict verbal working memory load",
@@ -1273,7 +1282,9 @@
         "dataset_text_length": 2284,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
+      },
+      "mentions_accession": true,
+      "matched_accession": "ds003498"
     },
     {
       "title": "A Neuromorphic Device for Detecting High-Frequency Oscillations in Human iEEG",
@@ -2378,22 +2389,47 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Matched Generators for the Karhunen--Loève Transform: A Double-Commutator Eigenvalue Theory",
+      "author": "Mitchell A. Thornton",
+      "venue": "arXiv (Cornell University)",
+      "year": 2026,
+      "url": "https://openalex.org/W7168328904",
+      "cited_by": 0,
+      "abstract": "The Karhunen--Loève transform (KLT) diagonalizes the covariance of a second-order process and is optimal for mean-square truncation. Which classical transform it reduces to is governed by the symmetry commutant of the covariance: when the kernel commutes with a group action, the KLT eigenfunctions are the irreducible representation functions of that group, recovering the Fourier, cosine, Mellin, and spherical-harmonic systems. We study the inverse question. Given a covariance $R$ and a finite-dimensional space of candidate generators, the generator nearest to commuting with $R$, the minimizer of $δ(A,R)=\\|[R,A]\\|_F/(\\|R\\|_F\\|A\\|_F)$, is the smallest-eigenvalue solution of a double-commutator eigenvalue problem $\\mathrm{ad}_R^2(A^\\ast)=λA^\\ast$, a Hermitian generalized eigenvalue problem of size the number of generators, independent of dimension. The framework recovers hidden transforms as well as classical ones: a variational characterization turns the existence of a commuting generator into a spectral condition, and a tridiagonal commutant-uniqueness result yields the prolate spheroidal, cosine, and discrete orthogonal-polynomial bases as exact recoveries, with matrix-valued extensions, and produces a continuum of transforms interpolating between and beyond the classical families. When symmetry is approximate, the coding penalty of the symmetry-adapted blockwise transform equals the multi-information among the sectors, an exact threshold between the fixed and data-driven transforms. We further give a graph-automorphism characterization of permutation structure, a sequential deflation for non-Abelian symmetry, and stability bounds under estimation error. As an application, the KLT of a two-paradigm covariance is synthesized from its two known generators, without forming the mixed covariance, reaching the full-data transform's compaction from few observations.",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": "W7168328904",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003498",
+      "confidence_scoring": {
+        "confidence_score": 0.27448685958981517,
+        "similarity_score": 0.23765096068382263,
+        "citation_text_length": 1676,
+        "dataset_text_length": 2284,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T16:48:13.548223+00:00",
+    "scoring_date": "2026-08-02T10:12:11.866453+00:00",
     "dataset_text_length": 2284,
-    "num_citations_scored": 100,
+    "num_citations_scored": 101,
     "summary_stats": {
-      "mean_confidence": 0.5815545020878315,
-      "median_confidence": 0.5855730384588242,
-      "std_confidence": 0.10457598124959736,
-      "min_confidence": 0.3244073957204819,
+      "mean_confidence": 0.5785142283997324,
+      "median_confidence": 0.584580022096634,
+      "std_confidence": 0.10840748909257117,
+      "min_confidence": 0.27448685958981517,
       "max_confidence": 0.773319030404091,
       "high_confidence_count": 12,
       "medium_confidence_count": 83,
-      "low_confidence_count": 5
+      "low_confidence_count": 6
     }
   }
 }

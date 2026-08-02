@@ -1,33 +1,87 @@
 {
   "dataset_id": "nm000187",
   "num_citations": 0,
-  "date_last_updated": "2026-08-01T15:25:33.250772+00:00",
+  "date_last_updated": "2026-08-02T10:02:04.852963+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-01T15:25:33.250772+00:00",
+    "fetch_date": "2026-08-02T10:02:04.852963+00:00",
     "processing_version": "1.0",
-    "fetch_status": "other",
-    "anchor_count": 0,
+    "fetch_status": "success",
+    "anchor_count": 2,
     "anchor_errors": {},
     "schema_version": "2.1",
     "discovery_backend": "opencite",
-    "anchor_judgment_model": null,
-    "anchors": [],
-    "searched_dois": [],
-    "keywords": [],
-    "methods_description": null,
-    "funding": [],
-    "searched_accessions": [
-      "nm000187"
+    "anchor_judgment_model": "gemma4:31b",
+    "anchors": [
+      {
+        "identifier": "10.13026/0byy-ry86",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "bigP3BCI: An Open, Diverse and Machine Learning Ready P300-based Brain-Computer Interface Dataset",
+        "paper_year": 2024,
+        "paper_venue": "PhysioNet",
+        "reason": "The paper 'bigP3BCI' describes the curation of a diverse P300-based BCI dataset including ALS patients, matching the dataset's authors and DOI (10.13026/0byy-ry86).",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "methodology",
+        "kept": false,
+        "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
+        "paper_year": 2019,
+        "paper_venue": "The Journal of Open Source Software",
+        "reason": "The paper describes MNE-BIDS, a tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset (BIDS Version 1.9.0).",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "methodology",
+        "kept": false,
+        "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
+        "paper_year": 2019,
+        "paper_venue": "Scientific Data",
+        "reason": "The paper describes the EEG-BIDS standard, which is the data organization standard used by this dataset (BIDS Version 1.9.0).",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000187",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
     ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 0
+    "searched_dois": [
+      "10.13026/0byy-ry86",
+      "10.82901/nemar.nm000187"
+    ],
+    "keywords": [
+      "E1A-Associated p300 Protein",
+      "Brain-Computer Interfaces",
+      "EEG",
+      "Event-Related Potentials, P300",
+      "Amyotrophic Lateral Sclerosis",
+      "Visual Perception",
+      "speller paradigm"
+    ],
+    "methods_description": "EEG data were acquired using a g.USBamp amplifier (g.tec) with 16 channels in a standard 10-20 montage at a sampling rate of 256 Hz with 60 Hz line frequency notch filtering. Participants performed a visual P300 speller task with 9x8 character grids. Each trial consisted of a 1.0 second epoch following stimulus presentation, with events labeled as Target or NonTarget. Data were processed using the MOABB (Mother of All BCI Benchmarks) framework version 1.5.0.",
+    "funding": []
   },
   "citation_details": [],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T16:33:26.197645+00:00",
+    "scoring_date": "2026-08-02T10:09:04.356642+00:00",
     "dataset_text_length": 2339,
     "num_citations_scored": 0
   }

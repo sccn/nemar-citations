@@ -1,33 +1,86 @@
 {
   "dataset_id": "nm000186",
   "num_citations": 0,
-  "date_last_updated": "2026-08-01T15:25:33.127057+00:00",
+  "date_last_updated": "2026-08-02T10:01:59.733781+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-01T15:25:33.127057+00:00",
+    "fetch_date": "2026-08-02T10:01:59.733781+00:00",
     "processing_version": "1.0",
-    "fetch_status": "other",
-    "anchor_count": 0,
+    "fetch_status": "success",
+    "anchor_count": 2,
     "anchor_errors": {},
     "schema_version": "2.1",
     "discovery_backend": "opencite",
-    "anchor_judgment_model": null,
-    "anchors": [],
-    "searched_dois": [],
-    "keywords": [],
-    "methods_description": null,
-    "funding": [],
-    "searched_accessions": [
-      "nm000186"
+    "anchor_judgment_model": "gemma4:31b",
+    "anchors": [
+      {
+        "identifier": "10.13026/0byy-ry86",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "bigP3BCI: An Open, Diverse and Machine Learning Ready P300-based Brain-Computer Interface Dataset",
+        "paper_year": 2024,
+        "paper_venue": "PhysioNet",
+        "reason": "The paper 'bigP3BCI' describes the curation and release of the P300-based BCI dataset, which matches the dataset's name and authors.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.21105/joss.01896",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "methodology",
+        "kept": false,
+        "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
+        "paper_year": 2019,
+        "paper_venue": "The Journal of Open Source Software",
+        "reason": "The paper describes MNE-BIDS, a software tool for organizing electrophysiological data into BIDS format, which is the format used by this dataset.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.1038/s41597-019-0104-8",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": "methodology",
+        "kept": false,
+        "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
+        "paper_year": 2019,
+        "paper_venue": "Scientific Data",
+        "reason": "The paper describes EEG-BIDS, a data structure standard for EEG data, which is cited in the dataset's BIDS version metadata.",
+        "judgment_model": "gemma4:31b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000186",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      }
     ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 0
+    "searched_dois": [
+      "10.13026/0byy-ry86",
+      "10.82901/nemar.nm000186"
+    ],
+    "keywords": [
+      "E1A-Associated p300 Protein",
+      "EEG",
+      "brain-computer interface",
+      "Event-Related Potentials, P300",
+      "Visual Perception",
+      "speller paradigm"
+    ],
+    "methods_description": "EEG data were acquired at 256 Hz sampling rate using 16 channels arranged in a standard 10-20 montage with g.USBamp hardware (g.tec). Subjects performed a P300 speller task with a 6x6 checkerboard visual stimulus paradigm in a laboratory setting with online feedback. Trial intervals were 0-1.0 seconds, with Target and NonTarget event classes. Data were processed using HED 8.4.0 event annotations and feature extraction focused on P300 ERP detection.",
+    "funding": []
   },
   "citation_details": [],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T16:33:21.792495+00:00",
+    "scoring_date": "2026-08-02T10:08:59.500583+00:00",
     "dataset_text_length": 2315,
     "num_citations_scored": 0
   }
