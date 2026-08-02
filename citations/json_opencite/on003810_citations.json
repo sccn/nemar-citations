@@ -1,6 +1,6 @@
 {
   "dataset_id": "on003810",
-  "num_citations": 68,
+  "num_citations": 69,
   "date_last_updated": "2026-08-01T15:47:04.601639+00:00",
   "metadata": {
     "total_cumulative_citations": 1797,
@@ -51,7 +51,14 @@
       "low-cost BCI"
     ],
     "methods_description": "EEG data were acquired using a low-cost consumer-grade device from 10 participants with no prior BCI experience. The protocol consisted of five runs: RUN0 involved real grasping movement for instruction and familiarization, while RUN1-RUN4 consisted of motor imagery (kinesthetic imagination of dominant-hand grasping) versus rest conditions. EMG signals from the dominant hand were recorded for protocol control. EEG signals were filtered with a 3rd-order Butterworth bandpass filter (0.5-45 Hz) during acquisition. Sampling rate was 125 Hz with 15 EEG channels using the 10-20 electrode placement scheme.",
-    "funding": []
+    "funding": [],
+    "searched_accessions": [
+      "on003810",
+      "ds003810"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 2,
+    "num_datapaper_citations": 67
   },
   "citation_details": [
     {
@@ -949,7 +956,9 @@
         "dataset_text_length": 1193,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
+      },
+      "mentions_accession": true,
+      "matched_accession": "ds003810"
     },
     {
       "title": "An Embedded EOG-based Brain Computer Interface System for Robotic Control",
@@ -1617,22 +1626,47 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Croissant Baker: Metadata Generation for Discoverable, Governable, and Reusable ML Datasets",
+      "author": "Rafi Al Attrach, Rajna Fani, Sebastian Lobentanzer, Joan Giner-Miguelez, Debanshu Das, Varuni H. K., Nobin Sarwar, Rajat Ghosh, Anwai Archit, Surbhi Motghare, Christina Conrad Parry, Luis Oala, Lara Grosso, Joaquin Vanschoren, Steffen Vogler, Sujata Goswami, Eric S. Rosenthal, Marzyeh Ghassemi, Matthew McDermott, Tom Pollard",
+      "venue": "arXiv (Cornell University)",
+      "year": 2026,
+      "url": "https://openalex.org/W7161452222",
+      "cited_by": 0,
+      "abstract": "Croissant has emerged as the metadata standard for machine learning datasets, providing a structured, JSON-LD-based format that makes dataset discovery, automated ingestion, and reproducible analysis machine-checkable across ML platforms. Adoption has accelerated, and NeurIPS now requires Croissant metadata in every submission to its dataset tracks. Yet in practice Croissant generation usually starts with uploading data to a public platform, a path infeasible for governed and large local repositories that hold much of the high-value data ML increasingly relies on. We release Croissant Baker, a local-first, open-source command-line tool that generates validated Croissant metadata directly from a dataset directory through a modular handler registry. We evaluate Croissant Baker on over 140 datasets, scaling to MIMIC-IV at 886 million rows and 374 Parquet files. On held-out comparisons against producer-authored or standards-derived ground truth, Croissant Baker reaches 97-100% agreement across multiple domains.",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": "W7161452222",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003810",
+      "confidence_scoring": {
+        "confidence_score": 0.38997965857386596,
+        "similarity_score": 0.3376447260379791,
+        "citation_text_length": 1504,
+        "dataset_text_length": 1193,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T16:51:07.613164+00:00",
+    "scoring_date": "2026-08-02T10:14:34.988426+00:00",
     "dataset_text_length": 1193,
-    "num_citations_scored": 68,
+    "num_citations_scored": 69,
     "summary_stats": {
-      "mean_confidence": 0.563864592581111,
-      "median_confidence": 0.5665560344606638,
-      "std_confidence": 0.1076626352425496,
+      "mean_confidence": 0.5613445210737595,
+      "median_confidence": 0.5643628616631031,
+      "std_confidence": 0.10888115404116211,
       "min_confidence": 0.30098091870546345,
       "max_confidence": 1.0,
       "high_confidence_count": 6,
       "medium_confidence_count": 60,
-      "low_confidence_count": 2
+      "low_confidence_count": 3
     }
   }
 }
