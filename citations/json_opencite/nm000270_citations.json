@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000270",
   "num_citations": 22,
-  "date_last_updated": "2026-08-01T15:35:06.514471+00:00",
+  "date_last_updated": "2026-08-09T10:17:39.119776+00:00",
   "metadata": {
-    "total_cumulative_citations": 12,
-    "fetch_date": "2026-08-01T15:35:06.514471+00:00",
+    "total_cumulative_citations": 13,
+    "fetch_date": "2026-08-09T10:17:39.119776+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -53,13 +53,7 @@
       "longitudinal"
     ],
     "methods_description": "Scalp EEG recordings were acquired during a lower-limb motor imagery task (task-imagery) using a multi-paradigm protocol with longitudinal training design in stroke patients undergoing rehabilitation. Data are organized in BIDS format with 27 participants.",
-    "funding": [],
-    "searched_accessions": [
-      "nm000270"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 22
+    "funding": []
   },
   "citation_details": [
     {
@@ -69,7 +63,7 @@
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2509.17920",
       "cited_by": 3,
-      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
+      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although EEG foundation models seek broader applicability, many still rely on predefined multi-channel inputs, electrode-layout assumptions, or model-specific channel handling. To address these limitations, we introduce the Single-Channel Large EEG Model (SingLEM), a self-supervised foundation model whose hybrid convolutional--Transformer encoder maps each channel independently to a reusable representation capturing local and long-range temporal structure. These representations can be used individually or concatenated through late fusion. We assembled 71 public EEG datasets comprising approximately 9,200 subjects and 357,000 single-channel hours. For leakage-controlled evaluation, downstream results were obtained with a model pretrained on 68 datasets after excluding the three source datasets underlying the six tasks. A model pretraine",
       "doi": "10.48550/arXiv.2509.17920",
       "pmid": null,
       "openalex_id": null,
@@ -77,8 +71,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6735961121320725,
-        "similarity_score": 0.5832000970840454,
+        "confidence_score": 0.6278249126672745,
+        "similarity_score": 0.5435713529586792,
         "citation_text_length": 1217,
         "dataset_text_length": 2526,
         "scoring_method": "sentence_transformers",
@@ -155,6 +149,29 @@
       }
     },
     {
+      "title": "EgoBrain: Synergizing Minds and Eyes For Human Action Understanding",
+      "author": "Nie Lin, Yansen Wang, Dongqi Han, Weibang Jiang, Jingyuan Li, Ryosuke Furuta, Yoichi Sato, Dongsheng Li",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2506.01353",
+      "cited_by": 2,
+      "abstract": "The integration of brain-computer interfaces (BCIs), in particular electroencephalography (EEG), with artificial intelligence (AI) has shown tremendous promise in decoding human cognition and behavior from neural signals. In particular, the rise of multimodal AI models have brought new possibilities that have never been imagined before. Here, we present EgoBrain --the world's first large-scale, temporally aligned multimodal dataset that synchronizes egocentric vision and EEG of human brain over extended periods of time, establishing a new paradigm for human-centered behavior analysis. This dataset comprises 61 hours of synchronized 32-channel EEG recordings and first-person video from 40 participants engaged in 29 categories of daily activities. We then developed a muiltimodal learning framework to fuse EEG and vision for action understanding, validated across both cross-subject and cross-environment challenges, achieving an action recognition accuracy of 66.70%. EgoBrain paves the way",
+      "doi": "10.48550/arXiv.2506.01353",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-025-04618-4",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6186257869005204,
+        "similarity_score": 0.5356067419052124,
+        "citation_text_length": 1214,
+        "dataset_text_length": 2526,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A Study on the Classification Method of Motor Imagery EEG Signals Based on Band Filter Bank Common Space Pattern and Continuous Wavelet Transforms",
       "author": "Qixuan Cui, Xiaodan Zhang, Kemeng Xu, Shu‐Yi Wang",
       "venue": "2025 5th International Conference on Sensors and Information Technology",
@@ -195,29 +212,6 @@
         "confidence_score": 0.7035480013489724,
         "similarity_score": 0.6091324687004089,
         "citation_text_length": 1012,
-        "dataset_text_length": 2526,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "EgoBrain: Synergizing Minds and Eyes For Human Action Understanding",
-      "author": "Nie Lin, Yansen Wang, Dongqi Han, Weibang Jiang, Jingyuan Li, Ryosuke Furuta, Yoichi Sato, Dongsheng Li",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2506.01353",
-      "cited_by": 1,
-      "abstract": "The integration of brain-computer interfaces (BCIs), in particular electroencephalography (EEG), with artificial intelligence (AI) has shown tremendous promise in decoding human cognition and behavior from neural signals. In particular, the rise of multimodal AI models have brought new possibilities that have never been imagined before. Here, we present EgoBrain --the world's first large-scale, temporally aligned multimodal dataset that synchronizes egocentric vision and EEG of human brain over extended periods of time, establishing a new paradigm for human-centered behavior analysis. This dataset comprises 61 hours of synchronized 32-channel EEG recordings and first-person video from 40 participants engaged in 29 categories of daily activities. We then developed a muiltimodal learning framework to fuse EEG and vision for action understanding, validated across both cross-subject and cross-environment challenges, achieving an action recognition accuracy of 66.70%. EgoBrain paves the way",
-      "doi": "10.48550/arXiv.2506.01353",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-025-04618-4",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6186257869005204,
-        "similarity_score": 0.5356067419052124,
-        "citation_text_length": 1214,
         "dataset_text_length": 2526,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -571,13 +565,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T16:41:09.910613+00:00",
+    "scoring_date": "2026-08-09T11:23:51.318478+00:00",
     "dataset_text_length": 2526,
     "num_citations_scored": 22,
     "summary_stats": {
-      "mean_confidence": 0.7452315443957395,
+      "mean_confidence": 0.7431510353291578,
       "median_confidence": 0.7293444018065931,
-      "std_confidence": 0.1145000388839701,
+      "std_confidence": 0.11618620449328523,
       "min_confidence": 0.5219198946654797,
       "max_confidence": 1.0,
       "high_confidence_count": 14,

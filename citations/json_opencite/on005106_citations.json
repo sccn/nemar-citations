@@ -1,10 +1,10 @@
 {
   "dataset_id": "on005106",
   "num_citations": 8,
-  "date_last_updated": "2026-08-01T16:03:01.021389+00:00",
+  "date_last_updated": "2026-08-09T10:44:16.244478+00:00",
   "metadata": {
-    "total_cumulative_citations": 52,
-    "fetch_date": "2026-08-01T16:03:01.021389+00:00",
+    "total_cumulative_citations": 56,
+    "fetch_date": "2026-08-09T10:44:16.244478+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -64,14 +64,7 @@
       "rapid visual presentation"
     ],
     "methods_description": "EEG data were collected while infants viewed 200 object images presented in rapid visual streams. Stimulus presentation was controlled using PsychoPy (version 2023.3.1). Data preprocessing, epoching, and analysis were performed using MATLAB-based toolboxes (FieldTrip and CoSMoMVPA), including representational similarity analysis (RSA) to examine neural representations of object categories.",
-    "funding": [],
-    "searched_accessions": [
-      "on005106",
-      "ds005106"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 8
+    "funding": []
   },
   "citation_details": [
     {
@@ -103,7 +96,7 @@
       "venue": "Communications Biology",
       "year": 2025,
       "url": "https://doi.org/10.1038/s42003-025-08464-3",
-      "cited_by": 43,
+      "cited_by": 46,
       "abstract": "Electroencephalography (EEG) preprocessing varies widely between studies, but its impact on classification performance remains poorly understood. To address this gap, we analyzed seven experiments with 40 participants drawn from the public ERP CORE dataset. We systematically varied key preprocessing steps, such as filtering, referencing, baseline interval, detrending, and multiple artifact correction steps, all of which were implemented in MNE-Python. Then we performed trial-wise binary classification (i.e., decoding) using neural networks (EEGNet), or time-resolved logistic regressions. Our findings demonstrate that preprocessing choices influenced decoding performance considerably. All artifact correction steps reduced decoding performance across experiments and models, while higher high-pass filter cutoffs consistently increased decoding performance. For EEGNet, baseline correction further increased decoding performance, and for time-resolved classifiers, linear detrending, and lowe",
       "doi": "10.1038/s42003-025-08464-3",
       "pmid": "40640472",
@@ -126,7 +119,7 @@
       "venue": "Developmental Cognitive Neuroscience",
       "year": 2026,
       "url": "https://doi.org/10.1016/j.dcn.2026.101680",
-      "cited_by": 4,
+      "cited_by": 5,
       "abstract": "Artificial intelligence (AI) is increasingly being integrated into everyday tasks and work environments. However, its adoption in medical image analysis has progressed more slowly due to high clinical stakes, limited availability of labeled data, and substantial variability in imaging protocols and population. These challenges are further pronounced in the field of fetal, infant, and toddler (FIT) neuroimaging, where datasets are especially scarce and subject to large amounts of anatomical variability. However, deep learning (DL), a specific method within machine learning, which is itself a subfield of AI, has emerged as a powerful framework to adapt to the challenges of medical image analysis. This review is written for the broad FIT research community, including clinicians, neuroscientists, and develop mental scientists who may not have formal training in AI. To make the material accessible, we provide a concise overview of DL concepts before reviewing a selected, and non-exhaustive,",
       "doi": "10.1016/j.dcn.2026.101680",
       "pmid": "41604954",
@@ -150,7 +143,7 @@
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2509.17920",
       "cited_by": 3,
-      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
+      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although EEG foundation models seek broader applicability, many still rely on predefined multi-channel inputs, electrode-layout assumptions, or model-specific channel handling. To address these limitations, we introduce the Single-Channel Large EEG Model (SingLEM), a self-supervised foundation model whose hybrid convolutional--Transformer encoder maps each channel independently to a reusable representation capturing local and long-range temporal structure. These representations can be used individually or concatenated through late fusion. We assembled 71 public EEG datasets comprising approximately 9,200 subjects and 357,000 single-channel hours. For leakage-controlled evaluation, downstream results were obtained with a model pretrained on 68 datasets after excluding the three source datasets underlying the six tasks. A model pretraine",
       "doi": "10.48550/arXiv.2509.17920",
       "pmid": null,
       "openalex_id": null,
@@ -158,8 +151,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5854720616340638,
-        "similarity_score": 0.5069022178649902,
+        "confidence_score": 0.565769779086113,
+        "similarity_score": 0.4898439645767212,
         "citation_text_length": 1217,
         "dataset_text_length": 1305,
         "scoring_method": "sentence_transformers",
@@ -261,13 +254,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T17:04:59.147171+00:00",
+    "scoring_date": "2026-08-09T11:51:56.703029+00:00",
     "dataset_text_length": 1305,
     "num_citations_scored": 8,
     "summary_stats": {
-      "mean_confidence": 0.6114510648138822,
-      "median_confidence": 0.5932663352787495,
-      "std_confidence": 0.14498543736505626,
+      "mean_confidence": 0.6089882794953884,
+      "median_confidence": 0.5919364535808564,
+      "std_confidence": 0.14557196036274395,
       "min_confidence": 0.4456092967092991,
       "max_confidence": 0.9487569826841356,
       "high_confidence_count": 1,

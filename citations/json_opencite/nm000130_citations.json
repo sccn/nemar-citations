@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000130",
   "num_citations": 32,
-  "date_last_updated": "2026-08-01T15:20:25.946605+00:00",
+  "date_last_updated": "2026-08-09T10:02:58.390951+00:00",
   "metadata": {
-    "total_cumulative_citations": 270,
-    "fetch_date": "2026-08-01T15:20:25.946605+00:00",
+    "total_cumulative_citations": 272,
+    "fetch_date": "2026-08-09T10:02:58.390951+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -107,13 +107,7 @@
         "award_number": "XDB32040200",
         "award_title": "Strategic Priority Research Program"
       }
-    ],
-    "searched_accessions": [
-      "nm000130"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 32
+    ]
   },
   "citation_details": [
     {
@@ -283,7 +277,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2024,
       "url": "https://doi.org/10.1109/tnsre.2024.3520984",
-      "cited_by": 10,
+      "cited_by": 11,
       "abstract": "Amyotrophic lateral sclerosis (ALS) is a chronic, progressive neurodegenerative disease that mainly causes damage to upper and lower motor neurons. This leads to a progressive deterioration in the voluntary mobility of the upper and lower extremities in ALS patients, which underscores the pressing need for an assistance system to facilitate communication and body movement without relying on neuromuscular function. In this paper, we developed a daily assistance system for ALS patients based on a wearable multimodal brain-computer interface (BCI) mouse. The system comprises two subsystems: a mouse system assisting the upper extremity and a wheelchair system based on the mouse system assisting the lower extremity. By wearing a BCI headband, ALS patients can control a computer cursor on the screen with slight head rotation and eye blinking, and further operate a computer and drive a wheelchair with specially designed graphical user interfaces (GUIs). We designed operating tasks that simula",
       "doi": "10.1109/tnsre.2024.3520984",
       "pmid": "40030617",
@@ -537,7 +531,7 @@
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2509.17920",
       "cited_by": 3,
-      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
+      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although EEG foundation models seek broader applicability, many still rely on predefined multi-channel inputs, electrode-layout assumptions, or model-specific channel handling. To address these limitations, we introduce the Single-Channel Large EEG Model (SingLEM), a self-supervised foundation model whose hybrid convolutional--Transformer encoder maps each channel independently to a reusable representation capturing local and long-range temporal structure. These representations can be used individually or concatenated through late fusion. We assembled 71 public EEG datasets comprising approximately 9,200 subjects and 357,000 single-channel hours. For leakage-controlled evaluation, downstream results were obtained with a model pretrained on 68 datasets after excluding the three source datasets underlying the six tasks. A model pretraine",
       "doi": "10.48550/arXiv.2509.17920",
       "pmid": null,
       "openalex_id": null,
@@ -545,8 +539,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.603983629345894,
-        "similarity_score": 0.5229295492172241,
+        "confidence_score": 0.5773771834373475,
+        "similarity_score": 0.4998936653137207,
         "citation_text_length": 1217,
         "dataset_text_length": 2310,
         "scoring_method": "sentence_transformers",
@@ -640,6 +634,29 @@
         "confidence_score": 0.3202385419607163,
         "similarity_score": 0.277262806892395,
         "citation_text_length": 1267,
+        "dataset_text_length": 2310,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "CSCLN-DDTE: Cross subject contrastive learning network with domain diversity and templates enhancement for SSVEP-BCI frequency recognition",
+      "author": "Xinjie He, Ren Xu, Andrew Ty Lau, Xiao Wu, Yixin Chen, Weijie Chen, Xingyu Wang, Andrzej Cichocki, Jing Jin",
+      "venue": "Knowledge-Based Systems",
+      "year": 2025,
+      "url": "https://doi.org/10.1016/j.knosys.2025.114929",
+      "cited_by": 1,
+      "abstract": null,
+      "doi": "10.1016/j.knosys.2025.114929",
+      "pmid": null,
+      "openalex_id": "W4416422059",
+      "source_doi": "10.1038/s41597-022-01372-9",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6006263136863709,
+        "similarity_score": 0.5720250606536865,
+        "citation_text_length": 295,
         "dataset_text_length": 2310,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -761,29 +778,6 @@
       }
     },
     {
-      "title": "CSCLN-DDTE: Cross subject contrastive learning network with domain diversity and templates enhancement for SSVEP-BCI frequency recognition",
-      "author": "Xinjie He, Ren Xu, Andrew Ty Lau, Xiao Wu, Yixin Chen, Weijie Chen, Xingyu Wang, Andrzej Cichocki, Jing Jin",
-      "venue": "Knowledge-Based Systems",
-      "year": 2025,
-      "url": "https://doi.org/10.1016/j.knosys.2025.114929",
-      "cited_by": 0,
-      "abstract": null,
-      "doi": "10.1016/j.knosys.2025.114929",
-      "pmid": null,
-      "openalex_id": "W4416422059",
-      "source_doi": "10.1038/s41597-022-01372-9",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6006263136863709,
-        "similarity_score": 0.5720250606536865,
-        "citation_text_length": 295,
-        "dataset_text_length": 2310,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Enhancing Individual Calibration Classification in SSVER-Based BCI With Exactly Periodic Component Analysis",
       "author": "Fulong Wang, Fuzhi Cao, Jianzhi Yang, Nan An, Miaowen Jiang, Shiqiang Zheng, Yaxiang Wang, Min Xiang, Chengpeng Chai, Yun-Hsuan Chen, Mohamad Sawan",
       "venue": "IEEE Transactions on Industrial Informatics",
@@ -855,13 +849,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T16:28:44.489683+00:00",
+    "scoring_date": "2026-08-09T11:09:27.891543+00:00",
     "dataset_text_length": 2310,
     "num_citations_scored": 32,
     "summary_stats": {
-      "mean_confidence": 0.6127032568771392,
-      "median_confidence": 0.602402384877205,
-      "std_confidence": 0.15492635278527192,
+      "mean_confidence": 0.6118718054424972,
+      "median_confidence": 0.6007237270474435,
+      "std_confidence": 0.1550422695174466,
       "min_confidence": 0.3024842168390751,
       "max_confidence": 1.0,
       "high_confidence_count": 8,

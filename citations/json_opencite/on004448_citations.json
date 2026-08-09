@@ -1,10 +1,10 @@
 {
   "dataset_id": "on004448",
   "num_citations": 9,
-  "date_last_updated": "2026-08-01T15:54:34.296500+00:00",
+  "date_last_updated": "2026-08-09T10:36:30.383529+00:00",
   "metadata": {
     "total_cumulative_citations": 45,
-    "fetch_date": "2026-08-01T15:54:34.296500+00:00",
+    "fetch_date": "2026-08-09T10:36:30.383529+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -51,14 +51,7 @@
       "scalp EEG"
     ],
     "methods_description": null,
-    "funding": [],
-    "searched_accessions": [
-      "on004448",
-      "ds004448"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 9
+    "funding": []
   },
   "citation_details": [
     {
@@ -137,7 +130,7 @@
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2509.17920",
       "cited_by": 3,
-      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
+      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although EEG foundation models seek broader applicability, many still rely on predefined multi-channel inputs, electrode-layout assumptions, or model-specific channel handling. To address these limitations, we introduce the Single-Channel Large EEG Model (SingLEM), a self-supervised foundation model whose hybrid convolutional--Transformer encoder maps each channel independently to a reusable representation capturing local and long-range temporal structure. These representations can be used individually or concatenated through late fusion. We assembled 71 public EEG datasets comprising approximately 9,200 subjects and 357,000 single-channel hours. For leakage-controlled evaluation, downstream results were obtained with a model pretrained on 68 datasets after excluding the three source datasets underlying the six tasks. A model pretraine",
       "doi": "10.48550/arXiv.2509.17920",
       "pmid": null,
       "openalex_id": null,
@@ -145,8 +138,8 @@
       "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6066657668352128,
-        "similarity_score": 0.5252517461776733,
+        "confidence_score": 0.5674945807456971,
+        "similarity_score": 0.49133729934692383,
         "citation_text_length": 1217,
         "dataset_text_length": 676,
         "scoring_method": "sentence_transformers",
@@ -271,13 +264,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T16:57:52.320319+00:00",
+    "scoring_date": "2026-08-09T11:43:31.850175+00:00",
     "dataset_text_length": 676,
     "num_citations_scored": 9,
     "summary_stats": {
-      "mean_confidence": 0.5277459403375785,
+      "mean_confidence": 0.5233935863276324,
       "median_confidence": 0.5038983196020127,
-      "std_confidence": 0.11761229546661393,
+      "std_confidence": 0.1153135806473235,
       "min_confidence": 0.30186720818281176,
       "max_confidence": 0.6882337260246278,
       "high_confidence_count": 0,

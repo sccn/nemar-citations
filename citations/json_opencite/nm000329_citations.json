@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000329",
   "num_citations": 13,
-  "date_last_updated": "2026-08-01T15:36:44.622375+00:00",
+  "date_last_updated": "2026-08-09T10:19:25.512097+00:00",
   "metadata": {
-    "total_cumulative_citations": 190,
-    "fetch_date": "2026-08-01T15:36:44.622375+00:00",
+    "total_cumulative_citations": 195,
+    "fetch_date": "2026-08-09T10:19:25.512097+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -84,13 +84,7 @@
         "funder_name": "BMBF",
         "award_number": "01IS18037A"
       }
-    ],
-    "searched_accessions": [
-      "nm000329"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 13
+    ]
   },
   "citation_details": [
     {
@@ -99,7 +93,7 @@
       "venue": "Scientific Data",
       "year": 2024,
       "url": "https://doi.org/10.1038/s41597-023-02787-8",
-      "cited_by": 73,
+      "cited_by": 74,
       "abstract": "The brain-computer interface (BCI) is a technology that involves direct communication with parts of the brain and has evolved rapidly in recent years; it has begun to be used in clinical practice, such as for patient rehabilitation. Patient electroencephalography (EEG) datasets are critical for algorithm optimization and clinical applications of BCIs but are rare at present. We collected data from 50 acute stroke patients with wireless portable saline EEG devices during the performance of two tasks: 1) imagining right-handed movements and 2) imagining left-handed movements. The dataset consists of four types of data: 1) the motor imagery instructions, 2) raw recording data, 3) pre-processed data after removing artefacts and other manipulations, and 4) patient characteristics. This is the first open dataset to address left- and right-handed motor imagery in acute stroke patients. We believe that the dataset will be very helpful for analysing brain activation and designing decoding metho",
       "doi": "10.1038/s41597-023-02787-8",
       "pmid": "38272904",
@@ -122,7 +116,7 @@
       "venue": "Neurocomputing",
       "year": 2024,
       "url": "https://doi.org/10.1016/j.neucom.2024.128577",
-      "cited_by": 48,
+      "cited_by": 51,
       "abstract": null,
       "doi": "10.1016/j.neucom.2024.128577",
       "pmid": null,
@@ -238,7 +232,7 @@
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2509.17920",
       "cited_by": 3,
-      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
+      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although EEG foundation models seek broader applicability, many still rely on predefined multi-channel inputs, electrode-layout assumptions, or model-specific channel handling. To address these limitations, we introduce the Single-Channel Large EEG Model (SingLEM), a self-supervised foundation model whose hybrid convolutional--Transformer encoder maps each channel independently to a reusable representation capturing local and long-range temporal structure. These representations can be used individually or concatenated through late fusion. We assembled 71 public EEG datasets comprising approximately 9,200 subjects and 357,000 single-channel hours. For leakage-controlled evaluation, downstream results were obtained with a model pretrained on 68 datasets after excluding the three source datasets underlying the six tasks. A model pretraine",
       "doi": "10.48550/arXiv.2509.17920",
       "pmid": null,
       "openalex_id": null,
@@ -246,8 +240,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5481542766094208,
-        "similarity_score": 0.4745924472808838,
+        "confidence_score": 0.48749797135591516,
+        "similarity_score": 0.42207616567611694,
         "citation_text_length": 1217,
         "dataset_text_length": 2344,
         "scoring_method": "sentence_transformers",
@@ -272,6 +266,29 @@
         "confidence_score": 0.5877406507730484,
         "similarity_score": 0.5597530007362366,
         "citation_text_length": 276,
+        "dataset_text_length": 2344,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A Multimodal fNIRS-EEG Dataset for Unilateral Limb Motor Imagery",
+      "author": "Lufeng Feng, Baomin Xu, Haoran Zhang, Bihai Lin, Zuxuan Deng, Sidi Tao, Chenyu Liu, Shifan Jia, Li Duan, Ziyu Jia",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2602.04299",
+      "cited_by": 1,
+      "abstract": "Unilateral limb motor imagery (MI) plays an important role in upper-limb motor rehabilitation and precise control of external devices, and places higher demands on spatial resolution. However, most existing public datasets focus on binary- or four-class left-right limb paradigms that mainly exploit coarse hemispheric lateralization, and there is still a lack of multimodal datasets that simultaneously record EEG and fNIRS for unilateral multi-directional MI. To address this gap, we constructed MIND, a public motor imagery fNIRS-EEG dataset based on a four-class directional MI paradigm of the right upper limb. The dataset includes 64-channel EEG recordings (1000 Hz) and 51-channel fNIRS recordings (47.62 Hz) from 30 participants (12 females, 18 males; aged 19.0-25.0 years). We analyse the spatiotemporal characteristics of EEG spectral power and hemodynamic responses, and validate the potential advantages of hybrid fNIRS-EEG BCIs in terms of classification accuracy. We expect that this da",
+      "doi": "10.48550/arXiv.2602.04299",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.3389/fnins.2020.566147",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.772304141521454,
+        "similarity_score": 0.6686615943908691,
+        "citation_text_length": 1221,
         "dataset_text_length": 2344,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -347,29 +364,6 @@
       }
     },
     {
-      "title": "A Multimodal fNIRS-EEG Dataset for Unilateral Limb Motor Imagery",
-      "author": "Lufeng Feng, Baomin Xu, Haoran Zhang, Bihai Lin, Zuxuan Deng, Sidi Tao, Chenyu Liu, Shifan Jia, Li Duan, Ziyu Jia",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2602.04299",
-      "cited_by": 0,
-      "abstract": "Unilateral limb motor imagery (MI) plays an important role in upper-limb motor rehabilitation and precise control of external devices, and places higher demands on spatial resolution. However, most existing public datasets focus on binary- or four-class left-right limb paradigms that mainly exploit coarse hemispheric lateralization, and there is still a lack of multimodal datasets that simultaneously record EEG and fNIRS for unilateral multi-directional MI. To address this gap, we constructed MIND, a public motor imagery fNIRS-EEG dataset based on a four-class directional MI paradigm of the right upper limb. The dataset includes 64-channel EEG recordings (1000 Hz) and 51-channel fNIRS recordings (47.62 Hz) from 30 participants (12 females, 18 males; aged 19.0-25.0 years). We analyse the spatiotemporal characteristics of EEG spectral power and hemodynamic responses, and validate the potential advantages of hybrid fNIRS-EEG BCIs in terms of classification accuracy. We expect that this da",
-      "doi": "10.48550/arXiv.2602.04299",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.3389/fnins.2020.566147",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.772304141521454,
-        "similarity_score": 0.6686615943908691,
-        "citation_text_length": 1221,
-        "dataset_text_length": 2344,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "An intertwined neural network model for EEG classification in brain-computer interfaces",
       "author": "A. Duggento, M. Lorenzo, S. Bargione, A. Conti, Vincenzo Catrambone, G. Valenza, N. Toschi",
       "venue": "ArXiv",
@@ -395,14 +389,14 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T16:42:29.454927+00:00",
+    "scoring_date": "2026-08-09T11:25:22.990353+00:00",
     "dataset_text_length": 2344,
     "num_citations_scored": 13,
     "summary_stats": {
-      "mean_confidence": 0.6405963673270667,
+      "mean_confidence": 0.6359304976921816,
       "median_confidence": 0.6195970416069031,
-      "std_confidence": 0.0934038122415057,
-      "min_confidence": 0.49143915072083477,
+      "std_confidence": 0.0992379045666164,
+      "min_confidence": 0.48749797135591516,
       "max_confidence": 0.8200678056478501,
       "high_confidence_count": 4,
       "medium_confidence_count": 9,

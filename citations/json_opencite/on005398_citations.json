@@ -1,10 +1,10 @@
 {
   "dataset_id": "on005398",
-  "num_citations": 11,
-  "date_last_updated": "2026-08-01T16:05:46.162501+00:00",
+  "num_citations": 14,
+  "date_last_updated": "2026-08-09T10:46:45.478781+00:00",
   "metadata": {
-    "total_cumulative_citations": 14,
-    "fetch_date": "2026-08-01T16:05:46.162501+00:00",
+    "total_cumulative_citations": 15,
+    "fetch_date": "2026-08-09T10:46:45.478781+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -75,7 +75,14 @@
         "funder_name": "National Institutes of Health",
         "award_number": "Not specified"
       }
-    ]
+    ],
+    "searched_accessions": [
+      "on005398",
+      "ds005398"
+    ],
+    "num_accession_mentions": 3,
+    "num_dataset_citations": 3,
+    "num_datapaper_citations": 11
   },
   "citation_details": [
     {
@@ -130,7 +137,7 @@
       "venue": "ArXiv",
       "year": 2026,
       "url": "https://doi.org/10.48550/arXiv.2602.16072",
-      "cited_by": 3,
+      "cited_by": 4,
       "abstract": "Epilepsy affects over 50 million people worldwide, and one-third of patients suffer drug-resistant seizures where surgery offers the best chance of seizure freedom. Accurate localization of the epileptogenic zone (EZ) relies on intracranial EEG (iEEG). Clinical workflows, however, remain constrained by labor-intensive manual review. At the same time, existing data-driven approaches are typically developed on single-center datasets that are inconsistent in format and metadata, lack standardized benchmarks, and rarely release pathological event annotations, creating barriers to reproducibility, cross-center validation, and clinical relevance. With extensive efforts to reconcile heterogeneous iEEG formats, metadata, and recordings across publicly available sources, we present $\\textbf{Omni-iEEG}$, a large-scale, pre-surgical iEEG resource comprising $\\textbf{302 patients}$ and $\\textbf{178 hours}$ of high-resolution recordings. The dataset includes harmonized clinical metadata such as sei",
       "doi": "10.48550/arXiv.2602.16072",
       "pmid": null,
@@ -330,20 +337,95 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Self-Supervised Data-Driven Approach Defines Pathological High-Frequency Oscillations in Human",
+      "author": "Yipeng Zhang, Atsuro Daida, Lawrence Liu, Naoto Kuroda, Yuanyi Ding, Shingo Oana, Sotaro Kanai, Tonmoy Monsoor, Chenda Duan, Shaun A. Hussain, Joe X Qiao, Noriko Salamon, Aria Fallah, Myung‐Shin Sim, Raman Sankar, Richard J. Staba, Jerome Engel, Eishi Asano, Vwani Roychowdhury, Hiroki Nariai",
+      "venue": "medRxiv",
+      "year": 2024,
+      "url": "https://doi.org/10.1101/2024.07.10.24310189",
+      "cited_by": 5,
+      "abstract": "Objective: Interictal high-frequency oscillations (HFOs) are a promising neurophysiological biomarker of the epileptogenic zone (EZ). However, objective criteria for distinguishing pathological from physiological HFOs remain elusive, hindering clinical application. We investigated whether the distinct mechanisms underlying pathological and physiological HFOs are encapsulated in their signal morphology in intracranial EEG (iEEG) recordings and whether this mechanism-driven distinction could be simulated by a deep generative model. Methods: In a retrospective cohort of 185 epilepsy patients who underwent iEEG monitoring, we analyzed 686,410 HFOs across 18,265 brain contacts. To learn morphological characteristics, each event was transformed into a time-frequency plot and input into a variational autoencoder. We characterized latent space clusters containing morphologically defined putative pathological HFOs (mpHFOs) using interpretability analysis, including latent space disentanglement and time-domain perturbation. Results: mpHFOs showed strong associations with expert-defined spikes and were predominantly located within the seizure onset zone (SOZ). Discovered novel pathological features included high power in the gamma (30-80 Hz) and ripple (>80 Hz) bands centered on the event. These characteristics were consistent across multiple variables, including institution, electrode type, and patient demographics. Predicting 12-month postoperative seizure outcomes using the resection ratio of mpHFOs outperformed unclassified HFOs (F1=0.72 vs. 0.68) and matched current clinical standards using SOZ resection (F1=0.74). Combining mpHFO data with demographic and SOZ resection status further improved prediction accuracy (F1=0.83). Interpretation: Our data-driven approach yielded a novel, explainable definition of pathological HFOs, which has the potential to further enhance the clinical use of HFOs for EZ delineation.",
+      "doi": "10.1101/2024.07.10.24310189",
+      "pmid": "39040207",
+      "openalex_id": "W4400520718",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005398",
+      "confidence_scoring": {
+        "confidence_score": 0.8291423249244692,
+        "similarity_score": 0.717872142791748,
+        "citation_text_length": 1932,
+        "dataset_text_length": 2531,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Self‐supervised data‐driven approach defines pathological high‐frequency oscillations in epilepsy",
+      "author": "Yipeng Zhang, Atsuro Daida, Lawrence Liu, Naoto Kuroda, Yuanyi Ding, Shingo Oana, Sotaro Kanai, Tonmoy Monsoor, Chenda Duan, Shaun A. Hussain, Joe X Qiao, Noriko Salamon, Aria Fallah, Myung‐Shin Sim, Raman Sankar, Richard J. Staba, Jerome Engel, Eishi Asano, Vwani Roychowdhury, Hiroki Nariai",
+      "venue": "Epilepsia",
+      "year": 2025,
+      "url": "https://doi.org/10.1111/epi.18545",
+      "cited_by": 9,
+      "abstract": "OBJECTIVE: Interictal high-frequency oscillations (HFOs) are a promising neurophysiological biomarker of the epileptogenic zone (EZ). However, objective criteria for distinguishing pathological from physiological HFOs remain elusive, hindering clinical application. We investigated whether the distinct mechanisms underlying pathological and physiological HFOs are encapsulated in their signal morphology in intracranial electroencephalographic (iEEG) recordings and whether this distinction could be captured by a deep generative model. METHODS: In a retrospective cohort of 185 epilepsy patients who underwent iEEG monitoring, we analyzed 686 410 HFOs across 18 265 brain contacts. To learn morphological characteristics, each event was transformed into a time-frequency plot and input into a variational autoencoder. We characterized latent space clusters containing morphologically defined putative pathological HFOs (mpHFOs) using interpretability analysis, including latent space disentanglement and time-domain perturbation. We built a predictive model to forecast postoperative seizure outcomes at 12 months based on the resection status of brain regions exhibiting mpHFOs. This model was compared to current clinical standards that evaluate outcomes based on the extent of seizure onset zone (SOZ) removal. RESULTS: mpHFOs showed strong associations with expert-defined spikes and were predominantly located within the SOZ. The interpretability analysis discovered novel pathological features, including high power in the gamma (30-80 Hz) and ripple (>80 Hz) bands centered on the event with spike-like activity. These characteristics were consistent across multiple variables, including institution, electrode type, patient demographics, and anatomical location. Predicting postoperative seizure outcomes using the resection ratio of mpHFOs outperformed unclassified HFOs (F1 = .72 vs. .68, p < .01) and matched current clinical standards using SOZ resection (F1 = .74, p = .76). Combining mpHFO data with demographic and SOZ resection status further improved prediction performance (F1 = .83, p < .01). SIGNIFICANCE: Our data-driven approach using the generative artificial intelligence model yielded a novel, explainable definition of pathological HFOs, which has the potential to further enhance the clinical use of HFOs for EZ delineation.",
+      "doi": "10.1111/epi.18545",
+      "pmid": "40650866",
+      "openalex_id": "W4412365719",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005398",
+      "confidence_scoring": {
+        "confidence_score": 0.8221008878946305,
+        "similarity_score": 0.7117756605148315,
+        "citation_text_length": 1937,
+        "dataset_text_length": 2531,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "頭蓋内脳波バイオマーカーによるてんかん手術支援のためのマルチタスク学習器の開発",
+      "author": "Nawara Mahmood Broti",
+      "venue": "Institutional Repositories DataBase (IRDB)",
+      "year": 2026,
+      "url": "https://openalex.org/W7162964593",
+      "cited_by": 0,
+      "abstract": "Diagram of the basic anatomical parts of human brain . . . . . . 2 Comparison of brain activity and EEG signals . . . . . . . . . . . 3 Schematic representation of overlapping cortical zones in epilepsy 4 CT scan images showing electrode placement in epilepsy evaluation 5 Methods for recording brain activity: EEG, SEEG, and ECoG . .6 Ictal and interictal iEEG signals . . . . . . . . . . . . . . . . . . .7 Example of an HFO event detected in the fast ripple band of iEEG 8 Illustrations of various types of IED waves . . . . . . . . . . . . .9 An example illustration of causal connectivity between brain regions 10 MRI brain scans of the left frontal cortex illustrating the FCD region 11 Schematic of the traditional surgical epilepsy patient journey . . .12 Overview of ML based classification methods of SOZ . . . . . . .13 Trends in performance across different ML and validation methods for SOZ localization . . . . . . . . . . . . . . . .",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": "W7162964593",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005398",
+      "confidence_scoring": {
+        "confidence_score": 0.7302572992444039,
+        "similarity_score": 0.6322574019432068,
+        "citation_text_length": 1088,
+        "dataset_text_length": 2531,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T17:07:38.258957+00:00",
+    "scoring_date": "2026-08-09T11:54:21.598936+00:00",
     "dataset_text_length": 2531,
-    "num_citations_scored": 11,
+    "num_citations_scored": 14,
     "summary_stats": {
-      "mean_confidence": 0.6536864227327435,
-      "median_confidence": 0.6615379214286804,
-      "std_confidence": 0.13004147866867677,
+      "mean_confidence": 0.6837179401516915,
+      "median_confidence": 0.7233883836865426,
+      "std_confidence": 0.13049451663311698,
       "min_confidence": 0.41212410628795626,
       "max_confidence": 0.8560752260684968,
-      "high_confidence_count": 5,
+      "high_confidence_count": 8,
       "medium_confidence_count": 6,
       "low_confidence_count": 0
     }

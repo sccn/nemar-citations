@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000250",
-  "num_citations": 37,
-  "date_last_updated": "2026-08-01T15:32:57.725488+00:00",
+  "num_citations": 38,
+  "date_last_updated": "2026-08-09T10:15:42.093812+00:00",
   "metadata": {
-    "total_cumulative_citations": 388,
-    "fetch_date": "2026-08-01T15:32:57.725488+00:00",
+    "total_cumulative_citations": 398,
+    "fetch_date": "2026-08-09T10:15:42.093812+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -71,13 +71,7 @@
         "award_number": "ERC-2016-STG-714567",
         "award_title": "BrainConquest"
       }
-    ],
-    "searched_accessions": [
-      "nm000250"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 37
+    ]
   },
   "citation_details": [
     {
@@ -86,7 +80,7 @@
       "venue": "IEEE Access",
       "year": 2023,
       "url": "https://doi.org/10.1109/access.2023.3329678",
-      "cited_by": 126,
+      "cited_by": 127,
       "abstract": "Brain-computer interfaces (BCIs) have undergone significant advancements in recent years. The integration of deep learning techniques, specifically transformers, has shown promising development in research and application domains. Transformers, which were originally designed for natural language processing, have now made notable inroads into BCIs, offering a unique self-attention mechanism that adeptly handles the temporal dynamics of brain signals. This comprehensive survey delves into the application of transformers in BCIs, providing readers with a lucid understanding of their foundational principles, inherent advantages, potential challenges, and diverse applications. In addition to discussing the benefits of transformers, we also address their limitations, such as computational overhead, interpretability concerns, and the data-intensive nature of these models, providing a well-rounded analysis. Furthermore, the paper sheds light on the myriad of BCI applications that have benefite",
       "doi": "10.1109/access.2023.3329678",
       "pmid": null,
@@ -109,7 +103,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2510.21585",
-      "cited_by": 64,
+      "cited_by": 66,
       "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
       "doi": "10.48550/arXiv.2510.21585",
       "pmid": null,
@@ -121,6 +115,29 @@
         "confidence_score": 0.6641345554590226,
         "similarity_score": 0.5750082731246948,
         "citation_text_length": 1270,
+        "dataset_text_length": 2450,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "TFTL: A Task-Free Transfer Learning Strategy for EEG-Based Cross-Subject and Cross-Dataset Motor Imagery BCI",
+      "author": "Yihan Wang, Jiaxing Wang, Weiqun Wang, Jianqiang Su, Chayut Bunterngchit, Zeng‐Guang Hou",
+      "venue": "IEEE Transactions on Biomedical Engineering",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/tbme.2024.3474049",
+      "cited_by": 23,
+      "abstract": "OBJECTIVE: Motor imagery-based brain-computer interfaces (MI-BCIs) have been playing an increasingly vital role in neural rehabilitation. However, the long-term task-based calibration required for enhanced model performance leads to an unfriendly user experience, while the inadequacy of EEG data hinders the performance of deep learning models. To address these challenges, a task-free transfer learning strategy (TFTL) for EEG-based cross-subject & cross-dataset MI-BCI is proposed for calibration time reduction and multi-center data co-modeling. METHODS: TFTL strategy consists of data alignment, shared feature extractor, and specific classifiers, in which the label predictor for MI tasks classification, as well as domain and dataset discriminator for inter-subject variability reduction are concurrently optimized for knowledge transfer from subjects across different datasets to the target subject. Moreover, only resting data of the target subject is used for subject-specific model constru",
+      "doi": "10.1109/tbme.2024.3474049",
+      "pmid": "39365711",
+      "openalex_id": "W4403123566",
+      "source_doi": "10.1038/s41597-023-02445-z",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.800217234492302,
+        "similarity_score": 0.6928287744522095,
+        "citation_text_length": 1278,
         "dataset_text_length": 2450,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -144,29 +161,6 @@
         "confidence_score": 0.6361473870277405,
         "similarity_score": 0.5507769584655762,
         "citation_text_length": 1245,
-        "dataset_text_length": 2450,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "TFTL: A Task-Free Transfer Learning Strategy for EEG-Based Cross-Subject and Cross-Dataset Motor Imagery BCI",
-      "author": "Yihan Wang, Jiaxing Wang, Weiqun Wang, Jianqiang Su, Chayut Bunterngchit, Zeng‐Guang Hou",
-      "venue": "IEEE Transactions on Biomedical Engineering",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/tbme.2024.3474049",
-      "cited_by": 22,
-      "abstract": "OBJECTIVE: Motor imagery-based brain-computer interfaces (MI-BCIs) have been playing an increasingly vital role in neural rehabilitation. However, the long-term task-based calibration required for enhanced model performance leads to an unfriendly user experience, while the inadequacy of EEG data hinders the performance of deep learning models. To address these challenges, a task-free transfer learning strategy (TFTL) for EEG-based cross-subject & cross-dataset MI-BCI is proposed for calibration time reduction and multi-center data co-modeling. METHODS: TFTL strategy consists of data alignment, shared feature extractor, and specific classifiers, in which the label predictor for MI tasks classification, as well as domain and dataset discriminator for inter-subject variability reduction are concurrently optimized for knowledge transfer from subjects across different datasets to the target subject. Moreover, only resting data of the target subject is used for subject-specific model constru",
-      "doi": "10.1109/tbme.2024.3474049",
-      "pmid": "39365711",
-      "openalex_id": "W4403123566",
-      "source_doi": "10.1038/s41597-023-02445-z",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.800217234492302,
-        "similarity_score": 0.6928287744522095,
-        "citation_text_length": 1278,
         "dataset_text_length": 2450,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -201,7 +195,7 @@
       "venue": "Brain-Computer Interfaces",
       "year": 2024,
       "url": "https://doi.org/10.1080/2326263x.2024.2345449",
-      "cited_by": 15,
+      "cited_by": 16,
       "abstract": "The utmost issue in Motor Imagery Brain-Computer Interfaces (MI-BCI) is the BCI poor performance known as 'BCI inefficiency'. Although past research has attempted to find a solution by investigating factors influencing users' MI-BCI performance, the issue persists. One of the factors that has been studied in relation to MI-BCI performance is gender. Research regarding the influence of gender on a user's ability to control MI-BCIs remains inconclusive, mainly due to the small sample size and unbalanced gender distribution in past studies. To address these issues and obtain reliable results, this study combined four MI-BCI datasets into one large dataset with 248 subjects and equal gender distribution. The datasets included EEG signals from healthy subjects from both gender groups who had executed a right- vs. left-hand motor imagery task following the Graz protocol. The analysis consisted of extracting the Mu Suppression Index from C3 and C4 electrodes and comparing the values between f",
       "doi": "10.1080/2326263x.2024.2345449",
       "pmid": "39355516",
@@ -293,11 +287,11 @@
       "venue": "Knowledge-Based Systems",
       "year": 2026,
       "url": "https://doi.org/10.1016/j.knosys.2026.115966",
-      "cited_by": 9,
+      "cited_by": 11,
       "abstract": "Brain-computer interfaces (BCIs) enable direct communication between the brain and external devices. Recent EEG foundation models aim to learn generalized representations across diverse BCI paradigms. However, these approaches overlook fundamental paradigm-specific neurophysiological distinctions, limiting their generalization ability. Importantly, in practical BCI deployments, the specific paradigm such as motor imagery (MI) for stroke rehabilitation or assistive robotics, is generally determined prior to data acquisition. This paper proposes MIRepNet, the first EEG foundation model tailored for the MI paradigm. MIRepNet comprises a high-quality EEG preprocessing pipeline incorporating a neurophysiologically-informed channel template, adaptable to EEG headsets with arbitrary electrode configurations. Furthermore, we introduce a hybrid pretraining strategy that combines self-supervised masked token reconstruction and supervised MI classification, facilitating rapid adaptation and accur",
       "doi": "10.1016/j.knosys.2026.115966",
       "pmid": null,
-      "openalex_id": "W7154894822",
+      "openalex_id": "W4417269708",
       "source_doi": "10.1038/s41597-023-02445-z",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
@@ -357,6 +351,29 @@
       }
     },
     {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2605.08495",
+      "cited_by": 6,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": "10.48550/arXiv.2605.08495",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02445-z",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6651952251791954,
+        "similarity_score": 0.5759266018867493,
+        "citation_text_length": 1326,
+        "dataset_text_length": 2450,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Fine-Tuning Strategies for Continual Online EEG Motor Imagery Decoding: Insights from a Large-Scale Longitudinal Study",
       "author": "Martin Wimpff, Bruno Aristimunha, Sylvain Chevallier, Bin Yang",
       "venue": "2025 47th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)",
@@ -397,29 +414,6 @@
         "confidence_score": 0.7311907464265824,
         "similarity_score": 0.6330655813217163,
         "citation_text_length": 856,
-        "dataset_text_length": 2450,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2605.08495",
-      "cited_by": 4,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": "10.48550/arXiv.2605.08495",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02445-z",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6651952251791954,
-        "similarity_score": 0.5759266018867493,
-        "citation_text_length": 1326,
         "dataset_text_length": 2450,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -478,7 +472,7 @@
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2509.17920",
       "cited_by": 3,
-      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
+      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although EEG foundation models seek broader applicability, many still rely on predefined multi-channel inputs, electrode-layout assumptions, or model-specific channel handling. To address these limitations, we introduce the Single-Channel Large EEG Model (SingLEM), a self-supervised foundation model whose hybrid convolutional--Transformer encoder maps each channel independently to a reusable representation capturing local and long-range temporal structure. These representations can be used individually or concatenated through late fusion. We assembled 71 public EEG datasets comprising approximately 9,200 subjects and 357,000 single-channel hours. For leakage-controlled evaluation, downstream results were obtained with a model pretrained on 68 datasets after excluding the three source datasets underlying the six tasks. A model pretraine",
       "doi": "10.48550/arXiv.2509.17920",
       "pmid": null,
       "openalex_id": null,
@@ -486,8 +480,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6548005655407906,
-        "similarity_score": 0.566926896572113,
+        "confidence_score": 0.5966385930776597,
+        "similarity_score": 0.5165702104568481,
         "citation_text_length": 1217,
         "dataset_text_length": 2450,
         "scoring_method": "sentence_transformers",
@@ -512,6 +506,29 @@
         "confidence_score": 0.5035840840637684,
         "similarity_score": 0.43600353598594666,
         "citation_text_length": 1281,
+        "dataset_text_length": 2450,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "EgoBrain: Synergizing Minds and Eyes For Human Action Understanding",
+      "author": "Nie Lin, Yansen Wang, Dongqi Han, Weibang Jiang, Jingyuan Li, Ryosuke Furuta, Yoichi Sato, Dongsheng Li",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2506.01353",
+      "cited_by": 2,
+      "abstract": "The integration of brain-computer interfaces (BCIs), in particular electroencephalography (EEG), with artificial intelligence (AI) has shown tremendous promise in decoding human cognition and behavior from neural signals. In particular, the rise of multimodal AI models have brought new possibilities that have never been imagined before. Here, we present EgoBrain --the world's first large-scale, temporally aligned multimodal dataset that synchronizes egocentric vision and EEG of human brain over extended periods of time, establishing a new paradigm for human-centered behavior analysis. This dataset comprises 61 hours of synchronized 32-channel EEG recordings and first-person video from 40 participants engaged in 29 categories of daily activities. We then developed a muiltimodal learning framework to fuse EEG and vision for action understanding, validated across both cross-subject and cross-environment challenges, achieving an action recognition accuracy of 66.70%. EgoBrain paves the way",
+      "doi": "10.48550/arXiv.2506.01353",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02445-z",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.627193068265915,
+        "similarity_score": 0.5430243015289307,
+        "citation_text_length": 1214,
         "dataset_text_length": 2450,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -604,29 +621,6 @@
         "confidence_score": 0.6828914120793342,
         "similarity_score": 0.5912479758262634,
         "citation_text_length": 1182,
-        "dataset_text_length": 2450,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "EgoBrain: Synergizing Minds and Eyes For Human Action Understanding",
-      "author": "Nie Lin, Yansen Wang, Dongqi Han, Weibang Jiang, Jingyuan Li, Ryosuke Furuta, Yoichi Sato, Dongsheng Li",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2506.01353",
-      "cited_by": 1,
-      "abstract": "The integration of brain-computer interfaces (BCIs), in particular electroencephalography (EEG), with artificial intelligence (AI) has shown tremendous promise in decoding human cognition and behavior from neural signals. In particular, the rise of multimodal AI models have brought new possibilities that have never been imagined before. Here, we present EgoBrain --the world's first large-scale, temporally aligned multimodal dataset that synchronizes egocentric vision and EEG of human brain over extended periods of time, establishing a new paradigm for human-centered behavior analysis. This dataset comprises 61 hours of synchronized 32-channel EEG recordings and first-person video from 40 participants engaged in 29 categories of daily activities. We then developed a muiltimodal learning framework to fuse EEG and vision for action understanding, validated across both cross-subject and cross-environment challenges, achieving an action recognition accuracy of 66.70%. EgoBrain paves the way",
-      "doi": "10.48550/arXiv.2506.01353",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02445-z",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.627193068265915,
-        "similarity_score": 0.5430243015289307,
-        "citation_text_length": 1214,
         "dataset_text_length": 2450,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -817,6 +811,29 @@
       }
     },
     {
+      "title": "STEAM: A Spatio-TEmporal Alignment Mixture-of-Experts Model with Hierarchical Pre-training for EEG Decoding",
+      "author": "Zhu Chen, Dingkun Liu, Yuheng Chen, Dongrui Wu",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "Brain-computer interfaces (BCIs) have been widely used in motor rehabilitation, disease diagnosis, and other neural engineering scenarios. However, conventional neural signal decoding algorithms often suffer from limited generalizability and high adaptation costs, motivating recent interest in BCI foundation models. Existing approaches still struggle to jointly achieve general transferability, accurate decoding, and efficient downstream adaptation. We present STEAM, a hierarchical transfer framework that reconciles general-purpose representation learning with paradigm-specific specialization in EEG foundation models. The framework is instantiated as a dual-branch spatio-temporal encoder in which a shared soft mixture-of-experts (SSMoE) module aligns the spatial and temporal branches, allowing complementary representations to exchange information through a compact set of soft slots. Across seven downstream datasets and fourteen evaluation settings, STEAM attains the best average rank am",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02445-z",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6492334091663361,
+        "similarity_score": 0.5621068477630615,
+        "citation_text_length": 1195,
+        "dataset_text_length": 2450,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Quantifying Event-Related (De)Synchronization Variability for Brain-Computer Interface: A Unified and Interpretable Framework",
       "author": "S. Kojima, F. Lotte",
       "venue": "n/a",
@@ -934,17 +951,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T16:39:23.369626+00:00",
+    "scoring_date": "2026-08-09T11:21:45.441857+00:00",
     "dataset_text_length": 2450,
-    "num_citations_scored": 37,
+    "num_citations_scored": 38,
     "summary_stats": {
-      "mean_confidence": 0.6587424116924004,
-      "median_confidence": 0.6548005655407906,
-      "std_confidence": 0.13216020175419013,
+      "mean_confidence": 0.6569615965611058,
+      "median_confidence": 0.6426903980970383,
+      "std_confidence": 0.13079363598044993,
       "min_confidence": 0.3276462256908417,
       "max_confidence": 1.0,
       "high_confidence_count": 13,
-      "medium_confidence_count": 23,
+      "medium_confidence_count": 24,
       "low_confidence_count": 1
     }
   }
