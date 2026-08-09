@@ -1,10 +1,10 @@
 {
   "dataset_id": "on005811",
-  "num_citations": 5,
-  "date_last_updated": "2026-08-01T16:09:51.259586+00:00",
+  "num_citations": 8,
+  "date_last_updated": "2026-08-09T10:50:50.996637+00:00",
   "metadata": {
     "total_cumulative_citations": 7,
-    "fetch_date": "2026-08-01T16:09:51.259586+00:00",
+    "fetch_date": "2026-08-09T10:50:50.996637+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -81,7 +81,14 @@
         "award_number": "2021ZD0200407",
         "award_title": "STI 2030-Major Projects"
       }
-    ]
+    ],
+    "searched_accessions": [
+      "on005811",
+      "ds005811"
+    ],
+    "num_accession_mentions": 3,
+    "num_dataset_citations": 3,
+    "num_datapaper_citations": 5
   },
   "citation_details": [
     {
@@ -114,7 +121,7 @@
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2509.17920",
       "cited_by": 3,
-      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
+      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although EEG foundation models seek broader applicability, many still rely on predefined multi-channel inputs, electrode-layout assumptions, or model-specific channel handling. To address these limitations, we introduce the Single-Channel Large EEG Model (SingLEM), a self-supervised foundation model whose hybrid convolutional--Transformer encoder maps each channel independently to a reusable representation capturing local and long-range temporal structure. These representations can be used individually or concatenated through late fusion. We assembled 71 public EEG datasets comprising approximately 9,200 subjects and 357,000 single-channel hours. For leakage-controlled evaluation, downstream results were obtained with a model pretrained on 68 datasets after excluding the three source datasets underlying the six tasks. A model pretraine",
       "doi": "10.48550/arXiv.2509.17920",
       "pmid": null,
       "openalex_id": null,
@@ -122,8 +129,8 @@
       "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5592882451415062,
-        "similarity_score": 0.48423224687576294,
+        "confidence_score": 0.5331525501608849,
+        "similarity_score": 0.46160393953323364,
         "citation_text_length": 1217,
         "dataset_text_length": 2203,
         "scoring_method": "sentence_transformers",
@@ -198,20 +205,95 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "A large-scale MEG and EEG dataset for object recognition in naturalistic scenes",
+      "author": "Guohao Zhang, Ming Zhou, Shuyi Zhen, Shaohua Tang, Zheng Li, Zonglei Zhen",
+      "venue": "Scientific Data",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41597-025-05174-7",
+      "cited_by": 1,
+      "abstract": "Neuroimaging with large-scale naturalistic stimuli is increasingly employed to elucidate neural mechanisms of object recognition in natural scenes. However, most existing large-scale neuroimaging datasets with naturalistic stimuli primarily rely on functional magnetic resonance imaging (fMRI), which provides high spatial resolution but is limited in capturing the temporal dynamics. To address this limitation, we extended our Natural Object Dataset-fMRI (NOD-fMRI) by collecting both magnetoencephalography (MEG) and electroencephalography (EEG) data from the same participants while viewing the same naturalistic stimuli. As a result, NOD contains fMRI, MEG, and EEG responses to 57,000 naturalistic images from 30 participants. This enables the examination of brain activity elicited by naturalistic stimuli with both high spatial resolution (via fMRI) and high temporal resolution (via MEG and EEG). Furthermore, the multimodal nature of NOD allows researchers to combine datasets from different modalities to achieve a more comprehensive view of object processing. We believe that the NOD dataset will serve as a valuable resource for advancing our understanding of the cognitive and neural mechanisms underlying object recognition.",
+      "doi": "10.1038/s41597-025-05174-7",
+      "pmid": "40410207",
+      "openalex_id": "W4410631980",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005811",
+      "confidence_scoring": {
+        "confidence_score": 1.0,
+        "similarity_score": 0.9340083599090576,
+        "citation_text_length": 1445,
+        "dataset_text_length": 2203,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "NOD-MEG",
+      "author": "Guohao Zhang, Ming Zhou, Shuyi Zhen, Shaohua Tang, Zheng Li, Zonglei Zhen",
+      "venue": "UC San Diego",
+      "year": 2026,
+      "url": "https://doi.org/10.82901/nemar.on005810.v1.0.0",
+      "cited_by": 0,
+      "abstract": "The Natural Object Dataset (NOD) integrates magnetoencephalography (MEG), electroencephalography (EEG), and functional magnetic resonance imaging (fMRI) data collected from the same subjects viewing naturalistic stimuli from ImageNet. This trimodal neuroimaging resource provides both high spatial resolution (fMRI) and high temporal resolution (MEG/EEG) for investigating object recognition mechanisms. The dataset encompasses diverse naturalistic stimuli and a broad subject pool, facilitating exploration of neural activation patterns across stimuli and subjects. The EEG component is available as a separate dataset (ds005811).",
+      "doi": "10.82901/nemar.on005810.v1.0.0",
+      "pmid": null,
+      "openalex_id": "W7166359357",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005811",
+      "confidence_scoring": {
+        "confidence_score": 1.0,
+        "similarity_score": 0.888829231262207,
+        "citation_text_length": 762,
+        "dataset_text_length": 2203,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "NOD-MEG",
+      "author": "G. Zhang, Ming Zhou, Shuyi Zhen, Shaohua Tang, Zheng Li, Zonglei Zhen",
+      "venue": "Open MIND",
+      "year": 2026,
+      "url": "https://openalex.org/W7166598608",
+      "cited_by": 0,
+      "abstract": "The Natural Object Dataset (NOD) integrates magnetoencephalography (MEG), electroencephalography (EEG), and functional magnetic resonance imaging (fMRI) data collected from the same subjects viewing naturalistic stimuli from ImageNet. This trimodal neuroimaging resource provides both high spatial resolution (fMRI) and high temporal resolution (MEG/EEG) for investigating object recognition mechanisms. The dataset encompasses diverse naturalistic stimuli and a broad subject pool, facilitating exploration of neural activation patterns across stimuli and subjects. The EEG component is available as a separate dataset (ds005811).",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": "W7166598608",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005811",
+      "confidence_scoring": {
+        "confidence_score": 1.0,
+        "similarity_score": 0.887119710445404,
+        "citation_text_length": 755,
+        "dataset_text_length": 2203,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T17:11:34.513479+00:00",
+    "scoring_date": "2026-08-09T11:57:07.128663+00:00",
     "dataset_text_length": 2203,
-    "num_citations_scored": 5,
+    "num_citations_scored": 8,
     "summary_stats": {
-      "mean_confidence": 0.5092116436064245,
-      "median_confidence": 0.5592882451415062,
-      "std_confidence": 0.17221374193745143,
+      "mean_confidence": 0.6899903153814375,
+      "median_confidence": 0.6565148341655731,
+      "std_confidence": 0.2755733959652265,
       "min_confidence": 0.19528246521949771,
-      "max_confidence": 0.6945043927431107,
-      "high_confidence_count": 0,
+      "max_confidence": 1.0,
+      "high_confidence_count": 3,
       "medium_confidence_count": 4,
       "low_confidence_count": 1
     }

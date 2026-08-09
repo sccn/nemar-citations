@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000311",
   "num_citations": 90,
-  "date_last_updated": "2026-08-01T15:36:11.160759+00:00",
+  "date_last_updated": "2026-08-09T10:18:51.262694+00:00",
   "metadata": {
-    "total_cumulative_citations": 1124,
-    "fetch_date": "2026-08-01T15:36:11.160759+00:00",
+    "total_cumulative_citations": 1139,
+    "fetch_date": "2026-08-09T10:18:51.262694+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -52,13 +52,7 @@
       "prosthetics"
     ],
     "methods_description": "EEG data were acquired using a 71-channel BrainAmp system (BrainProducts GmbH) with actiCap sensors at 1000 Hz sampling rate. Reference electrode at FCz, ground at Fpz, with online filters (highpass 0.016 Hz, lowpass 1000 Hz). Participants performed 11 motor imagery tasks with visual text cues in a synchronous, offline paradigm across 3 sessions with 550 trials per session (300 reaching, 150 grasping, 100 twisting movements).",
-    "funding": [],
-    "searched_accessions": [
-      "nm000311"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 90
+    "funding": []
   },
   "citation_details": [
     {
@@ -67,7 +61,7 @@
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2022,
       "url": "https://doi.org/10.1109/tbme.2022.3193277",
-      "cited_by": 121,
+      "cited_by": 122,
       "abstract": "OBJECT: Motor imagery (MI) is a mental process widely utilized as the experimental paradigm for brain-computer interfaces (BCIs) across a broad range of basic science and clinical studies. However, decoding intentions from MI remains challenging due to the inherent complexity of brain patterns relative to the small sample size available for machine learning. APPROACH: This paper proposes an end-to-end Filter-Bank Multiscale Convolutional Neural Network (FBMSNet) for MI classification. A filter bank is first employed to derive a multiview spectral representation of the EEG data. Mixed depthwise convolution is then applied to extract temporal features at multiple scales, followed by spatial filtering to mitigate volume conduction. Finally, with the joint supervision of cross-entropy and center loss, FBMSNet obtains features that maximize interclass dispersion and intraclass compactness. MAIN RESULTS: We compare FBMSNet with several state-of-the-art EEG decoding methods on two MI datasets",
       "doi": "10.1109/tbme.2022.3193277",
       "pmid": "35867371",
@@ -90,7 +84,7 @@
       "venue": "IEEE Transactions on Cybernetics",
       "year": 2021,
       "url": "https://doi.org/10.1109/tcyb.2021.3122969",
-      "cited_by": 113,
+      "cited_by": 114,
       "abstract": "Brain-computer interfaces (BCIs) have been widely employed to identify and estimate a user's intention to trigger a robotic device by decoding motor imagery (MI) from an electroencephalogram (EEG). However, developing a BCI system driven by MI related to natural hand-grasp tasks is challenging due to its high complexity. Although numerous BCI studies have successfully decoded large body parts, such as the movement intention of both hands, arms, or legs, research on MI decoding of high-level behaviors such as hand grasping is essential to further expand the versatility of MI-based BCIs. In this study, we propose NeuroGrasp, a dual-stage deep learning framework that decodes multiple hand grasping from EEG signals under the MI paradigm. The proposed method effectively uses an EEG and electromyography (EMG)-based learning, such that EEG-based inference at test phase becomes possible. The EMG guidance during model training allows BCIs to predict hand grasp types from EEG signals accurately.",
       "doi": "10.1109/tcyb.2021.3122969",
       "pmid": "34748509",
@@ -136,7 +130,7 @@
       "venue": "GigaScience",
       "year": 2020,
       "url": "https://doi.org/10.1093/gigascience/giaa098",
-      "cited_by": 78,
+      "cited_by": 79,
       "abstract": "BACKGROUND: Non-invasive brain-computer interfaces (BCIs) have been developed for realizing natural bi-directional interaction between users and external robotic systems. However, the communication between users and BCI systems through artificial matching is a critical issue. Recently, BCIs have been developed to adopt intuitive decoding, which is the key to solving several problems such as a small number of classes and manually matching BCI commands with device control. Unfortunately, the advances in this area have been slow owing to the lack of large and uniform datasets. This study provides a large intuitive dataset for 11 different upper extremity movement tasks obtained during multiple recording sessions. The dataset includes 60-channel electroencephalography, 7-channel electromyography, and 4-channel electro-oculography of 25 healthy participants collected over 3-day sessions for a total of 82,500 trials across all the participants. FINDINGS: We validated our dataset via neurophy",
       "doi": "10.1093/gigascience/giaa098",
       "pmid": "33034634",
@@ -159,7 +153,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2022,
       "url": "https://doi.org/10.3389/fnhum.2022.898300",
-      "cited_by": 67,
+      "cited_by": 68,
       "abstract": "The brain-computer interface (BCI) has been investigated as a form of communication tool between the brain and external devices. BCIs have been extended beyond communication and control over the years. The 2020 international BCI competition aimed to provide high-quality neuroscientific data for open access that could be used to evaluate the current degree of technical advances in BCI. Although there are a variety of remaining challenges for future BCI advances, we discuss some of more recent application directions: (i) few-shot EEG learning, (ii) micro-sleep detection (iii) imagined speech decoding, (iv) cross-session classification, and (v) EEG(+ear-EEG) detection in an ambulatory environment. Not only did scientists from the BCI field compete, but scholars with a broad variety of backgrounds and nationalities participated in the competition to address these challenges. Each dataset was prepared and separated into three data that were released to the competitors in the form of trainin",
       "doi": "10.3389/fnhum.2022.898300",
       "pmid": "35937679",
@@ -171,6 +165,29 @@
         "confidence_score": 0.5753478187322618,
         "similarity_score": 0.49813663959503174,
         "citation_text_length": 1312,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Deep learning in motor imagery EEG signal decoding: A Systematic Review",
+      "author": "Aurora Saibene, Hafez Ghaemi, Eda Dağdevır",
+      "venue": "Neurocomputing",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.neucom.2024.128577",
+      "cited_by": 51,
+      "abstract": null,
+      "doi": "10.1016/j.neucom.2024.128577",
+      "pmid": null,
+      "openalex_id": "W4402535853",
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5954649388790131,
+        "similarity_score": 0.5671094655990601,
+        "citation_text_length": 154,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -194,29 +211,6 @@
         "confidence_score": 0.6471858009696007,
         "similarity_score": 0.5603340268135071,
         "citation_text_length": 1304,
-        "dataset_text_length": 2351,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Deep learning in motor imagery EEG signal decoding: A Systematic Review",
-      "author": "Aurora Saibene, Hafez Ghaemi, Eda Dağdevır",
-      "venue": "Neurocomputing",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.neucom.2024.128577",
-      "cited_by": 48,
-      "abstract": null,
-      "doi": "10.1016/j.neucom.2024.128577",
-      "pmid": null,
-      "openalex_id": "W4402535853",
-      "source_doi": "10.1093/gigascience/giaa098",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5954649388790131,
-        "similarity_score": 0.5671094655990601,
-        "citation_text_length": 154,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -251,7 +245,7 @@
       "venue": "Wiley Interdisciplinary Reviews Data Mining and Knowledge Discovery",
       "year": 2025,
       "url": "https://doi.org/10.1002/widm.70002",
-      "cited_by": 44,
+      "cited_by": 46,
       "abstract": "ABSTRACT Mental and neurological disorders significantly impact global health. This systematic review examines the use of artificial intelligence (AI) techniques to automatically detect these conditions using electroencephalography (EEG) signals. Guided by Preferred Reporting Items for Systematic Reviews and Meta‐Analysis (PRISMA), we reviewed 74 carefully selected studies published between 2013 and August 2024 that used machine learning (ML), deep learning (DL), or both of these two methods to detect neurological and mental health disorders automatically using EEG signals. The most common and most prevalent neurological and mental health disorder types were sourced from major databases, including Scopus, Web of Science, Science Direct, PubMed, and IEEE Xplore. Epilepsy, depression, and Alzheimer's disease are the most studied conditions that meet our evaluation criteria, 32, 12, and 10 studies were identified on these topics, respectively. Conversely, the number of studies meeting our",
       "doi": "10.1002/widm.70002",
       "pmid": null,
@@ -320,7 +314,7 @@
       "venue": "Neurocomputing",
       "year": 2024,
       "url": "https://doi.org/10.1016/j.neucom.2024.128920",
-      "cited_by": 32,
+      "cited_by": 33,
       "abstract": null,
       "doi": "10.1016/j.neucom.2024.128920",
       "pmid": null,
@@ -430,6 +424,29 @@
       }
     },
     {
+      "title": "DTP-Net: Learning to Reconstruct EEG Signals in Time-Frequency Domain by Multi-Scale Feature Reuse",
+      "author": "Yan Pei, Jiahui Xu, Qianhao Chen, Chenhao Wang, Feng Yu, Lisan Zhang, Wei Luo",
+      "venue": "IEEE Journal of Biomedical and Health Informatics",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/jbhi.2024.3358917",
+      "cited_by": 22,
+      "abstract": "Electroencephalography (EEG) signals are prone to contamination by noise, such as ocular and muscle artifacts. Minimizing these artifacts is crucial for EEG-based downstream applications like disease diagnosis and brain-computer interface (BCI). This paper presents a new EEG denoising model, DTP-Net. It is a fully convolutional neural network comprising Densely-connected Temporal Pyramids (DTPs) placed between two learnable time-frequency transformations. In the time-frequency domain, DTPs facilitate efficient propagation of multi-scale features extracted from EEG signals of any length, leading to effective noise reduction. Comprehensive experiments on two public semi-simulated datasets demonstrate that the proposed DTP-Net consistently outperforms existing state-of-the-art methods on metrics including relative root mean square error (RRMSE) and signal-to-noise ratio improvement ( ∆SNR). Moreover, the proposed DTP-Net is applied to a BCI classification task, yielding an improvement of ",
+      "doi": "10.1109/jbhi.2024.3358917",
+      "pmid": "38277252",
+      "openalex_id": "W4391248794",
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5321909460425378,
+        "similarity_score": 0.460771381855011,
+        "citation_text_length": 1263,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "EMAHA-DB1: A New Upper Limb sEMG Dataset for Classification of Activities of Daily Living",
       "author": "Naveen Kumar Karnam, Anish C. Turlapaty, Shiv Ram Dubey, Balakrishna Gokaraju",
       "venue": "IEEE Transactions on Instrumentation and Measurement",
@@ -470,29 +487,6 @@
         "confidence_score": 0.6259720623493195,
         "similarity_score": 0.5961638689041138,
         "citation_text_length": 224,
-        "dataset_text_length": 2351,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "DTP-Net: Learning to Reconstruct EEG Signals in Time-Frequency Domain by Multi-Scale Feature Reuse",
-      "author": "Yan Pei, Jiahui Xu, Qianhao Chen, Chenhao Wang, Feng Yu, Lisan Zhang, Wei Luo",
-      "venue": "IEEE Journal of Biomedical and Health Informatics",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/jbhi.2024.3358917",
-      "cited_by": 20,
-      "abstract": "Electroencephalography (EEG) signals are prone to contamination by noise, such as ocular and muscle artifacts. Minimizing these artifacts is crucial for EEG-based downstream applications like disease diagnosis and brain-computer interface (BCI). This paper presents a new EEG denoising model, DTP-Net. It is a fully convolutional neural network comprising Densely-connected Temporal Pyramids (DTPs) placed between two learnable time-frequency transformations. In the time-frequency domain, DTPs facilitate efficient propagation of multi-scale features extracted from EEG signals of any length, leading to effective noise reduction. Comprehensive experiments on two public semi-simulated datasets demonstrate that the proposed DTP-Net consistently outperforms existing state-of-the-art methods on metrics including relative root mean square error (RRMSE) and signal-to-noise ratio improvement ( ∆SNR). Moreover, the proposed DTP-Net is applied to a BCI classification task, yielding an improvement of ",
-      "doi": "10.1109/jbhi.2024.3358917",
-      "pmid": "38277252",
-      "openalex_id": "W4391248794",
-      "source_doi": "10.1093/gigascience/giaa098",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5321909460425378,
-        "similarity_score": 0.460771381855011,
-        "citation_text_length": 1263,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -614,6 +608,52 @@
       }
     },
     {
+      "title": "Upper Limb Movement Recognition Utilising EEG and EMG Signals for Rehabilitative Robotics",
+      "author": "Zihao Wang, Ravi Suppiah",
+      "venue": "Lecture notes in networks and systems",
+      "year": 2023,
+      "url": "https://doi.org/10.1007/978-3-031-28076-4_49",
+      "cited_by": 8,
+      "abstract": "Upper limb movement classification, which maps input signals to the target activities, is a key building block in the control of rehabilitative robotics. Classifiers are trained for the rehabilitative system to comprehend the desires of the patient whose upper limbs do not function properly. Electromyography (EMG) signals and Electroencephalography (EEG) signals are used widely for upper limb movement classification. By analysing the classification results of the real-time EEG and EMG signals, the system can understand the intention of the user and predict the events that one would like to carry out. Accordingly, it will provide external help to the user. However, the noise in the real-time EEG and EMG data collection process contaminates the effectiveness of the data, which undermines classification performance. Moreover, not all patients process strong EMG signals due to muscle damage and neuromuscular disorder. To address these issues, this paper explores different feature extractio",
+      "doi": "10.1007/978-3-031-28076-4_49",
+      "pmid": null,
+      "openalex_id": "W4322152858",
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6732381954789162,
+        "similarity_score": 0.5828902125358582,
+        "citation_text_length": 1189,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "DMAE-EEG: A Pretraining Framework for EEG Spatiotemporal Representation Learning",
+      "author": "Yifan Zhang, Yang Yu, Hao Li, Anqi Wu, Xin Chen, Jinfang Liu, Ling‐Li Zeng, Dewen Hu",
+      "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/tnnls.2025.3581991",
+      "cited_by": 8,
+      "abstract": "Electroencephalography (EEG) plays a crucial role in neuroscience research and clinical practice, but it remains limited by nonuniform data, noise, and difficulty in labeling. To address these challenges, we develop a pretraining framework named DMAE-EEG, a denoising masked autoencoder for mining generalizable spatiotemporal representation from massive unlabeled EEG. First, we propose a novel brain region topological heterogeneity (BRTH) division method to partition the nonuniform data into fixed patches based on neuroscientific priors. Second, we design a denoised pseudo-label generator (DPLG), which utilizes a denoising reconstruction pretext task to enable the learning of generalizable representations from massive unlabeled EEG, suppressing the influence of noise and artifacts. Furthermore, we utilize an asymmetric autoencoder with self-attention as the backbone in the proposed DMAE-EEG, which captures long-range spatiotemporal dependencies and interactions from unlabeled EEG data a",
+      "doi": "10.1109/tnnls.2025.3581991",
+      "pmid": "40601454",
+      "openalex_id": "W4411948636",
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5088595166802408,
+        "similarity_score": 0.44057101011276245,
+        "citation_text_length": 1260,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Intuitive Visual Imagery Decoding for Drone Swarm Formation Control from EEG Signals",
       "author": "Sang‐Joon Kim, Byoung-Hee Kwon, Ji-Hoon Jeong",
       "venue": "2021 9th International Winter Conference on Brain-Computer Interface (BCI)",
@@ -631,29 +671,6 @@
         "confidence_score": 0.5406582668423653,
         "similarity_score": 0.4681023955345154,
         "citation_text_length": 1242,
-        "dataset_text_length": 2351,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Upper Limb Movement Recognition Utilising EEG and EMG Signals for Rehabilitative Robotics",
-      "author": "Zihao Wang, Ravi Suppiah",
-      "venue": "Lecture notes in networks and systems",
-      "year": 2023,
-      "url": "https://doi.org/10.1007/978-3-031-28076-4_49",
-      "cited_by": 7,
-      "abstract": "Upper limb movement classification, which maps input signals to the target activities, is a key building block in the control of rehabilitative robotics. Classifiers are trained for the rehabilitative system to comprehend the desires of the patient whose upper limbs do not function properly. Electromyography (EMG) signals and Electroencephalography (EEG) signals are used widely for upper limb movement classification. By analysing the classification results of the real-time EEG and EMG signals, the system can understand the intention of the user and predict the events that one would like to carry out. Accordingly, it will provide external help to the user. However, the noise in the real-time EEG and EMG data collection process contaminates the effectiveness of the data, which undermines classification performance. Moreover, not all patients process strong EMG signals due to muscle damage and neuromuscular disorder. To address these issues, this paper explores different feature extractio",
-      "doi": "10.1007/978-3-031-28076-4_49",
-      "pmid": null,
-      "openalex_id": "W4322152858",
-      "source_doi": "10.1093/gigascience/giaa098",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6732381954789162,
-        "similarity_score": 0.5828902125358582,
-        "citation_text_length": 1189,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -729,29 +746,6 @@
       }
     },
     {
-      "title": "DMAE-EEG: A Pretraining Framework for EEG Spatiotemporal Representation Learning",
-      "author": "Yifan Zhang, Yang Yu, Hao Li, Anqi Wu, Xin Chen, Jinfang Liu, Ling‐Li Zeng, Dewen Hu",
-      "venue": "IEEE Transactions on Neural Networks and Learning Systems",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/tnnls.2025.3581991",
-      "cited_by": 7,
-      "abstract": "Electroencephalography (EEG) plays a crucial role in neuroscience research and clinical practice, but it remains limited by nonuniform data, noise, and difficulty in labeling. To address these challenges, we develop a pretraining framework named DMAE-EEG, a denoising masked autoencoder for mining generalizable spatiotemporal representation from massive unlabeled EEG. First, we propose a novel brain region topological heterogeneity (BRTH) division method to partition the nonuniform data into fixed patches based on neuroscientific priors. Second, we design a denoised pseudo-label generator (DPLG), which utilizes a denoising reconstruction pretext task to enable the learning of generalizable representations from massive unlabeled EEG, suppressing the influence of noise and artifacts. Furthermore, we utilize an asymmetric autoencoder with self-attention as the backbone in the proposed DMAE-EEG, which captures long-range spatiotemporal dependencies and interactions from unlabeled EEG data a",
-      "doi": "10.1109/tnnls.2025.3581991",
-      "pmid": "40601454",
-      "openalex_id": "W4411948636",
-      "source_doi": "10.1093/gigascience/giaa098",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5088595166802408,
-        "similarity_score": 0.44057101011276245,
-        "citation_text_length": 1260,
-        "dataset_text_length": 2351,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Classification of Tactile Perception and Attention on Natural Textures from EEG Signals",
       "author": "Myoung-Ki Kim, Jeong-Hyun Cho, Ji-Hoon Jeong",
       "venue": "arXiv (Cornell University)",
@@ -775,6 +769,29 @@
       }
     },
     {
+      "title": "An investigation of multimodal EMG-EEG fusion strategies for upper-limb gesture classification",
+      "author": "Michael Pritchard, Felipe Campelo, Harry Goldingay",
+      "venue": "Journal of Neural Engineering",
+      "year": 2025,
+      "url": "https://doi.org/10.1088/1741-2552/ade1f9",
+      "cited_by": 6,
+      "abstract": "Abstract Objective . Upper-limb gesture identification is an important problem in the advancement of robotic prostheses. Prevailing research into classifying electromyographic (EMG) muscular data or electroencephalographic (EEG) brain data for this purpose is often limited in methodological rigour, the extent to which generalisation is demonstrated, and the granularity of gestures classified. This work evaluates three architectures for multimodal fusion of EMG &amp; EEG data in gesture classification, including a novel Hierarchical strategy, in both subject-specific and subject-independent settings. Approach . We propose an unbiased methodology for designing classifiers centred on Automated Machine Learning through Combined Algorithm Selection &amp; Hyperparameter Optimisation (CASH); the first application of this technique to the biosignal domain. Using CASH, we introduce an end-to-end pipeline for data handling, algorithm development, modelling, and fair comparison, addressing establ",
+      "doi": "10.1088/1741-2552/ade1f9",
+      "pmid": "40480249",
+      "openalex_id": "W4411081877",
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7605929902195931,
+        "similarity_score": 0.6585220694541931,
+        "citation_text_length": 1212,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Enhancing ensemble learning and transfer learning in multimodal data analysis by adaptive dimensionality reduction",
       "author": "A. Marinoni, Saloua Chlaily, Eduard Khachatrian, T. Eltoft, Sivasakthy Selvakumaran, M. Girolami, C. Jutten",
       "venue": "ArXiv",
@@ -792,29 +809,6 @@
         "confidence_score": 0.44423177540302283,
         "similarity_score": 0.38461625576019287,
         "citation_text_length": 1265,
-        "dataset_text_length": 2351,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "An investigation of multimodal EMG-EEG fusion strategies for upper-limb gesture classification",
-      "author": "Michael Pritchard, Felipe Campelo, Harry Goldingay",
-      "venue": "Journal of Neural Engineering",
-      "year": 2025,
-      "url": "https://doi.org/10.1088/1741-2552/ade1f9",
-      "cited_by": 5,
-      "abstract": "Abstract Objective . Upper-limb gesture identification is an important problem in the advancement of robotic prostheses. Prevailing research into classifying electromyographic (EMG) muscular data or electroencephalographic (EEG) brain data for this purpose is often limited in methodological rigour, the extent to which generalisation is demonstrated, and the granularity of gestures classified. This work evaluates three architectures for multimodal fusion of EMG &amp; EEG data in gesture classification, including a novel Hierarchical strategy, in both subject-specific and subject-independent settings. Approach . We propose an unbiased methodology for designing classifiers centred on Automated Machine Learning through Combined Algorithm Selection &amp; Hyperparameter Optimisation (CASH); the first application of this technique to the biosignal domain. Using CASH, we introduce an end-to-end pipeline for data handling, algorithm development, modelling, and fair comparison, addressing establ",
-      "doi": "10.1088/1741-2552/ade1f9",
-      "pmid": "40480249",
-      "openalex_id": "W4411081877",
-      "source_doi": "10.1093/gigascience/giaa098",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7605929902195931,
-        "similarity_score": 0.6585220694541931,
-        "citation_text_length": 1212,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1465,29 +1459,6 @@
       }
     },
     {
-      "title": "Lightweight Echo State Networks for Upper-Limb Movement Classification Using Multimodal Signals",
-      "author": "Arie Rachmad Syulistyo, Yuichiro Tanaka, Ninnart Fuengfusin, Dinda Pramanta, Hakaru Tamukoh",
-      "venue": "2026 International Conference on Activity and Behavior Computing (ABC)",
-      "year": 2026,
-      "url": "https://doi.org/10.1109/abc68169.2026.11567362",
-      "cited_by": 0,
-      "abstract": "Upper-limb movement intention recognition is a fundamental task to intuitive human-robot interaction, prosthetic control, and rehabilitation. Decoding intention in real time can improve assistance and effectiveness in such areas. Existing approaches face practical trade-offs: conventional machine learning classifiers are computationally efficient, but they typically require handcrafted and feature engineering to preprocess multivariate time series signals. On the other hand, deep recurrent neural networks can learn temporal representations directly from data, however they often impose substantial training costs that are challenging for wearable edge devices. This study investigates reservoir computing, specifically echo state networks (ESNs), that provides temporal processing with lightweight training by adjusting only a linear readout layer. We conducted a comparative evaluation using seven upper-limb movement tasks (Rest, Flex, Grasp, Lift, Return, Release, and Extend) with synchroni",
-      "doi": "10.1109/abc68169.2026.11567362",
-      "pmid": null,
-      "openalex_id": "W7165638654",
-      "source_doi": "10.1093/gigascience/giaa098",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6760481062531473,
-        "similarity_score": 0.5853230357170105,
-        "citation_text_length": 1295,
-        "dataset_text_length": 2351,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Classification of Same Limb Motor Imagery Eeg Using Temporal Attention Based Hierarchical Transformer",
       "author": "Minindu Liyanage, P.G.H.H. Gunasekara, Ramith Laksara, Ruwan Ranaweera, Janaka Wijayakulasooriya, Nalin Harischandra, Tharaka L. Dassanayake",
       "venue": "2025 Moratuwa Engineering Research Conference (MERCon)",
@@ -1505,6 +1476,29 @@
         "confidence_score": 0.6949055430293084,
         "similarity_score": 0.601649820804596,
         "citation_text_length": 1334,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Lightweight Echo State Networks for Upper-Limb Movement Classification Using Multimodal Signals",
+      "author": "Arie Rachmad Syulistyo, Yuichiro Tanaka, Ninnart Fuengfusin, Dinda Pramanta, Hakaru Tamukoh",
+      "venue": "2026 International Conference on Activity and Behavior Computing (ABC)",
+      "year": 2026,
+      "url": "https://doi.org/10.1109/abc68169.2026.11567362",
+      "cited_by": 0,
+      "abstract": "Upper-limb movement intention recognition is a fundamental task to intuitive human-robot interaction, prosthetic control, and rehabilitation. Decoding intention in real time can improve assistance and effectiveness in such areas. Existing approaches face practical trade-offs: conventional machine learning classifiers are computationally efficient, but they typically require handcrafted and feature engineering to preprocess multivariate time series signals. On the other hand, deep recurrent neural networks can learn temporal representations directly from data, however they often impose substantial training costs that are challenging for wearable edge devices. This study investigates reservoir computing, specifically echo state networks (ESNs), that provides temporal processing with lightweight training by adjusting only a linear readout layer. We conducted a comparative evaluation using seven upper-limb movement tasks (Rest, Flex, Grasp, Lift, Return, Release, and Extend) with synchroni",
+      "doi": "10.1109/abc68169.2026.11567362",
+      "pmid": null,
+      "openalex_id": "W7165638654",
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6760481062531473,
+        "similarity_score": 0.5853230357170105,
+        "citation_text_length": 1295,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1735,6 +1729,29 @@
         "confidence_score": 0.556266744285822,
         "similarity_score": 0.48161622881889343,
         "citation_text_length": 1286,
+        "dataset_text_length": 2351,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "ClipTBP: Clip-Pair Based Temporal Boundary Prediction with Boundary-Aware Learning for Moment Retrieval",
+      "author": "Ji-Hyeon Kim, Ho-Joong Kim, Seong–Whan Lee",
+      "venue": "Lecture notes in computer science",
+      "year": 2026,
+      "url": "https://doi.org/10.1007/978-3-032-31666-0_16",
+      "cited_by": 0,
+      "abstract": "Video moment retrieval is the task of retrieving specific segments of a video corresponding to a given text query. Recent studies have been conducted to improve multimodal alignment performance through visual-linguistic similarity learning at the snippet-level and transformer-based temporal boundary regression. However, existing models do not calculate similarity by considering the relationships between multiple answer segments that match the query. Therefore, existing models are easily influenced by visually similar segments in the surrounding context. Existing models calculate similarity at the snippet-level and ignore the relationships between multiple answer segments corresponding to a single query. Therefore, they struggle to exclude segments irrelevant to the query. To address this issues, we propose ClipTBP, a clip-pair temporal boundary prediction framework based on boundary-aware learning. ClipTBP introduces a clip-level alignment loss for explicitly learning the semantic rela",
+      "doi": "10.1007/978-3-032-31666-0_16",
+      "pmid": null,
+      "openalex_id": "W7172109194",
+      "source_doi": "10.1093/gigascience/giaa098",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.36223619565367704,
+        "similarity_score": 0.31362441182136536,
+        "citation_text_length": 1217,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2017,29 +2034,6 @@
       }
     },
     {
-      "title": "ClipTBP: Clip-Pair based Temporal Boundary Prediction with Boundary-Aware Learning for Moment Retrieval",
-      "author": "Ji-Hyeon Kim, Ho-Joong Kim, Seong-Whan Lee",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2604.27591",
-      "cited_by": 0,
-      "abstract": "Video moment retrieval is the task of retrieving specific segments of a video corresponding to a given text query. Recent studies have been conducted to improve multimodal alignment performance through visual-linguistic similarity learning at the snippet-level and transformer-based temporal boundary regression. However, existing models do not calculate similarity by considering the relationships between multiple answer segments that match the query. Therefore, existing models are easily influenced by visually similar segments in the surrounding context. Existing models calculate similarity at the snippet-level and ignore the relationships between multiple answer segments corresponding to a single query. Therefore, they struggle to exclude segments irrelevant to the query. To address this issues, we propose ClipTBP, a clip-pair temporal boundary prediction framework based on boundary-aware learning. ClipTBP introduces a clip-level alignment loss for explicitly learning the semantic rela",
-      "doi": "10.48550/arXiv.2604.27591",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1093/gigascience/giaa098",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.3694143900275231,
-        "similarity_score": 0.3198392987251282,
-        "citation_text_length": 1189,
-        "dataset_text_length": 2351,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "An intertwined neural network model for EEG classification in brain-computer interfaces",
       "author": "A. Duggento, M. Lorenzo, S. Bargione, A. Conti, Vincenzo Catrambone, G. Valenza, N. Toschi",
       "venue": "ArXiv",
@@ -2134,13 +2128,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T16:42:02.553433+00:00",
+    "scoring_date": "2026-08-09T11:24:52.364988+00:00",
     "dataset_text_length": 2351,
     "num_citations_scored": 90,
     "summary_stats": {
-      "mean_confidence": 0.5849621821277672,
+      "mean_confidence": 0.5848824244125022,
       "median_confidence": 0.5913292676210404,
-      "std_confidence": 0.11417402867665728,
+      "std_confidence": 0.11432697922277421,
       "min_confidence": 0.2245071530342102,
       "max_confidence": 0.7958670911192894,
       "high_confidence_count": 13,

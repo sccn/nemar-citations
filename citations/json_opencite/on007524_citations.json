@@ -1,10 +1,10 @@
 {
   "dataset_id": "on007524",
-  "num_citations": 29,
-  "date_last_updated": "2026-08-01T16:20:00.451167+00:00",
+  "num_citations": 31,
+  "date_last_updated": "2026-08-09T11:00:45.891880+00:00",
   "metadata": {
-    "total_cumulative_citations": 38,
-    "fetch_date": "2026-08-01T16:20:00.451167+00:00",
+    "total_cumulative_citations": 43,
+    "fetch_date": "2026-08-09T11:00:45.891880+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -64,7 +64,14 @@
       "source localization"
     ],
     "methods_description": "MEG data were recorded using a whole-head Elekta Neuromag TRIUX system (102 magnetometers, 204 planar gradiometers) at 1000 Hz sampling rate with online filtering (0.1–330 Hz). Words were presented individually in white font on black background for 225 ms with 50 ms inter-word intervals and 500 ms sentence-final pauses. Participants viewed stimuli from 100 cm distance while maintaining fixation. Vertical and horizontal EOG and ECG were recorded bipolarly. High-resolution T1-weighted anatomical MRI scans were acquired on a 3T Siemens Magnetom Prisma using MPRAGE sequence for coregistration and source analysis.",
-    "funding": []
+    "funding": [],
+    "searched_accessions": [
+      "on007524",
+      "ds007524"
+    ],
+    "num_accession_mentions": 0,
+    "num_dataset_citations": 0,
+    "num_datapaper_citations": 31
   },
   "citation_details": [
     {
@@ -73,7 +80,7 @@
       "venue": "ArXiv",
       "year": 2026,
       "url": "https://doi.org/10.48550/arXiv.2605.04326",
-      "cited_by": 15,
+      "cited_by": 16,
       "abstract": "Cognitive neuroscience is fragmented into specialized models, each tailored to specific experimental paradigms, hence preventing a unified model of cognition in the human brain. Here, we introduce TRIBE v2, a tri-modal (video, audio and language) foundation model capable of predicting human brain activity in a variety of naturalistic and experimental conditions. Leveraging a unified dataset of over 1,000 hours of fMRI across 720 subjects, we demonstrate that our model accurately predicts high-resolution brain responses for novel stimuli, tasks and subjects, superseding traditional linear encoding models, delivering several-fold improvements in accuracy. Critically, TRIBE v2 enables in silico experimentation: tested on seminal visual and neuro-linguistic paradigms, it recovers a variety of results established by decades of empirical research. Finally, by extracting interpretable latent features, TRIBE v2 reveals the fine-grained topography of multisensory integration. These results esta",
       "doi": "10.48550/arXiv.2605.04326",
       "pmid": null,
@@ -85,6 +92,29 @@
         "confidence_score": 0.49480435207486156,
         "similarity_score": 0.42840203642845154,
         "citation_text_length": 1255,
+        "dataset_text_length": 2259,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2605.08495",
+      "cited_by": 6,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": "10.48550/arXiv.2605.08495",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41467-025-65499-0",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5198550412058831,
+        "similarity_score": 0.4500909447669983,
+        "citation_text_length": 1326,
         "dataset_text_length": 2259,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -131,29 +161,6 @@
         "confidence_score": 0.45103880077600483,
         "similarity_score": 0.39050978422164917,
         "citation_text_length": 1207,
-        "dataset_text_length": 2259,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2605.08495",
-      "cited_by": 4,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": "10.48550/arXiv.2605.08495",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41467-025-65499-0",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5198550412058831,
-        "similarity_score": 0.4500909447669983,
-        "citation_text_length": 1326,
         "dataset_text_length": 2259,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -252,6 +259,52 @@
       }
     },
     {
+      "title": "Probabilistic Co-Control in Brain-Computer Interfaces: Uncertainty as a Control Signal in Brain-to-Text Decoding",
+      "author": "Jingya Huang, Sowmya Manojna Narasimha, Aashish N. Patel, Ram Dyuthi Sristi, Gal Mishne, Vikash Gilja",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2026,
+      "url": "https://doi.org/10.64898/2026.04.02.715749",
+      "cited_by": 1,
+      "abstract": "Abstract Neural decoders serve as probabilistic interfaces in co-control brain-to-text BCIs, where predicted uncertainty shapes hypothesis generation and language model integration, enabling decisions to be made safely under uncertainty. However, it remains unclear whether these decoders produce reliable and informative uncertainty, or how training objectives shape these properties. This work characterizes and improves uncertainty representations in brain-to-text decoding. We extend two metrics, calibration error (ECE) and resolution (RES), to evaluate sequential probabilistic predictions from frame-level phoneme estimates to word-level hypotheses, quantifying the reliability and informativeness of model uncertainty. Using this framework, we analyze neural decoders trained with connectionist temporal classification (CTC). To isolate the causal role of uncertainty independent of accuracy, we manipulate predicted probability distributions while holding predicted sequences fixed. Motivate",
+      "doi": "10.64898/2026.04.02.715749",
+      "pmid": null,
+      "openalex_id": "W7150892547",
+      "source_doi": "10.1038/s41467-025-65499-0",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.44093830883502966,
+        "similarity_score": 0.3817647695541382,
+        "citation_text_length": 1291,
+        "dataset_text_length": 2259,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "What Are We Actually Decoding? Source Attribution for Non-Invasive Brain-to-Language Retrieval",
+      "author": "Xinyu Zhang, Sichao Liu, Runhao Lu, Alexandra Woolgar, Lihui Wang",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2605.24524",
+      "cited_by": 1,
+      "abstract": "In non-invasive neural language decoding, results can be inflated by sources that are not stimulus-evoked neural evidence: decoder priors, embedding-based metrics, and non-neural structural nuisances such as signal duration. The methodological challenge is therefore attribution: a reported gain is more informative when it can be traced to a specific source. We recast stimulus-locked MEG-to-audio retrieval as an auditing framework that separates apparent performance into three sources - structural shortcuts, window-level stimulus-locked evidence, and cross-window contextual aggregation - and provides a diagnostic for each. Signal-blind Gaussian noise reaches 66.3% Rank@1 (R@1) under variable-length decoding but collapses to near chance once fixed-duration windows and stimulus-identity splits are enforced, isolating structural leakage. Under these controls, fixed-window retrieval recovers measurable MEG-audio discriminability, while an oracle sentence-bucket diagnostic shows that 95.7% o",
+      "doi": "10.48550/arXiv.2605.24524",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41467-025-65499-0",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6674799299240113,
+        "similarity_score": 0.5779047012329102,
+        "citation_text_length": 1203,
+        "dataset_text_length": 2259,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Bridging scalp and intracranial EEG in BCI via pretrained neural representations and geometric constraint embedding",
       "author": "Yihang Dong, Changhong Jing, Shuqiang Wang",
       "venue": "ArXiv",
@@ -315,29 +368,6 @@
         "confidence_score": 0.5133821189403535,
         "similarity_score": 0.48893535137176514,
         "citation_text_length": 273,
-        "dataset_text_length": 2259,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Probabilistic Co-Control in Brain-Computer Interfaces: Uncertainty as a Control Signal in Brain-to-Text Decoding",
-      "author": "Jingya Huang, Sowmya Manojna Narasimha, Aashish N. Patel, Ram Dyuthi Sristi, Gal Mishne, Vikash Gilja",
-      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
-      "year": 2026,
-      "url": "https://doi.org/10.64898/2026.04.02.715749",
-      "cited_by": 0,
-      "abstract": "Abstract Neural decoders serve as probabilistic interfaces in co-control brain-to-text BCIs, where predicted uncertainty shapes hypothesis generation and language model integration, enabling decisions to be made safely under uncertainty. However, it remains unclear whether these decoders produce reliable and informative uncertainty, or how training objectives shape these properties. This work characterizes and improves uncertainty representations in brain-to-text decoding. We extend two metrics, calibration error (ECE) and resolution (RES), to evaluate sequential probabilistic predictions from frame-level phoneme estimates to word-level hypotheses, quantifying the reliability and informativeness of model uncertainty. Using this framework, we analyze neural decoders trained with connectionist temporal classification (CTC). To isolate the causal role of uncertainty independent of accuracy, we manipulate predicted probability distributions while holding predicted sequences fixed. Motivate",
-      "doi": "10.64898/2026.04.02.715749",
-      "pmid": null,
-      "openalex_id": "W7150892547",
-      "source_doi": "10.1038/s41467-025-65499-0",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.44093830883502966,
-        "similarity_score": 0.3817647695541382,
-        "citation_text_length": 1291,
         "dataset_text_length": 2259,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -436,6 +466,29 @@
       }
     },
     {
+      "title": "Neuro-SPO: Physically-Grounded and Affect-Aligned EEG-to-Keyword Decoding",
+      "author": "Z. J. Xu, C. L. Philip Chen, Tong Zhang",
+      "venue": "Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining V.2",
+      "year": 2026,
+      "url": "https://doi.org/10.1145/3770855.3818192",
+      "cited_by": 0,
+      "abstract": "Decoding semantic information from non-invasive EEG remains a formidable challenge in Brain-Computer Interfaces due to the low signal-to-noise ratio and the complex biophysics of neural dynamics. While large-scale pre-trained models like Whisper provide powerful generic temporal representations, they lack the domain-specific biophysical constraints essential for EEG. Conversely, pure physical operators capture topology but miss the rich semantic priors. To bridge this gap, we propose the Neural Spectral-Physical Operator (Neuro-SPO), a robust framework that reframes EEG-to-Keyword decoding as a continuous representation learning problem. Neuro-SPO synergizes two complementary paradigms: a Pre-trained Temporal Operator derived from the Whisper encoder to extract high-level temporal semantics, and a novel Neural Holistic Physics Mixer (Neuro-HPM) that injects domain-specific physical constraints via dynamic spectral graph interactions. By fusing these streams, Neuro-SPO ensures that the ",
+      "doi": "10.1145/3770855.3818192",
+      "pmid": null,
+      "openalex_id": "W7196963353",
+      "source_doi": "10.1038/s41467-025-65499-0",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.517636494934559,
+        "similarity_score": 0.44817012548446655,
+        "citation_text_length": 1239,
+        "dataset_text_length": 2259,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Non-Invasive Brain-to-Text BCIs: Phoneme-Level Sentence Reconstruction from MEG",
       "author": "Angélica Vélez, Liyang Ru*, Babak Ahmadi, Jose Principe, Abbas Babajani-Feremi",
       "venue": "Research Square",
@@ -453,6 +506,29 @@
         "confidence_score": 0.6933952510356903,
         "similarity_score": 0.6603764295578003,
         "citation_text_length": 199,
+        "dataset_text_length": 2259,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval",
+      "author": "Ilia Semenkov, Daria Kleeva, I. Dakhtin, Z. Maksudova, A. Ossadtchi",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "Short segments of perceived speech can be retrieved from non-invasive magnetoencephalographic (MEG) recordings by deep networks trained with a CLIP-style objective against wav2vec 2.0 audio embeddings. Yet their weights do not map onto electrophysiological quantities, and it remains unclear which speech properties drive retrieval. We build on a high-performing MEG-to-audio retrieval architecture but redesign both its front end and decoder. Its spatial attention operates on a flattened sensor layout; we replace it with spherical harmonics defined on the three-dimensional MEG helmet geometry. We reduce the subject-specific representation from 270 to 25 branches, add a temporal filter to each branch to match it to a neuronal source in space and time, and make the convolutional decoder shallower. Ocular and cardiac components are removed before training to reduce the risk of stimulus-locked shortcuts. On MEG-MASC, the model reaches 39.75 +/- 0.34% Top-1 accuracy among 1005 candidates acros",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41467-025-65499-0",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7123370960354806,
+        "similarity_score": 0.6167420744895935,
+        "citation_text_length": 1220,
         "dataset_text_length": 2259,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -620,29 +696,6 @@
       }
     },
     {
-      "title": "What Are We Actually Decoding? Source Attribution for Non-Invasive Brain-to-Language Retrieval",
-      "author": "Xinyu Zhang, Sichao Liu, Runhao Lu, Alexandra Woolgar, Lihui Wang",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2605.24524",
-      "cited_by": 0,
-      "abstract": "In non-invasive neural language decoding, results can be inflated by sources that are not stimulus-evoked neural evidence: decoder priors, embedding-based metrics, and non-neural structural nuisances such as signal duration. The methodological challenge is therefore attribution: a reported gain is more informative when it can be traced to a specific source. We recast stimulus-locked MEG-to-audio retrieval as an auditing framework that separates apparent performance into three sources - structural shortcuts, window-level stimulus-locked evidence, and cross-window contextual aggregation - and provides a diagnostic for each. Signal-blind Gaussian noise reaches 66.3% Rank@1 (R@1) under variable-length decoding but collapses to near chance once fixed-duration windows and stimulus-identity splits are enforced, isolating structural leakage. Under these controls, fixed-window retrieval recovers measurable MEG-audio discriminability, while an oracle sentence-bucket diagnostic shows that 95.7% o",
-      "doi": "10.48550/arXiv.2605.24524",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41467-025-65499-0",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6674799299240113,
-        "similarity_score": 0.5779047012329102,
-        "citation_text_length": 1203,
-        "dataset_text_length": 2259,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "MEG-XL: Data-Efficient Brain-to-Text via Long-Context Pre-Training",
       "author": "D. Jayalath, Oiwi Parker Jones",
       "venue": "ArXiv",
@@ -737,17 +790,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T17:20:53.581880+00:00",
+    "scoring_date": "2026-08-09T12:03:58.249367+00:00",
     "dataset_text_length": 2259,
-    "num_citations_scored": 29,
+    "num_citations_scored": 31,
     "summary_stats": {
-      "mean_confidence": 0.5344350270592962,
+      "mean_confidence": 0.5396319153448267,
       "median_confidence": 0.5585190582275392,
-      "std_confidence": 0.11566703260262448,
+      "std_confidence": 0.11627014015560616,
       "min_confidence": 0.21787229664623742,
       "max_confidence": 0.8118747568130494,
-      "high_confidence_count": 1,
-      "medium_confidence_count": 26,
+      "high_confidence_count": 2,
+      "medium_confidence_count": 27,
       "low_confidence_count": 2
     }
   }

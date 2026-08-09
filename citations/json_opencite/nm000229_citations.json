@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000229",
-  "num_citations": 46,
-  "date_last_updated": "2026-08-01T15:30:26.188093+00:00",
+  "num_citations": 47,
+  "date_last_updated": "2026-08-09T10:13:14.818326+00:00",
   "metadata": {
-    "total_cumulative_citations": 415,
-    "fetch_date": "2026-08-01T15:30:26.188093+00:00",
+    "total_cumulative_citations": 423,
+    "fetch_date": "2026-08-09T10:13:14.818326+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -67,13 +67,7 @@
       {
         "funder_name": "Dingwall Foundation"
       }
-    ],
-    "searched_accessions": [
-      "nm000229"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 46
+    ]
   },
   "citation_details": [
     {
@@ -82,7 +76,7 @@
       "venue": "Nature Communications",
       "year": 2022,
       "url": "https://doi.org/10.1038/s41467-022-34326-1",
-      "cited_by": 117,
+      "cited_by": 118,
       "abstract": "Speech consists of a continuously-varying acoustic signal. Yet human listeners experience it as sequences of discrete speech sounds, which are used to recognise discrete words. To examine how the human brain appropriately sequences the speech signal, we recorded two-hour magnetoencephalograms from 21 participants listening to short narratives. Our analyses show that the brain continuously encodes the three most recently heard speech sounds in parallel, and maintains this information long past its dissipation from the sensory input. Each speech sound representation evolves over time, jointly encoding both its phonetic features and the amount of time elapsed since onset. As a result, this dynamic neural pattern encodes both the relative order and phonetic content of the speech sequence. These representations are active earlier when phonemes are more predictable, and are sustained longer when lexical identity is uncertain. Our results show how phonetic sequences in natural speech are repr",
       "doi": "10.1038/s41467-022-34326-1",
       "pmid": "36329058",
@@ -105,7 +99,7 @@
       "venue": "Proceedings of the National Academy of Sciences",
       "year": 2025,
       "url": "https://doi.org/10.1073/pnas.2422097122",
-      "cited_by": 44,
+      "cited_by": 45,
       "abstract": "Speech comprehension involves transforming an acoustic waveform into meaning. To do so, the human brain generates a hierarchy of features that converts the sensory input into increasingly abstract language properties. However, little is known about how rapid incoming sequences of hierarchical features are continuously coordinated. Here, we propose that each language feature is supported by a dynamic neural code, which represents the sequence history of hierarchical features in parallel. To test this \"hierarchical dynamic coding\" (HDC) hypothesis, we use time-resolved decoding of brain activity to track the construction, maintenance, and update of a comprehensive hierarchy of language features spanning phonetic, word form, lexical-syntactic, syntactic, and semantic representations. For this, we recorded 21 native English participants with magnetoencephalography (MEG), while they listened to two hours of short stories in English. Our analyses reveal three main findings. First, the brain ",
       "doi": "10.1073/pnas.2422097122",
       "pmid": "41105708",
@@ -146,12 +140,35 @@
       }
     },
     {
+      "title": "Towards decoding individual words from non-invasive brain recordings",
+      "author": "Stéphane d’Ascoli, Corentin Bel, Jérémy Rapin, Hubert Banville, Yohann Benchetrit, Christophe Pallier, Jean-Rémi King",
+      "venue": "Nature Communications",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41467-025-65499-0",
+      "cited_by": 29,
+      "abstract": "While deep learning has enabled the decoding of language from intracranial brain recordings, achieving this with non-invasive recordings remains an open challenge. We introduce a deep learning pipeline to decode individual words from electro- (EEG) and magneto-encephalography (MEG) signals. We evaluate our approach on seven public datasets and two datasets which we collect ourselves, amounting to a total of 723 participants reading or listening to five million words in three languages. Our model outperforms existing methods consistently across participants, devices, languages, and tasks, and can decode words absent from the training set. Our analyses highlight the importance of the recording device and experimental protocol: MEG and reading are easier to decode than EEG and listening, and decoding performance consistently increases with the amount of data used for training and for averaging during testing. Overall, our findings delineate the path and remaining challenges towards buildi",
+      "doi": "10.1038/s41467-025-65499-0",
+      "pmid": "41298362",
+      "openalex_id": "W4416720553",
+      "source_doi": "10.1038/s41597-023-02752-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7367705011367799,
+        "similarity_score": 0.6378965377807617,
+        "citation_text_length": 1245,
+        "dataset_text_length": 2472,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "BrainOmni: A Brain Foundation Model for Unified EEG and MEG Signals",
       "author": "Qinfan Xiao, Ziyun Cui, Chi Zhang, Siqi Chen, Wen Wu, Andrew Thwaites, Alexandra Woolgar, Bowen Zhou, Chao Zhang",
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2505.18185",
-      "cited_by": 28,
+      "cited_by": 29,
       "abstract": "Electroencephalography (EEG) and magnetoencephalography (MEG) measure neural activity non-invasively by capturing electromagnetic fields generated by dendritic currents. Although rooted in the same biophysics, EEG and MEG exhibit distinct signal patterns, further complicated by variations in sensor configurations across modalities and recording devices. Existing approaches typically rely on separate, modality- and dataset-specific models, which limits the performance and cross-domain scalability. This paper proposes BrainOmni, the first brain foundation model that generalises across heterogeneous EEG and MEG recordings. To unify diverse data sources, we introduce BrainTokenizer,the first tokenizer that quantises spatiotemporal brain activity into discrete representations. Central to BrainTokenizer is a novel Sensor Encoder that encodes sensor properties such as spatial layout, orientation, and type, enabling compatibility across devices and modalities. Building upon the discrete repres",
       "doi": "10.48550/arXiv.2505.18185",
       "pmid": null,
@@ -174,7 +191,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2501.15322",
-      "cited_by": 28,
+      "cited_by": 29,
       "abstract": "Generative AI has recently propelled the decoding of images from brain activity. How do these approaches scale with the amount and type of neural recordings? Here, we systematically compare image decoding from four types of non-invasive devices: electroencephalography (EEG), magnetoencephalography (MEG), high-field functional Magnetic Resonance Imaging (3T fMRI) and ultra-high field (7T) fMRI. For this, we evaluate decoding models on the largest benchmark to date, encompassing 8 public datasets, 84 volunteers, 498 hours of brain recording and 2.3 million brain responses to natural images. Unlike previous work, we focus on single-trial decoding performance to simulate real-time settings. This systematic comparison reveals three main findings. First, the most precise neuroimaging devices tend to yield the best decoding performances, when the size of the training sets are similar. However, the gain enabled by deep learning - in comparison to linear models - is obtained with the noisiest d",
       "doi": "10.48550/arXiv.2501.15322",
       "pmid": null,
@@ -186,29 +203,6 @@
         "confidence_score": 0.5601297175884248,
         "similarity_score": 0.48496079444885254,
         "citation_text_length": 1182,
-        "dataset_text_length": 2472,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Towards decoding individual words from non-invasive brain recordings",
-      "author": "Stéphane d’Ascoli, Corentin Bel, Jérémy Rapin, Hubert Banville, Yohann Benchetrit, Christophe Pallier, Jean-Rémi King",
-      "venue": "Nature Communications",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s41467-025-65499-0",
-      "cited_by": 27,
-      "abstract": "While deep learning has enabled the decoding of language from intracranial brain recordings, achieving this with non-invasive recordings remains an open challenge. We introduce a deep learning pipeline to decode individual words from electro- (EEG) and magneto-encephalography (MEG) signals. We evaluate our approach on seven public datasets and two datasets which we collect ourselves, amounting to a total of 723 participants reading or listening to five million words in three languages. Our model outperforms existing methods consistently across participants, devices, languages, and tasks, and can decode words absent from the training set. Our analyses highlight the importance of the recording device and experimental protocol: MEG and reading are easier to decode than EEG and listening, and decoding performance consistently increases with the amount of data used for training and for averaging during testing. Overall, our findings delineate the path and remaining challenges towards buildi",
-      "doi": "10.1038/s41467-025-65499-0",
-      "pmid": "41298362",
-      "openalex_id": "W4416720553",
-      "source_doi": "10.1038/s41597-023-02752-5",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7367705011367799,
-        "similarity_score": 0.6378965377807617,
-        "citation_text_length": 1245,
         "dataset_text_length": 2472,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -358,7 +352,7 @@
       "venue": "n/a",
       "year": 2024,
       "url": "https://doi.org/10.18653/v1/2025.findings-acl.142",
-      "cited_by": 8,
+      "cited_by": 9,
       "abstract": "Current EEG/MEG-to-text decoding systems suffer from three key limitations: (1) reliance on teacher-forcing methods, which compromises robustness during inference, (2) sensitivity to session-specific noise, hindering generalization across subjects, and (3) misalignment between brain signals and linguistic representations due to pre-trained language model over-dominance. To overcome these challenges, we propose BrainECHO (Brain signal decoding via vEctor-quantized speCtrogram reconstruction for WHisper-enhanced text generatiOn), a multi-stage framework that employs decoupled representation learning to achieve state-of-the-art performance on both EEG and MEG datasets. Specifically, BrainECHO consists of three stages: (1) Discrete autoencoding, which transforms continuous Mel spectrograms into a finite set of high-quality discrete representations for subsequent stages. (2) Frozen alignment, where brain signal embeddings are mapped to corresponding Mel spectrogram embeddings in a frozen la",
       "doi": "10.18653/v1/2025.findings-acl.142",
       "pmid": null,
@@ -675,6 +669,29 @@
       }
     },
     {
+      "title": "What Are We Actually Decoding? Source Attribution for Non-Invasive Brain-to-Language Retrieval",
+      "author": "Xinyu Zhang, Sichao Liu, Runhao Lu, Alexandra Woolgar, Lihui Wang",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2605.24524",
+      "cited_by": 1,
+      "abstract": "In non-invasive neural language decoding, results can be inflated by sources that are not stimulus-evoked neural evidence: decoder priors, embedding-based metrics, and non-neural structural nuisances such as signal duration. The methodological challenge is therefore attribution: a reported gain is more informative when it can be traced to a specific source. We recast stimulus-locked MEG-to-audio retrieval as an auditing framework that separates apparent performance into three sources - structural shortcuts, window-level stimulus-locked evidence, and cross-window contextual aggregation - and provides a diagnostic for each. Signal-blind Gaussian noise reaches 66.3% Rank@1 (R@1) under variable-length decoding but collapses to near chance once fixed-duration windows and stimulus-identity splits are enforced, isolating structural leakage. Under these controls, fixed-window retrieval recovers measurable MEG-audio discriminability, while an oracle sentence-bucket diagnostic shows that 95.7% o",
+      "doi": "10.48550/arXiv.2605.24524",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02752-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6991299784183503,
+        "similarity_score": 0.6053073406219482,
+        "citation_text_length": 1203,
+        "dataset_text_length": 2472,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Large language models reveal the neural tracking of linguistic context in attended and unattended multi-talker speech",
       "author": "Corentin Puffay, Gavin Mischler, Vishal Choudhari, Jonas Vanthornhout, Stephan Bickel, A. Mehta, Catherine A. Schevon, Guy M. McKhann, Hugo Van hamme, Tom Francart, N. Mesgarani",
       "venue": "Imaging Neuroscience",
@@ -905,6 +922,29 @@
       }
     },
     {
+      "title": "Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval",
+      "author": "Ilia Semenkov, Daria Kleeva, I. Dakhtin, Z. Maksudova, A. Ossadtchi",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "Short segments of perceived speech can be retrieved from non-invasive magnetoencephalographic (MEG) recordings by deep networks trained with a CLIP-style objective against wav2vec 2.0 audio embeddings. Yet their weights do not map onto electrophysiological quantities, and it remains unclear which speech properties drive retrieval. We build on a high-performing MEG-to-audio retrieval architecture but redesign both its front end and decoder. Its spatial attention operates on a flattened sensor layout; we replace it with spherical harmonics defined on the three-dimensional MEG helmet geometry. We reduce the subject-specific representation from 270 to 25 branches, add a temporal filter to each branch to match it to a neuronal source in space and time, and make the convolutional decoder shallower. Ocular and cardiac components are removed before training to reduce the risk of stimulus-locked shortcuts. On MEG-MASC, the model reaches 39.75 +/- 0.34% Top-1 accuracy among 1005 candidates acros",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02752-5",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8006128084659577,
+        "similarity_score": 0.6931712627410889,
+        "citation_text_length": 1220,
+        "dataset_text_length": 2472,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Prior knowledge reveals two computational regimes for syntactic processing in the human brain",
       "author": "Cosimo Iaia, Alessandro Tavano",
       "venue": "bioRxiv",
@@ -1020,29 +1060,6 @@
       }
     },
     {
-      "title": "What Are We Actually Decoding? Source Attribution for Non-Invasive Brain-to-Language Retrieval",
-      "author": "Xinyu Zhang, Sichao Liu, Runhao Lu, Alexandra Woolgar, Lihui Wang",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2605.24524",
-      "cited_by": 0,
-      "abstract": "In non-invasive neural language decoding, results can be inflated by sources that are not stimulus-evoked neural evidence: decoder priors, embedding-based metrics, and non-neural structural nuisances such as signal duration. The methodological challenge is therefore attribution: a reported gain is more informative when it can be traced to a specific source. We recast stimulus-locked MEG-to-audio retrieval as an auditing framework that separates apparent performance into three sources - structural shortcuts, window-level stimulus-locked evidence, and cross-window contextual aggregation - and provides a diagnostic for each. Signal-blind Gaussian noise reaches 66.3% Rank@1 (R@1) under variable-length decoding but collapses to near chance once fixed-duration windows and stimulus-identity splits are enforced, isolating structural leakage. Under these controls, fixed-window retrieval recovers measurable MEG-audio discriminability, while an oracle sentence-bucket diagnostic shows that 95.7% o",
-      "doi": "10.48550/arXiv.2605.24524",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02752-5",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6991299784183503,
-        "similarity_score": 0.6053073406219482,
-        "citation_text_length": 1203,
-        "dataset_text_length": 2472,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Robust Evaluation of Neural Encoding Models via ground-truth approximation",
       "author": "Giovanni M. Di Liberto",
       "venue": "n/a",
@@ -1137,16 +1154,16 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T16:37:17.425302+00:00",
+    "scoring_date": "2026-08-09T11:19:31.282306+00:00",
     "dataset_text_length": 2472,
-    "num_citations_scored": 46,
+    "num_citations_scored": 47,
     "summary_stats": {
-      "mean_confidence": 0.6596304986658305,
-      "median_confidence": 0.6594875594973565,
-      "std_confidence": 0.12203750649615613,
+      "mean_confidence": 0.6626301222785992,
+      "median_confidence": 0.6602848345041276,
+      "std_confidence": 0.12243436412980631,
       "min_confidence": 0.3069182114303113,
       "max_confidence": 1.0,
-      "high_confidence_count": 14,
+      "high_confidence_count": 15,
       "medium_confidence_count": 31,
       "low_confidence_count": 1
     }

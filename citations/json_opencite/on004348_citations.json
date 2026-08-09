@@ -1,10 +1,10 @@
 {
   "dataset_id": "on004348",
   "num_citations": 100,
-  "date_last_updated": "2026-08-01T15:52:44.436972+00:00",
+  "date_last_updated": "2026-08-09T10:35:07.480615+00:00",
   "metadata": {
-    "total_cumulative_citations": 3351,
-    "fetch_date": "2026-08-01T15:52:44.436972+00:00",
+    "total_cumulative_citations": 3371,
+    "fetch_date": "2026-08-09T10:35:07.480615+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -51,14 +51,7 @@
       "Electrooculography"
     ],
     "methods_description": "Partial polysomnography measurements were collected during nightly recordings at participants' homes. Data acquisition included conventional EEG, EOG, and chin EMG combined with 14 ear-EEG electrodes. Recordings consisted of two sessions per subject: a wake task (relaxation period before sleep) and a sleep task (overnight monitoring beginning at lights out). Equipment was mounted in the afternoon prior to recordings.",
-    "funding": [],
-    "searched_accessions": [
-      "on004348",
-      "ds004348"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 100
+    "funding": []
   },
   "citation_details": [
     {
@@ -67,7 +60,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2019,
       "url": "https://doi.org/10.1109/tnsre.2019.2896659",
-      "cited_by": 596,
+      "cited_by": 600,
       "abstract": "Automatic sleep staging has been often treated as a simple classification problem that aims at determining the label of individual target polysomnography epochs one at a time. In this paper, we tackle the task as a sequence-to-sequence classification problem that receives a sequence of multiple epochs as input and classifies all of their labels at once. For this purpose, we propose a hierarchical recurrent neural network named SeqSleepNet (source code is available at http://github.com/pquochuy/SeqSleepNet). At the epoch processing level, the network consists of a filterbank layer tailored to learn frequency-domain filters for preprocessing and an attention-based recurrent layer designed for short-term sequential modeling. At the sequence processing level, a recurrent layer placed on top of the learned epoch-wise features for long-term modeling of sequential epochs. The classification is then carried out on the output vectors at every time step of the top recurrent layer to produce the ",
       "doi": "10.1109/tnsre.2019.2896659",
       "pmid": "30716040",
@@ -90,7 +83,7 @@
       "venue": "Biomedical Engineering Letters",
       "year": 2019,
       "url": "https://doi.org/10.1007/s13534-018-00093-6",
-      "cited_by": 327,
+      "cited_by": 330,
       "abstract": null,
       "doi": "10.1007/s13534-018-00093-6",
       "pmid": "30956880",
@@ -102,6 +95,29 @@
         "confidence_score": 0.5345267057418823,
         "similarity_score": 0.5345267057418823,
         "citation_text_length": 99,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Automatic sleep staging of EEG signals: recent development, challenges, and future directions",
+      "author": "Huy Phan, Kaare B. Mikkelsen",
+      "venue": "Physiological Measurement",
+      "year": 2022,
+      "url": "https://doi.org/10.1088/1361-6579/ac6049",
+      "cited_by": 151,
+      "abstract": "Modern deep learning holds a great potential to transform clinical studies of human sleep. Teaching a machine to carry out routine tasks would be a tremendous reduction in workload for clinicians. Sleep staging, a fundamental step in sleep practice, is a suitable task for this and will be the focus in this article. Recently, automatic sleep-staging systems have been trained to mimic manual scoring, leading to similar performance to human sleep experts, at least on scoring of healthy subjects. Despite tremendous progress, we have not seen automatic sleep scoring adopted widely in clinical environments. This review aims to provide the shared view of the authors on the most recent state-of-the-art developments in automatic sleep staging, the challenges that still need to be addressed, and the future directions needed for automatic sleep scoring to achieve clinical value.",
+      "doi": "10.1088/1361-6579/ac6049",
+      "pmid": "35320788",
+      "openalex_id": "W4220988906",
+      "source_doi": "10.1186/s12938-017-0400-5",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6496939024329187,
+        "similarity_score": 0.5625055432319641,
+        "citation_text_length": 1065,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -125,29 +141,6 @@
         "confidence_score": 0.751806390285492,
         "similarity_score": 0.6834603548049927,
         "citation_text_length": 1237,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Automatic sleep staging of EEG signals: recent development, challenges, and future directions",
-      "author": "Huy Phan, Kaare B. Mikkelsen",
-      "venue": "Physiological Measurement",
-      "year": 2022,
-      "url": "https://doi.org/10.1088/1361-6579/ac6049",
-      "cited_by": 148,
-      "abstract": "Modern deep learning holds a great potential to transform clinical studies of human sleep. Teaching a machine to carry out routine tasks would be a tremendous reduction in workload for clinicians. Sleep staging, a fundamental step in sleep practice, is a suitable task for this and will be the focus in this article. Recently, automatic sleep-staging systems have been trained to mimic manual scoring, leading to similar performance to human sleep experts, at least on scoring of healthy subjects. Despite tremendous progress, we have not seen automatic sleep scoring adopted widely in clinical environments. This review aims to provide the shared view of the authors on the most recent state-of-the-art developments in automatic sleep staging, the challenges that still need to be addressed, and the future directions needed for automatic sleep scoring to achieve clinical value.",
-      "doi": "10.1088/1361-6579/ac6049",
-      "pmid": "35320788",
-      "openalex_id": "W4220988906",
-      "source_doi": "10.1186/s12938-017-0400-5",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6496939024329187,
-        "similarity_score": 0.5625055432319641,
-        "citation_text_length": 1065,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -320,7 +313,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2023,
       "url": "https://doi.org/10.1088/1741-2552/acfcda",
-      "cited_by": 69,
+      "cited_by": 70,
       "abstract": "Abstract Objective. This review paper provides a comprehensive overview of ear-electroencephalogram (EEG) technology, which involves recording EEG signals from electrodes placed in or around the ear, and its applications in the field of neural engineering. Approach. We conducted a thorough literature search using multiple databases to identify relevant studies related to ear-EEG technology and its various applications. We selected 123 publications and synthesized the information to highlight the main findings and trends in this field. Main results. Our review highlights the potential of ear-EEG technology as the future of wearable EEG technology. We discuss the advantages and limitations of ear-EEG compared to traditional scalp-based EEG and methods to overcome those limitations. Through our review, we found that ear-EEG is a promising method that produces comparable results to conventional scalp-based methods. We review the development of ear-EEG sensing devices, including the design,",
       "doi": "10.1088/1741-2552/acfcda",
       "pmid": "37748474",
@@ -499,6 +492,29 @@
       }
     },
     {
+      "title": "Spotlight on Sleep Stage Classification Based on EEG",
+      "author": "Isabelle Lambert, Laure Peter‐Derex",
+      "venue": "Nature and Science of Sleep",
+      "year": 2023,
+      "url": "https://doi.org/10.2147/nss.s401270",
+      "cited_by": 41,
+      "abstract": "The recommendations for identifying sleep stages based on the interpretation of electrophysiological signals (electroencephalography [EEG], electro-oculography [EOG], and electromyography [EMG]), derived from the Rechtschaffen and Kales manual, were published in 2007 at the initiative of the American Academy of Sleep Medicine, and regularly updated over years. They offer an important tool to assess objective markers in different types of sleep/wake subjective complaints. With the aims and advantages of simplicity, reproducibility and standardization of practices in research and, most of all, in sleep medicine, they have overall changed little in the way they describe sleep. However, our knowledge on sleep/wake physiology and sleep disorders has evolved since then. High-density electroencephalography and intracranial electroencephalography studies have highlighted local regulation of sleep mechanisms, with spatio-temporal heterogeneity in vigilance states. Progress in the understanding ",
+      "doi": "10.2147/nss.s401270",
+      "pmid": "37405208",
+      "openalex_id": "W4382561324",
+      "source_doi": "10.1186/s12938-017-0400-5",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6396450430154801,
+        "similarity_score": 0.5538052320480347,
+        "citation_text_length": 1153,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Advancements in Wearable EEG Technology for Improved Home-Based Sleep Monitoring and Assessment: A Review",
       "author": "Manal Mohamed, Nourelhuda Mohamed, Jae Gwan Kim",
       "venue": "Biosensors",
@@ -545,29 +561,6 @@
       }
     },
     {
-      "title": "Spotlight on Sleep Stage Classification Based on EEG",
-      "author": "Isabelle Lambert, Laure Peter‐Derex",
-      "venue": "Nature and Science of Sleep",
-      "year": 2023,
-      "url": "https://doi.org/10.2147/nss.s401270",
-      "cited_by": 40,
-      "abstract": "The recommendations for identifying sleep stages based on the interpretation of electrophysiological signals (electroencephalography [EEG], electro-oculography [EOG], and electromyography [EMG]), derived from the Rechtschaffen and Kales manual, were published in 2007 at the initiative of the American Academy of Sleep Medicine, and regularly updated over years. They offer an important tool to assess objective markers in different types of sleep/wake subjective complaints. With the aims and advantages of simplicity, reproducibility and standardization of practices in research and, most of all, in sleep medicine, they have overall changed little in the way they describe sleep. However, our knowledge on sleep/wake physiology and sleep disorders has evolved since then. High-density electroencephalography and intracranial electroencephalography studies have highlighted local regulation of sleep mechanisms, with spatio-temporal heterogeneity in vigilance states. Progress in the understanding ",
-      "doi": "10.2147/nss.s401270",
-      "pmid": "37405208",
-      "openalex_id": "W4382561324",
-      "source_doi": "10.1186/s12938-017-0400-5",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6396450430154801,
-        "similarity_score": 0.5538052320480347,
-        "citation_text_length": 1153,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Employing of machine learning and wearable devices in healthcare system: tasks and challenges",
       "author": "Hend S. Saad, John Zaki, Mohamed M. Abdelsalam",
       "venue": "Neural Computing and Applications",
@@ -591,6 +584,29 @@
       }
     },
     {
+      "title": "Detection of sleep apnea from single-channel electroencephalogram (EEG) using an explainable convolutional neural network (CNN)",
+      "author": "Lachlan D Barnes, Kevin Lee, Andreas W. Kempa-Liehr, Luke E. Hallum",
+      "venue": "PLoS ONE",
+      "year": 2022,
+      "url": "https://doi.org/10.1371/journal.pone.0272167",
+      "cited_by": 39,
+      "abstract": "Sleep apnea (SA) is a common disorder involving the cessation of breathing during sleep. It can cause daytime hypersomnia, accidents, and, if allowed to progress, serious, chronic conditions. Continuous positive airway pressure is an effective SA treatment. However, long waitlists impede timely diagnosis; overnight sleep studies involve trained technicians scoring a polysomnograph, which comprises multiple physiological signals including multi-channel electroencephalography (EEG). Therefore, it is important to develop simplified and automated approaches to detect SA. In the present study, we have developed an explainable convolutional neural network (CNN) to detect SA events from single-channel EEG recordings which generalizes across subjects. The network architecture consisted of three convolutional layers. We tuned hyperparameters using the Hyperband algorithm, optimized parameters using Adam, and quantified network performance with subjectwise 10-fold cross-validation. Our CNN perfo",
+      "doi": "10.1371/journal.pone.0272167",
+      "pmid": "36099242",
+      "openalex_id": "W4295440221",
+      "source_doi": "10.1186/s12938-017-0400-5",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5733224813640118,
+        "similarity_score": 0.49638310074806213,
+        "citation_text_length": 1241,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Sleep Monitoring Using Ear-Centered Setups: Investigating the Influence From Electrode Configurations",
       "author": "Kaare B. Mikkelsen, Huy Phan, Mike Lind Rank, Martin Christian Hemmsen, Maarten De Vos, Preben Kidmose",
       "venue": "IEEE Transactions on Biomedical Engineering",
@@ -608,29 +624,6 @@
         "confidence_score": 0.7366266185045243,
         "similarity_score": 0.6377719640731812,
         "citation_text_length": 1285,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Detection of sleep apnea from single-channel electroencephalogram (EEG) using an explainable convolutional neural network (CNN)",
-      "author": "Lachlan D Barnes, Kevin Lee, Andreas W. Kempa-Liehr, Luke E. Hallum",
-      "venue": "PLoS ONE",
-      "year": 2022,
-      "url": "https://doi.org/10.1371/journal.pone.0272167",
-      "cited_by": 38,
-      "abstract": "Sleep apnea (SA) is a common disorder involving the cessation of breathing during sleep. It can cause daytime hypersomnia, accidents, and, if allowed to progress, serious, chronic conditions. Continuous positive airway pressure is an effective SA treatment. However, long waitlists impede timely diagnosis; overnight sleep studies involve trained technicians scoring a polysomnograph, which comprises multiple physiological signals including multi-channel electroencephalography (EEG). Therefore, it is important to develop simplified and automated approaches to detect SA. In the present study, we have developed an explainable convolutional neural network (CNN) to detect SA events from single-channel EEG recordings which generalizes across subjects. The network architecture consisted of three convolutional layers. We tuned hyperparameters using the Hyperband algorithm, optimized parameters using Adam, and quantified network performance with subjectwise 10-fold cross-validation. Our CNN perfo",
-      "doi": "10.1371/journal.pone.0272167",
-      "pmid": "36099242",
-      "openalex_id": "W4295440221",
-      "source_doi": "10.1186/s12938-017-0400-5",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5733224813640118,
-        "similarity_score": 0.49638310074806213,
-        "citation_text_length": 1241,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -821,6 +814,29 @@
       }
     },
     {
+      "title": "Deep Convolutional Neural Network Based Eye States Classification Using Ear-EEG",
+      "author": "Chang Hee Han, Ga-Young Choi, Han‐Jeong Hwang",
+      "venue": "Expert Systems with Applications",
+      "year": 2021,
+      "url": "https://doi.org/10.1016/j.eswa.2021.116443",
+      "cited_by": 26,
+      "abstract": null,
+      "doi": "10.1016/j.eswa.2021.116443",
+      "pmid": null,
+      "openalex_id": "W4200027571",
+      "source_doi": "10.1186/s12938-017-0400-5",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5321748554706573,
+        "similarity_score": 0.5068331956863403,
+        "citation_text_length": 183,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "On the Feasibility of Using an Ear-EEG to Develop an Endogenous Brain-Computer Interface",
       "author": "Soo-In Choi, Chang Hee Han, Ga-Young Choi, Jaeyoung Shin, Kwang Soup Song, Chang‐Hwan Im, Han-Jeong Hwang",
       "venue": "Sensors",
@@ -838,29 +854,6 @@
         "confidence_score": 0.5831280827522278,
         "similarity_score": 0.5301164388656616,
         "citation_text_length": 1239,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Deep Convolutional Neural Network Based Eye States Classification Using Ear-EEG",
-      "author": "Chang Hee Han, Ga-Young Choi, Han‐Jeong Hwang",
-      "venue": "Expert Systems with Applications",
-      "year": 2021,
-      "url": "https://doi.org/10.1016/j.eswa.2021.116443",
-      "cited_by": 25,
-      "abstract": null,
-      "doi": "10.1016/j.eswa.2021.116443",
-      "pmid": null,
-      "openalex_id": "W4200027571",
-      "source_doi": "10.1186/s12938-017-0400-5",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5321748554706573,
-        "similarity_score": 0.5068331956863403,
-        "citation_text_length": 183,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -895,7 +888,7 @@
       "venue": "Clinical Neurophysiology",
       "year": 2021,
       "url": "https://doi.org/10.1016/j.clinph.2021.01.009",
-      "cited_by": 23,
+      "cited_by": 24,
       "abstract": "OBJECTIVE: Rapid-Eye-Movement (REM) sleep behaviour disorder (RBD) is an early predictor of Parkinson's disease, dementia with Lewy bodies, and multiple system atrophy. This study investigated the use of a minimal set of sensors to achieve effective screening for RBD in the population, integrating automated sleep staging (three state) followed by RBD detection without the need for cumbersome electroencephalogram (EEG) sensors. METHODS: Polysomnography signals from 50 participants with RBD and 50 age-matched healthy controls were used to evaluate this study. Three stage sleep classification was achieved using a random forest classifier and features derived from a combination of cost-effective and easy to use sensors, namely electrocardiogram (ECG), electrooculogram (EOG), and electromyogram (EMG) channels. Subsequently, RBD detection was achieved using established and new metrics derived from ECG and EMG channels. RESULTS: The EOG and EMG combination provided the optimal minimalist full",
       "doi": "10.1016/j.clinph.2021.01.009",
       "pmid": "33636605",
@@ -941,7 +934,7 @@
       "venue": "Computer Methods and Programs in Biomedicine",
       "year": 2021,
       "url": "https://doi.org/10.1016/j.cmpb.2021.106091",
-      "cited_by": 19,
+      "cited_by": 20,
       "abstract": "BACKGROUND\nAutomatic sleep stage classification depends crucially on the selection of a good set of descriptive features. However, the selection of a feature set with an appropriate low computational cost without compromising classification performance is still a challenge. This study attempts to represent sleep EEG patterns using a minimum number of features, without significant performance loss.\n\n\nMETHODS\nThree feature selection algorithms were applied to a high dimensional feature space comprising 84 features. These methods were based on a bootstrapping approach guided by Gini ranking and mutual information between the features. The algorithms were tested on three scalp electroencephalography (EEG) and one ear-EEG datasets. The relationship between the information carried by different features was investigated using mutual information and illustrated by a graphical clustering tool.\n\n\nRESULTS\nThe minimum number of features that can represent the whole feature set without performance ",
       "doi": "10.1016/j.cmpb.2021.106091",
       "pmid": "33882415",
@@ -953,6 +946,29 @@
         "confidence_score": 0.5460044704377651,
         "similarity_score": 0.4727311432361603,
         "citation_text_length": 1251,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Transcranial Auricular Vagus Nerve Stimulation (taVNS) and Ear-EEG: Potential for Closed-Loop Portable Non-invasive Brain Stimulation",
+      "author": "Philipp Ruhnau, Tino Zaehle",
+      "venue": "Frontiers in Human Neuroscience",
+      "year": 2021,
+      "url": "https://doi.org/10.3389/fnhum.2021.699473",
+      "cited_by": 20,
+      "abstract": "No matter how hard we concentrate, our attention fluctuates - a fact that greatly affects our success in completing a current task. Here, we review work from two methods that, in a closed-loop manner, have the potential to ameliorate these fluctuations. Ear-EEG can measure electric brain activity from areas in or around the ear, using small and thus portable hardware. It has been shown to capture the state of attention with high temporal resolution. Transcutaneous auricular vagus nerve stimulation (taVNS) comes with the same advantages (small and light) and critically current research suggests that it is possible to influence ongoing brain activity that has been linked to attention. Following the review of current work on ear-EEG and taVNS we suggest that a combination of the two methods in a closed-loop system could serve as a potential application to modulate attention.",
+      "doi": "10.3389/fnhum.2021.699473",
+      "pmid": "34194308",
+      "openalex_id": "W3169458815",
+      "source_doi": "10.1186/s12938-017-0400-5",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5034957236051559,
+        "similarity_score": 0.43592703342437744,
+        "citation_text_length": 1114,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -999,29 +1015,6 @@
         "confidence_score": 0.7239580690860749,
         "similarity_score": 0.6581436991691589,
         "citation_text_length": 1194,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Transcranial Auricular Vagus Nerve Stimulation (taVNS) and Ear-EEG: Potential for Closed-Loop Portable Non-invasive Brain Stimulation",
-      "author": "Philipp Ruhnau, Tino Zaehle",
-      "venue": "Frontiers in Human Neuroscience",
-      "year": 2021,
-      "url": "https://doi.org/10.3389/fnhum.2021.699473",
-      "cited_by": 19,
-      "abstract": "No matter how hard we concentrate, our attention fluctuates - a fact that greatly affects our success in completing a current task. Here, we review work from two methods that, in a closed-loop manner, have the potential to ameliorate these fluctuations. Ear-EEG can measure electric brain activity from areas in or around the ear, using small and thus portable hardware. It has been shown to capture the state of attention with high temporal resolution. Transcutaneous auricular vagus nerve stimulation (taVNS) comes with the same advantages (small and light) and critically current research suggests that it is possible to influence ongoing brain activity that has been linked to attention. Following the review of current work on ear-EEG and taVNS we suggest that a combination of the two methods in a closed-loop system could serve as a potential application to modulate attention.",
-      "doi": "10.3389/fnhum.2021.699473",
-      "pmid": "34194308",
-      "openalex_id": "W3169458815",
-      "source_doi": "10.1186/s12938-017-0400-5",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5034957236051559,
-        "similarity_score": 0.43592703342437744,
-        "citation_text_length": 1114,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1097,6 +1090,29 @@
       }
     },
     {
+      "title": "Signal quality evaluation of an in-ear EEG device in comparison to a conventional cap system",
+      "author": "Hanane Moumane, Jérémy Pazuelo, Mérie Nassar, José Yesith Juez, Mario Valderrama, Michel Le Van Quyen",
+      "venue": "Frontiers in Neuroscience",
+      "year": 2024,
+      "url": "https://doi.org/10.3389/fnins.2024.1441897",
+      "cited_by": 17,
+      "abstract": "Introduction Wearable in-ear electroencephalographic (EEG) devices hold significant promise for integrating brain monitoring technologies into real-life applications. However, despite the introduction of various in-ear EEG systems, there remains a necessity for validating these technologies against gold-standard, clinical-grade devices. This study aims to evaluate the signal quality of a newly developed mobile in-ear EEG device compared to a standard scalp EEG system among healthy volunteers during wakefulness and sleep. Methods The study evaluated an in-ear EEG device equipped with dry electrodes in a laboratory setting, recording a single bipolar EEG channel using a cross-ear electrode configuration. Thirty healthy participants were recorded simultaneously using the in-ear EEG device and a conventional EEG cap system with 64 wet electrodes. Based on two recording protocols, one during a resting state condition involving alternating eye opening and closure with a low degree of artifac",
+      "doi": "10.3389/fnins.2024.1441897",
+      "pmid": "39319310",
+      "openalex_id": "W4402429931",
+      "source_doi": "10.1186/s12938-017-0400-5",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6489768299460412,
+        "similarity_score": 0.5618847012519836,
+        "citation_text_length": 1257,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Ubi-SleepNet",
       "author": "Bing Zhai, Yu Guan, Michael Catt, Thomas Plötz",
       "venue": "Proceedings of the ACM on Interactive Mobile Wearable and Ubiquitous Technologies",
@@ -1137,29 +1153,6 @@
         "confidence_score": 0.6466753274202347,
         "similarity_score": 0.5598920583724976,
         "citation_text_length": 1177,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Signal quality evaluation of an in-ear EEG device in comparison to a conventional cap system",
-      "author": "Hanane Moumane, Jérémy Pazuelo, Mérie Nassar, José Yesith Juez, Mario Valderrama, Michel Le Van Quyen",
-      "venue": "Frontiers in Neuroscience",
-      "year": 2024,
-      "url": "https://doi.org/10.3389/fnins.2024.1441897",
-      "cited_by": 16,
-      "abstract": "Introduction Wearable in-ear electroencephalographic (EEG) devices hold significant promise for integrating brain monitoring technologies into real-life applications. However, despite the introduction of various in-ear EEG systems, there remains a necessity for validating these technologies against gold-standard, clinical-grade devices. This study aims to evaluate the signal quality of a newly developed mobile in-ear EEG device compared to a standard scalp EEG system among healthy volunteers during wakefulness and sleep. Methods The study evaluated an in-ear EEG device equipped with dry electrodes in a laboratory setting, recording a single bipolar EEG channel using a cross-ear electrode configuration. Thirty healthy participants were recorded simultaneously using the in-ear EEG device and a conventional EEG cap system with 64 wet electrodes. Based on two recording protocols, one during a resting state condition involving alternating eye opening and closure with a low degree of artifac",
-      "doi": "10.3389/fnins.2024.1441897",
-      "pmid": "39319310",
-      "openalex_id": "W4402429931",
-      "source_doi": "10.1186/s12938-017-0400-5",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6489768299460412,
-        "similarity_score": 0.5618847012519836,
-        "citation_text_length": 1257,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1465,6 +1458,29 @@
       }
     },
     {
+      "title": "Apnea and hypopnea event detection using EEG, EMG, and sleep stage labels in a cohort of patients with suspected sleep apnea",
+      "author": "Danny H. Zhang, Jeffrey Zhou, Joseph D. Wickens, Andrew G. Veale, Luke E. Hallum",
+      "venue": "Biomedical Signal Processing and Control",
+      "year": 2025,
+      "url": "https://doi.org/10.1016/j.bspc.2025.107628",
+      "cited_by": 9,
+      "abstract": "Abstract Automating the screening, diagnosis, and monitoring of sleep apnea (SA) is potentially clinically useful. We present machine-learning models which detect SA and hypopnea events from the overnight electroencephalogram (EEG) and electromyogram (EMG), and we explain detection mechanisms. We tested four models using a novel data set comprising six-channel EEG and two-channel EMG recorded from 26 consecutive patients; recordings were expertly labeled with sleep stage and apnea/hypopnea events. For Model 1, EEG subband power and sample entropy were features used to train and test a random forest classifier. Model 2 was identical to Model 1, but we used EMG, not EEG. Model 3 was a simple decision strategy contingent upon sleep stage label. Model 4 was identical to Model 1, but we used EEG subband power, sample entropy, and sleep stage label. All models performed above chance (Matthews correlation coefficient, MCC &gt; 0): Model 4 (leave-one-patient-out cross-validated MCC = 0.314) ou",
+      "doi": "10.1016/j.bspc.2025.107628",
+      "pmid": null,
+      "openalex_id": "W4407399774",
+      "source_doi": "10.1186/s12938-017-0400-5",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6099738970398904,
+        "similarity_score": 0.5281159281730652,
+        "citation_text_length": 1283,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Discrimination of Sleep Spindles in Ear-EEG",
       "author": "Kaare B. Mikkelsen, Simon L. Kappel, Martin Christian Hemmsen, Mike Lind Rank, Preben Kidmose",
       "venue": "2019 41st Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)",
@@ -1528,29 +1544,6 @@
         "confidence_score": 0.792129791378975,
         "similarity_score": 0.6858266592025757,
         "citation_text_length": 1278,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Apnea and hypopnea event detection using EEG, EMG, and sleep stage labels in a cohort of patients with suspected sleep apnea",
-      "author": "Danny H. Zhang, Jeffrey Zhou, Joseph D. Wickens, Andrew G. Veale, Luke E. Hallum",
-      "venue": "Biomedical Signal Processing and Control",
-      "year": 2025,
-      "url": "https://doi.org/10.1016/j.bspc.2025.107628",
-      "cited_by": 8,
-      "abstract": "Abstract Automating the screening, diagnosis, and monitoring of sleep apnea (SA) is potentially clinically useful. We present machine-learning models which detect SA and hypopnea events from the overnight electroencephalogram (EEG) and electromyogram (EMG), and we explain detection mechanisms. We tested four models using a novel data set comprising six-channel EEG and two-channel EMG recorded from 26 consecutive patients; recordings were expertly labeled with sleep stage and apnea/hypopnea events. For Model 1, EEG subband power and sample entropy were features used to train and test a random forest classifier. Model 2 was identical to Model 1, but we used EMG, not EEG. Model 3 was a simple decision strategy contingent upon sleep stage label. Model 4 was identical to Model 1, but we used EEG subband power, sample entropy, and sleep stage label. All models performed above chance (Matthews correlation coefficient, MCC &gt; 0): Model 4 (leave-one-patient-out cross-validated MCC = 0.314) ou",
-      "doi": "10.1016/j.bspc.2025.107628",
-      "pmid": null,
-      "openalex_id": "W4407399774",
-      "source_doi": "10.1186/s12938-017-0400-5",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6099738970398904,
-        "similarity_score": 0.5281159281730652,
-        "citation_text_length": 1283,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1971,6 +1964,29 @@
       }
     },
     {
+      "title": "Automatic Sleep Staging of Single-Channel Ear-EEG Signals With a Probabilistic Ensemble Learning Approach",
+      "author": "Hongyu Liang, Yongxuan Wang, Le Yang, Mei‐Mei Wu, Dan Wang, Xiaohong Wang, Rong Liu",
+      "venue": "IEEE Journal of Biomedical and Health Informatics",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/jbhi.2025.3599874",
+      "cited_by": 2,
+      "abstract": "Accurate sleep staging is crucial for the early diagnosis of neurodegenerative diseases and the management of sleep disorders. To provide a user-friendly, non-intrusive, and long-term monitoring solution, we explored the potential clinical applications of ear-electroencephalogram (ear-EEG). This study proposes a probabilistic ensemble learning approach for automatic sleep staging using single-channel ear-EEG data. The proposed method integrates Extreme Gradient Boosting (XGBoost) with Linear Discriminant Analysis (LDA), augmented by transition matrix correction and probability weighting strategies, to capture temporal sleep patterns without compromising data integrity or requiring intensive preprocessing. An ear-EEG with polysomnography (ear-PSG) dataset collected from twenty subjects using our custom-developed ear-EEG sensor, was compared with two public datasets, ear-Feature and Sleep-EDF, to validate both the reliability of the data and the effectiveness of the proposed approach. Th",
+      "doi": "10.1109/jbhi.2025.3599874",
+      "pmid": "40828728",
+      "openalex_id": "W4413319019",
+      "source_doi": "10.1186/s12938-017-0400-5",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7778885087370874,
+        "similarity_score": 0.6734965443611145,
+        "citation_text_length": 1276,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Brain Computer Interfaces and Emotional Involvement: Theory, Research, and Applications",
       "author": "Claudio Lucchiari",
       "venue": "n/a",
@@ -2080,29 +2096,6 @@
         "confidence_score": 0.6057317000627518,
         "similarity_score": 0.5244430303573608,
         "citation_text_length": 1178,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Automatic Sleep Staging of Single-Channel Ear-EEG Signals With a Probabilistic Ensemble Learning Approach",
-      "author": "Hongyu Liang, Yongxuan Wang, Le Yang, Mei‐Mei Wu, Dan Wang, Xiaohong Wang, Rong Liu",
-      "venue": "IEEE Journal of Biomedical and Health Informatics",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/jbhi.2025.3599874",
-      "cited_by": 1,
-      "abstract": "Accurate sleep staging is crucial for the early diagnosis of neurodegenerative diseases and the management of sleep disorders. To provide a user-friendly, non-intrusive, and long-term monitoring solution, we explored the potential clinical applications of ear-electroencephalogram (ear-EEG). This study proposes a probabilistic ensemble learning approach for automatic sleep staging using single-channel ear-EEG data. The proposed method integrates Extreme Gradient Boosting (XGBoost) with Linear Discriminant Analysis (LDA), augmented by transition matrix correction and probability weighting strategies, to capture temporal sleep patterns without compromising data integrity or requiring intensive preprocessing. An ear-EEG with polysomnography (ear-PSG) dataset collected from twenty subjects using our custom-developed ear-EEG sensor, was compared with two public datasets, ear-Feature and Sleep-EDF, to validate both the reliability of the data and the effectiveness of the proposed approach. Th",
-      "doi": "10.1109/jbhi.2025.3599874",
-      "pmid": "40828728",
-      "openalex_id": "W4413319019",
-      "source_doi": "10.1186/s12938-017-0400-5",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7778885087370874,
-        "similarity_score": 0.6734965443611145,
-        "citation_text_length": 1276,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2247,6 +2240,29 @@
       }
     },
     {
+      "title": "Soft piezoresistive fabric-embedded pressure sensors for smart bedding for aged care applications",
+      "author": "Shanmuga Sundar Dhanabalan, Dashen Dong, Praneeth Annaparthi, Mingjie Yang, Sumeet Walia, Andrew Tucker, H. Y. Lee, Sharath Sriram, Madhu Bhaskaran",
+      "venue": "Flexible and Printed Electronics",
+      "year": 2026,
+      "url": "https://doi.org/10.1088/2058-8585/ae8e8c",
+      "cited_by": 0,
+      "abstract": "Abstract With an ageing population, the need for timely care and support to maintain the quality of life for elderly individuals escalates, posing challenges for both caregivers and families. The imperative to care for them while respecting their privacy and daily routines becomes increasingly critical. In this work, we report the design and fabrication of soft sensors, embedded in fabric to create smart bedding to monitor people continuously and remotely in aged-care, without compromising their privacy. The soft piezoresistive sensors are fabricated using silver and carbon ink on flexible polyurethane substrate. The soft sensors are embedded in the fabric using hot-press technology, and extensively tested using a mattress rollator machine for durability, sensitivity, and robustness. Utilising low power electronics equipped with wireless electronic modules to monitor and log data continuously, these sensors accurately detect a person’s presence and falls in bed providing vital insights",
+      "doi": "10.1088/2058-8585/ae8e8c",
+      "pmid": null,
+      "openalex_id": "W7170039270",
+      "source_doi": "10.1186/s12938-017-0400-5",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4164201575517655,
+        "similarity_score": 0.36053693294525146,
+        "citation_text_length": 1315,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Hypoglycemia Detection Based on ear-EEG",
       "author": "Alvaro Fuentes Cabrera, Simon L. Kappel, Line Sofie Remvig, Hans O. Toft, Rasmus Elsborg Madsen, Preben Kildmose, Mike Lind Rank",
       "venue": "Research Square",
@@ -2337,40 +2353,17 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Beyond Scores: Earables as Active Recovery Boosters for Longevity and Performance",
-      "author": "Andrea Ferlini, A. Balaji, Mathias Ciliberto, Alessandro Montanari",
-      "venue": "Companion of the 2025 ACM International Joint Conference on Pervasive and Ubiquitous Computing",
-      "year": 2025,
-      "url": "https://doi.org/10.1145/3714394.3757260",
-      "cited_by": 0,
-      "abstract": "We live in a day and age where longevity and performance are the greatest aspirations of today's society. Endurance athletes are on a quest to minimize their cardiovascular age and boosting their peak performance. Yet, the key to their ambitions lies in their recovery. Current wearables such as Oura Ring, Whoop, UltraHuman, and Garmin (Body Battery) aim at quantifying recovery by means of scores but remain passive—they monitor and occasionally advise, without intervening. With this work, we envision that earables are in the unique situation where they have all the attributes that it takes to move beyond passive tracking to active recovery interventions. By leveraging continuous vital signs and biometrics sensing, acoustic modulation, dynamic noise masking, and even calorie intake detection, earables could help users actively improve sleep, boost their nutrition and fueling, and autonomic balance. We outline this vision, discuss challenges, and call on the community to explore this para",
-      "doi": "10.1145/3714394.3757260",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1186/s12938-017-0400-5",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.50748850107193,
-        "similarity_score": 0.43938398361206055,
-        "citation_text_length": 1280,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T16:56:28.366823+00:00",
+    "scoring_date": "2026-08-09T11:41:51.515087+00:00",
     "dataset_text_length": 2270,
     "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.6200082598388196,
+      "mean_confidence": 0.6190975764036178,
       "median_confidence": 0.6275583118200303,
-      "std_confidence": 0.11269452927944523,
+      "std_confidence": 0.11396096602782656,
       "min_confidence": 0.2828288346529007,
       "max_confidence": 0.8807420790195467,
       "high_confidence_count": 24,

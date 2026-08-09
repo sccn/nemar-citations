@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000112",
   "num_citations": 100,
-  "date_last_updated": "2026-08-01T15:18:42.191623+00:00",
+  "date_last_updated": "2026-08-09T10:01:06.146904+00:00",
   "metadata": {
-    "total_cumulative_citations": 1001,
-    "fetch_date": "2026-08-01T15:18:42.191623+00:00",
+    "total_cumulative_citations": 1028,
+    "fetch_date": "2026-08-09T10:01:06.146904+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -51,13 +51,7 @@
       "scalp electroencephalography"
     ],
     "methods_description": "EEG was recorded from 123 participants (75 female, ages 17-38) using a 32-channel biosignal recording system positioned according to the International 10-20 system, sampled at either 1000 Hz (92 subjects) or 250 Hz (31 subjects). Participants viewed 28 video clips (30-129 seconds duration) designed to target nine emotion categories (anger, disgust, fear, sadness, neutral, amusement, inspiration, joy, tenderness) presented in randomized blocks with arithmetic problems between blocks. After each video, participants rated their emotional response on 12 continuous 0-7 scales.",
-    "funding": [],
-    "searched_accessions": [
-      "nm000112"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 100
+    "funding": []
   },
   "citation_details": [
     {
@@ -89,7 +83,7 @@
       "venue": "IEEE Transactions on Affective Computing",
       "year": 2024,
       "url": "https://doi.org/10.1109/taffc.2024.3485057",
-      "cited_by": 81,
+      "cited_by": 82,
       "abstract": "Recognizing emotions from physiological signals is a topic that has garnered widespread interest, and research continues to develop novel techniques for perceiving emotions. However, the emergence of deep learning has highlighted the need for comprehensive and high-quality emotional datasets that enable the accurate decoding of human emotions. To systematically explore human emotions, we develop a multimodal dataset consisting of six basic (happiness, sadness, fear, disgust, surprise, and anger) emotions and the neutral emotion, named SEED-VII. This multimodal dataset includes electroencephalography (EEG) and eye movement signals. The seven emotions in SEED-VII are elicited by 80 different videos and fully investigated with continuous labels that indicate the intensity levels of the corresponding emotions. Additionally, we propose a novel Multimodal Adaptive Emotion Transformer (MAET), that can flexibly process both unimodal and multimodal inputs. Adversarial training is utilized in th",
       "doi": "10.1109/taffc.2024.3485057",
       "pmid": null,
@@ -112,7 +106,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2510.21585",
-      "cited_by": 64,
+      "cited_by": 66,
       "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
       "doi": "10.48550/arXiv.2510.21585",
       "pmid": null,
@@ -135,7 +129,7 @@
       "venue": "IEEE Transactions on Neural Networks and Learning Systems",
       "year": 2025,
       "url": "https://doi.org/10.1109/tnnls.2025.3552603",
-      "cited_by": 57,
+      "cited_by": 59,
       "abstract": "Integrating prior knowledge of neurophysiology into neural network architecture enhances the performance of emotion decoding. While numerous techniques emphasize learning spatial and short-term temporal patterns, there has been a limited emphasis on capturing the vital long-term contextual information associated with emotional cognitive processes. In order to address this discrepancy, we introduce a novel transformer model called emotion transformer (EmT). EmT is designed to excel in both generalized cross-subject electroencephalography (EEG) emotion classification and regression tasks. In EmT, EEG signals are transformed into a temporal graph format, creating a sequence of EEG feature graphs using a temporal graph construction (TGC) module. A novel residual multiview pyramid graph convolutional neural network (RMPG) module is then proposed to learn dynamic graph representations for each EEG feature graph within the series, and the learned representations of each graph are fused into o",
       "doi": "10.1109/tnnls.2025.3552603",
       "pmid": "40208757",
@@ -204,7 +198,7 @@
       "venue": "IEEE Journal of Biomedical and Health Informatics",
       "year": 2024,
       "url": "https://doi.org/10.1109/jbhi.2024.3395622",
-      "cited_by": 37,
+      "cited_by": 38,
       "abstract": "Due to the objectivity of emotional expression in the central nervous system, EEG-based emotion recognition can effectively reflect humans' internal emotional states. In recent years, convolutional neural networks (CNNs) and recurrent neural networks (RNNs) have made significant strides in extracting local features and temporal dependencies from EEG signals. However, CNNs ignore spatial distribution information from EEG electrodes; moreover, RNNs may encounter issues such as exploding/vanishing gradients and high time consumption. To address these limitations, we propose an attention-based temporal graph representation network (ATGRNet) for EEG-based emotion recognition. Firstly, a hierarchical attention mechanism is introduced to integrate feature representations from both frequency bands and channels ordered by priority in EEG signals. Second, a graph convolutional neural network with top-k operation is utilized to capture internal relationships between EEG electrodes under different",
       "doi": "10.1109/jbhi.2024.3395622",
       "pmid": "38696290",
@@ -227,7 +221,7 @@
       "venue": "Neural Networks",
       "year": 2025,
       "url": "https://doi.org/10.1016/j.neunet.2025.107457",
-      "cited_by": 35,
+      "cited_by": 36,
       "abstract": "Neuroscience shows that the brain stimulated by external information can induce functional responses to emotions, which can be measured and analyzed by electroencephalogram (EEG). Most existing works focus on extracting specific spatial topological information and temporal dependency representations, with a few works begin to mine the value of spatiotemporal cross-domain information. However, these approaches overdependence on cognitive prior information, limiting their ability to grasp complex domain-structured information. Moreover, the stable extraction of cognitive functions is crucial for reinforcing the performance of emotion recognition systems. Here, we propose a multi-domain constraint learning system. It is inspired by adaptive cognitive graphs, embedding spatiotemporal representative knowledge into the constructed framework (AC-DCL) to improve the performance of emotion recognition. In the AC-DCL, a spatial-guided dynamic graph constraint learning module is meticulously desi",
       "doi": "10.1016/j.neunet.2025.107457",
       "pmid": "40220562",
@@ -273,7 +267,7 @@
       "venue": "Neural Networks",
       "year": 2025,
       "url": "https://doi.org/10.1016/j.neunet.2025.107816",
-      "cited_by": 30,
+      "cited_by": 33,
       "abstract": "Electroencephalography (EEG) captures brain activity and has been widely used in clinic and brain-computer interfaces (BCIs). Classic EEG decoding methods rely on supervised learning, limiting their performance and generalizability. Inspired by the revolutionary impact of large models in other fields, researchers are now investigating EEG foundation models. Recently, state space models (SSMs), such as Mamba, have demonstrated strong sequence modeling capabilities, which may be suitable to model the spatiotemporal dependencies of EEG signals. However, the application of Mamba for EEG representation learning remains largely unexplored. In this paper, we investigate the potential of Mamba for learning generic EEG representations and propose a novel EEG foundation model, EEGMamba. Specifically, we employ Mamba encoder as the backbone of EEGMamba to model the spatiotemporal dependencies among EEG patches. Meanwhile, we use patch-based masked EEG reconstruction to learn generic EEG represent",
       "doi": "10.1016/j.neunet.2025.107816",
       "pmid": "40714477",
@@ -319,7 +313,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2505.18185",
-      "cited_by": 28,
+      "cited_by": 29,
       "abstract": "Electroencephalography (EEG) and magnetoencephalography (MEG) measure neural activity non-invasively by capturing electromagnetic fields generated by dendritic currents. Although rooted in the same biophysics, EEG and MEG exhibit distinct signal patterns, further complicated by variations in sensor configurations across modalities and recording devices. Existing approaches typically rely on separate, modality- and dataset-specific models, which limits the performance and cross-domain scalability. This paper proposes BrainOmni, the first brain foundation model that generalises across heterogeneous EEG and MEG recordings. To unify diverse data sources, we introduce BrainTokenizer,the first tokenizer that quantises spatiotemporal brain activity into discrete representations. Central to BrainTokenizer is a novel Sensor Encoder that encodes sensor properties such as spatial layout, orientation, and type, enabling compatibility across devices and modalities. Building upon the discrete repres",
       "doi": "10.48550/arXiv.2505.18185",
       "pmid": null,
@@ -360,6 +354,29 @@
       }
     },
     {
+      "title": "Neuron Perception Inspired EEG Emotion Recognition With Parallel Contrastive Learning",
+      "author": "Dongdong Li, Shengyao Huang, Li Xie, Zhe Wang, Jiazhen Xu",
+      "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/tnnls.2025.3546283",
+      "cited_by": 22,
+      "abstract": "Considerable interindividual variability exists in electroencephalogram (EEG) signals, resulting in challenges for subject-independent emotion recognition tasks. Current research in cross-subject EEG emotion recognition has been insufficient in uncovering the shared neural underpinnings of affective processing in the human brain. To address this issue, we propose the parallel contrastive multisource domain adaptation (PCMDA) model, inspired by the neural representation mechanism in the ventral visual cortex. Our model employs a neuron-perception-inspired contrastive learning architecture for EEG-based emotion recognition in subject-independent scenarios. A two-stage alignment methodology is employed for the purpose of aligning numerous source domains with the target domain. This approach integrates a parallel contrastive loss (PCL) which simulates the self-supervised learning mechanism inherent in the neural representation of the human brain. Furthermore, a self-attention mechanism is ",
+      "doi": "10.1109/tnnls.2025.3546283",
+      "pmid": "40085465",
+      "openalex_id": "W4408441416",
+      "source_doi": "10.1038/s41597-023-02650-w",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6883489698171615,
+        "similarity_score": 0.5959731340408325,
+        "citation_text_length": 1238,
+        "dataset_text_length": 2274,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "EEG Emotion Copilot: Optimizing lightweight LLMs for emotional EEG interpretation with assisted medical record generation",
       "author": "Hongyu Chen, Weiming Zeng, Chengcheng Chen, Luhui Cai, Fei Wang, Fei Wang, Yuhu Shi, Lei Wang, Lei Wang, Wei Zhang, Yueyang Li, Hongjie Yan, Wai Ting Siok, Nizhuan Wang",
       "venue": "Neural Networks",
@@ -377,29 +394,6 @@
         "confidence_score": 0.6205683588981629,
         "similarity_score": 0.591017484664917,
         "citation_text_length": 331,
-        "dataset_text_length": 2274,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Neuron Perception Inspired EEG Emotion Recognition With Parallel Contrastive Learning",
-      "author": "Dongdong Li, Shengyao Huang, Li Xie, Zhe Wang, Jiazhen Xu",
-      "venue": "IEEE Transactions on Neural Networks and Learning Systems",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/tnnls.2025.3546283",
-      "cited_by": 20,
-      "abstract": "Considerable interindividual variability exists in electroencephalogram (EEG) signals, resulting in challenges for subject-independent emotion recognition tasks. Current research in cross-subject EEG emotion recognition has been insufficient in uncovering the shared neural underpinnings of affective processing in the human brain. To address this issue, we propose the parallel contrastive multisource domain adaptation (PCMDA) model, inspired by the neural representation mechanism in the ventral visual cortex. Our model employs a neuron-perception-inspired contrastive learning architecture for EEG-based emotion recognition in subject-independent scenarios. A two-stage alignment methodology is employed for the purpose of aligning numerous source domains with the target domain. This approach integrates a parallel contrastive loss (PCL) which simulates the self-supervised learning mechanism inherent in the neural representation of the human brain. Furthermore, a self-attention mechanism is ",
-      "doi": "10.1109/tnnls.2025.3546283",
-      "pmid": "40085465",
-      "openalex_id": "W4408441416",
-      "source_doi": "10.1038/s41597-023-02650-w",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6883489698171615,
-        "similarity_score": 0.5959731340408325,
-        "citation_text_length": 1238,
         "dataset_text_length": 2274,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -434,7 +428,7 @@
       "venue": "Expert Systems with Applications",
       "year": 2025,
       "url": "https://doi.org/10.1016/j.eswa.2025.127348",
-      "cited_by": 19,
+      "cited_by": 20,
       "abstract": null,
       "doi": "10.1016/j.eswa.2025.127348",
       "pmid": null,
@@ -457,7 +451,7 @@
       "venue": "Biomedical Signal Processing and Control",
       "year": 2025,
       "url": "https://doi.org/10.1016/j.bspc.2025.107511",
-      "cited_by": 18,
+      "cited_by": 19,
       "abstract": null,
       "doi": "10.1016/j.bspc.2025.107511",
       "pmid": null,
@@ -469,6 +463,29 @@
         "confidence_score": 0.6232182025909424,
         "similarity_score": 0.593541145324707,
         "citation_text_length": 219,
+        "dataset_text_length": 2274,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "CodeBrain: Bridging Decoupled Tokenizer and Multi-Scale Architecture for EEG Foundation Model",
+      "author": "Jingying Ma, Feng Wu, Qika Lin, Yucheng Xing, Chenyu Liu, Ziyu Jia, Mengling Feng",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2506.09110",
+      "cited_by": 17,
+      "abstract": "Electroencephalography (EEG) provides real-time insights into brain activity and supports diverse applications in neuroscience. While EEG foundation models (EFMs) have emerged to address the scalability issues of task-specific models, current approaches still yield clinically uninterpretable and weakly discriminative representations, inefficiently capturing global dependencies and neglecting important local neural events. We present CodeBrain, a two-stage EFM designed to fill this gap. In the first stage, we introduce the TFDual-Tokenizer, which decouples heterogeneous temporal and frequency EEG signals into discrete tokens, quadratically expanding the representation space to enhance discriminative power and offering domain-specific representation-level interpretability by suggesting potential links to neural events and spectral rhythms. In the second stage, we propose the multi-scale EEGSSM architecture, which combines structured global convolution with sliding window attention to eff",
+      "doi": "10.48550/arXiv.2506.09110",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02650-w",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5338523773849011,
+        "similarity_score": 0.4622098505496979,
+        "citation_text_length": 1218,
         "dataset_text_length": 2274,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -515,29 +532,6 @@
         "confidence_score": 0.441586778908968,
         "similarity_score": 0.3823262155056,
         "citation_text_length": 1234,
-        "dataset_text_length": 2274,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "CodeBrain: Bridging Decoupled Tokenizer and Multi-Scale Architecture for EEG Foundation Model",
-      "author": "Jingying Ma, Feng Wu, Qika Lin, Yucheng Xing, Chenyu Liu, Ziyu Jia, Mengling Feng",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2506.09110",
-      "cited_by": 16,
-      "abstract": "Electroencephalography (EEG) provides real-time insights into brain activity and supports diverse applications in neuroscience. While EEG foundation models (EFMs) have emerged to address the scalability issues of task-specific models, current approaches still yield clinically uninterpretable and weakly discriminative representations, inefficiently capturing global dependencies and neglecting important local neural events. We present CodeBrain, a two-stage EFM designed to fill this gap. In the first stage, we introduce the TFDual-Tokenizer, which decouples heterogeneous temporal and frequency EEG signals into discrete tokens, quadratically expanding the representation space to enhance discriminative power and offering domain-specific representation-level interpretability by suggesting potential links to neural events and spectral rhythms. In the second stage, we propose the multi-scale EEGSSM architecture, which combines structured global convolution with sliding window attention to eff",
-      "doi": "10.48550/arXiv.2506.09110",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02650-w",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5338523773849011,
-        "similarity_score": 0.4622098505496979,
-        "citation_text_length": 1218,
         "dataset_text_length": 2274,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -618,7 +612,7 @@
       "venue": "Knowledge-Based Systems",
       "year": 2025,
       "url": "https://doi.org/10.1016/j.knosys.2025.113018",
-      "cited_by": 12,
+      "cited_by": 13,
       "abstract": null,
       "doi": "10.1016/j.knosys.2025.113018",
       "pmid": null,
@@ -779,7 +773,7 @@
       "venue": "ArXiv",
       "year": 2026,
       "url": "https://doi.org/10.48550/arXiv.2601.06134",
-      "cited_by": 8,
+      "cited_by": 9,
       "abstract": "Electroencephalography (EEG) foundation models hold significant promise for universal Brain-Computer Interfaces (BCIs). However, existing approaches often rely on end-to-end fine-tuning and exhibit limited efficacy under frozen-probing protocols, lacking the intrinsic universality required for broad generalization. This limitation stems from adapting general-purpose sequence architectures that overlook the biophysical and dynamical principles of neural activity. To bridge this gap, we propose DeeperBrain, a neuro-grounded foundation model integrating domain-specific inductive biases into its model design and learning objectives. Architecturally, DeeperBrain incorporates a volume conduction-aware channel encoding to model spatial mixing via 3D geometry, and a neurodynamics-aware temporal encoding capturing slow adaptations using oscillatory and exponential bases. For pretraining, we introduce a dual-objective strategy combining Masked EEG Reconstruction (MER) for local fidelity and Neur",
       "doi": "10.48550/arXiv.2601.06134",
       "pmid": null,
@@ -791,6 +785,29 @@
         "confidence_score": 0.5173890030384065,
         "similarity_score": 0.447955846786499,
         "citation_text_length": 1187,
+        "dataset_text_length": 2274,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Foundation models for EEG decoding: current progress and prospective research",
+      "author": "Yao Yuxuan, Hongbo Wang, Chen Li, Peng Yiheng, Jingjing Luo",
+      "venue": "Journal of Neural Engineering",
+      "year": 2025,
+      "url": "https://doi.org/10.1088/1741-2552/ae17e9",
+      "cited_by": 7,
+      "abstract": "Abstract Objective. Electroencephalography (EEG) records the spontaneous electrical activity in the brain. Despite the growing application of deep learning in EEG decoding, traditional methods still rely heavily on supervised learning, which is often limited by task specificity and dataset dependency, restricting model performance and generalization. Inspired by the success of large language models, EEG foundation models (EEG FMs) are attracting increasing attention as a unified paradigm for EEG decoding. In this study, we review a selection of representative studies on EEG FMs, aiming to extract trends and provide recommendations for future research. Approach. We provide a comprehensive analysis of recent advances in EEG FMs, with a focus on downstream tasks, benchmark datasets, model architectures, and pre-training techniques. We analyze and synthesize core FMs components, and systematically compare their performances and generalizabilities. Main results. Our review reveals that EEG ",
+      "doi": "10.1088/1741-2552/ae17e9",
+      "pmid": "41145005",
+      "openalex_id": "W4415599525",
+      "source_doi": "10.1038/s41597-023-02650-w",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5553687858581544,
+        "similarity_score": 0.4808387756347656,
+        "citation_text_length": 1204,
         "dataset_text_length": 2274,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -843,6 +860,75 @@
       }
     },
     {
+      "title": "A Review of Deep Learning Techniques for EEG-Based Emotion Recognition: Models, Methods, and Datasets",
+      "author": "P. Sreehari, U. Raghavendra, Anjan Gudigar, B. K. Deka, D. Noronha, A. Khan",
+      "venue": "F1000Research",
+      "year": 2025,
+      "url": "https://doi.org/10.12688/f1000research.171170.1",
+      "cited_by": 6,
+      "abstract": "Emotion Recognition (ER) with Electroencephalography (EEG) has become a major area of focus in affective computing due to its direct measurement of the activity of the brain. ER based on EEG has also advanced with the popularity of Deep Learning (DL) and its advancements related to classification accuracy and model efficiency. This systematic review is conducted following the PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses) guidelines and aims to provide an overview of DL-based EEG emotion recognition approaches. A comprehensive literature search was conducted across five major databases covering the publications from 2020 to 2025. The studies with EEG signals for ER using DL architectures were included in the present review. Finally, a total of 233 articles were considered after eligibility screening. To enhance the diversity of investigation, we assessed the public datasets utilized for ER based on EEG in terms of their stimulation procedures and emotional ",
+      "doi": "10.12688/f1000research.171170.1",
+      "pmid": "41585461",
+      "openalex_id": "W4416321657",
+      "source_doi": "10.1038/s41597-023-02650-w",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7165757131576539,
+        "similarity_score": 0.6204118728637695,
+        "citation_text_length": 1228,
+        "dataset_text_length": 2274,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "MSGM: a multi-scale spatiotemporal graph Mamba for EEG emotion recognition",
+      "author": "Hanwen Liu, Yifeng Gong, Zuwei Yan, Zeheng Zhuang, Jiaxuan Lu",
+      "venue": "Frontiers in Neuroscience",
+      "year": 2026,
+      "url": "https://doi.org/10.3389/fnins.2026.1665145",
+      "cited_by": 6,
+      "abstract": "Introduction: Electroencephalography (EEG) based emotion recognition is pivotal for advancing mobile health monitoring and real-time affective interaction. However, current methodologies face a critical trade-off between modeling the complex, multi-scale dynamics of brain activity and maintaining the computational efficiency necessary for edge deployment. Existing approaches often rely on fixed temporal scales and neglect hierarchical spatial connectivity, which limits both classification robustness and scalability in practical settings. Methods: To address these challenges, we propose the Multi-Scale Spatiotemporal Graph Mamba (MSGM). Specifically, it employs multi-window temporal segmentation to extract relative power spectral density (rPSD) features, mimicking the brain's multi-scale processing to capture both transient emotional fluctuations and sustained mood. Spatially, it constructs bimodal global and local graphs refined by multi-depth Graph Convolutional Networks (GCNs), intui",
+      "doi": "10.3389/fnins.2026.1665145",
+      "pmid": "41725855",
+      "openalex_id": "W7128012153",
+      "source_doi": "10.1038/s41597-023-02650-w",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6022474685311319,
+        "similarity_score": 0.5214263796806335,
+        "citation_text_length": 1199,
+        "dataset_text_length": 2274,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2605.08495",
+      "cited_by": 6,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": "10.48550/arXiv.2605.08495",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02650-w",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5801760792732239,
+        "similarity_score": 0.502316951751709,
+        "citation_text_length": 1326,
+        "dataset_text_length": 2274,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "ACCNet: Adaptive cross-frequency coupling graph attention for EEG emotion recognition",
       "author": "Dongyuan Tian, Yucheng Wang, Peiliang Gong, Zhewen Xu, Zhenghua Chen, Xiaohui Wei, Min Wu",
       "venue": "Neural Networks",
@@ -866,46 +952,23 @@
       }
     },
     {
-      "title": "Foundation models for EEG decoding: current progress and prospective research",
-      "author": "Yao Yuxuan, Hongbo Wang, Chen Li, Peng Yiheng, Jingjing Luo",
-      "venue": "Journal of Neural Engineering",
+      "title": "Dynamical Causal Graph Neural Network for EEG Emotion Recognition",
+      "author": "Yushun Xiao, Wenming Zheng, Guoying Zhao",
+      "venue": "IEEE Transactions on Affective Computing",
       "year": 2025,
-      "url": "https://doi.org/10.1088/1741-2552/ae17e9",
+      "url": "https://doi.org/10.1109/taffc.2025.3582740",
       "cited_by": 5,
-      "abstract": "Abstract Objective. Electroencephalography (EEG) records the spontaneous electrical activity in the brain. Despite the growing application of deep learning in EEG decoding, traditional methods still rely heavily on supervised learning, which is often limited by task specificity and dataset dependency, restricting model performance and generalization. Inspired by the success of large language models, EEG foundation models (EEG FMs) are attracting increasing attention as a unified paradigm for EEG decoding. In this study, we review a selection of representative studies on EEG FMs, aiming to extract trends and provide recommendations for future research. Approach. We provide a comprehensive analysis of recent advances in EEG FMs, with a focus on downstream tasks, benchmark datasets, model architectures, and pre-training techniques. We analyze and synthesize core FMs components, and systematically compare their performances and generalizabilities. Main results. Our review reveals that EEG ",
-      "doi": "10.1088/1741-2552/ae17e9",
-      "pmid": "41145005",
-      "openalex_id": "W4415599525",
+      "abstract": "Recently, topological graphs based on structural or functional connectivity of brain network have been utilized to construct graph neural networks (GNN) for Electroencephalogram (EEG) emotion recognition. In this paper, we propose a novel dynamical causal graph neural network (DCGNN) based on the effective causal connectivity of brain function network for EEG emotion recognition, in which Greedy Equivalence Search (GES) is used to find the optimal causal graph topology associated with the adjacent matrix of DCGNN. To this end, we firstly construct a skeleton graph using canonical correlation analysis (CCA) and then use GES to optimize the directional graph topology of DCGNN. Then, learnable weight parameters associated with the adjacent matrix are learnt during the model training of DCGNN. Additionally, a sparse graphic constraint is employed to enhance the efficacy of emotion recognition, while a Conditional Domain Adversarial Network (CDAN) is used to integrate features with emotion ",
+      "doi": "10.1109/taffc.2025.3582740",
+      "pmid": null,
+      "openalex_id": "W4411600807",
       "source_doi": "10.1038/s41597-023-02650-w",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5553687858581544,
-        "similarity_score": 0.4808387756347656,
-        "citation_text_length": 1204,
-        "dataset_text_length": 2274,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "A Review of Deep Learning Techniques for EEG-Based Emotion Recognition: Models, Methods, and Datasets",
-      "author": "P. Sreehari, U. Raghavendra, Anjan Gudigar, B. K. Deka, D. Noronha, A. Khan",
-      "venue": "F1000Research",
-      "year": 2025,
-      "url": "https://doi.org/10.12688/f1000research.171170.1",
-      "cited_by": 5,
-      "abstract": "Emotion Recognition (ER) with Electroencephalography (EEG) has become a major area of focus in affective computing due to its direct measurement of the activity of the brain. ER based on EEG has also advanced with the popularity of Deep Learning (DL) and its advancements related to classification accuracy and model efficiency. This systematic review is conducted following the PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses) guidelines and aims to provide an overview of DL-based EEG emotion recognition approaches. A comprehensive literature search was conducted across five major databases covering the publications from 2020 to 2025. The studies with EEG signals for ER using DL architectures were included in the present review. Finally, a total of 233 articles were considered after eligibility screening. To enhance the diversity of investigation, we assessed the public datasets utilized for ER based on EEG in terms of their stimulation procedures and emotional ",
-      "doi": "10.12688/f1000research.171170.1",
-      "pmid": "41585461",
-      "openalex_id": "W4416321657",
-      "source_doi": "10.1038/s41597-023-02650-w",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7165757131576539,
-        "similarity_score": 0.6204118728637695,
-        "citation_text_length": 1228,
+        "confidence_score": 0.6495047897100449,
+        "similarity_score": 0.5623418092727661,
+        "citation_text_length": 1184,
         "dataset_text_length": 2274,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -929,29 +992,6 @@
         "confidence_score": 0.7241488963365557,
         "similarity_score": 0.6269687414169312,
         "citation_text_length": 1242,
-        "dataset_text_length": 2274,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "MSGM: a multi-scale spatiotemporal graph Mamba for EEG emotion recognition",
-      "author": "Hanwen Liu, Yifeng Gong, Zuwei Yan, Zeheng Zhuang, Jiaxuan Lu",
-      "venue": "Frontiers in Neuroscience",
-      "year": 2026,
-      "url": "https://doi.org/10.3389/fnins.2026.1665145",
-      "cited_by": 5,
-      "abstract": "Introduction: Electroencephalography (EEG) based emotion recognition is pivotal for advancing mobile health monitoring and real-time affective interaction. However, current methodologies face a critical trade-off between modeling the complex, multi-scale dynamics of brain activity and maintaining the computational efficiency necessary for edge deployment. Existing approaches often rely on fixed temporal scales and neglect hierarchical spatial connectivity, which limits both classification robustness and scalability in practical settings. Methods: To address these challenges, we propose the Multi-Scale Spatiotemporal Graph Mamba (MSGM). Specifically, it employs multi-window temporal segmentation to extract relative power spectral density (rPSD) features, mimicking the brain's multi-scale processing to capture both transient emotional fluctuations and sustained mood. Spatially, it constructs bimodal global and local graphs refined by multi-depth Graph Convolutional Networks (GCNs), intui",
-      "doi": "10.3389/fnins.2026.1665145",
-      "pmid": "41725855",
-      "openalex_id": "W7128012153",
-      "source_doi": "10.1038/s41597-023-02650-w",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6022474685311319,
-        "similarity_score": 0.5214263796806335,
-        "citation_text_length": 1199,
         "dataset_text_length": 2274,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1004,29 +1044,6 @@
       }
     },
     {
-      "title": "Dynamical Causal Graph Neural Network for EEG Emotion Recognition",
-      "author": "Yushun Xiao, Wenming Zheng, Guoying Zhao",
-      "venue": "IEEE Transactions on Affective Computing",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/taffc.2025.3582740",
-      "cited_by": 4,
-      "abstract": "Recently, topological graphs based on structural or functional connectivity of brain network have been utilized to construct graph neural networks (GNN) for Electroencephalogram (EEG) emotion recognition. In this paper, we propose a novel dynamical causal graph neural network (DCGNN) based on the effective causal connectivity of brain function network for EEG emotion recognition, in which Greedy Equivalence Search (GES) is used to find the optimal causal graph topology associated with the adjacent matrix of DCGNN. To this end, we firstly construct a skeleton graph using canonical correlation analysis (CCA) and then use GES to optimize the directional graph topology of DCGNN. Then, learnable weight parameters associated with the adjacent matrix are learnt during the model training of DCGNN. Additionally, a sparse graphic constraint is employed to enhance the efficacy of emotion recognition, while a Conditional Domain Adversarial Network (CDAN) is used to integrate features with emotion ",
-      "doi": "10.1109/taffc.2025.3582740",
-      "pmid": null,
-      "openalex_id": "W4411600807",
-      "source_doi": "10.1038/s41597-023-02650-w",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6495047897100449,
-        "similarity_score": 0.5623418092727661,
-        "citation_text_length": 1184,
-        "dataset_text_length": 2274,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Spiking neural networks for EEG signal analysis: From theory to practice",
       "author": "Siqi Cai, Zheyuan Lin, Xiaoli Liu, Wenjie Wei, Shuai Wang, Malu Zhang, Tanja Schultz, Haizhou Li",
       "venue": "Neural Networks",
@@ -1044,29 +1061,6 @@
         "confidence_score": 0.4453644552826882,
         "similarity_score": 0.3855969309806824,
         "citation_text_length": 1222,
-        "dataset_text_length": 2274,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2605.08495",
-      "cited_by": 4,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": "10.48550/arXiv.2605.08495",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02650-w",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5801760792732239,
-        "similarity_score": 0.502316951751709,
-        "citation_text_length": 1326,
         "dataset_text_length": 2274,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1136,29 +1130,6 @@
         "confidence_score": 0.44989710241556174,
         "similarity_score": 0.3895213007926941,
         "citation_text_length": 1214,
-        "dataset_text_length": 2274,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Interpretable Dual-Filter Fuzzy Neural Networks for Affective Brain-Computer Interfaces",
-      "author": "Xiaowei Jiang, Yanan Chen, N. R. Pal, Yu-Cheng Chang, Yunkai Yang, T. Do, Chin-Teng Lin",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2502.17445",
-      "cited_by": 4,
-      "abstract": "Fuzzy logic provides a robust framework for enhancing explainability, particularly in domains requiring the interpretation of complex and ambiguous signals, such as brain-computer interface (BCI) systems. Despite significant advances in deep learning, interpreting human emotions remains a formidable challenge. In this work, we present iFuzzyAffectDuo, a novel computational model that integrates a dual-filter fuzzy neural network architecture for improved detection and interpretation of emotional states from neuroimaging data. The model introduces a new membership function (MF) based on the Laplace distribution, achieving superior accuracy and interpretability compared to traditional approaches. By refining the extraction of neural signals associated with specific emotions, iFuzzyAffectDuo offers a human-understandable framework that unravels the underlying decision-making processes. We validate our approach across three neuroimaging datasets using functional Near-Infrared Spectroscopy ",
-      "doi": "10.48550/arXiv.2502.17445",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02650-w",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5848996290564538,
-        "similarity_score": 0.5064066052436829,
-        "citation_text_length": 1218,
         "dataset_text_length": 2274,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1257,6 +1228,75 @@
       }
     },
     {
+      "title": "Wearable Music2Emotion : Assessing Emotions Induced by AI-Generated Music through Portable EEG-fNIRS Fusion",
+      "author": "Sha Zhao, Song Yi, Yangxuan Zhou, Jiadong Pan, Jiquan Wang, Jie Xia, Shijian Li, Shurong Dong, Gang Pan",
+      "venue": "Proceedings of the 33rd ACM International Conference on Multimedia",
+      "year": 2025,
+      "url": "https://doi.org/10.1145/3746027.3755270",
+      "cited_by": 3,
+      "abstract": "Emotions critically influence mental health, driving interest in music-based affective computing via neurophysiological signals with Brain-computer Interface techniques. While prior studies leverage music's accessibility for emotion induction, three key limitations persist: (1) Stimulus Constraints : Music stimuli are confined to small corpora due to copyright and curation costs, with selection biases from heuristic emotion-music mappings that ignore individual affective profiles. (2) Modality Specificity : Overreliance on unimodal neural data (e.g., EEG) ignores complementary insights from cross-modal signal fusion. (3) Portability Limitation : Cumbersome setups (e.g., 64+ channel gel-based EEG caps) hinder real-world applicability due to procedural complexity and portability barriers. To address these limitations, we propose MEEtBrain, a portable and multimodal framework for emotion analysis (valence/arousal), integrating AI-generated music stimuli with synchronized EEG-fNIRS acquisi",
+      "doi": "10.1145/3746027.3755270",
+      "pmid": null,
+      "openalex_id": "W4415541067",
+      "source_doi": "10.1038/s41597-023-02650-w",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6013819009065628,
+        "similarity_score": 0.5206769704818726,
+        "citation_text_length": 1315,
+        "dataset_text_length": 2274,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Affective annotation of videos from EEG-based crowdsourcing",
+      "author": "Yoelvis Moreno-Alcayde, Tuukka Ruotsalo, Luis A. Leiva, V. Javier Traver",
+      "venue": "Pattern Analysis and Applications",
+      "year": 2025,
+      "url": "https://doi.org/10.1007/s10044-025-01476-z",
+      "cited_by": 3,
+      "abstract": "Abstract Enriching multimedia content with affective metadata unlocks opportunities for innovative and enhanced user experiences in recommendation systems, multimedia retrieval, and many other applications. However, it is really challenging to accurately decode human affect. On the one hand, manual procedures for affective annotation are labour-intensive and hardly scalable. On the other hand, content-based approaches rely on the assumption that affective experiences (1) are directly related to the content, (2) are homogeneous for a particular content, and (3) ignore the subjective nature of affective responses. Recent advancements in brain-computer interfacing (BCI) signifies the prospect of partially automating affective annotation by decoding natural affective experiences toward the content. We consider affective annotation of videos based on brainsourcing : crowdsourced affective reactions from brain signals, recorded while participants were watching videos. Our experiments are bas",
+      "doi": "10.1007/s10044-025-01476-z",
+      "pmid": null,
+      "openalex_id": "W4412594476",
+      "source_doi": "10.1038/s41597-023-02650-w",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7092064440250397,
+        "similarity_score": 0.6140315532684326,
+        "citation_text_length": 1203,
+        "dataset_text_length": 2274,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "OmniEEG-Bench: A Standardized Evaluation Benchmark for EEG Foundation Models",
+      "author": "Zilin Lu, Zongsheng Li, Xinke Shen, Kexin Lou, Ying Xin, Xiaoqing Chen, Shinan Wang, Xiangyu Chen, Jiahao Fan, Chenyu Huang, Xin Xu, Zhoujie Hou, Chen Wei, Quanying Liu",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 3,
+      "abstract": "Electroencephalography (EEG) supports a variety of brain-computer interface (BCI) tasks ranging from brain-state monitoring to human-LLM interactions. EEG foundation models are emerging, but evaluation remains fragmented due to heterogeneous datasets and nconsistent task protocols. Here, we introduce OmniEEG-Bench, a unified benchmark and downstream task roadmap for EEG foundation models (FMs). It organizes evaluation of EEG FMs into six task families spanning (i) signal reliability, (ii) biometrics and disease, (iii) consciousness and state, (iv) cognition and emotion, (v) naturalistic stimulus decoding, and (vi) motor and interaction, introducing a new generation of tasks not systematically benchmarked in prior EEG FM work. OmniEEG-Bench standardizes model deployment, task definitions, and metrics through a task-card specification, and unifies 54 EEG datasets with consistent evaluation protocols. We benchmark 10 representative EEG foundation models and report a leaderboard that cover",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02650-w",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6273792895674707,
+        "similarity_score": 0.5431855320930481,
+        "citation_text_length": 1286,
+        "dataset_text_length": 2274,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Multi-dataset Joint Pre-training of Emotional EEG Enables Generalizable Affective Computing",
       "author": "Qingzhu Zhang, J. Zhong, Zongsheng Li, Xinke Shen, Quanying Liu",
       "venue": "ArXiv",
@@ -1286,7 +1326,7 @@
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2509.17920",
       "cited_by": 3,
-      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although emerging foundation models aim for broader applicability, their rigid dependence on fixed, high-density multi-channel montages restricts their use across heterogeneous datasets and in missing-channel or practical low-channel settings. To address these limitations, we introduce SingLEM, a self-supervised foundation model that learns robust, general-purpose representations from single-channel EEG, making it inherently hardware agnostic. The model employs a hybrid encoder architecture that combines convolutional layers to extract local features with a hierarchical transformer to model both short- and long-range temporal dependencies. SingLEM is pretrained on 71 public datasets comprising over 9,200 subjects and 357,000 single-channel hours of EEG. When evaluated as a fixed feature extractor across six motor imagery and cognitive ",
+      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although EEG foundation models seek broader applicability, many still rely on predefined multi-channel inputs, electrode-layout assumptions, or model-specific channel handling. To address these limitations, we introduce the Single-Channel Large EEG Model (SingLEM), a self-supervised foundation model whose hybrid convolutional--Transformer encoder maps each channel independently to a reusable representation capturing local and long-range temporal structure. These representations can be used individually or concatenated through late fusion. We assembled 71 public EEG datasets comprising approximately 9,200 subjects and 357,000 single-channel hours. For leakage-controlled evaluation, downstream results were obtained with a model pretrained on 68 datasets after excluding the three source datasets underlying the six tasks. A model pretraine",
       "doi": "10.48550/arXiv.2509.17920",
       "pmid": null,
       "openalex_id": null,
@@ -1294,8 +1334,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5733591404557229,
-        "similarity_score": 0.49641484022140503,
+        "confidence_score": 0.5530411916971207,
+        "similarity_score": 0.47882354259490967,
         "citation_text_length": 1217,
         "dataset_text_length": 2274,
         "scoring_method": "sentence_transformers",
@@ -1441,29 +1481,6 @@
       }
     },
     {
-      "title": "Wearable Music2Emotion : Assessing Emotions Induced by AI-Generated Music through Portable EEG-fNIRS Fusion",
-      "author": "Sha Zhao, Song Yi, Yangxuan Zhou, Jiadong Pan, Jiquan Wang, Jie Xia, Shijian Li, Shurong Dong, Gang Pan",
-      "venue": "Proceedings of the 33rd ACM International Conference on Multimedia",
-      "year": 2025,
-      "url": "https://doi.org/10.1145/3746027.3755270",
-      "cited_by": 2,
-      "abstract": "Emotions critically influence mental health, driving interest in music-based affective computing via neurophysiological signals with Brain-computer Interface techniques. While prior studies leverage music's accessibility for emotion induction, three key limitations persist: (1) Stimulus Constraints : Music stimuli are confined to small corpora due to copyright and curation costs, with selection biases from heuristic emotion-music mappings that ignore individual affective profiles. (2) Modality Specificity : Overreliance on unimodal neural data (e.g., EEG) ignores complementary insights from cross-modal signal fusion. (3) Portability Limitation : Cumbersome setups (e.g., 64+ channel gel-based EEG caps) hinder real-world applicability due to procedural complexity and portability barriers. To address these limitations, we propose MEEtBrain, a portable and multimodal framework for emotion analysis (valence/arousal), integrating AI-generated music stimuli with synchronized EEG-fNIRS acquisi",
-      "doi": "10.1145/3746027.3755270",
-      "pmid": null,
-      "openalex_id": "W4415541067",
-      "source_doi": "10.1038/s41597-023-02650-w",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6013819009065628,
-        "similarity_score": 0.5206769704818726,
-        "citation_text_length": 1315,
-        "dataset_text_length": 2274,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "CRIA: A cross-view interaction and instance-adapted pre-training framework for generalizable EEG representations",
       "author": "Puchun Liu, C. L. Philip Chen, Yubin He, Tong Zhang",
       "venue": "Pattern Recognition",
@@ -1481,29 +1498,6 @@
         "confidence_score": 0.5427977120876313,
         "similarity_score": 0.4699547290802002,
         "citation_text_length": 1221,
-        "dataset_text_length": 2274,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Affective annotation of videos from EEG-based crowdsourcing",
-      "author": "Yoelvis Moreno-Alcayde, Tuukka Ruotsalo, Luis A. Leiva, V. Javier Traver",
-      "venue": "Pattern Analysis and Applications",
-      "year": 2025,
-      "url": "https://doi.org/10.1007/s10044-025-01476-z",
-      "cited_by": 2,
-      "abstract": "Abstract Enriching multimedia content with affective metadata unlocks opportunities for innovative and enhanced user experiences in recommendation systems, multimedia retrieval, and many other applications. However, it is really challenging to accurately decode human affect. On the one hand, manual procedures for affective annotation are labour-intensive and hardly scalable. On the other hand, content-based approaches rely on the assumption that affective experiences (1) are directly related to the content, (2) are homogeneous for a particular content, and (3) ignore the subjective nature of affective responses. Recent advancements in brain-computer interfacing (BCI) signifies the prospect of partially automating affective annotation by decoding natural affective experiences toward the content. We consider affective annotation of videos based on brainsourcing : crowdsourced affective reactions from brain signals, recorded while participants were watching videos. Our experiments are bas",
-      "doi": "10.1007/s10044-025-01476-z",
-      "pmid": null,
-      "openalex_id": "W4412594476",
-      "source_doi": "10.1038/s41597-023-02650-w",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7092064440250397,
-        "similarity_score": 0.6140315532684326,
-        "citation_text_length": 1203,
         "dataset_text_length": 2274,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1717,29 +1711,6 @@
       }
     },
     {
-      "title": "OmniEEG-Bench: A Standardized Evaluation Benchmark for EEG Foundation Models",
-      "author": "Zilin Lu, Zongsheng Li, Xinke Shen, Kexin Lou, Ying Xin, Xiaoqing Chen, Shinan Wang, Xiangyu Chen, Jiahao Fan, Chenyu Huang, Xin Xu, Zhoujie Hou, Chen Wei, Quanying Liu",
-      "venue": "n/a",
-      "year": 2026,
-      "url": "n/a",
-      "cited_by": 1,
-      "abstract": "Electroencephalography (EEG) supports a variety of brain-computer interface (BCI) tasks ranging from brain-state monitoring to human-LLM interactions. EEG foundation models are emerging, but evaluation remains fragmented due to heterogeneous datasets and nconsistent task protocols. Here, we introduce OmniEEG-Bench, a unified benchmark and downstream task roadmap for EEG foundation models (FMs). It organizes evaluation of EEG FMs into six task families spanning (i) signal reliability, (ii) biometrics and disease, (iii) consciousness and state, (iv) cognition and emotion, (v) naturalistic stimulus decoding, and (vi) motor and interaction, introducing a new generation of tasks not systematically benchmarked in prior EEG FM work. OmniEEG-Bench standardizes model deployment, task definitions, and metrics through a task-card specification, and unifies 54 EEG datasets with consistent evaluation protocols. We benchmark 10 representative EEG foundation models and report a leaderboard that cover",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02650-w",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6273792895674707,
-        "similarity_score": 0.5431855320930481,
-        "citation_text_length": 1286,
-        "dataset_text_length": 2274,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Cross-Subject EEG Emotion Recognition Based on Temporal Asynchronous Alignment Contrastive Learning",
       "author": "Yingze Xie, Yichi Zheng, Zehui Xiao, Wenkai Lu, Mengting Liu",
       "venue": "ArXiv",
@@ -1786,6 +1757,29 @@
       }
     },
     {
+      "title": "SEED-OLF: A Novel EEG Dataset With Olfactory Stimulation for Emotion Recognition",
+      "author": "Jian-Ming Zhang, Wei-Bang Jiang, Wei-Long Zheng, Bao-Liang Lu",
+      "venue": "IEEE Transactions on Affective Computing",
+      "year": 2026,
+      "url": "https://doi.org/10.1109/TAFFC.2026.3662364",
+      "cited_by": 1,
+      "abstract": "Olfactory stimuli offer a unique and underexplored modality for affective brain-computer interfaces (aBCIs), leveraging the direct projection of odors to limbic structures involved in emotion processing. In this paper, we introduce a novel emotion induction paradigm based on olfactory stimulation and present a new dataset called SEED-OLF, which is designed to investigate the neural patterns of odor-induced emotional states. SEEDOLF was collected from three emotionrelated classification tasks: 1) distinguishing sniffing from non-sniffing EEG responses, 2) decoding subjectively reported valence, and 3) decoding the objective valence of odors. To advance the decoding of odor-induced emotional states, we introduce DSEN, a dual-stream EEG network that jointly captures spatiotemporal and spectral characteristics of EEG signals. DSEN integrates a spatiotemporal stream that employs temporal attention, multi-scale dense feature extraction, and attention-based fusion modules, along with a spectr",
+      "doi": "10.1109/TAFFC.2026.3662364",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02650-w",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7011026161909104,
+        "similarity_score": 0.6070152521133423,
+        "citation_text_length": 1220,
+        "dataset_text_length": 2274,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "CRCC: Contrast-Based Robust Cross-Subject and Cross-Site Representation Learning for EEG",
       "author": "Xiaobin Wong, Zhonghua Zhao, Haoran Guo, Zhengyi Liu, Yu Wu, Feng Yan, Zhiren Wang, Sen Song",
       "venue": "ArXiv",
@@ -1826,6 +1820,29 @@
         "confidence_score": 0.48526069968938834,
         "similarity_score": 0.4201391339302063,
         "citation_text_length": 1172,
+        "dataset_text_length": 2274,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "HEEGNet: Hyperbolic Embeddings for EEG",
+      "author": "Shanglin Li, Shiwen Chu, Okan Koç, Yi Ding, Qibin Zhao, M. Kawanabe, Ziheng Chen",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2601.03322",
+      "cited_by": 1,
+      "abstract": "Electroencephalography (EEG)-based brain-computer interfaces facilitate direct communication with a computer, enabling promising applications in human-computer interactions. However, their utility is currently limited because EEG decoding often suffers from poor generalization due to distribution shifts across domains (e.g., subjects). Learning robust representations that capture underlying task-relevant information would mitigate these shifts and improve generalization. One promising approach is to exploit the underlying hierarchical structure in EEG, as recent studies suggest that hierarchical cognitive processes, such as visual processing, can be encoded in EEG. While many decoding methods still rely on Euclidean embeddings, recent work has begun exploring hyperbolic geometry for EEG. Hyperbolic spaces, regarded as the continuous analogue of tree structures, provide a natural geometry for representing hierarchical data. In this study, we first empirically demonstrate that EEG data e",
+      "doi": "10.48550/arXiv.2601.03322",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02650-w",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5181646612286568,
+        "similarity_score": 0.44862741231918335,
+        "citation_text_length": 1162,
         "dataset_text_length": 2274,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2336,44 +2353,21 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Battle of the Algorithms: ML vs DL for Explainable Emotion Recognition from EEG Brainwaves",
-      "author": "V. Vishal, Neha Prerna Tigga",
-      "venue": "2026 IEEE International Conference on Interdisciplinary Approaches in Technology and Management for Social Innovation (IATMSI)",
-      "year": 2026,
-      "url": "https://doi.org/10.1109/iatmsi68868.2026.11465424",
-      "cited_by": 0,
-      "abstract": "This study compares deep learning and conventional machine learning models for emotion recognition based on electroencephalograms (EEGs). Advanced deep learning architectures, such as ResNet, Simplified Deep & Cross Network (DCN), Deep Multilayer Perceptron (MLP), Gated MLP, and Transformer models, were compared to conventional classifiers, such as Extra Trees, K-Nearest Neighbors (KNN), LightGBM, XGBoost, AdaBoost, QDA, and LDA. These showed the power of residual learning in capturing nonlinear EEG representations, with the ResNet model achieving the highest test accuracy of 93.19% and the Simplified DCN coming in second with 85.48 %. Global Feature Saliency and Local Interpretable Model-Agnostic Explanations (LIME) were used in feature attribution analysis to enhance interpretability. ResNet primarily used fronto-central (FC1, F8) and centro-parietal (CP2, CP5, CP6) regions, according to global saliency, whereas LIME found FC6, Fz, T4, and FC1 to be positive contributors and Fp2, CP1",
-      "doi": "10.1109/iatmsi68868.2026.11465424",
-      "pmid": null,
-      "openalex_id": "W7151615325",
-      "source_doi": "10.1038/s41597-023-02650-w",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6240886455774308,
-        "similarity_score": 0.5403364896774292,
-        "citation_text_length": 1283,
-        "dataset_text_length": 2274,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T16:26:54.937373+00:00",
+    "scoring_date": "2026-08-09T11:07:23.758854+00:00",
     "dataset_text_length": 2274,
     "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.6199488566413522,
+      "mean_confidence": 0.619848467181623,
       "median_confidence": 0.6225300380587578,
-      "std_confidence": 0.11206540201194219,
+      "std_confidence": 0.11286588624990258,
       "min_confidence": 0.23334310457110408,
       "max_confidence": 0.9997407951951027,
-      "high_confidence_count": 27,
-      "medium_confidence_count": 71,
+      "high_confidence_count": 28,
+      "medium_confidence_count": 70,
       "low_confidence_count": 2
     }
   }

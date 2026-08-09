@@ -1,10 +1,10 @@
 {
   "dataset_id": "on005594",
-  "num_citations": 2,
-  "date_last_updated": "2026-08-01T16:08:45.877911+00:00",
+  "num_citations": 4,
+  "date_last_updated": "2026-08-09T10:49:48.194524+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-01T16:08:45.877911+00:00",
+    "fetch_date": "2026-08-09T10:49:48.194524+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -83,7 +83,14 @@
         "funder_name": "Goethe University",
         "award_title": "Goethe University Fokus"
       }
-    ]
+    ],
+    "searched_accessions": [
+      "on005594",
+      "ds005594"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 3
   },
   "citation_details": [
     {
@@ -104,6 +111,29 @@
         "confidence_score": 0.912117304801941,
         "similarity_score": 0.7897119522094727,
         "citation_text_length": 601,
+        "dataset_text_length": 2263,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Character Iconicity vs. Arbitrariness: An Arabic NLP Perspective",
+      "author": "Dorieh M. Alomari, Irfan Ahmad, Maged Saeed Al-shaibani",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "Arabic script uses 28 letters, many of which share a common base shape (rasm) and are distinguished only by dot placement. Because early Arabic manuscripts were written without dots yet remained interpretable, dot removal offers a natural test of whether these visual distinctions are functionally necessary. Prior work has shown that dotless Arabic can remain readable and effective for natural language processing (NLP), but it remains unclear whether this success depends on preserving the original rasm groupings or whether arbitrary but consistent remappings to the same reduced rasm set can achieve comparable performance. We address this question by comparing standard dotted and dotless Arabic with arbitrary character remappings constrained to the same 19 undotted rasms. We generated 2,000 random remappings under word- and character-level tokenization and selected four representative mappings with the highest and lowest entropy values. These representations were evaluated across languag",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1101/2024.11.11.622929",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.45391184091568,
+        "similarity_score": 0.39299726486206055,
+        "citation_text_length": 1161,
         "dataset_text_length": 2263,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -131,21 +161,46 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Beyond Letters: Optimal Transport as a Model for Sub-Letter Orthographic Processing",
+      "author": "Jack E. Taylor, Rasmus Sinn, Cosimo Iaia, Christian J. Fiebach",
+      "venue": "Neurobiology of Language",
+      "year": 2025,
+      "url": "https://doi.org/10.1162/nol.a.19",
+      "cited_by": 1,
+      "abstract": "Letter processing plays a key role in visual word recognition. However, word recognition models typically overlook or greatly simplify early perceptual processes of letter recognition. We suggest that optimal transport theory may provide a computational framework for describing letter shape processing. We use representational similarity analysis to show that optimal transport cost (Wasserstein distance) between pairs of letters aligns with neural activity elicited by visually presented letters <225 ms after stimulus onset, outperforming an existing approach based on shape overlap. We additionally show that optimal transport can capture the emergence of geometric invariances (e.g., to position or size) observed in letter perception. Finally, we demonstrate that Wasserstein distance predicts neural activity similarly well to features from artificial networks trained to classify images and letters. However, whereas representations in artificial neural networks emerge in a computationally unconstrained manner, our proposal provides a computationally explicit route to modeling the earliest orthographic processes.",
+      "doi": "10.1162/nol.a.19",
+      "pmid": "41113136",
+      "openalex_id": "W4412201651",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds005594",
+      "confidence_scoring": {
+        "confidence_score": 0.46564350754022604,
+        "similarity_score": 0.40315455198287964,
+        "citation_text_length": 1333,
+        "dataset_text_length": 2263,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T17:10:27.796163+00:00",
+    "scoring_date": "2026-08-09T11:56:15.912291+00:00",
     "dataset_text_length": 2263,
-    "num_citations_scored": 2,
+    "num_citations_scored": 4,
     "summary_stats": {
-      "mean_confidence": 0.7524750494956971,
-      "median_confidence": 0.7524750494956971,
-      "std_confidence": 0.15964225530624387,
-      "min_confidence": 0.5928327941894532,
+      "mean_confidence": 0.606126361861825,
+      "median_confidence": 0.5292381508648396,
+      "std_confidence": 0.18487284065544163,
+      "min_confidence": 0.45391184091568,
       "max_confidence": 0.912117304801941,
       "high_confidence_count": 1,
-      "medium_confidence_count": 1,
+      "medium_confidence_count": 3,
       "low_confidence_count": 0
     }
   }
