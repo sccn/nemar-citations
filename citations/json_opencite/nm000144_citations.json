@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000144",
   "num_citations": 85,
-  "date_last_updated": "2026-08-09T10:04:32.655391+00:00",
+  "date_last_updated": "2026-08-17T10:03:57.407188+00:00",
   "metadata": {
-    "total_cumulative_citations": 2940,
-    "fetch_date": "2026-08-09T10:04:32.655391+00:00",
+    "total_cumulative_citations": 2957,
+    "fetch_date": "2026-08-17T10:03:57.407188+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -59,11 +59,11 @@
       "motor imagery",
       "EEG",
       "mental tasks",
-      "Stroke",
+      "stroke",
       "spinal cord injury",
-      "rehabilitation"
+      "motor imagery classification"
     ],
-    "methods_description": "EEG data were acquired at 256 Hz sampling rate from 30 active electrodes (g.LADYbird) arranged in 10-20 montage, referenced to bilateral mastoids. Online filtering included 0.5-100 Hz bandpass and 50 Hz notch filters. Preprocessing involved bandpass filtering (0.5-100 Hz), notch filtering at 50 Hz, and manual artifact rejection based on EOG recordings. Five mental imagery tasks were presented as visual cues with 7-second imagery periods per trial.",
+    "methods_description": "EEG data were acquired from 30 active electrodes (g.LADYbird, g.tec) using 10-20 montage with mastoid reference and ground. Sampling rate was 256 Hz. Online filtering included 0.5-100 Hz bandpass and 50 Hz notch filters. Preprocessing involved bandpass filtering, notch filtering, and manual artifact rejection based on EOG. Participants performed five mental tasks (word association, mental subtraction, spatial navigation, right hand motor imagery, feet motor imagery) in a cue-guided paradigm with 7 seconds of continuous imagery per trial.",
     "funding": [
       {
         "funder_name": "European Commission",
@@ -80,13 +80,7 @@
         "award_number": "288566",
         "award_title": "BackHome"
       }
-    ],
-    "searched_accessions": [
-      "nm000144"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 85
+    ]
   },
   "citation_details": [
     {
@@ -95,7 +89,7 @@
       "venue": "Sensors",
       "year": 2019,
       "url": "https://doi.org/10.3390/s19061423",
-      "cited_by": 602,
+      "cited_by": 604,
       "abstract": "Electroencephalography (EEG)-based brain-computer interfaces (BCIs), particularly those using motor-imagery (MI) data, have the potential to become groundbreaking technologies in both clinical and entertainment settings. MI data is generated when a subject imagines the movement of a limb. This paper reviews state-of-the-art signal processing techniques for MI EEG-based BCIs, with a particular focus on the feature extraction, feature selection and classification techniques used. It also summarizes the main applications of EEG-based BCIs, particularly those based on MI data, and finally presents a detailed discussion of the most prevalent challenges impeding the development and commercialization of EEG-based BCIs.",
       "doi": "10.3390/s19061423",
       "pmid": "30909489",
@@ -118,7 +112,7 @@
       "venue": "Neural Computing and Applications",
       "year": 2021,
       "url": "https://doi.org/10.1007/s00521-021-06352-5",
-      "cited_by": 576,
+      "cited_by": 583,
       "abstract": null,
       "doi": "10.1007/s00521-021-06352-5",
       "pmid": null,
@@ -233,7 +227,7 @@
       "venue": "Brain-Computer Interfaces",
       "year": 2016,
       "url": "https://doi.org/10.1080/2326263x.2016.1263916",
-      "cited_by": 94,
+      "cited_by": 95,
       "abstract": "Research in brain-computer interfaces has achieved impressive progress towards implementing assistive technologies for restoration or substitution of lost motor capabilities, as well as supporting technologies for able-bodied subjects. Notwithstanding this progress, effective translation of these interfaces from proof-of concept prototypes into reliable applications remains elusive. As a matter of fact, most of the current BCI systems cannot be used independently for long periods of time by their intended end-users. Multiple factors that impair achieving this goal have already been identified. However, it is not clear how do they affect the overall BCI performance or how they should be tackled. This is worsened by the publication bias where only positive results are disseminated, preventing the research community from learning from its errors. This paper is the result of a workshop held at the 6th International BCI meeting in Asilomar. We summarize here the discussion on concrete resea",
       "doi": "10.1080/2326263x.2016.1263916",
       "pmid": "29629393",
@@ -256,7 +250,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2510.21585",
-      "cited_by": 66,
+      "cited_by": 67,
       "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
       "doi": "10.48550/arXiv.2510.21585",
       "pmid": null,
@@ -279,7 +273,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2017,
       "url": "https://doi.org/10.1088/1741-2552/aa620b",
-      "cited_by": 65,
+      "cited_by": 66,
       "abstract": "OBJECTIVE: We present the first generic theoretical formulation of the co-adaptive learning problem and give a simple example of two interacting linear learning systems, a human and a machine. APPROACH: After the description of the training protocol of the two learning systems, we define a simple linear model where the two learning agents are coupled by a joint loss function. The simplicity of the model allows us to find learning rules for both human and machine that permit computing theoretical simulations. MAIN RESULTS: As seen in simulations, an astonishingly rich structure is found for this eco-system of learners. While the co-adaptive learners are shown to easily stall or get out of sync for some parameter settings, we can find a broad sweet spot of parameters where the learning system can converge quickly. It is defined by mid-range learning rates on the side of the learning machine, quite independent of the human in the loop. Despite its simplistic assumptions the theoretical st",
       "doi": "10.1088/1741-2552/aa620b",
       "pmid": "28224972",
@@ -504,6 +498,29 @@
       }
     },
     {
+      "title": "Riemannian geometric and ensemble learning for decoding cross-session motor imagery electroencephalography signals",
+      "author": "Lincong Pan, Kun Wang, Lichao Xu, Xinwei Sun, Weibo Yi, Minpeng Xu, Dong Ming",
+      "venue": "Journal of Neural Engineering",
+      "year": 2023,
+      "url": "https://doi.org/10.1088/1741-2552/ad0a01",
+      "cited_by": 28,
+      "abstract": "Abstract Objective. Brain–computer interfaces (BCIs) enable a direct communication pathway between the human brain and external devices, without relying on the traditional peripheral nervous and musculoskeletal systems. Motor imagery (MI)-based BCIs have attracted significant interest for their potential in motor rehabilitation. However, current algorithms fail to account for the cross-session variability of electroencephalography signals, limiting their practical application. Approach. We proposed a Riemannian geometry-based adaptive boosting and voting ensemble (RAVE) algorithm to address this issue. Our approach segmented the MI period into multiple sub-datasets using a sliding window approach and extracted features from each sub-dataset using Riemannian geometry. We then trained adaptive boosting (AdaBoost) ensemble learning classifiers for each sub-dataset, with the final BCI output determined by majority voting of all classifiers. We tested our proposed RAVE algorithm and eight o",
+      "doi": "10.1088/1741-2552/ad0a01",
+      "pmid": "37931299",
+      "openalex_id": "W4388406411",
+      "source_doi": "10.1371/journal.pone.0123727",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6316115731000901,
+        "similarity_score": 0.5468498468399048,
+        "citation_text_length": 1259,
+        "dataset_text_length": 2340,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Brain–computer interface control with artificial intelligence copilots",
       "author": "Johannes Y. Lee, SangJoon Lee, Abhishek Mishra, Yan Xu, Brandon McMahan, Brent Gaisford, Charles Kobashigawa, Mike Qu, Chang Xie, Jonathan C. Kao",
       "venue": "Nature Machine Intelligence",
@@ -527,23 +544,23 @@
       }
     },
     {
-      "title": "Riemannian geometric and ensemble learning for decoding cross-session motor imagery electroencephalography signals",
-      "author": "Lincong Pan, Kun Wang, Lichao Xu, Xinwei Sun, Weibo Yi, Minpeng Xu, Dong Ming",
-      "venue": "Journal of Neural Engineering",
+      "title": "Current Trends, Challenges, and Future Research Directions of Hybrid and Deep Learning Techniques for Motor Imagery Brain–Computer Interface",
+      "author": "Emmanouil Lionakis, Konstantinos Κarampidis, Giorgos Papadourakis",
+      "venue": "Multimodal Technologies and Interaction",
       "year": 2023,
-      "url": "https://doi.org/10.1088/1741-2552/ad0a01",
+      "url": "https://doi.org/10.3390/mti7100095",
       "cited_by": 27,
-      "abstract": "Abstract Objective. Brain–computer interfaces (BCIs) enable a direct communication pathway between the human brain and external devices, without relying on the traditional peripheral nervous and musculoskeletal systems. Motor imagery (MI)-based BCIs have attracted significant interest for their potential in motor rehabilitation. However, current algorithms fail to account for the cross-session variability of electroencephalography signals, limiting their practical application. Approach. We proposed a Riemannian geometry-based adaptive boosting and voting ensemble (RAVE) algorithm to address this issue. Our approach segmented the MI period into multiple sub-datasets using a sliding window approach and extracted features from each sub-dataset using Riemannian geometry. We then trained adaptive boosting (AdaBoost) ensemble learning classifiers for each sub-dataset, with the final BCI output determined by majority voting of all classifiers. We tested our proposed RAVE algorithm and eight o",
-      "doi": "10.1088/1741-2552/ad0a01",
-      "pmid": "37931299",
-      "openalex_id": "W4388406411",
+      "abstract": "The field of brain–computer interface (BCI) enables us to establish a pathway between the human brain and computers, with applications in the medical and nonmedical field. Brain computer interfaces can have a significant impact on the way humans interact with machines. In recent years, the surge in computational power has enabled deep learning algorithms to act as a robust avenue for leveraging BCIs. This paper provides an up-to-date review of deep and hybrid deep learning techniques utilized in the field of BCI through motor imagery. It delves into the adoption of deep learning techniques, including convolutional neural networks (CNNs), autoencoders (AEs), and recurrent structures such as long short-term memory (LSTM) networks. Moreover, hybrid approaches, such as combining CNNs with LSTMs or AEs and other techniques, are reviewed for their potential to enhance classification performance. Finally, we address challenges within motor imagery BCIs and highlight further research direction",
+      "doi": "10.3390/mti7100095",
+      "pmid": null,
+      "openalex_id": "W4387581467",
       "source_doi": "10.1371/journal.pone.0123727",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6316115731000901,
-        "similarity_score": 0.5468498468399048,
-        "citation_text_length": 1259,
+        "confidence_score": 0.4641103658080102,
+        "similarity_score": 0.4018271565437317,
+        "citation_text_length": 1283,
         "dataset_text_length": 2340,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -567,29 +584,6 @@
         "confidence_score": 0.47802188873291024,
         "similarity_score": 0.41387176513671875,
         "citation_text_length": 1171,
-        "dataset_text_length": 2340,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Current Trends, Challenges, and Future Research Directions of Hybrid and Deep Learning Techniques for Motor Imagery Brain–Computer Interface",
-      "author": "Emmanouil Lionakis, Konstantinos Κarampidis, Giorgos Papadourakis",
-      "venue": "Multimodal Technologies and Interaction",
-      "year": 2023,
-      "url": "https://doi.org/10.3390/mti7100095",
-      "cited_by": 26,
-      "abstract": "The field of brain–computer interface (BCI) enables us to establish a pathway between the human brain and computers, with applications in the medical and nonmedical field. Brain computer interfaces can have a significant impact on the way humans interact with machines. In recent years, the surge in computational power has enabled deep learning algorithms to act as a robust avenue for leveraging BCIs. This paper provides an up-to-date review of deep and hybrid deep learning techniques utilized in the field of BCI through motor imagery. It delves into the adoption of deep learning techniques, including convolutional neural networks (CNNs), autoencoders (AEs), and recurrent structures such as long short-term memory (LSTM) networks. Moreover, hybrid approaches, such as combining CNNs with LSTMs or AEs and other techniques, are reviewed for their potential to enhance classification performance. Finally, we address challenges within motor imagery BCIs and highlight further research direction",
-      "doi": "10.3390/mti7100095",
-      "pmid": null,
-      "openalex_id": "W4387581467",
-      "source_doi": "10.1371/journal.pone.0123727",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4641103658080102,
-        "similarity_score": 0.4018271565437317,
-        "citation_text_length": 1283,
         "dataset_text_length": 2340,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -711,6 +705,29 @@
       }
     },
     {
+      "title": "HR-SNN: An End-to-End Spiking Neural Network for Four-Class Classification Motor Imagery Brain–Computer Interface",
+      "author": "Yulin Li, Liangwei Fan, Hui Shen, Dewen Hu",
+      "venue": "IEEE Transactions on Cognitive and Developmental Systems",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/tcds.2024.3395443",
+      "cited_by": 20,
+      "abstract": "Spiking Neural Network (SNN) excels in processing temporal information and conserving energy, particularly when deployed on neuromorphic hardware. These strengths position SNN as an ideal choice for developing wearable Brain-Computer Interface (BCI) devices. However, the application of SNN in complex BCI tasks, like four-class Motor Imagery classification, is limited. In light of this, this study introduces a powerful SNN architecture hybrid response SNN (HR-SNN). We employ parameter-wise gradient descent methods to optimize spike encoding efficiency. The SNN’s frequency perception is improved by integrating a hybrid response spiking module. In addition, a diff-potential spiking decoder is designed to optimize SNN output potential utilization. Validation experiments are performed on Physionet and BCI competition IV 2a datasets. On Physionet, our model achieves accuracies of 67.24% and 74.95% using global training and subject-specific transfer learning, respectively. On BCI competition ",
+      "doi": "10.1109/tcds.2024.3395443",
+      "pmid": null,
+      "openalex_id": "W4396506006",
+      "source_doi": "10.1371/journal.pone.0123727",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.44454219013452534,
+        "similarity_score": 0.3848850131034851,
+        "citation_text_length": 1250,
+        "dataset_text_length": 2340,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Flexible Patched Brain Transformer model for EEG decoding",
       "author": "Timon Klein, Piotr Minakowski, Sebastian Säger",
       "venue": "Scientific Reports",
@@ -751,29 +768,6 @@
         "confidence_score": 0.512781316637993,
         "similarity_score": 0.44396650791168213,
         "citation_text_length": 1226,
-        "dataset_text_length": 2340,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "HR-SNN: An End-to-End Spiking Neural Network for Four-Class Classification Motor Imagery Brain–Computer Interface",
-      "author": "Yulin Li, Liangwei Fan, Hui Shen, Dewen Hu",
-      "venue": "IEEE Transactions on Cognitive and Developmental Systems",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/tcds.2024.3395443",
-      "cited_by": 19,
-      "abstract": "Spiking Neural Network (SNN) excels in processing temporal information and conserving energy, particularly when deployed on neuromorphic hardware. These strengths position SNN as an ideal choice for developing wearable Brain-Computer Interface (BCI) devices. However, the application of SNN in complex BCI tasks, like four-class Motor Imagery classification, is limited. In light of this, this study introduces a powerful SNN architecture hybrid response SNN (HR-SNN). We employ parameter-wise gradient descent methods to optimize spike encoding efficiency. The SNN’s frequency perception is improved by integrating a hybrid response spiking module. In addition, a diff-potential spiking decoder is designed to optimize SNN output potential utilization. Validation experiments are performed on Physionet and BCI competition IV 2a datasets. On Physionet, our model achieves accuracies of 67.24% and 74.95% using global training and subject-specific transfer learning, respectively. On BCI competition ",
-      "doi": "10.1109/tcds.2024.3395443",
-      "pmid": null,
-      "openalex_id": "W4396506006",
-      "source_doi": "10.1371/journal.pone.0123727",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.44454219013452534,
-        "similarity_score": 0.3848850131034851,
-        "citation_text_length": 1250,
         "dataset_text_length": 2340,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1148,6 +1142,52 @@
       }
     },
     {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2605.08495",
+      "cited_by": 7,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": "10.48550/arXiv.2605.08495",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0123727",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6304581713676453,
+        "similarity_score": 0.5458512306213379,
+        "citation_text_length": 1326,
+        "dataset_text_length": 2340,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Transfer Learning between Motor Imagery Datasets using Deep Learning - Validation of Framework and Comparison of Datasets",
+      "author": "Pierre Guetschel, Michael Tangermann",
+      "venue": "ArXiv",
+      "year": 2023,
+      "url": "https://doi.org/10.48550/arXiv.2311.16109",
+      "cited_by": 7,
+      "abstract": "We present a simple deep learning-based framework commonly used in computer vision and demonstrate its effectiveness for cross-dataset transfer learning in mental imagery decoding tasks that are common in the field of Brain-Computer Interfaces (BCI). We investigate, on a large selection of 12 motor-imagery datasets, which ones are well suited for transfer, both as donors and as receivers. Challenges. Deep learning models typically require long training times and are data-hungry, which impedes their use for BCI systems that have to minimize the recording time for (training) examples and are subject to constraints induced by experiments involving human subjects. A solution to both issues is transfer learning, but it comes with its own challenge, i.e., substantial data distribution shifts between datasets, subjects and even between subsequent sessions of the same subject. Approach. For every pair of pre-training (donor) and test (receiver) dataset, we first train a model on the donor befo",
+      "doi": "10.48550/arXiv.2311.16109",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0123727",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7138445591926575,
+        "similarity_score": 0.6180472373962402,
+        "citation_text_length": 1201,
+        "dataset_text_length": 2340,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Evaluation of induced and evoked changes in EEG during selective attention to verbal stimuli",
       "author": "P. Horki, G. Bauernfeind, G. Bauernfeind, W. Schippinger, G. Pichler, G. R. Müller-Putz",
       "venue": "Journal of Neuroscience Methods",
@@ -1188,52 +1228,6 @@
         "confidence_score": 0.6909426748752594,
         "similarity_score": 0.6580406427383423,
         "citation_text_length": 277,
-        "dataset_text_length": 2340,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2605.08495",
-      "cited_by": 6,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": "10.48550/arXiv.2605.08495",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0123727",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6304581713676453,
-        "similarity_score": 0.5458512306213379,
-        "citation_text_length": 1326,
-        "dataset_text_length": 2340,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Transfer Learning between Motor Imagery Datasets using Deep Learning - Validation of Framework and Comparison of Datasets",
-      "author": "Pierre Guetschel, Michael Tangermann",
-      "venue": "ArXiv",
-      "year": 2023,
-      "url": "https://doi.org/10.48550/arXiv.2311.16109",
-      "cited_by": 6,
-      "abstract": "We present a simple deep learning-based framework commonly used in computer vision and demonstrate its effectiveness for cross-dataset transfer learning in mental imagery decoding tasks that are common in the field of Brain-Computer Interfaces (BCI). We investigate, on a large selection of 12 motor-imagery datasets, which ones are well suited for transfer, both as donors and as receivers. Challenges. Deep learning models typically require long training times and are data-hungry, which impedes their use for BCI systems that have to minimize the recording time for (training) examples and are subject to constraints induced by experiments involving human subjects. A solution to both issues is transfer learning, but it comes with its own challenge, i.e., substantial data distribution shifts between datasets, subjects and even between subsequent sessions of the same subject. Approach. For every pair of pre-training (donor) and test (receiver) dataset, we first train a model on the donor befo",
-      "doi": "10.48550/arXiv.2311.16109",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0123727",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7138445591926575,
-        "similarity_score": 0.6180472373962402,
-        "citation_text_length": 1201,
         "dataset_text_length": 2340,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1724,7 +1718,7 @@
     },
     {
       "title": "Correlation-Based Adaptive Filtering Performance Driven by Signal Decomposition Methods for EEG Signals of Individuals with Severe Motor Disabilities",
-      "author": "Esra Kaya, Ismail Sarıtas",
+      "author": "Esra Kaya, İsmail Sarıtaş",
       "venue": "Bitlis Eren Üniversitesi Fen Bilimleri Dergisi",
       "year": 2026,
       "url": "https://doi.org/10.17798/bitlisfen.1726313",
@@ -1737,8 +1731,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4753466355800629,
-        "similarity_score": 0.41155552864074707,
+        "confidence_score": 0.47533644676208503,
+        "similarity_score": 0.4115467071533203,
         "citation_text_length": 1259,
         "dataset_text_length": 2340,
         "scoring_method": "sentence_transformers",
@@ -2047,13 +2041,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:10:59.867536+00:00",
+    "scoring_date": "2026-08-17T11:08:34.230037+00:00",
     "dataset_text_length": 2340,
     "num_citations_scored": 85,
     "summary_stats": {
-      "mean_confidence": 0.5039810454354567,
+      "mean_confidence": 0.5039809255670099,
       "median_confidence": 0.5225984492897988,
-      "std_confidence": 0.10028649270253095,
+      "std_confidence": 0.10028652693411119,
       "min_confidence": 0.22449894994497302,
       "max_confidence": 0.7138445591926575,
       "high_confidence_count": 1,

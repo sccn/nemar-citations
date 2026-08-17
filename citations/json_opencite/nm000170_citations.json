@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000170",
   "num_citations": 21,
-  "date_last_updated": "2026-08-09T10:06:49.573406+00:00",
+  "date_last_updated": "2026-08-17T10:06:33.586282+00:00",
   "metadata": {
-    "total_cumulative_citations": 434,
-    "fetch_date": "2026-08-09T10:06:49.573406+00:00",
+    "total_cumulative_citations": 440,
+    "fetch_date": "2026-08-17T10:06:33.586282+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -68,16 +68,14 @@
     ],
     "keywords": [
       "Electroencephalography",
-      "continuous decoding",
       "trajectory decoding",
       "motor imagery",
       "brain-computer interface",
       "source localization",
       "motor control",
-      "learning effects",
-      "regression"
+      "neuroplasticity"
     ],
-    "methods_description": "EEG was recorded from 60 channels (actiCAP, Brain Products GmbH) at 200 Hz sampling rate with reference at right mastoid and ground at Fpz. Online anti-aliasing (25 Hz) and notch (50 Hz) filters were applied. Preprocessing included downsampling to 100 Hz, bad channel interpolation, eye artifact subtraction (SGEYESUB), removal of frontal channels, high-pass filtering (0.18 Hz), common average re-reference, pops and drifts attenuation (HEAR algorithm), low-pass filtering (3 Hz), and final downsampling to 20 Hz. Feature extraction employed temporal features (7 time points × 55 channels) and sLORETA source localization. Decoding used PLS regression with UKF smoothing.",
+    "methods_description": "EEG was recorded at 200 Hz from 60 channels (actiCAP, Brain Products) with right mastoid reference and Fpz ground. Preprocessing included anti-aliasing (25 Hz) and notch (50 Hz) filtering, downsampling to 100 Hz, bad channel interpolation, eye artifact subtraction (SGEYESUB), removal of frontal channels, high-pass filtering (0.18 Hz), common average re-referencing, drift attenuation (HEAR algorithm), low-pass filtering (3 Hz), and final downsampling to 20 Hz. Feature extraction employed temporal features (7 time points × 55 channels) and sLORETA source localization. Decoding used PLS regression with UKF smoothing.",
     "funding": [
       {
         "funder_name": "NTU-TUG joint PhD program"
@@ -87,13 +85,7 @@
         "award_number": "681231",
         "award_title": "Feel Your Reach"
       }
-    ],
-    "searched_accessions": [
-      "nm000170"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 21
+    ]
   },
   "citation_details": [
     {
@@ -102,7 +94,7 @@
       "venue": "IEEE Reviews in Biomedical Engineering",
       "year": 2024,
       "url": "https://doi.org/10.1109/rbme.2024.3449790",
-      "cited_by": 150,
+      "cited_by": 154,
       "abstract": "Brain-computer interface (BCI) is a rapidly evolving technology that has the potential to widely influence research, clinical and recreational use. Non-invasive BCI approaches are particularly common as they can impact a large number of participants safely and at a relatively low cost. Where traditional non-invasive BCIs were used for simple computer cursor tasks, it is now increasingly common for these systems to control robotic devices for complex tasks that may be useful in daily life. In this review, we provide an overview of the general BCI framework as well as the various methods that can be used to record neural activity, extract signals of interest, and decode brain states. In this context, we summarize the current state-of-the-art of non-invasive BCI research, focusing on trends in both the application of BCIs for controlling external devices and algorithm development to optimize their use. We also discuss various open-source BCI toolboxes and software, and describe their impa",
       "doi": "10.1109/rbme.2024.3449790",
       "pmid": "39186407",
@@ -171,7 +163,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2023,
       "url": "https://doi.org/10.1109/tnsre.2023.3330500",
-      "cited_by": 39,
+      "cited_by": 41,
       "abstract": "Motor brain-computer interface (BCI) refers to the BCI that decodes voluntary motion intentions from brain signals directly and outputs corresponding control commands without activating peripheral nerves and muscles. Motor BCIs can be used for the restoration, compensation, and augmentation of motor function by activating the neuromuscular circuit and facilitating neural plasticity. The essential applications of motor BCIs include neurorehabilitation and daily-life assistance for motor-impaired patients. In recent years, studies on motor BCIs mainly concentrate on neural signatures, movement decoding, and its applications. In this review, we aim to provide a comprehensive review of the state-of-the-art research of electroencephalography (EEG) signals-based motor BCIs for the first time. We also aim to give some insights into advancing motor BCIs to a more natural and practical application scenario. In particular, we focus on the motor BCIs for the movements of the upper limbs. Specific",
       "doi": "10.1109/tnsre.2023.3330500",
       "pmid": "37930905",
@@ -582,7 +574,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:13:15.715249+00:00",
+    "scoring_date": "2026-08-17T11:10:49.623560+00:00",
     "dataset_text_length": 2335,
     "num_citations_scored": 21,
     "summary_stats": {

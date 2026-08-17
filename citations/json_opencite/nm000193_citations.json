@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000193",
   "num_citations": 11,
-  "date_last_updated": "2026-08-09T10:09:30.212932+00:00",
+  "date_last_updated": "2026-08-17T10:09:10.486572+00:00",
   "metadata": {
-    "total_cumulative_citations": 17,
-    "fetch_date": "2026-08-09T10:09:30.212932+00:00",
+    "total_cumulative_citations": 21,
+    "fetch_date": "2026-08-17T10:09:10.486572+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -61,22 +61,17 @@
       "auditory stream segregation",
       "selective attention",
       "EEG",
-      "Event-Related Potentials, P300",
+      "oddball paradigm",
       "Riemannian geometry"
     ],
-    "methods_description": "EEG and EOG signals (64 EEG channels + 2 EOG channels) were recorded at 1000 Hz using Brain Amp DC and MR plus amplifiers with a standard 10-20 montage. Musical tones (150 ms duration, 180 ms stimulus onset asynchrony) were presented to the right ear via headphones using a digital signal processor. Three auditory streams were created using stream segregation with standard (90%) and deviant (10%) tones. Subjects performed two task blocks with three 5-minute runs each, counting target stimuli in attended streams. Data were bandpass filtered (0.1-100 Hz online; 1-40 Hz for classification), baseline corrected, artifact rejected, and classified using xDAWN spatial filtering with Riemannian geometry covariance matrices.",
+    "methods_description": "EEG and EOG signals (64 EEG channels + 2 EOG channels) were recorded at 1000 Hz using Brain Amp DC and MR plus amplifiers with a standard 10-20 montage. Musical tones (150 ms duration, 180 ms stimulus onset asynchrony) were presented to the right ear via headphones using a digital signal processor. Subjects attended to one of three tone streams and counted target stimuli. Data were bandpass filtered (0.1-100 Hz online; 0.1-40 Hz for ERP analysis, 1-40 Hz for classification), baseline corrected, artifact rejected (±100μV EEG, ±500μV EOG), and classified using xDAWN spatial filtering with Riemannian geometry covariance matrices in 10-fold cross-validation.",
     "funding": [
       {
         "funder_name": "JSPS",
-        "award_number": "JP23K11811"
+        "award_number": "JP23K11811",
+        "award_title": "KAKENHI Grant"
       }
-    ],
-    "searched_accessions": [
-      "nm000193"
-    ],
-    "num_accession_mentions": 1,
-    "num_dataset_citations": 1,
-    "num_datapaper_citations": 10
+    ]
   },
   "citation_details": [
     {
@@ -86,7 +81,7 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.nm000193",
       "cited_by": 0,
-      "abstract": "An auditory brain-computer interface dataset based on selective attention to multiple tone streams using P300 event-related potentials. Eleven healthy subjects performed a 3-class auditory task involving selective attention to one of three segregated musical tone streams while EEG and EOG signals were recorded at 1000 Hz from 64 channels. Classification was performed using Riemannian geometry methods, achieving over 80% accuracy in five subjects and over 75% in nine subjects.",
+      "abstract": "An auditory brain-computer interface dataset based on selective attention to multiple tone streams using P300 event-related potentials. The study employed auditory stream segregation with three tone sequences presented to participants' right ear, recording 64-channel EEG and 2-channel EOG from 11 healthy subjects. Classification using Riemannian geometry achieved over 80% accuracy in 5 subjects and over 75% in 9 subjects, demonstrating the feasibility of multi-class auditory BCIs without visual feedback.",
       "doi": "10.82901/nemar.nm000193",
       "pmid": null,
       "openalex_id": "W7163212103",
@@ -94,9 +89,78 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 1.0,
-        "similarity_score": 0.8806594610214233,
-        "citation_text_length": 682,
+        "confidence_score": 0.985898184478283,
+        "similarity_score": 0.8535915017127991,
+        "citation_text_length": 711,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Falsifiable substitution tests reveal task-structured neural evidence for auditory attention",
+      "author": "Yu Ding",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2026,
+      "url": "https://doi.org/10.64898/2026.08.03.742580",
+      "cited_by": 0,
+      "abstract": "Abstract A neural decoder can predict a mental-state label without using information specific to that state. We made auditory-attention attribution falsifiable by requiring candidate evidence to persist in disjoint data, respond to capacity-matched substitutions of physical organization or listener/population template, and remain testable after target-event exclusion or command-identity residualization; two event-related datasets also permitted electrooculography (EOG)-only comparisons. The design drew on Wang and Zahl’s three-dimensional Kakeya proof strategy: examine the organized family and its concentration, not only the strongest member. Across six EEG datasets, averaging four neural–speech margins improved 5-s decoding relative to the leading margin in three evaluation sets whose rules were fixed before their results were computed (41 participants; study-equal gain, 0.0201; 95% interval, 0.0125–0.0279). A 16-cell scalp-direction–delay representation replicated in a participant-di",
+      "doi": "10.64898/2026.08.03.742580",
+      "pmid": null,
+      "openalex_id": "W7202034171",
+      "source_doi": "10.7910/dvn/mqovey",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6441873282194138,
+        "similarity_score": 0.5577379465103149,
+        "citation_text_length": 1177,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2605.08495",
+      "cited_by": 7,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": "10.48550/arXiv.2605.08495",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0303565",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6204594987630845,
+        "similarity_score": 0.5371943712234497,
+        "citation_text_length": 1326,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Four-class ASME BCI: investigation of the feasibility and comparison of two strategies for multiclassing",
+      "author": "Simon Kojima, Shin’ichiro Kanoh",
+      "venue": "Frontiers in Human Neuroscience",
+      "year": 2024,
+      "url": "https://doi.org/10.3389/fnhum.2024.1461960",
+      "cited_by": 6,
+      "abstract": "Introduction: The ASME (stands for Auditory Stream segregation Multiclass ERP) paradigm is proposed and used for an auditory brain-computer interface (BCI). In this paradigm, a sequence of sounds that are perceived as multiple auditory streams are presented simultaneously, and each stream is an oddball sequence. The users are requested to focus selectively on deviant stimuli in one of the streams, and the target of the user attention is detected by decoding event-related potentials (ERPs). To achieve multiclass ASME BCI, the number of streams must be increased. However, increasing the number of streams is not easy because of a person's limited audible frequency range. One method to achieve multiclass ASME with a limited number of streams is to increase the target stimuli in a single stream. Methods: Two approaches for the ASME paradigm, ASME-4stream (four streams with a single target stimulus in each stream) and ASME-2stream (two streams with two target stimuli in each stream) were inv",
+      "doi": "10.3389/fnhum.2024.1461960",
+      "pmid": "39660042",
+      "openalex_id": "W4404728424",
+      "source_doi": "10.1371/journal.pone.0303565",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6925042176246644,
+        "similarity_score": 0.5995707511901855,
+        "citation_text_length": 1205,
         "dataset_text_length": 2403,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -126,52 +190,6 @@
       }
     },
     {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2605.08495",
-      "cited_by": 6,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": "10.48550/arXiv.2605.08495",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0303565",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6204594987630845,
-        "similarity_score": 0.5371943712234497,
-        "citation_text_length": 1326,
-        "dataset_text_length": 2403,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Four-class ASME BCI: investigation of the feasibility and comparison of two strategies for multiclassing",
-      "author": "Simon Kojima, Shin’ichiro Kanoh",
-      "venue": "Frontiers in Human Neuroscience",
-      "year": 2024,
-      "url": "https://doi.org/10.3389/fnhum.2024.1461960",
-      "cited_by": 4,
-      "abstract": "Introduction: The ASME (stands for Auditory Stream segregation Multiclass ERP) paradigm is proposed and used for an auditory brain-computer interface (BCI). In this paradigm, a sequence of sounds that are perceived as multiple auditory streams are presented simultaneously, and each stream is an oddball sequence. The users are requested to focus selectively on deviant stimuli in one of the streams, and the target of the user attention is detected by decoding event-related potentials (ERPs). To achieve multiclass ASME BCI, the number of streams must be increased. However, increasing the number of streams is not easy because of a person's limited audible frequency range. One method to achieve multiclass ASME with a limited number of streams is to increase the target stimuli in a single stream. Methods: Two approaches for the ASME paradigm, ASME-4stream (four streams with a single target stimulus in each stream) and ASME-2stream (two streams with two target stimuli in each stream) were inv",
-      "doi": "10.3389/fnhum.2024.1461960",
-      "pmid": "39660042",
-      "openalex_id": "W4404728424",
-      "source_doi": "10.1371/journal.pone.0303565",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6925042176246644,
-        "similarity_score": 0.5995707511901855,
-        "citation_text_length": 1205,
-        "dataset_text_length": 2403,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Influence of pitch modulation on event-related potentials elicited by Dutch word stimuli in a brain–computer interface language rehabilitation task",
       "author": "Simon Kojima, Benjamin Eren Kortenbach, Crispijn Aalberts, Sara Miloševska, Kim de Wit, Rosie Zheng, Shin’ichiro Kanoh, Mariacristina Musso, Michael Tangermann",
       "venue": "Journal of Neural Engineering",
@@ -195,6 +213,29 @@
       }
     },
     {
+      "title": "The ASME-speller: 30-class auditory brain-computer interface speller using stream segregation and the QWERTY layout",
+      "author": "Simon Kojima, Shin’ichiro Kanoh",
+      "venue": "Frontiers in Human Neuroscience",
+      "year": 2026,
+      "url": "https://doi.org/10.3389/fnhum.2026.1807535",
+      "cited_by": 1,
+      "abstract": "Introduction: This study presents the ASME-speller, a novel 30-class auditory brain-computer interface (BCI) speller system that combines auditory stream segregation with the familiar QWERTY keyboard layout to facilitate intuitive and visionfree communication. Methods: In the ASME-speller, three distinct auditory streams are presented simultaneously, each corresponding to a row on the QWERTY keyboard. The low-, middle-, and high-frequency streams represent the bottom, middle, and top rows, respectively. Within each stream, alphabet letters and selected symbols are repeatedly presented as spoken voice stimuli. Users are instructed to focus exclusively on the stream corresponding to the row containing the target letter and to selectively attend to that letter within the stream. By leveraging the QWERTY layout and auditory stream segregation, the proposed approach enables users to restrict their attentional focus to a subset of letters by directing selective attention to auditory streams,",
+      "doi": "10.3389/fnhum.2026.1807535",
+      "pmid": "42253796",
+      "openalex_id": "W7161976913",
+      "source_doi": "10.1371/journal.pone.0303565",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6976378673315049,
+        "similarity_score": 0.6040154695510864,
+        "citation_text_length": 1216,
+        "dataset_text_length": 2403,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Comparing Visual and Auditory P300-based Brain-Computer Interfaces: An Experimental Study",
       "author": "Rakesh Sengupta, Anuj Shukla, Ravichander Janapati, D. Hari Krishna, I. A. Pasha",
       "venue": "2024 15th International Conference on Computing Communication and Networking Technologies (ICCCNT)",
@@ -212,29 +253,6 @@
         "confidence_score": 0.7070014598965646,
         "similarity_score": 0.6121224761009216,
         "citation_text_length": 1181,
-        "dataset_text_length": 2403,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "The ASME-speller: 30-class auditory brain-computer interface speller using stream segregation and the QWERTY layout",
-      "author": "Simon Kojima, Shin’ichiro Kanoh",
-      "venue": "Frontiers in Human Neuroscience",
-      "year": 2026,
-      "url": "https://doi.org/10.3389/fnhum.2026.1807535",
-      "cited_by": 0,
-      "abstract": "Introduction: This study presents the ASME-speller, a novel 30-class auditory brain-computer interface (BCI) speller system that combines auditory stream segregation with the familiar QWERTY keyboard layout to facilitate intuitive and visionfree communication. Methods: In the ASME-speller, three distinct auditory streams are presented simultaneously, each corresponding to a row on the QWERTY keyboard. The low-, middle-, and high-frequency streams represent the bottom, middle, and top rows, respectively. Within each stream, alphabet letters and selected symbols are repeatedly presented as spoken voice stimuli. Users are instructed to focus exclusively on the stream corresponding to the row containing the target letter and to selectively attend to that letter within the stream. By leveraging the QWERTY layout and auditory stream segregation, the proposed approach enables users to restrict their attentional focus to a subset of letters by directing selective attention to auditory streams,",
-      "doi": "10.3389/fnhum.2026.1807535",
-      "pmid": "42253796",
-      "openalex_id": "W7161976913",
-      "source_doi": "10.1371/journal.pone.0303565",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6976378673315049,
-        "similarity_score": 0.6040154695510864,
-        "citation_text_length": 1216,
         "dataset_text_length": 2403,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -308,47 +326,22 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Multiple Gene Expression Analyses in Paraffin-Embedded Tissues by TaqMan Low-Density Array",
-      "author": "Adam D. Steg, Wenquan Wang, Carmelo Blanquicett, Jessica M. Grunda, Isam A. Eltoum, Kangsheng Wang, Donald J. Buchsbaum, Selwyn M. Vickers, Suzanne Russo, Robert B. Diasio, Andra R. Frost, Al F. Lobuglio, William E. Grizzle, Martin R. Johnson",
-      "venue": "Journal of Molecular Diagnostics",
-      "year": 2006,
-      "url": "https://doi.org/10.2353/jmoldx.2006.040402",
-      "cited_by": 82,
-      "abstract": null,
-      "doi": "10.2353/jmoldx.2006.040402",
-      "pmid": "16436637",
-      "openalex_id": "W1553996898",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000193",
-      "confidence_scoring": {
-        "confidence_score": 0.30279573798179626,
-        "similarity_score": 0.30279573798179626,
-        "citation_text_length": 391,
-        "dataset_text_length": 2403,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-10T10:11:58.664833+00:00",
+    "scoring_date": "2026-08-17T11:12:59.312906+00:00",
     "dataset_text_length": 2403,
     "num_citations_scored": 11,
     "summary_stats": {
-      "mean_confidence": 0.650796808871356,
+      "mean_confidence": 0.6805504247546197,
       "median_confidence": 0.6678436982631685,
-      "std_confidence": 0.1680485383019122,
-      "min_confidence": 0.30279573798179626,
-      "max_confidence": 1.0,
+      "std_confidence": 0.12438736137694999,
+      "min_confidence": 0.42581548690795906,
+      "max_confidence": 0.985898184478283,
       "high_confidence_count": 3,
-      "medium_confidence_count": 7,
-      "low_confidence_count": 1
+      "medium_confidence_count": 8,
+      "low_confidence_count": 0
     }
   }
 }

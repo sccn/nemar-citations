@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000189",
-  "num_citations": 102,
-  "date_last_updated": "2026-08-09T10:09:08.057369+00:00",
+  "num_citations": 100,
+  "date_last_updated": "2026-08-17T10:08:39.737352+00:00",
   "metadata": {
-    "total_cumulative_citations": 18491,
-    "fetch_date": "2026-08-09T10:09:08.057369+00:00",
+    "total_cumulative_citations": 18556,
+    "fetch_date": "2026-08-17T10:08:39.737352+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -56,18 +56,18 @@
     ],
     "keywords": [
       "Brain-Computer Interfaces",
-      "P300",
       "Event-Related Potentials, P300",
+      "P300",
       "auditory oddball",
       "EEG",
       "spatial attention",
-      "speller interface",
-      "N200",
-      "dynamic subtrials",
-      "directional hearing"
+      "speller interface"
     ],
-    "methods_description": "EEG data acquired at 256 Hz from 8 channels (Fz, Cz, P3, Pz, P4, PO7, Oz, PO8) using BrainAmp hardware with Ag/AgCl electrodes referenced to nose. Stimuli presented from six speakers at ear height (60° spacing, 65 cm radius) using unique tone and filtered noise combinations. Preprocessing included hardware analog band-pass filtering (0.1-250 Hz), downsampling to 100 Hz, low-pass filtering at 40 Hz, and baselining using 150 ms pre-stimulus data. Spatio-temporal feature extraction employed r2 coefficient with interval averaging; classification used linear discriminant analysis with Ledoit-Wolf shrinkage regularization. Two sessions per subject: Session 1 with fixed iterations and Session 2 with dynamic stopping method.",
+    "methods_description": "EEG data were acquired at 256 Hz from 8 channels (Fz, Cz, P3, Pz, P4, PO7, Oz, PO8) using Ag/AgCl electrodes with nose reference. Stimuli consisted of auditory tones and band-pass filtered noise presented from six speakers arranged in a circle at 60° intervals. Preprocessing included hardware analog band-pass filtering (0.1-250 Hz), low-pass filtering (40 Hz), downsampling to 100 Hz, and baselining using 150 ms pre-stimulus data. Spatio-temporal features were extracted using r2 coefficient and interval averaging, with classification performed using linear discriminant analysis with Ledoit-Wolf shrinkage regularization.",
     "funding": [
+      {
+        "funder_name": "FP7-ICT PASCAL2 Network of Excellence ICT-216886"
+      },
       {
         "funder_name": "European Commission",
         "award_number": "FP7-224631"
@@ -87,18 +87,8 @@
       {
         "funder_name": "BMBF",
         "award_number": "01GQ0850"
-      },
-      {
-        "funder_name": "FP7-ICT PASCAL2 Network of Excellence",
-        "award_number": "ICT-216886"
       }
-    ],
-    "searched_accessions": [
-      "nm000189"
-    ],
-    "num_accession_mentions": 2,
-    "num_dataset_citations": 2,
-    "num_datapaper_citations": 100
+    ]
   },
   "citation_details": [
     {
@@ -107,7 +97,7 @@
       "venue": "NeuroImage",
       "year": 2010,
       "url": "https://doi.org/10.1016/j.neuroimage.2010.06.048",
-      "cited_by": 1158,
+      "cited_by": 1164,
       "abstract": null,
       "doi": "10.1016/j.neuroimage.2010.06.048",
       "pmid": "20600976",
@@ -130,7 +120,7 @@
       "venue": "GigaScience",
       "year": 2019,
       "url": "https://doi.org/10.1093/gigascience/giz002",
-      "cited_by": 577,
+      "cited_by": 587,
       "abstract": "BACKGROUND: Electroencephalography (EEG)-based brain-computer interface (BCI) systems are mainly divided into three major paradigms: motor imagery (MI), event-related potential (ERP), and steady-state visually evoked potential (SSVEP). Here, we present a BCI dataset that includes the three major BCI paradigms with a large number of subjects over multiple sessions. In addition, information about the psychological and physiological conditions of BCI users was obtained using a questionnaire, and task-unrelated parameters such as resting state, artifacts, and electromyography of both arms were also recorded. We evaluated the decoding accuracies for the individual paradigms and determined performance variations across both subjects and sessions. Furthermore, we looked for more general, severe cases of BCI illiteracy than have been previously reported in the literature. RESULTS: Average decoding accuracies across all subjects and sessions were 71.1% (± 0.15), 96.7% (± 0.05), and 95.1% (± 0.0",
       "doi": "10.1093/gigascience/giz002",
       "pmid": "30698704",
@@ -199,7 +189,7 @@
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2013,
       "url": "https://doi.org/10.1109/tbme.2013.2270283",
-      "cited_by": 420,
+      "cited_by": 421,
       "abstract": "In this paper, a hybrid brain-computer interface (BCI) system combining P300 and steady-state visual evoked potential (SSVEP) is proposed to improve the performance of asynchronous control. The four groups of flickering buttons were set in the graphical user interface. Each group contained one large button in the center and eight small buttons around it, all of which flashed at a fixed frequency (e.g., 7.5 Hz) to evoke SSVEP. At the same time, the four large buttons of the four groups were intensified through shape and color changes in a random order to produce P300 potential. During the control state, the user focused on a desired group of buttons (target buttons) to evoke P300 potential and SSVEP, simultaneously. Discrimination between the control and idle states was based on the detection of both P300 and SSVEP on the same group of buttons. As an application, this method was used to produce a \"go/stop\" command in real-time wheelchair control. Several experiments were conducted, and ",
       "doi": "10.1109/tbme.2013.2270283",
       "pmid": "23799679",
@@ -222,7 +212,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2010,
       "url": "https://doi.org/10.1109/tnsre.2010.2049862",
-      "cited_by": 406,
+      "cited_by": 408,
       "abstract": "While brain-computer interfaces (BCIs) can provide communication to people who are locked-in, they suffer from a very low information transfer rate. Further, using a BCI requires a concentration effort and using it continuously can be tiring. The brain controlled wheelchair (BCW) described in this paper aims at providing mobility to BCI users despite these limitations, in a safe and efficient way. Using a slow but reliable P300 based BCI, the user selects a destination amongst a list of predefined locations. While the wheelchair moves on virtual guiding paths ensuring smooth, safe, and predictable trajectories, the user can stop the wheelchair by using a faster BCI. Experiments with nondisabled subjects demonstrated the efficiency of this strategy. Brain control was not affected when the wheelchair was in motion, and the BCW enabled the users to move to various locations in less time and with significantly less control effort than other control strategies proposed in the literature.",
       "doi": "10.1109/tnsre.2010.2049862",
       "pmid": "20460212",
@@ -245,7 +235,7 @@
       "venue": "Frontiers in Neuroengineering",
       "year": 2012,
       "url": "https://doi.org/10.3389/fneng.2012.00014",
-      "cited_by": 359,
+      "cited_by": 360,
       "abstract": "A brain-computer interface (BCI) enables communication without movement based on brain signals measured with electroencephalography (EEG). BCIs usually rely on one of three types of signals: the P300 and other components of the event-related potential (ERP), steady state visual evoked potential (SSVEP), or event related desynchronization (ERD). Although P300 BCIs were introduced over twenty years ago, the past few years have seen a strong increase in P300 BCI research. This closed-loop BCI approach relies on the P300 and other components of the ERP, based on an oddball paradigm presented to the subject. In this paper, we overview the current status of P300 BCI technology, and then discuss new directions: paradigms for eliciting P300s; signal processing methods; applications; and hybrid BCIs. We conclude that P300 BCIs are quite promising, as several emerging directions have not yet been fully explored and could lead to improvements in bit rate, reliability, usability, and flexibility.",
       "doi": "10.3389/fneng.2012.00014",
       "pmid": "22822397",
@@ -314,7 +304,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2010,
       "url": "https://doi.org/10.1109/tnsre.2009.2039495",
-      "cited_by": 339,
+      "cited_by": 340,
       "abstract": "Brain-computer interface (BCI) systems use brain activity as an input signal and enable communication without movement. This study is a successor of our previous study (BCI demographics I) and examines correlations among BCI performance, personal preferences, and different subject factors such as age or gender for two sets of steady-state visual evoked potential (SSVEP) stimuli: one in the medium frequency range (13, 14, 15 and 16 Hz) and another in the high-frequency range (34, 36, 38, 40 Hz). High-frequency SSVEPs (above 30 Hz) diminish user fatigue and risk of photosensitive epileptic seizures. Results showed that most people, despite having no prior BCI experience, could use the SSVEP-based Bremen-BCI system in a very noisy field setting at a fair. Results showed that demographic parameters as well as handedness, tiredness, alcohol and caffeine consumption, etc., have no significant effect on the performance of SSVEP-based BCI. Most subjects did not consider the flickering stimuli ",
       "doi": "10.1109/tnsre.2009.2039495",
       "pmid": "20083463",
@@ -360,7 +350,7 @@
       "venue": "Sensors",
       "year": 2022,
       "url": "https://doi.org/10.3390/s22093331",
-      "cited_by": 314,
+      "cited_by": 317,
       "abstract": "An electroencephalography (EEG)-based brain-computer interface (BCI) is a system that provides a pathway between the brain and external devices by interpreting EEG. EEG-based BCI applications have initially been developed for medical purposes, with the aim of facilitating the return of patients to normal life. In addition to the initial aim, EEG-based BCI applications have also gained increasing significance in the non-medical domain, improving the life of healthy people, for instance, by making it more efficient, collaborative and helping develop themselves. The objective of this review is to give a systematic overview of the literature on EEG-based BCI applications from the period of 2009 until 2019. The systematic literature review has been prepared based on three databases PubMed, Web of Science and Scopus. This review was conducted following the PRISMA model. In this review, 202 publications were selected based on specific eligibility criteria. The distribution of the research bet",
       "doi": "10.3390/s22093331",
       "pmid": "35591021",
@@ -383,7 +373,7 @@
       "venue": "Journal of Neuroscience Methods",
       "year": 2015,
       "url": "https://doi.org/10.1016/j.jneumeth.2015.01.033",
-      "cited_by": 314,
+      "cited_by": 316,
       "abstract": null,
       "doi": "10.1016/j.jneumeth.2015.01.033",
       "pmid": "25668430",
@@ -406,7 +396,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2011,
       "url": "https://doi.org/10.1088/1741-2560/8/5/056016",
-      "cited_by": 298,
+      "cited_by": 299,
       "abstract": "Currently, the event-related potential (ERP)-based spelling device, often referred to as P300-Speller, is the most commonly used brain-computer interface (BCI) for enhancing communication of patients with impaired speech or motor function. Among numerous improvements, a most central feature has received little attention, namely optimizing the stimulus used for eliciting ERPs. Therefore we compared P300-Speller performance with the standard stimulus (flashing characters) against performance with stimuli known for eliciting particularly strong ERPs due to their psychological salience, i.e. flashing familiar faces transparently superimposed on characters. Our results not only indicate remarkably increased ERPs in response to familiar faces but also improved P300-Speller performance due to a significant reduction of stimulus sequences needed for correct character classification. These findings demonstrate a promising new approach for improving the speed and thus fluency of BCI-enhanced com",
       "doi": "10.1088/1741-2560/8/5/056016",
       "pmid": "21934188",
@@ -429,7 +419,7 @@
       "venue": "The frontiers collection",
       "year": 2009,
       "url": "https://doi.org/10.1007/978-3-642-02091-9_1",
-      "cited_by": 297,
+      "cited_by": 299,
       "abstract": null,
       "doi": "10.1007/978-3-642-02091-9_1",
       "pmid": null,
@@ -498,7 +488,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2010,
       "url": "https://doi.org/10.1088/1741-2560/7/5/056013",
-      "cited_by": 290,
+      "cited_by": 291,
       "abstract": "Many people affected by debilitating neuromuscular disorders such as amyotrophic lateral sclerosis, brainstem stroke or spinal cord injury are impaired in their ability to, or are even unable to, communicate. A brain-computer interface (BCI) uses brain signals, rather than muscles, to re-establish communication with the outside world. One particular BCI approach is the so-called 'P300 matrix speller' that was first described by Farwell and Donchin (1988 Electroencephalogr. Clin. Neurophysiol. 70 510-23). It has been widely assumed that this method does not depend on the ability to focus on the desired character, because it was thought that it relies primarily on the P300-evoked potential and minimally, if at all, on other EEG features such as the visual-evoked potential (VEP). This issue is highly relevant for the clinical application of this BCI method, because eye movements may be impaired or lost in the relevant user population. This study investigated the extent to which the perfor",
       "doi": "10.1088/1741-2560/7/5/056013",
       "pmid": "20858924",
@@ -521,7 +511,7 @@
       "venue": "Biomedical Signal Processing and Control",
       "year": 2016,
       "url": "https://doi.org/10.1016/j.bspc.2016.09.005",
-      "cited_by": 290,
+      "cited_by": 291,
       "abstract": null,
       "doi": "10.1016/j.bspc.2016.09.005",
       "pmid": null,
@@ -544,7 +534,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2020,
       "url": "https://doi.org/10.1088/1741-2552/abc902",
-      "cited_by": 278,
+      "cited_by": 279,
       "abstract": "Brain signals refer to the biometric information collected from the human brain. The research on brain signals aims to discover the underlying neurological or physical status of the individuals by signal decoding. The emerging deep learning techniques have improved the study of brain signals significantly in recent years. In this work, we first present a taxonomy of non-invasive brain signals and the basics of deep learning algorithms. Then, we provide the frontiers of applying deep learning for non-invasive brain signals analysis, by summarizing a large number of recent publications. Moreover, upon the deep learning-powered brain signal studies, we report the potential real-world applications which benefit not only disabled people but also normal individuals. Finally, we discuss the opening challenges and future directions.",
       "doi": "10.1088/1741-2552/abc902",
       "pmid": "33171452",
@@ -590,7 +580,7 @@
       "venue": "Amyotrophic Lateral Sclerosis",
       "year": 2011,
       "url": "https://doi.org/10.3109/17482968.2011.572978",
-      "cited_by": 216,
+      "cited_by": 217,
       "abstract": "Universal design principles advocate inclusion of end users in every design stage, including research and development. Brain-computer interfaces (BCIs) have long been described as potential tools to enable people with amyotrophic lateral sclerosis (ALS) to operate technology without moving. Therefore the objective of the current study is to determine the opinions and priorities of people with ALS regarding BCI design. This information will guide BCIs in development to meet end-user needs. A telephone survey was undertaken of 61 people with ALS from the University of Michigan's Motor Neuron Disease Clinic. With regard to BCI design, participants prioritized accuracy of command identification of at least 90% (satisfying 84% of respondents), speed of operation comparable to at least 15-19 letters per minute (satisfying 72%), and accidental exits from a standby mode not more than once every 2-4 h (satisfying 84%). While 84% of respondents would accept using an electrode cap, 72% were willi",
       "doi": "10.3109/17482968.2011.572978",
       "pmid": "21534845",
@@ -613,7 +603,7 @@
       "venue": "Handbook of clinical neurology",
       "year": 2013,
       "url": "https://doi.org/10.1016/b978-0-444-52901-5.00006-x",
-      "cited_by": 212,
+      "cited_by": 213,
       "abstract": null,
       "doi": "10.1016/b978-0-444-52901-5.00006-x",
       "pmid": "23312631",
@@ -636,7 +626,7 @@
       "venue": "PLoS ONE",
       "year": 2013,
       "url": "https://doi.org/10.1371/journal.pone.0080886",
-      "cited_by": 211,
+      "cited_by": 212,
       "abstract": "In most brain computer interface (BCI) systems, some target users have significant difficulty in using BCI systems. Such target users are called 'BCI-illiterate'. This phenomenon has been poorly investigated, and a clear understanding of the BCI-illiteracy mechanism or a solution to this problem has not been reported to date. In this study, we sought to demonstrate the neurophysiological differences between two groups (literate, illiterate) with a total of 52 subjects. We investigated recordings under non-task related state (NTS) which is collected during subject is relaxed with eyes open. We found that high theta and low alpha waves were noticeable in the BCI-illiterate relative to the BCI-literate people. Furthermore, these high theta and low alpha wave patterns were preserved across different mental states, such as NTS, resting before motor imagery (MI), and MI states, even though the spatial distribution of both BCI-illiterate and BCI-literate groups did not differ. From these find",
       "doi": "10.1371/journal.pone.0080886",
       "pmid": "24278339",
@@ -682,7 +672,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1109/tnsre.2018.2872924",
-      "cited_by": 198,
+      "cited_by": 201,
       "abstract": "This paper describes an open access electroencephalography (EEG) data set for multitasking mental workload activity induced by a single-session simultaneous capacity (SIMKAP) experiment with 48 subjects. To validate the database, EEG spectral activity was evaluated with EEGLAB and the significant channels and activities for the experiment are highlighted. Classification performance was evaluated by training a support vector regression model on selected features from neighborhood component analysis based on a nine-point workload rating scale. With a reduced feature dimension, 69% classification accuracy was obtained for 3 identified workload levels from the rating scale with Cohen's kappa of 0.46. Accurate discrimination of mental workload is a desirable outcome in the field of operator performance analysis and BCI development; thus, we hope that our provided database and analyses can contribute to future investigations in this research field.",
       "doi": "10.1109/tnsre.2018.2872924",
       "pmid": "30281467",
@@ -797,7 +787,7 @@
       "venue": "Scientific Data",
       "year": 2018,
       "url": "https://doi.org/10.1038/sdata.2018.211",
-      "cited_by": 176,
+      "cited_by": 178,
       "abstract": "Recent advancements in brain computer interfaces (BCI) have demonstrated control of robotic systems by mental processes alone. Together with invasive BCI, electroencephalographic (EEG) BCI represent an important direction in the development of BCI systems. In the context of EEG BCI, the processing of EEG data is the key challenge. Unfortunately, advances in that direction have been complicated by a lack of large and uniform datasets that could be used to design and evaluate different data processing approaches. In this work, we release a large set of EEG BCI data collected during the development of a slow cortical potentials-based EEG BCI. The dataset contains 60 h of EEG recordings, 13 participants, 75 recording sessions, 201 individual EEG BCI interaction session-segments, and over 60 000 examples of motor imageries in 4 interaction paradigms. The current dataset presents one of the largest EEG BCI datasets publically available to date.",
       "doi": "10.1038/sdata.2018.211",
       "pmid": "30325349",
@@ -953,6 +943,29 @@
       }
     },
     {
+      "title": "Co-adaptive calibration to improve BCI efficiency",
+      "author": "Carmen Vidaurre, Claudia Sannelli, Klaus‐Robert Müller, Benjamin Blankertz",
+      "venue": "Journal of Neural Engineering",
+      "year": 2011,
+      "url": "https://doi.org/10.1088/1741-2560/8/2/025009",
+      "cited_by": 167,
+      "abstract": "All brain-computer interface (BCI) groups that have published results of studies involving a large number of users performing BCI control based on the voluntary modulation of sensorimotor rhythms (SMR) report that BCI control could not be achieved by a non-negligible number of subjects (estimated 20% to 25%). This failure of the BCI system to read the intention of the user is one of the greatest problems and challenges in BCI research. There are two main causes for this problem in SMR-based BCI systems: either no idle SMR is observed over motor areas of the user, or this idle rhythm is not modulated during motor imagery, resulting in a classification performance lower than 70% (criterion level) that renders the control of a BCI application (like a speller) difficult or impossible. Previously, we introduced the concept of machine learning based co-adaptive calibration, which provided substantially improved performance for a variety of users. Here, we use a similar approach and investiga",
+      "doi": "10.1088/1741-2560/8/2/025009",
+      "pmid": "21436515",
+      "openalex_id": "W1969223073",
+      "source_doi": "10.1016/j.neulet.2009.06.045",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.42820153236389163,
+        "similarity_score": 0.38927412033081055,
+        "citation_text_length": 1191,
+        "dataset_text_length": 2236,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "The Cybathlon BCI race: Successful longitudinal mutual learning with two tetraplegic users",
       "author": "Serafeim Perdikis, Luca Tonin, Sareh Saeedi, Christoph Schneider, José del R. Millán",
       "venue": "PLoS Biology",
@@ -970,29 +983,6 @@
         "confidence_score": 0.4213205069303513,
         "similarity_score": 0.3830186426639557,
         "citation_text_length": 1225,
-        "dataset_text_length": 2236,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Co-adaptive calibration to improve BCI efficiency",
-      "author": "Carmen Vidaurre, Claudia Sannelli, Klaus‐Robert Müller, Benjamin Blankertz",
-      "venue": "Journal of Neural Engineering",
-      "year": 2011,
-      "url": "https://doi.org/10.1088/1741-2560/8/2/025009",
-      "cited_by": 165,
-      "abstract": "All brain-computer interface (BCI) groups that have published results of studies involving a large number of users performing BCI control based on the voluntary modulation of sensorimotor rhythms (SMR) report that BCI control could not be achieved by a non-negligible number of subjects (estimated 20% to 25%). This failure of the BCI system to read the intention of the user is one of the greatest problems and challenges in BCI research. There are two main causes for this problem in SMR-based BCI systems: either no idle SMR is observed over motor areas of the user, or this idle rhythm is not modulated during motor imagery, resulting in a classification performance lower than 70% (criterion level) that renders the control of a BCI application (like a speller) difficult or impossible. Previously, we introduced the concept of machine learning based co-adaptive calibration, which provided substantially improved performance for a variety of users. Here, we use a similar approach and investiga",
-      "doi": "10.1088/1741-2560/8/2/025009",
-      "pmid": "21436515",
-      "openalex_id": "W1969223073",
-      "source_doi": "10.1016/j.neulet.2009.06.045",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.42820153236389163,
-        "similarity_score": 0.38927412033081055,
-        "citation_text_length": 1191,
         "dataset_text_length": 2236,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1045,6 +1035,29 @@
       }
     },
     {
+      "title": "Cognitive neurophysiology: Event-related potentials",
+      "author": "Randolph F. Helfrich, Robert T. Knight",
+      "venue": "Handbook of clinical neurology",
+      "year": 2019,
+      "url": "https://doi.org/10.1016/b978-0-444-64032-1.00036-9",
+      "cited_by": 160,
+      "abstract": null,
+      "doi": "10.1016/b978-0-444-64032-1.00036-9",
+      "pmid": "31277875",
+      "openalex_id": "W2954252413",
+      "source_doi": "10.1016/j.neulet.2009.06.045",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.42862242460250854,
+        "similarity_score": 0.42862242460250854,
+        "citation_text_length": 146,
+        "dataset_text_length": 2236,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Toward brain-computer interface based wheelchair control utilizing tactually-evoked event-related potentials",
       "author": "Tobias Kaufmann, Andreas Herweg, Andrea Kübler",
       "venue": "Journal of NeuroEngineering and Rehabilitation",
@@ -1068,29 +1081,6 @@
       }
     },
     {
-      "title": "Cognitive neurophysiology: Event-related potentials",
-      "author": "Randolph F. Helfrich, Robert T. Knight",
-      "venue": "Handbook of clinical neurology",
-      "year": 2019,
-      "url": "https://doi.org/10.1016/b978-0-444-64032-1.00036-9",
-      "cited_by": 159,
-      "abstract": null,
-      "doi": "10.1016/b978-0-444-64032-1.00036-9",
-      "pmid": "31277875",
-      "openalex_id": "W2954252413",
-      "source_doi": "10.1016/j.neulet.2009.06.045",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.42862242460250854,
-        "similarity_score": 0.42862242460250854,
-        "citation_text_length": 146,
-        "dataset_text_length": 2236,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Prognosis for patients with cognitive motor dissociation identified by brain-computer interface",
       "author": "Jiahui Pan, Qiuyou Xie, Pengmin Qin, Yan Chen, Yanbin He, Haiyun Huang, Fei Wang, Xiaoxiao Ni, Andrzej Cichocki, Ronghao Yu, Yuanqing Li",
       "venue": "Brain",
@@ -1108,6 +1098,29 @@
         "confidence_score": 0.42139285147190103,
         "similarity_score": 0.3648422956466675,
         "citation_text_length": 1275,
+        "dataset_text_length": 2236,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Non-Invasive Brain-Computer Interfaces: State of the Art and Trends",
+      "author": "Bradley J. Edelman, Shuailei Zhang, Gerwin Schalk, Peter Brunner, Gernot Müller-Putz, Cuntai Guan, Bin He",
+      "venue": "IEEE Reviews in Biomedical Engineering",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/rbme.2024.3449790",
+      "cited_by": 151,
+      "abstract": "Brain-computer interface (BCI) is a rapidly evolving technology that has the potential to widely influence research, clinical and recreational use. Non-invasive BCI approaches are particularly common as they can impact a large number of participants safely and at a relatively low cost. Where traditional non-invasive BCIs were used for simple computer cursor tasks, it is now increasingly common for these systems to control robotic devices for complex tasks that may be useful in daily life. In this review, we provide an overview of the general BCI framework as well as the various methods that can be used to record neural activity, extract signals of interest, and decode brain states. In this context, we summarize the current state-of-the-art of non-invasive BCI research, focusing on trends in both the application of BCIs for controlling external devices and algorithm development to optimize their use. We also discuss various open-source BCI toolboxes and software, and describe their impa",
+      "doi": "10.1109/rbme.2024.3449790",
+      "pmid": "39186407",
+      "openalex_id": "W4401879161",
+      "source_doi": "10.1016/j.neulet.2009.06.045",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.43732713013887414,
+        "similarity_score": 0.37863820791244507,
+        "citation_text_length": 1249,
         "dataset_text_length": 2236,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1142,7 +1155,7 @@
       "venue": "IEEE Access",
       "year": 2018,
       "url": "https://doi.org/10.1109/access.2018.2868178",
-      "cited_by": 146,
+      "cited_by": 148,
       "abstract": "Brain-computer interface (BCI) has become extremely popular in recent decades. It gained its significance from the intention of helping paralyzed people communicate with the external environment. One of the major challenges facing BCI systems is obtaining reliable classification accuracy of motor imagery (MI) mental tasks. In this paper, a novel CSP\\AM-BA-SVM approach is proposed using bio-inspired algorithms for feature selection and classifier optimization to improve classification accuracy of the MI-BCI systems. The proposed approach applies optimum selection of time interval for each subject. The features are extracted from EEG signal using the common spatial pattern (CSP). Binary CSP is extended to multi-class problems by utilizing one-vs-one strategy. This paper introduces applying a hybrid attractor metagene (AM) algorithm along with the Bat optimization algorithm (BA) to select the most discriminant CSP features and optimize SVM parameters. The efficacy of the proposed approach",
       "doi": "10.1109/access.2018.2868178",
       "pmid": null,
@@ -1154,29 +1167,6 @@
         "confidence_score": 0.45126209259033206,
         "similarity_score": 0.41023826599121094,
         "citation_text_length": 1158,
-        "dataset_text_length": 2236,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Non-Invasive Brain-Computer Interfaces: State of the Art and Trends",
-      "author": "Bradley J. Edelman, Shuailei Zhang, Gerwin Schalk, Peter Brunner, Gernot Müller-Putz, Cuntai Guan, Bin He",
-      "venue": "IEEE Reviews in Biomedical Engineering",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/rbme.2024.3449790",
-      "cited_by": 144,
-      "abstract": "Brain-computer interface (BCI) is a rapidly evolving technology that has the potential to widely influence research, clinical and recreational use. Non-invasive BCI approaches are particularly common as they can impact a large number of participants safely and at a relatively low cost. Where traditional non-invasive BCIs were used for simple computer cursor tasks, it is now increasingly common for these systems to control robotic devices for complex tasks that may be useful in daily life. In this review, we provide an overview of the general BCI framework as well as the various methods that can be used to record neural activity, extract signals of interest, and decode brain states. In this context, we summarize the current state-of-the-art of non-invasive BCI research, focusing on trends in both the application of BCIs for controlling external devices and algorithm development to optimize their use. We also discuss various open-source BCI toolboxes and software, and describe their impa",
-      "doi": "10.1109/rbme.2024.3449790",
-      "pmid": "39186407",
-      "openalex_id": "W4401879161",
-      "source_doi": "10.1016/j.neulet.2009.06.045",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.43732713013887414,
-        "similarity_score": 0.37863820791244507,
-        "citation_text_length": 1249,
         "dataset_text_length": 2236,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1206,6 +1196,29 @@
       }
     },
     {
+      "title": "Predictive Spelling With a P300-Based Brain–Computer Interface: Increasing the Rate of Communication",
+      "author": "David B. Ryan, G. E. Frye, George Townsend, Daniel R. Berry, S. Mesa-G, Nathan A. Gates, Eric W. Sellers",
+      "venue": "International Journal of Human-Computer Interaction",
+      "year": 2010,
+      "url": "https://doi.org/10.1080/10447318.2011.535754",
+      "cited_by": 142,
+      "abstract": "This study compared a conventional P300 speller brain-computer interface (BCI) to one used in conjunction with a predictive spelling program. Performance differences in accuracy, bit rate, selections per minute, and output characters per minute (OCM) were examined. An 8×9 matrix of letters, numbers, and other keyboard commands was used. Participants (n = 24) were required to correctly complete the same 58 character sentence (i.e., correcting for errors) using the predictive speller (PS) and the non-predictive speller (NS), counterbalanced. The PS produced significantly higher OCMs than the NS. Time to complete the task in the PS condition was 12min 43sec as compared to 20min 20sec in the NS condition. Despite the marked improvement in overall output, accuracy was significantly higher in the NS paradigm. P300 amplitudes were significantly larger in the NS than in the PS paradigm; which is attributed to increased workload and task demands. These results demonstrate the potential efficacy",
+      "doi": "10.1080/10447318.2011.535754",
+      "pmid": "21278858",
+      "openalex_id": "W2095223585",
+      "source_doi": "10.1016/j.neulet.2009.06.045",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6356559634208679,
+        "similarity_score": 0.5778690576553345,
+        "citation_text_length": 1294,
+        "dataset_text_length": 2236,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A new hybrid BCI paradigm based on P300 and SSVEP",
       "author": "Minjue Wang, Ian Daly, Brendan Z. Allison, Jing Jin, Yu Zhang, Lanlan Chen, Xingyu Wang",
       "venue": "Journal of Neuroscience Methods",
@@ -1223,29 +1236,6 @@
         "confidence_score": 0.6053296327590942,
         "similarity_score": 0.6053296327590942,
         "citation_text_length": 194,
-        "dataset_text_length": 2236,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Predictive Spelling With a P300-Based Brain–Computer Interface: Increasing the Rate of Communication",
-      "author": "David B. Ryan, G. E. Frye, George Townsend, Daniel R. Berry, S. Mesa-G, Nathan A. Gates, Eric W. Sellers",
-      "venue": "International Journal of Human-Computer Interaction",
-      "year": 2010,
-      "url": "https://doi.org/10.1080/10447318.2011.535754",
-      "cited_by": 141,
-      "abstract": "This study compared a conventional P300 speller brain-computer interface (BCI) to one used in conjunction with a predictive spelling program. Performance differences in accuracy, bit rate, selections per minute, and output characters per minute (OCM) were examined. An 8×9 matrix of letters, numbers, and other keyboard commands was used. Participants (n = 24) were required to correctly complete the same 58 character sentence (i.e., correcting for errors) using the predictive speller (PS) and the non-predictive speller (NS), counterbalanced. The PS produced significantly higher OCMs than the NS. Time to complete the task in the PS condition was 12min 43sec as compared to 20min 20sec in the NS condition. Despite the marked improvement in overall output, accuracy was significantly higher in the NS paradigm. P300 amplitudes were significantly larger in the NS than in the PS paradigm; which is attributed to increased workload and task demands. These results demonstrate the potential efficacy",
-      "doi": "10.1080/10447318.2011.535754",
-      "pmid": "21278858",
-      "openalex_id": "W2095223585",
-      "source_doi": "10.1016/j.neulet.2009.06.045",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6356559634208679,
-        "similarity_score": 0.5778690576553345,
-        "citation_text_length": 1294,
         "dataset_text_length": 2236,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1395,7 +1385,7 @@
       "venue": "Neurorehabilitation and neural repair",
       "year": 2014,
       "url": "https://doi.org/10.1177/1545968314554624",
-      "cited_by": 128,
+      "cited_by": 129,
       "abstract": "A goal of brain-computer interface research is to develop fast and reliable means of communication for individuals with paralysis and anarthria. We evaluated the ability of an individual with incomplete locked-in syndrome enrolled in the BrainGate Neural Interface System pilot clinical trial to communicate using neural point-and-click control. A general-purpose interface was developed to provide control of a computer cursor in tandem with one of two on-screen virtual keyboards. The novel BrainGate Radial Keyboard was compared to a standard QWERTY keyboard in a balanced copy-spelling task. The Radial Keyboard yielded a significant improvement in typing accuracy and speed-enabling typing rates over 10 correct characters per minute. The participant used this interface to communicate face-to-face with research staff by using text-to-speech conversion, and remotely using an internet chat application. This study demonstrates the first use of an intracortical brain-computer interface for neur",
       "doi": "10.1177/1545968314554624",
       "pmid": "25385765",
@@ -1441,7 +1431,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2015,
       "url": "https://doi.org/10.1109/tnsre.2015.2403270",
-      "cited_by": 120,
+      "cited_by": 121,
       "abstract": "The present study proposes a hybrid brain-computer interface (BCI) with 64 selectable items based on the fusion of P300 and steady-state visually evoked potential (SSVEP) brain signals. With this approach, row/column (RC) P300 and two-step SSVEP paradigms were integrated to create two hybrid paradigms, which we denote as the double RC (DRC) and 4-D spellers. In each hybrid paradigm, the target is simultaneously detected based on both P300 and SSVEP potentials as measured by the electroencephalogram. We further proposed a maximum-probability estimation (MPE) fusion approach to combine the P300 and SSVEP on a score level and compared this approach to other approaches based on linear discriminant analysis, a naïve Bayes classifier, and support vector machines. The experimental results obtained from thirteen participants indicated that the 4-D hybrid paradigm outperformed the DRC paradigm and that the MPE fusion achieved higher accuracy compared with the other approaches. Importantly, 12 o",
       "doi": "10.1109/tnsre.2015.2403270",
       "pmid": "25706721",
@@ -1528,6 +1518,29 @@
       }
     },
     {
+      "title": "A Wearable Brain–Computer Interface Instrument for Augmented Reality-Based Inspection in Industry 4.0",
+      "author": "Leopoldo Angrisani, Pasquale Arpaïa, Antonio Espósito, Nicola Moccaldi",
+      "venue": "IEEE Transactions on Instrumentation and Measurement",
+      "year": 2019,
+      "url": "https://doi.org/10.1109/tim.2019.2914712",
+      "cited_by": 118,
+      "abstract": "This paper proposes a wearable monitoring system for inspection in the framework of Industry 4.0. The instrument integrates augmented reality (AR) glasses with a noninvasive single-channel brain-computer interface (BCI), which replaces the classical input interface of AR platforms. Steady-state visually evoked potentials (SSVEP) are measured by a single-channel electroencephalography (EEG) and simple power spectral density analysis. The visual stimuli for SSVEP elicitation are provided by AR glasses while displaying the inspection information. The real-time metrological performance of the BCI is assessed by the receiver operating characteristic curve on the experimental data from 20 subjects. The characterization was carried out by considering stimulation times from 10.0 down to 2.0 s. The thresholds for the classification were found to be dependent on the subject and the obtained average accuracy goes from 98.9% at 10.0 s to 81.1% at 2.0 s. An inspection case study of the integrated A",
+      "doi": "10.1109/tim.2019.2914712",
+      "pmid": null,
+      "openalex_id": "W2943537172",
+      "source_doi": "10.1016/j.neulet.2009.06.045",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.416672956943512,
+        "similarity_score": 0.3787935972213745,
+        "citation_text_length": 1262,
+        "dataset_text_length": 2236,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Multimodal BCIs: Target Detection, Multidimensional Control, and Awareness Evaluation in Patients With Disorder of Consciousness",
       "author": "Yuanqing Li, Jiahui Pan, Jinyi Long, Tianyou Yu, Fei Wang, Zhuliang Yu, Wei Wu",
       "venue": "Proceedings of the IEEE",
@@ -1545,29 +1558,6 @@
         "confidence_score": 0.460354432463646,
         "similarity_score": 0.4185040295124054,
         "citation_text_length": 1268,
-        "dataset_text_length": 2236,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "A Wearable Brain–Computer Interface Instrument for Augmented Reality-Based Inspection in Industry 4.0",
-      "author": "Leopoldo Angrisani, Pasquale Arpaïa, Antonio Espósito, Nicola Moccaldi",
-      "venue": "IEEE Transactions on Instrumentation and Measurement",
-      "year": 2019,
-      "url": "https://doi.org/10.1109/tim.2019.2914712",
-      "cited_by": 117,
-      "abstract": "This paper proposes a wearable monitoring system for inspection in the framework of Industry 4.0. The instrument integrates augmented reality (AR) glasses with a noninvasive single-channel brain-computer interface (BCI), which replaces the classical input interface of AR platforms. Steady-state visually evoked potentials (SSVEP) are measured by a single-channel electroencephalography (EEG) and simple power spectral density analysis. The visual stimuli for SSVEP elicitation are provided by AR glasses while displaying the inspection information. The real-time metrological performance of the BCI is assessed by the receiver operating characteristic curve on the experimental data from 20 subjects. The characterization was carried out by considering stimulation times from 10.0 down to 2.0 s. The thresholds for the classification were found to be dependent on the subject and the obtained average accuracy goes from 98.9% at 10.0 s to 81.1% at 2.0 s. An inspection case study of the integrated A",
-      "doi": "10.1109/tim.2019.2914712",
-      "pmid": null,
-      "openalex_id": "W2943537172",
-      "source_doi": "10.1016/j.neulet.2009.06.045",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.416672956943512,
-        "similarity_score": 0.3787935972213745,
-        "citation_text_length": 1262,
         "dataset_text_length": 2236,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1694,7 +1684,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2013,
       "url": "https://doi.org/10.3389/fnhum.2013.00105",
-      "cited_by": 108,
+      "cited_by": 109,
       "abstract": "OBJECTIVE: Brain-computer interface (BCI) provide a non-muscular communication channel for patients with impairments of the motor system. A significant number of BCI users is unable to obtain voluntary control of a BCI-system in proper time. This makes methods that can be used to determine the aptitude of a user necessary. METHODS: We hypothesized that integrity and connectivity of involved white matter connections may serve as a predictor of individual BCI-performance. Therefore, we analyzed structural data from anatomical scans and DTI of motor imagery BCI-users differentiated into high and low BCI-aptitude groups based on their overall performance. RESULTS: Using a machine learning classification method we identified discriminating structural brain trait features and correlated the best features with a continuous measure of individual BCI-performance. Prediction of the aptitude group of each participant was possible with near perfect accuracy (one error). CONCLUSIONS: Tissue volumet",
       "doi": "10.3389/fnhum.2013.00105",
       "pmid": "23565083",
@@ -1873,6 +1863,29 @@
       }
     },
     {
+      "title": "Review of brain encoding and decoding mechanisms for EEG-based brain–computer interface",
+      "author": "Lichao Xu, Minpeng Xu, Tzyy‐Ping Jung, Dong Ming",
+      "venue": "Cognitive Neurodynamics",
+      "year": 2021,
+      "url": "https://doi.org/10.1007/s11571-021-09676-z",
+      "cited_by": 101,
+      "abstract": null,
+      "doi": "10.1007/s11571-021-09676-z",
+      "pmid": "34367361",
+      "openalex_id": "W3155986091",
+      "source_doi": "10.1016/j.neulet.2009.06.045",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.46899085342884067,
+        "similarity_score": 0.4466579556465149,
+        "citation_text_length": 185,
+        "dataset_text_length": 2236,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Comparison of a row-column speller vs. a novel lateral single-character speller: Assessment of BCI for severe motor disabled patients",
       "author": "Gabriel Pires, Urbano Nunes, Miguel Castelo‐Branco",
       "venue": "Clinical Neurophysiology",
@@ -1988,29 +2001,6 @@
       }
     },
     {
-      "title": "Review of brain encoding and decoding mechanisms for EEG-based brain–computer interface",
-      "author": "Lichao Xu, Minpeng Xu, Tzyy‐Ping Jung, Dong Ming",
-      "venue": "Cognitive Neurodynamics",
-      "year": 2021,
-      "url": "https://doi.org/10.1007/s11571-021-09676-z",
-      "cited_by": 99,
-      "abstract": null,
-      "doi": "10.1007/s11571-021-09676-z",
-      "pmid": "34367361",
-      "openalex_id": "W3155986091",
-      "source_doi": "10.1016/j.neulet.2009.06.045",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.46899085342884067,
-        "similarity_score": 0.4466579556465149,
-        "citation_text_length": 185,
-        "dataset_text_length": 2236,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "A novel P300 BCI speller based on the Triple RSVP paradigm",
       "author": "Zhimin Lin, Chi Zhang, Ying Zeng, Tong Li, Bin Yan",
       "venue": "Scientific Reports",
@@ -2057,6 +2047,29 @@
       }
     },
     {
+      "title": "Spelling is Just a Click Away – A User-Centered Brain–Computer Interface Including Auto-Calibration and Predictive Text Entry",
+      "author": "Tobias Kaufmann, Stefan Völker, Laura Gunesch, Andrea Kübler",
+      "venue": "Frontiers in Neuroscience",
+      "year": 2012,
+      "url": "https://doi.org/10.3389/fnins.2012.00072",
+      "cited_by": 97,
+      "abstract": "Brain-computer interfaces (BCI) based on event-related potentials (ERP) allow for selection of characters from a visually presented character-matrix and thus provide a communication channel for users with neurodegenerative disease. Although they have been topic of research for more than 20 years and were multiply proven to be a reliable communication method, BCIs are almost exclusively used in experimental settings, handled by qualified experts. This study investigates if ERP-BCIs can be handled independently by laymen without expert support, which is inevitable for establishing BCIs in end-user's daily life situations. Furthermore we compared the classic character-by-character text entry against a predictive text entry (PTE) that directly incorporates predictive text into the character-matrix. N = 19 BCI novices handled a user-centered ERP-BCI application on their own without expert support. The software individually adjusted classifier weights and control parameters in the background",
+      "doi": "10.3389/fnins.2012.00072",
+      "pmid": "22833713",
+      "openalex_id": "W2131361926",
+      "source_doi": "10.1016/j.neulet.2009.06.045",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4987305104732514,
+        "similarity_score": 0.4533913731575012,
+        "citation_text_length": 1249,
+        "dataset_text_length": 2236,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Adapting the P300-Based Brain–Computer Interface for Gaming: A Review",
       "author": "Alexander Kaplan, Sergei L. Shishkin, И.П. Ганин, I. A. Basyul, Alexander Zhigalov",
       "venue": "IEEE Transactions on Computational Intelligence and AI in Games",
@@ -2080,35 +2093,12 @@
       }
     },
     {
-      "title": "Spelling is Just a Click Away – A User-Centered Brain–Computer Interface Including Auto-Calibration and Predictive Text Entry",
-      "author": "Tobias Kaufmann, Stefan Völker, Laura Gunesch, Andrea Kübler",
-      "venue": "Frontiers in Neuroscience",
-      "year": 2012,
-      "url": "https://doi.org/10.3389/fnins.2012.00072",
-      "cited_by": 96,
-      "abstract": "Brain-computer interfaces (BCI) based on event-related potentials (ERP) allow for selection of characters from a visually presented character-matrix and thus provide a communication channel for users with neurodegenerative disease. Although they have been topic of research for more than 20 years and were multiply proven to be a reliable communication method, BCIs are almost exclusively used in experimental settings, handled by qualified experts. This study investigates if ERP-BCIs can be handled independently by laymen without expert support, which is inevitable for establishing BCIs in end-user's daily life situations. Furthermore we compared the classic character-by-character text entry against a predictive text entry (PTE) that directly incorporates predictive text into the character-matrix. N = 19 BCI novices handled a user-centered ERP-BCI application on their own without expert support. The software individually adjusted classifier weights and control parameters in the background",
-      "doi": "10.3389/fnins.2012.00072",
-      "pmid": "22833713",
-      "openalex_id": "W2131361926",
-      "source_doi": "10.1016/j.neulet.2009.06.045",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4987305104732514,
-        "similarity_score": 0.4533913731575012,
-        "citation_text_length": 1249,
-        "dataset_text_length": 2236,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Combining Motor Imagery With Selective Sensation Toward a Hybrid-Modality BCI",
       "author": "Lin Yao, Jianjun Meng, Dingguo Zhang, Xinjun Sheng, Xiangyang Zhu",
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2013,
       "url": "https://doi.org/10.1109/tbme.2013.2287245",
-      "cited_by": 95,
+      "cited_by": 96,
       "abstract": "A hybrid modality brain-computer interface (BCI) is proposed in this paper, which combines motor imagery with selective sensation to enhance the discrimination between left and right mental tasks, e.g., the classification between left/ right stimulation sensation and right/ left motor imagery. In this paradigm, wearable vibrotactile rings are used to stimulate both the skin on both wrists. Subjects are required to perform the mental tasks according to the randomly presented cues (i.e., left hand motor imagery, right hand motor imagery, left stimulation sensation or right stimulation sensation). Two-way ANOVA statistical analysis showed a significant group effect (F (2,20) = 7.17, p = 0.0045), and the Benferroni-corrected multiple comparison test (with α = 0.05) showed that the hybrid modality group is 11.13% higher on average than the motor imagery group, and 10.45% higher than the selective sensation group. The hybrid modality experiment exhibits potentially wider spread usage within ",
       "doi": "10.1109/tbme.2013.2287245",
       "pmid": "24235291",
@@ -2131,7 +2121,7 @@
       "venue": "Brain-Computer Interfaces",
       "year": 2016,
       "url": "https://doi.org/10.1080/2326263x.2016.1263916",
-      "cited_by": 94,
+      "cited_by": 95,
       "abstract": "Research in brain-computer interfaces has achieved impressive progress towards implementing assistive technologies for restoration or substitution of lost motor capabilities, as well as supporting technologies for able-bodied subjects. Notwithstanding this progress, effective translation of these interfaces from proof-of concept prototypes into reliable applications remains elusive. As a matter of fact, most of the current BCI systems cannot be used independently for long periods of time by their intended end-users. Multiple factors that impair achieving this goal have already been identified. However, it is not clear how do they affect the overall BCI performance or how they should be tackled. This is worsened by the publication bias where only positive results are disseminated, preventing the research community from learning from its errors. This paper is the result of a workshop held at the 6th International BCI meeting in Asilomar. We summarize here the discussion on concrete resea",
       "doi": "10.1080/2326263x.2016.1263916",
       "pmid": "29629393",
@@ -2143,6 +2133,29 @@
         "confidence_score": 0.3886943578720093,
         "similarity_score": 0.35335850715637207,
         "citation_text_length": 1208,
+        "dataset_text_length": 2236,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "EEG-Based Detection of Driver Emergency Braking Intention for Brain-Controlled Vehicles",
+      "author": "Teng Teng, Luzheng Bi, Yili Liu",
+      "venue": "IEEE Transactions on Intelligent Transportation Systems",
+      "year": 2017,
+      "url": "https://doi.org/10.1109/tits.2017.2740427",
+      "cited_by": 94,
+      "abstract": "In this paper, we propose a new approach of detecting emergency braking intention for brain-controlled vehicles by interpreting electroencephalography (EEG) signals of drivers. Regularization linear discriminant analysis with spatial-frequency features is applied to build the detection model. These spatial-frequency features are selected from the powers of frequency points across sixteen channels by using the sequential forward floating search. Experimental results from twelve subjects show that on average, the proposed method can detect emergency braking intentions 420 ms after the onset of emergency situations with the system accuracy of over 94%, showing the feasibility of developing a practical system of detecting driver emergency braking intention with the power spectra of EEG signals for brain-controlled vehicles.",
+      "doi": "10.1109/tits.2017.2740427",
+      "pmid": null,
+      "openalex_id": "W2753691346",
+      "source_doi": "10.1016/j.neulet.2009.06.045",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.42458046972751623,
+        "similarity_score": 0.3859822452068329,
+        "citation_text_length": 1043,
         "dataset_text_length": 2236,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2166,29 +2179,6 @@
         "confidence_score": 0.3911195456981659,
         "similarity_score": 0.355563223361969,
         "citation_text_length": 1186,
-        "dataset_text_length": 2236,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "EEG-Based Detection of Driver Emergency Braking Intention for Brain-Controlled Vehicles",
-      "author": "Teng Teng, Luzheng Bi, Yili Liu",
-      "venue": "IEEE Transactions on Intelligent Transportation Systems",
-      "year": 2017,
-      "url": "https://doi.org/10.1109/tits.2017.2740427",
-      "cited_by": 93,
-      "abstract": "In this paper, we propose a new approach of detecting emergency braking intention for brain-controlled vehicles by interpreting electroencephalography (EEG) signals of drivers. Regularization linear discriminant analysis with spatial-frequency features is applied to build the detection model. These spatial-frequency features are selected from the powers of frequency points across sixteen channels by using the sequential forward floating search. Experimental results from twelve subjects show that on average, the proposed method can detect emergency braking intentions 420 ms after the onset of emergency situations with the system accuracy of over 94%, showing the feasibility of developing a practical system of detecting driver emergency braking intention with the power spectra of EEG signals for brain-controlled vehicles.",
-      "doi": "10.1109/tits.2017.2740427",
-      "pmid": null,
-      "openalex_id": "W2753691346",
-      "source_doi": "10.1016/j.neulet.2009.06.045",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.42458046972751623,
-        "similarity_score": 0.3859822452068329,
-        "citation_text_length": 1043,
         "dataset_text_length": 2236,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2361,7 +2351,7 @@
       "venue": "Exploration",
       "year": 2024,
       "url": "https://doi.org/10.1002/EXP.20230146",
-      "cited_by": 72,
+      "cited_by": 73,
       "abstract": "Neural interfaces, emerging at the intersection of neurotechnology and urban planning, promise to transform how we interact with our surroundings and communicate. By recording and decoding neural signals, these interfaces facilitate direct connections between the brain and external devices, enabling seamless information exchange and shared experiences. Nevertheless, their development is challenged by complexities in materials science, electrochemistry, and algorithmic design. Electrophysiological crosstalk and the mismatch between electrode rigidity and tissue flexibility further complicate signal fidelity and biocompatibility. Recent closed‐loop brain‐computer interfaces, while promising for mood regulation and cognitive enhancement, are limited by decoding accuracy and the adaptability of user interfaces. This perspective outlines these challenges and discusses the progress in neural interfaces, contrasting non‐invasive and invasive approaches, and explores the dynamics between stimu",
       "doi": "10.1002/EXP.20230146",
       "pmid": "39439491",
@@ -2384,7 +2374,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2510.21585",
-      "cited_by": 66,
+      "cited_by": 67,
       "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
       "doi": "10.48550/arXiv.2510.21585",
       "pmid": null,
@@ -2400,72 +2390,22 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Hypoxia and the metabolic phenotype of prostate cancer cells",
-      "author": "LeeAnn Higgins, Henry Withers, Alaina Garbens, Harold D. Love, Leonardo J. Magnoni, Simon W. Hayward, Christopher D. Moyes",
-      "venue": "Biochimica et Biophysica Acta (BBA) - Bioenergetics",
-      "year": 2009,
-      "url": "https://doi.org/10.1016/j.bbabio.2009.06.003",
-      "cited_by": 107,
-      "abstract": null,
-      "doi": "10.1016/j.bbabio.2009.06.003",
-      "pmid": "19524545",
-      "openalex_id": "W1981549785",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000189",
-      "confidence_scoring": {
-        "confidence_score": 0.21496613323688507,
-        "similarity_score": 0.21496613323688507,
-        "citation_text_length": 260,
-        "dataset_text_length": 2236,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Sur la dramaturgie de Huis clos",
-      "author": "Jean-François Louette",
-      "venue": "Les Temps Modernes",
-      "year": 1994,
-      "url": "https://openalex.org/W19524545",
-      "cited_by": 0,
-      "abstract": null,
-      "doi": null,
-      "pmid": null,
-      "openalex_id": "W19524545",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000189",
-      "confidence_scoring": {
-        "confidence_score": 0.1269451379776001,
-        "similarity_score": 0.1269451379776001,
-        "citation_text_length": 97,
-        "dataset_text_length": 2236,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-10T10:11:32.974961+00:00",
+    "scoring_date": "2026-08-17T11:12:34.752364+00:00",
     "dataset_text_length": 2236,
-    "num_citations_scored": 102,
+    "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.4874314257911608,
-      "median_confidence": 0.4707611665129662,
-      "std_confidence": 0.11140601004657925,
-      "min_confidence": 0.1269451379776001,
+      "mean_confidence": 0.4937609415948391,
+      "median_confidence": 0.4760353609919548,
+      "std_confidence": 0.10284738835865787,
+      "min_confidence": 0.30653911232948305,
       "max_confidence": 0.6973992168903351,
       "high_confidence_count": 0,
       "medium_confidence_count": 81,
-      "low_confidence_count": 21
+      "low_confidence_count": 19
     }
   }
 }

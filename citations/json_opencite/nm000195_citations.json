@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000195",
   "num_citations": 36,
-  "date_last_updated": "2026-08-09T10:09:43.206562+00:00",
+  "date_last_updated": "2026-08-17T10:09:23.140888+00:00",
   "metadata": {
-    "total_cumulative_citations": 1191,
-    "fetch_date": "2026-08-09T10:09:43.206562+00:00",
+    "total_cumulative_citations": 1195,
+    "fetch_date": "2026-08-17T10:09:23.140888+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -44,16 +44,18 @@
     ],
     "keywords": [
       "Brain-Computer Interfaces",
-      "Event-Related Potentials, P300",
+      "Evoked Potentials, P300",
       "EEG",
       "P300 speller",
       "matrix speller",
+      "visual speller",
       "unsupervised learning",
       "expectation-maximization",
       "learning from label proportions",
-      "MIX method"
+      "moabb",
+      "Mother of All BCI Benchmarks"
     ],
-    "methods_description": "Online study with 12 healthy participants (8 female, 4 male; mean age 26, range 19-31 years) performing a P300 copy-spelling task. Participants spelled a 35-character German sentence across three blocks, each using a different unsupervised algorithm (EM, LLP, or MIX) in pseudo-randomized order. EEG was recorded at 1000 Hz from 31 channels (Ag/AgCl electrodes in extended 10-20 montage) using BrainAmp DC amplifier with nose reference. Visual stimuli were presented on a 24-inch screen at 80 cm distance with 250 ms stimulus onset asynchrony and 100 ms stimulus duration. A modified 6×6 grid with 10 additional # symbols was used with two interleaved highlighting sequences to enable unsupervised learning.",
+    "methods_description": "Online study with 12 healthy participants (8 female, 4 male; mean age 26 years, range 19-31) performing a P300 copy-spelling task. Participants spelled a 35-character German sentence across three blocks, each using a different unsupervised algorithm (EM, LLP, or MIX) in pseudo-randomized order. EEG was recorded at 1000 Hz from 31 channels (Ag/AgCl electrodes in extended 10-20 montage) using BrainAmp DC amplifier with nose reference. Visual stimuli were presented on a 24-inch screen at 80 cm distance with 250 ms stimulus onset asynchrony and 100 ms stimulus duration. A modified 6×6 grid with 10 additional # symbols was used with two interleaved highlighting sequences to enable unsupervised learning.",
     "funding": [
       {
         "funder_name": "Special Research Fund of Ghent University"
@@ -87,13 +89,7 @@
         "award_number": "1IS14013A",
         "award_title": "Brain Korea 21 Plus Program"
       }
-    ],
-    "searched_accessions": [
-      "nm000195"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 36
+    ]
   },
   "citation_details": [
     {
@@ -102,7 +98,7 @@
       "venue": "Neurocomputing",
       "year": 2020,
       "url": "https://doi.org/10.1016/j.neucom.2020.09.017",
-      "cited_by": 470,
+      "cited_by": 471,
       "abstract": "Abstract Electroencephalogram (EEG) signal analysis, which is widely used for human-computer interaction and neurological disease diagnosis, requires a large amount of labeled data for training. However, the collection of substantial EEG data could be difficult owing to its randomness and non-stationary. Moreover, there is notable individual difference in EEG data, which affects the reusability and generalization of models. For mitigating the adverse effects from the above factors, transfer learning is applied in this field to transfer the knowledge learnt in one domain into a different but related domain. Transfer learning adjusts models with small-scale data of the task, and also maintains the learning ability with individual difference. This paper describes four main methods of transfer learning and explores their practical applications in EEG signal analysis in recent years. Finally, we discuss challenges and opportunities of transfer learning and suggest areas for further study.",
       "doi": "10.1016/j.neucom.2020.09.017",
       "pmid": null,
@@ -114,6 +110,29 @@
         "confidence_score": 0.4813025160133839,
         "similarity_score": 0.4167121350765228,
         "citation_text_length": 1165,
+        "dataset_text_length": 2360,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Physical principles of brain–computer interfaces and their applications for rehabilitation, robotics and control of human brain states",
+      "author": "Alexander E. Hramov, Vladimir Maksimenko, Alexander N. Pisarchik",
+      "venue": "Physics Reports",
+      "year": 2021,
+      "url": "https://doi.org/10.1016/j.physrep.2021.03.002",
+      "cited_by": 213,
+      "abstract": "Abstract Brain-computer interfaces (BCIs) development is closely related to physics. In this paper, we review the physical principles of BCIs, and underlying novel approaches for registration, analysis, and control of brain activity. We analyse recent advances in BCI studies focusing on their applications for (i) controlling the movement of robots and exoskeletons, (ii) revealing and preventing brain pathologies, (iii) assessing and controlling psychophysiological states, and (iv) monitoring and controlling normal and pathological cognitive activity. After introducing the topic to the reader in chapter 1, in chapter 2 we consider the BCI as a hardware/software communication system that allows interaction of humans or animals with their surroundings without the involvement of peripheral nerves and muscles, using control signals generated from brain cerebral activity. Classifying BCIs into three main types (active, reactive and passive), we describe their functional models and neuroimagi",
+      "doi": "10.1016/j.physrep.2021.03.002",
+      "pmid": null,
+      "openalex_id": "W3138374786",
+      "source_doi": "10.1109/mci.2018.2807039",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.2916514724493027,
+        "similarity_score": 0.2525120973587036,
+        "citation_text_length": 1252,
         "dataset_text_length": 2360,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -137,29 +156,6 @@
         "confidence_score": 0.5532896637916566,
         "similarity_score": 0.5029906034469604,
         "citation_text_length": 1221,
-        "dataset_text_length": 2360,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Physical principles of brain–computer interfaces and their applications for rehabilitation, robotics and control of human brain states",
-      "author": "Alexander E. Hramov, Vladimir Maksimenko, Alexander N. Pisarchik",
-      "venue": "Physics Reports",
-      "year": 2021,
-      "url": "https://doi.org/10.1016/j.physrep.2021.03.002",
-      "cited_by": 212,
-      "abstract": "Abstract Brain-computer interfaces (BCIs) development is closely related to physics. In this paper, we review the physical principles of BCIs, and underlying novel approaches for registration, analysis, and control of brain activity. We analyse recent advances in BCI studies focusing on their applications for (i) controlling the movement of robots and exoskeletons, (ii) revealing and preventing brain pathologies, (iii) assessing and controlling psychophysiological states, and (iv) monitoring and controlling normal and pathological cognitive activity. After introducing the topic to the reader in chapter 1, in chapter 2 we consider the BCI as a hardware/software communication system that allows interaction of humans or animals with their surroundings without the involvement of peripheral nerves and muscles, using control signals generated from brain cerebral activity. Classifying BCIs into three main types (active, reactive and passive), we describe their functional models and neuroimagi",
-      "doi": "10.1016/j.physrep.2021.03.002",
-      "pmid": null,
-      "openalex_id": "W3138374786",
-      "source_doi": "10.1109/mci.2018.2807039",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.2916514724493027,
-        "similarity_score": 0.2525120973587036,
-        "citation_text_length": 1252,
         "dataset_text_length": 2360,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -235,6 +231,29 @@
       }
     },
     {
+      "title": "Introducing block-Toeplitz covariance matrices to remaster linear discriminant analysis for event-related potential brain–computer interfaces",
+      "author": "Jan Sosulski, Michael Tangermann",
+      "venue": "Journal of Neural Engineering",
+      "year": 2022,
+      "url": "https://doi.org/10.1088/1741-2552/ac9c98",
+      "cited_by": 23,
+      "abstract": "Abstract Objective. Covariance matrices of noisy multichannel electroencephalogram (EEG) time series data provide essential information for the decoding of brain signals using machine learning methods. However, small datasets and high dimensionality make it hard to estimate these matrices. In brain–computer interfaces (BCI) based on event-related potentials (ERP) and a linear discriminant analysis (LDA) classifier, the state of the art covariance estimation uses shrinkage regularization. As this is a general covariance regularization approach, we aim at improving LDA further by better exploiting the domain-specific characteristics of the EEG to regularize the covariance estimates. Approach. We propose to enforce a block-Toeplitz structure for the covariance matrix of the LDA, which implements an assumption of signal stationarity in short time windows for each channel. Main results. An offline re-analysis of data collected from 213 subjects under 13 different event-related potential BCI",
+      "doi": "10.1088/1741-2552/ac9c98",
+      "pmid": "36270502",
+      "openalex_id": "W4307023523",
+      "source_doi": "10.1109/mci.2018.2807039",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6322913324832917,
+        "similarity_score": 0.547438383102417,
+        "citation_text_length": 1241,
+        "dataset_text_length": 2360,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "An Effective Model for Human Cognitive Performance within a Human-Robot Collaboration Framework",
       "author": "Khurram Monir Rabby, Mubbashar Altaf Khan, Ali Karimoddini, Steven Jiang",
       "venue": "2019 IEEE International Conference on Systems, Man and Cybernetics (SMC)",
@@ -252,29 +271,6 @@
         "confidence_score": 0.24150703102350238,
         "similarity_score": 0.21955184638500214,
         "citation_text_length": 1072,
-        "dataset_text_length": 2360,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Introducing block-Toeplitz covariance matrices to remaster linear discriminant analysis for event-related potential brain–computer interfaces",
-      "author": "Jan Sosulski, Michael Tangermann",
-      "venue": "Journal of Neural Engineering",
-      "year": 2022,
-      "url": "https://doi.org/10.1088/1741-2552/ac9c98",
-      "cited_by": 22,
-      "abstract": "Abstract Objective. Covariance matrices of noisy multichannel electroencephalogram (EEG) time series data provide essential information for the decoding of brain signals using machine learning methods. However, small datasets and high dimensionality make it hard to estimate these matrices. In brain–computer interfaces (BCI) based on event-related potentials (ERP) and a linear discriminant analysis (LDA) classifier, the state of the art covariance estimation uses shrinkage regularization. As this is a general covariance regularization approach, we aim at improving LDA further by better exploiting the domain-specific characteristics of the EEG to regularize the covariance estimates. Approach. We propose to enforce a block-Toeplitz structure for the covariance matrix of the LDA, which implements an assumption of signal stationarity in short time windows for each channel. Main results. An offline re-analysis of data collected from 213 subjects under 13 different event-related potential BCI",
-      "doi": "10.1088/1741-2552/ac9c98",
-      "pmid": "36270502",
-      "openalex_id": "W4307023523",
-      "source_doi": "10.1109/mci.2018.2807039",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6322913324832917,
-        "similarity_score": 0.547438383102417,
-        "citation_text_length": 1241,
         "dataset_text_length": 2360,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -419,6 +415,29 @@
       }
     },
     {
+      "title": "Towards physiology-informed data augmentation for EEG-based BCIs",
+      "author": "Oleksandr Zlatov, B. Blankertz",
+      "venue": "ArXiv",
+      "year": 2022,
+      "url": "https://doi.org/10.48550/arXiv.2203.14392",
+      "cited_by": 6,
+      "abstract": "Most EEG-based Brain-Computer Interfaces (BCIs) require a considerable amount of training data to calibrate the classification model, owing to the high variability in the EEG data, which manifests itself between participants, but also within participants from session to session (and, of course, from trial to trial). In general, the more complex the model, the more data for training is needed. We suggest a novel technique for augmenting the training data by generating new data from the data set at hand. Different from existing techniques, our method uses backward and forward projection using source localization and a head model to modify the current source dipoles of the model, thereby generating inter-participant variability in a physiologically meaningful way. In this manuscript, we explain the method and show first preliminary results for participant-independent motor-imagery classification. The accuracy was increased when using the proposed method of data augmentation by 13, 6 and 2",
+      "doi": "10.48550/arXiv.2203.14392",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1109/mci.2018.2807039",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5162647908926011,
+        "similarity_score": 0.4469825029373169,
+        "citation_text_length": 1138,
+        "dataset_text_length": 2360,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Unsupervised learning in a BCI chess application using label proportions and expectation-maximization",
       "author": "David Hübner, Albrecht Schall, Michael Tangermann",
       "venue": "Brain-Computer Interfaces",
@@ -482,29 +501,6 @@
         "confidence_score": 0.6992488709092141,
         "similarity_score": 0.6054102778434753,
         "citation_text_length": 1116,
-        "dataset_text_length": 2360,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Towards physiology-informed data augmentation for EEG-based BCIs",
-      "author": "Oleksandr Zlatov, B. Blankertz",
-      "venue": "ArXiv",
-      "year": 2022,
-      "url": "https://doi.org/10.48550/arXiv.2203.14392",
-      "cited_by": 5,
-      "abstract": "Most EEG-based Brain-Computer Interfaces (BCIs) require a considerable amount of training data to calibrate the classification model, owing to the high variability in the EEG data, which manifests itself between participants, but also within participants from session to session (and, of course, from trial to trial). In general, the more complex the model, the more data for training is needed. We suggest a novel technique for augmenting the training data by generating new data from the data set at hand. Different from existing techniques, our method uses backward and forward projection using source localization and a head model to modify the current source dipoles of the model, thereby generating inter-participant variability in a physiologically meaningful way. In this manuscript, we explain the method and show first preliminary results for participant-independent motor-imagery classification. The accuracy was increased when using the proposed method of data augmentation by 13, 6 and 2",
-      "doi": "10.48550/arXiv.2203.14392",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1109/mci.2018.2807039",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5162647908926011,
-        "similarity_score": 0.4469825029373169,
-        "citation_text_length": 1138,
         "dataset_text_length": 2360,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -927,7 +923,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:15:54.766575+00:00",
+    "scoring_date": "2026-08-17T11:13:10.670933+00:00",
     "dataset_text_length": 2360,
     "num_citations_scored": 36,
     "summary_stats": {

@@ -1,10 +1,10 @@
 {
   "dataset_id": "on003885",
-  "num_citations": 16,
-  "date_last_updated": "2026-08-09T10:30:13.785240+00:00",
+  "num_citations": 17,
+  "date_last_updated": "2026-08-17T10:29:18.075281+00:00",
   "metadata": {
-    "total_cumulative_citations": 141,
-    "fetch_date": "2026-08-09T10:30:13.785240+00:00",
+    "total_cumulative_citations": 143,
+    "fetch_date": "2026-08-17T10:29:18.075281+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -60,7 +60,14 @@
         "funder_name": "ARC",
         "award_number": "DP200101787"
       }
-    ]
+    ],
+    "searched_accessions": [
+      "on003885",
+      "ds003885"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 16
   },
   "citation_details": [
     {
@@ -69,7 +76,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2510.21585",
-      "cited_by": 66,
+      "cited_by": 67,
       "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
       "doi": "10.48550/arXiv.2510.21585",
       "pmid": null,
@@ -156,6 +163,29 @@
       }
     },
     {
+      "title": "Measuring information alignment in hyperscanning research with representational analyses: moving beyond interbrain synchrony",
+      "author": "Manuel Varlet, Tijl Grootswagers",
+      "venue": "Frontiers in Human Neuroscience",
+      "year": 2024,
+      "url": "https://doi.org/10.3389/fnhum.2024.1385624",
+      "cited_by": 10,
+      "abstract": "Hyperscanning, which enables the recording of brain activity from multiple individuals simultaneously, has been increasingly used to investigate the neuropsychological processes underpinning social interaction. Previous hyperscanning research has primarily focused on interbrain synchrony, demonstrating an enhanced alignment of brain waves across individuals during social interaction. However, using EEG hyperscanning simulations, we here show that interbrain synchrony has low sensitivity to information alignment across people. Surprisingly, interbrain synchrony remains largely unchanged despite manipulating whether two individuals are seeing same or different things at the same time. Furthermore, we show that hyperscanning recordings do contain indices of interpersonal information alignment and that they can be captured using representational analyses. These findings highlight major limitations of current hyperscanning research and offer a promising alternative for investigating interac",
+      "doi": "10.3389/fnhum.2024.1385624",
+      "pmid": "39118818",
+      "openalex_id": null,
+      "source_doi": "10.31234/osf.io/3x2qh",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4357734386622906,
+        "similarity_score": 0.37729302048683167,
+        "citation_text_length": 1226,
+        "dataset_text_length": 2405,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Measuring self‐similarity in empirical signals to understand musical beat perception",
       "author": "T. Lenc, C. Lenoir, P. Keller, R. Polak, D. Mulders, S. Nozaradan",
       "venue": "The European Journal of Neuroscience",
@@ -173,29 +203,6 @@
         "confidence_score": 0.3591061288118363,
         "similarity_score": 0.31091439723968506,
         "citation_text_length": 1224,
-        "dataset_text_length": 2405,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Measuring information alignment in hyperscanning research with representational analyses: moving beyond interbrain synchrony",
-      "author": "Manuel Varlet, Tijl Grootswagers",
-      "venue": "Frontiers in Human Neuroscience",
-      "year": 2024,
-      "url": "https://doi.org/10.3389/fnhum.2024.1385624",
-      "cited_by": 9,
-      "abstract": "Hyperscanning, which enables the recording of brain activity from multiple individuals simultaneously, has been increasingly used to investigate the neuropsychological processes underpinning social interaction. Previous hyperscanning research has primarily focused on interbrain synchrony, demonstrating an enhanced alignment of brain waves across individuals during social interaction. However, using EEG hyperscanning simulations, we here show that interbrain synchrony has low sensitivity to information alignment across people. Surprisingly, interbrain synchrony remains largely unchanged despite manipulating whether two individuals are seeing same or different things at the same time. Furthermore, we show that hyperscanning recordings do contain indices of interpersonal information alignment and that they can be captured using representational analyses. These findings highlight major limitations of current hyperscanning research and offer a promising alternative for investigating interac",
-      "doi": "10.3389/fnhum.2024.1385624",
-      "pmid": "39118818",
-      "openalex_id": null,
-      "source_doi": "10.31234/osf.io/3x2qh",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4357734386622906,
-        "similarity_score": 0.37729302048683167,
-        "citation_text_length": 1226,
         "dataset_text_length": 2405,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -430,20 +437,45 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Capacity for movement is an organisational principle in object representations",
+      "author": "Sophia M. Shatek, Amanda K. Robinson, Tijl Grootswagers, Thomas A. Carlson",
+      "venue": "n/a",
+      "year": 2021,
+      "url": "https://doi.org/10.31234/osf.io/3x2qh",
+      "cited_by": 2,
+      "abstract": "The ability to perceive moving objects is crucial for threat identification and survival. Recent neuroimaging evidence has shown that goal-directed movement is an important element of object processing in the brain. However, prior work has primarily used moving stimuli that are also animate, making it difficult to disentangle the effect of movement from aliveness or animacy in representational categorisation. In the current study, we investigated the relationship between how the brain processes movement and aliveness by including stimuli that are alive but still (e.g., plants), and stimuli that are not alive but move (e.g., waves). We examined electroencephalographic (EEG) data recorded while participants viewed static images of moving or non-moving objects that were either natural or artificial. Participants classified the images according to aliveness, or according to capacity for movement. Movement explained significant variance in the neural data over and above that of aliveness, showing that capacity for movement is an important dimension in the representation of visual objects in humans.",
+      "doi": "10.31234/osf.io/3x2qh",
+      "pmid": null,
+      "openalex_id": "W4200500804",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003885",
+      "confidence_scoring": {
+        "confidence_score": 0.9992749321460725,
+        "similarity_score": 0.8651731014251709,
+        "citation_text_length": 1304,
+        "dataset_text_length": 2405,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:36:34.439740+00:00",
+    "scoring_date": "2026-08-17T11:30:30.042703+00:00",
     "dataset_text_length": 2405,
-    "num_citations_scored": 16,
+    "num_citations_scored": 17,
     "summary_stats": {
-      "mean_confidence": 0.5369370854552835,
-      "median_confidence": 0.5622934989631176,
-      "std_confidence": 0.0943633624954168,
+      "mean_confidence": 0.564133429378271,
+      "median_confidence": 0.5723600855469705,
+      "std_confidence": 0.14217915216964044,
       "min_confidence": 0.3591061288118363,
-      "max_confidence": 0.7129122823476791,
-      "high_confidence_count": 1,
+      "max_confidence": 0.9992749321460725,
+      "high_confidence_count": 2,
       "medium_confidence_count": 13,
       "low_confidence_count": 2
     }

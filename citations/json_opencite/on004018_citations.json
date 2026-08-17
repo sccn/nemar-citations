@@ -1,10 +1,10 @@
 {
   "dataset_id": "on004018",
   "num_citations": 100,
-  "date_last_updated": "2026-08-09T10:31:13.698026+00:00",
+  "date_last_updated": "2026-08-17T10:30:15.073769+00:00",
   "metadata": {
-    "total_cumulative_citations": 1911,
-    "fetch_date": "2026-08-09T10:31:13.698026+00:00",
+    "total_cumulative_citations": 1926,
+    "fetch_date": "2026-08-17T10:30:15.073769+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -50,7 +50,14 @@
       "neural encoding"
     ],
     "methods_description": "EEG recordings were collected while participants viewed object images presented in RSVP sequences at two different presentation rates (5 Hz and 20 Hz). The dataset includes recordings for 200 distinct object images.",
-    "funding": []
+    "funding": [],
+    "searched_accessions": [
+      "on004018",
+      "ds004018"
+    ],
+    "num_accession_mentions": 0,
+    "num_dataset_citations": 0,
+    "num_datapaper_citations": 100
   },
   "citation_details": [
     {
@@ -82,7 +89,7 @@
       "venue": "ArXiv",
       "year": 2024,
       "url": "https://doi.org/10.52202/079017-3266",
-      "cited_by": 148,
+      "cited_by": 149,
       "abstract": "How to decode human vision through neural signals has attracted a long-standing interest in neuroscience and machine learning. Modern contrastive learning and generative models improved the performance of visual decoding and reconstruction based on functional Magnetic Resonance Imaging (fMRI). However, the high cost and low temporal resolution of fMRI limit their applications in brain-computer interfaces (BCIs), prompting a high need for visual decoding based on electroencephalography (EEG). In this study, we present an end-to-end EEG-based visual reconstruction zero-shot framework, consisting of a tailored brain encoder, called the Adaptive Thinking Mapper (ATM), which projects neural signals from different sources into the shared subspace as the clip embedding, and a two-stage multi-pipe EEG-to-image generation strategy. In stage one, EEG is embedded to align the high-level clip embedding, and then the prior diffusion model refines EEG embedding into image priors. A blurry image also",
       "doi": "10.52202/079017-3266",
       "pmid": null,
@@ -128,7 +135,7 @@
       "venue": "Scientific Data",
       "year": 2022,
       "url": "https://doi.org/10.1038/s41597-021-01102-7",
-      "cited_by": 101,
+      "cited_by": 102,
       "abstract": "The neural basis of object recognition and semantic knowledge has been extensively studied but the high dimensionality of object space makes it challenging to develop overarching theories on how the brain organises object knowledge. To help understand how the brain allows us to recognise, categorise, and represent objects and object categories, there is a growing interest in using large-scale image databases for neuroimaging experiments. In the current paper, we present THINGS-EEG, a dataset containing human electroencephalography responses from 50 subjects to 1,854 object concepts and 22,248 images in the THINGS stimulus set, a manually curated and high-quality image database that was specifically designed for studying human vision. The THINGS-EEG dataset provides neuroimaging recordings to a systematic collection of objects and concepts and can therefore support a wide array of research to understand visual object processing in the human brain. Measurement(s) Concept Technology Type(",
       "doi": "10.1038/s41597-021-01102-7",
       "pmid": "35013331",
@@ -140,6 +147,29 @@
         "confidence_score": 0.8776682227849962,
         "similarity_score": 0.7598859071731567,
         "citation_text_length": 1231,
+        "dataset_text_length": 677,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "The influence of image masking on object representations during rapid serial visual presentation",
+      "author": "Amanda K. Robinson, Tijl Grootswagers, Thomas A. Carlson",
+      "venue": "NeuroImage",
+      "year": 2019,
+      "url": "https://doi.org/10.1016/j.neuroimage.2019.04.050",
+      "cited_by": 83,
+      "abstract": "Abstract Rapid image presentations combined with time-resolved multivariate analysis methods of EEG or MEG (rapid-MVPA) offer unique potential in assessing the temporal limitations of the human visual system. Recent work has shown that multiple visual objects presented sequentially can be simultaneously decoded from M/EEG recordings. Interestingly, object representations reached higher stages of processing for slower image presentation rates compared to fast rates. This fast rate attenuation is probably caused by forward and backward masking from the other images in the stream. Two factors that are likely to influence masking during rapid streams are stimulus duration and stimulus onset asynchrony (SOA). Here, we disentangle these effects by studying the emerging neural representation of visual objects using rapid-MVPA while independently manipulating stimulus duration and SOA. Our results show that longer SOAs enhance the decodability of neural representations, regardless of stimulus ",
+      "doi": "10.1016/j.neuroimage.2019.04.050",
+      "pmid": "31009746",
+      "openalex_id": "W2951419039",
+      "source_doi": "10.1016/j.neuroimage.2018.12.046",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7124747335910798,
+        "similarity_score": 0.6477043032646179,
+        "citation_text_length": 1201,
         "dataset_text_length": 677,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -163,29 +193,6 @@
         "confidence_score": 0.46910322457551956,
         "similarity_score": 0.4467649757862091,
         "citation_text_length": 143,
-        "dataset_text_length": 677,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "The influence of image masking on object representations during rapid serial visual presentation",
-      "author": "Amanda K. Robinson, Tijl Grootswagers, Thomas A. Carlson",
-      "venue": "NeuroImage",
-      "year": 2019,
-      "url": "https://doi.org/10.1016/j.neuroimage.2019.04.050",
-      "cited_by": 82,
-      "abstract": "Abstract Rapid image presentations combined with time-resolved multivariate analysis methods of EEG or MEG (rapid-MVPA) offer unique potential in assessing the temporal limitations of the human visual system. Recent work has shown that multiple visual objects presented sequentially can be simultaneously decoded from M/EEG recordings. Interestingly, object representations reached higher stages of processing for slower image presentation rates compared to fast rates. This fast rate attenuation is probably caused by forward and backward masking from the other images in the stream. Two factors that are likely to influence masking during rapid streams are stimulus duration and stimulus onset asynchrony (SOA). Here, we disentangle these effects by studying the emerging neural representation of visual objects using rapid-MVPA while independently manipulating stimulus duration and SOA. Our results show that longer SOAs enhance the decodability of neural representations, regardless of stimulus ",
-      "doi": "10.1016/j.neuroimage.2019.04.050",
-      "pmid": "31009746",
-      "openalex_id": "W2951419039",
-      "source_doi": "10.1016/j.neuroimage.2018.12.046",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7124747335910798,
-        "similarity_score": 0.6477043032646179,
-        "citation_text_length": 1201,
         "dataset_text_length": 677,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -312,7 +319,7 @@
       "venue": "Journal of Neuroscience",
       "year": 2020,
       "url": "https://doi.org/10.1523/jneurosci.0158-20.2020",
-      "cited_by": 46,
+      "cited_by": 47,
       "abstract": "The ability to rapidly and accurately recognize complex objects is a crucial function of the human visual system. To recognize an object, we need to bind incoming visual features, such as color and form, together into cohesive neural representations and integrate these with our preexisting knowledge about the world. For some objects, typical color is a central feature for recognition; for example, a banana is typically yellow. Here, we applied multivariate pattern analysis on time-resolved neuroimaging (MEG) data to examine how object-color knowledge affects emerging object representations over time. Our results from 20 participants (11 female) show that the typicality of object-color combinations influences object representations, although not at the initial stages of object and color processing. We find evidence that color decoding peaks later for atypical object-color combinations compared with typical object-color combinations, illustrating the interplay between processing incoming",
       "doi": "10.1523/jneurosci.0158-20.2020",
       "pmid": "32703903",
@@ -353,6 +360,29 @@
       }
     },
     {
+      "title": "A Dual-Branch Spatio-Temporal-Spectral Transformer Feature Fusion Network for EEG-Based Visual Recognition",
+      "author": "Jie Luo, Weigang Cui, Song Xu, Lina Wang, Xiao Li, Xiaofeng Liao, Yang Li",
+      "venue": "IEEE Transactions on Industrial Informatics",
+      "year": 2023,
+      "url": "https://doi.org/10.1109/tii.2023.3280560",
+      "cited_by": 44,
+      "abstract": "Recognizing visual objects from single-trial electroencephalograph (EEG) signals is a promising brain-computer interface technology. However, due to the redundant features from noisy multichannel EEG signals, it is still a challenging task to achieve high precision recognition. Recent deep learning approaches commonly extract spatio-temporal features of EEG signals, which neglect important spectral-temporal features and may degrade the EEG recognition performance. To address the deficiency, we propose a novel channel attention weighting and multilevel adaptive spectral aggregation based dual-branch spatio-temporal-spectral transformer feature fusion network (CAW-MASA-STST) for EEG-based visual recognition. Specially, we first develop a channel attention weighting (CAW) to automatically learn the channel weights of EEG signals. Then, a graph convolution-based MASA is employed to aggregate spectral-temporal features of different sub-bands. Finally, an STST is designed to fuse spatio-temp",
+      "doi": "10.1109/tii.2023.3280560",
+      "pmid": null,
+      "openalex_id": "W4378647849",
+      "source_doi": "10.1016/j.neuroimage.2018.12.046",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6712741631269457,
+        "similarity_score": 0.581189751625061,
+        "citation_text_length": 1261,
+        "dataset_text_length": 677,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Are you for real? Decoding realistic AI-generated faces from neural activity",
       "author": "Michoel L Moshel, Amanda K. Robinson, Thomas A. Carlson, Tijl Grootswagers",
       "venue": "Vision Research",
@@ -376,35 +406,12 @@
       }
     },
     {
-      "title": "A Dual-Branch Spatio-Temporal-Spectral Transformer Feature Fusion Network for EEG-Based Visual Recognition",
-      "author": "Jie Luo, Weigang Cui, Song Xu, Lina Wang, Xiao Li, Xiaofeng Liao, Yang Li",
-      "venue": "IEEE Transactions on Industrial Informatics",
-      "year": 2023,
-      "url": "https://doi.org/10.1109/tii.2023.3280560",
-      "cited_by": 40,
-      "abstract": "Recognizing visual objects from single-trial electroencephalograph (EEG) signals is a promising brain-computer interface technology. However, due to the redundant features from noisy multichannel EEG signals, it is still a challenging task to achieve high precision recognition. Recent deep learning approaches commonly extract spatio-temporal features of EEG signals, which neglect important spectral-temporal features and may degrade the EEG recognition performance. To address the deficiency, we propose a novel channel attention weighting and multilevel adaptive spectral aggregation based dual-branch spatio-temporal-spectral transformer feature fusion network (CAW-MASA-STST) for EEG-based visual recognition. Specially, we first develop a channel attention weighting (CAW) to automatically learn the channel weights of EEG signals. Then, a graph convolution-based MASA is employed to aggregate spectral-temporal features of different sub-bands. Finally, an STST is designed to fuse spatio-temp",
-      "doi": "10.1109/tii.2023.3280560",
-      "pmid": null,
-      "openalex_id": "W4378647849",
-      "source_doi": "10.1016/j.neuroimage.2018.12.046",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6712741631269457,
-        "similarity_score": 0.581189751625061,
-        "citation_text_length": 1261,
-        "dataset_text_length": 677,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Working memory needs pointers",
       "author": "Edward Awh, Edward K. Vogel",
       "venue": "Trends in Cognitive Sciences",
       "year": 2025,
       "url": "https://doi.org/10.1016/j.tics.2024.12.006",
-      "cited_by": 38,
+      "cited_by": 39,
       "abstract": "Cognitive neuroscience has converged on a definition of working memory (WM) as a capacity-limited system that maintains highly accessible representations via stimulus-specific neural patterns. We argue that this standard definition may be incomplete. We highlight the fundamental need to recognize specific instances or tokens and to bind those tokens to the surrounding context. We propose that contextual binding is supported by spatiotemporal 'pointers' and that pointers are the source of neural signals that track the number of stored items, independent of their content. These content-independent pointers may provide a productive perspective for understanding item-based capacity limits in WM and the role of WM as a gateway for long-term storage.",
       "doi": "10.1016/j.tics.2024.12.006",
       "pmid": "39779443",
@@ -416,6 +423,29 @@
         "confidence_score": 0.3554193945229054,
         "similarity_score": 0.30772241950035095,
         "citation_text_length": 877,
+        "dataset_text_length": 677,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Recent advances in understanding object recognition in the human brain: deep neural networks, temporal dynamics, and context",
+      "author": "Susan G. Wardle, Chris I. Baker",
+      "venue": "F1000Research",
+      "year": 2020,
+      "url": "https://doi.org/10.12688/f1000research.22296.1",
+      "cited_by": 35,
+      "abstract": "Object recognition is the ability to identify an object or category based on the combination of visual features observed. It is a remarkable feat of the human brain, given that the patterns of light received by the eye associated with the properties of a given object vary widely with simple changes in viewing angle, ambient lighting, and distance. Furthermore, different exemplars of a specific object category can vary widely in visual appearance, such that successful categorization requires generalization across disparate visual features. In this review, we discuss recent advances in understanding the neural representations underlying object recognition in the human brain. We highlight three current trends in the approach towards this goal within the field of cognitive neuroscience. Firstly, we consider the influence of deep neural networks both as potential models of object vision and in how their representations relate to those in the human brain. Secondly, we review the contribution",
+      "doi": "10.12688/f1000research.22296.1",
+      "pmid": "32566136",
+      "openalex_id": "W3035198315",
+      "source_doi": "10.1016/j.neuroimage.2018.12.046",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5451482999324799,
+        "similarity_score": 0.47198987007141113,
+        "citation_text_length": 1207,
         "dataset_text_length": 677,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -445,36 +475,13 @@
       }
     },
     {
-      "title": "Recent advances in understanding object recognition in the human brain: deep neural networks, temporal dynamics, and context",
-      "author": "Susan G. Wardle, Chris I. Baker",
-      "venue": "F1000Research",
-      "year": 2020,
-      "url": "https://doi.org/10.12688/f1000research.22296.1",
-      "cited_by": 34,
-      "abstract": "Object recognition is the ability to identify an object or category based on the combination of visual features observed. It is a remarkable feat of the human brain, given that the patterns of light received by the eye associated with the properties of a given object vary widely with simple changes in viewing angle, ambient lighting, and distance. Furthermore, different exemplars of a specific object category can vary widely in visual appearance, such that successful categorization requires generalization across disparate visual features. In this review, we discuss recent advances in understanding the neural representations underlying object recognition in the human brain. We highlight three current trends in the approach towards this goal within the field of cognitive neuroscience. Firstly, we consider the influence of deep neural networks both as potential models of object vision and in how their representations relate to those in the human brain. Secondly, we review the contribution",
-      "doi": "10.12688/f1000research.22296.1",
-      "pmid": "32566136",
-      "openalex_id": "W3035198315",
-      "source_doi": "10.1016/j.neuroimage.2018.12.046",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5451482999324799,
-        "similarity_score": 0.47198987007141113,
-        "citation_text_length": 1207,
-        "dataset_text_length": 677,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "An empirically-driven guide on using Bayes Factors for M/EEG decoding",
       "author": "Lina Teichmann, Denise Moerel, Chris I. Baker, Tijl Grootswagers",
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
       "year": 2021,
       "url": "https://doi.org/10.1101/2021.06.23.449663",
       "cited_by": 33,
-      "abstract": "Abstract Bayes Factors can be used to provide quantifiable evidence for contrasting hypotheses and have thus become increasingly popular in cognitive science. However, Bayes Factors are rarely used to statistically assess the results of neuroimaging experiments. Here, we provide an empirically-driven guide on implementing Bayes Factors for time-series neural decoding results. Using real and simulated Magnetoencephalography (MEG) data, we examine how parameters such as the shape of the prior and data size affect Bayes Factors. Additionally, we discuss benefits Bayes Factors bring to analysing multivariate pattern analysis data and show how using Bayes Factors can be used instead or in addition to traditional frequentist approaches.",
+      "abstract": "Bayes factors can be used to provide quantifiable evidence for contrasting hypotheses and have thus become increasingly popular in cognitive science. However, Bayes factors are rarely used to statistically assess the results of neuroimaging experiments. Here, we provide an empirically driven guide on implementing Bayes factors for time-series neural decoding results. Using real and simulated magnetoencephalography (MEG) data, we examine how parameters such as the shape of the prior and data size affect Bayes factors. Additionally, we discuss the benefits Bayes factors bring to analysing multivariate pattern analysis data and show how using Bayes factors can be used instead or in addition to traditional frequentist approaches. Bayes factors to test the probability of above-chance classification versus at-chance classification given the decoding results across participants at each timepoint. The direct comparison of the predictions of two hypotheses is one of the strengths of the Bayesia",
       "doi": "10.1101/2021.06.23.449663",
       "pmid": null,
       "openalex_id": "W3176880948",
@@ -482,9 +489,9 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.48377251267433174,
-        "similarity_score": 0.4188506603240967,
-        "citation_text_length": 951,
+        "confidence_score": 0.4727253212034703,
+        "similarity_score": 0.4092859923839569,
+        "citation_text_length": 1211,
         "dataset_text_length": 677,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -744,6 +751,29 @@
       }
     },
     {
+      "title": "Temporal Variabilities Provide Additional Category-Related Information in Object Category Decoding: A Systematic Comparison of Informative EEG Features",
+      "author": "Hamid Karimi-Rouzbahani, Mozhgan Shahmohammadi, Ehsan Vahab, Saeed Setayeshi, Thomas A. Carlson",
+      "venue": "Neural Computation",
+      "year": 2021,
+      "url": "https://doi.org/10.1162/neco_a_01436",
+      "cited_by": 16,
+      "abstract": "How does the human brain encode visual object categories? Our understanding of this has advanced substantially with the development of multivariate decoding analyses. However, conventional electroencephalography (EEG) decoding predominantly uses the mean neural activation within the analysis window to extract category information. Such temporal averaging overlooks the within-trial neural variability that is suggested to provide an additional channel for the encoding of information about the complexity and uncertainty of the sensory input. The richness of temporal variabilities, however, has not been systematically compared with the conventional mean activity. Here we compare the information content of 31 variability-sensitive features against the mean of activity, using three independent highly varied data sets. In whole-trial decoding, the classical event-related potential (ERP) components of P2a and P2b provided information comparable to those provided by original magnitude data (OMD",
+      "doi": "10.1162/neco_a_01436",
+      "pmid": "34474472",
+      "openalex_id": "W3197434619",
+      "source_doi": "10.1016/j.neuroimage.2018.12.046",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6570000422000886,
+        "similarity_score": 0.568831205368042,
+        "citation_text_length": 1303,
+        "dataset_text_length": 677,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "The nature of neural object representations during dynamic occlusion",
       "author": "Lina Teichmann, Denise Moerel, Anina N. Rich, Chris I. Baker",
       "venue": "Cortex",
@@ -784,29 +814,6 @@
         "confidence_score": 0.7697919094562531,
         "similarity_score": 0.6664865016937256,
         "citation_text_length": 1270,
-        "dataset_text_length": 677,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Temporal Variabilities Provide Additional Category-Related Information in Object Category Decoding: A Systematic Comparison of Informative EEG Features",
-      "author": "Hamid Karimi-Rouzbahani, Mozhgan Shahmohammadi, Ehsan Vahab, Saeed Setayeshi, Thomas A. Carlson",
-      "venue": "Neural Computation",
-      "year": 2021,
-      "url": "https://doi.org/10.1162/neco_a_01436",
-      "cited_by": 15,
-      "abstract": "How does the human brain encode visual object categories? Our understanding of this has advanced substantially with the development of multivariate decoding analyses. However, conventional electroencephalography (EEG) decoding predominantly uses the mean neural activation within the analysis window to extract category information. Such temporal averaging overlooks the within-trial neural variability that is suggested to provide an additional channel for the encoding of information about the complexity and uncertainty of the sensory input. The richness of temporal variabilities, however, has not been systematically compared with the conventional mean activity. Here we compare the information content of 31 variability-sensitive features against the mean of activity, using three independent highly varied data sets. In whole-trial decoding, the classical event-related potential (ERP) components of P2a and P2b provided information comparable to those provided by original magnitude data (OMD",
-      "doi": "10.1162/neco_a_01436",
-      "pmid": "34474472",
-      "openalex_id": "W3197434619",
-      "source_doi": "10.1016/j.neuroimage.2018.12.046",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6570000422000886,
-        "similarity_score": 0.568831205368042,
-        "citation_text_length": 1303,
         "dataset_text_length": 677,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -887,7 +894,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2024,
       "url": "https://doi.org/10.3389/fnhum.2024.1385624",
-      "cited_by": 11,
+      "cited_by": 12,
       "abstract": "Hyperscanning, which enables the recording of brain activity from multiple individuals simultaneously, has been increasingly used to investigate the neuropsychological processes underpinning social interaction. Previous hyperscanning research has primarily focused on interbrain synchrony, demonstrating an enhanced alignment of brain waves across individuals during social interaction. However, using EEG hyperscanning simulations, we here show that interbrain synchrony has low sensitivity to information alignment across people. Surprisingly, interbrain synchrony remains largely unchanged despite manipulating whether two individuals are seeing same or different things at the same time. Furthermore, we show that hyperscanning recordings do contain indices of interpersonal information alignment and that they can be captured using representational analyses. These findings highlight major limitations of current hyperscanning research and offer a promising alternative for investigating interac",
       "doi": "10.3389/fnhum.2024.1385624",
       "pmid": "39118818",
@@ -968,6 +975,29 @@
         "confidence_score": 0.699581453204155,
         "similarity_score": 0.6056982278823853,
         "citation_text_length": 1338,
+        "dataset_text_length": 677,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Observing the suppression of individual aversive memories from conscious awareness",
+      "author": "Xuanyi Lin, Danni Chen, Jing Liu, Ziqing Yao, Hui Xie, Michael C. Anderson, Xiaoqing Hu",
+      "venue": "Cerebral Cortex",
+      "year": 2024,
+      "url": "https://doi.org/10.1093/cercor/bhae080",
+      "cited_by": 10,
+      "abstract": "When reminded of an unpleasant experience, people often try to exclude the unwanted memory from awareness, a process known as retrieval suppression. Here we used multivariate decoding (MVPA) and representational similarity analyses on EEG data to track how suppression unfolds in time and to reveal its impact on item-specific cortical patterns. We presented reminders to aversive scenes and asked people to either suppress or to retrieve the scene. During suppression, mid-frontal theta power within the first 500 ms distinguished suppression from passive viewing of the reminder, indicating that suppression rapidly recruited control. During retrieval, we could discern EEG cortical patterns relating to individual memories-initially, based on theta-driven visual perception of the reminders (0 to 500 ms) and later, based on alpha-driven reinstatement of the aversive scene (500 to 3000 ms). Critically, suppressing retrieval weakened (during 360 to 600 ms) and eventually abolished item-specific ",
+      "doi": "10.1093/cercor/bhae080",
+      "pmid": "38863114",
+      "openalex_id": "W4399597411",
+      "source_doi": "10.1016/j.neuroimage.2018.12.046",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.568464239537716,
+        "similarity_score": 0.4921768307685852,
+        "citation_text_length": 1223,
         "dataset_text_length": 677,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1060,29 +1090,6 @@
         "confidence_score": 0.4207592171430588,
         "similarity_score": 0.3642936944961548,
         "citation_text_length": 1245,
-        "dataset_text_length": 677,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Observing the suppression of individual aversive memories from conscious awareness",
-      "author": "Xuanyi Lin, Danni Chen, Jing Liu, Ziqing Yao, Hui Xie, Michael C. Anderson, Xiaoqing Hu",
-      "venue": "Cerebral Cortex",
-      "year": 2024,
-      "url": "https://doi.org/10.1093/cercor/bhae080",
-      "cited_by": 9,
-      "abstract": "When reminded of an unpleasant experience, people often try to exclude the unwanted memory from awareness, a process known as retrieval suppression. Here we used multivariate decoding (MVPA) and representational similarity analyses on EEG data to track how suppression unfolds in time and to reveal its impact on item-specific cortical patterns. We presented reminders to aversive scenes and asked people to either suppress or to retrieve the scene. During suppression, mid-frontal theta power within the first 500 ms distinguished suppression from passive viewing of the reminder, indicating that suppression rapidly recruited control. During retrieval, we could discern EEG cortical patterns relating to individual memories-initially, based on theta-driven visual perception of the reminders (0 to 500 ms) and later, based on alpha-driven reinstatement of the aversive scene (500 to 3000 ms). Critically, suppressing retrieval weakened (during 360 to 600 ms) and eventually abolished item-specific ",
-      "doi": "10.1093/cercor/bhae080",
-      "pmid": "38863114",
-      "openalex_id": "W4399597411",
-      "source_doi": "10.1016/j.neuroimage.2018.12.046",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.568464239537716,
-        "similarity_score": 0.4921768307685852,
-        "citation_text_length": 1223,
         "dataset_text_length": 677,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1480,6 +1487,29 @@
       }
     },
     {
+      "title": "The impact of spatial frequency on hierarchical category representation in macaque temporal cortex",
+      "author": "Esmaeil Farhang, Ramin Toosi, Behnam Karami, Roxana Koushki, Narges Kheirkhah, Farideh Shakerian, Jalaledin Noroozi, Ehsan Rezayat, Abdol‐Hossein Vahabie, Mohammad‐Reza A. Dehaqani",
+      "venue": "Communications Biology",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s42003-025-08230-5",
+      "cited_by": 3,
+      "abstract": "Objects are recognized in three hierarchical levels: superordinate, mid-level, and subordinate. Psychophysics shows that mid-level categories and low spatial frequency (LSF) information are rapidly recognized. However, the interaction between spatial frequency (SF) and abstraction is not well understood. To address this, we examine neural responses in the inferior temporal cortex and superior temporal sulcus of two male macaque monkeys. Our findings reveal that mid-level categories are well represented at both LSF and high SF (HSF), suggesting robust mid-level boundary maps in these areas, unaffected by SF changes. Conversely, superordinate category representation depends on HSF, indicating its crucial role in encoding global category information. The absence of subordinate representation in both LSF and HSF compared to intact stimuli further implies that full SF content is essential for fine-category processing. A supporting human psychophysics task confirms that superordinate categor",
+      "doi": "10.1038/s42003-025-08230-5",
+      "pmid": "40415067",
+      "openalex_id": "W4410717835",
+      "source_doi": "10.1016/j.neuroimage.2018.12.046",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5228807070851327,
+        "similarity_score": 0.4527105689048767,
+        "citation_text_length": 1339,
+        "dataset_text_length": 677,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Lightweight deep learning models for EEG decoding: a review",
       "author": "Yizhen Li, Enze Chen, Xiaolin Xiao, Minpeng Xu, Ming Dong",
       "venue": "Journal of Neural Engineering",
@@ -1635,29 +1665,6 @@
         "confidence_score": 0.4816709876060486,
         "similarity_score": 0.45873427391052246,
         "citation_text_length": 195,
-        "dataset_text_length": 677,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "The impact of spatial frequency on hierarchical category representation in macaque temporal cortex",
-      "author": "Esmaeil Farhang, Ramin Toosi, Behnam Karami, Roxana Koushki, Narges Kheirkhah, Farideh Shakerian, Jalaledin Noroozi, Ehsan Rezayat, Abdol‐Hossein Vahabie, Mohammad‐Reza A. Dehaqani",
-      "venue": "Communications Biology",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s42003-025-08230-5",
-      "cited_by": 2,
-      "abstract": "Objects are recognized in three hierarchical levels: superordinate, mid-level, and subordinate. Psychophysics shows that mid-level categories and low spatial frequency (LSF) information are rapidly recognized. However, the interaction between spatial frequency (SF) and abstraction is not well understood. To address this, we examine neural responses in the inferior temporal cortex and superior temporal sulcus of two male macaque monkeys. Our findings reveal that mid-level categories are well represented at both LSF and high SF (HSF), suggesting robust mid-level boundary maps in these areas, unaffected by SF changes. Conversely, superordinate category representation depends on HSF, indicating its crucial role in encoding global category information. The absence of subordinate representation in both LSF and HSF compared to intact stimuli further implies that full SF content is essential for fine-category processing. A supporting human psychophysics task confirms that superordinate categor",
-      "doi": "10.1038/s42003-025-08230-5",
-      "pmid": "40415067",
-      "openalex_id": "W4410717835",
-      "source_doi": "10.1016/j.neuroimage.2018.12.046",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5228807070851327,
-        "similarity_score": 0.4527105689048767,
-        "citation_text_length": 1339,
         "dataset_text_length": 677,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2032,6 +2039,29 @@
       }
     },
     {
+      "title": "Learning Brain Representation with Hierarchical Visual Embeddings",
+      "author": "Jiawen Zheng, Hao Jia, Ming Li, Yuhui Zheng, Yufeng Zeng, Yang Gao, Chen Liang",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2602.07495",
+      "cited_by": 1,
+      "abstract": "Decoding visual representations from brain signals has attracted significant attention in both neuroscience and artificial intelligence. However, the degree to which brain signals truly encode visual information remains unclear. Current visual decoding approaches explore various brain-image alignment strategies, yet most emphasize high-level semantic features while neglecting pixel-level details, thereby limiting our understanding of the human visual system. In this paper, we propose a brain-image alignment strategy that leverages multiple pre-trained visual encoders with distinct inductive biases to capture hierarchical and multi-scale visual representations, while employing a contrastive learning objective to achieve effective alignment between brain signals and visual embeddings. Furthermore, we introduce a Fusion Prior, which learns a stable mapping on large-scale visual data and subsequently matches brain features to this pre-trained prior, thereby enhancing distributional consist",
+      "doi": "10.48550/arXiv.2602.07495",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1016/j.neuroimage.2018.12.046",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5732629662752152,
+        "similarity_score": 0.4963315725326538,
+        "citation_text_length": 1187,
+        "dataset_text_length": 677,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Deep Models, Shallow Alignment: Uncovering the Granularity Mismatch in Neural Decoding",
       "author": "Yang Du, Siyuan Dai, Yonghao Song, Paul M. Thompson, Haoteng Tang, Liang Zhan",
       "venue": "ArXiv",
@@ -2329,40 +2359,17 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "NeuroAlign: Dynamic Dual-Stream Alignment of Perception and Cognition for Zero-Shot Brain-Image Retrieval",
-      "author": "Yixin Ke, Dong Liang, Kun Shang",
-      "venue": "Proceedings of the 2026 International Conference on Multimedia Retrieval",
-      "year": 2026,
-      "url": "https://doi.org/10.1145/3805622.3810885",
-      "cited_by": 0,
-      "abstract": "Visual retrieval from brain signals is a key challenge in Brain-Computer Interfaces (BCIs). Existing methods directly map noisy neural signals into a unified feature space, ignoring the dual-stream mechanism of neural decoding: brain signals are generated through the interaction of bottom-up perception (processing visual saliency) and top-down cognition (interpreting semantic concepts based on prior knowledge). In Rapid Serial Visual Presentation paradigm, standard encoders prioritize high-level semantic abstractions over actual salient features encoded in human vision, lacking the semantic guidance needed to stabilize inherently noisy signals. This mismatch causes perceptual misalignment and semantic inconsistency. To resolve this, we propose NeuroAlign, a dynamic dual-stream framework that explicitly separates and coordinates these two processes. Specifically, we utilize Visual Saliency Extraction (VSE) to capture salient features and Semantic Guidance Alignment (SGA) to provide top-",
-      "doi": "10.1145/3805622.3810885",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1016/j.neuroimage.2018.12.046",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5406760284304619,
-        "similarity_score": 0.46811777353286743,
-        "citation_text_length": 1247,
-        "dataset_text_length": 677,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:37:37.077370+00:00",
+    "scoring_date": "2026-08-17T11:31:09.582459+00:00",
     "dataset_text_length": 677,
     "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.586675809800625,
-      "median_confidence": 0.5710228720307351,
-      "std_confidence": 0.10440539715912371,
+      "mean_confidence": 0.5868912072643638,
+      "median_confidence": 0.5734222353994847,
+      "std_confidence": 0.10442718064594579,
       "min_confidence": 0.3554193945229054,
       "max_confidence": 0.8788354620337487,
       "high_confidence_count": 12,

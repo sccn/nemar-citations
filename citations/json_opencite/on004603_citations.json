@@ -1,10 +1,10 @@
 {
   "dataset_id": "on004603",
-  "num_citations": 3,
-  "date_last_updated": "2026-08-09T10:39:10.120653+00:00",
+  "num_citations": 4,
+  "date_last_updated": "2026-08-17T10:38:12.517750+00:00",
   "metadata": {
     "total_cumulative_citations": 1,
-    "fetch_date": "2026-08-09T10:39:10.120653+00:00",
+    "fetch_date": "2026-08-17T10:38:12.517750+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -51,7 +51,14 @@
       "event-related potentials"
     ],
     "methods_description": "EEG data were recorded from 37 subjects (age <35 years, normal or corrected-to-normal vision, no neurological disorders) during a visual contextual trajectory paradigm. Subjects completed trials in which visual stimulus onsets either violated or maintained established trajectories across three visual attributes: brightness, size, and orientation.",
-    "funding": []
+    "funding": [],
+    "searched_accessions": [
+      "on004603",
+      "ds004603"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 3
   },
   "citation_details": [
     {
@@ -122,21 +129,46 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Same but different: The latency of a shared expectation signal interacts with stimulus attributes",
+      "author": "Benjamin G. Lowe, Jonathan Robinson, Naohide Yamamoto, Hinze Hogendoorn, Patrick Johnston",
+      "venue": "Cortex",
+      "year": 2023,
+      "url": "https://doi.org/10.1016/j.cortex.2023.08.004",
+      "cited_by": 4,
+      "abstract": "Predictive coding theories assert that perceptual inference is a hierarchical process of belief updating, wherein the onset of unexpected sensory data causes so-called prediction error responses that calibrate erroneous inferences. Given the functionally specialised organisation of visual cortex, it is assumed that prediction error propagation interacts with the specific visual attribute violating an expectation. We sought to test this within the temporal domain by applying time-resolved decoding methods to electroencephalography (EEG) data evoked by contextual trajectory violations of either brightness, size, or orientation within a bound stimulus. We found that following ∼170 ms post stimulus onset, responses to both size violations and orientation violations were decodable from physically identical control trials in which no attributes were violated. These two violation types were then directly compared, with attribute-specific signalling being decoded from 265 ms. Temporal generalisation suggested that this dissociation was driven by latency shifts in shared expectation signalling between the two conditions. Using a novel temporal bias method, we then found that this shared signalling occurred earlier for size violations than orientation violations. To our knowledge, we are among the first to decode expectation violations in humans using EEG and have demonstrated a temporal dissociation in attribute-specific expectancy violations.",
+      "doi": "10.1016/j.cortex.2023.08.004",
+      "pmid": "37716110",
+      "openalex_id": "W4386192206",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds004603",
+      "confidence_scoring": {
+        "confidence_score": 0.6834996432065964,
+        "similarity_score": 0.591774582862854,
+        "citation_text_length": 1689,
+        "dataset_text_length": 1302,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:46:25.272090+00:00",
+    "scoring_date": "2026-08-17T11:36:54.927072+00:00",
     "dataset_text_length": 1302,
-    "num_citations_scored": 3,
+    "num_citations_scored": 4,
     "summary_stats": {
-      "mean_confidence": 0.5211642469465733,
-      "median_confidence": 0.5073868538439275,
-      "std_confidence": 0.08624294585512723,
+      "mean_confidence": 0.561748096011579,
+      "median_confidence": 0.5701946691423656,
+      "std_confidence": 0.10256476342838856,
       "min_confidence": 0.42310340255498896,
-      "max_confidence": 0.6330024844408036,
+      "max_confidence": 0.6834996432065964,
       "high_confidence_count": 0,
-      "medium_confidence_count": 3,
+      "medium_confidence_count": 4,
       "low_confidence_count": 0
     }
   }

@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000177",
-  "num_citations": 52,
-  "date_last_updated": "2026-08-09T10:07:28.028278+00:00",
+  "num_citations": 51,
+  "date_last_updated": "2026-08-17T10:07:10.644171+00:00",
   "metadata": {
-    "total_cumulative_citations": 161,
-    "fetch_date": "2026-08-09T10:07:28.028278+00:00",
+    "total_cumulative_citations": 162,
+    "fetch_date": "2026-08-17T10:07:10.644171+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -63,9 +63,10 @@
       "domain adaptation",
       "Riemannian geometry",
       "longitudinal training",
-      "BCI skill acquisition"
+      "BCI skill acquisition",
+      "calibration-free"
     ],
-    "methods_description": "EEG data were recorded from 18 healthy subjects (age mean=23.22±3.59 years) using ANT Neuro eego mylab hardware with 22 EEG channels and 3 EOG channels at 512 Hz sampling rate. Subjects performed cue-based left/right hand motor imagery tasks with continuous visual feedback across bar-feedback runs and car racing games. Session 1 consisted of 4 offline runs (80 trials); sessions 2-6 included 3-4 online runs each. EEG signals were bandpass filtered at 8-30 Hz using second-order Butterworth filters. Features were extracted as covariance matrices and classified using Riemannian Minimum Distance to Mean decoder.",
+    "methods_description": "EEG data were recorded from 18 healthy subjects (age 23.22±3.59 years) using ANT Neuro eego mylab hardware with 22 EEG channels and 3 EOG channels at 512 Hz sampling rate. Subjects performed cue-based left/right hand motor imagery tasks with continuous visual feedback across bar-feedback runs and car racing games. Session 1 consisted of 4 offline runs (80 trials); sessions 2-6 included 3-4 online runs each. EEG signals were bandpass filtered at 8-30 Hz using second-order Butterworth filters. Features were extracted as covariance matrices and classified using Riemannian Minimum Distance to Mean decoder.",
     "funding": [
       {
         "funder_name": "Coleman Fung Foundation"
@@ -73,13 +74,7 @@
       {
         "funder_name": "Sinclair Foundation"
       }
-    ],
-    "searched_accessions": [
-      "nm000177"
-    ],
-    "num_accession_mentions": 1,
-    "num_dataset_citations": 1,
-    "num_datapaper_citations": 51
+    ]
   },
   "citation_details": [
     {
@@ -405,6 +400,29 @@
       }
     },
     {
+      "title": "EEG-TriNet++: A Transformer-Guided Meta-Learning Framework for Robust and Generalizable Motor Imagery Classification",
+      "author": "Ahmed Tibermacine, Ilyes Naidji, Imad Eddine Tibermacine, Lahcene Mamen, Abdelaziz Rabehi, Mustapha Habib",
+      "venue": "Bioengineering",
+      "year": 2026,
+      "url": "https://doi.org/10.3390/bioengineering13030307",
+      "cited_by": 2,
+      "abstract": "Motor imagery (MI) classification using EEG signals is central to brain-computer interfaces but remains challenging due to low signal-to-noise ratio, non-stationarity, and high inter-subject variability. We introduce EEG-TriNet++, a multi-branch deep learning architecture that enhances both classification accuracy and cross-subject generalization. The model integrates three complementary components: convolutional spatial-spectral encoders for channel-wise and frequency-specific patterns, bidirectional LSTMs to model temporal dynamics, and a Transformer head for global relational reasoning. A patchwise tokenization strategy and neural architecture search optimize the trade-off between efficiency and representational capacity. To address individual differences, a model-agnostic meta-learning (MAML) module enables rapid adaptation to new users with limited data. Evaluated on two public MI datasets under within-subject and leave-one-subject-out (LOSO) protocols, EEG-TriNet++ achieves 79.1%",
+      "doi": "10.3390/bioengineering13030307",
+      "pmid": "41899838",
+      "openalex_id": "W7134059114",
+      "source_doi": "10.1093/pnasnexus/pgae076",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8535244417190553,
+        "similarity_score": 0.7389822006225586,
+        "citation_text_length": 1274,
+        "dataset_text_length": 2361,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Evolution of users’ subjective experience over three training sessions with an EEG Motor-Imagery Brain–Computer Interface (MI-BCI)",
       "author": "Aline Roc, Léna Kolodzienski, Pauline Dreyer, Aurélien Appriou, Thibaut Monseigne, Fabien Lotte",
       "venue": "Brain Research",
@@ -606,29 +624,6 @@
         "confidence_score": 0.5837083697319031,
         "similarity_score": 0.5559127330780029,
         "citation_text_length": 148,
-        "dataset_text_length": 2361,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "EEG-TriNet++: A Transformer-Guided Meta-Learning Framework for Robust and Generalizable Motor Imagery Classification",
-      "author": "Ahmed Tibermacine, Ilyes Naidji, Imad Eddine Tibermacine, Lahcene Mamen, Abdelaziz Rabehi, Mustapha Habib",
-      "venue": "Bioengineering",
-      "year": 2026,
-      "url": "https://doi.org/10.3390/bioengineering13030307",
-      "cited_by": 1,
-      "abstract": "Motor imagery (MI) classification using EEG signals is central to brain-computer interfaces but remains challenging due to low signal-to-noise ratio, non-stationarity, and high inter-subject variability. We introduce EEG-TriNet++, a multi-branch deep learning architecture that enhances both classification accuracy and cross-subject generalization. The model integrates three complementary components: convolutional spatial-spectral encoders for channel-wise and frequency-specific patterns, bidirectional LSTMs to model temporal dynamics, and a Transformer head for global relational reasoning. A patchwise tokenization strategy and neural architecture search optimize the trade-off between efficiency and representational capacity. To address individual differences, a model-agnostic meta-learning (MAML) module enables rapid adaptation to new users with limited data. Evaluated on two public MI datasets under within-subject and leave-one-subject-out (LOSO) protocols, EEG-TriNet++ achieves 79.1%",
-      "doi": "10.3390/bioengineering13030307",
-      "pmid": "41899838",
-      "openalex_id": "W7134059114",
-      "source_doi": "10.1093/pnasnexus/pgae076",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.8535244417190553,
-        "similarity_score": 0.7389822006225586,
-        "citation_text_length": 1274,
         "dataset_text_length": 2361,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -842,6 +837,29 @@
       }
     },
     {
+      "title": "Improving Motor Imagery Decoding in Elderly by Combining Cross-Population Model With Tactile-Induced Sensorimotor Rhythm",
+      "author": "Yucun Zhong, Weiming Qi, Huan Wen, Lin Yao, Yueming Wang",
+      "venue": "IEEE Transactions on Cognitive and Developmental Systems",
+      "year": 2026,
+      "url": "https://doi.org/10.1109/tcds.2026.3651312",
+      "cited_by": 0,
+      "abstract": "In motor imagery-based Brain-Computer Interfaces (MI-based BCIs), research has predominantly focused on developing algorithms and paradigms optimized for young adults. However, recent studies have revealed a significant decline in algorithm performance when applied to elderly subjects, posing a major challenge to the practical deployment of MI-BCIs in this demographic. To address this limitation, we propose a novel cross-population transfer learning-based decoding scheme. Specifically, we leverage sensory and motor multi-modal hybrid data to fine-tune a pre-trained model, originally trained on MI data from young adults. To further mitigate inter-subject variability in EEG signals, we introduce a cross-task Euclidean alignment strategy, where MI data is aligned using covariance computed from sensory data, enabling MI decoding for elderly subjects without requiring any MI data from the target population. Our proposed approach has demonstrated promising results, achieving a 14% improvemen",
+      "doi": "10.1109/tcds.2026.3651312",
+      "pmid": null,
+      "openalex_id": "W7118195467",
+      "source_doi": "10.1093/pnasnexus/pgae076",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7750196680426599,
+        "similarity_score": 0.6710126996040344,
+        "citation_text_length": 1271,
+        "dataset_text_length": 2361,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "How Machine Learning and Modulation Supports Subject Brain-Computer Interface Training",
       "author": "José del R. Millán",
       "venue": "2026 14th International Conference on Brain-Computer Interface (BCI)",
@@ -980,29 +998,6 @@
       }
     },
     {
-      "title": "Neuroscience-Inspired Deep Learning Brain–Machine Interface Decoder",
-      "author": "Hongyun Ou, Takahiro Hasegawa, Osamu Fukayama, Eizo Miyashita",
-      "venue": "Bioengineering",
-      "year": 2026,
-      "url": "https://doi.org/10.3390/bioengineering13040440",
-      "cited_by": 0,
-      "abstract": "Brain-machine interfaces (BMIs) aim to decode motor intentions from neural activity to enable direct control of external devices. However, most existing decoders rely on monolithic architectures that fail to capture the distinct neural representations of different joint movement directions, limiting their generalizability. In this work, we propose a Single-Direction CNN-LSTM decoder inspired by motor cortex encoding mechanisms, which separately models extension and flexion dynamics through parallel CNN-LSTM branches. Each branch extracts spatial-temporal features from neural spike data and predicts directional joint variables, which are then combined by subtraction to yield the net angular velocity and torque of upper-limb joints. Using invasive recordings from a macaque during a 2D center-out reaching task, we demonstrate that our decoder achieves comparable performance to a conventional CNN-LSTM when trained on all tasks, while significantly outperforming both CNN-LSTM and linear reg",
-      "doi": "10.3390/bioengineering13040440",
-      "pmid": "42072234",
-      "openalex_id": "W7153083140",
-      "source_doi": "10.1093/pnasnexus/pgae076",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5977852481603624,
-        "similarity_score": 0.517562985420227,
-        "citation_text_length": 1181,
-        "dataset_text_length": 2361,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Reducing calibration effort for brain-computer interfaces",
       "author": "Niklas Smedemark-Margulies",
       "venue": "n/a",
@@ -1020,6 +1015,29 @@
         "confidence_score": 0.6815524774789812,
         "similarity_score": 0.5900887250900269,
         "citation_text_length": 1125,
+        "dataset_text_length": 2361,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Neuroscience-Inspired Deep Learning Brain–Machine Interface Decoder",
+      "author": "Hongyun Ou, Takahiro Hasegawa, Osamu Fukayama, Eizo Miyashita",
+      "venue": "Bioengineering",
+      "year": 2026,
+      "url": "https://doi.org/10.3390/bioengineering13040440",
+      "cited_by": 0,
+      "abstract": "Brain-machine interfaces (BMIs) aim to decode motor intentions from neural activity to enable direct control of external devices. However, most existing decoders rely on monolithic architectures that fail to capture the distinct neural representations of different joint movement directions, limiting their generalizability. In this work, we propose a Single-Direction CNN-LSTM decoder inspired by motor cortex encoding mechanisms, which separately models extension and flexion dynamics through parallel CNN-LSTM branches. Each branch extracts spatial-temporal features from neural spike data and predicts directional joint variables, which are then combined by subtraction to yield the net angular velocity and torque of upper-limb joints. Using invasive recordings from a macaque during a 2D center-out reaching task, we demonstrate that our decoder achieves comparable performance to a conventional CNN-LSTM when trained on all tasks, while significantly outperforming both CNN-LSTM and linear reg",
+      "doi": "10.3390/bioengineering13040440",
+      "pmid": "42072234",
+      "openalex_id": "W7153083140",
+      "source_doi": "10.1093/pnasnexus/pgae076",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5977852481603624,
+        "similarity_score": 0.517562985420227,
+        "citation_text_length": 1181,
         "dataset_text_length": 2361,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1210,29 +1228,6 @@
       }
     },
     {
-      "title": "Improving Motor Imagery Decoding in Elderly by Combining Cross-Population Model With Tactile-Induced Sensorimotor Rhythm",
-      "author": "Yucun Zhong, Weiming Qi, Huan Wen, Lin Yao, Yueming Wang",
-      "venue": "IEEE Transactions on Cognitive and Developmental Systems",
-      "year": 2026,
-      "url": "https://doi.org/10.1109/TCDS.2026.3651312",
-      "cited_by": 0,
-      "abstract": "In motor imagery-based brain-computer interfaces (MI-BCIs), research has predominantly focused on developing algorithms and paradigms optimized for young adults. However, recent studies have revealed a significant decline in algorithm performance when applied to elderly subjects, posing a major challenge to the practical deployment of MI-BCIs in this demographic. To address this limitation, we propose a novel cross-population transfer learning-based decoding scheme. Specifically, we leverage sensory and motor multimodal hybrid data to fine-tune a pretrained model, originally trained on MI data from young adults. To further mitigate inter-subject variability in EEG signals, we introduce a cross-task Euclidean alignment strategy, where MI data is aligned using covariance computed from sensory data, enabling MI decoding for elderly subjects without requiring any MI data from the target population. Our proposed approach has demonstrated promising results, achieving a 14% improvement in dec",
-      "doi": "10.1109/TCDS.2026.3651312",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1093/pnasnexus/pgae076",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7675312310457231,
-        "similarity_score": 0.6645292043685913,
-        "citation_text_length": 1271,
-        "dataset_text_length": 2361,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Real-Time Decoding of Movement Onset and Offset for Brain-Controlled Rehabilitation Exoskeleton",
       "author": "Kanishka Mitra, Satyam Kumar, F. S. Racz, D. Liu, Ashish D. Deshpande, J. D. R. Millán",
       "venue": "ArXiv",
@@ -1254,47 +1249,22 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "An Order Estimation Based Approach to Identify Response Genes for Microarray Time Course Data",
-      "author": "Zhiheng K Lu, Allen O. Brian, Anthony F. Desmond",
-      "venue": "Statistical Applications in Genetics and Molecular Biology",
-      "year": 2012,
-      "url": "https://doi.org/10.1515/1544-6115.1818",
-      "cited_by": 2,
-      "abstract": "Gene expression profiles from microarray time course experiments provide a unique opportunity to examine genome-wide signal processing and gene responses. A fundamental issue in microarray experiments is that the treatment condition can only be controlled at the cell level rather than at the gene level. The treatment condition does not affect all genes equally. Some genes depend on other genes to detect external changes. The dependency between genes is not fully deterministic and may vary with treatment condition. Thus the expression of each gene is potentially affected by two confounding effects: the treatment effect and the gene context effect arising from the regulatory interactions among genes. This gene context effect is hard to isolate. Neither can it be simply ignored. Instead, this gene context information which may be different under different treatment conditions is of primary biological interest. We introduce an approach which deals with the confounding effects and takes into account the uncontrollable gene context effect. Our method is based on the estimation of the number of hidden states, which, in our development, corresponds to the order of a hidden Markov model (HMM). For each gene, its observed expression is modeled by a gamma distribution determined by the corresponding hidden state at each time point. Those genes showing evidence for more than one hidden state can be categorized as the signalling genes, or in a wider sense, as the response genes which are coordinated by a cell system in reaction to a specific external condition. These response genes can be used in the comparison of different treatment conditions, to investigate the gene context effect under different treatments. Microarray time course data are also analyzed to demonstrate our method.",
-      "doi": "10.1515/1544-6115.1818",
-      "pmid": "23241685",
-      "openalex_id": "W2265464824",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000177",
-      "confidence_scoring": {
-        "confidence_score": 0.23880138844251633,
-        "similarity_score": 0.21709217131137848,
-        "citation_text_length": 1738,
-        "dataset_text_length": 2361,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-10T10:10:44.037695+00:00",
+    "scoring_date": "2026-08-17T11:11:25.010333+00:00",
     "dataset_text_length": 2361,
-    "num_citations_scored": 52,
+    "num_citations_scored": 51,
     "summary_stats": {
-      "mean_confidence": 0.6245639598512879,
-      "median_confidence": 0.6198135070502758,
-      "std_confidence": 0.14021391225966617,
-      "min_confidence": 0.23880138844251633,
+      "mean_confidence": 0.6322747639376745,
+      "median_confidence": 0.6204838693141937,
+      "std_confidence": 0.13080963405580368,
+      "min_confidence": 0.36041642457246786,
       "max_confidence": 1.0,
       "high_confidence_count": 17,
       "medium_confidence_count": 32,
-      "low_confidence_count": 3
+      "low_confidence_count": 2
     }
   }
 }

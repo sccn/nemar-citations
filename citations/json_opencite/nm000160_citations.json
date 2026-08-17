@@ -1,18 +1,30 @@
 {
   "dataset_id": "nm000160",
-  "num_citations": 0,
-  "date_last_updated": "2026-08-09T10:06:02.622644+00:00",
+  "num_citations": 6,
+  "date_last_updated": "2026-08-17T10:05:44.807968+00:00",
   "metadata": {
-    "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-09T10:06:02.622644+00:00",
+    "total_cumulative_citations": 7,
+    "fetch_date": "2026-08-17T10:05:44.807968+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
-    "anchor_count": 1,
+    "anchor_count": 2,
     "anchor_errors": {},
     "schema_version": "2.1",
     "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:31b",
     "anchors": [
+      {
+        "identifier": "10.1038/s41597-025-05286-0",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:31b"
+      },
       {
         "identifier": "10.82901/nemar.nm000160",
         "identifier_type": "doi",
@@ -27,23 +39,175 @@
       }
     ],
     "searched_dois": [
+      "10.1038/s41597-025-05286-0",
       "10.82901/nemar.nm000160"
     ],
-    "keywords": [],
-    "methods_description": null,
-    "funding": [],
-    "searched_accessions": [
-      "nm000160"
+    "keywords": [
+      "EEG",
+      "motor imagery",
+      "brain-computer interfaces",
+      "upper limb",
+      "motor rehabilitation",
+      "event-related desynchronization",
+      "multi-joint"
     ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 0
+    "methods_description": "EEG data were acquired using a Neuroscan SynAmps2 system with 62 channels arranged in the standard 1005 montage, referenced to the left mastoid (M1), and sampled at 1000 Hz. Participants performed eight classes of motor imagery tasks (hand open/close, wrist flexion/extension, wrist abduction/adduction, elbow pronation/supination, elbow flexion/extension, shoulder pronation/supination, shoulder abduction/adduction, shoulder flexion/extension) in response to visual cues and text instructions. Each session consisted of 8 blocks containing 40 trials (5 trials per class), yielding 320 total trials per subject with a 4-second trial duration.",
+    "funding": []
   },
-  "citation_details": [],
+  "citation_details": [
+    {
+      "title": "SingLEM: Single-Channel Large EEG Model",
+      "author": "Jamiyan Sukhbaatar, S. Imamura, Ibuki Inoue, Shoya Murakami, Kazi Mahmudul Hassan, Seungwoo Han, Ingon Chanpornpakdi, Toshihisa Tanaka",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2509.17920",
+      "cited_by": 3,
+      "abstract": "Current deep learning models for electroencephalography (EEG) are often task-specific and depend on large labeled datasets, limiting their adaptability. Although EEG foundation models seek broader applicability, many still rely on predefined multi-channel inputs, electrode-layout assumptions, or model-specific channel handling. To address these limitations, we introduce the Single-Channel Large EEG Model (SingLEM), a self-supervised foundation model whose hybrid convolutional--Transformer encoder maps each channel independently to a reusable representation capturing local and long-range temporal structure. These representations can be used individually or concatenated through late fusion. We assembled 71 public EEG datasets comprising approximately 9,200 subjects and 357,000 single-channel hours. For leakage-controlled evaluation, downstream results were obtained with a model pretrained on 68 datasets after excluding the three source datasets underlying the six tasks. A model pretraine",
+      "doi": "10.48550/arXiv.2509.17920",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-025-05286-0",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.48603477448225024,
+        "similarity_score": 0.4208093285560608,
+        "citation_text_length": 1217,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "The application and challenges of brain‐computer interfaces in the medical industry",
+      "author": "Qi Chen, Sha Zhao, Wei Wei, Tianyu Zhao, Rui He, Sishu Zhou, Zhenhang Yu",
+      "venue": "Brain‐X",
+      "year": 2025,
+      "url": "https://doi.org/10.1002/brx2.70036",
+      "cited_by": 2,
+      "abstract": "Abstract Brain‐computer interface (BCI) technology aims to create a connection pathway for exchanging information between the brain and devices with computing capabilities. This technology has become a global research focus, and many countries and regions are working to establish a BCI industry. BCIs have many potential applications, especially in the medical field. However, the complexities of non‐invasive BCIs and the implantation risks associated with invasive BCIs have limited these technologies to laboratory settings. The main challenges for the practical implementation of BCIs include the lack of foundational technologies for non‐invasive and invasive BCIs, the signal processing challenges associated with BCIs, the key components of BCIs, and the compatibility of BCI software and hardware. These shortcomings should be addressed to enhance the competitiveness of BCI products and promote the application of BCIs in medicine. In the future, if novel methods for acquiring or decoding ",
+      "doi": "10.1002/brx2.70036",
+      "pmid": null,
+      "openalex_id": "W4411880799",
+      "source_doi": "10.1038/s41597-025-05286-0",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.3347315847873688,
+        "similarity_score": 0.2898108959197998,
+        "citation_text_length": 1201,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Cerebral Neurovascular Networks May Serve as Potential Targets for Identifying Disorders of Consciousness: A Synchronous Electroencephalography and Functional Near‐Infrared Spectroscopy Study",
+      "author": "Nan Wang, Juanning Si, Yunteng He, Jiuxiang Song, Xiaoke Chai, Dongsheng Liu, Jingqi Li, Tan Zhang, Tianqing Cao, Qiheng He, Sipeng Zhu, Yitong Jia, Wenbin Ma, Yi Yang, Jizong Zhao",
+      "venue": "MedComm",
+      "year": 2025,
+      "url": "https://doi.org/10.1002/mco2.70530",
+      "cited_by": 1,
+      "abstract": "The diagnosis and management of disorders of consciousness (DoC) remain a critical challenge in clinical medicine and neuroscience. The key bottleneck is the lack of reliable biomarkers and an incomplete understanding of the pathophysiological mechanisms that underlie DoC. In view of this, a bedside-compatible, multimodal technique based on electroencephalography (EEG) and functional near-infrared spectroscopy (fNIRS) was utilized to simultaneously capture neuronal oscillations and accompanying hemodynamics, so as to explore neurovascular biomarkers that can effectively discriminate different states of DoC. Resting-state EEG-fNIRS data from 13 regions of interest (ROIs) were acquired and compared across healthy controls (HC), minimally conscious state (MCS), and unresponsive wakefulness syndrome (UWS) groups. Hemodynamics-based functional connectivity and the spectral power of neuronal activity were quantified and subsequently employed to interrogate neurovascular coupling. The results",
+      "doi": "10.1002/mco2.70530",
+      "pmid": "41394963",
+      "openalex_id": "W4417222434",
+      "source_doi": "10.1038/s41597-025-05286-0",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.3782136391103268,
+        "similarity_score": 0.3274576961994171,
+        "citation_text_length": 1417,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A Multimodal fNIRS–EEG Dataset for Unilateral Limb Motor Imagery",
+      "author": "Lufeng Feng, Baomin Xu, Haoran Zhang, Bihai Lin, Zuxuan Deng, Sidi Tao, Chenyu Liu, Shifan Jia, Li Duan, Ziyu Jia",
+      "venue": "Scientific Data",
+      "year": 2026,
+      "url": "https://doi.org/10.1038/s41597-026-07807-x",
+      "cited_by": 1,
+      "abstract": "Unilateral limb motor imagery (MI) plays an important role in upper-limb motor rehabilitation and precise control of external devices, and places higher demands on spatial resolution. However, most existing public datasets focus on binary- or four-class left-right limb paradigms that mainly exploit coarse hemispheric lateralization, and there is still a lack of multimodal datasets that simultaneously record electroencephalography (EEG) and functional near-infrared spectroscopy (fNIRS) for unilateral multi-directional MI. To address this gap, we present MIND, a public motor imagery fNIRS-EEG dataset based on a four-class directional MI paradigm of the right upper limb. The dataset includes 64-channel EEG recordings (1000 Hz) and 51-channel fNIRS recordings (47.62 Hz) from 30 participants (12 females, 18 males; aged 19.0-25.0 years). We analyze the spatiotemporal characteristics of EEG spectral power and hemodynamic responses, and provide baseline classification summaries for EEG, fNIRS,",
+      "doi": "10.1038/s41597-026-07807-x",
+      "pmid": "42575895",
+      "openalex_id": "W7202073435",
+      "source_doi": "10.1038/s41597-025-05286-0",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8035666018724443,
+        "similarity_score": 0.6957286596298218,
+        "citation_text_length": 1231,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Use of Artificial Intelligence in the Classification of Upper-Limb Motion Using EEG and EMG Signals: A Review",
+      "author": "Isabel Bandes, Yasuharu Koike",
+      "venue": "Sensors",
+      "year": 2026,
+      "url": "https://doi.org/10.3390/s26051457",
+      "cited_by": 0,
+      "abstract": "This systematic review summarizes the application of artificial intelligence (AI) in classifying upper-limb motion using Electroencephalogram (EEG) and Electromyogram (EMG) signals, focusing on the field's progression from Traditional Machine Learning (TML) to Deep Learning (DL) architectures. Following the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) guidelines, a search of PubMed, IEEEXplore, and Web of Science yielded 301 eligible studies published up to June 2025. The results indicate a change from classical classifiers like Linear Discriminant Analysis (LDA) and Support Vector Machines (SVMs) toward DL approaches. While Convolutional Neural Networks (CNNs) remain the most frequently implemented, emerging architectures, including Long Short-Term Memory (LSTM) networks and Transformers, have demonstrated remarkable performance. Despite the rise of DL, classical models remain highly relevant due to their robustness and efficiency. This review also ident",
+      "doi": "10.3390/s26051457",
+      "pmid": "41829420",
+      "openalex_id": "W7131677012",
+      "source_doi": "10.1038/s41597-025-05286-0",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5867570918798447,
+        "similarity_score": 0.5080147981643677,
+        "citation_text_length": 1184,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "DTFMformer: A Dual-Bone Dynamic Time-Frequency Masked Transformer-Based Framework for Emotion Recognition from fNIRS Signals",
+      "author": "Mengxiang Chu, Xichen Wang, Xingxing Cheng, Jialaing He, Xiaowei He, Jingjing Yu, Hongbo Guo",
+      "venue": "2025 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/bibm66473.2025.11357188",
+      "cited_by": 0,
+      "abstract": "Emotion recognition using functional near-infrared spectroscopy (fNIRS) shows increasing potential for decoding neurophysiological responses to emotional stimuli. However, existing methods suffer from local noise sensitivity, limited ability to capture global spatiotemporal patterns, and high dynamic complexity at high temporal and frequency scales. To address these challenges, we propose DTFMformer, a dual-bone dynamic time-frequency masked transformer-based framework for robust three-class emotion recognition. The temporal bone incorporates a dynamic temporal masking strategy to suppress local noise interference and temporally unstable fluctuations, and employs a transformer-based temporal auto-en/decoder to extract hierarchical temporal features with global contextual awareness. The frequency bone employs a dynamic frequency interpolation and masking strategy, which adaptively masks lowsalience spectral components based on inter-sample amplitude differences, and utilizes a transform",
+      "doi": "10.1109/bibm66473.2025.11357188",
+      "pmid": null,
+      "openalex_id": "W7126044444",
+      "source_doi": "10.1038/s41597-025-05286-0",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.46482151776552205,
+        "similarity_score": 0.4024428725242615,
+        "citation_text_length": 1330,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    }
+  ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:12:27.702950+00:00",
+    "scoring_date": "2026-08-17T11:10:07.412679+00:00",
     "dataset_text_length": 2325,
-    "num_citations_scored": 0
+    "num_citations_scored": 6,
+    "summary_stats": {
+      "mean_confidence": 0.5090208683162928,
+      "median_confidence": 0.4754281461238862,
+      "std_confidence": 0.15425592277904007,
+      "min_confidence": 0.3347315847873688,
+      "max_confidence": 0.8035666018724443,
+      "high_confidence_count": 1,
+      "medium_confidence_count": 3,
+      "low_confidence_count": 2
+    }
   }
 }
