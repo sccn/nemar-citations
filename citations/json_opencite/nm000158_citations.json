@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000158",
   "num_citations": 83,
-  "date_last_updated": "2026-08-09T10:05:54.964616+00:00",
+  "date_last_updated": "2026-08-17T10:05:37.256231+00:00",
   "metadata": {
-    "total_cumulative_citations": 423,
-    "fetch_date": "2026-08-09T10:05:54.964616+00:00",
+    "total_cumulative_citations": 439,
+    "fetch_date": "2026-08-17T10:05:37.256231+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -62,9 +62,9 @@
       "stroke rehabilitation",
       "acute stroke",
       "hand-grip imagery",
-      "BCI"
+      "signal processing"
     ],
-    "methods_description": "EEG data were collected from 50 acute stroke patients using a ZhenTec NT1 wireless multichannel system with 29 EEG channels and 2 EOG channels at 500 Hz sampling rate. Participants performed 40 motor imagery trials (20 left-hand, 20 right-hand grip imagination) guided by video and audio cues. Each 8-second trial consisted of an instruction phase, 4-second video-guided imagery phase, and rest period. Data were preprocessed using EEGLAB (MATLAB R2019b) with FIR filtering (0.5-40 Hz bandpass) and baseline removal. Electrode montage followed the 10-10 system with semi-dry Ag/AgCl electrodes referenced to CPz.",
+    "methods_description": "EEG data were collected from 50 acute stroke patients using a ZhenTec NT1 wireless multichannel system with 29 EEG channels and 2 EOG channels at 500 Hz sampling rate. Participants performed 40 trials of hand-grip motor imagery (20 left-hand, 20 right-hand) in an 8-second cue-based paradigm consisting of instruction, 4-second video-guided imagery, and rest phases. Data were preprocessed using EEGLAB (MATLAB R2019b) with FIR filtering (0.5-40 Hz bandpass), baseline removal, and artifact removal. Clinical assessments included NIHSS, MBI, and mRS scores.",
     "funding": [
       {
         "funder_name": "National Natural Science Foundation of China",
@@ -74,13 +74,7 @@
         "funder_name": "National Natural Science Foundation of China",
         "award_number": "81825008"
       }
-    ],
-    "searched_accessions": [
-      "nm000158"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 83
+    ]
   },
   "citation_details": [
     {
@@ -89,7 +83,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2510.21585",
-      "cited_by": 66,
+      "cited_by": 67,
       "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
       "doi": "10.48550/arXiv.2510.21585",
       "pmid": null,
@@ -112,7 +106,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2026,
       "url": "https://doi.org/10.1088/1741-2552/ae4455",
-      "cited_by": 31,
+      "cited_by": 33,
       "abstract": "Abstract Premise. Patterns of electrical brain activity recorded via electroencephalography (EEG) offer immense value for scientific and clinical investigations. The inability of supervised EEG encoders to learn robust EEG patterns and their over-reliance on expensive signal annotations have sparked a transition towards general-purpose self-supervised EEG encoders, i.e. EEG foundation models (EEG-FMs), for robust and scalable EEG feature extraction. However, the real-world readiness of early EEG-FMs and the rubrics for long-term research progress remain unclear. Objective. In this work, we conduct a review of ten early EEG-FMs to capture common trends and identify key directions for future development of EEG-FMs. Methods. We comparatively analyze each EEG-FM using three fundamental pillars of foundation modeling, namely the representation of input data, self-supervised modeling, and the evaluation strategy. Based on this analysis, we present a critical synthesis of EEG-FM methodology, ",
       "doi": "10.1088/1741-2552/ae4455",
       "pmid": "41666566",
@@ -135,7 +129,7 @@
       "venue": "Brain‐X",
       "year": 2025,
       "url": "https://doi.org/10.1002/brx2.70024",
-      "cited_by": 25,
+      "cited_by": 26,
       "abstract": "Abstract Brain–computer interfaces (BCIs) have advanced at a rapid pace in recent years, particularly in the medical domain. This review provides a comprehensive summary of the progress made in medical BCIs during the 2023–2024 period, covering a wide range of topics from invasive to non‐invasive techniques, and from fundamental mechanisms to clinical applications. The 2023–2024 period saw numerous research breakthroughs and clinical applications of BCI technology. As BCI hardware and software continue to evolve, and as the understanding of basic medical principles deepens, the expectation is that innovative BCI inventions will increasingly be introduced in clinical practice. Both invasive and non‐invasive BCI technologies are paving the way for broader clinical applications. It is anticipated that BCI technologies will offer greater hope for disease treatment, provide additional methods of enhancing human bodily functions, and ultimately improve the quality of life.",
       "doi": "10.1002/brx2.70024",
       "pmid": null,
@@ -158,7 +152,7 @@
       "venue": "Scientific Data",
       "year": 2025,
       "url": "https://doi.org/10.1038/s41597-025-04618-4",
-      "cited_by": 18,
+      "cited_by": 19,
       "abstract": "Motor dysfunction is one of the most significant sequelae of stroke, with lower limb impairment being a major concern for stroke patients. Motor imagery (MI) technology based on brain-computer interface (BCI) offers promising rehabilitation potential for stroke patients by activating motor-related brain areas. However, developing a robust BCI-MI system and uncovering the underlying mechanisms of neural plasticity during stroke recovery through such systems requires large-scale datasets. These datasets are particularly needed for accurate lower limb MI in stroke patients and for longitudinal data reflecting the rehabilitation process. This study addresses this gap by collecting EEG data from 27 stroke patients, covering two enhanced paradigms and three different time points. The dataset includes raw EEG signals, preprocessed data, and patient information. An initial analysis using CSP-SVM on the dataset yielded an average classification accuracy of 80.50%. We anticipate that this datase",
       "doi": "10.1038/s41597-025-04618-4",
       "pmid": "39984530",
@@ -170,6 +164,29 @@
         "confidence_score": 0.9232938873767854,
         "similarity_score": 0.7993886470794678,
         "citation_text_length": 1259,
+        "dataset_text_length": 2406,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Feature Extraction and Classification of Motor Imagery EEG Signals in Motor Imagery for Sustainable Brain–Computer Interfaces",
+      "author": "Yuyi Lu, Wenbo Wang, Baosheng Lian, Chencheng He",
+      "venue": "Sustainability",
+      "year": 2024,
+      "url": "https://doi.org/10.3390/su16156627",
+      "cited_by": 16,
+      "abstract": "Motor imagery brain–computer interface (MI-BCI) systems hold the potential to restore motor function and offer the opportunity for sustainable autonomous living for individuals with a range of motor and sensory impairments. The feature extraction and classification of motor imagery EEG signals related to motor imagery brain–computer interface systems has become a research hotspot. To address the challenges of difficulty in feature extraction and low recognition rates of motor imagery EEG signals caused by individual variations in EEG signals, a classification algorithm for EEG signals based on multi-feature fusion and the SVM-AdaBoost algorithm was proposed to improve the recognition accuracy of motor imagery EEG signals. Initially, the electroencephalography (EEG) signals are preprocessed using Finite Impulse Response (FIR) filters, and a multi-wavelet framework is constructed based on the Morlet wavelet and the Haar wavelet. Subsequently, the preprocessed signals undergo multi-wavele",
+      "doi": "10.3390/su16156627",
+      "pmid": null,
+      "openalex_id": "W4401246880",
+      "source_doi": "10.1038/s41597-023-02787-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7386507511138918,
+        "similarity_score": 0.6395244598388672,
+        "citation_text_length": 1226,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -193,29 +210,6 @@
         "confidence_score": 0.6195701801776887,
         "similarity_score": 0.5364243984222412,
         "citation_text_length": 1258,
-        "dataset_text_length": 2406,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Feature Extraction and Classification of Motor Imagery EEG Signals in Motor Imagery for Sustainable Brain–Computer Interfaces",
-      "author": "Yuyi Lu, Wenbo Wang, Baosheng Lian, Chencheng He",
-      "venue": "Sustainability",
-      "year": 2024,
-      "url": "https://doi.org/10.3390/su16156627",
-      "cited_by": 14,
-      "abstract": "Motor imagery brain–computer interface (MI-BCI) systems hold the potential to restore motor function and offer the opportunity for sustainable autonomous living for individuals with a range of motor and sensory impairments. The feature extraction and classification of motor imagery EEG signals related to motor imagery brain–computer interface systems has become a research hotspot. To address the challenges of difficulty in feature extraction and low recognition rates of motor imagery EEG signals caused by individual variations in EEG signals, a classification algorithm for EEG signals based on multi-feature fusion and the SVM-AdaBoost algorithm was proposed to improve the recognition accuracy of motor imagery EEG signals. Initially, the electroencephalography (EEG) signals are preprocessed using Finite Impulse Response (FIR) filters, and a multi-wavelet framework is constructed based on the Morlet wavelet and the Haar wavelet. Subsequently, the preprocessed signals undergo multi-wavele",
-      "doi": "10.3390/su16156627",
-      "pmid": null,
-      "openalex_id": "W4401246880",
-      "source_doi": "10.1038/s41597-023-02787-8",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7386507511138918,
-        "similarity_score": 0.6395244598388672,
-        "citation_text_length": 1226,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -250,7 +244,7 @@
       "venue": "Advanced Functional Materials",
       "year": 2025,
       "url": "https://doi.org/10.1002/adfm.202527525",
-      "cited_by": 12,
+      "cited_by": 14,
       "abstract": "ABSTRACT Electronic skin (e‐skin) is initially developed to mimic human skin but has evolved significantly, gradually surpassing natural skin's capabilities. Among various materials, hydrogels have emerged as ideal candidates for e‐skin fabrication due to their unique flexibility, biocompatibility, and skin‐like texture. This review begins by examining hydrogel material preparation methods and underlying mechanisms, then discusses material design strategies for hydrogel‐based e‐skin. We summarize the latest developments in this field and emerging trends in functionalization, with particular emphasis on applications in smart wearable devices, soft robotics, and human‐machine interfaces. Finally, we address the challenges in improving material performance and expanding application domains. This comprehensive review aims to provide researchers in the hydrogel field with novel approaches to functionalization.",
       "doi": "10.1002/adfm.202527525",
       "pmid": null,
@@ -429,6 +423,29 @@
       }
     },
     {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2605.08495",
+      "cited_by": 7,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": "10.48550/arXiv.2605.08495",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-023-02787-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5997185763716698,
+        "similarity_score": 0.5192368626594543,
+        "citation_text_length": 1326,
+        "dataset_text_length": 2406,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "General-Purpose Brain Foundation Models for Time-Series Neuroimaging Data",
       "author": "M. J. Darvishi, Bayazi Mila, Hena Ghonia, Roland Riachi, B. Aristimunha, Arian Khorasani, Amin Darabi, Guillaume Dumas, Irina Rish",
       "venue": "n/a",
@@ -475,6 +492,29 @@
       }
     },
     {
+      "title": "MI-DGHCL: Motor imagery EEG domain generalization via hyperbolic contrastive learning",
+      "author": "Junfu Chen, Dechang Pi, Feng Gao, Cheng Ma, Yang Chen",
+      "venue": "Expert Systems with Applications",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.eswa.2026.131477",
+      "cited_by": 6,
+      "abstract": null,
+      "doi": "10.1016/j.eswa.2026.131477",
+      "pmid": null,
+      "openalex_id": "W7127085728",
+      "source_doi": "10.1038/s41597-023-02787-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6595833957195282,
+        "similarity_score": 0.6281746625900269,
+        "citation_text_length": 197,
+        "dataset_text_length": 2406,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A comprehensive review of deep learning for motor imagery EEG: From healthy subjects to patients",
       "author": "Bin Jiang, Xiangkai Wang, Dongyi He, Siyu Cheng, Maoyu Liao, Duoqian Miao, Qingling Xia, Yun Zhao, Gen Li",
       "venue": "Biomedical Signal Processing and Control",
@@ -498,29 +538,6 @@
       }
     },
     {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2605.08495",
-      "cited_by": 6,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": "10.48550/arXiv.2605.08495",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02787-8",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5997185763716698,
-        "similarity_score": 0.5192368626594543,
-        "citation_text_length": 1326,
-        "dataset_text_length": 2406,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "ArEEG: an Open-Access Arabic Inner Speech EEG Dataset",
       "author": "Donia Metwalli, Antony E. Kiroles, Yousef A. Radwan, Eslam Ahmed Mohamed, M. N. Barakat, Anas Ahmed, Amr Salah Omar, Sahar Selim",
       "venue": "Scientific Data",
@@ -538,29 +555,6 @@
         "confidence_score": 0.6684411209821701,
         "similarity_score": 0.5787369012832642,
         "citation_text_length": 1235,
-        "dataset_text_length": 2406,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "MI-DGHCL: Motor imagery EEG domain generalization via hyperbolic contrastive learning",
-      "author": "Junfu Chen, Dechang Pi, Feng Gao, Cheng Ma, Yang Chen",
-      "venue": "Expert Systems with Applications",
-      "year": 2026,
-      "url": "https://doi.org/10.1016/j.eswa.2026.131477",
-      "cited_by": 5,
-      "abstract": null,
-      "doi": "10.1016/j.eswa.2026.131477",
-      "pmid": null,
-      "openalex_id": "W7127085728",
-      "source_doi": "10.1038/s41597-023-02787-8",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6595833957195282,
-        "similarity_score": 0.6281746625900269,
-        "citation_text_length": 197,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -641,7 +635,7 @@
       "venue": "Experimental Neurology",
       "year": 2026,
       "url": "https://doi.org/10.1016/j.expneurol.2026.115649",
-      "cited_by": 3,
+      "cited_by": 4,
       "abstract": "Chronic pain is highly prevalent in patients with spinal cord injury (SCI) and further degrades the quality of life in individuals already struggling with somatic, motor, and autonomic deficits. The management of SCI pain is challenging, mainly due to the lack of reliable, FDA-approved diagnostics, effective therapies, and incomplete understanding of the underlying mechanisms. These limitations have led to increased efforts dedicated to the identification of objective pain biomarkers. However, the FDA has yet to approve a physiologically relevant biomarker for the assessment of pain in populations with SCI. Given the multidimensional nature of pain, there is increasing recognition that composite biomarkers are needed. In this paper, we review several candidate pain signatures and discuss how the inclusion of multi-modal features such as self-reported questionnaires and behavioural measures should also be considered in the identification of comprehensive biomarkers of SCI pain. Since mu",
       "doi": "10.1016/j.expneurol.2026.115649",
       "pmid": "41539462",
@@ -653,6 +647,29 @@
         "confidence_score": 0.2661155064404011,
         "similarity_score": 0.23040303587913513,
         "citation_text_length": 1189,
+        "dataset_text_length": 2406,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "DualDyConvNet: Dual-Stream Dynamic Convolution Network via Parameter-Efficient Fine-Tuning for Predicting Motor Prognosis in Subacute Stroke",
+      "author": "Yun-Jeong Jang, Joohye Jeong, Yun Kwan Kim, Da‐Hye Kim, Wanjoo Park, Laehyun Kim, Yun‐Hee Kim, Minji Lee",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/tnsre.2025.3595379",
+      "cited_by": 3,
+      "abstract": "Stroke is a significant impediment on a global scale, with the prognosis for motor ability contingent on initial rehabilitation and the severity of the injury. Consequently, the predictability of early recovery potential for personalized rehabilitation is crucial. However, studies predicting the prognosis of motor ability are still limited in performance. In this study, we propose a novel framework, called dual-stream dynamic convolution network (DualDyConvNet), to predict motor recovery for two months using resting-state electroencephalogram data in the subacute phase. Specifically, the channel-stream emphasizes distinct characteristics within each frequency band, while the spatial-stream integrates information across frequency bands to capture spatial patterns. We utilized the SMC and KIST datasets consisting of subacute stroke patients, and recovery potential was quantified using Fugl-Meyer Assessment of upper limb. As a result, we achieved average root mean squared error (RMSE) of ",
+      "doi": "10.1109/tnsre.2025.3595379",
+      "pmid": "40758503",
+      "openalex_id": "W4412939536",
+      "source_doi": "10.1038/s41597-023-02787-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6521202868223192,
+        "similarity_score": 0.5646063089370728,
+        "citation_text_length": 1349,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -676,6 +693,29 @@
         "confidence_score": 0.7570170593261719,
         "similarity_score": 0.655426025390625,
         "citation_text_length": 1305,
+        "dataset_text_length": 2406,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Brain-computer interface and functional electrical stimulation: a novel approach to motor rehabilitation in CNS injury patients",
+      "author": "Zi Wang, DU Yi-min, Debin Guo, Hao Jiang, Zheng Li, Jianmin Wu, Jinghong Yang, Hongliang Li, Li Lei, Jun Fei, Zhong Li",
+      "venue": "International Journal of Surgery",
+      "year": 2025,
+      "url": "https://doi.org/10.1097/js9.0000000000004392",
+      "cited_by": 3,
+      "abstract": "Central nervous system (CNS) injuries, such as stroke and spinal cord injury, often result in persistent motor impairments that conventional rehabilitation can only partially alleviate. Recent developments in brain-computer interfaces (BCIs) combined with functional electrical stimulation (FES) have introduced a novel approach to motor rehabilitation by directly linking cortical signals with specific muscle activation. This closed-loop system compensates for disrupted neural transmission and simultaneously promotes activity-dependent plasticity, thereby supporting functional reorganisation within the CNS. Findings from pilot trials and preclinical studies indicate that BCI-FES enhances motor recovery in both upper and lower limbs, increases patient engagement, and facilitates long-term cortical reorganisation. However, significant limitations persist, such as inconsistent neural decoding, stimulation-related fatigue, and the lack of standardised treatment protocols. Moreover, ethical c",
+      "doi": "10.1097/js9.0000000000004392",
+      "pmid": "41399276",
+      "openalex_id": "W4417358245",
+      "source_doi": "10.1038/s41597-023-02787-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5098281084001065,
+        "similarity_score": 0.4414096176624298,
+        "citation_text_length": 1316,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -866,29 +906,6 @@
       }
     },
     {
-      "title": "Brain-computer interface and functional electrical stimulation: a novel approach to motor rehabilitation in CNS injury patients",
-      "author": "Zi Wang, DU Yi-min, Debin Guo, Hao Jiang, Zheng Li, Jianmin Wu, Jinghong Yang, Hongliang Li, Li Lei, Jun Fei, Zhong Li",
-      "venue": "International Journal of Surgery",
-      "year": 2025,
-      "url": "https://doi.org/10.1097/js9.0000000000004392",
-      "cited_by": 2,
-      "abstract": "Central nervous system (CNS) injuries, such as stroke and spinal cord injury, often result in persistent motor impairments that conventional rehabilitation can only partially alleviate. Recent developments in brain-computer interfaces (BCIs) combined with functional electrical stimulation (FES) have introduced a novel approach to motor rehabilitation by directly linking cortical signals with specific muscle activation. This closed-loop system compensates for disrupted neural transmission and simultaneously promotes activity-dependent plasticity, thereby supporting functional reorganisation within the CNS. Findings from pilot trials and preclinical studies indicate that BCI-FES enhances motor recovery in both upper and lower limbs, increases patient engagement, and facilitates long-term cortical reorganisation. However, significant limitations persist, such as inconsistent neural decoding, stimulation-related fatigue, and the lack of standardised treatment protocols. Moreover, ethical c",
-      "doi": "10.1097/js9.0000000000004392",
-      "pmid": "41399276",
-      "openalex_id": "W4417358245",
-      "source_doi": "10.1038/s41597-023-02787-8",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5098281084001065,
-        "similarity_score": 0.4414096176624298,
-        "citation_text_length": 1316,
-        "dataset_text_length": 2406,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Enhancing classification of a large lower-limb motor imagery EEG dataset for BCI in knee pain patients",
       "author": "Chongwen Zuo, Yi Yin, Haochong Wang, Zhiyang Zheng, Xiaoyan Ma, Yuan Yang, Jue Wang, Shan Wang, Zi‐Gang Huang, Chaoqun Ye",
       "venue": "Scientific Data",
@@ -906,29 +923,6 @@
         "confidence_score": 0.6753556108474732,
         "similarity_score": 0.5847234725952148,
         "citation_text_length": 1275,
-        "dataset_text_length": 2406,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "DualDyConvNet: Dual-Stream Dynamic Convolution Network via Parameter-Efficient Fine-Tuning for Predicting Motor Prognosis in Subacute Stroke",
-      "author": "Yun-Jeong Jang, Joohye Jeong, Yun Kwan Kim, Da‐Hye Kim, Wanjoo Park, Laehyun Kim, Yun‐Hee Kim, Minji Lee",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/tnsre.2025.3595379",
-      "cited_by": 2,
-      "abstract": "Stroke is a significant impediment on a global scale, with the prognosis for motor ability contingent on initial rehabilitation and the severity of the injury. Consequently, the predictability of early recovery potential for personalized rehabilitation is crucial. However, studies predicting the prognosis of motor ability are still limited in performance. In this study, we propose a novel framework, called dual-stream dynamic convolution network (DualDyConvNet), to predict motor recovery for two months using resting-state electroencephalogram data in the subacute phase. Specifically, the channel-stream emphasizes distinct characteristics within each frequency band, while the spatial-stream integrates information across frequency bands to capture spatial patterns. We utilized the SMC and KIST datasets consisting of subacute stroke patients, and recovery potential was quantified using Fugl-Meyer Assessment of upper limb. As a result, we achieved average root mean squared error (RMSE) of ",
-      "doi": "10.1109/tnsre.2025.3595379",
-      "pmid": "40758503",
-      "openalex_id": "W4412939536",
-      "source_doi": "10.1038/s41597-023-02787-8",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6521202868223192,
-        "similarity_score": 0.5646063089370728,
-        "citation_text_length": 1349,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1010,7 +1004,7 @@
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2506.01353",
       "cited_by": 2,
-      "abstract": "The integration of brain-computer interfaces (BCIs), in particular electroencephalography (EEG), with artificial intelligence (AI) has shown tremendous promise in decoding human cognition and behavior from neural signals. In particular, the rise of multimodal AI models have brought new possibilities that have never been imagined before. Here, we present EgoBrain --the world's first large-scale, temporally aligned multimodal dataset that synchronizes egocentric vision and EEG of human brain over extended periods of time, establishing a new paradigm for human-centered behavior analysis. This dataset comprises 61 hours of synchronized 32-channel EEG recordings and first-person video from 40 participants engaged in 29 categories of daily activities. We then developed a muiltimodal learning framework to fuse EEG and vision for action understanding, validated across both cross-subject and cross-environment challenges, achieving an action recognition accuracy of 66.70%. EgoBrain paves the way",
+      "abstract": "The integration of brain-computer interfaces (BCIs), in particular electroencephalography (EEG), with artificial intelligence (AI) has shown tremendous promise in decoding human cognition and behavior from neural signals. In particular, the rise of multimodal AI models have brought new possibilities that have never been imagined before. Here, we present EgoBrain -- the world's first large-scale, temporally aligned multimodal dataset that synchronizes first-person (egocentric) vision and EEG of human brain over extended periods of time, establishing a new paradigm for human-centered behavior analysis. This dataset comprises 61 hours of synchronized 32-channel EEG recordings and first-person video from 40 participants engaged in 29 categories of daily activities. We then developed a multimodal learning framework to fuse EEG and vision for action understanding, validated across both cross-subject and cross-environment challenges, achieving an action recognition accuracy of 66.70%. EgoBrai",
       "doi": "10.48550/arXiv.2506.01353",
       "pmid": null,
       "openalex_id": null,
@@ -1018,8 +1012,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5835620024800301,
-        "similarity_score": 0.505248486995697,
+        "confidence_score": 0.5900381666421891,
+        "similarity_score": 0.5108555555343628,
         "citation_text_length": 1214,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
@@ -1044,6 +1038,29 @@
         "confidence_score": 0.8236458706855775,
         "similarity_score": 0.7131133079528809,
         "citation_text_length": 1247,
+        "dataset_text_length": 2406,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Integrating EEG Artifact Removal with Deep Learning for Accurate Motor Imagery Classification in Acute Stroke",
+      "author": "Yamin Thwe, Dechrit Maneetham, Padma Nyoman Crisnapati",
+      "venue": "Engineering Technology & Applied Science Research",
+      "year": 2026,
+      "url": "https://doi.org/10.48084/etasr.15300",
+      "cited_by": 1,
+      "abstract": "Nowadays, the number of stroke incidents has increased, particularly in aging populations and areas with limited access to healthcare. This rise has highlighted the need for innovative assistance solutions to improve the quality of life of stroke survivors. This study aimed to address the challenges of noisy and artifact-laden Electroencephalogram (EEG) data by employing preprocessing with autonomous and semi-autonomous artifact removal techniques, including the use of EEGLab. This study focuses on the classification of EEG data for stroke patients using Long Short-Term Memory (LSTM) and Convolutional Neural Networks (CNNs). Combining the strengths of CNNs and LSTMs, a hybrid model leverages both spatial and temporal features of EEG data to improve classification accuracy. The hybrid CNN-LSTM model outperforms individual CNN and LSTM models in classifying motor imagery tasks, demonstrating its potential for robust brain-computer interface applications in stroke rehabilitation. This int",
+      "doi": "10.48084/etasr.15300",
+      "pmid": null,
+      "openalex_id": "W7128532652",
+      "source_doi": "10.1038/s41597-023-02787-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7836391326785088,
+        "similarity_score": 0.6784754395484924,
+        "citation_text_length": 1251,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1119,23 +1136,46 @@
       }
     },
     {
-      "title": "Integrating EEG Artifact Removal with Deep Learning for Accurate Motor Imagery Classification in Acute Stroke",
-      "author": "Yamin Thwe, Dechrit Maneetham, Padma Nyoman Crisnapati",
-      "venue": "Engineering Technology & Applied Science Research",
+      "title": "DG-MTLNet: A Domain Generalization Motor Imagery Classification Model With a Novel Temporal Generation Component",
+      "author": "Zhenxi Zhao, YingYu Cao, Hongbin Yu, Huixian Yu, Junfen Huang",
+      "venue": "IEEE Transactions on Industrial Informatics",
       "year": 2026,
-      "url": "https://doi.org/10.48084/etasr.15300",
+      "url": "https://doi.org/10.1109/tii.2025.3647508",
       "cited_by": 1,
-      "abstract": "Nowadays, the number of stroke incidents has increased, particularly in aging populations and areas with limited access to healthcare. This rise has highlighted the need for innovative assistance solutions to improve the quality of life of stroke survivors. This study aimed to address the challenges of noisy and artifact-laden Electroencephalogram (EEG) data by employing preprocessing with autonomous and semi-autonomous artifact removal techniques, including the use of EEGLab. This study focuses on the classification of EEG data for stroke patients using Long Short-Term Memory (LSTM) and Convolutional Neural Networks (CNNs). Combining the strengths of CNNs and LSTMs, a hybrid model leverages both spatial and temporal features of EEG data to improve classification accuracy. The hybrid CNN-LSTM model outperforms individual CNN and LSTM models in classifying motor imagery tasks, demonstrating its potential for robust brain-computer interface applications in stroke rehabilitation. This int",
-      "doi": "10.48084/etasr.15300",
+      "abstract": "Motor imagery is a core paradigm in brain–computer interface (BCI) research. Despite notable progress, the accuracy of electroencephalography (EEG) decoding remains constrained by pronounced intersubject physiological variability. Domain generalization (DG) methods offer a feasible solution as they do not require target subject data during training. However, existing DG approaches are limited by insufficient modeling of temporal dependencies, inadequate exploitation of feature diversity, and overly simplistic training strategies. To address these issues, we propose a novel temporal generation (TGen) component that integrates a temporal convolutional network with a variational autoencoder to capture temporal dependencies in EEG signals. It employs a dual-branch design combining random convolutions with covariance regularization to enhance feature diversity. Building upon TGen, we further construct the DG model, named DG-MTLNet, by incorporating cross electrode convolution and multitask ",
+      "doi": "10.1109/tii.2025.3647508",
       "pmid": null,
-      "openalex_id": "W7128532652",
+      "openalex_id": "W7123343942",
       "source_doi": "10.1038/s41597-023-02787-8",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.7836391326785088,
-        "similarity_score": 0.6784754395484924,
-        "citation_text_length": 1251,
+        "confidence_score": 0.7122976487874986,
+        "similarity_score": 0.6167079210281372,
+        "citation_text_length": 1255,
+        "dataset_text_length": 2406,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A Multimodal fNIRS–EEG Dataset for Unilateral Limb Motor Imagery",
+      "author": "Lufeng Feng, Baomin Xu, Haoran Zhang, Bihai Lin, Zuxuan Deng, Sidi Tao, Chenyu Liu, Shifan Jia, Li Duan, Ziyu Jia",
+      "venue": "Scientific Data",
+      "year": 2026,
+      "url": "https://doi.org/10.1038/s41597-026-07807-x",
+      "cited_by": 1,
+      "abstract": "Unilateral limb motor imagery (MI) plays an important role in upper-limb motor rehabilitation and precise control of external devices, and places higher demands on spatial resolution. However, most existing public datasets focus on binary- or four-class left-right limb paradigms that mainly exploit coarse hemispheric lateralization, and there is still a lack of multimodal datasets that simultaneously record electroencephalography (EEG) and functional near-infrared spectroscopy (fNIRS) for unilateral multi-directional MI. To address this gap, we present MIND, a public motor imagery fNIRS-EEG dataset based on a four-class directional MI paradigm of the right upper limb. The dataset includes 64-channel EEG recordings (1000 Hz) and 51-channel fNIRS recordings (47.62 Hz) from 30 participants (12 females, 18 males; aged 19.0-25.0 years). We analyze the spatiotemporal characteristics of EEG spectral power and hemodynamic responses, and provide baseline classification summaries for EEG, fNIRS,",
+      "doi": "10.1038/s41597-026-07807-x",
+      "pmid": "42575895",
+      "openalex_id": "W7202073435",
+      "source_doi": "10.1038/s41597-023-02787-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8087317818403245,
+        "similarity_score": 0.7002006769180298,
+        "citation_text_length": 1231,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1257,29 +1297,6 @@
       }
     },
     {
-      "title": "DG-MTLNet: A Domain Generalization Motor Imagery Classification Model With a Novel Temporal Generation Component",
-      "author": "Zhenxi Zhao, Yingyu Cao, Hongbin Yu, Huixian Yu, Junfen Huang",
-      "venue": "IEEE Transactions on Industrial Informatics",
-      "year": 2026,
-      "url": "https://doi.org/10.1109/TII.2025.3647508",
-      "cited_by": 1,
-      "abstract": "Motor imagery is a core paradigm in brain–computer interface (BCI) research. Despite notable progress, the accuracy of electroencephalography (EEG) decoding remains constrained by pronounced intersubject physiological variability. Domain generalization (DG) methods offer a feasible solution as they do not require target subject data during training. However, existing DG approaches are limited by insufficient modeling of temporal dependencies, inadequate exploitation of feature diversity, and overly simplistic training strategies. To address these issues, we propose a novel temporal generation (TGen) component that integrates a temporal convolutional network with a variational autoencoder to capture temporal dependencies in EEG signals. It employs a dual-branch design combining random convolutions with covariance regularization to enhance feature diversity. Building upon TGen, we further construct the DG model, named DG-MTLNet, by incorporating cross electrode convolution and multitask ",
-      "doi": "10.1109/TII.2025.3647508",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02787-8",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7138058692216873,
-        "similarity_score": 0.6180137395858765,
-        "citation_text_length": 1255,
-        "dataset_text_length": 2406,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Laya: A LeJEPA Approach to EEG via Latent Prediction over Reconstruction",
       "author": "S. Panchavati, Uddhav Panchavati, Corey W. Arnold, W. Speier",
       "venue": "ArXiv",
@@ -1297,29 +1314,6 @@
         "confidence_score": 0.5669278277456762,
         "similarity_score": 0.4908466041088104,
         "citation_text_length": 1176,
-        "dataset_text_length": 2406,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "A Multimodal fNIRS-EEG Dataset for Unilateral Limb Motor Imagery",
-      "author": "Lufeng Feng, Baomin Xu, Haoran Zhang, Bihai Lin, Zuxuan Deng, Sidi Tao, Chenyu Liu, Shifan Jia, Li Duan, Ziyu Jia",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2602.04299",
-      "cited_by": 1,
-      "abstract": "Unilateral limb motor imagery (MI) plays an important role in upper-limb motor rehabilitation and precise control of external devices, and places higher demands on spatial resolution. However, most existing public datasets focus on binary- or four-class left-right limb paradigms that mainly exploit coarse hemispheric lateralization, and there is still a lack of multimodal datasets that simultaneously record EEG and fNIRS for unilateral multi-directional MI. To address this gap, we constructed MIND, a public motor imagery fNIRS-EEG dataset based on a four-class directional MI paradigm of the right upper limb. The dataset includes 64-channel EEG recordings (1000 Hz) and 51-channel fNIRS recordings (47.62 Hz) from 30 participants (12 females, 18 males; aged 19.0-25.0 years). We analyse the spatiotemporal characteristics of EEG spectral power and hemodynamic responses, and validate the potential advantages of hybrid fNIRS-EEG BCIs in terms of classification accuracy. We expect that this da",
-      "doi": "10.48550/arXiv.2602.04299",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02787-8",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7956202876567842,
-        "similarity_score": 0.6888487339019775,
-        "citation_text_length": 1221,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1832,23 +1826,23 @@
       }
     },
     {
-      "title": "B[FM]$^2$: Brain Foundation Model via Flow Matching with SplitUNet",
+      "title": "B[FM]2: Brain Foundation Model via Flow Matching with SplitUNet",
       "author": "Jaedong Hwang, Kathleen Zhang, Wei Dai, Konstantinos Kontras, M. Vanmarcke, M. D. Vos, I. Fiete, P. Liang",
-      "venue": "n/a",
+      "venue": "ArXiv",
       "year": 2026,
-      "url": "n/a",
+      "url": "https://doi.org/10.48550/arXiv.2606.20812",
       "cited_by": 0,
       "abstract": "EEG foundation models can learn generalizable representations from large-scale EEG corpora to enable single-backbone transfer across diverse clinical and brain-computer interface tasks. Existing models typically discretize the continuous multi-channel EEG waveform into patches or codebook tokens and train a transformer with masked self-supervision. Recognizing that this discretization fragments continuous brain rhythms and obscures fine-grained temporal dynamics, we present B[FM]$^2$(Brain Foundation Model via Flow Matching), whose inductive bias aligns with the data by pretraining directly on the raw signal using continuous-time flow matching without patches, tokenization, or masking. However, multi-channel EEG signals pose an architectural challenge for flow matching: time is densely sampled and highly autocorrelated (thousands of timepoints), while the electrode axis is short (tens of channels) at distinct scalp positions. To address this time-electrode asymmetry, we introduce Split",
-      "doi": null,
+      "doi": "10.48550/arXiv.2606.20812",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.1038/s41597-023-02787-8",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6396601885557175,
-        "similarity_score": 0.5538183450698853,
-        "citation_text_length": 1213,
+        "confidence_score": 0.638441867530346,
+        "similarity_score": 0.5527635216712952,
+        "citation_text_length": 1212,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1952,7 +1946,7 @@
       "venue": "Scientific Data",
       "year": 2024,
       "url": "https://doi.org/10.1038/s41597-023-02787-8",
-      "cited_by": 62,
+      "cited_by": 64,
       "abstract": "The brain-computer interface (BCI) is a technology that involves direct communication with parts of the brain and has evolved rapidly in recent years; it has begun to be used in clinical practice, such as for patient rehabilitation. Patient electroencephalography (EEG) datasets are critical for algorithm optimization and clinical applications of BCIs but are rare at present. We collected data from 50 acute stroke patients with wireless portable saline EEG devices during the performance of two tasks: 1) imagining right-handed movements and 2) imagining left-handed movements. The dataset consists of four types of data: 1) the motor imagery instructions, 2) raw recording data, 3) pre-processed data after removing artefacts and other manipulations, and 4) patient characteristics. This is the first open dataset to address left- and right-handed motor imagery in acute stroke patients. We believe that the dataset will be very helpful for analysing brain activation and designing decoding metho",
       "doi": "10.1038/s41597-023-02787-8",
       "pmid": "38272904",
@@ -1995,13 +1989,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:12:20.140370+00:00",
+    "scoring_date": "2026-08-17T11:10:01.101224+00:00",
     "dataset_text_length": 2406,
     "num_citations_scored": 83,
     "summary_stats": {
-      "mean_confidence": 0.6706658094726414,
+      "mean_confidence": 0.6708689554592214,
       "median_confidence": 0.6770456466078759,
-      "std_confidence": 0.14297965374776575,
+      "std_confidence": 0.14307686634318226,
       "min_confidence": 0.2661155064404011,
       "max_confidence": 1.0,
       "high_confidence_count": 39,

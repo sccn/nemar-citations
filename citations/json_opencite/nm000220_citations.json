@@ -1,137 +1,28 @@
 {
   "dataset_id": "nm000220",
-  "num_citations": 2,
-  "date_last_updated": "2026-08-09T10:12:52.561445+00:00",
+  "num_citations": 0,
+  "date_last_updated": "2026-08-17T10:12:18.589092+00:00",
   "metadata": {
-    "total_cumulative_citations": 3,
-    "fetch_date": "2026-08-09T10:12:52.561445+00:00",
+    "total_cumulative_citations": 0,
+    "fetch_date": "2026-08-17T10:12:18.589092+00:00",
     "processing_version": "1.0",
-    "fetch_status": "success",
-    "anchor_count": 2,
+    "fetch_status": "other",
+    "anchor_count": 0,
     "anchor_errors": {},
     "schema_version": "2.1",
     "discovery_backend": "opencite",
-    "anchor_judgment_model": "gemma4:e4b",
-    "anchors": [
-      {
-        "identifier": "10.48550/arxiv.2202.12950",
-        "identifier_type": "doi",
-        "source_relation": "IsDerivedFrom",
-        "classification": "data_paper",
-        "kept": true,
-        "paper_title": "2021 BEETL Competition: Advancing Transfer Learning for Subject Independence &amp; Heterogenous EEG Data Sets",
-        "paper_year": 2022,
-        "paper_venue": "arXiv (Cornell University)",
-        "reason": "The paper title explicitly mentions '2021 BEETL Competition' and 'Advancing Transfer Learning,' directly matching the dataset's name and purpose.",
-        "judgment_model": "gemma4:e4b"
-      },
-      {
-        "identifier": "10.82901/nemar.nm000220",
-        "identifier_type": "doi",
-        "source_relation": "References",
-        "classification": null,
-        "kept": true,
-        "paper_title": null,
-        "paper_year": null,
-        "paper_venue": null,
-        "reason": null,
-        "judgment_model": "gemma4:e4b"
-      }
-    ],
-    "searched_dois": [
-      "10.48550/arxiv.2202.12950",
-      "10.82901/nemar.nm000220"
-    ],
-    "keywords": [
-      "motor imagery",
-      "EEG",
-      "Brain-Computer Interfaces",
-      "transfer learning",
-      "domain adaptation",
-      "cross-dataset generalization",
-      "subject independence",
-      "machine learning",
-      "neuroscience"
-    ],
-    "methods_description": "EEG data were acquired at 500 Hz from 63 channels using standard 1005 montage during an online BCI racing game (Cybathlon2020IC) with visual feedback. The experimental protocol comprised 5 training races and 10 testing races per subject, with each trial lasting 4 seconds. Motor imagery tasks included four classes: rest, left hand, right hand, and feet. Online preprocessing included 1-100 Hz bandpass filtering and 50 Hz notch filtering. Data underwent offline preprocessing with identical bandpass (1-100 Hz) and notch (50 Hz) filtering before release. The dataset was part of the BEETL Competition Task 2, which focused on transfer learning evaluation using multiple source datasets (Cho2017, BNCI2014, PhysionetMI) as external benchmarks to assess generalization to target datasets with different EEG setups and electrode configurations.",
-    "funding": [
-      {
-        "funder_name": "NeurIPS 2021 BEETL Competition"
-      },
-      {
-        "funder_name": "NeurIPS 2021 BEETL Competition",
-        "award_number": "Task 2 - Motor Imagery"
-      }
-    ],
-    "searched_accessions": [
-      "nm000220"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 2
+    "anchor_judgment_model": null,
+    "anchors": [],
+    "searched_dois": [],
+    "keywords": [],
+    "methods_description": null,
+    "funding": []
   },
-  "citation_details": [
-    {
-      "title": "Benchmarking brain–computer interface algorithms: Riemannian approaches vs convolutional neural networks",
-      "author": "Manuel Eder, Jiachen Xu, Moritz Grosse‐Wentrup",
-      "venue": "Journal of Neural Engineering",
-      "year": 2024,
-      "url": "https://doi.org/10.1088/1741-2552/ad6793",
-      "cited_by": 3,
-      "abstract": "Abstract Objective. To date, a comprehensive comparison of Riemannian decoding methods with deep convolutional neural networks for EEG-based brain–computer interfaces remains absent from published work. We address this research gap by using MOABB, The Mother Of All BCI Benchmarks, to compare novel convolutional neural networks to state-of-the-art Riemannian approaches across a broad range of EEG datasets, including motor imagery, P300, and steady-state visual evoked potentials paradigms. Approach. We systematically evaluated the performance of convolutional neural networks, specifically EEGNet, shallow ConvNet, and deep ConvNet, against well-established Riemannian decoding methods using MOABB processing pipelines. This evaluation included within-session, cross-session, and cross-subject methods, to provide a practical analysis of model effectiveness and to find an overall solution that performs well across different experimental settings. Main results. We find no significant difference",
-      "doi": "10.1088/1741-2552/ad6793",
-      "pmid": "39053485",
-      "openalex_id": "W4400969643",
-      "source_doi": "10.48550/arxiv.2202.12950",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5795996537804604,
-        "similarity_score": 0.5018178820610046,
-        "citation_text_length": 1218,
-        "dataset_text_length": 2310,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "BEETL Competition 2021 Motor Imagery Dataset A — transfer learning benchmark",
-      "author": "Xiaoxi Wei, A. Aldo Faisal, Moritz Grosse-Wentrup, Alexandre Gramfort, Sylvain Chevallier, Vinay Jayaram, Camille Jeunet, Stylianos Bakas, Siegfried Ludwig, Konstantinos Barmpas, Mehdi Bahri, Yannis Panagakis, Nikolaos Laskaris, Dimitrios A. Adamos, Stefanos Zafeiriou, William C. Duong, Stephen M. Gordon, Vernon J. Lawhern, Maciej Śliwowski, Vincent Rouanne, Piotr Tempczyk",
-      "venue": "UC San Diego",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000220.v1.0.1",
-      "cited_by": 0,
-      "abstract": "Beetl2021-A is a preprocessed motor imagery EEG dataset from the BEETL Competition Task 2 (NeurIPS 2021), comprising data from 3 healthy subjects collected during an online racing game (Cybathlon2020IC). The dataset contains 63-channel EEG recordings at 500 Hz with four-class motor imagery tasks (rest, left hand, right hand, feet) and serves as a benchmark for evaluating transfer learning and domain adaptation methods across heterogeneous EEG datasets and subjects. This dataset is part of a larger competition focused on advancing transfer learning for subject independence and cross-dataset generalization in brain-computer interfacing.",
-      "doi": "10.82901/nemar.nm000220.v1.0.1",
-      "pmid": null,
-      "openalex_id": "W7165621908",
-      "source_doi": "10.48550/arxiv.2202.12950",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 1.0,
-        "similarity_score": 0.9586674571037292,
-        "citation_text_length": 1144,
-        "dataset_text_length": 2310,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    }
-  ],
+  "citation_details": [],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:18:43.289731+00:00",
+    "scoring_date": "2026-08-17T11:15:29.412358+00:00",
     "dataset_text_length": 2310,
-    "num_citations_scored": 2,
-    "summary_stats": {
-      "mean_confidence": 0.7897998268902302,
-      "median_confidence": 0.7897998268902302,
-      "std_confidence": 0.2102001731097698,
-      "min_confidence": 0.5795996537804604,
-      "max_confidence": 1.0,
-      "high_confidence_count": 1,
-      "medium_confidence_count": 1,
-      "low_confidence_count": 0
-    }
+    "num_citations_scored": 0
   }
 }

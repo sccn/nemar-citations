@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000130",
   "num_citations": 32,
-  "date_last_updated": "2026-08-09T10:02:58.390951+00:00",
+  "date_last_updated": "2026-08-17T10:02:33.765346+00:00",
   "metadata": {
-    "total_cumulative_citations": 272,
-    "fetch_date": "2026-08-09T10:02:58.390951+00:00",
+    "total_cumulative_citations": 284,
+    "fetch_date": "2026-08-17T10:02:33.765346+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -86,10 +86,9 @@
       "elderly",
       "aging",
       "benchmark dataset",
-      "JFPM",
-      "speller"
+      "visual evoked potentials"
     ],
-    "methods_description": "EEG data were acquired using a 64-channel Synamps2 system (Neuroscan) at 1000 Hz sampling rate with standard 10-05 electrode montage referenced to Cz. Participants performed a 9-target SSVEP speller task with visual feedback. Each trial consisted of a 4-second target cue followed by 5 seconds of SSVEP stimulation and 1 second rest. Stimuli used joint frequency and phase modulation (JFPM) with frequencies from 8.0 to 12.0 Hz in 0.5 Hz steps. Data were recorded in BIDS-formatted GDF files with event annotations marking stimulus onsets.",
+    "methods_description": "EEG data were acquired at 1000 Hz using a 64-channel Synamps2 system (Neuroscan) with standard 10-05 montage referenced to Cz. Participants completed 7 blocks of 9 trials each, with each trial consisting of a 4-second target cue followed by 5 seconds of SSVEP stimulation and 1 second rest. Nine SSVEP targets were presented in a 3×3 matrix using joint frequency and phase modulation with frequencies from 8.0 to 12.0 Hz (0.5 Hz step).",
     "funding": [
       {
         "funder_name": "Doctoral Brain+X Seed Grant Program of Tsinghua University"
@@ -107,13 +106,7 @@
         "award_number": "XDB32040200",
         "award_title": "Strategic Priority Research Program"
       }
-    ],
-    "searched_accessions": [
-      "nm000130"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 32
+    ]
   },
   "citation_details": [
     {
@@ -122,7 +115,7 @@
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2022,
       "url": "https://doi.org/10.1109/tbme.2022.3227036",
-      "cited_by": 49,
+      "cited_by": 51,
       "abstract": "OBJECTIVE: Currently, ensemble task-related component analysis (eTRCA) and task discriminative component analysis (TDCA) are the state-of-the-art algorithms for steady-state visual evoked potential (SSVEP)-based brain-computer interfaces (BCIs). However, training the BCIs requires multiple calibration trials. With insufficient calibration data, the accuracy of the BCI will degrade, or even become invalid with only one calibration trial. However, collecting a large amount of electroencephalography (EEG) data for calibration is a time-consuming and laborious process, which hinders the practical use of eTRCA and TDCA. METHODS: This study proposed a novel method, namely Source Aliasing Matrix Estimation (SAME), to augment the calibration data for SSVEP-BCIs. SAME could generate artificial EEG trials with the featured SSVEPs. Its effectiveness was evaluated using two public datasets (i.e., Benchmark, BETA). RESULTS: When combined with SAME, both eTRCA and TDCA had significantly improved per",
       "doi": "10.1109/tbme.2022.3227036",
       "pmid": "37015587",
@@ -145,7 +138,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2023,
       "url": "https://doi.org/10.1109/tnsre.2023.3243786",
-      "cited_by": 46,
+      "cited_by": 49,
       "abstract": "The brain-computer interfaces (BCIs) based on steady-state visual evoked potential (SSVEP) have been extensively explored due to their advantages in terms of high communication speed and smaller calibration time. The visual stimuli in the low- and medium-frequency ranges are adopted in most of the existing studies for eliciting SSVEPs. However, there is a need to further improve the comfort of these systems. The high-frequency visual stimuli have been used to build BCI systems and are generally considered to significantly improve the visual comfort, but their performance is relatively low. The distinguishability of 16-class SSVEPs encoded by the three frequency ranges, i.e., 31-34.75 Hz with an interval of 0.25 Hz, 31-38.5 Hz with an interval of 0.5 Hz, 31-46 Hz with an interval of 1 Hz, is explored in this study. We compare classification accuracy and information transfer rate (ITR) of the corresponding BCI system. According to the optimized frequency range, this study builds an onlin",
       "doi": "10.1109/tnsre.2023.3243786",
       "pmid": "37022899",
@@ -168,7 +161,7 @@
       "venue": "Scientific Data",
       "year": 2024,
       "url": "https://doi.org/10.1038/s41597-024-03023-7",
-      "cited_by": 30,
+      "cited_by": 32,
       "abstract": "A steady-state visual evoked potential (SSVEP)-based brain-computer interface (BCI) system relies on the photic driving response to effectively elicit characteristic electroencephalogram (EEG) signals. However, traditional visual stimuli mainly adopt high-contrast black-and-white flickering stimulations, which are easy to cause visual fatigue. This paper presents an SSVEP dataset acquired at a wide frequency range from 1 to 60 Hz with an interval of 1 Hz using flickering stimuli under two different modulation depths. This dataset contains 64-channel EEG data from 30 healthy subjects when they fixated on a single flickering stimulus. The stimulus was rendered on an LCD display with a refresh rate of 240 Hz. Initially, the dataset was rigorously validated through comprehensive data analysis to investigate SSVEP responses and user experiences. Subsequently, BCI performance was evaluated through offline simulations of frequency-coded and phase-coded BCI paradigms. This dataset provides com",
       "doi": "10.1038/s41597-024-03023-7",
       "pmid": "38351064",
@@ -237,7 +230,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2023,
       "url": "https://doi.org/10.1088/1741-2552/ad0b8f",
-      "cited_by": 15,
+      "cited_by": 17,
       "abstract": "Abstract Objective . Steady-state visual evoked potential (SSVEP)-based brain-computer interface (BCI) is a promising technology that can achieve high information transfer rate (ITR) with supervised algorithms such as ensemble task-related component analysis (eTRCA) and task-discriminant component analysis (TDCA). However, training individual models requires a tedious and time-consuming calibration process, which hinders the real-life use of SSVEP-BCIs. A recent data augmentation method, called source aliasing matrix estimation (SAME), can generate new EEG samples from a few calibration trials. But SAME does not exploit the information across stimuli as well as only reduces the number of calibration trials per command, so it still has some limitations. Approach . This study proposes an extended version of SAME, called multi-stimulus SAME (msSAME), which exploits the similarity of the aliasing matrix across frequencies to enhance the performance of SSVEP-BCI with insufficient calibratio",
       "doi": "10.1088/1741-2552/ad0b8f",
       "pmid": "37948768",
@@ -301,6 +294,29 @@
       }
     },
     {
+      "title": "Closed-Loop Brain Machine Interface System for In-Vehicle Function Controls Using Head-Up Display and Deep Learning Algorithm",
+      "author": "Hossein Hamidi Shishavan, Mohammad Mahdi Behzadi, Danny J. Lohan, Ercan M. Dede, In-Soo Kim",
+      "venue": "IEEE Transactions on Intelligent Transportation Systems",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/tits.2023.3345855",
+      "cited_by": 10,
+      "abstract": "Human-vehicle interfaces have evolved with technologies such as touchscreens, voice commands, and advanced steering wheels with control panels. However, these technologies can increase the driver’s cognitive workload and distraction, potentially compromising road safety. Brain-machine interfaces (BMI) offer an alternative way of controlling in-vehicle features with minimal distraction. This study presents a closed-loop steady-state visual evoked potentials (SSVEP) based BMI for controlling in-vehicle features via a windshield head-up display to control multiple vehicle features such as music, temperature, settings, and navigation system. The custom software synchronizes visual stimuli, processes electroencephalogram (EEG) signals, and selects target icons in real-time. A convolutional neural network (CNN) based on the SE-ResNet architecture efficiently detects SSVEPs and the driver’s intended target icon in under 1 second. Comparative evaluations against traditional and deep learning m",
+      "doi": "10.1109/tits.2023.3345855",
+      "pmid": null,
+      "openalex_id": "W4390933607",
+      "source_doi": "10.1038/s41597-022-01372-9",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4530205258727074,
+        "similarity_score": 0.39222556352615356,
+        "citation_text_length": 1310,
+        "dataset_text_length": 2310,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Dataset Evaluation Method and Application for Performance Testing of SSVEP-BCI Decoding Algorithm",
       "author": "Liyan Liang, Qian Zhang, Jie Zhou, Wenyu Li, Xiaorong Gao",
       "venue": "Sensors",
@@ -324,29 +340,6 @@
       }
     },
     {
-      "title": "Closed-Loop Brain Machine Interface System for In-Vehicle Function Controls Using Head-Up Display and Deep Learning Algorithm",
-      "author": "Hossein Hamidi Shishavan, Mohammad Mahdi Behzadi, Danny J. Lohan, Ercan M. Dede, In-Soo Kim",
-      "venue": "IEEE Transactions on Intelligent Transportation Systems",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/tits.2023.3345855",
-      "cited_by": 9,
-      "abstract": "Human-vehicle interfaces have evolved with technologies such as touchscreens, voice commands, and advanced steering wheels with control panels. However, these technologies can increase the driver’s cognitive workload and distraction, potentially compromising road safety. Brain-machine interfaces (BMI) offer an alternative way of controlling in-vehicle features with minimal distraction. This study presents a closed-loop steady-state visual evoked potentials (SSVEP) based BMI for controlling in-vehicle features via a windshield head-up display to control multiple vehicle features such as music, temperature, settings, and navigation system. The custom software synchronizes visual stimuli, processes electroencephalogram (EEG) signals, and selects target icons in real-time. A convolutional neural network (CNN) based on the SE-ResNet architecture efficiently detects SSVEPs and the driver’s intended target icon in under 1 second. Comparative evaluations against traditional and deep learning m",
-      "doi": "10.1109/tits.2023.3345855",
-      "pmid": null,
-      "openalex_id": "W4390933607",
-      "source_doi": "10.1038/s41597-022-01372-9",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4530205258727074,
-        "similarity_score": 0.39222556352615356,
-        "citation_text_length": 1310,
-        "dataset_text_length": 2310,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "A Least-Square Unified Framework for Spatial Filtering in SSVEP-Based BCIs",
       "author": "Ze Wang, Lu Shen, Yi Yang, Yueqi Ma, Chi Man Wong, Zige Liu, Cuiyun Lin, Chi Tin Hon, Tao Qian, Feng Wan",
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
@@ -364,6 +357,29 @@
         "confidence_score": 0.6327954724431039,
         "similarity_score": 0.5478748679161072,
         "citation_text_length": 1283,
+        "dataset_text_length": 2310,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Inter- and Intra-Subject transfer learning for High-Performance SSVEP-BCI with extremely little calibration effort",
+      "author": "Hui Li, Guanghua Xu, Zejin Li, Kai Zhang, Hanli Jiang, Xiaobing Guo, Yongzhen Zhu, Xuwei Yang, Yihua Zhao, Chengcheng Han",
+      "venue": "Expert Systems with Applications",
+      "year": 2025,
+      "url": "https://doi.org/10.1016/j.eswa.2025.127208",
+      "cited_by": 6,
+      "abstract": null,
+      "doi": "10.1016/j.eswa.2025.127208",
+      "pmid": null,
+      "openalex_id": "W4408286755",
+      "source_doi": "10.1038/s41597-022-01372-9",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6206072241067887,
+        "similarity_score": 0.5910544991493225,
+        "citation_text_length": 294,
         "dataset_text_length": 2310,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -433,29 +449,6 @@
         "confidence_score": 0.5573871356248856,
         "similarity_score": 0.4825862646102905,
         "citation_text_length": 1186,
-        "dataset_text_length": 2310,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Inter- and Intra-Subject transfer learning for High-Performance SSVEP-BCI with extremely little calibration effort",
-      "author": "Hui Li, Guanghua Xu, Zejin Li, Kai Zhang, Hanli Jiang, Xiaobing Guo, Yongzhen Zhu, Xuwei Yang, Yihua Zhao, Chengcheng Han",
-      "venue": "Expert Systems with Applications",
-      "year": 2025,
-      "url": "https://doi.org/10.1016/j.eswa.2025.127208",
-      "cited_by": 4,
-      "abstract": null,
-      "doi": "10.1016/j.eswa.2025.127208",
-      "pmid": null,
-      "openalex_id": "W4408286755",
-      "source_doi": "10.1038/s41597-022-01372-9",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6206072241067887,
-        "similarity_score": 0.5910544991493225,
-        "citation_text_length": 294,
         "dataset_text_length": 2310,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -855,7 +848,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:09:27.891543+00:00",
+    "scoring_date": "2026-08-17T11:07:17.602833+00:00",
     "dataset_text_length": 2310,
     "num_citations_scored": 32,
     "summary_stats": {

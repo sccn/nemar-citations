@@ -1,13 +1,13 @@
 {
   "dataset_id": "nm000259",
   "num_citations": 30,
-  "date_last_updated": "2026-08-09T10:16:34.350076+00:00",
+  "date_last_updated": "2026-08-17T10:15:18.764973+00:00",
   "metadata": {
-    "total_cumulative_citations": 769,
-    "fetch_date": "2026-08-09T10:16:34.350076+00:00",
+    "total_cumulative_citations": 773,
+    "fetch_date": "2026-08-17T10:15:18.764973+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
-    "anchor_count": 2,
+    "anchor_count": 3,
     "anchor_errors": {},
     "schema_version": "2.1",
     "discovery_backend": "opencite",
@@ -23,6 +23,18 @@
         "paper_year": 2017,
         "paper_venue": "PLoS ONE",
         "reason": "The candidate paper, 'A comparison of stimulus types in online classification of the P300 speller using language models,' directly describes the P300 speller study and its methods, matching the dataset's content.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.7910/dvn/phhhb6",
+        "identifier_type": "doi",
+        "source_relation": "IsVersionOf",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
         "judgment_model": "gemma4:e4b"
       },
       {
@@ -64,29 +76,22 @@
     ],
     "searched_dois": [
       "10.1371/journal.pone.0175382",
+      "10.7910/dvn/phhhb6",
       "10.82901/nemar.nm000259"
     ],
     "keywords": [
-      "Event-Related Potentials, P300",
       "EEG",
+      "Event-Related Potentials, P300",
       "brain-computer interface",
       "speller paradigm",
       "visual stimulus",
       "online classification",
       "language models",
-      "BCI",
-      "row-column speller",
       "famous faces",
-      "inverted faces"
+      "stimulus comparison"
     ],
-    "methods_description": "EEG data were acquired at 256 Hz sampling rate from 32 channels using a g.tec amplifier with left ear reference and AFz ground. Participants performed a P300 row-column speller task with a 6×6 character matrix. Two stimulus conditions were tested: famous face overlays and inverted faces. Stimuli were presented with an inter-stimulus interval of 25 ms and stimulus onset asynchrony of 125 ms. Visual feedback was provided during online classification.",
-    "funding": [],
-    "searched_accessions": [
-      "nm000259"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 30
+    "methods_description": "EEG data were acquired using a g.tec amplifier at 256 Hz sampling rate from 32 channels arranged in a standard 1005 montage, with left ear reference and AFz ground. Participants performed an online P300 row-column speller task with a 6×6 character matrix under two stimulus conditions (famous faces and inverted faces). Visual feedback was provided. Inter-stimulus interval was 25 ms with stimulus onset asynchrony of 125 ms. Trial duration was 1.0 s with approximately 1200 flashes per training run.",
+    "funding": []
   },
   "citation_details": [
     {
@@ -141,7 +146,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2021,
       "url": "https://doi.org/10.3389/fnhum.2021.772837",
-      "cited_by": 35,
+      "cited_by": 36,
       "abstract": "Brain-Computer Interface (BCI) is a technology that uses electroencephalographic (EEG) signals to control external devices, such as Functional Electrical Stimulation (FES). Visual BCI paradigms based on P300 and Steady State Visually Evoked potentials (SSVEP) have shown high potential for clinical purposes. Numerous studies have been published on P300- and SSVEP-based non-invasive BCIs, but many of them present two shortcomings: (1) they are not aimed for motor rehabilitation applications, and (2) they do not report in detail the artificial intelligence (AI) methods used for classification, or their performance metrics. To address this gap, in this paper the PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses) methodology was applied to prepare a systematic literature review (SLR). Papers older than 10 years, repeated or not related to a motor rehabilitation application, were excluded. Of all the studies, 51.02% referred to theoretical analysis of classification ",
       "doi": "10.3389/fnhum.2021.772837",
       "pmid": "34899220",
@@ -164,7 +169,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2020,
       "url": "https://doi.org/10.3389/fnins.2020.589659",
-      "cited_by": 34,
+      "cited_by": 35,
       "abstract": "This work presents the design, implementation, and evaluation of a P300-based brain-machine interface (BMI) developed to control a robotic hand-orthosis. The purpose of this system is to assist patients with amyotrophic lateral sclerosis (ALS) who cannot open and close their hands by themselves. The user of this interface can select one of six targets, which represent the flexion-extension of one finger independently or the movement of the five fingers simultaneously. We tested offline and online our BMI on eighteen healthy subjects (HS) and eight ALS patients. In the offline test, we used the calibration data of each participant recorded in the experimental sessions to estimate the accuracy of the BMI to classify correctly single epochs as target or non-target trials. On average, the system accuracy was 78.7% for target epochs and 85.7% for non-target trials. Additionally, we observed significant P300 responses in the calibration recordings of all the participants, including the ALS p",
       "doi": "10.3389/fnins.2020.589659",
       "pmid": "33328860",
@@ -320,6 +325,29 @@
       }
     },
     {
+      "title": "An innovative P300 speller brain–computer interface design: Easy screen",
+      "author": "Abdullah Bilal Aygün, Ahmet Reşit Kavsaoğlu",
+      "venue": "Biomedical Signal Processing and Control",
+      "year": 2022,
+      "url": "https://doi.org/10.1016/j.bspc.2022.103593",
+      "cited_by": 13,
+      "abstract": null,
+      "doi": "10.1016/j.bspc.2022.103593",
+      "pmid": null,
+      "openalex_id": "W4214527997",
+      "source_doi": "10.1371/journal.pone.0175382",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7082893878221512,
+        "similarity_score": 0.6745613217353821,
+        "citation_text_length": 181,
+        "dataset_text_length": 2421,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Evaluation of flashing stimuli shape and colour heterogeneity using a P300 brain-computer interface speller",
       "author": "Álvaro Fernández-Rodríguez, Francisco Velasco-Álvarez, María Teresa Medina-Juliá, Ricardo Ron-Angevín",
       "venue": "Neuroscience Letters",
@@ -337,29 +365,6 @@
         "confidence_score": 0.7702587723731995,
         "similarity_score": 0.7002352476119995,
         "citation_text_length": 1267,
-        "dataset_text_length": 2421,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "An innovative P300 speller brain–computer interface design: Easy screen",
-      "author": "Abdullah Bilal Aygün, Ahmet Reşit Kavsaoğlu",
-      "venue": "Biomedical Signal Processing and Control",
-      "year": 2022,
-      "url": "https://doi.org/10.1016/j.bspc.2022.103593",
-      "cited_by": 12,
-      "abstract": null,
-      "doi": "10.1016/j.bspc.2022.103593",
-      "pmid": null,
-      "openalex_id": "W4214527997",
-      "source_doi": "10.1371/journal.pone.0175382",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7082893878221512,
-        "similarity_score": 0.6745613217353821,
-        "citation_text_length": 181,
         "dataset_text_length": 2421,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -555,7 +560,7 @@
       "venue": "PLoS ONE",
       "year": 2025,
       "url": "https://doi.org/10.1371/journal.pone.0303390",
-      "cited_by": 4,
+      "cited_by": 5,
       "abstract": "Abstract The P300 Speller is a brain-computer interface system that allows victims of motor neuron diseases to regain the ability to communicate by typing characters into a computer by thought. Since the system has a relatively slow typing speed, different stimulus presentation paradigms have been proposed designed to allow users to input information faster by reducing the number of required stimuli or increase signal fidelity. This study compares the typing speeds of the Row-Column, Checkerboard, and Combinatorial Paradigms to examine how their performance compares in online and offline settings. When the different flashing patterns were tested in conjunction with other established optimization techniques such as language models and dynamic stopping, they did not make a significant impact on P300 speller performance. This result could indicate that further performance improvements on the system lie beyond optimizing flashing patterns.",
       "doi": "10.1371/journal.pone.0303390",
       "pmid": "39899514",
@@ -782,7 +787,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:22:43.306700+00:00",
+    "scoring_date": "2026-08-17T11:19:06.769935+00:00",
     "dataset_text_length": 2421,
     "num_citations_scored": 30,
     "summary_stats": {

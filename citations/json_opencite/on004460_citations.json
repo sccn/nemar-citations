@@ -1,10 +1,10 @@
 {
   "dataset_id": "on004460",
   "num_citations": 50,
-  "date_last_updated": "2026-08-09T10:36:39.099827+00:00",
+  "date_last_updated": "2026-08-17T10:35:37.232166+00:00",
   "metadata": {
-    "total_cumulative_citations": 856,
-    "fetch_date": "2026-08-09T10:36:39.099827+00:00",
+    "total_cumulative_citations": 860,
+    "fetch_date": "2026-08-17T10:35:37.232166+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -57,7 +57,14 @@
         "funder_name": "DFG",
         "award_number": "GR 2627/8-1"
       }
-    ]
+    ],
+    "searched_accessions": [
+      "on004460",
+      "ds004460"
+    ],
+    "num_accession_mentions": 0,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 49
   },
   "citation_details": [
     {
@@ -181,7 +188,7 @@
       "venue": "Scientific Reports",
       "year": 2024,
       "url": "https://doi.org/10.1038/s41598-024-64919-3",
-      "cited_by": 40,
+      "cited_by": 41,
       "abstract": "Electroencephalography (EEG) studies increasingly utilize more mobile experimental protocols, leading to more and stronger artifacts in the recorded data. Independent Component Analysis (ICA) is commonly used to remove these artifacts. It is standard practice to remove artifactual samples before ICA to improve the decomposition, for example using automatic tools such as the sample rejection option of the AMICA algorithm. However, the effects of movement intensity and the strength of automatic sample rejection on ICA decomposition have not been systematically evaluated. We conducted AMICA decompositions on eight open-access datasets with varying degrees of motion intensity using varying sample rejection criteria. We evaluated decomposition quality using mutual information of the components, the proportion of brain, muscle, and 'other' components, residual variance, and an exemplary signal-to-noise ratio. Within individual studies, increased movement significantly decreased decomposition",
       "doi": "10.1038/s41598-024-64919-3",
       "pmid": "38898069",
@@ -204,7 +211,7 @@
       "venue": "Frontiers in Virtual Reality",
       "year": 2022,
       "url": "https://doi.org/10.3389/frvir.2022.981625",
-      "cited_by": 37,
+      "cited_by": 38,
       "abstract": "The frequent use of GPS-based navigation assistance is found to negatively affect spatial learning. Displaying landmarks effectively while providing wayfinding instructions on such services could facilitate spatial learning because landmarks help navigators to structure and learn an environment by serving as cognitive anchors. However, simply adding landmarks on mobile maps may tax additional cognitive resources and thus adversely affect cognitive load in mobile map users during navigation. To address this potential issue, we set up the present study experimentally to investigate how the number of landmarks (i.e., 3 vs. 5 vs. 7 landmarks), displayed on a mobile map one at a time at intersections during turn-by-turn instructions, affects spatial learning, cognitive load, and visuospatial encoding during map consultation in a virtual urban environment. Spatial learning of the environment was measured using a landmark recognition test, a route direction test, and Judgements of Relative Di",
       "doi": "10.3389/frvir.2022.981625",
       "pmid": null,
@@ -216,6 +223,29 @@
         "confidence_score": 0.38288056522607805,
         "similarity_score": 0.33149832487106323,
         "citation_text_length": 1256,
+        "dataset_text_length": 2302,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Characterizing and Removing Artifacts Using Dual-Layer EEG during Table Tennis",
+      "author": "Amanda Studnicki, Ryan J. Downey, Daniel P. Ferris",
+      "venue": "Sensors",
+      "year": 2022,
+      "url": "https://doi.org/10.3390/s22155867",
+      "cited_by": 33,
+      "abstract": "Researchers can improve the ecological validity of brain research by studying humans moving in real-world settings. Recent work shows that dual-layer EEG can improve the fidelity of electrocortical recordings during gait, but it is unclear whether these positive results extrapolate to non-locomotor paradigms. For our study, we recorded brain activity with dual-layer EEG while participants played table tennis, a whole-body, responsive sport that could help investigate visuomotor feedback, object interception, and performance monitoring. We characterized artifacts with time-frequency analyses and correlated scalp and reference noise data to determine how well different sensors captured artifacts. As expected, individual scalp channels correlated more with noise-matched channel time series than with head and body acceleration. We then compared artifact removal methods with and without the use of the dual-layer noise electrodes. Independent Component Analysis separated channels into compon",
+      "doi": "10.3390/s22155867",
+      "pmid": "35957423",
+      "openalex_id": "W4291720795",
+      "source_doi": "10.1038/s41598-021-97749-8",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6132118758559227,
+        "similarity_score": 0.5309193730354309,
+        "citation_text_length": 1174,
         "dataset_text_length": 2302,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -239,29 +269,6 @@
         "confidence_score": 0.4576803955435753,
         "similarity_score": 0.3962600827217102,
         "citation_text_length": 1204,
-        "dataset_text_length": 2302,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Characterizing and Removing Artifacts Using Dual-Layer EEG during Table Tennis",
-      "author": "Amanda Studnicki, Ryan J. Downey, Daniel P. Ferris",
-      "venue": "Sensors",
-      "year": 2022,
-      "url": "https://doi.org/10.3390/s22155867",
-      "cited_by": 32,
-      "abstract": "Researchers can improve the ecological validity of brain research by studying humans moving in real-world settings. Recent work shows that dual-layer EEG can improve the fidelity of electrocortical recordings during gait, but it is unclear whether these positive results extrapolate to non-locomotor paradigms. For our study, we recorded brain activity with dual-layer EEG while participants played table tennis, a whole-body, responsive sport that could help investigate visuomotor feedback, object interception, and performance monitoring. We characterized artifacts with time-frequency analyses and correlated scalp and reference noise data to determine how well different sensors captured artifacts. As expected, individual scalp channels correlated more with noise-matched channel time series than with head and body acceleration. We then compared artifact removal methods with and without the use of the dual-layer noise electrodes. Independent Component Analysis separated channels into compon",
-      "doi": "10.3390/s22155867",
-      "pmid": "35957423",
-      "openalex_id": "W4291720795",
-      "source_doi": "10.1038/s41598-021-97749-8",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6132118758559227,
-        "similarity_score": 0.5309193730354309,
-        "citation_text_length": 1174,
         "dataset_text_length": 2302,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -327,6 +334,8 @@
       "source_doi": "10.1038/s41598-021-97749-8",
       "source_relation": "References",
       "discovery_backend": "opencite",
+      "mentions_accession": true,
+      "matched_accession": "ds004460",
       "confidence_scoring": {
         "confidence_score": 0.7002139171957971,
         "similarity_score": 0.6062458157539368,
@@ -342,7 +351,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2023,
       "url": "https://doi.org/10.3389/fnins.2023.1024583",
-      "cited_by": 23,
+      "cited_by": 24,
       "abstract": "The continuous assessment of pedestrians' cognitive load during a naturalistic mobile map-assisted navigation task is challenging because of limited experimental control over stimulus presentation, human-map-interactions, and other participant responses. To overcome this challenge, the present study takes advantage of navigators' spontaneous eye blinks during navigation to serve as event markers in continuously recorded electroencephalography (EEG) data to assess cognitive load in a mobile map-assisted navigation task. We examined if and how displaying different numbers of landmarks (3 vs. 5 vs. 7) on mobile maps along a given route would influence navigators' cognitive load during navigation in virtual urban environments. Cognitive load was assessed by the peak amplitudes of the blink-related fronto-central N2 and parieto-occipital P3. Our results show increased parieto-occipital P3 amplitude indicating higher cognitive load in the 7-landmark condition, compared to showing 3 or 5 land",
       "doi": "10.3389/fnins.2023.1024583",
       "pmid": "36866330",
@@ -1213,7 +1222,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:43:40.621372+00:00",
+    "scoring_date": "2026-08-17T11:35:24.926557+00:00",
     "dataset_text_length": 2302,
     "num_citations_scored": 50,
     "summary_stats": {

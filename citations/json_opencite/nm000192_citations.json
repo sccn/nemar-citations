@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000192",
   "num_citations": 87,
-  "date_last_updated": "2026-08-09T10:09:24.797380+00:00",
+  "date_last_updated": "2026-08-17T10:09:05.428962+00:00",
   "metadata": {
-    "total_cumulative_citations": 1745,
-    "fetch_date": "2026-08-09T10:09:24.797380+00:00",
+    "total_cumulative_citations": 1756,
+    "fetch_date": "2026-08-17T10:09:05.428962+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -43,17 +43,15 @@
       "10.82901/nemar.nm000192"
     ],
     "keywords": [
-      "Brain-Computer Interfaces",
+      "brain-computer interface",
       "EEG",
       "auditory attention",
-      "oddball paradigm",
       "P300",
+      "oddball paradigm",
       "music perception",
-      "selective attention",
-      "polyphonic music",
-      "musical stimulus"
+      "selective attention"
     ],
-    "methods_description": "EEG data were acquired from 64 active electrodes (Brain Products actiCAP, 10-10 montage) at 1000 Hz with left mastoid reference. Participants listened to 40-second polyphonic music clips containing three concurrent instruments (Synth-Pop or Jazz conditions) with embedded standard and deviant patterns. Preprocessing included downsampling to 250 Hz, Chebyshev lowpass filtering (42 Hz passband), epoching (-200 to 1200 ms), baseline correction, and artifact rejection (100 μV threshold on Fp1/Fp2). Classification used linear discriminant analysis with shrinkage covariance on spatio-temporal features, evaluated via leave-one-clip-out cross-validation.",
+    "methods_description": "EEG was recorded from 64 active electrodes (10-10 montage, Brain Products actiCAP) at 1000 Hz with left mastoid reference. Participants listened to 40-second polyphonic music clips containing three concurrent instruments (Synth-Pop or Jazz conditions) with embedded standard and deviant patterns. Participants were cued to attend to one instrument and count deviants. Data were downsampled to 250 Hz, lowpass filtered (Chebyshev, 42 Hz passband), epoched from -200 to 1200 ms, baseline corrected, and artifact rejected using min-max criterion (100 μV threshold on Fp1/Fp2). Classification employed LDA with shrinkage covariance on spatio-temporal features using leave-one-clip-out cross-validation.",
     "funding": [
       {
         "funder_name": "German Bundesministerium für Bildung und Forschung",
@@ -63,13 +61,7 @@
         "funder_name": "German Bundesministerium für Bildung und Forschung",
         "award_number": "01GQ0850"
       }
-    ],
-    "searched_accessions": [
-      "nm000192"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 87
+    ]
   },
   "citation_details": [
     {
@@ -78,7 +70,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2020,
       "url": "https://doi.org/10.3389/fnins.2020.00289",
-      "cited_by": 243,
+      "cited_by": 245,
       "abstract": "MVPA-Light is a MATLAB toolbox for multivariate pattern analysis (MVPA). It provides native implementations of a range of classifiers and regression models, using modern optimization algorithms. High-level functions allow for the multivariate analysis of multi-dimensional data, including generalization (e.g., time x time) and searchlight analysis. The toolbox performs cross-validation, hyperparameter tuning, and nested preprocessing. It computes various classification and regression metrics and establishes their statistical significance, is modular and easily extendable. Furthermore, it offers interfaces for LIBSVM and LIBLINEAR as well as an integration into the FieldTrip neuroimaging toolbox. After introducing MVPA-Light, example analyses of MEG and fMRI datasets, and benchmarking results on the classifiers and regression models are presented.",
       "doi": "10.3389/fnins.2020.00289",
       "pmid": "32581662",
@@ -101,7 +93,7 @@
       "venue": "NeuroImage",
       "year": 2018,
       "url": "https://doi.org/10.1016/j.neuroimage.2018.01.033",
-      "cited_by": 224,
+      "cited_by": 227,
       "abstract": "The relation between a stimulus and the evoked brain response can shed light on perceptual processes within the brain. Signals derived from this relation can also be harnessed to control external devices for Brain Computer Interface (BCI) applications. While the classic event-related potential (ERP) is appropriate for isolated stimuli, more sophisticated \"decoding\" strategies are needed to address continuous stimuli such as speech, music or environmental sounds. Here we describe an approach based on Canonical Correlation Analysis (CCA) that finds the optimal transform to apply to both the stimulus and the response to reveal correlations between the two. Compared to prior methods based on forward or backward models for stimulus-response mapping, CCA finds significantly higher correlation scores, thus providing increased sensitivity to relatively small effects, and supports classifier schemes that yield higher classification scores. CCA strips the brain response of variance unrelated to ",
       "doi": "10.1016/j.neuroimage.2018.01.033",
       "pmid": "29378317",
@@ -147,7 +139,7 @@
       "venue": "IEEE Transactions on Cognitive and Developmental Systems",
       "year": 2021,
       "url": "https://doi.org/10.1109/tcds.2021.3079712",
-      "cited_by": 111,
+      "cited_by": 115,
       "abstract": "Deep learning has achieved excellent performance in a wide range of domains, especially in speech recognition and computer vision. Relatively less work has been done for electroencephalogram (EEG), but there is still significant progress attained in the last decade. Due to the lack of a comprehensive and topic widely covered survey for deep learning in EEG, we attempt to summarize recent progress to provide an overview, as well as perspectives for future developments. We first briefly mention the artifacts removal for EEG signal and then introduce deep learning models that have been utilized in EEG processing and classification. Subsequently, the applications of deep learning in EEG are reviewed by categorizing them into groups, such as brain–computer interface, disease detection, and emotion recognition. They are followed by the discussion, in which the pros and cons of deep learning are presented and future directions and challenges for deep learning in EEG are proposed. We hope that",
       "doi": "10.1109/tcds.2021.3079712",
       "pmid": null,
@@ -170,7 +162,7 @@
       "venue": "IEEE Access",
       "year": 2019,
       "url": "https://doi.org/10.1109/access.2019.2919143",
-      "cited_by": 94,
+      "cited_by": 95,
       "abstract": "The process of recording electroencephalography (EEG) signals is onerous and requires massive storage to store signals at an applicable frequency rate. In this paper, we propose the event-related potential encoder network (ERPENet), a multi-task autoencoder-based model, that can be applied to any ERP-related tasks. The strength of ERPENet lies in its capability to handle various kinds of ERP datasets and its robustness across multiple recording setups, enabling joint training across datasets. The ERPENet incorporates convolutional neural networks (CNNs) and long short-term memory (LSTM), in an autoencoder setup, which tries to simultaneously compress the input EEG signal and extract related P300 features into a latent vector. Here, we can infer the process for generating the latent vector as universal joint feature extraction. The network also includes a classification part for attended and unattended events classification as an auxiliary task. We experimented on six different P300 dat",
       "doi": "10.1109/access.2019.2919143",
       "pmid": null,
@@ -1062,6 +1054,29 @@
       }
     },
     {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2605.08495",
+      "cited_by": 7,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": "10.48550/arXiv.2605.08495",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1088/1741-2560/11/2/026009",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5686660538613797,
+        "similarity_score": 0.49235156178474426,
+        "citation_text_length": 1326,
+        "dataset_text_length": 2250,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Analyzing the perception of natural music with EEG and ECoG",
       "author": "I. Sturm",
       "venue": "n/a",
@@ -1102,29 +1117,6 @@
         "confidence_score": 0.4567676013708115,
         "similarity_score": 0.3954697847366333,
         "citation_text_length": 1197,
-        "dataset_text_length": 2250,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2605.08495",
-      "cited_by": 6,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": "10.48550/arXiv.2605.08495",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1088/1741-2560/11/2/026009",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5686660538613797,
-        "similarity_score": 0.49235156178474426,
-        "citation_text_length": 1326,
         "dataset_text_length": 2250,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2076,13 +2068,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:15:32.218392+00:00",
+    "scoring_date": "2026-08-17T11:12:52.546277+00:00",
     "dataset_text_length": 2250,
     "num_citations_scored": 87,
     "summary_stats": {
       "mean_confidence": 0.5672533424592566,
       "median_confidence": 0.5775358736515045,
-      "std_confidence": 0.09620347284445015,
+      "std_confidence": 0.09620347284445016,
       "min_confidence": 0.29370835423469543,
       "max_confidence": 0.9567323487997056,
       "high_confidence_count": 5,

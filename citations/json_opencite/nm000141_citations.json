@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000141",
   "num_citations": 17,
-  "date_last_updated": "2026-08-09T10:04:07.174652+00:00",
+  "date_last_updated": "2026-08-17T10:03:40.992038+00:00",
   "metadata": {
-    "total_cumulative_citations": 192,
-    "fetch_date": "2026-08-09T10:04:07.174652+00:00",
+    "total_cumulative_citations": 194,
+    "fetch_date": "2026-08-17T10:03:40.992038+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -72,16 +72,10 @@
       "brain-computer interfaces",
       "motor control",
       "event-related desynchronization",
-      "asynchronous paradigm"
+      "electroencephalography"
     ],
-    "methods_description": "EEG data were acquired using a Deymed TruScan 32 system at 1024 Hz sampling rate with 19 Ag/AgCl ring electrodes in standard 10-20 montage (reference: FCz, ground: AFz). Online filters included 0.5 Hz high-pass, 60 Hz low-pass, and 50 Hz notch filtering. Preprocessing involved DC offset removal, ICA-based artifact removal (EEGLAB infomax), and trial segmentation from -3 to +3 seconds around movement onset. Participants performed asynchronous voluntary finger tapping (right, left, or rest) following visual text cues within a 10-second window.",
-    "funding": [],
-    "searched_accessions": [
-      "nm000141"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 17
+    "methods_description": "EEG data were acquired at 1024 Hz from 19 channels (Ag/AgCl ring sensors) using a Deymed TruScan 32 system with standard 10-20 montage. Preprocessing included DC offset removal, 0.5 Hz high-pass filter, 50 Hz notch filter, 60 Hz low-pass filter, and ICA artifact removal (EEGLAB infomax). Trials were segmented from -3 to +3 seconds around movement onset. Participants performed asynchronous voluntary finger tapping tasks (right tap, left tap, resting state) cued by visual text stimuli within 10-second windows.",
+    "funding": []
   },
   "citation_details": [
     {
@@ -90,7 +84,7 @@
       "venue": "Cerebral Cortex",
       "year": 2020,
       "url": "https://doi.org/10.1093/cercor/bhaa111",
-      "cited_by": 54,
+      "cited_by": 55,
       "abstract": "The salience network (SN) plays a critical role in cognitive control and adaptive human behaviors, but its electrophysiological foundations and millisecond timescale dynamic temporal properties are poorly understood. Here, we use invasive intracranial EEG (iEEG) from multiple cohorts to investigate the neurophysiological underpinnings of the SN and identify dynamic temporal properties that distinguish it from the default mode network (DMN) and dorsolateral frontal-parietal network (FPN), two other large-scale brain networks that play important roles in human cognition. iEEG analysis of network interactions revealed that the anterior insula and anterior cingulate cortex, which together anchor the SN, had stronger intranetwork interactions with each other than cross-network interactions with the DMN and FPN. Analysis of directionality of information flow between the SN, DMN, and FPN revealed causal outflow hubs in the SN consistent with its role in fast temporal switching of network inte",
       "doi": "10.1093/cercor/bhaa111",
       "pmid": "32426806",
@@ -338,6 +332,29 @@
       }
     },
     {
+      "title": "Deep spatio-temporal features optimised fusion with coordinate attention mechanism for EEG lower limb pre-movement intention decoding",
+      "author": "Runlin Dong, Xiaodong Zhang, Zhengzheng Zhou, W. Zha, Aibin Zhu",
+      "venue": "Journal of Applied Biomedicine",
+      "year": 2025,
+      "url": "https://doi.org/10.1016/j.bbe.2025.06.004",
+      "cited_by": 1,
+      "abstract": null,
+      "doi": "10.1016/j.bbe.2025.06.004",
+      "pmid": null,
+      "openalex_id": "W4412719680",
+      "source_doi": "10.1371/journal.pone.0193722",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5678559958934785,
+        "similarity_score": 0.5408152341842651,
+        "citation_text_length": 253,
+        "dataset_text_length": 2285,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "PREVENTION AND PROGNOSIS OF ACUTE ADHESIONS INTESTINAL OBSTRUCTION",
       "author": "M.M. Magomedov, М. А. Магомедов",
       "venue": "n/a",
@@ -355,29 +372,6 @@
         "confidence_score": 0.21658889204263687,
         "similarity_score": 0.20627513527870178,
         "citation_text_length": 127,
-        "dataset_text_length": 2285,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Deep spatio-temporal features optimised fusion with coordinate attention mechanism for EEG lower limb pre-movement intention decoding",
-      "author": "Runlin Dong, Xiaodong Zhang, Zhengzheng Zhou, W. Zha, Aibin Zhu",
-      "venue": "Journal of Applied Biomedicine",
-      "year": 2025,
-      "url": "https://doi.org/10.1016/j.bbe.2025.06.004",
-      "cited_by": 0,
-      "abstract": null,
-      "doi": "10.1016/j.bbe.2025.06.004",
-      "pmid": null,
-      "openalex_id": "W4412719680",
-      "source_doi": "10.1371/journal.pone.0193722",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5678559958934785,
-        "similarity_score": 0.5408152341842651,
-        "citation_text_length": 253,
         "dataset_text_length": 2285,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -478,13 +472,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:10:41.849210+00:00",
+    "scoring_date": "2026-08-17T11:08:18.250734+00:00",
     "dataset_text_length": 2285,
     "num_citations_scored": 17,
     "summary_stats": {
-      "mean_confidence": 0.44222529605578853,
+      "mean_confidence": 0.4422252960557886,
       "median_confidence": 0.5060424625873566,
-      "std_confidence": 0.1710399672943683,
+      "std_confidence": 0.17103996729436832,
       "min_confidence": 0.0582796042598784,
       "max_confidence": 0.6603863096237184,
       "high_confidence_count": 0,

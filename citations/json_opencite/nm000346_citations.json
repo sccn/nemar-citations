@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000346",
   "num_citations": 24,
-  "date_last_updated": "2026-08-09T10:20:48.985944+00:00",
+  "date_last_updated": "2026-08-17T10:19:38.733072+00:00",
   "metadata": {
-    "total_cumulative_citations": 76,
-    "fetch_date": "2026-08-09T10:20:48.985944+00:00",
+    "total_cumulative_citations": 81,
+    "fetch_date": "2026-08-17T10:19:38.733072+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -57,17 +57,18 @@
     ],
     "keywords": [
       "Code-VEP",
-      "Brain-computer interfaces",
+      "Brain-Computer Interfaces",
       "EEG",
-      "Visual evoked potentials",
-      "Convolutional neural networks",
+      "Visual Evoked Potentials",
+      "Convolutional Neural Networks",
       "Reactive BCI",
       "Amplitude depth reduction",
       "Visual comfort",
       "Burst c-VEP",
-      "M-sequence"
+      "M-sequence",
+      "User experience"
     ],
-    "methods_description": "EEG data acquired from 12 healthy participants using a BrainProducts LiveAmp 32-channel system at 500 Hz sampling rate with standard 10-20 montage (reference: FCz, ground: FPz). Participants performed a 2-class visual attention task with four cued targets presented sequentially for 0.5 s, followed by 2.2 s stimulation phase and 0.7 s inter-trial interval. Four experimental conditions tested: burst c-VEP and m-sequence c-VEP, each at 100% and 40% amplitude depth. CNN-based classification employed 250 ms sliding windows with 2 ms stride and standard deviation normalization. Subjective ratings collected for visual comfort, mental tiredness, and intrusiveness.",
+    "methods_description": "EEG data acquired from 12 healthy participants using a BrainProducts LiveAmp 32-channel system at 500 Hz sampling rate with standard 10-20 montage (reference: FCz, ground: FPz). Participants performed a 4-class visual attention task with four cued targets presented sequentially for 0.5 s, followed by 2.2 s stimulation phase. Four experimental conditions tested: burst c-VEP and m-sequence c-VEP, each at 100% and 40% amplitude depth. Data processed with CNN-based classification using 250 ms sliding windows with 2 ms stride and standard deviation normalization. Subjective ratings collected for visual comfort, mental tiredness, and intrusiveness.",
     "funding": [
       {
         "funder_name": "AID (Powerbrain project), France"
@@ -89,14 +90,12 @@
       {
         "funder_name": "Artificial and Natural Intelligence Toulouse Institute (ANITI)",
         "award_title": "Chair for Neuroadaptive Technology"
+      },
+      {
+        "funder_name": "Agence de l'Innovation de Défense (AID)",
+        "award_title": "Powerbrain project"
       }
-    ],
-    "searched_accessions": [
-      "nm000346"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 24
+    ]
   },
   "citation_details": [
     {
@@ -105,7 +104,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2024,
       "url": "https://doi.org/10.1088/1741-2552/ad8ef7",
-      "cited_by": 17,
+      "cited_by": 18,
       "abstract": "Abstract Objective. Reactive brain–computer interfaces typically rely on repetitive visual stimuli, which can strain the eyes and cause attentional distraction. To address these challenges, we propose a novel approach rooted in visual neuroscience to design visual Stimuli for Augmented Response (StAR). The StAR stimuli consist of small randomly-oriented Gabor or Ricker patches that optimize foveal neural response while reducing peripheral distraction. Approach. In a factorial design study, 24 participants equipped with an 8-dry electrode EEG system focused on series of target flickers presented under three formats: traditional Plain flickers, Gabor -based, or Ricker -based flickers. These flickers were part of a five-class code visually evoked potentials paradigm featuring low frequency, short, and aperiodic visual flashes. Main results. Subjective ratings revealed that Gabor and Ricker stimuli were visually comfortable and nearly invisible in peripheral vision compared to plain flicke",
       "doi": "10.1088/1741-2552/ad8ef7",
       "pmid": "39500051",
@@ -151,7 +150,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2024,
       "url": "https://doi.org/10.3389/fnins.2024.1373377",
-      "cited_by": 9,
+      "cited_by": 10,
       "abstract": "This short review examines recent advancements in neurotechnologies within the context of managing unilateral spatial neglect (USN), a common condition following stroke. Despite the success of brain-computer interfaces (BCIs) in restoring motor function, there is a notable absence of effective BCI devices for treating cerebral visual impairments, a prevalent consequence of brain lesions that significantly hinders rehabilitation. This review analyzes current non-invasive BCIs and technological solutions dedicated to cognitive rehabilitation, with a focus on visuo-attentional disorders. We emphasize the need for further research into the use of BCIs for managing cognitive impairments and propose a new potential solution for USN rehabilitation, by combining the clinical subtleties of this syndrome with the technological advancements made in the field of neurotechnologies.",
       "doi": "10.3389/fnins.2024.1373377",
       "pmid": "38784094",
@@ -174,7 +173,7 @@
       "venue": "Imaging Neuroscience",
       "year": 2024,
       "url": "https://doi.org/10.1162/imag_a_00223",
-      "cited_by": 8,
+      "cited_by": 10,
       "abstract": "Steady-State Visually Evoked Potentials (SSVEPs) manifest as a sustained rhythmic activity that can be observed in surface electroencephalography (EEG) in response to periodic visual stimuli, commonly referred to as flickers. SSVEPs are widely used in fundamental cognitive neuroscience paradigms and Brain-Computer Interfaces (BCI) due to their robust and rapid onset. However, they have drawbacks related to the intrusive saliency of flickering visual stimuli, which may induce eye strain, cognitive fatigue, and biases in visual exploration. Previous findings highlighted the potential of altering features of flicker stimuli to improve user experience. In this study, we propose to reduce the amplitude modulation depth of flickering stimuli down to the individuals' perceptual visibility threshold (periliminal) and below (subliminal). The stimulus amplitude modulation depth represents the contrast difference between the two alternating states of a flicker. A simple visual attention task wher",
       "doi": "10.1162/imag_a_00223",
       "pmid": "40800282",
@@ -261,6 +260,29 @@
       }
     },
     {
+      "title": "Enhancing user experience in c-VEP-based BCI: Effects of visual stimulus opacity on performance and visual fatigue",
+      "author": "Ana Martín-Fernández, Víctor Martínez-Cagigal, Selene Moreno-Calderón, Eduardo Santamaría-Vázquez, Roberto Hornero",
+      "venue": "Biomedical Signal Processing and Control",
+      "year": 2025,
+      "url": "https://doi.org/10.1016/j.bspc.2025.107894",
+      "cited_by": 4,
+      "abstract": "Brain-computer interfaces (BCI) based on code-modulated visual evoked potentials (c-VEP) enable users to control devices through brain activity. These systems typically employ black and white flashes encoded via pseudo-random binary sequences to synchronize brain responses with specific commands. However, this traditional encoding often induces visual fatigue in users. Additionally, the sharp contrast of black and white commands can obscure the background on which they are displayed, complicating the integration of this technology in dynamic environments. Using semi-transparent stimuli could address these issues by reducing eyestrain and enabling compatibility with diverse backgrounds. However, the impact of opacity in c-VEP stimuli remains unexplored. This study aims to assess how varying visual stimulus opacity influences system accuracy and user experience. Six different opacity and background combinations were tested with ten healthy participants, who rated visual fatigue on a scal",
+      "doi": "10.1016/j.bspc.2025.107894",
+      "pmid": null,
+      "openalex_id": "W4409986302",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6494258952140809,
+        "similarity_score": 0.5622735023498535,
+        "citation_text_length": 1307,
+        "dataset_text_length": 2231,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Addressing BCI inefficiency in c-VEP-based BCIs: A comprehensive study of neurophysiological predictors, binary stimulus sequences, and user comfort",
       "author": "Jordy Thielen",
       "venue": "Biomedical Physics & Engineering Express",
@@ -324,29 +346,6 @@
         "confidence_score": 0.3296191388368607,
         "similarity_score": 0.28538453578948975,
         "citation_text_length": 1245,
-        "dataset_text_length": 2231,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Enhancing user experience in c-VEP-based BCI: Effects of visual stimulus opacity on performance and visual fatigue",
-      "author": "Ana Martín-Fernández, Víctor Martínez-Cagigal, Selene Moreno-Calderón, Eduardo Santamaría-Vázquez, Roberto Hornero",
-      "venue": "Biomedical Signal Processing and Control",
-      "year": 2025,
-      "url": "https://doi.org/10.1016/j.bspc.2025.107894",
-      "cited_by": 3,
-      "abstract": "Brain-computer interfaces (BCI) based on code-modulated visual evoked potentials (c-VEP) enable users to control devices through brain activity. These systems typically employ black and white flashes encoded via pseudo-random binary sequences to synchronize brain responses with specific commands. However, this traditional encoding often induces visual fatigue in users. Additionally, the sharp contrast of black and white commands can obscure the background on which they are displayed, complicating the integration of this technology in dynamic environments. Using semi-transparent stimuli could address these issues by reducing eyestrain and enabling compatibility with diverse backgrounds. However, the impact of opacity in c-VEP stimuli remains unexplored. This study aims to assess how varying visual stimulus opacity influences system accuracy and user experience. Six different opacity and background combinations were tested with ten healthy participants, who rated visual fatigue on a scal",
-      "doi": "10.1016/j.bspc.2025.107894",
-      "pmid": null,
-      "openalex_id": "W4409986302",
-      "source_doi": "10.1016/j.neuroimage.2023.120446",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6494258952140809,
-        "similarity_score": 0.5622735023498535,
-        "citation_text_length": 1307,
         "dataset_text_length": 2231,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -422,8 +421,54 @@
       }
     },
     {
+      "title": "CastillosBurstVEP40",
+      "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
+      "venue": "UC San Diego",
+      "year": 2026,
+      "url": "https://doi.org/10.82901/nemar.nm000345.v1.0.1",
+      "cited_by": 0,
+      "abstract": "This dataset comprises electroencephalographic recordings from 12 healthy participants performing a reactive brain-computer interface task using code-modulated visual evoked potentials (c-VEP). The study introduces an innovative 'Burst c-VEP' paradigm employing short bursts of aperiodic visual flashes at 2-4 Hz, designed to optimize classification performance while reducing calibration requirements and improving visual comfort. Data were collected using a 32-channel BrainProducts LiveAmp system at 500 Hz sampling rate across a factorial design manipulating stimulus pattern (burst vs. m-sequence) and amplitude (100% vs. 40% depth modulation).",
+      "doi": "10.82901/nemar.nm000345.v1.0.1",
+      "pmid": null,
+      "openalex_id": "W7202282439",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.9158630722761155,
+        "similarity_score": 0.7929550409317017,
+        "citation_text_length": 790,
+        "dataset_text_length": 2231,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "CastillosBurstVEP100",
+      "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
+      "venue": "UC San Diego",
+      "year": 2026,
+      "url": "https://doi.org/10.82901/nemar.nm000344.v1.0.1",
+      "cited_by": 0,
+      "abstract": "This dataset comprises EEG recordings from 12 healthy participants performing a 4-class code-modulated Visual Evoked Potential (c-VEP) brain-computer interface task. The study compares novel burst c-VEP sequences with traditional m-sequences at two stimulus amplitude depths (100% and 40%) to optimize classification performance, minimize calibration requirements, and enhance user experience. Data were acquired at 500 Hz using a 32-channel BrainProducts system and processed with convolutional neural network architectures, achieving classification accuracies up to 95.6% with mean selection times of 1.5 seconds.",
+      "doi": "10.82901/nemar.nm000344.v1.0.1",
+      "pmid": null,
+      "openalex_id": "W7202266268",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.9175126281380654,
+        "similarity_score": 0.7943832278251648,
+        "citation_text_length": 757,
+        "dataset_text_length": 2231,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Near-invisible c-VEP-based passive BCI for mental workload monitoring",
-      "author": "Pietro Cimarosto, Sébastien Velut, Castillos-Cabrera Kalou, Torre Tresols Juan, Raphaëlle N. Roy, Frédéric Dehais",
+      "author": "Pietro Cimarosto, Sébastien Velut, Kalou Cabrera Castillos, Juan Jesús Torre, Raphaëlle N. Roy, Frédéric Dehais",
       "venue": "Journal of Neural Engineering",
       "year": 2026,
       "url": "https://doi.org/10.1088/1741-2552/ae4ff6",
@@ -436,9 +481,32 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6462113231420518,
-        "similarity_score": 0.5594903230667114,
-        "citation_text_length": 1250,
+        "confidence_score": 0.6444737166166306,
+        "similarity_score": 0.5579859018325806,
+        "citation_text_length": 1248,
+        "dataset_text_length": 2231,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "CastillosCVEP100",
+      "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
+      "venue": "UC San Diego",
+      "year": 2026,
+      "url": "https://doi.org/10.82901/nemar.nm000346.v1.0.1",
+      "cited_by": 0,
+      "abstract": "A 2-class code-VEP brain-computer interface dataset from 12 healthy participants comparing burst c-VEP and m-sequence stimulation paradigms at two amplitude depths (100% and 40%). The study evaluates classification performance and user experience using 32-channel EEG recorded at 500 Hz, with CNN-based decoding achieving up to 95.6% accuracy for burst c-VEP at full amplitude. This derivative dataset optimizes stimulus design for reactive BCI applications while maintaining visual comfort.",
+      "doi": "10.82901/nemar.nm000346.v1.0.1",
+      "pmid": null,
+      "openalex_id": "W7202259170",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8919095742702485,
+        "similarity_score": 0.7722160816192627,
+        "citation_text_length": 629,
         "dataset_text_length": 2231,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -470,44 +538,21 @@
     {
       "title": "c-VEP and Burst-VEP dataset from Castillos et al. (2023)",
       "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
-      "venue": "Open MIND",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000163",
-      "cited_by": 0,
-      "abstract": "This dataset comprises code-modulated Visual Evoked Potential (c-VEP) EEG recordings from 12 healthy participants performing a 2-class reactive brain-computer interface task with 4 targets. The study compares novel burst c-VEP sequences with traditional m-sequences at two stimulus amplitude depths (100% and 40%), evaluating classification performance, calibration efficiency, and user experience. EEG was recorded at 500 Hz using a 32-channel BrainProducts system with convolutional neural network decoding achieving 95.6% accuracy.",
-      "doi": "10.82901/nemar.nm000163",
-      "pmid": null,
-      "openalex_id": "W7160832225",
-      "source_doi": "10.1016/j.neuroimage.2023.120446",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.9467858594655991,
-        "similarity_score": 0.8197280168533325,
-        "citation_text_length": 709,
-        "dataset_text_length": 2231,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "CastillosBurstVEP100",
-      "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
       "venue": "UC San Diego",
       "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000344",
+      "url": "https://doi.org/10.82901/nemar.nm000163.v1.0.0",
       "cited_by": 0,
-      "abstract": "This dataset comprises EEG recordings from 12 healthy participants performing a 4-class code-modulated Visual Evoked Potential (c-VEP) brain-computer interface task. The study compares novel burst c-VEP sequences with traditional m-sequences at two stimulus amplitude depths (100% and 40%) to optimize classification performance, minimize calibration requirements, and enhance user experience. Data were acquired at 500 Hz using a 32-channel BrainProducts system and processed with convolutional neural network architectures, achieving classification accuracies up to 95.6% with mean selection times of 1.5 seconds.",
-      "doi": "10.82901/nemar.nm000344",
+      "abstract": "This dataset comprises code-modulated Visual Evoked Potential (c-VEP) EEG recordings from 12 healthy participants performing a 2-class reactive brain-computer interface task with 4 targets. The study compares novel burst c-VEP sequences with traditional m-sequences at two stimulus amplitude depths (100% and 40%), evaluating classification performance, calibration efficiency, and user experience. EEG was recorded at 500 Hz using a 32-channel BrainProducts system with convolutional neural network decoding achieving 95.6% accuracy.",
+      "doi": "10.82901/nemar.nm000163.v1.0.0",
       "pmid": null,
-      "openalex_id": "W7163364770",
+      "openalex_id": "W7160853652",
       "source_doi": "10.1016/j.neuroimage.2023.120446",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.9175126281380654,
-        "similarity_score": 0.7943832278251648,
-        "citation_text_length": 757,
+        "confidence_score": 0.9445740598440172,
+        "similarity_score": 0.8178130388259888,
+        "citation_text_length": 712,
         "dataset_text_length": 2231,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -515,7 +560,7 @@
     },
     {
       "title": "Optimizing EEGNet for Code-Modulated Visual Evoked Potential Classification",
-      "author": "Hazar Zilelioglu, Alexandre Delaux, Julien Carponcy, Alix Gouret, Solène Le Bars",
+      "author": "Hazar Zilelioglu, Alexandre Delaux, Julien Carponcy, Victor Woelffel, Solène Le Bars",
       "venue": "Lecture notes in computer science",
       "year": 2026,
       "url": "https://doi.org/10.1007/978-981-95-9575-4_9",
@@ -528,9 +573,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5921859294176102,
-        "similarity_score": 0.563986599445343,
-        "citation_text_length": 215,
+        "confidence_score": 0.595999538898468,
+        "similarity_score": 0.5676186084747314,
+        "citation_text_length": 219,
         "dataset_text_length": 2231,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -554,29 +599,6 @@
         "confidence_score": 0.6795831441879273,
         "similarity_score": 0.588383674621582,
         "citation_text_length": 1210,
-        "dataset_text_length": 2231,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "CastillosCVEP100",
-      "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
-      "venue": "UC San Diego",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000346.v1.0.0",
-      "cited_by": 0,
-      "abstract": "A 2-class code-VEP brain-computer interface dataset from 12 healthy participants comparing burst c-VEP and m-sequence stimulation paradigms at two amplitude depths (100% and 40%). The study evaluates classification performance and user experience using 32-channel EEG recorded at 500 Hz, with CNN-based decoding achieving up to 95.6% accuracy for burst c-VEP at full amplitude. This derivative dataset optimizes stimulus design for reactive BCI applications while maintaining visual comfort.",
-      "doi": "10.82901/nemar.nm000346.v1.0.0",
-      "pmid": null,
-      "openalex_id": "W7163410702",
-      "source_doi": "10.1016/j.neuroimage.2023.120446",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.8919095742702485,
-        "similarity_score": 0.7722160816192627,
-        "citation_text_length": 629,
         "dataset_text_length": 2231,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -610,12 +632,12 @@
       "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
       "venue": "UC San Diego",
       "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000342",
+      "url": "https://doi.org/10.82901/nemar.nm000342.v1.0.0",
       "cited_by": 0,
       "abstract": "A code-modulated Visual Evoked Potential (c-VEP) derivative dataset from 12 healthy participants, specifically focusing on the 40% amplitude depth modulation m-sequence c-VEP condition. This dataset is derived from a study comparing burst and m-sequence stimulus patterns at two amplitude levels (100% and 40% depth modulation) for reactive brain-computer interface applications. The study evaluated classification performance using convolutional neural networks, demonstrating that the reduced amplitude condition (40%) maintained 94.2% accuracy while improving visual comfort compared to the full amplitude burst c-VEP condition which achieved 95.6% accuracy.",
-      "doi": "10.82901/nemar.nm000342",
+      "doi": "10.82901/nemar.nm000342.v1.0.0",
       "pmid": null,
-      "openalex_id": "W7163403173",
+      "openalex_id": "W7163416655",
       "source_doi": "10.1016/j.neuroimage.2023.120446",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
@@ -627,42 +649,19 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "CastillosBurstVEP40",
-      "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
-      "venue": "UC San Diego",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000345.v1.0.0",
-      "cited_by": 0,
-      "abstract": "This dataset comprises electroencephalographic recordings from 12 healthy participants performing a reactive brain-computer interface task using code-modulated visual evoked potentials (c-VEP). The study introduces an innovative 'Burst c-VEP' paradigm employing short bursts of aperiodic visual flashes at 2-4 Hz, designed to optimize classification performance while reducing calibration requirements and improving visual comfort. Data were collected using a 32-channel BrainProducts LiveAmp system at 500 Hz sampling rate across a factorial design manipulating stimulus pattern (burst vs. m-sequence) and amplitude (100% vs. 40% depth modulation).",
-      "doi": "10.82901/nemar.nm000345.v1.0.0",
-      "pmid": null,
-      "openalex_id": "W7163394879",
-      "source_doi": "10.1016/j.neuroimage.2023.120446",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.9158630722761155,
-        "similarity_score": 0.7929550409317017,
-        "citation_text_length": 790,
-        "dataset_text_length": 2231,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:26:31.611361+00:00",
+    "scoring_date": "2026-08-17T11:22:43.675216+00:00",
     "dataset_text_length": 2231,
     "num_citations_scored": 24,
     "summary_stats": {
-      "mean_confidence": 0.6361728933639825,
-      "median_confidence": 0.6478186091780663,
-      "std_confidence": 0.17721518859600888,
+      "mean_confidence": 0.6361672351695598,
+      "median_confidence": 0.6469498059153558,
+      "std_confidence": 0.17701264039991002,
       "min_confidence": 0.3296191388368607,
-      "max_confidence": 0.9467858594655991,
+      "max_confidence": 0.9445740598440172,
       "high_confidence_count": 6,
       "medium_confidence_count": 15,
       "low_confidence_count": 3

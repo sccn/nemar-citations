@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000161",
-  "num_citations": 14,
-  "date_last_updated": "2026-08-09T10:06:05.918284+00:00",
+  "num_citations": 13,
+  "date_last_updated": "2026-08-17T10:05:50.399178+00:00",
   "metadata": {
     "total_cumulative_citations": 48,
-    "fetch_date": "2026-08-09T10:06:05.918284+00:00",
+    "fetch_date": "2026-08-17T10:05:50.399178+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -43,22 +43,15 @@
       "10.82901/nemar.nm000161"
     ],
     "keywords": [
-      "EEG",
-      "motor imagery",
-      "brain-computer interface",
-      "handwriting",
-      "kinematic decoding",
-      "character classification",
-      "continuous movement decoding"
+      "Electroencephalography",
+      "Brain-computer interfaces",
+      "Motor imagery",
+      "Handwriting",
+      "Kinematic decoding",
+      "EEG classification"
     ],
-    "methods_description": "EEG data were acquired at 500 Hz using 60 active electrodes (Brain Products GmbH cap) with 4 EOG channels, referenced to right mastoid. Preprocessing included 50 Hz notch filtering, 0.3-70 Hz bandpass filtering (Butterworth, order 4), bad channel interpolation, EOG artifact correction (SGEYESUB), ICA-based artifact removal, common average re-referencing, bad segment rejection (±120 μV threshold, kurtosis/probability >7 SD), and downsampling to 128 Hz. Two datasets were created with different frequency bands (0.3-3 Hz and 0.3-40 Hz). Classification employed Shrinkage Linear Discriminant Analysis and EEGNet CNN with 2-times repeated 5-fold cross-validation.",
-    "funding": [],
-    "searched_accessions": [
-      "nm000161"
-    ],
-    "num_accession_mentions": 1,
-    "num_dataset_citations": 1,
-    "num_datapaper_citations": 13
+    "methods_description": "EEG data were acquired at 500 Hz from 60 channels using BrainVision active electrodes with right mastoid reference. The experimental protocol involved visual presentation of letter cues (fade-in 2s, visible 0.5s, fade-out 2s) followed by a 4-second writing phase. Each of the 10 letters was written 60 times across 15 runs per session. Preprocessing included notch filtering at 50 Hz, bandpass filtering (0.3-70 Hz), bad channel interpolation, EOG artifact correction (SGEYESUB), ICA-based artifact removal, common average re-referencing, and downsampling to 128 Hz. Two datasets were created with different frequency bands (0.3-3 Hz and 0.3-40 Hz) for analysis.",
+    "funding": []
   },
   "citation_details": [
     {
@@ -67,7 +60,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2502.17480",
-      "cited_by": 33,
+      "cited_by": 32,
       "abstract": "Modern neuroprostheses can now restore communication in patients who have lost the ability to speak or move. However, these invasive devices entail risks inherent to neurosurgery. Here, we introduce a non-invasive method to decode the production of sentences from brain activity and demonstrate its efficacy in a cohort of 35 healthy volunteers. For this, we present Brain2Qwerty, a new deep learning architecture trained to decode sentences from either electro- (EEG) or magneto-encephalography (MEG), while participants typed briefly memorized sentences on a QWERTY keyboard. With MEG, Brain2Qwerty reaches, on average, a character-error-rate (CER) of 32% and substantially outperforms EEG (CER: 67%). For the best participants, the model achieves a CER of 19%, and can perfectly decode a variety of sentences outside of the training set. While error analyses suggest that decoding depends on motor processes, the analysis of typographical errors suggests that it also involves higher-level cogniti",
       "doi": "10.48550/arXiv.2502.17480",
       "pmid": null,
@@ -200,6 +193,29 @@
       }
     },
     {
+      "title": "Noninvasive decoding of typed sentences from human brain activity",
+      "author": "Jarod Levy, Mingfang Zhang, Svetlana Pinet, Jérémy Rapin, Hubert Banville, Stéphane d’Ascoli, Jean-Rémi King",
+      "venue": "Nature Neuroscience",
+      "year": 2026,
+      "url": "https://doi.org/10.1038/s41593-026-02303-2",
+      "cited_by": 1,
+      "abstract": "Modern neuroprostheses can now restore communication in patients who have lost the ability to speak or move. However, implanting these invasive devices comes with risks inherent to neurosurgery. Here we introduce a noninvasive method to decode the production of sentences from brain activity and demonstrate its efficacy in a cohort of 35 healthy volunteers. For this, we present Brain2Qwerty, a new deep learning architecture trained to decode sentences from either electro- or magnetoencephalography, while participants typed briefly memorized sentences on a QWERTY keyboard. With magnetoencephalography, Brain2Qwerty reaches, on average, a character error rate of 29% and substantially outperforms electroencephalography (character error rate: 65%). For the best participants, the model achieves a character error rate of 18%, and can perfectly decode a variety of sentences outside of the training set. Overall, these results narrow the gap between invasive and noninvasive methods and thus open ",
+      "doi": "10.1038/s41593-026-02303-2",
+      "pmid": "42374156",
+      "openalex_id": "W7166575844",
+      "source_doi": "10.1016/j.compbiomed.2024.109132",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5217543607950211,
+        "similarity_score": 0.45173537731170654,
+        "citation_text_length": 1231,
+        "dataset_text_length": 2282,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Electroencephalography-driven machine learning for recognition of emergency numbers for crisis readiness: A translational study",
       "author": "Jagannath Mohan, L. Sriram, G. Sreenath, S. Sukhi Sudharshan, K. Adalarasu, Saravana Kumar Jaganathan",
       "venue": "Elsevier eBooks",
@@ -246,29 +262,6 @@
       }
     },
     {
-      "title": "Noninvasive decoding of typed sentences from human brain activity",
-      "author": "Jarod Levy, Mingfang Zhang, Svetlana Pinet, Jérémy Rapin, Hubert Banville, Stéphane d’Ascoli, Jean-Rémi King",
-      "venue": "Nature Neuroscience",
-      "year": 2026,
-      "url": "https://doi.org/10.1038/s41593-026-02303-2",
-      "cited_by": 0,
-      "abstract": "Modern neuroprostheses can now restore communication in patients who have lost the ability to speak or move. However, implanting these invasive devices comes with risks inherent to neurosurgery. Here we introduce a noninvasive method to decode the production of sentences from brain activity and demonstrate its efficacy in a cohort of 35 healthy volunteers. For this, we present Brain2Qwerty, a new deep learning architecture trained to decode sentences from either electro- or magnetoencephalography, while participants typed briefly memorized sentences on a QWERTY keyboard. With magnetoencephalography, Brain2Qwerty reaches, on average, a character error rate of 29% and substantially outperforms electroencephalography (character error rate: 65%). For the best participants, the model achieves a character error rate of 18%, and can perfectly decode a variety of sentences outside of the training set. Overall, these results narrow the gap between invasive and noninvasive methods and thus open ",
-      "doi": "10.1038/s41593-026-02303-2",
-      "pmid": "42374156",
-      "openalex_id": "W7166575844",
-      "source_doi": "10.1016/j.compbiomed.2024.109132",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5217543607950211,
-        "similarity_score": 0.45173537731170654,
-        "citation_text_length": 1231,
-        "dataset_text_length": 2282,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "A holistic perspective on noninvasive brain–computer interfaces",
       "author": "Yidan Ding, Joshua Kosnoff, Bin He",
       "venue": "Trends in Neurosciences",
@@ -293,7 +286,7 @@
     },
     {
       "title": "Handwriting decoding as a challenging motor task for EEG Foundation Models",
-      "author": "Srinivas Ravishankar, Ishayu Ghosh, N. Zajzon, Teng Fei, V. D. Sa",
+      "author": "Srinivas Ravishankar, I. Ghosh, N. Zajzon, Teng Fei, V. D. Sa",
       "venue": "ArXiv",
       "year": 2026,
       "url": "https://doi.org/10.48550/arXiv.2605.15698",
@@ -306,9 +299,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.7588469848036767,
-        "similarity_score": 0.6570103764533997,
-        "citation_text_length": 1183,
+        "confidence_score": 0.7603954786062241,
+        "similarity_score": 0.6583510637283325,
+        "citation_text_length": 1179,
         "dataset_text_length": 2282,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -359,47 +352,22 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Tetrahydrobiopterin biosynthesis, regeneration and functions",
-      "author": "Beat Thöny, Günter Auerbach, Nenad Blau",
-      "venue": "Biochemical Journal",
-      "year": 2000,
-      "url": "https://doi.org/10.1042/bj3470001",
-      "cited_by": 861,
-      "abstract": "Tetrahydrobiopterin (BH(4)) cofactor is essential for various processes, and is present in probably every cell or tissue of higher organisms. BH(4) is required for various enzyme activities, and for less defined functions at the cellular level. The pathway for the de novo biosynthesis of BH(4) from GTP involves GTP cyclohydrolase I, 6-pyruvoyl-tetrahydropterin synthase and sepiapterin reductase. Cofactor regeneration requires pterin-4a-carbinolamine dehydratase and dihydropteridine reductase. Based on gene cloning, recombinant expression, mutagenesis studies, structural analysis of crystals and NMR studies, reaction mechanisms for the biosynthetic and recycling enzymes were proposed. With regard to the regulation of cofactor biosynthesis, the major controlling point is GTP cyclohydrolase I, the expression of which may be under the control of cytokine induction. In the liver at least, activity is inhibited by BH(4), but stimulated by phenylalanine through the GTP cyclohydrolase I feedback regulatory protein. The enzymes that depend on BH(4) are the phenylalanine, tyrosine and tryptophan hydroxylases, the latter two being the rate-limiting enzymes for catecholamine and 5-hydroxytryptamine (serotonin) biosynthesis, all NO synthase isoforms and the glyceryl-ether mono-oxygenase. On a cellular level, BH(4) has been found to be a growth or proliferation factor for Crithidia fasciculata, haemopoietic cells and various mammalian cell lines. In the nervous system, BH(4) is a self-protecting factor for NO, or a general neuroprotecting factor via the NO synthase pathway, and has neurotransmitter-releasing function. With regard to human disease, BH(4) deficiency due to autosomal recessive mutations in all enzymes (except sepiapterin reductase) have been described as a cause of hyperphenylalaninaemia. Furthermore, several neurological diseases, including Dopa-responsive dystonia, but also Alzheimer's disease, Parkinson's disease, autism and depression, have been suggested to be a consequence of restricted cofactor availability.",
-      "doi": "10.1042/bj3470001",
-      "pmid": "10727395",
-      "openalex_id": "W2128399345",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000161",
-      "confidence_scoring": {
-        "confidence_score": 0.178598390519619,
-        "similarity_score": 0.16236217319965363,
-        "citation_text_length": 1657,
-        "dataset_text_length": 2282,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-10T10:09:59.409405+00:00",
+    "scoring_date": "2026-08-17T11:10:11.718406+00:00",
     "dataset_text_length": 2282,
-    "num_citations_scored": 14,
+    "num_citations_scored": 13,
     "summary_stats": {
-      "mean_confidence": 0.5640400069952012,
-      "median_confidence": 0.5805695879459382,
-      "std_confidence": 0.164061333919571,
-      "min_confidence": 0.178598390519619,
+      "mean_confidence": 0.5938084770165957,
+      "median_confidence": 0.6201947271823883,
+      "std_confidence": 0.12930169474931358,
+      "min_confidence": 0.29451683655381206,
       "max_confidence": 0.7678696650266649,
       "high_confidence_count": 3,
       "medium_confidence_count": 9,
-      "low_confidence_count": 2
+      "low_confidence_count": 1
     }
   }
 }

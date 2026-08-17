@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000211",
-  "num_citations": 5,
-  "date_last_updated": "2026-08-09T10:11:40.625420+00:00",
+  "num_citations": 3,
+  "date_last_updated": "2026-08-17T10:11:13.370781+00:00",
   "metadata": {
-    "total_cumulative_citations": 7,
-    "fetch_date": "2026-08-09T10:11:40.625420+00:00",
+    "total_cumulative_citations": 8,
+    "fetch_date": "2026-08-17T10:11:13.370781+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -26,30 +26,6 @@
         "judgment_model": "gemma4:e4b"
       },
       {
-        "identifier": "10.21105/joss.01896",
-        "identifier_type": "doi",
-        "source_relation": "References",
-        "classification": "methodology",
-        "kept": false,
-        "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
-        "paper_year": 2019,
-        "paper_venue": "The Journal of Open Source Software",
-        "reason": "The paper describes MNE-BIDS, a tool and specification for organizing electrophysiological data into the BIDS format, which is a technical standard used by this dataset.",
-        "judgment_model": "gemma4:e4b"
-      },
-      {
-        "identifier": "10.1038/s41597-019-0104-8",
-        "identifier_type": "doi",
-        "source_relation": "References",
-        "classification": "methodology",
-        "kept": false,
-        "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
-        "paper_year": 2019,
-        "paper_venue": "Scientific Data",
-        "reason": "The paper introduces EEG-BIDS, an extension to the BIDS standard, which is a technical specification used to organize and share EEG data like the one in this dataset.",
-        "judgment_model": "gemma4:e4b"
-      },
-      {
         "identifier": "10.82901/nemar.nm000211",
         "identifier_type": "doi",
         "source_relation": "References",
@@ -68,21 +44,18 @@
     ],
     "keywords": [
       "EEG",
-      "event-related potentials",
+      "ERP",
       "P300",
-      "RSVP",
       "biometric authentication",
       "brain-computer interfaces",
+      "RSVP",
+      "face authentication",
+      "longitudinal",
+      "identity authentication",
       "target detection"
     ],
-    "methods_description": "EEG data were acquired using a Neuracle Neusen system with 57 channels arranged in a standard 10-20 montage (reference: CPz, ground: AFz). Participants performed an RSVP face authentication task involving self-face versus AI-generated face discrimination across 4 blocks per session, with 200 images per block presented at 100 ms stimulus onset asynchrony. Sampling rate was 1000 Hz with 50 Hz line frequency filtering.",
-    "funding": [],
-    "searched_accessions": [
-      "nm000211"
-    ],
-    "num_accession_mentions": 2,
-    "num_dataset_citations": 2,
-    "num_datapaper_citations": 3
+    "methods_description": "EEG data were acquired using a Neuracle Neusen system with 57 channels at 1000 Hz sampling rate, referenced to CPz with AFz as ground. Participants performed an RSVP face authentication task with 4 sessions over 200 days, each session containing 4 blocks of 8 sequences with 200 face images. Stimuli were presented at 100 ms stimulus onset asynchrony. Standard 10-20 electrode montage was used.",
+    "funding": []
   },
   "citation_details": [
     {
@@ -91,7 +64,7 @@
       "venue": "Small Methods",
       "year": 2025,
       "url": "https://doi.org/10.1002/smtd.202501708",
-      "cited_by": 7,
+      "cited_by": 8,
       "abstract": "Motion artifacts are a primary obstacle to reliable electrophysiological signal acquisition when employing electroencephalography (EEG) using skin-interfaced electrodes. Although filtering algorithms commonly remove such signal disturbances, advanced electrode materials that physically reduce interface noise have emerged as more effective solutions. This review summarizes recent advances in the materials and structures of neural interface electrodes for the longitudinal and stable monitoring of EEG signals. The developments are examined across two architectural paradigms: thin-film electrodes utilizing material thinning for conformal contact and bulk-patch electrodes employing 3D matrices with tissue-like properties. Thin-film designs include metal and 2D material-based systems, hybrid composites, and porous architectures. Bulk-patch electrodes address five key domains: adhesion mechanisms, sol-gel transitions, moisture adaptability, self-healing networks, and frequency-selective dampi",
       "doi": "10.1002/smtd.202501708",
       "pmid": "41414685",
@@ -153,72 +126,22 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Epidermolysis Bullosa with Congenital Pyloric Atresia: Novel Mutations in the β4 Integrin Gene (ITGB4) and Genotype/Phenotype Correlations",
-      "author": "Aoi Nakano, Leena Pulkkinen, Dédée F. Murrell, Joyce Rico, Anne W. Lucky, Maria C. Garzón, Cathy A. Stevens, Stephen P. Robertson, Ellen G Pfendner, Jouni Uitto",
-      "venue": "Pediatric Research",
-      "year": 2001,
-      "url": "https://doi.org/10.1203/00006450-200105000-00003",
-      "cited_by": 106,
-      "abstract": null,
-      "doi": "10.1203/00006450-200105000-00003",
-      "pmid": "11328943",
-      "openalex_id": "W2048097348",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000211",
-      "confidence_scoring": {
-        "confidence_score": 0.21631580591201782,
-        "similarity_score": 0.21631580591201782,
-        "citation_text_length": 343,
-        "dataset_text_length": 2323,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Etablierung einer cDNA-Microarray-Technologie zur Genexpressionsanalyse bei akuter und chronischer allogener Lungenschädigung nach Lungentransplantation",
-      "author": "Michael Brendel",
-      "venue": "Electronic Theses of LMU Munich (Ludwig-Maximilians-Universität München)",
-      "year": 2009,
-      "url": "https://doi.org/10.5282/edoc.10435",
-      "cited_by": 0,
-      "abstract": null,
-      "doi": "10.5282/edoc.10435",
-      "pmid": null,
-      "openalex_id": "W1708470998",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000211",
-      "confidence_scoring": {
-        "confidence_score": 0.3055912256240845,
-        "similarity_score": 0.3055912256240845,
-        "citation_text_length": 266,
-        "dataset_text_length": 2323,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-10T10:13:20.981460+00:00",
+    "scoring_date": "2026-08-17T11:14:39.369835+00:00",
     "dataset_text_length": 2323,
-    "num_citations_scored": 5,
+    "num_citations_scored": 3,
     "summary_stats": {
-      "mean_confidence": 0.46788198608160025,
-      "median_confidence": 0.49668023049831395,
-      "std_confidence": 0.2073235121334062,
-      "min_confidence": 0.21631580591201782,
+      "mean_confidence": 0.6058342996239663,
+      "median_confidence": 0.5017813861370087,
+      "std_confidence": 0.15077448617785186,
+      "min_confidence": 0.49668023049831395,
       "max_confidence": 0.8190412822365762,
       "high_confidence_count": 1,
       "medium_confidence_count": 2,
-      "low_confidence_count": 2
+      "low_confidence_count": 0
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "dataset_id": "on005506",
   "num_citations": 17,
-  "date_last_updated": "2026-08-09T10:47:50.675958+00:00",
+  "date_last_updated": "2026-08-17T10:46:42.336749+00:00",
   "metadata": {
-    "total_cumulative_citations": 94,
-    "fetch_date": "2026-08-09T10:47:50.675958+00:00",
+    "total_cumulative_citations": 96,
+    "fetch_date": "2026-08-17T10:46:42.336749+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -102,14 +102,7 @@
         "funder_name": "Child Mind Institute",
         "award_title": "Healthy Brain Network Project"
       }
-    ],
-    "searched_accessions": [
-      "on005506",
-      "ds005506"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 17
+    ]
   },
   "citation_details": [
     {
@@ -118,7 +111,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2510.21585",
-      "cited_by": 66,
+      "cited_by": 67,
       "abstract": "Foundation models have transformed AI by reducing reliance on task-specific data through large-scale pretraining. While successful in language and vision, their adoption in EEG has lagged due to the heterogeneity of public datasets, which are collected under varying protocols, devices, and electrode configurations. Existing EEG foundation models struggle to generalize across these variations, often restricting pretraining to a single setup, resulting in suboptimal performance, in particular under linear probing. We present REVE (Representation for EEG with Versatile Embeddings), a pretrained model explicitly designed to generalize across diverse EEG signals. REVE introduces a novel 4D positional encoding scheme that enables it to process signals of arbitrary length and electrode arrangement. Using a masked autoencoding objective, we pretrain REVE on over 60,000 hours of EEG data from 92 datasets spanning 25,000 subjects, representing the largest EEG pretraining effort to date. REVE ach",
       "doi": "10.48550/arXiv.2510.21585",
       "pmid": null,
@@ -137,7 +130,7 @@
     },
     {
       "title": "EEG Foundation Challenge: From Cross-Task to Cross-Subject EEG Decoding",
-      "author": "Bruno Aristimunha, Dung Truong, Pierre Guetschel, Seyed Yahya Shirazi, Isabelle Guyon, Alexandre R. Franco, M. Milham, Aviv Dotan, S. Makeig, Alexandre Gramfort, Jean-Rémi King, Marie-Constance Corsi, P. Valdés-Sosa, Amit Majumdar, Alan Evans, Terrence J. Sejnowski, O. Shriki, Sylvain Chevallier, Arnaud Delorme",
+      "author": "Bruno Aristimunha, Dung Truong, Pierre Guetschel, Seyed Yahya Shirazi, Isabelle Guyon, Alexandre R. Franco, M. Milham, Aviv Dotan, S. Makeig, Alexandre Gramfort, Jean-Rémi King, Marie-Constance Corsi, P. Valdés-Sosa, A. Majumdar, Alan Evans, Terrence J. Sejnowski, O. Shriki, Sylvain Chevallier, Arnaud Delorme",
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2506.19141",
@@ -150,9 +143,9 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6799694931507112,
-        "similarity_score": 0.5887181758880615,
-        "citation_text_length": 1427,
+        "confidence_score": 0.6813006484508515,
+        "similarity_score": 0.5898706912994385,
+        "citation_text_length": 1425,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -164,7 +157,7 @@
       "venue": "ArXiv",
       "year": 2026,
       "url": "https://doi.org/10.48550/arXiv.2605.08495",
-      "cited_by": 6,
+      "cited_by": 7,
       "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
       "doi": "10.48550/arXiv.2605.08495",
       "pmid": null,
@@ -207,21 +200,21 @@
     {
       "title": "OmniEEG-Bench: A Standardized Evaluation Benchmark for EEG Foundation Models",
       "author": "Zilin Lu, Zongsheng Li, Xinke Shen, Kexin Lou, Ying Xin, Xiaoqing Chen, Shinan Wang, Xiangyu Chen, Jiahao Fan, Chenyu Huang, Xin Xu, Zhoujie Hou, Chen Wei, Quanying Liu",
-      "venue": "n/a",
+      "venue": "ArXiv",
       "year": 2026,
-      "url": "n/a",
+      "url": "https://doi.org/10.48550/arXiv.2606.00815",
       "cited_by": 3,
       "abstract": "Electroencephalography (EEG) supports a variety of brain-computer interface (BCI) tasks ranging from brain-state monitoring to human-LLM interactions. EEG foundation models are emerging, but evaluation remains fragmented due to heterogeneous datasets and nconsistent task protocols. Here, we introduce OmniEEG-Bench, a unified benchmark and downstream task roadmap for EEG foundation models (FMs). It organizes evaluation of EEG FMs into six task families spanning (i) signal reliability, (ii) biometrics and disease, (iii) consciousness and state, (iv) cognition and emotion, (v) naturalistic stimulus decoding, and (vi) motor and interaction, introducing a new generation of tasks not systematically benchmarked in prior EEG FM work. OmniEEG-Bench standardizes model deployment, task definitions, and metrics through a task-card specification, and unifies 54 EEG datasets with consistent evaluation protocols. We benchmark 10 representative EEG foundation models and report a leaderboard that cover",
-      "doi": null,
+      "doi": "10.48550/arXiv.2606.00815",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.1101/2024.10.03.615261",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.7099427238106728,
-        "similarity_score": 0.6146690249443054,
-        "citation_text_length": 1286,
+        "confidence_score": 0.7116490066051483,
+        "similarity_score": 0.6161463260650635,
+        "citation_text_length": 1288,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -344,22 +337,22 @@
     },
     {
       "title": "Temporal Feature Extractors in EEG Foundation Models: A Controlled Comparison Including a Pretrained Time-Series Model",
-      "author": "Aycse Betul Yuce, Chris Leffler, Sarun Varghese, M. Spiliopoulou, Sebastian Stober",
-      "venue": "n/a",
+      "author": "A. Yuce, Chris Leffler, Sarun Varghese, M. Spiliopoulou, Sebastian Stober",
+      "venue": "ArXiv",
       "year": 2026,
-      "url": "n/a",
+      "url": "https://doi.org/10.48550/arXiv.2606.30104",
       "cited_by": 0,
       "abstract": "Electroencephalography (EEG) foundation models aim to learn generalizable representations from large-scale brain recordings. However, the role of temporal feature extractors and whether pretrained time-series foundation models (TSFMs) can be effectively transferred to this setting remains underexplored. We conduct a controlled comparison of three temporal feature extraction strategies, including a linear baseline, a convolutional encoder, and a frozen pretrained TSFM (MOMENT), within a unified EEG foundation model. We evaluate their impact on representation quality using two downstream tasks: motor imagery and emotion recognition. Results reveal different trends across the evaluated benchmarks. On the motor imagery dataset, simple temporal representations perform competitively, whereas the emotion dataset benefits from richer temporal modeling. Although not specifically adapted to EEG, the pretrained TSFM serves as an effective temporal feature extractor, suggesting that general-purpos",
-      "doi": null,
+      "doi": "10.48550/arXiv.2606.30104",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.1101/2024.10.03.615261",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5347004932165146,
-        "similarity_score": 0.4629441499710083,
-        "citation_text_length": 1242,
+        "confidence_score": 0.5309396490454674,
+        "similarity_score": 0.4596880078315735,
+        "citation_text_length": 1235,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -368,21 +361,21 @@
     {
       "title": "Zero-Shot Neural Priors for Generalizable Cross-Subject and Cross-Task EEG Decoding",
       "author": "Baimam Boukar Jean Jacques, Brandone Fonya, Nchofon Tagha Ghogomu, Pauline Nyaboe, Kipngeno Koech",
-      "venue": "n/a",
+      "venue": "ArXiv",
       "year": 2026,
-      "url": "n/a",
+      "url": "https://doi.org/10.48550/arXiv.2606.23706",
       "cited_by": 0,
       "abstract": "The development of generalizable electroencephalography (EEG) decoding models is essential for robust brain-computer interfaces (BCI) and objective neural biomarkers in mental health. Conventional approaches have been hindered by poor cross-subject and cross-task generalization, owing to high inter-subject variability and non-stationary neural signals. We address this challenge with a zero-shot cross-subject decoding framework on the large-scale Healthy Brain Network dataset, benchmarking a convolutional neural network baseline, a hybrid LSTM, and a Transformer-based foundation model. To adapt the Transformer for regression while averting catastrophic forgetting, we propose a novel progressive unfreezing strategy. The baseline yielded an nRMSE of 0.9991, whereas our fine-tuned Transformer achieved 0.9799 on unseen subjects. This work advances scalable, calibration-free EEG decoding for computational psychiatry and behavioral prediction.",
-      "doi": null,
+      "doi": "10.48550/arXiv.2606.23706",
       "pmid": null,
       "openalex_id": null,
       "source_doi": "10.1101/2024.10.03.615261",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5989447081089021,
-        "similarity_score": 0.5185668468475342,
-        "citation_text_length": 1172,
+        "confidence_score": 0.5960185208916665,
+        "similarity_score": 0.5160333514213562,
+        "citation_text_length": 1174,
         "dataset_text_length": 2351,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -506,13 +499,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:55:01.318778+00:00",
+    "scoring_date": "2026-08-17T11:43:30.987545+00:00",
     "dataset_text_length": 2351,
     "num_citations_scored": 17,
     "summary_stats": {
-      "mean_confidence": 0.6172022265984731,
+      "mean_confidence": 0.6169875446400223,
       "median_confidence": 0.584206101000309,
-      "std_confidence": 0.12515710699722635,
+      "std_confidence": 0.12544760375313183,
       "min_confidence": 0.3913941143453121,
       "max_confidence": 1.0,
       "high_confidence_count": 3,

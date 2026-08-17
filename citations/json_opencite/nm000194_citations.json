@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000194",
-  "num_citations": 106,
-  "date_last_updated": "2026-08-09T10:09:37.653976+00:00",
+  "num_citations": 100,
+  "date_last_updated": "2026-08-17T10:09:17.724421+00:00",
   "metadata": {
-    "total_cumulative_citations": 4348,
-    "fetch_date": "2026-08-09T10:09:37.653976+00:00",
+    "total_cumulative_citations": 4374,
+    "fetch_date": "2026-08-17T10:09:17.724421+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -68,16 +68,16 @@
     ],
     "keywords": [
       "Brain-Computer Interfaces",
-      "Event-Related Potentials",
-      "P300",
       "EEG",
-      "ERP",
+      "P300",
+      "Event-Related Potentials, P300",
       "RSVP",
-      "Speller",
+      "speller",
       "gaze-independent",
-      "N2"
+      "N2",
+      "Event-Related Potentials"
     ],
-    "methods_description": "EEG data acquired at 1000 Hz using 63-channel BrainAmp amplifiers with actiCap electrodes in 10-20 montage, referenced to left mastoid. Online lowpass filtering at 40 Hz (Chebyshev). Preprocessing included offline re-referencing to linked mastoids, downsampling to 200 Hz, lowpass filtering (40 Hz), baseline correction, and artifact rejection using min-max criterion (75 µV threshold on frontal channels) and broadband power rejection (5-40 Hz). Classification employed linear discriminant analysis with shrinkage on spatio-temporal features from individually selected time windows.",
+    "methods_description": "EEG data acquired at 1000 Hz using 63 active electrodes in 10-20 montage with BrainAmp amplifiers and actiCap system, referenced to left mastoid. Online lowpass Chebyshev filtering at 40 Hz applied during acquisition. Offline preprocessing included re-referencing to linked mastoids, downsampling to 200 Hz, artifact rejection using min-max criterion for eye movements and broadband power rejection, and baseline correction. Classification employed LDA with shrinkage on spatio-temporal features from individually selected time windows across 10 symbol sequences.",
     "funding": [
       {
         "funder_name": "BMBF Grant"
@@ -97,13 +97,7 @@
       {
         "funder_name": "DFG"
       }
-    ],
-    "searched_accessions": [
-      "nm000194"
-    ],
-    "num_accession_mentions": 6,
-    "num_dataset_citations": 6,
-    "num_datapaper_citations": 100
+    ]
   },
   "citation_details": [
     {
@@ -181,7 +175,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2013,
       "url": "https://doi.org/10.3389/fnins.2013.00129",
-      "cited_by": 136,
+      "cited_by": 137,
       "abstract": "This paper describes a case study with a patient in the classic locked-in state, who currently has no means of independent communication. Following a user-centered approach, we investigated event-related potentials (ERP) elicited in different modalities for use in brain-computer interface (BCI) systems. Such systems could provide her with an alternative communication channel. To investigate the most viable modality for achieving BCI based communication, classic oddball paradigms (1 rare and 1 frequent stimulus, ratio 1:5) in the visual, auditory and tactile modality were conducted (2 runs per modality). Classifiers were built on one run and tested offline on another run (and vice versa). In these paradigms, the tactile modality was clearly superior to other modalities, displaying high offline accuracy even when classification was performed on single trials only. Consequently, we tested the tactile paradigm online and the patient successfully selected targets without any error. Furtherm",
       "doi": "10.3389/fnins.2013.00129",
       "pmid": "23898236",
@@ -204,7 +198,7 @@
       "venue": "Neurorehabilitation and neural repair",
       "year": 2014,
       "url": "https://doi.org/10.1177/1545968314554624",
-      "cited_by": 128,
+      "cited_by": 129,
       "abstract": "A goal of brain-computer interface research is to develop fast and reliable means of communication for individuals with paralysis and anarthria. We evaluated the ability of an individual with incomplete locked-in syndrome enrolled in the BrainGate Neural Interface System pilot clinical trial to communicate using neural point-and-click control. A general-purpose interface was developed to provide control of a computer cursor in tandem with one of two on-screen virtual keyboards. The novel BrainGate Radial Keyboard was compared to a standard QWERTY keyboard in a balanced copy-spelling task. The Radial Keyboard yielded a significant improvement in typing accuracy and speed-enabling typing rates over 10 correct characters per minute. The participant used this interface to communicate face-to-face with research staff by using text-to-speech conversion, and remotely using an internet chat application. This study demonstrates the first use of an intracortical brain-computer interface for neur",
       "doi": "10.1177/1545968314554624",
       "pmid": "25385765",
@@ -245,35 +239,12 @@
       }
     },
     {
-      "title": "Discriminative Canonical Pattern Matching for Single-Trial Classification of ERP Components",
-      "author": "Xiaolin Xiao, Minpeng Xu, Jing Jin, Yijun Wang, Tzyy‐Ping Jung, Dong Ming",
-      "venue": "IEEE Transactions on Biomedical Engineering",
-      "year": 2019,
-      "url": "https://doi.org/10.1109/tbme.2019.2958641",
-      "cited_by": 112,
-      "abstract": "Event-related potentials (ERPs) are one of the most popular control signals for brain-computer interfaces (BCIs). However, they are very weak and sensitive to the experimental settings including paradigms, stimulation parameters and even surrounding environments, resulting in a diversity of ERP patterns across different BCI experiments. It's still a challenge to develop a general decoding algorithm that can adapt to the ERP diversities of different BCI datasets with small training sets. This study compared a recently developed algorithm, i.e., discriminative canonical pattern matching (DCPM), with seven ERP-BCI classification methods, i.e., linear discriminant analysis (LDA), stepwise LDA, bayesian LDA, shrinkage LDA, spatial-temporal discriminant analysis (STDA), xDAWN and EEGNet for the single-trial classification of two private EEG datasets and three public EEG datasets with small training sets. The feature ERPs of the five datasets included P300, motion visual evoked potential (mVE",
-      "doi": "10.1109/tbme.2019.2958641",
-      "pmid": "31831401",
-      "openalex_id": "W2996605177",
-      "source_doi": "10.1016/j.clinph.2012.12.050",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5550997853279114,
-        "similarity_score": 0.5046361684799194,
-        "citation_text_length": 1246,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Deep Learning in EEG: Advance of the Last Ten-Year Critical Period",
       "author": "Shu Gong, Kaibo Xing, Andrzej Cichocki, Junhua Li",
       "venue": "IEEE Transactions on Cognitive and Developmental Systems",
       "year": 2021,
       "url": "https://doi.org/10.1109/tcds.2021.3079712",
-      "cited_by": 111,
+      "cited_by": 115,
       "abstract": "Deep learning has achieved excellent performance in a wide range of domains, especially in speech recognition and computer vision. Relatively less work has been done for electroencephalogram (EEG), but there is still significant progress attained in the last decade. Due to the lack of a comprehensive and topic widely covered survey for deep learning in EEG, we attempt to summarize recent progress to provide an overview, as well as perspectives for future developments. We first briefly mention the artifacts removal for EEG signal and then introduce deep learning models that have been utilized in EEG processing and classification. Subsequently, the applications of deep learning in EEG are reviewed by categorizing them into groups, such as brain–computer interface, disease detection, and emotion recognition. They are followed by the discussion, in which the pros and cons of deep learning are presented and future directions and challenges for deep learning in EEG are proposed. We hope that",
       "doi": "10.1109/tcds.2021.3079712",
       "pmid": null,
@@ -285,6 +256,29 @@
         "confidence_score": 0.5044182935357094,
         "similarity_score": 0.43672579526901245,
         "citation_text_length": 1210,
+        "dataset_text_length": 2232,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Discriminative Canonical Pattern Matching for Single-Trial Classification of ERP Components",
+      "author": "Xiaolin Xiao, Minpeng Xu, Jing Jin, Yijun Wang, Tzyy‐Ping Jung, Dong Ming",
+      "venue": "IEEE Transactions on Biomedical Engineering",
+      "year": 2019,
+      "url": "https://doi.org/10.1109/tbme.2019.2958641",
+      "cited_by": 114,
+      "abstract": "Event-related potentials (ERPs) are one of the most popular control signals for brain-computer interfaces (BCIs). However, they are very weak and sensitive to the experimental settings including paradigms, stimulation parameters and even surrounding environments, resulting in a diversity of ERP patterns across different BCI experiments. It's still a challenge to develop a general decoding algorithm that can adapt to the ERP diversities of different BCI datasets with small training sets. This study compared a recently developed algorithm, i.e., discriminative canonical pattern matching (DCPM), with seven ERP-BCI classification methods, i.e., linear discriminant analysis (LDA), stepwise LDA, bayesian LDA, shrinkage LDA, spatial-temporal discriminant analysis (STDA), xDAWN and EEGNet for the single-trial classification of two private EEG datasets and three public EEG datasets with small training sets. The feature ERPs of the five datasets included P300, motion visual evoked potential (mVE",
+      "doi": "10.1109/tbme.2019.2958641",
+      "pmid": "31831401",
+      "openalex_id": "W2996605177",
+      "source_doi": "10.1016/j.clinph.2012.12.050",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5550997853279114,
+        "similarity_score": 0.5046361684799194,
+        "citation_text_length": 1246,
         "dataset_text_length": 2232,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -314,6 +308,29 @@
       }
     },
     {
+      "title": "Review of brain encoding and decoding mechanisms for EEG-based brain–computer interface",
+      "author": "Lichao Xu, Minpeng Xu, Tzyy‐Ping Jung, Dong Ming",
+      "venue": "Cognitive Neurodynamics",
+      "year": 2021,
+      "url": "https://doi.org/10.1007/s11571-021-09676-z",
+      "cited_by": 101,
+      "abstract": null,
+      "doi": "10.1007/s11571-021-09676-z",
+      "pmid": "34367361",
+      "openalex_id": "W3155986091",
+      "source_doi": "10.1016/j.clinph.2012.12.050",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5018149316310883,
+        "similarity_score": 0.47791898250579834,
+        "citation_text_length": 185,
+        "dataset_text_length": 2232,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Noninvasive Brain–Computer Interfaces for Augmentative and Alternative Communication",
       "author": "Murat Akçakaya, Betts Peters, Mohammad Moghadamfalahi, Aimee Mooney, Umut Orhan, Barry Oken, Deniz Erdoğmuş, Melanie Fried‐Oken",
       "venue": "IEEE Reviews in Biomedical Engineering",
@@ -337,35 +354,12 @@
       }
     },
     {
-      "title": "Review of brain encoding and decoding mechanisms for EEG-based brain–computer interface",
-      "author": "Lichao Xu, Minpeng Xu, Tzyy‐Ping Jung, Dong Ming",
-      "venue": "Cognitive Neurodynamics",
-      "year": 2021,
-      "url": "https://doi.org/10.1007/s11571-021-09676-z",
-      "cited_by": 99,
-      "abstract": null,
-      "doi": "10.1007/s11571-021-09676-z",
-      "pmid": "34367361",
-      "openalex_id": "W3155986091",
-      "source_doi": "10.1016/j.clinph.2012.12.050",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5018149316310883,
-        "similarity_score": 0.47791898250579834,
-        "citation_text_length": 185,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Universal Joint Feature Extraction for P300 EEG Classification Using Multi-Task Autoencoder",
       "author": "Apiwat Ditthapron, Nannapas Banluesombatkul, Sombat Ketrat, Ekapol Chuangsuwanich, Theerawit Wilaiprasitporn",
       "venue": "IEEE Access",
       "year": 2019,
       "url": "https://doi.org/10.1109/access.2019.2919143",
-      "cited_by": 94,
+      "cited_by": 95,
       "abstract": "The process of recording electroencephalography (EEG) signals is onerous and requires massive storage to store signals at an applicable frequency rate. In this paper, we propose the event-related potential encoder network (ERPENet), a multi-task autoencoder-based model, that can be applied to any ERP-related tasks. The strength of ERPENet lies in its capability to handle various kinds of ERP datasets and its robustness across multiple recording setups, enabling joint training across datasets. The ERPENet incorporates convolutional neural networks (CNNs) and long short-term memory (LSTM), in an autoencoder setup, which tries to simultaneously compress the input EEG signal and extract related P300 features into a latent vector. Here, we can infer the process for generating the latent vector as universal joint feature extraction. The network also includes a classification part for attended and unattended events classification as an auxiliary task. We experimented on six different P300 dat",
       "doi": "10.1109/access.2019.2919143",
       "pmid": null,
@@ -388,7 +382,7 @@
       "venue": "Sensors",
       "year": 2018,
       "url": "https://doi.org/10.3390/s18020335",
-      "cited_by": 80,
+      "cited_by": 81,
       "abstract": "The electroencephalogram (EEG) signal represents a subject's specific brain activity patterns and is considered as an ideal biometric given its superior forgery prevention. However, the accuracy and stability of the current EEG-based person authentication systems are still unsatisfactory in practical application. In this paper, a multi-task EEG-based person authentication system combining eye blinking is proposed, which can achieve high precision and robustness. Firstly, we design a novel EEG-based biometric evoked paradigm using self- or non-self-face rapid serial visual presentation (RSVP). The designed paradigm could obtain a distinct and stable biometric trait from EEG with a lower time cost. Secondly, the event-related potential (ERP) features and morphological features are extracted from EEG signals and eye blinking signals, respectively. Thirdly, convolutional neural network and back propagation neural network are severally designed to gain the score estimation of EEG features a",
       "doi": "10.3390/s18020335",
       "pmid": "29364848",
@@ -434,7 +428,7 @@
       "venue": "Computational Intelligence and Neuroscience",
       "year": 2017,
       "url": "https://doi.org/10.1155/2017/1742862",
-      "cited_by": 73,
+      "cited_by": 74,
       "abstract": "The most popular noninvasive Brain Robot Interaction (BRI) technology uses the electroencephalogram- (EEG-) based Brain Computer Interface (BCI), to serve as an additional communication channel, for robot control via brainwaves. This technology is promising for elderly or disabled patient assistance with daily life. The key issue of a BRI system is to identify human mental activities, by decoding brainwaves, acquired with an EEG device. Compared with other BCI applications, such as word speller, the development of these applications may be more challenging since control of robot systems via brainwaves must consider surrounding environment feedback in real-time, robot mechanical kinematics, and dynamics, as well as robot control architecture and behavior. This article reviews the major techniques needed for developing BRI systems. In this review article, we first briefly introduce the background and development of mind-controlled robot technologies. Second, we discuss the EEG-based brai",
       "doi": "10.1155/2017/1742862",
       "pmid": "28484488",
@@ -457,7 +451,7 @@
       "venue": "Gels",
       "year": 2025,
       "url": "https://doi.org/10.3390/gels11040232",
-      "cited_by": 69,
+      "cited_by": 71,
       "abstract": "Human-machine interfacing (HMI) has emerged as a critical technology in healthcare, robotics, and wearable electronics, with hydrogels offering unique advantages as multifunctional materials that seamlessly connect biological systems with electronic devices. This review provides a detailed examination of recent advancements in hydrogel design, focusing on their properties and potential applications in HMI. We explore the key characteristics such as biocompatibility, mechanical flexibility, and responsiveness, which are essential for effective and long-term integration with biological tissues. Additionally, we highlight innovations in conductive hydrogels, hybrid and composite materials, and fabrication techniques such as 3D/4D printing, which allow for the customization of hydrogel properties to meet the demands of specific HMI applications. Further, we discuss the diverse classes of polymers that contribute to hydrogel conductivity, including conducting, natural, synthetic, and hybrid",
       "doi": "10.3390/gels11040232",
       "pmid": "40277668",
@@ -480,7 +474,7 @@
       "venue": "PLoS ONE",
       "year": 2016,
       "url": "https://doi.org/10.1371/journal.pone.0148805",
-      "cited_by": 66,
+      "cited_by": 67,
       "abstract": "We present a new human-computer interface that is based on decoding of attention through pupillometry. Our method builds on the recent finding that covert visual attention affects the pupillary light response: Your pupil constricts when you covertly (without looking at it) attend to a bright, compared to a dark, stimulus. In our method, participants covertly attend to one of several letters with oscillating brightness. Pupil size reflects the brightness of the selected letter, which allows us-with high accuracy and in real time-to determine which letter the participant intends to select. The performance of our method is comparable to the best covert-attention brain-computer interfaces to date, and has several advantages: no movement other than pupil-size change is required; no physical contact is required (i.e. no electrodes); it is easy to use; and it is reliable. Potential applications include: communication with totally locked-in patients, training of sustained attention, and ultra-",
       "doi": "10.1371/journal.pone.0148805",
       "pmid": "26848745",
@@ -595,7 +589,7 @@
       "venue": "IEEE Transactions on Cybernetics",
       "year": 2024,
       "url": "https://doi.org/10.1109/tcyb.2024.3390805",
-      "cited_by": 55,
+      "cited_by": 57,
       "abstract": "Event-related potentials (ERPs) reflect neurophysiological changes of the brain in response to external events and their associated underlying complex spatiotemporal feature information is governed by ongoing oscillatory activity within the brain. Deep learning methods have been increasingly adopted for ERP-based brain-computer interfaces (BCIs) due to their excellent feature representation abilities, which allow for deep analysis of oscillatory activity within the brain. Features with higher spatiotemporal frequencies usually represent detailed and localized information, while features with lower spatiotemporal frequencies usually represent global structures. Mining EEG features from multiple spatiotemporal frequencies is conducive to obtaining more discriminative information. A multiscale feature fusion octave convolution neural network (MOCNN) is proposed in this article. MOCNN divides the ERP signals into high-, medium- and low-frequency components corresponding to different resolu",
       "doi": "10.1109/tcyb.2024.3390805",
       "pmid": "38713574",
@@ -636,6 +630,29 @@
       }
     },
     {
+      "title": "Advanced Electrode Technologies for Noninvasive Brain–Computer Interfaces",
+      "author": "Sen Lin, Jingjing Jiang, Kai Huang, Lei Li, Xian He, Peng Du, Yufeng Wu, Junchen Liu, Xilin Li, Zhibao Huang, Zenan Zhou, Yuanhang Yu, Jiaxin Gao, Ming Lei, Hui Wu",
+      "venue": "ACS Nano",
+      "year": 2023,
+      "url": "https://doi.org/10.1021/acsnano.3c06781",
+      "cited_by": 52,
+      "abstract": "Brain-computer interfaces (BCIs) have garnered significant attention in recent years due to their potential applications in medical, assistive, and communication technologies. Building on this, noninvasive BCIs stand out as they provide a safe and user-friendly method for interacting with the human brain. In this work, we provide a comprehensive overview of the latest developments and advancements in material, design, and application of noninvasive BCIs electrode technology. We also explore the challenges and limitations currently faced by noninvasive BCI electrode technology and sketch out the technological roadmap from three dimensions: Materials and Design; Performances; Mode and Function. We aim to unite research efforts within the field of noninvasive BCI electrode technology, focusing on the consolidation of shared goals and fostering integrated development strategies among a diverse array of multidisciplinary researchers.",
+      "doi": "10.1021/acsnano.3c06781",
+      "pmid": "38064282",
+      "openalex_id": "W4389490339",
+      "source_doi": "10.1016/j.clinph.2012.12.050",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4388480177521706,
+        "similarity_score": 0.379954993724823,
+        "citation_text_length": 1225,
+        "dataset_text_length": 2232,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A novel hybrid BCI speller based on RSVP and SSVEP paradigm",
       "author": "Shayan Jalilpour, Sepideh Hajipour Sardouie, Amirmohammad Mijani",
       "venue": "Computer Methods and Programs in Biomedicine",
@@ -653,29 +670,6 @@
         "confidence_score": 0.6542223501205445,
         "similarity_score": 0.5664262771606445,
         "citation_text_length": 1206,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Advanced Electrode Technologies for Noninvasive Brain–Computer Interfaces",
-      "author": "Sen Lin, Jingjing Jiang, Kai Huang, Lei Li, Xian He, Peng Du, Yufeng Wu, Junchen Liu, Xilin Li, Zhibao Huang, Zenan Zhou, Yuanhang Yu, Jiaxin Gao, Ming Lei, Hui Wu",
-      "venue": "ACS Nano",
-      "year": 2023,
-      "url": "https://doi.org/10.1021/acsnano.3c06781",
-      "cited_by": 51,
-      "abstract": "Brain-computer interfaces (BCIs) have garnered significant attention in recent years due to their potential applications in medical, assistive, and communication technologies. Building on this, noninvasive BCIs stand out as they provide a safe and user-friendly method for interacting with the human brain. In this work, we provide a comprehensive overview of the latest developments and advancements in material, design, and application of noninvasive BCIs electrode technology. We also explore the challenges and limitations currently faced by noninvasive BCI electrode technology and sketch out the technological roadmap from three dimensions: Materials and Design; Performances; Mode and Function. We aim to unite research efforts within the field of noninvasive BCI electrode technology, focusing on the consolidation of shared goals and fostering integrated development strategies among a diverse array of multidisciplinary researchers.",
-      "doi": "10.1021/acsnano.3c06781",
-      "pmid": "38064282",
-      "openalex_id": "W4389490339",
-      "source_doi": "10.1016/j.clinph.2012.12.050",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4388480177521706,
-        "similarity_score": 0.379954993724823,
-        "citation_text_length": 1225,
         "dataset_text_length": 2232,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -728,6 +722,29 @@
       }
     },
     {
+      "title": "Brain–Computer Interfaces for Detection and Localization of Targets in Aerial Images",
+      "author": "Ana Matran‐Fernandez, Riccardo Poli",
+      "venue": "IEEE Transactions on Biomedical Engineering",
+      "year": 2016,
+      "url": "https://doi.org/10.1109/tbme.2016.2583200",
+      "cited_by": 46,
+      "abstract": "OBJECTIVE: The N2pc event-related potential (ERP) appears on the opposite side of the scalp with respect to the visual hemisphere where an object of interest is located. We explored the feasibility of using it to extract information on the spatial location of targets in aerial images shown by means of a rapid serial visual presentation (RSVP) protocol using single-trial classification. METHODS: Images were shown to 11 participants at a presentation rate of 5 Hz while recording electroencephalographic signals. With the resulting ERPs, we trained linear classifiers for single-trial detection of target presence and location. We analyzed the classifiers' decisions and their raw output scores on independent test sets as well as the averages and voltage distributions of the ERPs. RESULTS: The N2pc is elicited in RSVP presentation of complex images and can be recognized in single trials (the median area under the receiver operating characteristic curve was 0.76 for left versus right classific",
+      "doi": "10.1109/tbme.2016.2583200",
+      "pmid": "27337711",
+      "openalex_id": "W2470888723",
+      "source_doi": "10.1016/j.clinph.2012.12.050",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6148329436779023,
+        "similarity_score": 0.5589390397071838,
+        "citation_text_length": 1201,
+        "dataset_text_length": 2232,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Visual P300 Mind-Speller Brain-Computer Interfaces: A Walk Through the Recent Developments With Special Focus on Classification Algorithms",
       "author": "Jobin T. Philip, S. Thomas George",
       "venue": "Clinical EEG and Neuroscience",
@@ -745,29 +762,6 @@
         "confidence_score": 0.6299773037433625,
         "similarity_score": 0.5727066397666931,
         "citation_text_length": 1239,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Brain–Computer Interfaces for Detection and Localization of Targets in Aerial Images",
-      "author": "Ana Matran‐Fernandez, Riccardo Poli",
-      "venue": "IEEE Transactions on Biomedical Engineering",
-      "year": 2016,
-      "url": "https://doi.org/10.1109/tbme.2016.2583200",
-      "cited_by": 45,
-      "abstract": "OBJECTIVE: The N2pc event-related potential (ERP) appears on the opposite side of the scalp with respect to the visual hemisphere where an object of interest is located. We explored the feasibility of using it to extract information on the spatial location of targets in aerial images shown by means of a rapid serial visual presentation (RSVP) protocol using single-trial classification. METHODS: Images were shown to 11 participants at a presentation rate of 5 Hz while recording electroencephalographic signals. With the resulting ERPs, we trained linear classifiers for single-trial detection of target presence and location. We analyzed the classifiers' decisions and their raw output scores on independent test sets as well as the averages and voltage distributions of the ERPs. RESULTS: The N2pc is elicited in RSVP presentation of complex images and can be recognized in single trials (the median area under the receiver operating characteristic curve was 0.76 for left versus right classific",
-      "doi": "10.1109/tbme.2016.2583200",
-      "pmid": "27337711",
-      "openalex_id": "W2470888723",
-      "source_doi": "10.1016/j.clinph.2012.12.050",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6148329436779023,
-        "similarity_score": 0.5589390397071838,
-        "citation_text_length": 1201,
         "dataset_text_length": 2232,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1119,6 +1113,29 @@
       }
     },
     {
+      "title": "A Cross-Session Dataset for Collaborative Brain-Computer Interfaces Based on Rapid Serial Visual Presentation",
+      "author": "Zheng Li, Sen Sun, Hongze Zhao, Weihua Pei, Hongda Chen, Xiaorong Gao, Lijian Zhang, Yijun Wang",
+      "venue": "Frontiers in Neuroscience",
+      "year": 2020,
+      "url": "https://doi.org/10.3389/fnins.2020.579469",
+      "cited_by": 27,
+      "abstract": "Brain-computer interfaces (BCIs) based on rapid serial visual presentation (RSVP) have been widely used to categorize target and non-target images. However, it is still a challenge to detect single-trial event related potentials (ERPs) from electroencephalography (EEG) signals. Besides, the variability of EEG signal over time may cause difficulties of calibration in long-term system use. Recently, collaborative BCIs have been proposed to improve the overall BCI performance by fusing brain activities acquired from multiple subjects. For both individual and collaborative BCIs, feature extraction and classification algorithms that can be transferred across sessions can significantly facilitate system calibration. Although open datasets are highly efficient for developing algorithms, currently there is still a lack of datasets for a collaborative RSVP-based BCI. This paper presents a cross-session EEG dataset of a collaborative RSVP-based BCI system from 14 subjects, who were divided into ",
+      "doi": "10.3389/fnins.2020.579469",
+      "pmid": "33192265",
+      "openalex_id": "W3094461913",
+      "source_doi": "10.1016/j.clinph.2012.12.050",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7199482119083406,
+        "similarity_score": 0.6233317852020264,
+        "citation_text_length": 1268,
+        "dataset_text_length": 2232,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Brain–Computer Interface Based Solutions for End-Users with Severe Communication Disorders",
       "author": "Andrea Kübler, Donatella Mattia",
       "venue": "Elsevier eBooks",
@@ -1182,29 +1199,6 @@
         "confidence_score": 0.4744823071360589,
         "similarity_score": 0.41080719232559204,
         "citation_text_length": 1234,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "A Cross-Session Dataset for Collaborative Brain-Computer Interfaces Based on Rapid Serial Visual Presentation",
-      "author": "Zheng Li, Sen Sun, Hongze Zhao, Weihua Pei, Hongda Chen, Xiaorong Gao, Lijian Zhang, Yijun Wang",
-      "venue": "Frontiers in Neuroscience",
-      "year": 2020,
-      "url": "https://doi.org/10.3389/fnins.2020.579469",
-      "cited_by": 26,
-      "abstract": "Brain-computer interfaces (BCIs) based on rapid serial visual presentation (RSVP) have been widely used to categorize target and non-target images. However, it is still a challenge to detect single-trial event related potentials (ERPs) from electroencephalography (EEG) signals. Besides, the variability of EEG signal over time may cause difficulties of calibration in long-term system use. Recently, collaborative BCIs have been proposed to improve the overall BCI performance by fusing brain activities acquired from multiple subjects. For both individual and collaborative BCIs, feature extraction and classification algorithms that can be transferred across sessions can significantly facilitate system calibration. Although open datasets are highly efficient for developing algorithms, currently there is still a lack of datasets for a collaborative RSVP-based BCI. This paper presents a cross-session EEG dataset of a collaborative RSVP-based BCI system from 14 subjects, who were divided into ",
-      "doi": "10.3389/fnins.2020.579469",
-      "pmid": "33192265",
-      "openalex_id": "W3094461913",
-      "source_doi": "10.1016/j.clinph.2012.12.050",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7199482119083406,
-        "similarity_score": 0.6233317852020264,
-        "citation_text_length": 1268,
         "dataset_text_length": 2232,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1326,6 +1320,29 @@
       }
     },
     {
+      "title": "Development of an electrooculogram-based human-computer interface using involuntary eye movement by spatially rotating sound for communication of locked-in patients",
+      "author": "Do Yeon Kim, Chang Hee Han, Chang‐Hwan Im",
+      "venue": "Scientific Reports",
+      "year": 2018,
+      "url": "https://doi.org/10.1038/s41598-018-27865-5",
+      "cited_by": 21,
+      "abstract": "Individuals who have lost normal pathways for communication need augmentative and alternative communication (AAC) devices. In this study, we propose a new electrooculogram (EOG)-based human-computer interface (HCI) paradigm for AAC that does not require a user's voluntary eye movement for binary yes/no communication by patients in locked-in state (LIS). The proposed HCI uses a horizontal EOG elicited by involuntary auditory oculogyric reflex, in response to a rotating sound source. In the proposed HCI paradigm, a user was asked to selectively attend to one of two sound sources rotating in directions opposite to each other, based on the user's intention. The user's intentions could then be recognised by quantifying EOGs. To validate its performance, a series of experiments was conducted with ten healthy subjects, and two patients with amyotrophic lateral sclerosis (ALS). The online experimental results exhibited high-classification accuracies of 94% in both healthy subjects and ALS pati",
+      "doi": "10.1038/s41598-018-27865-5",
+      "pmid": "29934518",
+      "openalex_id": "W2809501170",
+      "source_doi": "10.1016/j.clinph.2012.12.050",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4813044518232346,
+        "similarity_score": 0.43754950165748596,
+        "citation_text_length": 1262,
+        "dataset_text_length": 2232,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Assessment of Visual Pursuit in Patients With Disorders of Consciousness Based on a Brain-Computer Interface",
       "author": "Jun Xiao, Qiuyou Xie, Qing Lin, Tianyou Yu, Ronghao Yu, Yuanqing Li",
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
@@ -1389,29 +1406,6 @@
         "confidence_score": 0.5189880311489106,
         "similarity_score": 0.4718073010444641,
         "citation_text_length": 1198,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Development of an electrooculogram-based human-computer interface using involuntary eye movement by spatially rotating sound for communication of locked-in patients",
-      "author": "Do Yeon Kim, Chang Hee Han, Chang‐Hwan Im",
-      "venue": "Scientific Reports",
-      "year": 2018,
-      "url": "https://doi.org/10.1038/s41598-018-27865-5",
-      "cited_by": 18,
-      "abstract": "Individuals who have lost normal pathways for communication need augmentative and alternative communication (AAC) devices. In this study, we propose a new electrooculogram (EOG)-based human-computer interface (HCI) paradigm for AAC that does not require a user's voluntary eye movement for binary yes/no communication by patients in locked-in state (LIS). The proposed HCI uses a horizontal EOG elicited by involuntary auditory oculogyric reflex, in response to a rotating sound source. In the proposed HCI paradigm, a user was asked to selectively attend to one of two sound sources rotating in directions opposite to each other, based on the user's intention. The user's intentions could then be recognised by quantifying EOGs. To validate its performance, a series of experiments was conducted with ten healthy subjects, and two patients with amyotrophic lateral sclerosis (ALS). The online experimental results exhibited high-classification accuracies of 94% in both healthy subjects and ALS pati",
-      "doi": "10.1038/s41598-018-27865-5",
-      "pmid": "29934518",
-      "openalex_id": "W2809501170",
-      "source_doi": "10.1016/j.clinph.2012.12.050",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4813044518232346,
-        "similarity_score": 0.43754950165748596,
-        "citation_text_length": 1262,
         "dataset_text_length": 2232,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1855,6 +1849,29 @@
       }
     },
     {
+      "title": "Decoding brain signals: A comprehensive review of EEG-Based BCI paradigms, signal processing and applications",
+      "author": "Hitesh Yadav, Surita Maini",
+      "venue": "Computers in Biology and Medicine",
+      "year": 2025,
+      "url": "https://doi.org/10.1016/j.compbiomed.2025.110937",
+      "cited_by": 12,
+      "abstract": "Brain-computer interface (BCI) based on electroencephalography (EEG) is a fast-developing field with a wide range of applications such as assistive technology, neurorehabilitation, entertainment, cognitive enhancement, etc. Since EEG is a non-invasive technique that captures brain activity in real time, it is ideally suited for developing interfaces that enable direct brain-to-device communication. The different paradigms utilised in EEG-based BCIs, such as Motor Imagery (MI), Steady-State Visual Evoked Potentials (SSVEP), P300 Event-related Potentials (ERP), and Hybrid paradigms that integrate several strategies for enhanced performance, are the main emphasis of this systematic review. This paper also explores the signal processing techniques, feature extraction strategies, and classification algorithms necessary for handling low-amplitude and noisy EEG recordings. The applications of BCI in different fields, as well as the challenges and possible solutions of EEG-based BCIs, are also",
+      "doi": "10.1016/j.compbiomed.2025.110937",
+      "pmid": "40829351",
+      "openalex_id": "W4413274133",
+      "source_doi": "10.1016/j.clinph.2012.12.050",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5789803388714791,
+        "similarity_score": 0.5012816786766052,
+        "citation_text_length": 1207,
+        "dataset_text_length": 2232,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Gaze-independent ERP-BCIs: augmenting performance through location-congruent bimodal stimuli",
       "author": "Marieke E. Thurlings, Anne-Marie Brouwer, Jan B. F. van Erp, Peter Werkhoven",
       "venue": "Frontiers in Systems Neuroscience",
@@ -1918,29 +1935,6 @@
         "confidence_score": 0.6473826241493226,
         "similarity_score": 0.5605044364929199,
         "citation_text_length": 1263,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Decoding brain signals: A comprehensive review of EEG-Based BCI paradigms, signal processing and applications",
-      "author": "Hitesh Yadav, Surita Maini",
-      "venue": "Computers in Biology and Medicine",
-      "year": 2025,
-      "url": "https://doi.org/10.1016/j.compbiomed.2025.110937",
-      "cited_by": 11,
-      "abstract": "Brain-computer interface (BCI) based on electroencephalography (EEG) is a fast-developing field with a wide range of applications such as assistive technology, neurorehabilitation, entertainment, cognitive enhancement, etc. Since EEG is a non-invasive technique that captures brain activity in real time, it is ideally suited for developing interfaces that enable direct brain-to-device communication. The different paradigms utilised in EEG-based BCIs, such as Motor Imagery (MI), Steady-State Visual Evoked Potentials (SSVEP), P300 Event-related Potentials (ERP), and Hybrid paradigms that integrate several strategies for enhanced performance, are the main emphasis of this systematic review. This paper also explores the signal processing techniques, feature extraction strategies, and classification algorithms necessary for handling low-amplitude and noisy EEG recordings. The applications of BCI in different fields, as well as the challenges and possible solutions of EEG-based BCIs, are also",
-      "doi": "10.1016/j.compbiomed.2025.110937",
-      "pmid": "40829351",
-      "openalex_id": "W4413274133",
-      "source_doi": "10.1016/j.clinph.2012.12.050",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5789803388714791,
-        "similarity_score": 0.5012816786766052,
-        "citation_text_length": 1207,
         "dataset_text_length": 2232,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2361,6 +2355,29 @@
       }
     },
     {
+      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
+      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2605.08495",
+      "cited_by": 7,
+      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
+      "doi": "10.48550/arXiv.2605.08495",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1016/j.clinph.2012.12.050",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6092880794405938,
+        "similarity_score": 0.5275221467018127,
+        "citation_text_length": 1326,
+        "dataset_text_length": 2232,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A framework for Interpretable deep learning in cross-subject detection of event-related potentials",
       "author": "Shayan Jalilpour, Gernot Müller-Putz",
       "venue": "Engineering Applications of Artificial Intelligence",
@@ -2382,195 +2399,22 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
-      "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2605.08495",
-      "cited_by": 6,
-      "abstract": "Deep learning and large public datasets have recently catalyzed the proliferation of AI models for processing brain recordings. However, systematically evaluating these models remains a challenge: not only do the preprocessing pipelines, training and finetuning approaches largely vary across studies, but their downstream evaluation is often limited to small sets of tasks and/or datasets. Here, we present NeuralBench: a unified framework for benchmarking AI models of brain activity. We accompany this framework with NeuralBench-EEG v1.0 -- a large EEG benchmark that includes 36 electroencephalography (EEG) tasks and 14 deep learning architectures, and is evaluated on 94 datasets accessed through a standardized interface. This first EEG-focused release already highlights two main findings. First, current foundation models only marginally outperform task-specific models. Second, a large set of tasks (e.g. cognitive decoding, clinical predictions) remain highly challenging, even for the bes",
-      "doi": "10.48550/arXiv.2605.08495",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1016/j.clinph.2012.12.050",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6092880794405938,
-        "similarity_score": 0.5275221467018127,
-        "citation_text_length": 1326,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Oxidative stress triggers the amyloidogenic pathway in human vascular smooth muscle cells",
-      "author": "Mireia Coma, Francesc X. Guix, Gerard ILL‐Raga, Iris Uribesalgo, Francesc Alameda, Miguel A. Valverde, Francisco J. Muñoz",
-      "venue": "Neurobiology of Aging",
-      "year": 2007,
-      "url": "https://doi.org/10.1016/j.neurobiolaging.2007.01.009",
-      "cited_by": 60,
-      "abstract": null,
-      "doi": "10.1016/j.neurobiolaging.2007.01.009",
-      "pmid": "17306421",
-      "openalex_id": "W2142632286",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000194",
-      "confidence_scoring": {
-        "confidence_score": 0.2140343189239502,
-        "similarity_score": 0.2140343189239502,
-        "citation_text_length": 258,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Interleukin-10 is produced by human uterine natural killer cells but does not affect their production of interferon-gamma",
-      "author": "Paola Viganò",
-      "venue": "Molecular Human Reproduction",
-      "year": 2001,
-      "url": "https://doi.org/10.1093/molehr/7.10.971",
-      "cited_by": 62,
-      "abstract": "A predominance of T helper (Th)2-type cytokines and a weakening of Th1 responses seem to be critical for the maintenance of a successful gestation. Among Th2-type cytokines, interleukin (IL)-10 is produced by human cytotrophoblasts and defects in this production result in specific pathological conditions of pregnancy. The current opinion is that IL-10 serves to protect the fetus from a harmful maternal immune response. However, production of the cytokine and its direct effect on uterine natural killer (uNK) cells, which represent the predominant lymphocyte population infiltrating the pregnant endometrium, are largely unknown. Thus, to shed light on the cytokine network at the maternal-fetal barrier during early pregnancy, we investigated the IL-10 system in uNK cells. We showed that uNK cells express the mRNA transcripts for IL-10 and IL-10 receptor. Production of IL-10 by the uNK cells was enhanced by both IL-2 and IL-12. Treatment with IL-10 alone enhanced uNK cell cytotoxic activity. In contrast, the cytokine did not modify the basal or stimulated production of interferon (IFN)-gamma by uNK. Thus, IL-10 does not act as a direct antagonist of uNK cell function and activation. However, IL-10 produced by uNK cells in response to IL-12 and IL-2 may still have a feedback inhibitory effect on the production of deleterious cytokines within the uterine microenvironment.",
-      "doi": "10.1093/molehr/7.10.971",
-      "pmid": "11574666",
-      "openalex_id": "W2150820515",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000194",
-      "confidence_scoring": {
-        "confidence_score": 0.16922187507152558,
-        "similarity_score": 0.15383806824684143,
-        "citation_text_length": 1587,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Nitro-Oxidative Stress after Neuronal Ischemia Induces Protein Nitrotyrosination and Cell Death",
-      "author": "Marta Tajes, Gerard ILL‐Raga, Ernest Palomer, Eva Ramos‐Fernández, Francesc X. Guix, Mònica Bosch-Morató, Biuse Guivernau, Jordi Jiménez-Conde, Ángel Ois, Fernando J. Pérez-Asensio, Mario Reyes-Navarro, Carolina Caballo, Ana M. Galán, Francesc Alameda, Ginés Escolar, Carlos Opazo, Anna M. Planas, Jaume Roquer, Miguel A. Valverde, Francisco J. Muñoz",
-      "venue": "Oxidative Medicine and Cellular Longevity",
-      "year": 2013,
-      "url": "https://doi.org/10.1155/2013/826143",
-      "cited_by": 56,
-      "abstract": "Ischemic stroke is an acute vascular event that obstructs blood supply to the brain, producing irreversible damage that affects neurons but also glial and brain vessel cells. Immediately after the stroke, the ischemic tissue produces nitric oxide (NO) to recover blood perfusion but also produces superoxide anion. These compounds interact, producing peroxynitrite, which irreversibly nitrates protein tyrosines. The present study measured NO production in a human neuroblastoma (SH-SY5Y), a murine glial (BV2), a human endothelial cell line (HUVEC), and in primary cultures of human cerebral myocytes (HC-VSMCs) after experimental ischemia in vitro. Neuronal, endothelial, and inducible NO synthase (NOS) expression was also studied up to 24 h after ischemia, showing a different time course depending on the NOS type and the cells studied. Finally, we carried out cell viability experiments on SH-SY5Y cells with H2O2, a prooxidant agent, and with a NO donor to mimic ischemic conditions. We found that both compounds were highly toxic when they interacted, producing peroxynitrite. We obtained similar results when all cells were challenged with peroxynitrite. Our data suggest that peroxynitrite induces cell death and is a very harmful agent in brain ischemia.",
-      "doi": "10.1155/2013/826143",
-      "pmid": "23983901",
-      "openalex_id": "W1977623645",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000194",
-      "confidence_scoring": {
-        "confidence_score": 0.27005073577165606,
-        "similarity_score": 0.24550066888332367,
-        "citation_text_length": 1790,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Expression of the Microtubule-Associated Protein MAP9/ASAP and Its Partners AURKA and PLK1 in Colorectal and Breast Cancers",
-      "author": "Sylvie Rouquier, Marie‐Jeanne Pillaire, Christophe Cazaux, Dominique Giorgi",
-      "venue": "Disease Markers",
-      "year": 2014,
-      "url": "https://doi.org/10.1155/2014/798170",
-      "cited_by": 24,
-      "abstract": "BACKGROUND: Colorectal and breast cancers are among the most common cancers worldwide. They result from a conjugated deficiency of gene maintenance and cell cycle control. OBJECTIVE: We investigate the expression of the microtubule-associated protein MAP9/ASAP and its two partners AURKA and PLK1 in colorectal tumors as well as in ductal breast cancers. MATERIALS AND METHODS: 26 colorectal cancer samples and adjacent normal tissues and 77 ductal breast cancer samples from grade I to grade III were collected. Real-time quantitative PCR was used to analyse the expression of MAP9, AURKA, and PLK1. Results. Expression of MAP9 is downregulated in colorectal cancer compared to normal tissues (P > 10(-3)), whereas those of AURKA and PLK1 are upregulated (P > 10(-4)). In ductal breast cancer, we found a grade-dependent increase of AURKA expression (P > 10(-3)), while the variations of expression of MAP9 and PLK1 are not significant (P > 0.2). CONCLUSIONS: MAP9 downregulation is associated with colorectal malignancy and could be used as a disease marker and a new drug target, while AURKA and PLK1 are upregulated. In ductal breast cancer, AURKA overexpression is strongly associated with the tumor grade and is therefore of prognostic value for the progression of the disease.",
-      "doi": "10.1155/2014/798170",
-      "pmid": "24876664",
-      "openalex_id": "W1972271314",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000194",
-      "confidence_scoring": {
-        "confidence_score": 0.17305120527744294,
-        "similarity_score": 0.15731927752494812,
-        "citation_text_length": 1535,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "The <i>ex vivo</i> characterization of XR5944 (MLN944) against a panel of human clinical tumor samples",
-      "author": "Federica Di Nicolantonio, Louise A. Knight, Pauline A. Whitehouse, Stuart Mercer, Sanjay Sharma, Peter Charlton, David A. Norris, Ian A. Cree",
-      "venue": "Molecular Cancer Therapeutics",
-      "year": 2004,
-      "url": "https://doi.org/10.1158/1535-7163.1631.3.12",
-      "cited_by": 25,
-      "abstract": "XR5944 (MLN944) is a novel DNA targeting agent with potent antitumor activity, both in vitro and in vivo, against several murine and human tumor models. We have used an ATP-tumor chemosensitivity assay to assess the ex vivo sensitivity of a variety of solid tumors (n = 90) and a CCRF-CEM leukemia cell line selected with XR5944. Differences in gene expression between the parental CCRF-CEM and the resistant subline were investigated by quantitative reverse transcription-PCR. Immunohistochemistry for topoisomerases I and IIalpha and multidrug resistance (MDR1) protein was done on those tumors for which tissue was available (n = 32). The CCRF-CEM XR5944 line showed increased mRNA levels of MDR1, major vault protein, and MDR-associated protein 1 compared with the parental line, whereas the expression of topoisomerases I, IIalpha, and IIbeta was essentially unchanged, suggesting that XR5944 is susceptible to MDR mechanisms. The median IC90 and IC50 values for XR5944 in tumor-derived cells were 68 and 26 nmol/L, respectively, 6-fold greater than in resistant cell lines. XR5944 was 40- to 300-fold more potent than the other cytotoxics tested, such as doxorubicin, topotecan, and paclitaxel. Breast and gynecologic malignancies were most sensitive to XR5944, whereas gastrointestinal tumors showed greater resistance. A positive correlation (r = 0.68; P < 0.0001) was found between the IC50 values of XR5944 and P-glycoprotein/MDR1 staining but not with either topoisomerase I or IIalpha immunohistochemistry index. These data support the rapid introduction of XR5944 to clinical trials and suggest that it may be effective against a broad spectrum of tumor types, especially ovarian and breast cancer.",
-      "doi": "10.1158/1535-7163.1631.3.12",
-      "pmid": "15634657",
-      "openalex_id": "W1954902094",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000194",
-      "confidence_scoring": {
-        "confidence_score": 0.18738432824611664,
-        "similarity_score": 0.1703493893146515,
-        "citation_text_length": 1811,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Corticotrophin-releasing activity of desmopressin in Cushing's disease: lack of correlation between in vivo and in vitro responsiveness",
-      "author": "Francesca Pecori Giraldi, Eleonora Marini, E Torchiana, Pietro Mortini, A. Dubini, Francesco Cavagnini",
-      "venue": "Journal of Endocrinology",
-      "year": 2003,
-      "url": "https://doi.org/10.1677/joe.0.1770373",
-      "cited_by": 28,
-      "abstract": "Desmopressin (DDAVP), an arginine vasopressin analogue, markedly stimulates ACTH secretion in patients with Cushing's disease, in contrast to its minimal effect in normal subjects. However, little is known about the mechanisms underlying this action and it appeared to be of interest to evaluate the effect of DDAVP on ACTH-secreting pituitary adenomas in vitro, in comparison with its effect in the same patients in vivo. Pituitary adenomas from 14 patients with Cushing's disease were incubated with DDAVP, corticotrophin-releasing hormone (CRH) and DDAVP together with vasopressin receptor antagonists or CRH. Incubation with DDAVP induced a modest dose-dependent increase in ACTH concentrations which appeared maximal at 10 nM. CRH stimulated ACTH to a greater extent compared with DDAVP and potentiated the effect of DDAVP alone. The DDAVP-induced ACTH increase appeared blunted by vasopressin V(2) and V(3) receptor antagonists. V(3) receptor gene expression was detected by RT-PCR in all adenoma samples except for two which were not responsive to DDAVP in vitro but responsive to the peptide in vivo. Surprisingly, no difference in the in vitro ACTH secretory response was observed between in vivo DDAVP-responsive (ACTH peak>150% baseline) and -unresponsive (ACTH peak<120% baseline) patients, suggesting that the pituitary adenoma is not the sole mediator of the ACTH-releasing effect of DDAVP. In conclusion, the marked stimulatory effect of DDAVP observed in patients with Cushing's disease appears to be mainly dependent on an extrapituitary action, possibly the inhibition of a corticotrophin release-inhibitory factor.",
-      "doi": "10.1677/joe.0.1770373",
-      "pmid": "12773117",
-      "openalex_id": "W2117666741",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000194",
-      "confidence_scoring": {
-        "confidence_score": 0.22492668032646182,
-        "similarity_score": 0.20447880029678345,
-        "citation_text_length": 1800,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-10T10:12:08.788486+00:00",
+    "scoring_date": "2026-08-17T11:13:03.711307+00:00",
     "dataset_text_length": 2232,
-    "num_citations_scored": 106,
+    "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.5341285613832891,
-      "median_confidence": 0.5394903883337976,
-      "std_confidence": 0.13301933233921326,
-      "min_confidence": 0.16922187507152558,
+      "mean_confidence": 0.5537895836301149,
+      "median_confidence": 0.5528993904590607,
+      "std_confidence": 0.10887401064386476,
+      "min_confidence": 0.19296273887157442,
       "max_confidence": 0.775265908241272,
       "high_confidence_count": 8,
       "medium_confidence_count": 87,
-      "low_confidence_count": 11
+      "low_confidence_count": 5
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000207",
-  "num_citations": 4,
-  "date_last_updated": "2026-08-09T10:11:15.580921+00:00",
+  "num_citations": 6,
+  "date_last_updated": "2026-08-17T10:10:48.493872+00:00",
   "metadata": {
-    "total_cumulative_citations": 4,
-    "fetch_date": "2026-08-09T10:11:15.580921+00:00",
+    "total_cumulative_citations": 5,
+    "fetch_date": "2026-08-17T10:10:48.493872+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -82,25 +82,19 @@
     "keywords": [
       "Brain-Computer Interfaces",
       "Electroencephalography",
-      "event-related potentials",
+      "Event-Related Potentials, P300",
       "auditory scene analysis",
       "stream segregation",
       "P300",
       "machine learning"
     ],
-    "methods_description": "EEG was recorded at 1000 Hz from 64 channels (64 EEG + 2 EOG) using a BrainAmp system with EasyCap electrodes referenced to the right mastoid. Subjects performed 12 runs alternating between ASME-4stream (4 streams, SOA=150ms, 600 stimuli/trial) and ASME-2stream (2 streams, SOA=300ms, 300 stimuli/trial) paradigms. Preprocessing included ICA-based artifact removal (15 components), bandpass filtering (1-40 Hz for ERP analysis, 0.1-8 Hz for classification), epoching (-0.1 to 1.2s), and downsampling to 250 Hz. Classification employed shrinkage-LDA with mean amplitudes from 10 non-overlapping intervals (0-1.0s) as features, evaluated via 4-fold chronological cross-validation.",
+    "methods_description": "EEG was recorded at 1000 Hz from 64 channels using a BrainAmp system with standard 10-20 montage referenced to right mastoid. Subjects performed 12 runs alternating between ASME-4stream and ASME-2stream paradigms, each containing 4 trials of ~90s duration. ASME-4stream presented 4 auditory streams (SOA=150ms, 600 stimuli/trial, 9:1 standard:deviant ratio), while ASME-2stream presented 2 streams with 2 deviant stimuli each (SOA=300ms, 300 stimuli/trial, 8:1:1 ratio). Preprocessing included ICA-based artifact removal, bandpass filtering (1-40 Hz for ERP analysis, 0.1-8 Hz for classification), epoching (-0.1 to 1.2s), and downsampling to 250 Hz. Classification employed shrinkage-LDA with mean amplitudes from 10 non-overlapping intervals (0-1.0s) as features, evaluated using 4-fold chronological cross-validation.",
     "funding": [
       {
         "funder_name": "JSPS",
         "award_number": "JP23K11811"
       }
-    ],
-    "searched_accessions": [
-      "nm000207"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 4
+    ]
   },
   "citation_details": [
     {
@@ -178,7 +172,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2026,
       "url": "https://doi.org/10.3389/fnhum.2026.1807535",
-      "cited_by": 0,
+      "cited_by": 1,
       "abstract": "Introduction: This study presents the ASME-speller, a novel 30-class auditory brain-computer interface (BCI) speller system that combines auditory stream segregation with the familiar QWERTY keyboard layout to facilitate intuitive and visionfree communication. Methods: In the ASME-speller, three distinct auditory streams are presented simultaneously, each corresponding to a row on the QWERTY keyboard. The low-, middle-, and high-frequency streams represent the bottom, middle, and top rows, respectively. Within each stream, alphabet letters and selected symbols are repeatedly presented as spoken voice stimuli. Users are instructed to focus exclusively on the stream corresponding to the row containing the target letter and to selectively attend to that letter within the stream. By leveraging the QWERTY layout and auditory stream segregation, the proposed approach enables users to restrict their attentional focus to a subset of letters by directing selective attention to auditory streams,",
       "doi": "10.3389/fnhum.2026.1807535",
       "pmid": "42253796",
@@ -194,21 +188,67 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Falsifiable substitution tests reveal task-structured neural evidence for auditory attention",
+      "author": "Yu Ding",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2026,
+      "url": "https://doi.org/10.64898/2026.08.03.742580",
+      "cited_by": 0,
+      "abstract": "Abstract A neural decoder can predict a mental-state label without using information specific to that state. We made auditory-attention attribution falsifiable by requiring candidate evidence to persist in disjoint data, respond to capacity-matched substitutions of physical organization or listener/population template, and remain testable after target-event exclusion or command-identity residualization; two event-related datasets also permitted electrooculography (EOG)-only comparisons. The design drew on Wang and Zahl’s three-dimensional Kakeya proof strategy: examine the organized family and its concentration, not only the strongest member. Across six EEG datasets, averaging four neural–speech margins improved 5-s decoding relative to the leading margin in three evaluation sets whose rules were fixed before their results were computed (41 participants; study-equal gain, 0.0201; 95% interval, 0.0125–0.0279). A 16-cell scalp-direction–delay representation replicated in a participant-di",
+      "doi": "10.64898/2026.08.03.742580",
+      "pmid": null,
+      "openalex_id": "W7202034171",
+      "source_doi": "10.3389/fnhum.2024.1461960",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5900972342491151,
+        "similarity_score": 0.5109066963195801,
+        "citation_text_length": 1177,
+        "dataset_text_length": 2431,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Brain–Computer Interface Games for Cognitive Assessment: A Scoping Review",
+      "author": "Munirah Alsubaie, Salamah Alshammari, Yusuf Ahmed, Shaniff Esmail, Kim Adams, Hossein Rouhani, Adriana Rincón",
+      "venue": "Canadian Journal of Neurological Sciences / Journal Canadien des Sciences Neurologiques",
+      "year": 2026,
+      "url": "https://doi.org/10.1017/cjn.2026.10606",
+      "cited_by": 0,
+      "abstract": "BACKGROUND: Traditional cognitive assessments rely on verbal or motor responses, posing challenges for individuals with communication or mobility impairments. Brain-computer interface (BCI) games could enable cognitive assessments without motor or verbal demands. OBJECTIVE: This scoping review synthesizes the current literature on BCI games for cognitive assessment, identifying trends, gaps and future research directions, to inform the development of more accessible electroencephalogram (EEG)-based tools. METHODS: Seven electronic databases were systematically searched using Arksey and O'Malley's framework and Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) extension for Scoping Reviews guidelines. Studies were reviewed based on game types, BCI paradigms, electrode placement, brainwave frequencies and cognitive skills assessed. Study design, population characteristics and comparisons to standardized assessments were extracted. RESULTS: Of the 4735 screened s",
+      "doi": "10.1017/cjn.2026.10606",
+      "pmid": "41969217",
+      "openalex_id": "W7154043802",
+      "source_doi": "10.3389/fnhum.2024.1461960",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5522322821617127,
+        "similarity_score": 0.47812318801879883,
+        "citation_text_length": 1308,
+        "dataset_text_length": 2431,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-09T11:17:15.008418+00:00",
+    "scoring_date": "2026-08-17T11:14:18.495052+00:00",
     "dataset_text_length": 2431,
-    "num_citations_scored": 4,
+    "num_citations_scored": 6,
     "summary_stats": {
-      "mean_confidence": 0.6743250945210457,
-      "median_confidence": 0.6378499522805214,
-      "std_confidence": 0.18373627813186916,
+      "mean_confidence": 0.6399383157491685,
+      "median_confidence": 0.6051240885257722,
+      "std_confidence": 0.15808350301711294,
       "min_confidence": 0.4567452961206437,
       "max_confidence": 0.9648551774024964,
       "high_confidence_count": 1,
-      "medium_confidence_count": 3,
+      "medium_confidence_count": 5,
       "low_confidence_count": 0
     }
   }

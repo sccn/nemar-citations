@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000266",
-  "num_citations": 3,
-  "date_last_updated": "2026-08-09T10:17:16.613713+00:00",
+  "num_citations": 2,
+  "date_last_updated": "2026-08-17T10:15:57.923124+00:00",
   "metadata": {
     "total_cumulative_citations": 11,
-    "fetch_date": "2026-08-09T10:17:16.613713+00:00",
+    "fetch_date": "2026-08-17T10:15:57.923124+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -56,15 +56,15 @@
       "10.82901/nemar.nm000266"
     ],
     "keywords": [
-      "Brain-Computer Interfaces",
+      "brain-computer interfaces",
       "EEG",
       "Event-Related Potentials, P300",
-      "Bayesian optimization",
       "auditory oddball paradigm",
+      "Bayesian optimization",
       "stimulus onset asynchrony",
-      "parameter optimization"
+      "closed-loop parameter optimization"
     ],
-    "methods_description": "EEG data were recorded from 13 healthy subjects (mean age 22.7±1.64 years) using a 31-channel BrainProducts BrainAmp DC system at 1000 Hz sampling rate with nose reference and passive Ag/AgCl sensors in standard 10-20 montage. Subjects performed an auditory oddball task with target (1000 Hz) and non-target (500 Hz) tones presented at variable SOAs. The experiment consisted of an optimization phase (four strategies, 20 minutes each) and validation phase (20 trials per SOA). Features were extracted as mean amplitudes in five time intervals (100-500 ms) across all channels, and classification was performed using regularized linear discriminant analysis with 13-fold cross-validation.",
+    "methods_description": "EEG data were recorded from 13 healthy subjects (mean age 22.7 years) using a 31-channel BrainProducts BrainAmp DC system at 1000 Hz sampling rate with passive Ag/AgCl electrodes in a standard 10-20 montage, referenced to the nose. Subjects performed an auditory oddball task with target (1000 Hz) and non-target (500 Hz) tones presented via speaker at 65 cm distance. Each trial consisted of 90 stimuli (15 target, 75 non-target) in pseudo-random order. The experiment comprised an optimization phase (four strategies with 20-minute allocations) and a validation phase (20 trials per stimulus onset asynchrony). Classification used regularized linear discriminant analysis with mean amplitude features extracted from five time intervals (100-500 ms) across all channels.",
     "funding": [
       {
         "funder_name": "DFG",
@@ -74,19 +74,13 @@
       {
         "funder_name": "DFG",
         "award_number": "TA 1258/1-1",
-        "award_title": "SuitAble project"
+        "award_title": "DFG project SuitAble"
       },
       {
         "funder_name": "DFG",
         "award_number": "INST 39/963-1 FUGG"
       }
-    ],
-    "searched_accessions": [
-      "nm000266"
-    ],
-    "num_accession_mentions": 1,
-    "num_dataset_citations": 1,
-    "num_datapaper_citations": 2
+    ]
   },
   "citation_details": [
     {
@@ -134,47 +128,22 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Evolution of the Large Secreted Gel-Forming Mucins",
-      "author": "Jean‐Luc Desseyn, Jean‐Pierre Aubert, Nicole Porchet, Anne Laine",
-      "venue": "Molecular Biology and Evolution",
-      "year": 2000,
-      "url": "https://doi.org/10.1093/oxfordjournals.molbev.a026400",
-      "cited_by": 145,
-      "abstract": "Mucins, the major component of mucus, contain tandemly repeated sequences that differ from one mucin to another. Considerable advances have been made in recent years in our knowledge of mucin genes. The availability of the complete genomic and cDNA sequences of MUC5B, one of the four human mucin genes clustered on chromosome 11, provides an exemplary model for studying the molecular evolution of large mucins. The emerging picture is one of expansion of mucin genes by gene duplications, followed by internal repeat expansion that strictly preserves frameshift. Computational and phylogenetic analyses have permitted the proposal of an evolutionary history of the four human mucin genes located on chromosome 11 from an ancestor gene common to the human von Willebrand factor gene and the suggestion of a model for the evolution of the repeat coding portion of the MUC5B gene from a hypothetical ancestral minigene. The characterization of MUC5B, a member of the large secreted gel-forming mucin family, offers a new model for the comparative study of the structure-function relationship within this important family.",
-      "doi": "10.1093/oxfordjournals.molbev.a026400",
-      "pmid": "10908637",
-      "openalex_id": "W2015107805",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000266",
-      "confidence_scoring": {
-        "confidence_score": 0.18014212101697924,
-        "similarity_score": 0.1637655645608902,
-        "citation_text_length": 1304,
-        "dataset_text_length": 2442,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-10T10:18:03.549109+00:00",
+    "scoring_date": "2026-08-17T11:19:43.876288+00:00",
     "dataset_text_length": 2442,
-    "num_citations_scored": 3,
+    "num_citations_scored": 2,
     "summary_stats": {
-      "mean_confidence": 0.4001078479488691,
-      "median_confidence": 0.46956393063068397,
-      "std_confidence": 0.15902014700288972,
-      "min_confidence": 0.18014212101697924,
+      "mean_confidence": 0.510090711414814,
+      "median_confidence": 0.510090711414814,
+      "std_confidence": 0.04052678078413005,
+      "min_confidence": 0.46956393063068397,
       "max_confidence": 0.5506174921989441,
       "high_confidence_count": 0,
       "medium_confidence_count": 2,
-      "low_confidence_count": 1
+      "low_confidence_count": 0
     }
   }
 }
