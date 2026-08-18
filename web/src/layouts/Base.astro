@@ -9,10 +9,32 @@ interface Props {
 
 const { title, description = "Citation tracking for NEMAR and OpenNeuro neuroscience datasets." } =
   Astro.props;
-const homeUrl = "https://nemar.org";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const here = Astro.url.pathname.replace(/\/$/, "");
+// The wordmark links to THIS site's own homepage, not nemar.org (owner
+// decision, nemarOrg/nemar-citations#208: a surface's wordmark goes to that
+// surface's own homepage; the primary nav below carries the route back to
+// nemar.org). Same convention already shipped for docs.nemar.org
+// (nemarOrg/docs#2 / PR nemarOrg/docs#6).
+const dashboardHome = `${base}/`;
+
+// nemar.org's own primary nav (nemarOrg/website src/components/Nav.astro,
+// `marketingLinks`), reproduced here so a visitor arriving at
+// dashboard.nemar.org/citations/ from nemar.org's nav/footer has a route
+// onward to the rest of NEMAR. Bare `nemar.org` throughout — never `www.`
+// or the retired `ww2.` alias.
+const NEMAR_SITE = "https://nemar.org";
+const primaryNavLinks: Array<[string, string]> = [
+  ["About", `${NEMAR_SITE}/about`],
+  ["Discover", `${NEMAR_SITE}/discover`],
+  ["Citation Dashboard", dashboardHome],
+  ["Documentation", "https://docs.nemar.org"],
+  ["Support", `${NEMAR_SITE}/support`],
+];
+/** A nav target that leaves this deployment, and so opens in a new tab. */
+const isExternal = (href: string) => href.startsWith("http");
+
 const navItems: Array<[string, string]> = [
   ["Overview", `${base}`],
   ["Maps", `${base}/maps`],
@@ -30,6 +52,47 @@ const lastUpdated = lastUpdatedIso
     })
   : null;
 const copyrightYear = lastUpdatedIso ? new Date(lastUpdatedIso).getUTCFullYear() : null;
+
+// Footer nav columns — mirrors nemar.org's Footer.astro structure (Explore /
+// Project / Data column, Data in the nemar.org / data.nemar.org / api.nemar.org
+// order) adapted for a separate deployment, so every NEMAR-wide link is
+// absolute. "Get help" carries the two support routes directly, since this
+// site has no /support page of its own the way nemar.org does. No forum link
+// (nemarOrg/website#222 dropped it there too: it promised a forum NEMAR does
+// not run).
+const footerNav: Array<{ heading: string; links: Array<[string, string]> }> = [
+  {
+    heading: "Explore",
+    links: [
+      ["Discover", `${NEMAR_SITE}/discover`],
+      ["Documentation", "https://docs.nemar.org"],
+    ],
+  },
+  {
+    heading: "Project",
+    links: [
+      ["About", `${NEMAR_SITE}/about`],
+      ["Support", `${NEMAR_SITE}/support`],
+      ["Policies", "https://docs.nemar.org/policies/"],
+      ["Privacy Policy", "https://docs.nemar.org/policies/privacy/"],
+    ],
+  },
+  {
+    heading: "Data",
+    links: [
+      ["nemar.org", NEMAR_SITE],
+      ["data.nemar.org", "https://data.nemar.org"],
+      ["api.nemar.org", "https://api.nemar.org"],
+    ],
+  },
+  {
+    heading: "Get help",
+    links: [
+      ["support@nemar.org", "mailto:support@nemar.org"],
+      ["Report an issue", "https://github.com/nemarOrg/nemar-citations/issues"],
+    ],
+  },
+];
 ---
 
 <!doctype html>
@@ -55,8 +118,30 @@ const copyrightYear = lastUpdatedIso ? new Date(lastUpdatedIso).getUTCFullYear()
   </head>
   <body>
     <header class="site-header">
+      <div class="container site-header__utility">
+        <nav class="primary-nav" aria-label="Primary">
+          <ul role="list" class="primary-nav__list">
+            {
+              primaryNavLinks.map(([label, href]) => (
+                <li>
+                  <a
+                    href={href}
+                    aria-current={
+                      !isExternal(href) && href.replace(/\/$/, "") === here ? "page" : undefined
+                    }
+                    target={isExternal(href) ? "_blank" : undefined}
+                    rel={isExternal(href) ? "noopener noreferrer" : undefined}
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
       <div class="container site-header__inner">
-        <a class="site-header__brand" href={homeUrl}>NEMAR <span>Citations</span></a>
+        <a class="site-header__brand" href={dashboardHome}>NEMAR <span>Citations</span></a>
         <nav class="site-nav" aria-label="Dashboard sections">
           {
             navItems.map(([label, href]) => (
@@ -75,15 +160,38 @@ const copyrightYear = lastUpdatedIso ? new Date(lastUpdatedIso).getUTCFullYear()
     </main>
 
     <footer class="site-footer">
-      <div class="container">
-        <p class="site-footer__tagline">
-          NEMAR is an open-access data, tools, and compute resource for FAIR neuroscience
-        </p>
-        <p class="site-footer__meta">
-          <span>&copy; {copyrightYear ?? ""} NEMAR</span>
-          {lastUpdated && <span>· Data updated {lastUpdated}</span>}
-          <span>· <a href={homeUrl}>nemar.org</a></span>
-        </p>
+      <div class="container site-footer__inner">
+        <div class="site-footer__about">
+          <p class="site-footer__tagline">
+            NEMAR is an open-access data, tools, and compute resource for FAIR neuroscience.
+          </p>
+          <p class="site-footer__meta">
+            <span>&copy; {copyrightYear ?? ""} NEMAR</span>
+            {lastUpdated && <span>· Data updated {lastUpdated}</span>}
+          </p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Footer">
+          {
+            footerNav.map((col) => (
+              <div>
+                <h3>{col.heading}</h3>
+                <ul role="list">
+                  {col.links.map(([label, href]) => (
+                    <li>
+                      <a
+                        href={href}
+                        target={isExternal(href) ? "_blank" : undefined}
+                        rel={isExternal(href) ? "noopener noreferrer" : undefined}
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </nav>
       </div>
     </footer>
 
@@ -118,6 +226,40 @@ const copyrightYear = lastUpdatedIso ? new Date(lastUpdatedIso).getUTCFullYear()
         z-index: 10;
         background: var(--color-bg);
         border-bottom: 1px solid var(--color-border);
+      }
+      /* NEMAR-wide primary nav (About / Discover / Citation Dashboard /
+         Documentation / Support) — a thin utility bar above the dashboard's
+         own header row, so the org-wide route stays separate from this site's
+         section nav (Overview / Maps / Themes) below it. Tokens are the same
+         ones vendored from website/src/styles/tokens.css into ./tokens.css. */
+      .site-header__utility {
+        display: flex;
+        justify-content: flex-end;
+        background: var(--color-bg-elevated);
+        border-bottom: 1px solid var(--color-border);
+      }
+      .primary-nav__list {
+        display: flex;
+        gap: var(--space-4);
+        flex-wrap: wrap;
+      }
+      .primary-nav__list a {
+        display: inline-flex;
+        align-items: center;
+        min-block-size: 2rem;
+        padding-inline: var(--space-1);
+        font-size: var(--fs-xs);
+        font-weight: var(--fw-medium);
+        color: var(--color-fg-subtle);
+        border-block-end: 2px solid transparent;
+      }
+      .primary-nav__list a:hover {
+        color: var(--color-fg);
+        text-decoration: none;
+      }
+      .primary-nav__list a[aria-current="page"] {
+        color: var(--color-fg);
+        border-block-end-color: var(--brand-teal);
       }
       .site-header__inner {
         display: flex;
@@ -177,7 +319,18 @@ const copyrightYear = lastUpdatedIso ? new Date(lastUpdatedIso).getUTCFullYear()
         border-top: 1px solid var(--color-border);
         color: var(--color-fg-subtle);
         font-size: var(--fs-sm);
-        padding-block: var(--space-6);
+        padding-block: var(--space-10);
+        margin-block-start: var(--space-12);
+      }
+      .site-footer__inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 2fr;
+        gap: var(--space-10);
+      }
+      @media (max-width: 720px) {
+        .site-footer__inner {
+          grid-template-columns: 1fr;
+        }
       }
       .site-footer__tagline {
         color: var(--color-fg-muted);
@@ -187,6 +340,35 @@ const copyrightYear = lastUpdatedIso ? new Date(lastUpdatedIso).getUTCFullYear()
         display: flex;
         flex-wrap: wrap;
         gap: var(--space-2);
+      }
+      /* Footer nav columns (Explore / Project / Data / Get help) — same
+         auto-fit + heading treatment as nemar.org's Footer.astro
+         (.site-footer__nav), reusing the vendored tokens rather than any new
+         hardcoded values. */
+      .site-footer__nav {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: var(--space-8);
+      }
+      .site-footer__nav h3 {
+        font-size: var(--fs-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--color-fg);
+        margin-block-end: var(--space-3);
+        font-weight: var(--fw-semibold);
+      }
+      .site-footer__nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+      .site-footer__nav a {
+        color: var(--color-fg-muted);
+        font-size: var(--fs-sm);
+      }
+      .site-footer__nav a:hover {
+        color: var(--color-fg);
       }
     </style>
   </body>
