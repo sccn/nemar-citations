@@ -1,6 +1,6 @@
 {
   "dataset_id": "on007753",
-  "num_citations": 0,
+  "num_citations": 1,
   "date_last_updated": "2026-08-17T11:00:35.886217+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
@@ -48,13 +48,56 @@
       "Eelbrain"
     ],
     "methods_description": "EEG data were recorded using a 64-channel BrainAmp amplifier (Brain Products GmbH, Germany) at 1,000 Hz sampling rate with online reference at FCz and ground at AFz. Stimuli (20 Japanese newspaper articles) were presented word-by-word via rapid serial visual presentation (RSVP) in PsychoPy, with each word displayed for 500 ms followed by 500 ms blank screen. Preprocessing was performed using MNE-Python (v1.9.0) and Eelbrain (v0.40.3) and involved: bandpass filtering (0.1–40 Hz), independent component analysis for ocular artifact removal, common average re-referencing, epoching (−100 to 1,000 ms relative to word onset), downsampling to 200 Hz, and baseline correction using the pre-stimulus interval (−100 to 0 ms). Preprocessed data are provided in the derivatives folder.",
-    "funding": []
+    "funding": [],
+    "searched_accessions": [
+      "on007753",
+      "ds007753"
+    ],
+    "num_accession_mentions": 1,
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 0
   },
-  "citation_details": [],
+  "citation_details": [
+    {
+      "title": "BCCWJ-Brain: A Multi-Modal fMRI, MEG, and EEG Dataset of Naturalistic Japanese Reading",
+      "author": "Yushi Sugimoto, Masayuki Asahara, Hyeonjeong Jeong, Akitake Kanno, Masatoshi Koizumi, Yohei Oseki",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2026,
+      "url": "https://doi.org/10.64898/2026.07.05.736621",
+      "cited_by": 0,
+      "abstract": "Abstract We present the BCCWJ-Brain dataset, a multi-modal neuroimaging resource comprising functional magnetic resonance imaging (fMRI), magnetoencephalography (MEG), and electroencephalography (EEG) data recorded from native Japanese speakers reading newspaper articles from the Balanced Corpus of Contemporary Written Japanese (BCCWJ). Neural data were collected from 112 participants (36 fMRI, 35 MEG, and 41 EEG) as they read twenty newspaper articles presented in a Rapid Serial Visual Presentation (RSVP) paradigm. By providing three complementary neuroimaging modalities collected under identical naturalistic reading stimuli, this dataset provides a cognitive benchmark for computational models such as large language models. The dataset is publicly available on the OpenNeuro platform, offering a valuable resource for neuroscience, natural language processing, and related research fields.",
+      "doi": "10.64898/2026.07.05.736621",
+      "pmid": null,
+      "openalex_id": "W7167787497",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds007753",
+      "confidence_scoring": {
+        "confidence_score": 0.9171026659011842,
+        "similarity_score": 0.7940282821655273,
+        "citation_text_length": 1161,
+        "dataset_text_length": 2211,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    }
+  ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:55:48.041430+00:00",
+    "scoring_date": "2026-08-18T10:20:19.866048+00:00",
     "dataset_text_length": 2211,
-    "num_citations_scored": 0
+    "num_citations_scored": 1,
+    "summary_stats": {
+      "mean_confidence": 0.9171026659011842,
+      "median_confidence": 0.9171026659011842,
+      "std_confidence": 0.0,
+      "min_confidence": 0.9171026659011842,
+      "max_confidence": 0.9171026659011842,
+      "high_confidence_count": 1,
+      "medium_confidence_count": 0,
+      "low_confidence_count": 0
+    }
   }
 }
