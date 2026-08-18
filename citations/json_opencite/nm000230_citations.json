@@ -1,28 +1,145 @@
 {
   "dataset_id": "nm000230",
-  "num_citations": 0,
-  "date_last_updated": "2026-08-17T10:12:25.248747+00:00",
+  "num_citations": 3,
+  "date_last_updated": "2026-08-18T10:02:02.321612+00:00",
   "metadata": {
-    "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-17T10:12:25.248747+00:00",
+    "total_cumulative_citations": 6,
+    "fetch_date": "2026-08-18T10:02:02.321612+00:00",
     "processing_version": "1.0",
-    "fetch_status": "other",
-    "anchor_count": 0,
+    "fetch_status": "success",
+    "anchor_count": 2,
     "anchor_errors": {},
     "schema_version": "2.1",
     "discovery_backend": "opencite",
-    "anchor_judgment_model": null,
-    "anchors": [],
-    "searched_dois": [],
-    "keywords": [],
-    "methods_description": null,
+    "anchor_judgment_model": "gemma4:e4b",
+    "anchors": [
+      {
+        "identifier": "10.1038/s41597-025-05767-2",
+        "identifier_type": "doi",
+        "source_relation": "IsDerivedFrom",
+        "classification": "data_paper",
+        "kept": true,
+        "paper_title": "Enhancing classification of a large lower-limb motor imagery EEG dataset for BCI in knee pain patients",
+        "paper_year": 2025,
+        "paper_venue": "Scientific Data",
+        "reason": "The candidate paper title and abstract explicitly describe the dataset's content, collection from 30 knee pain patients, and analysis of lower-limb MI data.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.82901/nemar.nm000230",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
+        "judgment_model": "gemma4:e4b"
+      }
+    ],
+    "searched_dois": [
+      "10.1038/s41597-025-05767-2",
+      "10.82901/nemar.nm000230"
+    ],
+    "keywords": [
+      "motor imagery",
+      "EEG",
+      "brain-computer interfaces",
+      "knee pain",
+      "rehabilitation",
+      "lower-limb motor imagery",
+      "clinical neurophysiology",
+      "clinical"
+    ],
+    "methods_description": "EEG data were acquired from 30 knee pain patients (12 female, 18 male; mean age 33.5 years) using a ZhenTec EEG system with 30 channels at 500 Hz sampling rate. Participants performed cue-based motor imagery of left and right leg movements in a 2-class paradigm across 5 sessions, with 100 trials per session (50 per class). Visual cues indicated the imagery task, with 4-second trial duration and no feedback provided. Reference electrode was CPz and ground was FPz, with 50 Hz line frequency.",
     "funding": []
   },
-  "citation_details": [],
+  "citation_details": [
+    {
+      "title": "A comprehensive review of deep learning for motor imagery EEG: From healthy subjects to patients",
+      "author": "Bin Jiang, Xiangkai Wang, Dongyi He, Siyu Cheng, Maoyu Liao, Duoqian Miao, Qingling Xia, Yun Zhao, Gen Li",
+      "venue": "Biomedical Signal Processing and Control",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.bspc.2026.109680",
+      "cited_by": 6,
+      "abstract": null,
+      "doi": "10.1016/j.bspc.2026.109680",
+      "pmid": null,
+      "openalex_id": "W7125366598",
+      "source_doi": "10.1038/s41597-025-05767-2",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6796813398599625,
+        "similarity_score": 0.6473155617713928,
+        "citation_text_length": 268,
+        "dataset_text_length": 2379,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Classification of the lower limb motor imagery and execution using high vs. low channel EEG devices",
+      "author": "Parsa Bahramsari, Saeed Behzadipour",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2026,
+      "url": "https://doi.org/10.64898/2026.02.10.704620",
+      "cited_by": 0,
+      "abstract": "Abstract Brain–computer interfaces (BCIs) translate brain signals into commands for external devices, with motor imagery (MI) BCIs decoding imagined movements to aid neurorehabilitation. Although high-channel EEG offers rich data, such systems are bulky and impractical for everyday use. This study assesses whether a low-channel, consumer-grade headset (Muse) can match a clinical-grade system (OpenBCI) in classifying lower limb MI and motor execution (ME). Six healthy volunteers performed left and right knees and ankles MI and ME tasks while EEG was recorded concurrently from both devices. Signals were band-pass filtered (8–30 Hz), segmented into overlapping one second windows, and features were extracted across time, frequency, and time-frequency domains. Feature dimensionality was reduced via mutual information-based minimum redundancy maximum relevance and principal component analysis. Five classifiers (support vector machine, linear discriminant analysis, k nearest neighbors, random",
+      "doi": "10.64898/2026.02.10.704620",
+      "pmid": null,
+      "openalex_id": "W7128625219",
+      "source_doi": "10.1038/s41597-025-05767-2",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7134869867563248,
+        "similarity_score": 0.6177376508712769,
+        "citation_text_length": 1212,
+        "dataset_text_length": 2379,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Stacked LoRA for Subject-Adaptive EEG Foundation Models in Motor Imagery Decoding",
+      "author": "Aymen Sarhane, Fouad Lbakali, Mouad Souissi, Jonathan Lys, Giulia Lioi",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "Electroencephalography (EEG) decoding for brain-computer interfaces (BCIs) faces a major challenge: substantial inter-subject variability limits effective cross-subject generalization. Consequently, practical systems still rely largely on subject-specific models trained from scratch and requiring individual recalibration. EEG foundation models have recently emerged as a promising alternative; however, even large pretrained models cannot simply be used as fixed feature extractors and still require additional adaptation before they can be reliably applied to downstream tasks. In this work, we address this challenge through targeted adaptation strategies. Building on recent EEG foundation models such as REVE, LaBraM, and LUNA, we examine the impact of different low-rank adaptation strategies on motor imagery classification. We propose a framework that structurally decouples subject-invariant knowledge from subject-specific neural signatures: the low-rank update at each adapted layer is sp",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-025-05767-2",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6008110517263413,
+        "similarity_score": 0.520182728767395,
+        "citation_text_length": 1193,
+        "dataset_text_length": 2379,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    }
+  ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:16:08.027523+00:00",
+    "scoring_date": "2026-08-18T10:10:08.293613+00:00",
     "dataset_text_length": 2379,
-    "num_citations_scored": 0
+    "num_citations_scored": 3,
+    "summary_stats": {
+      "mean_confidence": 0.6646597927808763,
+      "median_confidence": 0.6796813398599625,
+      "std_confidence": 0.04721018069023651,
+      "min_confidence": 0.6008110517263413,
+      "max_confidence": 0.7134869867563248,
+      "high_confidence_count": 1,
+      "medium_confidence_count": 2,
+      "low_confidence_count": 0
+    }
   }
 }
