@@ -250,7 +250,9 @@ const footerNav: Array<{ heading: string; links: Array<[string, string]> }> = [
         padding-inline: var(--space-1);
         font-size: var(--fs-xs);
         font-weight: var(--fw-medium);
-        color: var(--color-fg-subtle);
+        /* fg-muted, not fg-subtle: subtle-on-elevated is 4.48:1 in light mode,
+           just under the WCAG AA 4.5:1 floor for normal-size interactive text. */
+        color: var(--color-fg-muted);
         border-block-end: 2px solid transparent;
       }
       .primary-nav__list a:hover {
