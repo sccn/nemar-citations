@@ -1,6 +1,6 @@
 {
   "dataset_id": "ds003490",
-  "num_citations": 17,
+  "num_citations": 18,
   "date_last_updated": "2026-06-18T22:27:38.571105+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
@@ -16,8 +16,8 @@
     "searched_accessions": [
       "ds003490"
     ],
-    "num_accession_mentions": 17,
-    "num_dataset_citations": 17,
+    "num_accession_mentions": 18,
+    "num_dataset_citations": 18,
     "num_datapaper_citations": 0
   },
   "citation_details": [
@@ -445,20 +445,45 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "Gumbel Selection of Sparse Inputs with Spectral and Temporal Fusion for EEG Classification of Parkinson’s Disease at the Participant Level",
+      "author": "Haoze Chen, Hongyu Wang, Xiang Gao, Fan Zhou",
+      "venue": "Electronics",
+      "year": 2026,
+      "url": "https://doi.org/10.3390/electronics15163563",
+      "cited_by": 0,
+      "abstract": "Scalp electroencephalography (EEG) could support low-burden monitoring of Parkinson’s disease (PD), but participant leakage, electrode count, and dataset shift can overstate performance. We tested whether a Gumbel selector could reduce eight candidate inputs to four without using outer test data, then retrained every setting with the same backend, which fused a bidirectional long short-term memory multiple instance learning (LSTM-MIL) temporal branch with a participant-level spectral random forest. OpenNeuro ds004584 included 144 participants (97 PD and 47 controls) and 7000 four-second epochs evaluated by five-fold participant-wise cross-validation across five seeds. Among the four primary fused input settings, Full8 had the highest mean balanced accuracy (BA), area under the receiver operating characteristic curve (AUC), and F1 score (0.6698 ± 0.0337, 0.7349 ± 0.0110, and 0.7431 ± 0.0166), while Learned4 achieved BA 0.6596 ± 0.0502 compared with 0.6338 ± 0.0450 for Fixed4 and 0.6367 ± 0.0202 for Random4; exact paired tests found no clear ranking. In event-defined eye-open ds003490 (25 PD-OFF and 25 controls), a separate eight-input benchmark trained within the cohort under Fixed19, using LR/ET spectral models and fixed fusion and decision rules, had the highest observed BA of 0.5760 (95% CI, 0.4520–0.6960). Under Fixed19, direct application of the frozen Learned4 source models yielded BA 0.5592 (95% CI, 0.5184–0.6024) and AUC 0.6417 (0.5460–0.7355). Learned4 produced 18 input sets across 25 combinations of fold and seed, and every paired transfer contrast with the other settings included zero. Taken together, Learned4 achieved a source cohort mean BA 0.0102 below Full8 and showed modest discrimination when the frozen source models were transferred under Fixed19, without a clear paired advantage over the controls. Because both datasets used 16-channel average referencing, their quality control procedures differed, and the selected subsets were unstable; acquisition-compatible validation with a predefined montage is needed before sparse model inputs can inform practical electrode reduction.",
+      "doi": "10.3390/electronics15163563",
+      "pmid": null,
+      "openalex_id": "W7202207141",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003490",
+      "confidence_scoring": {
+        "confidence_score": 0.7026243299245835,
+        "similarity_score": 0.6083327531814575,
+        "citation_text_length": 1732,
+        "dataset_text_length": 977,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-01T16:26:04.088357+00:00",
+    "scoring_date": "2026-08-19T10:04:45.695727+00:00",
     "dataset_text_length": 977,
-    "num_citations_scored": 17,
+    "num_citations_scored": 18,
     "summary_stats": {
-      "mean_confidence": 0.6201087274621516,
-      "median_confidence": 0.6207804465293885,
-      "std_confidence": 0.10820289182766739,
+      "mean_confidence": 0.6246929275989533,
+      "median_confidence": 0.6319523477554322,
+      "std_confidence": 0.10683951495673562,
       "min_confidence": 0.31279602348804475,
       "max_confidence": 0.7761972337961198,
-      "high_confidence_count": 3,
+      "high_confidence_count": 4,
       "medium_confidence_count": 13,
       "low_confidence_count": 1
     }
