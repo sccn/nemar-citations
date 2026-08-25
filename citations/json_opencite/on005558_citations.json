@@ -1,10 +1,10 @@
 {
   "dataset_id": "on005558",
   "num_citations": 0,
-  "date_last_updated": "2026-08-17T10:48:17.360068+00:00",
+  "date_last_updated": "2026-08-25T10:51:30.783852+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-17T10:48:17.360068+00:00",
+    "fetch_date": "2026-08-25T10:51:30.783852+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 1,
@@ -30,34 +30,27 @@
       "10.82901/nemar.on005558"
     ],
     "keywords": [
+      "Electroencephalography",
       "intracranial EEG",
+      "free recall",
       "closed-loop stimulation",
       "memory encoding",
-      "machine learning classification",
-      "free recall",
-      "neural decoding",
-      "semantic memory"
+      "Deep Brain Stimulation",
+      "semantic categorization"
     ],
-    "methods_description": "Intracranial recordings were collected during a categorized free recall paradigm with 12-item word lists organized into 3 semantic categories (4 words per category). An L2 logistic regression classifier was trained on prior catFR1 sessions using spectral power features (Morlet wavelet transformation, 3-180 Hz, 8 log-spaced frequencies) extracted from the 0-1366 ms post-stimulus interval and z-transformed within-session. Classifier threshold was determined using Youden's J statistic from training ROC curves. During closed-loop sessions, stimulation (500 ms duration) was delivered to a single electrode when classifier output fell below the threshold during the decoding interval on stimulation lists. Recordings were acquired at multiple clinical sites using Blackrock (250 nV units) or Medtronic (0.1 µV units) systems.",
+    "methods_description": "Intracranial EEG was recorded during a categorized free recall task involving word list encoding, arithmetic distraction, and free recall. Closed-loop stimulation was delivered to a single electrode during encoding when an L2 logistic regression classifier, trained on spectral power features (Morlet wavelet transform, 3-180 Hz, 60 Hz line noise removed via Butterworth filter) from prior catFR1 sessions, predicted low likelihood of subsequent recall. Classifier performance was validated via leave-one-session-out cross-validation with permutation testing, and stimulation thresholds were set using Youden's J statistic. Recordings were labeled as monopolar or bipolar, with electrode locations provided in MNI and Talairach coordinates.",
     "funding": [
       {
         "funder_name": "DARPA",
         "award_number": "N66001-14-2-4032",
-        "award_title": "RAM"
+        "award_title": "Restoring Active Memory (RAM)"
       }
-    ],
-    "searched_accessions": [
-      "on005558",
-      "ds005558"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 0
+    ]
   },
   "citation_details": [],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:44:44.475512+00:00",
+    "scoring_date": "2026-08-25T12:08:34.553944+00:00",
     "dataset_text_length": 2322,
     "num_citations_scored": 0
   }

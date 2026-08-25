@@ -1,10 +1,10 @@
 {
   "dataset_id": "on004080",
   "num_citations": 76,
-  "date_last_updated": "2026-08-17T10:30:53.995217+00:00",
+  "date_last_updated": "2026-08-25T10:34:28.080316+00:00",
   "metadata": {
-    "total_cumulative_citations": 462,
-    "fetch_date": "2026-08-17T10:30:53.995217+00:00",
+    "total_cumulative_citations": 467,
+    "fetch_date": "2026-08-25T10:34:28.080316+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -44,32 +44,26 @@
     ],
     "keywords": [
       "Electrocorticography",
-      "evoked potentials",
-      "intracranial recording",
-      "neural transmission",
-      "developmental neuroscience",
-      "epilepsy surgery",
-      "brain connectivity"
+      "Evoked Potentials",
+      "Epilepsy",
+      "single pulse electrical stimulation",
+      "cortico-cortical evoked potentials",
+      "brain development",
+      "iEEG"
     ],
-    "methods_description": "Cortico-cortical evoked potentials were measured using electrocorticography (ECoG) during single-pulse electrical stimulation (SPES). Electrode positions were estimated using Freesurfer on individual subject MRI scans with Destrieux atlas labels, then converted to MNI152 space using surface-based non-linear transformation. Data are organized in BIDS format with sessions and runs indicating recording timepoints during the monitoring period.",
+    "methods_description": "CCEPs were measured with ECoG during single pulse electrical stimulation (SPES) in epilepsy surgery patients. Electrode positions were estimated using Freesurfer on individual subject MRI scans, labeled with the Destrieux atlas based on the most common surface label within a sphere around each electrode, then converted to MNI152 space using Freesurfer surface-based non-linear transformation.",
     "funding": [
-      {
-        "funder_name": "Alexandre Suerman Stipendium 2015"
-      },
-      {
-        "funder_name": "EpilepsieNL #17-07"
-      },
       {
         "funder_name": "National Institute of Mental Health",
         "award_number": "R01MH122258"
       },
       {
         "funder_name": "EpilepsieNL",
-        "award_number": "NEF17-07"
+        "award_number": "17-07"
       },
       {
-        "funder_name": "UMC Utrecht",
-        "award_title": "Alexandre Suerman MD/PhD Stipendium 2015"
+        "funder_name": "UMC Utrecht Alexandre Suerman MD/PhD Stipendium",
+        "award_number": "2015"
       }
     ],
     "searched_accessions": [
@@ -174,6 +168,29 @@
       }
     },
     {
+      "title": "Delayed effective connectivity characterizes the epileptogenic zone during stereo-EEG",
+      "author": "Odile Feys, Vincent Wens, Antonin Rovaï, Sophie Schuind, Estelle Rikir, Benjamin Legros, Xavier De Tiège, Nicolas Gaspard",
+      "venue": "Clinical Neurophysiology",
+      "year": 2023,
+      "url": "https://doi.org/10.1016/j.clinph.2023.12.013",
+      "cited_by": 17,
+      "abstract": "OBJECTIVE\nSingle-pulse electrical stimulations (SPES) can elicit normal and abnormal responses that might characterize the epileptogenic zone, including spikes, high-frequency oscillations and cortico-cortical evoked potentials (CCEPs). In this study, we investigate their association with the epileptogenic zone during stereoelectroencephalography (SEEG) in 28 patients with refractory focal epilepsy.\n\n\nMETHODS\nCharacteristics of CCEPs (distance-corrected or -uncorrected latency, amplitude and the connectivity index) and the occurrence of spikes and ripples were assessed. Responses within the epileptogenic zone and within the non-involved zone were compared using receiver operating characteristics curves and analysis of variance (ANOVA) either in all patients, patients with well-delineated epileptogenic zone, and patients older than 15 years old.\n\n\nRESULTS\nWe found an increase in distance-corrected CCEPs latency after stimulation within the epileptogenic zone (area under the curve = 0.71",
+      "doi": "10.1016/j.clinph.2023.12.013",
+      "pmid": "38183887",
+      "openalex_id": "W4390278101",
+      "source_doi": "10.1038/s41593-023-01272-0",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7051767665147782,
+        "similarity_score": 0.6105426549911499,
+        "citation_text_length": 1269,
+        "dataset_text_length": 2380,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A Simple Review of EEG Foundation Models: Datasets, Advancements and Future Perspectives",
       "author": "Junhong Lai, Jiyu Wei, Lin Yao, Yueming Wang",
       "venue": "ArXiv",
@@ -191,29 +208,6 @@
         "confidence_score": 0.5400481425225735,
         "similarity_score": 0.4675741493701935,
         "citation_text_length": 1176,
-        "dataset_text_length": 2380,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Delayed effective connectivity characterizes the epileptogenic zone during stereo-EEG",
-      "author": "Odile Feys, Vincent Wens, Antonin Rovaï, Sophie Schuind, Estelle Rikir, Benjamin Legros, Xavier De Tiège, Nicolas Gaspard",
-      "venue": "Clinical Neurophysiology",
-      "year": 2023,
-      "url": "https://doi.org/10.1016/j.clinph.2023.12.013",
-      "cited_by": 16,
-      "abstract": "OBJECTIVE\nSingle-pulse electrical stimulations (SPES) can elicit normal and abnormal responses that might characterize the epileptogenic zone, including spikes, high-frequency oscillations and cortico-cortical evoked potentials (CCEPs). In this study, we investigate their association with the epileptogenic zone during stereoelectroencephalography (SEEG) in 28 patients with refractory focal epilepsy.\n\n\nMETHODS\nCharacteristics of CCEPs (distance-corrected or -uncorrected latency, amplitude and the connectivity index) and the occurrence of spikes and ripples were assessed. Responses within the epileptogenic zone and within the non-involved zone were compared using receiver operating characteristics curves and analysis of variance (ANOVA) either in all patients, patients with well-delineated epileptogenic zone, and patients older than 15 years old.\n\n\nRESULTS\nWe found an increase in distance-corrected CCEPs latency after stimulation within the epileptogenic zone (area under the curve = 0.71",
-      "doi": "10.1016/j.clinph.2023.12.013",
-      "pmid": "38183887",
-      "openalex_id": "W4390278101",
-      "source_doi": "10.1038/s41593-023-01272-0",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7051767665147782,
-        "similarity_score": 0.6105426549911499,
-        "citation_text_length": 1269,
         "dataset_text_length": 2380,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -358,6 +352,29 @@
       }
     },
     {
+      "title": "Identifying individual brain development using multimodality brain network",
+      "author": "Yuwei Jiang, Yangjiayi Mu, Zhao Xu, Qingyang Liu, Shouyan Wang, He Wang, Jianfeng Feng",
+      "venue": "Communications Biology",
+      "year": 2024,
+      "url": "https://doi.org/10.1038/s42003-024-06876-1",
+      "cited_by": 10,
+      "abstract": "The cortical development of our brains is in a hierarchical manner and promotes the emergence of large-scale functional hierarchy. However, under interindividual heterogenicity, how the spatiotemporal features of brain networks reflect brain development and mental health remains unclear. Here we collect both resting-state electroencephalography and functional magnetic resonance imaging data from the Child Mind Institute Biobank to demonstrate that during brain growth, the global dynamic patterns of brain states become more active and the dominant networks shift from sensory to higher-level networks; the individual functional network patterns become more similar to that of adults and their spatial coupling tends to be invariable. Furthermore, the properties of multimodality brain networks are sufficiently robust to identify healthy brain age and mental disorders at specific ages. Therefore, multimodality brain networks provide new insights into the functional development of the brain an",
+      "doi": "10.1038/s42003-024-06876-1",
+      "pmid": "39289448",
+      "openalex_id": "W4402600016",
+      "source_doi": "10.1038/s41593-023-01272-0",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5310406766831876,
+        "similarity_score": 0.45977547764778137,
+        "citation_text_length": 1221,
+        "dataset_text_length": 2380,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Adaptive Biomimetic Neuronal Circuit System Based on Myelin Sheath Function",
       "author": "Xiaosong Li, Jingru Sun, Wenjing Ma, Yichuang Sun, Chunhua Wang, Jiliang Zhang",
       "venue": "IEEE Transactions on Consumer Electronics",
@@ -381,30 +398,7 @@
       }
     },
     {
-      "title": "Identifying individual brain development using multimodality brain network",
-      "author": "Yuwei Jiang, Yangjiayi Mu, Zhao Xu, Qingyang Liu, Shouyan Wang, He Wang, Jianfeng Feng",
-      "venue": "Communications Biology",
-      "year": 2024,
-      "url": "https://doi.org/10.1038/s42003-024-06876-1",
-      "cited_by": 9,
-      "abstract": "The cortical development of our brains is in a hierarchical manner and promotes the emergence of large-scale functional hierarchy. However, under interindividual heterogenicity, how the spatiotemporal features of brain networks reflect brain development and mental health remains unclear. Here we collect both resting-state electroencephalography and functional magnetic resonance imaging data from the Child Mind Institute Biobank to demonstrate that during brain growth, the global dynamic patterns of brain states become more active and the dominant networks shift from sensory to higher-level networks; the individual functional network patterns become more similar to that of adults and their spatial coupling tends to be invariable. Furthermore, the properties of multimodality brain networks are sufficiently robust to identify healthy brain age and mental disorders at specific ages. Therefore, multimodality brain networks provide new insights into the functional development of the brain an",
-      "doi": "10.1038/s42003-024-06876-1",
-      "pmid": "39289448",
-      "openalex_id": "W4402600016",
-      "source_doi": "10.1038/s41593-023-01272-0",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5310406766831876,
-        "similarity_score": 0.45977547764778137,
-        "citation_text_length": 1221,
-        "dataset_text_length": 2380,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Engineering Interconnected Nanofluidic Channel in a Hydrogel Supernetwork toward K<sup>+</sup> Ion Accelerating Transport and Efficient Sensing",
+      "title": "Engineering Interconnected Nanofluidic Channel in a Hydrogel Supernetwork toward K+ Ion Accelerating Transport and Efficient Sensing",
       "author": "Rui Zhu, Peng Sun, Guofeng Cui, Jie Zhao, Yaoguang Yu",
       "venue": "ACS Applied Materials & Interfaces",
       "year": 2024,
@@ -418,9 +412,9 @@
       "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.3251089346408844,
-        "similarity_score": 0.2814795970916748,
-        "citation_text_length": 1269,
+        "confidence_score": 0.3277912098169327,
+        "similarity_score": 0.2838019132614136,
+        "citation_text_length": 1258,
         "dataset_text_length": 2380,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -444,6 +438,29 @@
         "confidence_score": 0.40333812832832344,
         "similarity_score": 0.3492105007171631,
         "citation_text_length": 1269,
+        "dataset_text_length": 2380,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Cortico‐cortical evoked potentials: Analytical techniques and emerging paradigms for epileptogenic zone localization",
+      "author": "Zekai Qiang, J. C. Norris, Gerald Cooray, Richard Rosch, Kai J. Miller, Dora Hermes, Ajai Chari, Martin Tisdall",
+      "venue": "Epilepsia",
+      "year": 2025,
+      "url": "https://doi.org/10.1111/epi.18467",
+      "cited_by": 8,
+      "abstract": "Cortico-cortical evoked potentials (CCEPs) are an active electrophysiological technique used during intracranial electroencephalography to evaluate the effective connectivity and influence of therapeutic stimulation between distinct cortical regions and pinpoint epileptogenic zones (EZs) in patients with epilepsy. Various methodologies have been implemented to analyze CCEPs and characterize the epileptogenic networks for EZ localization. Despite its promise, their interpretation remains challenging due to the large volumes of spatially and temporally complex data generated. Early studies focused largely on qualitative descriptors and predefined, semi-quantitative features such as waveform morphology and peak latencies. However, these methods are limited by the significant heterogeneity in CCEP waveform conformations across patients and cortical regions. The specific technique used for extraction of features, such as the spectral band power and root mean squared values, remains open to ",
+      "doi": "10.1111/epi.18467",
+      "pmid": "40407405",
+      "openalex_id": "W4410627556",
+      "source_doi": "10.1038/s41593-023-01272-0",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7070101341605187,
+        "similarity_score": 0.6121299862861633,
+        "citation_text_length": 1275,
         "dataset_text_length": 2380,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -542,29 +559,6 @@
       }
     },
     {
-      "title": "Cortico‐cortical evoked potentials: Analytical techniques and emerging paradigms for epileptogenic zone localization",
-      "author": "Zekai Qiang, J. C. Norris, Gerald Cooray, Richard Rosch, Kai J. Miller, Dora Hermes, Ajai Chari, Martin Tisdall",
-      "venue": "Epilepsia",
-      "year": 2025,
-      "url": "https://doi.org/10.1111/epi.18467",
-      "cited_by": 6,
-      "abstract": "Cortico-cortical evoked potentials (CCEPs) are an active electrophysiological technique used during intracranial electroencephalography to evaluate the effective connectivity and influence of therapeutic stimulation between distinct cortical regions and pinpoint epileptogenic zones (EZs) in patients with epilepsy. Various methodologies have been implemented to analyze CCEPs and characterize the epileptogenic networks for EZ localization. Despite its promise, their interpretation remains challenging due to the large volumes of spatially and temporally complex data generated. Early studies focused largely on qualitative descriptors and predefined, semi-quantitative features such as waveform morphology and peak latencies. However, these methods are limited by the significant heterogeneity in CCEP waveform conformations across patients and cortical regions. The specific technique used for extraction of features, such as the spectral band power and root mean squared values, remains open to ",
-      "doi": "10.1111/epi.18467",
-      "pmid": "40407405",
-      "openalex_id": "W4410627556",
-      "source_doi": "10.1038/s41593-023-01272-0",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7070101341605187,
-        "similarity_score": 0.6121299862861633,
-        "citation_text_length": 1275,
-        "dataset_text_length": 2380,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Short-range human cortico-cortical white matter fibers have thinner axons and are less myelinated compared to long-range fibers despite a similar g-ratio",
       "author": "Philip Ruthig, David Edler v.d. Planitz, Maria Morozova, Katja Reimann, Carsten Jäger, T. Reinert, Siawoosh Mohammadi, Nikolaus Weiskopf, Evgeniya Kirilina, Markus Morawski",
       "venue": "PLoS Biology",
@@ -628,6 +622,29 @@
         "confidence_score": 0.6799218535423279,
         "similarity_score": 0.588676929473877,
         "citation_text_length": 1261,
+        "dataset_text_length": 2380,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "The effect of propofol on effective brain networks",
+      "author": "D. V. Blooijs, S. Blok, G. Huiskamp, P. V. Eijsden, H.G.E. Meijer, F. Leijten, Clinical Neurophysiology",
+      "venue": "Clinical Neurophysiology",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.clinph.2024.01.012",
+      "cited_by": 5,
+      "abstract": "OBJECTIVE: We compared the effective networks derived from Single Pulse Electrical Stimulation (SPES) in intracranial electrocorticography (ECoG) of awake epilepsy patients and while under general propofol-anesthesia to investigate the effect of propofol on these brain networks. METHODS: We included nine patients who underwent ECoG for epilepsy surgery evaluation. We performed SPES when the patient was awake (SPES-clinical) and repeated this under propofol-anesthesia during the surgery in which the ECoG grids were removed (SPES-propofol). We detected the cortico-cortical evoked potentials (CCEPs) with an automatic detector. We constructed two effective networks derived from SPES-clinical and SPES-propofol. We compared three network measures (indegree, outdegree and betweenness centrality), the N1-peak-latency and amplitude of CCEPs between the two effective networks. RESULTS: = 0.55, p < 0.001). The median N1-peak-latency increased from 22.0 ms during SPES-clinical to 26.4 ms during SP",
+      "doi": "10.1016/j.clinph.2024.01.012",
+      "pmid": "38522268",
+      "openalex_id": "W4392578699",
+      "source_doi": "10.1038/s41593-023-01272-0",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6823999392986299,
+        "similarity_score": 0.5908224582672119,
+        "citation_text_length": 1216,
         "dataset_text_length": 2380,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -726,29 +743,6 @@
       }
     },
     {
-      "title": "The effect of propofol on effective brain networks",
-      "author": "D. V. Blooijs, S. Blok, G. Huiskamp, P. V. Eijsden, H.G.E. Meijer, F. Leijten, Clinical Neurophysiology",
-      "venue": "Clinical Neurophysiology",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.clinph.2024.01.012",
-      "cited_by": 4,
-      "abstract": "OBJECTIVE: We compared the effective networks derived from Single Pulse Electrical Stimulation (SPES) in intracranial electrocorticography (ECoG) of awake epilepsy patients and while under general propofol-anesthesia to investigate the effect of propofol on these brain networks. METHODS: We included nine patients who underwent ECoG for epilepsy surgery evaluation. We performed SPES when the patient was awake (SPES-clinical) and repeated this under propofol-anesthesia during the surgery in which the ECoG grids were removed (SPES-propofol). We detected the cortico-cortical evoked potentials (CCEPs) with an automatic detector. We constructed two effective networks derived from SPES-clinical and SPES-propofol. We compared three network measures (indegree, outdegree and betweenness centrality), the N1-peak-latency and amplitude of CCEPs between the two effective networks. RESULTS: = 0.55, p < 0.001). The median N1-peak-latency increased from 22.0 ms during SPES-clinical to 26.4 ms during SP",
-      "doi": "10.1016/j.clinph.2024.01.012",
-      "pmid": "38522268",
-      "openalex_id": "W4392578699",
-      "source_doi": "10.1038/s41593-023-01272-0",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6823999392986299,
-        "similarity_score": 0.5908224582672119,
-        "citation_text_length": 1216,
-        "dataset_text_length": 2380,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "ER-detect: A pipeline for robust detection of early evoked responses in BIDS-iEEG electrical stimulation data",
       "author": "Max van den Boom, Max A. van den Boom, Nicholas M. Gregg, Gabriela Ojeda Valencia, Brian N. Lundstrom, Kai J. Miller, Dorien van Blooijs, Geertjan Huiskamp, Frans S. S. Leijten, Gregory A. Worrell, Dora Hermes",
       "venue": "Journal of Neuroscience Methods",
@@ -778,7 +772,7 @@
       "year": 2025,
       "url": "https://doi.org/10.22339/jbh.v8i1.8112",
       "cited_by": 4,
-      "abstract": "Energy rate density (ERD) corresponds to the energy flow through a dissipative system to maintain its energy gradient and is defined as the energy rate (ER), normalised to mass. ERD has been proposed by Chaisson [2002] as a single, simple metric for complexity of a wide variety of systems over big time. The main objective of this study is to assess the usefulness of this metric over the lifetimes of dissipative systems. For this purpose, mass and ER(D) data have been collected over the lifetimes of a low-mass star, like our Sun, a human, and the Roman Empire, as representative examples of dissipative systems from the cosmological, biological, and cultural realms. Proxies are very useful for further interpretation of the ER(D) time profiles. ER(D) of a low-mass star as a contracting proto-star (&lt; 0.05 Gyr) as well as during its red giant stage and helium flashes (11 to 12.5 Gyr) is much larger than during its stable appearance as a yellow dwarf star in its main sequence (0.05 to 11 G",
+      "abstract": "Energy rate density (ERD) corresponds to the energy flow through a dissipative system to maintain its energy gradient and is defined as the energy rate (ER), normalised to mass. ERD has been proposed by Chaisson [2002] as a single, simple metric for complexity of a wide variety of systems over big time. The main objective of this study is to assess the usefulness of this metric over the lifetimes of dissipative systems. For this purpose, mass and ER(D) data have been collected over the lifetimes of a low-mass star, like our Sun, a human, and the Roman Empire, as representative examples of dissipative systems from the cosmological, biological, and cultural realms. Proxies are very useful for further interpretation of the ER(D) time profiles. ER(D) of a low-mass star as a contracting proto-star (< 0.05 Gyr) as well as during its red giant stage and helium flashes (11 to 12.5 Gyr) is much larger than during its stable appearance as a yellow dwarf star in its main sequence (0.05 to 11 Gyr)",
       "doi": "10.22339/jbh.v8i1.8112",
       "pmid": null,
       "openalex_id": "W4406822737",
@@ -786,8 +780,8 @@
       "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.3021074026823044,
-        "similarity_score": 0.26156485080718994,
+        "confidence_score": 0.296514567732811,
+        "similarity_score": 0.2567225694656372,
         "citation_text_length": 1242,
         "dataset_text_length": 2380,
         "scoring_method": "sentence_transformers",
@@ -1148,7 +1142,7 @@
       "year": 2026,
       "url": "https://doi.org/10.7554/elife.109640.1",
       "cited_by": 1,
-      "abstract": "Visual recognition is a fundamental human brain function, supported by a network of regions in the ventral occipito-temporal cortex (VOTC). This network is thought to be organized hierarchically, with definite processing stages increasing in invariance and time-course from posterior to anterior cortical regions. Here we provide a stringent test of this view by measuring category-selective neural activity to natural images of faces across the VOTC with electrophysiological intracerebral recordings in a large human sample (N=140; &gt;11000 recording sites). Face-selective high frequency broadband (30-160 Hz) neural activity is distributed across the VOTC, with right-hemispheric dominance and regional peaks of activity. Crucially, while a progressive increase in degree of category-selectivity is found along the postero-anterior axis, neural activity occurs largely concurrently (∼100ms onset – ∼450ms offset) across all VOTC regions. These observations challenge the standard hierarchical vi",
+      "abstract": "Visual recognition is a fundamental human brain function, supported by a network of regions in the ventral occipito-temporal cortex (VOTC). This network is thought to be organized hierarchically, with definite processing stages increasing in invariance and time-course from posterior to anterior cortical regions. Here we provide a stringent test of this view by measuring category-selective neural activity to natural images of faces across the VOTC with electrophysiological intracerebral recordings in a large human sample (N=140; >11000 recording sites). Face-selective high frequency broadband (30-160 Hz) neural activity is distributed across the VOTC, with right-hemispheric dominance and regional peaks of activity. Crucially, while a progressive increase in degree of category-selectivity is found along the postero-anterior axis, neural activity occurs largely concurrently (∼100ms onset – ∼450ms offset) across all VOTC regions. These observations challenge the standard hierarchical view ",
       "doi": "10.7554/elife.109640.1",
       "pmid": "42550157",
       "openalex_id": "W7125391754",
@@ -1156,8 +1150,8 @@
       "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4219261121749878,
-        "similarity_score": 0.36530399322509766,
+        "confidence_score": 0.42840675115585336,
+        "similarity_score": 0.37091493606567383,
         "citation_text_length": 1264,
         "dataset_text_length": 2380,
         "scoring_method": "sentence_transformers",
@@ -1280,7 +1274,7 @@
       }
     },
     {
-      "title": "The Psychology of Grievance: How a Culturally Specific Narrative Can Enhance Parent-based Externalizing Disorder Treatment For Orthodox Jewish Families",
+      "title": "The Psychology of Grievance: How a Culturally Specific Narrative Can Enhance Parent-based Externalizing Disorder Treatment For Orthodox Jewish Families",
       "author": "Ethan Ehrenberg",
       "venue": "n/a",
       "year": 2026,
@@ -1294,8 +1288,8 @@
       "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.22325987666845323,
-        "similarity_score": 0.21262845396995544,
+        "confidence_score": 0.23858370557427408,
+        "similarity_score": 0.22722257673740387,
         "citation_text_length": 196,
         "dataset_text_length": 2380,
         "scoring_method": "sentence_transformers",
@@ -1464,7 +1458,7 @@
       }
     },
     {
-      "title": "Paediatric MRI: High-Resolution <i>in vivo</i> 3T Methods",
+      "title": "Paediatric MRI: High-Resolution in vivo 3T Methods",
       "author": "Brooklyn Rose Wright, Mark M. Schira, George Paxinos, Mustafa S. Kassem",
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
       "year": 2025,
@@ -1478,9 +1472,9 @@
       "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4016246514022351,
-        "similarity_score": 0.347726970911026,
-        "citation_text_length": 1162,
+        "confidence_score": 0.3942947950959206,
+        "similarity_score": 0.341380774974823,
+        "citation_text_length": 1155,
         "dataset_text_length": 2380,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1648,29 +1642,6 @@
       }
     },
     {
-      "title": "How Thalamo-Cortical Loops Modulate Cortico-Cortical Evoked Potentials?",
-      "author": "Odile Feys, Samuel Medina Villalon, Christian-George Bénar, Julia Makhalova, Francesca Bonini, Sandrine Aubert‐Conil, Romain Carron, Angela Marchi, Fabrice Bartolomei, Francesca Pizzo",
-      "venue": "Brain Topography",
-      "year": 2026,
-      "url": "https://doi.org/10.1007/s10548-026-01213-7",
-      "cited_by": 0,
-      "abstract": null,
-      "doi": "10.1007/s10548-026-01213-7",
-      "pmid": "42216978",
-      "openalex_id": "W7162873957",
-      "source_doi": "10.1038/s41593-023-01272-0",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5048795565962791,
-        "similarity_score": 0.4808376729488373,
-        "citation_text_length": 297,
-        "dataset_text_length": 2380,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Minimal biophysical rules are sufficient for the emergence of computational intelligence at the neuronal scale",
       "author": "Guanyu Wang, Liang Qi, K E X I N Li, Chenyu Tang, Xuhang Chen, Luigi G. Occhipinti, Arokia Nathan, Hongtao Wang, Yu Pan, Peter Smielewski, Ying Wang, Yingyan Mao, X S Guo, Shuo Gao",
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
@@ -1694,6 +1665,29 @@
       }
     },
     {
+      "title": "How Thalamo-Cortical Loops Modulate Cortico-Cortical Evoked Potentials?",
+      "author": "Odile Feys, Samuel Medina Villalon, Christian-George Bénar, Julia Makhalova, Francesca Bonini, Sandrine Aubert‐Conil, Romain Carron, Angela Marchi, Fabrice Bartolomei, Francesca Pizzo",
+      "venue": "Brain Topography",
+      "year": 2026,
+      "url": "https://doi.org/10.1007/s10548-026-01213-7",
+      "cited_by": 0,
+      "abstract": null,
+      "doi": "10.1007/s10548-026-01213-7",
+      "pmid": "42216978",
+      "openalex_id": "W7162873957",
+      "source_doi": "10.1038/s41593-023-01272-0",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5048795565962791,
+        "similarity_score": 0.4808376729488373,
+        "citation_text_length": 297,
+        "dataset_text_length": 2380,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "White matter conduction in the human brain is mostly slow, with rare high velocity connections",
       "author": "Samuel Romero-Santiago, María Guadalupe Yáñez-Ramos, Jordan A. Bilderbeek, Nicholas M. Gregg, Myung-Ho In, E. Gray, D. Kang, Y. Shu, G. Worrell, Cameron C. Mcintyre, K. Miller, Dora Hermes",
       "venue": "bioRxiv",
@@ -1702,7 +1696,7 @@
       "cited_by": 0,
       "abstract": "White matter bundles play a crucial role in cognitive functions by rapidly transmitting information between brain regions. Inter-areal conduction guides the integration of information and conduction velocity is a fundamental parameter in theories and models of brain function. However, distributions of conduction velocity remain difficult to characterize in vivo in humans. In this work, we integrated diffusion magnetic resonance imaging (dMRI) tractography with intracranial electrical stimulation during clinical stereo-electroencephalography (sEEG) monitoring in 17 subjects to measure conduction velocity within four major white matter bundles. Our findings reveal that human brain conduction is characterized by high variability both within and between bundles, reflecting a predominance of slow connections alongside rare high-speed connections. Because conduction velocity in myelinated fibers follows an approximately linear relationship with axon diameter, we derive underlying axon diamet",
       "doi": "10.64898/2026.07.28.741279",
-      "pmid": null,
+      "pmid": "42619995",
       "openalex_id": null,
       "source_doi": "10.1038/s41593-023-01272-0",
       "source_relation": "IsDescribedBy",
@@ -1840,18 +1834,18 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:31:44.805198+00:00",
+    "scoring_date": "2026-08-25T11:47:25.548386+00:00",
     "dataset_text_length": 2380,
     "num_citations_scored": 76,
     "summary_stats": {
-      "mean_confidence": 0.48170440231008765,
+      "mean_confidence": 0.48185656088649464,
       "median_confidence": 0.47911315932869913,
-      "std_confidence": 0.1435779749262959,
-      "min_confidence": 0.22325987666845323,
+      "std_confidence": 0.14330344981596732,
+      "min_confidence": 0.22352921068668366,
       "max_confidence": 0.8016150301694871,
       "high_confidence_count": 8,
-      "medium_confidence_count": 46,
-      "low_confidence_count": 22
+      "medium_confidence_count": 45,
+      "low_confidence_count": 23
     }
   }
 }

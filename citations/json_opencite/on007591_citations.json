@@ -1,10 +1,10 @@
 {
   "dataset_id": "on007591",
   "num_citations": 1,
-  "date_last_updated": "2026-08-17T10:59:20.605666+00:00",
+  "date_last_updated": "2026-08-25T11:02:28.594934+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-17T10:59:20.605666+00:00",
+    "fetch_date": "2026-08-25T11:02:28.594934+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -16,7 +16,7 @@
       {
         "identifier": "10.1101/2024.05.09.591996",
         "identifier_type": "doi",
-        "source_relation": "References",
+        "source_relation": "IsDescribedBy",
         "classification": "data_paper",
         "kept": true,
         "paper_title": "Delineating neural contributions to electroencephalogram-based speech decoding",
@@ -45,26 +45,19 @@
     "keywords": [
       "EEG",
       "speech decoding",
-      "speech production",
-      "motor imagery",
-      "brain-computer interfaces",
-      "neural decoding"
+      "covert speech",
+      "Speech Production Measurement",
+      "Electromyography",
+      "brain-computer interface"
     ],
-    "methods_description": "EEG was recorded from 128 channels with a 10x preamp gain and converted to Volts (×1e-6). Participants performed speech production tasks under three conditions (overt, minimally overt, covert) producing one of five color words. Each trial consisted of 5 repetitions of the same word lasting 1.25 seconds per repetition. Additional channels recorded EOG, EMG from upper and lower orbicularis oris muscles, microphone input, and trial onset triggers. Data collection included both offline calibration sessions for decoder training and online sessions with real-time decoding.",
+    "methods_description": "128-channel EEG was recorded alongside bipolar EOG, EMG (upper and lower orbicularis oris), microphone, and display channels, plus a trigger channel marking trial onsets. Each trial consisted of 5 repetitions of a spoken color word (1.25 sec per repetition) under overt, minimally overt, or covert speech conditions. EEG channels were recorded with a 10x preamp gain, and raw values were converted to Volts (×1e-6).",
     "funding": [
       {
         "funder_name": "JST",
         "award_number": "JPMJMS2012",
-        "award_title": "Moonshot R&D Grant"
+        "award_title": "Moonshot R&D"
       }
-    ],
-    "searched_accessions": [
-      "on007591",
-      "ds007591"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 1
+    ]
   },
   "citation_details": [
     {
@@ -74,17 +67,17 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.on007591.v1.0.0",
       "cited_by": 0,
-      "abstract": "This dataset comprises 128-channel EEG recordings acquired during speech production tasks involving overt, minimally overt, and covert speech conditions. Participants produced one of five color words, with each trial consisting of five repetitions. The dataset includes calibration and online real-time decoding sessions, along with supplementary physiological recordings (EOG, EMG, microphone) and trigger markers, designed to investigate neural contributions to EEG-based speech decoding.",
+      "abstract": "This dataset comprises 128-channel EEG recordings collected during a speech production paradigm designed to investigate neural correlates of overt, minimally overt, and covert speech. Participants produced one of five color words under each speech condition, with additional peripheral recordings including EOG, EMG, microphone, and display markers to support speech decoding analyses. The dataset includes both calibration sessions for decoder training and online sessions for real-time decoding evaluation.",
       "doi": "10.82901/nemar.on007591.v1.0.0",
       "pmid": null,
       "openalex_id": "W7166667100",
       "source_doi": "10.1101/2024.05.09.591996",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 1.0,
-        "similarity_score": 0.9388642311096191,
-        "citation_text_length": 721,
+        "similarity_score": 0.9289304614067078,
+        "citation_text_length": 739,
         "dataset_text_length": 1590,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -93,7 +86,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:54:48.107466+00:00",
+    "scoring_date": "2026-08-25T12:22:09.940846+00:00",
     "dataset_text_length": 1590,
     "num_citations_scored": 1,
     "summary_stats": {

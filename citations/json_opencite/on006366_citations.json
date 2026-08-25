@@ -1,30 +1,18 @@
 {
   "dataset_id": "on006366",
-  "num_citations": 1,
-  "date_last_updated": "2026-08-17T10:52:41.537538+00:00",
+  "num_citations": 0,
+  "date_last_updated": "2026-08-25T10:55:45.157958+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-17T10:52:41.537538+00:00",
+    "fetch_date": "2026-08-25T10:55:45.157958+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
-    "anchor_count": 2,
+    "anchor_count": 1,
     "anchor_errors": {},
     "schema_version": "2.1",
     "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
     "anchors": [
-      {
-        "identifier": "10.1093/sleepadvances/zpaf025",
-        "identifier_type": "doi",
-        "source_relation": "IsDescribedBy",
-        "classification": "data_paper",
-        "kept": true,
-        "paper_title": "Probability estimation of narcolepsy type 1 in DTA mice using unlabeled EEG and EMG data",
-        "paper_year": 2025,
-        "paper_venue": "SLEEP Advances",
-        "reason": "The paper title and abstract describe the use of EEG/EMG data from mouse models (WT and DTA mice), directly relating to the MSSV dataset's content and purpose.",
-        "judgment_model": "gemma4:e4b"
-      },
       {
         "identifier": "10.82901/nemar.on006366",
         "identifier_type": "doi",
@@ -39,71 +27,29 @@
       }
     ],
     "searched_dois": [
-      "10.1093/sleepadvances/zpaf025",
       "10.82901/nemar.on006366"
     ],
     "keywords": [
       "EEG",
-      "sleep staging",
-      "mice",
       "EMG",
-      "polysomnography",
-      "automated sleep classification"
+      "Sleep Stages",
+      "Mice",
+      "Polysomnography",
+      "BIDS"
     ],
-    "methods_description": "EEG and EMG recordings were collected from 92 healthy mice across five laboratories during both dark and light phases. All recordings were downsampled to 128 Hz with SI units (volts) and segmented into 4-second epochs. Each mouse was scored by a single sleep expert. The number of EEG channels varied between laboratories.",
+    "methods_description": "Recordings were collected from 92 healthy mice across five labs, each scored by a single sleep expert. All recordings contain at least one EEG and one EMG channel, with the number of EEG channels varying by lab. Data were downsampled to 128Hz with SI units (volts), using an epoch length of 4 seconds.",
     "funding": [
       {
         "funder_name": "Lundbeck Foundation",
         "award_number": "R344-2020-749"
       }
-    ],
-    "searched_accessions": [
-      "on006366",
-      "ds006366"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 1
+    ]
   },
-  "citation_details": [
-    {
-      "title": "Lack of Consensus for Manual Mouse Sleep Scoring Limits Implementation of Automatic Deep Learning Models",
-      "author": "Laura Rose, A. N. Zahid, Javier García Ciudad, Christine Egebjerg, L. Piilgaard, F. L. Sørensen, Mie Andersen, T. Radovanovic, A. Tsopanidou, M. Nedergaard, S. Arthaud, Renato Maciel, C. Peyron, C. Berteotti, V. L. Martire, A. Silvani, G. Zoccoli, M. Borsa, A. Adamantidis, Morten Mørup, B. R. Kornum",
-      "venue": "bioRxiv",
-      "year": 2026,
-      "url": "https://doi.org/10.64898/2026.03.27.714381",
-      "cited_by": 0,
-      "abstract": "Scientists have for decades attempted to automate the manual sleep staging problem not only for human polysomnography data but also for rodent data. No model has, however, succeeded in fully replacing the manual procedure across clinics and laboratories. We hypothesize that this is due to the models’ limited ability to generalize to data from unseen laboratories. Our findings show that despite the high performance of four state-of-the-art models reported in initial publications, the published models struggle to generalize to other laboratories. We further show a significant improvement in model performance across labs by re-training them on a diverse dataset from five different sites. To assess the contribution of variability in manual scoring, ten experts from five laboratories all labelled the same nine mouse sleep recordings. The result revealed substantial scoring variability, particularly for rapid eye movement (REM) sleep, both within and between labs. In conclusion our study dem",
-      "doi": "10.64898/2026.03.27.714381",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1093/sleepadvances/zpaf025",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7306304991245272,
-        "similarity_score": 0.6325805187225342,
-        "citation_text_length": 1450,
-        "dataset_text_length": 2232,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    }
-  ],
+  "citation_details": [],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:48:43.229212+00:00",
+    "scoring_date": "2026-08-25T12:13:55.130689+00:00",
     "dataset_text_length": 2232,
-    "num_citations_scored": 1,
-    "summary_stats": {
-      "mean_confidence": 0.7306304991245272,
-      "median_confidence": 0.7306304991245272,
-      "std_confidence": 0.0,
-      "min_confidence": 0.7306304991245272,
-      "max_confidence": 0.7306304991245272,
-      "high_confidence_count": 1,
-      "medium_confidence_count": 0,
-      "low_confidence_count": 0
-    }
+    "num_citations_scored": 0
   }
 }

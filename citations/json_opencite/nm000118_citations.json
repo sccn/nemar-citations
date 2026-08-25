@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000118",
   "num_citations": 100,
-  "date_last_updated": "2026-08-17T10:01:15.270487+00:00",
+  "date_last_updated": "2026-08-25T10:01:55.944707+00:00",
   "metadata": {
-    "total_cumulative_citations": 6614,
-    "fetch_date": "2026-08-17T10:01:15.270487+00:00",
+    "total_cumulative_citations": 6629,
+    "fetch_date": "2026-08-25T10:01:55.944707+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -51,7 +51,7 @@
       "visual stimulation",
       "joint frequency-phase modulation"
     ],
-    "methods_description": "EEG data were acquired using a Biosemi ActiveTwo amplifier with 8 electrodes (PO7, PO3, POz, PO4, PO8, O1, Oz, O2) positioned according to the standard 10-20 montage with CMS/DRL reference. Sampling rate was 256 Hz. Subjects performed a 12-class SSVEP target identification task with joint frequency-phase modulation (stimulus frequencies: 9.25-14.75 Hz in 0.5 Hz steps). Each trial consisted of a 1-second cue period followed by 4 seconds of flickering visual stimuli presented on a 4×3 matrix at 60 Hz refresh rate. Preprocessing included zero-phase IIR bandpass filtering (6-80 Hz), epoch extraction with 135-ms latency compensation for visual system delay, and downsampling to 256 Hz. A simulated online BCI experiment was conducted using leave-one-block-out cross-validation with 15 folds across 9 subjects.",
+    "methods_description": "EEG data were acquired using a Biosemi ActiveTwo amplifier with 8 electrodes (PO7, PO3, POz, PO4, PO8, O1, Oz, O2) positioned according to the standard 10-20 montage with CMS/DRL reference. Sampling rate was 256 Hz. Subjects performed a 12-class SSVEP target identification task with joint frequency-phase modulation (9.25-14.75 Hz range, 0.5 Hz resolution). Each trial consisted of a 1-second cue period followed by 4 seconds of flickering visual stimuli presented on a 4×3 matrix at 60 Hz refresh rate. Preprocessing included zero-phase IIR bandpass filtering (6-80 Hz) and epoch extraction with 135-ms latency compensation for visual system delay.",
     "funding": [
       {
         "funder_name": "Swartz Foundation gift fund"
@@ -87,14 +87,12 @@
       {
         "funder_name": "NIH",
         "award_number": "1R21EY025056-01"
+      },
+      {
+        "funder_name": "DARPA",
+        "award_number": "D11PC20183"
       }
-    ],
-    "searched_accessions": [
-      "nm000118"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 100
+    ]
   },
   "citation_details": [
     {
@@ -126,7 +124,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1088/1741-2552/aae5d8",
-      "cited_by": 259,
+      "cited_by": 261,
       "abstract": "OBJECTIVE: Steady-state visual evoked potentials (SSVEPs) are neural oscillations from the parietal and occipital regions of the brain that are evoked from flickering visual stimuli. SSVEPs are robust signals measurable in the electroencephalogram (EEG) and are commonly used in brain-computer interfaces (BCIs). However, methods for high-accuracy decoding of SSVEPs usually require hand-crafted approaches that leverage domain-specific knowledge of the stimulus signals, such as specific temporal frequencies in the visual stimuli and their relative spatial arrangement. When this knowledge is unavailable, such as when SSVEP signals are acquired asynchronously, such approaches tend to fail. APPROACH: In this paper, we show how a compact convolutional neural network (Compact-CNN), which only requires raw EEG signals for automatic feature extraction, can be used to decode signals from a 12-class SSVEP dataset without the need for user-specific calibration. MAIN RESULTS: The Compact-CNN demonst",
       "doi": "10.1088/1741-2552/aae5d8",
       "pmid": "30279309",
@@ -172,7 +170,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2020,
       "url": "https://doi.org/10.1088/1741-2552/ab6a67",
-      "cited_by": 161,
+      "cited_by": 162,
       "abstract": "OBJECTIVE: We presented a comparative study on the training methodologies of a convolutional neural network (CNN) for the detection of steady-state visually evoked potentials (SSVEP). Two training scenarios were also compared: user-independent (UI) training and user-dependent (UD) training. APPROACH: The CNN was trained in both UD and UI scenarios on two types of features for SSVEP classification: magnitude spectrum features (M-CNN) and complex spectrum features (C-CNN). The canonical correlation analysis (CCA), widely used in SSVEP processing, was used as the baseline. Additional comparisons were performed with task-related components analysis (TRCA) and filter-bank canonical correlation analysis (FBCCA). The performance of the proposed CNN pipelines, CCA, FBCCA and TRCA were evaluated with two datasets: a seven-class SSVEP dataset collected on 21 healthy participants and a twelve-class publicly available SSVEP dataset collected on ten healthy participants. MAIN RESULTS: The UD based ",
       "doi": "10.1088/1741-2552/ab6a67",
       "pmid": "31923910",
@@ -195,7 +193,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1088/1741-2552/aaca6e",
-      "cited_by": 159,
+      "cited_by": 160,
       "abstract": "OBJECTIVE: Despite the vast research aimed at improving the performance of steady-state visually evoked potential (SSVEP)-based brain-computer interfaces (BCIs), several limitations exist that restrict the use of such applications for long-term users in the real-world. One of the main challenges has been to reduce training time while maintaining good BCI performance. In view of this challenge, this survey identifies and compares the different training requirements of feature extraction methods for SSVEP-based BCIs. APPROACH: This paper reviews the various state-of-the-art SSVEP feature extraction methods that have been developed and are most widely used in the literature. MAIN RESULTS: The main contributions compared to existing reviews are the following: (i) a detailed summary, including a brief mathematical description of each feature extraction algorithm, providing a guide to the basic concepts of the state-of-the-art techniques for SSVEP-based BCIs found in literature; (ii) a categ",
       "doi": "10.1088/1741-2552/aaca6e",
       "pmid": "29869996",
@@ -356,7 +354,7 @@
       "venue": "Neural Networks",
       "year": 2023,
       "url": "https://doi.org/10.1016/j.neunet.2023.04.045",
-      "cited_by": 124,
+      "cited_by": 126,
       "abstract": null,
       "doi": "10.1016/j.neunet.2023.04.045",
       "pmid": "37209444",
@@ -368,6 +366,29 @@
         "confidence_score": 0.6064225494861603,
         "similarity_score": 0.5775452852249146,
         "citation_text_length": 173,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Deep Learning in EEG: Advance of the Last Ten-Year Critical Period",
+      "author": "Shu Gong, Kaibo Xing, Andrzej Cichocki, Junhua Li",
+      "venue": "IEEE Transactions on Cognitive and Developmental Systems",
+      "year": 2021,
+      "url": "https://doi.org/10.1109/tcds.2021.3079712",
+      "cited_by": 117,
+      "abstract": "Deep learning has achieved excellent performance in a wide range of domains, especially in speech recognition and computer vision. Relatively less work has been done for electroencephalogram (EEG), but there is still significant progress attained in the last decade. Due to the lack of a comprehensive and topic widely covered survey for deep learning in EEG, we attempt to summarize recent progress to provide an overview, as well as perspectives for future developments. We first briefly mention the artifacts removal for EEG signal and then introduce deep learning models that have been utilized in EEG processing and classification. Subsequently, the applications of deep learning in EEG are reviewed by categorizing them into groups, such as brain–computer interface, disease detection, and emotion recognition. They are followed by the discussion, in which the pros and cons of deep learning are presented and future directions and challenges for deep learning in EEG are proposed. We hope that",
+      "doi": "10.1109/tcds.2021.3079712",
+      "pmid": null,
+      "openalex_id": "W3108203525",
+      "source_doi": "10.1371/journal.pone.0140703",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4983038324117661,
+        "similarity_score": 0.4314318895339966,
+        "citation_text_length": 1210,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -391,29 +412,6 @@
         "confidence_score": 0.7703958722949029,
         "similarity_score": 0.6670094132423401,
         "citation_text_length": 1216,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Deep Learning in EEG: Advance of the Last Ten-Year Critical Period",
-      "author": "Shu Gong, Kaibo Xing, Andrzej Cichocki, Junhua Li",
-      "venue": "IEEE Transactions on Cognitive and Developmental Systems",
-      "year": 2021,
-      "url": "https://doi.org/10.1109/tcds.2021.3079712",
-      "cited_by": 115,
-      "abstract": "Deep learning has achieved excellent performance in a wide range of domains, especially in speech recognition and computer vision. Relatively less work has been done for electroencephalogram (EEG), but there is still significant progress attained in the last decade. Due to the lack of a comprehensive and topic widely covered survey for deep learning in EEG, we attempt to summarize recent progress to provide an overview, as well as perspectives for future developments. We first briefly mention the artifacts removal for EEG signal and then introduce deep learning models that have been utilized in EEG processing and classification. Subsequently, the applications of deep learning in EEG are reviewed by categorizing them into groups, such as brain–computer interface, disease detection, and emotion recognition. They are followed by the discussion, in which the pros and cons of deep learning are presented and future directions and challenges for deep learning in EEG are proposed. We hope that",
-      "doi": "10.1109/tcds.2021.3079712",
-      "pmid": null,
-      "openalex_id": "W3108203525",
-      "source_doi": "10.1371/journal.pone.0140703",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4983038324117661,
-        "similarity_score": 0.4314318895339966,
-        "citation_text_length": 1210,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -494,7 +492,7 @@
       "venue": "ACM Computing Surveys",
       "year": 2017,
       "url": "https://doi.org/10.1145/3136624",
-      "cited_by": 99,
+      "cited_by": 100,
       "abstract": "Canonical correlation analysis is a family of multivariate statistical methods for the analysis of paired sets of variables. Since its proposition, canonical correlation analysis has, for instance, been extended to extract relations between two sets of variables when the sample size is insufficient in relation to the data dimensionality, when the relations have been considered to be non-linear, and when the dimensionality is too large for human interpretation. This tutorial explains the theory of canonical correlation analysis, including its regularised, kernel, and sparse variants. Additionally, the deep and Bayesian CCA extensions are briefly reviewed. Together with the numerical examples, this overview provides a coherent compendium on the applicability of the variants of canonical correlation analysis. By bringing together techniques for solving the optimisation problems, evaluating the statistical significance and generalisability of the canonical correlation model, and interpreti",
       "doi": "10.1145/3136624",
       "pmid": null,
@@ -701,7 +699,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2022,
       "url": "https://doi.org/10.1088/1741-2552/ac8dc5",
-      "cited_by": 77,
+      "cited_by": 78,
       "abstract": "Abstract Objective . Steady-state visual evoked potentials (SSVEPs) based brain–computer interface (BCI) has received great interests owing to the high information transfer rate and available large number of targets. However, the performance of frequency recognition methods heavily depends on the amount of the calibration data for intra-subject classification. Some research adopted the deep learning (DL) algorithm to conduct the inter-subject classification, which could reduce the calculation procedure, but the performance still has large room to improve compared with the intra-subject classification. Approach . To address these issues, we proposed an efficient SSVEP DL NETwork (termed SSVEPNET) based on one-dimensional convolution and long short-term memory (LSTM) module. To enhance the performance of SSVEPNET, we adopted the spectral normalization and label smoothing technologies during implementing the network architecture. We evaluated the SSVEPNET and compared it with other method",
       "doi": "10.1088/1741-2552/ac8dc5",
       "pmid": "36041426",
@@ -1041,6 +1039,29 @@
       }
     },
     {
+      "title": "An Analysis of Deep Learning Models in SSVEP-Based BCI: A Survey",
+      "author": "Dongcen Xu, Fengzhen Tang, Yiping Li, Qifeng Zhang, Xisheng Feng",
+      "venue": "Brain Sciences",
+      "year": 2023,
+      "url": "https://doi.org/10.3390/brainsci13030483",
+      "cited_by": 51,
+      "abstract": "The brain-computer interface (BCI), which provides a new way for humans to directly communicate with robots without the involvement of the peripheral nervous system, has recently attracted much attention. Among all the BCI paradigms, BCIs based on steady-state visual evoked potentials (SSVEPs) have the highest information transfer rate (ITR) and the shortest training time. Meanwhile, deep learning has provided an effective and feasible solution for solving complex classification problems in many fields, and many researchers have started to apply deep learning to classify SSVEP signals. However, the designs of deep learning models vary drastically. There are many hyper-parameters that influence the performance of the model in an unpredictable way. This study surveyed 31 deep learning models (2011-2023) that were used to classify SSVEP signals and analyzed their design aspects including model input, model structure, performance measure, etc. Most of the studies that were surveyed in this",
+      "doi": "10.3390/brainsci13030483",
+      "pmid": "36979293",
+      "openalex_id": "W4324058344",
+      "source_doi": "10.1371/journal.pone.0140703",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6452101340889932,
+        "similarity_score": 0.5586234927177429,
+        "citation_text_length": 1181,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Wearable in‐the‐ear EEG system for SSVEP‐based brain–computer interface",
       "author": "Jeongyeol Ahn, Yunseo Ku, D. Y. Kim, Jangjay Sohn, Ji‐hoon Kim, Hee Chan Kim",
       "venue": "Electronics Letters",
@@ -1058,29 +1079,6 @@
         "confidence_score": 0.6702600479125977,
         "similarity_score": 0.6093273162841797,
         "citation_text_length": 1205,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "An Analysis of Deep Learning Models in SSVEP-Based BCI: A Survey",
-      "author": "Dongcen Xu, Fengzhen Tang, Yiping Li, Qifeng Zhang, Xisheng Feng",
-      "venue": "Brain Sciences",
-      "year": 2023,
-      "url": "https://doi.org/10.3390/brainsci13030483",
-      "cited_by": 50,
-      "abstract": "The brain-computer interface (BCI), which provides a new way for humans to directly communicate with robots without the involvement of the peripheral nervous system, has recently attracted much attention. Among all the BCI paradigms, BCIs based on steady-state visual evoked potentials (SSVEPs) have the highest information transfer rate (ITR) and the shortest training time. Meanwhile, deep learning has provided an effective and feasible solution for solving complex classification problems in many fields, and many researchers have started to apply deep learning to classify SSVEP signals. However, the designs of deep learning models vary drastically. There are many hyper-parameters that influence the performance of the model in an unpredictable way. This study surveyed 31 deep learning models (2011-2023) that were used to classify SSVEP signals and analyzed their design aspects including model input, model structure, performance measure, etc. Most of the studies that were surveyed in this",
-      "doi": "10.3390/brainsci13030483",
-      "pmid": "36979293",
-      "openalex_id": "W4324058344",
-      "source_doi": "10.1371/journal.pone.0140703",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6452101340889932,
-        "similarity_score": 0.5586234927177429,
-        "citation_text_length": 1181,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1179,6 +1177,29 @@
       }
     },
     {
+      "title": "Effects of Paradigm Color and Screen Brightness on Visual Fatigue in Light Environment of Night Based on Eye Tracker and EEG Acquisition Equipment",
+      "author": "Peiyuan Tian, Guanghua Xu, Chengcheng Han, Xiaowei Zheng, Kai Zhang, Chenghang Du, Wei Fan, Sicong Zhang",
+      "venue": "Sensors",
+      "year": 2022,
+      "url": "https://doi.org/10.3390/s22114082",
+      "cited_by": 42,
+      "abstract": "Nowadays, more people tend to go to bed late and spend their sleep time with various electronic devices. At the same time, the BCI (brain−computer interface) rehabilitation equipment uses a visual display, thus it is necessary to evaluate the problem of visual fatigue to avoid the impact on the training effect. Therefore, it is very important to understand the impact of using electronic devices in a dark environment at night on human visual fatigue. This paper uses Matlab to write different color paradigm stimulations, uses a 4K display with an adjustable screen brightness to jointly design the experiment, uses eye tracker and g.tec Electroencephalogram (EEG) equipment to collect the signal, and then carries out data processing and analysis, finally obtaining the influence of the combination of different colors and different screen brightness on human visual fatigue in a dark environment. In this study, subjects were asked to evaluate their subjective (Likert scale) perception, and obj",
+      "doi": "10.3390/s22114082",
+      "pmid": "35684700",
+      "openalex_id": "W4281721758",
+      "source_doi": "10.1371/journal.pone.0140703",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5712554249167443,
+        "similarity_score": 0.49459344148635864,
+        "citation_text_length": 1296,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A new multivariate empirical mode decomposition method for improving the performance of SSVEP-based brain–computer interface",
       "author": "Yi-Feng Chen, Kiran Atal, Sheng Quan Xie, Quan Liu",
       "venue": "Journal of Neural Engineering",
@@ -1219,29 +1240,6 @@
         "confidence_score": 0.7108743810653687,
         "similarity_score": 0.6154756546020508,
         "citation_text_length": 1199,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Effects of Paradigm Color and Screen Brightness on Visual Fatigue in Light Environment of Night Based on Eye Tracker and EEG Acquisition Equipment",
-      "author": "Peiyuan Tian, Guanghua Xu, Chengcheng Han, Xiaowei Zheng, Kai Zhang, Chenghang Du, Wei Fan, Sicong Zhang",
-      "venue": "Sensors",
-      "year": 2022,
-      "url": "https://doi.org/10.3390/s22114082",
-      "cited_by": 41,
-      "abstract": "Nowadays, more people tend to go to bed late and spend their sleep time with various electronic devices. At the same time, the BCI (brain−computer interface) rehabilitation equipment uses a visual display, thus it is necessary to evaluate the problem of visual fatigue to avoid the impact on the training effect. Therefore, it is very important to understand the impact of using electronic devices in a dark environment at night on human visual fatigue. This paper uses Matlab to write different color paradigm stimulations, uses a 4K display with an adjustable screen brightness to jointly design the experiment, uses eye tracker and g.tec Electroencephalogram (EEG) equipment to collect the signal, and then carries out data processing and analysis, finally obtaining the influence of the combination of different colors and different screen brightness on human visual fatigue in a dark environment. In this study, subjects were asked to evaluate their subjective (Likert scale) perception, and obj",
-      "doi": "10.3390/s22114082",
-      "pmid": "35684700",
-      "openalex_id": "W4281721758",
-      "source_doi": "10.1371/journal.pone.0140703",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5712554249167443,
-        "similarity_score": 0.49459344148635864,
-        "citation_text_length": 1296,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1363,6 +1361,29 @@
       }
     },
     {
+      "title": "Brain-Controlled Wheelchair Review: From Wet Electrode to Dry Electrode, From Single Modal to Hybrid Modal, From Synchronous to Asynchronous",
+      "author": "Hongtao Wang, Fan Yan, Tao Xu, Haojun Yin, Peng Chen, Hongwei Yue, Chuangquan Chen, Hongfei Zhang, Linfeng Xu, Yuebang He, Anastasios Bezerianos",
+      "venue": "IEEE Access",
+      "year": 2021,
+      "url": "https://doi.org/10.1109/access.2021.3071599",
+      "cited_by": 35,
+      "abstract": "Brain-computer interface (BCI) is a novel human-computer interaction model, which does not depend on the conventional output pathway (peripheral nerve and muscle tissue). In the past three decades, it has attracted the interest of researchers and gradually become a research hotspot. As a typical BCI application, the brain-controlled wheelchair (BCW) could provide a new communicating channel with the external environment for physically disabled people. However, the main challenge of BCW is how to decode multi-degree of freedom control instruction from electroencephalogram (EEG) as soon as possible. The research progress of BCW has been developed rapidly over the past fifteen years. In this review, we investigate the BCW from multiple perspectives, include the type of signal acquisition, the pattern of commands for the control system and the working mechanism of the control system. Furthermore, we summarize the development trend of BCW based on the previous investigation, and it is mainl",
+      "doi": "10.1109/access.2021.3071599",
+      "pmid": null,
+      "openalex_id": "W3156296854",
+      "source_doi": "10.1371/journal.pone.0140703",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.38338491171598443,
+        "similarity_score": 0.33193498849868774,
+        "citation_text_length": 1334,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Unsupervised frequency-recognition method of SSVEPs using a filter bank implementation of binary subband CCA",
       "author": "Md. Rabiul Islam, Md. Khademul Islam Molla, Masaki Nakanishi, Toshihisa Tanaka",
       "venue": "Journal of Neural Engineering",
@@ -1409,23 +1430,23 @@
       }
     },
     {
-      "title": "Brain-Controlled Wheelchair Review: From Wet Electrode to Dry Electrode, From Single Modal to Hybrid Modal, From Synchronous to Asynchronous",
-      "author": "Hongtao Wang, Fan Yan, Tao Xu, Haojun Yin, Peng Chen, Hongwei Yue, Chuangquan Chen, Hongfei Zhang, Linfeng Xu, Yuebang He, Anastasios Bezerianos",
-      "venue": "IEEE Access",
-      "year": 2021,
-      "url": "https://doi.org/10.1109/access.2021.3071599",
+      "title": "Bidirectional Siamese correlation analysis method for enhancing the detection of SSVEPs",
+      "author": "Xinyi Zhang, Shuang Qiu, Yukun Zhang, Kangning Wang, Yijun Wang, Huiguang He",
+      "venue": "Journal of Neural Engineering",
+      "year": 2022,
+      "url": "https://doi.org/10.1088/1741-2552/ac823e",
       "cited_by": 34,
-      "abstract": "Brain-computer interface (BCI) is a novel human-computer interaction model, which does not depend on the conventional output pathway (peripheral nerve and muscle tissue). In the past three decades, it has attracted the interest of researchers and gradually become a research hotspot. As a typical BCI application, the brain-controlled wheelchair (BCW) could provide a new communicating channel with the external environment for physically disabled people. However, the main challenge of BCW is how to decode multi-degree of freedom control instruction from electroencephalogram (EEG) as soon as possible. The research progress of BCW has been developed rapidly over the past fifteen years. In this review, we investigate the BCW from multiple perspectives, include the type of signal acquisition, the pattern of commands for the control system and the working mechanism of the control system. Furthermore, we summarize the development trend of BCW based on the previous investigation, and it is mainl",
-      "doi": "10.1109/access.2021.3071599",
-      "pmid": null,
-      "openalex_id": "W3156296854",
+      "abstract": "Abstract Objective. Steady-state visual evoked potential (SSVEP)-based brain–computer interfaces (BCIs) have attracted increasing attention due to their high information transfer rate. To improve the performance of SSVEP detection, we propose a bidirectional Siamese correlation analysis (bi-SiamCA) model. Approach . In this model, an long short-term memory-based Siamese architecture is designed to measure the similarity between the SSVEP signal and the template in each frequency and obtain the probability that the SSVEP signal belongs to each frequency. Additionally, a maximize agreement module with a designed contrastive loss is adopted in the Siamese architecture to increase the similarity between the SSVEP signal and the reference signal in the same frequency. Moreover, a two-way signal processing mechanism is built to effectively integrate complementary information from two temporal directions of the input signals. Our model uses raw SSVEPs as inputs and can be trained end-to-end. ",
+      "doi": "10.1088/1741-2552/ac823e",
+      "pmid": "35853437",
+      "openalex_id": "W4286213801",
       "source_doi": "10.1371/journal.pone.0140703",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.38338491171598443,
-        "similarity_score": 0.33193498849868774,
-        "citation_text_length": 1334,
+        "confidence_score": 0.6957722121477128,
+        "similarity_score": 0.6024001836776733,
+        "citation_text_length": 1231,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1472,29 +1493,6 @@
         "confidence_score": 0.6167352795600891,
         "similarity_score": 0.6167352795600891,
         "citation_text_length": 235,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Bidirectional Siamese correlation analysis method for enhancing the detection of SSVEPs",
-      "author": "Xinyi Zhang, Shuang Qiu, Yukun Zhang, Kangning Wang, Yijun Wang, Huiguang He",
-      "venue": "Journal of Neural Engineering",
-      "year": 2022,
-      "url": "https://doi.org/10.1088/1741-2552/ac823e",
-      "cited_by": 33,
-      "abstract": "Abstract Objective. Steady-state visual evoked potential (SSVEP)-based brain–computer interfaces (BCIs) have attracted increasing attention due to their high information transfer rate. To improve the performance of SSVEP detection, we propose a bidirectional Siamese correlation analysis (bi-SiamCA) model. Approach . In this model, an long short-term memory-based Siamese architecture is designed to measure the similarity between the SSVEP signal and the template in each frequency and obtain the probability that the SSVEP signal belongs to each frequency. Additionally, a maximize agreement module with a designed contrastive loss is adopted in the Siamese architecture to increase the similarity between the SSVEP signal and the reference signal in the same frequency. Moreover, a two-way signal processing mechanism is built to effectively integrate complementary information from two temporal directions of the input signals. Our model uses raw SSVEPs as inputs and can be trained end-to-end. ",
-      "doi": "10.1088/1741-2552/ac823e",
-      "pmid": "35853437",
-      "openalex_id": "W4286213801",
-      "source_doi": "10.1371/journal.pone.0140703",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6957722121477128,
-        "similarity_score": 0.6024001836776733,
-        "citation_text_length": 1231,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1576,7 +1574,7 @@
       "year": 2022,
       "url": "https://doi.org/10.1088/1741-2552/ac7257",
       "cited_by": 32,
-      "abstract": "Abstract Objective. Brain-computer interfaces (BCIs) based on electroencephalogram (EEG) develop into novel application areas with more complex scenarios, which put forward higher requirements for the robustness of EEG signal processing algorithms. Deep learning can automatically extract discriminative features and potential dependencies via deep structures, demonstrating strong analytical capabilities in numerous domains such as computer vision and natural language processing. Making full use of deep learning technology to design a robust algorithm that is capable of analyzing EEG across BCI paradigms is our main work in this paper. Approach. Inspired by InceptionV4 and InceptionTime architecture, we introduce a neural network ensemble named InceptionEEG-Net (IENet), where multi-scale convolutional layer and convolution of length 1 enable model to extract rich high-dimensional features with limited parameters. In addition, we propose the average receptive field (RF) gain for convoluti",
+      "abstract": "Abstract Objective.Brain-computer interfaces (BCIs) based on electroencephalogram (EEG) develop into novel application areas with more complex scenarios, which put forward higher requirements for the robustness of EEG signal processing algorithms. Deep learning can automatically extract discriminative features and potential dependencies via deep structures, demonstrating strong analytical capabilities in numerous domains such as computer vision and natural language processing. Making full use of deep learning technology to design a robust algorithm that is capable of analyzing EEG across BCI paradigms is our main work in this paper.Approach.Inspired by InceptionV4 and InceptionTime architecture, we introduce a neural network ensemble named InceptionEEG-Net (IENet), where multi-scale convolutional layer and convolution of length 1 enable model to extract rich high-dimensional features with limited parameters. In addition, we propose the average receptive field (RF) gain for convolutiona",
       "doi": "10.1088/1741-2552/ac7257",
       "pmid": "35605585",
       "openalex_id": "W4281399130",
@@ -1584,8 +1582,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4731870192289353,
-        "similarity_score": 0.40968573093414307,
+        "confidence_score": 0.4762660042941571,
+        "similarity_score": 0.4123515188694,
         "citation_text_length": 1171,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
@@ -2030,6 +2028,29 @@
       }
     },
     {
+      "title": "Adaptive Time Segment Analysis for Steady-State Visual Evoked Potential Based Brain–Computer Interfaces",
+      "author": "Hubert Cecotti",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2020,
+      "url": "https://doi.org/10.1109/tnsre.2020.2968307",
+      "cited_by": 23,
+      "abstract": "The research in non-invasive Brain-Computer Interface (BCI) has led to significant improvements in the recent years for potential end users. However, the user experience and the BCI illiteracy problem remains challenging areas to address for obtaining robust and resilient clinical applications. In this study, we address the choice of the time segment for the detection of steady state visual evoked potential (SSVEP) detection. This problem has been widely addressed for the detection of event-related potentials compared to SSVEP based BCIs. The choice of this parameter is typically fixed and has a direct influence on both the detection accuracy and the information transfer rate. We propose to shift the problem of the time segment to the choice of the threshold for determining if a response has been properly detected. We consider two open-datasets for benchmarking the rationale of the approach. The results support the conclusion that an adaptive time segment for each trial, based on the s",
+      "doi": "10.1109/tnsre.2020.2968307",
+      "pmid": "31985428",
+      "openalex_id": "W3001567762",
+      "source_doi": "10.1371/journal.pone.0140703",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6762133991718293,
+        "similarity_score": 0.5854661464691162,
+        "citation_text_length": 1222,
+        "dataset_text_length": 2270,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Non-Invasive Biosensing for Healthcare Using Artificial Intelligence: A Semi-Systematic Review",
       "author": "Tanvir Islam, Peter Washington",
       "venue": "Biosensors",
@@ -2116,29 +2137,6 @@
         "confidence_score": 0.6462647455930711,
         "similarity_score": 0.5595365762710571,
         "citation_text_length": 1245,
-        "dataset_text_length": 2270,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Adaptive Time Segment Analysis for Steady-State Visual Evoked Potential Based Brain–Computer Interfaces",
-      "author": "Hubert Cecotti",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2020,
-      "url": "https://doi.org/10.1109/tnsre.2020.2968307",
-      "cited_by": 22,
-      "abstract": "The research in non-invasive Brain-Computer Interface (BCI) has led to significant improvements in the recent years for potential end users. However, the user experience and the BCI illiteracy problem remains challenging areas to address for obtaining robust and resilient clinical applications. In this study, we address the choice of the time segment for the detection of steady state visual evoked potential (SSVEP) detection. This problem has been widely addressed for the detection of event-related potentials compared to SSVEP based BCIs. The choice of this parameter is typically fixed and has a direct influence on both the detection accuracy and the information transfer rate. We propose to shift the problem of the time segment to the choice of the threshold for determining if a response has been properly detected. We consider two open-datasets for benchmarking the rationale of the approach. The results support the conclusion that an adaptive time segment for each trial, based on the s",
-      "doi": "10.1109/tnsre.2020.2968307",
-      "pmid": "31985428",
-      "openalex_id": "W3001567762",
-      "source_doi": "10.1371/journal.pone.0140703",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6762133991718293,
-        "similarity_score": 0.5854661464691162,
-        "citation_text_length": 1222,
         "dataset_text_length": 2270,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2400,13 +2398,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:06:00.948410+00:00",
+    "scoring_date": "2026-08-25T11:11:49.747846+00:00",
     "dataset_text_length": 2270,
     "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.5973008021458984,
+      "mean_confidence": 0.5973315919965505,
       "median_confidence": 0.6257488518953324,
-      "std_confidence": 0.12309079927209833,
+      "std_confidence": 0.12306013094922183,
       "min_confidence": 0.15839232206344606,
       "max_confidence": 0.7926996079087258,
       "high_confidence_count": 10,

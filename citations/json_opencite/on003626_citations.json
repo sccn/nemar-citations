@@ -1,10 +1,10 @@
 {
   "dataset_id": "on003626",
-  "num_citations": 74,
-  "date_last_updated": "2026-08-17T10:26:30.347298+00:00",
+  "num_citations": 75,
+  "date_last_updated": "2026-08-25T10:29:48.864625+00:00",
   "metadata": {
-    "total_cumulative_citations": 626,
-    "fetch_date": "2026-08-17T10:26:30.347298+00:00",
+    "total_cumulative_citations": 632,
+    "fetch_date": "2026-08-25T10:29:48.864625+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -58,7 +58,7 @@
     ],
     "num_accession_mentions": 6,
     "num_dataset_citations": 6,
-    "num_datapaper_citations": 68
+    "num_datapaper_citations": 69
   },
   "citation_details": [
     {
@@ -67,7 +67,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2506.14783",
-      "cited_by": 140,
+      "cited_by": 142,
       "abstract": "Decoding natural language from brain activity using non-invasive electroencephalography (EEG) remains a significant challenge in neuroscience and machine learning, particularly for open-vocabulary scenarios where traditional methods struggle with noise and variability. Previous studies have achieved high accuracy on small-closed vocabularies, but it still struggles on open vocabularies. In this study, we propose ETS, a framework that integrates EEG with synchronized eye-tracking data to address two critical tasks: (1) open-vocabulary text generation and (2) sentiment classification of perceived language. Our model achieves a superior performance on BLEU and Rouge score for EEG-To-Text decoding and up to 10% F1 score on EEG-based ternary sentiment classification, which significantly outperforms supervised baselines. Furthermore, we show that our proposed model can handle data from various subjects and sources, showing great potential for high performance open vocabulary eeg-to-text syst",
       "doi": "10.48550/arXiv.2506.14783",
       "pmid": null,
@@ -136,7 +136,7 @@
       "venue": "n/a",
       "year": 2024,
       "url": "https://doi.org/10.18653/v1/2024.acl-long.393",
-      "cited_by": 32,
+      "cited_by": 33,
       "abstract": "Reconstructing natural language from non-invasive electroencephalography (EEG) holds great promise as a language decoding technology for brain-computer interfaces (BCIs). However, EEG-based language decoding is still in its nascent stages, facing several technical issues such as: 1) Absence of a hybrid strategy that can effectively integrate cross-modality (between EEG and text) self-learning with intra-modality self-reconstruction of EEG features or textual sequences; 2) Under-utilization of large language models (LLMs) to enhance EEG-based language decoding. To address above issues, we propose the Contrastive EEG-Text Masked Autoencoder (CET-MAE), a novel model that orchestrates compound self-supervised learning across and within EEG and text through a dedicated multi-stream encoder. Furthermore, we develop a framework called E2T-PTR (EEG-to-Text decoding using Pretrained Transferable Representations), which leverages pre-trained modules alongside the EEG stream from CET-MAE and furt",
       "doi": "10.18653/v1/2024.acl-long.393",
       "pmid": null,
@@ -246,6 +246,29 @@
       }
     },
     {
+      "title": "Rethinking the Methods and Algorithms for Inner Speech Decoding - and Making them Reproducible",
+      "author": "Foteini Liwicki, Vibha Gupta, Rajkumar Saini, Kanjar De, Marcus Liwicki",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2022,
+      "url": "https://doi.org/10.1101/2022.03.22.485286",
+      "cited_by": 18,
+      "abstract": "Abstract This study focuses on the automatic decoding of inner speech using noninvasive methods, such as electroencephalography (EEG)). While inner speech has been a research topic in philosophy and psychology for half a century, recent attempts have been made to decode nonvoiced spoken words by using various brain-computer interfaces. The main shortcomings of existing work are reproducibility and the availability of data and code. In this work, we investigate various methods (using Convolutional Neural Network (CNN), Gated Recurrent Unit (GRU), Long Short-Term Memory Networks (LSTM)) for the detection task of 5 vowels and 6 words on a publicly available EEG dataset. The main contributions of this work are (1) subject dependent vs. subject-independent approaches, (2) the effect of different preprocessing steps (Independent Component Analysis (ICA), down-sampling and filtering), and (3) word classification (where we achieve state-of-the-art performance on a publicly available dataset). ",
+      "doi": "10.1101/2022.03.22.485286",
+      "pmid": "39483370",
+      "openalex_id": "W4221090108",
+      "source_doi": "10.1101/2021.04.19.440473",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8758811867237092,
+        "similarity_score": 0.7583386898040771,
+        "citation_text_length": 1243,
+        "dataset_text_length": 2005,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "BELT: Bootstrapped EEG-to-Language Training by Natural Language Supervision",
       "author": "Jinzhao Zhou, Yiqun Duan, Yu-Cheng Chang, Yu-kai Wang, Chin-Teng Lin",
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
@@ -263,29 +286,6 @@
         "confidence_score": 0.6697995382547379,
         "similarity_score": 0.5799130201339722,
         "citation_text_length": 1248,
-        "dataset_text_length": 2005,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Rethinking the Methods and Algorithms for Inner Speech Decoding - and Making them Reproducible",
-      "author": "Foteini Liwicki, Vibha Gupta, Rajkumar Saini, Kanjar De, Marcus Liwicki",
-      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
-      "year": 2022,
-      "url": "https://doi.org/10.1101/2022.03.22.485286",
-      "cited_by": 17,
-      "abstract": "Abstract This study focuses on the automatic decoding of inner speech using noninvasive methods, such as electroencephalography (EEG)). While inner speech has been a research topic in philosophy and psychology for half a century, recent attempts have been made to decode nonvoiced spoken words by using various brain-computer interfaces. The main shortcomings of existing work are reproducibility and the availability of data and code. In this work, we investigate various methods (using Convolutional Neural Network (CNN), Gated Recurrent Unit (GRU), Long Short-Term Memory Networks (LSTM)) for the detection task of 5 vowels and 6 words on a publicly available EEG dataset. The main contributions of this work are (1) subject dependent vs. subject-independent approaches, (2) the effect of different preprocessing steps (Independent Component Analysis (ICA), down-sampling and filtering), and (3) word classification (where we achieve state-of-the-art performance on a publicly available dataset). ",
-      "doi": "10.1101/2022.03.22.485286",
-      "pmid": "39483370",
-      "openalex_id": "W4221090108",
-      "source_doi": "10.1101/2021.04.19.440473",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.8758811867237092,
-        "similarity_score": 0.7583386898040771,
-        "citation_text_length": 1243,
         "dataset_text_length": 2005,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -706,6 +706,29 @@
       }
     },
     {
+      "title": "Enhancing the Classification Accuracy of EEG-Informed Inner Speech Decoder Using Multi-Wavelet Feature and Support Vector Machine",
+      "author": "Mokhles M. Abdulghani, Wilbur L. Walters, Khalid H. Abed",
+      "venue": "IEEE Access",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/ACCESS.2024.3474854",
+      "cited_by": 6,
+      "abstract": "Speech involves the synchronization of the brain and the oral articulators. Inner speech, also known as imagined speech or covert speech, refers to thinking in the form of sound without intentional movement of the lips, tongue, or hands. Decoding human thoughts is a powerful technique that can help individuals who have lost the ability to speak. This paper introduces a high-performance brain wave decoder based on inner speech, using a novel feature extraction method. The approach combined Support Vector Machine (SVM) and multi-wavelet feature extraction techniques to decode two EEG-based inner speech datasets (Data 1 and Data 2) into internally spoken words. The proposed approach achieved an overall classification accuracy of 68.20%, precision of 68.22%, recall of 68.20%, and F1-score of 68.21% for Data 1, and accuracy of 97.5%, precision of 97.73%, recall of 97.50%, and F1-score of 97.61% for Data 2. Additionally, the Area Under the Curve of the Receiver Operating Characteristic (AUC-",
+      "doi": "10.1109/ACCESS.2024.3474854",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1101/2021.04.19.440473",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8235969918966295,
+        "similarity_score": 0.7130709886550903,
+        "citation_text_length": 1235,
+        "dataset_text_length": 2005,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Neural-Driven Image Editing",
       "author": "P. Zhou, Jie Xia, Xiaopeng Peng, Wangbo Zhao, Zilong Ye, Zekai Li, Suorong Yang, Jiadong Pan, Yuanxiang Chen, Ziqiao Wang, Kai Wang, Qian Zheng, Xiaojun Chang, Gang Pan, Shurong Dong, Kaipeng Zhang, Yang You",
       "venue": "ArXiv",
@@ -798,29 +821,6 @@
       }
     },
     {
-      "title": "Enhancing the Classification Accuracy of EEG-Informed Inner Speech Decoder Using Multi-Wavelet Feature and Support Vector Machine",
-      "author": "Mokhles M. Abdulghani, Wilbur L. Walters, Khalid H. Abed",
-      "venue": "IEEE Access",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/ACCESS.2024.3474854",
-      "cited_by": 5,
-      "abstract": "Speech involves the synchronization of the brain and the oral articulators. Inner speech, also known as imagined speech or covert speech, refers to thinking in the form of sound without intentional movement of the lips, tongue, or hands. Decoding human thoughts is a powerful technique that can help individuals who have lost the ability to speak. This paper introduces a high-performance brain wave decoder based on inner speech, using a novel feature extraction method. The approach combined Support Vector Machine (SVM) and multi-wavelet feature extraction techniques to decode two EEG-based inner speech datasets (Data 1 and Data 2) into internally spoken words. The proposed approach achieved an overall classification accuracy of 68.20%, precision of 68.22%, recall of 68.20%, and F1-score of 68.21% for Data 1, and accuracy of 97.5%, precision of 97.73%, recall of 97.50%, and F1-score of 97.61% for Data 2. Additionally, the Area Under the Curve of the Receiver Operating Characteristic (AUC-",
-      "doi": "10.1109/ACCESS.2024.3474854",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1101/2021.04.19.440473",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.8235969918966295,
-        "similarity_score": 0.7130709886550903,
-        "citation_text_length": 1235,
-        "dataset_text_length": 2005,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Assembling the Mind's Mosaic: Towards EEG Semantic Intent Decoding",
       "author": "Jiahe Li, Junru Chen, Fanqi Shen, Jialan Yang, Jada Li, Zhizhang Yuan, Baowen Cheng, Meng Li, Yang Yang",
       "venue": "ArXiv",
@@ -884,6 +884,29 @@
         "confidence_score": 0.7907030814886093,
         "similarity_score": 0.6845914125442505,
         "citation_text_length": 1243,
+        "dataset_text_length": 2005,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Cross-subject generalization for EEG decoding: a survey of deep learning methods",
+      "author": "Taida Li, Yujun Yan, Fei Dou, Wenzhan Song, Xiang Zhang",
+      "venue": "Progress in Biomedical Engineering",
+      "year": 2026,
+      "url": "https://doi.org/10.1088/2516-1091/ae65f0",
+      "cited_by": 2,
+      "abstract": "Deep learning for cross-subject electroencephalography (EEG) decoding is hindered by high inter-subject variability, which introduces a severe domain shift between training and unseen test subjects. This survey presents a comprehensive review of deep learning methodologies specifically engineered to address this cross-subject generalization challenge. To ground this analysis, we formalize the cross-subject setting as a multi-source domain problem and delineate the rigorous, subject-independent evaluation protocols required for valid assessment. Central to this survey is a systematic taxonomy of the current literature into discrete methodological families, including feature alignment, adversarial learning, feature disentanglement, and contrastive learning. We conclude by examining three critical elements for advancing robust, real-world decoding: the theoretical limitations of current methodologies, the structural value of subject identity, and the emergence of EEG foundation models.",
+      "doi": "10.1088/2516-1091/ae65f0",
+      "pmid": "42049051",
+      "openalex_id": null,
+      "source_doi": "10.1101/2021.04.19.440473",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.49572733506560335,
+        "similarity_score": 0.4292011559009552,
+        "citation_text_length": 1205,
         "dataset_text_length": 2005,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1074,29 +1097,6 @@
       }
     },
     {
-      "title": "Cross-subject generalization for EEG decoding: a survey of deep learning methods",
-      "author": "Taida Li, Yujun Yan, Fei Dou, Wenzhan Song, Xiang Zhang",
-      "venue": "Progress in Biomedical Engineering",
-      "year": 2026,
-      "url": "https://doi.org/10.1088/2516-1091/ae65f0",
-      "cited_by": 1,
-      "abstract": "Deep learning for cross-subject electroencephalography (EEG) decoding is hindered by high inter-subject variability, which introduces a severe domain shift between training and unseen test subjects. This survey presents a comprehensive review of deep learning methodologies specifically engineered to address this cross-subject generalization challenge. To ground this analysis, we formalize the cross-subject setting as a multi-source domain problem and delineate the rigorous, subject-independent evaluation protocols required for valid assessment. Central to this survey is a systematic taxonomy of the current literature into discrete methodological families, including feature alignment, adversarial learning, feature disentanglement, and contrastive learning. We conclude by examining three critical elements for advancing robust, real-world decoding: the theoretical limitations of current methodologies, the structural value of subject identity, and the emergence of EEG foundation models.",
-      "doi": "10.1088/2516-1091/ae65f0",
-      "pmid": "42049051",
-      "openalex_id": null,
-      "source_doi": "10.1101/2021.04.19.440473",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.49572733506560335,
-        "similarity_score": 0.4292011559009552,
-        "citation_text_length": 1205,
-        "dataset_text_length": 2005,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Multi-View Manifold-Adaptive Kernel Regression for Speech Classification From EEG Signals",
       "author": "Xie He, Qiquan Cui, Changwei Wu, Yong Peng, Wangzeng Kong",
       "venue": "IEEE Signal Processing Letters",
@@ -1258,6 +1258,29 @@
       }
     },
     {
+      "title": "IoT-Controlled EEG Monitoring and Decision Support System for Autism Therapy Using Signal Analysis and Embedded Processing",
+      "author": "Melinda Melinda, Nizam Albar, Yuwaldi Away, K. Priandana, P. D. Purnamasari, M. Nur, Nurlida Basir, S. Gazali",
+      "venue": "Journal of Computational and Cognitive Engineering",
+      "year": 2026,
+      "url": "https://doi.org/10.47852/bonviewjcce62028787",
+      "cited_by": 0,
+      "abstract": "Autism spectrum disorder (ASD) is associated with irregular neural activity that complicates therapy planning when based solely on behavioral observation. This study introduces an Internet of Things (IoT)-based electroencephalography (EEG) analysis system designed to support real-time therapy recommendations for children with ASD. EEG signals were processed using the fast Fourier transform for noise reduction and evaluated through power spectrum density (PSD) using Welch's method to characterize spectral patterns. The system was implemented on a Raspberry Pi platform integrated with an IoT application for remote monitoring and automated therapy notification. EEG recordings were segmented into two 30-s loops from 16 channels with a sampling rate of 256 Hz. Spectral analysis showed dominant Delta activity with frequencies of 1.68 Hz and 1.75 Hz and PSD values reaching up to 1280.31 µV2 /Hz across segments. Repeated-measures analysis of variance indicated a statistically significant incre",
+      "doi": "10.47852/bonviewjcce62028787",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1101/2021.04.19.440473",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.45301625758409503,
+        "similarity_score": 0.3922218680381775,
+        "citation_text_length": 1320,
+        "dataset_text_length": 2005,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "EEG-PRIME: Prototype-Aligned Representation Learning with Multi-Level Conditioning for EEG Decoding",
       "author": "Shuailei Zhang, Muyun Jiang, Wei Zhang, Jinbo Chen, Zhiwei Guo, Yong Li, Yi Ding, Cuntai Guan",
       "venue": "n/a",
@@ -1397,7 +1420,7 @@
     },
     {
       "title": "Hierarchic-EEG2Text: Assessing EEG-To-Text Decoding across Hierarchical Abstraction Levels",
-      "author": "Anupam Sharma, Harish Katti, Prajwal Singh, Shanmuganathan Raman, K. Miyapuram",
+      "author": "Anupam Sharma, Harish Katti, Prajwal Singh, S. Raman, K. Miyapuram",
       "venue": "ArXiv",
       "year": 2026,
       "url": "https://doi.org/10.48550/arXiv.2602.20932",
@@ -1410,9 +1433,9 @@
       "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5928119346499443,
-        "similarity_score": 0.5132570862770081,
-        "citation_text_length": 1212,
+        "confidence_score": 0.5898317742347718,
+        "similarity_score": 0.5106768608093262,
+        "citation_text_length": 1200,
         "dataset_text_length": 2005,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1631,7 +1654,7 @@
       "venue": "Scientific Data",
       "year": 2022,
       "url": "https://doi.org/10.1038/s41597-022-01147-2",
-      "cited_by": 120,
+      "cited_by": 122,
       "abstract": "Surface electroencephalography is a standard and noninvasive way to measure electrical brain activity. Recent advances in artificial intelligence led to significant improvements in the automatic detection of brain patterns, allowing increasingly faster, more reliable and accessible Brain-Computer Interfaces. Different paradigms have been used to enable the human-machine interaction and the last few years have broad a mark increase in the interest for interpreting and characterizing the \"inner voice\" phenomenon. This paradigm, called inner speech, raises the possibility of executing an order just by thinking about it, allowing a \"natural\" way of controlling external devices. Unfortunately, the lack of publicly available electroencephalography datasets, restricts the development of new techniques for inner speech recognition. A ten-participant dataset acquired under this and two others related paradigms, recorded with an acquisition system of 136 channels, is presented. The main purpose of this work is to provide the scientific community with an open-access multiclass electroencephalography database of inner speech commands that could be used for better understanding of the related brain mechanisms.",
       "doi": "10.1038/s41597-022-01147-2",
       "pmid": "35165308",
@@ -1778,17 +1801,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:28:26.845626+00:00",
+    "scoring_date": "2026-08-25T11:42:25.250916+00:00",
     "dataset_text_length": 2005,
-    "num_citations_scored": 74,
+    "num_citations_scored": 75,
     "summary_stats": {
-      "mean_confidence": 0.681181494418431,
-      "median_confidence": 0.6677037397027017,
-      "std_confidence": 0.13098253290367845,
+      "mean_confidence": 0.6780995557884376,
+      "median_confidence": 0.6656079411506653,
+      "std_confidence": 0.13273823675030866,
       "min_confidence": 0.36664778172969825,
       "max_confidence": 1.0,
       "high_confidence_count": 32,
-      "medium_confidence_count": 41,
+      "medium_confidence_count": 42,
       "low_confidence_count": 1
     }
   }

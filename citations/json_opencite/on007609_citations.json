@@ -1,10 +1,10 @@
 {
   "dataset_id": "on007609",
   "num_citations": 7,
-  "date_last_updated": "2026-08-17T10:59:39.515401+00:00",
+  "date_last_updated": "2026-08-25T11:02:43.597441+00:00",
   "metadata": {
-    "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-17T10:59:39.515401+00:00",
+    "total_cumulative_citations": 1,
+    "fetch_date": "2026-08-25T11:02:43.597441+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -16,7 +16,7 @@
       {
         "identifier": "10.1162/imag.a.44",
         "identifier_type": "doi",
-        "source_relation": "References",
+        "source_relation": "IsDescribedBy",
         "classification": "data_paper",
         "kept": true,
         "paper_title": "Rhythmic activity in resting-state EEG predicts trait anxiety",
@@ -44,40 +44,46 @@
     ],
     "keywords": [
       "EEG",
-      "resting-state",
+      "resting state",
       "trait anxiety",
-      "anxiety",
-      "alpha oscillations",
-      "theta oscillations",
-      "eyes-open",
-      "eyes-closed",
-      "personality",
-      "behavioral inhibition",
-      "STAI",
-      "TIPI",
-      "BIS/FFFS",
-      "Electroencephalography"
+      "alpha rhythm",
+      "theta rhythm",
+      "personality"
     ],
-    "methods_description": "EEG was recorded using a 256-channel EGI HydroCel Geodesic Sensor Net with Net Amps amplifier at 500 Hz sampling rate with online reference at Cz. The resting-state protocol consisted of alternating 1-minute eyes-open and eyes-closed blocks repeated twice. Preprocessing included bandpass filtering (0.1-50 Hz), line noise removal at 60 and 120 Hz, kurtosis-based channel rejection, average re-referencing, ICA decomposition, and artifact component removal via ICLabel with visual inspection.",
+    "methods_description": "EEG was recorded using a 256-channel EGI HydroCel Geodesic Sensor Net with a Net Amps amplifier at an original sampling rate of 500 Hz, referenced online to Cz. Participants completed a resting-state protocol of alternating 1-minute eyes-open and eyes-closed blocks (EO-EC-EO-EC) for 4 minutes total, with auditory cues signaling transitions. Preprocessing in EEGLAB included 0.1-50 Hz bandpass filtering, CleanLine noise removal at 60/120 Hz, kurtosis-based channel rejection, average re-referencing, ICA decomposition (runica), ICLabel-based artifact removal (>0.8 probability) with visual inspection, and spherical interpolation of removed channels.",
     "funding": [
       {
-        "funder_name": "Social Sciences and Humanities Research Council of Canada",
-        "award_number": "SSHRC"
+        "funder_name": "Social Sciences and Humanities Research Council of Canada (SSHRC)"
       },
       {
-        "funder_name": "Natural Sciences and Engineering Research Council of Canada",
-        "award_number": "NSERC"
+        "funder_name": "Natural Sciences and Engineering Research Council of Canada (NSERC)"
       }
-    ],
-    "searched_accessions": [
-      "on007609",
-      "ds007609"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 7
+    ]
   },
   "citation_details": [
+    {
+      "title": "Trait anxiety in young adults is more consistently associated with resting-state EEG microstate transitions than with stationary spectral power",
+      "author": "Meng Zhang, Congcong Liu, Xin Wu, Qianqian Yu, Feng Zou, Kun Li",
+      "venue": "International Journal of Psychophysiology",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.ijpsycho.2026.113436",
+      "cited_by": 1,
+      "abstract": "Trait anxiety is a clinically relevant vulnerability dimension, yet resting-state EEG work has relied predominantly on stationary spectral summaries. We tested whether resting EEG microstate transition dynamics index trait-anxiety-related variation more consistently than conventional alpha (8-13 Hz)- and theta (4-8 Hz)-band power. Self-report measures and approximately 6 min of eyes-closed resting EEG were obtained from 333 undergraduates. HC3-robust regressions contrasted three prespecified microstate transition metrics with two prespecified spectral indices. Follow-up analyses comprised family-wise transition tests, supplemental spectral summaries, repeated 5-fold cross-validated model comparisons, bootstrap resampling, extreme-groups sensitivity analyses, and exploratory Gaussian mixture modeling. Trait anxiety was positively related to state anxiety, anxious arousal, intolerance of uncertainty, maladaptive metacognitive beliefs, and depressive symptoms. Higher trait anxiety was ass",
+      "doi": "10.1016/j.ijpsycho.2026.113436",
+      "pmid": "42379500",
+      "openalex_id": "W7166741285",
+      "source_doi": "10.1162/imag.a.44",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8715026798844339,
+        "similarity_score": 0.7545477747917175,
+        "citation_text_length": 1286,
+        "dataset_text_length": 2234,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
     {
       "title": "Resting-State EEG and Trait Anxiety",
       "author": "Tamari Shalamberidze, Kyle Nash, Jeremy B. Caplan",
@@ -90,7 +96,7 @@
       "pmid": null,
       "openalex_id": "W7166655298",
       "source_doi": "10.1162/imag.a.44",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 1.0,
@@ -113,7 +119,7 @@
       "pmid": "41795910",
       "openalex_id": "W7134189965",
       "source_doi": "10.1162/imag.a.44",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 0.7848820996284486,
@@ -131,16 +137,16 @@
       "year": 2025,
       "url": "https://doi.org/10.17759/jmfp.2025140313",
       "cited_by": 0,
-      "abstract": "&lt;p style=\"text-align: justify;\"&gt;&lt;strong&gt;Context and relevance&lt;/strong&gt;. The relevance of the research is due to the absence of the fact that understanding decision-making processes, including in conditions of uncertainty and stress, is important both for fundamental psychology and for applied fields such as professional selection of specialists, assessment of their professional reliability and development of adaptive behavior strategies. In this study, modern models of neurophysiological, psychophysiological and psychoendocrine correlators of decision-making, cognitive and emotional components of the choice process, and features of these processes under the influence of stress and extreme factors were considered. The study of neurophysiological, psychophysiological, and psychological correlates of research acceptance mechanisms allows us to develop a specific methodology for studying these phenomena. The aim of the study is to systematize and analytically summarize em",
+      "abstract": "Context and relevance. The relevance of the research is due to the absence of the fact that understanding decision-making processes, including in conditions of uncertainty and stress, is important both for fundamental psychology and for applied fields such as professional selection of specialists, assessment of their professional reliability and development of adaptive behavior strategies. In this study, modern models of neurophysiological, psychophysiological and psychoendocrine correlators of decision-making, cognitive and emotional components of the choice process, and features of these processes under the influence of stress and extreme factors were considered. The study of neurophysiological, psychophysiological, and psychological correlates of research acceptance mechanisms allows us to develop a specific methodology for studying these phenomena. The aim of the study is to systematize and analytically summarize empirical data on the interrelation of cognitive, emotional and physi",
       "doi": "10.17759/jmfp.2025140313",
       "pmid": null,
       "openalex_id": "W4414858957",
       "source_doi": "10.1162/imag.a.44",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.3899764229357243,
-        "similarity_score": 0.3376419246196747,
+        "confidence_score": 0.3992436003684998,
+        "similarity_score": 0.34566545486450195,
         "citation_text_length": 1186,
         "dataset_text_length": 2234,
         "scoring_method": "sentence_transformers",
@@ -159,35 +165,12 @@
       "pmid": "42591756",
       "openalex_id": "W7171617005",
       "source_doi": "10.1162/imag.a.44",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 0.5998365738987923,
         "similarity_score": 0.5193390250205994,
         "citation_text_length": 1265,
-        "dataset_text_length": 2234,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Trait anxiety in young adults is more consistently associated with resting-state EEG microstate transitions than with stationary spectral power",
-      "author": "Meng Zhang, Congcong Liu, Xin Wu, Qianqian Yu, Feng Zou, Kun Li",
-      "venue": "International Journal of Psychophysiology",
-      "year": 2026,
-      "url": "https://doi.org/10.1016/j.ijpsycho.2026.113436",
-      "cited_by": 0,
-      "abstract": "Trait anxiety is a clinically relevant vulnerability dimension, yet resting-state EEG work has relied predominantly on stationary spectral summaries. We tested whether resting EEG microstate transition dynamics index trait-anxiety-related variation more consistently than conventional alpha (8-13 Hz)- and theta (4-8 Hz)-band power. Self-report measures and approximately 6 min of eyes-closed resting EEG were obtained from 333 undergraduates. HC3-robust regressions contrasted three prespecified microstate transition metrics with two prespecified spectral indices. Follow-up analyses comprised family-wise transition tests, supplemental spectral summaries, repeated 5-fold cross-validated model comparisons, bootstrap resampling, extreme-groups sensitivity analyses, and exploratory Gaussian mixture modeling. Trait anxiety was positively related to state anxiety, anxious arousal, intolerance of uncertainty, maladaptive metacognitive beliefs, and depressive symptoms. Higher trait anxiety was ass",
-      "doi": "10.1016/j.ijpsycho.2026.113436",
-      "pmid": "42379500",
-      "openalex_id": "W7166741285",
-      "source_doi": "10.1162/imag.a.44",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.8715026798844339,
-        "similarity_score": 0.7545477747917175,
-        "citation_text_length": 1286,
         "dataset_text_length": 2234,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -205,7 +188,7 @@
       "pmid": null,
       "openalex_id": "W7135089592",
       "source_doi": "10.1162/imag.a.44",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 0.6129854500293732,
@@ -228,7 +211,7 @@
       "pmid": "42405700",
       "openalex_id": null,
       "source_doi": "10.1162/imag.a.44",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 0.5628116141259671,
@@ -242,14 +225,14 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:54:59.930908+00:00",
+    "scoring_date": "2026-08-25T12:22:26.178292+00:00",
     "dataset_text_length": 2234,
     "num_citations_scored": 7,
     "summary_stats": {
-      "mean_confidence": 0.6888564057861055,
+      "mean_confidence": 0.690180288276502,
       "median_confidence": 0.6129854500293732,
-      "std_confidence": 0.19208941280791353,
-      "min_confidence": 0.3899764229357243,
+      "std_confidence": 0.19004603271294043,
+      "min_confidence": 0.3992436003684998,
       "max_confidence": 1.0,
       "high_confidence_count": 3,
       "medium_confidence_count": 3,

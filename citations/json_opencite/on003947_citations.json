@@ -1,10 +1,10 @@
 {
   "dataset_id": "on003947",
-  "num_citations": 10,
-  "date_last_updated": "2026-08-09T10:30:35.754113+00:00",
+  "num_citations": 11,
+  "date_last_updated": "2026-08-25T10:33:06.944086+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-09T10:30:35.754113+00:00",
+    "fetch_date": "2026-08-25T10:33:06.944086+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 1,
@@ -63,11 +63,36 @@
       "on003947",
       "ds003947"
     ],
-    "num_accession_mentions": 10,
-    "num_dataset_citations": 10,
+    "num_accession_mentions": 11,
+    "num_dataset_citations": 11,
     "num_datapaper_citations": 0
   },
   "citation_details": [
+    {
+      "title": "Resting-State Electroencephalography Alpha Dynamic Connectivity: Quantifying Brain Network State Evolution in Individuals with Psychosis",
+      "author": "Romain Aubonnet, Mahmoud Hassan, Paolo Gargiulo, Stefano Seri, Giorgio Di Lorenzo",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2024,
+      "url": "https://doi.org/10.1101/2024.06.04.597416",
+      "cited_by": 2,
+      "abstract": "This study investigates brain dynamic connectivity patterns in psychosis and their relationship with psychopathological profile and cognitive functioning using a novel dynamic connectivity pipeline on resting-state EEG. Data from seventy-eight individuals with first-episode psychosis (FEP) and sixty control subjects (CTR) were analyzed. Source estimation was performed using eLORETA, and connectivity matrices in the alpha band were computed with the weighted phase-lag index. A modified k-means algorithm was employed to cluster connectivity matrices into distinct brain network states (BNS), from which metrics were extracted. The segmentation revealed five distinct BNSs. FEP exhibited significantly lower connectivity power in BNS 2 and 5 and a greater duration dispersion in BNS 1 than CTR. Negative correlations were identified between BNS metrics and negative symptoms in FEP. In CTR, correlations were found between BNS metrics and cognitive domains. This analysis method highlights the variability of neural dynamics in psychosis and their relationship with negative symptoms.",
+      "doi": "10.1101/2024.06.04.597416",
+      "pmid": null,
+      "openalex_id": "W4399456211",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003947",
+      "confidence_scoring": {
+        "confidence_score": 0.7253821563720704,
+        "similarity_score": 0.6280364990234375,
+        "citation_text_length": 1382,
+        "dataset_text_length": 1865,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
     {
       "title": "Classification of First-Episode Psychosis with EEG Signals: ciSSA and Machine Learning Approach",
       "author": "Şerife Gengeç Benli",
@@ -124,7 +149,7 @@
       "venue": "arXiv (Cornell University)",
       "year": 2025,
       "url": "https://doi.org/10.48550/arxiv.2502.01678",
-      "cited_by": 1,
+      "cited_by": 2,
       "abstract": "Electroencephalography (EEG) provides a non-invasive, highly accessible, and cost-effective approach for detecting Alzheimer's disease (AD). However, existing methods, whether based on handcrafted feature engineering or standard deep learning, face three major challenges: 1) the lack of large-scale EEG-based AD datasets for robust representation learning; 2) limited generalizability across subjects; and 3) difficulty in adapting to highly heterogeneous data. To address these challenges, we curate the world's largest EEG-AD corpus to date, comprising 2,238 subjects. Leveraging this unique resource, we propose LEAD, the first large-scale foundation model for EEG-based AD detection. Specifically, we design a gated temporal-spatial Transformer that can adapt to EEG recordings with arbitrary lengths, channel configurations, and sampling rates. In addition, we introduce a subject-regularized training strategy to enhance subject-level feature learning. We further employ medical contrastive learning for pre-training on 13 datasets, including 4 AD datasets and 9 non-AD neurological disorder datasets, and fine-tune/test the model on the other 5 AD datasets. LEAD achieves the best average ranking across all 20 evaluations on 5 downstream datasets, substantially outperforming existing approaches, including state-of-the-art (SOTA) EEG foundation models. These results strongly demonstrate the effectiveness and practical potential of the proposed method for real-world EEG-based AD detection. Source code: https://github.com/DL4mHealth/LEAD",
       "doi": "10.48550/arxiv.2502.01678",
       "pmid": null,
@@ -321,16 +346,16 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:30:47.429846+00:00",
+    "scoring_date": "2026-08-25T11:45:46.811079+00:00",
     "dataset_text_length": 1865,
-    "num_citations_scored": 10,
+    "num_citations_scored": 11,
     "summary_stats": {
-      "mean_confidence": 0.7391528567522766,
+      "mean_confidence": 0.7379009748995305,
       "median_confidence": 0.7954916882514955,
-      "std_confidence": 0.12078231330128542,
+      "std_confidence": 0.11522944106242772,
       "min_confidence": 0.4922218653559685,
       "max_confidence": 0.8206149727106096,
-      "high_confidence_count": 8,
+      "high_confidence_count": 9,
       "medium_confidence_count": 2,
       "low_confidence_count": 0
     }

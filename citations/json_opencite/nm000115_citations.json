@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000115",
   "num_citations": 86,
-  "date_last_updated": "2026-08-17T10:01:09.794228+00:00",
+  "date_last_updated": "2026-08-25T10:01:50.585485+00:00",
   "metadata": {
-    "total_cumulative_citations": 1209,
-    "fetch_date": "2026-08-17T10:01:09.794228+00:00",
+    "total_cumulative_citations": 1218,
+    "fetch_date": "2026-08-25T10:01:50.585485+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -74,13 +74,7 @@
       "Electroencephalography"
     ],
     "methods_description": "EEG was recorded from 14 channels placed according to the extended 10/20 system (Fp1, Fp2, FC3, FCz, FC4, C3, Cz, C4, CP3, CPz, CP4, O1, Oz, O2) at a sampling frequency of 250 Hz with 50 Hz power line frequency. Each trial began with an auditory cue followed by a 5-second visual arrow stimulus indicating the motor imagery task, then a 4-second rest period. Four participants completed three recording sessions, each containing two runs with 75 trials per run (25 trials per class).",
-    "funding": [],
-    "searched_accessions": [
-      "nm000115"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 86
+    "funding": []
   },
   "citation_details": [
     {
@@ -89,7 +83,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1088/1741-2552/aadea0",
-      "cited_by": 249,
+      "cited_by": 251,
       "abstract": "OBJECTIVE: Brain-computer interface (BCI) algorithm development has long been hampered by two major issues: small sample sets and a lack of reproducibility. We offer a solution to both of these problems via a software suite that streamlines both the issues of finding and preprocessing data in a reliable manner, as well as that of using a consistent interface for machine learning methods. APPROACH: By building on recent advances in software for signal analysis implemented in the MNE toolkit, and the unified framework for machine learning offered by the scikit-learn project, we offer a system that can improve BCI algorithm development. This system is fully open-source under the BSD licence and available at https://github.com/NeuroTechX/moabb. MAIN RESULTS: We analyze a set of state-of-the-art decoding algorithms across 12 open access datasets, including over 250 subjects. Our results show that even for the best methods, there are datasets which do not show significant improvements, and f",
       "doi": "10.1088/1741-2552/aadea0",
       "pmid": "30177583",
@@ -112,7 +106,7 @@
       "venue": "Frontiers in Human Neuroscience",
       "year": 2020,
       "url": "https://doi.org/10.3389/fnhum.2020.00103",
-      "cited_by": 136,
+      "cited_by": 137,
       "abstract": "Cross-subject variability problems hinder practical usages of Brain-Computer Interfaces. Recently, deep learning has been introduced into the BCI community due to its better generalization and feature representation abilities. However, most studies currently only have validated deep learning models for single datasets, and the generalization ability for other datasets still needs to be further verified. In this paper, we validated deep learning models for eight MI datasets and demonstrated that the cross-dataset variability problem weakened the generalization ability of models. To alleviate the impact of cross-dataset variability, we proposed an online pre-alignment strategy for aligning the EEG distributions of different subjects before training and inference processes. The results of this study show that deep learning models with online pre-alignment strategies could significantly improve the generalization ability across datasets without any additional calibration data.",
       "doi": "10.3389/fnhum.2020.00103",
       "pmid": "32372929",
@@ -705,6 +699,29 @@
       }
     },
     {
+      "title": "Feature-aware domain invariant representation learning for EEG motor imagery decoding",
+      "author": "Jianxiu Li, Jiaxin Shi, Paula K. Yu, Xiaokai Yan, Yu-Ting Lin",
+      "venue": "Scientific Reports",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41598-025-95178-5",
+      "cited_by": 10,
+      "abstract": "Electroencephalography (EEG)-based motor imagery (MI) is extensively utilized in clinical rehabilitation and virtual reality-based movement control. Decoding EEG-based MI signals is challenging because of the inherent spatio-temporal variability of the original signal representation, coupled with a low signal-to-noise ratio (SNR), which impedes the extraction of clean and robust features. To address this issue, we propose a multi-scale spatio-temporal domain-invariant representation learning method, termed MSDI. By decomposing the original signal into spatial and temporal components, the proposed method extracts invariant features at multiple scales from both components. To further constrain the representation to invariant domains, we introduce a feature-aware shift operation that resamples the representation based on its feature statistics and feature measure, thereby projecting the features into a domain-invariant space. We evaluate our proposed method via two publicly available data",
+      "doi": "10.1038/s41598-025-95178-5",
+      "pmid": "40148520",
+      "openalex_id": "W4408946167",
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7003048592805863,
+        "similarity_score": 0.6063245534896851,
+        "citation_text_length": 1203,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Geometric neural network based on phase space for BCI-EEG decoding",
       "author": "Igor Carrara, Bruno Aristimunha, Marie‐Constance Corsi, Raphael Y. de Camargo, Sylvain Chevallier, Théodore Papadopoulo",
       "venue": "Journal of Neural Engineering",
@@ -774,29 +791,6 @@
       }
     },
     {
-      "title": "Feature-aware domain invariant representation learning for EEG motor imagery decoding",
-      "author": "Jianxiu Li, Jiaxin Shi, Paula K. Yu, Xiaokai Yan, Yu-Ting Lin",
-      "venue": "Scientific Reports",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s41598-025-95178-5",
-      "cited_by": 9,
-      "abstract": "Electroencephalography (EEG)-based motor imagery (MI) is extensively utilized in clinical rehabilitation and virtual reality-based movement control. Decoding EEG-based MI signals is challenging because of the inherent spatio-temporal variability of the original signal representation, coupled with a low signal-to-noise ratio (SNR), which impedes the extraction of clean and robust features. To address this issue, we propose a multi-scale spatio-temporal domain-invariant representation learning method, termed MSDI. By decomposing the original signal into spatial and temporal components, the proposed method extracts invariant features at multiple scales from both components. To further constrain the representation to invariant domains, we introduce a feature-aware shift operation that resamples the representation based on its feature statistics and feature measure, thereby projecting the features into a domain-invariant space. We evaluate our proposed method via two publicly available data",
-      "doi": "10.1038/s41598-025-95178-5",
-      "pmid": "40148520",
-      "openalex_id": "W4408946167",
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7003048592805863,
-        "similarity_score": 0.6063245534896851,
-        "citation_text_length": 1203,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "A spatial filtering approach to environmental emotion perception based on electroencephalography",
       "author": "Yuanyuan Su, Peng Chen, Xueying Liu, Wenchao Li, Zhao Lv",
       "venue": "Medical Engineering & Physics",
@@ -860,6 +854,29 @@
         "confidence_score": 0.7244553869962693,
         "similarity_score": 0.6272341012954712,
         "citation_text_length": 1233,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Session-independent subject-adaptive mental imagery BCI using selective filter-bank adaptive Riemannian features",
+      "author": "Jayasandhya Meenakshinathan, Vinay Gupta, Tharun Kumar Reddy, Laxmidhar Behera, Tushar Sandhan",
+      "venue": "Medical & Biological Engineering & Computing",
+      "year": 2024,
+      "url": "https://doi.org/10.1007/s11517-024-03137-5",
+      "cited_by": 7,
+      "abstract": null,
+      "doi": "10.1007/s11517-024-03137-5",
+      "pmid": "38825665",
+      "openalex_id": "W4399297510",
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6412055969238282,
+        "similarity_score": 0.6106719970703125,
+        "citation_text_length": 277,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -952,29 +969,6 @@
         "confidence_score": 0.7168896389007569,
         "similarity_score": 0.6206836700439453,
         "citation_text_length": 1201,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Session-independent subject-adaptive mental imagery BCI using selective filter-bank adaptive Riemannian features",
-      "author": "Jayasandhya Meenakshinathan, Vinay Gupta, Tharun Kumar Reddy, Laxmidhar Behera, Tushar Sandhan",
-      "venue": "Medical & Biological Engineering & Computing",
-      "year": 2024,
-      "url": "https://doi.org/10.1007/s11517-024-03137-5",
-      "cited_by": 6,
-      "abstract": null,
-      "doi": "10.1007/s11517-024-03137-5",
-      "pmid": "38825665",
-      "openalex_id": "W4399297510",
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6412055969238282,
-        "similarity_score": 0.6106719970703125,
-        "citation_text_length": 277,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1096,7 +1090,53 @@
       }
     },
     {
-      "title": "Unlocking In-Context Learning for Natural Datasets Beyond Language Modelling",
+      "title": "The Riemannian Means Field Classifier for EEG-Based BCI Data",
+      "author": "Anton Andreev, Grégoire Cattan, Marco Congedo",
+      "venue": "Sensors",
+      "year": 2025,
+      "url": "https://doi.org/10.3390/s25072305",
+      "cited_by": 4,
+      "abstract": "A substantial amount of research has demonstrated the robustness and accuracy of the Riemannian minimum distance to mean (MDM) classifier for all kinds of EEG-based brain-computer interfaces (BCIs). This classifier is simple, fully deterministic, robust to noise, computationally efficient, and prone to transfer learning. Its training is very simple, requiring just the computation of a geometric mean of a symmetric positive-definite (SPD) matrix per class. We propose an improvement of the MDM involving a number of power means of SPD matrices instead of the sole geometric mean. By the analysis of 20 public databases, 10 for the motor-imagery BCI paradigm and 10 for the P300 BCI paradigm, comprising 587 individuals in total, we show that the proposed classifier clearly outperforms the MDM, approaching the state-of-the art in terms of performance while retaining the simplicity and the deterministic behavior. In order to promote reproducible research, our code will be released as open sourc",
+      "doi": "10.3390/s25072305",
+      "pmid": "40218817",
+      "openalex_id": "W4409210927",
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6768792521953584,
+        "similarity_score": 0.5860426425933838,
+        "citation_text_length": 1151,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A protocol for trustworthy EEG decoding with neural networks",
+      "author": "Davide Borra, Elisa Magosso, Mirco Ravanelli",
+      "venue": "Neural Networks",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.neunet.2024.106847",
+      "cited_by": 4,
+      "abstract": "Deep learning solutions have rapidly emerged for EEG decoding, achieving state-of-the-art performance on a variety of decoding tasks. Despite their high performance, existing solutions do not fully address the challenge posed by the introduction of many hyperparameters, defining data pre-processing, network architecture, network training, and data augmentation. Automatic hyperparameter search is rarely performed and limited to network-related hyperparameters. Moreover, pipelines are highly sensitive to performance fluctuations due to random initialization, hindering their reliability. Here, we design a comprehensive protocol for EEG decoding that explores the hyperparameters characterizing the entire pipeline and that includes multi-seed initialization for providing robust performance estimates. Our protocol is validated on 9 datasets about motor imagery, P300, SSVEP, including 204 participants and 26 recording sessions, and on different deep learning models. We accompany our protocol ",
+      "doi": "10.1016/j.neunet.2024.106847",
+      "pmid": "39549492",
+      "openalex_id": "W4403997676",
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5917413514852524,
+        "similarity_score": 0.512330174446106,
+        "citation_text_length": 1158,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Unlocking In-Context Learning for Natural Datasets Beyond Language Modelling",
       "author": "Jelena Bratulić, Sudhanshu Mittal, David T. Hoffmann, Samuel Böhm, Robin Tibor Schirrmeister, Tonio Ball, Christian Rupprecht, Thomas Brox",
       "venue": "Lecture notes in computer science",
       "year": 2026,
@@ -1110,8 +1150,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.37636643394827846,
-        "similarity_score": 0.32585838437080383,
+        "confidence_score": 0.3726337811350823,
+        "similarity_score": 0.32262665033340454,
         "citation_text_length": 1281,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
@@ -1234,58 +1274,12 @@
       }
     },
     {
-      "title": "The Riemannian Means Field Classifier for EEG-Based BCI Data",
-      "author": "Anton Andreev, Grégoire Cattan, Marco Congedo",
-      "venue": "Sensors",
-      "year": 2025,
-      "url": "https://doi.org/10.3390/s25072305",
-      "cited_by": 3,
-      "abstract": "A substantial amount of research has demonstrated the robustness and accuracy of the Riemannian minimum distance to mean (MDM) classifier for all kinds of EEG-based brain-computer interfaces (BCIs). This classifier is simple, fully deterministic, robust to noise, computationally efficient, and prone to transfer learning. Its training is very simple, requiring just the computation of a geometric mean of a symmetric positive-definite (SPD) matrix per class. We propose an improvement of the MDM involving a number of power means of SPD matrices instead of the sole geometric mean. By the analysis of 20 public databases, 10 for the motor-imagery BCI paradigm and 10 for the P300 BCI paradigm, comprising 587 individuals in total, we show that the proposed classifier clearly outperforms the MDM, approaching the state-of-the art in terms of performance while retaining the simplicity and the deterministic behavior. In order to promote reproducible research, our code will be released as open sourc",
-      "doi": "10.3390/s25072305",
-      "pmid": "40218817",
-      "openalex_id": "W4409210927",
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6768792521953584,
-        "similarity_score": 0.5860426425933838,
-        "citation_text_length": 1151,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "A protocol for trustworthy EEG decoding with neural networks",
-      "author": "Davide Borra, Elisa Magosso, Mirco Ravanelli",
-      "venue": "Neural Networks",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.neunet.2024.106847",
-      "cited_by": 3,
-      "abstract": "Deep learning solutions have rapidly emerged for EEG decoding, achieving state-of-the-art performance on a variety of decoding tasks. Despite their high performance, existing solutions do not fully address the challenge posed by the introduction of many hyperparameters, defining data pre-processing, network architecture, network training, and data augmentation. Automatic hyperparameter search is rarely performed and limited to network-related hyperparameters. Moreover, pipelines are highly sensitive to performance fluctuations due to random initialization, hindering their reliability. Here, we design a comprehensive protocol for EEG decoding that explores the hyperparameters characterizing the entire pipeline and that includes multi-seed initialization for providing robust performance estimates. Our protocol is validated on 9 datasets about motor imagery, P300, SSVEP, including 204 participants and 26 recording sessions, and on different deep learning models. We accompany our protocol ",
-      "doi": "10.1016/j.neunet.2024.106847",
-      "pmid": "39549492",
-      "openalex_id": "W4403997676",
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5917413514852524,
-        "similarity_score": 0.512330174446106,
-        "citation_text_length": 1158,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "A New Canonical Log-Euclidean Kernel for Symmetric Positive Definite Matrices for EEG Analysis (Oct 2024)",
       "author": "G. Berg, Vera Röhr, Daniel Platt, Benjamin Blankertz",
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2024,
       "url": "https://doi.org/10.1109/tbme.2024.3483936",
-      "cited_by": 2,
+      "cited_by": 3,
       "abstract": "OBJECTIVE: Working with the Riemannian manifold of symmetric positive-definite (SPD) matrices has become popular in electroencephalography (EEG) analysis. Frequently selected for its speed property is the manifold geometry provided by the log-euclidean Riemannian metric. However, the kernels used in the log-euclidean framework are not canonically based on the underlying geometry. Therefore, we introduce a new canonical log-euclidean (CLE) kernel. METHODS: We used the log-euclidean metric tensor on the SPD manifold to derive the CLE kernel. We compared it with existing kernels, namely the affine-invariant, log-euclidean, and Gaussian log-euclidean kernel. For comparison, we tested the kernels on two paradigms: classification and dimensionality reduction. Each paradigm was evaluated on five open-access brain-computer interface datasets with motor-imagery tasks across multiple sessions. Performance was measured as balanced classification accuracy using a leave-one-session-out cross-valida",
       "doi": "10.1109/tbme.2024.3483936",
       "pmid": "40031582",
@@ -1389,6 +1383,29 @@
         "confidence_score": 0.7449325016140939,
         "similarity_score": 0.6449632048606873,
         "citation_text_length": 1333,
+        "dataset_text_length": 2228,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Temporal Out-of-Distribution Detection for Asynchronous Motor Imagery Brain-Computer Interfaces",
+      "author": "Chenhao Liu, Siyang Li, Luofei Tan, Dongrui Wu",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2605.01014",
+      "cited_by": 2,
+      "abstract": "Real online brain--computer interfaces operate on continuous electroencephalography (EEG) streams, where users are usually at rest and enter motor-imagery task states only intermittently. EEG windows may also arise from OOD MI activity outside the predefined control set. Conventional closed-set motor-imagery classifiers tend to assign such inputs to ID classes, which can cause erroneous control. To address this issue, this paper proposes a two-stage EEG detection framework for asynchronous motor-imagery brain--computer interfaces. A sliding-window mechanism continuously monitors EEG signals. The first stage uses an EEGNet-based rest/task gate to determine whether the current window should enter the control-decision process. The second stage performs ID MI classification and out-of-distribution detection only for task-state samples. To improve OOD rejection, we further propose TempDens, which combines classification-output energy, deep-feature density, and temporal-consistency scores to",
+      "doi": "10.48550/arXiv.2605.01014",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0162657",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6528867200016976,
+        "similarity_score": 0.5652698874473572,
+        "citation_text_length": 1185,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1504,29 +1521,6 @@
         "confidence_score": 0.6283793771266938,
         "similarity_score": 0.5440514087677002,
         "citation_text_length": 1246,
-        "dataset_text_length": 2228,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Temporal Out-of-Distribution Detection for Asynchronous Motor Imagery Brain-Computer Interfaces",
-      "author": "Chenhao Liu, Siyang Li, Luofei Tan, Dongrui Wu",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2605.01014",
-      "cited_by": 1,
-      "abstract": "Real online brain--computer interfaces operate on continuous electroencephalography (EEG) streams, where users are usually at rest and enter motor-imagery task states only intermittently. EEG windows may also arise from OOD MI activity outside the predefined control set. Conventional closed-set motor-imagery classifiers tend to assign such inputs to ID classes, which can cause erroneous control. To address this issue, this paper proposes a two-stage EEG detection framework for asynchronous motor-imagery brain--computer interfaces. A sliding-window mechanism continuously monitors EEG signals. The first stage uses an EEGNet-based rest/task gate to determine whether the current window should enter the control-decision process. The second stage performs ID MI classification and out-of-distribution detection only for task-state samples. To improve OOD rejection, we further propose TempDens, which combines classification-output energy, deep-feature density, and temporal-consistency scores to",
-      "doi": "10.48550/arXiv.2605.01014",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0162657",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6528867200016976,
-        "similarity_score": 0.5652698874473572,
-        "citation_text_length": 1185,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1740,7 +1734,7 @@
       }
     },
     {
-      "title": "Identifying Good Donor Datasets for Transfer Learning Scenarios in Motor Imagery BCI",
+      "title": "Identifying Good Donor Datasets for Transfer Learning Scenarios in Motor Imagery BCI",
       "author": "Pierre Guetschel, Michael Tangermann",
       "venue": "Communications in computer and information science",
       "year": 2024,
@@ -1754,8 +1748,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6658858180046082,
-        "similarity_score": 0.6341769695281982,
+        "confidence_score": 0.6613931000232697,
+        "similarity_score": 0.629898190498352,
         "citation_text_length": 197,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
@@ -1926,21 +1920,21 @@
     {
       "title": "Backpropagation-Free Test-Time Adaptation for Lightweight EEG-Based Brain-Computer Interfaces",
       "author": "Siyang Li, Jiayi Ouyang, Zhenyao Cui, Ziwei Wang, Tianwang Jia, Feng Wan, Dongrui Wu",
-      "venue": "ArXiv",
+      "venue": "IEEE journal of biomedical and health informatics",
       "year": 2026,
       "url": "https://doi.org/10.48550/arXiv.2601.07556",
       "cited_by": 0,
-      "abstract": "Electroencephalogram (EEG)-based brain-computer interfaces (BCIs) face significant deployment challenges due to inter-subject variability, signal non-stationarity, and computational constraints. While test-time adaptation (TTA) mitigates distribution shifts under online data streams without per-use calibration sessions, existing TTA approaches heavily rely on explicitly defined loss objectives that require backpropagation for updating model parameters, which incurs computational overhead, privacy risks, and sensitivity to noisy data streams. This paper proposes Backpropagation-Free Transformations (BFT), a TTA approach for EEG decoding that eliminates such issues. BFT applies multiple sample-wise transformations of knowledge-guided augmentations or approximate Bayesian inference to each test trial, generating multiple prediction scores for a single test sample. A learning-to-rank module enhances the weighting of these predictions, enabling robust aggregation for uncertainty suppression",
+      "abstract": "Electroencephalogram (EEG)-based brain-computer interfaces (BCIs) face significant deployment challenges due to inter-subject variability, signal non-stationarity, and computational constraints. While test-time adaptation (TTA) mitigates distribution shifts under online data streams without per-use calibration sessions, existing TTA approaches heavily rely on explicitly defined loss objectives that require backpropagation for updating model parameters, which incurs computational overhead, privacy risks, and sensitivity to noisy data streams. This paper proposes Backpropagation-Free Transformations (BFT), a TTA approach for EEG decoding that avoids these issues. BFT applies multiple sample-wise transformations, based on knowledge-guided augmentations or structured feature masking, to each test trial, producing multiple predictions for a single test sample using only forward passes. A learning-to-rank module, trained on source data, estimates the reliability of each transformed predictio",
       "doi": "10.48550/arXiv.2601.07556",
-      "pmid": null,
+      "pmid": "42616624",
       "openalex_id": null,
       "source_doi": "10.1371/journal.pone.0162657",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6030693206191065,
-        "similarity_score": 0.5221379399299622,
-        "citation_text_length": 1221,
+        "confidence_score": 0.621339936554432,
+        "similarity_score": 0.5379566550254822,
+        "citation_text_length": 1265,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1971,7 +1965,7 @@
     },
     {
       "title": "BTTDA: Block-Term Tensor Discriminant Analysis for Brain-Computer Interfacing",
-      "author": "Arne Van Den Kerchove, Hakim Si-Mohammed, Franccois Cabestaing, Marc M. Van Hulle",
+      "author": "Arne Van Den Kerchove, Hakim Si-Mohammed, Franccois Cabestaing, M. V. Hulle",
       "venue": "n/a",
       "year": 2025,
       "url": "n/a",
@@ -1984,9 +1978,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.620800411105156,
-        "similarity_score": 0.5374895334243774,
-        "citation_text_length": 1200,
+        "confidence_score": 0.6225052481889726,
+        "similarity_score": 0.5389655828475952,
+        "citation_text_length": 1194,
         "dataset_text_length": 2228,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2064,13 +2058,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:05:54.996283+00:00",
+    "scoring_date": "2026-08-25T11:11:41.915877+00:00",
     "dataset_text_length": 2228,
     "num_citations_scored": 86,
     "summary_stats": {
-      "mean_confidence": 0.6274413504815379,
+      "mean_confidence": 0.6275779793446148,
       "median_confidence": 0.6246336972713471,
-      "std_confidence": 0.1140104726357158,
+      "std_confidence": 0.11406068732554427,
       "min_confidence": 0.2541618543863297,
       "max_confidence": 1.0,
       "high_confidence_count": 18,

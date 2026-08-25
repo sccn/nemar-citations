@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000207",
   "num_citations": 6,
-  "date_last_updated": "2026-08-17T10:10:48.493872+00:00",
+  "date_last_updated": "2026-08-25T10:11:31.834933+00:00",
   "metadata": {
     "total_cumulative_citations": 5,
-    "fetch_date": "2026-08-17T10:10:48.493872+00:00",
+    "fetch_date": "2026-08-25T10:11:31.834933+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -81,26 +81,20 @@
     ],
     "keywords": [
       "Brain-Computer Interfaces",
-      "Electroencephalography",
+      "electroencephalography",
       "Event-Related Potentials, P300",
       "auditory scene analysis",
       "stream segregation",
       "P300",
       "machine learning"
     ],
-    "methods_description": "EEG was recorded at 1000 Hz from 64 channels using a BrainAmp system with standard 10-20 montage referenced to right mastoid. Subjects performed 12 runs alternating between ASME-4stream and ASME-2stream paradigms, each containing 4 trials of ~90s duration. ASME-4stream presented 4 auditory streams (SOA=150ms, 600 stimuli/trial, 9:1 standard:deviant ratio), while ASME-2stream presented 2 streams with 2 deviant stimuli each (SOA=300ms, 300 stimuli/trial, 8:1:1 ratio). Preprocessing included ICA-based artifact removal, bandpass filtering (1-40 Hz for ERP analysis, 0.1-8 Hz for classification), epoching (-0.1 to 1.2s), and downsampling to 250 Hz. Classification employed shrinkage-LDA with mean amplitudes from 10 non-overlapping intervals (0-1.0s) as features, evaluated using 4-fold chronological cross-validation.",
+    "methods_description": "EEG was recorded at 1000 Hz from 64 channels using a BrainAmp system with standard 10-20 montage (EasyCap, passive Ag/AgCl electrodes). Subjects performed 12 runs alternating between ASME-4stream (4 streams, SOA=150ms, 600 stimuli/trial) and ASME-2stream (2 streams, SOA=300ms, 300 stimuli/trial) paradigms. Preprocessing included ICA-based artifact removal (15 components), bandpass filtering (1-40 Hz for ERP analysis, 0.1-8 Hz for classification), epoching (-0.1 to 1.2s), and downsampling to 250 Hz. Classification employed shrinkage-LDA with mean amplitudes from 10 non-overlapping intervals (0-1.0s) as features, evaluated using 4-fold chronological cross-validation.",
     "funding": [
       {
         "funder_name": "JSPS",
         "award_number": "JP23K11811"
       }
-    ],
-    "searched_accessions": [
-      "nm000207"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 6
+    ]
   },
   "citation_details": [
     {
@@ -244,7 +238,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:14:18.495052+00:00",
+    "scoring_date": "2026-08-25T11:22:57.841883+00:00",
     "dataset_text_length": 2431,
     "num_citations_scored": 6,
     "summary_stats": {

@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000120",
   "num_citations": 42,
-  "date_last_updated": "2026-08-17T10:01:28.282535+00:00",
+  "date_last_updated": "2026-08-25T10:02:09.231055+00:00",
   "metadata": {
-    "total_cumulative_citations": 440,
-    "fetch_date": "2026-08-17T10:01:28.282535+00:00",
+    "total_cumulative_citations": 444,
+    "fetch_date": "2026-08-25T10:02:09.231055+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -56,27 +56,20 @@
     ],
     "keywords": [
       "SSVEP",
-      "MAMEM",
-      "Brain-Computer Interfaces",
+      "brain-computer interface",
       "EEG",
       "visual evoked potentials",
       "signal processing",
       "feature extraction",
-      "classification"
+      "classification algorithms"
     ],
-    "methods_description": "EEG signals were recorded from 11 healthy subjects (8 male, 3 female; age 24-39 years) using a 256-channel EGI 300 Geodesic EEG System (GSN-HydroCel-256 montage) at 250 Hz sampling rate with Cz reference. Subjects performed a visual attention task focusing on flickering boxes presented at five simultaneous frequencies. Each trial consisted of 5 seconds of visual stimulation followed by 5 seconds of rest. Data were acquired in raw format without preprocessing. Leave-one-subject-out cross-validation was employed for algorithm evaluation.",
+    "methods_description": "EEG signals were recorded from 11 healthy subjects (8 male, 3 female; age 24-39 years) using a 256-channel EGI 300 Geodesic EEG System with HydroCel Geodesic Sensor Net montage at 250 Hz sampling rate and Cz reference. Subjects performed an SSVEP task focusing on flickering visual stimuli presented at five frequencies (6.66, 7.50, 8.57, 10.00, 12.00 Hz) for 5-second trials separated by 5-second rest periods. Each subject completed one session with 5 runs. Leave-one-subject-out cross-validation was employed for algorithm evaluation across signal processing stages: filtering (FIR vs IIR), artifact removal (AMUSE vs FastICA), feature extraction (PWelch, Periodogram, PYULEAR, DWT, STFT, Goertzel), feature selection, and classification (SVM, LDA, kNN, Naive Bayes, Random Forest, AdaBoost).",
     "funding": [
       {
         "funder_name": "European Commission",
         "award_number": "H2020-ICT-2014-644780"
       }
-    ],
-    "searched_accessions": [
-      "nm000120"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 42
+    ]
   },
   "citation_details": [
     {
@@ -108,7 +101,7 @@
       "venue": "ACM Computing Surveys",
       "year": 2024,
       "url": "https://doi.org/10.1145/3652149",
-      "cited_by": 78,
+      "cited_by": 82,
       "abstract": "The rapid growth of the internet has reached the fourth generation, i.e., web 4.0, which supports Sentiment Analysis (SA) in many applications such as social media, marketing, risk management, healthcare, businesses, websites, data mining, e-learning, psychology, and many more. Sentiment analysis is a powerful tool for governments, businesses, and researchers to analyse users’ emotions and mental states in order to generate opinions and reviews about products, services, and daily activities. In the past years, several SA techniques based on Machine Learning (ML), Deep Learning (DL), and other soft computing approaches were proposed. However, growing data size, subjectivity, and diversity pose a significant challenge to enhancing the efficiency of existing techniques and incorporating current development trends, such as Multimodal Sentiment Analysis (MSA) and fusion techniques. With the aim of assisting the enthusiastic researcher to navigating the current trend, this article presents a",
       "doi": "10.1145/3652149",
       "pmid": null,
@@ -155,7 +148,7 @@
       "year": 2023,
       "url": "https://doi.org/10.1088/1741-2552/ad171a",
       "cited_by": 18,
-      "abstract": "Abstract Objective . BCI (Brain–Computer Interfaces) operate in three modes: online , offline , and pseudo-online . In online mode, real-time EEG data is constantly analyzed. In offline mode, the signal is acquired and processed afterwards. The pseudo-online mode processes collected data as if they were received in real-time. The main difference is that the offline mode often analyzes the whole data, while the online and pseudo-online modes only analyze data in short time windows. Offline processing tends to be more accurate, while online analysis is better for therapeutic applications. Pseudo-online implementation approximates online processing without real-time constraints. Many BCI studies being offline introduce biases compared to real-life scenarios, impacting classification algorithm performance. Approach . The objective of this research paper is therefore to extend the current MOABB framework, operating in offline mode, so as to allow a comparison of different algorithms in a ps",
+      "abstract": "Abstract Objective. BCI (Brain–Computer Interfaces) operate in three modes: online, offline, and pseudo-online. In online mode, real-time EEG data is constantly analyzed. In offline mode, the signal is acquired and processed afterwards. The pseudo-online mode processes collected data as if they were received in real-time. The main difference is that the offline mode often analyzes the whole data, while the online and pseudo-online modes only analyze data in short time windows. Offline processing tends to be more accurate, while online analysis is better for therapeutic applications. Pseudo-online implementation approximates online processing without real-time constraints. Many BCI studies being offline introduce biases compared to real-life scenarios, impacting classification algorithm performance. Approach. The objective of this research paper is therefore to extend the current MOABB framework, operating in offline mode, so as to allow a comparison of different algorithms in a pseudo-",
       "doi": "10.1088/1741-2552/ad171a",
       "pmid": "38113535",
       "openalex_id": "W4389939932",
@@ -163,8 +156,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.47811902672052387,
-        "similarity_score": 0.4139558672904968,
+        "confidence_score": 0.4660983900725842,
+        "similarity_score": 0.40354838967323303,
         "citation_text_length": 1201,
         "dataset_text_length": 2344,
         "scoring_method": "sentence_transformers",
@@ -868,7 +861,7 @@
       "year": 2023,
       "url": "https://doi.org/10.11591/ijai.v13.i1.pp92-103",
       "cited_by": 0,
-      "abstract": "&lt;span lang=\"EN-US\"&gt;The significance of brain computer interface (BCI) systems is immensely high, especially for disabled people and patients with nervous system failure. Therefore, in this study, adaptive filtering-based component analysis (AFCA) model is presented to enhance target box identification efficiency at varied flickering frequencies in a visual stimulation process by efficient acquisition of electroencephalogram (EEG) signals for the application of steady-state visually evoked potential based BCI system. Furthermore, optimization of proposed AFCA model is performed based on the maximized reproducibility of correlated components. A multimedia authoring and management using your eyes and mind (MAMEM) steady-state visual evoked potential (SSVEP) dataset is utilized for efficient training of EEG signals and background entities are eliminated using adaptive filters in a pre-processing stage. Additionally, spatial filtering components are obtained to detect target flickerin",
+      "abstract": "The significance of brain computer interface (BCI) systems is immensely high, especially for disabled people and patients with nervous system failure. Therefore, in this study, adaptive filtering-based component analysis (AFCA) model is presented to enhance target box identification efficiency at varied flickering frequencies in a visual stimulation process by efficient acquisition of electroencephalogram (EEG) signals for the application of steady-state visually evoked potential based BCI system. Furthermore, optimization of proposed AFCA model is performed based on the maximized reproducibility of correlated components. A multimedia authoring and management using your eyes and mind (MAMEM) steady-state visual evoked potential (SSVEP) dataset is utilized for efficient training of EEG signals and background entities are eliminated using adaptive filters in a pre-processing stage. Additionally, spatial filtering components are obtained to detect target flickering box based on the obtain",
       "doi": "10.11591/ijai.v13.i1.pp92-103",
       "pmid": null,
       "openalex_id": "W4389178626",
@@ -876,8 +869,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5238121578097344,
-        "similarity_score": 0.45351701974868774,
+        "confidence_score": 0.5149281281232835,
+        "similarity_score": 0.4458252191543579,
         "citation_text_length": 1281,
         "dataset_text_length": 2344,
         "scoring_method": "sentence_transformers",
@@ -1048,13 +1041,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:06:14.373533+00:00",
+    "scoring_date": "2026-08-25T11:12:07.450137+00:00",
     "dataset_text_length": 2344,
     "num_citations_scored": 42,
     "summary_stats": {
-      "mean_confidence": 0.5171351322992926,
+      "mean_confidence": 0.5166374021484739,
       "median_confidence": 0.5323995004594326,
-      "std_confidence": 0.1286403771608799,
+      "std_confidence": 0.1287358808341016,
       "min_confidence": 0.18662931323051454,
       "max_confidence": 0.9216190659999848,
       "high_confidence_count": 1,

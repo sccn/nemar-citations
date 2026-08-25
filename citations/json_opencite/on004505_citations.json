@@ -1,10 +1,10 @@
 {
   "dataset_id": "on004505",
   "num_citations": 27,
-  "date_last_updated": "2026-08-17T10:36:19.020973+00:00",
+  "date_last_updated": "2026-08-25T10:39:38.004094+00:00",
   "metadata": {
-    "total_cumulative_citations": 388,
-    "fetch_date": "2026-08-17T10:36:19.020973+00:00",
+    "total_cumulative_citations": 390,
+    "fetch_date": "2026-08-25T10:39:38.004094+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -45,18 +45,17 @@
     "keywords": [
       "Electroencephalography",
       "Electromyography",
-      "motor control",
-      "real-world movement",
-      "inertial measurement units",
       "table tennis",
-      "multimodal neuroimaging"
+      "mobile brain/body imaging",
+      "motor control",
+      "inertial measurement unit",
+      "independent component analysis"
     ],
-    "methods_description": "Data were collected from 25 participants performing 60 minutes of table tennis play (ball machine and human opponent) plus 10 minutes of standing baseline. Recordings included high-density dual-layer EEG, neck EMG, IMU acceleration, T1 structural MRI, and synchronized video. EEG data underwent independent component analysis decomposition and dipole modeling. Raw data are available in the sourcedata folder.",
+    "methods_description": "Data were collected using high-density, dual-layer EEG, neck EMG, IMU acceleration sensors, T1 structural MRI, and video recordings. Video data with marked hit events (via Adobe Premiere project files) were collected for 17 of the 25 participants. Processed subject data include ICA decomposition and dipole modeling, with retained components documented in EEG.etc.KeepComponents; raw data are available in the sourcedata folder.",
     "funding": [
       {
         "funder_name": "National Science Foundation",
-        "award_number": "BCS-1835317",
-        "award_title": "Division of Behavioral and Cognitive Sciences"
+        "award_number": "BCS-1835317"
       }
     ],
     "searched_accessions": [
@@ -64,8 +63,8 @@
       "ds004505"
     ],
     "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 27
+    "num_dataset_citations": 1,
+    "num_datapaper_citations": 26
   },
   "citation_details": [
     {
@@ -74,7 +73,7 @@
       "venue": "Science Robotics",
       "year": 2023,
       "url": "https://doi.org/10.1126/scirobotics.adf1080",
-      "cited_by": 80,
+      "cited_by": 81,
       "abstract": "Maintaining balance throughout daily activities is challenging because of the unstable nature of the human body. For instance, a person's delayed reaction times limit their ability to restore balance after disturbances. Wearable exoskeletons have the potential to enhance user balance after a disturbance by reacting faster than physiologically possible. However, \"artificially fast\" balance-correcting exoskeleton torque may interfere with the user's ensuing physiological responses, consequently hindering the overall reactive balance response. Here, we show that exoskeletons need to react faster than physiological responses to improve standing balance after postural perturbations. Delivering ankle exoskeleton torque before the onset of physiological reactive joint moments improved standing balance by 9%, whereas delaying torque onset to coincide with that of physiological reactive ankle moments did not. In addition, artificially fast exoskeleton torque disrupted the ankle mechanics that g",
       "doi": "10.1126/scirobotics.adf1080",
       "pmid": "36791215",
@@ -368,7 +367,7 @@
       }
     },
     {
-      "title": "Preprocessing choices for <scp>P3</scp> analyses with mobile <scp>EEG</scp> : A systematic literature review and interactive exploration",
+      "title": "Preprocessing choices for P3 analyses with mobile EEG : A systematic literature review and interactive exploration",
       "author": "Nadine Jacobsen, Daniel Kristanto, Suong Welp, Yusuf Coşku Inceler, Stefan Debener",
       "venue": "Psychophysiology",
       "year": 2024,
@@ -382,9 +381,9 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4793158341944218,
-        "similarity_score": 0.4149920642375946,
-        "citation_text_length": 1273,
+        "confidence_score": 0.4640995573997498,
+        "similarity_score": 0.40181779861450195,
+        "citation_text_length": 1251,
         "dataset_text_length": 1156,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -450,6 +449,8 @@
       "source_doi": "10.3390/s22155867",
       "source_relation": "References",
       "discovery_backend": "opencite",
+      "mentions_accession": true,
+      "matched_accession": "ds004505",
       "confidence_scoring": {
         "confidence_score": 0.9502937731146813,
         "similarity_score": 0.8227651715278625,
@@ -477,6 +478,29 @@
         "confidence_score": 0.44761047005653387,
         "similarity_score": 0.3875415325164795,
         "citation_text_length": 1359,
+        "dataset_text_length": 1156,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "IMU-integrated Artifact Subspace Reconstruction for Wearable EEG Devices",
+      "author": "Velu Prabhakar Kumaravel, Elisabetta Farella",
+      "venue": "2023 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)",
+      "year": 2023,
+      "url": "https://doi.org/10.1109/bibm58861.2023.10385390",
+      "cited_by": 2,
+      "abstract": "Electroencephalography (EEG) provides unique insights into natural brain dynamics outside the laboratory setting. However, its usability is limited due to the presence of artifacts. Artifact Subspace Reconstruction (ASR) has been a popular method for enhancing the signal-to-noise ratio (SNR) in mobile EEG; nonetheless, its complexity restricts its applicability on lightweight, resource-constrained EEG devices. To address this challenge, we propose an innovative IMU-integrated approach for artifacts correction (IMU-ASR). Specifically, we replace ASR’s time-consuming calibration process with a simpler accelerometer-based method, significantly reducing computational time without compromising performance. We validate our approach on two publicly available datasets, one with low-density (8 channels) and the other with high-density (120 channels) EEG. Our findings demonstrate the potential of accelerometer-driven ASR for lightweight hardware-software EEG solutions, promising a more practical",
+      "doi": "10.1109/bibm58861.2023.10385390",
+      "pmid": null,
+      "openalex_id": "W4390971154",
+      "source_doi": "10.3390/s22155867",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5886813327670097,
+        "similarity_score": 0.5096808075904846,
+        "citation_text_length": 1230,
         "dataset_text_length": 1156,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -523,29 +547,6 @@
         "confidence_score": 0.7920950943231584,
         "similarity_score": 0.6857966184616089,
         "citation_text_length": 1232,
-        "dataset_text_length": 1156,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "IMU-integrated Artifact Subspace Reconstruction for Wearable EEG Devices",
-      "author": "Velu Prabhakar Kumaravel, Elisabetta Farella",
-      "venue": "2023 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)",
-      "year": 2023,
-      "url": "https://doi.org/10.1109/bibm58861.2023.10385390",
-      "cited_by": 1,
-      "abstract": "Electroencephalography (EEG) provides unique insights into natural brain dynamics outside the laboratory setting. However, its usability is limited due to the presence of artifacts. Artifact Subspace Reconstruction (ASR) has been a popular method for enhancing the signal-to-noise ratio (SNR) in mobile EEG; nonetheless, its complexity restricts its applicability on lightweight, resource-constrained EEG devices. To address this challenge, we propose an innovative IMU-integrated approach for artifacts correction (IMU-ASR). Specifically, we replace ASR’s time-consuming calibration process with a simpler accelerometer-based method, significantly reducing computational time without compromising performance. We validate our approach on two publicly available datasets, one with low-density (8 channels) and the other with high-density (120 channels) EEG. Our findings demonstrate the potential of accelerometer-driven ASR for lightweight hardware-software EEG solutions, promising a more practical",
-      "doi": "10.1109/bibm58861.2023.10385390",
-      "pmid": null,
-      "openalex_id": "W4390971154",
-      "source_doi": "10.3390/s22155867",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5886813327670097,
-        "similarity_score": 0.5096808075904846,
-        "citation_text_length": 1230,
         "dataset_text_length": 1156,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -692,13 +693,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:35:53.192125+00:00",
+    "scoring_date": "2026-08-25T11:53:41.256316+00:00",
     "dataset_text_length": 1156,
     "num_citations_scored": 27,
     "summary_stats": {
-      "mean_confidence": 0.5581561106829732,
+      "mean_confidence": 0.5575925448757632,
       "median_confidence": 0.5077206753194333,
-      "std_confidence": 0.1612958787707007,
+      "std_confidence": 0.1615966634662607,
       "min_confidence": 0.3728037209808827,
       "max_confidence": 1.0,
       "high_confidence_count": 4,

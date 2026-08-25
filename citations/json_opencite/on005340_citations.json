@@ -1,10 +1,10 @@
 {
   "dataset_id": "on005340",
-  "num_citations": 11,
-  "date_last_updated": "2026-08-17T10:44:57.620981+00:00",
+  "num_citations": 9,
+  "date_last_updated": "2026-08-25T10:48:25.872356+00:00",
   "metadata": {
     "total_cumulative_citations": 18,
-    "fetch_date": "2026-08-17T10:44:57.620981+00:00",
+    "fetch_date": "2026-08-25T10:48:25.872356+00:00",
     "processing_version": "1.0",
     "fetch_status": "partial",
     "anchor_count": 3,
@@ -18,7 +18,7 @@
       {
         "identifier": "10.1121/10.0034329",
         "identifier_type": "doi",
-        "source_relation": "References",
+        "source_relation": "IsDescribedBy",
         "classification": "data_paper",
         "kept": true,
         "paper_title": "Fundamental frequency predominantly drives talker differences in auditory brainstem responses to continuous speech",
@@ -30,7 +30,7 @@
       {
         "identifier": "10.1101/2024.07.12.603125",
         "identifier_type": "doi",
-        "source_relation": "IsDescribedBy",
+        "source_relation": "References",
         "classification": "data_paper",
         "kept": true,
         "paper_title": "Fundamental frequency predominantly drives talker differences in auditory brainstem responses to continuous speech",
@@ -58,27 +58,20 @@
       "10.82901/nemar.on005340"
     ],
     "keywords": [
-      "auditory brainstem response",
+      "Evoked Potentials, Auditory, Brain Stem",
       "EEG",
-      "fundamental frequency",
       "speech perception",
-      "talker differences",
-      "neurophysiology"
+      "fundamental frequency",
+      "auditory brainstem response",
+      "continuous speech"
     ],
-    "methods_description": "Participants (n=15, ages 19-35 years, normal hearing) were seated in a sound-isolating booth while EEG was recorded during passive listening to continuous peaky speech (720 trials: 2 narrators × 3 f0 conditions × 120 trials) and click trains (90 trials: 3 rates × 30 trials). Stimuli were presented at 65 dB SPL and 48 kHz sampling rate through ER-2 insert earphones. EEG was recorded in Brain Products format (.eeg, .vhdr, .vmrk files). Stimulus files in HDF5 format contain audio waveforms and regressors for deconvolution analysis.",
+    "methods_description": "Participants sat in a darkened sound-isolating booth and watched silent captioned videos while stimuli (click trains and peaky speech from male and female narrators at three fundamental frequencies) were presented at 65 dB SPL via ER-2 insert earphones connected to an RME Babyface Pro sound card, controlled by custom Python scripts using expyfun. EEG was recorded using Brain Products hardware, with stimuli including 90 click trials (30 x 10s per rate) and 720 speech trials (120 x 10s per narrator-f0 combination).",
     "funding": [
       {
         "funder_name": "NIDCD",
         "award_number": "R01DC017962"
       }
-    ],
-    "searched_accessions": [
-      "on005340",
-      "ds005340"
-    ],
-    "num_accession_mentions": 2,
-    "num_dataset_citations": 2,
-    "num_datapaper_citations": 9
+    ]
   },
   "citation_details": [
     {
@@ -287,70 +280,20 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Fundamental frequency predominantly drives talker differences in auditory brainstem responses to continuous speech",
-      "author": "Melissa J. Polonenko, Ross K. Maddox",
-      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
-      "year": 2024,
-      "url": "https://doi.org/10.1101/2024.07.12.603125",
-      "cited_by": 0,
-      "abstract": "Deriving human neural responses to natural speech is now possible, but the responses to male- and female-uttered speech have been shown to differ. These talker differences may complicate interpretations or restrict experimental designs geared toward more realistic communication scenarios. This study found that when a male and female talker had the same fundamental frequency, auditory brainstem responses (ABRs) were very similar. Those responses became smaller and later with increasing fundamental frequency, as did click ABRs with increasing stimulus rates. Modeled responses suggested that the speech and click ABR differences were reasonably predicted by peripheral and brainstem processing of stimulus acoustics.",
-      "doi": "10.1101/2024.07.12.603125",
-      "pmid": "39026858",
-      "openalex_id": "W4400624032",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "ds005340",
-      "confidence_scoring": {
-        "confidence_score": 1.0,
-        "similarity_score": 0.8933851718902588,
-        "citation_text_length": 948,
-        "dataset_text_length": 2379,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Fundamental frequency predominantly drives talker differences in auditory brainstem responses to continuous speech",
-      "author": "Melissa J. Polonenko, Ross K. Maddox",
-      "venue": "JASA Express Letters",
-      "year": 2024,
-      "url": "https://doi.org/10.1121/10.0034329",
-      "cited_by": 9,
-      "abstract": "Deriving human neural responses to natural speech is now possible, but the responses to male- and female-uttered speech have been shown to differ. These talker differences may complicate interpretations or restrict experimental designs geared toward more realistic communication scenarios. This study found that when a male talker and a female talker had the same fundamental frequency, auditory brainstem responses (ABRs) were very similar. Those responses became smaller and later with increasing fundamental frequency, as did click ABRs with increasing stimulus rates. Modeled responses suggested that the speech and click ABR differences were reasonably predicted by peripheral and brainstem processing of stimulus acoustics.",
-      "doi": "10.1121/10.0034329",
-      "pmid": "39504231",
-      "openalex_id": "W4404106206",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "ds005340",
-      "confidence_scoring": {
-        "confidence_score": 1.0,
-        "similarity_score": 0.8950352668762207,
-        "citation_text_length": 938,
-        "dataset_text_length": 2379,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-18T10:14:06.019570+00:00",
+    "scoring_date": "2026-08-25T12:04:46.785488+00:00",
     "dataset_text_length": 2379,
-    "num_citations_scored": 11,
+    "num_citations_scored": 9,
     "summary_stats": {
-      "mean_confidence": 0.7631138516285204,
-      "median_confidence": 0.7552462014555932,
-      "std_confidence": 0.13110900460023026,
+      "mean_confidence": 0.7104724853237472,
+      "median_confidence": 0.6862231555581094,
+      "std_confidence": 0.07594966634514233,
       "min_confidence": 0.5765421509742737,
-      "max_confidence": 1.0,
-      "high_confidence_count": 6,
+      "max_confidence": 0.8419287407398225,
+      "high_confidence_count": 4,
       "medium_confidence_count": 5,
       "low_confidence_count": 0
     }

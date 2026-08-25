@@ -1,13 +1,13 @@
 {
   "dataset_id": "on004952",
   "num_citations": 25,
-  "date_last_updated": "2026-08-17T10:41:47.332614+00:00",
+  "date_last_updated": "2026-08-25T10:45:12.888669+00:00",
   "metadata": {
     "total_cumulative_citations": 126,
-    "fetch_date": "2026-08-17T10:41:47.332614+00:00",
+    "fetch_date": "2026-08-25T10:45:12.888669+00:00",
     "processing_version": "1.0",
     "fetch_status": "partial",
-    "anchor_count": 2,
+    "anchor_count": 3,
     "anchor_errors": {
       "10.82901/nemar.on004952": "not_found"
     },
@@ -18,13 +18,25 @@
       {
         "identifier": "10.1038/s41597-024-03398-7",
         "identifier_type": "doi",
-        "source_relation": "References",
+        "source_relation": "IsDescribedBy",
         "classification": "data_paper",
         "kept": true,
         "paper_title": "ChineseEEG: A Chinese Linguistic Corpora EEG Dataset for Semantic Alignment and Neural Decoding",
         "paper_year": 2024,
         "paper_venue": "Scientific Data",
         "reason": "The candidate paper's title and abstract explicitly introduce and describe the ChineseEEG dataset, detailing its contents and purpose.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.1101/2024.02.08.579481",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
         "judgment_model": "gemma4:e4b"
       },
       {
@@ -42,18 +54,19 @@
     ],
     "searched_dois": [
       "10.1038/s41597-024-03398-7",
+      "10.1101/2024.02.08.579481",
       "10.82901/nemar.on004952"
     ],
     "keywords": [
       "EEG",
-      "eye tracking",
+      "Eye-Tracking",
+      "Reading",
+      "Semantics",
+      "Natural Language Processing",
       "Chinese language",
-      "semantic processing",
-      "neural decoding",
-      "natural language processing",
-      "reading comprehension"
+      "Neural decoding"
     ],
-    "methods_description": "EEG data were recorded at 1 kHz sampling rate using high-density electrodes during silent reading of Chinese text presented sequentially at 0.35 seconds per character. Simultaneous eye-tracking calibration and recording were performed at the beginning of each run. Raw data were converted from .mff format to BrainVision format and preprocessed with band-pass filtering (0.5-80 Hz and 0.5-30 Hz variants) and independent component analysis, with downsampling to 256 Hz for filtered and preprocessed versions.",
+    "methods_description": "EEG data were recorded at 1 kHz sampling rate using high-density EEG (EGI system, .mff format converted to BrainVision), alongside simultaneous eye-tracking data, while participants silently read Chinese novels presented in a moving-window highlighted reading paradigm. Data were pre-processed through filtering (0.5-80 Hz and 0.5-30 Hz band-pass) and further processed with a full pipeline including bad channel rejection and ICA, down-sampled to 256 Hz. The dataset was organized following the EEG-BIDS specification using the MNE-BIDS package.",
     "funding": [],
     "searched_accessions": [
       "on004952",
@@ -644,7 +657,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:39:29.104389+00:00",
+    "scoring_date": "2026-08-25T12:00:26.808885+00:00",
     "dataset_text_length": 2495,
     "num_citations_scored": 25,
     "summary_stats": {

@@ -1,10 +1,10 @@
 {
   "dataset_id": "on007763",
-  "num_citations": 101,
-  "date_last_updated": "2026-08-17T11:00:39.716994+00:00",
+  "num_citations": 100,
+  "date_last_updated": "2026-08-25T11:03:57.777391+00:00",
   "metadata": {
     "total_cumulative_citations": 1848,
-    "fetch_date": "2026-08-17T11:00:39.716994+00:00",
+    "fetch_date": "2026-08-25T11:03:57.777391+00:00",
     "processing_version": "1.0",
     "fetch_status": "partial",
     "anchor_count": 3,
@@ -118,31 +118,15 @@
       "10.82901/nemar.on007763"
     ],
     "keywords": [
-      "MEG",
-      "magnetoencephalography",
-      "language processing",
+      "Magnetoencephalography",
+      "Japanese language processing",
       "reading",
-      "word-by-word reading",
-      "Japanese",
-      "RSVP",
-      "neuroimaging",
-      "cross-modal comparison",
-      "BCCWJ",
-      "anatomical MRI",
-      "structural MRI",
-      "T1-weighted",
-      "preprocessing",
-      "derivatives"
+      "language comprehension",
+      "MEG",
+      "psycholinguistics"
     ],
-    "methods_description": "Continuous MEG was recorded using a 200-channel whole-head system with axial gradiometers at 1,000 Hz sampling rate with 200 Hz online low-pass filtering. T1-weighted structural images were acquired with 1 mm slice thickness, 256 × 256 mm field of view, 368 × 368 matrix, TR = 1,100 ms, and TE = 5.1 ms; facial structures were removed using PyDeface. Stimuli (20 Japanese newspaper articles from BCCWJ) were presented word-by-word via rapid serial visual presentation (RSVP) at 500 ms per word with 500 ms inter-stimulus intervals using PsychoPy. MEG preprocessing included CALM filtering, ICA artifact removal, 0.1–40 Hz bandpass filtering, epoching (−100 to 1,000 ms relative to word onset), downsampling to 200 Hz, and baseline correction using MNE-Python and Eelbrain. Preprocessed data are provided in the derivatives folder.",
-    "funding": [],
-    "searched_accessions": [
-      "on007763",
-      "ds007763"
-    ],
-    "num_accession_mentions": 1,
-    "num_dataset_citations": 1,
-    "num_datapaper_citations": 100
+    "methods_description": "Continuous MEG was recorded with a 200-channel whole-head MEG system using axial gradiometers at a sampling rate of 1,000 Hz with an online low-pass filter of 200 Hz. T1-weighted structural images were collected and defaced using PyDeface. Stimuli (twenty Japanese newspaper articles) were presented word by word via RSVP in PsychoPy, each word shown for 500 ms followed by a 500 ms blank screen. Preprocessing was performed using MNE-Python and Eelbrain, including CALM filtering, ICA-based artifact removal, 0.1–40 Hz bandpass filtering, epoching (-100 to 1000 ms relative to word onset), downsampling to 200 Hz, and baseline correction.",
+    "funding": []
   },
   "citation_details": [
     {
@@ -2444,45 +2428,20 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "BCCWJ-Brain: A Multi-Modal fMRI, MEG, and EEG Dataset of Naturalistic Japanese Reading",
-      "author": "Yushi Sugimoto, Masayuki Asahara, Hyeonjeong Jeong, Akitake Kanno, Masatoshi Koizumi, Yohei Oseki",
-      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
-      "year": 2026,
-      "url": "https://doi.org/10.64898/2026.07.05.736621",
-      "cited_by": 0,
-      "abstract": "Abstract We present the BCCWJ-Brain dataset, a multi-modal neuroimaging resource comprising functional magnetic resonance imaging (fMRI), magnetoencephalography (MEG), and electroencephalography (EEG) data recorded from native Japanese speakers reading newspaper articles from the Balanced Corpus of Contemporary Written Japanese (BCCWJ). Neural data were collected from 112 participants (36 fMRI, 35 MEG, and 41 EEG) as they read twenty newspaper articles presented in a Rapid Serial Visual Presentation (RSVP) paradigm. By providing three complementary neuroimaging modalities collected under identical naturalistic reading stimuli, this dataset provides a cognitive benchmark for computational models such as large language models. The dataset is publicly available on the OpenNeuro platform, offering a valuable resource for neuroscience, natural language processing, and related research fields.",
-      "doi": "10.64898/2026.07.05.736621",
-      "pmid": null,
-      "openalex_id": "W7167787497",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "ds007763",
-      "confidence_scoring": {
-        "confidence_score": 0.9054902359843255,
-        "similarity_score": 0.7839742302894592,
-        "citation_text_length": 1161,
-        "dataset_text_length": 2211,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-18T10:20:24.119610+00:00",
+    "scoring_date": "2026-08-25T12:23:52.159254+00:00",
     "dataset_text_length": 2211,
-    "num_citations_scored": 101,
+    "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.45408342912793154,
-      "median_confidence": 0.4498161852359772,
-      "std_confidence": 0.09358957210094374,
+      "mean_confidence": 0.4495693610593676,
+      "median_confidence": 0.44928620770573624,
+      "std_confidence": 0.08239259810691515,
       "min_confidence": 0.2520510479807854,
-      "max_confidence": 0.9054902359843255,
-      "high_confidence_count": 2,
+      "max_confidence": 0.7198190617561342,
+      "high_confidence_count": 1,
       "medium_confidence_count": 72,
       "low_confidence_count": 27
     }

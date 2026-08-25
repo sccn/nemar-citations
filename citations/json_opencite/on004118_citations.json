@@ -1,10 +1,10 @@
 {
   "dataset_id": "on004118",
   "num_citations": 86,
-  "date_last_updated": "2026-08-17T10:31:34.391424+00:00",
+  "date_last_updated": "2026-08-25T10:35:09.231009+00:00",
   "metadata": {
-    "total_cumulative_citations": 2494,
-    "fetch_date": "2026-08-17T10:31:34.391424+00:00",
+    "total_cumulative_citations": 2498,
+    "fetch_date": "2026-08-25T10:35:09.231009+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -93,21 +93,16 @@
     ],
     "keywords": [
       "EEG",
-      "driver fatigue",
+      "Eye-Tracking Technology",
+      "Fatigue",
       "driving simulator",
-      "motor control",
-      "performance prediction",
-      "calibration",
-      "steering control",
-      "lateral perturbations",
-      "BioSemi",
-      "multi-site study",
-      "fatigue",
-      "eye tracking",
-      "multi-center",
-      "BCIT"
+      "Automobile Driving",
+      "BCIT",
+      "human performance",
+      "lane-keeping",
+      "steering control"
     ],
-    "methods_description": "Subjects performed a 15-minute driving simulator task requiring steering control on a straight road with periodic lateral perturbations. EEG was recorded using BioSemi systems (64-channel at sites T1 and T2; 256-channel at site T3) at 1024 Hz sampling rate, with 4 eye and 2 mastoid channels. Eye tracking (SMI REDEYE250) and vehicle data (100 Hz) were simultaneously acquired. Dependent measures included reaction times to perturbations, continuous vehicle performance metrics (steering angle, lane position, heading error), and subjective fatigue scales (TIFS, KSS, VAS-F).",
+    "methods_description": "Subjects performed a 15-minute driving task using a Real Time Technologies driving simulator with steering wheel and pedal controls, while EEG was recorded using BioSemi 64- or 256-channel systems (plus 4 eye and 2 mastoid channels) at 1024 Hz. Eye tracking was recorded with a Sensomotoric Instruments REDEYE250 system, and vehicle log data were sampled at 100 Hz. Subjects maintained lane position against periodic lateral perturbing forces, and fatigue-related questionnaires (TIFS, KSS, VAS-F) were administered.",
     "funding": [
       {
         "funder_name": "Army Research Laboratory",
@@ -405,7 +400,7 @@
       "venue": "2016 IEEE Winter Conference on Applications of Computer Vision (WACV)",
       "year": 2016,
       "url": "https://doi.org/10.1109/wacv.2016.7477574",
-      "cited_by": 34,
+      "cited_by": 35,
       "abstract": "A novel approach for the fusion of heterogeneous object detection methods is proposed. In order to effectively integrate the outputs of multiple detectors, the level of ambiguity in each individual detection score is estimated using the precision/recall relationship of the corresponding detector. The main contribution of the proposed work is a novel fusion method, called Dynamic Belief Fusion (DBF), which dynamically assigns probabilities to hypotheses (target, non-target, intermediate state (target or non-target)) based on confidence levels in the detection results conditioned on the prior performance of individual detectors. In DBF, a joint basic probability assignment, optimally fusing information from all detectors, is determined by the Dempster's combination rule, and is easily reduced to a single fused detection score. Experiments on ARL and PASCAL VOC 07 datasets demonstrate that the detection accuracy of DBF is considerably greater than conventional fusion approaches as well as",
       "doi": "10.1109/wacv.2016.7477574",
       "pmid": null,
@@ -469,6 +464,29 @@
       }
     },
     {
+      "title": "Decoding P300 Variability Using Convolutional Neural Networks",
+      "author": "Amelia J. Solon, Vernon J. Lawhern, Jonathan Touryan, Jonathan R. McDaniel, Anthony J. Ries, Stephen M. Gordon",
+      "venue": "Frontiers in Human Neuroscience",
+      "year": 2019,
+      "url": "https://doi.org/10.3389/fnhum.2019.00201",
+      "cited_by": 29,
+      "abstract": "Deep convolutional neural networks (CNN) have previously been shown to be useful tools for signal decoding and analysis in a variety of complex domains, such as image processing and speech recognition. By learning from large amounts of data, the representations encoded by these deep networks are often invariant to moderate changes in the underlying feature spaces. Recently, we proposed a CNN architecture that could be applied to electroencephalogram (EEG) decoding and analysis. In this article, we train our CNN model using data from prior experiments in order to later decode the P300 evoked response from an unseen, hold-out experiment. We analyze the CNN output as a function of the underlying variability in the P300 response and demonstrate that the CNN output is sensitive to the experiment-induced changes in the neural response. We then assess the utility of our approach as a means of improving the overall signal-to-noise ratio in the EEG record. Finally, we show an example of how CNN",
+      "doi": "10.3389/fnhum.2019.00201",
+      "pmid": "31258469",
+      "openalex_id": "W2949108148",
+      "source_doi": "10.3389/fnins.2014.00155",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.3838574230670929,
+        "similarity_score": 0.3489612936973572,
+        "citation_text_length": 1241,
+        "dataset_text_length": 2333,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Generating EEG signals of an RSVP Experiment by a Class Conditioned Wasserstein Generative Adversarial Network",
       "author": "Sharaj Panwar, Paul Rad, John Quarles, Yufei Huang",
       "venue": "2019 IEEE International Conference on Systems, Man and Cybernetics (SMC)",
@@ -486,29 +504,6 @@
         "confidence_score": 0.41017155349254614,
         "similarity_score": 0.37288323044776917,
         "citation_text_length": 1181,
-        "dataset_text_length": 2333,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Decoding P300 Variability Using Convolutional Neural Networks",
-      "author": "Amelia J. Solon, Vernon J. Lawhern, Jonathan Touryan, Jonathan R. McDaniel, Anthony J. Ries, Stephen M. Gordon",
-      "venue": "Frontiers in Human Neuroscience",
-      "year": 2019,
-      "url": "https://doi.org/10.3389/fnhum.2019.00201",
-      "cited_by": 28,
-      "abstract": "Deep convolutional neural networks (CNN) have previously been shown to be useful tools for signal decoding and analysis in a variety of complex domains, such as image processing and speech recognition. By learning from large amounts of data, the representations encoded by these deep networks are often invariant to moderate changes in the underlying feature spaces. Recently, we proposed a CNN architecture that could be applied to electroencephalogram (EEG) decoding and analysis. In this article, we train our CNN model using data from prior experiments in order to later decode the P300 evoked response from an unseen, hold-out experiment. We analyze the CNN output as a function of the underlying variability in the P300 response and demonstrate that the CNN output is sensitive to the experiment-induced changes in the neural response. We then assess the utility of our approach as a means of improving the overall signal-to-noise ratio in the EEG record. Finally, we show an example of how CNN",
-      "doi": "10.3389/fnhum.2019.00201",
-      "pmid": "31258469",
-      "openalex_id": "W2949108148",
-      "source_doi": "10.3389/fnins.2014.00155",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.3838574230670929,
-        "similarity_score": 0.3489612936973572,
-        "citation_text_length": 1241,
         "dataset_text_length": 2333,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -952,7 +947,7 @@
       }
     },
     {
-      "title": "A physiology-based approach for estimation of mental fatigue levels with both high time resolution and high level of granularity",
+      "title": "A physiology-based approach for estimation of mental fatigue levels with both high time resolution and high level of granularity",
       "author": "Xianyin Hu, Shinji Nakatsuru, Yuki Ban, Rui Fukui, Shin’ichi Warisawa",
       "venue": "Informatics in Medicine Unlocked",
       "year": 2021,
@@ -966,8 +961,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5271089977025987,
-        "similarity_score": 0.4563714265823364,
+        "confidence_score": 0.5387069705128671,
+        "similarity_score": 0.4664129614830017,
         "citation_text_length": 1268,
         "dataset_text_length": 2333,
         "scoring_method": "sentence_transformers",
@@ -981,7 +976,7 @@
       "year": 2023,
       "url": "https://doi.org/10.18280/ts.400106",
       "cited_by": 6,
-      "abstract": "Owing to the reliability of biometric data, person identification systems are developed using many different biometric data.However, these systems can be easily fooled with prosthetic face masks, contact lenses and fingerprint tapes.EEG signal is considered to be the most difficult biometric data to copy.The main reason why EEG-based identification systems have not become widespread is that their accuracy performance is not stable.In this study, an EEG based identification system DM-EEGID with improved accuracy performance is proposed.In this approach, first of all, the channels that are meaningless and reduce the accuracy performance from the high number of channels used as input data should be filtered out.Therefore, a Random Forest based binary feature selection method is recommended.With this algorithm, it has been determined that the optimum number of channels for the highest percentage of accuracy in the 64-channel data set is 48-channel.Then, for the determination of the most di",
+      "abstract": "Owing to the reliability of biometric data, person identification systems are developed using many different biometric data. However, these systems can be easily fooled with prosthetic face masks, contact lenses and fingerprint tapes. EEG signal is considered to be the most difficult biometric data to copy. The main reason why EEG-based identification systems have not become widespread is that their accuracy performance is not stable. In this study, an EEG based identification system DM-EEGID with improved accuracy performance is proposed. In this approach, first of all, the channels that are meaningless and reduce the accuracy performance from the high number of channels used as input data should be filtered out. Therefore, a Random Forest based binary feature selection method is recommended. With this algorithm, it has been determined that the optimum number of channels for the highest percentage of accuracy in the 64-channel data set is 48-channel. Then, for the determination of the",
       "doi": "10.18280/ts.400106",
       "pmid": null,
       "openalex_id": "W4353100331",
@@ -989,8 +984,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5183430343866349,
-        "similarity_score": 0.4487818479537964,
+        "confidence_score": 0.5094380074739456,
+        "similarity_score": 0.44107186794281006,
         "citation_text_length": 1174,
         "dataset_text_length": 2333,
         "scoring_method": "sentence_transformers",
@@ -1302,7 +1297,7 @@
       "venue": "bioRxiv",
       "year": 2018,
       "url": "https://doi.org/10.1101/409631",
-      "cited_by": 37,
+      "cited_by": 38,
       "abstract": "Significant achievements have been made in the fMRI field by pooling statistical results from multiple studies (meta-analysis). More recently, fMRI standardization efforts have focused on enabling the joint analysis of raw fMRI data across studies (mega-analysis), with the hope of achieving more detailed insights. However, it has not been clear if such analyses in the EEG field are possible or equally fruitful. Here we present the results of a large-scale EEG mega-analysis using 18 studies from six sites representing several different experimental paradigms. We demonstrate that when meta-data are consistent across studies, both channel-level and source-level EEG mega-analysis are possible and can provide insights unavailable in single studies. The analysis uses a fully-automated processing pipeline to reduce line noise, interpolate noisy channels, perform robust referencing, remove eye-activity, and further identify outlier signals. We define several robust measures based on channel am",
       "doi": "10.1101/409631",
       "pmid": "31770636",
@@ -1394,7 +1389,7 @@
       "venue": "bioRxiv",
       "year": 2018,
       "url": "https://doi.org/10.1101/411371",
-      "cited_by": 24,
+      "cited_by": 25,
       "abstract": "In this paper, we present the results of a large-scale analysis of event-related responses based on raw EEG data from 17 studies performed at six experimental sites associated with four different institutions. The analysis corpus represents 1,155 recordings containing approximately 7.8 million event instances acquired under several different experimental paradigms. Such large-scale analysis is predicated on consistent data organization and event annotation as well as an effective automated pre-processing pipeline to transform raw EEG into a form suitable for comparative analysis. A key component of this analysis is the annotation of study-specific event codes using a common vocabulary to describe relevant event features. We demonstrate that Hierarchical Event Descriptors (HED tags) capture statistically significant cognitive aspects of EEG events common across multiple recordings, subjects, studies, paradigms, headset configurations, and experimental sites. We use representational simi",
       "doi": "10.1101/411371",
       "pmid": "31491523",
@@ -1849,29 +1844,6 @@
       }
     },
     {
-      "title": "Pupil-linked arousal correlates with neural activity prior to sensorimotor decisions",
-      "author": "Sharath C. Koorathota, J. Ma, Josef Faller, Linbi Hong, Pawan Lapborisuth, P. Sajda",
-      "venue": "Journal of Neural Engineering",
-      "year": 2023,
-      "url": "https://doi.org/10.1088/1741-2552/ad1055",
-      "cited_by": 3,
-      "abstract": "Objective. Sensorimotor decisions require the brain to process external information and combine it with relevant knowledge prior to actions. In this study, we explore the neural predictors of motor actions in a novel, realistic driving task designed to study decisions while driving. Approach. Through a spatiospectral assessment of functional connectivity during the premotor period, we identified the organization of visual cortex regions of interest into a distinct scene processing network. Additionally, we identified a motor action selection network characterized by coherence between the anterior cingulate cortex (ACC) and dorsolateral prefrontal cortex (DLPFC). Main results. We show that steering behavior can be predicted from oscillatory power in the visual cortex, DLPFC, and ACC. Power during the premotor periods (specific to the theta and beta bands) correlates with pupil-linked arousal and saccade duration. Significance. We interpret our findings in the context of network-level co",
-      "doi": "10.1088/1741-2552/ad1055",
-      "pmid": "38016448",
-      "openalex_id": null,
-      "source_doi": "10.1016/j.neuroimage.2017.02.057",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.47861256480216985,
-        "similarity_score": 0.4143831729888916,
-        "citation_text_length": 1235,
-        "dataset_text_length": 2333,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Hybrid EEG-EMG system to detect steering actions in car driving settings",
       "author": "G. Vecchiato, M. Del Vecchio, J. Ambeck-Madsen, L. Ascari, P. Avanzini",
       "venue": "bioRxiv",
@@ -1889,6 +1861,29 @@
         "confidence_score": 0.6029366594552994,
         "similarity_score": 0.52202308177948,
         "citation_text_length": 1188,
+        "dataset_text_length": 2333,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Journal of Neural Engineering",
+      "author": "Sharath C. Koorathota, Jia Li, Josef Faller, Linbi Hong, Pawan Lapborisuth, P. Sajda",
+      "venue": "n/a",
+      "year": 0,
+      "url": "n/a",
+      "cited_by": 3,
+      "abstract": null,
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1016/j.neuroimage.2017.02.057",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.30816030502319336,
+        "similarity_score": 0.30816030502319336,
+        "citation_text_length": 143,
         "dataset_text_length": 2333,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2104,18 +2099,18 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:32:21.087770+00:00",
+    "scoring_date": "2026-08-25T11:48:13.442520+00:00",
     "dataset_text_length": 2333,
     "num_citations_scored": 86,
     "summary_stats": {
-      "mean_confidence": 0.4371328650103059,
-      "median_confidence": 0.4363602669537068,
-      "std_confidence": 0.11008881998414945,
+      "mean_confidence": 0.4351821753140106,
+      "median_confidence": 0.4322039864957333,
+      "std_confidence": 0.11090126545264925,
       "min_confidence": 0.23280951686203483,
       "max_confidence": 0.6421649396419525,
       "high_confidence_count": 0,
-      "medium_confidence_count": 56,
-      "low_confidence_count": 30
+      "medium_confidence_count": 55,
+      "low_confidence_count": 31
     }
   }
 }

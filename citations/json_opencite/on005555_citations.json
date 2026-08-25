@@ -1,10 +1,10 @@
 {
   "dataset_id": "on005555",
-  "num_citations": 7,
-  "date_last_updated": "2026-08-17T10:48:08.243657+00:00",
+  "num_citations": 6,
+  "date_last_updated": "2026-08-25T10:51:21.596895+00:00",
   "metadata": {
-    "total_cumulative_citations": 4,
-    "fetch_date": "2026-08-17T10:48:08.243657+00:00",
+    "total_cumulative_citations": 5,
+    "fetch_date": "2026-08-25T10:51:21.596895+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -67,14 +67,15 @@
       "10.82901/nemar.on005555"
     ],
     "keywords": [
-      "sleep staging",
-      "electroencephalography",
+      "EEG",
       "Polysomnography",
-      "wearable sensors",
+      "Sleep Stages",
+      "wearable EEG",
+      "sleep staging",
       "deep learning",
-      "sleep monitoring"
+      "BIDS"
     ],
-    "methods_description": "Data were collected from 128 nights of simultaneous recording using two systems: a Micromed Brain Quick Plus Evolution PSG system (recording EEG from F3, F4, C3, C4, O1, O2; EOG; chin EMG; abdominal and thoracic breathing belts; thermistor and nasal cannula airflow; and PPG) and a Bitbrain wearable EEG headband (recording forehead EEG at AF7/AF8 locations, 6-axis IMU, and PPG). Sleep stages were independently scored by three expert raters following AASM criteria, with consensus labels derived when at least two raters agreed. A deep learning model was trained on consensus labels using cross-validation, achieving 87.13% accuracy on PSG data and 86.71% on wearable EEG data.",
+    "methods_description": "PSG recordings were obtained using a Brain Quick Plus Evolution system by Micromed, capturing EEG, EOG, EMG, respiratory, and PPG signals, while simultaneous wearable EEG recordings were collected using a Bitbrain forehead headband with EEG, IMU, and PPG sensors. Sleep stages were manually scored by three independent expert scorers following AASM criteria, with consensus labels derived from majority agreement (a fourth scorer resolved ties). A deep learning model was trained on the human-consensus labels to generate automatic sleep stage predictions for both PSG and wearable EEG data.",
     "funding": [
       {
         "funder_name": "Programa Misiones de I+D en Inteligencia Artificial",
@@ -82,22 +83,22 @@
         "award_title": "AI4HEALTHYAGING"
       },
       {
-        "funder_name": "Euripides",
+        "funder_name": "Penta call 5 – Joint call – Euripides",
         "award_number": "IDI-20210522",
         "award_title": "pAvIs"
       },
       {
-        "funder_name": "European Commission",
+        "funder_name": "H2020 FET-Open",
         "award_number": "964677",
         "award_title": "MITICS"
       },
       {
-        "funder_name": "European Commission",
+        "funder_name": "Horizon-EIC-2022",
         "award_number": "101099555",
         "award_title": "BAYFLEX"
       },
       {
-        "funder_name": "European Commission",
+        "funder_name": "Horizon-RIA-2023",
         "award_number": "101135782",
         "award_title": "MANOLO"
       },
@@ -110,19 +111,35 @@
         "award_number": "IDMF/2023/0007"
       },
       {
-        "funder_name": "red.es",
+        "funder_name": "Programa red.es",
         "award_number": "2021/C005/00143341"
       }
-    ],
-    "searched_accessions": [
-      "on005555",
-      "ds005555"
-    ],
-    "num_accession_mentions": 2,
-    "num_dataset_citations": 4,
-    "num_datapaper_citations": 3
+    ]
   },
   "citation_details": [
+    {
+      "title": "Sleep Staging for Wearable Electroencephalography Leveraging Machine Learning and Conventional Polysomnography Datasets *",
+      "author": "Gürkan Yılmaz, Cristina Sainz Martinez, Fabian Braun, Oriella Gnarra, Andrea Seiler, Kaspar Schindler, Markus H. Schmidt, Mathieu Lemay, João Jorge",
+      "venue": "2025 47th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/embc58623.2025.11254304",
+      "cited_by": 2,
+      "abstract": "Wearable electroencephalography (EEG) sensors are becoming increasingly accessible, enabling long-term, at-home automatic sleep profiling, with outstanding potential for personalized medicine and wellness applications. However, current devices remain less reliable for sleep stage classification than gold-standard, lab-based polysomnography (PSG). One of the main bottlenecks is the need to collect extensive datasets for each new wearable device together with a gold standard reference, to train robust algorithms. To tackle this challenge, here, we investigated machine learning and feature engineering techniques on a recent PSG dataset containing multi-channel EEG and reference sleep stage labels, to train classifiers tailored for sleep staging on a separate, wearable EEG headband (ULTEEMNite). We found that the classification performance improved when: (i) training on EEG configurations spatially closer to that of the wearable device, (ii) filtering the training data to approximate the s",
+      "doi": "10.1109/embc58623.2025.11254304",
+      "pmid": "41336713",
+      "openalex_id": "W4416962667",
+      "source_doi": "10.1101/2024.06.12.597764",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.853824874162674,
+        "similarity_score": 0.7392423152923584,
+        "citation_text_length": 1411,
+        "dataset_text_length": 2342,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
     {
       "title": "Forehead and In-Ear EEG Acquisition and Processing: Biomarker Analysis and Memory-Efficient Deep Learning Algorithm for Sleep Staging with Optimized Feature Dimensionality",
       "author": "Roberto De Fazio, Şule Esma Yalçınkaya, Ilaria Cascella, Carolina Del-Valle-Soto, Massimo De Vittorio, Paolo Visconti",
@@ -141,31 +158,6 @@
         "confidence_score": 0.7670107752084734,
         "similarity_score": 0.6640785932540894,
         "citation_text_length": 1334,
-        "dataset_text_length": 2342,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      },
-      "mentions_accession": true,
-      "matched_accession": "ds005555"
-    },
-    {
-      "title": "Sleep Staging for Wearable Electroencephalography Leveraging Machine Learning and Conventional Polysomnography Datasets <sup>*</sup>",
-      "author": "Gürkan Yılmaz, Cristina Sainz Martinez, Fabian Braun, Oriella Gnarra, Andrea Seiler, Kaspar Schindler, Markus H. Schmidt, Mathieu Lemay, João Jorge",
-      "venue": "2025 47th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/embc58623.2025.11254304",
-      "cited_by": 1,
-      "abstract": "Wearable electroencephalography (EEG) sensors are becoming increasingly accessible, enabling long-term, at-home automatic sleep profiling, with outstanding potential for personalized medicine and wellness applications. However, current devices remain less reliable for sleep stage classification than gold-standard, lab-based polysomnography (PSG). One of the main bottlenecks is the need to collect extensive datasets for each new wearable device together with a gold standard reference, to train robust algorithms. To tackle this challenge, here, we investigated machine learning and feature engineering techniques on a recent PSG dataset containing multi-channel EEG and reference sleep stage labels, to train classifiers tailored for sleep staging on a separate, wearable EEG headband (ULTEEMNite). We found that the classification performance improved when: (i) training on EEG configurations spatially closer to that of the wearable device, (ii) filtering the training data to approximate the s",
-      "doi": "10.1109/embc58623.2025.11254304",
-      "pmid": "41336713",
-      "openalex_id": "W4416962667",
-      "source_doi": "10.1101/2024.06.12.597764",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.8589593499898912,
-        "similarity_score": 0.7436877489089966,
-        "citation_text_length": 1422,
         "dataset_text_length": 2342,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -192,9 +184,7 @@
         "dataset_text_length": 2342,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      },
-      "mentions_accession": true,
-      "matched_accession": "ds005555"
+      }
     },
     {
       "title": "The Bitbrain Open Access Sleep (BOAS) dataset",
@@ -214,6 +204,29 @@
         "confidence_score": 1.0,
         "similarity_score": 0.9238678216934204,
         "citation_text_length": 878,
+        "dataset_text_length": 2342,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Hierarchical Multimodal Sleep Staging with Optimized EEG, EOG, and PPG Features for Wearable Applications",
+      "author": "R. de Fazio, Matteo Paiano, R. Velázquez, Carolina Del-Valle-Soto, P. Visconti",
+      "venue": "Applied Sciences",
+      "year": 2026,
+      "url": "https://doi.org/10.3390/app16168164",
+      "cited_by": 0,
+      "abstract": "Automatic sleep staging is fundamental for diagnosing sleep disorders and enabling long-term sleep monitoring with wearable devices. Although Deep Learning has significantly improved classification performance, balancing accuracy with computational efficiency remains challenging, particularly for resource-constrained systems. This paper proposes a lightweight two-stage Deep Learning framework for five-class sleep staging based on optimized multimodal physiological features extracted from electroencephalogram (EEG), electrooculogram (EOG), and photoplethysmography (PPG) signals. The framework is trained and tested using the Bitbrain Open Access Sleep (BOAS) database, considering a 31-subject dataset partitioned into training (24 subjects) and independent test (7 subjects) sets. Feature selection is performed using the minimum Redundancy Maximum Relevance (mRMR) algorithm, followed by Principal Component Analysis (PCA) for EEG and EOG features, while respiratory and cardiac features deri",
+      "doi": "10.3390/app16168164",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1101/2024.06.12.597764",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7794607535004617,
+        "similarity_score": 0.6748577952384949,
+        "citation_text_length": 1238,
         "dataset_text_length": 2342,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -241,71 +254,21 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Sleep-Spindle-Rich Windows Are Associated With Local Meta-Noetic Phase-Space Shifts in N2 Sleep",
-      "author": "Robin Langell",
-      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
-      "year": 2026,
-      "url": "https://doi.org/10.5281/zenodo.20038828",
-      "cited_by": 0,
-      "abstract": "Event-locked analysis of OpenNeuro ds005555 sleep EEG testing whether N2 sleep-spindle windows show local Meta-Noetic Phase Space (MNPS) shifts. The release includes manuscript files, figures, event-locked MNPS/9D/MNJ analyses, matched-control tests, temporal nulls, baseline-contamination checks, and spectral incremental-validity results. Findings support a bounded measurement-layer claim: spindle-rich N2 windows are associated with reproducible local MNPS/9D reconfiguration beyond pre-event baseline and matched non-spindle controls.",
-      "doi": "10.5281/zenodo.20038828",
-      "pmid": null,
-      "openalex_id": "W7160778749",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "ds005555",
-      "confidence_scoring": {
-        "confidence_score": 0.5137023720145226,
-        "similarity_score": 0.4447639584541321,
-        "citation_text_length": 742,
-        "dataset_text_length": 2342,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Sleep-Spindle-Rich Windows Are Associated With Local Meta-Noetic Phase-Space Shifts in N2 Sleep",
-      "author": "Robin Langell",
-      "venue": "Zenodo (CERN European Organization for Nuclear Research)",
-      "year": 2026,
-      "url": "https://doi.org/10.5281/zenodo.20038829",
-      "cited_by": 0,
-      "abstract": "Event-locked analysis of OpenNeuro ds005555 sleep EEG testing whether N2 sleep-spindle windows show local Meta-Noetic Phase Space (MNPS) shifts. The release includes manuscript files, figures, event-locked MNPS/9D/MNJ analyses, matched-control tests, temporal nulls, baseline-contamination checks, and spectral incremental-validity results. Findings support a bounded measurement-layer claim: spindle-rich N2 windows are associated with reproducible local MNPS/9D reconfiguration beyond pre-event baseline and matched non-spindle controls.",
-      "doi": "10.5281/zenodo.20038829",
-      "pmid": null,
-      "openalex_id": "W7160771054",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "ds005555",
-      "confidence_scoring": {
-        "confidence_score": 0.5137023720145226,
-        "similarity_score": 0.4447639584541321,
-        "citation_text_length": 742,
-        "dataset_text_length": 2342,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-18T10:15:12.231293+00:00",
+    "scoring_date": "2026-08-25T12:08:22.865796+00:00",
     "dataset_text_length": 2342,
-    "num_citations_scored": 7,
+    "num_citations_scored": 6,
     "summary_stats": {
-      "mean_confidence": 0.710982807150909,
-      "median_confidence": 0.7670107752084734,
-      "std_confidence": 0.19193998608856302,
+      "mean_confidence": 0.787300197283427,
+      "median_confidence": 0.8118707294762135,
+      "std_confidence": 0.15721404275518533,
       "min_confidence": 0.47922407537698747,
       "max_confidence": 1.0,
-      "high_confidence_count": 4,
-      "medium_confidence_count": 3,
+      "high_confidence_count": 5,
+      "medium_confidence_count": 1,
       "low_confidence_count": 0
     }
   }

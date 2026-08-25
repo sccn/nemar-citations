@@ -1,13 +1,13 @@
 {
   "dataset_id": "on007663",
-  "num_citations": 3,
-  "date_last_updated": "2026-08-17T11:00:15.279265+00:00",
+  "num_citations": 5,
+  "date_last_updated": "2026-08-25T11:03:18.299554+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-17T11:00:15.279265+00:00",
+    "fetch_date": "2026-08-25T11:03:18.299554+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
-    "anchor_count": 2,
+    "anchor_count": 3,
     "anchor_errors": {},
     "schema_version": "2.1",
     "discovery_backend": "opencite",
@@ -16,13 +16,25 @@
       {
         "identifier": "10.7554/elife.106050.3",
         "identifier_type": "doi",
-        "source_relation": "References",
+        "source_relation": "IsDescribedBy",
         "classification": "data_paper",
         "kept": true,
         "paper_title": "Cross-modal interaction of Alpha Activity does not reflect inhibition of early sensory processing: A frequency tagging study using EEG and MEG",
         "paper_year": 2025,
         "paper_venue": "eLife",
         "reason": "The paper title and abstract describe the specific 'Cross-modal interaction' study, including the use of the cross-modal paradigm and frequency tagging, which matches the dataset's README description.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.7554/elife.106050.1",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
         "judgment_model": "gemma4:e4b"
       },
       {
@@ -40,17 +52,19 @@
     ],
     "searched_dois": [
       "10.7554/elife.106050.3",
+      "10.7554/elife.106050.1",
       "10.82901/nemar.on007663"
     ],
     "keywords": [
       "MEG",
-      "frequency tagging",
-      "alpha oscillations",
-      "cross-modal attention",
-      "target discrimination",
-      "sensory preparation"
+      "Alpha Oscillations",
+      "Frequency-Tagging",
+      "Cross-Modal Attention",
+      "Target Discrimination",
+      "Auditory Perception",
+      "Visual Perception"
     ],
-    "methods_description": "MEG data were acquired during a cued target discrimination task. Participants received visual or auditory cues indicating target modality, followed by a 3-second interval with frequency-tagged stimulation (36 Hz flickering fixation cross and 40 Hz amplitude-modulated tone). Targets were either visual Gabor patches or auditory tones varying in three difficulty levels (calibrated individually). Participants responded using a button box. Eye-tracking data were recorded to monitor eye movements. The experiment consisted of 16 blocks: Block 1 contained unimodal trials (auditory cue-target or visual cue-target), and Block 2 contained cross-modal distractor trials.",
+    "methods_description": "Participants performed a cross-modal target-discrimination task in which cues indicated whether an upcoming target would be auditory (tone) or visual (Gabor patch/disc). During the cue-target interval (3 seconds), a fixation cross was frequency-tagged at 36 Hz while an amplitude-modulated 40 Hz tone was played. In Block 1, targets were presented without distractors; in Block 2, targets were accompanied by a distractor from the other sensory modality. Stimulus difficulty was individually calibrated for auditory and visual conditions prior to the main experiment. Eye-tracking (eye-link) data were also collected to monitor eye movements during MEG recording. One participant (sub-07) was excluded due to incomplete data collection and poor performance.",
     "funding": [
       {
         "funder_name": "Facebook Oculus"
@@ -59,14 +73,7 @@
         "funder_name": "BBSRC",
         "award_number": "BB/R018723/1"
       }
-    ],
-    "searched_accessions": [
-      "on007663",
-      "ds007663"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 3
+    ]
   },
   "citation_details": [
     {
@@ -81,7 +88,7 @@
       "pmid": null,
       "openalex_id": "W7166719381",
       "source_doi": "10.7554/elife.106050.3",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 0.957220448255539,
@@ -104,7 +111,7 @@
       "pmid": "41459754",
       "openalex_id": "W7117456464",
       "source_doi": "10.7554/elife.106050.3",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 0.4702877497673035,
@@ -127,7 +134,7 @@
       "pmid": null,
       "openalex_id": "W7125480348",
       "source_doi": "10.7554/elife.106050.3",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 0.380398417711258,
@@ -137,22 +144,68 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "OPM quantum sensors enhance non-invasive neuroimaging performance",
+      "author": "Marion Brickwedde, Paul Anders, P. Krüger, Tilmann Sander, Peter J. Uhlhaas",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2025,
+      "url": "https://doi.org/10.1101/2025.05.30.657044",
+      "cited_by": 0,
+      "abstract": "Much of our understanding of how neural circuit activity relates to human behaviour as well as mental health stems from non-invasive assessments of the central nervous system. Further progress in key questions, however, requires a higher differentiation of circuit-level activity, which remains constrained by the sensitivity and resolution of existing instruments. Here we show that neural quantum sensing with optically pumped magnetometers (OPMs) addresses this issue by significantly outperforming EEG and conventional MEG in both signal-to-noise ratio (SNR) and signal coherence across trials. SNR for OPMs was increased by up to 205% compared to EEG and by up to 40% compared to conventional MEG. Likewise, the signal coherence across trials of OPMs was increased by up to 61% compared to EEG and by up to 23% compared to conventional MEG. Our data emphasize the important role of OPMs for non-invasive neuroimaging, paving the way for significant advances in basic research as well as translat",
+      "doi": "10.1101/2025.05.30.657044",
+      "pmid": null,
+      "openalex_id": "W4411035603",
+      "source_doi": "10.7554/elife.106050.1",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.341602600067854,
+        "similarity_score": 0.29575982689857483,
+        "citation_text_length": 1218,
+        "dataset_text_length": 2278,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Opposite Effects of Alpha Oscillations on Mind-Wandering with Eyes Open and Closed",
+      "author": "Esther Thielking, Hannah Ramsey, Jason Samaha, Thomas Andrillon, Luca Iemi",
+      "venue": "Journal of Neuroscience",
+      "year": 2026,
+      "url": "https://doi.org/10.1523/jneurosci.0133-26.2026",
+      "cited_by": 0,
+      "abstract": "Spontaneous fluctuations in brain activity are thought to underlie mind-wandering, moments when mental experience becomes unrelated to what one is currently doing. A large body of research has investigated ongoing neural oscillations in the alpha band (7-14 Hz), reflecting changes in arousal and attention. However, studies disagree whether the power of alpha oscillations increases or decreases during mind-wandering compared with on-task focus. We hypothesized that these opposite effects arise from differences in eye state across studies, as eye closure increases alpha power and can reverse alpha's relationship with sleepiness, which is itself related to mind-wandering. To test this, we recorded electroencephalography while male and female participants with eyes either open or closed were probed to report whether they were focused on the auditory attention task or mind-wandering and how alert or sleepy they were. Consistent with our hypothesis, we found that increased alpha power was mo",
+      "doi": "10.1523/jneurosci.0133-26.2026",
+      "pmid": "42509159",
+      "openalex_id": "W7171411498",
+      "source_doi": "10.7554/elife.106050.1",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.3748031044006348,
+        "similarity_score": 0.3245048522949219,
+        "citation_text_length": 1218,
+        "dataset_text_length": 2278,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:55:28.045192+00:00",
+    "scoring_date": "2026-08-25T12:23:07.206068+00:00",
     "dataset_text_length": 2278,
-    "num_citations_scored": 3,
+    "num_citations_scored": 5,
     "summary_stats": {
-      "mean_confidence": 0.6026355385780335,
-      "median_confidence": 0.4702877497673035,
-      "std_confidence": 0.25340069275441224,
-      "min_confidence": 0.380398417711258,
+      "mean_confidence": 0.5048624640405179,
+      "median_confidence": 0.380398417711258,
+      "std_confidence": 0.23016675511164203,
+      "min_confidence": 0.341602600067854,
       "max_confidence": 0.957220448255539,
       "high_confidence_count": 1,
       "medium_confidence_count": 1,
-      "low_confidence_count": 1
+      "low_confidence_count": 3
     }
   }
 }

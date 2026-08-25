@@ -1,10 +1,10 @@
 {
   "dataset_id": "on007524",
-  "num_citations": 31,
-  "date_last_updated": "2026-08-17T10:58:54.352090+00:00",
+  "num_citations": 32,
+  "date_last_updated": "2026-08-25T11:02:07.069663+00:00",
   "metadata": {
-    "total_cumulative_citations": 42,
-    "fetch_date": "2026-08-17T10:58:54.352090+00:00",
+    "total_cumulative_citations": 43,
+    "fetch_date": "2026-08-25T11:02:07.069663+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -64,14 +64,7 @@
       "source localization"
     ],
     "methods_description": "MEG data were recorded using a whole-head Elekta Neuromag TRIUX system (102 magnetometers, 204 planar gradiometers) at 1000 Hz sampling rate with online filtering (0.1–330 Hz). Words were presented individually in white font on black background for 225 ms with 50 ms inter-word intervals and 500 ms sentence-final pauses. Participants viewed stimuli from 100 cm distance while maintaining fixation. Vertical and horizontal EOG and ECG were recorded bipolarly. High-resolution T1-weighted anatomical MRI scans were acquired on a 3T Siemens Magnetom Prisma using MPRAGE sequence for coregistration and source analysis.",
-    "funding": [],
-    "searched_accessions": [
-      "on007524",
-      "ds007524"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 31
+    "funding": []
   },
   "citation_details": [
     {
@@ -276,6 +269,29 @@
         "confidence_score": 0.44093830883502966,
         "similarity_score": 0.3817647695541382,
         "citation_text_length": 1291,
+        "dataset_text_length": 2259,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Diffusion Latent Representations for Neural Decoding",
+      "author": "Brandon Wong, Brokoslaw Laschowski",
+      "venue": "bioRxiv",
+      "year": 2026,
+      "url": "https://doi.org/10.64898/2026.07.08.737343",
+      "cited_by": 1,
+      "abstract": "Neural decoding can be viewed as a representation learning problem in which neural activity is mapped into an intermediate representation before downstream reconstruction. The choice of intermediate representation influences both performance and learning difficulty. Here we developed a novel framework for studying how intermediate representation choice influences downstream learning and reconstruction. As a proof-of-concept, we instantiated our framework using diffusion latent representations extracted from different diffusion timesteps for neural speech decoding. Component-wise evaluation showed that reconstruction performance differed substantially across diffusion timesteps, with teacher-forced Word Error Rates of 44.7%, 7.5%, and 3.5% for different latent models. These results demonstrate that diffusion latent representations can serve as effective intermediate representations for learning from neural activity, but that their effectiveness depends strongly on the selected diffusion",
+      "doi": "10.64898/2026.07.08.737343",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41467-025-65499-0",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.42710189402103427,
+        "similarity_score": 0.3697851896286011,
+        "citation_text_length": 1132,
         "dataset_text_length": 2259,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -512,6 +528,29 @@
       }
     },
     {
+      "title": "Margin-Regularized Structured Semantic Alignment for Brain-Language Correspondence",
+      "author": "Jiaqi Wang, Huawen Hu, Shu Zhang",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "With the rapid advancement of large language models, brain-language decoding has achieved remarkable progress. However, it remains unclear whether decoded content genuinely reflects neural representations or is largely reconstructed by the language model itself. This ambiguity limits interpretability and hinders the investigation of intrinsic brain-language correspondence. To address this challenge, we propose MD-SigLIP. This margin-regularized structured semantic alignment framework directly aligns brain embeddings with text embeddings in a shared semantic space, enabling retrieval-based decoding. This formulation enables explicit modeling of the correspondence between neural representations and language semantics. Building upon duplicate-aware sigmoid contrastive learning, we introduce a listwise margin-regularized term that enforces structured ranking constraints between positive semantic clusters and negative samples. By modeling multi-positive semantic structure and margin-based o",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41467-025-65499-0",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5235834945738316,
+        "similarity_score": 0.4533190429210663,
+        "citation_text_length": 1156,
+        "dataset_text_length": 2259,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval",
       "author": "Ilia Semenkov, Daria Kleeva, I. Dakhtin, Z. Maksudova, A. Ossadtchi",
       "venue": "n/a",
@@ -604,29 +643,6 @@
       }
     },
     {
-      "title": "Diffusion Latent Representations for Neural Decoding",
-      "author": "Brandon Wong, Brokoslaw Laschowski",
-      "venue": "bioRxiv",
-      "year": 2026,
-      "url": "https://doi.org/10.64898/2026.07.08.737343",
-      "cited_by": 0,
-      "abstract": "Neural decoding can be viewed as a representation learning problem in which neural activity is mapped into an intermediate representation before downstream reconstruction. The choice of intermediate representation influences both performance and learning difficulty. Here we developed a novel framework for studying how intermediate representation choice influences downstream learning and reconstruction. As a proof-of-concept, we instantiated our framework using diffusion latent representations extracted from different diffusion timesteps for neural speech decoding. Component-wise evaluation showed that reconstruction performance differed substantially across diffusion timesteps, with teacher-forced Word Error Rates of 44.7%, 7.5%, and 3.5% for different latent models. These results demonstrate that diffusion latent representations can serve as effective intermediate representations for learning from neural activity, but that their effectiveness depends strongly on the selected diffusion",
-      "doi": "10.64898/2026.07.08.737343",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41467-025-65499-0",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.42710189402103427,
-        "similarity_score": 0.3697851896286011,
-        "citation_text_length": 1132,
-        "dataset_text_length": 2259,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Physiological Noise Augmentation Improves Non-Invasive Brain-to-Speech",
       "author": "Benjamin D. Ballyk, Teyun Kwon, Miran Ozdogan, Oiwi Parker Jones",
       "venue": "n/a",
@@ -644,6 +660,29 @@
         "confidence_score": 0.5592259418964386,
         "similarity_score": 0.4841783046722412,
         "citation_text_length": 1176,
+        "dataset_text_length": 2259,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Accurate Decoding of Natural Sentences from Non-Invasive Brain Recordings",
+      "author": "Mingfang Zhang, Jarod Lévy, Cédric Rommel, Jérémy Rapin, Corentin Bel, Julie Bonnaire, Daniel Nieto, Pierre Bourdillon, S. Pinet, Stéphane d’Ascoli, Thomas Moreau, Jean-Rémi King",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "Restoring communication for people who have lost the ability to speak or move after a brain injury is a major challenge. While intracranial implants now enable high-performing brain-computer-interfaces, non-invasive alternatives are still lagging behind. Here, we present Brain2Qwerty v2, a model that can decode the production of natural sentences solely from real-time magnetoencephalography (MEG) recordings. By collecting 22,000 sentences typed by nine subjects, each recorded for 10 hours, our model leverages character, word and sentence-level representations to achieve an average word error rate (WER) of 39%. For our best participant, the model accurately decodes half of the sentences with one word error or less. Critically, decoding accuracy log-linearly improves with data volume, suggesting that the performance gap with intracranial approaches could be partially bridged through data scaling. We show that AI enables this performance in three main ways: the substitution of hand-crafte",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41467-025-65499-0",
+      "source_relation": "IsDescribedBy",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6468307068943978,
+        "similarity_score": 0.5600265860557556,
+        "citation_text_length": 1294,
         "dataset_text_length": 2259,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -742,29 +781,6 @@
       }
     },
     {
-      "title": "Accurate Decoding of Natural Sentences from Non-Invasive Brain Recordings",
-      "author": "Lucy Zhang, Jarod Lévy, Cédric Rommel, Jérémy Rapin, Corentin Bel, Julie Bonnaire, Daniel Nieto, Pierre Bourdillon, S. Pinet, Stéphane d’Ascoli, Thomas Moreau, Jean-Rémi King",
-      "venue": "n/a",
-      "year": 0,
-      "url": "n/a",
-      "cited_by": 0,
-      "abstract": null,
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41467-025-65499-0",
-      "source_relation": "IsDescribedBy",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5937066674232483,
-        "similarity_score": 0.5937066674232483,
-        "citation_text_length": 278,
-        "dataset_text_length": 2259,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "AI and Neuroengineering Powered Slavery: a Distopian Future",
       "author": "Tianqing Zhu",
       "venue": "n/a",
@@ -790,17 +806,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:54:27.756582+00:00",
+    "scoring_date": "2026-08-25T12:21:42.183943+00:00",
     "dataset_text_length": 2259,
-    "num_citations_scored": 31,
+    "num_citations_scored": 32,
     "summary_stats": {
-      "mean_confidence": 0.5397528176177895,
-      "median_confidence": 0.5585190582275392,
-      "std_confidence": 0.11633998661084063,
+      "mean_confidence": 0.5409076525061391,
+      "median_confidence": 0.5453293079137803,
+      "std_confidence": 0.11569871891818746,
       "min_confidence": 0.21787229664623742,
       "max_confidence": 0.8118747568130494,
       "high_confidence_count": 2,
-      "medium_confidence_count": 27,
+      "medium_confidence_count": 28,
       "low_confidence_count": 2
     }
   }

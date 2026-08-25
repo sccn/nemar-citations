@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000249",
-  "num_citations": 32,
-  "date_last_updated": "2026-08-17T10:14:08.637660+00:00",
+  "num_citations": 30,
+  "date_last_updated": "2026-08-25T10:16:57.177510+00:00",
   "metadata": {
-    "total_cumulative_citations": 365,
-    "fetch_date": "2026-08-17T10:14:08.637660+00:00",
+    "total_cumulative_citations": 368,
+    "fetch_date": "2026-08-25T10:16:57.177510+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -56,29 +56,23 @@
       "10.82901/nemar.nm000249"
     ],
     "keywords": [
+      "visuomotor learning",
+      "real-time decoding",
+      "difficulty decoding",
+      "closed-loop adaptation",
       "EEG",
       "Brain-Computer Interfaces",
-      "visuomotor control",
-      "visuomotor learning",
       "workload assessment",
-      "closed-loop adaptation",
-      "adaptive difficulty",
-      "real-time decoding",
+      "simulated flying",
       "challenge point",
-      "simulated flying"
+      "brain-machine interface"
     ],
-    "methods_description": "EEG data were acquired using a Biosemi ActiveTwo system with 64 channels at 256 Hz sampling rate (downsampled from 2048 Hz). Preprocessing included bandpass filtering (1-40 Hz, Butterworth order 14), SPHARA spatial filtering, common-average re-referencing, ICA-based EOG artifact removal, amplitude thresholding (>50 µV rejection), and removal of peripheral electrodes, resulting in 25 central channels for analysis. Subjects performed a visuomotor control task piloting a simulated drone via joystick while navigating circular waypoints of varying difficulty levels. The experimental design included an offline session with 32 trajectories at varying difficulty levels (v-shaped design) and two online sessions with adaptive difficulty adjustment.",
+    "methods_description": "EEG data were acquired using a Biosemi ActiveTwo system with 64 EEG channels and 3 EOG channels at 256 Hz sampling rate in a 10-10 montage. Subjects performed a visuomotor task controlling simulated drone flight via joystick across three sessions (1 offline, 2 online) with varying difficulty levels. Preprocessing included downsampling from 2048 Hz, bandpass filtering (1-40 Hz), SPHARA 20th order spatial filtering, common-average re-referencing, ICA-based artifact removal, peripheral electrode removal (retaining 25 central channels), and amplitude thresholding (>50 µV rejection). Classification employed LDA and elastic net regularization on power spectral density features with leave-one-pair-out cross-validation.",
     "funding": [
       {
         "funder_name": "Swiss National Centres of Competence in Research (NCCR) Robotics"
       }
-    ],
-    "searched_accessions": [
-      "nm000249"
-    ],
-    "num_accession_mentions": 2,
-    "num_dataset_citations": 2,
-    "num_datapaper_citations": 30
+    ]
   },
   "citation_details": [
     {
@@ -87,7 +81,7 @@
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2021,
       "url": "https://doi.org/10.1109/tbme.2021.3092206",
-      "cited_by": 70,
+      "cited_by": 71,
       "abstract": "OBJECTIVE: Cognitive workload monitoring (CWM) can enhance human-machine interaction by supporting task execution assistance considering the operator's cognitive state. Therefore, we propose a machine learning design methodology and a data processing strategy to enable CWM on resource-constrained wearable devices. METHODS: Our CWM solution is built upon edge computing on a simple wearable system, with only four peripheral channels of electroencephalography (EEG). We assess our solution on experimental data from 24 volunteers. Moreover, to overcome the system's memory constraints, we adopt an optimization strategy for model size reduction and a multi-batch data processing scheme for optimizing RAM memory footprint. Finally, we implement our data processing strategy on a state-of-the-art wearable platform and assess its execution and system battery life. RESULTS: We achieve an accuracy of 74.5% and a 74.0% geometric mean between sensitivity and specificity for CWM classification on unsee",
       "doi": "10.1109/tbme.2021.3092206",
       "pmid": "34166183",
@@ -133,7 +127,7 @@
       "venue": "IEEE Journal of Biomedical and Health Informatics",
       "year": 2022,
       "url": "https://doi.org/10.1109/jbhi.2022.3186625",
-      "cited_by": 35,
+      "cited_by": 36,
       "abstract": "In search and rescue missions, drone operations are challenging and cognitively demanding. High levels of cognitive workload can affect rescuers' performance, leading to failure with catastrophic outcomes. To face this problem, we propose a machine learning algorithm for real-time cognitive workload monitoring to understand if a search and rescue operator has to be replaced or if more resources are required. Our multimodal cognitive workload monitoring model combines the information of 25 features extracted from physiological signals, such as respiration, electrocardiogram, photoplethysmogram, and skin temperature, acquired in a noninvasive way. To reduce both subject and day inter-variability of the signals, we explore different feature normalization techniques, and introduce a novel weighted-learning method based on support vector machines suitable for subject-specific optimizations. On an unseen test set acquired from 34 volunteers, our proposed subject-specific model is able to dis",
       "doi": "10.1109/jbhi.2022.3186625",
       "pmid": "35759604",
@@ -226,7 +220,7 @@
       "year": 2024,
       "url": "https://doi.org/10.3389/fnins.2024.1323190",
       "cited_by": 10,
-      "abstract": "Lack of situation awareness (SA) is the primary cause of human errors when operating forklifts, so determining the SA level of the forklift operator is crucial to the safety of forklift operations. An EEG recognition approach of forklift operator SA in actual settings was presented in order to address the issues with invasiveness, subjectivity, and intermittency of existing measuring methods. In this paper, we conducted a field experiment that mimicked a typical forklift operation scenario to verify the differences in EEG states of forklift operators with different SA levels and investigate the correlation of multi-band combination features of each brain region of forklift operators with SA. Based on the sensitive EEG combination indexes, Support Vector Mechanism was used to construct a forklift operator SA recognition model. The results revealed that there were differences between forklift operators with high and low SA in the θ , α , and β frequency bands in zones F, C, P, and O; com",
+      "abstract": "Lack of situation awareness (SA) is the primary cause of human errors when operating forklifts, so determining the SA level of the forklift operator is crucial to the safety of forklift operations. An EEG recognition approach of forklift operator SA in actual settings was presented in order to address the issues with invasiveness, subjectivity, and intermittency of existing measuring methods. In this paper, we conducted a field experiment that mimicked a typical forklift operation scenario to verify the differences in EEG states of forklift operators with different SA levels and investigate the correlation of multi-band combination features of each brain region of forklift operators with SA. Based on the sensitive EEG combination indexes, Support Vector Mechanism was used to construct a forklift operator SA recognition model. The results revealed that there were differences between forklift operators with high and low SA in the θ, α, and β frequency bands in zones F, C, P, and O; combi",
       "doi": "10.3389/fnins.2024.1323190",
       "pmid": "38445257",
       "openalex_id": "W4391968116",
@@ -234,8 +228,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5400577805936336,
-        "similarity_score": 0.46758249402046204,
+        "confidence_score": 0.5358023312687874,
+        "similarity_score": 0.4638981223106384,
         "citation_text_length": 1230,
         "dataset_text_length": 2294,
         "scoring_method": "sentence_transformers",
@@ -294,7 +288,7 @@
       "venue": "Drones",
       "year": 2025,
       "url": "https://doi.org/10.3390/drones9110760",
-      "cited_by": 5,
+      "cited_by": 6,
       "abstract": "This research is based on a systematic review of machine learning (ML) approaches for the cognitive load (CL) assessment of applications for unmanned aerial system (UAS) operator training. The review synthesises evidence on how ML techniques have been applied to assess CL using diverse data sources, including physiological signals (e.g., EEG, HRV), behavioural measures (e.g., eye-tracking), and performance indicators. It highlights the effectiveness of models such as Support Vector Machines (SVMs), Random Forests (RFs), and advanced deep learning (DL) architectures such as Long Short-Term Memory (LSTM), as well as how the use of different methods affects the performance of ML models, with studies reporting accuracies of up to 98%. The findings also indicate that, compared with traditional UAS training approaches, ML approaches can enhance training by providing adaptive assessment, with methodological factors such as model selection, data preprocessing, and validation being central to M",
       "doi": "10.3390/drones9110760",
       "pmid": null,
@@ -404,29 +398,6 @@
       }
     },
     {
-      "title": "A spatiotemporal separable graph convolutional network for oddball paradigm classification under different cognitive-load scenarios",
-      "author": "Yuangan Li, Ke Li, Shaofan Wang, Haopeng Wu, Pengjiao Li",
-      "venue": "Expert Systems with Applications",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.eswa.2024.125303",
-      "cited_by": 3,
-      "abstract": null,
-      "doi": "10.1016/j.eswa.2024.125303",
-      "pmid": null,
-      "openalex_id": "W4402222650",
-      "source_doi": "10.1109/thms.2020.3038339",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4553493842482567,
-        "similarity_score": 0.43366608023643494,
-        "citation_text_length": 246,
-        "dataset_text_length": 2294,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Comprehensive assessment of mental workload of armored vehicle operators based on SVM and DS evidence theory",
       "author": "Qingyang Huang, Houjie Sun, Yuning Wei, Jingyuan Zhang, Xiaoping Jin",
       "venue": "Cognition Technology & Work",
@@ -444,6 +415,29 @@
         "confidence_score": 0.3373732924461365,
         "similarity_score": 0.321307897567749,
         "citation_text_length": 230,
+        "dataset_text_length": 2294,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A spatiotemporal separable graph convolutional network for oddball paradigm classification under different cognitive-load scenarios",
+      "author": "Yuangan Li, Ke Li, Shaofan Wang, Haopeng Wu, Pengjiao Li",
+      "venue": "Expert Systems with Applications",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.eswa.2024.125303",
+      "cited_by": 3,
+      "abstract": null,
+      "doi": "10.1016/j.eswa.2024.125303",
+      "pmid": null,
+      "openalex_id": "W4402222650",
+      "source_doi": "10.1109/thms.2020.3038339",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4553493842482567,
+        "similarity_score": 0.43366608023643494,
+        "citation_text_length": 246,
         "dataset_text_length": 2294,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -548,7 +542,7 @@
       "year": 2022,
       "url": "https://doi.org/10.36227/techrxiv.21669248",
       "cited_by": 1,
-      "abstract": "&lt;p&gt;This work has been submitted to the IEEE Transactions on Affective Computing for possible publication. Copyright may be transferred without notice, after which this version may no longer be accessible.&lt;/p&gt; &lt;p&gt;&lt;br&gt;&lt;/p&gt; &lt;p&gt;Overburdening an individual’s limited cognitive resources, especially when engaged in critical operations, may result in disastrous mishaps. Regular assessments of individuals’ physiological states and associated performance become vital to improving their mission readiness in such scenarios. As a key step towards a field-ready system, this treatise discusses the experimental findings pertinent to affective physiological state modulation and predictive modeling of marksmanship during a Go/NoGo shooting task in an immersive virtual reality environment. The shooting exercise requires the participants to hit the enemy targets and spare the friendly targets. The shooting difficulty levels (SDLs) are introduced by modulating the subjec",
+      "abstract": "This work has been submitted to the IEEE Transactions on Affective Computing for possible publication. Copyright may be transferred without notice, after which this version may no longer be accessible. Overburdening an individual’s limited cognitive resources, especially when engaged in critical operations, may result in disastrous mishaps. Regular assessments of individuals’ physiological states and associated performance become vital to improving their mission readiness in such scenarios. As a key step towards a field-ready system, this treatise discusses the experimental findings pertinent to affective physiological state modulation and predictive modeling of marksmanship during a Go/NoGo shooting task in an immersive virtual reality environment. The shooting exercise requires the participants to hit the enemy targets and spare the friendly targets. The shooting difficulty levels (SDLs) are introduced by modulating the subject-specific target exposure time. The physiological signals",
       "doi": "10.36227/techrxiv.21669248",
       "pmid": null,
       "openalex_id": "W4311111030",
@@ -556,8 +550,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4927152657508851,
-        "similarity_score": 0.4265933036804199,
+        "confidence_score": 0.49195964097976685,
+        "similarity_score": 0.42593908309936523,
         "citation_text_length": 1321,
         "dataset_text_length": 2294,
         "scoring_method": "sentence_transformers",
@@ -571,7 +565,7 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.nm000249.v1.0.0",
       "cited_by": 0,
-      "abstract": "This dataset comprises EEG recordings from 13 healthy subjects performing a visuomotor control task involving simulated drone piloting through waypoints of varying difficulty levels. The study investigates real-time decoding of subjective difficulty from EEG signals to enable adaptive closed-loop learning, comparing algorithmic difficulty adjustment with subject-controlled progression. Data include offline and online sessions with preprocessed EEG recordings sampled at 256 Hz. The final dataset contains 25 central channels (selected from 64 acquired channels after preprocessing and peripheral electrode removal), along with behavioral markers of task performance.",
+      "abstract": "This dataset comprises EEG recordings from 13 healthy subjects performing a visuomotor learning task involving simulated drone piloting through waypoints of varying difficulty levels. The study investigates real-time decoding of subjective difficulty from EEG signals to enable adaptive closed-loop learning, comparing algorithmic difficulty adjustment with subject-controlled progression. Data include offline and online sessions with preprocessed 25-channel central EEG recordings (from original 64-channel acquisition) sampled at 256 Hz, alongside behavioral markers of task performance.",
       "doi": "10.82901/nemar.nm000249.v1.0.0",
       "pmid": null,
       "openalex_id": "W7163348259",
@@ -579,9 +573,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.9817869275808336,
-        "similarity_score": 0.8500319719314575,
-        "citation_text_length": 828,
+        "confidence_score": 0.9764061301946642,
+        "similarity_score": 0.845373272895813,
+        "citation_text_length": 748,
         "dataset_text_length": 2294,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -770,72 +764,22 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Inheritance of a Cancer-Associated <i>MLH1</i> Germ-Line Epimutation",
-      "author": "Megan P. Hitchins, Justin Wong, Graeme Suthers, Catherine M. Suter, David I. K. Martin, Nicholas J. Hawkins, Robyn L. Ward",
-      "venue": "New England Journal of Medicine",
-      "year": 2007,
-      "url": "https://doi.org/10.1056/nejmoa064522",
-      "cited_by": 411,
-      "abstract": "Persons who have hypermethylation of one allele of MLH1 in somatic cells throughout the body (a germ-line epimutation) have a predisposition for the development of cancer in a pattern typical of hereditary nonpolyposis colorectal cancer. By studying the families of two such persons, we found evidence that the epimutation was transmitted from a mother to her son but was erased in his spermatozoa. The affected maternal allele was inherited by three other siblings from these two families, but in those offspring the allele had reverted to the normal active state. These findings demonstrate a novel pattern of inheritance of cancer susceptibility and are consistent with transgenerational epigenetic inheritance.",
-      "doi": "10.1056/nejmoa064522",
-      "pmid": "17301300",
-      "openalex_id": "W1974439810",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000249",
-      "confidence_scoring": {
-        "confidence_score": 0.13084004372358324,
-        "similarity_score": 0.11894549429416656,
-        "citation_text_length": 974,
-        "dataset_text_length": 2294,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Assessing pathogenicity of MLH1 variants by co-expression of human MLH1 and PMS2genes in yeast",
-      "author": "Matjaž Vogelsang, Aleksandra Comino, Neja Zupanec, Petra Hudler, Radovan Komel",
-      "venue": "BMC Cancer",
-      "year": 2009,
-      "url": "https://doi.org/10.1186/1471-2407-9-382",
-      "cited_by": 17,
-      "abstract": "BACKGROUND: Loss of DNA mismatch repair (MMR) in humans, mainly due to mutations in the hMLH1 gene, is linked to hereditary nonpolyposis colorectal cancer (HNPCC). Because not all MLH1 alterations result in loss of MMR function, accurate characterization of variants and their classification in terms of their effect on MMR function is essential for reliable genetic testing and effective treatment. To date, in vivo assays for functional characterization of MLH1 mutations performed in various model systems have used episomal expression of the modified MMR genes. We describe here a novel approach to determine accurately the functional significance of hMLH1 mutations in vivo, based on co-expression of human MLH1 and PMS2 in yeast cells. METHODS: Yeast MLH1 and PMS1 genes, whose protein products form the MutLalpha complex, were replaced by human orthologs directly on yeast chromosomes by homologous recombination, and the resulting MMR activity was tested. RESULTS: The yeast strain co-expressing hMLH1 and hPMS2 exhibited the same mutation rate as the wild-type. Eight cancer-related MLH1 variants were introduced, using the same approach, into the prepared yeast model, and their effect on MMR function was determined. Five variants (A92P, S93G, I219V, K618R and K618T) were classified as non-pathogenic, whereas variants T117M, Y646C and R659Q were characterized as pathogenic. CONCLUSION: Results of our in vivo yeast-based approach correlate well with clinical data in five out of seven hMLH1 variants and the described model was thus shown to be useful for functional characterization of MLH1 variants in cancer patients found throughout the entire coding region of the gene.",
-      "doi": "10.1186/1471-2407-9-382",
-      "pmid": "19863800",
-      "openalex_id": "W2031899685",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000249",
-      "confidence_scoring": {
-        "confidence_score": 0.19170660972595216,
-        "similarity_score": 0.17427873611450195,
-        "citation_text_length": 1721,
-        "dataset_text_length": 2294,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-19T10:09:27.268149+00:00",
+    "scoring_date": "2026-08-25T11:28:18.290712+00:00",
     "dataset_text_length": 2294,
-    "num_citations_scored": 32,
+    "num_citations_scored": 30,
     "summary_stats": {
-      "mean_confidence": 0.4979192888760008,
-      "median_confidence": 0.5032945632934571,
-      "std_confidence": 0.15694604934934545,
-      "min_confidence": 0.13084004372358324,
-      "max_confidence": 0.9817869275808336,
+      "mean_confidence": 0.5200159573033453,
+      "median_confidence": 0.5084878141433,
+      "std_confidence": 0.13410871345474015,
+      "min_confidence": 0.28257566235959536,
+      "max_confidence": 0.9764061301946642,
       "high_confidence_count": 2,
       "medium_confidence_count": 24,
-      "low_confidence_count": 6
+      "low_confidence_count": 4
     }
   }
 }

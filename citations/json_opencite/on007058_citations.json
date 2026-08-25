@@ -1,10 +1,10 @@
 {
   "dataset_id": "on007058",
   "num_citations": 0,
-  "date_last_updated": "2026-08-17T10:56:15.279242+00:00",
+  "date_last_updated": "2026-08-25T10:59:17.492003+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-17T10:56:15.279242+00:00",
+    "fetch_date": "2026-08-25T10:59:17.492003+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 1,
@@ -16,7 +16,7 @@
       {
         "identifier": "10.21105/joss.01896",
         "identifier_type": "doi",
-        "source_relation": "IsDescribedBy",
+        "source_relation": "References",
         "classification": "methodology",
         "kept": false,
         "paper_title": "MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis",
@@ -28,7 +28,7 @@
       {
         "identifier": "10.1038/s41597-019-0104-8",
         "identifier_type": "doi",
-        "source_relation": "IsDescribedBy",
+        "source_relation": "References",
         "classification": "methodology",
         "kept": false,
         "paper_title": "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography",
@@ -56,25 +56,18 @@
     "keywords": [
       "EEG",
       "silent reading",
+      "language comprehension",
       "word processing",
-      "narrative comprehension",
-      "auditory representations",
-      "event-related potentials"
+      "auditory representation",
+      "BIDS"
     ],
-    "methods_description": "EEG data were collected while participants viewed word stimuli forming naturalistic narratives presented on a grey background with central fixation. Stimulus presentation included trigger markers for word onsets in unique stories (S111) and repeated stories (S71), with run onset (S71) and run end (S78) markers. Data are provided in BrainVision format (.eeg, .vhdr, .vmrk files) organized according to BIDS specification.",
-    "funding": [],
-    "searched_accessions": [
-      "on007058",
-      "ds007058"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 0
+    "methods_description": "EEG data were recorded in BrainVision format (.eeg, .vhdr, .vmrk) while participants viewed word stimuli forming naturalistic narratives on a grey background with a central fixation cross. Event annotations mark word onsets in unique and repeated stories, as well as run onset and offset triggers. Processed derivatives include epoch-level EEG data organized by channel, metadata tables matching sessions to stories and runs, and story/expectation indices for each epoch.",
+    "funding": []
   },
   "citation_details": [],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:51:52.920063+00:00",
+    "scoring_date": "2026-08-25T12:18:08.935075+00:00",
     "dataset_text_length": 2212,
     "num_citations_scored": 0
   }
