@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000129",
   "num_citations": 100,
-  "date_last_updated": "2026-08-17T10:02:28.260929+00:00",
+  "date_last_updated": "2026-08-25T10:03:14.698853+00:00",
   "metadata": {
-    "total_cumulative_citations": 2958,
-    "fetch_date": "2026-08-17T10:02:28.260929+00:00",
+    "total_cumulative_citations": 2967,
+    "fetch_date": "2026-08-25T10:03:14.698853+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -44,13 +44,14 @@
     ],
     "keywords": [
       "SSVEP",
-      "brain-computer interfaces",
       "EEG",
+      "brain-computer interface",
       "benchmark dataset",
       "visual evoked potentials",
-      "frequency modulation"
+      "joint frequency and phase modulation",
+      "cued-spelling"
     ],
-    "methods_description": "EEG data were acquired using a Synamps2 amplifier (Neuroscan) with 64 channels in the international 10-10 system, referenced to Cz, and sampled at 1000 Hz then downsampled to 250 Hz. Stimulation duration was 2 seconds for experienced subjects (S1-S15) and 3 seconds for naive subjects (S16-S70), with a 0.5-second visual cue. Subjects completed 4 blocks of 40 trials each using a 5×8 QWERTY virtual keyboard with JFPM visual flicker stimuli.",
+    "methods_description": "EEG data were acquired using a Synamps2 amplifier (Neuroscan) with 64 channels in the international 10-10 system, referenced to Cz, and sampled at 1000 Hz then downsampled to 250 Hz. Stimulation duration was 2 seconds for experienced subjects (S1-S15) and 3 seconds for naive subjects (S16-S70), with a 0.5-second visual cue. Stimuli employed joint frequency and phase modulation (JFPM) with 40 targets arranged in a 5×8 QWERTY keyboard layout. Each subject completed 4 blocks of 40 trials. Data were preprocessed with a 50 Hz notch filter and zero-phase FIR filtering.",
     "funding": [
       {
         "funder_name": "National Key Research and Development Program of China",
@@ -68,13 +69,7 @@
         "funder_name": "National Natural Science Foundation of China",
         "award_number": "61431007"
       }
-    ],
-    "searched_accessions": [
-      "nm000129"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 100
+    ]
   },
   "citation_details": [
     {
@@ -83,7 +78,7 @@
       "venue": "Brain Sciences",
       "year": 2021,
       "url": "https://doi.org/10.3390/brainsci11010043",
-      "cited_by": 281,
+      "cited_by": 282,
       "abstract": "Over the last few decades, the Brain-Computer Interfaces have been gradually making their way to the epicenter of scientific interest. Many scientists from all around the world have contributed to the state of the art in this scientific domain by developing numerous tools and methods for brain signal acquisition and processing. Such a spectacular progress would not be achievable without accompanying technological development to equip the researchers with the proper devices providing what is absolutely necessary for any kind of discovery as the core of every analysis: the data reflecting the brain activity. The common effort has resulted in pushing the whole domain to the point where the communication between a human being and the external world through BCI interfaces is no longer science fiction but nowadays reality. In this work we present the most relevant aspects of the BCIs and all the milestones that have been made over nearly 50-year history of this research domain. We mention pe",
       "doi": "10.3390/brainsci11010043",
       "pmid": "33401571",
@@ -152,7 +147,7 @@
       "venue": "Neural Networks",
       "year": 2023,
       "url": "https://doi.org/10.1016/j.neunet.2023.04.045",
-      "cited_by": 124,
+      "cited_by": 126,
       "abstract": null,
       "doi": "10.1016/j.neunet.2023.04.045",
       "pmid": "37209444",
@@ -175,7 +170,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2023,
       "url": "https://doi.org/10.3389/fnins.2023.1148855",
-      "cited_by": 104,
+      "cited_by": 105,
       "abstract": "Background: The effective analysis methods for steady-state visual evoked potential (SSVEP) signals are critical in supporting an early diagnosis of glaucoma. Most efforts focused on adopting existing techniques to the SSVEPs-based brain-computer interface (BCI) task rather than proposing new ones specifically suited to the domain. Method: Given that electroencephalogram (EEG) signals possess temporal, regional, and synchronous characteristics of brain activity, we proposed a transformer-based EEG analysis model known as EEGformer to capture the EEG characteristics in a unified manner. We adopted a one-dimensional convolution neural network (1DCNN) to automatically extract EEG-channel-wise features. The output was fed into the EEGformer, which is sequentially constructed using three components: regional, synchronous, and temporal transformers. In addition to using a large benchmark database (BETA) toward SSVEP-BCI application to validate model performance, we compared the EEGformer to ",
       "doi": "10.3389/fnins.2023.1148855",
       "pmid": "37034169",
@@ -198,7 +193,7 @@
       "venue": "Scientific Data",
       "year": 2023,
       "url": "https://doi.org/10.1038/s41597-023-02650-w",
-      "cited_by": 95,
+      "cited_by": 96,
       "abstract": "Affective computing based on electroencephalogram (EEG) has gained increasing attention for its objectivity in measuring emotional states. While positive emotions play a crucial role in various real-world applications, such as human-computer interactions, the state-of-the-art EEG datasets have primarily focused on negative emotions, with less consideration given to positive emotions. Meanwhile, these datasets usually have a relatively small sample size, limiting exploration of the important issue of cross-subject affective computing. The proposed Finer-grained Affective Computing EEG Dataset (FACED) aimed to address these issues by recording 32-channel EEG signals from 123 subjects. During the experiment, subjects watched 28 emotion-elicitation video clips covering nine emotion categories (amusement, inspiration, joy, tenderness; anger, fear, disgust, sadness, and neutral emotion), providing a fine-grained and balanced categorization on both the positive and negative sides of emotion. ",
       "doi": "10.1038/s41597-023-02650-w",
       "pmid": "37880266",
@@ -354,6 +349,29 @@
       }
     },
     {
+      "title": "An Analysis of Deep Learning Models in SSVEP-Based BCI: A Survey",
+      "author": "Dongcen Xu, Fengzhen Tang, Yiping Li, Qifeng Zhang, Xisheng Feng",
+      "venue": "Brain Sciences",
+      "year": 2023,
+      "url": "https://doi.org/10.3390/brainsci13030483",
+      "cited_by": 51,
+      "abstract": "The brain-computer interface (BCI), which provides a new way for humans to directly communicate with robots without the involvement of the peripheral nervous system, has recently attracted much attention. Among all the BCI paradigms, BCIs based on steady-state visual evoked potentials (SSVEPs) have the highest information transfer rate (ITR) and the shortest training time. Meanwhile, deep learning has provided an effective and feasible solution for solving complex classification problems in many fields, and many researchers have started to apply deep learning to classify SSVEP signals. However, the designs of deep learning models vary drastically. There are many hyper-parameters that influence the performance of the model in an unpredictable way. This study surveyed 31 deep learning models (2011-2023) that were used to classify SSVEP signals and analyzed their design aspects including model input, model structure, performance measure, etc. Most of the studies that were surveyed in this",
+      "doi": "10.3390/brainsci13030483",
+      "pmid": "36979293",
+      "openalex_id": "W4324058344",
+      "source_doi": "10.3389/fnins.2020.00627",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6744547265768053,
+        "similarity_score": 0.5839434862136841,
+        "citation_text_length": 1181,
+        "dataset_text_length": 2292,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Data Augmentation of SSVEPs Using Source Aliasing Matrix Estimation for Brain–Computer Interfaces",
       "author": "Ruixin Luo, Minpeng Xu, Xiaoyu Zhou, Xiaolin Xiao, Tzyy‐Ping Jung, Dong Ming",
       "venue": "IEEE Transactions on Biomedical Engineering",
@@ -377,23 +395,23 @@
       }
     },
     {
-      "title": "An Analysis of Deep Learning Models in SSVEP-Based BCI: A Survey",
-      "author": "Dongcen Xu, Fengzhen Tang, Yiping Li, Qifeng Zhang, Xisheng Feng",
-      "venue": "Brain Sciences",
-      "year": 2023,
-      "url": "https://doi.org/10.3390/brainsci13030483",
-      "cited_by": 50,
-      "abstract": "The brain-computer interface (BCI), which provides a new way for humans to directly communicate with robots without the involvement of the peripheral nervous system, has recently attracted much attention. Among all the BCI paradigms, BCIs based on steady-state visual evoked potentials (SSVEPs) have the highest information transfer rate (ITR) and the shortest training time. Meanwhile, deep learning has provided an effective and feasible solution for solving complex classification problems in many fields, and many researchers have started to apply deep learning to classify SSVEP signals. However, the designs of deep learning models vary drastically. There are many hyper-parameters that influence the performance of the model in an unpredictable way. This study surveyed 31 deep learning models (2011-2023) that were used to classify SSVEP signals and analyzed their design aspects including model input, model structure, performance measure, etc. Most of the studies that were surveyed in this",
-      "doi": "10.3390/brainsci13030483",
-      "pmid": "36979293",
-      "openalex_id": "W4324058344",
+      "title": "Transformers in biosignal analysis: A review",
+      "author": "Ayman Anwar, Yassin Khalifa, James L. Coyle, Ervin Sejdić",
+      "venue": "Information Fusion",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.inffus.2024.102697",
+      "cited_by": 48,
+      "abstract": null,
+      "doi": "10.1016/j.inffus.2024.102697",
+      "pmid": null,
+      "openalex_id": "W4402714520",
       "source_doi": "10.3389/fnins.2020.00627",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6744547265768053,
-        "similarity_score": 0.5839434862136841,
-        "citation_text_length": 1181,
+        "confidence_score": 0.4601839408278465,
+        "similarity_score": 0.4382704198360443,
+        "citation_text_length": 146,
         "dataset_text_length": 2292,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -446,36 +464,13 @@
       }
     },
     {
-      "title": "Transformers in biosignal analysis: A review",
-      "author": "Ayman Anwar, Yassin Khalifa, James L. Coyle, Ervin Sejdić",
-      "venue": "Information Fusion",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.inffus.2024.102697",
-      "cited_by": 47,
-      "abstract": null,
-      "doi": "10.1016/j.inffus.2024.102697",
-      "pmid": null,
-      "openalex_id": "W4402714520",
-      "source_doi": "10.3389/fnins.2020.00627",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4601839408278465,
-        "similarity_score": 0.4382704198360443,
-        "citation_text_length": 146,
-        "dataset_text_length": 2292,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Galea: A physiological sensing system for behavioral research in Virtual Environments",
       "author": "Guillermo Bernal, Nelson Hidalgo, Conor Russomanno, Pattie Maes",
       "venue": "2022 IEEE Conference on Virtual Reality and 3D User Interfaces (VR)",
       "year": 2022,
       "url": "https://doi.org/10.1109/vr51125.2022.00024",
       "cited_by": 43,
-      "abstract": "The pairing of Virtual Reality technology with Physiological Sensing has gained much interest in clinical settings and beyond: from developing novel methods for diagnosis of perception and cognition impairments, biofeedback for anxiety treatment, to enhancing everyday practices such as self-guided meditation. However, conducting this type of research does not come without challenges. For example, accessing the equipment for recording data from the user and synchronizing physiological response data with the stimuli or interactive environment are not trivial tasks, and generating virtual content in response to the user&#x2019;s real-time data is costly and complex. This paper presents Galea, a device for multi-modal signal acquisition able to measure the physiological response of a user when experiencing virtual content, enabling behavioral, affective computing , and human-computer interaction research and applications to access data from the Parasympathetic nervous system and Sympatheti",
+      "abstract": "The pairing of Virtual Reality technology with Physiological Sensing has gained much interest in clinical settings and beyond: from developing novel methods for diagnosis of perception and cognition impairments, biofeedback for anxiety treatment, to enhancing everyday practices such as self-guided meditation. However, conducting this type of research does not come without challenges. For example, accessing the equipment for recording data from the user and synchronizing physiological response data with the stimuli or interactive environment are not trivial tasks, and generating virtual content in response to the user’s real-time data is costly and complex. This paper presents Galea, a device for multi-modal signal acquisition able to measure the physiological response of a user when experiencing virtual content, enabling behavioral, affective computing , and human-computer interaction research and applications to access data from the Parasympathetic nervous system and Sympathetic nervo",
       "doi": "10.1109/vr51125.2022.00024",
       "pmid": null,
       "openalex_id": "W4224276710",
@@ -483,8 +478,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4527587834000588,
-        "similarity_score": 0.39199894666671753,
+        "confidence_score": 0.46034074410796166,
+        "similarity_score": 0.398563414812088,
         "citation_text_length": 1254,
         "dataset_text_length": 2292,
         "scoring_method": "sentence_transformers",
@@ -653,7 +648,7 @@
       }
     },
     {
-      "title": "An open dataset for human SSVEPs in the frequency range of 1-60 Hz",
+      "title": "An open dataset for human SSVEPs in the frequency range of 1-60 Hz",
       "author": "Meng Gu, Weihua Pei, Xiaorong Gao, Yijun Wang",
       "venue": "Scientific Data",
       "year": 2024,
@@ -667,8 +662,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.8742315620183946,
-        "similarity_score": 0.7569104433059692,
+        "confidence_score": 0.8747894686460496,
+        "similarity_score": 0.757393479347229,
         "citation_text_length": 1165,
         "dataset_text_length": 2292,
         "scoring_method": "sentence_transformers",
@@ -842,7 +837,7 @@
       "venue": "IEEE Reviews in Biomedical Engineering",
       "year": 2024,
       "url": "https://doi.org/10.1109/rbme.2024.3492381",
-      "cited_by": 23,
+      "cited_by": 24,
       "abstract": "Advancements in wearable sensor technologies and the digitization of medical records have contributed to the unprecedented ubiquity of biomedical time series data. Data-driven models have tremendous potential to assist clinical diagnosis and improve patient care by improving long-term monitoring capabilities, facilitating early disease detection and intervention, as well as promoting personalized healthcare delivery. However, accessing extensively labeled datasets to train data-hungry deep learning models encounters many barriers, such as long-tail distribution of rare diseases, cost of annotation, privacy and security concerns, data-sharing regulations, and ethical considerations. An emerging approach to overcome the scarcity of labeled data is to augment AI methods with human-like capabilities to leverage past experiences to learn new tasks with limited examples, called few-shot learning. This survey provides a comprehensive review and comparison of few-shot learning methods for biom",
       "doi": "10.1109/rbme.2024.3492381",
       "pmid": "39504299",
@@ -1050,7 +1045,7 @@
       "year": 2023,
       "url": "https://doi.org/10.1088/1741-2552/ad0b8f",
       "cited_by": 17,
-      "abstract": "Abstract Objective . Steady-state visual evoked potential (SSVEP)-based brain-computer interface (BCI) is a promising technology that can achieve high information transfer rate (ITR) with supervised algorithms such as ensemble task-related component analysis (eTRCA) and task-discriminant component analysis (TDCA). However, training individual models requires a tedious and time-consuming calibration process, which hinders the real-life use of SSVEP-BCIs. A recent data augmentation method, called source aliasing matrix estimation (SAME), can generate new EEG samples from a few calibration trials. But SAME does not exploit the information across stimuli as well as only reduces the number of calibration trials per command, so it still has some limitations. Approach . This study proposes an extended version of SAME, called multi-stimulus SAME (msSAME), which exploits the similarity of the aliasing matrix across frequencies to enhance the performance of SSVEP-BCI with insufficient calibratio",
+      "abstract": "Abstract Objective. Steady-state visual evoked potential (SSVEP)-based brain-computer interface (BCI) is a promising technology that can achieve high information transfer rate (ITR) with supervised algorithms such as ensemble task-related component analysis (eTRCA) and task-discriminant component analysis (TDCA). However, training individual models requires a tedious and time-consuming calibration process, which hinders the real-life use of SSVEP-BCIs. A recent data augmentation method, called source aliasing matrix estimation (SAME), can generate new EEG samples from a few calibration trials. But SAME does not exploit the information across stimuli as well as only reduces the number of calibration trials per command, so it still has some limitations. Approach. This study proposes an extended version of SAME, called multi-stimulus SAME (msSAME), which exploits the similarity of the aliasing matrix across frequencies to enhance the performance of SSVEP-BCI with insufficient calibration ",
       "doi": "10.1088/1741-2552/ad0b8f",
       "pmid": "37948768",
       "openalex_id": "W4388560452",
@@ -1058,8 +1053,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.7075652182102203,
-        "similarity_score": 0.6126105785369873,
+        "confidence_score": 0.6945660763978959,
+        "similarity_score": 0.6013559103012085,
         "citation_text_length": 1220,
         "dataset_text_length": 2292,
         "scoring_method": "sentence_transformers",
@@ -1872,6 +1867,29 @@
       }
     },
     {
+      "title": "Cross-Stimulus Transfer Learning Framework Using Common Period Repetition Components for Fast Calibration of SSVEP-Based BCIs",
+      "author": "Jing Jin, Xinjie He, Ren Xu, Ruiyu Zhao, Xin Long, Xingyu Wang, Andrzej Cichocki",
+      "venue": "IEEE Internet of Things Journal",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/jiot.2024.3488957",
+      "cited_by": 9,
+      "abstract": "The decoding approach of steady-state visual evoked potentials (SSVEPs) based on supervised learning has achieved remarkable results. However, these approaches require extensive calibration efforts to train the mode parameters for each stimulus. To facilitate the calibration process, we proposed a cross-stimulus transfer learning framework using the common periodic repetition components (CSTLF-CPRC) in fast calibration scenario. First, a source stimulus mode was constructed, which can use periodic repetition components to obtain a source synthetic SSVEP template and source ensemble spatial filter. Second, leveraging the common information between period repeated component templates across multistimulus periods, the common source aliasing matrix was further estimated. Finally, leveraging the commonality between target and source stimuli, a cross-stimulus transfer learning mode was constructed for SSVEP cross-stimulus recognition. Offline tests on public datasets show that the CSTLF-CPRC",
+      "doi": "10.1109/jiot.2024.3488957",
+      "pmid": null,
+      "openalex_id": "W4403936909",
+      "source_doi": "10.3389/fnins.2020.00627",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.718318414092064,
+        "similarity_score": 0.6219207048416138,
+        "citation_text_length": 1275,
+        "dataset_text_length": 2292,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Task-oriented EEG denoising generative adversarial network for enhancing SSVEP-BCI performance",
       "author": "Pu Zeng, Liangwei Fan, You Xin Luo, Hui Shen, Dewen Hu",
       "venue": "Journal of Neural Engineering",
@@ -1889,29 +1907,6 @@
         "confidence_score": 0.5459634742140771,
         "similarity_score": 0.47269564867019653,
         "citation_text_length": 1216,
-        "dataset_text_length": 2292,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Cross-Stimulus Transfer Learning Framework Using Common Period Repetition Components for Fast Calibration of SSVEP-Based BCIs",
-      "author": "Jing Jin, Xinjie He, Ren Xu, Ruiyu Zhao, Xin Long, Xingyu Wang, Andrzej Cichocki",
-      "venue": "IEEE Internet of Things Journal",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/jiot.2024.3488957",
-      "cited_by": 8,
-      "abstract": "The decoding approach of steady-state visual evoked potentials (SSVEPs) based on supervised learning has achieved remarkable results. However, these approaches require extensive calibration efforts to train the mode parameters for each stimulus. To facilitate the calibration process, we proposed a cross-stimulus transfer learning framework using the common periodic repetition components (CSTLF-CPRC) in fast calibration scenario. First, a source stimulus mode was constructed, which can use periodic repetition components to obtain a source synthetic SSVEP template and source ensemble spatial filter. Second, leveraging the common information between period repeated component templates across multistimulus periods, the common source aliasing matrix was further estimated. Finally, leveraging the commonality between target and source stimuli, a cross-stimulus transfer learning mode was constructed for SSVEP cross-stimulus recognition. Offline tests on public datasets show that the CSTLF-CPRC",
-      "doi": "10.1109/jiot.2024.3488957",
-      "pmid": null,
-      "openalex_id": "W4403936909",
-      "source_doi": "10.3389/fnins.2020.00627",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.718318414092064,
-        "similarity_score": 0.6219207048416138,
-        "citation_text_length": 1275,
         "dataset_text_length": 2292,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2010,29 +2005,6 @@
       }
     },
     {
-      "title": "A subjective and objective fusion visual fatigue assessment system for different hardware and software parameters in SSVEP-based BCI applications",
-      "author": "Peiyuan Tian, Guanghua Xu, Chengcheng Han, Chenghang Du, Hui Li, Ruiquan Chen, Jieren Xie, Jiahuan Wang, Hanli Jiang, Xiaobing Guo, Sicong Zhang, Qingqiang Wu",
-      "venue": "Scientific Reports",
-      "year": 2024,
-      "url": "https://doi.org/10.1038/s41598-024-79401-3",
-      "cited_by": 8,
-      "abstract": "With the development of brain-computer interface industry, large amounts of related applications have entered people's vision. BCI applications based on steady-state visual evoked potentials (SSVEP) are widely used because they do not require pre-training and have high information transmission rates. However, in the actual use of SSVEP stimulus paradigm, the subjects will produce visual fatigue with the use, and fatigue will affect the transmission efficiency. In this experiment, an experimental environment consisting of two paradigm stimulus frequencies (7.5 Hz, 15 Hz), three resolutions (800 × 600, 1280 × 720, 1920 × 1080) and three refresh rates (120 Hz, 240 Hz, 360 Hz) is set up. The Likert scale is used to collect subjective fatigue and preference scores, and the EEG acquisition system and eye tracker are used to collect objective data. Using the proposed information entropy-CRITIC algorithm to combine subjective and objective indicators, a fatigue assessment system (display scree",
-      "doi": "10.1038/s41598-024-79401-3",
-      "pmid": "39537730",
-      "openalex_id": "W4404312489",
-      "source_doi": "10.3389/fnins.2020.00627",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6626610320806504,
-        "similarity_score": 0.5737324953079224,
-        "citation_text_length": 1360,
-        "dataset_text_length": 2292,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "A reliability-enhanced Brain–Computer Interface via Mixture-of-Graphs-driven Information Fusion",
       "author": "Bo Dai, Yijun Wang, Xinyu Mou, Xiaorong Gao",
       "venue": "Information Fusion",
@@ -2050,6 +2022,29 @@
         "confidence_score": 0.44468641698360445,
         "similarity_score": 0.38500988483428955,
         "citation_text_length": 1195,
+        "dataset_text_length": 2292,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A subjective and objective fusion visual fatigue assessment system for different hardware and software parameters in SSVEP-based BCI applications",
+      "author": "Peiyuan Tian, Guanghua Xu, Chengcheng Han, Chenghang Du, Hui Li, Ruiquan Chen, Jieren Xie, Jiahuan Wang, Hanli Jiang, Xiaobing Guo, Sicong Zhang, Qingqiang Wu",
+      "venue": "Scientific Reports",
+      "year": 2024,
+      "url": "https://doi.org/10.1038/s41598-024-79401-3",
+      "cited_by": 8,
+      "abstract": "With the development of brain-computer interface industry, large amounts of related applications have entered people's vision. BCI applications based on steady-state visual evoked potentials (SSVEP) are widely used because they do not require pre-training and have high information transmission rates. However, in the actual use of SSVEP stimulus paradigm, the subjects will produce visual fatigue with the use, and fatigue will affect the transmission efficiency. In this experiment, an experimental environment consisting of two paradigm stimulus frequencies (7.5 Hz, 15 Hz), three resolutions (800 × 600, 1280 × 720, 1920 × 1080) and three refresh rates (120 Hz, 240 Hz, 360 Hz) is set up. The Likert scale is used to collect subjective fatigue and preference scores, and the EEG acquisition system and eye tracker are used to collect objective data. Using the proposed information entropy-CRITIC algorithm to combine subjective and objective indicators, a fatigue assessment system (display scree",
+      "doi": "10.1038/s41598-024-79401-3",
+      "pmid": "39537730",
+      "openalex_id": "W4404312489",
+      "source_doi": "10.3389/fnins.2020.00627",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6626610320806504,
+        "similarity_score": 0.5737324953079224,
+        "citation_text_length": 1360,
         "dataset_text_length": 2292,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2380,17 +2375,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:07:09.528133+00:00",
+    "scoring_date": "2026-08-25T11:13:25.407448+00:00",
     "dataset_text_length": 2292,
     "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.6294667982831598,
+      "mean_confidence": 0.6294182055383921,
       "median_confidence": 0.6583399499952793,
-      "std_confidence": 0.10621481930589274,
+      "std_confidence": 0.10601643379275572,
       "min_confidence": 0.351555113196373,
       "max_confidence": 0.8784546893835068,
-      "high_confidence_count": 18,
-      "medium_confidence_count": 79,
+      "high_confidence_count": 17,
+      "medium_confidence_count": 80,
       "low_confidence_count": 3
     }
   }

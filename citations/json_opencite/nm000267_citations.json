@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000267",
-  "num_citations": 102,
-  "date_last_updated": "2026-08-17T10:16:05.863583+00:00",
+  "num_citations": 100,
+  "date_last_updated": "2026-08-25T10:18:53.035377+00:00",
   "metadata": {
-    "total_cumulative_citations": 4299,
-    "fetch_date": "2026-08-17T10:16:05.863583+00:00",
+    "total_cumulative_citations": 4323,
+    "fetch_date": "2026-08-25T10:18:53.035377+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -45,13 +45,14 @@
     "keywords": [
       "Brain-Computer Interfaces",
       "Electroencephalography",
+      "Near-Infrared Spectroscopy",
       "motor imagery",
-      "near-infrared spectroscopy",
       "hybrid BCI",
       "mental arithmetic",
-      "multimodal neuroimaging"
+      "multimodal neuroimaging",
+      "open access dataset"
     ],
-    "methods_description": "EEG data were recorded at 1000 Hz using 30 active electrodes with a BrainAmp amplifier, referenced to linked mastoids, and downsampled to 200 Hz. NIRS data were collected at 12.5 Hz using NIRScout with 14 sources and 16 detectors (36 channels). Preprocessing included common average reference, bandpass filtering (0.5-50 Hz, Chebyshev type II, order 4), ICA-based EOG rejection, and artifact removal. Feature extraction employed Common Spatial Patterns (CSP) with log-variance features, classified using Shrinkage LDA with 10×5-fold cross-validation. Motor imagery tasks involved kinesthetic hand gripping at 1 Hz pace cued by visual arrows.",
+    "methods_description": "EEG data were recorded at 1000 Hz using 30 active electrodes with a BrainAmp amplifier, referenced to linked mastoids, and downsampled to 200 Hz. NIRS data were collected at 12.5 Hz using NIRScout with 14 sources and 16 detectors (36 channels). Preprocessing included common average reference, bandpass filtering (0.5-50 Hz, Chebyshev type II, order 4), ICA-based EOG rejection, and artifact removal. Feature extraction employed Common Spatial Patterns (CSP) with log-variance features, classified using Shrinkage LDA with 10x5-fold cross-validation.",
     "funding": [
       {
         "funder_name": "Brain Korea 21 PLUS Program through the NRF funded by the Ministry of Education"
@@ -74,20 +75,11 @@
         "award_title": "Brain Korea 21 PLUS Program"
       },
       {
-        "funder_name": "Korea University"
-      },
-      {
         "funder_name": "BMBF",
         "award_number": "01GQ0850",
         "award_title": "Bernstein Focus: Neurotechnology"
       }
-    ],
-    "searched_accessions": [
-      "nm000267"
-    ],
-    "num_accession_mentions": 2,
-    "num_dataset_citations": 2,
-    "num_datapaper_citations": 100
+    ]
   },
   "citation_details": [
     {
@@ -96,7 +88,7 @@
       "venue": "Scientific Data",
       "year": 2018,
       "url": "https://doi.org/10.1038/sdata.2018.3",
-      "cited_by": 216,
+      "cited_by": 217,
       "abstract": "We provide an open access multimodal brain-imaging dataset of simultaneous electroencephalography (EEG) and near-infrared spectroscopy (NIRS) recordings. Twenty-six healthy participants performed three cognitive tasks: 1) n-back (0-, 2- and 3-back), 2) discrimination/selection response task (DSR) and 3) word generation (WG) tasks. The data provided includes: 1) measured data, 2) demographic data, and 3) basic analysis results. For n-back (dataset A) and DSR tasks (dataset B), event-related potential (ERP) analysis was performed, and spatiotemporal characteristics and classification results for 'target' versus 'non-target' (dataset A) and symbol 'O' versus symbol 'X' (dataset B) are provided. Time-frequency analysis was performed to show the EEG spectral power to differentiate the task-relevant activations. Spatiotemporal characteristics of hemodynamic responses are also shown. For the WG task (dataset C), the EEG spectral power and spatiotemporal characteristics of hemodynamic response",
       "doi": "10.1038/sdata.2018.3",
       "pmid": "29437166",
@@ -142,7 +134,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1088/1741-2552/aaaf82",
-      "cited_by": 197,
+      "cited_by": 198,
       "abstract": "OBJECTIVE: Brain-computer interface (BCI) refers to procedures that link the central nervous system to a device. BCI was historically performed using electroencephalography (EEG). In the last years, encouraging results were obtained by combining EEG with other neuroimaging technologies, such as functional near infrared spectroscopy (fNIRS). A crucial step of BCI is brain state classification from recorded signal features. Deep artificial neural networks (DNNs) recently reached unprecedented complex classification outcomes. These performances were achieved through increased computational power, efficient learning algorithms, valuable activation functions, and restricted or back-fed neurons connections. By expecting significant overall BCI performances, we investigated the capabilities of combining EEG and fNIRS recordings with state-of-the-art deep learning procedures. APPROACH: We performed a guided left and right hand motor imagery task on 15 subjects with a fixed classification respo",
       "doi": "10.1088/1741-2552/aaaf82",
       "pmid": "29446352",
@@ -165,7 +157,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1088/1741-2552/aadea0",
-      "cited_by": 184,
+      "cited_by": 186,
       "abstract": "OBJECTIVE: Brain-computer interface (BCI) algorithm development has long been hampered by two major issues: small sample sets and a lack of reproducibility. We offer a solution to both of these problems via a software suite that streamlines both the issues of finding and preprocessing data in a reliable manner, as well as that of using a consistent interface for machine learning methods. APPROACH: By building on recent advances in software for signal analysis implemented in the MNE toolkit, and the unified framework for machine learning offered by the scikit-learn project, we offer a system that can improve BCI algorithm development. This system is fully open-source under the BSD licence and available at https://github.com/NeuroTechX/moabb. MAIN RESULTS: We analyze a set of state-of-the-art decoding algorithms across 12 open access datasets, including over 250 subjects. Our results show that even for the best methods, there are datasets which do not show significant improvements, and f",
       "doi": "10.1088/1741-2552/aadea0",
       "pmid": "30177583",
@@ -234,7 +226,7 @@
       "venue": "IEEE Journal of Biomedical and Health Informatics",
       "year": 2022,
       "url": "https://doi.org/10.1109/jbhi.2022.3140531",
-      "cited_by": 112,
+      "cited_by": 113,
       "abstract": "Functional near-infrared spectroscopy (fNIRS) is a promising neuroimaging technology. The fNIRS classification problem has always been the focus of the brain-computer interface (BCI). Inspired by the success of Transformer based on self-attention mechanism in the fields of natural language processing and computer vision, we propose an fNIRS classification network based on Transformer, named fNIRS-T. We explore the spatial-level and channel-level representation of fNIRS signals to improve data utilization and network representation capacity. Besides, a preprocessing module, which consists of one-dimensional average pooling and layer normalization, is designed to replace filtering and baseline correction of data preprocessing. It makes fNIRS-T an end-to-end network, called fNIRS-PreT. Compared with traditional machine learning classifiers, convolutional neural network (CNN), and long short-term memory (LSTM), the proposed models obtain the best accuracy on three open-access datasets. Spe",
       "doi": "10.1109/jbhi.2022.3140531",
       "pmid": "34986110",
@@ -257,7 +249,7 @@
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
       "year": 2022,
       "url": "https://doi.org/10.1109/tnsre.2022.3149899",
-      "cited_by": 105,
+      "cited_by": 106,
       "abstract": "Non-invasive brain-computer interfaces (BCIs) have been widely used for neural decoding, linking neural signals to control devices. Hybrid BCI systems using electroencephalography (EEG) and functional near-infrared spectroscopy (fNIRS) have received significant attention for overcoming the limitations of EEG- and fNIRS-standalone BCI systems. However, most hybrid EEG-fNIRS BCI studies have focused on late fusion because of discrepancies in their temporal resolutions and recording locations. Despite the enhanced performance of hybrid BCIs, late fusion methods have difficulty in extracting correlated features in both EEG and fNIRS signals. Therefore, in this study, we proposed a deep learning-based early fusion structure, which combines two signals before the fully-connected layer, called the fNIRS-guided attention network (FGANet). First, 1D EEG and fNIRS signals were converted into 3D EEG and fNIRS tensors to spatially align EEG and fNIRS signals at the same time point. The proposed fN",
       "doi": "10.1109/tnsre.2022.3149899",
       "pmid": "35130163",
@@ -321,6 +313,29 @@
       }
     },
     {
+      "title": "Cognitive workload estimation using physiological measures: a review",
+      "author": "Debashis Das Chakladar, Partha Pratim Roy",
+      "venue": "Cognitive Neurodynamics",
+      "year": 2023,
+      "url": "https://doi.org/10.1007/s11571-023-10051-3",
+      "cited_by": 73,
+      "abstract": null,
+      "doi": "10.1007/s11571-023-10051-3",
+      "pmid": "39104683",
+      "openalex_id": "W4390232090",
+      "source_doi": "10.1109/tnsre.2016.2628057",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4524545520544052,
+        "similarity_score": 0.43090909719467163,
+        "citation_text_length": 159,
+        "dataset_text_length": 2349,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A Novel Multimodal Approach for Hybrid Brain–Computer Interface",
       "author": "Zhe Sun, Zihao Huang, Feng Duan, Yu Liu",
       "venue": "IEEE Access",
@@ -338,29 +353,6 @@
         "confidence_score": 0.6326710724830629,
         "similarity_score": 0.547767162322998,
         "citation_text_length": 1152,
-        "dataset_text_length": 2349,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Cognitive workload estimation using physiological measures: a review",
-      "author": "Debashis Das Chakladar, Partha Pratim Roy",
-      "venue": "Cognitive Neurodynamics",
-      "year": 2023,
-      "url": "https://doi.org/10.1007/s11571-023-10051-3",
-      "cited_by": 71,
-      "abstract": null,
-      "doi": "10.1007/s11571-023-10051-3",
-      "pmid": "39104683",
-      "openalex_id": "W4390232090",
-      "source_doi": "10.1109/tnsre.2016.2628057",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4524545520544052,
-        "similarity_score": 0.43090909719467163,
-        "citation_text_length": 159,
         "dataset_text_length": 2349,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -418,7 +410,7 @@
       "venue": "Scientific Data",
       "year": 2024,
       "url": "https://doi.org/10.1038/s41597-023-02787-8",
-      "cited_by": 64,
+      "cited_by": 65,
       "abstract": "The brain-computer interface (BCI) is a technology that involves direct communication with parts of the brain and has evolved rapidly in recent years; it has begun to be used in clinical practice, such as for patient rehabilitation. Patient electroencephalography (EEG) datasets are critical for algorithm optimization and clinical applications of BCIs but are rare at present. We collected data from 50 acute stroke patients with wireless portable saline EEG devices during the performance of two tasks: 1) imagining right-handed movements and 2) imagining left-handed movements. The dataset consists of four types of data: 1) the motor imagery instructions, 2) raw recording data, 3) pre-processed data after removing artefacts and other manipulations, and 4) patient characteristics. This is the first open dataset to address left- and right-handed motor imagery in acute stroke patients. We believe that the dataset will be very helpful for analysing brain activation and designing decoding metho",
       "doi": "10.1038/s41597-023-02787-8",
       "pmid": "38272904",
@@ -441,7 +433,7 @@
       "venue": "IEEE Sensors Journal",
       "year": 2022,
       "url": "https://doi.org/10.1109/jsen.2022.3205956",
-      "cited_by": 64,
+      "cited_by": 65,
       "abstract": "Brain–computer interface (BCI) based on motor imagery (MI) can control external applications by decoding different brain physiological signals, such as electroencephalography (EEG) and functional near-infrared spectroscopy (fNIRS). Traditional unimodal-based MI decoding methods cannot obtain satisfactory classification performance due to the limited representation ability in EEG or fNIRS signals. Usually, different brain signals have complementarity with different sensitivity to different MI patterns. To improve the recognition rate and generalization ability of MI, we propose a novel end-to-end multimodal multitask neural network (M2NN) model with the fusion of EEG and fNIRS signals. M2NN method integrates the spatial–temporal feature extraction module, multimodal feature fusion module, and multitask learning (MTL) module. Specifically, the MTL module includes two learning tasks, namely one main classification task for MI and one auxiliary task with deep metric learning. This approach",
       "doi": "10.1109/jsen.2022.3205956",
       "pmid": null,
@@ -574,6 +566,29 @@
       }
     },
     {
+      "title": "Rethinking Delayed Hemodynamic Responses for fNIRS Classification",
+      "author": "Zenghui Wang, Jihong Fang, Jun Zhang",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2023,
+      "url": "https://doi.org/10.1109/tnsre.2023.3330911",
+      "cited_by": 54,
+      "abstract": "Functional near-infrared spectroscopy (fNIRS) is a non-invasive neuroimaging technology for monitoring cerebral hemodynamic responses. Enhancing fNIRS classification can improve the performance of brain-computer interfaces (BCIs). Currently, deep neural networks (DNNs) do not consider the inherent delayed hemodynamic responses of fNIRS signals, which causes many optimization and application problems. Considering the kernel size and receptive field of convolutions, delayed hemodynamic responses as domain knowledge are introduced into fNIRS classification, and a concise and efficient model named fNIRSNet is proposed. We empirically summarize three design guidelines for fNIRSNet. In subject-specific and subject-independent experiments, fNIRSNet outperforms other DNNs on open-access datasets. Specifically, fNIRSNet with only 498 parameters is 6.58% higher than convolutional neural network (CNN) with millions of parameters on mental arithmetic tasks and the floating-point operations (FLOPs)",
+      "doi": "10.1109/tnsre.2023.3330911",
+      "pmid": "37934649",
+      "openalex_id": "W4388469973",
+      "source_doi": "10.1109/tnsre.2016.2628057",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5965499916672707,
+        "similarity_score": 0.5164934992790222,
+        "citation_text_length": 1206,
+        "dataset_text_length": 2349,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Assessing Time-Resolved fNIRS for Brain-Computer Interface Applications of Mental Communication",
       "author": "Androu Abdalmalak, Daniel Milej, Lawrence C. M. Yip, Ali R. Khan, Mamadou Diop, Adrian M. Owen, Keith St. Lawrence",
       "venue": "Frontiers in Neuroscience",
@@ -614,29 +629,6 @@
         "confidence_score": 0.5720448017120362,
         "similarity_score": 0.544804573059082,
         "citation_text_length": 307,
-        "dataset_text_length": 2349,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Rethinking Delayed Hemodynamic Responses for fNIRS Classification",
-      "author": "Zenghui Wang, Jihong Fang, Jun Zhang",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2023,
-      "url": "https://doi.org/10.1109/tnsre.2023.3330911",
-      "cited_by": 52,
-      "abstract": "Functional near-infrared spectroscopy (fNIRS) is a non-invasive neuroimaging technology for monitoring cerebral hemodynamic responses. Enhancing fNIRS classification can improve the performance of brain-computer interfaces (BCIs). Currently, deep neural networks (DNNs) do not consider the inherent delayed hemodynamic responses of fNIRS signals, which causes many optimization and application problems. Considering the kernel size and receptive field of convolutions, delayed hemodynamic responses as domain knowledge are introduced into fNIRS classification, and a concise and efficient model named fNIRSNet is proposed. We empirically summarize three design guidelines for fNIRSNet. In subject-specific and subject-independent experiments, fNIRSNet outperforms other DNNs on open-access datasets. Specifically, fNIRSNet with only 498 parameters is 6.58% higher than convolutional neural network (CNN) with millions of parameters on mental arithmetic tasks and the floating-point operations (FLOPs)",
-      "doi": "10.1109/tnsre.2023.3330911",
-      "pmid": "37934649",
-      "openalex_id": "W4388469973",
-      "source_doi": "10.1109/tnsre.2016.2628057",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5965499916672707,
-        "similarity_score": 0.5164934992790222,
-        "citation_text_length": 1206,
         "dataset_text_length": 2349,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -809,7 +801,7 @@
       "venue": "Frontiers in Neuroscience",
       "year": 2023,
       "url": "https://doi.org/10.3389/fnins.2022.1062889",
-      "cited_by": 44,
+      "cited_by": 45,
       "abstract": "Introduction: Many research papers have reported successful implementation of hybrid brain-computer interfaces by complementarily combining EEG and fNIRS, to improve classification performance. However, modality or feature fusion of EEG and fNIRS was usually designed for specific user cases, which were generally customized and hard to be generalized. How to effectively utilize information from the two modalities was still unclear. Methods: In this paper, we conducted a study to investigate the stage of bi-modal fusion based on EEG and fNIRS. A Y-shaped neural network was proposed and evaluated on an open dataset, which fuses the bimodal information in different stages. Results: < 0.05). With the proposed framework, the average accuracy of 29 participants reaches 76.21% in the left-or-right hand motor imagery task in leave-one-out cross-validation, using bi-modal data as network inputs respectively, which is in the same level as the state-of-the-art hybrid BCI methods based on EEG and f",
       "doi": "10.3389/fnins.2022.1062889",
       "pmid": "36699533",
@@ -832,7 +824,7 @@
       "venue": "IET Signal Processing",
       "year": 2020,
       "url": "https://doi.org/10.1049/iet-spr.2019.0297",
-      "cited_by": 43,
+      "cited_by": 44,
       "abstract": "Brain–computer interface (BCI) is a powerful system for communicating between the brain and outside world. Traditional BCI systems work based on electroencephalogram (EEG) signals only. Recently, researchers have used a combination of EEG signals with other signals to improve the performance of BCI systems. Among these signals, the combination of EEG with functional near‐infrared spectroscopy (fNIRS) has achieved favourable results. In most studies, only EEGs or fNIRs have been considered as chain‐like sequences, and do not consider complex correlations between adjacent signals, neither in time nor channel location. In this study, a deep neural network model has been introduced to identify the exact objectives of the human brain by introducing temporal and spatial features. The proposed model incorporates the spatial relationship between EEG and fNIRS signals. This could be implemented by transforming the sequences of these chain‐like signals into hierarchical three‐rank tensors. The t",
       "doi": "10.1049/iet-spr.2019.0297",
       "pmid": null,
@@ -855,7 +847,7 @@
       "venue": "IEEE Transactions on Instrumentation and Measurement",
       "year": 2023,
       "url": "https://doi.org/10.1109/tim.2023.3276509",
-      "cited_by": 43,
+      "cited_by": 44,
       "abstract": "Hybrid brain computer interfaces (BCI) utilizing the high temporal resolution of electroencephalography (EEG) and the high spatial resolution of near-infrared spectroscopy (fNIRS) are preferred over single-modal BCIs. However, due to the large dimensionality of the multi-class statistical features commonly used in fNIRS signals, it is easy to cause overfitting of the EEG-fNIRS hybrid BCI classifier. Therefore, a low-dimensional feature extraction method for fNIRS based on the EEG-informed fNIRS general linear model (GLM) analysis is proposed in this paper. First, a regression coefficient matrix is obtained by using the EEG-informed fNIRS GLM with a time window added, and the common spatial pattern (CSP) features of this regression coefficient matrix are extracted as the fNIRS features. Lastly, the fNIRS features were combined with the CSP features extracted from the optimal narrow band of EEG as hybrid features, and the support vector machine (SVM) method is used to classify the sample",
       "doi": "10.1109/tim.2023.3276509",
       "pmid": null,
@@ -1103,6 +1095,29 @@
       }
     },
     {
+      "title": "Cognitive Workload Estimation Using Variational Autoencoder and Attention-Based Deep Model",
+      "author": "Debashis Das Chakladar, Sumalyo Datta, Partha Pratim Roy, Vinod A. Prasad",
+      "venue": "IEEE Transactions on Cognitive and Developmental Systems",
+      "year": 2022,
+      "url": "https://doi.org/10.1109/tcds.2022.3163020",
+      "cited_by": 33,
+      "abstract": "The estimation of cognitive workload using electroencephalogram (EEG) is an emerging research area. However, due to poor spatial resolution issues, features obtained from EEG signals often lead to poor classification results. As a good generative model, the variational autoencoder (VAE) extracts the noise-free robust features from the latent space that lead to better classification performance. The spatial attention-based method [convolutional block attention module (CBAM)] can improve the spatial resolution of EEG signals. In this article, we propose an effective VAE-CBAM-based deep model for estimating cognitive states from topographical videos. Topographical videos of four different conditions [baseline (BL), low workload (LW), medium workload (MW), and high workload (HW)] of the mental arithmetic task are taken for the experiment. Initially, the VAE extracts localized features from input images (extracted from topographical video), and CBAM infers the spatial–channel-level’s attent",
+      "doi": "10.1109/tcds.2022.3163020",
+      "pmid": null,
+      "openalex_id": "W4226393362",
+      "source_doi": "10.1109/tnsre.2016.2628057",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.494711069315672,
+        "similarity_score": 0.4283212721347809,
+        "citation_text_length": 1258,
+        "dataset_text_length": 2349,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Combined real-time fMRI and real time fNIRS brain computer interface (BCI): Training of volitional wrist extension after stroke, a case series pilot study",
       "author": "Avi K. Matarasso, Jake D. Rieke, Keith D. White, M. Minhal Yusufali, Janis J. Daly",
       "venue": "PLoS ONE",
@@ -1143,29 +1158,6 @@
         "confidence_score": 0.6702630639076234,
         "similarity_score": 0.6093300580978394,
         "citation_text_length": 1261,
-        "dataset_text_length": 2349,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Cognitive Workload Estimation Using Variational Autoencoder and Attention-Based Deep Model",
-      "author": "Debashis Das Chakladar, Sumalyo Datta, Partha Pratim Roy, Vinod A. Prasad",
-      "venue": "IEEE Transactions on Cognitive and Developmental Systems",
-      "year": 2022,
-      "url": "https://doi.org/10.1109/tcds.2022.3163020",
-      "cited_by": 32,
-      "abstract": "The estimation of cognitive workload using electroencephalogram (EEG) is an emerging research area. However, due to poor spatial resolution issues, features obtained from EEG signals often lead to poor classification results. As a good generative model, the variational autoencoder (VAE) extracts the noise-free robust features from the latent space that lead to better classification performance. The spatial attention-based method [convolutional block attention module (CBAM)] can improve the spatial resolution of EEG signals. In this article, we propose an effective VAE-CBAM-based deep model for estimating cognitive states from topographical videos. Topographical videos of four different conditions [baseline (BL), low workload (LW), medium workload (MW), and high workload (HW)] of the mental arithmetic task are taken for the experiment. Initially, the VAE extracts localized features from input images (extracted from topographical video), and CBAM infers the spatial–channel-level’s attent",
-      "doi": "10.1109/tcds.2022.3163020",
-      "pmid": null,
-      "openalex_id": "W4226393362",
-      "source_doi": "10.1109/tnsre.2016.2628057",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.494711069315672,
-        "similarity_score": 0.4283212721347809,
-        "citation_text_length": 1258,
         "dataset_text_length": 2349,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1223,7 +1215,7 @@
       "venue": "IEEE Transactions on Cognitive and Developmental Systems",
       "year": 2021,
       "url": "https://doi.org/10.1109/tcds.2021.3116079",
-      "cited_by": 29,
+      "cited_by": 30,
       "abstract": "Estimating the cognitive state of an operator has drawn increasing attention in recent years. Cognitive behavior has been effectively studied by analyzing electroencephalogram (EEG) signals. EEG has an excellent temporal resolution but poor spatial resolution; therefore, it cannot be efficiently used for the cognitive state assessment. To obtain the spatial as well as the temporal resolution of the EEG signal, we propose to combine the filter bank common spatial pattern (FBCSP) method and long short-term memory (LSTM)-based deep ensemble model for classifying the cognitive state of a user during the mental arithmetic experiment. The proposed deep ensemble model produces 87.04% classification accuracy, and it achieves an improvement of 2.04% over the state-of-the-art method. In addition, we propose an algorithm that enables us to identify the brain dynamics for each cognitive state, which is equally important to the estimation of the cognitive state in cognitive neuroscience. For each c",
       "doi": "10.1109/tcds.2021.3116079",
       "pmid": null,
@@ -1258,6 +1250,29 @@
         "confidence_score": 0.7694160935282708,
         "similarity_score": 0.6661611199378967,
         "citation_text_length": 1230,
+        "dataset_text_length": 2349,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "STA-Net: Spatial–temporal alignment network for hybrid EEG-fNIRS decoding",
+      "author": "Mutian Liu, Banghua Yang, Lin Meng, Yonghuai Zhang, Shouwei Gao, Peng Zan, Xinxing Xia",
+      "venue": "Information Fusion",
+      "year": 2025,
+      "url": "https://doi.org/10.1016/j.inffus.2025.103023",
+      "cited_by": 29,
+      "abstract": null,
+      "doi": "10.1016/j.inffus.2025.103023",
+      "pmid": null,
+      "openalex_id": "W4407597234",
+      "source_doi": "10.1109/tnsre.2016.2628057",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5447311967611314,
+        "similarity_score": 0.5187916159629822,
+        "citation_text_length": 204,
         "dataset_text_length": 2349,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1310,29 +1325,6 @@
       }
     },
     {
-      "title": "STA-Net: Spatial–temporal alignment network for hybrid EEG-fNIRS decoding",
-      "author": "Mutian Liu, Banghua Yang, Lin Meng, Yonghuai Zhang, Shouwei Gao, Peng Zan, Xinxing Xia",
-      "venue": "Information Fusion",
-      "year": 2025,
-      "url": "https://doi.org/10.1016/j.inffus.2025.103023",
-      "cited_by": 27,
-      "abstract": null,
-      "doi": "10.1016/j.inffus.2025.103023",
-      "pmid": null,
-      "openalex_id": "W4407597234",
-      "source_doi": "10.1109/tnsre.2016.2628057",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5447311967611314,
-        "similarity_score": 0.5187916159629822,
-        "citation_text_length": 204,
-        "dataset_text_length": 2349,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Methodological Note: Recent Advances in Hybrid Brain-Computer Interface Systems: A Technological and Quantitative Review",
       "author": "Sahar Sadeghi, Ali Maleki",
       "venue": "Basic and Clinical Neuroscience Journal",
@@ -1373,6 +1365,29 @@
         "confidence_score": 0.5560660839080811,
         "similarity_score": 0.5055146217346191,
         "citation_text_length": 1239,
+        "dataset_text_length": 2349,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Simultaneous EEG-fNIRS Data Classification Through Selective Channel Representation and Spectrogram Imaging",
+      "author": "Chayut Bunterngchit, Jiaxing Wang, Zeng‐Guang Hou",
+      "venue": "IEEE Journal of Translational Engineering in Health and Medicine",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/jtehm.2024.3448457",
+      "cited_by": 24,
+      "abstract": "The integration of electroencephalography (EEG) and functional near-infrared spectroscopy (fNIRS) can facilitate the advancement of brain-computer interfaces (BCIs). However, existing research in this domain has grappled with the challenge of the efficient selection of features, resulting in the underutilization of the temporal richness of EEG and the spatial specificity of fNIRS data.To effectively address this challenge, this study proposed a deep learning architecture called the multimodal DenseNet fusion (MDNF) model that was trained on two-dimensional (2D) EEG data images, leveraging advanced feature extraction techniques. The model transformed EEG data into 2D images using a short-time Fourier transform, applied transfer learning to extract discriminative features, and consequently integrated them with fNIRS-derived spectral entropy features. This approach aimed to bridge existing gaps in EEG-fNIRS-based BCI research by enhancing classification accuracy and versatility across var",
+      "doi": "10.1109/jtehm.2024.3448457",
+      "pmid": "39247844",
+      "openalex_id": "W4401806707",
+      "source_doi": "10.1109/tnsre.2016.2628057",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6227854406833649,
+        "similarity_score": 0.539208173751831,
+        "citation_text_length": 1259,
         "dataset_text_length": 2349,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1465,29 +1480,6 @@
         "confidence_score": 0.6174780428409576,
         "similarity_score": 0.5880743265151978,
         "citation_text_length": 202,
-        "dataset_text_length": 2349,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Simultaneous EEG-fNIRS Data Classification Through Selective Channel Representation and Spectrogram Imaging",
-      "author": "Chayut Bunterngchit, Jiaxing Wang, Zeng‐Guang Hou",
-      "venue": "IEEE Journal of Translational Engineering in Health and Medicine",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/jtehm.2024.3448457",
-      "cited_by": 23,
-      "abstract": "The integration of electroencephalography (EEG) and functional near-infrared spectroscopy (fNIRS) can facilitate the advancement of brain-computer interfaces (BCIs). However, existing research in this domain has grappled with the challenge of the efficient selection of features, resulting in the underutilization of the temporal richness of EEG and the spatial specificity of fNIRS data.To effectively address this challenge, this study proposed a deep learning architecture called the multimodal DenseNet fusion (MDNF) model that was trained on two-dimensional (2D) EEG data images, leveraging advanced feature extraction techniques. The model transformed EEG data into 2D images using a short-time Fourier transform, applied transfer learning to extract discriminative features, and consequently integrated them with fNIRS-derived spectral entropy features. This approach aimed to bridge existing gaps in EEG-fNIRS-based BCI research by enhancing classification accuracy and versatility across var",
-      "doi": "10.1109/jtehm.2024.3448457",
-      "pmid": "39247844",
-      "openalex_id": "W4401806707",
-      "source_doi": "10.1109/tnsre.2016.2628057",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6227854406833649,
-        "similarity_score": 0.539208173751831,
-        "citation_text_length": 1259,
         "dataset_text_length": 2349,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1609,6 +1601,29 @@
       }
     },
     {
+      "title": "Inter-Brain Synchrony Levels According to Task Execution Modes and Difficulty Levels: An fNIRS/GSR Study",
+      "author": "Jinwoo Park, Jaeyoung Shin, Jichai Jeong",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2022,
+      "url": "https://doi.org/10.1109/tnsre.2022.3144168",
+      "cited_by": 22,
+      "abstract": "Hyperscanning is a brain imaging technique that measures brain synchrony caused by social interactions. Recent research on hyperscanning has revealed substantial inter-brain synchrony (IBS), but little is known about the link between IBS and mental workload. To study this link, we conducted an experiment consisting of button-pressing tasks of three different difficulty levels for the cooperation and competition modes with 56 participants aged 23.7± 3.8 years (mean±standard deviation). We attempted to observe IBS using functional near-infrared spectroscopy (fNIRS) and galvanic skin response (GSR) to assess the activities of the human autonomic nervous system. We found that the IBS levels increased in a frequency band of 0.075-0.15 Hz, which was unrelated to the task repetition frequency in the cooperation mode according to the task difficulty level. Significant relative inter-brain synchrony (RIBS) increases were observed in three and 10 channels out of 15 for the hard tasks compared to",
+      "doi": "10.1109/tnsre.2022.3144168",
+      "pmid": "35041606",
+      "openalex_id": "W4205727853",
+      "source_doi": "10.1109/tnsre.2016.2628057",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5080379055440426,
+        "similarity_score": 0.43985965847969055,
+        "citation_text_length": 1249,
+        "dataset_text_length": 2349,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Multivariate Kalman filter regression of confounding physiological signals for real-time classification of fNIRS data",
       "author": "Antonio Ortega‐Martínez, Alexander von Lühmann, Parya Farzam, De’Ja Rogers, Emily M. Mugler, David A. Boas, Meryem A. Yücel",
       "venue": "Neurophotonics",
@@ -1661,7 +1676,7 @@
       "year": 2024,
       "url": "https://doi.org/10.1080/27706710.2024.2335886",
       "cited_by": 22,
-      "abstract": "Purpose: This study aimed to improve the accuracy of brain-computer interface (BCI) systems based on motor imagery (MI) and mental arithmetic (MA) by utilizing functional near-infrared spectroscopy (fNIRS) and an improved dilation CapsuleNet (ID-CapsuleNet) model.",
+      "abstract": "Purpose: This study aimed to improve the accuracy of brain-computer interface (BCI) systems based on motor imagery (MI) and mental arithmetic (MA) by utilizing functional near-infrared spectroscopy (fNIRS) and an improved dilation CapsuleNet (ID-CapsuleNet) model. Methods:The study focused on the characteristics of fNIRS and employed large-kernel dilation convolution to extract hemodynamic features from fNIRS data.Inspired by CapsuleNet's success in image classification, an ID-CapsuleNet model was designed, combining large-kernel dilation convolution and CapsuleNet.Four publicly available datasets (A, B, C, and D) were utilized for evaluating the proposed model.Datasets A and B were MA type, while datasets C and D were MI type.Ablation experiments were conducted to assess the usefulness of large-kernel convolution, dynamic routing, and dilation convolution.Results: The average accuracies for each dataset were 95.01%, 76.88%, 74.03%, and 80.29% respectively.Cross-subject average accurac",
       "doi": "10.1080/27706710.2024.2335886",
       "pmid": null,
       "openalex_id": "W4393992165",
@@ -1669,9 +1684,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6704135522246361,
-        "similarity_score": 0.5804446339607239,
-        "citation_text_length": 500,
+        "confidence_score": 0.6892743623256684,
+        "similarity_score": 0.5967743396759033,
+        "citation_text_length": 1236,
         "dataset_text_length": 2349,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1684,7 +1699,7 @@
       "year": 2023,
       "url": "https://doi.org/10.1088/1741-2552/acbfdf",
       "cited_by": 21,
-      "abstract": "Abstract Objective . A motor imagery-based brain-computer interface (MI-BCI) translates spontaneous movement intention from the brain to outside devices. Multimodal MI-BCI that uses multiple neural signals contains rich common and complementary information and is promising for enhancing the decoding accuracy of MI-BCI. However, the heterogeneity of different modalities makes the multimodal decoding task difficult. How to effectively utilize multimodal information remains to be further studied. Approach . In this study, a multimodal MI decoding neural network was proposed. Spatial feature alignment losses were designed to enhance the feature representations extracted from the heterogeneous data and guide the fusion of features from different modalities. An attention-based modality fusion module was built to align and fuse the features in the temporal dimension. To evaluate the proposed decoding method, a five-class MI electroencephalography (EEG) and functional near infrared spectroscop",
+      "abstract": "Abstract Objective. A motor imagery-based brain-computer interface (MI-BCI) translates spontaneous movement intention from the brain to outside devices. Multimodal MI-BCI that uses multiple neural signals contains rich common and complementary information and is promising for enhancing the decoding accuracy of MI-BCI. However, the heterogeneity of different modalities makes the multimodal decoding task difficult. How to effectively utilize multimodal information remains to be further studied. Approach. In this study, a multimodal MI decoding neural network was proposed. Spatial feature alignment losses were designed to enhance the feature representations extracted from the heterogeneous data and guide the fusion of features from different modalities. An attention-based modality fusion module was built to align and fuse the features in the temporal dimension. To evaluate the proposed decoding method, a five-class MI electroencephalography (EEG) and functional near infrared spectroscopy ",
       "doi": "10.1088/1741-2552/acbfdf",
       "pmid": "36854181",
       "openalex_id": "W4322622370",
@@ -1692,32 +1707,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6341640096902847,
-        "similarity_score": 0.5490597486495972,
+        "confidence_score": 0.6364056873321534,
+        "similarity_score": 0.5510005950927734,
         "citation_text_length": 1199,
-        "dataset_text_length": 2349,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Inter-Brain Synchrony Levels According to Task Execution Modes and Difficulty Levels: An fNIRS/GSR Study",
-      "author": "Jinwoo Park, Jaeyoung Shin, Jichai Jeong",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2022,
-      "url": "https://doi.org/10.1109/tnsre.2022.3144168",
-      "cited_by": 21,
-      "abstract": "Hyperscanning is a brain imaging technique that measures brain synchrony caused by social interactions. Recent research on hyperscanning has revealed substantial inter-brain synchrony (IBS), but little is known about the link between IBS and mental workload. To study this link, we conducted an experiment consisting of button-pressing tasks of three different difficulty levels for the cooperation and competition modes with 56 participants aged 23.7± 3.8 years (mean±standard deviation). We attempted to observe IBS using functional near-infrared spectroscopy (fNIRS) and galvanic skin response (GSR) to assess the activities of the human autonomic nervous system. We found that the IBS levels increased in a frequency band of 0.075-0.15 Hz, which was unrelated to the task repetition frequency in the cooperation mode according to the task difficulty level. Significant relative inter-brain synchrony (RIBS) increases were observed in three and 10 channels out of 15 for the hard tasks compared to",
-      "doi": "10.1109/tnsre.2022.3144168",
-      "pmid": "35041606",
-      "openalex_id": "W4205727853",
-      "source_doi": "10.1109/tnsre.2016.2628057",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5080379055440426,
-        "similarity_score": 0.43985965847969055,
-        "citation_text_length": 1249,
         "dataset_text_length": 2349,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1793,6 +1785,29 @@
       }
     },
     {
+      "title": "Aggregating intrinsic information to enhance BCI performance through federated learning",
+      "author": "Rui Liu, Yuanyuan Chen, Anran Li, Yi Ding, Han Yu, Cuntai Guan",
+      "venue": "Neural Networks",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.neunet.2024.106100",
+      "cited_by": 20,
+      "abstract": "Insufficient data is a long-standing challenge for Brain-Computer Interface (BCI) to build a high-performance deep learning model. Though numerous research groups and institutes collect a multitude of EEG datasets for the same BCI task, sharing EEG data from multiple sites is still challenging due to the heterogeneity of devices. The significance of this challenge cannot be overstated, given the critical role of data diversity in fostering model robustness. However, existing works rarely discuss this issue, predominantly centering their attention on model training within a single dataset, often in the context of inter-subject or inter-session settings. In this work, we propose a hierarchical personalized Federated Learning EEG decoding (FLEEG) framework to surmount this challenge. This innovative framework heralds a new learning paradigm for BCI, enabling datasets with disparate data formats to collaborate in the model training process. Each client is assigned a specific dataset and tr",
+      "doi": "10.1016/j.neunet.2024.106100",
+      "pmid": "38232427",
+      "openalex_id": "W4390988847",
+      "source_doi": "10.1109/tnsre.2016.2628057",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5099254184961319,
+        "similarity_score": 0.4414938688278198,
+        "citation_text_length": 1203,
+        "dataset_text_length": 2349,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "An effective classification framework for brain-computer interface system design based on combining of fNIRS and EEG signals",
       "author": "Adi Alhudhaif",
       "venue": "PeerJ Computer Science",
@@ -1833,29 +1848,6 @@
         "confidence_score": 0.5500827670097351,
         "similarity_score": 0.523888349533081,
         "citation_text_length": 254,
-        "dataset_text_length": 2349,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Aggregating intrinsic information to enhance BCI performance through federated learning",
-      "author": "Rui Liu, Yuanyuan Chen, Anran Li, Yi Ding, Han Yu, Cuntai Guan",
-      "venue": "Neural Networks",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.neunet.2024.106100",
-      "cited_by": 19,
-      "abstract": "Insufficient data is a long-standing challenge for Brain-Computer Interface (BCI) to build a high-performance deep learning model. Though numerous research groups and institutes collect a multitude of EEG datasets for the same BCI task, sharing EEG data from multiple sites is still challenging due to the heterogeneity of devices. The significance of this challenge cannot be overstated, given the critical role of data diversity in fostering model robustness. However, existing works rarely discuss this issue, predominantly centering their attention on model training within a single dataset, often in the context of inter-subject or inter-session settings. In this work, we propose a hierarchical personalized Federated Learning EEG decoding (FLEEG) framework to surmount this challenge. This innovative framework heralds a new learning paradigm for BCI, enabling datasets with disparate data formats to collaborate in the model training process. Each client is assigned a specific dataset and tr",
-      "doi": "10.1016/j.neunet.2024.106100",
-      "pmid": "38232427",
-      "openalex_id": "W4390988847",
-      "source_doi": "10.1109/tnsre.2016.2628057",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5099254184961319,
-        "similarity_score": 0.4414938688278198,
-        "citation_text_length": 1203,
         "dataset_text_length": 2349,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1931,6 +1923,29 @@
       }
     },
     {
+      "title": "Investigating the interaction between EEG and fNIRS: A multimodal network analysis of brain connectivity",
+      "author": "Rosmary Blanco, Cemal Koba, Alessandro Crimi",
+      "venue": "Journal of Computational Science",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.jocs.2024.102416",
+      "cited_by": 18,
+      "abstract": "The brain is a complex system with functional and structural networks. Different neuroimaging methods have been developed to explore these networks, but each method has its own unique strengths and limitations, depending on the signals they measure. Combining techniques like electroencephalography (EEG) and functional near-infrared spectroscopy (fNIRS) has gained interest, but understanding how the information derived from these modalities is related to each other remains an exciting open question. The multilayer network model has emerged as a promising approach to integrate different sources data. In this study, we investigated the hemodynamic and electrophysiological data captured by fNIRS and EEG to compare brain network topologies derived from each modality, examining how these topologies vary between resting state (RS) and task-related conditions. Additionally, we adopted the multilayer network model to integrate EEG and fNIRS data and evaluate the benefits of combining multiple m",
+      "doi": "10.1016/j.jocs.2024.102416",
+      "pmid": null,
+      "openalex_id": "W4401502353",
+      "source_doi": "10.1109/tnsre.2016.2628057",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5231300233304501,
+        "similarity_score": 0.4529264271259308,
+        "citation_text_length": 1219,
+        "dataset_text_length": 2349,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Performance Improvement of Near-Infrared Spectroscopy-Based Brain-Computer Interface Using Regularized Linear Discriminant Analysis Ensemble Classifier Based on Bootstrap Aggregating",
       "author": "Jaeyoung Shin, Chang‐Hwan Im",
       "venue": "Frontiers in Neuroscience",
@@ -1994,29 +2009,6 @@
         "confidence_score": 0.7258332180976869,
         "similarity_score": 0.6284270286560059,
         "citation_text_length": 1210,
-        "dataset_text_length": 2349,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Investigating the interaction between EEG and fNIRS: A multimodal network analysis of brain connectivity",
-      "author": "Rosmary Blanco, Cemal Koba, Alessandro Crimi",
-      "venue": "Journal of Computational Science",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.jocs.2024.102416",
-      "cited_by": 17,
-      "abstract": "The brain is a complex system with functional and structural networks. Different neuroimaging methods have been developed to explore these networks, but each method has its own unique strengths and limitations, depending on the signals they measure. Combining techniques like electroencephalography (EEG) and functional near-infrared spectroscopy (fNIRS) has gained interest, but understanding how the information derived from these modalities is related to each other remains an exciting open question. The multilayer network model has emerged as a promising approach to integrate different sources data. In this study, we investigated the hemodynamic and electrophysiological data captured by fNIRS and EEG to compare brain network topologies derived from each modality, examining how these topologies vary between resting state (RS) and task-related conditions. Additionally, we adopted the multilayer network model to integrate EEG and fNIRS data and evaluate the benefits of combining multiple m",
-      "doi": "10.1016/j.jocs.2024.102416",
-      "pmid": null,
-      "openalex_id": "W4401502353",
-      "source_doi": "10.1109/tnsre.2016.2628057",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5231300233304501,
-        "similarity_score": 0.4529264271259308,
-        "citation_text_length": 1219,
         "dataset_text_length": 2349,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2207,6 +2199,29 @@
       }
     },
     {
+      "title": "Enhancing motor imagery EEG classification with a Riemannian geometry-based spatial filtering (RSF) method",
+      "author": "Lincong Pan, Kun Wang, Yongzhi Huang, Xinwei Sun, Jiayuan Meng, Weibo Yi, Minpeng Xu, Tzyy‐Ping Jung, Dong Ming",
+      "venue": "Neural Networks",
+      "year": 2025,
+      "url": "https://doi.org/10.1016/j.neunet.2025.107511",
+      "cited_by": 14,
+      "abstract": "Motor imagery (MI) refers to the mental simulation of movements without physical execution, and it can be captured using electroencephalography (EEG). This area has garnered significant research interest due to its substantial potential in brain-computer interface (BCI) applications, especially for individuals with physical disabilities. However, accurate classification of MI EEG signals remains a major challenge due to their non-stationary nature, low signal-to-noise ratio, and sensitivity to both external and physiological noise. Traditional classification methods, such as common spatial pattern (CSP), often assume that the data is stationary and Gaussian, which limits their applicability in real-world scenarios where these assumptions do not hold. These challenges highlight the need for more robust methods to improve classification accuracy in MI-BCI systems. To address these issues, this study introduces a Riemannian geometry-based spatial filtering (RSF) method that projects EEG s",
+      "doi": "10.1016/j.neunet.2025.107511",
+      "pmid": "40294568",
+      "openalex_id": "W4409685924",
+      "source_doi": "10.1109/tnsre.2016.2628057",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.707901036143303,
+        "similarity_score": 0.6129013299942017,
+        "citation_text_length": 1271,
+        "dataset_text_length": 2349,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Why build an integrated EEG-NIRS? About the advantages of hybrid bio-acquisition hardware",
       "author": "Alexander von Lühmann, K. Müller",
       "venue": "n/a",
@@ -2270,29 +2285,6 @@
         "confidence_score": 0.5364229291677475,
         "similarity_score": 0.5108789801597595,
         "citation_text_length": 341,
-        "dataset_text_length": 2349,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Enhancing motor imagery EEG classification with a Riemannian geometry-based spatial filtering (RSF) method",
-      "author": "Lincong Pan, Kun Wang, Yongzhi Huang, Xinwei Sun, Jiayuan Meng, Weibo Yi, Minpeng Xu, Tzyy‐Ping Jung, Dong Ming",
-      "venue": "Neural Networks",
-      "year": 2025,
-      "url": "https://doi.org/10.1016/j.neunet.2025.107511",
-      "cited_by": 13,
-      "abstract": "Motor imagery (MI) refers to the mental simulation of movements without physical execution, and it can be captured using electroencephalography (EEG). This area has garnered significant research interest due to its substantial potential in brain-computer interface (BCI) applications, especially for individuals with physical disabilities. However, accurate classification of MI EEG signals remains a major challenge due to their non-stationary nature, low signal-to-noise ratio, and sensitivity to both external and physiological noise. Traditional classification methods, such as common spatial pattern (CSP), often assume that the data is stationary and Gaussian, which limits their applicability in real-world scenarios where these assumptions do not hold. These challenges highlight the need for more robust methods to improve classification accuracy in MI-BCI systems. To address these issues, this study introduces a Riemannian geometry-based spatial filtering (RSF) method that projects EEG s",
-      "doi": "10.1016/j.neunet.2025.107511",
-      "pmid": "40294568",
-      "openalex_id": "W4409685924",
-      "source_doi": "10.1109/tnsre.2016.2628057",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.707901036143303,
-        "similarity_score": 0.6129013299942017,
-        "citation_text_length": 1271,
         "dataset_text_length": 2349,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2389,72 +2381,22 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Comprehensive search for genetic predisposition to breast cancer based on multigene panel testing",
-      "author": "千比呂 秦, チヒロ ハタ, Chihiro Hata",
-      "venue": "SOKENDAI (Graduate University for Advanced Studies)",
-      "year": 2020,
-      "url": "https://openalex.org/W7146656803",
-      "cited_by": 0,
-      "abstract": "Breast cancer is the most common cancer in women.It has been a long-known disease about its pathological conditions.Approximately 10% of women develop breast cancer during their lifetime.There are several subtypes of breast cancer, and appropriate treatments are selected based on the subtypes.For example, PARP inhibitor has been demonstrated to be very effective in treating for patients with triple negative breast cancer (TNBC).The presence of germline mutations on specific genes can be a marker for selecting effective treatments.With advancements in DNA sequencing technologies, many genes including BRCA1/2 have been shown to be associated with breast cancer.Recently, multigene panel testing has been conducted to detect pathogenic variants in breast cancer patients.However, there are several issues such as selection of appropriate genes and lack of information for accurate classification of pathogenic variants in populations other than European-descent populations.In this doctoral thesis, I attempted to search for pathogenic germline mutations in Chinese patients with breast cancer using multigene panel testing.I investigated genotype-phenotype correlations in Chinese patients with breast cancer by using next-generation sequencing data for 54 breast cancer predisposition genes.First, I conducted multigene panel testing for 583 Chinese patients with breast cancer.I detected 78 pathogenic mutations comprising 43 single nucleotide variants (SNVs) and 35 short insertions and deletions (INDELs).In other words, 14.2% of the patients had pathogenic mutations (83/583).The utility of the multigene panel was demonstrated by the fact that the pathogenesis of a larger number of the patients was identified compared to genetic testing focusing only on BRCA1/2.Furthermore, I showed that pathogenic germline mutations were associated with several clinical features of breast cancer including TNBC and histological grades.On the other hand, I found that there were two issues emerged: 1) Even after the 54 genes were evaluated, the proportion of the patients whose pathogenesis were not clearly explained was still high, and 2) a large number of variant of uncertain significance (VUS) was detected as the bad side of using the multigene panel.Second, I focused on the fact that a general application of pathogenic mutation search was limited to SNVs and short INDELs.I hypothesized that exploration of intermediate-sized INDELs (50 bp to 10,000 bp) in breast cancer patients was useful to resolve the first issue emerged in the previous chapter.By examining intermediate-sized",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": "W7146656803",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000267",
-      "confidence_scoring": {
-        "confidence_score": 0.18958564236760142,
-        "similarity_score": 0.1641434133052826,
-        "citation_text_length": 1714,
-        "dataset_text_length": 2349,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Comprehensive search for genetic predisposition to breast cancer based on multigene panel testing（乳癌患者におけるマルチジーンパネル検査を用いた網羅的病因変異検出に関する研究）",
-      "author": "Chihiro Hata",
-      "venue": "Institutional Repositories DataBase (IRDB)",
-      "year": 0,
-      "url": "https://openalex.org/W7169745440",
-      "cited_by": 0,
-      "abstract": "Breast cancer is the most common cancer in women.It has been a long-known disease about its pathological conditions.Approximately 10% of women develop breast cancer during their lifetime.There are several subtypes of breast cancer, and appropriate treatments are selected based on the subtypes.For example, PARP inhibitor has been demonstrated to be very effective in treating for patients with triple negative breast cancer (TNBC).The presence of germline mutations on specific genes can be a marker for selecting effective treatments.With advancements in DNA sequencing technologies, many genes including BRCA1/2 have been shown to be associated with breast cancer.Recently, multigene panel testing has been conducted to detect pathogenic variants in breast cancer patients.However, there are several issues such as selection of appropriate genes and lack of information for accurate classification of pathogenic variants in populations other than European-descent populations.In this doctoral thesis, I attempted to search for pathogenic germline mutations in Chinese patients with breast cancer using multigene panel testing.I investigated genotype-phenotype correlations in Chinese patients with breast cancer by using next-generation sequencing data for 54 breast cancer predisposition genes.First, I conducted multigene panel testing for 583 Chinese patients with breast cancer.I detected 78 pathogenic mutations comprising 43 single nucleotide variants (SNVs) and 35 short insertions and deletions (INDELs).In other words, 14.2% of the patients had pathogenic mutations (83/583).The utility of the multigene panel was demonstrated by the fact that the pathogenesis of a larger number of the patients was identified compared to genetic testing focusing only on BRCA1/2.Furthermore, I showed that pathogenic germline mutations were associated with several clinical features of breast cancer including TNBC and histological grades.On the other hand, I found that there were two issues emerged: 1) Even after the 54 genes were evaluated, the proportion of the patients whose pathogenesis were not clearly explained was still high, and 2) a large number of variant of uncertain significance (VUS) was detected as the bad side of using the multigene panel.Second, I focused on the fact that a general application of pathogenic mutation search was limited to SNVs and short INDELs.I hypothesized that exploration of intermediate-sized INDELs (50 bp to 10,000 bp) in breast cancer patients was useful to resolve the first issue emerged in the previous chapter.By examining intermediate-sized",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": "W7169745440",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000267",
-      "confidence_scoring": {
-        "confidence_score": 0.19421375393867493,
-        "similarity_score": 0.17655795812606812,
-        "citation_text_length": 1730,
-        "dataset_text_length": 2349,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-19T10:10:06.720239+00:00",
+    "scoring_date": "2026-08-25T11:30:25.902672+00:00",
     "dataset_text_length": 2349,
-    "num_citations_scored": 102,
+    "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.5756058584518878,
-      "median_confidence": 0.5861302074790002,
-      "std_confidence": 0.11464118251939703,
-      "min_confidence": 0.18958564236760142,
+      "mean_confidence": 0.5834910065352917,
+      "median_confidence": 0.5878281946480275,
+      "std_confidence": 0.10217904706214338,
+      "min_confidence": 0.3081183791160584,
       "max_confidence": 0.8256905186176301,
       "high_confidence_count": 12,
       "medium_confidence_count": 82,
-      "low_confidence_count": 8
+      "low_confidence_count": 6
     }
   }
 }

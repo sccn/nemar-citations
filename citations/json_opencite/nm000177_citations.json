@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000177",
-  "num_citations": 52,
-  "date_last_updated": "2026-08-17T10:07:10.644171+00:00",
+  "num_citations": 53,
+  "date_last_updated": "2026-08-25T10:08:24.739070+00:00",
   "metadata": {
-    "total_cumulative_citations": 162,
-    "fetch_date": "2026-08-17T10:07:10.644171+00:00",
+    "total_cumulative_citations": 169,
+    "fetch_date": "2026-08-25T10:08:24.739070+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -56,17 +56,18 @@
       "10.82901/nemar.nm000177"
     ],
     "keywords": [
+      "EEG",
       "motor imagery",
       "brain-computer interface",
-      "EEG",
       "transfer learning",
       "domain adaptation",
       "Riemannian geometry",
       "longitudinal training",
       "BCI skill acquisition",
-      "calibration-free"
+      "MOABB",
+      "calibration-free BCI"
     ],
-    "methods_description": "EEG data were recorded from 18 healthy subjects (age 23.22±3.59 years) using ANT Neuro eego mylab hardware with 22 EEG channels and 3 EOG channels at 512 Hz sampling rate. Subjects performed cue-based left/right hand motor imagery tasks with continuous visual feedback across bar-feedback runs and car racing games. Session 1 consisted of 4 offline runs (80 trials); sessions 2-6 included 3-4 online runs each. EEG signals were bandpass filtered at 8-30 Hz using second-order Butterworth filters. Features were extracted as covariance matrices and classified using Riemannian Minimum Distance to Mean decoder.",
+    "methods_description": "EEG data were recorded from 18 healthy subjects using ANT Neuro eego mylab hardware with 22 EEG channels and 3 EOG channels at 512 Hz. Subjects performed cue-based left/right hand motor imagery tasks with continuous visual feedback across bar-feedback runs and car racing games. Session 1 consisted of 4 offline runs; sessions 2-6 included 3-4 online runs each. Signals were bandpass filtered (8-30 Hz) with second-order Butterworth filters, and covariance matrix features were classified using a Riemannian Minimum Distance to Mean decoder.",
     "funding": [
       {
         "funder_name": "Coleman Fung Foundation"
@@ -74,13 +75,7 @@
       {
         "funder_name": "Sinclair Foundation"
       }
-    ],
-    "searched_accessions": [
-      "nm000177"
-    ],
-    "num_accession_mentions": 1,
-    "num_dataset_citations": 1,
-    "num_datapaper_citations": 51
+    ]
   },
   "citation_details": [
     {
@@ -291,6 +286,29 @@
       }
     },
     {
+      "title": "Journal of Neural Engineering",
+      "author": "D. Liu, Ju-Chun Hsieh, Hussein Alawieh, Satyam Kumar, Fumiaki Iwane, I. Pyatnitskiy, Zoya Ahmad, Huiliang Wang, J. D. R. Millán",
+      "venue": "n/a",
+      "year": 0,
+      "url": "n/a",
+      "cited_by": 6,
+      "abstract": null,
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1093/pnasnexus/pgae076",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.30458760261535645,
+        "similarity_score": 0.30458760261535645,
+        "citation_text_length": 186,
+        "dataset_text_length": 2361,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Personalized whole-brain activity patterns predict human corticospinal tract activation in real-time",
       "author": "Uttara U Khatri, Kristen Pulliam, Muskan Manesiya, Melanie Vieyra Cortez, José del R. Millán, Sara J. Hussain",
       "venue": "Brain stimulation",
@@ -388,7 +406,7 @@
       "venue": "ArXiv",
       "year": 2025,
       "url": "https://doi.org/10.48550/arXiv.2507.06779",
-      "cited_by": 4,
+      "cited_by": 5,
       "abstract": "Despite the growing success of deep learning (DL) in offline brain-computer interfaces (BCIs), its adoption in real-time applications remains limited due to three primary challenges. First, most DL solutions are designed for offline decoding, making the transition to online decoding unclear. Second, the use of sliding windows in online decoding substantially increases computational complexity. Third, DL models typically require large amounts of training data, which are often scarce in BCI applications. To address these challenges and enable real-time, cross-subject decoding without subject-specific calibration, we introduce realtime adaptive pooling (RAP), a novel parameter-free method. RAP seamlessly modifies the pooling layers of existing offline DL models to meet online decoding requirements. It also reduces computational complexity during training by jointly decoding consecutive sliding windows. To further alleviate data requirements, our method leverages source-free domain adaptat",
       "doi": "10.48550/arXiv.2507.06779",
       "pmid": null,
@@ -400,6 +418,29 @@
         "confidence_score": 0.5663651365041734,
         "similarity_score": 0.49035942554473877,
         "citation_text_length": 1201,
+        "dataset_text_length": 2361,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Optimized Deep Learning Approach for Motor Imagery EEG Classification",
+      "author": "Virendra Kumar Tiwari, Priyanka Singh",
+      "venue": "American Journal of Networks and Communications",
+      "year": 2025,
+      "url": "https://doi.org/10.11648/j.ajnc.20251401.13",
+      "cited_by": 3,
+      "abstract": "Motor Imagery (MI)-based electroencephalography (EEG) signal classification plays a pivotal role in enhancing Brain-Computer Interface (BCI) systems, particularly in medical diagnostics, neurorehabilitation, and assistive technologies. However, EEG signals are inherently non-stationary and often contaminated with noise and artifacts, making accurate classification a significant challenge. Additionally, the high dimensionality of raw EEG data further complicates the feature extraction and classification process. To address these issues, we present an optimized deep learning approach that integrates a Deep Neural Network (DNN) with Teacher Learning-Based Optimization (TLBO). This hybrid model is designed to enhance the quality of feature selection, reduce irrelevant information, and improve overall classification performance. The proposed method involves a three-stage pipeline: discrete wavelet transforms (DWT)-based feature extraction, TLBO for selecting the most informative features an",
+      "doi": "10.11648/j.ajnc.20251401.13",
+      "pmid": null,
+      "openalex_id": "W4411840765",
+      "source_doi": "10.1093/pnasnexus/pgae076",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7097517523169519,
+        "similarity_score": 0.6145036816596985,
+        "citation_text_length": 1192,
         "dataset_text_length": 2361,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -481,7 +522,7 @@
       "year": 2025,
       "url": "https://doi.org/10.1088/1741-2552/addb7a",
       "cited_by": 2,
-      "abstract": "Abstract Objective . Controlling a motor imagery brain–computer interface (MI-BCI) can be challenging, requiring several sessions of practice. Electroencephalography (EEG)-based BCIs are particularly affected by cross-session variability. In this scenario, it is crucial to implement co-adaptive systems, where the machine adapts the decoding algorithm while the user learns how to control the BCI. To support the user learning process, it is essential to measure and provide real-time feedback on self-modulation skills. This study aims to develop a method for online assessment of MI modulation capability to build co-adaptive BCIs that improve both user performance and system accuracy. Approach . Backward optimal transport for domain adaptation allows across-session MI-BCI usage without classifier retraining. Using the cued label to guide the adaptation, a supportive backward adaptation (SBA) method is defined. The required model effort to perform a trial adaptation is proposed as an online",
+      "abstract": "Abstract Objective. Controlling a motor imagery brain–computer interface (MI-BCI) can be challenging, requiring several sessions of practice. Electroencephalography (EEG)-based BCIs are particularly affected by cross-session variability. In this scenario, it is crucial to implement co-adaptive systems, where the machine adapts the decoding algorithm while the user learns how to control the BCI. To support the user learning process, it is essential to measure and provide real-time feedback on self-modulation skills. This study aims to develop a method for online assessment of MI modulation capability to build co-adaptive BCIs that improve both user performance and system accuracy. Approach. Backward optimal transport for domain adaptation allows across-session MI-BCI usage without classifier retraining. Using the cued label to guide the adaptation, a supportive backward adaptation (SBA) method is defined. The required model effort to perform a trial adaptation is proposed as an online m",
       "doi": "10.1088/1741-2552/addb7a",
       "pmid": "40398442",
       "openalex_id": "W4410578879",
@@ -489,8 +530,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.7817738217115403,
-        "similarity_score": 0.6768604516983032,
+        "confidence_score": 0.7857243293523789,
+        "similarity_score": 0.6802808046340942,
         "citation_text_length": 1272,
         "dataset_text_length": 2361,
         "scoring_method": "sentence_transformers",
@@ -515,52 +556,6 @@
         "confidence_score": 0.439743738770485,
         "similarity_score": 0.3807305097579956,
         "citation_text_length": 1248,
-        "dataset_text_length": 2361,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Optimized Deep Learning Approach for Motor Imagery EEG Classification",
-      "author": "Virendra Kumar Tiwari, Priyanka Singh",
-      "venue": "American Journal of Networks and Communications",
-      "year": 2025,
-      "url": "https://doi.org/10.11648/j.ajnc.20251401.13",
-      "cited_by": 2,
-      "abstract": "Motor Imagery (MI)-based electroencephalography (EEG) signal classification plays a pivotal role in enhancing Brain-Computer Interface (BCI) systems, particularly in medical diagnostics, neurorehabilitation, and assistive technologies. However, EEG signals are inherently non-stationary and often contaminated with noise and artifacts, making accurate classification a significant challenge. Additionally, the high dimensionality of raw EEG data further complicates the feature extraction and classification process. To address these issues, we present an optimized deep learning approach that integrates a Deep Neural Network (DNN) with Teacher Learning-Based Optimization (TLBO). This hybrid model is designed to enhance the quality of feature selection, reduce irrelevant information, and improve overall classification performance. The proposed method involves a three-stage pipeline: discrete wavelet transforms (DWT)-based feature extraction, TLBO for selecting the most informative features an",
-      "doi": "10.11648/j.ajnc.20251401.13",
-      "pmid": null,
-      "openalex_id": "W4411840765",
-      "source_doi": "10.1093/pnasnexus/pgae076",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7097517523169519,
-        "similarity_score": 0.6145036816596985,
-        "citation_text_length": 1192,
-        "dataset_text_length": 2361,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Fed-REACT: Federated Representation Learning for Heterogeneous and Evolving Data",
-      "author": "Yiyue Chen, Usman Akram, C. Wang, Haris Vikalo",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2509.07198",
-      "cited_by": 2,
-      "abstract": "Motivated by the high resource costs and privacy concerns associated with centralized machine learning, federated learning (FL) has emerged as an efficient alternative that enables clients to collaboratively train a global model while keeping their data local. However, in real-world deployments, client data distributions often evolve over time and differ significantly across clients, introducing heterogeneity that degrades the performance of standard FL algorithms. In this work, we introduce Fed-REACT, a federated learning framework designed for heterogeneous and evolving client data. Fed-REACT combines representation learning with evolutionary clustering in a two-stage process: (1) in the first stage, each client learns a local model to extracts feature representations from its data; (2) in the second stage, the server dynamically groups clients into clusters based on these representations and coordinates cluster-wise training of task-specific models for downstream objectives such as ",
-      "doi": "10.48550/arXiv.2509.07198",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1093/pnasnexus/pgae076",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.36041642457246786,
-        "similarity_score": 0.31204885244369507,
-        "citation_text_length": 1170,
         "dataset_text_length": 2361,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -820,6 +815,29 @@
       }
     },
     {
+      "title": "Fed-REACT: Federated Representation Learning for Heterogeneous and Evolving Data",
+      "author": "Yiyue Chen, Usman Akram, C. Wang, Haris Vikalo",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2509.07198",
+      "cited_by": 1,
+      "abstract": "Motivated by the high resource costs and privacy concerns associated with centralized machine learning, federated learning (FL) has emerged as an efficient alternative that enables clients to collaboratively train a global model while keeping their data local. However, in real-world deployments, client data distributions often evolve over time and differ significantly across clients, introducing heterogeneity that degrades the performance of standard FL algorithms. In this work, we introduce Fed-REACT, a federated learning framework designed for heterogeneous and evolving client data. Fed-REACT combines representation learning with evolutionary clustering in a two-stage process: (1) in the first stage, each client learns a local model to extracts feature representations from its data; (2) in the second stage, the server dynamically groups clients into clusters based on these representations and coordinates cluster-wise training of task-specific models for downstream objectives such as ",
+      "doi": "10.48550/arXiv.2509.07198",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1093/pnasnexus/pgae076",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.36041642457246786,
+        "similarity_score": 0.31204885244369507,
+        "citation_text_length": 1170,
+        "dataset_text_length": 2361,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Towards calibration-free online EEG motor imagery decoding using Deep Learning",
       "author": "Martin Wimpff, J. Zerfowski, Bin Yang",
       "venue": "ESANN 2024 proceesdings",
@@ -958,29 +976,6 @@
       }
     },
     {
-      "title": "A Multi-Class Intra-Trial Trajectory Analysis Technique to Visualize and Quantify Variability of Mental Imagery EEG Signals",
-      "author": "Nicolas Ivanov, Madeline Wong, Tom Chau",
-      "venue": "International Journal of Neural Systems",
-      "year": 2025,
-      "url": "https://doi.org/10.1142/s0129065725500753",
-      "cited_by": 0,
-      "abstract": "High inter- and intra-individual variation is a prominent characteristic of electroencephalography (EEG) signals and a significant inhibitor to the practical implementation of brain–computer interfaces (BCIs) outside of research laboratories. However, a few methods exist to assess EEG signal variability. Here, a novel multi-class intra-trial trajectory (MITT) analysis to study EEG variability for mental imagery BCIs is presented. The methods yield insight into different aspects of signal variation, specifically (i) inter-individual, (ii) inter-task, (iii) inter-trial, and (iv) intra-trial. A novel representation of the time evolution of EEG signals was developed. Task trials were segmented into short temporal windows and represented in a feature space derived from unsupervised clustering of trial covariance matrices. Using this representation, temporal trajectories through the feature space were constructed. Two metrics were defined to assess user performance based on these trajectorie",
-      "doi": "10.1142/s0129065725500753",
-      "pmid": "41293812",
-      "openalex_id": "W4414717774",
-      "source_doi": "10.1093/pnasnexus/pgae076",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7548146224021912,
-        "similarity_score": 0.6535191535949707,
-        "citation_text_length": 1240,
-        "dataset_text_length": 2361,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Skin-Machine Interface with Multimodal Contact Motion Classifier",
       "author": "Alberto Confente, Takanori Jin, Taisuke Kobayashi, J. Rogelio Guadarrama-Olvera, Gordon Cheng",
       "venue": "2025 IEEE-RAS 24th International Conference on Humanoid Robots (Humanoids)",
@@ -998,6 +993,29 @@
         "confidence_score": 0.47235549464821824,
         "similarity_score": 0.4089657962322235,
         "citation_text_length": 1270,
+        "dataset_text_length": 2361,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A Multi-Class Intra-Trial Trajectory Analysis Technique to Visualize and Quantify Variability of Mental Imagery EEG Signals",
+      "author": "Nicolas Ivanov, Madeline Wong, Tom Chau",
+      "venue": "International Journal of Neural Systems",
+      "year": 2025,
+      "url": "https://doi.org/10.1142/s0129065725500753",
+      "cited_by": 0,
+      "abstract": "High inter- and intra-individual variation is a prominent characteristic of electroencephalography (EEG) signals and a significant inhibitor to the practical implementation of brain–computer interfaces (BCIs) outside of research laboratories. However, a few methods exist to assess EEG signal variability. Here, a novel multi-class intra-trial trajectory (MITT) analysis to study EEG variability for mental imagery BCIs is presented. The methods yield insight into different aspects of signal variation, specifically (i) inter-individual, (ii) inter-task, (iii) inter-trial, and (iv) intra-trial. A novel representation of the time evolution of EEG signals was developed. Task trials were segmented into short temporal windows and represented in a feature space derived from unsupervised clustering of trial covariance matrices. Using this representation, temporal trajectories through the feature space were constructed. Two metrics were defined to assess user performance based on these trajectorie",
+      "doi": "10.1142/s0129065725500753",
+      "pmid": "41293812",
+      "openalex_id": "W4414717774",
+      "source_doi": "10.1093/pnasnexus/pgae076",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7548146224021912,
+        "similarity_score": 0.6535191535949707,
+        "citation_text_length": 1240,
         "dataset_text_length": 2361,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1142,6 +1160,29 @@
       }
     },
     {
+      "title": "Multi-Feature Riemannian Hypergraph for Online Test-Time Adaptation of Motor Imagery Brain-Computer Interface",
+      "author": "Siqi Li, Zhi Li, Tonghang Liu, Shuai Zhang, Yanfei Jia, Zhiqiang Yi, Jue Xie, Ni Ji Peking University, Chinese Institute for Brain Research, Beijing, NeuCyber Neurotech, Beijing Medical University, Chinese Academy of Medical SciencesPeking Union Medical College",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "In clinical motor imagery brain-computer interface (MI-BCI) decoding, cross-day transferability and online operation remain two critical challenges. Hypergraphs can improve transferability by capturing higher-order sample relationships, yet existing hypergraph-based methods for online emotion recognition neglect the cross-day benefits of Riemannian geometry widely adopted in EEG transfer learning. To bridge this gap, we propose the Multi-feature Riemannian Hypergraph (MRieHy), a framework tailored for online test-time adaptation in MI-BCI decoding that leverages Riemannian geometry to strengthen cross-day transferability. MRieHy first computes Riemannian means of covariance matrices from cross-day training data to align multi-day distributions. It then constructs a hypergraph over covariance matrices using Riemannian distance, complemented by a second hypergraph over deep features built with cosine similarity. The two hypergraphs are fused via adaptively learned combination weights, jo",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1093/pnasnexus/pgae076",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7967772692441942,
+        "similarity_score": 0.6898504495620728,
+        "citation_text_length": 1412,
+        "dataset_text_length": 2361,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Bayesian Complete-Pooling in Cross-Subject Classification for Motor Imagery Electroencephalogram",
       "author": "Ethan Davis",
       "venue": "n/a",
@@ -1255,45 +1296,20 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "An Order Estimation Based Approach to Identify Response Genes for Microarray Time Course Data",
-      "author": "Zhiheng K Lu, Allen O. Brian, Anthony F. Desmond",
-      "venue": "Statistical Applications in Genetics and Molecular Biology",
-      "year": 2012,
-      "url": "https://doi.org/10.1515/1544-6115.1818",
-      "cited_by": 2,
-      "abstract": "Gene expression profiles from microarray time course experiments provide a unique opportunity to examine genome-wide signal processing and gene responses. A fundamental issue in microarray experiments is that the treatment condition can only be controlled at the cell level rather than at the gene level. The treatment condition does not affect all genes equally. Some genes depend on other genes to detect external changes. The dependency between genes is not fully deterministic and may vary with treatment condition. Thus the expression of each gene is potentially affected by two confounding effects: the treatment effect and the gene context effect arising from the regulatory interactions among genes. This gene context effect is hard to isolate. Neither can it be simply ignored. Instead, this gene context information which may be different under different treatment conditions is of primary biological interest. We introduce an approach which deals with the confounding effects and takes into account the uncontrollable gene context effect. Our method is based on the estimation of the number of hidden states, which, in our development, corresponds to the order of a hidden Markov model (HMM). For each gene, its observed expression is modeled by a gamma distribution determined by the corresponding hidden state at each time point. Those genes showing evidence for more than one hidden state can be categorized as the signalling genes, or in a wider sense, as the response genes which are coordinated by a cell system in reaction to a specific external condition. These response genes can be used in the comparison of different treatment conditions, to investigate the gene context effect under different treatments. Microarray time course data are also analyzed to demonstrate our method.",
-      "doi": "10.1515/1544-6115.1818",
-      "pmid": "23241685",
-      "openalex_id": "W2265464824",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000177",
-      "confidence_scoring": {
-        "confidence_score": 0.23880138844251633,
-        "similarity_score": 0.21709217131137848,
-        "citation_text_length": 1738,
-        "dataset_text_length": 2361,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-19T10:06:56.009215+00:00",
+    "scoring_date": "2026-08-25T11:19:20.388951+00:00",
     "dataset_text_length": 2361,
-    "num_citations_scored": 52,
+    "num_citations_scored": 53,
     "summary_stats": {
-      "mean_confidence": 0.6247079682550752,
-      "median_confidence": 0.6198135070502758,
-      "std_confidence": 0.1403644393271916,
-      "min_confidence": 0.23880138844251633,
+      "mean_confidence": 0.6292703460438073,
+      "median_confidence": 0.6204838693141937,
+      "std_confidence": 0.1378971125428729,
+      "min_confidence": 0.30458760261535645,
       "max_confidence": 1.0,
-      "high_confidence_count": 17,
+      "high_confidence_count": 18,
       "medium_confidence_count": 32,
       "low_confidence_count": 3
     }

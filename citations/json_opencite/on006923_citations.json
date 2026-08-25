@@ -1,10 +1,10 @@
 {
   "dataset_id": "on006923",
   "num_citations": 0,
-  "date_last_updated": "2026-08-17T10:55:38.824540+00:00",
+  "date_last_updated": "2026-08-25T10:58:39.504771+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-17T10:55:38.824540+00:00",
+    "fetch_date": "2026-08-25T10:58:39.504771+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 1,
@@ -31,20 +31,13 @@
     ],
     "keywords": [
       "EEG",
-      "resting-state",
-      "juvenile delinquency",
+      "Juvenile Delinquency",
+      "resting-state EEG",
       "neurocognition",
-      "spectral analysis",
-      "adolescents",
-      "preprocessing",
-      "BIDS",
-      "Biosemi",
-      "Colombia",
-      "Atlántico",
-      "juvenile justice",
-      "neurocognitive dysfunction"
+      "power spectral density",
+      "adolescent offenders"
     ],
-    "methods_description": "EEG data were acquired using a Biosemi ActiveTwo system with 128 channels sampled at 2048 Hz and subsequently downsampled to 128 Hz. Recordings consisted of 12-minute resting-state sessions with alternating eyes-closed and eyes-open conditions. Preprocessing included visual inspection, rereferencing to average reference, bandpass filtering (1-40 Hz), artifact removal via bad channel rejection and Artifact Subspace Reconstruction (ASR), and independent component analysis with ICLabel. Spectral features were extracted using Welch's method across delta (1-4 Hz), theta (4-8 Hz), alpha (8-13 Hz), and beta (13-30 Hz) frequency bands.",
+    "methods_description": "EEG was recorded using a Biosemi ActiveTwo system with 128 channels plus EOG/ECG at 2048 Hz, online bandpass filtered 0.1-100 Hz. The resting-state paradigm consisted of 12 minutes with 4 minutes alternating eyes closed/open (COCO) and 8 minutes eyes closed (excluded). Preprocessing in EEGLAB/MATLAB included visual inspection, downsampling to 128 Hz, average rereferencing, FIR bandpass filtering (1-40 Hz), bad channel rejection, ASR, and ICA with ICLabel for artifact removal. Spectral features were extracted using Welch's method with 50% overlap and a Hamming window across delta, theta, alpha, and beta bands.",
     "funding": [
       {
         "funder_name": "SISTEMA GENERAL DE REGALÍAS (SGR)"
@@ -53,19 +46,12 @@
         "funder_name": "MINISTERIO DE CIENCIA TECNOLOGÍA E INNOVACIÓN (MINCIENCIAS)",
         "award_number": "BPIN 2020000100006"
       }
-    ],
-    "searched_accessions": [
-      "on006923",
-      "ds006923"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 0
+    ]
   },
   "citation_details": [],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:51:21.160746+00:00",
+    "scoring_date": "2026-08-25T12:17:26.864105+00:00",
     "dataset_text_length": 2296,
     "num_citations_scored": 0
   }

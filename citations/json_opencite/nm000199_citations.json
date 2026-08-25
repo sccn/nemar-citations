@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000199",
   "num_citations": 57,
-  "date_last_updated": "2026-08-17T10:09:47.635576+00:00",
+  "date_last_updated": "2026-08-25T10:10:23.131821+00:00",
   "metadata": {
-    "total_cumulative_citations": 638,
-    "fetch_date": "2026-08-17T10:09:47.635576+00:00",
+    "total_cumulative_citations": 640,
+    "fetch_date": "2026-08-25T10:10:23.131821+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -72,11 +72,11 @@
       "Event-Related Potentials, P300",
       "P300",
       "EEG",
-      "learning from label proportions",
       "unsupervised learning",
-      "visual speller"
+      "visual speller",
+      "learning from label proportions"
     ],
-    "methods_description": "EEG data were acquired at 1000 Hz from 31 channels using a BrainAmp DC amplifier with passive Ag/AgCl electrodes in a standard 10-20 montage (nose reference, FCz ground). Subjects performed a visual copy-spelling task using a 6×7 grid with two stimulus sequences featuring different target/non-target ratios (3/8 and 2/18). Each character required 68 highlighting events across 4 sequences of length 8 and 2 sequences of length 18. The LLP classifier was reset per sentence and retrained after each character. Sessions lasted approximately 3 hours including electrode setup.",
+    "methods_description": "EEG data were acquired at 1000 Hz from 31 channels using a BrainAmp DC amplifier with passive Ag/AgCl electrodes in a standard 10-20 montage (reference: nose, ground: FCz). Subjects performed a visual P300 speller task with a 6×7 grid, spelling a German pangram sentence three times across three sessions. Two stimulus sequences with different target/non-target ratios were employed: sequence 1 (3 targets/8 stimuli) and sequence 2 (2 targets/18 stimuli). Stimulus onset asynchrony was 250 ms with 100 ms stimulus duration. The LLP classifier was trained online using known class proportions without explicit trial labels.",
     "funding": [
       {
         "funder_name": "Special Research Fund from Ghent University"
@@ -93,7 +93,7 @@
       {
         "funder_name": "European Union",
         "award_number": "657679",
-        "award_title": "Horizon 2020 Marie Sklodowska-Curie grant"
+        "award_title": "Marie Sklodowska-Curie grant (Horizon 2020)"
       },
       {
         "funder_name": "Ghent University",
@@ -104,13 +104,7 @@
         "award_number": "2012-005741",
         "award_title": "BK21 program"
       }
-    ],
-    "searched_accessions": [
-      "nm000199"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 57
+    ]
   },
   "citation_details": [
     {
@@ -119,7 +113,7 @@
       "venue": "Annals of Translational Medicine",
       "year": 2020,
       "url": "https://doi.org/10.21037/atm.2019.11.109",
-      "cited_by": 122,
+      "cited_by": 123,
       "abstract": "Brain-computer interfaces (BCIs) have shown great prospects as real-time bidirectional links between living brains and actuators. Artificial intelligence (AI), which can advance the analysis and decoding of neural activity, has turbocharged the field of BCIs. Over the past decade, a wide range of BCI applications with AI assistance have emerged. These \"smart\" BCIs including motor and sensory BCIs have shown notable clinical success, improved the quality of paralyzed patients' lives, expanded the athletic ability of common people and accelerated the evolution of robots and neurophysiological discoveries. However, despite technological improvements, challenges remain with regard to the long training periods, real-time feedback, and monitoring of BCIs. In this article, the authors review the current state of AI as applied to BCIs and describe advances in BCI applications, their challenges and where they could be headed in the future.",
       "doi": "10.21037/atm.2019.11.109",
       "pmid": "32617332",
@@ -349,7 +343,7 @@
       "venue": "BMC Bioinformatics",
       "year": 2024,
       "url": "https://doi.org/10.1186/s12859-024-06024-w",
-      "cited_by": 19,
+      "cited_by": 20,
       "abstract": "BACKGROUND: The collection of substantial amounts of electroencephalogram (EEG) data is typically time-consuming and labor-intensive, which adversely impacts the development of decoding models with strong generalizability, particularly when the available data is limited. Utilizing sufficient EEG data from other subjects to aid in modeling the target subject presents a potential solution, commonly referred to as domain adaptation. Most current domain adaptation techniques for EEG decoding primarily focus on learning shared feature representations through domain alignment strategies. Since the domain shift cannot be completely removed, target EEG samples located near the edge of clusters are also susceptible to misclassification. METHODS: We propose a novel adaptive deep feature representation (ADFR) framework to improve the cross-subject EEG classification performance through learning transferable EEG feature representations. Specifically, we first minimize the distribution discrepancy ",
       "doi": "10.1186/s12859-024-06024-w",
       "pmid": "39741250",
@@ -736,7 +730,7 @@
     },
     {
       "title": "EDAPT: towards calibration-free BCIs with continual online adaptation",
-      "author": "Lisa Haxel, Jaivardhan Kapoor, Ulf Ziemann, Jakob H Macke",
+      "author": "Lisa Haxel, Jaivardhan Kapoor, Ulf Ziemann, Jakob H. Macke",
       "venue": "Journal of Neural Engineering",
       "year": 2026,
       "url": "https://doi.org/10.1088/1741-2552/ae5689",
@@ -749,9 +743,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4479599189758301,
-        "similarity_score": 0.3878440856933594,
-        "citation_text_length": 1194,
+        "confidence_score": 0.44417539268732076,
+        "similarity_score": 0.3845674395561218,
+        "citation_text_length": 1195,
         "dataset_text_length": 2373,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1109,7 +1103,7 @@
       "year": 2016,
       "url": "https://doi.org/10.5281/zenodo.192684",
       "cited_by": 0,
-      "abstract": "Data about two experiments is contained in this repository. An EEG experiment utilizing visual event-related potentials (ERPs) with N=13 healthy subjects was conducted in addition to a smaller study with N=5 subjects performing both an auditory and a visual ERP paradigm. The dataset is used and described in the following journal article: <em>Hübner, D., Verhoeven, T., Schmid, K., Müller, K. R., Tangermann, M., &amp; Kindermans, P. J. (2017). Learning from label proportions in brain-computer interfaces: online unsupervised learning with guarantees. PloS one, 12(4), e0175856.</em> <strong>Please cite the above article when using the data.</strong> The larger data set with N=13 is different to ordinary ERP datasets in the sense that the train of stimuli to spell one character (68) is divided into repetitions of two interleaved sequences with length 8 and 18, respectively. We added '#' symbols to the spelling matrix which should never be attended by the subject and hence, are non-targets b",
+      "abstract": "Data about two experiments is contained in this repository. An EEG experiment utilizing visual event-related potentials (ERPs) with N=13 healthy subjects was conducted in addition to a smaller study with N=5 subjects performing both an auditory and a visual ERP paradigm. The dataset is used and described in the following journal article: Hübner, D., Verhoeven, T., Schmid, K., Müller, K. R., Tangermann, M., & Kindermans, P. J. (2017). Learning from label proportions in brain-computer interfaces: online unsupervised learning with guarantees. PloS one, 12(4), e0175856. Please cite the above article when using the data. The larger data set with N=13 is different to ordinary ERP datasets in the sense that the train of stimuli to spell one character (68) is divided into repetitions of two interleaved sequences with length 8 and 18, respectively. We added '#' symbols to the spelling matrix which should never be attended by the subject and hence, are non-targets by definition. The first, short",
       "doi": "10.5281/zenodo.192684",
       "pmid": null,
       "openalex_id": "W3208362585",
@@ -1117,8 +1111,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.8692659556865693,
-        "similarity_score": 0.7902417778968811,
+        "confidence_score": 0.8629243671894075,
+        "similarity_score": 0.7844766974449158,
         "citation_text_length": 1150,
         "dataset_text_length": 2373,
         "scoring_method": "sentence_transformers",
@@ -1219,7 +1213,7 @@
     },
     {
       "title": "BTTDA: Block-Term Tensor Discriminant Analysis for Brain-Computer Interfacing",
-      "author": "Arne Van Den Kerchove, Hakim Si-Mohammed, Franccois Cabestaing, Marc M. Van Hulle",
+      "author": "Arne Van Den Kerchove, Hakim Si-Mohammed, Franccois Cabestaing, M. V. Hulle",
       "venue": "n/a",
       "year": 2025,
       "url": "n/a",
@@ -1232,9 +1226,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4763225591182709,
-        "similarity_score": 0.412400484085083,
-        "citation_text_length": 1200,
+        "confidence_score": 0.47784117490053185,
+        "similarity_score": 0.41371530294418335,
+        "citation_text_length": 1194,
         "dataset_text_length": 2373,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1427,13 +1421,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:13:34.323336+00:00",
+    "scoring_date": "2026-08-25T11:21:58.791198+00:00",
     "dataset_text_length": 2373,
     "num_citations_scored": 57,
     "summary_stats": {
-      "mean_confidence": 0.4981551223326671,
+      "mean_confidence": 0.49800411357822133,
       "median_confidence": 0.5026841163635254,
-      "std_confidence": 0.14098666326321194,
+      "std_confidence": 0.14071652076979602,
       "min_confidence": 0.1428113877773285,
       "max_confidence": 1.0,
       "high_confidence_count": 2,

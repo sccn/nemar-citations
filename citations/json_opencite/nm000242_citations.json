@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000242",
   "num_citations": 2,
-  "date_last_updated": "2026-08-18T10:02:51.740486+00:00",
+  "date_last_updated": "2026-08-25T10:15:53.520111+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-18T10:02:51.740486+00:00",
+    "fetch_date": "2026-08-25T10:15:53.520111+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -82,19 +82,14 @@
     "keywords": [
       "EEG",
       "visual imagery",
-      "brain-computer interfaces",
-      "signal classification",
-      "neural decoding",
-      "human_machine_interaction"
+      "brain-computer interface",
+      "CSP",
+      "EEGNet",
+      "human-machine interaction",
+      "motor imagery"
     ],
-    "methods_description": "EEG data were acquired using a Neuracle NeuSenW32 system with 32 Ag/AgCl electrodes positioned according to the standard 1005 montage, referenced to CPz with ground at AFz. Signals were sampled at 1000 Hz with a 50 Hz line frequency. Participants performed visual imagery tasks of 10 classes (animals, geometric figures, and objects) with 4-second trial intervals across 3 runs per session. Image cues were presented as visual stimuli in an offline, synchronous paradigm without feedback.",
-    "funding": [],
-    "searched_accessions": [
-      "nm000242"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 2
+    "methods_description": "EEG was recorded from 32 channels using a Neuracle NeuSenW32 system with Ag/AgCl electrodes at a sampling rate of 1000 Hz, referenced to CPz with ground at AFz, following the standard_1005 montage. Subjects performed visual imagery of 10 object/animal/figure categories across 2 sessions of 3 runs each, with trial durations of 4 seconds. Data were bandpass filtered between 5-30 Hz and analyzed using CSP and deep learning (EEGNet) methods within a train-test split, within-subject evaluation scheme.",
+    "funding": []
   },
   "citation_details": [
     {
@@ -127,7 +122,7 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.nm000242",
       "cited_by": 0,
-      "abstract": "A 32-channel EEG dataset comprising visual imagery recordings from 22 healthy participants performing mental imagery tasks of 10 distinct categories (animals, geometric figures, and objects). The dataset contains 16,800 trials collected across 2 sessions per subject with simultaneous EEG recording at 1000 Hz, designed to support brain-computer interface research and classification algorithm development.",
+      "abstract": "This dataset contains 32-channel EEG recordings from 22 healthy adults performing a visual imagery task involving 10 categories of animals, figures, and objects. Data were collected across two sessions per subject using a Neuracle NeuSenW32 system at 1000 Hz sampling rate, and are formatted according to BIDS for use in brain-computer interface research. The dataset supports evaluation of classification approaches such as CSP and EEGNet for decoding imagined visual categories from EEG signals.",
       "doi": "10.82901/nemar.nm000242",
       "pmid": null,
       "openalex_id": "W7163358063",
@@ -136,8 +131,8 @@
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 1.0,
-        "similarity_score": 0.8879169225692749,
-        "citation_text_length": 625,
+        "similarity_score": 0.8859269618988037,
+        "citation_text_length": 716,
         "dataset_text_length": 2330,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -146,7 +141,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-18T10:10:34.598785+00:00",
+    "scoring_date": "2026-08-25T11:27:13.721667+00:00",
     "dataset_text_length": 2330,
     "num_citations_scored": 2,
     "summary_stats": {

@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000216",
   "num_citations": 45,
-  "date_last_updated": "2026-08-17T10:11:59.416139+00:00",
+  "date_last_updated": "2026-08-25T10:12:40.920545+00:00",
   "metadata": {
-    "total_cumulative_citations": 1706,
-    "fetch_date": "2026-08-17T10:11:59.416139+00:00",
+    "total_cumulative_citations": 1719,
+    "fetch_date": "2026-08-25T10:12:40.920545+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -58,22 +58,23 @@
     "keywords": [
       "Electroencephalography",
       "P300",
-      "Brain-Computer Interfaces",
-      "Event-related potentials",
+      "Brain-Computer Interface",
       "Oddball paradigm",
-      "Visual attention",
-      "Riemannian geometry",
-      "Brain Invaders",
-      "Calibration-free"
+      "Event-related potentials",
+      "Visual stimulation",
+      "Riemannian classification",
+      "Calibration-free BCI",
+      "Flash duration modulation"
     ],
-    "methods_description": "EEG data were recorded from 43 healthy subjects (mean age 23.7±3.19 years; 31 male, 12 female) using 32 active wet electrodes in a 10-10 montage (g.GAMMAcap, g.tec) sampled at 512 Hz with g.USBamp hardware and OpenViBE software. The experiment employed an oddball paradigm with visual stimuli presented on a grid of 36 symbols (1 target, 35 non-targets) flashed pseudo-randomly at three flash durations across three game sessions. Reference electrode was placed at the right earlobe with ground at Fz. Resting state recordings (eyes closed, approximately one minute) were acquired before and after each session. Real-time adaptive Riemannian Minimum Distance to Mean classification provided visual feedback through the game interface.",
-    "funding": [],
-    "searched_accessions": [
-      "nm000216"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 1,
-    "num_datapaper_citations": 44
+    "methods_description": "EEG recordings were acquired using 32 active wet electrodes (g.tec g.GAMMAcap, 10-10 montage) at 512 Hz sampling rate with reference at right earlobe and ground at Fz. The oddball paradigm presented pseudo-randomly flashed symbol groups on a 36-symbol grid. Each session consisted of 9 levels with 12 repetitions per level. Real-time classification used an adaptive Riemannian Minimum Distance to Mean (RMDM) classifier. Resting state recordings (eyes closed) were acquired before and after each session. Data were collected using OpenViBE software with g.USBamp hardware.",
+    "funding": [
+      {
+        "funder_name": "CNRS"
+      },
+      {
+        "funder_name": "University Grenoble-Alpes"
+      }
+    ]
   },
   "citation_details": [
     {
@@ -105,7 +106,7 @@
       "venue": "ArXiv",
       "year": 2024,
       "url": "https://doi.org/10.48550/arXiv.2405.18765",
-      "cited_by": 433,
+      "cited_by": 440,
       "abstract": "The current electroencephalogram (EEG) based deep learning models are typically designed for specific datasets and applications in brain-computer interaction (BCI), limiting the scale of the models and thus diminishing their perceptual capabilities and generalizability. Recently, Large Language Models (LLMs) have achieved unprecedented success in text processing, prompting us to explore the capabilities of Large EEG Models (LEMs). We hope that LEMs can break through the limitations of different task types of EEG datasets, and obtain universal perceptual capabilities of EEG signals through unsupervised pre-training. Then the models can be fine-tuned for different downstream tasks. However, compared to text data, the volume of EEG datasets is generally small and the format varies widely. For example, there can be mismatched numbers of electrodes, unequal length data samples, varied task designs, and low signal-to-noise ratio. To overcome these challenges, we propose a unified foundation ",
       "doi": "10.48550/arXiv.2405.18765",
       "pmid": null,
@@ -128,7 +129,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2021,
       "url": "https://doi.org/10.1088/1741-2552/ac2bf8",
-      "cited_by": 246,
+      "cited_by": 247,
       "abstract": "Objective. Deep learning (DL) networks are increasingly attracting attention across various fields, including electroencephalography (EEG) signal processing. These models provide comparable performance to that of traditional techniques. At present, however, there is a lack of well-structured and standardized datasets with specific benchmark limit the development of DL solutions for EEG denoising. Approach. Here, we present EEGdenoiseNet, a benchmark EEG dataset that is suited for training and testing DL-based denoising models, as well as for performance comparisons across models. EEGdenoiseNet contains 4514 clean EEG segments, 3400 ocular artifact segments and 5598 muscular artifact segments, allowing users to synthesize contaminated EEG segments with the ground-truth clean EEG. Main results. We used EEGdenoiseNet to evaluate denoising performance of four classical networks (a fully-connected network, a simple and a complex convolution network, and a recurrent neural network). Our resu",
       "doi": "10.1088/1741-2552/ac2bf8",
       "pmid": "34596046",
@@ -312,7 +313,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2025,
       "url": "https://doi.org/10.1088/1741-2552/ae4455",
-      "cited_by": 33,
+      "cited_by": 35,
       "abstract": "Premise. Patterns of electrical brain activity recorded via electroencephalography (EEG) offer immense value for scientific and clinical investigations. The inability of supervised EEG encoders to learn robust EEG patterns and their over-reliance on expensive signal annotations have sparked a transition towards general-purpose self-supervised EEG encoders, i.e. EEG foundation models (EEG-FMs), for robust and scalable EEG feature extraction. However, the real-world readiness of early EEG-FMs and the rubrics for long-term research progress remain unclear. Objective. In this work, we conduct a review of ten early EEG-FMs to capture common trends and identify key directions for future development of EEG-FMs. Methods. We comparatively analyze each EEG-FM using three fundamental pillars of foundation modeling, namely the representation of input data, self-supervised modeling, and the evaluation strategy. Based on this analysis, we present a critical synthesis of EEG-FM methodology, empirical",
       "doi": "10.1088/1741-2552/ae4455",
       "pmid": "41666566",
@@ -399,6 +400,29 @@
       }
     },
     {
+      "title": "Virtual Electroencephalogram Acquisition: A Review on Electroencephalogram Generative Methods",
+      "author": "Zhishui You, Yuzhu Guo, Xiulei Zhang, Yifan Zhao",
+      "venue": "Sensors",
+      "year": 2025,
+      "url": "https://doi.org/10.3390/s25103178",
+      "cited_by": 9,
+      "abstract": "Driven by the remarkable capabilities of machine learning, brain-computer interfaces (BCIs) are carving out an ever-expanding range of applications across a multitude of diverse fields. Notably, electroencephalogram (EEG) signals have risen to prominence as the most prevalently utilized signals within BCIs, owing to their non-invasive essence, exceptional portability, cost-effectiveness, and high temporal resolution. However, despite the significant strides made, the paucity of EEG data has emerged as the main bottleneck, preventing generalization of decoding algorithms. Taking inspiration from the resounding success of generative models in computer vision and natural language processing arenas, the generation of synthetic EEG data from limited recorded samples has recently garnered burgeoning attention. This paper undertakes a comprehensive and thorough review of the techniques and methodologies underpinning the generative models of the general EEG, namely the variational autoencoder ",
+      "doi": "10.3390/s25103178",
+      "pmid": "40431969",
+      "openalex_id": "W4410481326",
+      "source_doi": "10.5281/zenodo.3266930",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.49278892815113073,
+        "similarity_score": 0.4266570806503296,
+        "citation_text_length": 1187,
+        "dataset_text_length": 2369,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "NeuroIDBench: An open-source benchmark framework for the standardization of methodology in brainwave-based authentication research",
       "author": "Avinash Kumar Chaurasia, Matin Fallahi, Thorsten Strufe, Philipp Terhörst, Patricia Arias-Cabarcos",
       "venue": "Journal of Information Security and Applications",
@@ -416,29 +440,6 @@
         "confidence_score": 0.47535623922944076,
         "similarity_score": 0.41156384348869324,
         "citation_text_length": 1315,
-        "dataset_text_length": 2369,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Virtual Electroencephalogram Acquisition: A Review on Electroencephalogram Generative Methods",
-      "author": "Zhishui You, Yuzhu Guo, Xiulei Zhang, Yifan Zhao",
-      "venue": "Sensors",
-      "year": 2025,
-      "url": "https://doi.org/10.3390/s25103178",
-      "cited_by": 8,
-      "abstract": "Driven by the remarkable capabilities of machine learning, brain-computer interfaces (BCIs) are carving out an ever-expanding range of applications across a multitude of diverse fields. Notably, electroencephalogram (EEG) signals have risen to prominence as the most prevalently utilized signals within BCIs, owing to their non-invasive essence, exceptional portability, cost-effectiveness, and high temporal resolution. However, despite the significant strides made, the paucity of EEG data has emerged as the main bottleneck, preventing generalization of decoding algorithms. Taking inspiration from the resounding success of generative models in computer vision and natural language processing arenas, the generation of synthetic EEG data from limited recorded samples has recently garnered burgeoning attention. This paper undertakes a comprehensive and thorough review of the techniques and methodologies underpinning the generative models of the general EEG, namely the variational autoencoder ",
-      "doi": "10.3390/s25103178",
-      "pmid": "40431969",
-      "openalex_id": "W4410481326",
-      "source_doi": "10.5281/zenodo.3266930",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.49278892815113073,
-        "similarity_score": 0.4266570806503296,
-        "citation_text_length": 1187,
         "dataset_text_length": 2369,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -491,6 +492,29 @@
       }
     },
     {
+      "title": "Benchmarking brain–computer interface algorithms: Riemannian approaches vs convolutional neural networks",
+      "author": "Manuel Eder, Jiachen Xu, Moritz Grosse‐Wentrup",
+      "venue": "Journal of Neural Engineering",
+      "year": 2024,
+      "url": "https://doi.org/10.1088/1741-2552/ad6793",
+      "cited_by": 7,
+      "abstract": "Abstract Objective. To date, a comprehensive comparison of Riemannian decoding methods with deep convolutional neural networks for EEG-based brain–computer interfaces remains absent from published work. We address this research gap by using MOABB, The Mother Of All BCI Benchmarks, to compare novel convolutional neural networks to state-of-the-art Riemannian approaches across a broad range of EEG datasets, including motor imagery, P300, and steady-state visual evoked potentials paradigms. Approach. We systematically evaluated the performance of convolutional neural networks, specifically EEGNet, shallow ConvNet, and deep ConvNet, against well-established Riemannian decoding methods using MOABB processing pipelines. This evaluation included within-session, cross-session, and cross-subject methods, to provide a practical analysis of model effectiveness and to find an overall solution that performs well across different experimental settings. Main results. We find no significant difference",
+      "doi": "10.1088/1741-2552/ad6793",
+      "pmid": "39053485",
+      "openalex_id": "W4400969643",
+      "source_doi": "10.5281/zenodo.3266930",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.49615839779376986,
+        "similarity_score": 0.4295743703842163,
+        "citation_text_length": 1218,
+        "dataset_text_length": 2369,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
       "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
       "venue": "ArXiv",
@@ -537,46 +561,23 @@
       }
     },
     {
-      "title": "Benchmarking brain–computer interface algorithms: Riemannian approaches vs convolutional neural networks",
-      "author": "Manuel Eder, Jiachen Xu, Moritz Grosse‐Wentrup",
+      "title": "Universal semantic feature extraction from EEG signals: a task-independent framework",
+      "author": "Hossein Ahmadi, L. Mesin",
       "venue": "Journal of Neural Engineering",
-      "year": 2024,
-      "url": "https://doi.org/10.1088/1741-2552/ad6793",
-      "cited_by": 6,
-      "abstract": "Abstract Objective. To date, a comprehensive comparison of Riemannian decoding methods with deep convolutional neural networks for EEG-based brain–computer interfaces remains absent from published work. We address this research gap by using MOABB, The Mother Of All BCI Benchmarks, to compare novel convolutional neural networks to state-of-the-art Riemannian approaches across a broad range of EEG datasets, including motor imagery, P300, and steady-state visual evoked potentials paradigms. Approach. We systematically evaluated the performance of convolutional neural networks, specifically EEGNet, shallow ConvNet, and deep ConvNet, against well-established Riemannian decoding methods using MOABB processing pipelines. This evaluation included within-session, cross-session, and cross-subject methods, to provide a practical analysis of model effectiveness and to find an overall solution that performs well across different experimental settings. Main results. We find no significant difference",
-      "doi": "10.1088/1741-2552/ad6793",
-      "pmid": "39053485",
-      "openalex_id": "W4400969643",
-      "source_doi": "10.5281/zenodo.3266930",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.49615839779376986,
-        "similarity_score": 0.4295743703842163,
-        "citation_text_length": 1218,
-        "dataset_text_length": 2369,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "NeuroRVQ: Multi-Scale Biosignal Tokenization for Generative Foundation Models",
-      "author": "Konstantinos Barmpas, Na Lee, Dimitrios Chalatsis, W. Raftery, Yannis Panagakis, Dimitrios A. Adamos, N. Laskaris, A. Koliousis, Dario Farina, S. Zafeiriou",
-      "venue": "n/a",
       "year": 2025,
-      "url": "n/a",
-      "cited_by": 6,
-      "abstract": "Biosignals such as electroencephalography (EEG), electrocardiography (ECG), and electromyography (EMG) encode physiological activity across multiple temporal and spectral scales, yielding representations that are rich but challenging for machine learning. Foundation models trained to predict masked signal tokens have shown promise in learning generalizable biosignal representations, yet their performance depends on the tokenizer's ability to preserve high-frequency dynamics and reconstruct signals with high fidelity. We introduce NeuroRVQ, a modality-adaptive biosignal tokenizer family designed for high-fidelity signal reconstruction. To capture the full frequency spectrum, NeuroRVQ decomposes biosignals into frequency-specific representations via multi-scale temporal convolutions, each encoded into hierarchical RVQ codebooks to preserve high-frequency detail, combined with a novel phase-aware training loss that respects the circular topology of Fourier phase. By tuning the temporal re",
-      "doi": null,
-      "pmid": null,
+      "url": "https://doi.org/10.1088/1741-2552/add08f",
+      "cited_by": 7,
+      "abstract": "Objective. Extracting universal, task-independent semantic features from electroencephalography (EEG) signals remains an open challenge. Traditional approaches are often task-specific, limiting their generalization across different EEG paradigms. This study aims to develop a robust, unsupervised framework for learning high-level, task-independent neural representations. Approach. We propose a novel framework integrating convolutional neural networks, AutoEncoders, and Transformers to extract both low-level spatiotemporal patterns and high-level semantic features from EEG signals. The model is trained in an unsupervised manner to ensure adaptability across diverse EEG paradigms, including motor imagery (MI), steady-state visually evoked potentials (SSVEPs), and event-related potentials (ERPs, specifically P300). Extensive analyses, including clustering, correlation, and ablation studies, are conducted to validate the quality and interpretability of the extracted features. Main results. ",
+      "doi": "10.1088/1741-2552/add08f",
+      "pmid": "40273947",
       "openalex_id": null,
       "source_doi": "10.5281/zenodo.3266930",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.44090966999530795,
-        "similarity_score": 0.3817399740219116,
-        "citation_text_length": 1274,
+        "confidence_score": 0.47529603570699697,
+        "similarity_score": 0.41151171922683716,
+        "citation_text_length": 1176,
         "dataset_text_length": 2369,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -606,23 +607,23 @@
       }
     },
     {
-      "title": "Universal semantic feature extraction from EEG signals: a task-independent framework",
-      "author": "Hossein Ahmadi, L. Mesin",
-      "venue": "Journal of Neural Engineering",
+      "title": "NeuroRVQ: Multi-Scale Biosignal Tokenization for Generative Foundation Models",
+      "author": "Konstantinos Barmpas, Na Lee, Dimitrios Chalatsis, W. Raftery, Yannis Panagakis, Dimitrios A. Adamos, N. Laskaris, A. Koliousis, Dario Farina, S. Zafeiriou",
+      "venue": "n/a",
       "year": 2025,
-      "url": "https://doi.org/10.1088/1741-2552/add08f",
-      "cited_by": 6,
-      "abstract": "Objective. Extracting universal, task-independent semantic features from electroencephalography (EEG) signals remains an open challenge. Traditional approaches are often task-specific, limiting their generalization across different EEG paradigms. This study aims to develop a robust, unsupervised framework for learning high-level, task-independent neural representations. Approach. We propose a novel framework integrating convolutional neural networks, AutoEncoders, and Transformers to extract both low-level spatiotemporal patterns and high-level semantic features from EEG signals. The model is trained in an unsupervised manner to ensure adaptability across diverse EEG paradigms, including motor imagery (MI), steady-state visually evoked potentials (SSVEPs), and event-related potentials (ERPs, specifically P300). Extensive analyses, including clustering, correlation, and ablation studies, are conducted to validate the quality and interpretability of the extracted features. Main results. ",
-      "doi": "10.1088/1741-2552/add08f",
-      "pmid": "40273947",
+      "url": "n/a",
+      "cited_by": 5,
+      "abstract": "Biosignals such as electroencephalography (EEG), electrocardiography (ECG), and electromyography (EMG) encode physiological activity across multiple temporal and spectral scales, yielding representations that are rich but challenging for machine learning. Foundation models trained to predict masked signal tokens have shown promise in learning generalizable biosignal representations, yet their performance depends on the tokenizer's ability to preserve high-frequency dynamics and reconstruct signals with high fidelity. We introduce NeuroRVQ, a modality-adaptive biosignal tokenizer family designed for high-fidelity signal reconstruction. To capture the full frequency spectrum, NeuroRVQ decomposes biosignals into frequency-specific representations via multi-scale temporal convolutions, each encoded into hierarchical RVQ codebooks to preserve high-frequency detail, combined with a novel phase-aware training loss that respects the circular topology of Fourier phase. By tuning the temporal re",
+      "doi": null,
+      "pmid": null,
       "openalex_id": null,
       "source_doi": "10.5281/zenodo.3266930",
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.47529603570699697,
-        "similarity_score": 0.41151171922683716,
-        "citation_text_length": 1176,
+        "confidence_score": 0.44090966999530795,
+        "similarity_score": 0.3817399740219116,
+        "citation_text_length": 1274,
         "dataset_text_length": 2369,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -675,6 +676,29 @@
       }
     },
     {
+      "title": "The Riemannian Means Field Classifier for EEG-Based BCI Data",
+      "author": "Anton Andreev, G. Cattan, Marco Congedo",
+      "venue": "Sensors (Basel, Switzerland)",
+      "year": 2025,
+      "url": "https://doi.org/10.3390/s25072305",
+      "cited_by": 4,
+      "abstract": ": A substantial amount of research has demonstrated the robustness and accuracy of the Riemannian minimum distance to mean (MDM) classifier for all kinds of EEG-based brain–computer interfaces (BCIs). This classifier is simple, fully deterministic, robust to noise, computationally efficient, and prone to transfer learning. Its training is very simple, requiring just the computation of a geometric mean of a symmetric positive-definite (SPD) matrix per class. We propose an improvement of the MDM involving a number of power means of SPD matrices instead of the sole geometric mean. By the analysis of 20 public databases, 10 for the motor-imagery BCI paradigm and 10 for the P300 BCI paradigm, comprising 587 individuals in total, we show that the proposed classifier clearly outperforms the MDM, approaching the state-of-the art in terms of performance while retaining the simplicity and the deterministic behavior. In order to promote reproducible research, our code will be released as open sou",
+      "doi": "10.3390/s25072305",
+      "pmid": "40218817",
+      "openalex_id": null,
+      "source_doi": "10.5281/zenodo.3266930",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5799181920289994,
+        "similarity_score": 0.5020936727523804,
+        "citation_text_length": 1166,
+        "dataset_text_length": 2369,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "SpeechBrain-MOABB: An open-source Python library for benchmarking deep neural networks applied to EEG signals",
       "author": "Davide Borra, Francesco Paissan, Mirco Ravanelli",
       "venue": "Computers in Biology and Medicine",
@@ -692,29 +716,6 @@
         "confidence_score": 0.4935762897133828,
         "similarity_score": 0.42733877897262573,
         "citation_text_length": 1229,
-        "dataset_text_length": 2369,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "The Riemannian Means Field Classifier for EEG-Based BCI Data",
-      "author": "Anton Andreev, G. Cattan, Marco Congedo",
-      "venue": "Sensors (Basel, Switzerland)",
-      "year": 2025,
-      "url": "https://doi.org/10.3390/s25072305",
-      "cited_by": 3,
-      "abstract": ": A substantial amount of research has demonstrated the robustness and accuracy of the Riemannian minimum distance to mean (MDM) classifier for all kinds of EEG-based brain–computer interfaces (BCIs). This classifier is simple, fully deterministic, robust to noise, computationally efficient, and prone to transfer learning. Its training is very simple, requiring just the computation of a geometric mean of a symmetric positive-definite (SPD) matrix per class. We propose an improvement of the MDM involving a number of power means of SPD matrices instead of the sole geometric mean. By the analysis of 20 public databases, 10 for the motor-imagery BCI paradigm and 10 for the P300 BCI paradigm, comprising 587 individuals in total, we show that the proposed classifier clearly outperforms the MDM, approaching the state-of-the art in terms of performance while retaining the simplicity and the deterministic behavior. In order to promote reproducible research, our code will be released as open sou",
-      "doi": "10.3390/s25072305",
-      "pmid": "40218817",
-      "openalex_id": null,
-      "source_doi": "10.5281/zenodo.3266930",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5799181920289994,
-        "similarity_score": 0.5020936727523804,
-        "citation_text_length": 1166,
         "dataset_text_length": 2369,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -767,7 +768,7 @@
       }
     },
     {
-      "title": "Tagging Latency Estimator: A Standalone Software forEstimating Latency of Event-Related Potentials in P300-basedBrain-Computer Interfaces",
+      "title": "Tagging Latency Estimator: A Standalone Software for Estimating Latency of Event-Related Potentials in P300-based Brain-Computer Interfaces",
       "author": "Grégoire Cattan, César Mendoza",
       "venue": "The Journal of Open Source Software",
       "year": 2023,
@@ -781,9 +782,9 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6764966207742692,
-        "similarity_score": 0.5857113599777222,
-        "citation_text_length": 486,
+        "confidence_score": 0.6750308766961098,
+        "similarity_score": 0.5844423174858093,
+        "citation_text_length": 488,
         "dataset_text_length": 2369,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -837,7 +838,7 @@
     },
     {
       "title": "BrainAuth: A Neuro-Biometric Approach for Personal Authentication",
-      "author": "Muhammad Adil, Shahid Mumtaz, Ahmed Farouk, Houbing Song, Zhanpeng Jin",
+      "author": "Muhammad Adil, Shahid Mumtaz, A. Farouk, Houbing Song, Zhanpeng Jin",
       "venue": "IEEE Journal of Biomedical and Health Informatics",
       "year": 2025,
       "url": "https://doi.org/10.1109/JBHI.2025.3613234",
@@ -850,9 +851,9 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4050292655825616,
-        "similarity_score": 0.35067468881607056,
-        "citation_text_length": 1223,
+        "confidence_score": 0.40290107622742655,
+        "similarity_score": 0.3488321006298065,
+        "citation_text_length": 1220,
         "dataset_text_length": 2369,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -911,7 +912,7 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.nm000217.v1.0.0",
       "cited_by": 0,
-      "abstract": "This dataset comprises electroencephalographic recordings from 43 healthy subjects performing a visual P300-based brain-computer interface task using the Brain Invaders videogame paradigm. Participants responded to an oddball stimulus presentation (36-symbol grid with 1 target, 35 non-targets) across three sessions with varying flash durations (110ms, 80ms, 50ms). EEG data were acquired using 32 wet electrodes at 512 Hz and processed with a calibration-free adaptive Riemannian classifier for real-time feedback. Resting state recordings (eyes closed) were acquired before and after sessions.",
+      "abstract": "This dataset comprises electroencephalographic recordings from 43 healthy subjects performing a visual P300-based brain-computer interface task using the Brain Invaders videogame paradigm. The experiment took place at GIPSA-lab, Grenoble, France, in 2015. Participants responded to an oddball stimulus presentation (36-symbol grid with 1 target, 35 non-targets) across three sessions with varying flash durations (50ms, 80ms, 110ms). EEG data were acquired using 32 wet electrodes at 512 Hz and processed with a calibration-free adaptive Riemannian classifier for real-time feedback. Resting state recordings (eyes closed, approximately one minute) were acquired before and after each session.",
       "doi": "10.82901/nemar.nm000217.v1.0.0",
       "pmid": null,
       "openalex_id": "W7163328840",
@@ -920,8 +921,8 @@
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 1.0,
-        "similarity_score": 0.8673410415649414,
-        "citation_text_length": 833,
+        "similarity_score": 0.8785149455070496,
+        "citation_text_length": 930,
         "dataset_text_length": 2369,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1021,7 +1022,7 @@
     },
     {
       "title": "BTTDA: Block-Term Tensor Discriminant Analysis for Brain-Computer Interfacing",
-      "author": "Arne Van Den Kerchove, Hakim Si-Mohammed, Franccois Cabestaing, Marc M. Van Hulle",
+      "author": "Arne Van Den Kerchove, Hakim Si-Mohammed, Franccois Cabestaing, M. V. Hulle",
       "venue": "n/a",
       "year": 2025,
       "url": "n/a",
@@ -1034,9 +1035,9 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.49930591642856603,
-        "similarity_score": 0.43229949474334717,
-        "citation_text_length": 1200,
+        "confidence_score": 0.5000127312541008,
+        "similarity_score": 0.4329114556312561,
+        "citation_text_length": 1194,
         "dataset_text_length": 2369,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1090,7 +1091,7 @@
     },
     {
       "title": "EDAPT: towards calibration-free BCIs with continual online adaptation",
-      "author": "Lisa Haxel, Jaivardhan Kapoor, Ulf Ziemann, Jakob H Macke",
+      "author": "Lisa Haxel, Jaivardhan Kapoor, Ulf Ziemann, Jakob H. Macke",
       "venue": "Journal of Neural Engineering",
       "year": 2026,
       "url": "https://doi.org/10.1088/1741-2552/ae5689",
@@ -1103,9 +1104,9 @@
       "source_relation": "IsVersionOf",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5142677825689316,
-        "similarity_score": 0.44525349140167236,
-        "citation_text_length": 1194,
+        "confidence_score": 0.510004312992096,
+        "similarity_score": 0.4415621757507324,
+        "citation_text_length": 1195,
         "dataset_text_length": 2369,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1114,13 +1115,13 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:15:09.872859+00:00",
+    "scoring_date": "2026-08-25T11:24:05.350124+00:00",
     "dataset_text_length": 2369,
     "num_citations_scored": 45,
     "summary_stats": {
-      "mean_confidence": 0.4844820318818093,
+      "mean_confidence": 0.4843231299221517,
       "median_confidence": 0.49176536500453955,
-      "std_confidence": 0.11500982938050697,
+      "std_confidence": 0.11496793981298939,
       "min_confidence": 0.21081116795539856,
       "max_confidence": 1.0,
       "high_confidence_count": 1,

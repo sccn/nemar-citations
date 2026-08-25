@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000239",
   "num_citations": 32,
-  "date_last_updated": "2026-08-18T10:02:24.219502+00:00",
+  "date_last_updated": "2026-08-25T10:15:31.931934+00:00",
   "metadata": {
-    "total_cumulative_citations": 150,
-    "fetch_date": "2026-08-18T10:02:24.219502+00:00",
+    "total_cumulative_citations": 151,
+    "fetch_date": "2026-08-25T10:15:31.931934+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 4,
@@ -120,11 +120,18 @@
       "EEG",
       "brain-computer interfaces",
       "code-modulated visual evoked potentials",
-      "c-VEP",
       "m-sequences",
-      "visual stimulation"
+      "p-ary m-sequences",
+      "visual stimulation",
+      "BCI paradigm",
+      "non-binary stimulation",
+      "MOABB",
+      "benchmark",
+      "Evoked Potentials, Visual",
+      "Brain-Computer Interfaces",
+      "Electroencephalography"
     ],
-    "methods_description": "EEG data were acquired at a sampling rate of 256 Hz using 16 channels with standard 1005 montage. The experimental paradigm employed code-modulated visual evoked potentials with p-ary m-sequences across 11 classes (0-10). Each session contained 8 runs (6 training, 2 testing) with a trial interval of 0-1 second. Line frequency was 50 Hz.",
+    "methods_description": "EEG data were acquired at 256 Hz sampling rate using 16 channels arranged in a standard 1005 montage with 50 Hz line frequency. Participants completed 5 sessions, each containing 8 runs (6 training, 2 testing) of the c-VEP paradigm with 11 visual stimulus classes based on p-ary m-sequences. Trial intervals were 1 second in duration.",
     "funding": [
       {
         "funder_name": "CIBER-BBN through Instituto de Salud Carlos III"
@@ -140,17 +147,8 @@
       {
         "funder_name": "Ministerio de Ciencia e Innovación/Agencia Estatal de Investigación",
         "award_number": "PID2020-115468RB-I00"
-      },
-      {
-        "funder_name": "CIBER-BBN"
       }
-    ],
-    "searched_accessions": [
-      "nm000239"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 32
+    ]
   },
   "citation_details": [
     {
@@ -275,7 +273,7 @@
       "year": 2024,
       "url": "https://doi.org/10.1088/1741-2552/ad8ef7",
       "cited_by": 18,
-      "abstract": "Abstract Objective. Reactive brain–computer interfaces typically rely on repetitive visual stimuli, which can strain the eyes and cause attentional distraction. To address these challenges, we propose a novel approach rooted in visual neuroscience to design visual Stimuli for Augmented Response (StAR). The StAR stimuli consist of small randomly-oriented Gabor or Ricker patches that optimize foveal neural response while reducing peripheral distraction. Approach. In a factorial design study, 24 participants equipped with an 8-dry electrode EEG system focused on series of target flickers presented under three formats: traditional Plain flickers, Gabor -based, or Ricker -based flickers. These flickers were part of a five-class code visually evoked potentials paradigm featuring low frequency, short, and aperiodic visual flashes. Main results. Subjective ratings revealed that Gabor and Ricker stimuli were visually comfortable and nearly invisible in peripheral vision compared to plain flicke",
+      "abstract": "Abstract Objective. Reactive brain–computer interfaces typically rely on repetitive visual stimuli, which can strain the eyes and cause attentional distraction. To address these challenges, we propose a novel approach rooted in visual neuroscience to design visual Stimuli for Augmented Response (StAR). The StAR stimuli consist of small randomly-oriented Gabor or Ricker patches that optimize foveal neural response while reducing peripheral distraction. Approach. In a factorial design study, 24 participants equipped with an 8-dry electrode EEG system focused on series of target flickers presented under three formats: traditional Plain flickers, Gabor-based, or Ricker-based flickers. These flickers were part of a five-class code visually evoked potentials paradigm featuring low frequency, short, and aperiodic visual flashes. Main results. Subjective ratings revealed that Gabor and Ricker stimuli were visually comfortable and nearly invisible in peripheral vision compared to plain flickers",
       "doi": "10.1088/1741-2552/ad8ef7",
       "pmid": "39500051",
       "openalex_id": "W4404065487",
@@ -283,8 +281,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.530936723202467,
-        "similarity_score": 0.45968547463417053,
+        "confidence_score": 0.5293468889594078,
+        "similarity_score": 0.45830899477005005,
         "citation_text_length": 1257,
         "dataset_text_length": 2415,
         "scoring_method": "sentence_transformers",
@@ -361,6 +359,29 @@
       }
     },
     {
+      "title": "Addressing BCI inefficiency in c-VEP-based BCIs: A comprehensive study of neurophysiological predictors, binary stimulus sequences, and user comfort",
+      "author": "Jordy Thielen",
+      "venue": "Biomedical Physics & Engineering Express",
+      "year": 2025,
+      "url": "https://doi.org/10.1088/2057-1976/ade316",
+      "cited_by": 4,
+      "abstract": "Abstract Objective. This study investigated the presence of brain-computer interface (BCI) inefficiency in BCIs using the code-modulated visual evoked potential (c-VEP). It further explored neurophysiological predictors of performance variability and evaluated a wide range of binary stimulus sequences in terms of classification accuracy and user comfort, aiming to identify strategies to mitigate c-VEP BCI inefficiency. Approach. In a comprehensive empirical analysis, ten different binary stimulus sequences were offline evaluated. These sequences included five code families (m-sequence, de Bruijn sequence, Golay sequence, Gold code, and a Gold code set), each in original and modulated form. To identify predictors of performance variability, resting-state alpha activity, heart rate and heart rate variability, sustained attention, and flash-VEP characteristics were studied. Main Results. Results confirmed substantial inter-individual variability in c-VEP BCI efficiency. While all particip",
+      "doi": "10.1088/2057-1976/ade316",
+      "pmid": "40494367",
+      "openalex_id": "W4411166688",
+      "source_doi": "10.1016/j.eswa.2023.120815",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6529817926883699,
+        "similarity_score": 0.565352201461792,
+        "citation_text_length": 1240,
+        "dataset_text_length": 2415,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Enhancing user experience in c-VEP-based BCI: Effects of visual stimulus opacity on performance and visual fatigue",
       "author": "Ana Martín-Fernández, Víctor Martínez-Cagigal, Selene Moreno-Calderón, Eduardo Santamaría-Vázquez, Roberto Hornero",
       "venue": "Biomedical Signal Processing and Control",
@@ -407,29 +428,6 @@
       }
     },
     {
-      "title": "Addressing BCI inefficiency in c-VEP-based BCIs: A comprehensive study of neurophysiological predictors, binary stimulus sequences, and user comfort",
-      "author": "Jordy Thielen",
-      "venue": "Biomedical Physics & Engineering Express",
-      "year": 2025,
-      "url": "https://doi.org/10.1088/2057-1976/ade316",
-      "cited_by": 3,
-      "abstract": "Abstract Objective. This study investigated the presence of brain-computer interface (BCI) inefficiency in BCIs using the code-modulated visual evoked potential (c-VEP). It further explored neurophysiological predictors of performance variability and evaluated a wide range of binary stimulus sequences in terms of classification accuracy and user comfort, aiming to identify strategies to mitigate c-VEP BCI inefficiency. Approach. In a comprehensive empirical analysis, ten different binary stimulus sequences were offline evaluated. These sequences included five code families (m-sequence, de Bruijn sequence, Golay sequence, Gold code, and a Gold code set), each in original and modulated form. To identify predictors of performance variability, resting-state alpha activity, heart rate and heart rate variability, sustained attention, and flash-VEP characteristics were studied. Main Results. Results confirmed substantial inter-individual variability in c-VEP BCI efficiency. While all particip",
-      "doi": "10.1088/2057-1976/ade316",
-      "pmid": "40494367",
-      "openalex_id": "W4411166688",
-      "source_doi": "10.1016/j.eswa.2023.120815",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6529817926883699,
-        "similarity_score": 0.565352201461792,
-        "citation_text_length": 1240,
-        "dataset_text_length": 2415,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Optimization of stimulus properties for SSVEP-based BMI system with a heads-up display to control in-vehicle features",
       "author": "Hossein Hamidi Shishavan, Raheli Roy, Kia Golzari, Abhishek Singla, David Zalozhin, Danny J. Lohan, Muhamed Farooq, Ercan M. Dede, In-Soo Kim",
       "venue": "PLoS ONE",
@@ -453,7 +451,7 @@
       }
     },
     {
-      "title": "Toward Early Stopping Detection for Non-binary c-VEP-Based BCIs: A Pilot Study",
+      "title": "Toward Early Stopping Detection for Non-binary c-VEP-Based BCIs: A Pilot Study",
       "author": "Víctor Martínez-Cagigal, Eduardo Santamaría-Vázquez, Roberto Hornero",
       "venue": "Lecture notes in computer science",
       "year": 2023,
@@ -467,8 +465,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6118598610162735,
-        "similarity_score": 0.5827236771583557,
+        "confidence_score": 0.6163034498691559,
+        "similarity_score": 0.5869556665420532,
         "citation_text_length": 206,
         "dataset_text_length": 2415,
         "scoring_method": "sentence_transformers",
@@ -482,7 +480,7 @@
       "year": 2025,
       "url": "https://doi.org/10.3389/fnhum.2025.1548183",
       "cited_by": 2,
-      "abstract": "The c-VEP stimulus protocol is distinctly different from other major classes of evoked responses, such as the event-related potential (ERP) and steady-state visual evoked potential (SSVEP) (Mart&#237;nez-Cagigal et al., 2021). The ERP protocol, typically based on an oddball paradigm, operates at a much slower pace, with a typical stimulus onset asynchrony (SOA) of approximately 250 ms (4 Hz) compared to the significantly faster SOA of at least 16 ms (60 Hz) used in c-VEP. Similarly, while the SSVEP paradigm is also relatively fast as compared to ERP, SSVEP protocols rely on a frequency-tagging approach, where stimuli are restricted to periodic signals with specific frequencies and phases. In contrast, the c-VEP protocol employs a noise-tagging approach, allowing for a much wider range of stimulus sequences, including non-periodic patterns, while also demonstrating greater resilience to narrowband interferences. Moreover, recent evidence has revealed that, from an information-theoretic ",
+      "abstract": "The c-VEP stimulus protocol is distinctly different from other major classes of evoked responses, such as the event-related potential (ERP) and steady-state visual evoked potential (SSVEP) (Martínez-Cagigal et al., 2021). The ERP protocol, typically based on an oddball paradigm, operates at a much slower pace, with a typical stimulus onset asynchrony (SOA) of approximately 250 ms (4 Hz) compared to the significantly faster SOA of at least 16 ms (60 Hz) used in c-VEP. Similarly, while the SSVEP paradigm is also relatively fast as compared to ERP, SSVEP protocols rely on a frequency-tagging approach, where stimuli are restricted to periodic signals with specific frequencies and phases. In contrast, the c-VEP protocol employs a noise-tagging approach, allowing for a much wider range of stimulus sequences, including non-periodic patterns, while also demonstrating greater resilience to narrowband interferences. Moreover, recent evidence has revealed that, from an information-theoretic persp",
       "doi": "10.3389/fnhum.2025.1548183",
       "pmid": "40051611",
       "openalex_id": "W4407798053",
@@ -490,8 +488,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6946802186965944,
-        "similarity_score": 0.6014547348022461,
+        "confidence_score": 0.7055158889293671,
+        "similarity_score": 0.6108362674713135,
         "citation_text_length": 1240,
         "dataset_text_length": 2415,
         "scoring_method": "sentence_transformers",
@@ -660,7 +658,7 @@
       }
     },
     {
-      "title": "Bit-Wise Reconstruction of Non-binary Visual Stimulation Patterns from EEG Using Deep Learning: A Promising Alternative for User-Friendly High-Speed c-VEP-Based BCIs",
+      "title": "Bit-Wise Reconstruction of Non-binary Visual Stimulation Patterns from EEG Using Deep Learning: A Promising Alternative for User-Friendly High-Speed c-VEP-Based BCIs",
       "author": "Eduardo Santamaría-Vázquez, Víctor Martínez-Cagigal, Roberto Hornero",
       "venue": "Lecture notes in computer science",
       "year": 2023,
@@ -674,9 +672,32 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5899116575717926,
-        "similarity_score": 0.5618206262588501,
+        "confidence_score": 0.5910911321640014,
+        "similarity_score": 0.5629439353942871,
         "citation_text_length": 293,
+        "dataset_text_length": 2415,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Beyond flickering: introducing code-modulated motion visual evoked potentials for brain-computer interfacing",
+      "author": "Hanneke Scheppink, Rainer Herpers, Jordy Thielen, Ivan Volosyak",
+      "venue": "Frontiers in Neuroergonomics",
+      "year": 2026,
+      "url": "https://doi.org/10.3389/fnrgo.2026.1884144",
+      "cited_by": 0,
+      "abstract": "This study presents a novel code-modulated motion visual evoked potential (c-MVEP) paradigm for brain-computer interfacing (BCI). To avoid the visual discomfort and fatigue often associated with traditional flickering stimuli, this paradigm uses pseudo-random sequences to visually stimulate objects using motion. We conducted offline and online experiments, to investigate signal characteristics and evaluate practical feasibility, respectively. In the offline experiment, EEG data were recorded and compared during sequential stimulation of a single target under four conditions: c-MVEP, code-modulated visual evoked potential (c-VEP), steady-state motion visual evoked potential (SSMVEP), and steady-state visual evoked potential (SSVEP). The c-MVEP evoked similar temporal and broadband spectral responses as c-VEP, with a comparable signal-to-noise ratio (SNR), although c-MVEP responses were more focused in the lower frequency range. While SSMVEP and SSVEP both showed clear harmonic oscillati",
+      "doi": "10.3389/fnrgo.2026.1884144",
+      "pmid": null,
+      "openalex_id": "W7161586519",
+      "source_doi": "10.1016/j.eswa.2023.120815",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6108383631706239,
+        "similarity_score": 0.5288643836975098,
+        "citation_text_length": 1238,
         "dataset_text_length": 2415,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -706,7 +727,7 @@
       }
     },
     {
-      "title": "Exploring the Integration of c-VEP-Based BCI Spellers in Mixed Reality: A Pilot Study",
+      "title": "Exploring the Integration of c-VEP-Based BCI Spellers in Mixed Reality: A Pilot Study",
       "author": "Selene Moreno-Calderón, Víctor Martínez-Cagigal, Ana Martín-Fernández, Eduardo Santamaría-Vázquez, Beatriz Pascual-Roa, Roberto Hornero",
       "venue": "Lecture notes in computer science",
       "year": 2025,
@@ -720,8 +741,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5935474008321763,
-        "similarity_score": 0.5652832388877869,
+        "confidence_score": 0.610367712378502,
+        "similarity_score": 0.5813025832176208,
         "citation_text_length": 280,
         "dataset_text_length": 2415,
         "scoring_method": "sentence_transformers",
@@ -746,29 +767,6 @@
         "confidence_score": 0.7102305579185487,
         "similarity_score": 0.6149182319641113,
         "citation_text_length": 1252,
-        "dataset_text_length": 2415,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Beyond Flickering: Introducing Code-Modulated Motion Visual Evoked Potentials for Brain-Computer Interfacing",
-      "author": "H. Scheppink, Rainer Herpers, J. Thielen, Ivan Volosyak",
-      "venue": "n/a",
-      "year": 2026,
-      "url": "n/a",
-      "cited_by": 0,
-      "abstract": "A code-modulated motion visual evoked potential (c-MVEP) for brain-computer interfacing (BCI) is presented in this study. This paradigm uses pseudo-random sequences to visually stimulate objects using motion as an alternative to flickering. In an offline experiment of this study, EEG data were recorded and compared during sequential stimulation of a single object under four conditions: c-MVEP, code-modulated visual evoked potential (c-VEP), steady-state motion visual evoked potential (SSMVEP), and steady-state visual evoked potential (SSVEP). c-MVEP showed similar time-domain characteristics as c-VEP, and also in the frequency domain c-MVEP evoked a broadband response similar to c-VEP, with a comparable signal-to-noise ratio (SNR), albeit more focused in the lower frequency range. Both SSMVEP and SSVEP showed clear oscillatory responses at the stimulation frequency and harmonics, with a higher SNR for SSVEP than SSMVEP. The spatial distribution of c-MVEP showed the main activation at O",
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1016/j.eswa.2023.120815",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.647542753815651,
-        "similarity_score": 0.5606430768966675,
-        "citation_text_length": 1205,
         "dataset_text_length": 2415,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -844,7 +842,7 @@
       }
     },
     {
-      "title": "Towards Calibration-Free User-Friendly c-VEP-Based BCIs: An Exploratory Study Using Deep-Learning",
+      "title": "Towards Calibration-Free User-Friendly c-VEP-Based BCIs: An Exploratory Study Using Deep-Learning",
       "author": "Eduardo Santamaría-Vázquez, Víctor Martínez-Cagigal, Rubén Ruiz-Gálvez, Ana Martín-Fernández, Beatriz Pascual-Roa, Roberto Hornero",
       "venue": "Biosystems & biorobotics",
       "year": 2025,
@@ -858,8 +856,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5839849948883057,
-        "similarity_score": 0.5561761856079102,
+        "confidence_score": 0.590518605709076,
+        "similarity_score": 0.5623986721038818,
         "citation_text_length": 278,
         "dataset_text_length": 2415,
         "scoring_method": "sentence_transformers",
@@ -892,17 +890,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-18T10:10:20.986554+00:00",
+    "scoring_date": "2026-08-25T11:26:54.856783+00:00",
     "dataset_text_length": 2415,
     "num_citations_scored": 32,
     "summary_stats": {
-      "mean_confidence": 0.5561948470911011,
+      "mean_confidence": 0.5562422980647534,
       "median_confidence": 0.5547707779705524,
-      "std_confidence": 0.15330444192655573,
+      "std_confidence": 0.15334352471720222,
       "min_confidence": 0.22987604945898057,
       "max_confidence": 0.9809506183862687,
-      "high_confidence_count": 3,
-      "medium_confidence_count": 25,
+      "high_confidence_count": 4,
+      "medium_confidence_count": 24,
       "low_confidence_count": 4
     }
   }

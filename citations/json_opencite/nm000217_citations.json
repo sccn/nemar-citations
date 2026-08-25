@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000217",
-  "num_citations": 12,
-  "date_last_updated": "2026-08-17T10:12:07.111012+00:00",
+  "num_citations": 11,
+  "date_last_updated": "2026-08-25T10:12:48.627574+00:00",
   "metadata": {
-    "total_cumulative_citations": 587,
-    "fetch_date": "2026-08-17T10:12:07.111012+00:00",
+    "total_cumulative_citations": 589,
+    "fetch_date": "2026-08-25T10:12:48.627574+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -13,18 +13,6 @@
     "discovery_backend": "opencite",
     "anchor_judgment_model": "gemma4:e4b",
     "anchors": [
-      {
-        "identifier": "10.5281/zenodo.3266930",
-        "identifier_type": "doi",
-        "source_relation": "References",
-        "classification": "related_work",
-        "kept": false,
-        "paper_title": "Brain Invaders calibration-less P300-based BCI with modulation of flash duration Dataset (bi2015a)",
-        "paper_year": 2019,
-        "paper_venue": "HAL (Le Centre pour la Communication Scientifique Directe)",
-        "reason": "The dataset is P300 dataset BI2015b, while the paper describes a related but different dataset, bi2015a, focusing on the same P300 paradigm.",
-        "judgment_model": "gemma4:e4b"
-      },
       {
         "identifier": "10.5281/zenodo.3267307",
         "identifier_type": "doi",
@@ -58,19 +46,12 @@
       "Electroencephalography",
       "P300",
       "Brain-Computer Interface",
-      "Oddball paradigm",
-      "Visual stimulation",
-      "Real-time classification",
-      "Calibration-free"
+      "oddball paradigm",
+      "Riemannian geometry",
+      "Event-Related Potentials, P300"
     ],
-    "methods_description": "EEG data were recorded from 50 subjects using 32 active wet Silver/Silver Chloride electrodes (10-10 montage) at 512 Hz sampling rate with a g.USBamp amplifier (g.tec). The experiment consisted of three game sessions of 9 levels each with different flash durations (110ms, 80ms, 50ms), with approximately one minute of resting state and eyes-closed recordings before and after the sessions. The Brain Invaders interface presented 36 aliens in pseudo-random groups of six symbols using an oddball paradigm (1 Target, 35 Non-Target). Synchronization was achieved via USB digital-to-analog converter connected to the trigger channel to reduce jitter. A real-time adaptive Riemannian Minimum Distance to Mean classifier provided online feedback during the experiment to enable calibration-free operation.",
-    "funding": [],
-    "searched_accessions": [
-      "nm000217"
-    ],
-    "num_accession_mentions": 1,
-    "num_dataset_citations": 12,
-    "num_datapaper_citations": 0
+    "methods_description": "EEG was recorded using a g.USBamp amplifier (g.tec) with 32 wet Silver/Silver Chloride electrodes in a 10-10 montage, referenced to the right earlobe with ground at Fz, at a sampling rate of 512 Hz with no online digital filtering. Event tagging was synchronized via a USB digital-to-analog converter connected to the amplifier's trigger channel to reduce jitter compared to software tagging. The paradigm involved three game sessions of 9 levels each with different flash durations (110ms, 80ms, 50ms), using pseudo-random flashing of groups of six symbols among 36 aliens to elicit P300 responses, with a real-time adaptive Riemannian Minimum Distance to Mean classifier used for online feedback.",
+    "funding": []
   },
   "citation_details": [
     {
@@ -217,7 +198,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2025,
       "url": "https://doi.org/10.1088/1741-2552/add08f",
-      "cited_by": 6,
+      "cited_by": 7,
       "abstract": "Objective. Extracting universal, task-independent semantic features from electroencephalography (EEG) signals remains an open challenge. Traditional approaches are often task-specific, limiting their generalization across different EEG paradigms. This study aims to develop a robust, unsupervised framework for learning high-level, task-independent neural representations. Approach. We propose a novel framework integrating convolutional neural networks, AutoEncoders, and Transformers to extract both low-level spatiotemporal patterns and high-level semantic features from EEG signals. The model is trained in an unsupervised manner to ensure adaptability across diverse EEG paradigms, including motor imagery (MI), steady-state visually evoked potentials (SSVEPs), and event-related potentials (ERPs, specifically P300). Extensive analyses, including clustering, correlation, and ablation studies, are conducted to validate the quality and interpretability of the extracted features. Main results. ",
       "doi": "10.1088/1741-2552/add08f",
       "pmid": "40273947",
@@ -240,7 +221,7 @@
       "venue": "Sensors (Basel, Switzerland)",
       "year": 2025,
       "url": "https://doi.org/10.3390/s25072305",
-      "cited_by": 3,
+      "cited_by": 4,
       "abstract": ": A substantial amount of research has demonstrated the robustness and accuracy of the Riemannian minimum distance to mean (MDM) classifier for all kinds of EEG-based brain–computer interfaces (BCIs). This classifier is simple, fully deterministic, robust to noise, computationally efficient, and prone to transfer learning. Its training is very simple, requiring just the computation of a geometric mean of a symmetric positive-definite (SPD) matrix per class. We propose an improvement of the MDM involving a number of power means of SPD matrices instead of the sole geometric mean. By the analysis of 20 public databases, 10 for the motor-imagery BCI paradigm and 10 for the P300 BCI paradigm, comprising 587 individuals in total, we show that the proposed classifier clearly outperforms the MDM, approaching the state-of-the art in terms of performance while retaining the simplicity and the deterministic behavior. In order to promote reproducible research, our code will be released as open sou",
       "doi": "10.3390/s25072305",
       "pmid": "40218817",
@@ -258,7 +239,7 @@
       }
     },
     {
-      "title": "Tagging Latency Estimator: A Standalone Software forEstimating Latency of Event-Related Potentials in P300-basedBrain-Computer Interfaces",
+      "title": "Tagging Latency Estimator: A Standalone Software for Estimating Latency of Event-Related Potentials in P300-based Brain-Computer Interfaces",
       "author": "Grégoire Cattan, César Mendoza",
       "venue": "The Journal of Open Source Software",
       "year": 2023,
@@ -272,9 +253,9 @@
       "source_relation": "IsVersionOf",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.68236359000206,
-        "similarity_score": 0.5907909870147705,
-        "citation_text_length": 486,
+        "confidence_score": 0.6810864767432214,
+        "similarity_score": 0.5896852612495422,
+        "citation_text_length": 488,
         "dataset_text_length": 2369,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -282,7 +263,7 @@
     },
     {
       "title": "BTTDA: Block-Term Tensor Discriminant Analysis for Brain-Computer Interfacing",
-      "author": "Arne Van Den Kerchove, Hakim Si-Mohammed, Franccois Cabestaing, Marc M. Van Hulle",
+      "author": "Arne Van Den Kerchove, Hakim Si-Mohammed, Franccois Cabestaing, M. V. Hulle",
       "venue": "n/a",
       "year": 2025,
       "url": "n/a",
@@ -295,9 +276,9 @@
       "source_relation": "IsVersionOf",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4755829748511315,
-        "similarity_score": 0.411760151386261,
-        "citation_text_length": 1200,
+        "confidence_score": 0.4770189785957337,
+        "similarity_score": 0.41300344467163086,
+        "citation_text_length": 1194,
         "dataset_text_length": 2369,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -325,47 +306,22 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Clinical, genetic, neurophysiological and functional study of new mutations in episodic ataxia type 1",
-      "author": "Susan E Tomlinson, Sanjeev Rajakulendran, S. Veronica Tan, Tracey D. Graves, Doris‐Eva Bamiou, Robyn Labrum, David Burke, Carolyn M. Sue, Paola Giunti, Stéphanie Schorge, Dimitri M. Kullmann, Michael G. Hanna",
-      "venue": "Journal of Neurology Neurosurgery & Psychiatry",
-      "year": 2013,
-      "url": "https://doi.org/10.1136/jnnp-2012-304131",
-      "cited_by": 49,
-      "abstract": "BACKGROUND AND OBJECTIVE: Heterozygous mutations in KCNA1 cause episodic ataxia type 1 (EA1), an ion channel disorder characterised by brief paroxysms of cerebellar dysfunction and persistent neuromyotonia. This paper describes four previously unreported families with EA1, with the aim of understanding the phenotypic spectrum associated with different mutations. METHODS: 15 affected individuals from four families underwent clinical, genetic and neurophysiological evaluation. The functional impact of new mutations identified in the KCNA1 gene was investigated with in vitro electrophysiology and immunocytochemistry. RESULTS: Detailed clinical documentation, dating back to 1928 in one family, indicates that all patients manifested episodic ataxia of varying severity. Four subjects from three families reported hearing impairment, which has not previously been reported in association with EA1. New mutations (R167M, C185W and I407M) were identified in three out of the four families. When expressed in human embryonic kidney cells, all three new mutations resulted in a loss of K(v)1.1 channel function. The fourth family harboured a previously reported A242P mutation, which has not been previously described in association with ataxia. CONCLUSIONS: The genetic basis of EA1 in four families is established and this report presents the earliest documented case from 1928. All three new mutations caused a loss of K(v)1.1 channel function. The finding of deafness in four individuals raises the possibility of a link between K(v)1.1 dysfunction and hearing impairment. Our findings broaden the phenotypic range associated with mutations in KCNA1.",
-      "doi": "10.1136/jnnp-2012-304131",
-      "pmid": "23349320",
-      "openalex_id": "W2160991909",
-      "source_doi": null,
-      "source_relation": null,
-      "discovery_backend": "openalex",
-      "discovery_method": "accession_mention",
-      "matched_accession": "nm000217",
-      "confidence_scoring": {
-        "confidence_score": 0.2569005221128464,
-        "similarity_score": 0.2335459291934967,
-        "citation_text_length": 1894,
-        "dataset_text_length": 2369,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-19T10:08:23.150342+00:00",
+    "scoring_date": "2026-08-25T11:24:12.322257+00:00",
     "dataset_text_length": 2369,
-    "num_citations_scored": 12,
+    "num_citations_scored": 11,
     "summary_stats": {
-      "mean_confidence": 0.4594140422592561,
-      "median_confidence": 0.4762940579652787,
-      "std_confidence": 0.13082733851566214,
+      "mean_confidence": 0.4778388068621809,
+      "median_confidence": 0.4770189785957337,
+      "std_confidence": 0.12065136080729856,
       "min_confidence": 0.21324396133422852,
-      "max_confidence": 0.68236359000206,
+      "max_confidence": 0.6810864767432214,
       "high_confidence_count": 0,
       "medium_confidence_count": 9,
-      "low_confidence_count": 3
+      "low_confidence_count": 2
     }
   }
 }

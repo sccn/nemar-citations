@@ -1,10 +1,10 @@
 {
   "dataset_id": "on003825",
-  "num_citations": 1,
-  "date_last_updated": "2026-08-09T10:29:42.715166+00:00",
+  "num_citations": 2,
+  "date_last_updated": "2026-08-25T10:32:03.144751+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-09T10:29:42.715166+00:00",
+    "fetch_date": "2026-08-25T10:32:03.144751+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 1,
@@ -57,11 +57,36 @@
       "on003825",
       "ds003825"
     ],
-    "num_accession_mentions": 1,
-    "num_dataset_citations": 1,
+    "num_accession_mentions": 2,
+    "num_dataset_citations": 2,
     "num_datapaper_citations": 0
   },
   "citation_details": [
+    {
+      "title": "Shared Hierarchical Representations Explain Temporal Correspondence Between Brain Activity and Deep Neural Networks",
+      "author": "Eric Lützow Holm, Giovanni Marraffini, Diego Fernández Slezak, Enzo Tagliazucchi",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2025,
+      "url": "https://doi.org/10.1101/2025.05.19.655003",
+      "cited_by": 0,
+      "abstract": "Abstract The visual cortex and artificial neural networks both process images hierarchically, progressing from low-level features to high-level semantic representations. We investigated the temporal correspondence between activations from multiple convolutional and transformer-based neural network models (AlexNet, MoCo, ResNet-50, VGG-19, and ViT) and human EEG responses recorded during visual perception tasks. Leveraging two EEG datasets of images presented at different durations, we assessed whether this correspondence reflects general architectural principles or model-specific computations. Our analysis revealed a robust mapping: early EEG components correlated with activations from initial network layers and low-level visual features, whereas later components aligned with deeper layers and semantic content. Moreover, for images presented during longer times, the extent of correspondence correlated with the semantic contribution to the EEG response. These findings highlight a consistent temporal alignment between biological and artificial vision, suggesting that this correspondence is primarily driven by the hierarchical transformation of visual to semantic representations rather than by idiosyncratic computational features of individual network architectures.",
+      "doi": "10.1101/2025.05.19.655003",
+      "pmid": null,
+      "openalex_id": "W4410554823",
+      "source_doi": null,
+      "source_relation": null,
+      "discovery_backend": "openalex",
+      "discovery_method": "accession_mention",
+      "matched_accession": "ds003825",
+      "confidence_scoring": {
+        "confidence_score": 0.5702345122396947,
+        "similarity_score": 0.493709534406662,
+        "citation_text_length": 1556,
+        "dataset_text_length": 2031,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
     {
       "title": "THINGS-EEG: Human electroencephalography recordings from 50 subjects for 22,248 images from 1,854 object concepts",
       "author": "Tijl Grootswagers, Ivy Zhou, Amanda K. Robinson, Martin N. Hebart, Thomas A. Carlson",
@@ -90,17 +115,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:30:05.495820+00:00",
+    "scoring_date": "2026-08-25T11:44:44.181634+00:00",
     "dataset_text_length": 2031,
-    "num_citations_scored": 1,
+    "num_citations_scored": 2,
     "summary_stats": {
-      "mean_confidence": 0.9358343946933748,
-      "median_confidence": 0.9358343946933748,
-      "std_confidence": 0.0,
-      "min_confidence": 0.9358343946933748,
+      "mean_confidence": 0.7530344534665347,
+      "median_confidence": 0.7530344534665347,
+      "std_confidence": 0.18279994122684007,
+      "min_confidence": 0.5702345122396947,
       "max_confidence": 0.9358343946933748,
       "high_confidence_count": 1,
-      "medium_confidence_count": 0,
+      "medium_confidence_count": 1,
       "low_confidence_count": 0
     }
   }

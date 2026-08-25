@@ -1,10 +1,10 @@
 {
   "dataset_id": "on005557",
   "num_citations": 0,
-  "date_last_updated": "2026-08-17T10:48:13.810830+00:00",
+  "date_last_updated": "2026-08-25T10:51:27.234634+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-17T10:48:13.810830+00:00",
+    "fetch_date": "2026-08-25T10:51:27.234634+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 1,
@@ -30,34 +30,27 @@
       "10.82901/nemar.on005557"
     ],
     "keywords": [
-      "intracranial electrophysiology",
+      "intracranial EEG",
       "free recall",
       "closed-loop stimulation",
-      "memory encoding",
-      "brain-computer interface",
-      "machine learning classification",
-      "iEEG"
+      "Deep Brain Stimulation",
+      "Memory",
+      "Electrocorticography",
+      "classifier"
     ],
-    "methods_description": "Intracranial electrophysiology recordings were acquired during a delayed free recall task with closed-loop stimulation at encoding. Neural features were extracted using Morlet wavelet transformation (wavenumber = 5, 8 log-spaced wavelets between 3-180 Hz) applied to bipolar recordings in the 0-1366 ms interval after word presentation, following 58-62 Hz notch filtering. An L2 logistic regression classifier was trained on encoding data from prior FR1 sessions to predict subsequent recall. Classifier outputs were used to trigger 500 ms electrical stimulation pulses during encoding on designated lists. Stimulation parameters (anode/cathode labels, amplitude, pulse frequency, pulse width, pulse count) are documented in behavioral event files.",
+    "methods_description": "Intracranial EEG was recorded during a delayed free recall task with word encoding, distractor arithmetic, and free recall phases. An L2 logistic regression classifier trained on FR1 session data predicted subsequent recall from spectral power features (Morlet wavelet transform, 8 frequencies 3-180 Hz) computed from bipolar recordings 0-1366 ms post-word presentation, after removing line noise with a Butterworth band-stop filter. Classifier performance was validated via leave-one-session-out cross-validation with permutation testing. During closed-loop sessions, stimulation was delivered to a single electrode pair based on real-time classifier output relative to a training-derived median threshold, with stimulation parameters (anode/cathode, amplitude, frequency, pulse width, pulse count) recorded in behavioral event files.",
     "funding": [
       {
         "funder_name": "DARPA",
         "award_number": "N66001-14-2-4032",
         "award_title": "RAM"
       }
-    ],
-    "searched_accessions": [
-      "on005557",
-      "ds005557"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 0
+    ]
   },
   "citation_details": [],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:44:40.463252+00:00",
+    "scoring_date": "2026-08-25T12:08:28.729322+00:00",
     "dataset_text_length": 2298,
     "num_citations_scored": 0
   }

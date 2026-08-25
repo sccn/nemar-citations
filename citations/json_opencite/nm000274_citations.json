@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000274",
   "num_citations": 2,
-  "date_last_updated": "2026-08-17T10:16:46.037140+00:00",
+  "date_last_updated": "2026-08-25T10:19:36.497695+00:00",
   "metadata": {
     "total_cumulative_citations": 4,
-    "fetch_date": "2026-08-17T10:16:46.037140+00:00",
+    "fetch_date": "2026-08-25T10:19:36.497695+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -16,7 +16,7 @@
       {
         "identifier": "10.48550/arxiv.2202.12950",
         "identifier_type": "doi",
-        "source_relation": "References",
+        "source_relation": "IsDescribedBy",
         "classification": "data_paper",
         "kept": true,
         "paper_title": "2021 BEETL Competition: Advancing Transfer Learning for Subject Independence &amp; Heterogenous EEG Data Sets",
@@ -45,13 +45,12 @@
     "keywords": [
       "EEG",
       "motor imagery",
+      "Brain-Computer Interfaces",
       "transfer learning",
       "domain adaptation",
-      "brain-computer interfaces",
-      "cross-dataset generalization",
-      "machine learning"
+      "cross-dataset"
     ],
-    "methods_description": "EEG data were acquired at 200 Hz sampling rate using 32 channels positioned according to the standard 1005 montage around the motor cortex. Online bandpass filtering (1-100 Hz) was applied during acquisition. Preprocessed data underwent frequency-domain bandpass filtering (1-100 Hz) and were organized into 4-second trials. Motor imagery paradigm employed visual cues for four classes. Evaluation utilized block-wise 5-fold cross-validation with cross-subject and cross-dataset assessment.",
+    "methods_description": "EEG data were acquired at 200 Hz using 32 channels positioned around the motor cortex (standard 1005 montage), with online bandpass filtering (1-100 Hz) applied during acquisition. Data were preprocessed with frequency-domain bandpass filtering (1-100 Hz) and organized into 4-second trials under a motor imagery paradigm with visual cues for four classes: left hand, right hand, feet, and rest. Block-wise 5-fold cross-validation was employed for evaluation with cross-subject and cross-dataset assessment.",
     "funding": [
       {
         "funder_name": "CEA NUMERICS program"
@@ -73,21 +72,10 @@
         "award_title": "BrAIN AI chair"
       },
       {
-        "funder_name": "CEA",
-        "award_title": "NUMERICS program"
-      },
-      {
-        "funder_name": "European Union",
-        "award_number": "800945",
-        "award_title": "Horizon 2020 Marie Sklodowska-Curie grant"
+        "funder_name": "European Union Horizon 2020",
+        "award_number": "800945"
       }
-    ],
-    "searched_accessions": [
-      "nm000274"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 2
+    ]
   },
   "citation_details": [
     {
@@ -102,7 +90,7 @@
       "pmid": "39053485",
       "openalex_id": "W4400969643",
       "source_doi": "10.48550/arxiv.2202.12950",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 0.6071573084592821,
@@ -125,7 +113,7 @@
       "pmid": null,
       "openalex_id": "W7165621908",
       "source_doi": "10.48550/arxiv.2202.12950",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 1.0,
@@ -139,7 +127,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:20:27.435586+00:00",
+    "scoring_date": "2026-08-25T11:31:13.371361+00:00",
     "dataset_text_length": 2655,
     "num_citations_scored": 2,
     "summary_stats": {

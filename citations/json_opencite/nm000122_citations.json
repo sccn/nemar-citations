@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000122",
-  "num_citations": 57,
-  "date_last_updated": "2026-08-17T10:01:41.449752+00:00",
+  "num_citations": 56,
+  "date_last_updated": "2026-08-25T10:02:22.551483+00:00",
   "metadata": {
-    "total_cumulative_citations": 1761,
-    "fetch_date": "2026-08-17T10:01:41.449752+00:00",
+    "total_cumulative_citations": 1766,
+    "fetch_date": "2026-08-25T10:02:22.551483+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -68,14 +68,14 @@
     ],
     "keywords": [
       "SSVEP",
-      "brain-computer interface",
+      "Brain-Computer Interfaces",
       "EEG",
       "spatial navigation",
-      "motor imagery",
       "single-flicker paradigm",
-      "online BCI"
+      "online BCI",
+      "visual evoked potentials"
     ],
-    "methods_description": "EEG data were acquired using a BioSemi ActiveTwo system with 32 active electrodes arranged in the biosemi32 montage and CMS/DRL reference. Training sessions were recorded at 2048 Hz with 100 trials per run (50 per direction, 200 total) lasting approximately 3.5 seconds each. Online sessions were recorded at 512 Hz with variable-length trials from approximately 16 game rounds per subject. All recordings used sintered Ag/AgCl electrodes with a 50 Hz line frequency.",
+    "methods_description": "EEG data were acquired using a BioSemi ActiveTwo amplifier with 32 active electrodes arranged in the biosemi32 montage and CMS/DRL reference. Training sessions were recorded at 2048 Hz with 100 trials per run (50 trials per direction, ~3.5 s per trial). Online sessions were recorded at 512 Hz with variable-length trials from approximately 16 game rounds per subject. All recordings used sintered Ag/AgCl electrodes with a 50 Hz line frequency.",
     "funding": [
       {
         "funder_name": "DFG",
@@ -86,13 +86,7 @@
         "funder_name": "Landesforschungsfoerderung Hamburg",
         "award_number": "CROSS FV25"
       }
-    ],
-    "searched_accessions": [
-      "nm000122"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 57
+    ]
   },
   "citation_details": [
     {
@@ -101,7 +95,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1088/1741-2552/aaf12e",
-      "cited_by": 961,
+      "cited_by": 966,
       "abstract": "Advances in brain science and computer technology in the past decade have led to exciting developments in brain-computer interface (BCI), thereby making BCI a top research area in applied science. The renaissance of BCI opens new methods of neurorehabilitation for physically disabled people (e.g. paralyzed patients and amputees) and patients with brain injuries (e.g. stroke patients). Recent technological advances such as wireless recording, machine learning analysis, and real-time temporal resolution have increased interest in electroencephalographic (EEG) based BCI approaches. Many BCI studies have focused on decoding EEG signals associated with whole-body kinematics/kinetics, motor imagery, and various senses. Thus, there is a need to understand the various experimental paradigms used in EEG-based BCI systems. Moreover, given that there are many available options, it is essential to choose the most appropriate BCI application to properly manipulate a neuroprosthetic or neurorehabili",
       "doi": "10.1088/1741-2552/aaf12e",
       "pmid": "30523919",
@@ -234,6 +228,29 @@
       }
     },
     {
+      "title": "A Spatially-Coded Visual Brain-Computer Interface for Flexible Visual Spatial Information Decoding",
+      "author": "Jingjing Chen, Yijun Wang, Alexander Maÿe, Bo Hong, Xiaorong Gao, Andreas K. Engel, Dan Zhang",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2021,
+      "url": "https://doi.org/10.1109/tnsre.2021.3080045",
+      "cited_by": 27,
+      "abstract": "Conventional visual BCIs, in which control channels are tagged with stimulation patterns to elicit distinguishable brain patterns, has made impressive progress in terms of the information transfer rates (ITRs). However, less development has been seen with respect to user experience and complexity of the technical setup. The requirement to tag each of targets by a unique stimulus substantially limits the flexibility of conventional visual BCI systems. A method for decoding the targets in the environment flexibly was therefore proposed in the present study. A BCI speller with thirteen symbols drawn on paper was developed. The symbols were interspersed with four flickers with distinct frequencies, but the user did not have to gaze at flickers. Rather, subjects could spell a sequence by looking at the symbols on the paper. In a cue-guided spelling task, the average offline and online accuracies reached 89.3± 7.3% and 90.3± 6.9% for 13 subjects, corresponding to ITRs of 43.0± 7.4 bit/min an",
+      "doi": "10.1109/tnsre.2021.3080045",
+      "pmid": "33983885",
+      "openalex_id": "W3160555854",
+      "source_doi": "10.1371/journal.pone.0178385",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6438597714900971,
+        "similarity_score": 0.5574543476104736,
+        "citation_text_length": 1296,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Simultaneous Decoding of Eccentricity and Direction Information for a Single-Flicker SSVEP BCI",
       "author": "Jingjing Chen, A. Maye, A. Engel, Yijun Wang, Xiaorong Gao, Dan, Zhang",
       "venue": "Electronics",
@@ -251,29 +268,6 @@
         "confidence_score": 0.7657787084579468,
         "similarity_score": 0.6961624622344971,
         "citation_text_length": 1214,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "A Spatially-Coded Visual Brain-Computer Interface for Flexible Visual Spatial Information Decoding",
-      "author": "Jingjing Chen, Yijun Wang, Alexander Maÿe, Bo Hong, Xiaorong Gao, Andreas K. Engel, Dan Zhang",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2021,
-      "url": "https://doi.org/10.1109/tnsre.2021.3080045",
-      "cited_by": 26,
-      "abstract": "Conventional visual BCIs, in which control channels are tagged with stimulation patterns to elicit distinguishable brain patterns, has made impressive progress in terms of the information transfer rates (ITRs). However, less development has been seen with respect to user experience and complexity of the technical setup. The requirement to tag each of targets by a unique stimulus substantially limits the flexibility of conventional visual BCI systems. A method for decoding the targets in the environment flexibly was therefore proposed in the present study. A BCI speller with thirteen symbols drawn on paper was developed. The symbols were interspersed with four flickers with distinct frequencies, but the user did not have to gaze at flickers. Rather, subjects could spell a sequence by looking at the symbols on the paper. In a cue-guided spelling task, the average offline and online accuracies reached 89.3± 7.3% and 90.3± 6.9% for 13 subjects, corresponding to ITRs of 43.0± 7.4 bit/min an",
-      "doi": "10.1109/tnsre.2021.3080045",
-      "pmid": "33983885",
-      "openalex_id": "W3160555854",
-      "source_doi": "10.1371/journal.pone.0178385",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6438597714900971,
-        "similarity_score": 0.5574543476104736,
-        "citation_text_length": 1296,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -304,7 +298,7 @@
     },
     {
       "title": "Automatic stimuli classification from ERP data for augmented communication via Brain–Computer Interfaces",
-      "author": "Jessica Leoni, Silvia Strada, Mara Tanelli, Kaijun Jiang, Alessandra Brusa, Alice Mado Proverbio",
+      "author": "Jessica Leoni, Silvia Strada, Silvia Strada, Mara Tanelli, Mara Tanelli, Kaijun Jiang, Alessandra Brusa, Alice Mado Proverbio",
       "venue": "Expert Systems with Applications",
       "year": 2021,
       "url": "https://doi.org/10.1016/j.eswa.2021.115572",
@@ -317,9 +311,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5295352099835874,
-        "similarity_score": 0.45847204327583313,
-        "citation_text_length": 961,
+        "confidence_score": 0.524006640315056,
+        "similarity_score": 0.4536854028701782,
+        "citation_text_length": 990,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -469,7 +463,7 @@
       "venue": "Computers in Biology and Medicine",
       "year": 2023,
       "url": "https://doi.org/10.1016/j.compbiomed.2023.107488",
-      "cited_by": 15,
+      "cited_by": 16,
       "abstract": "The Steady State Visual Evoked Potential (SSVEP) is a widely used component in BCIs due to its high noise resistance and low equipment requirements. Recently, a novel SSVEP-based paradigm has been introduced for direction detection, in which, unlike the common SSVEP paradigms that use several frequency stimuli, only one flickering stimulus is used and it makes direction detection very challenging. So far, only the CCA method has been used for direction detection using SSVEP component analysis. Since Canonical Correlation Analysis (CCA) has some limitations, a Task-Related Component Analysis (TRCA) based method has been introduced for feature extraction to improve the direction detection performance. Although these methods have been proven efficient, they do not utilize the latent frequency information in the EEG signal. Therefore, the performance of direction detection using SSVEP component analysis is still suboptimal. For further improvement, the TRCA-based algorithm is enhanced by i",
       "doi": "10.1016/j.compbiomed.2023.107488",
       "pmid": "37778215",
@@ -533,6 +527,29 @@
       }
     },
     {
+      "title": "Decoding auditory and tactile attention for use in an EEG-based brain-computer interface",
+      "author": "Winko W. An, Hakim Si-Mohammed, Nicholas Huang, Hannes Gamper, Adrian K. C. Lee, Christian Holz, David Johnston, Mihai Jalobeanu, Dimitra Emmanouilidou, Edward Cutrell, Andrew D. Wilson, Ivan Tashev",
+      "venue": "2020 8th International Winter Conference on Brain-Computer Interface (BCI)",
+      "year": 2020,
+      "url": "https://doi.org/10.1109/bci48061.2020.9061623",
+      "cited_by": 11,
+      "abstract": "Brain-computer interface (BCI) systems offer a nonverbal and covert way for humans to interact with a machine. They are designed to interpret a user's brain state that can be translated into action or for other communication purposes. This study investigates the feasibility of developing a hands- and eyes-free BCI system based on auditory and tactile attention. Users were presented with multiple simultaneous streams of auditory or tactile stimuli, and were directed to detect a pattern in one particular stream. We applied a linear classifier to decode the stream-tracking attention from the EEG signal. The results showed that the proposed BCI system could capture attention from most study participants using multisensory inputs, and showed potential in transfer learning across multiple sessions.",
+      "doi": "10.1109/bci48061.2020.9061623",
+      "pmid": null,
+      "openalex_id": "W3011316662",
+      "source_doi": "10.1371/journal.pone.0178385",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5407128940522672,
+        "similarity_score": 0.46814969182014465,
+        "citation_text_length": 1202,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "The effects of dynamic prompt and background transparency of hover feedback design on the user interface of shopping websites",
       "author": "Chien‐Hsiung Chen, Weimin Zhai",
       "venue": "Asia Pacific Journal of Marketing and Logistics",
@@ -573,29 +590,6 @@
         "confidence_score": 0.733604050576687,
         "similarity_score": 0.6351550221443176,
         "citation_text_length": 1257,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Decoding auditory and tactile attention for use in an EEG-based brain-computer interface",
-      "author": "Winko W. An, Hakim Si-Mohammed, Nicholas Huang, Hannes Gamper, Adrian K. C. Lee, Christian Holz, David Johnston, Mihai Jalobeanu, Dimitra Emmanouilidou, Edward Cutrell, Andrew D. Wilson, Ivan Tashev",
-      "venue": "2020 8th International Winter Conference on Brain-Computer Interface (BCI)",
-      "year": 2020,
-      "url": "https://doi.org/10.1109/bci48061.2020.9061623",
-      "cited_by": 10,
-      "abstract": "Brain-computer interface (BCI) systems offer a nonverbal and covert way for humans to interact with a machine. They are designed to interpret a user's brain state that can be translated into action or for other communication purposes. This study investigates the feasibility of developing a hands- and eyes-free BCI system based on auditory and tactile attention. Users were presented with multiple simultaneous streams of auditory or tactile stimuli, and were directed to detect a pattern in one particular stream. We applied a linear classifier to decode the stream-tracking attention from the EEG signal. The results showed that the proposed BCI system could capture attention from most study participants using multisensory inputs, and showed potential in transfer learning across multiple sessions.",
-      "doi": "10.1109/bci48061.2020.9061623",
-      "pmid": null,
-      "openalex_id": "W3011316662",
-      "source_doi": "10.1371/journal.pone.0178385",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5407128940522672,
-        "similarity_score": 0.46814969182014465,
-        "citation_text_length": 1202,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -746,7 +740,7 @@
       "year": 2025,
       "url": "https://doi.org/10.1088/1741-2552/addf82",
       "cited_by": 8,
-      "abstract": "Abstract Objective . existing steady-state visual evoked potential (SSVEP)-based brain–computer interface (BCI) systems predominantly employ a flicker frequency range of 8–20 Hz, which often induces visual fatigue in users, thereby compromising system performance. Considering that, this study introduces an innovative paradigm to enhance the user experience of SSVEP-based BCIs while maintaining the performance. Approach . the system encodes 12 targets by integrating ultra-low-frequency (2.00–3.32 Hz) and high-frequency (34.00–35.32 Hz) flickers with peripheral stimulation, and task-related component analysis is employed for SSVEP signal identification. Main results . the feasibility of the ultra-low-frequency peripheral stimulation paradigm was validated through online experiments, achieving an average accuracy of 89.03 ± 9.95% and an information transfer rate (ITR) of 66.74 ± 15.44 bits min −1 . For the high-frequency peripheral stimulation paradigm, only the stimulation frequency chan",
+      "abstract": "Abstract Objective. existing steady-state visual evoked potential (SSVEP)-based brain–computer interface (BCI) systems predominantly employ a flicker frequency range of 8–20 Hz, which often induces visual fatigue in users, thereby compromising system performance. Considering that, this study introduces an innovative paradigm to enhance the user experience of SSVEP-based BCIs while maintaining the performance. Approach. the system encodes 12 targets by integrating ultra-low-frequency (2.00–3.32 Hz) and high-frequency (34.00–35.32 Hz) flickers with peripheral stimulation, and task-related component analysis is employed for SSVEP signal identification. Main results. the feasibility of the ultra-low-frequency peripheral stimulation paradigm was validated through online experiments, achieving an average accuracy of 89.03 ± 9.95% and an information transfer rate (ITR) of 66.74 ± 15.44 bits min−1. For the high-frequency peripheral stimulation paradigm, only the stimulation frequency changed, ",
       "doi": "10.1088/1741-2552/addf82",
       "pmid": "40456241",
       "openalex_id": "W4410947059",
@@ -754,8 +748,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.7974345168471337,
-        "similarity_score": 0.6904194951057434,
+        "confidence_score": 0.7951594501733782,
+        "similarity_score": 0.6884497404098511,
         "citation_text_length": 1222,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
@@ -1010,29 +1004,6 @@
         "confidence_score": 0.5840387427806855,
         "similarity_score": 0.5056612491607666,
         "citation_text_length": 1297,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Expert Systems With Applications",
-      "author": "Jessica Leoni, S. Strada, M. Tanelli, Kaijun Jiang, A. Brusa, A. Proverbio",
-      "venue": "n/a",
-      "year": 0,
-      "url": "n/a",
-      "cited_by": 3,
-      "abstract": null,
-      "doi": null,
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0178385",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.25885632634162903,
-        "similarity_score": 0.25885632634162903,
-        "citation_text_length": 136,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1409,18 +1380,18 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:06:26.030755+00:00",
+    "scoring_date": "2026-08-25T11:12:23.128257+00:00",
     "dataset_text_length": 2296,
-    "num_citations_scored": 57,
+    "num_citations_scored": 56,
     "summary_stats": {
-      "mean_confidence": 0.5911809112314592,
-      "median_confidence": 0.5841585302352906,
-      "std_confidence": 0.13369157027878034,
-      "min_confidence": 0.25885632634162903,
+      "mean_confidence": 0.5969759281698082,
+      "median_confidence": 0.5856819224357606,
+      "std_confidence": 0.12721217516135672,
+      "min_confidence": 0.3252887535095215,
       "max_confidence": 0.8225429311394693,
       "high_confidence_count": 17,
       "medium_confidence_count": 35,
-      "low_confidence_count": 5
+      "low_confidence_count": 4
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000158",
-  "num_citations": 83,
-  "date_last_updated": "2026-08-17T10:05:37.256231+00:00",
+  "num_citations": 84,
+  "date_last_updated": "2026-08-25T10:06:40.287027+00:00",
   "metadata": {
-    "total_cumulative_citations": 439,
-    "fetch_date": "2026-08-17T10:05:37.256231+00:00",
+    "total_cumulative_citations": 450,
+    "fetch_date": "2026-08-25T10:06:40.287027+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -57,14 +57,13 @@
     ],
     "keywords": [
       "motor imagery",
+      "Brain-Computer Interfaces",
       "EEG",
-      "brain-computer interface",
       "stroke rehabilitation",
       "acute stroke",
-      "hand-grip imagery",
-      "signal processing"
+      "Electroencephalography"
     ],
-    "methods_description": "EEG data were collected from 50 acute stroke patients using a ZhenTec NT1 wireless multichannel system with 29 EEG channels and 2 EOG channels at 500 Hz sampling rate. Participants performed 40 trials of hand-grip motor imagery (20 left-hand, 20 right-hand) in an 8-second cue-based paradigm consisting of instruction, 4-second video-guided imagery, and rest phases. Data were preprocessed using EEGLAB (MATLAB R2019b) with FIR filtering (0.5-40 Hz bandpass), baseline removal, and artifact removal. Clinical assessments included NIHSS, MBI, and mRS scores.",
+    "methods_description": "EEG data were collected from 50 acute stroke patients using a ZhenTec NT1 wireless multichannel system with 29 EEG channels and 2 EOG channels at 500 Hz sampling rate. Participants performed 40 motor imagery trials (20 left-hand, 20 right-hand) in a cue-based paradigm, with each 8-second trial consisting of an instruction phase, 4-second video-guided imagery phase, and rest period. Data were recorded with semi-dry Ag/AgCl electrodes in a 10-10 montage (reference: CPz, ground: FPz). Preprocessing included FIR filtering (0.5-40 Hz bandpass) and baseline removal using EEGLAB in MATLAB R2019b.",
     "funding": [
       {
         "funder_name": "National Natural Science Foundation of China",
@@ -74,13 +73,7 @@
         "funder_name": "National Natural Science Foundation of China",
         "award_number": "81825008"
       }
-    ],
-    "searched_accessions": [
-      "nm000158"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 83
+    ]
   },
   "citation_details": [
     {
@@ -112,7 +105,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2026,
       "url": "https://doi.org/10.1088/1741-2552/ae4455",
-      "cited_by": 33,
+      "cited_by": 35,
       "abstract": "Abstract Premise. Patterns of electrical brain activity recorded via electroencephalography (EEG) offer immense value for scientific and clinical investigations. The inability of supervised EEG encoders to learn robust EEG patterns and their over-reliance on expensive signal annotations have sparked a transition towards general-purpose self-supervised EEG encoders, i.e. EEG foundation models (EEG-FMs), for robust and scalable EEG feature extraction. However, the real-world readiness of early EEG-FMs and the rubrics for long-term research progress remain unclear. Objective. In this work, we conduct a review of ten early EEG-FMs to capture common trends and identify key directions for future development of EEG-FMs. Methods. We comparatively analyze each EEG-FM using three fundamental pillars of foundation modeling, namely the representation of input data, self-supervised modeling, and the evaluation strategy. Based on this analysis, we present a critical synthesis of EEG-FM methodology, ",
       "doi": "10.1088/1741-2552/ae4455",
       "pmid": "41666566",
@@ -158,7 +151,7 @@
       "venue": "Scientific Data",
       "year": 2025,
       "url": "https://doi.org/10.1038/s41597-025-04618-4",
-      "cited_by": 19,
+      "cited_by": 21,
       "abstract": "Motor dysfunction is one of the most significant sequelae of stroke, with lower limb impairment being a major concern for stroke patients. Motor imagery (MI) technology based on brain-computer interface (BCI) offers promising rehabilitation potential for stroke patients by activating motor-related brain areas. However, developing a robust BCI-MI system and uncovering the underlying mechanisms of neural plasticity during stroke recovery through such systems requires large-scale datasets. These datasets are particularly needed for accurate lower limb MI in stroke patients and for longitudinal data reflecting the rehabilitation process. This study addresses this gap by collecting EEG data from 27 stroke patients, covering two enhanced paradigms and three different time points. The dataset includes raw EEG signals, preprocessed data, and patient information. An initial analysis using CSP-SVM on the dataset yielded an average classification accuracy of 80.50%. We anticipate that this datase",
       "doi": "10.1038/s41597-025-04618-4",
       "pmid": "39984530",
@@ -193,6 +186,29 @@
         "confidence_score": 0.7386507511138918,
         "similarity_score": 0.6395244598388672,
         "citation_text_length": 1226,
+        "dataset_text_length": 2406,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Advances in Hydrogel‐Based Electronic Skins: From Material Design to Multifunctional Applications",
+      "author": "D. Li, Ningfeng Que, Hao Tang, Yanwen Tian, Yanwen Tian, Chenxi Jing, Le Liu, Guanshi Liu, Hongxing Zhou, Wenwen Zhang, Hongguo Wei, Ye Tian, Ye Tian",
+      "venue": "Advanced Functional Materials",
+      "year": 2025,
+      "url": "https://doi.org/10.1002/adfm.202527525",
+      "cited_by": 16,
+      "abstract": "ABSTRACT Electronic skin (e‐skin) is initially developed to mimic human skin but has evolved significantly, gradually surpassing natural skin's capabilities. Among various materials, hydrogels have emerged as ideal candidates for e‐skin fabrication due to their unique flexibility, biocompatibility, and skin‐like texture. This review begins by examining hydrogel material preparation methods and underlying mechanisms, then discusses material design strategies for hydrogel‐based e‐skin. We summarize the latest developments in this field and emerging trends in functionalization, with particular emphasis on applications in smart wearable devices, soft robotics, and human‐machine interfaces. Finally, we address the challenges in improving material performance and expanding application domains. This comprehensive review aims to provide researchers in the hydrogel field with novel approaches to functionalization.",
+      "doi": "10.1002/adfm.202527525",
+      "pmid": null,
+      "openalex_id": "W7117709177",
+      "source_doi": "10.1038/s41597-023-02787-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.2962981930375099,
+        "similarity_score": 0.25653523206710815,
+        "citation_text_length": 1232,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -239,29 +255,6 @@
         "confidence_score": 0.6099056044220925,
         "similarity_score": 0.528056800365448,
         "citation_text_length": 1288,
-        "dataset_text_length": 2406,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Advances in Hydrogel‐Based Electronic Skins: From Material Design to Multifunctional Applications",
-      "author": "D. Li, Ningfeng Que, Hao Tang, Yanwen Tian, Yanwen Tian, Chenxi Jing, Le Liu, Guanshi Liu, Hongxing Zhou, Wenwen Zhang, Hongguo Wei, Ye Tian, Ye Tian",
-      "venue": "Advanced Functional Materials",
-      "year": 2025,
-      "url": "https://doi.org/10.1002/adfm.202527525",
-      "cited_by": 14,
-      "abstract": "ABSTRACT Electronic skin (e‐skin) is initially developed to mimic human skin but has evolved significantly, gradually surpassing natural skin's capabilities. Among various materials, hydrogels have emerged as ideal candidates for e‐skin fabrication due to their unique flexibility, biocompatibility, and skin‐like texture. This review begins by examining hydrogel material preparation methods and underlying mechanisms, then discusses material design strategies for hydrogel‐based e‐skin. We summarize the latest developments in this field and emerging trends in functionalization, with particular emphasis on applications in smart wearable devices, soft robotics, and human‐machine interfaces. Finally, we address the challenges in improving material performance and expanding application domains. This comprehensive review aims to provide researchers in the hydrogel field with novel approaches to functionalization.",
-      "doi": "10.1002/adfm.202527525",
-      "pmid": null,
-      "openalex_id": "W7117709177",
-      "source_doi": "10.1038/s41597-023-02787-8",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.2962981930375099,
-        "similarity_score": 0.25653523206710815,
-        "citation_text_length": 1232,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -475,6 +468,29 @@
       }
     },
     {
+      "title": "ArEEG: an Open-Access Arabic Inner Speech EEG Dataset",
+      "author": "Donia Metwalli, Antony E. Kiroles, Yousef A. Radwan, Eslam Ahmed Mohamed, M. N. Barakat, Anas Ahmed, Amr Salah Omar, Sahar Selim",
+      "venue": "Scientific Data",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41597-025-05387-w",
+      "cited_by": 6,
+      "abstract": "Recent advancements in Brain-Computer Interface (BCI) technology are shifting towards inner speech over motor imagery due to its intuitive nature and broader command spectrum, enhancing interaction with electronic devices. However, the reliance on a large number of electrodes in available datasets complicates the development of cost-effective BCIs. Additionally, the lack of publicly available datasets hinder the development of this technology. To address this, we introduce a new Arabic Inner Speech dataset, featuring five distinct classes, exceeding the typical four-class datasets, and recorded using only eight electrodes, making it an economical solution. Our primary objective is to provide an open-access, multi-class Electroencephalographic (EEG) dataset in Arabic for inner speech, encompassing five commands. This dataset is designed to enhance our understanding of brain activity, facilitate the integration of BCI technologies in Arabic-speaking regions, and serve as a valuable resou",
+      "doi": "10.1038/s41597-025-05387-w",
+      "pmid": "40883351",
+      "openalex_id": "W4413803090",
+      "source_doi": "10.1038/s41597-023-02787-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6684411209821701,
+        "similarity_score": 0.5787369012832642,
+        "citation_text_length": 1235,
+        "dataset_text_length": 2406,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "AMFN: Autoencoder-led Multimodal Fusion Network for EEG–fNIRS Classification",
       "author": "Chayut Bunterngchit, Jiaxing Wang, Jianqiang Su, Yihan Wang, Shi-Qi Liu, Zeng‐Guang Hou",
       "venue": "Procedia Computer Science",
@@ -538,29 +554,6 @@
         "confidence_score": 0.752229917049408,
         "similarity_score": 0.71640944480896,
         "citation_text_length": 268,
-        "dataset_text_length": 2406,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "ArEEG: an Open-Access Arabic Inner Speech EEG Dataset",
-      "author": "Donia Metwalli, Antony E. Kiroles, Yousef A. Radwan, Eslam Ahmed Mohamed, M. N. Barakat, Anas Ahmed, Amr Salah Omar, Sahar Selim",
-      "venue": "Scientific Data",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s41597-025-05387-w",
-      "cited_by": 5,
-      "abstract": "Recent advancements in Brain-Computer Interface (BCI) technology are shifting towards inner speech over motor imagery due to its intuitive nature and broader command spectrum, enhancing interaction with electronic devices. However, the reliance on a large number of electrodes in available datasets complicates the development of cost-effective BCIs. Additionally, the lack of publicly available datasets hinder the development of this technology. To address this, we introduce a new Arabic Inner Speech dataset, featuring five distinct classes, exceeding the typical four-class datasets, and recorded using only eight electrodes, making it an economical solution. Our primary objective is to provide an open-access, multi-class Electroencephalographic (EEG) dataset in Arabic for inner speech, encompassing five commands. This dataset is designed to enhance our understanding of brain activity, facilitate the integration of BCI technologies in Arabic-speaking regions, and serve as a valuable resou",
-      "doi": "10.1038/s41597-025-05387-w",
-      "pmid": "40883351",
-      "openalex_id": "W4413803090",
-      "source_doi": "10.1038/s41597-023-02787-8",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6684411209821701,
-        "similarity_score": 0.5787369012832642,
-        "citation_text_length": 1235,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -734,7 +727,7 @@
       "year": 2025,
       "url": "https://doi.org/10.3389/fnhum.2025.1695730",
       "cited_by": 3,
-      "abstract": "Introduction Patients with prolonged disorders of consciousness (pDoC) present significant challenges to the assessment of consciousness. This study investigated the clinical utility of motor imagery-based brain-computer interface (MI-BCI) for discriminating consciousness levels in patients with pDoC. Methods Thirty-one pDoC patients [12 with unresponsive wakefulness syndrome (UWS) and 19 in a minimally conscious state (MCS)] underwent EEG recordings during resting state and MI-BCI training. The analysis focused on relative power spectral density across five frequency bands (delta, theta, alpha, beta, gamma) in motor imagery-related regions (frontal and parietal cortices), along with BCI performance metrics (classification accuracy and attention indices). Results We found that MCS patients exhibited multiband neural oscillation modulation during MI-BCI tasks, including slow-wave enhancement [(delta in frontal lobes ( p = 0.003); theta in frontal ( p = 0.026) and parietal lobes ( p &amp",
+      "abstract": "Introduction Patients with prolonged disorders of consciousness (pDoC) present significant challenges to the assessment of consciousness. This study investigated the clinical utility of motor imagery-based brain-computer interface (MI-BCI) for discriminating consciousness levels in patients with pDoC. Methods Thirty-one pDoC patients [12 with unresponsive wakefulness syndrome (UWS) and 19 in a minimally conscious state (MCS)] underwent EEG recordings during resting state and MI-BCI training. The analysis focused on relative power spectral density across five frequency bands (delta, theta, alpha, beta, gamma) in motor imagery-related regions (frontal and parietal cortices), along with BCI performance metrics (classification accuracy and attention indices). Results We found that MCS patients exhibited multiband neural oscillation modulation during MI-BCI tasks, including slow-wave enhancement [(delta in frontal lobes ( p = 0.003); theta in frontal ( p = 0.026) and parietal lobes ( p < 0.",
       "doi": "10.3389/fnhum.2025.1695730",
       "pmid": "41394940",
       "openalex_id": "W4416763968",
@@ -742,9 +735,32 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6393812352418901,
-        "similarity_score": 0.5535768270492554,
+        "confidence_score": 0.6329930528998375,
+        "similarity_score": 0.5480459332466125,
         "citation_text_length": 1291,
+        "dataset_text_length": 2406,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Few-shot channel selection with wavelet scattering and squeeze-and-excitation for EEG motor imagery classification",
+      "author": "Dong-Jin Sung, Ji-Hyeok Jeong, Keun-Tae Kim, J. H. Lee, Song Joo Lee, Hyungmin Kim",
+      "venue": "Biomedical Signal Processing and Control",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.bspc.2026.110046",
+      "cited_by": 3,
+      "abstract": "Motor imagery (MI)-based brain–computer interfaces (BCIs) provide a promising non-invasive solution for motor rehabilitation and assistive control. However, the use of multichannel electroencephalography (EEG) often results in high-dimensional and noise-prone data, posing both practical and computational challenges for real-world implementation. To address these issues, we propose a few-shot channel selection framework that integrates wavelet scattering transforms (WSTs) for robust, shift-invariant feature extraction with a squeeze-and-excitation (SE) convolutional neural network (CNN) for end-to-end channel selection. Our approach identifies informative EEG channels using only a small number of labeled samples from a target individual, allowing subsequent model training with the reduced channel set. We evaluated the proposed method on two public upper-limb MI EEG datasets (SHU and Stroke; 75 participants) and an in-house lower-limb MI dataset comprising 12 healthy and 5 spinal cord in",
+      "doi": "10.1016/j.bspc.2026.110046",
+      "pmid": null,
+      "openalex_id": "W7133685485",
+      "source_doi": "10.1038/s41597-023-02787-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7892679038643838,
+        "similarity_score": 0.6833488345146179,
+        "citation_text_length": 1275,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -791,6 +807,29 @@
         "confidence_score": 0.7829210963845253,
         "similarity_score": 0.6778537631034851,
         "citation_text_length": 1123,
+        "dataset_text_length": 2406,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Optimized Deep Learning Approach for Motor Imagery EEG Classification",
+      "author": "Virendra Kumar Tiwari, Priyanka Singh",
+      "venue": "American Journal of Networks and Communications",
+      "year": 2025,
+      "url": "https://doi.org/10.11648/j.ajnc.20251401.13",
+      "cited_by": 3,
+      "abstract": "Motor Imagery (MI)-based electroencephalography (EEG) signal classification plays a pivotal role in enhancing Brain-Computer Interface (BCI) systems, particularly in medical diagnostics, neurorehabilitation, and assistive technologies. However, EEG signals are inherently non-stationary and often contaminated with noise and artifacts, making accurate classification a significant challenge. Additionally, the high dimensionality of raw EEG data further complicates the feature extraction and classification process. To address these issues, we present an optimized deep learning approach that integrates a Deep Neural Network (DNN) with Teacher Learning-Based Optimization (TLBO). This hybrid model is designed to enhance the quality of feature selection, reduce irrelevant information, and improve overall classification performance. The proposed method involves a three-stage pipeline: discrete wavelet transforms (DWT)-based feature extraction, TLBO for selecting the most informative features an",
+      "doi": "10.11648/j.ajnc.20251401.13",
+      "pmid": null,
+      "openalex_id": "W4411840765",
+      "source_doi": "10.1038/s41597-023-02787-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6527069011330605,
+        "similarity_score": 0.5651142001152039,
+        "citation_text_length": 1192,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -935,29 +974,6 @@
       }
     },
     {
-      "title": "Few-shot channel selection with wavelet scattering and squeeze-and-excitation for EEG motor imagery classification",
-      "author": "Dong-Jin Sung, Ji-Hyeok Jeong, Keun-Tae Kim, J. H. Lee, Song Joo Lee, Hyungmin Kim",
-      "venue": "Biomedical Signal Processing and Control",
-      "year": 2026,
-      "url": "https://doi.org/10.1016/j.bspc.2026.110046",
-      "cited_by": 2,
-      "abstract": "Motor imagery (MI)-based brain–computer interfaces (BCIs) provide a promising non-invasive solution for motor rehabilitation and assistive control. However, the use of multichannel electroencephalography (EEG) often results in high-dimensional and noise-prone data, posing both practical and computational challenges for real-world implementation. To address these issues, we propose a few-shot channel selection framework that integrates wavelet scattering transforms (WSTs) for robust, shift-invariant feature extraction with a squeeze-and-excitation (SE) convolutional neural network (CNN) for end-to-end channel selection. Our approach identifies informative EEG channels using only a small number of labeled samples from a target individual, allowing subsequent model training with the reduced channel set. We evaluated the proposed method on two public upper-limb MI EEG datasets (SHU and Stroke; 75 participants) and an in-house lower-limb MI dataset comprising 12 healthy and 5 spinal cord in",
-      "doi": "10.1016/j.bspc.2026.110046",
-      "pmid": null,
-      "openalex_id": "W7133685485",
-      "source_doi": "10.1038/s41597-023-02787-8",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7892679038643838,
-        "similarity_score": 0.6833488345146179,
-        "citation_text_length": 1275,
-        "dataset_text_length": 2406,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "A Somatosensory ERP-BCI System for Post-Stroke Hand Function Rehabilitation Applications",
       "author": "Junlin Wang, Xiaodong Li, Xingyu Lu, Ningbo Fei, Wei Huang, Yong Hu",
       "venue": "IEEE Transactions on Instrumentation and Measurement",
@@ -981,23 +997,23 @@
       }
     },
     {
-      "title": "Optimized Deep Learning Approach for Motor Imagery EEG Classification",
-      "author": "Virendra Kumar Tiwari, Priyanka Singh",
-      "venue": "American Journal of Networks and Communications",
-      "year": 2025,
-      "url": "https://doi.org/10.11648/j.ajnc.20251401.13",
+      "title": "Laya: A LeJEPA Approach to EEG via Latent Prediction over Reconstruction",
+      "author": "S. Panchavati, Uddhav Panchavati, Corey W. Arnold, W. Speier",
+      "venue": "ArXiv",
+      "year": 2026,
+      "url": "https://doi.org/10.48550/arXiv.2603.16281",
       "cited_by": 2,
-      "abstract": "Motor Imagery (MI)-based electroencephalography (EEG) signal classification plays a pivotal role in enhancing Brain-Computer Interface (BCI) systems, particularly in medical diagnostics, neurorehabilitation, and assistive technologies. However, EEG signals are inherently non-stationary and often contaminated with noise and artifacts, making accurate classification a significant challenge. Additionally, the high dimensionality of raw EEG data further complicates the feature extraction and classification process. To address these issues, we present an optimized deep learning approach that integrates a Deep Neural Network (DNN) with Teacher Learning-Based Optimization (TLBO). This hybrid model is designed to enhance the quality of feature selection, reduce irrelevant information, and improve overall classification performance. The proposed method involves a three-stage pipeline: discrete wavelet transforms (DWT)-based feature extraction, TLBO for selecting the most informative features an",
-      "doi": "10.11648/j.ajnc.20251401.13",
+      "abstract": "Electroencephalography (EEG) is a widely used tool for studying brain function, with applications in clinical neuroscience, diagnosis, and brain-computer interfaces (BCIs). Recent EEG foundation models trained on large unlabeled corpora aim to learn transferable representations, but their effectiveness remains unclear; reported improvements over smaller task-specific models are often modest, sensitive to downstream adaptation and fine-tuning strategies, and limited under linear probing. We hypothesize that one contributing factor is the reliance on signal reconstruction as the primary self-supervised learning (SSL) objective, which biases representations toward high-variance artifacts rather than task-relevant neural structure. To address this limitation, we explore an SSL paradigm based on Joint Embedding Predictive Architectures (JEPA), which learn by predicting latent representations instead of reconstructing raw signals. We introduce Laya, the first EEG foundation model based on Le",
+      "doi": "10.48550/arXiv.2603.16281",
       "pmid": null,
-      "openalex_id": "W4411840765",
+      "openalex_id": null,
       "source_doi": "10.1038/s41597-023-02787-8",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6527069011330605,
-        "similarity_score": 0.5651142001152039,
-        "citation_text_length": 1192,
+        "confidence_score": 0.5669278277456762,
+        "similarity_score": 0.4908466041088104,
+        "citation_text_length": 1176,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1303,29 +1319,6 @@
       }
     },
     {
-      "title": "Laya: A LeJEPA Approach to EEG via Latent Prediction over Reconstruction",
-      "author": "S. Panchavati, Uddhav Panchavati, Corey W. Arnold, W. Speier",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2603.16281",
-      "cited_by": 1,
-      "abstract": "Electroencephalography (EEG) is a widely used tool for studying brain function, with applications in clinical neuroscience, diagnosis, and brain-computer interfaces (BCIs). Recent EEG foundation models trained on large unlabeled corpora aim to learn transferable representations, but their effectiveness remains unclear; reported improvements over smaller task-specific models are often modest, sensitive to downstream adaptation and fine-tuning strategies, and limited under linear probing. We hypothesize that one contributing factor is the reliance on signal reconstruction as the primary self-supervised learning (SSL) objective, which biases representations toward high-variance artifacts rather than task-relevant neural structure. To address this limitation, we explore an SSL paradigm based on Joint Embedding Predictive Architectures (JEPA), which learn by predicting latent representations instead of reconstructing raw signals. We introduce Laya, the first EEG foundation model based on Le",
-      "doi": "10.48550/arXiv.2603.16281",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-023-02787-8",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5669278277456762,
-        "similarity_score": 0.4908466041088104,
-        "citation_text_length": 1176,
-        "dataset_text_length": 2406,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Brain–computer interfaces for pediatric and geriatric neurorehabilitation",
       "author": "Abdelkader Nasreddine Belkacem, Abdelhadi Hireche",
       "venue": "Elsevier eBooks",
@@ -1464,7 +1457,7 @@
       }
     },
     {
-      "title": "The AppleCatcher Game: A Motor Imagery BCI Platform for Investigating Cortical Activation During Imagined Hand Movements",
+      "title": "The AppleCatcher Game: A Motor Imagery BCI Platform for Investigating Cortical Activation During Imagined Hand Movements",
       "author": "Erlend Skredsvig, Robin Kneider, Marta Molinas",
       "venue": "Lecture notes in computer science",
       "year": 2026,
@@ -1478,8 +1471,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.6040117800235748,
-        "similarity_score": 0.5752493143081665,
+        "confidence_score": 0.6014698952436447,
+        "similarity_score": 0.572828471660614,
         "citation_text_length": 226,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
@@ -1619,6 +1612,29 @@
         "confidence_score": 0.7217194139957428,
         "similarity_score": 0.6248652935028076,
         "citation_text_length": 1279,
+        "dataset_text_length": 2406,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "A spatio-temporal neural relation extraction model for end-to-end brain directed network mapping",
+      "author": "Chanlin Yi, Wanjun Chen, Junpu Wang, Qingyang Li, Mi Yang, Dezhong Yao, Fali Li, Peng Xu",
+      "venue": "Neurocomputing",
+      "year": 2026,
+      "url": "https://doi.org/10.1016/j.neucom.2026.134845",
+      "cited_by": 0,
+      "abstract": null,
+      "doi": "10.1016/j.neucom.2026.134845",
+      "pmid": null,
+      "openalex_id": "W7126099506",
+      "source_doi": "10.1038/s41597-023-02787-8",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4360132545232773,
+        "similarity_score": 0.4152507185935974,
+        "citation_text_length": 225,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1952,7 +1968,7 @@
       "venue": "Scientific Data",
       "year": 2024,
       "url": "https://doi.org/10.1038/s41597-023-02787-8",
-      "cited_by": 64,
+      "cited_by": 65,
       "abstract": "The brain-computer interface (BCI) is a technology that involves direct communication with parts of the brain and has evolved rapidly in recent years; it has begun to be used in clinical practice, such as for patient rehabilitation. Patient electroencephalography (EEG) datasets are critical for algorithm optimization and clinical applications of BCIs but are rare at present. We collected data from 50 acute stroke patients with wireless portable saline EEG devices during the performance of two tasks: 1) imagining right-handed movements and 2) imagining left-handed movements. The dataset consists of four types of data: 1) the motor imagery instructions, 2) raw recording data, 3) pre-processed data after removing artefacts and other manipulations, and 4) patient characteristics. This is the first open dataset to address left- and right-handed motor imagery in acute stroke patients. We believe that the dataset will be very helpful for analysing brain activation and designing decoding metho",
       "doi": "10.1038/s41597-023-02787-8",
       "pmid": "38272904",
@@ -1976,7 +1992,7 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.nm000158",
       "cited_by": 0,
-      "abstract": "An EEG motor imagery dataset from 50 acute stroke patients (1-30 days post-stroke) performing left- and right-handed hand-grip imagination tasks. The dataset comprises 40 trials per subject (20 left, 20 right) recorded with a 29-channel wireless EEG system at 500 Hz, including raw and preprocessed data. This is the first open dataset to address bilateral motor imagery in acute stroke patients, providing a critical resource for brain-computer interface algorithm development and clinical rehabilitation applications.",
+      "abstract": "This dataset comprises electroencephalography (EEG) recordings from 50 acute stroke patients (1-30 days post-stroke) performing motor imagery tasks of left- and right-handed hand-grip movements. Each subject completed 40 trials (20 per hand) of cue-based motor imagery guided by video stimuli, recorded using a 29-channel wireless EEG system at 500 Hz. The dataset includes raw and preprocessed data, representing the first open resource addressing bilateral motor imagery in the acute stroke population and supporting brain-computer interface development for neurorehabilitation applications.",
       "doi": "10.82901/nemar.nm000158",
       "pmid": null,
       "openalex_id": "W7160819933",
@@ -1985,8 +2001,8 @@
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 1.0,
-        "similarity_score": 0.9319387674331665,
-        "citation_text_length": 770,
+        "similarity_score": 0.907884955406189,
+        "citation_text_length": 844,
         "dataset_text_length": 2406,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1995,17 +2011,17 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:10:01.101224+00:00",
+    "scoring_date": "2026-08-25T11:17:26.964412+00:00",
     "dataset_text_length": 2406,
-    "num_citations_scored": 83,
+    "num_citations_scored": 84,
     "summary_stats": {
-      "mean_confidence": 0.6708689554592214,
-      "median_confidence": 0.6770456466078759,
-      "std_confidence": 0.14307686634318226,
+      "mean_confidence": 0.6679667439347222,
+      "median_confidence": 0.6762006287276745,
+      "std_confidence": 0.14451607593772695,
       "min_confidence": 0.2661155064404011,
       "max_confidence": 1.0,
       "high_confidence_count": 39,
-      "medium_confidence_count": 39,
+      "medium_confidence_count": 40,
       "low_confidence_count": 5
     }
   }

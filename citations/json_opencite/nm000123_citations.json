@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000123",
   "num_citations": 100,
-  "date_last_updated": "2026-08-17T10:01:46.940239+00:00",
+  "date_last_updated": "2026-08-25T10:02:28.095980+00:00",
   "metadata": {
-    "total_cumulative_citations": 5370,
-    "fetch_date": "2026-08-17T10:01:46.940239+00:00",
+    "total_cumulative_citations": 5623,
+    "fetch_date": "2026-08-25T10:02:28.095980+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -72,17 +72,11 @@
       "EEG",
       "Riemannian geometry",
       "assistive robotics",
-      "online BCI",
-      "visual evoked potentials"
+      "visual evoked potentials",
+      "exoskeleton"
     ],
-    "methods_description": "EEG data were acquired using a g.tec MobiLab amplifier with 8 electrodes (Oz, O1, O2, POz, PO3, PO4, PO7, PO8) positioned according to the standard 10-05 montage with right mastoid reference. Sampling rate was 256 Hz. Subjects performed 32 trials per session (8 trials per visual stimulus frequency: 13 Hz, 17 Hz, 21 Hz, and 8 rest trials), with each trial lasting 6 seconds and a 3-second inter-trial interval. Visual stimuli were presented via LED panels positioned on the left side of the wheelchair.",
-    "funding": [],
-    "searched_accessions": [
-      "nm000123"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 100
+    "methods_description": "EEG data were recorded from 12 healthy subjects (aged 20-28 years) using a g.tec MobiLab amplifier with 8 electrodes (Oz, O1, O2, POz, PO3, PO4, PO7, PO8) positioned according to the standard 1005 montage with right mastoid reference. Subjects sat in an electric wheelchair with a 20×30 cm LED panel positioned on the left side displaying three groups of 4 LEDs flickering at 13 Hz, 17 Hz, and 21 Hz. Each trial lasted 6 seconds total with a 2-4 second stimulus window and 3-second inter-trial intervals. Subjects followed auditory cues to focus on target LEDs or a central fixation point for the rest class. Signals were sampled at 256 Hz with 50 Hz line frequency filtering.",
+    "funding": []
   },
   "citation_details": [
     {
@@ -91,7 +85,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1088/1741-2552/aab2f2",
-      "cited_by": 2204,
+      "cited_by": 2214,
       "abstract": "OBJECTIVE: Most current electroencephalography (EEG)-based brain-computer interfaces (BCIs) are based on machine learning algorithms. There is a large diversity of classifier types that are used in this field, as described in our 2007 review paper. Now, approximately ten years after this review publication, many new algorithms have been developed and tested to classify EEG signals in BCIs. The time is therefore ripe for an updated review of EEG classification algorithms for BCIs. APPROACH: We surveyed the BCI and machine learning literature from 2007 to 2017 to identify the new classification approaches that have been investigated to design BCIs. We synthesize these studies in order to present such algorithms, to report how they were used for BCIs, what were the outcomes, and to identify their pros and cons. MAIN RESULTS: We found that the recently designed classification algorithms for EEG-based BCIs can be divided into four main categories: adaptive classifiers, matrix and tensor cla",
       "doi": "10.1088/1741-2552/aab2f2",
       "pmid": "29488902",
@@ -114,7 +108,7 @@
       "venue": "Frontiers in Neurorobotics",
       "year": 2020,
       "url": "https://doi.org/10.3389/fnbot.2020.00025",
-      "cited_by": 503,
+      "cited_by": 504,
       "abstract": "Brain-Computer Interface (BCI), in essence, aims at controlling different assistive devices through the utilization of brain waves. It is worth noting that the application of BCI is not limited to medical applications, and hence, the research in this field has gained due attention. Moreover, the significant number of related publications over the past two decades further indicates the consistent improvements and breakthroughs that have been made in this particular field. Nonetheless, it is also worth mentioning that with these improvements, new challenges are constantly discovered. This article provides a comprehensive review of the state-of-the-art of a complete BCI system. First, a brief overview of electroencephalogram (EEG)-based BCI systems is given. Secondly, a considerable number of popular BCI applications are reviewed in terms of electrophysiological control signals, feature extraction, classification algorithms, and performance evaluation metrics. Finally, the challenges to t",
       "doi": "10.3389/fnbot.2020.00025",
       "pmid": "32581758",
@@ -155,12 +149,35 @@
       }
     },
     {
+      "title": "Journal of Neural Engineering",
+      "author": "Xiang Zhang, Lina Yao, Xianzhi Wang, Jessica J. M. Monaghan, D. McAlpine, Yu Zhang",
+      "venue": "n/a",
+      "year": 0,
+      "url": "n/a",
+      "cited_by": 234,
+      "abstract": null,
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.34282052516937256,
+        "similarity_score": 0.34282052516937256,
+        "citation_text_length": 141,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Riemannian Procrustes Analysis: Transfer Learning for Brain–Computer Interfaces",
       "author": "Pedro Luiz Coelho Rodrigues, Christian Jutten, Marco Congedo",
       "venue": "IEEE Transactions on Biomedical Engineering",
       "year": 2018,
       "url": "https://doi.org/10.1109/tbme.2018.2889705",
-      "cited_by": 212,
+      "cited_by": 213,
       "abstract": "OBJECTIVE: This paper presents a Transfer Learning approach for dealing with the statistical variability of electroencephalographic (EEG) signals recorded on different sessions and/or from different subjects. This is a common problem faced by brain-computer interfaces (BCI) and poses a challenge for systems that try to reuse data from previous recordings to avoid a calibration phase for new users or new sessions for the same user. METHOD: We propose a method based on Procrustes analysis for matching the statistical distributions of two datasets using simple geometrical transformations (translation, scaling, and rotation) over the data points. We use symmetric positive definite matrices (SPD) as statistical features for describing the EEG signals, so the geometrical operations on the data points respect the intrinsic geometry of the SPD manifold. Because of its geometry-aware nature, we call our method the Riemannian Procrustes analysis (RPA). We assess the improvement in transfer learn",
       "doi": "10.1109/tbme.2018.2889705",
       "pmid": "30596565",
@@ -206,7 +223,7 @@
       "venue": "Cognitive Neurodynamics",
       "year": 2021,
       "url": "https://doi.org/10.1007/s11571-021-09676-z",
-      "cited_by": 101,
+      "cited_by": 102,
       "abstract": null,
       "doi": "10.1007/s11571-021-09676-z",
       "pmid": "34367361",
@@ -293,6 +310,29 @@
       }
     },
     {
+      "title": "Classification of EEG Signals on VEP-Based BCI Systems With Broad Learning",
+      "author": "Zhongke Gao, Weidong Dang, Mingxu Liu, Wei Guo, Kai Ma, Guanrong Chen",
+      "venue": "IEEE Transactions on Systems Man and Cybernetics Systems",
+      "year": 2020,
+      "url": "https://doi.org/10.1109/tsmc.2020.2964684",
+      "cited_by": 73,
+      "abstract": "Brain–computer interface (BCI) systems based on electroencephalography (EEG) signals have been extensively used in medical practice. To enhance the BCI performance, improving the classification accuracy of EEG signals is the key, which has always been the focus of research and development. In this article, a novel method integrating complex network and broad learning system (BLS) is proposed for visual evoked potential (VEP)-based BCI research. First, systematic VEP-based brain experiments are conducted for obtaining EEG signals, including steady-state VEP (SSVEP) and steady-state motion VEP (SSMVEP). Then, limited penetrable visibility graph (LPVG) and its degree sequence are employed to implement the preliminary feature extraction. All these features are finally fed into a BLS to study and classify the SSVEP and SSMVEP signals, respectively. The classification results show that our LPVG-based BLS can effectively classify VEP-based EEG signals, with average classification accuracy 96.",
+      "doi": "10.1109/tsmc.2020.2964684",
+      "pmid": null,
+      "openalex_id": "W3004859010",
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6137596625089646,
+        "similarity_score": 0.5313936471939087,
+        "citation_text_length": 1238,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "EEG-Based User Reaction Time Estimation Using Riemannian Geometry Features",
       "author": "Dongrui Wu, Brent J. Lance, Vernon J. Lawhern, Stephen M. Gordon, Tzyy‐Ping Jung, Chin‐Teng Lin",
       "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
@@ -310,29 +350,6 @@
         "confidence_score": 0.4758185863494873,
         "similarity_score": 0.43256235122680664,
         "citation_text_length": 1269,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Classification of EEG Signals on VEP-Based BCI Systems With Broad Learning",
-      "author": "Zhongke Gao, Weidong Dang, Mingxu Liu, Wei Guo, Kai Ma, Guanrong Chen",
-      "venue": "IEEE Transactions on Systems Man and Cybernetics Systems",
-      "year": 2020,
-      "url": "https://doi.org/10.1109/tsmc.2020.2964684",
-      "cited_by": 72,
-      "abstract": "Brain–computer interface (BCI) systems based on electroencephalography (EEG) signals have been extensively used in medical practice. To enhance the BCI performance, improving the classification accuracy of EEG signals is the key, which has always been the focus of research and development. In this article, a novel method integrating complex network and broad learning system (BLS) is proposed for visual evoked potential (VEP)-based BCI research. First, systematic VEP-based brain experiments are conducted for obtaining EEG signals, including steady-state VEP (SSVEP) and steady-state motion VEP (SSMVEP). Then, limited penetrable visibility graph (LPVG) and its degree sequence are employed to implement the preliminary feature extraction. All these features are finally fed into a BLS to study and classify the SSVEP and SSMVEP signals, respectively. The classification results show that our LPVG-based BLS can effectively classify VEP-based EEG signals, with average classification accuracy 96.",
-      "doi": "10.1109/tsmc.2020.2964684",
-      "pmid": null,
-      "openalex_id": "W3004859010",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6137596625089646,
-        "similarity_score": 0.5313936471939087,
-        "citation_text_length": 1238,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -666,7 +683,7 @@
       "venue": "Progress in Neuro-Psychopharmacology and Biological Psychiatry",
       "year": 2020,
       "url": "https://doi.org/10.1016/j.pnpbp.2020.109960",
-      "cited_by": 30,
+      "cited_by": 31,
       "abstract": "Recently, objective and automated methods for the diagnosis of post-traumatic stress disorder (PTSD) have attracted increasing attention. However, previous studies on machine-learning-based diagnosis of PTSD with resting-state electroencephalogram (EEG) have reported poor accuracies of as low as 60%. Here, a Riemannian geometry-based classifier, the Fisher geodesic minimum distance to the mean (FgMDM), was employed for PTSD classification for the first time. Eyes-closed resting-state EEG data of 39 healthy individuals and 42 PTSD patients were used for the analysis. EEG source activities in 148 cortical regions were parcellated based on the Destrieux atlas, and their covariances were evaluated for each individual. Thirty epochs of preprocessed EEG were employed to calculate source activities. In addition, the FgMDM approach was applied to each EEG source covariance to construct the classifier. For a comparison, linear discriminant analysis (LDA), support vector machine (SVM), and rando",
       "doi": "10.1016/j.pnpbp.2020.109960",
       "pmid": "32376342",
@@ -897,7 +914,7 @@
       "year": 2021,
       "url": "https://doi.org/10.1088/1741-2552/abf291",
       "cited_by": 22,
-      "abstract": "Abstract Objective . Over the last decade, Riemannian geometry has shown promising results for motor imagery classification. However, extracting the underlying spatial features is not as straightforward as for applying common spatial pattern (CSP) filtering prior to classification. In this article, we propose a simple way to extract the spatial patterns obtained from Riemannian classification: the Riemannian spatial pattern (RSP) method, which is based on the backward channel selection procedure. Approach . The RSP method was compared to the CSP approach on ECoG data obtained from a quadriplegic patient while performing imagined movements of arm articulations and fingers. Main results. Similar results were found between the RSP and CSP methods for mapping each motor imagery task with activations following the classical somatotopic organization. Clustering obtained by pairwise comparisons of imagined motor movements however, revealed higher differentiation for the RSP method compared to",
+      "abstract": "Abstract Objective. Over the last decade, Riemannian geometry has shown promising results for motor imagery classification. However, extracting the underlying spatial features is not as straightforward as for applying common spatial pattern (CSP) filtering prior to classification. In this article, we propose a simple way to extract the spatial patterns obtained from Riemannian classification: the Riemannian spatial pattern (RSP) method, which is based on the backward channel selection procedure. Approach. The RSP method was compared to the CSP approach on ECoG data obtained from a quadriplegic patient while performing imagined movements of arm articulations and fingers. Main results. Similar results were found between the RSP and CSP methods for mapping each motor imagery task with activations following the classical somatotopic organization. Clustering obtained by pairwise comparisons of imagined motor movements however, revealed higher differentiation for the RSP method compared to t",
       "doi": "10.1088/1741-2552/abf291",
       "pmid": "33770779",
       "openalex_id": "W3138318499",
@@ -905,8 +922,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4356135155260563,
-        "similarity_score": 0.37715455889701843,
+        "confidence_score": 0.4333737310767174,
+        "similarity_score": 0.3752153515815735,
         "citation_text_length": 1320,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
@@ -989,7 +1006,7 @@
       "year": 2023,
       "url": "https://doi.org/10.1088/1741-2552/ad171a",
       "cited_by": 18,
-      "abstract": "Abstract Objective . BCI (Brain–Computer Interfaces) operate in three modes: online , offline , and pseudo-online . In online mode, real-time EEG data is constantly analyzed. In offline mode, the signal is acquired and processed afterwards. The pseudo-online mode processes collected data as if they were received in real-time. The main difference is that the offline mode often analyzes the whole data, while the online and pseudo-online modes only analyze data in short time windows. Offline processing tends to be more accurate, while online analysis is better for therapeutic applications. Pseudo-online implementation approximates online processing without real-time constraints. Many BCI studies being offline introduce biases compared to real-life scenarios, impacting classification algorithm performance. Approach . The objective of this research paper is therefore to extend the current MOABB framework, operating in offline mode, so as to allow a comparison of different algorithms in a ps",
+      "abstract": "Abstract Objective. BCI (Brain–Computer Interfaces) operate in three modes: online, offline, and pseudo-online. In online mode, real-time EEG data is constantly analyzed. In offline mode, the signal is acquired and processed afterwards. The pseudo-online mode processes collected data as if they were received in real-time. The main difference is that the offline mode often analyzes the whole data, while the online and pseudo-online modes only analyze data in short time windows. Offline processing tends to be more accurate, while online analysis is better for therapeutic applications. Pseudo-online implementation approximates online processing without real-time constraints. Many BCI studies being offline introduce biases compared to real-life scenarios, impacting classification algorithm performance. Approach. The objective of this research paper is therefore to extend the current MOABB framework, operating in offline mode, so as to allow a comparison of different algorithms in a pseudo-",
       "doi": "10.1088/1741-2552/ad171a",
       "pmid": "38113535",
       "openalex_id": "W4389939932",
@@ -997,8 +1014,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5196096490323544,
-        "similarity_score": 0.4498784840106964,
+        "confidence_score": 0.5104117968678475,
+        "similarity_score": 0.44191497564315796,
         "citation_text_length": 1201,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
@@ -1052,6 +1069,29 @@
       }
     },
     {
+      "title": "Phase space reconstruction, geometric filtering based Fisher discriminant analysis and minimum distance to the Riemannian means algorithm for epileptic seizure classification",
+      "author": "Xueling Zhou, Bingo Wing‐Kuen Ling, Yang Zhou, Ngai Fong Law",
+      "venue": "Expert Systems with Applications",
+      "year": 2023,
+      "url": "https://doi.org/10.1016/j.eswa.2023.119613",
+      "cited_by": 16,
+      "abstract": null,
+      "doi": "10.1016/j.eswa.2023.119613",
+      "pmid": null,
+      "openalex_id": "W4319320827",
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4685600504279137,
+        "similarity_score": 0.4462476670742035,
+        "citation_text_length": 293,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Spatio-temporal analysis of error-related brain activity in active and passive brain–computer interfaces",
       "author": "Mahta Mousavi, Virginia R. de",
       "venue": "Brain-Computer Interfaces",
@@ -1069,29 +1109,6 @@
         "confidence_score": 0.38117115497589116,
         "similarity_score": 0.34651923179626465,
         "citation_text_length": 1184,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Phase space reconstruction, geometric filtering based Fisher discriminant analysis and minimum distance to the Riemannian means algorithm for epileptic seizure classification",
-      "author": "Xueling Zhou, Bingo Wing‐Kuen Ling, Yang Zhou, Ngai Fong Law",
-      "venue": "Expert Systems with Applications",
-      "year": 2023,
-      "url": "https://doi.org/10.1016/j.eswa.2023.119613",
-      "cited_by": 15,
-      "abstract": null,
-      "doi": "10.1016/j.eswa.2023.119613",
-      "pmid": null,
-      "openalex_id": "W4319320827",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4685600504279137,
-        "similarity_score": 0.4462476670742035,
-        "citation_text_length": 293,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1305,6 +1322,29 @@
       }
     },
     {
+      "title": "Riemannian Channel Selection for BCI With Between-Session Non-Stationarity Reduction Capabilities",
+      "author": "Khadijeh Sadatnejad, Fabien Lotte",
+      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+      "year": 2022,
+      "url": "https://doi.org/10.1109/tnsre.2022.3167262",
+      "cited_by": 11,
+      "abstract": "OBJECTIVE: Between-session non-stationarity is a major challenge of current Brain-Computer Interfaces (BCIs) that affects system performance. In this paper, we investigate the use of channel selection for reducing between-session non-stationarity with Riemannian BCI classifiers. We use the Riemannian geometry framework of covariance matrices due to its robustness and promising performances. Current Riemannian channel selection methods do not consider between-session non-stationarity and are usually tested on a single session. Here, we propose a new channel selection approach that specifically considers non-stationarity effects and is assessed on multi-session BCI data sets. METHODS: We remove the least significant channels using a sequential floating backward selection search strategy. Our contributions include: 1) quantifying the non-stationarity effects on brain activity in multi-class problems by different criteria in a Riemannian framework and 2) a method to predict whether BCI per",
+      "doi": "10.1109/tnsre.2022.3167262",
+      "pmid": "35420985",
+      "openalex_id": "W4223973573",
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.40159002318978315,
+        "similarity_score": 0.347696989774704,
+        "citation_text_length": 1235,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Electroencephalogram classification in motor-imagery brain–computer interface applications based on double-constraint nonnegative matrix factorization",
       "author": "Jing Su, Zuyuan Yang, Wei Yan, Weijun Sun",
       "venue": "Physiological Measurement",
@@ -1345,29 +1385,6 @@
         "confidence_score": 0.7245446079969406,
         "similarity_score": 0.6273113489151001,
         "citation_text_length": 1173,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Riemannian Channel Selection for BCI With Between-Session Non-Stationarity Reduction Capabilities",
-      "author": "Khadijeh Sadatnejad, Fabien Lotte",
-      "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
-      "year": 2022,
-      "url": "https://doi.org/10.1109/tnsre.2022.3167262",
-      "cited_by": 10,
-      "abstract": "OBJECTIVE: Between-session non-stationarity is a major challenge of current Brain-Computer Interfaces (BCIs) that affects system performance. In this paper, we investigate the use of channel selection for reducing between-session non-stationarity with Riemannian BCI classifiers. We use the Riemannian geometry framework of covariance matrices due to its robustness and promising performances. Current Riemannian channel selection methods do not consider between-session non-stationarity and are usually tested on a single session. Here, we propose a new channel selection approach that specifically considers non-stationarity effects and is assessed on multi-session BCI data sets. METHODS: We remove the least significant channels using a sequential floating backward selection search strategy. Our contributions include: 1) quantifying the non-stationarity effects on brain activity in multi-class problems by different criteria in a Riemannian framework and 2) a method to predict whether BCI per",
-      "doi": "10.1109/tnsre.2022.3167262",
-      "pmid": "35420985",
-      "openalex_id": "W4223973573",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.40159002318978315,
-        "similarity_score": 0.347696989774704,
-        "citation_text_length": 1235,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1581,6 +1598,29 @@
       }
     },
     {
+      "title": "Benchmarking brain–computer interface algorithms: Riemannian approaches vs convolutional neural networks",
+      "author": "Manuel Eder, Jiachen Xu, Moritz Grosse‐Wentrup",
+      "venue": "Journal of Neural Engineering",
+      "year": 2024,
+      "url": "https://doi.org/10.1088/1741-2552/ad6793",
+      "cited_by": 7,
+      "abstract": "Abstract Objective. To date, a comprehensive comparison of Riemannian decoding methods with deep convolutional neural networks for EEG-based brain–computer interfaces remains absent from published work. We address this research gap by using MOABB, The Mother Of All BCI Benchmarks, to compare novel convolutional neural networks to state-of-the-art Riemannian approaches across a broad range of EEG datasets, including motor imagery, P300, and steady-state visual evoked potentials paradigms. Approach. We systematically evaluated the performance of convolutional neural networks, specifically EEGNet, shallow ConvNet, and deep ConvNet, against well-established Riemannian decoding methods using MOABB processing pipelines. This evaluation included within-session, cross-session, and cross-subject methods, to provide a practical analysis of model effectiveness and to find an overall solution that performs well across different experimental settings. Main results. We find no significant difference",
+      "doi": "10.1088/1741-2552/ad6793",
+      "pmid": "39053485",
+      "openalex_id": "W4400969643",
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4557624538242817,
+        "similarity_score": 0.3945995271205902,
+        "citation_text_length": 1218,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "NeuralBench: A Unifying Framework to Benchmark NeuroAI Models",
       "author": "Hubert J. Banville, Stéphane d’Ascoli, Simon Dahan, Jérémy Rapin, Marlène Careil, Yohann Benchetrit, Jarod Lévy, S. Panchavati, Antoine Ratouchniak, Mingfang Zhang, Elisa Cascardi, K. Begany, Teon L Brooks, Jean-Rémi King",
       "venue": "ArXiv",
@@ -1673,7 +1713,7 @@
       }
     },
     {
-      "title": "Inductive Means and Sequences Applied to Online Classification of EEG",
+      "title": "Inductive Means and Sequences Applied to Online Classification of EEG",
       "author": "Estelle Massart, Sylvain Chevallier",
       "venue": "Lecture notes in computer science",
       "year": 2017,
@@ -1687,32 +1727,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4382075071334839,
-        "similarity_score": 0.4382075071334839,
+        "confidence_score": 0.46031785011291504,
+        "similarity_score": 0.46031785011291504,
         "citation_text_length": 164,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Benchmarking brain–computer interface algorithms: Riemannian approaches vs convolutional neural networks",
-      "author": "Manuel Eder, Jiachen Xu, Moritz Grosse‐Wentrup",
-      "venue": "Journal of Neural Engineering",
-      "year": 2024,
-      "url": "https://doi.org/10.1088/1741-2552/ad6793",
-      "cited_by": 6,
-      "abstract": "Abstract Objective. To date, a comprehensive comparison of Riemannian decoding methods with deep convolutional neural networks for EEG-based brain–computer interfaces remains absent from published work. We address this research gap by using MOABB, The Mother Of All BCI Benchmarks, to compare novel convolutional neural networks to state-of-the-art Riemannian approaches across a broad range of EEG datasets, including motor imagery, P300, and steady-state visual evoked potentials paradigms. Approach. We systematically evaluated the performance of convolutional neural networks, specifically EEGNet, shallow ConvNet, and deep ConvNet, against well-established Riemannian decoding methods using MOABB processing pipelines. This evaluation included within-session, cross-session, and cross-subject methods, to provide a practical analysis of model effectiveness and to find an overall solution that performs well across different experimental settings. Main results. We find no significant difference",
-      "doi": "10.1088/1741-2552/ad6793",
-      "pmid": "39053485",
-      "openalex_id": "W4400969643",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4557624538242817,
-        "similarity_score": 0.3945995271205902,
-        "citation_text_length": 1218,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1834,23 +1851,46 @@
       }
     },
     {
-      "title": "SPD Matrix Learning for Neuroimaging Analysis: Perspectives, Methods, and Challenges",
-      "author": "Ce Ju, Reinmar J. Kobler, A. Collas, M. Kawanabe, Cuntai Guan, Bertrand Thirion",
-      "venue": "n/a",
-      "year": 2025,
-      "url": "n/a",
+      "title": "Riemannian Geodesic Discriminant Analysis–Minimum Riemannian Mean Distance: A Robust and Effective Method Leveraging a Symmetric Positive Definite Manifold and Discriminant Algorithm for Image Set Classification",
+      "author": "Zigang Liu, Fayez F. M. El-Sousy, Nauman Ali Larik, Huan Quan, Tianyao Ji",
+      "venue": "Mathematics",
+      "year": 2024,
+      "url": "https://doi.org/10.3390/math12142164",
       "cited_by": 5,
-      "abstract": "Neuroimaging provides essential tools for characterizing brain activity by quantifying connectivity strength between remote regions, using different modalities that capture different aspects of connectivity. Yet, decoding meaningful neural signatures must contend with modality-specific challenges, including measurement noise, spatial and temporal distortions, heterogeneous acquisition protocols, and limited sample sizes. A unifying perspective emerges when these data are expressed through symmetric positive definite (SPD)-valued representations: across neuroimaging modalities, SPD-valued representations naturally give rise to SPD matrices that capture dependencies between sensors or brain regions. Endowing the SPD space with Riemannian metrics equips it with a non-Euclidean geometric structure, enabling principled statistical modeling and machine learning on the resulting manifold. This review consolidates machine learning methodologies that operate on the SPD manifold under a unified ",
-      "doi": null,
+      "abstract": "This study introduces a novel method for classifying sets of images, called Riemannian geodesic discriminant analysis–minimum Riemannian mean distance (RGDA-MRMD). This method first converts image data into symmetric positive definite (SPD) matrices, which capture important features related to the variability within the data. These SPD matrices are then mapped onto simpler, flat spaces (tangent spaces) using a mathematical tool called the logarithm operator, which helps to reduce their complexity and dimensionality. Subsequently, regularized local Fisher discriminant analysis (RLFDA) is employed to refine these simplified data points on the tangent plane, focusing on local data structures to optimize the distances between the points and prevent overfitting. The optimized points are then transformed back into a complex, curved space (SPD manifold) using the exponential operator to enhance robustness. Finally, classification is performed using the minimum Riemannian mean distance (MRMD) ",
+      "doi": "10.3390/math12142164",
       "pmid": null,
+      "openalex_id": "W4400484923",
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.26348534569144255,
+        "similarity_score": 0.22812584042549133,
+        "citation_text_length": 1334,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "SPD Matrix Learning for Neuroimaging Analysis: Perspectives, Methods, and Challenges.",
+      "author": "Ce Ju, Reinmar J. Kobler, A. Collas, M. Kawanabe, Cuntai Guan, Bertrand Thirion",
+      "venue": "IEEE transactions on pattern analysis and machine intelligence",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/TPAMI.2026.3726269",
+      "cited_by": 5,
+      "abstract": "Neuroimaging provides essential tools for characterizing brain activity and inter-regional connectivity through modalities that capture complementary aspects of brain organization. At the same time, extracting meaningful neural signatures remains challenging because each modality introduces its own sources of variability, including measurement noise, spatial and temporal distortions, heterogeneous acquisition protocols, and limited sample sizes. A unifying perspective arises when these data are represented by symmetric positive definite (SPD) matrices, such as covariance, connectivity, diffusion, or deformation tensors, which encode second-order statistical relationships or local anatomical structure depending on the modality. Equipping the SPD space with Riemannian geometry yields a non-Euclidean framework for principled statistical analysis and machine learning on these representations. This review organizes learning methodologies on SPD manifolds under a unified framework termed SPD",
+      "doi": "10.1109/TPAMI.2026.3726269",
+      "pmid": "42627746",
       "openalex_id": null,
       "source_doi": "10.1016/j.neucom.2016.01.007",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4046093554794789,
-        "similarity_score": 0.35031113028526306,
-        "citation_text_length": 1205,
+        "confidence_score": 0.4286478061974049,
+        "similarity_score": 0.37112364172935486,
+        "citation_text_length": 1265,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1903,29 +1943,6 @@
       }
     },
     {
-      "title": "Riemannian Geodesic Discriminant Analysis–Minimum Riemannian Mean Distance: A Robust and Effective Method Leveraging a Symmetric Positive Definite Manifold and Discriminant Algorithm for Image Set Classification",
-      "author": "Zigang Liu, Fayez F. M. El-Sousy, Nauman Ali Larik, Huan Quan, Tianyao Ji",
-      "venue": "Mathematics",
-      "year": 2024,
-      "url": "https://doi.org/10.3390/math12142164",
-      "cited_by": 4,
-      "abstract": "This study introduces a novel method for classifying sets of images, called Riemannian geodesic discriminant analysis–minimum Riemannian mean distance (RGDA-MRMD). This method first converts image data into symmetric positive definite (SPD) matrices, which capture important features related to the variability within the data. These SPD matrices are then mapped onto simpler, flat spaces (tangent spaces) using a mathematical tool called the logarithm operator, which helps to reduce their complexity and dimensionality. Subsequently, regularized local Fisher discriminant analysis (RLFDA) is employed to refine these simplified data points on the tangent plane, focusing on local data structures to optimize the distances between the points and prevent overfitting. The optimized points are then transformed back into a complex, curved space (SPD manifold) using the exponential operator to enhance robustness. Finally, classification is performed using the minimum Riemannian mean distance (MRMD) ",
-      "doi": "10.3390/math12142164",
-      "pmid": null,
-      "openalex_id": "W4400484923",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.26348534569144255,
-        "similarity_score": 0.22812584042549133,
-        "citation_text_length": 1334,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "EDAPT: Towards Calibration-Free BCIs with Continual Online Adaptation",
       "author": "L. Haxel, J. Kapoor, U. Ziemann, J. Macke",
       "venue": "ArXiv",
@@ -1966,6 +1983,29 @@
         "confidence_score": 0.4910766559839249,
         "similarity_score": 0.4251745939254761,
         "citation_text_length": 534,
+        "dataset_text_length": 2296,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Introduction",
+      "author": "Muskan Jindal, Eshan Bajal, Areeba Kazim",
+      "venue": "n/a",
+      "year": 2023,
+      "url": "https://doi.org/10.1002/9781119857655.ch2",
+      "cited_by": 3,
+      "abstract": "Brain signals or radiations are a relatively new concept that works with information collected via human brain and cognitive activity. These signals like human brain are influenced by all the physical, geographical, emotional, and cognitive activities around it, are individualistic in nature, and follow numerous patterns. Complying with the same Brain–computer interface (BCI), is the area of science where these signals are contemplated to advance the human-computer interaction applications. This area of research ties the cord between human cognitive to computer's processing and speed, aiming to create a unique field in biomedical sciences to introduce infinite applications like, neural rehabilitation, biometric authentication, educational programs, and entertainment applications. Although nascent, Brain–computer interface (BCI) has four major grades of processing steps – signal acquisition, signal pre-processing, feature extraction, and classification. This study firstly, thoroughly el",
+      "doi": "10.1002/9781119857655.ch2",
+      "pmid": null,
+      "openalex_id": "W4319875849",
+      "source_doi": "10.1016/j.neucom.2016.01.007",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.2825687608122826,
+        "similarity_score": 0.244648277759552,
+        "citation_text_length": 1094,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2035,29 +2075,6 @@
         "confidence_score": 0.16762980669736863,
         "similarity_score": 0.14513403177261353,
         "citation_text_length": 1145,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Introduction",
-      "author": "Muskan Jindal, Eshan Bajal, Areeba Kazim",
-      "venue": "n/a",
-      "year": 2023,
-      "url": "https://doi.org/10.1002/9781119857655.ch2",
-      "cited_by": 2,
-      "abstract": "Brain signals or radiations are a relatively new concept that works with information collected via human brain and cognitive activity. These signals like human brain are influenced by all the physical, geographical, emotional, and cognitive activities around it, are individualistic in nature, and follow numerous patterns. Complying with the same Brain–computer interface (BCI), is the area of science where these signals are contemplated to advance the human-computer interaction applications. This area of research ties the cord between human cognitive to computer's processing and speed, aiming to create a unique field in biomedical sciences to introduce infinite applications like, neural rehabilitation, biometric authentication, educational programs, and entertainment applications. Although nascent, Brain–computer interface (BCI) has four major grades of processing steps – signal acquisition, signal pre-processing, feature extraction, and classification. This study firstly, thoroughly el",
-      "doi": "10.1002/9781119857655.ch2",
-      "pmid": null,
-      "openalex_id": "W4319875849",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.2825687608122826,
-        "similarity_score": 0.244648277759552,
-        "citation_text_length": 1094,
         "dataset_text_length": 2296,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2361,45 +2378,22 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "Detection Performance Analysis based on EEG Signal for Visual BCI",
-      "author": "Kibae Lee, Ghun Hyeok Ko, Chong Hyun Lee, Yoon Sang Jeong",
-      "venue": "2023 International Conference on Electronics, Information, and Communication (ICEIC)",
-      "year": 2023,
-      "url": "https://doi.org/10.1109/iceic57457.2023.10049806",
-      "cited_by": 1,
-      "abstract": "The brain computer interfaces (BCIs) offer a possibility of communication for people with computer. Event related potential (ERP) and steady-state visual evoked potential (SSVEP) studies using simple images were mainly conducted to observe brain response characteristics to visual stimuli. In this paper, we present a Visual BCI dataset according to the presence or absence of a target in a still image and analyze the performance of various feature extraction and classification algorithms. Throughout various experiments, the proposed variance and mean ratio (VMR) based on Takens' delay embedding showed the best average accuracy from 69.23 to 76.40%.",
-      "doi": "10.1109/iceic57457.2023.10049806",
-      "pmid": null,
-      "openalex_id": "W4323824502",
-      "source_doi": "10.1016/j.neucom.2016.01.007",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6223193022608758,
-        "similarity_score": 0.5388045907020569,
-        "citation_text_length": 899,
-        "dataset_text_length": 2296,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:06:31.523810+00:00",
+    "scoring_date": "2026-08-25T11:12:31.841067+00:00",
     "dataset_text_length": 2296,
     "num_citations_scored": 100,
     "summary_stats": {
-      "mean_confidence": 0.48093491127490995,
-      "median_confidence": 0.47340380698442464,
-      "std_confidence": 0.12060790589812581,
+      "mean_confidence": 0.47848703507483004,
+      "median_confidence": 0.470926396548748,
+      "std_confidence": 0.1203412853424764,
       "min_confidence": 0.16762980669736863,
       "max_confidence": 0.7390335202217103,
       "high_confidence_count": 6,
-      "medium_confidence_count": 68,
-      "low_confidence_count": 26
+      "medium_confidence_count": 67,
+      "low_confidence_count": 27
     }
   }
 }

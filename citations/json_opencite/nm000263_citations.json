@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000263",
   "num_citations": 100,
-  "date_last_updated": "2026-08-17T10:15:42.784764+00:00",
+  "date_last_updated": "2026-08-25T10:18:29.785546+00:00",
   "metadata": {
-    "total_cumulative_citations": 3373,
-    "fetch_date": "2026-08-17T10:15:42.784764+00:00",
+    "total_cumulative_citations": 3382,
+    "fetch_date": "2026-08-25T10:18:29.785546+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 2,
@@ -69,27 +69,34 @@
     "keywords": [
       "EEG",
       "event-related potentials",
-      "P300",
       "visual object recognition",
       "single-trial classification",
       "representational similarity analysis",
+      "object categorization",
+      "neural representation",
+      "geodesic sensor net",
+      "Healthy",
       "Visual ERP",
-      "object recognition",
-      "high-density EEG",
-      "MOABB"
+      "MOABB",
+      "benchmark dataset"
     ],
-    "methods_description": "EEG data were acquired from 10 healthy participants using a 124-channel EGI Net Amps 300 system with HydroCel Geodesic Sensor Net montage (GSN-HydroCel-128) at a sampling rate of 62.5 Hz with average reference. Participants viewed 72 photographs from six object categories presented for 500 ms each with a 750 ms interstimulus interval.",
+    "methods_description": "EEG data were acquired from 10 healthy participants using a 124-channel EGI Net Amps 300 system with HydroCel Geodesic Sensor Net montage (GSN-HydroCel-128) at a sampling rate of 62.5 Hz with average reference. Participants viewed 72 photographs per category from six object categories presented for 500 ms each with a 750 ms interstimulus interval. Data were preprocessed and converted to BIDS format using the MOABB (Mother of All BCI Benchmarks) pipeline.",
     "funding": [
       {
         "funder_name": "Not specified"
+      },
+      {
+        "funder_name": "No funding information available"
+      },
+      {
+        "funder_name": "National Institutes of Health",
+        "award_number": "R01-MH087450"
+      },
+      {
+        "funder_name": "National Science Foundation",
+        "award_number": "BCS-1228261"
       }
-    ],
-    "searched_accessions": [
-      "nm000263"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 100
+    ]
   },
   "citation_details": [
     {
@@ -236,7 +243,7 @@
       "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
       "year": 2020,
       "url": "https://doi.org/10.1109/tpami.2020.2973153",
-      "cited_by": 112,
+      "cited_by": 113,
       "abstract": "A recent paper [31] claims to classify brain processing evoked in subjects watching ImageNet stimuli as measured with EEG and to employ a representation derived from this processing to construct a novel object classiﬁer. That paper, together with a series of subsequent papers [11, 18, 20, 24, 25, 30, 34], claims to achieve successful results on a wide variety of computer-vision tasks, including object classiﬁcation, transfer learning, and generation of images depicting human perception and thought using brain-derived representations measured through EEG. Our novel experiments and analyses demonstrate that their results crucially depend on the block design that they employ, where all stimuli of a given class are presented together, and fail with a rapid-event design, where stimuli of different classes are randomly intermixed. The block design leads to classiﬁcation of arbitrary brain states based on block-level temporal correlations that are known to exist in all EEG data, rather than s",
       "doi": "10.1109/tpami.2020.2973153",
       "pmid": "33211652",
@@ -277,6 +284,29 @@
       }
     },
     {
+      "title": "Human EEG recordings for 1,854 concepts presented in rapid serial visual presentation streams",
+      "author": "Tijl Grootswagers, Ivy Zhou, Amanda K. Robinson, Martin N. Hebart, Thomas A. Carlson",
+      "venue": "Scientific Data",
+      "year": 2022,
+      "url": "https://doi.org/10.1038/s41597-021-01102-7",
+      "cited_by": 104,
+      "abstract": "The neural basis of object recognition and semantic knowledge has been extensively studied but the high dimensionality of object space makes it challenging to develop overarching theories on how the brain organises object knowledge. To help understand how the brain allows us to recognise, categorise, and represent objects and object categories, there is a growing interest in using large-scale image databases for neuroimaging experiments. In the current paper, we present THINGS-EEG, a dataset containing human electroencephalography responses from 50 subjects to 1,854 object concepts and 22,248 images in the THINGS stimulus set, a manually curated and high-quality image database that was specifically designed for studying human vision. The THINGS-EEG dataset provides neuroimaging recordings to a systematic collection of objects and concepts and can therefore support a wide array of research to understand visual object processing in the human brain. Measurement(s) Concept Technology Type(",
+      "doi": "10.1038/s41597-021-01102-7",
+      "pmid": "35013331",
+      "openalex_id": "W4205130599",
+      "source_doi": "10.1371/journal.pone.0135697",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8849572205543519,
+        "similarity_score": 0.7661967277526855,
+        "citation_text_length": 1231,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Representational Similarity Analyses",
       "author": "Halle R. Dimsdale-Zucker, Charan Ranganath",
       "venue": "Handbook of behavioral neuroscience",
@@ -294,29 +324,6 @@
         "confidence_score": 0.35062316060066223,
         "similarity_score": 0.35062316060066223,
         "citation_text_length": 140,
-        "dataset_text_length": 2325,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Human EEG recordings for 1,854 concepts presented in rapid serial visual presentation streams",
-      "author": "Tijl Grootswagers, Ivy Zhou, Amanda K. Robinson, Martin N. Hebart, Thomas A. Carlson",
-      "venue": "Scientific Data",
-      "year": 2022,
-      "url": "https://doi.org/10.1038/s41597-021-01102-7",
-      "cited_by": 102,
-      "abstract": "The neural basis of object recognition and semantic knowledge has been extensively studied but the high dimensionality of object space makes it challenging to develop overarching theories on how the brain organises object knowledge. To help understand how the brain allows us to recognise, categorise, and represent objects and object categories, there is a growing interest in using large-scale image databases for neuroimaging experiments. In the current paper, we present THINGS-EEG, a dataset containing human electroencephalography responses from 50 subjects to 1,854 object concepts and 22,248 images in the THINGS stimulus set, a manually curated and high-quality image database that was specifically designed for studying human vision. The THINGS-EEG dataset provides neuroimaging recordings to a systematic collection of objects and concepts and can therefore support a wide array of research to understand visual object processing in the human brain. Measurement(s) Concept Technology Type(",
-      "doi": "10.1038/s41597-021-01102-7",
-      "pmid": "35013331",
-      "openalex_id": "W4205130599",
-      "source_doi": "10.1371/journal.pone.0135697",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.8849572205543519,
-        "similarity_score": 0.7661967277526855,
-        "citation_text_length": 1231,
         "dataset_text_length": 2325,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -558,7 +565,7 @@
       "venue": "Scientific Reports",
       "year": 2017,
       "url": "https://doi.org/10.1038/s41598-017-13756-8",
-      "cited_by": 41,
+      "cited_by": 42,
       "abstract": "One key ability of human brain is invariant object recognition, which refers to rapid and accurate recognition of objects in the presence of variations such as size, rotation and position. Despite decades of research into the topic, it remains unknown how the brain constructs invariant representations of objects. Providing brain-plausible object representations and reaching human-level accuracy in recognition, hierarchical models of human vision have suggested that, human brain implements similar feed-forward operations to obtain invariant representations. However, conducting two psychophysical object recognition experiments on humans with systematically controlled variations of objects, we observed that humans relied on specific (diagnostic) object regions for accurate recognition which remained relatively consistent (invariant) across variations; but feed-forward feature-extraction models selected view-specific (non-invariant) features across variations. This suggests that models can",
       "doi": "10.1038/s41598-017-13756-8",
       "pmid": "29089520",
@@ -696,7 +703,7 @@
       "venue": "Journal of Cognitive Neuroscience",
       "year": 2022,
       "url": "https://doi.org/10.1162/jocn_a_01883",
-      "cited_by": 32,
+      "cited_by": 33,
       "abstract": "Responses to visually presented objects along the cortical surface of the human brain have a large-scale organization reflecting the broad categorical divisions of animacy and object size. Emerging evidence indicates that this topographical organization is supported by differences between objects in mid-level perceptual features. With regard to the timing of neural responses, images of objects quickly evoke neural responses with decodable information about animacy and object size, but are mid-level features sufficient to evoke these rapid neural responses? Or is slower iterative neural processing required to untangle information about animacy and object size from mid-level features, requiring hundreds of milliseconds more processing time? To answer this question, we used EEG to measure human neural responses to images of objects and their texform counterparts-unrecognizable images that preserve some mid-level feature information about texture and coarse form. We found that texform imag",
       "doi": "10.1162/jocn_a_01883",
       "pmid": "35704550",
@@ -990,6 +997,29 @@
       }
     },
     {
+      "title": "A Survey of Few-Shot Learning for Biomedical Time Series",
+      "author": "Chenqi Li, Timothy Denison, Tingting Zhu",
+      "venue": "IEEE Reviews in Biomedical Engineering",
+      "year": 2024,
+      "url": "https://doi.org/10.1109/rbme.2024.3492381",
+      "cited_by": 24,
+      "abstract": "Advancements in wearable sensor technologies and the digitization of medical records have contributed to the unprecedented ubiquity of biomedical time series data. Data-driven models have tremendous potential to assist clinical diagnosis and improve patient care by improving long-term monitoring capabilities, facilitating early disease detection and intervention, as well as promoting personalized healthcare delivery. However, accessing extensively labeled datasets to train data-hungry deep learning models encounters many barriers, such as long-tail distribution of rare diseases, cost of annotation, privacy and security concerns, data-sharing regulations, and ethical considerations. An emerging approach to overcome the scarcity of labeled data is to augment AI methods with human-like capabilities to leverage past experiences to learn new tasks with limited examples, called few-shot learning. This survey provides a comprehensive review and comparison of few-shot learning methods for biom",
+      "doi": "10.1109/rbme.2024.3492381",
+      "pmid": "39504299",
+      "openalex_id": "W4404101349",
+      "source_doi": "10.1371/journal.pone.0135697",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.2905104281008244,
+        "similarity_score": 0.2515241801738739,
+        "citation_text_length": 1173,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Overfitting the Literature to One Set of Stimuli and Data",
       "author": "Tijl Grootswagers, Amanda K. Robinson",
       "venue": "Frontiers in Human Neuroscience",
@@ -1007,29 +1037,6 @@
         "confidence_score": 0.43004281371831904,
         "similarity_score": 0.372331440448761,
         "citation_text_length": 747,
-        "dataset_text_length": 2325,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "A Survey of Few-Shot Learning for Biomedical Time Series",
-      "author": "Chenqi Li, Timothy Denison, Tingting Zhu",
-      "venue": "IEEE Reviews in Biomedical Engineering",
-      "year": 2024,
-      "url": "https://doi.org/10.1109/rbme.2024.3492381",
-      "cited_by": 23,
-      "abstract": "Advancements in wearable sensor technologies and the digitization of medical records have contributed to the unprecedented ubiquity of biomedical time series data. Data-driven models have tremendous potential to assist clinical diagnosis and improve patient care by improving long-term monitoring capabilities, facilitating early disease detection and intervention, as well as promoting personalized healthcare delivery. However, accessing extensively labeled datasets to train data-hungry deep learning models encounters many barriers, such as long-tail distribution of rare diseases, cost of annotation, privacy and security concerns, data-sharing regulations, and ethical considerations. An emerging approach to overcome the scarcity of labeled data is to augment AI methods with human-like capabilities to leverage past experiences to learn new tasks with limited examples, called few-shot learning. This survey provides a comprehensive review and comparison of few-shot learning methods for biom",
-      "doi": "10.1109/rbme.2024.3492381",
-      "pmid": "39504299",
-      "openalex_id": "W4404101349",
-      "source_doi": "10.1371/journal.pone.0135697",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.2905104281008244,
-        "similarity_score": 0.2515241801738739,
-        "citation_text_length": 1173,
         "dataset_text_length": 2325,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1105,6 +1112,29 @@
       }
     },
     {
+      "title": "Photorealistic Reconstruction of Visual Texture From EEG Signals",
+      "author": "Suguru Wakita, Taiki Orima, Isamu Motoyoshi",
+      "venue": "Frontiers in Computational Neuroscience",
+      "year": 2021,
+      "url": "https://doi.org/10.3389/fncom.2021.754587",
+      "cited_by": 21,
+      "abstract": "Recent advances in brain decoding have made it possible to classify image categories based on neural activity. Increasing numbers of studies have further attempted to reconstruct the image itself. However, because images of objects and scenes inherently involve spatial layout information, the reconstruction usually requires retinotopically organized neural data with high spatial resolution, such as fMRI signals. In contrast, spatial layout does not matter in the perception of \"texture,\" which is known to be represented as spatially global image statistics in the visual cortex. This property of \"texture\" enables us to reconstruct the perceived image from EEG signals, which have a low spatial resolution. Here, we propose an MVAE-based approach for reconstructing texture images from visual evoked potentials measured from observers viewing natural textures such as the textures of various surfaces and object ensembles. This approach allowed us to reconstruct images that perceptually resembl",
+      "doi": "10.3389/fncom.2021.754587",
+      "pmid": "34867251",
+      "openalex_id": "W3216196091",
+      "source_doi": "10.1371/journal.pone.0135697",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6422047770023347,
+        "similarity_score": 0.5560214519500732,
+        "citation_text_length": 1185,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Spatiotemporal analysis of category and target-related information processing in the brain during object detection",
       "author": "Hamid Karimi-Rouzbahani, Ehsan Vahab, Reza Ebrahimpour, Mohammad Bagher Menhaj",
       "venue": "Behavioural Brain Research",
@@ -1168,29 +1198,6 @@
         "confidence_score": 0.5985388338565827,
         "similarity_score": 0.5441262125968933,
         "citation_text_length": 1220,
-        "dataset_text_length": 2325,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Photorealistic Reconstruction of Visual Texture From EEG Signals",
-      "author": "Suguru Wakita, Taiki Orima, Isamu Motoyoshi",
-      "venue": "Frontiers in Computational Neuroscience",
-      "year": 2021,
-      "url": "https://doi.org/10.3389/fncom.2021.754587",
-      "cited_by": 20,
-      "abstract": "Recent advances in brain decoding have made it possible to classify image categories based on neural activity. Increasing numbers of studies have further attempted to reconstruct the image itself. However, because images of objects and scenes inherently involve spatial layout information, the reconstruction usually requires retinotopically organized neural data with high spatial resolution, such as fMRI signals. In contrast, spatial layout does not matter in the perception of \"texture,\" which is known to be represented as spatially global image statistics in the visual cortex. This property of \"texture\" enables us to reconstruct the perceived image from EEG signals, which have a low spatial resolution. Here, we propose an MVAE-based approach for reconstructing texture images from visual evoked potentials measured from observers viewing natural textures such as the textures of various surfaces and object ensembles. This approach allowed us to reconstruct images that perceptually resembl",
-      "doi": "10.3389/fncom.2021.754587",
-      "pmid": "34867251",
-      "openalex_id": "W3216196091",
-      "source_doi": "10.1371/journal.pone.0135697",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6422047770023347,
-        "similarity_score": 0.5560214519500732,
-        "citation_text_length": 1185,
         "dataset_text_length": 2325,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1289,6 +1296,29 @@
       }
     },
     {
+      "title": "A GAN model encoded by CapsEEGNet for visual EEG encoding and image reproduction",
+      "author": "Xin Deng, Zhongyin Wang, Ke Liu, Xiaohong Xiang",
+      "venue": "Journal of Neuroscience Methods",
+      "year": 2022,
+      "url": "https://doi.org/10.1016/j.jneumeth.2022.109747",
+      "cited_by": 17,
+      "abstract": "In last few decades, reading the human mind is an innovative topic in scientific research. Recent studies in neuroscience indicate that it is possible to decode the signals of the human brain based on the neuroimaging data. The work in this paper explores the possibility of building an end-to-end BCI system to learn and visualize the brain thoughts evoked by the stimulating images. To achieve this goal, it designs an experiment to collect the EEG signals evoked by randomly presented images. Based on these data, this work analyzes and compares the classification abilities by several improved methods, including the Transformer, CapsNet and the ensemble strategies. After obtaining the optimal method to be the encoder, this paper proposes a distribution-to-distribution mapping network to transform an encoded latent feature vector into a prior image feature vector. To visualize the brain thoughts, a pretrained IC-GAN model is used to receive these image feature vectors and generate images. ",
+      "doi": "10.1016/j.jneumeth.2022.109747",
+      "pmid": "36427669",
+      "openalex_id": "W4309880396",
+      "source_doi": "10.1371/journal.pone.0135697",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5807820385694504,
+        "similarity_score": 0.502841591835022,
+        "citation_text_length": 1197,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Natural scene representations in the gamma band are prototypical across subjects",
       "author": "Yiran Chen, Reza Farivar",
       "venue": "NeuroImage",
@@ -1375,6 +1405,29 @@
         "confidence_score": 0.6324707382917405,
         "similarity_score": 0.5475937128067017,
         "citation_text_length": 1228,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Using High-Density Electroencephalography to Explore Spatiotemporal Representations of Object Categories in Visual Cortex",
+      "author": "Gennadiy Gurariy, Ryan E. B. Mruczek, Jacqueline C. Snow, Gideon P. Caplovitz",
+      "venue": "Journal of Cognitive Neuroscience",
+      "year": 2022,
+      "url": "https://doi.org/10.1162/jocn_a_01845",
+      "cited_by": 17,
+      "abstract": "Visual object perception involves neural processes that unfold over time and recruit multiple regions of the brain. Here, we use high-density EEG to investigate the spatiotemporal representations of object categories across the dorsal and ventral pathways. In , human participants were presented with images from two animate object categories (birds and insects) and two inanimate categories (tools and graspable objects). In , participants viewed images of tools and graspable objects from a different stimulus set, one in which a shape confound that often exists between these categories (elongation) was controlled for. To explore the temporal dynamics of object representations, we employed time-resolved multivariate pattern analysis on the EEG time series data. This was performed at the electrode level as well as in source space of two regions of interest: one encompassing the ventral pathway and another encompassing the dorsal pathway. Our results demonstrate shape, exemplar, and category",
+      "doi": "10.1162/jocn_a_01845",
+      "pmid": "35286384",
+      "openalex_id": "W4221080911",
+      "source_doi": "10.1371/journal.pone.0135697",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.8196087580919267,
+        "similarity_score": 0.7096179723739624,
+        "citation_text_length": 1270,
         "dataset_text_length": 2325,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1473,29 +1526,6 @@
       }
     },
     {
-      "title": "A GAN model encoded by CapsEEGNet for visual EEG encoding and image reproduction",
-      "author": "Xin Deng, Zhongyin Wang, Ke Liu, Xiaohong Xiang",
-      "venue": "Journal of Neuroscience Methods",
-      "year": 2022,
-      "url": "https://doi.org/10.1016/j.jneumeth.2022.109747",
-      "cited_by": 16,
-      "abstract": "In last few decades, reading the human mind is an innovative topic in scientific research. Recent studies in neuroscience indicate that it is possible to decode the signals of the human brain based on the neuroimaging data. The work in this paper explores the possibility of building an end-to-end BCI system to learn and visualize the brain thoughts evoked by the stimulating images. To achieve this goal, it designs an experiment to collect the EEG signals evoked by randomly presented images. Based on these data, this work analyzes and compares the classification abilities by several improved methods, including the Transformer, CapsNet and the ensemble strategies. After obtaining the optimal method to be the encoder, this paper proposes a distribution-to-distribution mapping network to transform an encoded latent feature vector into a prior image feature vector. To visualize the brain thoughts, a pretrained IC-GAN model is used to receive these image feature vectors and generate images. ",
-      "doi": "10.1016/j.jneumeth.2022.109747",
-      "pmid": "36427669",
-      "openalex_id": "W4309880396",
-      "source_doi": "10.1371/journal.pone.0135697",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5807820385694504,
-        "similarity_score": 0.502841591835022,
-        "citation_text_length": 1197,
-        "dataset_text_length": 2325,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Your place or mine? The neural dynamics of personally familiar scene recognition suggests category independent familiarity encoding",
       "author": "Hannah Klink, Daniel Kaiser, Rico Stecher, Géza Gergely Ambrus, Gyula Kovács",
       "venue": "Cerebral Cortex",
@@ -1513,29 +1543,6 @@
         "confidence_score": 0.5655781880021096,
         "similarity_score": 0.4896780848503113,
         "citation_text_length": 1261,
-        "dataset_text_length": 2325,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Using High-Density Electroencephalography to Explore Spatiotemporal Representations of Object Categories in Visual Cortex",
-      "author": "Gennadiy Gurariy, Ryan E. B. Mruczek, Jacqueline C. Snow, Gideon P. Caplovitz",
-      "venue": "Journal of Cognitive Neuroscience",
-      "year": 2022,
-      "url": "https://doi.org/10.1162/jocn_a_01845",
-      "cited_by": 16,
-      "abstract": "Visual object perception involves neural processes that unfold over time and recruit multiple regions of the brain. Here, we use high-density EEG to investigate the spatiotemporal representations of object categories across the dorsal and ventral pathways. In , human participants were presented with images from two animate object categories (birds and insects) and two inanimate categories (tools and graspable objects). In , participants viewed images of tools and graspable objects from a different stimulus set, one in which a shape confound that often exists between these categories (elongation) was controlled for. To explore the temporal dynamics of object representations, we employed time-resolved multivariate pattern analysis on the EEG time series data. This was performed at the electrode level as well as in source space of two regions of interest: one encompassing the ventral pathway and another encompassing the dorsal pathway. Our results demonstrate shape, exemplar, and category",
-      "doi": "10.1162/jocn_a_01845",
-      "pmid": "35286384",
-      "openalex_id": "W4221080911",
-      "source_doi": "10.1371/journal.pone.0135697",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.8196087580919267,
-        "similarity_score": 0.7096179723739624,
-        "citation_text_length": 1270,
         "dataset_text_length": 2325,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1662,7 +1669,7 @@
       "venue": "Cognitive Neurodynamics",
       "year": 2021,
       "url": "https://doi.org/10.1007/s11571-021-09717-7",
-      "cited_by": 14,
+      "cited_by": 13,
       "abstract": null,
       "doi": "10.1007/s11571-021-09717-7",
       "pmid": "35401863",
@@ -1910,29 +1917,6 @@
       }
     },
     {
-      "title": "Deep Learning for EEG-Based Visual Classification and Reconstruction: Panorama, Trends, Challenges and Opportunities",
-      "author": "Wei Li, Penglu Zhao, Cheng Xu, Yingting Hou, Wenhao Jiang, Aiguo Song",
-      "venue": "IEEE Transactions on Biomedical Engineering",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/tbme.2025.3568282",
-      "cited_by": 11,
-      "abstract": "Deep learning has significantly enhanced the research on the emerging issue of Electroencephalogram (EEG)-based visual classification and reconstruction, which has gained a growth of attention and concern recently. To promote the research progress, at this critical moment, a review work on the deep learning methodology for the issue becomes necessary and important. However, such a work seems absent in the literature. This paper provides the first review on EEG-based visual classification and reconstruction, whose contents can be categorized into the following four main parts: 1) comprehensively summarizing and systematically analyzing the representative deep learning methods from both feature encoding and decoding perspectives; 2) introducing the available benchmark datasets, describing the experimental paradigms, and displaying the method performances; 3) proposing the methodological essences and neuroscientific insights as well as the dynamic closed-loop interaction and promotion bet",
-      "doi": "10.1109/tbme.2025.3568282",
-      "pmid": "40343828",
-      "openalex_id": "W4410227779",
-      "source_doi": "10.1371/journal.pone.0135697",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7268880361318589,
-        "similarity_score": 0.6293402910232544,
-        "citation_text_length": 1267,
-        "dataset_text_length": 2325,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Cross-Subject EEG Feedback for Implicit Image Generation",
       "author": "Carlos de la Torre‐Ortiz, Michiel Spapé, Niklas Ravaja, Tuukka Ruotsalo",
       "venue": "IEEE Transactions on Cybernetics",
@@ -1950,6 +1934,29 @@
         "confidence_score": 0.5334634467959404,
         "similarity_score": 0.4618731141090393,
         "citation_text_length": 1198,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Deep Learning for EEG-Based Visual Classification and Reconstruction: Panorama, Trends, Challenges and Opportunities",
+      "author": "Wei Li, Penglu Zhao, Cheng Xu, Yingting Hou, Wenhao Jiang, Aiguo Song",
+      "venue": "IEEE Transactions on Biomedical Engineering",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/tbme.2025.3568282",
+      "cited_by": 11,
+      "abstract": "Deep learning has significantly enhanced the research on the emerging issue of Electroencephalogram (EEG)-based visual classification and reconstruction, which has gained a growth of attention and concern recently. To promote the research progress, at this critical moment, a review work on the deep learning methodology for the issue becomes necessary and important. However, such a work seems absent in the literature. This paper provides the first review on EEG-based visual classification and reconstruction, whose contents can be categorized into the following four main parts: 1) comprehensively summarizing and systematically analyzing the representative deep learning methods from both feature encoding and decoding perspectives; 2) introducing the available benchmark datasets, describing the experimental paradigms, and displaying the method performances; 3) proposing the methodological essences and neuroscientific insights as well as the dynamic closed-loop interaction and promotion bet",
+      "doi": "10.1109/tbme.2025.3568282",
+      "pmid": "40343828",
+      "openalex_id": "W4410227779",
+      "source_doi": "10.1371/journal.pone.0135697",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7268880361318589,
+        "similarity_score": 0.6293402910232544,
+        "citation_text_length": 1267,
         "dataset_text_length": 2325,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2232,6 +2239,29 @@
       }
     },
     {
+      "title": "A Survey on Bridging EEG Signals and Generative AI: From Image and Text to Beyond",
+      "author": "Shreya Shukla, Jose Torres, Abhijit Mishra, Jacek Gwizdka, Shounak Roychowdhury",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2502.12048",
+      "cited_by": 10,
+      "abstract": "Decoding neural activity into human-interpretable representations is a key research direction in brain-computer interfaces (BCIs) and computational neuroscience. Recent progress in machine learning and generative AI has driven growing interest in transforming non-invasive Electroencephalography (EEG) signals into images, text, and audio. This survey consolidates and analyzes developments across EEG-to-image synthesis, EEG-to-text generation, and EEG-to-audio reconstruction. We conducted a structured literature search across major databases (2017-2025), extracting key information on datasets, generative architectures (GANs, VAEs, transformers, diffusion models), EEG feature-encoding techniques, evaluation metrics, and the major challenges shaping current work in this area. Our review finds that EEG-to-image models predominantly employ encoder-decoder architectures built on GANs, VAEs, or diffusion models; EEG-to-text approaches increasingly leverage transformer-based language models for",
+      "doi": "10.48550/arXiv.2502.12048",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1371/journal.pone.0135697",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5278903010487558,
+        "similarity_score": 0.45704787969589233,
+        "citation_text_length": 1204,
+        "dataset_text_length": 2325,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Dynamic pattern decoding of source-reconstructed MEG or EEG data: Perspective of multivariate pattern analysis and signal leakage",
       "author": "Bakul Gohel, Sanghyun Lim, Minyoung Kim, Hyukchan Kwon, Kiwoong Kim",
       "venue": "Computers in Biology and Medicine",
@@ -2249,29 +2279,6 @@
         "confidence_score": 0.4064190983772278,
         "similarity_score": 0.4064190983772278,
         "citation_text_length": 256,
-        "dataset_text_length": 2325,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "A Survey on Bridging EEG Signals and Generative AI: From Image and Text to Beyond",
-      "author": "Shreya Shukla, Jose Torres, Abhijit Mishra, Jacek Gwizdka, Shounak Roychowdhury",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2502.12048",
-      "cited_by": 9,
-      "abstract": "Decoding neural activity into human-interpretable representations is a key research direction in brain-computer interfaces (BCIs) and computational neuroscience. Recent progress in machine learning and generative AI has driven growing interest in transforming non-invasive Electroencephalography (EEG) signals into images, text, and audio. This survey consolidates and analyzes developments across EEG-to-image synthesis, EEG-to-text generation, and EEG-to-audio reconstruction. We conducted a structured literature search across major databases (2017-2025), extracting key information on datasets, generative architectures (GANs, VAEs, transformers, diffusion models), EEG feature-encoding techniques, evaluation metrics, and the major challenges shaping current work in this area. Our review finds that EEG-to-image models predominantly employ encoder-decoder architectures built on GANs, VAEs, or diffusion models; EEG-to-text approaches increasingly leverage transformer-based language models for",
-      "doi": "10.48550/arXiv.2502.12048",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1371/journal.pone.0135697",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5278903010487558,
-        "similarity_score": 0.45704787969589233,
-        "citation_text_length": 1204,
         "dataset_text_length": 2325,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2395,7 +2402,7 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:19:27.669915+00:00",
+    "scoring_date": "2026-08-25T11:29:59.340566+00:00",
     "dataset_text_length": 2325,
     "num_citations_scored": 100,
     "summary_stats": {

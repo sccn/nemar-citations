@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000342",
   "num_citations": 24,
-  "date_last_updated": "2026-08-17T10:19:02.148706+00:00",
+  "date_last_updated": "2026-08-25T10:21:50.435506+00:00",
   "metadata": {
-    "total_cumulative_citations": 81,
-    "fetch_date": "2026-08-17T10:19:02.148706+00:00",
+    "total_cumulative_citations": 83,
+    "fetch_date": "2026-08-25T10:21:50.435506+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 3,
@@ -56,24 +56,18 @@
       "10.82901/nemar.nm000342"
     ],
     "keywords": [
-      "code-VEP",
-      "Brain-Computer Interfaces",
       "EEG",
+      "Brain-Computer Interfaces",
       "visual evoked potentials",
+      "code-VEP",
       "convolutional neural networks",
       "reactive BCI",
       "visual stimulation",
-      "amplitude depth reduction",
-      "visual comfort"
+      "visual comfort",
+      "amplitude modulation"
     ],
-    "methods_description": "EEG data acquired from 12 healthy participants (mean age 30.6±7.1 years, 4 female, 8 male) using a BrainProducts LiveAmp 32-channel system at 500 Hz sampling rate with active Acticap electrodes referenced to FCz. Participants completed a reactive BCI task with four visual targets presented on a Dell monitor (60 Hz, 1920×1080 pixels, 265 cd/m²). Each trial consisted of a 0.5-second visual cue (red-bordered square) followed by 2.2 seconds of aperiodic visual stimulation at 40% amplitude depth modulation (m-sequence code type). The dataset contains 60 trials per subject (15 blocks × 4 trials per block). Preprocessing included average re-referencing, IIR notch filtering (49.9-50.1 Hz, order 16), and baseline removal. Classification employed convolutional neural networks with sliding window feature extraction and bitwise decoding.",
-    "funding": [],
-    "searched_accessions": [
-      "nm000342"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 24
+    "methods_description": "Factorial experimental design with 12 healthy participants (mean age 30.6±7.1 years). EEG recorded using BrainProducts LiveAmp 32-channel system at 500 Hz sampling rate with active electrodes in standard 10-20 montage, referenced to FCz. Four experimental conditions: burst vs. m-sequence patterns × 100% vs. 40% amplitude depth modulation. Each condition comprised 15 blocks of 4 trials. Trial structure: 0.5s visual cue (red-bordered square), 2.2s stimulation phase with aperiodic visual flashes on Dell monitor (60 Hz, 1920×1080), 0.7s inter-trial interval. Online 50 Hz notch filter (IIR, order 16). Preprocessing: average re-reference, IIR notch filtering, epoching (0-2.2s), baseline removal. Classification via convolutional neural network with sliding window bitwise decoding.",
+    "funding": []
   },
   "citation_details": [
     {
@@ -83,7 +77,7 @@
       "year": 2024,
       "url": "https://doi.org/10.1088/1741-2552/ad8ef7",
       "cited_by": 18,
-      "abstract": "Abstract Objective. Reactive brain–computer interfaces typically rely on repetitive visual stimuli, which can strain the eyes and cause attentional distraction. To address these challenges, we propose a novel approach rooted in visual neuroscience to design visual Stimuli for Augmented Response (StAR). The StAR stimuli consist of small randomly-oriented Gabor or Ricker patches that optimize foveal neural response while reducing peripheral distraction. Approach. In a factorial design study, 24 participants equipped with an 8-dry electrode EEG system focused on series of target flickers presented under three formats: traditional Plain flickers, Gabor -based, or Ricker -based flickers. These flickers were part of a five-class code visually evoked potentials paradigm featuring low frequency, short, and aperiodic visual flashes. Main results. Subjective ratings revealed that Gabor and Ricker stimuli were visually comfortable and nearly invisible in peripheral vision compared to plain flicke",
+      "abstract": "Abstract Objective. Reactive brain–computer interfaces typically rely on repetitive visual stimuli, which can strain the eyes and cause attentional distraction. To address these challenges, we propose a novel approach rooted in visual neuroscience to design visual Stimuli for Augmented Response (StAR). The StAR stimuli consist of small randomly-oriented Gabor or Ricker patches that optimize foveal neural response while reducing peripheral distraction. Approach. In a factorial design study, 24 participants equipped with an 8-dry electrode EEG system focused on series of target flickers presented under three formats: traditional Plain flickers, Gabor-based, or Ricker-based flickers. These flickers were part of a five-class code visually evoked potentials paradigm featuring low frequency, short, and aperiodic visual flashes. Main results. Subjective ratings revealed that Gabor and Ricker stimuli were visually comfortable and nearly invisible in peripheral vision compared to plain flickers",
       "doi": "10.1088/1741-2552/ad8ef7",
       "pmid": "39500051",
       "openalex_id": "W4404065487",
@@ -91,8 +85,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.715962594151497,
-        "similarity_score": 0.6198810338973999,
+        "confidence_score": 0.7142193424701692,
+        "similarity_score": 0.6183717250823975,
         "citation_text_length": 1257,
         "dataset_text_length": 2229,
         "scoring_method": "sentence_transformers",
@@ -105,7 +99,7 @@
       "venue": "Journal of Neural Engineering",
       "year": 2025,
       "url": "https://doi.org/10.1088/1741-2552/add771",
-      "cited_by": 11,
+      "cited_by": 12,
       "abstract": "Abstract Objective. Sustaining vigilance over extended periods is crucial for many critical operations but remains challenging due to the cognitive resources required. Fatigue and other factors contribute to fluctuations in vigilance, causing attentional focus to drift from task-relevant information. Such lapses of attention, common in prolonged tasks, lead to decreased performance and missed critical information, with potentially serious consequences. Identifying physiological markers that predict inattention is key to developing preventive strategies. Approach. Previous research has established electroencephalography (EEG) responses to periodic visual stimuli, known as steady-state visual evoked potentials (SSVEP), as sensitive markers of attention. In this study, we evaluated a minimally intrusive SSVEP-based approach for tracking vigilance in healthy participants ( N = 16) during two sessions of a 45 min sustained visual attention task (Mackworth’s clock task). A 14 Hz frequency-ta",
       "doi": "10.1088/1741-2552/add771",
       "pmid": "40354807",
@@ -238,6 +232,29 @@
       }
     },
     {
+      "title": "Addressing BCI inefficiency in c-VEP-based BCIs: A comprehensive study of neurophysiological predictors, binary stimulus sequences, and user comfort",
+      "author": "Jordy Thielen",
+      "venue": "Biomedical Physics & Engineering Express",
+      "year": 2025,
+      "url": "https://doi.org/10.1088/2057-1976/ade316",
+      "cited_by": 4,
+      "abstract": "Abstract Objective. This study investigated the presence of brain-computer interface (BCI) inefficiency in BCIs using the code-modulated visual evoked potential (c-VEP). It further explored neurophysiological predictors of performance variability and evaluated a wide range of binary stimulus sequences in terms of classification accuracy and user comfort, aiming to identify strategies to mitigate c-VEP BCI inefficiency. Approach. In a comprehensive empirical analysis, ten different binary stimulus sequences were offline evaluated. These sequences included five code families (m-sequence, de Bruijn sequence, Golay sequence, Gold code, and a Gold code set), each in original and modulated form. To identify predictors of performance variability, resting-state alpha activity, heart rate and heart rate variability, sustained attention, and flash-VEP characteristics were studied. Main Results. Results confirmed substantial inter-individual variability in c-VEP BCI efficiency. While all particip",
+      "doi": "10.1088/2057-1976/ade316",
+      "pmid": "40494367",
+      "openalex_id": "W4411166688",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7333586239814759,
+        "similarity_score": 0.6349425315856934,
+        "citation_text_length": 1240,
+        "dataset_text_length": 2229,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Enhancing user experience in c-VEP-based BCI: Effects of visual stimulus opacity on performance and visual fatigue",
       "author": "Ana Martín-Fernández, Víctor Martínez-Cagigal, Selene Moreno-Calderón, Eduardo Santamaría-Vázquez, Roberto Hornero",
       "venue": "Biomedical Signal Processing and Control",
@@ -255,29 +272,6 @@
         "confidence_score": 0.669500344991684,
         "similarity_score": 0.5796539783477783,
         "citation_text_length": 1307,
-        "dataset_text_length": 2229,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Addressing BCI inefficiency in c-VEP-based BCIs: A comprehensive study of neurophysiological predictors, binary stimulus sequences, and user comfort",
-      "author": "Jordy Thielen",
-      "venue": "Biomedical Physics & Engineering Express",
-      "year": 2025,
-      "url": "https://doi.org/10.1088/2057-1976/ade316",
-      "cited_by": 3,
-      "abstract": "Abstract Objective. This study investigated the presence of brain-computer interface (BCI) inefficiency in BCIs using the code-modulated visual evoked potential (c-VEP). It further explored neurophysiological predictors of performance variability and evaluated a wide range of binary stimulus sequences in terms of classification accuracy and user comfort, aiming to identify strategies to mitigate c-VEP BCI inefficiency. Approach. In a comprehensive empirical analysis, ten different binary stimulus sequences were offline evaluated. These sequences included five code families (m-sequence, de Bruijn sequence, Golay sequence, Gold code, and a Gold code set), each in original and modulated form. To identify predictors of performance variability, resting-state alpha activity, heart rate and heart rate variability, sustained attention, and flash-VEP characteristics were studied. Main Results. Results confirmed substantial inter-individual variability in c-VEP BCI efficiency. While all particip",
-      "doi": "10.1088/2057-1976/ade316",
-      "pmid": "40494367",
-      "openalex_id": "W4411166688",
-      "source_doi": "10.1016/j.neuroimage.2023.120446",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.7333586239814759,
-        "similarity_score": 0.6349425315856934,
-        "citation_text_length": 1240,
         "dataset_text_length": 2229,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -474,7 +468,7 @@
       "year": 2026,
       "url": "https://doi.org/10.82901/nemar.nm000346.v1.0.1",
       "cited_by": 0,
-      "abstract": "A 2-class code-VEP brain-computer interface dataset from 12 healthy participants comparing burst c-VEP and m-sequence stimulation paradigms at two amplitude depths (100% and 40%). The study evaluates classification performance and user experience using 32-channel EEG recorded at 500 Hz, with CNN-based decoding achieving up to 95.6% accuracy for burst c-VEP at full amplitude. This derivative dataset optimizes stimulus design for reactive BCI applications while maintaining visual comfort.",
+      "abstract": "A 4-target, 2-class code-VEP brain-computer interface dataset from 12 healthy participants comparing burst c-VEP and m-sequence stimulation paradigms at two amplitude depths (100% and 40%). The study evaluates classification performance and user experience using 32-channel EEG recorded at 500 Hz. This derivative dataset is derived from the original Castillos et al. (2023) study and optimizes stimulus design for reactive BCI applications while maintaining visual comfort. CNN-based decoding achieved up to 95.6% accuracy (best-case scenario with 52.8 s of calibration data).",
       "doi": "10.82901/nemar.nm000346.v1.0.1",
       "pmid": null,
       "openalex_id": "W7202259170",
@@ -482,9 +476,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.9001746332645417,
-        "similarity_score": 0.779371976852417,
-        "citation_text_length": 629,
+        "confidence_score": 0.903257989883423,
+        "similarity_score": 0.7820415496826172,
+        "citation_text_length": 715,
         "dataset_text_length": 2229,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -537,7 +531,7 @@
       }
     },
     {
-      "title": "Optimizing EEGNet for Code-Modulated Visual Evoked Potential Classification",
+      "title": "Optimizing EEGNet for Code-Modulated Visual Evoked Potential Classification",
       "author": "Hazar Zilelioglu, Alexandre Delaux, Julien Carponcy, Victor Woelffel, Solène Le Bars",
       "venue": "Lecture notes in computer science",
       "year": 2026,
@@ -551,8 +545,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5856376111507416,
-        "similarity_score": 0.5577501058578491,
+        "confidence_score": 0.5851848721504211,
+        "similarity_score": 0.557318925857544,
         "citation_text_length": 219,
         "dataset_text_length": 2229,
         "scoring_method": "sentence_transformers",
@@ -583,6 +577,29 @@
       }
     },
     {
+      "title": "CastillosCVEP40",
+      "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
+      "venue": "UC San Diego",
+      "year": 2026,
+      "url": "https://doi.org/10.82901/nemar.nm000342.v1.0.2",
+      "cited_by": 0,
+      "abstract": "A code-modulated Visual Evoked Potential (c-VEP) derivative dataset from 12 healthy participants, specifically focusing on the 40% amplitude depth modulation m-sequence c-VEP condition. This dataset is derived from a study comparing burst and m-sequence stimulus patterns at two amplitude levels (100% and 40% depth modulation) for reactive brain-computer interface applications. The study evaluated classification performance using convolutional neural networks, demonstrating that the reduced amplitude condition (40%) maintained 94.2% accuracy while improving visual comfort compared to the full amplitude burst c-VEP condition which achieved 95.6% accuracy.",
+      "doi": "10.82901/nemar.nm000342.v1.0.2",
+      "pmid": null,
+      "openalex_id": "W7203712055",
+      "source_doi": "10.1016/j.neuroimage.2023.120446",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.859769498705864,
+        "similarity_score": 0.7443891763687134,
+        "citation_text_length": 798,
+        "dataset_text_length": 2229,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Low-Frequency Textured Gabor Flicker Enhances Neural Entrainment and Visual Comfort for Brain-Computer Interface Control",
       "author": "J Gomel, Marie‐Constance Corsi, Frédéric Dehais",
       "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
@@ -604,40 +621,17 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
-    },
-    {
-      "title": "CastillosCVEP40",
-      "author": "Kalou Cabrera Castillos, Simon Ladouce, Ludovic Darmet, Frédéric Dehais",
-      "venue": "UC San Diego",
-      "year": 2026,
-      "url": "https://doi.org/10.82901/nemar.nm000342.v1.0.0",
-      "cited_by": 0,
-      "abstract": "A code-modulated Visual Evoked Potential (c-VEP) derivative dataset from 12 healthy participants, specifically focusing on the 40% amplitude depth modulation m-sequence c-VEP condition. This dataset is derived from a study comparing burst and m-sequence stimulus patterns at two amplitude levels (100% and 40% depth modulation) for reactive brain-computer interface applications. The study evaluated classification performance using convolutional neural networks, demonstrating that the reduced amplitude condition (40%) maintained 94.2% accuracy while improving visual comfort compared to the full amplitude burst c-VEP condition which achieved 95.6% accuracy.",
-      "doi": "10.82901/nemar.nm000342.v1.0.0",
-      "pmid": null,
-      "openalex_id": "W7163416655",
-      "source_doi": "10.1016/j.neuroimage.2023.120446",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.859769498705864,
-        "similarity_score": 0.7443891763687134,
-        "citation_text_length": 798,
-        "dataset_text_length": 2229,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:22:17.369194+00:00",
+    "scoring_date": "2026-08-25T11:33:38.385253+00:00",
     "dataset_text_length": 2229,
     "num_citations_scored": 24,
     "summary_stats": {
-      "mean_confidence": 0.6627713247574866,
+      "mean_confidence": 0.6628082983382048,
       "median_confidence": 0.6695846092700959,
-      "std_confidence": 0.16912264019870618,
+      "std_confidence": 0.1692902248988339,
       "min_confidence": 0.36728836923837666,
       "max_confidence": 0.9560582345724107,
       "high_confidence_count": 9,

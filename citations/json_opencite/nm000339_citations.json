@@ -1,10 +1,10 @@
 {
   "dataset_id": "nm000339",
-  "num_citations": 161,
-  "date_last_updated": "2026-08-17T10:18:34.510892+00:00",
+  "num_citations": 162,
+  "date_last_updated": "2026-08-25T10:21:23.482653+00:00",
   "metadata": {
-    "total_cumulative_citations": 3243,
-    "fetch_date": "2026-08-17T10:18:34.510892+00:00",
+    "total_cumulative_citations": 3265,
+    "fetch_date": "2026-08-25T10:21:23.482653+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
     "anchor_count": 4,
@@ -83,13 +83,12 @@
     "keywords": [
       "Brain-Computer Interfaces",
       "motor imagery",
-      "Electroencephalography",
+      "EEG",
       "sensorimotor rhythm",
       "learning",
-      "longitudinal",
-      "BCI"
+      "neural decoding"
     ],
-    "methods_description": "Participants completed 7-11 online BCI training sessions, each consisting of 450 trials across 3 tasks (left-right, up-down, 2D) with 6 runs. Each trial included a 2-second inter-trial interval, 2-second target presentation, and up to 6-second feedback control period. EEG was recorded from 62 channels at 1000 Hz sampling rate using Neuroscan SynAmps RT amplifiers with a 10-10 montage. Online control employed spatial filtering (Laplacian around C3/C4), autoregressive spectral estimation (order 16), and alpha power (12 Hz ± 1.5 Hz) for generating control signals, with cursor position updated every 40 milliseconds.",
+    "methods_description": "EEG data were acquired from 62 participants using Neuroscan SynAmps RT amplifiers with a 62-channel 10-10 montage at 1000 Hz sampling rate. Online preprocessing included 0.1-200 Hz bandpass filtering with 60 Hz notch filter. BCI control employed spatial filtering (Laplacian around C3/C4), autoregressive spectral estimation (order 16), and alpha power (12 ± 1.5 Hz) as the control signal. Each session consisted of 450 trials across 3 tasks (left-right, up-down, 2D cursor control) with 6 runs, where each trial included 2s inter-trial interval, 2s target presentation, and up to 6s feedback control with cursor position updates every 40 ms.",
     "funding": [
       {
         "funder_name": "NIH",
@@ -111,13 +110,7 @@
         "funder_name": "NIH",
         "award_number": "EB029354"
       }
-    ],
-    "searched_accessions": [
-      "nm000339"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 161
+    ]
   },
   "citation_details": [
     {
@@ -126,7 +119,7 @@
       "venue": "IEEE Reviews in Biomedical Engineering",
       "year": 2024,
       "url": "https://doi.org/10.1109/rbme.2024.3449790",
-      "cited_by": 154,
+      "cited_by": 156,
       "abstract": "Brain-computer interface (BCI) is a rapidly evolving technology that has the potential to widely influence research, clinical and recreational use. Non-invasive BCI approaches are particularly common as they can impact a large number of participants safely and at a relatively low cost. Where traditional non-invasive BCIs were used for simple computer cursor tasks, it is now increasingly common for these systems to control robotic devices for complex tasks that may be useful in daily life. In this review, we provide an overview of the general BCI framework as well as the various methods that can be used to record neural activity, extract signals of interest, and decode brain states. In this context, we summarize the current state-of-the-art of non-invasive BCI research, focusing on trends in both the application of BCIs for controlling external devices and algorithm development to optimize their use. We also discuss various open-source BCI toolboxes and software, and describe their impa",
       "doi": "10.1109/rbme.2024.3449790",
       "pmid": "39186407",
@@ -195,7 +188,7 @@
       "venue": "IEEE Journal of Biomedical and Health Informatics",
       "year": 2023,
       "url": "https://doi.org/10.1109/jbhi.2023.3243698",
-      "cited_by": 66,
+      "cited_by": 67,
       "abstract": "The present paper introduces a novel method, named AutoEncoder-Filter Bank Common Spatial Patterns (AE-FBCSP), to decode imagined movements from electroencephalography (EEG). AE-FBCSP is an extension of the well-established FBCSP and is based on a global (cross-subject) and subsequent transfer learning subject-specific (intra-subject) approach. A multi-way extension of AE-FBCSP is also introduced in this paper. Features are extracted from high-density EEG (64 electrodes), by means of FBCSP, and used to train a custom AE, in an unsupervised way, to project the features into a compressed latent space. Latent features are used to train a supervised classifier (feed forward neural network) to decode the imagined movement. The proposed method was tested using a public dataset of EEGs collected from 109 subjects. The dataset consists of right-hand, left-hand, both hands, both feet motor imagery and resting EEGs. AE-FBCSP was extensively tested in the 3-way classification (right hand vs left ",
       "doi": "10.1109/jbhi.2023.3243698",
       "pmid": "37022818",
@@ -282,7 +275,7 @@
       }
     },
     {
-      "title": "Automated Detection of Neurological and Mental Health Disorders Using <scp>EEG</scp> Signals and Artificial Intelligence: A Systematic Review",
+      "title": "Automated Detection of Neurological and Mental Health Disorders Using EEG Signals and Artificial Intelligence: A Systematic Review",
       "author": "Hakan Uyanık, Abdulkadir Sengur, Massimo Salvi, Ru‐San Tan, Jen Hong Tan, U. Rajendra Acharya",
       "venue": "Wiley Interdisciplinary Reviews Data Mining and Knowledge Discovery",
       "year": 2025,
@@ -296,9 +289,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.4070214548707009,
-        "similarity_score": 0.3523995280265808,
-        "citation_text_length": 1340,
+        "confidence_score": 0.40852767884731295,
+        "similarity_score": 0.3537036180496216,
+        "citation_text_length": 1329,
         "dataset_text_length": 2401,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -333,7 +326,7 @@
       "venue": "Scientific Data",
       "year": 2023,
       "url": "https://doi.org/10.1038/s41597-023-02445-z",
-      "cited_by": 36,
+      "cited_by": 37,
       "abstract": "We present and share a large database containing electroencephalographic signals from 87 human participants, collected during a single day of brain-computer interface (BCI) experiments, organized into 3 datasets (A, B, and C) that were all recorded using the same protocol: right and left hand motor imagery (MI). Each session contains 240 trials (120 per class), which represents more than 20,800 trials, or approximately 70 hours of recording time. It includes the performance of the associated BCI users, detailed information about the demographics, personality profile as well as some cognitive traits and the experimental instructions and codes (executed in the open-source platform OpenViBE). Such database could prove useful for various studies, including but not limited to: (1) studying the relationships between BCI users' profiles and their BCI performances, (2) studying how EEG signals properties varies for different users' profiles and MI tasks, (3) using the large number of participa",
       "doi": "10.1038/s41597-023-02445-z",
       "pmid": "37670009",
@@ -425,7 +418,7 @@
       "venue": "Nature Machine Intelligence",
       "year": 2025,
       "url": "https://doi.org/10.1038/s42256-025-01090-y",
-      "cited_by": 28,
+      "cited_by": 30,
       "abstract": "Motor brain–computer interfaces (BCIs) decode neural signals to help people with paralysis move and communicate. Even with important advances in the past two decades, BCIs face a key obstacle to clinical viability: BCI performance should strongly outweigh costs and risks. To significantly increase the BCI performance, we use shared autonomy, where artificial intelligence (AI) copilots collaborate with BCI users to achieve task goals. We demonstrate this AI-BCI in a non-invasive BCI system decoding electroencephalography signals. We first contribute a hybrid adaptive decoding approach using a convolutional neural network and ReFIT-like Kalman filter, enabling healthy users and a participant with paralysis to control computer cursors and robotic arms via decoded electroencephalography signals. We then design two AI copilots to aid BCI users in a cursor control task and a robotic arm pick-and-place task. We demonstrate AI-BCIs that enable a participant with paralysis to achieve 3.9-times-",
       "doi": "10.1038/s42256-025-01090-y",
       "pmid": "41221369",
@@ -471,7 +464,7 @@
       "venue": "Sensors and Actuators Reports",
       "year": 2025,
       "url": "https://doi.org/10.1016/j.snr.2025.100312",
-      "cited_by": 22,
+      "cited_by": 23,
       "abstract": "• Advanced e-skin technologies enhance prosthetics, robotics, and human-machine interfaces. • Flexible interfaces with high sensitivity enable real-time data processing and adaptive learning. • Integration of e-skins with AI boosts device adaptability in rehabilitation and robotics. • Recent breakthroughs in transducer sensitivity improve tactile perception beyond human levels. E-skin technologies are poised to reshape numerous sectors, offering new possibilities through their thin, flexible, and highly sensitive interfaces. By integrating advanced transducer mechanisms and edge artificial intelligence computing, these interfaces not only enhance the quality of services and products but also promote greater user interaction and real-time data processing. Prosthetic and rehabilitation devices equipped with human-machine interfaces can improve the lives of people with disabilities, enabling them to interact more naturally with their environment. Furthermore, recent studies and advanced s",
       "doi": "10.1016/j.snr.2025.100312",
       "pmid": null,
@@ -540,7 +533,7 @@
       "venue": "Electronics",
       "year": 2023,
       "url": "https://doi.org/10.3390/electronics12030623",
-      "cited_by": 17,
+      "cited_by": 18,
       "abstract": "Physical and cognitive rehabilitation is deemed crucial to attenuate symptoms and to improve the quality of life in people with neurodegenerative disorders, such as Parkinson’s Disease. Among rehabilitation strategies, a novel and popular approach relies on exergaming: the patient performs a motor or cognitive task within an interactive videogame in a virtual environment. These strategies may widely benefit from being tailored to the patient’s needs and engagement patterns. In this pilot study, we investigated the ability of a low-cost BCI based on single-channel EEG to measure the user’s engagement during an exergame. As a first step, healthy subjects were recruited to assess the system’s capability to distinguish between (1) rest and gaming conditions and (2) gaming at different complexity levels, through Machine Learning supervised models. Both EEG and eye-blink features were employed. The results indicate the ability of the exergame to stimulate engagement and the capability of the",
       "doi": "10.3390/electronics12030623",
       "pmid": null,
@@ -673,6 +666,29 @@
       }
     },
     {
+      "title": "Fine-Tuning Strategies for Continual Online EEG Motor Imagery Decoding: Insights from a Large-Scale Longitudinal Study",
+      "author": "Martin Wimpff, Bruno Aristimunha, Sylvain Chevallier, Bin Yang",
+      "venue": "2025 47th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)",
+      "year": 2025,
+      "url": "https://doi.org/10.1109/embc58623.2025.11253543",
+      "cited_by": 6,
+      "abstract": "This study investigates continual fine-tuning strategies for deep learning in online longitudinal electroencephalography (EEG) motor imagery (MI) decoding within a causal setting involving a large user group and multiple sessions per participant. We are the first to explore such strategies across a large user group, as longitudinal adaptation is typically studied in the single-subject setting with a single adaptation strategy, which limits the ability to generalize findings. First, we examine the impact of different fine-tuning approaches on decoder performance and stability. Building on this, we integrate online test-time adaptation (OTTA) to adapt the model during deployment, complementing the effects of prior fine-tuning. Our findings demonstrate that fine-tuning that successively builds on prior subject-specific information improves both performance and stability, while OTTA effectively adapts the model to evolving data distributions across consecutive sessions, enabling calibratio",
+      "doi": "10.1109/embc58623.2025.11253543",
+      "pmid": "41336201",
+      "openalex_id": "W4416960586",
+      "source_doi": "10.1038/s41597-021-00883-1",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.6683841186761857,
+        "similarity_score": 0.5786875486373901,
+        "citation_text_length": 1323,
+        "dataset_text_length": 2401,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A Functional BCI Model by the P2731 Working Group: Transducer",
       "author": "Guillermo Sahonero-Alvarez, Avinash Kumar Singh, Kamran Sayrafian, Luigi Bianchi, Avid Roman–Gonzalez",
       "venue": "Brain-Computer Interfaces",
@@ -696,31 +712,8 @@
       }
     },
     {
-      "title": "Fine-Tuning Strategies for Continual Online EEG Motor Imagery Decoding: Insights from a Large-Scale Longitudinal Study",
-      "author": "Martin Wimpff, Bruno Aristimunha, Sylvain Chevallier, Bin Yang",
-      "venue": "2025 47th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)",
-      "year": 2025,
-      "url": "https://doi.org/10.1109/embc58623.2025.11253543",
-      "cited_by": 5,
-      "abstract": "This study investigates continual fine-tuning strategies for deep learning in online longitudinal electroencephalography (EEG) motor imagery (MI) decoding within a causal setting involving a large user group and multiple sessions per participant. We are the first to explore such strategies across a large user group, as longitudinal adaptation is typically studied in the single-subject setting with a single adaptation strategy, which limits the ability to generalize findings. First, we examine the impact of different fine-tuning approaches on decoder performance and stability. Building on this, we integrate online test-time adaptation (OTTA) to adapt the model during deployment, complementing the effects of prior fine-tuning. Our findings demonstrate that fine-tuning that successively builds on prior subject-specific information improves both performance and stability, while OTTA effectively adapts the model to evolving data distributions across consecutive sessions, enabling calibratio",
-      "doi": "10.1109/embc58623.2025.11253543",
-      "pmid": "41336201",
-      "openalex_id": "W4416960586",
-      "source_doi": "10.1038/s41597-021-00883-1",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6683841186761857,
-        "similarity_score": 0.5786875486373901,
-        "citation_text_length": 1323,
-        "dataset_text_length": 2401,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "CoMET: A Contrastive-Masked Brain Foundation Model for Universal EEG Representation",
-      "author": "Ang Li, Zikai Wang, Liuyin Yang, Zhenyu Wang, Tianheng Xu, Honglin Hu, Marc M. Van Hulle",
+      "author": "Ang Li, Zikai Wang, Liuyin Yang, Zhenyu Wang, Tianheng Xu, Honglin Hu, M. V. Hulle",
       "venue": "n/a",
       "year": 2025,
       "url": "n/a",
@@ -733,9 +726,9 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5787670621275902,
-        "similarity_score": 0.5010970234870911,
-        "citation_text_length": 1213,
+        "confidence_score": 0.5815975570678712,
+        "similarity_score": 0.5035476684570312,
+        "citation_text_length": 1207,
         "dataset_text_length": 2401,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -972,6 +965,29 @@
       }
     },
     {
+      "title": "Cross-subject generalization for EEG decoding: a survey of deep learning methods",
+      "author": "Taida Li, Yujun Yan, Fei Dou, Wenzhan Song, Xiang Zhang",
+      "venue": "Progress in Biomedical Engineering",
+      "year": 2026,
+      "url": "https://doi.org/10.1088/2516-1091/ae65f0",
+      "cited_by": 2,
+      "abstract": "Deep learning for cross-subject electroencephalography (EEG) decoding is hindered by high inter-subject variability, which introduces a severe domain shift between training and unseen test subjects. This survey presents a comprehensive review of deep learning methodologies specifically engineered to address this cross-subject generalization challenge. To ground this analysis, we formalize the cross-subject setting as a multi-source domain problem and delineate the rigorous, subject-independent evaluation protocols required for valid assessment. Central to this survey is a systematic taxonomy of the current literature into discrete methodological families, including feature alignment, adversarial learning, feature disentanglement, and contrastive learning. We conclude by examining three critical elements for advancing robust, real-world decoding: the theoretical limitations of current methodologies, the structural value of subject identity, and the emergence of EEG foundation models.",
+      "doi": "10.1088/2516-1091/ae65f0",
+      "pmid": "42049051",
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-021-00883-1",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5090137946605683,
+        "similarity_score": 0.4407045841217041,
+        "citation_text_length": 1205,
+        "dataset_text_length": 2401,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Unraveling Imaginary and Real Motion: A Correlation Indices Study in BCI Data",
       "author": "Stavros-Theofanis Miloulis, Ioannis Zorzos, Iοannis Kakkos, Aikaterini Karampasi, Errikos C. Ventouras, Ioannis Kalatzis, Charalabos Papageorgiou, Pantelis A. Asvestas, George K. Matsopoulos",
       "venue": "Advances in Biomedical Sciences, Engineering and Technology (ABSET) Conference",
@@ -1024,7 +1040,7 @@
       "year": 2026,
       "url": "https://doi.org/10.59717/j.xinn-life.2026.100198",
       "cited_by": 1,
-      "abstract": "&lt;p&gt;Brain-Computer Interface (BCI) technology is rapidly emerging as a promising tool to empower individuals with severe disabilities and enhance their independence by translating brain neural signals into actionable commands. However, its development and application face challenges such as low signal-to-noise ratios, overfitting from limited training data, and the non-stationarity of brain signals, which can compromise system stability. The integration of Generative Artificial Intelligence (Generative AI, GAI) offers potential solutions by improving signal processing, generating high-fidelity synthetic data, and developing adaptive algorithms that maintain accuracy over time. Despite these advancements, existing literature lacks systematic discussion on the comprehensive integration of GAI in BCI development. To address this gap, this study examines over 170 articles published from 2020 to 2025 that leverage GAI techniques in BCI research. The analysis highlights the latest devel",
+      "abstract": "Brain-Computer Interface (BCI) technology is rapidly emerging as a promising tool to empower individuals with severe disabilities and enhance their independence by translating brain neural signals into actionable commands. However, its development and application face challenges such as low signal-to-noise ratios, overfitting from limited training data, and the non-stationarity of brain signals, which can compromise system stability. The integration of Generative Artificial Intelligence (Generative AI, GAI) offers potential solutions by improving signal processing, generating high-fidelity synthetic data, and developing adaptive algorithms that maintain accuracy over time. Despite these advancements, existing literature lacks systematic discussion on the comprehensive integration of GAI in BCI development. To address this gap, this study examines over 170 articles published from 2020 to 2025 that leverage GAI techniques in BCI research. The analysis highlights the latest developments i",
       "doi": "10.59717/j.xinn-life.2026.100198",
       "pmid": null,
       "openalex_id": "W7124525447",
@@ -1032,8 +1048,8 @@
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.45779553607106216,
-        "similarity_score": 0.39635977149009705,
+        "confidence_score": 0.4480743366479874,
+        "similarity_score": 0.3879431486129761,
         "citation_text_length": 1196,
         "dataset_text_length": 2401,
         "scoring_method": "sentence_transformers",
@@ -1041,23 +1057,23 @@
       }
     },
     {
-      "title": "Cross-subject generalization for EEG decoding: a survey of deep learning methods",
-      "author": "Taida Li, Yujun Yan, Fei Dou, Wenzhan Song, Xiang Zhang",
-      "venue": "Progress in Biomedical Engineering",
+      "title": "The Challenge of Out-Of-Distribution Detection in Motor Imagery BCIs",
+      "author": "Merlijn Quincent Mulder, Matias Valdenegro-Toro, A. Sburlea, Ivo Pascal de Jong",
+      "venue": "ArXiv",
       "year": 2026,
-      "url": "https://doi.org/10.1088/2516-1091/ae65f0",
+      "url": "https://doi.org/10.48550/arXiv.2603.13324",
       "cited_by": 1,
-      "abstract": "Deep learning for cross-subject electroencephalography (EEG) decoding is hindered by high inter-subject variability, which introduces a severe domain shift between training and unseen test subjects. This survey presents a comprehensive review of deep learning methodologies specifically engineered to address this cross-subject generalization challenge. To ground this analysis, we formalize the cross-subject setting as a multi-source domain problem and delineate the rigorous, subject-independent evaluation protocols required for valid assessment. Central to this survey is a systematic taxonomy of the current literature into discrete methodological families, including feature alignment, adversarial learning, feature disentanglement, and contrastive learning. We conclude by examining three critical elements for advancing robust, real-world decoding: the theoretical limitations of current methodologies, the structural value of subject identity, and the emergence of EEG foundation models.",
-      "doi": "10.1088/2516-1091/ae65f0",
-      "pmid": "42049051",
+      "abstract": "Machine Learning classifiers used in Brain-Computer Interfaces make classifications based on the distribution of data they were trained on. When they need to make inferences on samples that fall outside of this distribution, they can only make blind guesses. Instead of allowing random guesses, these Out-of-Distribution (OOD) samples should be detected and rejected. We study OOD detection in Motor Imagery BCIs by training a model on some classes and observing whether unfamiliar classes can be detected based on increased uncertainty. We test seven different OOD detection techniques and one more method that has been claimed to boost the quality of OOD detection. Our findings show that OOD detection for Brain-Computer Interfaces is more challenging than in other machine learning domains due to the high uncertainty inherent in classifying EEG signals. For many subjects, uncertainty for in-distribution classes can still be higher than for out-of-distribution classes. As a result, many OOD de",
+      "doi": "10.48550/arXiv.2603.13324",
+      "pmid": null,
       "openalex_id": null,
       "source_doi": "10.1038/s41597-021-00883-1",
       "source_relation": "IsDerivedFrom",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5090137946605683,
-        "similarity_score": 0.4407045841217041,
-        "citation_text_length": 1205,
+        "confidence_score": 0.6154515570402146,
+        "similarity_score": 0.5328584909439087,
+        "citation_text_length": 1191,
         "dataset_text_length": 2401,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1386,6 +1402,29 @@
       }
     },
     {
+      "title": "Multi-Feature Riemannian Hypergraph for Online Test-Time Adaptation of Motor Imagery Brain-Computer Interface",
+      "author": "Siqi Li, Zhi Li, Tonghang Liu, Shuai Zhang, Yanfei Jia, Zhiqiang Yi, Jue Xie, Ni Ji Peking University, Chinese Institute for Brain Research, Beijing, NeuCyber Neurotech, Beijing Medical University, Chinese Academy of Medical SciencesPeking Union Medical College",
+      "venue": "n/a",
+      "year": 2026,
+      "url": "n/a",
+      "cited_by": 0,
+      "abstract": "In clinical motor imagery brain-computer interface (MI-BCI) decoding, cross-day transferability and online operation remain two critical challenges. Hypergraphs can improve transferability by capturing higher-order sample relationships, yet existing hypergraph-based methods for online emotion recognition neglect the cross-day benefits of Riemannian geometry widely adopted in EEG transfer learning. To bridge this gap, we propose the Multi-feature Riemannian Hypergraph (MRieHy), a framework tailored for online test-time adaptation in MI-BCI decoding that leverages Riemannian geometry to strengthen cross-day transferability. MRieHy first computes Riemannian means of covariance matrices from cross-day training data to align multi-day distributions. It then constructs a hypergraph over covariance matrices using Riemannian distance, complemented by a second hypergraph over deep features built with cosine similarity. The two hypergraphs are fused via adaptively learned combination weights, jo",
+      "doi": null,
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.1038/s41597-021-00883-1",
+      "source_relation": "IsDerivedFrom",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.7149490821361543,
+        "similarity_score": 0.6190035343170166,
+        "citation_text_length": 1412,
+        "dataset_text_length": 2401,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Bayesian Complete-Pooling in Cross-Subject Classification for Motor Imagery Electroencephalogram",
       "author": "Ethan Davis",
       "venue": "n/a",
@@ -1403,29 +1442,6 @@
         "confidence_score": 0.7052339065074922,
         "similarity_score": 0.6105921268463135,
         "citation_text_length": 1149,
-        "dataset_text_length": 2401,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "The Challenge of Out-Of-Distribution Detection in Motor Imagery BCIs",
-      "author": "Merlijn Quincent Mulder, Matias Valdenegro-Toro, A. Sburlea, Ivo Pascal de Jong",
-      "venue": "ArXiv",
-      "year": 2026,
-      "url": "https://doi.org/10.48550/arXiv.2603.13324",
-      "cited_by": 0,
-      "abstract": "Machine Learning classifiers used in Brain-Computer Interfaces make classifications based on the distribution of data they were trained on. When they need to make inferences on samples that fall outside of this distribution, they can only make blind guesses. Instead of allowing random guesses, these Out-of-Distribution (OOD) samples should be detected and rejected. We study OOD detection in Motor Imagery BCIs by training a model on some classes and observing whether unfamiliar classes can be detected based on increased uncertainty. We test seven different OOD detection techniques and one more method that has been claimed to boost the quality of OOD detection. Our findings show that OOD detection for Brain-Computer Interfaces is more challenging than in other machine learning domains due to the high uncertainty inherent in classifying EEG signals. For many subjects, uncertainty for in-distribution classes can still be higher than for out-of-distribution classes. As a result, many OOD de",
-      "doi": "10.48550/arXiv.2603.13324",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.1038/s41597-021-00883-1",
-      "source_relation": "IsDerivedFrom",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.6154515570402146,
-        "similarity_score": 0.5328584909439087,
-        "citation_text_length": 1191,
         "dataset_text_length": 2401,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1529,7 +1545,7 @@
       "venue": "Neurophotonics",
       "year": 2022,
       "url": "https://doi.org/10.1117/1.nph.9.s2.s24001",
-      "cited_by": 179,
+      "cited_by": 180,
       "abstract": "Abstract. This report is the second part of a comprehensive two-part series aimed at reviewing an extensive and diverse toolkit of novel methods to explore brain health and function. While the first report focused on neurophotonic tools mostly applicable to animal studies, here, we highlight optical spectroscopy and imaging methods relevant to noninvasive human brain studies. We outline current state-of-the-art technologies and software advances, explore the most recent impact of these technologies on neuroscience and clinical applications, identify the areas where innovation is needed, and provide an outlook for the future directions.",
       "doi": "10.1117/1.nph.9.s2.s24001",
       "pmid": "36052058",
@@ -1644,7 +1660,7 @@
       "venue": "eLife",
       "year": 2022,
       "url": "https://doi.org/10.7554/elife.75126",
-      "cited_by": 89,
+      "cited_by": 90,
       "abstract": "Brain signal decoding promises significant advances in the development of clinical brain computer interfaces (BCI). In Parkinson's disease (PD), first bidirectional BCI implants for adaptive deep brain stimulation (DBS) are now available. Brain signal decoding can extend the clinical utility of adaptive DBS but the impact of neural source, computational methods and PD pathophysiology on decoding performance are unknown. This represents an unmet need for the development of future neurotechnology. To address this, we developed an invasive brain-signal decoding approach based on intraoperative sensorimotor electrocorticography (ECoG) and subthalamic LFP to predict grip-force, a representative movement decoding application, in 11 PD patients undergoing DBS. We demonstrate that ECoG is superior to subthalamic LFP for accurate grip-force decoding. Gradient boosted decision trees (XGBOOST) outperformed other model architectures. ECoG based decoding performance negatively correlated with motor",
       "doi": "10.7554/elife.75126",
       "pmid": "35621994",
@@ -1713,7 +1729,7 @@
       "venue": "Scientific Data",
       "year": 2023,
       "url": "https://doi.org/10.1038/s41597-023-02525-0",
-      "cited_by": 72,
+      "cited_by": 73,
       "abstract": "Biomarker discovery in neurological and psychiatric disorders critically depends on reproducible and transparent methods applied to large-scale datasets. Electroencephalography (EEG) is a promising tool for identifying biomarkers. However, recording, preprocessing, and analysis of EEG data is time-consuming and researcher-dependent. Therefore, we developed DISCOVER-EEG, an open and fully automated pipeline that enables easy and fast preprocessing, analysis, and visualization of resting state EEG data. Data in the Brain Imaging Data Structure (BIDS) standard are automatically preprocessed, and physiologically meaningful features of brain function (including oscillatory power, connectivity, and network characteristics) are extracted and visualized using two open-source and widely used Matlab toolboxes (EEGLAB and FieldTrip). We tested the pipeline in two large, openly available datasets containing EEG recordings of healthy participants and patients with a psychiatric condition. Additiona",
       "doi": "10.1038/s41597-023-02525-0",
       "pmid": "37696851",
@@ -1800,6 +1816,29 @@
       }
     },
     {
+      "title": "Shared pathway-specific network mechanisms of dopamine and deep brain stimulation for the treatment of Parkinson’s disease",
+      "author": "Thomas S. Binns, Richard M. Köhler, Jonathan Vanhoecke, Meera Chikermane, Moritz Gerster, Timon Merk, Franziska Pellegrini, Johannes L. Busch, Jeroen Habets, Alessia Cavallo, Jean-Christin Beyer, Bassam Al‐Fatly, Ningfei Li, Andreas Horn, Patricia Krause, Katharina Faust, Gerd‐Helge Schneider, Stefan Haufe, Andrea A. Kühn, Wolf‐Julian Neumann",
+      "venue": "Nature Communications",
+      "year": 2025,
+      "url": "https://doi.org/10.1038/s41467-025-58825-z",
+      "cited_by": 51,
+      "abstract": "Deep brain stimulation is a brain circuit intervention that can modulate distinct neural pathways for the alleviation of neurological symptoms in patients with brain disorders. In Parkinson's disease, subthalamic deep brain stimulation clinically mimics the effect of dopaminergic drug treatment, but the shared pathway mechanisms on cortex - basal ganglia networks are unknown. To address this critical knowledge gap, we combined fully invasive neural multisite recordings in patients undergoing deep brain stimulation surgery with normative MRI-based whole-brain connectomics. Our findings demonstrate that dopamine and stimulation exert distinct mesoscale effects through modulation of local neural population activity. In contrast, at the macroscale, stimulation mimics dopamine in its suppression of excessive interregional network synchrony associated with indirect and hyperdirect cortex - basal ganglia pathways. Our results provide a better understanding of the circuit mechanisms of dopamin",
+      "doi": "10.1038/s41467-025-58825-z",
+      "pmid": "40234441",
+      "openalex_id": "W4409448364",
+      "source_doi": "10.21105/joss.01896",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.3841136187314988,
+        "similarity_score": 0.33256590366363525,
+        "citation_text_length": 1526,
+        "dataset_text_length": 2401,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A decision support system for automated diagnosis of Parkinson’s disease from EEG using FAWT and entropy features",
       "author": "Parikha Chawla, Shashi B. Rana, Hardeep Kaur, Kuldeep Singh, Rajamanickam Yuvaraj, M. Murugappan",
       "venue": "Biomedical Signal Processing and Control",
@@ -1817,29 +1856,6 @@
         "confidence_score": 0.4552206158638001,
         "similarity_score": 0.43354344367980957,
         "citation_text_length": 276,
-        "dataset_text_length": 2401,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Shared pathway-specific network mechanisms of dopamine and deep brain stimulation for the treatment of Parkinson’s disease",
-      "author": "Thomas S. Binns, Richard M. Köhler, Jonathan Vanhoecke, Meera Chikermane, Moritz Gerster, Timon Merk, Franziska Pellegrini, Johannes L. Busch, Jeroen Habets, Alessia Cavallo, Jean-Christin Beyer, Bassam Al‐Fatly, Ningfei Li, Andreas Horn, Patricia Krause, Katharina Faust, Gerd‐Helge Schneider, Stefan Haufe, Andrea A. Kühn, Wolf‐Julian Neumann",
-      "venue": "Nature Communications",
-      "year": 2025,
-      "url": "https://doi.org/10.1038/s41467-025-58825-z",
-      "cited_by": 50,
-      "abstract": "Deep brain stimulation is a brain circuit intervention that can modulate distinct neural pathways for the alleviation of neurological symptoms in patients with brain disorders. In Parkinson's disease, subthalamic deep brain stimulation clinically mimics the effect of dopaminergic drug treatment, but the shared pathway mechanisms on cortex - basal ganglia networks are unknown. To address this critical knowledge gap, we combined fully invasive neural multisite recordings in patients undergoing deep brain stimulation surgery with normative MRI-based whole-brain connectomics. Our findings demonstrate that dopamine and stimulation exert distinct mesoscale effects through modulation of local neural population activity. In contrast, at the macroscale, stimulation mimics dopamine in its suppression of excessive interregional network synchrony associated with indirect and hyperdirect cortex - basal ganglia pathways. Our results provide a better understanding of the circuit mechanisms of dopamin",
-      "doi": "10.1038/s41467-025-58825-z",
-      "pmid": "40234441",
-      "openalex_id": "W4409448364",
-      "source_doi": "10.21105/joss.01896",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.3841136187314988,
-        "similarity_score": 0.33256590366363525,
-        "citation_text_length": 1526,
         "dataset_text_length": 2401,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -1897,7 +1913,7 @@
       "venue": "Neural Computing and Applications",
       "year": 2024,
       "url": "https://doi.org/10.1007/s00521-024-09521-4",
-      "cited_by": 36,
+      "cited_by": 37,
       "abstract": "Abstract Parkinson’s disease (PD) is an incurable neurological disorder that degenerates the cerebrospinal nervous system and hinders motor functions. Electroencephalography (EEG) signal analysis can provide reliable information regarding PD conditions. However, EEG is a complex, multichannel, and nonlinear signal with noise that problematizes identifying PD symptoms. A few studies have employed fractal dimension (FD) to extract distinguishing PD features from EEG signals. However, no exploratory study exists, as per our knowledge, on the efficiency of the different FD measures. We aim to conduct a comparative analysis of the various FDs that, as feature extraction measures, can discriminate PD patients who are ON and OFF medication from healthy controls using ML architecture. This study has implemented and analyzed several techniques for segmentation, feature extraction, and ML models. The results show that k-nearest neighbors (KNN) classifier with Higuchi FD and 90% overlap for segme",
       "doi": "10.1007/s00521-024-09521-4",
       "pmid": null,
@@ -1989,7 +2005,7 @@
       "venue": "EBioMedicine",
       "year": 2024,
       "url": "https://doi.org/10.1016/j.ebiom.2024.105259",
-      "cited_by": 30,
+      "cited_by": 31,
       "abstract": "BACKGROUND: Electroencephalography (EEG) has a long history as a clinical tool to study brain function, and its potential to derive biomarkers for various applications is far from exhausted. Machine learning (ML) can guide future innovation by harnessing the wealth of complex EEG signals to isolate relevant brain activity. Yet, ML studies in EEG tend to ignore physiological artefacts, which may cause problems for deriving biomarkers specific to the central nervous system (CNS). METHODS: We present a framework for conceptualising machine learning from CNS versus peripheral signals measured with EEG. A signal representation based on Morlet wavelets allowed us to define traditional brain activity features (e.g. log power) and alternative inputs used by state-of-the-art ML approaches based on covariance matrices. Using more than 2600 EEG recordings from large public databases (TUAB, TDBRAIN), we studied the impact of peripheral signals and artefact removal techniques on ML models in age an",
       "doi": "10.1016/j.ebiom.2024.105259",
       "pmid": "39106531",
@@ -2444,6 +2460,29 @@
       }
     },
     {
+      "title": "Simultaneous invasive and non-invasive recordings in humans: A novel Rosetta stone for deciphering brain activity",
+      "author": "Andrea Pigorini, Pietro Avanzini, Andrei Barborică, Christian Bénar, Olivier David, Michele Farisco, Corey J. Keller, Alfredo Manfridi, Ezequiel Mikulan, Angelique C. Paulk, Nicolas Roehri, Ajay Subramanian, Serge Vulliémoz, Rina Zelmann",
+      "venue": "Journal of Neuroscience Methods",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.jneumeth.2024.110160",
+      "cited_by": 13,
+      "abstract": "Simultaneous noninvasive and invasive electrophysiological recordings provide a unique opportunity to achieve a comprehensive understanding of human brain activity, much like a Rosetta stone for human neuroscience. In this review we focus on the increasingly-used powerful combination of intracranial electroencephalography (iEEG) with scalp electroencephalography (EEG) or magnetoencephalography (MEG). We first provide practical insight on how to achieve these technically challenging recordings. We then provide examples from clinical research on how simultaneous recordings are advancing our understanding of epilepsy. This is followed by the illustration of how human neuroscience and methodological advances could benefit from these simultaneous recordings. We conclude with a call for open data sharing and collaboration, while ensuring neuroethical approaches and argue that only with a true collaborative approach the promises of simultaneous recordings will be fulfilled.",
+      "doi": "10.1016/j.jneumeth.2024.110160",
+      "pmid": "38734149",
+      "openalex_id": "W4396767893",
+      "source_doi": "10.21105/joss.01896",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.4765082985162736,
+        "similarity_score": 0.412561297416687,
+        "citation_text_length": 1401,
+        "dataset_text_length": 2401,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "Simultaneous EEG and fNIRS recordings for semantic decoding of imagined animals and tools",
       "author": "Milan Rybář, Riccardo Poli, Ian Daly",
       "venue": "Scientific Data",
@@ -2536,29 +2575,6 @@
       }
     },
     {
-      "title": "Simultaneous invasive and non-invasive recordings in humans: A novel Rosetta stone for deciphering brain activity",
-      "author": "Andrea Pigorini, Pietro Avanzini, Andrei Barborică, Christian Bénar, Olivier David, Michele Farisco, Corey J. Keller, Alfredo Manfridi, Ezequiel Mikulan, Angelique C. Paulk, Nicolas Roehri, Ajay Subramanian, Serge Vulliémoz, Rina Zelmann",
-      "venue": "Journal of Neuroscience Methods",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.jneumeth.2024.110160",
-      "cited_by": 12,
-      "abstract": "Simultaneous noninvasive and invasive electrophysiological recordings provide a unique opportunity to achieve a comprehensive understanding of human brain activity, much like a Rosetta stone for human neuroscience. In this review we focus on the increasingly-used powerful combination of intracranial electroencephalography (iEEG) with scalp electroencephalography (EEG) or magnetoencephalography (MEG). We first provide practical insight on how to achieve these technically challenging recordings. We then provide examples from clinical research on how simultaneous recordings are advancing our understanding of epilepsy. This is followed by the illustration of how human neuroscience and methodological advances could benefit from these simultaneous recordings. We conclude with a call for open data sharing and collaboration, while ensuring neuroethical approaches and argue that only with a true collaborative approach the promises of simultaneous recordings will be fulfilled.",
-      "doi": "10.1016/j.jneumeth.2024.110160",
-      "pmid": "38734149",
-      "openalex_id": "W4396767893",
-      "source_doi": "10.21105/joss.01896",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.4765082985162736,
-        "similarity_score": 0.412561297416687,
-        "citation_text_length": 1401,
-        "dataset_text_length": 2401,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "A resource for assessing dynamic binary choices in the adult brain using EEG and mouse-tracking",
       "author": "Kun Chen, Ruien Wang, Jiamin Huang, Fei Gao, Zhen Yuan, Yanyan Qi, Haiyan Wu",
       "venue": "Scientific Data",
@@ -2634,7 +2650,7 @@
       "year": 2024,
       "url": "https://doi.org/10.1088/1741-2552/ad88a3",
       "cited_by": 9,
-      "abstract": "Abstract Objetive . Decoding speech from brain activity can enable communication for individuals with speech disorders. Deep neural networks (DNNs) have shown great potential for speech decoding applications. However, the limited availability of large datasets containing neural recordings from speech-impaired subjects poses a challenge. Leveraging data from healthy participants can mitigate this limitation and expedite the development of speech neuroprostheses while minimizing the need for patient-specific training data. Approach . In this study, we collected a substantial dataset consisting of recordings from 56 healthy participants using 64 EEG channels. Multiple neural networks were trained to classify perceived sentences in the Spanish language using subject-independent, mixed-subjects, and fine-tuning approaches. The dataset has been made publicly available to foster further research in this area. Main results . Our results demonstrate a remarkable level of accuracy in distinguish",
+      "abstract": "Abstract Objetive. Decoding speech from brain activity can enable communication for individuals with speech disorders. Deep neural networks (DNNs) have shown great potential for speech decoding applications. However, the limited availability of large datasets containing neural recordings from speech-impaired subjects poses a challenge. Leveraging data from healthy participants can mitigate this limitation and expedite the development of speech neuroprostheses while minimizing the need for patient-specific training data. Approach. In this study, we collected a substantial dataset consisting of recordings from 56 healthy participants using 64 EEG channels. Multiple neural networks were trained to classify perceived sentences in the Spanish language using subject-independent, mixed-subjects, and fine-tuning approaches. The dataset has been made publicly available to foster further research in this area. Main results. Our results demonstrate a remarkable level of accuracy in distinguishing",
       "doi": "10.1088/1741-2552/ad88a3",
       "pmid": "39423829",
       "openalex_id": "W4403527980",
@@ -2642,8 +2658,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.549494450390339,
-        "similarity_score": 0.4757527709007263,
+        "confidence_score": 0.5415176385641098,
+        "similarity_score": 0.4688464403152466,
         "citation_text_length": 1242,
         "dataset_text_length": 2401,
         "scoring_method": "sentence_transformers",
@@ -2675,7 +2691,7 @@
     },
     {
       "title": "Longitudinal associations between resting-state, interregional theta-beta phase-amplitude coupling, psychological distress, and wellbeing in 12–15-year-old adolescents",
-      "author": "D. Sacks, P. Schwenn, Lia Mills, Kassie Bromley, Taliah Prince, Marcella J. Parker, Sophie C. Andrews, J. Lagopoulos, D. F. Hermens",
+      "author": "D. Sacks, P. Schwenn, L. Mills, Kassie Bromley, T. Prince, Marcella J. Parker, Sophie C. Andrews, J. Lagopoulos, D. F. Hermens",
       "venue": "Cerebral Cortex",
       "year": 2023,
       "url": "https://doi.org/10.1093/cercor/bhad099",
@@ -2688,9 +2704,9 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.35315468877553946,
-        "similarity_score": 0.3057616353034973,
-        "citation_text_length": 1352,
+        "confidence_score": 0.3532488664984703,
+        "similarity_score": 0.30584317445755005,
+        "citation_text_length": 1347,
         "dataset_text_length": 2401,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2818,7 +2834,7 @@
       "year": 2025,
       "url": "https://doi.org/10.1038/s41598-025-12695-z",
       "cited_by": 8,
-      "abstract": "Abstract Patients undergoing general anesthesia are often assumed to be unconscious. However, it is known that conscious experiences in the form of dreams occur even in unresponsive states induced by anesthetics. Here, we recorded resting state electroencephalography (EEG) as well as EEG combined with TMS perturbations in 20 healthy participants during propofol sedation. Participants were repeatedly awoken from deep sedation and asked immediately whether they had experiences just before waking up and what they experienced. Out of the 52 attempted awakenings in this study, 24 produced reports of having had an experience, while there were 5 reports of no experience. In the remaining 23 attempts, the subject was either unarousable or the report too incoherent to provide information about their experience prior to awakening. We then tested whether two different consciousness measures based on EEG complexity—the state transitions perturbational complexity index (PCI st ) and single-channel ",
+      "abstract": "Abstract Patients undergoing general anesthesia are often assumed to be unconscious. However, it is known that conscious experiences in the form of dreams occur even in unresponsive states induced by anesthetics. Here, we recorded resting state electroencephalography (EEG) as well as EEG combined with TMS perturbations in 20 healthy participants during propofol sedation. Participants were repeatedly awoken from deep sedation and asked immediately whether they had experiences just before waking up and what they experienced. Out of the 52 attempted awakenings in this study, 24 produced reports of having had an experience, while there were 5 reports of no experience. In the remaining 23 attempts, the subject was either unarousable or the report too incoherent to provide information about their experience prior to awakening. We then tested whether two different consciousness measures based on EEG complexity—the state transitions perturbational complexity index (PCIst) and single-channel Le",
       "doi": "10.1038/s41598-025-12695-z",
       "pmid": "40993159",
       "openalex_id": "W4414466365",
@@ -2826,9 +2842,32 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.44191065251827244,
-        "similarity_score": 0.3826066255569458,
+        "confidence_score": 0.4476140499114991,
+        "similarity_score": 0.3875446319580078,
         "citation_text_length": 1287,
+        "dataset_text_length": 2401,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Is Limited Participant Diversity Impeding EEG-based Machine Learning?",
+      "author": "Philipp Bomatter, Henry Gouk",
+      "venue": "ArXiv",
+      "year": 2025,
+      "url": "https://doi.org/10.48550/arXiv.2503.13497",
+      "cited_by": 8,
+      "abstract": "The application of machine learning (ML) to electroencephalography (EEG) has great potential to advance both neuroscientific research and clinical applications. However, the generalisability and robustness of EEG-based ML models often hinge on the amount and diversity of training data. It is common practice to split EEG recordings into small segments, thereby increasing the number of samples substantially compared to the number of individual recordings or participants. We conceptualise this as a multi-level data generation process and investigate the scaling behaviour of model performance with respect to the overall sample size and the participant diversity through large-scale empirical studies. We then use the same framework to investigate the effectiveness of different ML strategies designed to address limited data problems: data augmentations and self-supervised learning. Our findings show that model performance scaling can be severely constrained by participant distribution shifts ",
+      "doi": "10.48550/arXiv.2503.13497",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.21105/joss.01896",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.47733496963977823,
+        "similarity_score": 0.4132770299911499,
+        "citation_text_length": 1141,
         "dataset_text_length": 2401,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -2875,29 +2914,6 @@
         "confidence_score": 0.477211808860302,
         "similarity_score": 0.41317039728164673,
         "citation_text_length": 1196,
-        "dataset_text_length": 2401,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
-      "title": "Is Limited Participant Diversity Impeding EEG-based Machine Learning?",
-      "author": "Philipp Bomatter, Henry Gouk",
-      "venue": "ArXiv",
-      "year": 2025,
-      "url": "https://doi.org/10.48550/arXiv.2503.13497",
-      "cited_by": 7,
-      "abstract": "The application of machine learning (ML) to electroencephalography (EEG) has great potential to advance both neuroscientific research and clinical applications. However, the generalisability and robustness of EEG-based ML models often hinge on the amount and diversity of training data. It is common practice to split EEG recordings into small segments, thereby increasing the number of samples substantially compared to the number of individual recordings or participants. We conceptualise this as a multi-level data generation process and investigate the scaling behaviour of model performance with respect to the overall sample size and the participant diversity through large-scale empirical studies. We then use the same framework to investigate the effectiveness of different ML strategies designed to address limited data problems: data augmentations and self-supervised learning. Our findings show that model performance scaling can be severely constrained by participant distribution shifts ",
-      "doi": "10.48550/arXiv.2503.13497",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.21105/joss.01896",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.47733496963977823,
-        "similarity_score": 0.4132770299911499,
-        "citation_text_length": 1141,
         "dataset_text_length": 2401,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -3048,7 +3064,7 @@
       "year": 2025,
       "url": "https://doi.org/10.1088/1741-2552/adba8d",
       "cited_by": 5,
-      "abstract": "Abstract Objective . Seizure onset zone (SOZ) localization and SOZ resection outcome prediction are critical for the surgical treatment of drug-resistant epilepsy but have mainly relied on manual inspection of intracranial electroencephalography (iEEG) monitoring data, which can be both inaccurate and time-consuming. Therefore, automating SOZ localization and surgical outcome prediction by using appropriate iEEG neural features and machine learning models has become an emerging topic. However, current channel-wise local features, graph-theoretic network features, and system-theoretic network features cannot fully capture the spatial, temporal, and neural dynamical aspects of epilepsy, hindering accurate SOZ localization and surgical outcome prediction. Approach . Here, we develop a method for computing dynamical functional network controllability from multi-channel iEEG signals, which from a control-theoretic viewpoint, has the ability to simultaneously capture the spatial, temporal, f",
+      "abstract": "Abstract Objective. Seizure onset zone (SOZ) localization and SOZ resection outcome prediction are critical for the surgical treatment of drug-resistant epilepsy but have mainly relied on manual inspection of intracranial electroencephalography (iEEG) monitoring data, which can be both inaccurate and time-consuming. Therefore, automating SOZ localization and surgical outcome prediction by using appropriate iEEG neural features and machine learning models has become an emerging topic. However, current channel-wise local features, graph-theoretic network features, and system-theoretic network features cannot fully capture the spatial, temporal, and neural dynamical aspects of epilepsy, hindering accurate SOZ localization and surgical outcome prediction. Approach. Here, we develop a method for computing dynamical functional network controllability from multi-channel iEEG signals, which from a control-theoretic viewpoint, has the ability to simultaneously capture the spatial, temporal, fun",
       "doi": "10.1088/1741-2552/adba8d",
       "pmid": "40009882",
       "openalex_id": "W4407960459",
@@ -3056,8 +3072,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.44753457024693494,
-        "similarity_score": 0.3874758183956146,
+        "confidence_score": 0.4468701973557473,
+        "similarity_score": 0.3869006037712097,
         "citation_text_length": 1266,
         "dataset_text_length": 2401,
         "scoring_method": "sentence_transformers",
@@ -3203,6 +3219,29 @@
       }
     },
     {
+      "title": "Critical analysis of Parkinson’s disease detection using EEG sub-bands and gated recurrent unit",
+      "author": "Nabeel Khalid, Muhammad Sarwar Ehsan",
+      "venue": "Engineering Science and Technology an International Journal",
+      "year": 2024,
+      "url": "https://doi.org/10.1016/j.jestch.2024.101855",
+      "cited_by": 5,
+      "abstract": "Parkinson’s disease, the second most common neurodegenerative disorder in the world. A progressive disease, which can worsen over time and lead to complications like mild cognitive impairments and dementia. The accurate diagnosis of Parkinson’s Disease (PD) remains a critical challenge in medical engineering. This study explores the potential of brain wave patterns for PD detection in healthy and unhealthy patients. The Power Spectral Density (PSD) and proposed PD detection model based on the Gated Recurrent Unit (GRU) is used to analyze brain activities. It was found that the detection of PD in patients was improved by classifying the RAW EEG in conjunction with the sub-bands using PSD as a feature and GRU as a classifier. The performance matrices including accuracy, precision, recall, and F1-score fall within a range of 90% to 98% for alpha, beta, and gamma sub-bands, while the area under the curve in the case of receiver operating characteristics curve achieved the maximum value of ",
+      "doi": "10.1016/j.jestch.2024.101855",
+      "pmid": null,
+      "openalex_id": "W4403529529",
+      "source_doi": "10.21105/joss.01896",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.45849508792161947,
+        "similarity_score": 0.3969654440879822,
+        "citation_text_length": 1229,
+        "dataset_text_length": 2401,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
       "title": "A large-scale MEG and EEG dataset for object recognition in naturalistic scenes",
       "author": "Guohao Zhang, Ming Zhou, Shuyi Zhen, Shaohua Tang, Zheng Li, Zonglei Zhen",
       "venue": "Scientific Data",
@@ -3243,6 +3282,29 @@
         "confidence_score": 0.43014504611492166,
         "similarity_score": 0.37241995334625244,
         "citation_text_length": 781,
+        "dataset_text_length": 2401,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Addressing BCI inefficiency in c-VEP-based BCIs: A comprehensive study of neurophysiological predictors, binary stimulus sequences, and user comfort",
+      "author": "Jordy Thielen",
+      "venue": "Biomedical Physics & Engineering Express",
+      "year": 2025,
+      "url": "https://doi.org/10.1088/2057-1976/ade316",
+      "cited_by": 4,
+      "abstract": "Abstract Objective. This study investigated the presence of brain-computer interface (BCI) inefficiency in BCIs using the code-modulated visual evoked potential (c-VEP). It further explored neurophysiological predictors of performance variability and evaluated a wide range of binary stimulus sequences in terms of classification accuracy and user comfort, aiming to identify strategies to mitigate c-VEP BCI inefficiency. Approach. In a comprehensive empirical analysis, ten different binary stimulus sequences were offline evaluated. These sequences included five code families (m-sequence, de Bruijn sequence, Golay sequence, Gold code, and a Gold code set), each in original and modulated form. To identify predictors of performance variability, resting-state alpha activity, heart rate and heart rate variability, sustained attention, and flash-VEP characteristics were studied. Main Results. Results confirmed substantial inter-individual variability in c-VEP BCI efficiency. While all particip",
+      "doi": "10.1088/2057-1976/ade316",
+      "pmid": "40494367",
+      "openalex_id": "W4411166688",
+      "source_doi": "10.21105/joss.01896",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.5189255180954934,
+        "similarity_score": 0.44928616285324097,
+        "citation_text_length": 1240,
         "dataset_text_length": 2401,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -3364,29 +3426,6 @@
       }
     },
     {
-      "title": "Critical analysis of Parkinson’s disease detection using EEG sub-bands and gated recurrent unit",
-      "author": "Nabeel Khalid, M. Ehsan",
-      "venue": "Engineering Science and Technology, an International Journal",
-      "year": 2024,
-      "url": "https://doi.org/10.1016/j.jestch.2024.101855",
-      "cited_by": 4,
-      "abstract": null,
-      "doi": "10.1016/j.jestch.2024.101855",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.21105/joss.01896",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.48846276104450226,
-        "similarity_score": 0.4652026295661926,
-        "citation_text_length": 205,
-        "dataset_text_length": 2401,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "A Pilot Randomized Control Trial Testing a Smartphone-Delivered Food Attention Retraining Program in Adolescent Girls with Overweight or Obesity",
       "author": "Megan N. Parker, Bess F. Bloomer, Jeffrey Stout, Meghan E. Byrne, Natasha A. Schvey, Sheila M. Brady, Kong Y. Chen, Allison C. Nugent, Sara A. Turner, Shanna Yang, Monika M. Stojek, Andrew J. Waters, Marian Tanofsky‐Kraff, Jack A. Yanovski",
       "venue": "Nutrients",
@@ -3439,7 +3478,7 @@
       "year": 2022,
       "url": "https://doi.org/10.1101/2022.05.05.22274610",
       "cited_by": 3,
-      "abstract": "Background EEG is a common tool for monitoring anaesthetic depth but is rarely reused at large for biomedical research. This study sets out to explore repurposing of EEG during anaesthesia to learn biomarkers of brain ageing in the absence of consciousness. Methods We focused on brain age estimation as an example. Using machine learning, we reanalysed 4-electrodes EEG of 323 patients under propofol and sevoflurane. We included spatio-spectral features from stable anaesthesia for EEG-based age prediction applying recently published reference methods. Anaesthesia was considered stable when 95% of the total power was below a frequency between 8Hz and 13Hz. Results We considered moderate-risk patients (ASA &lt;= 2) with propofol anaesthesia to explore predictive EEG signatures. Average alpha-band power (8-13Hz) was informative about age. Yet, state-of-the-art prediction performance was achieved by analysing the entire power spectrum from all electrodes (MAE = 8.2y, R2 = 0.65). Clinical exp",
+      "abstract": "Background EEG is a common tool for monitoring anaesthetic depth but is rarely reused at large for biomedical research. This study sets out to explore repurposing of EEG during anaesthesia to learn biomarkers of brain ageing in the absence of consciousness. Methods We focused on brain age estimation as an example. Using machine learning, we reanalysed 4-electrodes EEG of 323 patients under propofol and sevoflurane. We included spatio-spectral features from stable anaesthesia for EEG-based age prediction applying recently published reference methods. Anaesthesia was considered stable when 95% of the total power was below a frequency between 8Hz and 13Hz. Results We considered moderate-risk patients (ASA <= 2) with propofol anaesthesia to explore predictive EEG signatures. Average alpha-band power (8-13Hz) was informative about age. Yet, state-of-the-art prediction performance was achieved by analysing the entire power spectrum from all electrodes (MAE = 8.2y, R2 = 0.65). Clinical explor",
       "doi": "10.1101/2022.05.05.22274610",
       "pmid": null,
       "openalex_id": "W4280564103",
@@ -3447,8 +3486,8 @@
       "source_relation": "References",
       "discovery_backend": "opencite",
       "confidence_scoring": {
-        "confidence_score": 0.5226086381077767,
-        "similarity_score": 0.45247501134872437,
+        "confidence_score": 0.5199951374530792,
+        "similarity_score": 0.4502122402191162,
         "citation_text_length": 1308,
         "dataset_text_length": 2401,
         "scoring_method": "sentence_transformers",
@@ -3479,29 +3518,6 @@
       }
     },
     {
-      "title": "Addressing BCI inefficiency in c-VEP-based BCIs: A comprehensive study of neurophysiological predictors, binary stimulus sequences, and user comfort",
-      "author": "Jordy Thielen",
-      "venue": "Biomedical Physics & Engineering Express",
-      "year": 2025,
-      "url": "https://doi.org/10.1088/2057-1976/ade316",
-      "cited_by": 3,
-      "abstract": "Abstract Objective. This study investigated the presence of brain-computer interface (BCI) inefficiency in BCIs using the code-modulated visual evoked potential (c-VEP). It further explored neurophysiological predictors of performance variability and evaluated a wide range of binary stimulus sequences in terms of classification accuracy and user comfort, aiming to identify strategies to mitigate c-VEP BCI inefficiency. Approach. In a comprehensive empirical analysis, ten different binary stimulus sequences were offline evaluated. These sequences included five code families (m-sequence, de Bruijn sequence, Golay sequence, Gold code, and a Gold code set), each in original and modulated form. To identify predictors of performance variability, resting-state alpha activity, heart rate and heart rate variability, sustained attention, and flash-VEP characteristics were studied. Main Results. Results confirmed substantial inter-individual variability in c-VEP BCI efficiency. While all particip",
-      "doi": "10.1088/2057-1976/ade316",
-      "pmid": "40494367",
-      "openalex_id": "W4411166688",
-      "source_doi": "10.21105/joss.01896",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.5189255180954934,
-        "similarity_score": 0.44928616285324097,
-        "citation_text_length": 1240,
-        "dataset_text_length": 2401,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "Challenging the status quo: A guide to open and reproducible neuroimaging for early career researchers",
       "author": "Nikhil Bhagwat, Sebastian Urchs, Jean‐Baptiste Poline, Yufang Yang",
       "venue": "Imaging Neuroscience",
@@ -3519,6 +3535,29 @@
         "confidence_score": 0.5469394321739675,
         "similarity_score": 0.47354063391685486,
         "citation_text_length": 1227,
+        "dataset_text_length": 2401,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Corticothalamic circuit mechanisms underlying brain region and ageing variations in resting-state alpha activity",
+      "author": "Sorenza P. Bastiaens, D. Momi, Leanne Rokos, Taha Morshedzadeh, Kevin Kadak, M. P. Oveisi, J. Griffiths",
+      "venue": "bioRxiv",
+      "year": 2025,
+      "url": "https://doi.org/10.1101/2025.08.08.669373",
+      "cited_by": 3,
+      "abstract": "Understanding the neural mechanisms underlying oscillations in resting-state brain activity, which exhibit substantial spatial and age-related variations, remains a significant challenge. This study aims to characterize the contributions of neural circuits to the mechanisms governing resting-state alpha oscillations, which are crucial for various neurocognitive processes and pathologies. Using the Cam-CAN dataset, source-space MEG analyses revealed a pronounced posterior-anterior gradient in alpha frequency, alpha power, and aperiodic components, alongside notable age-related changes. Through neurophysiological modelling, we uncover strong corticothalamic interactions in occipital regions, contrasting with predominantly corticocortical interactions in frontal areas. Ageing is associated with reduced intrathalamic activity and increased corticothalamic delay in occipital regions, while fronto-central regions exhibit increased intrathalamic activity. These findings establish how differen",
+      "doi": "10.1101/2025.08.08.669373",
+      "pmid": null,
+      "openalex_id": null,
+      "source_doi": "10.21105/joss.01896",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.40375421762466435,
+        "similarity_score": 0.34957075119018555,
+        "citation_text_length": 1261,
         "dataset_text_length": 2401,
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
@@ -3755,29 +3794,6 @@
       }
     },
     {
-      "title": "Corticothalamic circuit mechanisms underlying brain region and ageing variations in resting-state alpha activity",
-      "author": "Sorenza P. Bastiaens, D. Momi, Leanne Rokos, Taha Morshedzadeh, Kevin Kadak, M. P. Oveisi, J. Griffiths",
-      "venue": "bioRxiv",
-      "year": 2025,
-      "url": "https://doi.org/10.1101/2025.08.08.669373",
-      "cited_by": 2,
-      "abstract": "Understanding the neural mechanisms underlying oscillations in resting-state brain activity, which exhibit substantial spatial and age-related variations, remains a significant challenge. This study aims to characterize the contributions of neural circuits to the mechanisms governing resting-state alpha oscillations, which are crucial for various neurocognitive processes and pathologies. Using the Cam-CAN dataset, source-space MEG analyses revealed a pronounced posterior-anterior gradient in alpha frequency, alpha power, and aperiodic components, alongside notable age-related changes. Through neurophysiological modelling, we uncover strong corticothalamic interactions in occipital regions, contrasting with predominantly corticocortical interactions in frontal areas. Ageing is associated with reduced intrathalamic activity and increased corticothalamic delay in occipital regions, while fronto-central regions exhibit increased intrathalamic activity. These findings establish how differen",
-      "doi": "10.1101/2025.08.08.669373",
-      "pmid": null,
-      "openalex_id": null,
-      "source_doi": "10.21105/joss.01896",
-      "source_relation": "References",
-      "discovery_backend": "opencite",
-      "confidence_scoring": {
-        "confidence_score": 0.40375421762466435,
-        "similarity_score": 0.34957075119018555,
-        "citation_text_length": 1261,
-        "dataset_text_length": 2401,
-        "scoring_method": "sentence_transformers",
-        "model_used": "Qwen/Qwen3-Embedding-0.6B"
-      }
-    },
-    {
       "title": "PSDNorm: Test-Time Temporal Normalization for Deep Learning in Sleep Staging",
       "author": "Théo Gnassounou, A. Collas, Rémi Flamary, Alexandre Gramfort",
       "venue": "n/a",
@@ -3826,16 +3842,16 @@
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:21:54.598015+00:00",
+    "scoring_date": "2026-08-25T11:33:08.248088+00:00",
     "dataset_text_length": 2401,
-    "num_citations_scored": 161,
+    "num_citations_scored": 162,
     "summary_stats": {
-      "mean_confidence": 0.5429973530834137,
-      "median_confidence": 0.5302488058805466,
-      "std_confidence": 0.11044697888977305,
+      "mean_confidence": 0.5438068744733378,
+      "median_confidence": 0.5312574644386769,
+      "std_confidence": 0.1110608374232718,
       "min_confidence": 0.29781123250722885,
       "max_confidence": 0.9668052345514299,
-      "high_confidence_count": 14,
+      "high_confidence_count": 15,
       "medium_confidence_count": 137,
       "low_confidence_count": 10
     }

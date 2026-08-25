@@ -1,13 +1,13 @@
 {
   "dataset_id": "on007648",
-  "num_citations": 3,
-  "date_last_updated": "2026-08-17T11:00:01.050919+00:00",
+  "num_citations": 5,
+  "date_last_updated": "2026-08-25T11:03:06.821211+00:00",
   "metadata": {
     "total_cumulative_citations": 0,
-    "fetch_date": "2026-08-17T11:00:01.050919+00:00",
+    "fetch_date": "2026-08-25T11:03:06.821211+00:00",
     "processing_version": "1.0",
     "fetch_status": "success",
-    "anchor_count": 2,
+    "anchor_count": 3,
     "anchor_errors": {},
     "schema_version": "2.1",
     "discovery_backend": "opencite",
@@ -16,13 +16,25 @@
       {
         "identifier": "10.7554/elife.106050.3",
         "identifier_type": "doi",
-        "source_relation": "References",
+        "source_relation": "IsDescribedBy",
         "classification": "data_paper",
         "kept": true,
         "paper_title": "Cross-modal interaction of Alpha Activity does not reflect inhibition of early sensory processing: A frequency tagging study using EEG and MEG",
         "paper_year": 2025,
         "paper_venue": "eLife",
         "reason": "The candidate paper's title and abstract describe the exact cross-modal paradigm, frequency-tagging, and EEG/MEG studies performed using the data contained in this dataset.",
+        "judgment_model": "gemma4:e4b"
+      },
+      {
+        "identifier": "10.7554/elife.106050.1",
+        "identifier_type": "doi",
+        "source_relation": "References",
+        "classification": null,
+        "kept": true,
+        "paper_title": null,
+        "paper_year": null,
+        "paper_venue": null,
+        "reason": null,
         "judgment_model": "gemma4:e4b"
       },
       {
@@ -40,17 +52,18 @@
     ],
     "searched_dois": [
       "10.7554/elife.106050.3",
+      "10.7554/elife.106050.1",
       "10.82901/nemar.on007648"
     ],
     "keywords": [
       "EEG",
-      "alpha oscillations",
-      "cross-modal attention",
-      "frequency tagging",
+      "Alpha Rhythm",
+      "crossmodal attention",
+      "frequency-tagging",
       "target discrimination",
-      "sensory preparation"
+      "target preparation"
     ],
-    "methods_description": "EEG data were collected from healthy control participants with normal or corrected-to-normal vision and no history of psychiatric or neurological illness. The experimental protocol involved six randomly ordered and balanced conditions combining cue type (auditory, visual, non-specific) with target modality and distractor presence. Participants performed target discrimination tasks using keyboard responses. One additional EOG channel was acquired to monitor eye activity. Data were collected at Birmingham University, United Kingdom.",
+    "methods_description": "EEG was recorded from healthy adult participants performing a cued target-discrimination task with auditory and visual targets and distractors. An additional EOG channel was used to monitor eye activity. During the cue-target interval, a frequency-tagged fixation cross (36 Hz) and an amplitude-modulated tone (40 Hz) were presented. Participants indicated target identity via keyboard arrow presses across 28 experimental blocks. Two participants were excluded due to task abortion or below-chance performance. Data were collected at the University of Birmingham, United Kingdom.",
     "funding": [
       {
         "funder_name": "Facebook Oculus"
@@ -59,14 +72,7 @@
         "funder_name": "BBSRC",
         "award_number": "BB/R018723/1"
       }
-    ],
-    "searched_accessions": [
-      "on007648",
-      "ds007648"
-    ],
-    "num_accession_mentions": 0,
-    "num_dataset_citations": 0,
-    "num_datapaper_citations": 3
+    ]
   },
   "citation_details": [
     {
@@ -81,7 +87,7 @@
       "pmid": null,
       "openalex_id": "W7166719381",
       "source_doi": "10.7554/elife.106050.3",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 0.9510574525594713,
@@ -104,7 +110,7 @@
       "pmid": "41459754",
       "openalex_id": "W7117456464",
       "source_doi": "10.7554/elife.106050.3",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 0.48400207087397584,
@@ -127,7 +133,7 @@
       "pmid": null,
       "openalex_id": "W7125480348",
       "source_doi": "10.7554/elife.106050.3",
-      "source_relation": "References",
+      "source_relation": "IsDescribedBy",
       "discovery_backend": "opencite",
       "confidence_scoring": {
         "confidence_score": 0.43851185560226447,
@@ -137,22 +143,68 @@
         "scoring_method": "sentence_transformers",
         "model_used": "Qwen/Qwen3-Embedding-0.6B"
       }
+    },
+    {
+      "title": "OPM quantum sensors enhance non-invasive neuroimaging performance",
+      "author": "Marion Brickwedde, Paul Anders, P. Krüger, Tilmann Sander, Peter J. Uhlhaas",
+      "venue": "bioRxiv (Cold Spring Harbor Laboratory)",
+      "year": 2025,
+      "url": "https://doi.org/10.1101/2025.05.30.657044",
+      "cited_by": 0,
+      "abstract": "Much of our understanding of how neural circuit activity relates to human behaviour as well as mental health stems from non-invasive assessments of the central nervous system. Further progress in key questions, however, requires a higher differentiation of circuit-level activity, which remains constrained by the sensitivity and resolution of existing instruments. Here we show that neural quantum sensing with optically pumped magnetometers (OPMs) addresses this issue by significantly outperforming EEG and conventional MEG in both signal-to-noise ratio (SNR) and signal coherence across trials. SNR for OPMs was increased by up to 205% compared to EEG and by up to 40% compared to conventional MEG. Likewise, the signal coherence across trials of OPMs was increased by up to 61% compared to EEG and by up to 23% compared to conventional MEG. Our data emphasize the important role of OPMs for non-invasive neuroimaging, paving the way for significant advances in basic research as well as translat",
+      "doi": "10.1101/2025.05.30.657044",
+      "pmid": null,
+      "openalex_id": "W4411035603",
+      "source_doi": "10.7554/elife.106050.1",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.3663618752360345,
+        "similarity_score": 0.31719642877578735,
+        "citation_text_length": 1218,
+        "dataset_text_length": 2278,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
+    },
+    {
+      "title": "Opposite Effects of Alpha Oscillations on Mind-Wandering with Eyes Open and Closed",
+      "author": "Esther Thielking, Hannah Ramsey, Jason Samaha, Thomas Andrillon, Luca Iemi",
+      "venue": "Journal of Neuroscience",
+      "year": 2026,
+      "url": "https://doi.org/10.1523/jneurosci.0133-26.2026",
+      "cited_by": 0,
+      "abstract": "Spontaneous fluctuations in brain activity are thought to underlie mind-wandering, moments when mental experience becomes unrelated to what one is currently doing. A large body of research has investigated ongoing neural oscillations in the alpha band (7-14 Hz), reflecting changes in arousal and attention. However, studies disagree whether the power of alpha oscillations increases or decreases during mind-wandering compared with on-task focus. We hypothesized that these opposite effects arise from differences in eye state across studies, as eye closure increases alpha power and can reverse alpha's relationship with sleepiness, which is itself related to mind-wandering. To test this, we recorded electroencephalography while male and female participants with eyes either open or closed were probed to report whether they were focused on the auditory attention task or mind-wandering and how alert or sleepy they were. Consistent with our hypothesis, we found that increased alpha power was mo",
+      "doi": "10.1523/jneurosci.0133-26.2026",
+      "pmid": "42509159",
+      "openalex_id": "W7171411498",
+      "source_doi": "10.7554/elife.106050.1",
+      "source_relation": "References",
+      "discovery_backend": "opencite",
+      "confidence_scoring": {
+        "confidence_score": 0.42393898889422427,
+        "similarity_score": 0.3670467436313629,
+        "citation_text_length": 1218,
+        "dataset_text_length": 2278,
+        "scoring_method": "sentence_transformers",
+        "model_used": "Qwen/Qwen3-Embedding-0.6B"
+      }
     }
   ],
   "confidence_scoring": {
     "model_used": "Qwen/Qwen3-Embedding-0.6B",
-    "scoring_date": "2026-08-17T11:55:20.100068+00:00",
+    "scoring_date": "2026-08-25T12:22:55.954897+00:00",
     "dataset_text_length": 2278,
-    "num_citations_scored": 3,
+    "num_citations_scored": 5,
     "summary_stats": {
-      "mean_confidence": 0.6245237930119039,
-      "median_confidence": 0.48400207087397584,
-      "std_confidence": 0.23163982535322902,
-      "min_confidence": 0.43851185560226447,
+      "mean_confidence": 0.5327744486331941,
+      "median_confidence": 0.43851185560226447,
+      "std_confidence": 0.21249148431504283,
+      "min_confidence": 0.3663618752360345,
       "max_confidence": 0.9510574525594713,
       "high_confidence_count": 1,
-      "medium_confidence_count": 2,
-      "low_confidence_count": 0
+      "medium_confidence_count": 3,
+      "low_confidence_count": 1
     }
   }
 }
